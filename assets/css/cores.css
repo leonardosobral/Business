@@ -1,0 +1,599 @@
+:root {
+    --5red: 137;
+    --5green: 193;
+    --5blue: 215;
+    --5: rgba(var(--5red), var(--5green), var(--5blue), 0.5);
+    --5b: rgba(var(--5red), var(--5green), var(--5blue), 1);
+
+    --10red: 187;
+    --10green: 217;
+    --10blue: 118;
+    --10: rgba(var(--10red), var(--10green), var(--10blue), 0.5);
+    --10b: rgba(var(--10red), var(--10green), var(--10blue), 1);
+
+    --21red: 255;
+    --21green: 204;
+    --21blue: 108;
+    --21: rgba(var(--21red), var(--21green), var(--21blue), 0.5);
+    --21b: rgba(var(--21red), var(--21green), var(--21blue), 1);
+
+    --42red: 243;
+    --42green: 113;
+    --42blue: 103;
+    --42: rgba(var(--42red), var(--42green), var(--42blue), 0.5);
+    --42b: rgba(var(--42red), var(--42green), var(--42blue), 1);
+
+    --ultrared: 150;
+    --ultragreen: 150;
+    --ultrablue: 150;
+    --ultra: rgba(var(--ultrared), var(--ultragreen), var(--ultrablue), 0.5);
+    --ultrab: rgba(var(--ultrared), var(--ultragreen), var(--ultrablue), 1);
+
+    --rh-yellow: #f4b120;
+    --rh-darkyellow: #d99d1c;
+    --rh-gray: #666666;
+    --rh-darkgray: #333333;
+}
+.btn-primary {
+    --mdb-btn-bg: var(--rh-yellow);
+    --mdb-btn-box-shadow: 0 4px 9px -4px var(--rh-darkgray);
+    --mdb-btn-hover-bg: var(--rh-darkyellow);
+    --mdb-btn-focus-bg: var(--rh-darkyellow);
+    --mdb-btn-active-bg: var(--rh-yellow);
+    --mdb-btn-box-shadow-state: 0 8px 9px -4px rgba(150, 150, 150, 0.3), 0 4px 18px 0 rgba(150, 150, 150, 0.2);
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: var(--rh-yellow);
+    border-color: var(--rh-yellow);
+}
+.nav-tabs .nav-link:hover {
+    background-color: #ffffff;
+}
+.multi-range-slider-hand {
+    background-color: var(--rh-yellow);
+}
+.multi-range-slider-tooltip {
+    background-color: var(--rh-yellow);
+    left: 0px;
+}
+.btn {
+    box-shadow: 0 4px 9px -4px var(--rh-darkgray);
+}
+.btn:hover {
+    box-shadow: 0 8px 9px -4px rgba(150, 150, 150, 0.3), 0 4px 18px 0 rgba(150, 150, 150, 0.2) !important;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: var(--rh-yellow);
+}
+.menu-item a:hover, .nav-link:focus, .nav-link:hover {
+    color: var(--rh-yellow);
+}
+body {
+    background-color: rgb(239, 239, 239);
+}
+.card-principal {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.text-hidden {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.iframe.embed-responsive-item {
+    max-width: 100%;
+}
+
+.mono {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+/* Ajustes */
+.card-header {
+    font-size: 0.8rem;
+    color: rgb(255,255,255);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    background-color: rgb(70 70 70) !important;
+}
+table tr th {
+    font-weight: normal !important;
+}
+table tr th:first-child {
+    border-radius: 5px 0 0 0;
+}
+table tr th:last-child {
+    border-radius: 0 5px 0 0;
+}
+/* mobile  */
+@media screen and (max-width: 990px) {
+    .navbar-nav{
+        display: block;
+    }
+    .menu-item {
+        display: inline-block;
+        width: 5%;
+        text-align: center;
+        padding: 8px;
+        font-size: large;
+    }
+}
+
+.bg-1k, .bg-1k-light {
+    background-color: rgba(137,193,215,0.7) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-2k, .bg-2k-light {
+    background-color: rgba(137,193,215,0.7) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-3k, .bg-3k-light {
+    background-color: rgba(137,193,215,0.7) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-4k, .bg-4k-light {
+    background-color: rgba(137,193,215,0.7) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-5k, .bg-5k-light {
+    background-color: rgba(137,193,215,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-6k, .bg-6k-light {
+    background-color: rgba(137,193,215,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-7k, .bg-7k-light {
+    background-color: rgba(137,193,215,0.9) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-8k, .bg-8k-light {
+    background-color: rgba(137,193,215,0.9) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-9k, .bg-9k-light {
+    background-color: rgba(137,193,215,0.9) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-10k, .bg-10k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-11k, .bg-11k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-12k, .bg-12k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-13k, .bg-13k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-14k, .bg-14k-light {
+    background-color: rgba(187,217,118,0.8) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-15k, .bg-15k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-16k, .bg-16k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-17k, .bg-17k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-18k, .bg-18k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-19k, .bg-19k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-20k, .bg-20k-light {
+    background-color: rgba(187,217,118,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-21k, .bg-21k-light {
+    background-color: rgba(255,204,108,1) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.bg-42k, .bg-42k-light {
+    background-color: rgba(243,113,103,1) !important;
+    font-size: 0.8rem;
+    color: rgb(255,255,255) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.bg-50k, .bg-50k-light {
+    background-color: rgba(243,113,103,1) !important;
+    font-size: 0.8rem;
+    color: rgb(255,255,255) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.bg-100k, .bg-100k-light {
+    background-color: rgba(243,113,103,1) !important;
+    font-size: 0.8rem;
+    color: rgb(255,255,255) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* BADGES */
+
+.badge-1k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-2k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-3k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-4k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-5k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-6k-light {
+    border: 1px solid rgba(137,193,215,1) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-7k-light {
+    border: 1px solid rgba(137,193,215,0.9) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-8k-light {
+    border: 1px solid rgba(137,193,215,0.9) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-9k-light {
+    border: 1px solid rgba(137,193,215,0.9) !important;
+    background-color: rgba(137,193,215,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-10k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-11k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-12k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-13k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-14k-light {
+    border: 1px solid rgba(187,217,118,0.8) !important;
+    background-color: rgba(187,217,118,0.4) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-15k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-16k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-17k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-18k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-19k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-20k-light {
+    border: 1px solid rgba(187,217,118,1) !important;
+    background-color: rgba(187,217,118,0.5) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-21k-light {
+    border: 1px solid rgba(255,204,108,1) !important;
+    background-color: rgba(255,204,108,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-22k-light, .badge-23k-light, .badge-24k-light, .badge-25k-light, .badge-26k-light, .badge-27k-light, .badge-28k-light, .badge-29k-light, .badge-30k-light, .badge-31k-light, .badge-32k-light, .badge-33k-light, .badge-34k-light, .badge-35k-light, .badge-36k-light, .badge-37k-light, .badge-38k-light, .badge-39k-light, .badge-40k-light, .badge-41k-light {
+    border: 1px solid rgba(255,204,108,1) !important;
+    background-color: rgba(255,204,108,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-42k-light {
+    border: 1px solid rgba(243,113,103,1) !important;
+    background-color: rgba(243,113,103,0.2) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-50k-light {
+    border: 1px solid rgba(243,113,103,1) !important;
+    background-color: rgba(243,113,103,0.3) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+.badge-100k-light {
+    border: 1px solid rgba(243,113,103,1) !important;
+    background-color: rgba(243,113,103,0.4) !important;
+    font-size: 0.7rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+
+
+/* OUTROS */
+
+.bg-last5 {
+    background-color: rgba(0, 140, 255, 0.2) !important;
+    font-size: 0.8rem;
+    color: rgb(40 40 40) !important;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+
+.bg-pace {
+    background-color: rgb(70,70,70) !important;
+    font-size: 0.8rem;
+    color: rgb(255,255,255) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.bg-strava {
+    background-color: #fc5200;
+    color: white;
+}
+
+.text-gray-light {
+    color: rgb(204, 204, 204);
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.bg-42k a, .bg-42k-light a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #222222;
+}
+
+.bg-42k a:hover, .bg-42k-light a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+th {
+    font-size: 0.8rem;
+}
+
+td a:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+.w-50px {
+    width: 50px !important;
+}
+.w-75px {
+    width: 75px !important;
+}
+.w-100px {
+    width: 100px !important;
+}
+.w-150px {
+    width: 150px !important;
+}
+.w-200px {
+    width: 200px !important;
+}
+.w-250px {
+    width: 250px !important;
+}
+.w-300px {
+    width: 300px !important;
+}
+.nav-link {
+    color: #444444;
+}
+
+.highlight > *{
+    background-color:yellow !important;
+}
+
+.runnerhub-logo {
+    display: block;
+    background: url("/assets/runnerhub_logo.png") left center no-repeat;
+    background-size: contain;
+    height: 40px;
+}
+.linescroll {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100px;
+    text-overflow: ellipsis;
+}
+.counter {
+    text-align: center;
+    color: darkgray;
+    border-bottom: 1px solid #dddddd;
+    display: block;
+}
+/* KMs */
+/* estilo fixo */
+.kms {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    border: 1px solid #fff;
+    border-radius: 0.375rem;
+    font-weight: 600;
+}
+/* estilo dinamico */
+.k5 {
+    background-color: var(--5);
+    border-color: var(--5b);
+}
+.k10 {
+    background-color: var(--10);
+    border-color: var(--10b);
+}
+.k21 {
+    background-color: var(--21);
+    border-color: var(--21b);
+}
+.k42 {
+    background-color: var(--42);
+    border-color: var(--42b);
+}
+.ultra {
+    background-color: var(--ultra);
+    border-color: var(--ultrab);
+}
+
+/* scroll to top */
+#scrollTop {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 16px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--rh-gray);
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+#scrollTop:hover {
+    background-color: var(--rh-yellow);
+    opacity: 1;
+}
