@@ -510,7 +510,7 @@
                                                         <span id="nome_#dados.cbat#">Carregando...</span>
 
                                                         <script>
-                                                            fetch("https://runnerhub.run/bi/includes/getH1.cfm?external=https://cbat.org.br/atletas/#dados.cbat#/atleta")
+                                                            fetch("https://runnerhub.run/includes/getH1.cfm?external=https://cbat.org.br/atletas/#dados.cbat#/atleta")
                                                                     .then(response => response.json())
                                                                     .then(data => {
                                                                         const container = document.getElementById("nome_#dados.cbat#");

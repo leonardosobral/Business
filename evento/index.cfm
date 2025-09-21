@@ -24,8 +24,8 @@
 <cfparam name="URL.assessoria" default=""/>
 
 <!--- BACKEND --->
-<cfinclude template="backend_login.cfm"/>
-<cfinclude template="backend_parceiros.cfm"/>
+<cfinclude template="../includes/backend/backend_login.cfm"/>
+<cfinclude template="../includes/backend/backend_parceiros.cfm"/>
 
 <!--- HEAD --->
 <head>
@@ -35,7 +35,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Runner Hub - <cfoutput>#qAgrega.nome_evento_agregado#</cfoutput></title>
-    <cfinclude template="includes/seo-web-tools-head.cfm"/>
+    <cfinclude template="../includes/seo-web-tools-head.cfm"/>
 
     <style>
         /*.table-active {
@@ -102,7 +102,7 @@
 
     <cfif NOT isDefined("COOKIE.id")>
 
-        <cflocation addtoken="false" url="/bi/"/>
+        <cflocation addtoken="false" url="/"/>
 
     <cfelse>
 
@@ -111,7 +111,7 @@
 
             <!--- HEADER --->
 
-            <cfinclude template="includes/header_parceiro.cfm"/>
+            <cfinclude template="../includes/header_parceiro.cfm"/>
 
             <!---cfdump var="#qPeriodo#"/--->
 
@@ -203,7 +203,7 @@
 
                     <!--- TREINOS --->
 
-                    <cfinclude template="backend_treinao_core.cfm"/>
+                    <cfinclude template="../includes/backend/backend_treinao_core.cfm"/>
 
                     <div class="col-md-6">
                         <div class="row g-2">
@@ -312,17 +312,17 @@
 
                             <!--- LISTAGEM DE REGIAO --->
 
-                            <cfinclude template="parts/listagem_regioes.cfm"/>
+                            <cfinclude template="../parts/listagem_regioes.cfm"/>
 
 
                             <!--- LISTAGEM DE UF --->
 
-                            <cfinclude template="parts/listagem_estados.cfm"/>
+                            <cfinclude template="../parts/listagem_estados.cfm"/>
 
 
                             <!--- LISTAGEM DE CIDADE --->
 
-                            <cfinclude template="parts/listagem_cidades.cfm"/>
+                            <cfinclude template="../parts/listagem_cidades.cfm"/>
 
 
                             <!--- LISTAGEM DE PERCURSOS --->
@@ -331,7 +331,7 @@
 
                                 <cfif qBi.tipo EQ "empresa">
 
-                                    <cfinclude template="parts/listagem_ticketeiras.cfm"/>
+                                    <cfinclude template="../parts/listagem_ticketeiras.cfm"/>
 
                                 <cfelse>
 
@@ -392,7 +392,7 @@
 
                                         <div class="<cfif len(trim(URL.id_evento))>table-wrapper-sm<cfelse>table-wrapper-lg</cfif>">
 
-                                            <cfinclude template="parts/listagem_eventos.cfm"/>
+                                            <cfinclude template="../parts/listagem_eventos.cfm"/>
 
                                         </div>
 
@@ -594,7 +594,7 @@
 
                                 <!--- ESTATISTICAS DE INSCRICOES --->
 
-                                <cfinclude template="backend_inscritos.cfm"/>
+                                <cfinclude template="../includes/backend/backend_inscritos.cfm"/>
                                 <cfinclude template="inscritos.cfm"/>
 
                             </cfif>
@@ -605,7 +605,7 @@
 
                                 <!--- ESTATISTICAS DE TREINOS --->
 
-                                <cfinclude template="backend_treinao.cfm"/>
+                                <cfinclude template="../includes/backend/backend_treinao.cfm"/>
                                 <cfinclude template="treinao.cfm"/>
 
                             </cfif>
@@ -616,7 +616,7 @@
 
                                 <!--- ESTATISTICAS DE SAUDE --->
 
-                                <cfinclude template="backend_saude.cfm"/>
+                                <cfinclude template="../includes/backend/backend_saude.cfm"/>
                                 <cfinclude template="saude.cfm"/>
 
                             </cfif>
@@ -634,9 +634,9 @@
 
     </cfif>
 
-    <cfinclude template="includes/footer_parceiro.cfm"/>
+    <cfinclude template="../includes/footer_parceiro.cfm"/>
 
-    <cfinclude template="includes/seo-web-tools-body-end.cfm"/>
+    <cfinclude template="../includes/seo-web-tools-body-end.cfm"/>
 
 </body>
 

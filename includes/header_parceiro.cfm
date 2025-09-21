@@ -10,11 +10,11 @@
     <div class="col-8 row-cols-auto h4">
 
         <cfif isDefined("qAgrega")>
-            <a href="/bi/" class="me-4"><img src="/assets/icons/rh_favicon.png" style="max-height: 40px;"/></a>
+            <a href="/" class="me-4"><img src="/assets/icons/rh_favicon.png" style="max-height: 40px;"/></a>
             <img src="/assets/logos/<cfoutput>#qTema.logo#</cfoutput>.png?2" style="max-height: 40px;" onerror="this.src='/assets/logos/runnerhub.png';">
             <!---span class="d-none d-md-block">// dashboard</span--->
         <cfelse>
-            <a href="/bi/" class="me-4">
+            <a href="/" class="me-4">
                 <svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336.39 47.13" height="36">
                     <defs>
                         <style>
@@ -62,7 +62,7 @@
         <div class="btn-group ms-2 rounded-circle">
             <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : 'https://roadrunners.run/assets/user.png'#" style="max-height: 38px; cursor: pointer;" alt="imagem do usuário" class="rounded-circle" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false" onerror="this.src='https://roadrunners.run/assets/user.png';"/></cfoutput>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="z-index: 999999;">
-                <li><a class="dropdown-item" href="/bi/">Meus Painéis</a></li>
+                <li><a class="dropdown-item" href="/">Meus Painéis</a></li>
                 <li><a class="dropdown-item" href="https://roadrunners.run/atleta/" target="_blank">Meu Perfil</a></li>
                 <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->
                 <li><hr class="dropdown-divider"></li>

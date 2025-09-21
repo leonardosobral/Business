@@ -72,7 +72,7 @@
     <cfset delSession = StructDelete(COOKIE, "name", true)/>
     <cfset delSession = StructDelete(COOKIE, "email", true)/>
     <cfset delSession = StructDelete(COOKIE, "imagem_usuario", true)/>
-    <cflocation addtoken="false" url="/bi/"/>
+    <cflocation addtoken="false" url="/"/>
 </cfif>
 
 <!--- GOOGLE SIGN IN --->

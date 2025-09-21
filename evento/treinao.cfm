@@ -335,7 +335,7 @@
 
                     <div class="card-body p-2">
 
-                        <cfinclude template="includes/treinao_accordion.cfm"/>
+                        <cfinclude template="../includes/treinao_accordion.cfm"/>
 
                     </div>
 

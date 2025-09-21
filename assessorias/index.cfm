@@ -65,7 +65,7 @@
 
     <cfif NOT isDefined("COOKIE.id")>
 
-        <cflocation addtoken="false" url="/bi/"/>
+        <cflocation addtoken="false" url="/"/>
 
     <cfelse>
 
