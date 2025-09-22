@@ -312,17 +312,17 @@
 
                             <!--- LISTAGEM DE REGIAO --->
 
-                            <cfinclude template="../parts/listagem_regioes.cfm"/>
+                            <cfinclude template="../includes/parts/listagem_regioes.cfm"/>
 
 
                             <!--- LISTAGEM DE UF --->
 
-                            <cfinclude template="../parts/listagem_estados.cfm"/>
+                            <cfinclude template="../includes/parts/listagem_estados.cfm"/>
 
 
                             <!--- LISTAGEM DE CIDADE --->
 
-                            <cfinclude template="../parts/listagem_cidades.cfm"/>
+                            <cfinclude template="../includes/parts/listagem_cidades.cfm"/>
 
 
                             <!--- LISTAGEM DE PERCURSOS --->
@@ -331,7 +331,7 @@
 
                                 <cfif qBi.tipo EQ "empresa">
 
-                                    <cfinclude template="../parts/listagem_ticketeiras.cfm"/>
+                                    <cfinclude template="../includes/parts/listagem_ticketeiras.cfm"/>
 
                                 <cfelse>
 
@@ -392,7 +392,7 @@
 
                                         <div class="<cfif len(trim(URL.id_evento))>table-wrapper-sm<cfelse>table-wrapper-lg</cfif>">
 
-                                            <cfinclude template="../parts/listagem_eventos.cfm"/>
+                                            <cfinclude template="../includes/parts/listagem_eventos.cfm"/>
 
                                         </div>
 

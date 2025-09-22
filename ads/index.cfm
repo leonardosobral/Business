@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<cfprocessingdirective pageencoding="utf-8"/>
+
+<!--- BACKEND --->
+<cfinclude template="../includes/backend/backend_login.cfm"/>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

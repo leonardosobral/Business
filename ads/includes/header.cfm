@@ -13,7 +13,7 @@
 
       <ul class="sidenav-menu px-2 pb-5">
         <li class="sidenav-item">
-          <a class="sidenav-link" href="">
+          <a class="sidenav-link" href="./">
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Overview</span></a>
         </li>
 
