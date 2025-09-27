@@ -117,6 +117,7 @@
             </li>
           </ul>
 
+
           <!--- CONTEUDO ABAS --->
           <div class="tab-content" id="ex1-content">
 
@@ -194,6 +195,83 @@
             </div>
 
           </div>
+
+
+          <hr/>
+
+          <!--- INCLUIR CAMPANHA --->
+          <form method="post">
+
+            <h3>Incluir Campanha</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="text" name="evento" id="form1Example1" class="form-control"
+              value="https://roadrunners.run/evento/2026-maratona-internacional-de-floripa-2026/"/>
+              <label class="form-label" for="form1Example1">Evento</label>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" name="cpc_max" id="form3Example1" class="form-control"
+                  value="1.00"/>
+                  <label class="form-label" for="form3Example1">CPC max</label>
+                </div>
+              </div>
+              <div class="col">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" name="limite_diario" id="form3Example2" class="form-control"
+                  value="20.00"/>
+                  <label class="form-label" for="form3Example2">Valor diário</label>
+                </div>
+              </div>
+              <div class="col">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" name="limite_ad" id="form3Example2" class="form-control"
+                  value="100.00"/>
+                  <label class="form-label" for="form3Example2">Valor da Campanha</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col">
+                <select name="escopo" data-mdb-select-init data-mdb-placeholder="Locais" multiple>
+                  <option value="hom">Home</option>
+                  <option value="busca">Busca</option>
+                  <option value="feed">Feed de Usuários</option>
+                </select>
+              </div>
+              <div class="col">
+                <select name="locais" data-mdb-select-init data-mdb-placeholder="Público" multiple>
+                  <cfoutput query="qAdUFs">
+                    <option value="#qAdUFs.uf#">#qAdUFs.uf# - #qAdUFs.nome_uf#</option>
+                  </cfoutput>
+                </select>
+              </div>
+              <div class="col">
+                <div class="form-outline" data-mdb-datepicker-init data-mdb-input-init data-mdb-date-range="true" data-mdb-inline="true">
+                  <input type="text" name="datas" class="form-control" id="date-range-inline" />
+                  <label for="date-range-inline" class="form-label">Data da Campanha</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+              <div class="col d-flex">
+                <!-- Checkbox -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                  <label class="form-check-label" for="form1Example3"> aprovar anúncio e começar </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Incluir Campanha</button>
+
+          </form>
 
         </div>
 
