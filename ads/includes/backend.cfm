@@ -133,4 +133,6 @@
         )
     </cfquery>
 
+    <cflocation url="/ads/" addtoken="false"/>
+
 </cfif>
