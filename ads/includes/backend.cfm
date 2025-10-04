@@ -62,8 +62,8 @@
 
 <!--- QUERY BASE DE EVENTOS --->
 
-<cfquery name="qEventosAds">
-    SELECT evt.*, ad.id_ad_evento,
+<cfquery name="qEventosAdsBase">
+    SELECT evt.*, ad.id_ad_evento, ad.status,
     ad.cpc_max, ad.qualidade,
     (SELECT count(*) FROM tb_ad_log log WHERE log.id_ad = ad.id_ad_evento) as views,
     (SELECT count(*) FROM tb_ad_log log WHERE log.id_ad = ad.id_ad_evento AND status = 2) as clicks,
@@ -76,7 +76,24 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    ORDER BY ad_rank DESC
+</cfquery>
+
+<cfquery name="qEventosAds" dbtype="query">
+    select * from qEventosAdsBase
+    where status < 3
+    order by clicks desc, views desc
+</cfquery>
+
+<cfquery name="qEventosAdsPausados" dbtype="query">
+    select * from qEventosAdsBase
+    where status = 3
+    order by clicks desc, views desc
+</cfquery>
+
+<cfquery name="qEventosAdsFinalizados" dbtype="query">
+    select * from qEventosAdsBase
+    where status = 4
+    order by clicks desc, views desc
 </cfquery>
 
 

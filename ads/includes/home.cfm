@@ -157,41 +157,73 @@
             </div>
 
             <div class="tab-pane fade" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-              <div class="bg-image rounded-4">
-                <img src="https://mdbootstrap.com/img/Photos/dashboard/home/bedroom.jpg" class="w-100"
-                     alt="Louvre Museum" />
-                <div class="mask" style="background-color: rgba(0, 0, 0, 0.1)">
-                  <div class="d-flex justify-content-between align-items-start h-100 p-4">
-                    <small class="text-white">
-                      23.05.2022 18:45
-                    </small>
 
-                    <span class="badge badge-light">
-                      <i class="fas fa-video me-1 text-danger"></i>
-                      <span>Recording</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th class="text-end">CPC max</th>
+                            <!---th class="text-end">Qualidade</th--->
+                            <th class="text-end">Ad Rank</th>
+                            <th class="text-end">Views</th>
+                            <th class="text-end">Clicks</th>
+                            <th class="text-end">Taxa</th>
+                            <th class="text-end">CPC médio</th>
+                            <th class="text-end">Custo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <cfoutput query="qEventosAdsPausados">
+                            <tr>
+                                <td>#qEventosAdsPausados.nome_evento#</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_max)#</td>
+                                <!---td class="text-end">#qEventosAdsPausados.qualidade#</td--->
+                                <td class="text-end">#qEventosAdsPausados.ad_rank#</td>
+                                <td class="text-end">#qEventosAdsPausados.views#</td>
+                                <td class="text-end">#qEventosAdsPausados.clicks#</td>
+                                <td class="text-end">#lsNumberFormat(qEventosAdsPausados.clicks NEQ 0 ? qEventosAdsPausados.clicks*100/qEventosAdsPausados.views : 0, "9.99")#%</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_medio)#</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.custo_total)#</td>
+                            </tr>
+                        </cfoutput>
+                      </tbody>
+                  </table>
+
             </div>
 
             <div class="tab-pane fade" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-              <div class="bg-image rounded-4">
-                <img src="https://mdbootstrap.com/img/Photos/dashboard/home/living-room.jpg" class="w-100"
-                     alt="Louvre Museum" />
-                <div class="mask" style="background-color: rgba(0, 0, 0, 0.1)">
-                  <div class="d-flex justify-content-between align-items-start h-100 p-4">
-                    <small class="text-white">
-                      23.05.2022 18:45
-                    </small>
 
-                    <span class="badge badge-light">
-                      <i class="fas fa-video me-1 text-danger"></i>
-                      <span>Recording</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th class="text-end">CPC max</th>
+                            <!---th class="text-end">Qualidade</th--->
+                            <th class="text-end">Ad Rank</th>
+                            <th class="text-end">Views</th>
+                            <th class="text-end">Clicks</th>
+                            <th class="text-end">Taxa</th>
+                            <th class="text-end">CPC médio</th>
+                            <th class="text-end">Custo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <cfoutput query="qEventosAdsFinalizados">
+                            <tr>
+                                <td>#qEventosAdsFinalizados.nome_evento#</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_max)#</td>
+                                <!---td class="text-end">#qEventosAdsFinalizados.qualidade#</td--->
+                                <td class="text-end">#qEventosAdsFinalizados.ad_rank#</td>
+                                <td class="text-end">#qEventosAdsFinalizados.views#</td>
+                                <td class="text-end">#qEventosAdsFinalizados.clicks#</td>
+                                <td class="text-end">#lsNumberFormat(qEventosAdsFinalizados.clicks NEQ 0 ? qEventosAdsFinalizados.clicks*100/qEventosAdsFinalizados.views : 0, "9.99")#%</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_medio)#</td>
+                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.custo_total)#</td>
+                            </tr>
+                        </cfoutput>
+                      </tbody>
+                  </table>
+
             </div>
 
           </div>
