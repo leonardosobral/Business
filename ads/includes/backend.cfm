@@ -27,8 +27,9 @@
     FROM tb_ad_log log
     INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    WHERE log.status <= 2
     <cfif NOT qPerfil.is_admin>
-        WHERE evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
+        AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
 </cfquery>
 
