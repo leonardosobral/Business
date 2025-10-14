@@ -7,6 +7,7 @@
 
 <!--- TEMPLATE --->
 <cfset VARIABLES.template = "/inscricao/"/>
+<cfset VARIABLES.theme = "dark"/>
 
 <!--- TAG PARAM TREAT --->
 <cfparam name="URL.tag" default=""/>
@@ -80,8 +81,7 @@
                 <div class="col-lg-6">
                     <div class="card h-100">
                         <div class="card-body d-flex align-items-center justify-content-center">
-                            <img class="d-block d-lg-none" src="../assets/logo_365_horiz.svg">
-                            <img class="d-none d-lg-block" src="../assets/logo_365.svg">
+                            <img class="w-100" src="../assets/runpro_cover.png">
                         </div>
                     </div>
                 </div>

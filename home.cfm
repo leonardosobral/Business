@@ -131,8 +131,8 @@
                     <div class="sevencol">
 
                     <!---<h2 class="home_title">Running Business Intelligence</h2>--->
-                    <img src="/lib/images/rbi_logo.png">
-                    <h3 class="home_subtitle">Uma solução poderosa para transformar<br>dados em estratégias vencedoras.</h3>
+                    <img src="/lib/images/runpro.svg" class="w-75">
+                    <h3 class="home_subtitle">Toda a tecnologia do RunnerHub<br>a serviço do seu evento.</h3>
                     <!--- <a href="#" class="button_green">Faça parte</a> --->
                         <!---<a href="https://roadrunners.run/" target="_blank" class="button_white" style="padding: 8px"><img src="lib/images/rr.png" style="max-height: 32px"></a>--->
                         <!---<a href="https://openresults.run/" target="_blank" class="button_white" style="padding: 8px"><img src="lib/images/or.png" style="max-height: 32px"></a>--->
@@ -299,9 +299,9 @@
                     <!--begin sixcol -->
                     <div class="sixcol last">
 
-                        <h3>Utilidades do Run BI</h3>
+                        <h3>O que o Run Pro oferece?</h3>
 
-                        <p>O Run BI do RunnerHub é uma poderosa solução de Business Intelligence destinada a organizadores de eventos de corrida de rua. Ele fornece uma análise detalhada dos resultados de edições anteriores, oferecendo insights valiosos sobre o número de participantes, tempos médios de conclusão, e perfil demográfico dos corredores. Essa ferramenta permite aos organizadores planejar estrategicamente futuros eventos, criar campanhas de marketing mais eficazes e melhorar a experiência dos participantes, garantindo maior engajamento e sucesso das corridas.</p>
+                        <p>O Run Pro é uma poderosa solução que conta com o Business Intelligence do RunnerHub, destinado a organizadores de eventos de corrida de rua. Ele fornece uma análise detalhada dos resultados de edições anteriores, oferecendo insights valiosos sobre o número de participantes, tempos médios de conclusão, e perfil demográfico dos corredores. Essa ferramenta permite aos organizadores planejar estrategicamente futuros eventos, criar campanhas de marketing mais eficazes e melhorar a experiência dos participantes, garantindo maior engajamento e sucesso das corridas.</p>
 
                         <!--begin featured_dropcap -->
                         <div class="featured_dropcap">
