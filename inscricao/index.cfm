@@ -15,7 +15,7 @@
 <!--- PRODUTO --->
 <cfif isDefined("FORM.produto_codigo")>
     <cfcookie name="produto_codigo" secure="yes" encodevalue="yes" value="#FORM.produto_codigo#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-<cfelseif NOT isDefined("COOKIE.produto_codigo")>
+<cfelseif NOT isDefined("COOKIE.produto_codigo") OR (isDefined("COOKIE.produto_codigo") AND COOKIE.produto_codigo EQ "inscricao365")>
     <cfcookie name="produto_codigo" secure="yes" encodevalue="yes" value="runpro" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
 </cfif>
 

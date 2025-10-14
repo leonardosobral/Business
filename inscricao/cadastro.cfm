@@ -80,16 +80,17 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+        <!---div class="col-md-12">
             <div class="form-outline" data-mdb-input-init>
                 <textarea class="form-control" name="descricao" id="inputDescricao" maxlength="150" rows="2"><cfoutput>#qPerfil.descricao#</cfoutput></textarea>
                 <label class="form-label" for="inputDescricao">Texto da Bio</label>
             </div>
-        </div>
+        </div--->
 
         <p class="text-end m-0 text-secondary" style="font-size: x-small;"><cfoutput>#isDefined('COOKIE.produto_codigo') ? 'produto: ' & COOKIE.produto_codigo : 'produto'#</cfoutput></p>
 
         <div class="col-md-12">
+            <input type="hidden" name="descricao" value="<cfoutput>#qPerfil.descricao#</cfoutput>"/>
             <input type="hidden" name="action" value="confirmar_inscricao_desafio_365"/>
             <input type="hidden" name="tag_prefix" value="atleta"/>
             <input type="hidden" name="id_pagina" value="<cfoutput>#qPerfil.id_pagina#</cfoutput>"/>

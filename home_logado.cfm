@@ -49,7 +49,7 @@
                         <h4 class="bg-black bg-opacity-25 px-2 py-1 rounded">#uCase(qPermissoes.tipo)#</h4>
                     </div>
 
-                    <cfif NOT #qPermissoes.recordcount#>Sem permissão</cfif>
+                    <cfif NOT #qPermissoes.recordcount#>Seu cadastro está em análise, você receberá um email ou mensagem no momento da ativação.</cfif>
 
                     <cfoutput>
 
