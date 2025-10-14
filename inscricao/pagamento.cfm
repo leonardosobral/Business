@@ -35,10 +35,10 @@
         <!--- FORMA DE PAGAMENTO --->
 
         <div class="col-md-12">
-            <label for="radioFormaPagamentoPIX" class="form-label">Pagamento:</label>
-            <input type="radio" id="radioFormaPagamentoPIX" class="ms-3" checked required name="forma_pagamento" value="pix"/> PIX
-            <input type="radio" id="radioFormaPagamentoCC" class="ms-3" required name="forma_pagamento" value="cc"/> Cartão de Crédito
-            <input type="radio" id="radioFormaPagamentointernacional" class="ms-3" required name="forma_pagamento" value="internacional"/> Cartão Internacional
+            <label class="form-label">Pagamento:</label>
+            <input type="radio" id="radioFormaPagamentoPIX" class="ms-3" checked required name="forma_pagamento" value="pix"/> <label for="radioFormaPagamentoPIX">PIX</label>
+            <input type="radio" id="radioFormaPagamentoCC" class="ms-3" required name="forma_pagamento" value="cc"/> <label for="radioFormaPagamentoCC">Cartão de Crédito</label>
+            <input type="radio" id="radioFormaPagamentointernacional" class="ms-3" required name="forma_pagamento" value="internacional"/> <label for="radioFormaPagamentointernacional">Cartão Internacional</label>
         </div>
 
 

@@ -155,8 +155,8 @@
 
                         <div class="card-footer text-center">
                             <span class="small">Está com alguma dificuldade?</span>
-                            <a href="https://wa.me/554891534589?text=Desafio365" target="_blank">
-                                <button type="button" class="btn btn-success btn-sm shadow-0 mx-2">
+                            <a href="https://wa.me/554891534589?text=RunPro" target="_blank">
+                                <button type="button" class="btn btn-sm shadow-0 mx-2 btn-outline-success">
                                     <i class="fa-brands fa-whatsapp"></i>
                                     Fale com o suporte
                                 </button>

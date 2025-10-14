@@ -30,28 +30,28 @@
             <div class="col-md-12">
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required/>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="org" required/>
                   <label class="form-check-label" for="flexRadioDefault1"> Organizador </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required/>
-                  <label class="form-check-label" for="flexRadioDefault1"> Cronometrador </label>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="timer" required/>
+                  <label class="form-check-label" for="flexRadioDefault2"> Cronometrador / Timer </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required/>
-                  <label class="form-check-label" for="flexRadioDefault1"> Creator / Media </label>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="midia" required/>
+                  <label class="form-check-label" for="flexRadioDefault3"> Creator / Media </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" required/>
-                  <label class="form-check-label" for="flexRadioDefault1"> Agência </label>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="agencia" required/>
+                  <label class="form-check-label" for="flexRadioDefault4"> Agência </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" required/>
-                  <label class="form-check-label" for="flexRadioDefault1"> Marca </label>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="marca" required/>
+                  <label class="form-check-label" for="flexRadioDefault5"> Marca </label>
                 </div>
 
             </div>
