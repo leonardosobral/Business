@@ -41,6 +41,23 @@
 
             <div class="row g-3">
 
+                <div class="col-12">
+                    <div data-mdb-alert-init class="alert text-center" role="alert" data-mdb-color="light">
+                        <b>Cadastro inicial realizado com sucesso.</b><br>Seu perfil está sob análise.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card bg-warning bg-opacity-50">
+                        <div class="row p-3">
+                            <div class="col-md-6 text-center align-content-center"><img src="/lib/images/runpro.svg" class="w-50"></div>
+                            <div class="col-md-6 align-content-center">
+                                Plataforma Ads disponível a partir de <b>01 de novembro</b>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <cfoutput query="qPermissoes" group="tipo">
 
                     <!---<hr/>--->

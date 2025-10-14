@@ -4,7 +4,7 @@
 
         <form class="row g-3 needs-validation" novalidate method="post" action="<cfoutput>#VARIABLES.template#</cfoutput>?filtro=pagamento">
 
-            <p class="mb-0">Qual seu nome comercial?</p>
+            <p class="mb-0">Dados comerciais</p>
 
             <div class="col-md-12">
                 <div class="form-outline" data-mdb-input-init>
@@ -22,8 +22,6 @@
                 </div>
             </div>
 
-            <p class="mb-0">Informe um documento:</p>
-
             <div class="col-md-12">
                 <div class="form-outline" data-mdb-input-init>
                     <input type="text" name="documento" id="txtInscricao" class="form-control" maxlength="50"
@@ -33,7 +31,7 @@
                 </div>
             </div>
 
-            <p class="mt-3 mb-0">Qual seu perfil?</p>
+            <p class="mt-3 mb-0">Atuação no mercado</p>
 
             <div class="col-md-12">
 
