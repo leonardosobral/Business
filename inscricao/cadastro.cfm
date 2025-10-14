@@ -91,7 +91,7 @@
 
         <div class="col-md-12">
             <input type="hidden" name="descricao" value="<cfoutput>#qPerfil.descricao#</cfoutput>"/>
-            <input type="hidden" name="action" value="confirmar_inscricao_desafio_365"/>
+            <input type="hidden" name="action" value="atualizar_cadastro_pocket"/>
             <input type="hidden" name="tag_prefix" value="atleta"/>
             <input type="hidden" name="id_pagina" value="<cfoutput>#qPerfil.id_pagina#</cfoutput>"/>
             <button type="submit" class="btn btn-primary shadow-3 w-100 fs-6" data-mdb-ripple-init>Salvar e prosseguir</button>

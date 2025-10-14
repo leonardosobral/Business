@@ -67,12 +67,17 @@
                 SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
                 coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
                 pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
-                pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao
+                pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
+                usr.partner_info
                 FROM tb_usuarios usr
                 inner join tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
                 inner join tb_paginas pg on pg.id_pagina = pgusr.id_pagina
                 WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
             </cfquery>
+
+            <cfif URL.filtro EQ "finalizar" AND len(trim(qPerfil.partner_info))>
+                <cflocation addtoken="false" url="/"/>
+            </cfif>
 
             <div class="row g-3 mt-0">
 

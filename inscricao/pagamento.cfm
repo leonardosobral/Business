@@ -4,20 +4,20 @@
 
     <!--- CHECA SE TEM CUPOM --->
 
-    <cfquery name="qCheckCupom365">
+    <!---cfquery name="qCheckCupom365">
         select *
         from tb_convite
         where id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
         AND chave_acesso ILIKE 'CNA%' AND data_aceite is null
-    </cfquery>
+    </cfquery--->
 
-    <form class="row g-3 needs-validation" novalidate method="post" action="<cfoutput>#VARIABLES.template#</cfoutput>?filtro=pagamento">
+    <form class="row g-3 needs-validation" novalidate method="post" action="<cfoutput>#VARIABLES.template#</cfoutput>?filtro=finalizar">
 
-        <cfif qCheckCupom365.recordcount>
+        <!---cfif qCheckCupom365.recordcount--->
             <div class="col-md-12">
-                <div class="alert alert-success">Cupom <b>de 10% de desconto</b> aplicado com sucesso. Cód.: <cfoutput>#qCheckCupom365.chave_acesso#</cfoutput></div>
+                <div class="alert alert-success">Cupom <b>de 100% de desconto</b> aplicado com sucesso. <!--- Cód.: <cfoutput>#qCheckCupom365.chave_acesso#</cfoutput>---></div>
             </div>
-        </cfif>
+        <!---/cfif--->
 
         <!--- PERFIL DO USER LOGADO --->
 
@@ -36,9 +36,9 @@
 
         <div class="col-md-12">
             <label class="form-label">Pagamento:</label>
-            <input type="radio" id="radioFormaPagamentoPIX" class="ms-3" checked required name="forma_pagamento" value="pix"/> <label for="radioFormaPagamentoPIX">PIX</label>
-            <input type="radio" id="radioFormaPagamentoCC" class="ms-3" required name="forma_pagamento" value="cc"/> <label for="radioFormaPagamentoCC">Cartão de Crédito</label>
-            <input type="radio" id="radioFormaPagamentointernacional" class="ms-3" required name="forma_pagamento" value="internacional"/> <label for="radioFormaPagamentointernacional">Cartão Internacional</label>
+            <input type="radio" id="radioFormaPagamentoPIX" disabled class="ms-3" checked required name="forma_pagamento" value="pix"/> <label for="radioFormaPagamentoPIX">PIX</label>
+            <input type="radio" id="radioFormaPagamentoCC" disabled class="ms-3" required name="forma_pagamento" value="cc"/> <label for="radioFormaPagamentoCC">Cartão de Crédito</label>
+            <input type="radio" id="radioFormaPagamentointernacional" disabled class="ms-3" required name="forma_pagamento" value="internacional"/> <label for="radioFormaPagamentointernacional">Cartão Internacional</label>
         </div>
 
 

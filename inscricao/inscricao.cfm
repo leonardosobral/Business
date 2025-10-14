@@ -14,6 +14,14 @@
                 </div>
             </div>
 
+            <div class="col-md-12">
+                <div class="form-outline" data-mdb-input-init>
+                    <input type="text" name="celular" id="txtCelular" class="form-control" maxlength="16"
+                        style="font-size: large;"/>
+                    <label for="txtCelular" class="form-label">Celular com DDD</label>
+                </div>
+            </div>
+
             <p class="mb-0">Informe um documento:</p>
 
             <div class="col-md-12">
@@ -30,27 +38,27 @@
             <div class="col-md-12">
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="org" required/>
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault1" value="org" required/>
                   <label class="form-check-label" for="flexRadioDefault1"> Organizador </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="timer" required/>
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault2" value="timer" required/>
                   <label class="form-check-label" for="flexRadioDefault2"> Cronometrador / Timer </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="midia" required/>
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault3" value="midia" required/>
                   <label class="form-check-label" for="flexRadioDefault3"> Creator / Media </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="agencia" required/>
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault4" value="agencia" required/>
                   <label class="form-check-label" for="flexRadioDefault4"> Agência </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="marca" required/>
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault5" value="marca" required/>
                   <label class="form-check-label" for="flexRadioDefault5"> Marca </label>
                 </div>
 
@@ -60,6 +68,7 @@
                 <input type="hidden" name="action" value="confirmar_business"/>
                 <input type="hidden" name="tag_prefix" value="<cfoutput>#qPerfil.tag_prefix#</cfoutput>"/>
                 <input type="hidden" name="tag" value="<cfoutput>#qPerfil.tag#</cfoutput>"/>
+                <input type="hidden" name="email" value="<cfoutput>#qPerfil.email#</cfoutput>"/>
                 <input type="hidden" name="id_pagina" value="<cfoutput>#qPerfil.id_pagina#</cfoutput>"/>
                 <button type="submit" class="btn btn-primary shadow-3 fs-6 w-100" data-mdb-ripple-init>Prosseguir</button>
             </div>

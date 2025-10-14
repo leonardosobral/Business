@@ -139,3 +139,73 @@
     <cflocation addtoken="false" url="#URL.redirect#"/>
 
 </cfif>
+
+<!--- ATUALIZAR CADASTRO POCKET --->
+
+<cfif isDefined("FORM.action") AND FORM.action EQ "atualizar_cadastro_pocket">
+    <cfquery name="qCheckTagPagina">
+        SELECT tag FROM tb_paginas
+        WHERE tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(FORM.tag))#"/>
+        AND id_pagina <> <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_pagina#"/>
+    </cfquery>
+    <cfquery datasource="runner_dba" name="qUpdatePagina">
+        UPDATE tb_paginas
+        SET
+        nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome#"/>,
+        tag_prefix = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tag_prefix#"/>,
+        <cfif NOT qCheckTagPagina.recordcount>
+            tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(FORM.tag))#"/>,
+        </cfif>
+        cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.cidade#"/>,
+        uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
+        <!---pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>,--->
+        descricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.descricao#"/>,
+        id_usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        WHERE id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_pagina#"/>
+    </cfquery>
+    <cfquery datasource="runner_dba" name="qUpdateUsuario">
+        UPDATE tb_usuarios
+        SET
+        name = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome#"/>,
+        <cfif isDefined("FORM.assessoria")>
+            assessoria = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.assessoria#"/>,
+        </cfif>
+        cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.cidade#"/>,
+        estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
+        pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+    </cfquery>
+    <cfif qCheckTagPagina.recordcount>
+        <cflocation addtoken="false" url="#FORM.template#inscricao/?info=tag&tag=#FORM.tag#"/>
+    </cfif>
+</cfif>
+
+<!--- CONFIRMAR INSCRICAO BUSINESS --->
+
+<cfif isDefined("FORM.action") AND FORM.action EQ "confirmar_business">
+    <cfset VARIABLES.postback = {}/>
+    <cfif isDefined("FORM.documento")>
+        <cfset VARIABLES.postback["documento"] = FORM.documento/>
+    </cfif>
+    <cfif isDefined("FORM.celular")>
+        <cfset VARIABLES.postback["celular"] = FORM.celular/>
+    </cfif>
+    <cfif isDefined("FORM.nascimento")>
+        <cfset VARIABLES.postback["nome_comercial"] = FORM.nome_comercial/>
+    </cfif>
+    <cfif isDefined("FORM.assessoria")>
+        <cfset VARIABLES.postback["perfil"] = FORM.perfil/>
+    </cfif>
+    <cfquery datasource="runner_dba" name="qInsertIncricaoTreino">
+        UPDATE tb_usuarios
+        set partner_info = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.postback)#"/>::jsonb
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+    </cfquery>
+    <cfmail from="Road Runners <contato@roadrunners.run>" to="#FORM.email#" bcc="contato@roadrunners.run"
+            subject="[ROADRUNNERS] Cadastro concluído no RoadRunners Business" usetls="true"
+            server="smtp.mandrillapp.com" username="RunnerHub" password="md-kHpL53XqZM3olhBw2z1t1w"
+            charset="utf-8" type="html" port="587">
+        <!---cfinclude template="../../mif/treinao/email_template.cfm"/--->
+    </cfmail>
+</cfif>
+
