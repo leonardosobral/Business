@@ -190,10 +190,10 @@
     <cfif isDefined("FORM.celular")>
         <cfset VARIABLES.postback["celular"] = FORM.celular/>
     </cfif>
-    <cfif isDefined("FORM.nascimento")>
+    <cfif isDefined("FORM.nome_comercial")>
         <cfset VARIABLES.postback["nome_comercial"] = FORM.nome_comercial/>
     </cfif>
-    <cfif isDefined("FORM.assessoria")>
+    <cfif isDefined("FORM.perfil")>
         <cfset VARIABLES.postback["perfil"] = FORM.perfil/>
     </cfif>
     <cfquery datasource="runner_dba" name="qInsertIncricaoTreino">
@@ -201,11 +201,11 @@
         set partner_info = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.postback)#"/>::jsonb
         WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
     </cfquery>
-    <cfmail from="Road Runners <contato@roadrunners.run>" to="#FORM.email#" bcc="contato@roadrunners.run"
+    <!---cfmail from="Road Runners <contato@roadrunners.run>" to="#FORM.email#" bcc="contato@roadrunners.run"
             subject="[ROADRUNNERS] Cadastro concluído no RoadRunners Business" usetls="true"
             server="smtp.mandrillapp.com" username="RunnerHub" password="md-kHpL53XqZM3olhBw2z1t1w"
             charset="utf-8" type="html" port="587">
         <!---cfinclude template="../../mif/treinao/email_template.cfm"/--->
-    </cfmail>
+    </cfmail---->
 </cfif>
 
