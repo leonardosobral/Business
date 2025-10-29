@@ -12,7 +12,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>RoadRunners Business</title>
     <!--- Font Awesome --->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" />
     <!--- Google Fonts Roboto --->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!--- MDB --->
@@ -29,7 +29,7 @@
 
   <!--- CONTEUDO --->
 
-  <main class="mb-5" style="margin-top: -100px;">
+  <main class="mb-5" id="content">
 
     <div class="container px-4">
 
