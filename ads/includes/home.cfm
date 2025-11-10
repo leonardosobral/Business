@@ -1,102 +1,7 @@
 <cfinclude template="backend.cfm"/>
 
-<!--- Navbar --->
-<nav id="main-navbar" class="navbar navbar-expand-lg shadow-1">
-
-  <!--- Container wrapper --->
-  <div class="container-fluid">
-
-    <!--- Toggler --->
-    <!---<button data-mdb-toggle="sidenav" data-mdb-target="#main-sidenav"
-      class="btn shadow-0 p-0 me-3 d-block d-xxl-none" data-mdb-ripple-init aria-controls="#main-sidenav"
-      aria-haspopup="true">
-      <i class="fas fa-bars fa-lg"></i>
-    </button>--->
-
-    <!--- Search form --->
-    <form class="d-none d-md-flex input-group w-auto my-auto">
-      <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
-        placeholder='Pesquisa' style="min-width: 225px" />
-      <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
-    </form>
-
-    <!--- Right links --->
-    <ul class="navbar-nav ms-auto d-flex flex-row">
-
-      <!--- Notification dropdown --->
-      <li class="nav-item dropdown">
-        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-          role="button" data-mdb-dropdown-init aria-expanded="false">
-          <i class="fas fa-bell link-secondary"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item disabled" href="#">Sem notificações</a></li>
-        </ul>
-      </li>
-
-      <!--- Icon dropdown --->
-      <li class="nav-item dropdown">
-        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
-          data-mdb-dropdown-init aria-expanded="false">
-          <i class="flag flag-brazil m-0"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li>
-            <a class="dropdown-item" href="#"><i class="flag flag-brazil flag"></i>Português
-              <i class="fa fa-check text-success ms-2"></i></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <!---<li>
-            <a class="dropdown-item" href="#"><i class="flag flag-china"></i>中文</a>
-          </li>
-            <li>
-            <a class="dropdown-item" href="#"><i class="flag flag-japan"></i>日本語</a>
-          </li>--->
-            <li>
-            <a class="dropdown-item disabled" href="#"><i class="flag flag-united-states"></i>English</a>
-          </li>
-            <li>
-            <a class="dropdown-item disabled" href="#"><i class="flag flag-germany"></i>Deutsch</a>
-          </li>
-            <li>
-            <a class="dropdown-item disabled" href="#"><i class="flag flag-france"></i>Français</a>
-          </li>
-            <li>
-            <a class="dropdown-item" disabled href="#"><i class="flag flag-spain"></i>Español</a>
-          </li>
-            <!---<li>
-            <a class="dropdown-item" href="#"><i class="flag flag-russia"></i>Русский</a>
-          </li>--->
-            <!---<li>
-                <a class="dropdown-item" href="#"><i class="flag flag-poland"></i>Polski</a>
-            </li>--->
-        </ul>
-      </li>
-
-      <!--- Avatar --->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-          id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
-          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"
-            loading="lazy" />
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item " href="#">Cadastro</a></li>
-          <li><a class="dropdown-item" href="#">Equipe</a></li>
-          <li><a class="dropdown-item" href="#">Assinaturas</a></li>
-          <li><a class="dropdown-item" href="#">Sair</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-</nav>
-
 <!--- WIDGETS --->
-<section class="mb-5">
+<section class="mb-4">
 
   <div class="row gx-xl-3">
 
@@ -232,7 +137,7 @@
                             <th class="text-end">Custo</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="overflow-scroll h-50">
                         <cfoutput query="qEventosAds">
                             <tr>
                                 <td>#qEventosAds.nome_evento#</td>
