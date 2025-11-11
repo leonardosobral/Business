@@ -60,6 +60,10 @@
             <a class="sidenav-link" href="">
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Meus eventos</span></a>
         </li>
+        <li class="sidenav-item">
+            <a class="sidenav-link link-warning" href="">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
+        </li>
 
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ferramentas</span>
