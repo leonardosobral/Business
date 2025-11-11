@@ -73,7 +73,7 @@
     LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
     LEFT JOIN atv on atv.athlete_id = usr.strava_id
     LEFT JOIN tb_uf uf ON usr.estado = uf.uf
-    where produto = 'desafiofoco'
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
 </cfquery>
 
 <cfquery name="qCountHoje" dbtype="query">
@@ -85,27 +85,24 @@
 <cfquery name="qNoDesafio" dbtype="query">
     select count(*) as total
     from qBase
-    where produto = 'desafiofoco'
-    and dias_correndo is not null
+    where dias_correndo is not null
 </cfquery>
 
 <cfquery name="qCountvip" dbtype="query">
     select count(*) as total
     from qBase
-    where produto = 'desafiofoco'
-    and strava_id is not null
+    where strava_id is not null
 </cfquery>
 
 <cfquery name="qCountNovoSite" dbtype="query">
     select count(*) as total
     from qBase
-    where produto = 'desafiofoco'
 </cfquery>
 
 <cfquery name="qCountTotal">
     select count(*) as total
     from desafios
-    where produto = 'desafiofoco'
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
 </cfquery>
 
 <cfquery name="qPeriodo" dbtype="query">
@@ -118,14 +115,13 @@
         where status = 'I'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "nodesafio">
-        where produto = 'desafiofoco'
-        and dias_correndo is not null AND (dias_do_ano-dias_correndo < 2)
+        where dias_correndo is not null AND (dias_do_ano-dias_correndo < 2)
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "vip">
-        where produto = 'desafiofoco' and produto = 'inscricao365vip' and strava_id is not null
+        where produto = 'inscricao365vip' and strava_id is not null
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "novosite">
-        where produto = 'desafiofoco'
+
     </cfif>
 </cfquery>
 

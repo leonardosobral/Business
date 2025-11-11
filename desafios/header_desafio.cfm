@@ -5,7 +5,7 @@
     <div class="col-6 row-cols-auto">
         <a href="/desafios/"><img src="https://cdn.bitrix24.com.br/b25804041/landing/b1e/b1e05d692982b45e353e62e93764dcf8/copy_of_copia_de_copia_de_4_1x_1x_png" class="w-150px"/></a>
         <div class="d-block d-md-inline">
-            <a href="./fila.cfm?debug=true&auto=false&order=asc&desafio=<cfoutput>#URL.desafio#</cfoutput>" class="p-1 ano align-middle"><i class="fa-solid fa-list-check <cfif VARIABLES.template EQ "fila">active<cfelse>opacity-50</cfif>"></i> Fila</a>
+            <a href="./fila.cfm?debug=true&auto=false&order=asc&desafio=<cfoutput>#URL.desafio#</cfoutput>" class="p-1 ano align-middle"><i class="fa-solid fa-list-check"></i> Fila</a>
         </div>
     </div>
 

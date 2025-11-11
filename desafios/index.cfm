@@ -3,8 +3,6 @@
 
 <cfprocessingdirective pageencoding="utf-8"/>
 
-<cfset VARIABLES.template = "365"/>
-
 <!--- VARIAVEIS --->
 <cfparam name="URL.periodo" default="novosite"/>
 <cfparam name="URL.preset" default=""/>
@@ -12,7 +10,12 @@
 <cfparam name="URL.regiao" default=""/>
 <cfparam name="URL.estado" default=""/>
 <cfparam name="URL.cidade" default=""/>
-<cfparam name="URL.desafio" default="foco"/>
+<cfparam name="URL.desafio" default="desafiofoco"/>
+
+<cfset VARIABLES.theme = "dark"/>
+
+<!--- TAG PARAM TREAT --->
+<cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
 
 <!--- BACKEND --->
 <cfinclude template="../includes/backend/backend_login.cfm"/>

@@ -1,0 +1,11 @@
+ErrorDocument 404 /404/
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+    RewriteRule ^(.*) index.cfm?desafio=$1 [NC,L,QSA]
+</IfModule>

@@ -3,8 +3,6 @@
 
 <cfprocessingdirective pageencoding="utf-8"/>
 
-<cfset VARIABLES.template = "fila"/>
-
 <!--- VARIAVEIS --->
 <cfparam name="URL.full" default="false"/>
 <cfparam name="URL.auto" default="false"/>
