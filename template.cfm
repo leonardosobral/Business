@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/mdb.min.css" />
     <link rel="stylesheet" href="assets/plugins/css/all.min.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="css/style.css?8" />
+    <link rel="stylesheet" href="css/style.css?9" />
 </head>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <!--Main Navigation-->
@@ -47,7 +47,7 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="mb-5" style="margin-top: -55px;">
+<main class="" style="margin-top: -55px;">
   <!-- Container for demo purpose -->
   <div class="container px-4">
 

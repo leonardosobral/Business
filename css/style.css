@@ -31,7 +31,7 @@ body {
 
 .tableFixHead {
     overflow: auto;
-    height: calc(100vh - 660px);
+    height: calc(100vh - 610px);
     min-height: 300px;
 }
 .tableFixHead thead th {

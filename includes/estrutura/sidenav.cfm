@@ -69,16 +69,7 @@
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="">
-                <i class="fas fa-users fa-fw me-3"></i><span>Equipe</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="">
-                <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
-        </li>
-
-
-        <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>
+                <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="">
@@ -86,8 +77,21 @@
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="">
-                <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
+                <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
         </li>
+
+
+        <!---<li class="sidenav-item pt-3">--->
+            <!---<span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>--->
+        <!---</li>--->
+        <!---<li class="sidenav-item">--->
+            <!---<a class="sidenav-link" href="">--->
+                <!---<i class="fa-solid fa-screwdriver-wrench fa-fw me-3"></i><span>Configurações</span></a>--->
+        <!---</li>--->
+        <!---<li class="sidenav-item">--->
+            <!---<a class="sidenav-link" href="">--->
+                <!---<i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>--->
+        <!---</li>--->
 
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Suporte</span>

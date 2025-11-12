@@ -101,6 +101,76 @@
 
         <div class="card-body">
 
+          <div class="bg-light bg-opacity-10 rounded p-2">
+            <!--- INCLUIR CAMPANHA --->
+            <form method="post">
+
+                <h3>Turbinar evento</h3>
+
+                <div data-mdb-input-init class="form-outline mb-2">
+                    <input type="text" name="evento" id="form1Example1" class="form-control"
+                           placeholder="https://roadrunners.run/evento/seu-evento/"
+                           required/>
+                    <label class="form-label" for="form1Example1">URL do Evento no Road Runners</label>
+                </div>
+
+                <div class="row mb-2 g-2">
+                    <div class="col">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="number" name="cpc_max" id="form3Example1" class="form-control"
+                                   value="1.00"
+                                   required/>
+                            <label class="form-label" for="form3Example1">CPC max</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="number" name="limite_diario" id="form3Example2" class="form-control"
+                                   placeholder="20.00"/>
+                            <label class="form-label" for="form3Example2">Valor max diário</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="number" name="limite_ad" id="form3Example2" class="form-control"
+                                   placeholder="100.00"/>
+                            <label class="form-label" for="form3Example2">Valor max da Campanha</label>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row mb-2 g-2">
+                <div class="col">
+                    <select name="escopo" data-mdb-select-init data-mdb-placeholder="Locais" multiple required>
+                        <option value="hom">Capa/Home</option>
+                        <option value="busca">Página de Busca</option>
+                        <option value="feed">Feed de Usuários</option>
+                    </select>
+                </div>
+            <div class="col">
+            <select name="locais" data-mdb-select-init data-mdb-placeholder="Público" multiple required>
+            <cfoutput query="qAdUFs">
+                    <option value="#qAdUFs.uf#">#qAdUFs.uf# - #qAdUFs.nome_uf#</option>
+            </cfoutput>
+            </select>
+            </div>
+                <div class="col">
+                    <div class="form-outline" data-mdb-datepicker-init data-mdb-input-init data-mdb-date-range="true" data-mdb-inline="true">
+                        <input type="text" name="datas" class="form-control" id="date-range-inline" />
+                        <label for="date-range-inline" class="form-label">Período da Campanha</label>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Incluir Campanha</button>
+
+            </form>
+
+            </div>
+
+          <hr/>
+
           <!--- ABAS --->
           <ul class="nav nav-tabs nav-fill mb-4" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
@@ -116,7 +186,6 @@
                  aria-controls="ex1-pills-3" aria-selected="false">Finalizados</a>
             </li>
           </ul>
-
 
           <!--- CONTEUDO ABAS --->
           <div class="tab-content" id="ex1-content">
@@ -227,77 +296,6 @@
             </div>
 
           </div>
-
-
-          <hr/>
-
-            <div class="bg-light bg-opacity-10 rounded p-2">
-              <!--- INCLUIR CAMPANHA --->
-              <form method="post">
-
-                <h3>Incluir Campanha</h3>
-
-                <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="text" name="evento" id="form1Example1" class="form-control"
-                  placeholder="https://roadrunners.run/evento/seu-evento/"
-                  required/>
-                  <label class="form-label" for="form1Example1">URL do Evento</label>
-                </div>
-
-                <div class="row mb-4">
-                  <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="number" name="cpc_max" id="form3Example1" class="form-control"
-                      value="1.00"
-                      required/>
-                      <label class="form-label" for="form3Example1">CPC max</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="number" name="limite_diario" id="form3Example2" class="form-control"
-                      placeholder="20.00"/>
-                      <label class="form-label" for="form3Example2">Valor max diário</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="number" name="limite_ad" id="form3Example2" class="form-control"
-                      placeholder="100.00"/>
-                      <label class="form-label" for="form3Example2">Valor max da Campanha</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row mb-4">
-                  <div class="col">
-                    <select name="escopo" data-mdb-select-init data-mdb-placeholder="Locais" multiple required>
-                      <option value="hom">Home</option>
-                      <option value="busca">Busca</option>
-                      <option value="feed">Feed de Usuários</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <select name="locais" data-mdb-select-init data-mdb-placeholder="Público" multiple required>
-                      <cfoutput query="qAdUFs">
-                        <option value="#qAdUFs.uf#">#qAdUFs.uf# - #qAdUFs.nome_uf#</option>
-                      </cfoutput>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <div class="form-outline" data-mdb-datepicker-init data-mdb-input-init data-mdb-date-range="true" data-mdb-inline="true">
-                      <input type="text" name="datas" class="form-control" id="date-range-inline" />
-                      <label for="date-range-inline" class="form-label">Data da Campanha</label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Submit button -->
-                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Incluir Campanha</button>
-
-              </form>
-
-            </div>
 
         </div>
 
