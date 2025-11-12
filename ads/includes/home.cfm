@@ -133,7 +133,7 @@
                     <div class="col">
                         <div data-mdb-input-init class="form-outline">
                             <input type="number" name="limite_ad" id="form3Example2" class="form-control"
-                                   placeholder="100.00"/>
+                                   placeholder="500.00"/>
                             <label class="form-label" for="form3Example2">Valor max da Campanha</label>
                         </div>
                     </div>
