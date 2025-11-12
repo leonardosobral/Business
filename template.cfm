@@ -12,9 +12,10 @@
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!-- MDB -->
-    <link rel="stylesheet" href="https://roadrunners.run/assets/css/mdb.min.css" />
+    <link rel="stylesheet" href="assets/css/mdb.min.css" />
+    <link rel="stylesheet" href="assets/plugins/css/all.min.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="css/style.css?1" />
+    <link rel="stylesheet" href="css/style.css?6" />
 </head>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <!--Main Navigation-->
@@ -62,7 +63,8 @@
 <footer></footer>
 <!--Footer-->
     <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="assets/js/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/js/all.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript" src="js/script.js"></script>
 </body>
