@@ -10,7 +10,7 @@
         <!-- Search form -->
         <form class="d-none d-md-flex input-group w-auto my-auto">
             <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
-                   placeholder='Search (ctrl + alt to focus)' style="min-width: 225px" />
+                   placeholder='Pesquisa [ctrl+alt]' style="min-width: 225px" />
             <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
         </form>
 
@@ -24,16 +24,12 @@
                     <span class="badge rounded-pill badge-notification bg-danger">1</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Some news</a></li>
-                    <li><a class="dropdown-item" href="#">Another news</a></li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Seja bem-vindo!</a></li>
                 </ul>
             </li>
 
             <!-- Icon dropdown -->
-            <li class="nav-item dropdown">
+            <!---<li class="nav-item dropdown">
                 <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
                    data-mdb-dropdown-init aria-expanded="false">
                     <i class="flag flag-united-kingdom m-0"></i>
@@ -71,7 +67,7 @@
                         <a class="dropdown-item" href="#"><i class="flag flag-portugal"></i>Português</a>
                     </li>
                 </ul>
-            </li>
+            </li>--->
 
             <!-- Avatar -->
             <li class="nav-item dropdown">
@@ -81,9 +77,9 @@
                          loading="lazy" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item " href="#">My profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item " href="#">Cadastro</a></li>
+                    <li><a class="dropdown-item" href="#">Configurações</a></li>
+                    <li><a class="dropdown-item" href="#">Sair</a></li>
                 </ul>
             </li>
         </ul>

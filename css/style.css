@@ -29,6 +29,17 @@ body {
     box-shadow: 0px 0px 0px 13px #f4b120;
 }
 
+.tableFixHead {
+    overflow: auto;
+    height: calc(100vh - 660px);
+    min-height: 300px;
+}
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 *{
     --mdb-primary: #f4b120;
     --mdb-primary-rgb: 244, 177, 32;

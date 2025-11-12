@@ -121,9 +121,9 @@
           <!--- CONTEUDO ABAS --->
           <div class="tab-content" id="ex1-content">
 
-            <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+            <div class="tab-pane fade show active tableFixHead rounded" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
 
-                  <table class="table table-hover">
+                  <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
                             <th>Evento</th>
@@ -137,7 +137,7 @@
                             <th class="text-end">Custo</th>
                         </tr>
                       </thead>
-                      <tbody class="overflow-scroll h-50">
+                      <tbody>
                         <cfoutput query="qEventosAds">
                             <tr>
                                 <td>#qEventosAds.nome_evento#</td>
@@ -156,9 +156,9 @@
 
             </div>
 
-            <div class="tab-pane fade" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
 
-                  <table class="table table-hover">
+                  <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
                             <th>Evento</th>
@@ -191,9 +191,9 @@
 
             </div>
 
-            <div class="tab-pane fade" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
 
-                  <table class="table table-hover">
+                  <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
                             <th>Evento</th>
