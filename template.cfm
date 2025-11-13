@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/mdb.min.css" />
     <link rel="stylesheet" href="assets/plugins/css/all.min.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="css/style.css?9" />
+    <link rel="stylesheet" href="css/style.css?11" />
 </head>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <!--Main Navigation-->
