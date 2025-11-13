@@ -71,16 +71,33 @@
 
             <!-- Avatar -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-                   id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
-                    <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"
-                         loading="lazy" />
+
+                <!---<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"--->
+                   <!---id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">--->
+                    <!---<img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"--->
+                         <!---loading="lazy" />--->
+                <!---</a>--->
+                <!---<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">--->
+                    <!---<li><a class="dropdown-item " href="#">Cadastro</a></li>--->
+                    <!---<li><a class="dropdown-item" href="#">Configurações</a></li>--->
+                    <!---<li><a class="dropdown-item" href="#">Sair</a></li>--->
+                <!---</ul>--->
+
+
+                <!--- USER --->
+
+                <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
+                    <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : 'https://roadrunners.run/assets/user.png'#"
+                    style="max-height: 22px;" alt="imagem do usuário" class="rounded-circle" onerror="this.src='https://roadrunners.run/assets/user.png';"/></cfoutput>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item " href="#">Cadastro</a></li>
-                    <li><a class="dropdown-item" href="#">Configurações</a></li>
-                    <li><a class="dropdown-item" href="#">Sair</a></li>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="z-index: 999999;">
+                    <li><a class="dropdown-item" href="/">Meus Painéis</a></li>
+                    <li><a class="dropdown-item" href="https://roadrunners.run/atleta/" target="_blank">Meu Perfil</a></li>
+                    <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#" onclick="signOut()">Sair</a></li>
                 </ul>
+
             </li>
         </ul>
     </div>

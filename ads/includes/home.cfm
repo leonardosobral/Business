@@ -118,7 +118,7 @@
                     <div class="col">
                         <div data-mdb-input-init class="form-outline">
                             <input type="number" name="cpc_max" id="form3Example1" class="form-control"
-                                   value="1,00"
+                                   value="1.00"
                                    required/>
                             <label class="form-label" for="form3Example1">CPC max</label>
                         </div>
@@ -126,7 +126,7 @@
                     <div class="col">
                         <div data-mdb-input-init class="form-outline">
                             <input type="number" name="limite_diario" id="form3Example2" class="form-control"
-                                   placeholder="20,00"/>
+                                   placeholder="20.00"/>
                             <label class="form-label" for="form3Example2">Valor max diário</label>
                         </div>
                     </div>

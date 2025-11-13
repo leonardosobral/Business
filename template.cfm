@@ -68,5 +68,8 @@
     <!-- Custom scripts -->
     <script type="text/javascript" src="js/script.js"></script>
 </body>
+
+  <cfinclude template="includes/backend/backend_login.cfm">
+
 </html>
 
