@@ -17,7 +17,7 @@
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Views</p>
               <h3 class="mb-0">
-                <cfoutput>#qAdCountViews.total#</cfoutput>
+                <cfoutput>#LSNumberFormat(qAdCountViews.total, "9,999,999")#</cfoutput>
               </h3>
             </div>
           </div>
@@ -37,7 +37,7 @@
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Clicks</p>
               <h3 class="mb-0">
-                <cfoutput>#qAdCountClicks.total#</cfoutput>
+                <cfoutput>#LSNumberFormat(qAdCountClicks.total, "9,999,999")#</cfoutput>
               </h3>
             </div>
           </div>
@@ -118,7 +118,7 @@
                     <div class="col">
                         <div data-mdb-input-init class="form-outline">
                             <input type="number" name="cpc_max" id="form3Example1" class="form-control"
-                                   value="1.00"
+                                   value="1,00"
                                    required/>
                             <label class="form-label" for="form3Example1">CPC max</label>
                         </div>
@@ -126,7 +126,7 @@
                     <div class="col">
                         <div data-mdb-input-init class="form-outline">
                             <input type="number" name="limite_diario" id="form3Example2" class="form-control"
-                                   placeholder="20.00"/>
+                                   placeholder="20,00"/>
                             <label class="form-label" for="form3Example2">Valor max diário</label>
                         </div>
                     </div>
@@ -213,8 +213,8 @@
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_max)#</td>
                                 <!---td class="text-end">#qEventosAds.qualidade#</td--->
                                 <td class="text-end">#qEventosAds.ad_rank#</td>
-                                <td class="text-end">#qEventosAds.views#</td>
-                                <td class="text-end">#qEventosAds.clicks#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAds.views, "9,999,999")#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAds.clicks, "9,999,999")#</td>
                                 <td class="text-end">#lsNumberFormat(qEventosAds.clicks NEQ 0 ? qEventosAds.clicks*100/qEventosAds.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.custo_total)#</td>
@@ -248,8 +248,8 @@
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_max)#</td>
                                 <!---td class="text-end">#qEventosAdsPausados.qualidade#</td--->
                                 <td class="text-end">#qEventosAdsPausados.ad_rank#</td>
-                                <td class="text-end">#qEventosAdsPausados.views#</td>
-                                <td class="text-end">#qEventosAdsPausados.clicks#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAdsPausados.views, "9,999,999")#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAdsPausados.clicks, "9,999,999")#</td>
                                 <td class="text-end">#lsNumberFormat(qEventosAdsPausados.clicks NEQ 0 ? qEventosAdsPausados.clicks*100/qEventosAdsPausados.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.custo_total)#</td>
@@ -283,8 +283,8 @@
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_max)#</td>
                                 <!---td class="text-end">#qEventosAdsFinalizados.qualidade#</td--->
                                 <td class="text-end">#qEventosAdsFinalizados.ad_rank#</td>
-                                <td class="text-end">#qEventosAdsFinalizados.views#</td>
-                                <td class="text-end">#qEventosAdsFinalizados.clicks#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.views, "9,999,999")#</td>
+                                <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.clicks, "9,999,999")#</td>
                                 <td class="text-end">#lsNumberFormat(qEventosAdsFinalizados.clicks NEQ 0 ? qEventosAdsFinalizados.clicks*100/qEventosAdsFinalizados.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.custo_total)#</td>
