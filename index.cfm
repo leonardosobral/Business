@@ -14,7 +14,7 @@
 
     <cfif qPerfil.recordcount AND len(trim(qPerfil.partner_info))>
 
-        <cfinclude template="home_logado.cfm"/>
+        <cfinclude template="template.cfm"/>
 
     <cfelse>
 

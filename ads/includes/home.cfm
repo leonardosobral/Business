@@ -16,9 +16,9 @@
             </div>
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Views</p>
-              <h3 class="mb-0">
+              <h4 class="mb-0">
                 <cfoutput>#LSNumberFormat(qAdCountViews.total, "9,999,999")#</cfoutput>
-              </h3>
+              </h4>
             </div>
           </div>
         </div>
@@ -36,9 +36,9 @@
             </div>
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Clicks</p>
-              <h3 class="mb-0">
+              <h4 class="mb-0">
                 <cfoutput>#LSNumberFormat(qAdCountClicks.total, "9,999,999")#</cfoutput>
-              </h3>
+              </h4>
             </div>
           </div>
         </div>
@@ -56,9 +56,9 @@
             </div>
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">CPC Médio</p>
-              <h3 class="mb-0">
+              <h4 class="mb-0">
                 <cfoutput>#lsCurrencyFormat(qAdValorMedio.total)#</cfoutput>
-              </h3>
+              </h4>
             </div>
           </div>
         </div>
@@ -76,9 +76,9 @@
             </div>
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Investimento</p>
-              <h3 class="mb-0">
+              <h4 class="mb-0">
                 <cfoutput>#lsCurrencyFormat(qAdValorTotal.total)#</cfoutput>
-              </h3>
+              </h4>
             </div>
           </div>
         </div>
@@ -101,71 +101,13 @@
 
         <div class="card-body">
 
-          <div class="bg-light bg-opacity-10 rounded p-2">
+          <div class="bg-light bg-opacity-10 rounded p-3">
+
             <!--- INCLUIR CAMPANHA --->
-            <form method="post">
 
-                <h3>Turbinar evento</h3>
+            <h3>Turbinar Evento</h3>
 
-                <div data-mdb-input-init class="form-outline mb-2">
-                    <input type="text" name="evento" id="form1Example1" class="form-control"
-                           placeholder="https://roadrunners.run/evento/seu-evento/"
-                           required/>
-                    <label class="form-label" for="form1Example1">URL do Evento no Road Runners</label>
-                </div>
-
-                <div class="row mb-2 g-2">
-                    <div class="col">
-                        <div data-mdb-input-init class="form-outline">
-                            <input type="number" name="cpc_max" id="form3Example1" class="form-control"
-                                   value="1.00"
-                                   required/>
-                            <label class="form-label" for="form3Example1">CPC max</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div data-mdb-input-init class="form-outline">
-                            <input type="number" name="limite_diario" id="form3Example2" class="form-control"
-                                   placeholder="20.00"/>
-                            <label class="form-label" for="form3Example2">Valor max diário</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div data-mdb-input-init class="form-outline">
-                            <input type="number" name="limite_ad" id="form3Example2" class="form-control"
-                                   placeholder="500.00"/>
-                            <label class="form-label" for="form3Example2">Valor max da Campanha</label>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="row mb-2 g-2">
-                <div class="col">
-                    <select name="escopo" data-mdb-select-init data-mdb-placeholder="Locais" multiple required>
-                        <option value="hom">Capa/Home</option>
-                        <option value="busca">Página de Busca</option>
-                        <option value="feed">Feed de Usuários</option>
-                    </select>
-                </div>
-            <div class="col">
-            <select name="locais" data-mdb-select-init data-mdb-placeholder="Público" multiple required>
-            <cfoutput query="qAdUFs">
-                    <option value="#qAdUFs.uf#">#qAdUFs.uf# - #qAdUFs.nome_uf#</option>
-            </cfoutput>
-            </select>
-            </div>
-                <div class="col">
-                    <div class="form-outline" data-mdb-datepicker-init data-mdb-input-init data-mdb-date-range="true" data-mdb-inline="true">
-                        <input type="text" name="datas" class="form-control" id="date-range-inline" />
-                        <label for="date-range-inline" class="form-label">Período da Campanha</label>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Submit button -->
-                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Incluir Campanha</button>
-
-            </form>
+            <cfinclude template="form_campanha.cfm"/>
 
             </div>
 
@@ -175,15 +117,15 @@
           <ul class="nav nav-tabs nav-fill mb-4" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
               <a class="nav-link active" id="ex1-tab-1" data-mdb-pill-init href="#ex1-pills-1" role="tab"
-                 aria-controls="ex1-pills-1" aria-selected="true">Ativos</a>
+                 aria-controls="ex1-pills-1" aria-selected="true">Ativos (<cfoutput>#qEventosAds.recordcount#</cfoutput>)</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="ex1-tab-2" data-mdb-pill-init href="#ex1-pills-2" role="tab"
-                 aria-controls="ex1-pills-2" aria-selected="false">Pausados</a>
+                 aria-controls="ex1-pills-2" aria-selected="false">Pausados (<cfoutput>#qEventosAdsPausados.recordcount#</cfoutput>)</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="ex1-tab-3" data-mdb-pill-init href="#ex1-pills-3" role="tab"
-                 aria-controls="ex1-pills-3" aria-selected="false">Finalizados</a>
+                 aria-controls="ex1-pills-3" aria-selected="false">Finalizados (<cfoutput>#qEventosAdsFinalizados.recordcount#</cfoutput>)</a>
             </li>
           </ul>
 
@@ -195,6 +137,7 @@
                   <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
+                            <th></th>
                             <th>Evento</th>
                             <th class="text-end">CPC max</th>
                             <!---th class="text-end">Qualidade</th--->
@@ -209,16 +152,32 @@
                       <tbody>
                         <cfoutput query="qEventosAds">
                             <tr>
-                                <td>#qEventosAds.nome_evento#</td>
+                                <td>
+                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
+                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
+                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                </td>
+                                <td <cfif qEventosAds.data_final LT now()>class="text-danger"</cfif>>#lsDateFormat(qEventosAds.data_final, "dd/mm/yyyy")# - #qEventosAds.nome_evento# <cfif qEventosAds.status EQ 1><span class="badge badge-success">em aprovação</span></cfif></td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_max)#</td>
                                 <!---td class="text-end">#qEventosAds.qualidade#</td--->
                                 <td class="text-end">#qEventosAds.ad_rank#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAds.views, "9,999,999")#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAds.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(qEventosAds.clicks NEQ 0 ? qEventosAds.clicks*100/qEventosAds.views : 0, "9.99")#%</td>
+                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAds.clicks)) AND qEventosAds.clicks NEQ 0 ? qEventosAds.clicks*100/qEventosAds.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.custo_total)#</td>
                             </tr>
+                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qEventosAds.id_ad_evento>
+                                <tr>
+                                    <td colspan="9" class="p-3">
+                                        <!--- EDITAR CAMPANHA --->
+                                        <cfset VARIABLES.campanha = QueryGetRow(qEventosAds, qEventosAds.currentRow)>
+                                        <h5 class="mb-3">Editar Campanha</h5>
+                                        <h5 class="mb-3 float-end">X</h5>
+                                        <cfinclude template="form_campanha.cfm"/>
+                                    </td>
+                                </tr>
+                            </cfif>
                         </cfoutput>
                       </tbody>
                   </table>
@@ -244,13 +203,14 @@
                       <tbody>
                         <cfoutput query="qEventosAdsPausados">
                             <tr>
-                                <td>#qEventosAdsPausados.nome_evento#</td>
+                                <td><a href=""><icon class="fa fa-pause"></icon></a> </td>
+                                <td <cfif qEventosAdsPausados.data_final LT now()>class="text-danger"</cfif>>#qEventosAdsPausados.nome_evento#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_max)#</td>
                                 <!---td class="text-end">#qEventosAdsPausados.qualidade#</td--->
                                 <td class="text-end">#qEventosAdsPausados.ad_rank#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAdsPausados.views, "9,999,999")#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAdsPausados.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(qEventosAdsPausados.clicks NEQ 0 ? qEventosAdsPausados.clicks*100/qEventosAdsPausados.views : 0, "9.99")#%</td>
+                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAdsPausados.clicks)) AND qEventosAdsPausados.clicks NEQ 0 ? qEventosAdsPausados.clicks*100/qEventosAdsPausados.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.custo_total)#</td>
                             </tr>
@@ -285,7 +245,7 @@
                                 <td class="text-end">#qEventosAdsFinalizados.ad_rank#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.views, "9,999,999")#</td>
                                 <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(qEventosAdsFinalizados.clicks NEQ 0 ? qEventosAdsFinalizados.clicks*100/qEventosAdsFinalizados.views : 0, "9.99")#%</td>
+                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAdsFinalizados.clicks)) AND qEventosAdsFinalizados.clicks NEQ 0 ? qEventosAdsFinalizados.clicks*100/qEventosAdsFinalizados.views : 0, "9.99")#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.custo_total)#</td>
                             </tr>

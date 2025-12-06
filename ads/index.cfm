@@ -1,54 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <cfprocessingdirective pageencoding="utf-8"/>
 
 <!--- BACKEND --->
+
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>RoadRunners Business</title>
-    <!--- Font Awesome --->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" />
-    <!--- Google Fonts Roboto --->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-    <!--- MDB --->
-    <link rel="stylesheet" href="/assets/css/mdb.min.css" />
-    <!--- Custom styles --->
-    <link rel="stylesheet" href="css/style.css?15" />
-</head>
+<!--- BACKEND --->
 
-<body data-mdb-theme="dark">
+<cfinclude template="../includes/estrutura/head.cfm"/>
 
-  <!--- HEADER E NAVAGACAO --->
+<body data-mdb-theme="dark" class="bg-dark-subtle">
 
-  <cfinclude template="includes/header.cfm"/>
 
-  <!--- CONTEUDO --->
+    <!--- HEADER --->
 
-  <main class="mb-5" id="content">
+    <cfinclude template="../includes/estrutura/header.cfm"/>
 
-    <div class="container px-4">
+    <!--- CONTEUDO --->
 
-      <cfinclude template="includes/home.cfm"/>
+    <main class="" style="margin-top: -55px;">
 
-    </div>
+      <div class="container px-4">
 
-  </main>
+        <cfinclude template="includes/home.cfm">
 
-  <!--- RODAPE --->
+      </div>
 
-  <cfinclude template="includes/footer.cfm"/>
-    
-  <!--- MDB --->
-  <script type="text/javascript" src="../assets/js/mdb.umd.min.js"></script>
+    </main>
 
-  <!--- CUSTOM SCRIPTS --->
-  <script type="text/javascript" src="js/script.js"></script>
+    <!--- FOOTER --->
+
+    <cfinclude template="../includes/estrutura/footer.cfm"/>
 
 </body>
 
 </html>
+

@@ -97,6 +97,7 @@
 <cfquery name="qCountNovoSite" dbtype="query">
     select count(*) as total
     from qBase
+    where status = 'C'
 </cfquery>
 
 <cfquery name="qCountTotal">
