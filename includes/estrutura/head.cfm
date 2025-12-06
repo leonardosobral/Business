@@ -6,17 +6,22 @@
 
     <title>RoadRunners Business</title>
 
-    <!--- Font Awesome --->
+    <!--- FONT AWESOME --->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" />
 
-    <!--- Google Fonts Roboto --->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!--- GOOGLE FONTS ROBOTO --->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
-    <!--- MDB --->
+    <!--- MDB ESSENTIAL --->
     <link rel="stylesheet" href="/assets/css/mdb.min.css" />
-    <link rel="stylesheet" href="/assets/plugins/css/all.min.css">
 
-    <!--- Custom styles --->
+    <!--- MDB PLUGINS --->
+    <link rel="stylesheet" href="/assets/plugins/css/all.min.css" />
+
+    <!--- GOOGLE --->
+    <meta name="google-signin-client_id" content="921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com">
+
+    <!--- CUSTOM STYLES --->
     <link rel="stylesheet" href="/css/style.css?11" />
 
 </head>

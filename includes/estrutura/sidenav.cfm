@@ -20,17 +20,18 @@
             <i class="fa-solid fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span></a>
         </li>
 
+
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos</span>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link" href="">
+            <a class="sidenav-link" href="/admin/?id_evento=0">
                 <i class="fa-solid fa-plus fa-fw me-3"></i><span>Novo evento</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link" href="">
+            <a class="sidenav-link" href="/admin/">
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Meus eventos</span></a>
         </li>
 
@@ -38,6 +39,7 @@
             <a class="sidenav-link link-warning" href="/ads/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
         </li>
+
 
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ferramentas</span>
@@ -50,18 +52,6 @@
             <a class="sidenav-link" href="">
                 <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
         </li>
-    <!---<li class="sidenav-item">
-      <a class="sidenav-link" href="">
-        <i class="fas fa-stream fa-fw me-3"></i><span>Custom domains</span></a>
-    </li>
-    <li class="sidenav-item">
-      <a class="sidenav-link" href="">
-        <i class="fas fa-code-branch fa-fw me-3"></i><span>Repositories</span></a>
-    </li>
-    <li class="sidenav-item">
-      <a class="sidenav-link" href="">
-        <i class="fas fa-users fa-fw me-3"></i><span>Team</span></a>
-    </li>--->
 
 
         <li class="sidenav-item pt-3">
@@ -84,18 +74,6 @@
                 <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
         </li>
 
-
-        <!---<li class="sidenav-item pt-3">--->
-            <!---<span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>--->
-        <!---</li>--->
-        <!---<li class="sidenav-item">--->
-            <!---<a class="sidenav-link" href="">--->
-                <!---<i class="fa-solid fa-screwdriver-wrench fa-fw me-3"></i><span>Configurações</span></a>--->
-        <!---</li>--->
-        <!---<li class="sidenav-item">--->
-            <!---<a class="sidenav-link" href="">--->
-                <!---<i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>--->
-        <!---</li>--->
 
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Suporte</span>

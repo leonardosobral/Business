@@ -1,4 +1,5 @@
 <!--- DADOS DO USUARIO LOGADO --->
+
 <cfif isDefined("COOKIE.id")>
     <cfquery name="qPerfil">
         SELECT * FROM tb_usuarios
