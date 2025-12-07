@@ -16,8 +16,20 @@
     order by nome_fornecedor
 </cfquery>
 
-<cfquery name="qEventosAdsOutros" dbtype="query">
+<cfquery name="qFornecedoresAssessorias" dbtype="query">
     select * from qFornecedoresBase
-    where tag_tipo <> 'org' and tag_tipo <> 'timer'
+    where tag_tipo = 'assessoria'
+    order by nome_fornecedor
+</cfquery>
+
+<cfquery name="qFornecedoresCreator" dbtype="query">
+    select * from qFornecedoresBase
+    where tag_tipo = 'creator'
+    order by nome_fornecedor
+</cfquery>
+
+<cfquery name="qFornecedoresOutros" dbtype="query">
+    select * from qFornecedoresBase
+    where tag_tipo <> 'org' and tag_tipo <> 'timer' and tag_tipo <> 'assessoria' and tag_tipo <> 'creator'
     order by nome_fornecedor
 </cfquery>
