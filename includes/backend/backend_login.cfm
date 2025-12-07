@@ -19,11 +19,13 @@
         INNER JOIN tb_fornecedores forn ON usrforn.id_fornecedor = forn.id_fornecedor
         WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
     </cfquery>
+    <cfif qFornecedor.recordcount>
     <cfquery name="qEventosFornecedor">
         SELECT id_evento
         FROM tb_evento_corridas_fornecedores
         WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qFornecedor.id_fornecedor)#" list="true"/>)
     </cfquery>
+    </cfif>
     <cfif Len(trim(qPerfil.is_admin)) and qPerfil.is_admin>
         <cfquery name="qPermissoes">
             SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
