@@ -1,23 +1,23 @@
 <!--- QUERY BASE DE EVENTOS --->
 
-<cfquery name="qEventosAdsBase">
+<cfquery name="qFornecedoresBase">
     SELECT * from tb_fornecedores
 </cfquery>
 
-<cfquery name="qEventosAds" dbtype="query">
-    select * from qEventosAdsBase
-    where status < 3
-    order by clicks desc, views desc
+<cfquery name="qFornecedoresOrg" dbtype="query">
+    select * from qFornecedoresBase
+    where tag_tipo = 'org'
+    order by nome_fornecedor
 </cfquery>
 
-<cfquery name="qEventosAdsPausados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 3
-    order by clicks desc, views desc
+<cfquery name="qFornecedoresTimer" dbtype="query">
+    select * from qFornecedoresBase
+    where tag_tipo = 'timer'
+    order by nome_fornecedor
 </cfquery>
 
-<cfquery name="qEventosAdsFinalizados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 4
-    order by clicks desc, views desc
+<cfquery name="qEventosAdsOutros" dbtype="query">
+    select * from qFornecedoresBase
+    where tag_tipo <> 'org' and tag_tipo <> 'timer'
+    order by nome_fornecedor
 </cfquery>

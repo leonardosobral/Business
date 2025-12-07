@@ -12,11 +12,7 @@
 
         <div class="card-body">
 
-            <div class="bg-light bg-opacity-10 rounded p-3">
-
-                <h3>Fornecedores/h3>
-
-            </div>
+          <h3>Fornecedores</h3>
 
           <hr/>
 
@@ -24,19 +20,19 @@
           <ul class="nav nav-tabs nav-fill mb-4" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
               <a class="nav-link active" id="ex1-tab-1" data-mdb-pill-init href="#ex1-pills-1" role="tab"
-                 aria-controls="ex1-pills-1" aria-selected="true">Organizadores (<cfoutput>#qEventosAds.recordcount#</cfoutput>)</a>
+                 aria-controls="ex1-pills-1" aria-selected="true">Organizadores (<cfoutput>#qFornecedoresOrg.recordcount#</cfoutput>)</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="ex1-tab-2" data-mdb-pill-init href="#ex1-pills-2" role="tab"
-                 aria-controls="ex1-pills-2" aria-selected="false">Timers (<cfoutput>#qEventosAdsPausados.recordcount#</cfoutput>)</a>
+                 aria-controls="ex1-pills-2" aria-selected="false">Timers (<cfoutput>#qFornecedoresOrg.recordcount#</cfoutput>)</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="ex1-tab-3" data-mdb-pill-init href="#ex1-pills-3" role="tab"
-                 aria-controls="ex1-pills-3" aria-selected="false">Fornecedores (<cfoutput>#qEventosAdsFinalizados.recordcount#</cfoutput>)</a>
+                 aria-controls="ex1-pills-3" aria-selected="false">Fornecedores (<cfoutput>#qFornecedoresOrg.recordcount#</cfoutput>)</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="ex1-tab-4" data-mdb-pill-init href="#ex1-pills-4" role="tab"
-                 aria-controls="ex1-pills-4" aria-selected="false">Creators (<cfoutput>#qEventosAdsFinalizados.recordcount#</cfoutput>)</a>
+                 aria-controls="ex1-pills-4" aria-selected="false">Creators (<cfoutput>#qFornecedoresOrg.recordcount#</cfoutput>)</a>
             </li>
           </ul>
 
@@ -50,45 +46,16 @@
                         <tr>
                             <th></th>
                             <th>Nome</th>
-                            <th class="text-end">CPC max</th>
-                            <!---th class="text-end">Qualidade</th--->
-                            <th class="text-end">Ad Rank</th>
-                            <th class="text-end">Views</th>
-                            <th class="text-end">Clicks</th>
-                            <th class="text-end">Taxa</th>
-                            <th class="text-end">CPC médio</th>
-                            <th class="text-end">Custo</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <cfoutput query="qEventosAds">
+                        <cfoutput query="qFornecedoresOrg">
                             <tr>
                                 <td>
-                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
-                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                    <a href="/ads/?campanha=#qFornecedoresOrg.id_fornecedor#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
-                                <td <cfif qEventosAds.data_final LT now()>class="text-danger"</cfif>>#lsDateFormat(qEventosAds.data_final, "dd/mm/yyyy")# - #qEventosAds.nome_evento# <cfif qEventosAds.status EQ 1><span class="badge badge-success">em aprovação</span></cfif></td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_max)#</td>
-                                <!---td class="text-end">#qEventosAds.qualidade#</td--->
-                                <td class="text-end">#qEventosAds.ad_rank#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAds.views, "9,999,999")#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAds.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAds.clicks)) AND qEventosAds.clicks NEQ 0 ? qEventosAds.clicks*100/qEventosAds.views : 0, "9.99")#%</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_medio)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAds.custo_total)#</td>
+                                <td>#qFornecedoresOrg.nome_fornecedor# <cfif qFornecedoresOrg.status EQ 1><span class="badge badge-success">em verificação</span></cfif></td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qEventosAds.id_ad_evento>
-                                <tr>
-                                    <td colspan="9" class="p-3">
-                                        <!--- EDITAR CAMPANHA --->
-                                        <cfset VARIABLES.campanha = QueryGetRow(qEventosAds, qEventosAds.currentRow)>
-                                        <h5 class="mb-3">Editar Campanha</h5>
-                                        <h5 class="mb-3 float-end">X</h5>
-                                        <cfinclude template="includes/form_campanha.cfm"/>
-                                    </td>
-                                </tr>
-                            </cfif>
                         </cfoutput>
                       </tbody>
                   </table>
@@ -100,30 +67,17 @@
                   <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
-                            <th>Evento</th>
-                            <th class="text-end">CPC max</th>
-                            <!---th class="text-end">Qualidade</th--->
-                            <th class="text-end">Ad Rank</th>
-                            <th class="text-end">Views</th>
-                            <th class="text-end">Clicks</th>
-                            <th class="text-end">Taxa</th>
-                            <th class="text-end">CPC médio</th>
-                            <th class="text-end">Custo</th>
+                            <th></th>
+                            <th>Nome</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <cfoutput query="qEventosAdsPausados">
+                        <cfoutput query="qFornecedoresOrg">
                             <tr>
-                                <td><a href=""><icon class="fa fa-pause"></icon></a> </td>
-                                <td <cfif qEventosAdsPausados.data_final LT now()>class="text-danger"</cfif>>#qEventosAdsPausados.nome_evento#</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_max)#</td>
-                                <!---td class="text-end">#qEventosAdsPausados.qualidade#</td--->
-                                <td class="text-end">#qEventosAdsPausados.ad_rank#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAdsPausados.views, "9,999,999")#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAdsPausados.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAdsPausados.clicks)) AND qEventosAdsPausados.clicks NEQ 0 ? qEventosAdsPausados.clicks*100/qEventosAdsPausados.views : 0, "9.99")#%</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.cpc_medio)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsPausados.custo_total)#</td>
+                                <td>
+                                    <a href="/ads/?campanha=#qFornecedoresOrg.id_fornecedor#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                </td>
+                                <td>#qFornecedoresOrg.nome_fornecedor# <cfif qFornecedoresOrg.status EQ 1><span class="badge badge-success">em verificação</span></cfif></td>
                             </tr>
                         </cfoutput>
                       </tbody>
@@ -136,29 +90,40 @@
                   <table class="table table-sm table-striped table-hover">
                       <thead>
                         <tr>
-                            <th>Evento</th>
-                            <th class="text-end">CPC max</th>
-                            <!---th class="text-end">Qualidade</th--->
-                            <th class="text-end">Ad Rank</th>
-                            <th class="text-end">Views</th>
-                            <th class="text-end">Clicks</th>
-                            <th class="text-end">Taxa</th>
-                            <th class="text-end">CPC médio</th>
-                            <th class="text-end">Custo</th>
+                            <th></th>
+                            <th>Nome</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <cfoutput query="qEventosAdsFinalizados">
+                        <cfoutput query="qFornecedoresOrg">
                             <tr>
-                                <td>#qEventosAdsFinalizados.nome_evento#</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_max)#</td>
-                                <!---td class="text-end">#qEventosAdsFinalizados.qualidade#</td--->
-                                <td class="text-end">#qEventosAdsFinalizados.ad_rank#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.views, "9,999,999")#</td>
-                                <td class="text-end">#LSNumberFormat(qEventosAdsFinalizados.clicks, "9,999,999")#</td>
-                                <td class="text-end">#lsNumberFormat(len(trim(qEventosAdsFinalizados.clicks)) AND qEventosAdsFinalizados.clicks NEQ 0 ? qEventosAdsFinalizados.clicks*100/qEventosAdsFinalizados.views : 0, "9.99")#%</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.cpc_medio)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qEventosAdsFinalizados.custo_total)#</td>
+                                <td>
+                                    <a href="/ads/?campanha=#qFornecedoresOrg.id_fornecedor#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                </td>
+                                <td>#qFornecedoresOrg.nome_fornecedor# <cfif qFornecedoresOrg.status EQ 1><span class="badge badge-success">em verificação</span></cfif></td>
+                            </tr>
+                        </cfoutput>
+                      </tbody>
+                  </table>
+
+            </div>
+
+            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+
+                  <table class="table table-sm table-striped table-hover">
+                      <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <cfoutput query="qFornecedoresOrg">
+                            <tr>
+                                <td>
+                                    <a href="/ads/?campanha=#qFornecedoresOrg.id_fornecedor#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                </td>
+                                <td>#qFornecedoresOrg.nome_fornecedor# <cfif qFornecedoresOrg.status EQ 1><span class="badge badge-success">em verificação</span></cfif></td>
                             </tr>
                         </cfoutput>
                       </tbody>
