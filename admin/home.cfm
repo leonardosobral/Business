@@ -18,7 +18,9 @@
 
 <div class="row">
 
-    <cfinclude template="listagem_eventos.cfm"/>
+    <cfif isDefined("URL.id_evento") and URL.id_evento NEQ 0>
+        <cfinclude template="listagem_eventos.cfm"/>
+    </cfif>
 
     <cfinclude template="form_edicao.cfm"/>
 

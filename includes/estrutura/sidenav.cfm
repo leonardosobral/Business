@@ -49,6 +49,10 @@
                 <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>BI</span></a>
         </li>
         <li class="sidenav-item">
+            <a class="sidenav-link" href="/desafios/">
+                <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Desafios</span></a>
+        </li>
+        <li class="sidenav-item">
             <a class="sidenav-link" href="">
                 <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
         </li>

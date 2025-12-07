@@ -2,9 +2,27 @@
 
 <cfif isDefined("COOKIE.id")>
     <cfquery name="qPerfil">
-        SELECT * FROM tb_usuarios
-        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
+        coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
+        pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
+        pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
+        usr.partner_info
+        FROM tb_usuarios usr
+        inner join tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
+        inner join tb_paginas pg on pg.id_pagina = pgusr.id_pagina
+        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
         AND (is_admin = true or is_partner = true)
+    </cfquery>
+    <cfquery name="qFornecedor">
+        SELECT usrforn.*, forn.nome_fornecedor, forn.tag_fornecedor, forn.tag_tipo
+        FROM tb_usuarios_fornecedores usrforn
+        INNER JOIN tb_fornecedores forn ON usrforn.id_fornecedor = forn.id_fornecedor
+        WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+    </cfquery>
+    <cfquery name="qEventosFornecedor">
+        SELECT id_evento
+        FROM tb_evento_corridas_fornecedores
+        WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qFornecedor.id_fornecedor)#" list="true"/>)
     </cfquery>
     <cfif Len(trim(qPerfil.is_admin)) and qPerfil.is_admin>
         <cfquery name="qPermissoes">

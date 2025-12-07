@@ -1,4 +1,4 @@
-<cfinclude template="backend.cfm"/>
+<cfinclude template="includes/backend.cfm"/>
 
 <!--- WIDGETS --->
 <section class="mb-4">
@@ -107,7 +107,7 @@
 
             <h3>Turbinar Evento</h3>
 
-            <cfinclude template="form_campanha.cfm"/>
+            <cfinclude template="includes/form_campanha.cfm"/>
 
             </div>
 
@@ -153,9 +153,9 @@
                         <cfoutput query="qEventosAds">
                             <tr>
                                 <td>
-                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
-                                    <a href="/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
+                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
+                                    <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
                                 <td <cfif qEventosAds.data_final LT now()>class="text-danger"</cfif>>#lsDateFormat(qEventosAds.data_final, "dd/mm/yyyy")# - #qEventosAds.nome_evento# <cfif qEventosAds.status EQ 1><span class="badge badge-success">em aprovação</span></cfif></td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_max)#</td>
@@ -174,7 +174,7 @@
                                         <cfset VARIABLES.campanha = QueryGetRow(qEventosAds, qEventosAds.currentRow)>
                                         <h5 class="mb-3">Editar Campanha</h5>
                                         <h5 class="mb-3 float-end">X</h5>
-                                        <cfinclude template="form_campanha.cfm"/>
+                                        <cfinclude template="includes/form_campanha.cfm"/>
                                     </td>
                                 </tr>
                             </cfif>

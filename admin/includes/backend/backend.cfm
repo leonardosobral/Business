@@ -30,27 +30,28 @@
                 AND id_fornecedor_tipo = 2
     ) as has_cronometrador
     FROM tb_evento_corridas evt
-    <cfif URL.preset EQ "inativos">
+    WHERE ativo = true
+    <!---cfif URL.preset EQ "inativos">
         WHERE ativo = false
         <cfelse>
         WHERE ativo = true
-    </cfif>
+    </cfif--->
     <cfif len(trim(URL.busca))>
         AND nome_evento ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
         OR tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
     </cfif>
-    <cfif URL.preset EQ "duplicados">
+    <!---cfif URL.preset EQ "duplicados">
         AND evt.tag IN (
             SELECT tag FROM tb_evento_corridas
             GROUP BY tag
             HAVING count(*) > 1
         )
         OR evt.info_duplicado IS NOT NULL
-    </cfif>
-    <cfif len(trim(URL.id_agrega_evento)) >
+    </cfif--->
+    <!---cfif len(trim(URL.id_agrega_evento)) >
         AND evt.id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_agrega_evento#"/>
-    </cfif>
-    <cfif len(trim(URL.agregador_tag))>
+    </cfif--->
+    <!---cfif len(trim(URL.agregador_tag))>
         <cfif URL.agregador_tag EQ 'correria-campinas'>
             AND evt.cidade IN (SELECT cidade FROM tb_agregadores_cidades WHERE agregador_tag = 'correria-campinas')
             AND evt.estado = 'SP'
@@ -59,9 +60,11 @@
                 select id_evento from tb_agregadores_eventos where agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.agregador_tag#"/>
             )
         </cfif>
-    </cfif>
+    </cfif--->
+    <!---cfif NOT qPerfil.is_admin--->
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    <!---/cfif--->
 </cfquery>
-
 
 <cfquery name="qEventos" dbtype="query" maxrows="3000">
     SELECT *

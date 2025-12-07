@@ -107,7 +107,7 @@
     <cfquery>
         UPDATE tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
-        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_evento#"/>
+        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
     </cfquery>
 
 </cfif>
@@ -125,6 +125,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdValorMedio">
@@ -136,6 +137,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountViews">
@@ -147,6 +149,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountClicks">
@@ -158,6 +161,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountAds">
@@ -168,19 +172,32 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 
 <!--- QUERY BASE DE EVENTOS --->
 
 <cfquery name="qEventosAdsBase">
-    WITH ad_views AS (
+    WITH
+    ad_views AS (
         SELECT
             id_ad as id_evento,
             count(*) as views
         FROM tb_ad_log
+        WHERE tb_ad_log.status <= 2
         GROUP BY id_ad
-    ), ad_clicks AS (
+    ),
+    ad_views_usuarios AS (
+        SELECT
+            id_ad as id_evento,
+            count(*) as views
+        FROM tb_ad_log
+        WHERE tb_ad_log.status <= 2
+        AND id_usuario is not null
+        GROUP BY id_ad
+    ),
+    ad_clicks AS (
         select
         id_ad as id_evento,
         count(*) as clicks,
@@ -188,6 +205,17 @@
         sum(valor_ad) as custo_total
         FROM tb_ad_log
         WHERE status = 2
+        group by id_ad
+    ),
+    ad_clicks_usuarios AS (
+        select
+        id_ad as id_evento,
+        count(*) as clicks,
+        avg(valor_ad) as cpc_medio,
+        sum(valor_ad) as custo_total
+        FROM tb_ad_log
+        WHERE status = 2
+        AND id_usuario is not null
         group by id_ad
     )
     SELECT evt.*,
@@ -202,18 +230,25 @@
            ad.inicio_ad,
            ad.final_ad,
            ad_views.views,
+           ad_views_usuarios.views as views_usuarios,
            ad_clicks.clicks,
            ad_clicks.cpc_medio,
            ad_clicks.custo_total,
+           ad_clicks_usuarios.clicks as clicks_usuarios,
+           ad_clicks_usuarios.cpc_medio as cpc_medio_usuarios,
+           ad_clicks_usuarios.custo_total as custo_total_usuarios,
            (ad.qualidade * ad.cpc_max) as ad_rank
     FROM tb_ad_eventos ad
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     LEFT JOIN ad_views on ad_views.id_evento = ad.id_ad_evento
+    LEFT JOIN ad_views_usuarios on ad_views_usuarios.id_evento = ad.id_ad_evento
     LEFT JOIN ad_clicks on ad_clicks.id_evento = ad.id_ad_evento
+    LEFT JOIN ad_clicks_usuarios on ad_clicks_usuarios.id_evento = ad.id_ad_evento
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qEventosAds" dbtype="query">

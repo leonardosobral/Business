@@ -48,7 +48,7 @@
 
             <!--- LISTAGEM DE EVENTOS --->
 
-            <table id="tblEventos" class="table table-stripped table-bordered table-condensed table-sm mb-0" style="height: calc(100vh - 275px);overflow: auto;display: inline-block;">
+            <table id="tblEventos" class="table table-stripped table-bordered table-condensed table-sm mb-0">
 
                 <tr>
                     <th>Data</th>

@@ -24,7 +24,7 @@
 
       <div class="container px-4">
 
-        <cfinclude template="includes/home.cfm">
+        <cfinclude template="home.cfm">
 
       </div>
 
