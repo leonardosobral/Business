@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" data-mdb-theme="dark">
 
 <!--- Define the page request properties. --->
 <cfsetting requesttimeout="180" showdebugoutput="false" enablecfoutputonly="false" />
@@ -54,16 +54,6 @@
                             <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
                                 FROM tb_evento_corridas evt
-                                where evt.ativo = true
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Provas catalogadas <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Mundo</cfif>: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                FROM tb_evento_corridas evt
                                 where evt.ativo = true AND evt.pais = 'BR'
                             </cfquery>
                             <p>Provas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
@@ -78,17 +68,10 @@
                             </cfquery>
                             <p>Provas com resultado coletado <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
 
-                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(distinct res.id_evento) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR'
-                            </cfquery>
-                            <p>Provas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
-
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select sum(res.concluintes) as total
                                     from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true
+                                where evt.ativo = true AND evt.pais = 'BR'
                                 <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
                                     AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
                                 </cfif>
@@ -112,26 +95,52 @@
                             </cfquery>
                             <p>Corredores <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR'
-                            </cfquery>
-                            <p>Corredores no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
                             <hr/>
 
-                            <h5>2024</h5>
+                            <h5>2025</h5>
 
                             <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
-                                FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
+                                    FROM tb_evento_corridas evt
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2025-01-01' and '2025-12-31'
+                            </cfquery>
+                            <p>Provas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
+
+                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(distinct res.id_evento) as total
+                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2025-01-01' and '2025-12-31'
                                 <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
                                     AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
                                 </cfif>
                             </cfquery>
-                            <p>Provas catalogadas <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
+                            <p>Provas com resultado coletado <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select sum(res.concluintes) as total
+                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2025-01-01' and '2025-12-31'
+                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
+                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
+                                </cfif>
+                            </cfquery>
+                            <p>Resultados coletados <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(DISTINCT res.nome) as total
+                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2025-01-01' and '2025-12-31'
+                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
+                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
+                                </cfif>
+                            </cfquery>
+                            <p>Corredores <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <hr/>
+
+
+
+                            <h5>2024</h5>
 
                             <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
@@ -150,29 +159,15 @@
                             </cfquery>
                             <p>Provas com resultado coletado <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
 
-                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(distinct res.id_evento) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
-                            </cfquery>
-                            <p>Provas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
-
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select sum(res.concluintes) as total
                                     from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
                                 <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
                                     AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
                                 </cfif>
                             </cfquery>
                             <p>Resultados coletados <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select sum(res.concluintes) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
-                            </cfquery>
-                            <p>Resultados coletados no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(DISTINCT res.nome) as total
@@ -183,13 +178,6 @@
                                 </cfif>
                             </cfquery>
                             <p>Corredores <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2024-01-01' and '2024-12-31'
-                            </cfquery>
-                            <p>Corredores no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
                             <hr/>
 
@@ -199,16 +187,6 @@
 
                             <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
-                                FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Provas catalogadas <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
                                     FROM tb_evento_corridas evt
                                 where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
                             </cfquery>
@@ -224,29 +202,15 @@
                             </cfquery>
                             <p>Provas com resultado coletado <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
 
-                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(distinct res.id_evento) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
-                            </cfquery>
-                            <p>Provas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
-
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select sum(res.concluintes) as total
                                     from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
+                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
                                 <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
                                     AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
                                 </cfif>
                             </cfquery>
                             <p>Resultados coletados <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select sum(res.concluintes) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
-                            </cfquery>
-                            <p>Resultados coletados no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(DISTINCT res.nome) as total
@@ -257,87 +221,6 @@
                                 </cfif>
                             </cfquery>
                             <p>Corredores <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2023-01-01' and '2023-12-31'
-                            </cfquery>
-                            <p>Corredores no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <hr/>
-
-
-
-                            <h5>2022</h5>
-
-                            <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Provas catalogadas <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qProvas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                    FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                            </cfquery>
-                            <p>Provas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qProvas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(distinct res.id_evento) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Provas com resultado coletado <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
-
-                            <cfquery name="qProvasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(distinct res.id_evento) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                            </cfquery>
-                            <p>Provas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qProvasResultados.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select sum(res.concluintes) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Resultados coletados <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select sum(res.concluintes) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                            </cfquery>
-                            <p>Resultados coletados no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Corredores <cfif isDefined("URL.estado") AND Len(trim(URL.estado))><cfoutput> - #URL.estado#</cfoutput><cfelse>no Brasil</cfif>: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND evt.pais = 'BR' AND evt.data_final BETWEEN '2022-01-01' and '2022-12-31'
-                            </cfquery>
-                            <p>Corredores no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
                         </div>
 
@@ -352,16 +235,6 @@
                         <div class="card-header h5 p-3">Números de Maratona</div>
 
                         <div class="card-body p-3">
-
-                            <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                    FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.tipo_corrida = 'rua'
-                                <cfif isDefined("URL.estado") AND Len(trim(URL.estado))>
-                                    AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.estado#"/>
-                                </cfif>
-                            </cfquery>
-                            <p>Maratonas catalogadas: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
 
                             <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
@@ -407,14 +280,39 @@
 
                             <hr/>
 
-                            <h5>2024</h5>
+                            <h5>2025</h5>
 
                             <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
                                     FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2024-01-01' and '2024-12-31' and evt.tipo_corrida = 'rua'
+                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR' and evt.tipo_corrida = 'rua'
                             </cfquery>
-                            <p>Maratonas catalogadas: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
+                            <p>Maratonas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
+
+                            <cfquery name="qMaratonasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(res.*) as total
+                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR' and evt.tipo_corrida = 'rua'
+                            </cfquery>
+                            <p>Maratonas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonasResultados.total)#</b></cfoutput></p>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(res.id_resultado) as total
+                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR'
+                            </cfquery>
+                            <p>Resultados de Maratona no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(DISTINCT res.nome) as total
+                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR'
+                            </cfquery>
+                            <p>Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <hr/>
+
+                            <h5>2024</h5>
 
                             <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
@@ -451,13 +349,6 @@
                             <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
                                 select count(evt.id_evento) as total
                                     FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2023-01-01' and '2023-12-31' and evt.tipo_corrida = 'rua'
-                            </cfquery>
-                            <p>Maratonas catalogadas: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                    FROM tb_evento_corridas evt
                                 where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2023-01-01' and '2023-12-31' and evt.pais = 'BR' and evt.tipo_corrida = 'rua'
                             </cfquery>
                             <p>Maratonas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
@@ -480,45 +371,6 @@
                                 select count(DISTINCT res.nome) as total
                                     from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
                                 where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2023-01-01' and '2023-12-31' and evt.pais = 'BR'
-                            </cfquery>
-                            <p>Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <hr/>
-
-                            <h5>2022</h5>
-
-                            <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                    FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.tipo_corrida = 'rua'
-                            </cfquery>
-                            <p>Maratonas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qMaratonas" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(evt.id_evento) as total
-                                    FROM tb_evento_corridas evt
-                                where evt.ativo = true AND evt.categorias ilike '%42%' and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR' and evt.tipo_corrida = 'rua'
-                            </cfquery>
-                            <p>Maratonas catalogadas no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonas.total)#</b></cfoutput></p>
-
-                            <cfquery name="qMaratonasResultados" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(res.*) as total
-                                    from tb_resultados_resumo res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR' and evt.tipo_corrida = 'rua'
-                            </cfquery>
-                            <p>Maratonas com resultado coletado no Brasil: <cfoutput><b>#lsNumberFormat(qMaratonasResultados.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(res.id_resultado) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR'
-                            </cfquery>
-                            <p>Resultados de Maratona no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where evt.ativo = true AND res.percurso = 42 and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR'
                             </cfquery>
                             <p>Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
@@ -566,6 +418,24 @@
 
                             <hr/>
 
+                            <h5>2025</h5>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(res.id_resultado) as total
+                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where res.percurso = 21 and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR'
+                            </cfquery>
+                            <p>Resultados de 21k no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
+                                select count(DISTINCT res.nome) as total
+                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
+                                where res.percurso = 21 and evt.data_final BETWEEN '2025-01-01' and '2025-12-31' and evt.pais = 'BR'
+                            </cfquery>
+                            <p>Meio-Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
+
+                            <hr/>
+
                             <h5>2024</h5>
 
                             <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
@@ -597,24 +467,6 @@
                                 select count(DISTINCT res.nome) as total
                                     from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
                                 where res.percurso = 21 and evt.data_final BETWEEN '2023-01-01' and '2023-12-31' and evt.pais = 'BR'
-                            </cfquery>
-                            <p>Meio-Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <hr/>
-
-                            <h5>2022</h5>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(res.id_resultado) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where res.percurso = 21 and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR'
-                            </cfquery>
-                            <p>Resultados de 21k no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
-
-                            <cfquery name="qRetorno" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
-                                select count(DISTINCT res.nome) as total
-                                    from tb_resultados res inner join public.tb_evento_corridas evt on evt.id_evento = res.id_evento
-                                where res.percurso = 21 and evt.data_final BETWEEN '2022-01-01' and '2022-12-31' and evt.pais = 'BR'
                             </cfquery>
                             <p>Meio-Maratonistas no Brasil: <cfoutput><b>#lsNumberFormat(qRetorno.total)#</b></cfoutput></p>
 
