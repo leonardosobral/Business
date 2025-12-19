@@ -43,6 +43,29 @@
         </li>
 
 
+        <!--- DESAFIOS --->
+
+        <li class="sidenav-item pt-3">
+            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
+        </li>
+
+        <!---<li class="sidenav-item">
+            <a class="sidenav-link" href="/desafios/">
+                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Todos</span></a>
+        </li>--->
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/desafios/todosantodia/">
+                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Todo Santo Dia</span></a>
+        </li>
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/desafios/desafiofoco/">
+                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Desafio Foco</span></a>
+        </li>
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/desafios/desafio365/">
+                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Desafio 365</span></a>
+        </li>
+
         <!--- FERRAMENTAS --->
 
         <li class="sidenav-item pt-3">
@@ -52,10 +75,6 @@
         <li class="sidenav-item">
             <a class="sidenav-link" href="/bi/">
                 <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>BI</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/desafios/">
-                <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Desafios</span></a>
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="/fornecedores/">

@@ -3,7 +3,8 @@
     <div class="container-fluid">
         <!-- Toggler -->
         <button data-mdb-toggle="sidenav" data-mdb-target="#main-sidenav"
-                class="btn shadow-0 p-0 me-3 d-block d-xxl-none"  data-mdb-ripple-init aria-controls="#main-sidenav" aria-haspopup="true">
+                class="btn shadow-0 p-0 me-3 d-block d-xxl-none"
+                data-mdb-ripple-init aria-controls="#main-sidenav" aria-haspopup="true">
             <i class="fas fa-bars fa-lg"></i>
         </button>
 
