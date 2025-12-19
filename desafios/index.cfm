@@ -7,9 +7,11 @@
 
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 
-<!--- BACKEND --->
+<!--- HEAD --->
 
 <cfinclude template="../includes/estrutura/head.cfm"/>
+
+<!--- CONTEUDO --->
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 

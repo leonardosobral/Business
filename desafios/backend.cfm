@@ -47,6 +47,7 @@
     des.status,
     des.produto,
     usr.id,
+    usr.email,
     usr.strava_id,
     usr.strava_code,
     usr.ddi_usuario,
@@ -57,6 +58,7 @@
     COALESCE(usr.genero, usr.strava_sex) as genero,
     usr.tag_usuario,
     usr.pais,
+    (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
     atv.distancia_percorrida,
     atv.dias_correndo,
     atv.atividades,
@@ -76,7 +78,7 @@
     where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
 </cfquery>
 
-<cfquery name="qCountHoje" dbtype="query">
+<cfquery name="qCountPendentes" dbtype="query">
     select count(*) as total
     from qBase
     where status = 'I'
@@ -85,16 +87,16 @@
 <cfquery name="qNoDesafio" dbtype="query">
     select count(*) as total
     from qBase
-    where dias_correndo is not null
+    where dias_correndo is not null and status = 'C'
 </cfquery>
 
-<cfquery name="qCountvip" dbtype="query">
+<cfquery name="qCountVip" dbtype="query">
     select count(*) as total
     from qBase
-    where strava_id is not null
+    where produto like '%vip%' and status = 'C'
 </cfquery>
 
-<cfquery name="qCountNovoSite" dbtype="query">
+<cfquery name="qCountConfirmados" dbtype="query">
     select count(*) as total
     from qBase
     where status = 'C'
@@ -116,13 +118,13 @@
         where status = 'I'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "nodesafio">
-        where dias_correndo is not null AND (dias_do_ano-dias_correndo < 2)
+        where dias_correndo is not null and status = 'C'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "vip">
-        where produto = 'inscricao365vip' and strava_id is not null
+        where produto like '%vip%' and status = 'C'
     </cfif>
-    <cfif len(trim(URL.periodo)) AND URL.periodo EQ "novosite">
-
+    <cfif len(trim(URL.periodo)) AND URL.periodo EQ "confirmados">
+        where status = 'C'
     </cfif>
 </cfquery>
 
