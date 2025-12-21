@@ -1,6 +1,6 @@
 <!--- CONTEUDO --->
 
-<div class="row g-3">
+<div class="row g-2">
 
 
     <cfif NOT qPermissoes.recordcount>
@@ -34,7 +34,7 @@
 
         <cfoutput>
 
-            <div class="mb-1 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
 
                 <div class="card" data-mdb-theme="light">
 

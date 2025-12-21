@@ -1,4 +1,4 @@
-<header>
+<header >
 
       <!--- Sidenav --->
         <cfinclude template="sidenav.cfm">
@@ -9,13 +9,7 @@
       <!--- Heading --->
       <section class="text-center text-md-start">
         <!-- Background gradient -->
-        <div class="p-5 bg-dark-subtle" style="height: 140px;
-        /*                        background: linear-gradient(
-                                to right,
-                                hsl(209, 42.2%, 65%),
-                                hsl(209, 42.2%, 85%)
-                                );*/
-        ">
+        <div class="p-5 bg-black bg-opacity-10" style="height: 140px;">
         </div>
       </section>
 

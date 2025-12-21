@@ -20,9 +20,9 @@
 
     <!--- CONTEUDO --->
 
-    <main class="" style="margin-top: -55px;">
+    <main id="content" class="" style="margin-top: -55px;">
 
-      <div class="container px-4">
+      <div class="container">
 
         <cfinclude template="home_logado.cfm">
 
