@@ -1,5 +1,5 @@
 <!--- VARIAVEIS --->
-<cfparam name="URL.periodo" default="confirmados"/>
+<cfparam name="URL.periodo" default="pendentes"/>
 <cfparam name="URL.preset" default=""/>
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.regiao" default=""/>
@@ -234,13 +234,13 @@
 
     <cfif URL.periodo NEQ "pendentes">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="row g-3">
 
                 <!--- LISTAGEM DE REGIAO --->
 
-                <div class="col-md-8">
+                <div class="col-md-7">
 
                     <div class="card">
 
@@ -269,7 +269,7 @@
 
                 <!--- LISTAGEM DE UF --->
 
-                <div class="col-md-4">
+                <div class="col-md-5">
 
                     <div class="card">
 
@@ -331,7 +331,7 @@
 
     </cfif>
 
-    <div class="<cfif URL.periodo NEQ "pendentes">col-md-8<cfelse>col-md-12</cfif>">
+    <div class="<cfif URL.periodo NEQ "pendentes">col-md-9<cfelse>col-md-12</cfif>">
 
         <div class="row g-3">
 
