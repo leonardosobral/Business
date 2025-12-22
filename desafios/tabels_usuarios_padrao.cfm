@@ -6,7 +6,7 @@
             <cfif URL.periodo NEQ "pendentes"><td>UF</td></cfif>
             <td>Nome</td>
             <cfif URL.periodo EQ "pendentes"><td>Email</td></cfif>
-            <!---td>Tel</td--->
+            <td>Tel</td>
             <cfif URL.periodo NEQ "pendentes"><td class="text-end">KM</td></cfif>
             <!---td class="text-end">Última</td--->
             <td class="text-end">Dias</td>
@@ -30,7 +30,7 @@
             <td nowrap>
                 #qStatsEvento.ddi_usuario# #qStatsEvento.ddd_usuario# #qStatsEvento.telefone_usuario#
             </td>
-            <cfif URL.periodo NEQ "pendentes"><td class="text-end"><cfif len(trim(distancia_percorrida))>#numberFormat(distancia_percorrida/1000, "9.9")#km</cfif></td></cfif>
+            <cfif URL.periodo NEQ "pendentes"><td class="text-end"><cfif len(trim(distancia_percorrida))>#numberFormat(distancia_percorrida/1000, "9")#k</cfif></td></cfif>
             <!---td class="text-end">#ultimo_dia#</td--->
             <td class="text-end"><cfif len(trim(distancia_percorrida))>#dias_correndo#/#dias_do_ano#</cfif></td>
             <td class="text-start" nowrap>

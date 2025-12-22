@@ -60,6 +60,11 @@
                   <label class="form-check-label" for="flexRadioDefault5"> Marca </label>
                 </div>
 
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault6" value="assessoria" required/>
+                  <label class="form-check-label" for="flexRadioDefault6"> Assessoria </label>
+                </div>
+
             </div>
 
             <div class="col-md-12">

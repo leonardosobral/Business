@@ -1,6 +1,6 @@
-<!--- INCLUIR CAMPANHA --->
+<!--- INCLUIR usuario --->
 
-<cfif isDefined("form.acao") AND form.acao EQ "incluir_campanha">
+<cfif isDefined("form.acao") AND form.acao EQ "incluir_usuario">
 
     <cfquery name="qAdCheckEvento">
         select id_evento from tb_evento_corridas where tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="#replace(replace(FORM.evento, 'https://roadrunners.run/evento/',''),'/','','ALL')#"/>
@@ -35,7 +35,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirusuario">
         insert into tb_ad_eventos
         (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
         values
@@ -53,20 +53,9 @@
 
 </cfif>
 
-<!--- EDITAR CAMPANHA --->
+<!--- EDITAR usuario --->
 
-<cfif isDefined("form.acao") AND form.acao EQ "editar_campanha">
-
-    <cfset VARIABLES.locais = {}/>
-    <cfif isDefined("FORM.locais") and len(trim(FORM.locais))>
-        <cfset arrEstados = listToArray(FORM.locais)/>
-        <cfif arraylen(arrEstados) EQ 27>
-            <cfset VARIABLES.locais["nacional"] = true/>
-        <cfelse>
-            <cfset VARIABLES.locais["nacional"] = false/>
-        </cfif>
-        <cfset VARIABLES.locais["estados"] = arrEstados/>
-    </cfif>
+<cfif isDefined("form.acao") AND form.acao EQ "editar_usuario">
 
     <cfset VARIABLES.escopo = ""/>
     <cfif isDefined("FORM.escopo") and len(trim(FORM.escopo))>
@@ -86,7 +75,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirUsuario">
         UPDATE tb_ad_eventos
         SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
             cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
@@ -100,14 +89,14 @@
 
 </cfif>
 
-<!--- ALTERAR STATUS DA CAMPANHA --->
+<!--- ALTERAR STATUS DA usuario --->
 
-<cfif isDefined("URL.acao") AND URL.acao EQ "status_campanha">
+<cfif isDefined("URL.acao") AND URL.acao EQ "status_usuario">
 
     <cfquery>
         UPDATE tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
-        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
+        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.usuario#"/>
     </cfquery>
 
 </cfif>
@@ -115,28 +104,66 @@
 
 <!--- QUERY BASE DE EVENTOS --->
 
-<cfquery name="qEventosAdsBase">
-    select * from tb_usuarios_fornecedores
+<cfquery name="qUsuariosBase">
+    select usr.*,
+    usr.partner_info ->> 'perfil' as perfil,
+    usr.partner_info ->> 'celular' as celular,
+    usr.partner_info ->> 'documento' as documento,
+    usr.partner_info ->> 'nome_comercial' as nome_comercial
+    from tb_usuarios usr where partner_info is not null
+    or is_partner = true
+    <!---
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
     AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    --->
 </cfquery>
 
-<cfquery name="qEventosAds" dbtype="query">
-    select * from qEventosAdsBase
-    where status < 3
-    order by clicks desc, views desc
+<cfquery name="qUsuariosBaseAprovar" dbtype="query">
+    select * from qUsuariosBase
+    where is_partner = 0
+    order by name
 </cfquery>
 
-<cfquery name="qEventosAdsPausados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 3
-    order by clicks desc, views desc
+<cfquery name="qUsuariosBaseCompletar" dbtype="query">
+    select * from qUsuariosBase
+    where partner_info is null
+    order by name
 </cfquery>
 
-<cfquery name="qEventosAdsFinalizados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 4
-    order by clicks desc, views desc
+<cfquery name="qUsuariosBaseAssessoria" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'assessoria'
+    order by name
+</cfquery>
+
+<cfquery name="qUsuariosBaseTime" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'timer'
+    order by name
+</cfquery>
+
+<cfquery name="qUsuariosBaseMidia" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'midia'
+    order by name
+</cfquery>
+
+<cfquery name="qUsuariosBaseAgencia" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'agencia'
+    order by name
+</cfquery>
+
+<cfquery name="qUsuariosBaseMarca" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'marca'
+    order by name
+</cfquery>
+
+<cfquery name="qUsuariosBaseOrg" dbtype="query">
+    select * from qUsuariosBase
+    where perfil = 'org'
+    order by name
 </cfquery>
