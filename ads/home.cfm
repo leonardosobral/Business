@@ -108,7 +108,11 @@
 
             <h3>Turbinar Evento</h3>
 
-            <cfinclude template="includes/form_campanha.cfm"/>
+            <cfif NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
+
+                <cfinclude template="includes/form_campanha.cfm"/>
+
+            </cfif>
 
             </div>
 
@@ -154,8 +158,11 @@
                         <cfoutput query="qEventosAds">
                             <tr>
                                 <td>
+                                    <cfif qEventosAds.status EQ 1><a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=2"><icon class="fa fa-thumbs-up"></icon></a></cfif>
+                                    <cfif qEventosAds.status GT 1>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
+                                    </cfif>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
                                 <td <cfif qEventosAds.data_final LT now()>class="text-danger"</cfif>>#lsDateFormat(qEventosAds.data_final, "dd/mm/yyyy")# - #qEventosAds.nome_evento# <cfif qEventosAds.status EQ 1><span class="badge badge-success">em aprovação</span></cfif></td>
@@ -174,7 +181,7 @@
                                         <!--- EDITAR CAMPANHA --->
                                         <cfset VARIABLES.campanha = QueryGetRow(qEventosAds, qEventosAds.currentRow)>
                                         <h5 class="mb-3">Editar Campanha</h5>
-                                        <h5 class="mb-3 float-end">X</h5>
+                                        <a href="./"><h5 class="mb-3 float-end">X</h5></a>
                                         <cfinclude template="includes/form_campanha.cfm"/>
                                     </td>
                                 </tr>

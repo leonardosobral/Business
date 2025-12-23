@@ -4,7 +4,7 @@
 
         <div class="col">
 
-            <div data-mdb-input-init class="form-outline mb-3">
+            <div data-mdb-input-init class="form-outline">
                 <input type="text" name="evento" id="formEmail" class="form-control"
                        placeholder="Email (conta google)"
                        <cfif isDefined("VARIABLES.usuario")>value="<cfoutput>#VARIABLES.usuario.email#</cfoutput>"</cfif>
@@ -46,41 +46,39 @@
 
     </div>
 
-    <p class="mt-3 mb-0">Atuação no mercado</p>
+    <div class="row mb-3 g-3">
 
-    <div class="col-md-12">
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault1" value="org" required/>
+          <label class="form-check-label" for="flexRadioDefault1"> Organizador </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault1" value="org" required/>
-                  <label class="form-check-label" for="flexRadioDefault1"> Organizador </label>
-                </div>
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault2" value="timer" required/>
+          <label class="form-check-label" for="flexRadioDefault2"> Timer </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault2" value="timer" required/>
-                  <label class="form-check-label" for="flexRadioDefault2"> Cronometrador / Timer </label>
-                </div>
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault3" value="midia" required/>
+          <label class="form-check-label" for="flexRadioDefault3"> Creator / Media </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault3" value="midia" required/>
-                  <label class="form-check-label" for="flexRadioDefault3"> Creator / Media </label>
-                </div>
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault4" value="agencia" required/>
+          <label class="form-check-label" for="flexRadioDefault4"> Agência </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault4" value="agencia" required/>
-                  <label class="form-check-label" for="flexRadioDefault4"> Agência </label>
-                </div>
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault5" value="marca" required/>
+          <label class="form-check-label" for="flexRadioDefault5"> Marca </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault5" value="marca" required/>
-                  <label class="form-check-label" for="flexRadioDefault5"> Marca </label>
-                </div>
+        <div class="col form-check">
+          <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault6" value="assessoria" required/>
+          <label class="form-check-label" for="flexRadioDefault6"> Assessoria </label>
+        </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="perfil" id="flexRadioDefault6" value="assessoria" required/>
-                  <label class="form-check-label" for="flexRadioDefault6"> Assessoria </label>
-                </div>
-
-            </div>
+    </div>
 
     <cfif isDefined("URL.usuario")>
         <input type="hidden" name="acao" value="editar_usuario">

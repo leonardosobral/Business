@@ -18,7 +18,9 @@
 
             <h3>Usuários</h3>
 
-            <cfinclude template="includes/form_usuario.cfm"/>
+            <cfif NOT isDefined("URL.acao") AND NOT isDefined("URL.usuario")>
+                <cfinclude template="includes/form_usuario.cfm"/>
+            </cfif>
 
             </div>
 
@@ -59,8 +61,7 @@
                         <cfoutput query="qUsuariosBaseAprovar">
                             <tr>
                                 <td>
-                                    <a href="./?usuario=#qUsuariosBaseAprovar.id#&acao=status_usuario&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="./?usuario=#qUsuariosBaseAprovar.id#&acao=status_usuario&status=4"><icon class="fa fa-archive"></icon></a>
+                                    <a href="./?usuario=#qUsuariosBaseAprovar.id#&acao=status_usuario&status=1"><icon class="fa fa-check"></icon></a>
                                     <a href="./?usuario=#qUsuariosBaseAprovar.id#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
                                 <td>#qUsuariosBaseAprovar.name# <cfif NOT qUsuariosBaseAprovar.is_partner><span class="badge badge-success">em aprovação</span></cfif></td>
@@ -68,13 +69,13 @@
                                 <td>#qUsuariosBaseAprovar.perfil#</td>
                                 <td>#qUsuariosBaseAprovar.nome_comercial#</td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBaseAprovar.id_fornecedor>
+                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBaseAprovar.id>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR USUARIO --->
                                         <cfset VARIABLES.usuario = QueryGetRow(qUsuariosBaseAprovar, qUsuariosBaseAprovar.currentRow)>
                                         <h5 class="mb-3">Editar Usuário</h5>
-                                        <h5 class="mb-3 float-end">X</h5>
+                                        <a href="./"><h5 class="mb-3 float-end">X</h5></a>
                                         <cfinclude template="includes/form_usuario.cfm"/>
                                     </td>
                                 </tr>
@@ -101,8 +102,6 @@
                         <cfoutput query="qUsuariosBaseCompletar">
                             <tr>
                                 <td>
-                                    <a href="./?usuario=#qUsuariosBaseCompletar.id#&acao=status_usuario&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="./?usuario=#qUsuariosBaseCompletar.id#&acao=status_usuario&status=4"><icon class="fa fa-archive"></icon></a>
                                     <a href="./?usuario=#qUsuariosBaseCompletar.id#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
                                 <td>#qUsuariosBaseCompletar.name# <cfif NOT qUsuariosBaseCompletar.is_partner><span class="badge badge-success">em aprovação</span></cfif></td>
@@ -110,13 +109,13 @@
                                 <td>#qUsuariosBaseCompletar.perfil#</td>
                                 <td>#qUsuariosBaseCompletar.nome_comercial#</td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBaseCompletar.id_fornecedor>
+                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBaseCompletar.id>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR USUARIO --->
                                         <cfset VARIABLES.usuario = QueryGetRow(qUsuariosBaseCompletar, qUsuariosBaseCompletar.currentRow)>
                                         <h5 class="mb-3">Editar Usuário</h5>
-                                        <h5 class="mb-3 float-end">X</h5>
+                                        <a href="./"><h5 class="mb-3 float-end">X</h5></a>
                                         <cfinclude template="includes/form_usuario.cfm"/>
                                     </td>
                                 </tr>
@@ -143,8 +142,6 @@
                         <cfoutput query="qUsuariosBase">
                             <tr>
                                 <td>
-                                    <a href="./?usuario=#qUsuariosBase.id#&acao=status_usuario&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="./?usuario=#qUsuariosBase.id#&acao=status_usuario&status=4"><icon class="fa fa-archive"></icon></a>
                                     <a href="./?usuario=#qUsuariosBase.id#&acao=editar"><icon class="fa fa-edit"></icon></a>
                                 </td>
                                 <td>#qUsuariosBase.name# <cfif NOT qUsuariosBase.is_partner><span class="badge badge-success">em aprovação</span></cfif></td>
@@ -152,13 +149,13 @@
                                 <td>#qUsuariosBase.perfil#</td>
                                 <td>#qUsuariosBase.nome_comercial#</td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBase.id_fornecedor>
+                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.usuario") and URL.usuario EQ qUsuariosBase.id>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR USUARIO --->
                                         <cfset VARIABLES.usuario = QueryGetRow(qUsuariosBase, qUsuariosBase.currentRow)>
                                         <h5 class="mb-3">Editar Usuário</h5>
-                                        <h5 class="mb-3 float-end">X</h5>
+                                        <a href="./"><h5 class="mb-3 float-end">X</h5></a>
                                         <cfinclude template="includes/form_usuario.cfm"/>
                                     </td>
                                 </tr>

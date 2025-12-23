@@ -94,9 +94,9 @@
 <cfif isDefined("URL.acao") AND URL.acao EQ "status_usuario">
 
     <cfquery>
-        UPDATE tb_ad_eventos
-        SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
-        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.usuario#"/>
+        UPDATE tb_usuarios
+        SET is_partner = true
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.usuario#"/>
     </cfquery>
 
 </cfif>

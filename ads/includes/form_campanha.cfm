@@ -6,7 +6,7 @@
             <input type="text" name="evento" id="form1Example1" class="form-control"
                    placeholder="https://roadrunners.run/evento/seu-evento/"
                    required/>
-            <label class="form-label" for="form1Example1">URL do Evento no Road Runners</label>
+            <label class="form-label" for="form1Example1">URL ou tag do Evento no Road Runners</label>
         </div>
 
    </cfif>

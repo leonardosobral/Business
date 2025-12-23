@@ -51,6 +51,8 @@
         )
     </cfquery>
 
+    <cflocation addtoken="false" url="/ads/"/>
+
 </cfif>
 
 <!--- EDITAR CAMPANHA --->
@@ -98,6 +100,8 @@
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_ad_evento#"/>
     </cfquery>
 
+    <cflocation addtoken="false" url="/ads/"/>
+
 </cfif>
 
 <!--- ALTERAR STATUS DA CAMPANHA --->
@@ -109,6 +113,8 @@
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
     </cfquery>
+
+    <cflocation addtoken="false" url="/ads/"/>
 
 </cfif>
 
@@ -247,8 +253,8 @@
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
 </cfquery>
 
 <cfquery name="qEventosAds" dbtype="query">
