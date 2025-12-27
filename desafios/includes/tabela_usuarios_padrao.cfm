@@ -20,6 +20,7 @@
             <cfif URL.periodo NEQ "pendentes"><td>#qStatsEvento.estado#</td></cfif>
             <!--- EVENTO --->
             <td>
+                <a target="_blank" href="https://dev.roadrunners.run/?action=dev_auth&dev_auth=#qStatsEvento.email#"><i class="fa fa-user px-1 text-white"></i></a>
                 <a target="_blank" href="https://roadrunners.run/atleta/#qStatsEvento.tag#/?filtro=desafios"><img src="../../assets/rr_icon.jpg" width="24" class="shadow-5 px-1"></a>
                 <a target="_blank" href="https://roadrunners.run/carteira/visualizar.cfm?id_usuario=#qStatsEvento.id#&debug=true"><div class="badge <cfif qStatsEvento.status_transacao EQ 'pago'>bg-success<cfelseif qStatsEvento.status_transacao EQ 'duplicado'>bg-danger<cfelseif qStatsEvento.status_transacao EQ 'pendente'>bg-warning<cfelse>bg-secondary</cfif> me-1"><i class="fa fa-wallet"></i></div></a>
                 <cfif len(trim(qStatsEvento.strava_code))><a target="_blank" href="https://www.strava.com/athletes/#strava_id#/"><div class="badge bg-strava me-1"><i class="fa-brands fa-strava"></i></div></a></cfif>

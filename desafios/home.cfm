@@ -439,6 +439,7 @@
                                     where strava_code is null
                                     order by data_inscricao
                                 </cfquery>
+                                <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=semstrava"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
@@ -449,6 +450,7 @@
                                     where status_transacao is null and strava_code is not null
                                     order by data_inscricao
                                 </cfquery>
+                                <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=sempedido"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
@@ -459,6 +461,7 @@
                                     where status_transacao = 'pendente'
                                     order by data_inscricao
                                 </cfquery>
+                                <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=pendente"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
