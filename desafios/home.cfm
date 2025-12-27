@@ -13,7 +13,7 @@
 <cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
 
 <!--- BACKEND --->
-<cfinclude template="backend.cfm"/>
+<cfinclude template="includes/backend.cfm"/>
 
 <style>
     a {
@@ -352,15 +352,16 @@
                                 from qStatsBase
                             </cfquery>
 
-                            <cfinclude template="tabels_usuarios_padrao.cfm"/>
+                            <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
 
                         <cfelse>
 
                             <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm is null
+                                    where status_transacao = 'duplicado' OR status_transacao = 'pago'
                                 </cfquery>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
@@ -371,10 +372,11 @@
                                   aria-controls="ex1-tabs-1"
                                   aria-selected="true">Pendentes de Interação (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
+
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'sem strava'
+                                    where strava_code is null
                                 </cfquery>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
@@ -385,10 +387,11 @@
                                   aria-controls="ex1-tabs-2"
                                   aria-selected="false">Sem Strava (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
+
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'sem pedido'
+                                    where status_transacao is null and strava_code is not null
                                 </cfquery>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
@@ -399,10 +402,11 @@
                                   aria-controls="ex1-tabs-3"
                                   aria-selected="false">Sem Pedido (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
+
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'pagamento negado'
+                                    where status_transacao = 'pendente'
                                 </cfquery>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
@@ -411,70 +415,53 @@
                                   href="#ex1-tabs-4"
                                   role="tab"
                                   aria-controls="ex1-tabs-4"
-                                  aria-selected="false">Pagamento Negado (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
+                                  aria-selected="false">Pagamento Pendente (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
-                                <cfquery name="qStatsEvento" dbtype="query">
-                                    select *
-                                    from qStatsBase
-                                    where status_crm = 'pagamento expirado'
-                                </cfquery>
-                              <li class="nav-item" role="presentation">
-                                <a data-mdb-tab-init
-                                  class="nav-link"
-                                  id="ex1-tab-5"
-                                  href="#ex1-tabs-5"
-                                  role="tab"
-                                  aria-controls="ex1-tabs-5"
-                                  aria-selected="false">Pagamento Expirado (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
-                              </li>
+
                             </ul>
 
                             <div class="tab-content" id="ex1-content">
+
                               <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm is null
-                                    order by id
+                                    where status_transacao = 'duplicado' OR status_transacao = 'pago'
+                                    order by data_inscricao
                                 </cfquery>
-                                <cfinclude template="tabels_usuarios_padrao.cfm"/>
+                                <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
+
                               <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'sem strava'
-                                    order by nome
+                                    where strava_code is null
+                                    order by data_inscricao
                                 </cfquery>
-                                <cfinclude template="tabels_usuarios_padrao.cfm"/>
+                                <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
+
                               <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'sem pedido'
-                                    order by dias_correndo desc
+                                    where status_transacao is null and strava_code is not null
+                                    order by data_inscricao
                                 </cfquery>
-                                <cfinclude template="tabels_usuarios_padrao.cfm"/>
+                                <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
+
                               <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
-                                    where status_crm = 'pagamento negado'
-                                    order by dias_correndo desc
+                                    where status_transacao = 'pendente'
+                                    order by data_inscricao
                                 </cfquery>
-                                <cfinclude template="tabels_usuarios_padrao.cfm"/>
+                                <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
-                              <div class="tab-pane fade" id="ex1-tabs-5" role="tabpanel" aria-labelledby="ex1-tab-5">
-                                <cfquery name="qStatsEvento" dbtype="query">
-                                    select *
-                                    from qStatsBase
-                                    where status_crm = 'pagamento expirado'
-                                    order by dias_correndo desc
-                                </cfquery>
-                                <cfinclude template="tabels_usuarios_padrao.cfm"/>
-                              </div>
+
                             </div>
 
                         </cfif>

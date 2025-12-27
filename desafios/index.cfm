@@ -24,7 +24,7 @@
 
     <main class="" style="margin-top: -55px;">
 
-      <div class="container px-4">
+      <div class="px-4">
 
         <cfinclude template="home.cfm">
 

@@ -21,7 +21,7 @@
             <!--- EVENTO --->
             <td>
                 <a target="_blank" href="https://roadrunners.run/atleta/#qStatsEvento.tag#/?filtro=desafios"><img src="../../assets/rr_icon.jpg" width="24" class="shadow-5 px-1"></a>
-                <a target="_blank" href="https://roadrunners.run/carteira/visualizar.cfm?id_usuario=#qStatsEvento.id#&debug=true"><div class="badge <cfif qStatsEvento.status_transacao EQ 1>bg-success<cfelseif qStatsEvento.status_transacao GT 1>bg-danger<cfelse>bg-secondary</cfif> me-1"><i class="fa fa-wallet"></i></div></a>
+                <a target="_blank" href="https://roadrunners.run/carteira/visualizar.cfm?id_usuario=#qStatsEvento.id#&debug=true"><div class="badge <cfif qStatsEvento.status_transacao EQ 'pago'>bg-success<cfelseif qStatsEvento.status_transacao EQ 'duplicado'>bg-danger<cfelseif qStatsEvento.status_transacao EQ 'pendente'>bg-warning<cfelse>bg-secondary</cfif> me-1"><i class="fa fa-wallet"></i></div></a>
                 <cfif len(trim(qStatsEvento.strava_code))><a target="_blank" href="https://www.strava.com/athletes/#strava_id#/"><div class="badge bg-strava me-1"><i class="fa-brands fa-strava"></i></div></a></cfif>
                 <cfif qStatsEvento.produto CONTAINS "vip"><div class="badge bg-black me-1">V</div><cfelse><div class="badge badge-secondary me-1">N</div></cfif>
                 #qStatsEvento.nome#

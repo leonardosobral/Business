@@ -1,3 +1,19 @@
+<!--- ALTERAR STATUS DA CAMPANHA --->
+
+<cfif isDefined("URL.acao") AND URL.acao EQ "alterar_status">
+
+    <cfquery>
+        UPDATE desafios
+        SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
+        WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_usuario#"/>
+        AND desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
+    </cfquery>
+
+    <cflocation addtoken="false" url="/ads/#lcase(trim(URL.desafio))#"/>
+
+</cfif>
+
+
 <cfquery name="qBase" cachedwithin="#CreateTimeSpan(0, 0, 0, 15)#">
     WITH atv as (
     with atividades as
@@ -46,6 +62,7 @@
     SELECT COALESCE(uf.nome_regiao, 'Exterior') as regiao,
     des.status,
     des.produto,
+    des.data_inscricao,
     usr.id,
     usr.ddi_usuario,
     usr.ddd_usuario,
@@ -62,7 +79,12 @@
     usr.tag_usuario,
     usr.pais,
     (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
-    (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') as status_transacao,
+    CASE
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') > 1 THEN 'duplicado'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') = 1 THEN 'pago'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id) > 0 THEN 'pendente'
+        ELSE null
+    END as status_transacao,
     atv.distancia_percorrida,
     atv.dias_correndo,
     atv.atividades,
