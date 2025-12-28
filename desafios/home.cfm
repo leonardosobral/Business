@@ -352,6 +352,7 @@
                                 from qStatsBase
                             </cfquery>
 
+                            <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=inscritos"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                             <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
 
                         <cfelse>

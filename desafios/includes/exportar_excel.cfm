@@ -114,6 +114,14 @@
             where status_transacao = 'pendente'
         </cfquery>
 
+    <cfelseif URL.tipo EQ "inscritos">
+
+        <cfquery name="qExportExcel" dbtype="query">
+            select distinct nome, email, ddi_usuario || ddd_usuario || telefone_usuario as telefone
+            from qBaseExcel
+            where status = 'C'
+        </cfquery>
+
     <cfelse>
 
         <cfquery name="qExportExcel" dbtype="query">
