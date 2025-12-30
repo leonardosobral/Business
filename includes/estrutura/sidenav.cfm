@@ -38,9 +38,36 @@
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Meus eventos</span></a>
         </li>
 
+
+        <!--- MARKETING --->
+
+        <li class="sidenav-item pt-3">
+            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Marketing</span>
+        </li>
+
         <li class="sidenav-item">
             <a class="sidenav-link link-warning" href="/ads/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link link-warning" href="/emailmkt/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link link-warning" href="/crm/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>CRM</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link link-warning" href="/cupons/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Cupons</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link link-warning" href="/notificacoes/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
         </li>
 
 
@@ -50,10 +77,6 @@
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
         </li>
 
-        <!---<li class="sidenav-item">
-            <a class="sidenav-link" href="/desafios/">
-                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Todos</span></a>
-        </li>--->
         <li class="sidenav-item">
             <a class="sidenav-link" href="/desafios/todosantodia/">
                 <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Todo Santo Dia</span></a>
@@ -104,6 +127,10 @@
         <li class="sidenav-item">
             <a class="sidenav-link" href="/assinaturas/">
                 <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
+        </li>
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/manutencao/">
+                <i class="fas fa-file-contract fa-fw me-3"></i><span>Manutenção</span></a>
         </li>
 
 
