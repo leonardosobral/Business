@@ -3,11 +3,19 @@
 
 <cfprocessingdirective pageencoding="utf-8"/>
 
+<!--- TEMA --->
+
+<cfset VARIABLES.theme = "dark"/>
+
+<!--- TEMPLATE --->
+
+<cfset VARIABLES.template = "/documentacao/"/>
+
 <!--- BACKEND --->
 
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 
-<!--- BACKEND --->
+<!--- HEAD --->
 
 <cfinclude template="../includes/estrutura/head.cfm"/>
 

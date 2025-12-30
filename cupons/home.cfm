@@ -1,3 +1,5 @@
+<!--- BACKEND --->
+
 <cfinclude template="includes/backend.cfm"/>
 
 <!--- WIDGETS --->
@@ -70,7 +72,7 @@
     
 </section>
 
-<!--- CONTEUDO--->
+<!--- CONTEUDO --->
 
 <section class="">
 
@@ -114,9 +116,9 @@
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
                             <th class="text-end">Vendas</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
-                            <th class="text-end">Ticket (repasse)</th>
-                            <th class="text-end">Repasse</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Cashback</th>
                         </tr>
                       </thead>
@@ -126,9 +128,9 @@
                                 <td>#qCuponsBase.titulocupom# <cfif qCuponsBase.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsBase.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsBase.pedidos#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.vendas)#</td>
+                                <td class="text-end">#lsCurrencyFormat(qCuponsBase.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.ticket_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.ticket_medio_repasse)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qCuponsBase.repasse)#</td>
                                 <td class="text-end"><cfif qCuponsBase.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsBase.cashback)#</cfif></td>
                             </tr>
                             <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsBase.titulocupom>
@@ -163,9 +165,9 @@
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
                             <th class="text-end">Vendas</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
-                            <th class="text-end">Ticket (repasse)</th>
-                            <th class="text-end">Repasse</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Cashback</th>
                         </tr>
                       </thead>
@@ -175,9 +177,9 @@
                                 <td>#qCuponsInflu.titulocupom# <cfif qCuponsInflu.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsInflu.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsInflu.pedidos#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.vendas)#</td>
+                                <td class="text-end">#lsCurrencyFormat(qCuponsInflu.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.ticket_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.ticket_medio_repasse)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qCuponsInflu.repasse)#</td>
                                 <td class="text-end"><cfif qCuponsInflu.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsInflu.cashback)#</cfif></td>
                             </tr>
                             <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsInflu.titulocupom>
@@ -206,9 +208,9 @@
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
                             <th class="text-end">Vendas</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
-                            <th class="text-end">Ticket (repasse)</th>
-                            <th class="text-end">Repasse</th>
+                            <th class="text-end">Líquido</th>
                             <th class="text-end">Cashback</th>
                         </tr>
                       </thead>
@@ -218,9 +220,9 @@
                                 <td>#qCuponsAssessoria.titulocupom# <cfif qCuponsAssessoria.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsAssessoria.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsAssessoria.pedidos#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.vendas)#</td>
+                                <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.ticket_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.ticket_medio_repasse)#</td>
-                                <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.repasse)#</td>
                                 <td class="text-end"><cfif qCuponsAssessoria.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsAssessoria.cashback)#</cfif></td>
                             </tr>
                             <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsAssessoria.titulocupom>

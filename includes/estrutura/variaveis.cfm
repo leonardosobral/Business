@@ -13,6 +13,9 @@
 <cfset VARIABLES.uf = ""/>
 <cfset VARIABLES.pais = ""/>
 
+<!--- TEMPLATE --->
+<cfset VARIABLES.template = "/"/>
+
 <!--- URL PARAMS --->
 
 <cfparam name="URL.distancia" default="1,42"/>

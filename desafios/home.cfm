@@ -7,12 +7,11 @@
 <cfparam name="URL.cidade" default=""/>
 <cfparam name="URL.desafio" default="todosantodia"/>
 
-<cfset VARIABLES.theme = "dark"/>
-
 <!--- TAG PARAM TREAT --->
 <cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
 
 <!--- BACKEND --->
+
 <cfinclude template="includes/backend.cfm"/>
 
 <style>
@@ -54,10 +53,11 @@
         <a href="./?periodo=nodesafio">
         <div class="card bg-21k py-2 px-3">
             <p class="h4 m-0"><cfoutput>#numberFormat(qNoDesafio.total, "9")#/#numberFormat(qCountConfirmados.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#numberFormat((qNoDesafio.total*100)/qCountConfirmados.total, "9,9")#% Ativos no Mês</cfoutput></p>
+            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) ? numberFormat((qNoDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% Ativos no Mês</cfoutput></p>
         </div>
         </a>
     </div>
+
     <cfif qCountVip.recordcount>
     <div class="col-md">
         <a href="./?periodo=vip">
@@ -68,6 +68,7 @@
         </a>
     </div>
     </cfif>
+
     <div class="col-md">
         <a href="./?periodo=confirmados">
         <div class="card bg-10k py-2 px-3">
@@ -76,6 +77,7 @@
         </div>
         </a>
     </div>
+
     <div class="col-md">
         <a href="./?periodo=pendentes">
         <div class="card bg-42k py-2 px-3">

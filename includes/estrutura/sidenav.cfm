@@ -46,49 +46,30 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link link-warning" href="/ads/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "ads">link-warning</cfif>" href="/ads/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link link-warning" href="/emailmkt/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "emailmkt">link-warning</cfif>" href="/emailmkt/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link link-warning" href="/crm/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "crm">link-warning</cfif>" href="/crm/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>CRM</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link link-warning" href="/cupons/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "cupons">link-warning</cfif>" href="/cupons/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Cupons</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link link-warning" href="/notificacoes/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "notificacoes">link-warning</cfif>" href="/notificacoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
         </li>
 
-
-        <!--- DESAFIOS --->
-
-        <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/desafios/todosantodia/">
-                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Todo Santo Dia</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/desafios/desafiofoco/">
-                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Desafio Foco</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/desafios/desafio365/">
-                <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Desafio 365</span></a>
-        </li>
 
         <!--- FERRAMENTAS --->
 
@@ -98,12 +79,33 @@
 
         <li class="sidenav-item">
             <a class="sidenav-link" href="/bi/">
-                <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>BI</span></a>
+                <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="/fornecedores/">
                 <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
         </li>
+
+
+        <!--- DESAFIOS --->
+
+        <li class="sidenav-item pt-3">
+            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
+        </li>
+
+        <cfquery name="qDesafiosBusinessAtivos">
+            select * from desafios_eventos
+            where ativo = true and data_fim > now()
+            order by data_inicio desc
+        </cfquery>
+
+        <cfoutput query="qDesafiosBusinessAtivos">
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/">
+                    <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#qDesafiosBusinessAtivos.titulo#</span>
+                </a>
+            </li>
+        </cfoutput>
 
 
         <!--- EMPRESA --->
