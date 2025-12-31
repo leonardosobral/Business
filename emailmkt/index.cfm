@@ -32,7 +32,15 @@
 
       <div class="container px-4">
 
+        <cfif isdefined("URL.action") and URL.action EQ "compose">
+
+        <cfinclude template="compose.cfm">
+
+        <cfelse>
+
         <cfinclude template="home.cfm">
+
+        </cfif>
 
       </div>
 

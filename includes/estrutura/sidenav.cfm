@@ -22,20 +22,25 @@
         </li>
 
 
-        <!--- EVENTOS --->
+        <!--- FERRAMENTAS --->
 
         <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos</span>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/admin/?id_evento=0">
-                <i class="fa-solid fa-plus fa-fw me-3"></i><span>Novo evento</span></a>
+            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ferramentas</span>
         </li>
 
         <li class="sidenav-item">
             <a class="sidenav-link" href="/admin/">
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Meus eventos</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/bi/">
+                <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="sidenav-link" href="/fornecedores/">
+                <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
         </li>
 
 
@@ -71,23 +76,9 @@
         </li>
 
 
-        <!--- FERRAMENTAS --->
-
-        <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ferramentas</span>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/bi/">
-                <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/fornecedores/">
-                <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
-        </li>
-
-
         <!--- DESAFIOS --->
+
+        <cfif qPerfil.is_admin>
 
         <li class="sidenav-item pt-3">
             <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
@@ -95,7 +86,7 @@
 
         <cfquery name="qDesafiosBusinessAtivos">
             select * from desafios_eventos
-            where ativo = true and data_fim > now()
+            where ativo = true and data_fim+30 > current_date
             order by data_inicio desc
         </cfquery>
 
@@ -106,6 +97,8 @@
                 </a>
             </li>
         </cfoutput>
+
+        </cfif>
 
 
         <!--- EMPRESA --->
