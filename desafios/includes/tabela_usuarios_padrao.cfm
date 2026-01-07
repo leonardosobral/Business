@@ -1,4 +1,4 @@
-<div class="table-wrapper-lg">
+<div class="table-wrapper-l">
 
     <table id="tblEventos" class="table table-stripped table-condensed table-sm mb-0">
         <tr>
@@ -10,7 +10,7 @@
             <cfif URL.periodo NEQ "pendentes"><td class="text-end">KM</td></cfif>
             <!---td class="text-end">Última</td--->
             <td class="text-end">Dias</td>
-            <td class="text-start">Atualizar</td>
+            <cfif URL.periodo NEQ "pendentes"><td class="text-start">Atualizar</td></cfif>
         </tr>
         <tbody>
         <cfoutput query="qStatsEvento">
@@ -34,15 +34,18 @@
             <cfif URL.periodo NEQ "pendentes"><td class="text-end"><cfif len(trim(distancia_percorrida))>#numberFormat(distancia_percorrida/1000, "9")#k</cfif></td></cfif>
             <!---td class="text-end">#ultimo_dia#</td--->
             <td class="text-end"><cfif len(trim(distancia_percorrida))>#dias_correndo#/#dias_do_ano#</cfif></td>
-            <td class="text-start" nowrap>
-                <cfif isDefined("strava_code") AND len(trim(qStatsEvento.strava_code))>
-                    <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true"><div class="badge bg-strava"><i class="fa fa-refresh"></i></div></a>
-                    <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=true"><div class="badge bg-black me-1"><i class="fa fa-refresh"></i></div></a>
-                    <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=promax"><div class="badge bg-black me-1"><i class="fa fa-mobile"></i></div></a>
-                    <cfif isDefined("ultima_atividade") AND len(trim(ultima_atividade))> há <cfif DateDiff("n",ultima_atividade, now()) LT 120>#DateDiff("n",ultima_atividade, now())# min<cfelse>#DateDiff("h",ultima_atividade, now())# horas</cfif> | </cfif>
-                    <cfif isDefined("strava_expires_at") AND len(trim(strava_expires_at))> <cfif DateDiff("n",strava_expires_at, now()) LT 0>#DateDiff("n",strava_expires_at, now()) * -1# min válido<cfelse><span class="text-danger">token expirado</span></cfif></cfif>
-                </cfif>
-            </td>
+            <cfif URL.periodo NEQ "pendentes">
+                <td class="text-start" nowrap>
+                    <cfif isDefined("strava_code") AND len(trim(qStatsEvento.strava_code))>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true"><div class="badge bg-strava"><i class="fa fa-refresh"></i></div></a>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=true"><div class="badge bg-black me-1"><i class="fa fa-refresh"></i></div></a>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=promax"><div class="badge <cfif len(trim(data_statisticas))>bg-secondary<cfelse>bg-black</cfif> me-1"><i class="fa fa-mobile"></i></div></a>
+                        <cfif isDefined("data_inicial") AND len(trim(data_inicial))>#lsDateFormat(data_inicial,'mm/yyyy')# | </cfif>
+                        <cfif isDefined("data_final") AND len(trim(data_final))> há <cfif DateDiff("n",data_final, now()) LT 120>#DateDiff("n",data_final, now())# min<cfelse>#DateDiff("h",data_final, now())# horas</cfif> | </cfif>
+                        <cfif isDefined("strava_expires_at") AND len(trim(strava_expires_at))> <cfif DateDiff("n",strava_expires_at, now()) LT 0>#DateDiff("n",strava_expires_at, now()) * -1# min válido<cfelse><span class="text-danger">token expirado</span></cfif></cfif>
+                    </cfif>
+                </td>
+            </cfif>
         </tr>
         </cfoutput>
         </tbody>

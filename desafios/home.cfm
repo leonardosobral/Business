@@ -51,9 +51,18 @@
 
     <div class="col-md">
         <a href="./?periodo=nodesafio">
-        <div class="card bg-21k py-2 px-3">
+        <div class="card bg-5k py-2 px-3">
             <p class="h4 m-0"><cfoutput>#numberFormat(qNoDesafio.total, "9")#/#numberFormat(qCountConfirmados.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) ? numberFormat((qNoDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% Ativos no Mês</cfoutput></p>
+            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) AND len(trim(qNoDesafio.total)) ? numberFormat((qNoDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% no desafio</cfoutput></p>
+        </div>
+        </a>
+    </div>
+
+    <div class="col-md">
+        <a href="./?periodo=pendentedesafio">
+        <div class="card bg-8k py-2 px-3">
+            <p class="h4 m-0"><cfoutput>#numberFormat(qPendenteDesafio.total, "9")#/#numberFormat(qCountConfirmados.total, "9")#</cfoutput></p>
+            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) AND len(trim(qPendenteDesafio.total)) ? numberFormat((qPendenteDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% correndo</cfoutput></p>
         </div>
         </a>
     </div>
@@ -236,7 +245,7 @@
 
     <cfif URL.periodo NEQ "pendentes">
 
-        <div class="col-md-3">
+        <div class="col-md-3 d-none d-xl-block">
 
             <div class="row g-3">
 
@@ -333,7 +342,7 @@
 
     </cfif>
 
-    <div class="<cfif URL.periodo NEQ "pendentes">col-md-9<cfelse>col-md-12</cfif>">
+    <div class="<cfif URL.periodo NEQ "pendentes">col-md-12 col-xl-9<cfelse>col-md-12</cfif>">
 
         <div class="row g-3">
 
@@ -352,6 +361,11 @@
                             <cfquery name="qStatsEvento" dbtype="query">
                                 select *
                                 from qStatsBase
+                                <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+                                    order by dias_correndo desc
+                                <cfelse>
+                                    order by data_inicial desc
+                                </cfif>
                             </cfquery>
 
                             <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=inscritos"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
