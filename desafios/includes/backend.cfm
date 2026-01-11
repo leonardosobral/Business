@@ -32,6 +32,21 @@
                 <cfelse>
                     where activity_date between '2020-01-01'::date and current_date::date
                 </cfif>
+                AND type in ('Run','VirtualRun','TrailRun')
+                AND distance >= 990
+                UNION
+                select
+                id_athlete_donation as athlete_id,
+                activity_date as frequencia_fechamento
+                from tb_strava_activities act
+                <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+                    where activity_date between '2025-01-01'::date and '2025-12-31'::date
+                <cfelse>
+                    where activity_date between '2020-01-01'::date and current_date::date
+                </cfif>
+                and id_athlete_donation > 0
+                AND type in ('Run','VirtualRun','TrailRun')
+                AND distance >= 990
             ) as atv
         group by
         athlete_id
@@ -62,19 +77,42 @@
         </cfif>
         FROM tb_strava_activities at1
         inner join atividades on atividades.athlete_id = at1.athlete_id
-        <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-            WHERE activity_date >= '2025-01-01'
-            AND activity_date <= '2025-12-31'
-        <cfelse>
-            WHERE activity_date >= '2020-01-01'
-        </cfif>
+        WHERE type in ('Run','VirtualRun','TrailRun')
         AND distance >= 990
-        AND type in ('Run','VirtualRun','TrailRun')
         <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+            AND activity_date >= '2025-01-01'
+            AND activity_date <= '2025-12-31'
             AND extract(year from start_date) = 2025
         <cfelse>
+            AND activity_date >= '2020-01-01'
             --AND extract(year from start_date) = extract(year from current_date)
         </cfif>
+        UNION
+        SELECT
+        id_athlete_donation as athlete_id,
+        distance,
+        total_elevation_gain,
+        activity_id,
+        activity_date::date,
+        frequencia_fechamento,
+        <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+            365 as dias_do_ano
+        <cfelse>
+            EXTRACT('doy' FROM current_date) as dias_do_ano
+        </cfif>
+        FROM tb_strava_activities at2
+        inner join atividades on atividades.athlete_id = at2.id_athlete_donation
+        WHERE type in ('Run','VirtualRun','TrailRun')
+        AND distance >= 990
+        <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+            AND activity_date >= '2025-01-01'
+            AND activity_date <= '2025-12-31'
+            AND extract(year from start_date) = 2025
+        <cfelse>
+            AND activity_date >= '2020-01-01'
+            --AND extract(year from start_date) = extract(year from current_date)
+        </cfif>
+        AND id_athlete_donation > 0
 
     ) as qry1
      GROUP BY athlete_id
@@ -138,18 +176,18 @@
     select count(*) as total
     from qBase
     <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-        where dias_correndo = 365
+        where frequencia_fechamento = 365
     <cfelse>
-        where dias_correndo = dias_do_ano
+        where frequencia_fechamento = dias_do_ano
     </cfif>
     and status = 'C'
-    and dias_correndo is not null
+    and frequencia_fechamento is not null
 </cfquery>
 
 <cfquery name="qPendenteDesafio" dbtype="query">
     select count(*) as total
     from qBase
-    where dias_correndo <> dias_do_ano and status = 'C' and dias_correndo is not null
+    where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
 </cfquery>
 
 <cfquery name="qCountVip" dbtype="query">
@@ -180,10 +218,10 @@
         where status = 'I'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "nodesafio">
-        where dias_correndo = dias_do_ano and status = 'C' and dias_correndo is not null
+        where frequencia_fechamento = dias_do_ano and status = 'C' and frequencia_fechamento is not null
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "pendentedesafio">
-        where dias_correndo <> dias_do_ano and status = 'C' and dias_correndo is not null
+        where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "vip">
         where produto like '%vip%' and status = 'C'
