@@ -47,7 +47,7 @@
 
 <!--- WIDGETS TEMPORAIS --->
 
-<div class="row g-3 mb-3">
+<div class="row g-2 mb-2">
 
     <div class="col-md">
         <a href="./?periodo=nodesafio">
@@ -240,18 +240,18 @@
 
 <!--- ESTATISTICAS --->
 
-<div class="row g-3">
+<!---<div class="row g-3">--->
 
 
     <cfif URL.periodo NEQ "pendentes">
 
-        <div class="col-md-3 d-none d-xl-block">
+        <!---<div class="col-md-3 d-none d-xl-block">--->
 
-            <div class="row g-3">
+            <div class="row g-2 mb-2">
 
                 <!--- LISTAGEM DE REGIAO --->
 
-                <div class="col-md-7">
+                <div class="col-4">
 
                     <div class="card">
 
@@ -280,7 +280,7 @@
 
                 <!--- LISTAGEM DE UF --->
 
-                <div class="col-md-5">
+                <div class="col-4">
 
                     <div class="card">
 
@@ -309,7 +309,7 @@
 
                 <!--- LISTAGEM DE CIDADE --->
 
-                <div class="col-md-12">
+                <div class="col-4">
 
                     <div class="card">
 
@@ -317,7 +317,7 @@
 
                         <div class="card-body p-2">
 
-                            <div class="table-wrapper-sm">
+                            <div class="table-wrapper">
 
                                 <table id="tblEventos" class="table table-stripped table-condensed table-sm mb-0" >
                                     <cfoutput query="qStatsCidade">
@@ -338,11 +338,13 @@
 
             </div>
 
-        </div>
+        <!---</div>--->
 
     </cfif>
 
-    <div class="<cfif URL.periodo NEQ "pendentes">col-md-12 col-xl-9<cfelse>col-md-12</cfif>">
+<!---</div>--->
+
+    <!---<div class="<cfif URL.periodo NEQ "pendentes">col-md-12 col-xl-9<cfelse>col-md-12</cfif>">--->
 
         <div class="row g-3">
 
@@ -494,6 +496,6 @@
 
         </div>
 
-    </div>
+    <!---</div>--->
 
-</div>
+<!---</div>--->

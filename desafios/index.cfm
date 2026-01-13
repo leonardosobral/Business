@@ -30,9 +30,9 @@
 
     <!--- CONTEUDO --->
 
-    <main class="" style="margin-top: -55px;">
+    <main class="" style="margin-top: -80px;">
 
-      <div class="px-4">
+      <div class="px-2">
 
         <cfinclude template="home.cfm">
 
