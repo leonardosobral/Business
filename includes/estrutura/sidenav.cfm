@@ -34,6 +34,12 @@
         </li>
 
         <li class="sidenav-item">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/cupons/">link-warning</cfif>" href="/cupons/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Inscrições</span></a>
+        </li>
+
+
+        <li class="sidenav-item">
             <a class="sidenav-link" href="/bi/">
                 <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
         </li>
@@ -51,27 +57,27 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "ads">link-warning</cfif>" href="/ads/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "emailmkt">link-warning</cfif>" href="/emailmkt/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/emailmkt/">link-warning</cfif>" href="/emailmkt/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "crm">link-warning</cfif>" href="/crm/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/crm/">link-warning</cfif>" href="/crm/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>CRM</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "cupons">link-warning</cfif>" href="/cupons/">
-                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Cupons</span></a>
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/cupons-rr/">link-warning</cfif>" href="/cupons-rr/">
+                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Cupons de Desconto</span></a>
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "notificacoes">link-warning</cfif>" href="/notificacoes/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/">link-warning</cfif>" href="/notificacoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
         </li>
 
