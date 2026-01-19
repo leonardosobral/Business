@@ -115,6 +115,7 @@
                         <tr>
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
+                            <th class="text-end">%</th>
                             <th class="text-end">Vendas</th>
                             <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
@@ -127,6 +128,7 @@
                             <tr>
                                 <td>#qCuponsBase.titulocupom# <cfif qCuponsBase.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsBase.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsBase.pedidos#</td>
+                                <td class="text-end">#lsNumberFormat((qCuponsBase.pedidos*100)/qAdCountViews.total, 9.9)#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.vendas)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.ticket_medio)#</td>
@@ -164,6 +166,7 @@
                         <tr>
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
+                            <th class="text-end">%</th>
                             <th class="text-end">Vendas</th>
                             <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
@@ -176,6 +179,7 @@
                             <tr>
                                 <td>#qCuponsInflu.titulocupom# <cfif qCuponsInflu.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsInflu.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsInflu.pedidos#</td>
+                                <td class="text-end">#lsNumberFormat((qCuponsInflu.pedidos*100)/qCountCuponsInflu.total, 9.9)#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.vendas)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.ticket_medio)#</td>
@@ -207,6 +211,7 @@
                         <tr>
                             <th>Cupom</th>
                             <th class="text-end">Inscrições</th>
+                            <th class="text-end">%</th>
                             <th class="text-end">Vendas</th>
                             <th class="text-end">Líquido</th>
                             <th class="text-end">Ticket</th>
@@ -219,6 +224,7 @@
                             <tr>
                                 <td>#qCuponsAssessoria.titulocupom# <cfif qCuponsAssessoria.titulocupom CONTAINS "influ"><span class="badge badge-info">influ</span></cfif> <cfif qCuponsAssessoria.titulocupom CONTAINS "cashback"><span class="badge badge-success">$$$</span></cfif></td>
                                 <td class="text-end">#qCuponsAssessoria.pedidos#</td>
+                                <td class="text-end">#lsNumberFormat((qCuponsAssessoria.pedidos*100)/qCountCuponsAssessoria.total, 9.9)#%</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.vendas)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.repasse)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.ticket_medio)#</td>

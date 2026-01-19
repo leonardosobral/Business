@@ -152,8 +152,44 @@
     OR titulocupom like '%cashback%'
 </cfquery>
 
+<cfquery name="qCountCuponsInflu" dbtype="query">
+    SELECT sum(pedidos) as total
+    FROM qCuponsBase
+    WHERE titulocupom like '%Influ%'
+    OR titulocupom like '%cashback%'
+</cfquery>
+
+<cfquery name="qVendasCuponsInflu" dbtype="query">
+    SELECT sum(vendas) as total
+    FROM qCuponsBase
+    WHERE titulocupom like '%Influ%'
+    OR titulocupom like '%cashback%'
+</cfquery>
+
 <cfquery name="qCuponsAssessoria" dbtype="query">
     SELECT *
+    FROM qCuponsBase
+    WHERE titulocupom NOT like '%Influ%'
+    AND titulocupom NOT like '%cashback%'
+    AND titulocupom NOT like '%Orgânico%'
+    AND titulocupom NOT like '%Sports Week%'
+    AND titulocupom NOT like '%PCD%'
+    AND titulocupom NOT like '%Benefício%'
+</cfquery>
+
+<cfquery name="qCountCuponsAssessoria" dbtype="query">
+    SELECT sum(pedidos) as total
+    FROM qCuponsBase
+    WHERE titulocupom NOT like '%Influ%'
+    AND titulocupom NOT like '%cashback%'
+    AND titulocupom NOT like '%Orgânico%'
+    AND titulocupom NOT like '%Sports Week%'
+    AND titulocupom NOT like '%PCD%'
+    AND titulocupom NOT like '%Benefício%'
+</cfquery>
+
+<cfquery name="qVendasCuponsAssessoria" dbtype="query">
+    SELECT sum(vendas) as total
     FROM qCuponsBase
     WHERE titulocupom NOT like '%Influ%'
     AND titulocupom NOT like '%cashback%'
