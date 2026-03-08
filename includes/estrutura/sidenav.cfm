@@ -84,25 +84,25 @@
 
         <!--- DESAFIOS --->
 
-        <cfif qPerfil.is_admin>
+        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
 
-        <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
-        </li>
-
-        <cfquery name="qDesafiosBusinessAtivos">
-            select * from desafios_eventos
-            where ativo = true and data_fim+30 > current_date
-            order by data_inicio desc
-        </cfquery>
-
-        <cfoutput query="qDesafiosBusinessAtivos">
-            <li class="sidenav-item">
-                <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/">
-                    <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#qDesafiosBusinessAtivos.titulo#</span>
-                </a>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
             </li>
-        </cfoutput>
+
+            <cfquery name="qDesafiosBusinessAtivos">
+                select * from desafios_eventos
+                where ativo = true and data_fim+30 > current_date
+                order by data_inicio desc
+            </cfquery>
+
+            <cfoutput query="qDesafiosBusinessAtivos">
+                <li class="sidenav-item">
+                    <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#qDesafiosBusinessAtivos.titulo#</span>
+                    </a>
+                </li>
+            </cfoutput>
 
         </cfif>
 

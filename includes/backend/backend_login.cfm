@@ -75,7 +75,12 @@
             ORDER BY tipo, ordem
         </cfquery>
     </cfif>
+<cfelse>
+    <cfif isDefined("VARIABLES.template")>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
 </cfif>
+
 
 <!--- GOOGLE SIGN OUT --->
 
@@ -95,6 +100,7 @@
     <cfset delSession = StructDelete(COOKIE, "imagem_usuario", true)/>
     <cflocation addtoken="false" url="/"/>
 </cfif>
+
 
 <!--- GOOGLE SIGN IN --->
 
@@ -161,6 +167,7 @@
 
 </cfif>
 
+
 <!--- ATUALIZAR CADASTRO POCKET --->
 
 <cfif isDefined("FORM.action") AND FORM.action EQ "atualizar_cadastro_pocket">
@@ -200,6 +207,7 @@
         <cflocation addtoken="false" url="#FORM.template#inscricao/?info=tag&tag=#FORM.tag#"/>
     </cfif>
 </cfif>
+
 
 <!--- CONFIRMAR INSCRICAO BUSINESS --->
 

@@ -28,7 +28,7 @@
     <cfquery name="qBase" cachedwithin="#CreateTimeSpan(0, 0, 10, 0)#">
         SELECT
         extract(year from evt.data_final) as ano,
-        evt.id_evento, evt.estado, evt.cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
+        evt.id_evento, evt.estado, unaccent(upper(evt.cidade)) as cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
         evt.data_final, evt.url_resultado, evt.url_inscricao, evt.url_hotsite, evt.obs_resultado,
         '' as nome_evento_agregado, '' as tipo_agregacao, '' as id_agrega_evento,
         replace(replace(replace(substring(coalesce(evt.url_inscricao,evt.url_hotsite) from '(?:.*://)?(?:www\.)?([^/?]*)'), '.com.br', ''), '.com', ''), 'site.', '') as url_inscricao_domain,
@@ -72,7 +72,7 @@
     <cfquery name="qBase" cachedwithin="#CreateTimeSpan(0, 0, 10, 0)#">
         SELECT
         extract(year from evt.data_final) as ano,
-        evt.id_evento, evt.estado, evt.cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
+        evt.id_evento, evt.estado, unaccent(upper(evt.cidade)) as cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
         evt.data_final, evt.url_resultado, evt.url_inscricao, evt.url_hotsite, evt.obs_resultado,
         agr.nome_evento_agregado, agr.tipo_agregacao, evt.id_agrega_evento,
         substring(evt.url_inscricao from '(?:.*://)?(?:www\.)?([^/?]*)') as url_inscricao_domain,
@@ -118,7 +118,7 @@
     <cfquery name="qBase" cachedwithin="#CreateTimeSpan(0, 0, 10, 0)#">
         SELECT
         extract(year from evt.data_final) as ano,
-        evt.id_evento, evt.estado, evt.cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
+        evt.id_evento, evt.estado, unaccent(upper(evt.cidade)) as cidade, evt.nome_evento, evt.tag, evt.tipo_corrida,
         evt.data_final, evt.url_resultado, evt.url_inscricao, evt.url_hotsite, evt.obs_resultado,
         agr.nome_evento_agregado, agr.tipo_agregacao, evt.id_agrega_evento,
         substring(evt.url_inscricao from '(?:.*://)?(?:www\.)?([^/?]*)') as url_inscricao_domain,
