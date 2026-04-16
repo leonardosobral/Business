@@ -1,10 +1,10 @@
-<div class="<cfif (URL.estado NEQ "") OR URL.cidade NEQ "">col-md-8<cfelse>col-md-3</cfif>">
+<div id="divCidades" class="<cfif (URL.estado NEQ "") OR URL.cidade NEQ "">col-md-8<cfelse>col-md-3</cfif>">
 
     <div class="card">
 
         <!--- HEADER DO PAINEL --->
 
-        <div class="card-header <cfif URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
+        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
             <h6 class="m0 p0">Cidades</h6>
         </div>
 

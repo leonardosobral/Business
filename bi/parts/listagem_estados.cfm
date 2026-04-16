@@ -1,10 +1,10 @@
-<div class="<cfif URL.regiao NEQ "" AND URL.estado EQ "" AND URL.cidade EQ "">col-md-7<cfelse>col-md-2</cfif>">
+<div id="divEstados" class="<cfif URL.regiao NEQ "" AND URL.estado EQ "" AND URL.cidade EQ "">col-md-7<cfelse>col-md-2</cfif>">
 
     <div class="card">
 
         <!--- HEADER DO PAINEL --->
 
-        <div class="card-header <cfif URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
+        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
             <h6 class="m0 p0">Estados</h6>
         </div>
 

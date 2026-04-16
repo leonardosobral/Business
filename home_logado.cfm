@@ -29,7 +29,7 @@
     <!--- VERIFICA TAGS COM CARACTERES ESPECIAIS --->
 
     <cfquery name="qManutencaoItem">
-        select id_usuario_cadastro, nome, tag from tb_paginas where tag ilike '% %' OR tag = '' OR tag is null or tag ilike '%/%' or tag ilike '%|%' or tag ilike '%\%';
+        select id_pagina, id_usuario_cadastro, nome, tag from tb_paginas where tag ilike '% %' OR tag = '' OR tag is null or tag ilike '%/%' or tag ilike '%|%' or tag ilike '%\%';
     </cfquery>
 
     <cfif qManutencaoItem.recordcount>
@@ -42,28 +42,28 @@
 
                 <div class="card-body">
 
-                    <table class="table table-sm table-striped table-hover">
-                  <thead>
-                    <tr>
-                        <th></th>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Tag</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <cfoutput query="qManutencaoItem">
-                        <tr>
-                            <td>
-                                <a href="/emailmkt/?campanha=#qManutencaoItem.id_pagina#&acao=editar"><icon class="fa fa-edit"></icon></a>
-                            </td>
-                            <td>#qManutencaoItem.id_pagina#</td>
-                            <td>#qManutencaoItem.nome#</td>
-                            <td>#qManutencaoItem.tag#</td>
-                        </tr>
-                    </cfoutput>
-                  </tbody>
-              </table>
+                  <table class="table table-sm table-striped table-hover">
+                    <thead>
+                      <tr>
+                          <th></th>
+                          <th>ID</th>
+                          <th>Nome</th>
+                          <th>Tag</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <cfoutput query="qManutencaoItem">
+                          <tr>
+                              <td>
+                                  <a href="/emailmkt/?campanha=#qManutencaoItem.id_pagina#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                              </td>
+                              <td>#qManutencaoItem.id_pagina#</td>
+                              <td>#qManutencaoItem.nome#</td>
+                              <td>#qManutencaoItem.tag#</td>
+                          </tr>
+                      </cfoutput>
+                    </tbody>
+                  </table>
 
                     <div class="font-monospace">--update tb_paginas set tag = replace(lower(tag), ' ', '-') where tag ilike '% %';</div>
 

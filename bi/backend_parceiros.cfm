@@ -154,8 +154,12 @@
     from qBase
     <!---WHERE concluintes > 0--->
     WHERE estado is not null AND estado <> ''
-    <cfif len(trim(URL.preset)) AND (URL.preset EQ "2025" OR URL.preset CONTAINS "treino" OR URL.preset CONTAINS "saude")>
+    <cfif len(trim(URL.preset)) AND (URL.preset EQ "2026" OR URL.preset EQ "2025" OR URL.preset CONTAINS "treino" OR URL.preset CONTAINS "saude")>
+        <cfif URL.preset EQ "2026">
+        AND data_final between '2026-01-01' and '2026-12-31'
+        <cfelse>
         AND data_final between '2025-01-01' and '2025-12-31'
+        </cfif>
     </cfif>
     <cfif len(trim(URL.preset)) AND URL.preset EQ "2024">
         AND data_final between '2024-01-01' and '2024-12-31'
@@ -178,6 +182,12 @@
     where data_final between '2025-01-01' and '2025-12-31' and concluintes > 0
 </cfquery>
 
+<cfquery name="qCountAtual26" dbtype="query">
+    select count(*) as total, sum(concluintes) as concluintes
+    from qBase
+    where data_final between '2026-01-01' and '2026-12-31' and concluintes > 0
+</cfquery>
+
 <cfquery name="qCountAnterior" dbtype="query">
     select count(*) as total, sum(concluintes) as concluintes
     from qBase
@@ -194,6 +204,12 @@
     select count(*) as total
     from qBase
     where data_final between '2025-01-01' and '2025-12-31'
+</cfquery>
+
+<cfquery name="qCountEvAtual26" dbtype="query">
+    select count(*) as total
+    from qBase
+    where data_final between '2026-01-01' and '2026-12-31'
 </cfquery>
 
 <cfquery name="qCountEvAnterior" dbtype="query">
@@ -444,8 +460,12 @@
     <cfif len(trim(URL.id_evento))>
         and evt.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_evento#"/>
     </cfif>
-    <cfif len(trim(URL.preset)) AND (URL.preset EQ "2025" OR URL.preset CONTAINS "treino")>
+    <cfif len(trim(URL.preset)) AND (URL.preset EQ "2026" OR URL.preset EQ "2025" OR URL.preset CONTAINS "treino")>
+        <cfif URL.preset EQ "2026">
+        AND evt.data_final between '2026-01-01' and '2026-12-31'
+        <cfelse>
         AND evt.data_final between '2025-01-01' and '2025-12-31'
+        </cfif>
     </cfif>
     <cfif len(trim(URL.preset)) AND URL.preset EQ "2024">
         AND evt.data_final between '2024-01-01' and '2024-12-31'
