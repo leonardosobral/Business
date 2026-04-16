@@ -15,14 +15,14 @@
         usr.strava_premium, usr.strava_weight, usr.strava_full_follower_count, usr.strava_full_friend_count,
         usr.strava_full_shoes, usr.strava_full_clubs,
     (select count(*) from tb_resultados where id_usuario = usr.id) as resultados,
-    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 70020 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
+    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 72611 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
     (select count(*) from tb_evento_corridas_checkin where id_usuario = usr.id) as checkin
     from tb_inscricoes insc
     left join tb_evento_corridas evt on evt.id_evento = insc.id_evento
     left join tb_usuarios usr on usr.id = insc.id_usuario
     left join tb_paginas pag ON usr.id = pag.id_usuario_cadastro
     left join tb_uf uf ON coalesce(pag.uf, usr.estado) = uf.uf
-    WHERE insc.id_evento IN (29146, 29147, 29148, 29149, 29150)
+    WHERE insc.id_evento IN (40782, 40783, 40784, 40785, 40786)
     ORDER BY random()
 </cfquery>
 

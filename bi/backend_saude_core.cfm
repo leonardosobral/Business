@@ -15,14 +15,14 @@
         usr.strava_premium, usr.strava_weight, usr.strava_full_follower_count, usr.strava_full_friend_count,
         usr.strava_full_shoes, usr.strava_full_clubs,
     (select count(*) from tb_resultados where id_usuario = usr.id) as resultados,
-    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 70020 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
+    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 72611 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
     (select count(*) from tb_evento_corridas_checkin where id_usuario = usr.id) as checkin
     from tb_inscricoes insc
     left join tb_evento_corridas evt on evt.id_evento = insc.id_evento
     left join tb_usuarios usr on usr.id = insc.id_usuario
     left join tb_paginas pag ON usr.id = pag.id_usuario_cadastro
     left join tb_uf uf ON coalesce(pag.uf, usr.estado) = uf.uf
-    WHERE insc.id_evento IN (22792)
+    WHERE insc.id_evento IN (34529)
     ORDER BY random()
 </cfquery>
 
@@ -41,15 +41,15 @@
         select *
         from qBaseTreinoes
         <cfif URL.preset EQ "treino1">
-            where id_evento = 29146
+            where id_evento = 40782
         <cfelseif URL.preset EQ "treino2">
-            where id_evento = 29147
+            where id_evento = 40783
         <cfelseif URL.preset EQ "treino3">
-            where id_evento = 29148
+            where id_evento = 40784
         <cfelseif URL.preset EQ "treino4">
-            where id_evento = 29149
+            where id_evento = 40785
         <cfelseif URL.preset EQ "treino5">
-            where id_evento = 29150
+            where id_evento = 40786
         </cfif>
     </cfif>
 </cfquery>
@@ -57,29 +57,29 @@
 <cfquery name="qCountTreino1" dbtype="query">
     select count(*) as total
     from qBaseTreinoes
-    where id_evento = 29146
+    where id_evento = 40782
 </cfquery>
 
 <cfquery name="qCountTreino2" dbtype="query">
     select count(*) as total
     from qBaseTreinoes
-    where id_evento = 29147
+    where id_evento = 40783
 </cfquery>
 
 <cfquery name="qCountTreino3" dbtype="query">
     select count(*) as total
     from qBaseTreinoes
-    where id_evento = 29148
+    where id_evento = 40784
 </cfquery>
 
 <cfquery name="qCountTreino4" dbtype="query">
     select count(*) as total
     from qBaseTreinoes
-    where id_evento = 29149
+    where id_evento = 40785
 </cfquery>
 
 <cfquery name="qCountTreino5" dbtype="query">
     select count(*) as total
     from qBaseTreinoes
-    where id_evento = 29150
+    where id_evento = 40786
 </cfquery>

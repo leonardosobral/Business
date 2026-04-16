@@ -15,7 +15,7 @@
         usr.strava_premium, usr.strava_weight, usr.strava_full_follower_count, usr.strava_full_friend_count,
         usr.strava_full_shoes, usr.strava_full_clubs,
     (select count(*) from tb_resultados where id_usuario = usr.id) as resultados,
-    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 70020 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
+    (select trim(upper(tsparticipantes.body ->> 'modalidade')) from tb_ticketsports_participantes tsparticipantes where documento = insc.body ->>'documento' AND cod_evento = 72611 order by tsparticipantes.body ->> 'valor' desc limit 1) as mif,
     (select count(*) from tb_evento_corridas_checkin where id_usuario = usr.id) as checkin
     from tb_inscricoes insc
     left join tb_evento_corridas evt on evt.id_evento = insc.id_evento

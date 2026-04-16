@@ -14,7 +14,7 @@
     left join tb_usuarios usr on usr.email = (tkt.body ->> 'email')::varchar
     left join tb_uf uf ON coalesce(tkt.estado, usr.estado) = uf.uf
     left join tb_paginas pag ON usr.id = pag.id_usuario_cadastro
-    WHERE cod_evento = '70020'
+    WHERE cod_evento = '72611'
 </cfquery>
 
 <cfquery name="qCountPedidos">

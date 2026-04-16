@@ -390,13 +390,13 @@
     <cfquery name="qCountInscritos">
         select count(*) as total
         from tb_ticketsports_participantes tsparticipantes
-        WHERE cod_evento = '70020'
+        WHERE cod_evento = '72611'
     </cfquery>
 
     <cfquery name="qCountInscritosTreino">
         select count(*) as total
         from tb_inscricoes
-        WHERE id_evento IN (29146, 29147, 29148, 29149, 29150)
+        WHERE id_evento IN (40782, 40783, 40784, 40785, 40786)
     </cfquery>
 
     <cfquery name="qCountFichasMedicas">

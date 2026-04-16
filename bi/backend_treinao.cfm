@@ -1,7 +1,7 @@
 <cfquery name="qTreinoAssessorias" cachedwithin="#CreateTimeSpan(0, 0, 1, 0)#">
     select trim(unaccent(upper(tsparticipantes.body ->> 'assessoria'))) as assossoria, count(*) as total
     FROM tb_inscricoes tsparticipantes
-    WHERE id_evento = 29146 and trim(unaccent(upper(tsparticipantes.body ->> 'assessoria'))) NOT IN ('NÃO POSSUO','INDIVIDUAL','NA','SEM ASSESORIA','AULSO','N/A','N/A','NAO TENHO','NÃO','SIM','NAO','-','.',' ','','NÃO TEM','NENHUMA','SEM','NAO TEM','NENHUM','AVULSO','NÃO TENHO')
+    WHERE id_evento = 40782 and trim(unaccent(upper(tsparticipantes.body ->> 'assessoria'))) NOT IN ('NÃO POSSUO','INDIVIDUAL','NA','SEM ASSESORIA','AULSO','N/A','N/A','NAO TENHO','NÃO','SIM','NAO','-','.',' ','','NÃO TEM','NENHUMA','SEM','NAO TEM','NENHUM','AVULSO','NÃO TENHO')
     group by trim(unaccent(upper(tsparticipantes.body ->> 'assessoria')))
     order by total desc;
 </cfquery>

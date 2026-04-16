@@ -10,9 +10,9 @@
 <!--- VARIAVEIS --->
 <cfparam name="URL.periodo" default=""/>
 <cfif URL.tag NEQ "maratona-internacional-de-floripa">
-    <cfparam name="URL.preset" default="2025"/>
+    <cfparam name="URL.preset" default="2026"/>
 <cfelse>
-    <cfparam name="URL.preset" default="treino5"/>
+    <cfparam name="URL.preset" default="treino1"/>
 </cfif>
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.regiao" default=""/>
