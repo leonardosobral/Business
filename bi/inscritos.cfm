@@ -42,7 +42,7 @@
         </div>
         </a>
     </div>
-    <cfif URL.preset EQ "2025">
+    <cfif URL.preset EQ "2026">
     <div class="col-md">
         <a href="./?periodo=&preset=<cfoutput>#URL.preset#</cfoutput>">
         <div class="card bg-warning text-white py-2 px-3">

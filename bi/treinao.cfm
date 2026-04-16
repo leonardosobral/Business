@@ -42,12 +42,12 @@
         <a href="./?periodo=mif&preset=<cfoutput>#URL.preset#</cfoutput>">
         <div class="card bg-warning text-white py-2 px-3">
             <p class="h4 m-0"><cfoutput>#numberFormat(qCountMIF.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#len(trim(qCountMIF.total)) ? numberFormat((qCountMIF.total*100)/qBaseInscritos.recordcount, "9") : 0#</cfoutput>% MIF 2025</p>
+            <p class="m-0"><cfoutput>#len(trim(qCountMIF.total)) ? numberFormat((qCountMIF.total*100)/qBaseInscritos.recordcount, "9") : 0#</cfoutput>% MIF 2026</p>
         </div>
         </a>
     </div>
 
-    <cfif URL.preset EQ "2025">
+    <cfif URL.preset EQ "2026">
     <div class="col d-none d-md-block">
         <a href="./?periodo=&preset=<cfoutput>#URL.preset#</cfoutput>">
         <div class="card bg-warning text-white py-2 px-3">
