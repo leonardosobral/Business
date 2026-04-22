@@ -12,7 +12,7 @@
 <cfif URL.tag NEQ "maratona-internacional-de-floripa">
     <cfparam name="URL.preset" default="2026"/>
 <cfelse>
-    <cfparam name="URL.preset" default="treino1"/>
+    <cfparam name="URL.preset" default="treino5"/>
 </cfif>
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.regiao" default=""/>
@@ -118,42 +118,54 @@
 
             <!--- WIDGETS --->
 
-            <div class="row g-2 mb-3" id="divWidgets">
+            <div class="row g-2 mb-3">
 
                 <cfif URL.tag NEQ "maratona-internacional-de-floripa">
 
                     <!--- ATUAL --->
 
-                    <div class="col-md-3">
-                        <a href="./?regiao=&estado=&cidade=&preset=2026">
-                            <div class="card bg-warning text-white py-2 px-3">
-                                <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountAtual26.total)# / #lsnumberFormat(qCountEvAtual26.total)# em 2026</cfoutput></p>
-                                <p class="m-0"><cfoutput>#lsnumberFormat(qCountAtual26.concluintes)# concluintes</cfoutput></p>
-                                <p class="small m-0 opacity-75"><cfoutput>#Len(qCountAtual26.total) AND Len(qCountAtual26.concluintes) ? lsnumberFormat(qCountAtual26.concluintes/qCountAtual26.total) : 0# média</cfoutput></p>
+                    <div class="col-md-4">
+                        <div class="row g-2">
+                            <div class="col-md-8">
+                                <a href="./?regiao=&estado=&cidade=&preset=2026">
+                                    <div class="card bg-warning text-white py-2 px-3" >
+                                        <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountAtual.total)# / #lsnumberFormat(qCountEvAtual.total)# em 2026</cfoutput></p>
+                                        <p class="m-0"><cfoutput>#lsnumberFormat(qCountAtual.concluintes)# concluintes</cfoutput></p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="./?regiao=&estado=&cidade=&preset=2025">
-                            <div class="card bg-warning text-white py-2 px-3" >
-                                <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountAtual.total)# / #lsnumberFormat(qCountEvAtual.total)# em 2025</cfoutput></p>
-                                <p class="m-0"><cfoutput>#lsnumberFormat(qCountAtual.concluintes)# concluintes</cfoutput></p>
-                                <p class="small m-0 opacity-75"><cfoutput>#Len(qCountAtual.total) AND Len(qCountAtual.concluintes) ? lsnumberFormat(qCountAtual.concluintes/qCountAtual.total) : 0# média</cfoutput></p>
+                            <div class="col-md-4 d-none d-md-block">
+                                <a href="./?regiao=&estado=&cidade=&preset=2026">
+                                    <div class="card bg-warning text-white py-2 px-3">
+                                        <p class="h5 m-0"><cfoutput>#Len(qCountAtual.total) AND Len(qCountAtual.concluintes) ? lsnumberFormat(qCountAtual.concluintes/qCountAtual.total) : 0#</cfoutput></p>
+                                        <p class="m-0"><cfoutput>Média</cfoutput></p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     <!--- ANTERIOR --->
 
-                    <div class="col-md-3 d-none d-md-block">
-                        <a href="./?regiao=&estado=&cidade=&preset=2024">
-                        <div class="card bg-secondary text-white py-2 px-3">
-                            <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountAnterior.total)# / #lsnumberFormat(qCountEvAnterior.total)# em 2024</cfoutput></p>
-                            <p class="m-0"><cfoutput>#lsnumberFormat(qCountAnterior.concluintes)# concluintes</cfoutput></p>
-                            <p class="small m-0 opacity-75"><cfoutput>#Len(qCountAnterior.total) AND Len(qCountAnterior.concluintes) ? lsnumberFormat(qCountAnterior.concluintes/qCountAnterior.total) : 0# média</cfoutput></p>
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="row g-2">
+                            <div class="col-md-8">
+                                <a href="./?regiao=&estado=&cidade=&preset=2024">
+                                <div class="card bg-secondary text-white py-2 px-3">
+                                    <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountAnterior.total)# / #lsnumberFormat(qCountEvAnterior.total)# em 2024</cfoutput></p>
+                                    <p class="m-0"><cfoutput>#lsnumberFormat(qCountAnterior.concluintes)# concluintes</cfoutput></p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-none d-md-block">
+                                <a href="./?regiao=&estado=&cidade=&preset=2024">
+                                    <div class="card bg-secondary text-white py-2 px-3">
+                                        <p class="h5 m-0"><cfoutput>#Len(qCountAnterior.total) AND Len(qCountAnterior.concluintes)  ? lsnumberFormat(qCountAnterior.concluintes/qCountAnterior.total) : 0#</cfoutput></p>
+                                        <p class="m-0"><cfoutput>Média</cfoutput></p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        </a>
                     </div>
 
                 <cfelse>
@@ -163,8 +175,8 @@
                     <div class="col-md-4">
                         <div class="row g-2">
                             <div class="col-4">
-                                <a href="./?regiao=&estado=&cidade=&preset=2025">
-                                    <div class="card <cfif preset EQ "2025">bg-warning<cfelse>bg-secondary</cfif> text-white py-2 px-3" >
+                                <a href="./?regiao=&estado=&cidade=&preset=2026">
+                                    <div class="card <cfif preset EQ "2026">bg-warning<cfelse>bg-secondary</cfif> text-white py-2 px-3" >
                                         <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountInscritos.total)#</cfoutput></p>
                                         <p class="m-0"><cfoutput>MIF</cfoutput></p>
                                     </div>
@@ -242,12 +254,11 @@
 
                 <!--- HISTORICO --->
 
-                <div class="<cfif URL.tag NEQ "maratona-internacional-de-floripa">col-md-3<cfelse>col-md-2</cfif> d-none d-md-block">
+                <div class="<cfif URL.tag NEQ "maratona-internacional-de-floripa">col-md-4<cfelse>col-md-2</cfif> d-none d-md-block">
                     <a href="./?regiao=&estado=&cidade=&preset=">
                                 <div class="card bg-black text-white py-2 px-3">
                                     <p class="h5 m-0"><cfoutput>#lsnumberFormat(qCountTotal.total)# / #lsnumberFormat(qCountEvTotal.total)# no total</cfoutput></p>
                                     <p class="m-0"><cfoutput>#lsnumberFormat(qCountTotal.concluintes)# concluintes</cfoutput></p>
-                                    <p class="small m-0 opacity-75"><cfoutput>#Len(qCountTotal.total) AND Len(qCountTotal.concluintes) ? lsnumberFormat(qCountTotal.concluintes/qCountTotal.total) : 0# média</cfoutput></p>
                                 </div>
                             </a>
                 </div>
@@ -260,8 +271,8 @@
             <!---ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a
-                            class="nav-link <cfif URL.preset EQ "2025">active</cfif> px-2"
-                            href="./?regiao=&estado=&cidade=&preset=2025"
+                            class="nav-link <cfif URL.preset EQ "2026">active</cfif> px-2"
+                            href="./?regiao=&estado=&cidade=&preset=2026"
                             role="tab"
                             aria-selected="true"
                     >Inscrições</a>
@@ -326,7 +337,7 @@
 
                                     <div class="card">
 
-                                        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
+                                        <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
                                             <h6 class="m0 p0">Percursos</h6>
                                         </div>
 
@@ -373,7 +384,7 @@
 
                                 <div class="card">
 
-                                    <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
+                                    <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 pt-2 pb-0">
                                         <h6 class="m0 p0">Eventos</h6>
                                     </div>
 
@@ -404,7 +415,7 @@
 
                                     <div class="card">
 
-                                        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
+                                        <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
                                             <table class="m-0" width="98%">
                                                 <tr>
                                                     <td width="40%">Feminino</td>
@@ -451,7 +462,7 @@
 
                                     <div class="card">
 
-                                        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
+                                        <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
                                             <table class="m-0" width="98%">
                                                 <tr>
                                                     <td width="40%">Masculino</td>
@@ -498,7 +509,7 @@
 
                                     <div class="card">
 
-                                        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
+                                        <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
                                             <table class="m-0" width="98%">
                                                 <tr>
                                                     <td width="40%">PCD</td>
@@ -536,7 +547,7 @@
 
                                     <div class="card">
 
-                                        <div class="card-header <cfif URL.preset EQ "2026" OR URL.preset EQ "2025">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
+                                        <div class="card-header <cfif URL.preset EQ "2026">bg-warning<cfelseif URL.preset EQ "2024">bg-secondary<cfelse>bg-black</cfif> text-white fw-bold px-3 py-2">
                                             <table class="m-0" width="98%">
                                                 <tr>
                                                     <td width="40%">PCD</td>
@@ -579,7 +590,7 @@
 
                             <!--- DADOS PRINCIPAIS --->
 
-                            <cfif URL.preset EQ "2025">
+                            <cfif URL.preset EQ "2026">
 
                                 <!--- ESTATISTICAS DE INSCRICOES --->
 
