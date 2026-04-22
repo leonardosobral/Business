@@ -22,6 +22,21 @@
         </li>
 
 
+        <!--- PORTAL --->
+
+        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Portal</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/">link-warning</cfif>" href="/portal/">
+                    <i class="fa-solid fa-photo-film fa-fw me-3"></i><span>Mídia</span>
+                </a>
+            </li>
+        </cfif>
+
+
         <!--- FERRAMENTAS --->
 
         <li class="sidenav-item pt-3">
