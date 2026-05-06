@@ -30,8 +30,14 @@
             </li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/">link-warning</cfif>" href="/portal/">
-                    <i class="fa-solid fa-photo-film fa-fw me-3"></i><span>Mídia</span>
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/videos/">link-warning</cfif>" href="/portal/videos/">
+                    <i class="fa-solid fa-photo-film fa-fw me-3"></i><span>Vídeos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/canais/">link-warning</cfif>" href="/portal/canais/">
+                    <i class="fa-brands fa-youtube fa-fw me-3"></i><span>Canais</span>
                 </a>
             </li>
         </cfif>

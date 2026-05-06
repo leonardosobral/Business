@@ -34,33 +34,57 @@
 <cfset VARIABLES.mediaHasUrl = ListFindNoCase(VARIABLES.mediaColumns, "media_url")/>
 <cfset VARIABLES.mediaOrderColumn = len(trim(VARIABLES.mediaPk)) ? VARIABLES.mediaPk : (qMediaColumns.recordcount ? qMediaColumns.column_name : "")/>
 
-<cfif isDefined("URL.acao") AND URL.acao EQ "pub_status"
+<cfif isDefined("URL.acao")
     AND isDefined("qPerfil")
     AND qPerfil.recordcount
     AND qPerfil.is_admin
-    AND VARIABLES.mediaHasPubStatus
     AND len(trim(VARIABLES.mediaPk))
-    AND isDefined("URL.media_id")
-    AND isDefined("URL.status")>
+    AND isDefined("URL.media_id")>
 
-    <cfquery>
-        UPDATE tb_media
-        SET pub_status = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
-        WHERE "#Replace(VARIABLES.mediaPk, '"', '""', 'all')#" =
-        <cfif IsNumeric(URL.media_id)>
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.media_id#"/>
-        <cfelse>
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.media_id#"/>
-        </cfif>
-    </cfquery>
+    <cfif URL.acao EQ "pub_status"
+        AND VARIABLES.mediaHasPubStatus
+        AND isDefined("URL.status")>
 
-    <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
+        <cfquery>
+            UPDATE tb_media
+            SET pub_status = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
+            WHERE "#Replace(VARIABLES.mediaPk, '"', '""', 'all')#" =
+            <cfif IsNumeric(URL.media_id)>
+                <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.media_id#"/>
+            <cfelse>
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.media_id#"/>
+            </cfif>
+        </cfquery>
+
+        <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
+    </cfif>
+
+    <cfif URL.acao EQ "excluir">
+        <cfquery>
+            DELETE FROM tb_media
+            WHERE "#Replace(VARIABLES.mediaPk, '"', '""', 'all')#" =
+            <cfif IsNumeric(URL.media_id)>
+                <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.media_id#"/>
+            <cfelse>
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.media_id#"/>
+            </cfif>
+        </cfquery>
+
+        <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
+    </cfif>
 </cfif>
 
 <cfquery name="qMediaCount">
     SELECT count(*) as total
     FROM tb_media
 </cfquery>
+
+<cfset VARIABLES.mediaTotalPages = max(1, ceiling(qMediaCount.total / VARIABLES.mediaPageSize))/>
+
+<cfif VARIABLES.mediaPage GT VARIABLES.mediaTotalPages>
+    <cfset VARIABLES.mediaPage = VARIABLES.mediaTotalPages/>
+    <cfset VARIABLES.mediaOffset = (VARIABLES.mediaPage - 1) * VARIABLES.mediaPageSize/>
+</cfif>
 
 <cfif qMediaColumns.recordcount>
     <cfquery name="qMedia">
@@ -73,5 +97,3 @@
 <cfelse>
     <cfset qMedia = QueryNew("")/>
 </cfif>
-
-<cfset VARIABLES.mediaTotalPages = max(1, ceiling(qMediaCount.total / VARIABLES.mediaPageSize))/>
