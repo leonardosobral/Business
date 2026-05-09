@@ -70,6 +70,11 @@
                 <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
         </li>
 
+        <li class="sidenav-item">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/">link-warning</cfif>" href="/treinos-config/">
+                <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de Treinos</span></a>
+        </li>
+
 
         <!--- MARKETING --->
 
