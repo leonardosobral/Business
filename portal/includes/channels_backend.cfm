@@ -12,7 +12,7 @@
 <cfset VARIABLES.channelColumns = ValueList(qChannelColumns.column_name)/>
 <cfset VARIABLES.channelPk = ""/>
 <cfset VARIABLES.channelSelectColumns = ""/>
-<cfset VARIABLES.channelFormExcludedColumns = "created_at,updated_at,createdon,modifiedon,data_cadastro,data_atualizacao,data_criacao,data_alteracao,data_importacao,ultima_importacao,data_ultima_importacao"/>
+<cfset VARIABLES.channelFormExcludedColumns = "created_at,updated_at,createdon,modifiedon,data_cadastro,data_atualizacao,data_criacao,data_alteracao,data_importacao,ultima_importacao,data_ultima_importacao,logotipo,logo,logo_url,imagem_url,image_url,avatar_url,thumbnail_url,logotipo_arquivo,logo_arquivo,logotipo_blob,logo_blob,logotipo_mime,logo_mime,logotipo_nome_arquivo,logo_nome_arquivo,logotipo_atualizado_em,logo_atualizado_em"/>
 
 <cfloop list="id_canal,id_youtube_canal,youtube_canal_id,id" item="channelPkCandidate">
     <cfif NOT len(trim(VARIABLES.channelPk)) AND ListFindNoCase(VARIABLES.channelColumns, channelPkCandidate)>
@@ -47,7 +47,10 @@
     AND len(trim(VARIABLES.channelPk))
     AND qChannelColumns.recordcount>
 
+    <cfset VARIABLES.savedChannelRecordId = ""/>
+
     <cfif isDefined("FORM.canal_record_id") AND len(trim(FORM.canal_record_id))>
+        <cfset VARIABLES.savedChannelRecordId = FORM.canal_record_id/>
         <cfquery>
             UPDATE tb_youtube_canais
             SET
@@ -58,8 +61,16 @@
                     AND StructKeyExists(FORM, "canal_" & qChannelColumns.column_name)>
                     <cfset VARIABLES.channelFieldValue = FORM["canal_" & qChannelColumns.column_name]/>
                     <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
+                    <cfif VARIABLES.channelFieldType EQ "boolean">
+                        <cfset VARIABLES.channelFieldValue = ListFindNoCase(VARIABLES.channelFieldValue, "true")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "1")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "yes")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "sim")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "on")/>
+                    </cfif>
                     <cfset VARIABLES.channelFieldNullable = qChannelColumns.is_nullable EQ "YES"/>
-                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldNullable AND VARIABLES.channelFieldType NEQ "boolean" AND NOT len(trim(VARIABLES.channelFieldValue))/>
+                    <cfset VARIABLES.channelFieldHasValue = VARIABLES.channelFieldType EQ "boolean" OR (isSimpleValue(VARIABLES.channelFieldValue) AND len(trim(VARIABLES.channelFieldValue)))/>
+                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldType NEQ "boolean" AND NOT VARIABLES.channelFieldHasValue/>
                     #VARIABLES.channelFieldSeparator#"#Replace(qChannelColumns.column_name, '"', '""', 'all')#" =
                     <cfswitch expression="#VARIABLES.channelFieldType#">
                         <cfcase value="boolean">
@@ -95,7 +106,7 @@
             </cfif>
         </cfquery>
     <cfelse>
-        <cfquery>
+        <cfquery name="qChannelInsert">
             INSERT INTO tb_youtube_canais (
             <cfset VARIABLES.channelFieldSeparator = ""/>
             <cfloop query="qChannelColumns">
@@ -114,8 +125,16 @@
                     AND StructKeyExists(FORM, "canal_" & qChannelColumns.column_name)>
                     <cfset VARIABLES.channelFieldValue = FORM["canal_" & qChannelColumns.column_name]/>
                     <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
+                    <cfif VARIABLES.channelFieldType EQ "boolean">
+                        <cfset VARIABLES.channelFieldValue = ListFindNoCase(VARIABLES.channelFieldValue, "true")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "1")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "yes")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "sim")
+                            OR ListFindNoCase(VARIABLES.channelFieldValue, "on")/>
+                    </cfif>
                     <cfset VARIABLES.channelFieldNullable = qChannelColumns.is_nullable EQ "YES"/>
-                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldNullable AND VARIABLES.channelFieldType NEQ "boolean" AND NOT len(trim(VARIABLES.channelFieldValue))/>
+                    <cfset VARIABLES.channelFieldHasValue = VARIABLES.channelFieldType EQ "boolean" OR (isSimpleValue(VARIABLES.channelFieldValue) AND len(trim(VARIABLES.channelFieldValue)))/>
+                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldType NEQ "boolean" AND NOT VARIABLES.channelFieldHasValue/>
                     #VARIABLES.channelFieldSeparator#
                     <cfswitch expression="#VARIABLES.channelFieldType#">
                         <cfcase value="boolean">
@@ -144,10 +163,15 @@
                 </cfif>
             </cfloop>
             )
+            RETURNING "#Replace(VARIABLES.channelPk, '"', '""', 'all')#"
         </cfquery>
+        <cfif qChannelInsert.recordcount>
+            <cfset VARIABLES.savedChannelRecordId = qChannelInsert[VARIABLES.channelPk][1]/>
+        </cfif>
     </cfif>
 
-    <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
+    <cfset VARIABLES.channelRedirectUrl = "./?pagina=" & VARIABLES.mediaPage/>
+    <cflocation addtoken="false" url="#VARIABLES.channelRedirectUrl#"/>
 </cfif>
 
 <cfif isDefined("URL.canal_acao")

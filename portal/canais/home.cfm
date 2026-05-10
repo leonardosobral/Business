@@ -2,8 +2,27 @@
 <cfset VARIABLES.channelVisibleColumns = "id_youtube_canal,name,id_pagina,id_usuario,max_results,sort"/>
 <cfset VARIABLES.channelShowForm = qChannelEdit.recordcount OR (isDefined("URL.canal_novo") AND URL.canal_novo)/>
 <cfset VARIABLES.channelVisibleCount = 0/>
+<cfset VARIABLES.channelDescriptionColumns = "descricao,description,bio"/>
+<cfset VARIABLES.channelInstagramColumns = "instagram,instagram_url,url_instagram,link_instagram"/>
+<cfset VARIABLES.channelUrlColumns = "url,channel_url,youtube_url,feed_url,api_url"/>
+<cfset VARIABLES.channelHasDescriptionField = false/>
+<cfset VARIABLES.channelHasInstagramField = false/>
+<cfloop list="#VARIABLES.channelDescriptionColumns#" item="channelDescriptionColumn">
+  <cfif NOT VARIABLES.channelHasDescriptionField AND ListFindNoCase(VARIABLES.channelColumns, channelDescriptionColumn)>
+    <cfset VARIABLES.channelHasDescriptionField = true/>
+  </cfif>
+</cfloop>
+<cfloop list="#VARIABLES.channelInstagramColumns#" item="channelInstagramColumn">
+  <cfif NOT VARIABLES.channelHasInstagramField AND ListFindNoCase(VARIABLES.channelColumns, channelInstagramColumn)>
+    <cfset VARIABLES.channelHasInstagramField = true/>
+  </cfif>
+</cfloop>
 
 <style>
+  .channel-form-grid {
+    row-gap: 1rem;
+  }
+
   .channel-table td,
   .channel-table th {
     vertical-align: middle;
@@ -23,6 +42,28 @@
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 1rem;
   }
+
+  .channel-field-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  .channel-field-card .form-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .channel-field-help {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.58);
+  }
+
 </style>
 
 <section>
@@ -64,16 +105,24 @@
                 <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
                   <div>
                     <h5 class="mb-1"><cfif qChannelEdit.recordcount>Editar canal<cfelse>Novo canal</cfif></h5>
-                    <p class="text-muted small mb-0">Cadastre ou atualize os dados usados na importacao.</p>
+                    <p class="text-muted small mb-0">Cadastre ou atualize os dados usados na importacao e exibicao do canal.</p>
                   </div>
                   <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.mediaPage#">Fechar</a></cfoutput>
                 </div>
+
+                <cfif NOT VARIABLES.channelHasDescriptionField OR NOT VARIABLES.channelHasInstagramField>
+                  <div class="alert alert-warning py-2 px-3 small mb-3">
+                    Alguns campos avançados do canal dependem de colunas na tabela <strong>tb_youtube_canais</strong>.
+                    <cfif NOT VARIABLES.channelHasDescriptionField>Descrição não encontrada. </cfif>
+                    <cfif NOT VARIABLES.channelHasInstagramField>Instagram não encontrado.</cfif>
+                  </div>
+                </cfif>
 
                 <cfoutput><form method="post" action="./?pagina=#VARIABLES.mediaPage#"></cfoutput>
                   <input type="hidden" name="canal_action" value="salvar"/>
                   <input type="hidden" name="canal_record_id" value="<cfif qChannelEdit.recordcount><cfoutput>#htmlEditFormat(qChannelEdit[VARIABLES.channelPk][1])#</cfoutput></cfif>"/>
 
-                  <div class="row g-3">
+                  <div class="row channel-form-grid">
                     <cfloop query="qChannelColumns">
                       <cfif qChannelColumns.column_name NEQ VARIABLES.channelPk
                           AND NOT ListFindNoCase(VARIABLES.channelFormExcludedColumns, qChannelColumns.column_name)>
@@ -81,21 +130,65 @@
                         <cfset VARIABLES.channelFieldValue = qChannelEdit.recordcount ? qChannelEdit[qChannelColumns.column_name][1] : ""/>
                         <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
                         <cfset VARIABLES.channelFieldLabel = Replace(qChannelColumns.column_name, "_", " ", "all")/>
+                        <cfset VARIABLES.channelFieldHelp = ""/>
+                        <cfset VARIABLES.channelFieldColClass = VARIABLES.channelFieldType EQ "text" ? "col-12" : "col-12 col-md-6 col-xl-4"/>
+                        <cfset VARIABLES.channelIsDescriptionField = ListFindNoCase(VARIABLES.channelDescriptionColumns, qChannelColumns.column_name)/>
+                        <cfset VARIABLES.channelIsInstagramField = ListFindNoCase(VARIABLES.channelInstagramColumns, qChannelColumns.column_name)/>
+                        <cfset VARIABLES.channelIsUrlField = VARIABLES.channelIsInstagramField OR ListFindNoCase(VARIABLES.channelUrlColumns, qChannelColumns.column_name) OR FindNoCase("url", qChannelColumns.column_name)/>
+                        <cfset VARIABLES.channelIsIntegerField = VARIABLES.channelFieldType EQ "integer" OR VARIABLES.channelFieldType EQ "smallint" OR VARIABLES.channelFieldType EQ "bigint"/>
+
+                        <cfswitch expression="#qChannelColumns.column_name#">
+                          <cfcase value="id_youtube_canal"><cfset VARIABLES.channelFieldLabel = "ID do Canal"/></cfcase>
+                          <cfcase value="name"><cfset VARIABLES.channelFieldLabel = "Nome do Canal"/><cfset VARIABLES.channelFieldHelp = "Nome interno para identificar facilmente o canal no Business."/></cfcase>
+                          <cfcase value="id_pagina"><cfset VARIABLES.channelFieldLabel = "ID da Página"/><cfset VARIABLES.channelFieldHelp = "Relaciona o canal com a pagina correspondente dentro do ecossistema Roadrunners."/></cfcase>
+                          <cfcase value="id_usuario"><cfset VARIABLES.channelFieldLabel = "ID do Usuário"/><cfset VARIABLES.channelFieldHelp = "Usuário responsável ou proprietário vinculado ao canal."/></cfcase>
+                          <cfcase value="max_results"><cfset VARIABLES.channelFieldLabel = "Máx. de Resultados"/><cfset VARIABLES.channelFieldHelp = "Quantidade máxima de videos buscados em cada importação."/></cfcase>
+                          <cfcase value="sort"><cfset VARIABLES.channelFieldLabel = "Ordem"/><cfset VARIABLES.channelFieldHelp = "Define a ordem de prioridade ou exibição do canal."/></cfcase>
+                        </cfswitch>
+
+                        <cfif VARIABLES.channelIsDescriptionField>
+                          <cfset VARIABLES.channelFieldLabel = "Descrição"/>
+                          <cfset VARIABLES.channelFieldHelp = "Resumo editorial do canal, propósito ou observações internas."/>
+                          <cfset VARIABLES.channelFieldColClass = "col-12"/>
+                        <cfelseif VARIABLES.channelIsInstagramField>
+                          <cfset VARIABLES.channelFieldLabel = "URL do Instagram"/>
+                          <cfset VARIABLES.channelFieldHelp = "Cole a URL completa do Instagram do canal ou da marca."/>
+                          <cfset VARIABLES.channelFieldColClass = "col-12 col-lg-6"/>
+                        <cfelseif VARIABLES.channelIsUrlField>
+                          <cfset VARIABLES.channelFieldColClass = "col-12 col-lg-6"/>
+                        <cfelseif VARIABLES.channelIsIntegerField>
+                          <cfset VARIABLES.channelFieldColClass = "col-12 col-md-6 col-lg-4"/>
+                        <cfelseif VARIABLES.channelFieldType EQ "boolean">
+                          <cfset VARIABLES.channelFieldColClass = "col-12 col-md-6 col-lg-4"/>
+                        </cfif>
 
                         <cfoutput>
-                          <div class="col-12 <cfif VARIABLES.channelFieldType EQ 'text'>col-lg-12<cfelse>col-md-6 col-lg-4</cfif>">
-                            <label class="form-label text-capitalize">#htmlEditFormat(VARIABLES.channelFieldLabel)#</label>
-                            <cfif VARIABLES.channelFieldType EQ "boolean">
-                              <input type="hidden" name="#VARIABLES.channelFieldName#" value="false"/>
-                              <div class="form-check form-switch pt-2">
-                                <input class="form-check-input" type="checkbox" role="switch" id="#VARIABLES.channelFieldName#" name="#VARIABLES.channelFieldName#" value="true" <cfif IsBoolean(VARIABLES.channelFieldValue) ? VARIABLES.channelFieldValue : ListFindNoCase('true,1,yes,sim', trim(VARIABLES.channelFieldValue))>checked</cfif>>
-                                <label class="form-check-label" for="#VARIABLES.channelFieldName#">Ativo</label>
-                              </div>
-                            <cfelseif VARIABLES.channelFieldType EQ "text" OR (isNumeric(qChannelColumns.character_maximum_length) AND qChannelColumns.character_maximum_length GT 160)>
-                              <textarea class="form-control" name="#VARIABLES.channelFieldName#" rows="4">#htmlEditFormat(VARIABLES.channelFieldValue)#</textarea>
-                            <cfelse>
-                              <input class="form-control" type="text" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#"/>
-                            </cfif>
+                          <div class="#VARIABLES.channelFieldColClass#">
+                            <div class="channel-field-card">
+                              <label class="form-label">#htmlEditFormat(VARIABLES.channelFieldLabel)#</label>
+
+                              <cfif VARIABLES.channelFieldType EQ "boolean">
+                                <input type="hidden" name="#VARIABLES.channelFieldName#" value="false"/>
+                                <div class="form-check form-switch pt-2">
+                                  <input class="form-check-input" type="checkbox" role="switch" id="#VARIABLES.channelFieldName#" name="#VARIABLES.channelFieldName#" value="true" <cfif IsBoolean(VARIABLES.channelFieldValue) ? VARIABLES.channelFieldValue : ListFindNoCase('true,1,yes,sim', trim(VARIABLES.channelFieldValue))>checked</cfif>>
+                                  <label class="form-check-label" for="#VARIABLES.channelFieldName#">Canal ativo para importação e uso</label>
+                                </div>
+                              <cfelseif VARIABLES.channelIsInstagramField>
+                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" placeholder="https://instagram.com/..."/>
+                              <cfelseif VARIABLES.channelIsUrlField>
+                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" placeholder="https://..."/>
+                              <cfelseif VARIABLES.channelIsIntegerField>
+                                <input class="form-control" type="number" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" step="1" inputmode="numeric"/>
+                              <cfelseif VARIABLES.channelIsDescriptionField OR VARIABLES.channelFieldType EQ "text" OR (isNumeric(qChannelColumns.character_maximum_length) AND qChannelColumns.character_maximum_length GT 160)>
+                                <textarea class="form-control" name="#VARIABLES.channelFieldName#" rows="<cfif VARIABLES.channelIsDescriptionField>5<cfelse>4</cfif>" placeholder="<cfif VARIABLES.channelIsDescriptionField>Descreva rapidamente o canal, sua linha editorial ou observações relevantes.</cfif>">#htmlEditFormat(VARIABLES.channelFieldValue)#</textarea>
+                              <cfelse>
+                                <input class="form-control" type="text" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#"/>
+                              </cfif>
+
+                              <cfif len(trim(VARIABLES.channelFieldHelp))>
+                                <div class="channel-field-help mt-2">#htmlEditFormat(VARIABLES.channelFieldHelp)#</div>
+                              </cfif>
+                            </div>
                           </div>
                         </cfoutput>
                       </cfif>
