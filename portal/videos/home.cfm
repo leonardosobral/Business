@@ -62,7 +62,7 @@
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
             <div>
               <h3 class="mb-1">Portal - Videos</h3>
-              <p class="text-muted mb-0">Gerencie os videos importados e a exibicao no portal Roadrunners.</p>
+              <p class="text-muted mb-0">Gerencie os videos importados a partir dos canais de video e a exibicao no portal Roadrunners.</p>
             </div>
             <div class="text-lg-end">
               <div class="small text-muted">Total de itens</div>

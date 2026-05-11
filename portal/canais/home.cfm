@@ -74,8 +74,8 @@
 
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
             <div>
-              <h3 class="mb-1">Portal - Canais do YouTube</h3>
-              <p class="text-muted mb-0">Gerencie os canais usados na importacao automatica de conteudo.</p>
+              <h3 class="mb-1">Portal - Canais de Vídeo</h3>
+              <p class="text-muted mb-0">Gerencie os canais de origem usados na importacao automatica de videos para o portal.</p>
             </div>
             <div class="text-lg-end">
               <div class="small text-muted">Total de canais</div>
@@ -87,7 +87,7 @@
 
           <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
             <div class="alert alert-warning mb-0">
-              Voce nao tem permissao para acessar o gerenciamento de canais do Portal.
+              Voce nao tem permissao para acessar o gerenciamento de canais de video do Portal.
             </div>
           <cfelseif NOT qChannelColumns.recordcount>
             <div class="alert alert-danger mb-0">
