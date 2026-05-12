@@ -140,7 +140,7 @@
                         <cfswitch expression="#qChannelColumns.column_name#">
                           <cfcase value="id_youtube_canal"><cfset VARIABLES.channelFieldLabel = "ID do Canal"/></cfcase>
                           <cfcase value="name"><cfset VARIABLES.channelFieldLabel = "Nome do Canal"/><cfset VARIABLES.channelFieldHelp = "Nome interno para identificar facilmente o canal no Business."/></cfcase>
-                          <cfcase value="id_pagina"><cfset VARIABLES.channelFieldLabel = "ID da Página"/><cfset VARIABLES.channelFieldHelp = "Relaciona o canal com a pagina correspondente dentro do ecossistema Roadrunners."/></cfcase>
+                          <cfcase value="id_pagina"><cfset VARIABLES.channelFieldLabel = "ID da Página"/><cfset VARIABLES.channelFieldHelp = "Relaciona o canal com a pagina correspondente dentro do ecossistema Road Runners."/></cfcase>
                           <cfcase value="id_usuario"><cfset VARIABLES.channelFieldLabel = "ID do Usuário"/><cfset VARIABLES.channelFieldHelp = "Usuário responsável ou proprietário vinculado ao canal."/></cfcase>
                           <cfcase value="max_results"><cfset VARIABLES.channelFieldLabel = "Máx. de Resultados"/><cfset VARIABLES.channelFieldHelp = "Quantidade máxima de videos buscados em cada importação."/></cfcase>
                           <cfcase value="sort"><cfset VARIABLES.channelFieldLabel = "Ordem"/><cfset VARIABLES.channelFieldHelp = "Define a ordem de prioridade ou exibição do canal."/></cfcase>

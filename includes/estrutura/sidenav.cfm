@@ -109,7 +109,7 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/">link-warning</cfif>" href="/notificacoes/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/">link-warning</cfif>" href="/notificacoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
         </li>
 
@@ -179,9 +179,11 @@
         <li class="sidenav-item">
             <a class="sidenav-link" href="/faq/"><i class="fa-solid fa-circle-question fa-fw me-3"></i>FAQ</a>
         </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
-        </li>
+        <cfif isDefined("qPerfil") AND qPerfil.is_admin>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
+            </li>
+        </cfif>
         <li class="sidenav-item">
             <a class="sidenav-link" href="/chat/"><i class="fa-solid fa-message fa-fw me-3"></i>Chat</a>
         </li>

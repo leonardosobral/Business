@@ -7,22 +7,22 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-    <title>RoadRunners Business</title>
+    <title>Road Runners Business</title>
     <link rel="canonical" href="https://business.roadrunners.run" />
-    <meta name="twitter:title" content="RoadRunners Business" />
+    <meta name="twitter:title" content="Road Runners Business" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="RunnerHub é a junção de corredores com conhecimento e própósito para o desenvolvimento inteligente do esporte." />
     <meta name="twitter:image" content="https://business.roadrunners.run/assets/meta_imagem.jpg" />
     <meta name="twitter:site" content="https://business.roadrunners.run" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="RoadRunners Business" />
+    <meta property="og:title" content="Road Runners Business" />
     <meta property="og:description" content="RunnerHub é a junção de corredores com conhecimento e própósito para o desenvolvimento inteligente do esporte." />
     <meta property="og:url" content="https://business.roadrunners.run" />
     <meta property="og:image" content="https://business.roadrunners.run/assets/meta_imagem.jpg" />
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
     <meta name="description" content="RunnerHub é a junção de corredores com conhecimento e própósito para o desenvolvimento inteligente do esporte.">
-    <meta name="author" content="RoadRunners Business">
+    <meta name="author" content="Road Runners Business">
 
 	<!-- 1140px Grid styles for IE -->
 	<!--[if lte IE 9]><link rel="stylesheet" href="lib/css/ie.css" type="text/css" media="screen" /><![endif]-->

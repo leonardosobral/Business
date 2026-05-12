@@ -84,6 +84,11 @@
 
         <div class="card-body">
 
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <a class="btn btn-warning <cfif VARIABLES.template EQ "/notificacoes/">active</cfif>" href="/notificacoes/">Histórico de Notificações</a>
+            <a class="btn btn-outline-secondary <cfif VARIABLES.template EQ "/notificacoes/templates/">active</cfif>" href="/notificacoes/templates/">Templates</a>
+          </div>
+
           <div class="row">
             <div class="col">
                 <h3>Notificações</h3>
@@ -138,4 +143,3 @@
   </div>
 
 </section>
-

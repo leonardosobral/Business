@@ -16,6 +16,7 @@ Este conjunto de documentos serve para:
 - [Arquitetura Geral](/Users/geraldoprotta/IdeaProjects/Business/docs/architecture.md)
 - [Mapa de Módulos](/Users/geraldoprotta/IdeaProjects/Business/docs/modules.md)
 - [Integrações e Dependências](/Users/geraldoprotta/IdeaProjects/Business/docs/integrations.md)
+- [Help Desk](/Users/geraldoprotta/IdeaProjects/Business/docs/helpdesk.md)
 - [Operação e Setup](/Users/geraldoprotta/IdeaProjects/Business/docs/operations.md)
 - [Banco e Entidades](/Users/geraldoprotta/IdeaProjects/Business/docs/data-model.md)
 - [Riscos e Débitos Técnicos](/Users/geraldoprotta/IdeaProjects/Business/docs/risks.md)

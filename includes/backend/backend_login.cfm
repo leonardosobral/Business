@@ -231,16 +231,15 @@
         WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
     </cfquery>
     <cfmail from="Road Runners <contato@roadrunners.run>" to="leonardo.sobral@gmail.com" bcc="contato@roadrunners.run"
-            subject="[ROADRUNNERS] Cadastro concluído no RoadRunners Business" usetls="true"
+            subject="[ROADRUNNERS] Cadastro concluído no Road Runners Business" usetls="true"
             server="smtp.mandrillapp.com" username="RunnerHub" password="md-kHpL53XqZM3olhBw2z1t1w"
             charset="utf-8" type="html" port="587">
         <cfdump var="#VARIABLES.postback#"/>
     </cfmail>
     <!---cfmail from="Road Runners <contato@roadrunners.run>" to="#FORM.email#" bcc="contato@roadrunners.run"
-            subject="[ROADRUNNERS] Cadastro concluído no RoadRunners Business" usetls="true"
+            subject="[ROADRUNNERS] Cadastro concluído no Road Runners Business" usetls="true"
             server="smtp.mandrillapp.com" username="RunnerHub" password="md-kHpL53XqZM3olhBw2z1t1w"
             charset="utf-8" type="html" port="587">
         <!---cfinclude template="../../mif/treinao/email_template.cfm"/--->
     </cfmail---->
 </cfif>
-

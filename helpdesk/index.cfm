@@ -13,7 +13,7 @@
 
 <!--- BACKEND --->
 
-<cfinclude template="../includes/backend/backend_login.cfm"/>
+<cfinclude template="includes/backend.cfm"/>
 
 <!--- HEAD --->
 
@@ -45,4 +45,3 @@
 </body>
 
 </html>
-

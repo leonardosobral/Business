@@ -7,6 +7,8 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Contexto Geral](/Users/geraldoprotta/IdeaProjects/Business/_codex/context.md)
 - [Mapa de Domínios](/Users/geraldoprotta/IdeaProjects/Business/_codex/domain-map.md)
 - [Guia de Edição](/Users/geraldoprotta/IdeaProjects/Business/_codex/editing-guidelines.md)
+- [Contexto Help Desk para Road Runners](/Users/geraldoprotta/IdeaProjects/Business/_codex/helpdesk-roadrunners-context.md)
+- [Contrato Público do Help Desk](/Users/geraldoprotta/IdeaProjects/Business/_codex/helpdesk-public-contract.md)
 - [Mapa de Integrações](/Users/geraldoprotta/IdeaProjects/Business/_codex/integration-map.md)
 - [Checklist para Novas Features](/Users/geraldoprotta/IdeaProjects/Business/_codex/feature-checklist.md)
 
