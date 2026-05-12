@@ -46,6 +46,12 @@
                     <i class="fa-solid fa-newspaper fa-fw me-3"></i><span>Canais de Conteúdo</span>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/">
+                    <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
+                </a>
+            </li>
         </cfif>
 
 
@@ -136,6 +142,21 @@
                 </li>
             </cfoutput>
 
+        </cfif>
+
+
+        <!--- ADMINISTRACAO --->
+
+        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Administração</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/permissoes/">link-warning</cfif>" href="/administracao/permissoes/">
+                    <i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span>
+                </a>
+            </li>
         </cfif>
 
 
