@@ -289,6 +289,10 @@
                           <div class="d-flex flex-wrap gap-2">
                             <a class="btn btn-sm btn-outline-primary" href="./?pagina=#VARIABLES.configPage#&config_editar=#urlEncodedFormat(VARIABLES.treinoConfigPkValue)#">Editar</a>
 
+                            <cfif VARIABLES.treinoConfigHasEvento AND ListFindNoCase(qTreinoConfigs.columnList, "id_evento") AND len(trim(qTreinoConfigs.id_evento[qTreinoConfigs.currentRow]))>
+                              <a class="btn btn-sm btn-outline-info" href="/treinos-config/inscritos/?id_evento=#urlEncodedFormat(qTreinoConfigs.id_evento[qTreinoConfigs.currentRow])#">Inscritos</a>
+                            </cfif>
+
                             <cfif len(trim(VARIABLES.treinoConfigActiveColumn))>
                               <cfset VARIABLES.treinoConfigCurrentStatus = qTreinoConfigs[VARIABLES.treinoConfigActiveColumn][qTreinoConfigs.currentRow]/>
                               <cfset VARIABLES.treinoConfigIsActive = IsBoolean(VARIABLES.treinoConfigCurrentStatus) ? VARIABLES.treinoConfigCurrentStatus : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.treinoConfigCurrentStatus))/>
