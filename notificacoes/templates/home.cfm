@@ -157,6 +157,7 @@
           <div class="notification-nav mb-4">
             <a class="btn btn-outline-secondary <cfif VARIABLES.template EQ "/notificacoes/">active</cfif>" href="/notificacoes/">Histórico de Notificações</a>
             <a class="btn btn-warning <cfif VARIABLES.template EQ "/notificacoes/templates/">active</cfif>" href="/notificacoes/templates/">Templates</a>
+            <a class="btn btn-outline-secondary <cfif VARIABLES.template EQ "/notificacoes/envio/">active</cfif>" href="/notificacoes/envio/">Envio</a>
           </div>
 
           <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>

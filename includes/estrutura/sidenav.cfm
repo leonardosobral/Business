@@ -115,7 +115,7 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/">link-warning</cfif>" href="/notificacoes/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
         </li>
 

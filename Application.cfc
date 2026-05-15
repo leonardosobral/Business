@@ -30,12 +30,32 @@
             output="false"
             hint="Fires when the application is first created.">
 
+        <cfset var system = createObject("java", "java.lang.System")/>
+        <cfset var environment = system.getenv()/>
+        <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : ""/>
+        <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : "https://roadrunners.run/api/push/send.cfm"/>
+        <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : 20/>
+        <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : ""/>
+        <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : ""/>
+        <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : "mailto:contato@runnerhub.run"/>
+
         <!--- APPLICATION VARIABLES --->
         <cfset APPLICATION.codSite = "RH"/>
         <cfset APPLICATION.nomeSite = "Runner Hub"/>
         <cfset APPLICATION.dominio = "runnerhub.run"/>
         <cfset APPLICATION.baseCanonica = "https://runnerhub.run"/>
         <cfset APPLICATION.ga = ""/>
+        <cfset APPLICATION.pushDispatch = {
+            url = len(pushDispatchUrl) ? pushDispatchUrl : "https://roadrunners.run/api/push/send.cfm",
+            secret = len(pushDispatchSecret) ? pushDispatchSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
+            timeoutSeconds = pushDispatchTimeoutSeconds GT 0 ? pushDispatchTimeoutSeconds : 20
+        }/>
+        <cfset APPLICATION.pwaPush = {
+            enabled = (len(pushPublicKey) GT 0 AND len(pushPrivateKey) GT 0),
+            publicKey = pushPublicKey,
+            privateKey = pushPrivateKey,
+            subject = len(pushSubject) ? pushSubject : "mailto:contato@runnerhub.run"
+        }/>
 
         <!--- Return out. --->
         <cfreturn true />

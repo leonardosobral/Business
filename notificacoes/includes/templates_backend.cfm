@@ -58,6 +58,11 @@
                             OR ListFindNoCase(VARIABLES.notificationTemplateFieldValue, "sim")
                             OR ListFindNoCase(VARIABLES.notificationTemplateFieldValue, "on")/>
                     </cfif>
+                    <cfif qNotificationTemplateColumns.column_name EQ "data_publicacao"
+                        AND ListFindNoCase("timestamp without time zone,timestamp with time zone", VARIABLES.notificationTemplateFieldType)
+                        AND (NOT isSimpleValue(VARIABLES.notificationTemplateFieldValue) OR NOT len(trim(VARIABLES.notificationTemplateFieldValue)))>
+                        <cfset VARIABLES.notificationTemplateFieldValue = now()/>
+                    </cfif>
                     <cfif VARIABLES.notificationTemplateFieldType EQ "date"
                         AND isSimpleValue(VARIABLES.notificationTemplateFieldValue)
                         AND Find("T", VARIABLES.notificationTemplateFieldValue)>
@@ -142,6 +147,11 @@
                             OR ListFindNoCase(VARIABLES.notificationTemplateFieldValue, "yes")
                             OR ListFindNoCase(VARIABLES.notificationTemplateFieldValue, "sim")
                             OR ListFindNoCase(VARIABLES.notificationTemplateFieldValue, "on")/>
+                    </cfif>
+                    <cfif qNotificationTemplateColumns.column_name EQ "data_publicacao"
+                        AND ListFindNoCase("timestamp without time zone,timestamp with time zone", VARIABLES.notificationTemplateFieldType)
+                        AND (NOT isSimpleValue(VARIABLES.notificationTemplateFieldValue) OR NOT len(trim(VARIABLES.notificationTemplateFieldValue)))>
+                        <cfset VARIABLES.notificationTemplateFieldValue = now()/>
                     </cfif>
                     <cfif VARIABLES.notificationTemplateFieldType EQ "date"
                         AND isSimpleValue(VARIABLES.notificationTemplateFieldValue)
