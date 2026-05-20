@@ -34,10 +34,22 @@
         <cfset var environment = system.getenv()/>
         <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : ""/>
         <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : "https://roadrunners.run/api/push/send.cfm"/>
+        <cfset var notificationDispatchUrl = structKeyExists(environment, "RR_NOTIFICATION_DISPATCH_URL") ? trim(environment["RR_NOTIFICATION_DISPATCH_URL"]) : ""/>
         <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : 20/>
         <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : ""/>
         <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : ""/>
         <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : "mailto:contato@runnerhub.run"/>
+
+        <cfif NOT len(notificationDispatchUrl)>
+            <cfset notificationDispatchUrl = pushDispatchUrl/>
+        </cfif>
+        <cfif findNoCase("/api/push/send.cfm", notificationDispatchUrl)>
+            <cfset notificationDispatchUrl = replaceNoCase(notificationDispatchUrl, "/api/push/send.cfm", "/api/notifications/integrations/dispatch.cfm", "one")/>
+        <cfelseif findNoCase("/api/push/send-notifications.cfm", notificationDispatchUrl)>
+            <cfset notificationDispatchUrl = replaceNoCase(notificationDispatchUrl, "/api/push/send-notifications.cfm", "/api/notifications/integrations/dispatch.cfm", "one")/>
+        <cfelseif NOT len(notificationDispatchUrl)>
+            <cfset notificationDispatchUrl = "https://roadrunners.run/api/notifications/integrations/dispatch.cfm"/>
+        </cfif>
 
         <!--- APPLICATION VARIABLES --->
         <cfset APPLICATION.codSite = "RH"/>
@@ -47,6 +59,11 @@
         <cfset APPLICATION.ga = ""/>
         <cfset APPLICATION.pushDispatch = {
             url = len(pushDispatchUrl) ? pushDispatchUrl : "https://roadrunners.run/api/push/send.cfm",
+            secret = len(pushDispatchSecret) ? pushDispatchSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
+            timeoutSeconds = pushDispatchTimeoutSeconds GT 0 ? pushDispatchTimeoutSeconds : 20
+        }/>
+        <cfset APPLICATION.notificationDispatch = {
+            url = len(notificationDispatchUrl) ? notificationDispatchUrl : "https://roadrunners.run/api/notifications/integrations/dispatch.cfm",
             secret = len(pushDispatchSecret) ? pushDispatchSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
             timeoutSeconds = pushDispatchTimeoutSeconds GT 0 ? pushDispatchTimeoutSeconds : 20
         }/>

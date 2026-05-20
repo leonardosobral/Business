@@ -119,7 +119,7 @@
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
             <div>
               <h3 class="mb-1">Notificações - Envio</h3>
-              <p class="text-muted mb-0">Selecione um template existente, filtre os destinatários reais do portal e publique a notificação na fila interna.</p>
+              <p class="text-muted mb-0">Selecione um template existente, filtre os destinatários reais do portal e publique o dispatch na API central de notificações do Road Runners.</p>
             </div>
             <div class="text-lg-end">
               <div class="small text-muted">Destinatários encontrados</div>
@@ -137,8 +137,13 @@
 
           <cfif VARIABLES.notificationSendStatus EQ "enviado">
             <div class="alert alert-success">
-              <cfoutput>#LSNumberFormat(VARIABLES.notificationSendTotalSent)#</cfoutput> notificações foram preparadas com sucesso na fila.
+              <cfoutput>#LSNumberFormat(VARIABLES.notificationSendTotalSent)#</cfoutput> notificações foram materializadas com sucesso pela API central.
             </div>
+            <cfif VARIABLES.notificationSendPushStatus EQ "dispatch_requested">
+              <div class="alert alert-info">
+                As notificações web foram materializadas com sucesso e o push foi encaminhado para processamento pelo Road Runners.
+              </div>
+            </cfif>
             <cfif VARIABLES.notificationSendPushStatus EQ "sent">
               <div class="alert alert-info">
                 <cfoutput>
@@ -147,75 +152,37 @@
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "no_active_subscriptions">
               <div class="alert alert-secondary">
-                As notificações web foram salvas, mas nenhum destinatário deste recorte tinha Push ativo no PWA neste ambiente.
+                As notificações foram materializadas, mas nenhum destinatário deste recorte tinha Push ativo no PWA neste ambiente.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "push_disabled">
               <div class="alert alert-secondary">
-                As notificações web foram salvas, mas o Push do PWA não está habilitado neste ambiente do Road Runners.
+                As notificações foram materializadas, mas o Push do PWA não está habilitado neste ambiente do Road Runners.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "scheduled">
               <div class="alert alert-secondary">
-                As notificações web foram agendadas com sucesso. O Push não foi disparado agora porque a publicação está programada para uma data futura.
+                As notificações foram agendadas com sucesso. O Push não foi disparado agora porque a publicação está programada para uma data futura.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "invalid_signature">
               <div class="alert alert-warning">
-                As notificações web foram salvas, mas o Road Runners recusou a autenticação do disparo Push.
+                A API central do Road Runners recusou a autenticação do dispatch.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "expired_signature">
               <div class="alert alert-warning">
-                As notificações web foram salvas, mas a assinatura usada no disparo Push expirou antes da validação.
+                A assinatura usada no dispatch expirou antes da validação.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "invalid_payload">
               <div class="alert alert-warning">
-                As notificações web foram salvas, mas o payload enviado ao Road Runners foi recusado.
+                O payload enviado à API central do Road Runners foi recusado.
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "internal_error">
               <div class="alert alert-warning">
-                As notificações web foram salvas, mas o Road Runners retornou erro interno ao processar o Push.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "http_401">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o endpoint de Push respondeu HTTP 401.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "http_404">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o endpoint de Push não foi encontrado no Road Runners.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "http_500">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o endpoint de Push retornou HTTP 500.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_dispatch_failed">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas nem a ponte HTTP nem o envio direto local conseguiram confirmar o Push.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_vapid_401">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o envio Push local foi rejeitado com HTTP 401. Isso normalmente indica problema nas chaves VAPID configuradas no Business para este ambiente.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_vapid_403">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o envio Push local foi rejeitado com HTTP 403. A subscription ativa foi tratada como inválida e desativada; agora é importante recriá-la no beta antes de testar novamente.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_subscription_404">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas as subscriptions Push encontradas responderam HTTP 404 e foram tratadas como inválidas.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_subscription_410">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas as subscriptions Push encontradas responderam HTTP 410 e foram desativadas por expiração ou revogação.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "local_push_unconfigured">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o ambiente do Business não tem as chaves VAPID configuradas para tentar o envio Push local.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "dispatch_failed">
-              <div class="alert alert-warning">
-                As notificações web foram salvas, mas o disparo do Push não retornou confirmação do Road Runners.
-              </div>
-            <cfelseif VARIABLES.notificationSendPushStatus EQ "not_configured">
-              <div class="alert alert-secondary">
-                As notificações web foram salvas, mas a ponte de Push ainda não está configurada neste ambiente.
+                A API central do Road Runners retornou erro interno ao processar o dispatch.
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+                <cfif len(trim(VARIABLES.notificationSendPushDetail))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                </cfif>
               </div>
             </cfif>
           <cfelseif VARIABLES.notificationSendStatus EQ "sem_destinatarios">
@@ -226,6 +193,25 @@
             <div class="alert alert-danger">A data de publicação informada é inválida.</div>
           <cfelseif VARIABLES.notificationSendStatus EQ "expiracao_invalida">
             <div class="alert alert-danger">A data de expiração informada é inválida.</div>
+          <cfelseif VARIABLES.notificationSendStatus EQ "api_http_401">
+            <div class="alert alert-danger">A API central de notificações respondeu HTTP 401 ao receber o dispatch.</div>
+          <cfelseif VARIABLES.notificationSendStatus EQ "api_http_404">
+            <div class="alert alert-danger">O endpoint de dispatch da API central não foi encontrado no Road Runners.</div>
+          <cfelseif VARIABLES.notificationSendStatus EQ "api_http_500">
+            <div class="alert alert-danger">A API central de notificações retornou HTTP 500 ao processar o dispatch.</div>
+          <cfelseif VARIABLES.notificationSendStatus EQ "api_falhou">
+            <div class="alert alert-danger">
+              O dispatch não foi aceito pela API central do Road Runners.
+              <cfif len(trim(VARIABLES.notificationSendPushStatus))>
+                <span class="d-block small mt-1">Status retornado: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushStatus)#</cfoutput></span>
+              </cfif>
+              <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+              </cfif>
+              <cfif len(trim(VARIABLES.notificationSendPushDetail))>
+                <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+              </cfif>
+            </div>
           </cfif>
 
           <div class="notification-send-card p-4 mb-4">

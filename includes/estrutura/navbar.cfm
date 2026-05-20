@@ -1,3 +1,28 @@
+<style>
+  .business-topbar-notification-menu {
+    width: min(22rem, calc(100vw - 1rem));
+    min-width: 18rem;
+    max-width: calc(100vw - 1rem);
+  }
+
+  .business-topbar-notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .business-topbar-notification-icon {
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+  }
+
+  .business-topbar-notification-text {
+    min-width: 0;
+  }
+</style>
+
 <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top shadow-1" style="background-color: #333333;">
     <!-- Container wrapper -->
     <div class="container-fluid">
@@ -19,13 +44,36 @@
         <ul class="navbar-nav ms-auto d-flex flex-row">
             <!-- Notification dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications"
                    role="button" data-mdb-dropdown-init aria-expanded="false">
                     <i class="fas fa-bell link-secondary"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    <span class="badge rounded-pill badge-notification bg-danger"><cfif isDefined("qNotificacoesNaoLidas") AND qNotificacoesNaoLidas.recordcount>1</cfif></span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Seja bem-vindo!</a></li>
+                <ul class="dropdown-menu dropdown-menu-end business-topbar-notification-menu" aria-labelledby="navbarDropdownNotifications">
+                    <li class="bg-light-subtle"><span class="dropdown-header text-center">Notificações</span></li>
+                    <cfif isDefined("qNotificacoes") AND qNotificacoes.recordcount>
+                        <cfoutput query="qNotificacoes">
+                            <cfset VARIABLES.businessNotificationHref = trim(qNotificacoes.link)/>
+                            <cfif len(VARIABLES.businessNotificationHref)>
+                                <cfif reFindNoCase("^https?://", VARIABLES.businessNotificationHref)>
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.businessNotificationHref/>
+                                <cfelseif left(VARIABLES.businessNotificationHref, 1) EQ "/">
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.roadRunnersBaseUrl & VARIABLES.businessNotificationHref/>
+                                <cfelse>
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.roadRunnersBaseUrl & "/" & VARIABLES.businessNotificationHref/>
+                                </cfif>
+                                <cfset VARIABLES.businessNotificationReadUrl = "/?action=abrir_notificacao&id_notifica=" & qNotificacoes.id_notifica & "&destino=" & urlEncodedFormat(VARIABLES.businessNotificationUrl)/>
+                                <li class="border-top border-1 border-light-subtle">
+                                    <a class="dropdown-item business-topbar-notification-item" href="#VARIABLES.businessNotificationReadUrl#" target="_blank">
+                                        <i class="#len(trim(qNotificacoes.icone)) ? qNotificacoes.icone : 'fa-solid fa-bell'# business-topbar-notification-icon"></i>
+                                        <span class="business-topbar-notification-text">#qNotificacoes.conteudo_notifica#</span>
+                                    </a>
+                                </li>
+                            </cfif>
+                        </cfoutput>
+                    <cfelse>
+                        <li><span class="dropdown-item text-muted">Nenhuma notificação</span></li>
+                    </cfif>
                 </ul>
             </li>
 

@@ -1,5 +1,39 @@
 <!--- DADOS DO USUARIO LOGADO --->
 
+<cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
+
+<cfif isDefined("URL.action")
+    AND URL.action EQ "abrir_notificacao"
+    AND isDefined("COOKIE.id")
+    AND len(trim(COOKIE.id))
+    AND isDefined("URL.id_notifica")
+    AND isNumeric(URL.id_notifica)>
+
+    <cfset VARIABLES.businessNotificationRedirectUrl = isDefined("URL.destino") ? trim(URL.destino) : ""/>
+
+    <cfif len(VARIABLES.businessNotificationRedirectUrl)>
+        <cfif NOT reFindNoCase("^https?://", VARIABLES.businessNotificationRedirectUrl)>
+            <cfif left(VARIABLES.businessNotificationRedirectUrl, 1) EQ "/">
+                <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & VARIABLES.businessNotificationRedirectUrl/>
+            <cfelse>
+                <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & "/" & VARIABLES.businessNotificationRedirectUrl/>
+            </cfif>
+        </cfif>
+    <cfelse>
+        <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & "/"/>
+    </cfif>
+
+    <cfquery>
+        UPDATE tb_notifica
+        SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+        WHERE id_notifica = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_notifica#"/>
+          AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+          AND data_leitura IS NULL
+    </cfquery>
+
+    <cflocation addtoken="false" url="#VARIABLES.businessNotificationRedirectUrl#"/>
+</cfif>
+
 <cfif isDefined("COOKIE.id")>
     <cfquery name="qPerfil">
         SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
@@ -13,6 +47,86 @@
         WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
         AND (is_admin = true or is_partner = true)
     </cfquery>
+    <cfif qPerfil.recordcount>
+        <cfif qPerfil.is_admin>
+            <cftry>
+                <cfquery>
+                    INSERT INTO tb_notifica
+                    (
+                        id_usuario,
+                        id_notifica_template,
+                        data_publicacao,
+                        data_expiracao,
+                        link
+                    )
+                    SELECT setr.id_usuario_responsavel,
+                           10,
+                           cham.updated_at,
+                           cham.updated_at + interval '999 days',
+                           <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
+                    FROM tb_helpdesk_chamados cham
+                    INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
+                    WHERE setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+                      AND cham.id_usuario <> setr.id_usuario_responsavel
+                      AND cham.status IN (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="cliente_respondeu"/>
+                      )
+                      AND COALESCE(
+                        (
+                            SELECT MAX(ntf.data_publicacao)
+                            FROM tb_notifica ntf
+                            WHERE ntf.id_usuario = setr.id_usuario_responsavel
+                              AND ntf.id_notifica_template = 10
+                              AND ntf.link = <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
+                        ),
+                        timestamp '1900-01-01 00:00:00'
+                      ) < cham.updated_at
+                </cfquery>
+            <cfcatch type="any"></cfcatch>
+            </cftry>
+        </cfif>
+
+        <cfquery name="qNotificacoes">
+            SELECT ntf.id_notifica,
+                   ntf.id_usuario,
+                   ntf.data_publicacao,
+                   ntf.data_expiracao,
+                   ntf.data_leitura,
+                   ntf.id_notifica_template,
+                   COALESCE(ntf.link, tpl.link) AS link,
+                   COALESCE(ntf.icone, tpl.icone) AS icone,
+                   COALESCE(ntf.conteudo_notifica, tpl.conteudo_template) AS conteudo_notifica
+            FROM tb_notifica ntf
+            LEFT JOIN tb_notifica_template tpl ON ntf.id_notifica_template = tpl.id_notifica_template
+            WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+            AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            ORDER BY ntf.data_publicacao DESC, ntf.id_notifica DESC
+        </cfquery>
+
+        <cfquery name="qNotificacoesNaoLidas">
+            SELECT ntf.id_notifica
+            FROM tb_notifica ntf
+            WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+            AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
+            AND ntf.data_leitura IS NULL
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            LIMIT 1
+        </cfquery>
+
+        <cfif isDefined("URL.notificacao")>
+            <cfquery>
+                UPDATE tb_notifica
+                SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+                AND data_leitura IS NULL
+            </cfquery>
+        </cfif>
+    <cfelse>
+        <cfset qNotificacoes = queryNew("id_notifica,id_usuario,data_publicacao,data_expiracao,data_leitura,id_notifica_template,link,icone,conteudo_notifica")/>
+        <cfset qNotificacoesNaoLidas = queryNew("id_notifica")/>
+    </cfif>
     <cfquery name="qFornecedor">
         SELECT usrforn.*, forn.nome_fornecedor, forn.tag_fornecedor, forn.tag_tipo
         FROM tb_usuarios_fornecedores usrforn

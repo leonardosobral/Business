@@ -1,3 +1,10 @@
+<cfif NOT isDefined("qPerfil")
+    OR NOT isDefined("qNotificacoes")
+    OR NOT isDefined("qNotificacoesNaoLidas")
+    OR NOT isDefined("VARIABLES.roadRunnersBaseUrl")>
+    <cfinclude template="../backend/backend_login.cfm"/>
+</cfif>
+
 <header >
 
       <!--- Sidenav --->

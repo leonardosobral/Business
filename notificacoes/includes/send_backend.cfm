@@ -5,6 +5,30 @@
     <cflocation addtoken="false" url="/"/>
 </cfif>
 
+<cfscript>
+    function notificationResolveDispatchUrl(required string configuredUrl) {
+        var resolvedUrl = trim(arguments.configuredUrl & "");
+
+        if (!len(resolvedUrl)) {
+            return "https://roadrunners.run/api/notifications/integrations/dispatch.cfm";
+        }
+
+        if (findNoCase("/api/notifications/integrations/dispatch.cfm", resolvedUrl)) {
+            return resolvedUrl;
+        }
+
+        if (findNoCase("/api/push/send.cfm", resolvedUrl)) {
+            return replaceNoCase(resolvedUrl, "/api/push/send.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+        }
+
+        if (findNoCase("/api/push/send-notifications.cfm", resolvedUrl)) {
+            return replaceNoCase(resolvedUrl, "/api/push/send-notifications.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+        }
+
+        return resolvedUrl;
+    }
+</cfscript>
+
 <cfif NOT structKeyExists(REQUEST, "notificationPushHelpersLoaded")>
     <cfscript>
         function notificationPushBase64UrlEncode(required binary valueBytes) {
@@ -371,6 +395,8 @@
 <cfset VARIABLES.notificationSendStatus = trim(isDefined("URL.envio_status") ? URL.envio_status : "")/>
 <cfset VARIABLES.notificationSendTotalSent = (isDefined("URL.envio_total") AND isNumeric(URL.envio_total)) ? int(URL.envio_total) : 0/>
 <cfset VARIABLES.notificationSendPushStatus = trim(isDefined("URL.envio_push_status") ? URL.envio_push_status : "")/>
+<cfset VARIABLES.notificationSendPushMessage = trim(isDefined("URL.envio_push_message") ? URL.envio_push_message : "")/>
+<cfset VARIABLES.notificationSendPushDetail = trim(isDefined("URL.envio_push_detail") ? URL.envio_push_detail : "")/>
 <cfset VARIABLES.notificationSendPushNotifications = (isDefined("URL.envio_push_notifications") AND isNumeric(URL.envio_push_notifications)) ? int(URL.envio_push_notifications) : 0/>
 <cfset VARIABLES.notificationSendPushDeliveries = (isDefined("URL.envio_push_deliveries") AND isNumeric(URL.envio_push_deliveries)) ? int(URL.envio_push_deliveries) : 0/>
 <cfset VARIABLES.notificationSendPushSubscriptions = (isDefined("URL.envio_push_subscriptions") AND isNumeric(URL.envio_push_subscriptions)) ? int(URL.envio_push_subscriptions) : 0/>
@@ -522,6 +548,236 @@
     <cfset VARIABLES.notificationSendTemplateContentValue = len(trim(VARIABLES.notificationSendTemplateContentColumn)) ? qNotificationSendTemplateCurrent[VARIABLES.notificationSendTemplateContentColumn][1] : ""/>
     <cfset VARIABLES.notificationSendTemplateIconValue = len(trim(VARIABLES.notificationSendTemplateIconColumn)) ? qNotificationSendTemplateCurrent[VARIABLES.notificationSendTemplateIconColumn][1] : ""/>
     <cfset VARIABLES.notificationSendTemplateLinkValue = len(trim(VARIABLES.notificationSendTemplateLinkColumn)) ? qNotificationSendTemplateCurrent[VARIABLES.notificationSendTemplateLinkColumn][1] : ""/>
+
+    <cfquery name="qNotificationSendDispatchRecipients">
+        SELECT DISTINCT usr.id AS id_usuario
+        FROM tb_usuarios usr
+        LEFT JOIN LATERAL (
+            SELECT pg.id_pagina,
+                   pg.verificado,
+                   pg.uf
+            FROM tb_paginas pg
+            WHERE pg.id_usuario_cadastro = usr.id
+              AND pg.tag_prefix = 'atleta'
+            ORDER BY pg.verificado DESC, pg.id_pagina DESC
+            LIMIT 1
+        ) pag ON true
+        WHERE 1 = 1
+        <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
+            AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
+        </cfif>
+        <cfif VARIABLES.notificationSendAdmin EQ "true">
+            AND usr.is_admin = true
+        <cfelseif VARIABLES.notificationSendAdmin EQ "false">
+            AND coalesce(usr.is_admin, false) = false
+        </cfif>
+        <cfif VARIABLES.notificationSendStrava EQ "true">
+            AND (usr.strava_id IS NOT NULL OR (usr.strava_code IS NOT NULL AND trim(usr.strava_code) <> ''))
+        <cfelseif VARIABLES.notificationSendStrava EQ "false">
+            AND usr.strava_id IS NULL
+            AND (usr.strava_code IS NULL OR trim(usr.strava_code) = '')
+        </cfif>
+        <cfif VARIABLES.notificationSendDesafio EQ "true">
+            AND EXISTS (
+                SELECT 1
+                FROM desafios des
+                WHERE des.id_usuario = usr.id
+            )
+        <cfelseif VARIABLES.notificationSendDesafio EQ "false">
+            AND NOT EXISTS (
+                SELECT 1
+                FROM desafios des
+                WHERE des.id_usuario = usr.id
+            )
+        </cfif>
+        <cfif VARIABLES.notificationSendAssessoria EQ "true">
+            AND trim(coalesce(usr.assessoria, '')) <> ''
+        <cfelseif VARIABLES.notificationSendAssessoria EQ "false">
+            AND trim(coalesce(usr.assessoria, '')) = ''
+        </cfif>
+        <cfif VARIABLES.notificationSendDev EQ "true">
+            AND usr.is_dev = true
+        <cfelseif VARIABLES.notificationSendDev EQ "false">
+            AND coalesce(usr.is_dev, false) = false
+        </cfif>
+        <cfif VARIABLES.notificationSendPartner EQ "true">
+            AND usr.is_partner = true
+        <cfelseif VARIABLES.notificationSendPartner EQ "false">
+            AND coalesce(usr.is_partner, false) = false
+        </cfif>
+        <cfif VARIABLES.notificationSendGenero EQ "M" OR VARIABLES.notificationSendGenero EQ "F">
+            AND upper(left(coalesce(usr.genero, usr.strava_sex, ''), 1)) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendGenero#"/>
+        </cfif>
+        <cfif VARIABLES.notificationSendCBAT EQ "true">
+            AND trim(coalesce(usr.cbat, '')) <> ''
+        <cfelseif VARIABLES.notificationSendCBAT EQ "false">
+            AND trim(coalesce(usr.cbat, '')) = ''
+        </cfif>
+        <cfif len(trim(VARIABLES.notificationSendPais))>
+            AND usr.pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendPais#"/>
+        </cfif>
+        <cfif len(trim(VARIABLES.notificationSendEstado))>
+            AND coalesce(usr.estado, pag.uf) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendEstado#"/>
+        </cfif>
+        <cfif VARIABLES.notificationSendVerificado EQ "true">
+            AND coalesce(pag.verificado, false) = true
+        <cfelseif VARIABLES.notificationSendVerificado EQ "false">
+            AND coalesce(pag.verificado, false) = false
+        </cfif>
+    </cfquery>
+
+    <cfset VARIABLES.notificationSendDispatchUrl = notificationResolveDispatchUrl(
+        structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch) AND structKeyExists(APPLICATION.notificationDispatch, "url")
+            ? APPLICATION.notificationDispatch.url
+            : (structKeyExists(VARIABLES, "notificationPushDispatchConfig") AND isStruct(VARIABLES.notificationPushDispatchConfig) AND structKeyExists(VARIABLES.notificationPushDispatchConfig, "url")
+                ? VARIABLES.notificationPushDispatchConfig.url
+                : "")
+    )/>
+    <cfset VARIABLES.notificationSendDispatchSecret = structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch) AND structKeyExists(APPLICATION.notificationDispatch, "secret")
+        ? APPLICATION.notificationDispatch.secret
+        : (structKeyExists(VARIABLES, "notificationPushDispatchConfig") AND isStruct(VARIABLES.notificationPushDispatchConfig) AND structKeyExists(VARIABLES.notificationPushDispatchConfig, "secret")
+            ? VARIABLES.notificationPushDispatchConfig.secret
+            : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"))/>
+    <cfset VARIABLES.notificationSendDispatchTimeoutValue = structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch) AND structKeyExists(APPLICATION.notificationDispatch, "timeoutSeconds")
+        ? int(APPLICATION.notificationDispatch.timeoutSeconds)
+        : (structKeyExists(VARIABLES, "notificationPushDispatchConfig") AND isStruct(VARIABLES.notificationPushDispatchConfig) AND structKeyExists(VARIABLES.notificationPushDispatchConfig, "timeoutSeconds")
+            ? int(VARIABLES.notificationPushDispatchConfig.timeoutSeconds)
+            : 20)/>
+    <cfset VARIABLES.notificationSendDispatchPayload = {
+        origin = "business",
+        category = "painel_operacional",
+        id_notifica_template = qNotificationSendTemplateCurrent[VARIABLES.notificationSendTemplatePk][1],
+        conteudo_notifica = VARIABLES.notificationSendTemplateContentValue,
+        icone = VARIABLES.notificationSendTemplateIconValue,
+        link = VARIABLES.notificationSendTemplateLinkValue,
+        data_publicacao = dateTimeFormat(VARIABLES.notificationSendPublicationDate, "yyyy-mm-dd HH:nn:ss"),
+        userIds = listToArray(ValueList(qNotificationSendDispatchRecipients.id_usuario))
+    }/>
+
+    <cfif VARIABLES.notificationSendExpirationHasValue>
+        <cfset VARIABLES.notificationSendDispatchPayload.data_expiracao = dateTimeFormat(VARIABLES.notificationSendExpirationDate, "yyyy-mm-dd HH:nn:ss")/>
+    </cfif>
+
+    <cfif VARIABLES.notificationSendPublicationDate LTE now()>
+        <cfset VARIABLES.notificationSendDispatchPayload.options = { sendPush = true }/>
+    </cfif>
+
+    <cfset VARIABLES.notificationSendDispatchRawBody = serializeJSON(VARIABLES.notificationSendDispatchPayload)/>
+    <cfset VARIABLES.notificationSendDispatchTimestamp = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")/>
+    <cfset VARIABLES.notificationSendDispatchSignature = lCase(hmac(
+        VARIABLES.notificationSendDispatchTimestamp & "." & VARIABLES.notificationSendDispatchRawBody,
+        VARIABLES.notificationSendDispatchSecret,
+        "HmacSHA256"
+    ))/>
+    <cfif VARIABLES.notificationSendDispatchTimeoutValue LTE 0>
+        <cfset VARIABLES.notificationSendDispatchTimeoutValue = 20/>
+    </cfif>
+
+    <cfset VARIABLES.notificationSendDispatchUrlAttempts = [ VARIABLES.notificationSendDispatchUrl ]/>
+    <cfif findNoCase("://roadrunners.run/", VARIABLES.notificationSendDispatchUrl)>
+        <cfset arrayAppend(
+            VARIABLES.notificationSendDispatchUrlAttempts,
+            replaceNoCase(
+                VARIABLES.notificationSendDispatchUrl,
+                "://roadrunners.run/",
+                "://dev.roadrunners.run/",
+                "one"
+            )
+        )/>
+    <cfelseif findNoCase("://beta.roadrunners.run/", VARIABLES.notificationSendDispatchUrl)>
+        <cfset arrayAppend(
+            VARIABLES.notificationSendDispatchUrlAttempts,
+            replaceNoCase(
+                VARIABLES.notificationSendDispatchUrl,
+                "://beta.roadrunners.run/",
+                "://dev.roadrunners.run/",
+                "one"
+            )
+        )/>
+    </cfif>
+
+    <cfloop array="#VARIABLES.notificationSendDispatchUrlAttempts#" item="VARIABLES.notificationSendDispatchUrlAttempt">
+        <cfhttp
+            url="#VARIABLES.notificationSendDispatchUrlAttempt#"
+            method="post"
+            result="notificationSendDispatchHttpResult"
+            timeout="#VARIABLES.notificationSendDispatchTimeoutValue#"
+            throwOnError="false">
+            <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
+            <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#VARIABLES.notificationSendDispatchTimestamp#"/>
+            <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#VARIABLES.notificationSendDispatchSignature#"/>
+            <cfhttpparam type="body" value="#VARIABLES.notificationSendDispatchRawBody#"/>
+        </cfhttp>
+
+        <cfset VARIABLES.notificationSendDispatchHttpStatusCode = structKeyExists(notificationSendDispatchHttpResult, "statusCode") ? trim(notificationSendDispatchHttpResult.statusCode) : ""/>
+        <cfset VARIABLES.notificationSendDispatchHttpStatusPrefix = len(VARIABLES.notificationSendDispatchHttpStatusCode) GTE 3 ? left(VARIABLES.notificationSendDispatchHttpStatusCode, 3) : ""/>
+
+        <cfif VARIABLES.notificationSendDispatchHttpStatusPrefix NEQ "404">
+            <cfbreak/>
+        </cfif>
+    </cfloop>
+
+    <cfset VARIABLES.notificationSendDispatchResponse = {} />
+
+    <cfif structKeyExists(notificationSendDispatchHttpResult, "fileContent")
+        AND len(trim(toString(notificationSendDispatchHttpResult.fileContent)))
+        AND isJSON(toString(notificationSendDispatchHttpResult.fileContent))>
+        <cfset VARIABLES.notificationSendDispatchResponse = deserializeJSON(toString(notificationSendDispatchHttpResult.fileContent))/>
+    </cfif>
+
+    <cfif structKeyExists(VARIABLES.notificationSendDispatchResponse, "success")
+        AND VARIABLES.notificationSendDispatchResponse.success
+        AND structKeyExists(VARIABLES.notificationSendDispatchResponse, "status")
+        AND VARIABLES.notificationSendDispatchResponse.status EQ "dispatched">
+        <cfset VARIABLES.notificationSendPushStatusValue = VARIABLES.notificationSendPublicationDate LTE now() ? "dispatch_requested" : "scheduled"/>
+        <cfset VARIABLES.notificationSendPushNotificationsValue = 0/>
+        <cfset VARIABLES.notificationSendPushDeliveriesValue = 0/>
+        <cfset VARIABLES.notificationSendPushSubscriptionsValue = 0/>
+
+        <cfif VARIABLES.notificationSendPublicationDate LTE now()
+            AND structKeyExists(VARIABLES.notificationSendDispatchResponse, "push_result")
+            AND isStruct(VARIABLES.notificationSendDispatchResponse.push_result)
+            AND structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "status")
+            AND len(trim(VARIABLES.notificationSendDispatchResponse.push_result.status & ""))>
+            <cfset VARIABLES.notificationSendPushStatusValue = trim(VARIABLES.notificationSendDispatchResponse.push_result.status & "")/>
+            <cfset VARIABLES.notificationSendPushNotificationsValue = structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "notificationsProcessed")
+                AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.notificationsProcessed)
+                ? int(VARIABLES.notificationSendDispatchResponse.push_result.notificationsProcessed)
+                : 0/>
+            <cfset VARIABLES.notificationSendPushDeliveriesValue = structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "deliveriesAccepted")
+                AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
+                ? int(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
+                : 0/>
+            <cfset VARIABLES.notificationSendPushSubscriptionsValue = structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "subscriptionsTargeted")
+                AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.subscriptionsTargeted)
+                ? int(VARIABLES.notificationSendDispatchResponse.push_result.subscriptionsTargeted)
+                : 0/>
+        </cfif>
+
+        <cfset VARIABLES.notificationSendPushMessageValue = structKeyExists(VARIABLES.notificationSendDispatchResponse, "push_result")
+            AND isStruct(VARIABLES.notificationSendDispatchResponse.push_result)
+            AND structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "message")
+            ? trim(VARIABLES.notificationSendDispatchResponse.push_result.message & "")
+            : ""/>
+        <cfset VARIABLES.notificationSendPushDetailValue = structKeyExists(VARIABLES.notificationSendDispatchResponse, "push_result")
+            AND isStruct(VARIABLES.notificationSendDispatchResponse.push_result)
+            AND structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "detail")
+            ? trim(VARIABLES.notificationSendDispatchResponse.push_result.detail & "")
+            : ""/>
+        <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=enviado&envio_total=#(structKeyExists(VARIABLES.notificationSendDispatchResponse, 'notifications_created') AND isNumeric(VARIABLES.notificationSendDispatchResponse.notifications_created) ? int(VARIABLES.notificationSendDispatchResponse.notifications_created) : qNotificationSendDispatchRecipients.recordcount)#&envio_push_status=#urlEncodedFormat(VARIABLES.notificationSendPushStatusValue)#&envio_push_message=#urlEncodedFormat(VARIABLES.notificationSendPushMessageValue)#&envio_push_detail=#urlEncodedFormat(VARIABLES.notificationSendPushDetailValue)#&envio_push_notifications=#VARIABLES.notificationSendPushNotificationsValue#&envio_push_deliveries=#VARIABLES.notificationSendPushDeliveriesValue#&envio_push_subscriptions=#VARIABLES.notificationSendPushSubscriptionsValue#"/>
+    </cfif>
+
+    <cfif structKeyExists(VARIABLES.notificationSendDispatchResponse, "status") AND len(trim(VARIABLES.notificationSendDispatchResponse.status & ""))>
+        <cfset VARIABLES.notificationSendDispatchMessageValue = structKeyExists(VARIABLES.notificationSendDispatchResponse, "message") ? trim(VARIABLES.notificationSendDispatchResponse.message & "") : ""/>
+        <cfset VARIABLES.notificationSendDispatchDetailValue = structKeyExists(VARIABLES.notificationSendDispatchResponse, "detail") ? trim(VARIABLES.notificationSendDispatchResponse.detail & "") : ""/>
+        <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=api_falhou&envio_push_status=#urlEncodedFormat(trim(VARIABLES.notificationSendDispatchResponse.status & ''))#&envio_push_message=#urlEncodedFormat(VARIABLES.notificationSendDispatchMessageValue)#&envio_push_detail=#urlEncodedFormat(VARIABLES.notificationSendDispatchDetailValue)#"/>
+    </cfif>
+
+    <cfif len(VARIABLES.notificationSendDispatchHttpStatusPrefix)>
+        <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=api_http_#VARIABLES.notificationSendDispatchHttpStatusPrefix#"/>
+    </cfif>
+
+    <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=api_falhou"/>
 
     <cfquery name="qNotificationSendInsert">
         INSERT INTO tb_notifica (

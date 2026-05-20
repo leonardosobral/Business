@@ -1,5 +1,6 @@
 <cfparam name="URL.pagina" default="1" type="numeric"/>
 <cfset VARIABLES.helpdeskPage = max(1, int(URL.pagina))/>
+<cfset VARIABLES.helpdeskBusinessBaseUrl = "https://" & cgi.http_host/>
 
 <cfif NOT isDefined("COOKIE.id") OR NOT len(trim(COOKIE.id)) OR NOT isNumeric(COOKIE.id)>
     <cflocation addtoken="false" url="/"/>
@@ -55,6 +56,236 @@
 <cfset QuerySetCell(qHelpdeskStats, "total_chamados", 0, 1)/>
 <cfset QuerySetCell(qHelpdeskStats, "total_abertos", 0, 1)/>
 <cfset QuerySetCell(qHelpdeskStats, "total_setores", 0, 1)/>
+
+<cfscript>
+    function helpdeskResolveNotificationDispatchUrl(required string configuredUrl) {
+        var resolvedUrl = trim(arguments.configuredUrl & "");
+
+        if (!len(resolvedUrl)) {
+            return "https://roadrunners.run/api/notifications/integrations/dispatch.cfm";
+        }
+
+        if (findNoCase("/api/notifications/integrations/dispatch.cfm", resolvedUrl)) {
+            return resolvedUrl;
+        }
+
+        if (findNoCase("/api/push/send.cfm", resolvedUrl)) {
+            return replaceNoCase(resolvedUrl, "/api/push/send.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+        }
+
+        if (findNoCase("/api/push/send-notifications.cfm", resolvedUrl)) {
+            return replaceNoCase(resolvedUrl, "/api/push/send-notifications.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+        }
+
+        return resolvedUrl;
+    }
+</cfscript>
+
+<cffunction name="helpdeskDispatchCentralNotification" access="private" returntype="boolean" output="false">
+    <cfargument name="payload" type="struct" required="true"/>
+
+    <cfset var dispatchUrl = "https://roadrunners.run/api/notifications/integrations/dispatch.cfm"/>
+    <cfset var dispatchUrlAttempts = []/>
+    <cfset var dispatchSecret = hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256")/>
+    <cfset var dispatchTimeoutSeconds = 20/>
+    <cfset var rawBody = ""/>
+    <cfset var timestampHeader = ""/>
+    <cfset var signatureHeader = ""/>
+    <cfset var httpResult = ""/>
+    <cfset var responsePayload = {} />
+    <cfset var httpStatusCode = ""/>
+    <cfset var httpStatusPrefix = ""/>
+
+    <cfif structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch)>
+        <cfif structKeyExists(APPLICATION.notificationDispatch, "url") AND len(trim(APPLICATION.notificationDispatch.url))>
+            <cfset dispatchUrl = helpdeskResolveNotificationDispatchUrl(APPLICATION.notificationDispatch.url)/>
+        </cfif>
+        <cfif structKeyExists(APPLICATION.notificationDispatch, "secret") AND len(trim(APPLICATION.notificationDispatch.secret))>
+            <cfset dispatchSecret = trim(APPLICATION.notificationDispatch.secret)/>
+        </cfif>
+        <cfif structKeyExists(APPLICATION.notificationDispatch, "timeoutSeconds") AND val(APPLICATION.notificationDispatch.timeoutSeconds) GT 0>
+            <cfset dispatchTimeoutSeconds = int(APPLICATION.notificationDispatch.timeoutSeconds)/>
+        </cfif>
+    </cfif>
+
+    <cfset rawBody = serializeJSON(arguments.payload)/>
+    <cfset timestampHeader = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")/>
+    <cfset signatureHeader = lCase(hmac(
+        timestampHeader & "." & rawBody,
+        dispatchSecret,
+        "HmacSHA256"
+    ))/>
+
+    <cfset dispatchUrlAttempts = [ dispatchUrl ]/>
+    <cfif findNoCase("://roadrunners.run/", dispatchUrl)>
+        <cfset arrayAppend(
+            dispatchUrlAttempts,
+            replaceNoCase(
+                dispatchUrl,
+                "://roadrunners.run/",
+                "://dev.roadrunners.run/",
+                "one"
+            )
+        )/>
+    <cfelseif findNoCase("://beta.roadrunners.run/", dispatchUrl)>
+        <cfset arrayAppend(
+            dispatchUrlAttempts,
+            replaceNoCase(
+                dispatchUrl,
+                "://beta.roadrunners.run/",
+                "://dev.roadrunners.run/",
+                "one"
+            )
+        )/>
+    </cfif>
+
+    <cftry>
+        <cfloop array="#dispatchUrlAttempts#" item="dispatchUrlAttempt">
+            <cfhttp
+                url="#dispatchUrlAttempt#"
+                method="post"
+                result="httpResult"
+                timeout="#dispatchTimeoutSeconds#"
+                throwOnError="false">
+                <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
+                <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#timestampHeader#"/>
+                <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#signatureHeader#"/>
+                <cfhttpparam type="body" value="#rawBody#"/>
+            </cfhttp>
+
+            <cfset httpStatusCode = structKeyExists(httpResult, "statusCode") ? trim(httpResult.statusCode) : ""/>
+            <cfset httpStatusPrefix = len(httpStatusCode) GTE 3 ? left(httpStatusCode, 3) : ""/>
+
+            <cfif httpStatusPrefix NEQ "404">
+                <cfbreak/>
+            </cfif>
+        </cfloop>
+
+        <cfif structKeyExists(httpResult, "fileContent")
+            AND len(trim(toString(httpResult.fileContent)))
+            AND isJSON(toString(httpResult.fileContent))>
+            <cfset responsePayload = deserializeJSON(toString(httpResult.fileContent))/>
+        </cfif>
+
+        <cfif structKeyExists(responsePayload, "success")
+            AND responsePayload.success
+            AND structKeyExists(responsePayload, "status")
+            AND trim(responsePayload.status & "") EQ "dispatched">
+            <cfreturn true/>
+        </cfif>
+    <cfcatch type="any">
+    </cfcatch>
+    </cftry>
+
+    <cfreturn false/>
+</cffunction>
+
+<cffunction name="helpdeskNotifyResponsibleAdmin" access="private" returntype="boolean" output="false">
+    <cfargument name="ticketId" type="numeric" required="true"/>
+    <cfargument name="setorId" type="numeric" required="true"/>
+    <cfargument name="requesterUserId" type="numeric" required="true"/>
+    <cfargument name="businessBaseUrl" type="string" required="true"/>
+
+    <cfset var qHelpdeskNotificationTarget = ""/>
+    <cfset var notificationPayload = {} />
+    <cfset var notificationPublishedAt = now()/>
+    <cfset var notificationExpiresAt = dateAdd("d", 999, notificationPublishedAt)/>
+
+    <cfset qHelpdeskNotificationTarget = queryExecute(
+        "
+            SELECT setr.id_usuario_responsavel,
+                   setr.nome_setor,
+                   cham.assunto
+            FROM tb_helpdesk_chamados cham
+            INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
+            INNER JOIN tb_usuarios usr ON usr.id = setr.id_usuario_responsavel
+            WHERE cham.id_chamado = :id_chamado
+              AND setr.id_setor = :setor_id
+              AND setr.id_usuario_responsavel IS NOT NULL
+              AND usr.is_admin = true
+            LIMIT 1
+        ",
+        {
+            id_chamado = { value = arguments.ticketId, cfsqltype = "cf_sql_integer" },
+            setor_id = { value = arguments.setorId, cfsqltype = "cf_sql_integer" }
+        },
+        { datasource = "runner_dba" }
+    )/>
+
+    <cfif NOT qHelpdeskNotificationTarget.recordcount>
+        <cfreturn false/>
+    </cfif>
+
+    <cfif val(qHelpdeskNotificationTarget.id_usuario_responsavel) EQ arguments.requesterUserId>
+        <cfreturn false/>
+    </cfif>
+
+    <cfset notificationPayload = {
+        origin = "business_helpdesk",
+        category = "atendimento_admin",
+        conteudo_notifica = left("Novo chamado em " & qHelpdeskNotificationTarget.nome_setor & ": " & qHelpdeskNotificationTarget.assunto, 240),
+        icone = "fa-solid fa-headset",
+        link = arguments.businessBaseUrl & "/helpdesk/?ticket_id=" & arguments.ticketId,
+        data_publicacao = dateTimeFormat(notificationPublishedAt, "yyyy-mm-dd HH:nn:ss"),
+        data_expiracao = dateTimeFormat(notificationExpiresAt, "yyyy-mm-dd HH:nn:ss"),
+        userIds = [ val(qHelpdeskNotificationTarget.id_usuario_responsavel) ],
+        options = {
+            sendPush = true
+        }
+    }/>
+
+    <cfreturn helpdeskDispatchCentralNotification(notificationPayload)/>
+</cffunction>
+
+<cffunction name="helpdeskNotifyTicketOwner" access="private" returntype="boolean" output="false">
+    <cfargument name="ticketId" type="numeric" required="true"/>
+    <cfargument name="actorUserId" type="numeric" required="true"/>
+
+    <cfset var qHelpdeskTicketOwner = ""/>
+    <cfset var notificationPayload = {} />
+    <cfset var notificationPublishedAt = now()/>
+    <cfset var notificationExpiresAt = dateAdd("d", 999, notificationPublishedAt)/>
+
+    <cfset qHelpdeskTicketOwner = queryExecute(
+        "
+            SELECT cham.id_usuario,
+                   cham.assunto,
+                   setr.nome_setor
+            FROM tb_helpdesk_chamados cham
+            INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
+            WHERE cham.id_chamado = :id_chamado
+            LIMIT 1
+        ",
+        {
+            id_chamado = { value = arguments.ticketId, cfsqltype = "cf_sql_integer" }
+        },
+        { datasource = "runner_dba" }
+    )/>
+
+    <cfif NOT qHelpdeskTicketOwner.recordcount>
+        <cfreturn false/>
+    </cfif>
+
+    <cfif val(qHelpdeskTicketOwner.id_usuario) EQ arguments.actorUserId>
+        <cfreturn false/>
+    </cfif>
+
+    <cfset notificationPayload = {
+        origin = "business_helpdesk",
+        category = "atendimento_usuario",
+        conteudo_notifica = left("Atualização no seu chamado em " & qHelpdeskTicketOwner.nome_setor & ": " & qHelpdeskTicketOwner.assunto, 240),
+        icone = "fa-solid fa-headset",
+        link = "/atendimento/?id_chamado=" & arguments.ticketId,
+        data_publicacao = dateTimeFormat(notificationPublishedAt, "yyyy-mm-dd HH:nn:ss"),
+        data_expiracao = dateTimeFormat(notificationExpiresAt, "yyyy-mm-dd HH:nn:ss"),
+        userIds = [ val(qHelpdeskTicketOwner.id_usuario) ],
+        options = {
+            sendPush = true
+        }
+    }/>
+
+    <cfreturn helpdeskDispatchCentralNotification(notificationPayload)/>
+</cffunction>
 
 <cfif VARIABLES.helpdeskTablesReady>
     <cfquery name="qHelpdeskAdmins">
@@ -127,36 +358,53 @@
 
             <cfset VARIABLES.helpdeskTicketProtocol = "HD-" & dateFormat(now(), "yyyymmdd") & "-" & right(replace(createUUID(), "-", "", "all"), 8)/>
 
-            <cfquery name="qHelpdeskTicketInsert">
-                INSERT INTO tb_helpdesk_chamados
-                (protocolo, id_usuario, id_setor, assunto, status, created_at, updated_at)
-                VALUES
-                (
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskTicketProtocol#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_setor_id#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_assunto)#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
-                    <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-                )
-                RETURNING id_chamado
-            </cfquery>
-
-            <cfif qHelpdeskTicketInsert.recordcount>
-                <cfquery>
-                    INSERT INTO tb_helpdesk_mensagens
-                    (id_chamado, id_usuario, mensagem, interno, created_at)
+            <cftransaction>
+                <cfquery name="qHelpdeskTicketInsert">
+                    INSERT INTO tb_helpdesk_chamados
+                    (protocolo, id_usuario, id_setor, assunto, status, created_at, updated_at)
                     VALUES
                     (
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#qHelpdeskTicketInsert.id_chamado#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskTicketProtocol#"/>,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_mensagem)#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_setor_id#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_assunto)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
+                        <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
                         <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
                     )
+                    RETURNING id_chamado
                 </cfquery>
 
+                <cfif qHelpdeskTicketInsert.recordcount>
+                    <cfquery>
+                        INSERT INTO tb_helpdesk_mensagens
+                        (id_chamado, id_usuario, mensagem, interno, created_at)
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qHelpdeskTicketInsert.id_chamado#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_mensagem)#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
+                            <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                        )
+                    </cfquery>
+                </cfif>
+            </cftransaction>
+
+            <cfif qHelpdeskTicketInsert.recordcount>
+                <cftry>
+                    <cfset helpdeskNotifyResponsibleAdmin(
+                        qHelpdeskTicketInsert.id_chamado,
+                        FORM.ticket_setor_id,
+                        qPerfil.id,
+                        VARIABLES.helpdeskBusinessBaseUrl
+                    )/>
+                <cfcatch type="any">
+                </cfcatch>
+                </cftry>
+            </cfif>
+
+            <cfif qHelpdeskTicketInsert.recordcount>
                 <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#qHelpdeskTicketInsert.id_chamado#"/>
             </cfif>
         </cfif>
@@ -169,7 +417,7 @@
         AND len(trim(FORM.ticket_mensagem))>
 
         <cfquery name="qHelpdeskTicketPermission">
-            SELECT id_chamado, id_usuario
+            SELECT id_chamado, id_usuario, id_setor
             FROM tb_helpdesk_chamados
             WHERE id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_id#"/>
             <cfif NOT VARIABLES.helpdeskIsAdmin>
@@ -211,6 +459,24 @@
                     updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
                 WHERE id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_id#"/>
             </cfquery>
+
+            <cftry>
+                <cfif VARIABLES.helpdeskIsAdmin>
+                    <cfset helpdeskNotifyTicketOwner(
+                        FORM.ticket_id,
+                        qPerfil.id
+                    )/>
+                <cfelse>
+                    <cfset helpdeskNotifyResponsibleAdmin(
+                        FORM.ticket_id,
+                        qHelpdeskTicketPermission.id_setor,
+                        qPerfil.id,
+                        VARIABLES.helpdeskBusinessBaseUrl
+                    )/>
+                </cfif>
+            <cfcatch type="any">
+            </cfcatch>
+            </cftry>
         </cfif>
 
         <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#FORM.ticket_id#"/>
