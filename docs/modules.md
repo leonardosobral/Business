@@ -143,6 +143,12 @@ Gestao de campanhas e descontos.
 
 Operacao de notificacoes.
 
+Estado atual:
+
+- templates e historico ainda operam localmente
+- o envio administrativo ja usa a API central do `Road Runners`
+- o topo do `Business` possui inbox propria baseada em `tb_notifica`
+
 ## Lideranca, tempo real e dados de prova
 
 ### `leaderboard`
@@ -188,6 +194,12 @@ O codigo sugere uso em contextos como `runpro` e desafios especificos.
 ### `helpdesk`
 
 - [helpdesk](/Users/geraldoprotta/IdeaProjects/Business/helpdesk)
+
+Estado atual:
+
+- painel administrativo do atendimento
+- respostas e aberturas preservam o fluxo principal mesmo se a notificacao falhar
+- notificacoes operacionais foram migradas para a API central do `Road Runners`
 
 ### `documentacao`
 

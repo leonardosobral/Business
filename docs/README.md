@@ -16,6 +16,7 @@ Este conjunto de documentos serve para:
 - [Arquitetura Geral](/Users/geraldoprotta/IdeaProjects/Business/docs/architecture.md)
 - [Mapa de Módulos](/Users/geraldoprotta/IdeaProjects/Business/docs/modules.md)
 - [Integrações e Dependências](/Users/geraldoprotta/IdeaProjects/Business/docs/integrations.md)
+- [Plataforma de Notificações](/Users/geraldoprotta/IdeaProjects/Business/docs/notifications-platform.md)
 - [Help Desk](/Users/geraldoprotta/IdeaProjects/Business/docs/helpdesk.md)
 - [Push PWA no Business](/Users/geraldoprotta/IdeaProjects/Business/docs/push-pwa-business.md)
 - [Operação e Setup](/Users/geraldoprotta/IdeaProjects/Business/docs/operations.md)

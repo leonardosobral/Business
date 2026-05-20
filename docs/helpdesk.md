@@ -129,6 +129,70 @@ O painel administrativo deve permitir:
 - manter setores ativos/inativos
 - definir usuario admin responsavel por setor
 
+## Notificacoes integradas
+
+O Help Desk do `Business` nao grava mais notificacoes operacionais diretamente em `tb_notifica`.
+
+Agora ele usa o mesmo dispatch central do ecossistema, via API do `Road Runners`.
+
+Arquivo principal:
+
+- [helpdesk/includes/backend.cfm](/Users/geraldoprotta/IdeaProjects/Business/helpdesk/includes/backend.cfm)
+
+Helpers relevantes:
+
+- `helpdeskDispatchCentralNotification(payload)`
+- `helpdeskNotifyResponsibleAdmin(...)`
+- `helpdeskNotifyTicketOwner(...)`
+
+### Regras atuais
+
+- usuario abriu chamado:
+  - notifica o admin responsavel pelo setor
+  - `sendPush = false`
+- usuario respondeu chamado:
+  - notifica o admin responsavel pelo setor
+  - `sendPush = false`
+- admin respondeu chamado:
+  - notifica o dono do chamado
+  - `sendPush = true`
+
+### Canais
+
+#### Admin responsavel
+
+Payload operacional:
+
+- `origin = business_helpdesk`
+- `category = atendimento_admin`
+- link para o ticket no `Business`
+- icone `fa-solid fa-headset`
+- expiracao em `999` dias
+
+#### Dono do chamado
+
+Payload operacional:
+
+- `origin = business_helpdesk`
+- `category = atendimento_usuario`
+- link para `/atendimento/?id_chamado={id}`
+- icone `fa-solid fa-headset`
+- expiracao em `999` dias
+- `sendPush = true`
+
+## Regra tecnica importante
+
+A notificacao e acessoria.
+
+Ou seja:
+
+- falha de dispatch nao deve impedir
+  - gravacao da mensagem
+  - atualizacao do status do chamado
+  - persistencia principal do atendimento
+
+No fluxo atual, os chamados e respostas continuam sendo gravados mesmo que a API central de notificacoes falhe.
+
 ## Observacoes importantes
 
 - O modulo atual do `Business` ja esta preparado para operar sobre essas tabelas.

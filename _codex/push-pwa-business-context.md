@@ -2,12 +2,14 @@
 
 ## Resumo rapido
 
-O modulo de envio de notificacoes do `Business` grava notificacoes em `tb_notifica` e tenta disparar Push da PWA do `Road Runners`.
+O modulo de envio de notificacoes do `Business` nao deve mais ser entendido como gravacao local em `tb_notifica`.
 
-Ordem atual de tentativa:
+Estado atual:
 
-1. ponte HTTP para `Road Runners`
-2. fallback local no proprio `Business`
+1. o `Business` monta o dispatch
+2. chama a API central de notificacoes do `Road Runners`
+3. o `Road Runners` materializa `tb_notifica`
+4. o proprio `Road Runners` tenta o push quando aplicavel
 
 ## Dependencias de ambiente
 
@@ -24,6 +26,7 @@ Alternativamente, sem restart, o projeto aceita:
 Para a ponte HTTP funcionar com autenticacao consistente:
 
 - `RR_HANDOFF_SECRET`
+- `RR_NOTIFICATION_DISPATCH_URL`
 - `RR_PUSH_DISPATCH_URL`
 
 ## Arquivos chave
@@ -35,37 +38,35 @@ Para a ponte HTTP funcionar com autenticacao consistente:
 
 ## Sinais de diagnostico
 
-- `local_push_unconfigured`
-  - chaves VAPID ausentes no ambiente do `Business`
 - `http_404`
   - endpoint remoto errado ou host errado
 - `invalid_signature`
   - segredo de handoff divergente entre `Business` e `Road Runners`
 - `no_active_subscriptions`
   - usuario alvo sem subscription ativa no ambiente
-- `local_dispatch_failed`
-  - o fallback local tentou disparar, mas o servico de push nao aceitou
+- `internal_error`
+  - a API central ou a camada de push do `Road Runners` falhou
 
 ## Causa comum em beta
 
 Quando o teste esta sendo feito em `beta.roadrunners.run`, o `Business` precisa apontar explicitamente para o host beta:
 
 ```env
-RR_PUSH_DISPATCH_URL=https://beta.roadrunners.run/api/push/send.cfm
+RR_NOTIFICATION_DISPATCH_URL=https://beta.roadrunners.run/api/notifications/integrations/dispatch.cfm
 ```
 
 Sem isso, a ponte pode tentar `roadrunners.run` por padrao.
 
 ## Expectativa funcional
 
+- notificacao web deve ser materializada pela API central
 - notificacao web deve aparecer no dropdown do portal
-- Push deve acordar o service worker
-- o PWA busca a notificacao pendente em `/api/push/pending.cfm`
+- Push deve acordar o service worker quando o ambiente tiver subscription valida
 
 ## Nota importante
 
-Se a mensagem no `Business` continuar em `dispatch_failed`, mas nao houver `local_push_unconfigured`, o proximo suspeito deixa de ser configuracao basica e passa a ser:
+Se a mensagem no `Business` vier com `internal_error` ou conflito de unicidade, o foco do diagnostico deve sair do `Business` e ir para o `Road Runners`, especialmente em:
 
-- subscriptions invalidas
-- servico de push recusando o POST
-- diferenca de ambiente `prod/beta/dev` nas subscriptions
+- materializacao central com conflito de unicidade
+- configuracao do push no ambiente alvo
+- subscriptions invalidas no ambiente correto

@@ -157,12 +157,26 @@ Campos minimos:
 - assunto
 - mensagem inicial
 
-## Regra de notificacao futura
+## Regra atual de notificacao
 
-O schema atual nao depende de notificacao automatica, mas o ideal e prever depois:
+O fluxo ja nao e mais apenas hipotetico.
 
-- aviso interno quando um usuario abre chamado
-- aviso ao usuario quando admin responde
+Hoje o `Business` usa a API central de notificacoes do `Road Runners` para:
+
+- avisar o admin responsavel quando um usuario abre chamado
+- avisar o admin responsavel quando um usuario responde chamado
+- avisar o dono do chamado quando um admin responde
+
+Detalhes:
+
+- admin responsavel:
+  - categoria `atendimento_admin`
+  - `sendPush = false`
+  - link para o ticket no `Business`
+- dono do chamado:
+  - categoria `atendimento_usuario`
+  - `sendPush = true`
+  - link para `/atendimento/?id_chamado={id}`
 
 ## Assuncao atual importante
 
