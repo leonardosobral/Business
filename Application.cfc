@@ -39,6 +39,7 @@
         <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : ""/>
         <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : ""/>
         <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : "mailto:contato@runnerhub.run"/>
+        <cfset var contentAdminBaseUrl = structKeyExists(environment, "RR_CONTENT_ADMIN_BASE_URL") ? trim(environment["RR_CONTENT_ADMIN_BASE_URL"]) : "https://conteudo.roadrunners.run"/>
 
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
@@ -72,6 +73,9 @@
             publicKey = pushPublicKey,
             privateKey = pushPrivateKey,
             subject = len(pushSubject) ? pushSubject : "mailto:contato@runnerhub.run"
+        }/>
+        <cfset APPLICATION.contentAdmin = {
+            baseUrl = len(contentAdminBaseUrl) ? contentAdminBaseUrl : "https://conteudo.roadrunners.run"
         }/>
 
         <!--- Return out. --->
