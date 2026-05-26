@@ -48,6 +48,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">
+                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Banners</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/">
                     <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
                 </a>

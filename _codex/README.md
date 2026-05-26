@@ -11,6 +11,7 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Contrato Público do Help Desk](/Users/geraldoprotta/IdeaProjects/Business/_codex/helpdesk-public-contract.md)
 - [Mapa de Integrações](/Users/geraldoprotta/IdeaProjects/Business/_codex/integration-map.md)
 - [Contexto Plataforma de Notificações](/Users/geraldoprotta/IdeaProjects/Business/_codex/notifications-platform-context.md)
+- [Contexto Portal Banners](/Users/geraldoprotta/IdeaProjects/Business/_codex/portal-banners-context.md)
 - [Contexto Push PWA no Business](/Users/geraldoprotta/IdeaProjects/Business/_codex/push-pwa-business-context.md)
 - [Checklist para Novas Features](/Users/geraldoprotta/IdeaProjects/Business/_codex/feature-checklist.md)
 

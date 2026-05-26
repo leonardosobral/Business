@@ -138,6 +138,7 @@ Para a aplicacao funcionar fora do repositorio, o ambiente precisa oferecer:
 Ha integracao conceitual e agora tambem operacional com o repositorio News:
 
 - a area [`portal/conteudo-canais`](/Users/geraldoprotta/IdeaProjects/Business/portal/conteudo-canais) governa a exibicao de canais vindos de `news.tb_content_types`
+- a area [`portal/banners`](/Users/geraldoprotta/IdeaProjects/Business/portal/banners) expoe uma API publica para entrega e tracking de banners consumidos por outros sites da plataforma
 
 Campos esperados:
 
@@ -148,3 +149,6 @@ Campos esperados:
 Script auxiliar:
 
 - [portal/conteudo-canais/news_tb_content_types_portal_flags.sql](/Users/geraldoprotta/IdeaProjects/Business/portal/conteudo-canais/news_tb_content_types_portal_flags.sql)
+- [portal/banners/portal_banner_schema.sql](/Users/geraldoprotta/IdeaProjects/Business/portal/banners/portal_banner_schema.sql)
+- [api/portal/banners/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/index.cfm)
+- [api/portal/banners/click.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/click.cfm)

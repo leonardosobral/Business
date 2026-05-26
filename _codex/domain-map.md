@@ -74,6 +74,10 @@ Arquivos chave:
 - [portal/includes/channels_backend.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/includes/channels_backend.cfm)
 - [portal/conteudo-canais/home.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/conteudo-canais/home.cfm)
 - [portal/includes/content_channels_backend.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/includes/content_channels_backend.cfm)
+- [portal/banners/home.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/banners/home.cfm)
+- [portal/includes/banner_management_backend.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/includes/banner_management_backend.cfm)
+- [api/portal/banners/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/index.cfm)
+- [api/portal/banners/click.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/click.cfm)
 
 ## Dominio: treinos
 

@@ -106,6 +106,18 @@ Novo controle de canais editoriais do repositório News, baseado em `news.tb_con
 - destaque na home
 - destaque na sessao Noticias
 
+### `portal/banners`
+
+- [portal/banners](/Users/geraldoprotta/IdeaProjects/Business/portal/banners)
+- [api/portal/banners](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners)
+
+Gerenciador de banners visuais da plataforma, com:
+
+- upload de criativos `jpg`, `png` e `gif`
+- segmentacao por `canal` e `local_layout`
+- API publica para entrega de banner elegivel
+- tracking de impressoes e cliques
+
 ## Marketing e relacionamento
 
 ### `crm`
