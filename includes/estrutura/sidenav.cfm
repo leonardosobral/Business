@@ -83,15 +83,6 @@
                 <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
         </li>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/fornecedores/">
-                <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/" OR VARIABLES.template EQ "/treinos-config/inscritos/">link-warning</cfif>" href="/treinos-config/">
-                <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de Treinos</span></a>
-        </li>
 
 
         <!--- MARKETING --->
@@ -103,16 +94,6 @@
         <li class="sidenav-item">
             <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/emailmkt/">link-warning</cfif>" href="/emailmkt/">
-                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
-        </li>
-
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/crm/">link-warning</cfif>" href="/crm/">
-                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>CRM</span></a>
         </li>
 
         <li class="sidenav-item">
@@ -203,20 +184,53 @@
         <li class="sidenav-item">
             <a class="sidenav-link" href="/documentacao/"><i class="fa-solid fa-book fa-fw me-3"></i><span>Documentação</span></a>
         </li>
+
         <li class="sidenav-item">
             <a class="sidenav-link" href="/faq/"><i class="fa-solid fa-circle-question fa-fw me-3"></i>FAQ</a>
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Suporte</a>
         </li>
-        <cfif isDefined("qPerfil") AND qPerfil.is_admin>
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
-            </li>
-        </cfif>
+
+        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+
         <li class="sidenav-item">
-            <a class="sidenav-link" href="/chat/"><i class="fa-solid fa-message fa-fw me-3"></i>Chat</a>
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
         </li>
+
+        </cfif>
+
+
+        <!--- DEV --->
+
+        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">DEV</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/fornecedores/">
+                    <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span></a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/emailmkt/">link-warning</cfif>" href="/emailmkt/">
+                    <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/crm/">link-warning</cfif>" href="/crm/">
+                    <i class="fa-solid fa-rocket fa-fw me-3"></i><span>CRM</span></a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/" OR VARIABLES.template EQ "/treinos-config/inscritos/">link-warning</cfif>" href="/treinos-config/">
+                    <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de Treinos</span></a>
+            </li>
+
+        </cfif>
+
 
     </ul>
 
