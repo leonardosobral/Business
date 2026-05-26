@@ -122,6 +122,8 @@
 
 <!--- WIDGETS --->
 
+<cfset VARIABLES.adsEventosFornecedorIds = qEventosFornecedor.recordcount ? ValueList(qEventosFornecedor.id_evento) : "0"/>
+
 <cfquery name="qAdValorTotal">
     SELECT sum(valor_ad) as total
     FROM tb_ad_log log
@@ -131,7 +133,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdValorMedio">
@@ -143,7 +145,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountViews">
@@ -155,7 +157,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountClicks">
@@ -167,7 +169,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
 </cfquery>
 
 <cfquery name="qAdCountAds">
@@ -178,7 +180,7 @@
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
 </cfquery>
 
 
@@ -253,7 +255,7 @@
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
     <cfif NOT qPerfil.is_admin>
         AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
     </cfif>
 </cfquery>
 

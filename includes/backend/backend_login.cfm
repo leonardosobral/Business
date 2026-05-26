@@ -133,6 +133,7 @@
         INNER JOIN tb_fornecedores forn ON usrforn.id_fornecedor = forn.id_fornecedor
         WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
     </cfquery>
+    <cfset qEventosFornecedor = queryNew("id_evento")/>
     <cfif qFornecedor.recordcount>
     <cfquery name="qEventosFornecedor">
         SELECT id_evento

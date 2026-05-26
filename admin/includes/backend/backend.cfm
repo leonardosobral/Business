@@ -1,3 +1,5 @@
+<cfset VARIABLES.adminEventosFornecedorIds = qEventosFornecedor.recordcount ? ValueList(qEventosFornecedor.id_evento) : "0"/>
+
 <cfquery name="qEventosBase" cachedwithin="#CreateTimeSpan(0, 0, 0, 5)#">
     SELECT evt.*,
     <cfif URL.preset NEQ "futuros">
@@ -62,7 +64,7 @@
         </cfif>
     </cfif--->
     <!---cfif NOT qPerfil.is_admin--->
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adminEventosFornecedorIds#" list="true"/>)
     <!---/cfif--->
 </cfquery>
 

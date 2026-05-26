@@ -1,4 +1,16 @@
-<cfset VARIABLES.permissionsShowForm = qPermissionUserEdit.recordcount OR (isDefined("URL.user_novo") AND URL.user_novo)/>
+<cfset VARIABLES.permissionsShowForm = qPermissionUserEdit.recordcount OR (isDefined("URL.user_novo") AND URL.user_novo) OR len(trim(VARIABLES.permissionsSaveErrorMessage))/>
+<cfset VARIABLES.permissionsUsingPostedState = len(trim(VARIABLES.permissionsSaveErrorMessage)) AND isDefined("FORM.permissions_action") AND FORM.permissions_action EQ "salvar"/>
+<cfset VARIABLES.permissionsFormIsAdmin = VARIABLES.permissionsUsingPostedState ? (isDefined("FORM.permissions_is_admin") AND FORM.permissions_is_admin EQ "true") : (qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_admin)/>
+<cfset VARIABLES.permissionsFormIsDev = VARIABLES.permissionsUsingPostedState ? (isDefined("FORM.permissions_is_dev") AND FORM.permissions_is_dev EQ "true") : (qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_dev)/>
+<cfset VARIABLES.permissionsFormIsPartner = VARIABLES.permissionsUsingPostedState ? (isDefined("FORM.permissions_is_partner") AND FORM.permissions_is_partner EQ "true") : (qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_partner)/>
+<cfset VARIABLES.permissionsEditVerified = qPermissionUserEdit.recordcount AND (IsBoolean(qPermissionUserEdit.verificado) ? qPermissionUserEdit.verificado : ListFindNoCase("1,true,yes,on", trim(qPermissionUserEdit.verificado)) GT 0)/>
+<cfset VARIABLES.permissionsFormIsVerified = VARIABLES.permissionsUsingPostedState ? (isDefined("FORM.permissions_is_verified") AND FORM.permissions_is_verified EQ "true") : VARIABLES.permissionsEditVerified/>
+<cfset VARIABLES.permissionSelectedCompanies = []/>
+<cfif VARIABLES.permissionsUsingPostedState AND isDefined("FORM.permissions_company_ids") AND len(trim(FORM.permissions_company_ids))>
+  <cfset VARIABLES.permissionSelectedCompanies = ListToArray(FORM.permissions_company_ids)/>
+<cfelseif qPermissionUserEdit.recordcount AND len(trim(qPermissionUserEdit.company_ids))>
+  <cfset VARIABLES.permissionSelectedCompanies = ListToArray(qPermissionUserEdit.company_ids)/>
+</cfif>
 
 <style>
   .permissions-table td,
@@ -32,6 +44,43 @@
   .permissions-form-card {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 1rem;
+  }
+
+  .permissions-company-select-hidden {
+    display: none;
+  }
+
+  .permissions-company-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 38px;
+    padding: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.5rem;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .permissions-company-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(255,193,7,0.12);
+    border: 1px solid rgba(255,193,7,0.35);
+  }
+
+  .permissions-company-chip button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .permissions-company-empty {
+    color: var(--bs-secondary-color);
   }
 
   @media (max-width: 991.98px) {
@@ -81,6 +130,12 @@
                 <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.permissionsPage#">Fechar</a></cfoutput>
               </div>
 
+              <cfif len(trim(VARIABLES.permissionsSaveErrorMessage))>
+                <div class="alert alert-danger" role="alert">
+                  <cfoutput>#htmlEditFormat(VARIABLES.permissionsSaveErrorMessage)#</cfoutput>
+                </div>
+              </cfif>
+
               <cfif NOT qPermissionUserEdit.recordcount>
                 <cfoutput>
                   <form method="get" action="./" class="mb-4">
@@ -123,6 +178,11 @@
                           <cfoutput>Permissões correlacionadas: #htmlEditFormat(qPermissionUserEdit.permission_types)# · #htmlEditFormat(qPermissionUserEdit.permission_tags)#</cfoutput>
                         </div>
                       </cfif>
+                      <cfif len(trim(qPermissionUserEdit.company_names))>
+                        <div class="small text-muted mt-2">
+                          <cfoutput>Empresas vinculadas: #htmlEditFormat(qPermissionUserEdit.company_names)#</cfoutput>
+                        </div>
+                      </cfif>
                     <cfelse>
                       <input type="hidden" name="permissions_page_id" id="permissions_page_id" value=""/>
                       <select class="form-select" name="permissions_user_id" required>
@@ -144,24 +204,24 @@
                   <div class="col-12 col-lg-3">
                     <label class="form-label d-block">ADMIN</label>
                     <select class="form-select" name="permissions_is_admin">
-                      <option value="true" <cfif qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_admin>selected</cfif>>Ativo</option>
-                      <option value="false" <cfif NOT qPermissionUserEdit.recordcount OR NOT qPermissionUserEdit.is_admin>selected</cfif>>Inativo</option>
+                      <option value="true" <cfif VARIABLES.permissionsFormIsAdmin>selected</cfif>>Ativo</option>
+                      <option value="false" <cfif NOT VARIABLES.permissionsFormIsAdmin>selected</cfif>>Inativo</option>
                     </select>
                   </div>
 
                   <div class="col-12 col-lg-3">
                     <label class="form-label d-block">DEV</label>
                     <select class="form-select" name="permissions_is_dev">
-                      <option value="true" <cfif qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_dev>selected</cfif>>Ativo</option>
-                      <option value="false" <cfif NOT qPermissionUserEdit.recordcount OR NOT qPermissionUserEdit.is_dev>selected</cfif>>Inativo</option>
+                      <option value="true" <cfif VARIABLES.permissionsFormIsDev>selected</cfif>>Ativo</option>
+                      <option value="false" <cfif NOT VARIABLES.permissionsFormIsDev>selected</cfif>>Inativo</option>
                     </select>
                   </div>
 
                   <div class="col-12 col-lg-3">
                     <label class="form-label d-block">PARTNER</label>
                     <select class="form-select" name="permissions_is_partner">
-                      <option value="true" <cfif qPermissionUserEdit.recordcount AND qPermissionUserEdit.is_partner>selected</cfif>>Ativo</option>
-                      <option value="false" <cfif NOT qPermissionUserEdit.recordcount OR NOT qPermissionUserEdit.is_partner>selected</cfif>>Inativo</option>
+                      <option value="true" <cfif VARIABLES.permissionsFormIsPartner>selected</cfif>>Ativo</option>
+                      <option value="false" <cfif NOT VARIABLES.permissionsFormIsPartner>selected</cfif>>Inativo</option>
                     </select>
                   </div>
 
@@ -169,15 +229,49 @@
                     <label class="form-label d-block">VERIFIED</label>
                     <cfif qPermissionUserEdit.recordcount AND len(trim(qPermissionUserEdit.id_pagina))>
                       <select class="form-select" name="permissions_is_verified">
-                        <option value="true" <cfif qPermissionUserEdit.verificado>selected</cfif>>Ativo</option>
-                        <option value="false" <cfif NOT qPermissionUserEdit.verificado>selected</cfif>>Inativo</option>
+                        <option value="true" <cfif VARIABLES.permissionsFormIsVerified>selected</cfif>>Ativo</option>
+                        <option value="false" <cfif NOT VARIABLES.permissionsFormIsVerified>selected</cfif>>Inativo</option>
                       </select>
                     <cfelse>
                       <select class="form-select" name="permissions_is_verified">
-                        <option value="true">Ativo</option>
-                        <option value="false" selected>Inativo</option>
+                        <option value="true" <cfif VARIABLES.permissionsFormIsVerified>selected</cfif>>Ativo</option>
+                        <option value="false" <cfif NOT VARIABLES.permissionsFormIsVerified>selected</cfif>>Inativo</option>
                       </select>
                       <div class="small text-muted mt-2">Na inclusão nova, o status será aplicado se o usuário selecionado tiver página vinculada.</div>
+                    </cfif>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">Empresas vinculadas</label>
+                    <cfif qPermissionCompaniesList.recordcount>
+                      <div class="row g-2">
+                        <div class="col-12 col-lg-9">
+                          <select class="form-select" id="permissions_company_picker">
+                            <option value="">Selecione uma empresa para adicionar</option>
+                            <cfoutput query="qPermissionCompaniesList">
+                              <option value="#qPermissionCompaniesList.id_fornecedor#">
+                                #htmlEditFormat(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #htmlEditFormat(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#htmlEditFormat(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
+                              </option>
+                            </cfoutput>
+                          </select>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                          <button class="btn btn-outline-warning w-100" type="button" id="permissions_company_add">Adicionar</button>
+                        </div>
+                      </div>
+
+                      <select class="permissions-company-select-hidden" id="permissions_company_ids" name="permissions_company_ids" multiple size="8">
+                        <cfoutput query="qPermissionCompaniesList">
+                          <cfset VARIABLES.permissionCompanySelected = arrayFind(VARIABLES.permissionSelectedCompanies, qPermissionCompaniesList.id_fornecedor) GT 0/>
+                          <option value="#qPermissionCompaniesList.id_fornecedor#"<cfif VARIABLES.permissionCompanySelected> selected</cfif>>
+                            #htmlEditFormat(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #htmlEditFormat(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#htmlEditFormat(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
+                          </option>
+                        </cfoutput>
+                      </select>
+                      <div class="permissions-company-list mt-2" id="permissions_company_list"></div>
+                      <div class="small text-muted mt-2">Selecione uma empresa e clique em adicionar. A lista abaixo mostra os vínculos que serão salvos.</div>
+                    <cfelse>
+                      <div class="form-control bg-body-tertiary text-muted d-flex align-items-center" style="min-height: 38px;">Nenhuma empresa cadastrada em fornecedores.</div>
                     </cfif>
                   </div>
                 </div>
@@ -201,6 +295,7 @@
                   <th>DEV</th>
                   <th>PARTNER</th>
                   <th>VERIFIED</th>
+                  <th>Empresas</th>
                   <th>Permissões</th>
                   <th class="permissions-actions-cell">Ações</th>
                 </tr>
@@ -228,6 +323,18 @@
                         <span class="badge <cfif VARIABLES.permissionUserVerified>badge-success<cfelse>badge-secondary</cfif>"><cfif VARIABLES.permissionUserVerified>Ativo<cfelse>Inativo</cfif></span>
                       </td>
                       <td class="permissions-scope-cell">
+                        <cfif len(trim(qPermissionUsers.company_names))>
+                          <div class="small fw-semibold">#htmlEditFormat(qPermissionUsers.company_names)#</div>
+                          <cfif len(trim(qPermissionUsers.company_types)) OR len(trim(qPermissionUsers.company_tags))>
+                            <div class="small text-muted">
+                              <cfif len(trim(qPermissionUsers.company_types))>#htmlEditFormat(qPermissionUsers.company_types)#</cfif><cfif len(trim(qPermissionUsers.company_types)) AND len(trim(qPermissionUsers.company_tags))> · </cfif><cfif len(trim(qPermissionUsers.company_tags))>#htmlEditFormat(qPermissionUsers.company_tags)#</cfif>
+                            </div>
+                          </cfif>
+                        <cfelse>
+                          <span class="text-muted small">-</span>
+                        </cfif>
+                      </td>
+                      <td class="permissions-scope-cell">
                         <cfif len(trim(qPermissionUsers.permission_tags))>
                           <div class="small fw-semibold"><cfif len(trim(qPermissionUsers.permission_types))>#htmlEditFormat(qPermissionUsers.permission_types)#<cfelse>Tag</cfif></div>
                           <div class="small text-muted">#htmlEditFormat(qPermissionUsers.permission_tags)#</div>
@@ -249,7 +356,7 @@
                   </cfoutput>
                 <cfelse>
                   <tr>
-                    <td colspan="8" class="text-center text-muted py-4">Nenhum usuário com status especial cadastrado.</td>
+                    <td colspan="9" class="text-center text-muted py-4">Nenhum usuário com status especial cadastrado.</td>
                   </tr>
                 </cfif>
               </tbody>
@@ -265,6 +372,7 @@
                   <th>Nome</th>
                   <th>PARTNER</th>
                   <th>VERIFIED</th>
+                  <th>Empresas</th>
                   <th>Permissões</th>
                   <th class="permissions-actions-cell">Ações</th>
                 </tr>
@@ -284,6 +392,18 @@
                       </td>
                       <td class="permissions-cell">
                         <span class="badge <cfif VARIABLES.partnerUserVerified>badge-success<cfelse>badge-secondary</cfif>"><cfif VARIABLES.partnerUserVerified>Ativo<cfelse>Inativo</cfif></span>
+                      </td>
+                      <td class="permissions-scope-cell">
+                        <cfif len(trim(qPartnerUsers.company_names))>
+                          <div class="small fw-semibold">#htmlEditFormat(qPartnerUsers.company_names)#</div>
+                          <cfif len(trim(qPartnerUsers.company_types)) OR len(trim(qPartnerUsers.company_tags))>
+                            <div class="small text-muted">
+                              <cfif len(trim(qPartnerUsers.company_types))>#htmlEditFormat(qPartnerUsers.company_types)#</cfif><cfif len(trim(qPartnerUsers.company_types)) AND len(trim(qPartnerUsers.company_tags))> · </cfif><cfif len(trim(qPartnerUsers.company_tags))>#htmlEditFormat(qPartnerUsers.company_tags)#</cfif>
+                            </div>
+                          </cfif>
+                        <cfelse>
+                          <span class="text-muted small">-</span>
+                        </cfif>
                       </td>
                       <td class="permissions-scope-cell">
                         <cfif len(trim(qPartnerUsers.permission_tags))>
@@ -307,7 +427,7 @@
                   </cfoutput>
                 <cfelse>
                   <tr>
-                    <td colspan="6" class="text-center text-muted py-4">Nenhum usuário partner cadastrado.</td>
+                    <td colspan="7" class="text-center text-muted py-4">Nenhum usuário partner cadastrado.</td>
                   </tr>
                 </cfif>
               </tbody>
@@ -318,6 +438,77 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const companySelect = document.getElementById('permissions_company_ids');
+    const companyPicker = document.getElementById('permissions_company_picker');
+    const companyAddButton = document.getElementById('permissions_company_add');
+    const companyList = document.getElementById('permissions_company_list');
+
+    if (!companySelect || !companyPicker || !companyAddButton || !companyList) {
+      return;
+    }
+
+    function renderCompanyList() {
+      const selectedOptions = Array.from(companySelect.options).filter((option) => option.selected);
+      companyList.innerHTML = '';
+
+      if (!selectedOptions.length) {
+        const emptyState = document.createElement('div');
+        emptyState.className = 'permissions-company-empty small';
+        emptyState.textContent = '-';
+        companyList.appendChild(emptyState);
+        return;
+      }
+
+      selectedOptions.forEach((option) => {
+        const chip = document.createElement('div');
+        chip.className = 'permissions-company-chip';
+
+        const label = document.createElement('span');
+        label.textContent = option.textContent.trim();
+        chip.appendChild(label);
+
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.setAttribute('aria-label', 'Remover empresa');
+        removeButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        removeButton.addEventListener('click', function () {
+          option.selected = false;
+          renderCompanyList();
+        });
+
+        chip.appendChild(removeButton);
+        companyList.appendChild(chip);
+      });
+    }
+
+    companyAddButton.addEventListener('click', function () {
+      const companyId = companyPicker.value;
+
+      if (!companyId) {
+        return;
+      }
+
+      const hiddenOption = Array.from(companySelect.options).find((option) => option.value === companyId);
+      if (hiddenOption) {
+        hiddenOption.selected = true;
+      }
+
+      companyPicker.value = '';
+      renderCompanyList();
+    });
+
+    companyPicker.addEventListener('change', function () {
+      if (companyPicker.value) {
+        companyAddButton.disabled = false;
+      }
+    });
+
+    renderCompanyList();
+  })();
+</script>
 
 <script>
   (function () {
