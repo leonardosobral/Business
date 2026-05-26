@@ -1,6 +1,11 @@
 <!--- VARIAVEIS DA APLICACAO --->
 
 <cfset VARIABLES.devMode = false/>
+<cfset VARIABLES.adminIsAdmin = false/>
+
+<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+    <cfset VARIABLES.adminIsAdmin = true/>
+</cfif>
 
 <!--- URL PARAMS --->
 
@@ -9,9 +14,19 @@
 <cfparam name="URL.cidade" default=""/>
 
 <cfparam name="URL.preset" default=""/>
-<cfparam name="URL.periodo" default="2025"/>
+<cfif NOT structKeyExists(URL, "periodo")>
+    <cfif VARIABLES.adminIsAdmin>
+        <cfset URL.periodo = "2026"/>
+    <cfelse>
+        <cfset URL.periodo = ""/>
+    </cfif>
+</cfif>
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.sessao" default="dados"/>
+
+<cfif NOT VARIABLES.adminIsAdmin AND listFindNoCase("configuracoes,or", URL.sessao)>
+    <cfset URL.sessao = "dados"/>
+</cfif>
 
 <cfparam name="URL.id_evento" default=""/>
 <cfparam name="URL.agregador_tag" default=""/>

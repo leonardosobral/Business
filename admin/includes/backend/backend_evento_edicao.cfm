@@ -1,5 +1,32 @@
 <!--- EDITAR DADOS DO EVENTO --->
 
+<cfset VARIABLES.adminRestrictByFornecedor = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
+<cfset VARIABLES.adminEventosFornecedorIds = "0"/>
+
+<cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount>
+    <cfset VARIABLES.adminEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+</cfif>
+
+<cfif VARIABLES.adminRestrictByFornecedor
+    AND isDefined("URL.id_evento")
+    AND len(trim(URL.id_evento))
+    AND isNumeric(URL.id_evento)
+    AND val(URL.id_evento) NEQ 0
+    AND NOT listFind(VARIABLES.adminEventosFornecedorIds, URL.id_evento)>
+
+    <cflocation addtoken="false" url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
+</cfif>
+
+<cfif VARIABLES.adminRestrictByFornecedor
+    AND isDefined("FORM.id_evento")
+    AND len(trim(FORM.id_evento))
+    AND isNumeric(FORM.id_evento)
+    AND val(FORM.id_evento) NEQ 0
+    AND NOT listFind(VARIABLES.adminEventosFornecedorIds, FORM.id_evento)>
+
+    <cflocation addtoken="false" url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
+</cfif>
+
 <cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_basico" AND isDefined("FORM.nome_evento") AND Len(trim(FORM.nome_evento))>
 
     <cfquery name="qCidade">
@@ -75,7 +102,7 @@
 
 <!--- EDITAR CONFIGURACOES DO EVENTO --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_configuracoes" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento))>
+<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_configuracoes" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
     <cfquery>
         UPDATE tb_evento_corridas
@@ -101,7 +128,7 @@
 
 <!--- EDITAR CONFIGURACOES DO OR (RESULTADOS) --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_or" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento))>
+<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_or" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
     <cfquery>
         UPDATE tb_evento_corridas
@@ -159,7 +186,7 @@
 
 <!--- EDITAR AGRAGADORES --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_agregadores" AND isDefined("FORM.agregador_tag") AND Len(trim(FORM.agregador_tag))>
+<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_agregadores" AND isDefined("FORM.agregador_tag") AND Len(trim(FORM.agregador_tag)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
     <cfquery datasource="runner_dba">
         DELETE FROM tb_agregadores_eventos
@@ -289,7 +316,7 @@
 
 <!--- EXCLUIR EVENTO --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "excluir_evento" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento))>
+<cfif isDefined("FORM.action") AND FORM.action EQ "excluir_evento" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
     <cfquery datasource="runner_dba">
         DELETE FROM tb_evento_corridas_fornecedores
@@ -339,7 +366,7 @@
 
 <!--- EXCLUIR RESULTADOS --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "excluir_resultados" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento))>
+<cfif isDefined("FORM.action") AND FORM.action EQ "excluir_resultados" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
     <cfif isDefined("FORM.aceite")>
 

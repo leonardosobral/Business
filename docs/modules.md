@@ -16,9 +16,11 @@ Responsabilidade:
 
 - manutencao operacional de eventos
 - formularios de edicao
-- homologacao
-- resultados
-- stats e dashboards administrativos
+
+Observacao:
+
+- a rota principal `/admin/` esta focada na edicao de eventos via `index.cfm` -> `home.cfm`
+- telas antigas que nao participam desse fluxo foram arquivadas em `admin/_legado/`
 
 Arquivos relevantes:
 

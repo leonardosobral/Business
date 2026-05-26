@@ -1,4 +1,14 @@
-<cfset VARIABLES.adminEventosFornecedorIds = qEventosFornecedor.recordcount ? ValueList(qEventosFornecedor.id_evento) : "0"/>
+<cfif NOT isDefined("VARIABLES.adminRestrictByFornecedor")>
+    <cfset VARIABLES.adminRestrictByFornecedor = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
+</cfif>
+
+<cfif NOT isDefined("VARIABLES.adminEventosFornecedorIds")>
+    <cfset VARIABLES.adminEventosFornecedorIds = "0"/>
+
+    <cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount>
+        <cfset VARIABLES.adminEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+    </cfif>
+</cfif>
 
 <cfquery name="qEventosBase" cachedwithin="#CreateTimeSpan(0, 0, 0, 5)#">
     SELECT evt.*,
@@ -39,8 +49,10 @@
         WHERE ativo = true
     </cfif--->
     <cfif len(trim(URL.busca))>
-        AND nome_evento ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
-        OR tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
+        AND (
+            nome_evento ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
+            OR tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/>
+        )
     </cfif>
     <!---cfif URL.preset EQ "duplicados">
         AND evt.tag IN (
@@ -63,9 +75,9 @@
             )
         </cfif>
     </cfif--->
-    <!---cfif NOT qPerfil.is_admin--->
+    <cfif VARIABLES.adminRestrictByFornecedor>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adminEventosFornecedorIds#" list="true"/>)
-    <!---/cfif--->
+    </cfif>
 </cfquery>
 
 <cfquery name="qEventos" dbtype="query" maxrows="3000">
@@ -80,6 +92,9 @@
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "mes">
         AND data_final >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()-30#"/>
+    </cfif>
+    <cfif len(trim(URL.periodo)) AND URL.periodo EQ "2026">
+        AND data_final between '2026-01-01' and '2026-12-31'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "2025">
         AND data_final between '2025-01-01' and '2025-12-31'

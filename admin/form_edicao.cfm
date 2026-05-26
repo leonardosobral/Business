@@ -28,12 +28,14 @@
                         <li class="nav-item" role="presentation">
                             <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "percursos">active</cfif> px-3" id="ex1-tab-4" href="#ex1-tabs-4" role="tab" aria-controls="ex1-tabs-4" aria-selected="false">Percursos</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "configuracoes">active</cfif> px-3" id="ex1-tab-5" href="#ex1-tabs-5" role="tab" aria-controls="ex1-tabs-5" aria-selected="false">Configurações</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "or">active</cfif> px-3" id="ex1-tab-6" href="#ex1-tabs-6" role="tab" aria-controls="ex1-tabs-6" aria-selected="false">OR</a>
-                        </li>
+                        <cfif VARIABLES.adminIsAdmin>
+                            <li class="nav-item" role="presentation">
+                                <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "configuracoes">active</cfif> px-3" id="ex1-tab-5" href="#ex1-tabs-5" role="tab" aria-controls="ex1-tabs-5" aria-selected="false">Configurações</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "or">active</cfif> px-3" id="ex1-tab-6" href="#ex1-tabs-6" role="tab" aria-controls="ex1-tabs-6" aria-selected="false">OR</a>
+                            </li>
+                        </cfif>
                     </ul>
 
                 </cfif>
@@ -233,14 +235,18 @@
                     <cfinclude template="form_edicao_percursos.cfm"/>
 
 
-                    <!--- CONFIGURACOES --->
+                    <cfif VARIABLES.adminIsAdmin>
 
-                    <cfinclude template="form_edicao_configuracoes.cfm"/>
+                        <!--- CONFIGURACOES --->
+
+                        <cfinclude template="form_edicao_configuracoes.cfm"/>
 
 
-                    <!--- OR --->
+                        <!--- OR --->
 
-                    <cfinclude template="form_edicao_or.cfm"/>
+                        <cfinclude template="form_edicao_or.cfm"/>
+
+                    </cfif>
 
 
                     <!---
@@ -396,6 +402,5 @@
     </cfif--->
 
 </cfif>
-
 
 

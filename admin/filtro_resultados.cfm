@@ -13,6 +13,7 @@
                 <option value="semana" <cfif URL.periodo EQ "semana">selected</cfif> >Esta Semana</option>
                 <option value="mes" <cfif URL.periodo EQ "mes">selected</cfif> >Este Mês</option>
                 <option value="futuros" disabled <cfif URL.periodo EQ "futuros">selected</cfif> >Futuros</option>
+                <option value="2026" <cfif URL.periodo EQ "2026">selected</cfif> >Em 2026</option>
                 <option value="2025" <cfif URL.periodo EQ "2025">selected</cfif> >Em 2025</option>
                 <option value="passados" disabled <cfif URL.periodo EQ "passados">selected</cfif> >Passados (este ano)</option>
                 <option value="2024" <cfif URL.periodo EQ "2024">selected</cfif> >Em 2024</option>
