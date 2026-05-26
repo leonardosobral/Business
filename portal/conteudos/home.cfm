@@ -184,9 +184,9 @@
                               <cfif VARIABLES.contentPublished>Exibido<cfelse>Oculto</cfif>
                             </span>
                           </div>
-                          <div class="small text-muted">
-                            <cfif VARIABLES.contentFeatured>destaque<cfelse>-</cfif>
-                          </div>
+                          <cfif VARIABLES.contentFeatured>
+                            <div class="small text-muted">destaque</div>
+                          </cfif>
                         </td>
                         <td class="content-actions-cell">
                           <div class="d-flex flex-wrap gap-2">
