@@ -35,9 +35,9 @@ Este repositório hoje funciona como um monólito em Adobe ColdFusion/CFML, com 
 - [`leaderboard`](/Users/leonardosobral/Git/RunnerHub/Business/leaderboard): páginas, APIs e assets voltados a rankings, startlists, parciais e transmissão.
 - [`crm`](/Users/leonardosobral/Git/RunnerHub/Business/crm): fila e disparo de comunicação.
 - [`emailmkt`](/Users/leonardosobral/Git/RunnerHub/Business/emailmkt): composição e envio de e-mail marketing.
-- [`cupons`](/Users/leonardosobral/Git/RunnerHub/Business/cupons) e [`ads`](/Users/leonardosobral/Git/RunnerHub/Business/ads): campanhas e peças comerciais.
+- [`inscricoes`](/Users/leonardosobral/Git/RunnerHub/Business/inscricoes) e [`ads`](/Users/leonardosobral/Git/RunnerHub/Business/ads): inscrições, campanhas e peças comerciais.
 - [`fornecedores`](/Users/leonardosobral/Git/RunnerHub/Business/fornecedores): gestão operacional ligada a fornecedores.
-- [`configuracoes`](/Users/leonardosobral/Git/RunnerHub/Business/configuracoes), [`usuarios`](/Users/leonardosobral/Git/RunnerHub/Business/usuarios), [`faq`](/Users/leonardosobral/Git/RunnerHub/Business/faq), [`helpdesk`](/Users/leonardosobral/Git/RunnerHub/Business/helpdesk), [`notificacoes`](/Users/leonardosobral/Git/RunnerHub/Business/notificacoes): áreas de suporte e operação interna.
+- [`usuarios`](/Users/leonardosobral/Git/RunnerHub/Business/usuarios), [`faq`](/Users/leonardosobral/Git/RunnerHub/Business/faq), [`helpdesk`](/Users/leonardosobral/Git/RunnerHub/Business/helpdesk), [`notificacoes`](/Users/leonardosobral/Git/RunnerHub/Business/notificacoes): áreas de suporte e operação interna.
 
 ## Fluxo técnico observado
 
@@ -64,7 +64,7 @@ O padrão mais recorrente é:
 3. incluir template estrutural (`head`, `header`, `footer`)
 4. renderizar `home.cfm` ou alguma view principal do módulo
 
-Isso aparece claramente em módulos como [`bi/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/bi/index.cfm), [`configuracoes/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/configuracoes/index.cfm) e [`crm/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/crm/index.cfm).
+Isso aparece claramente em módulos como [`bi/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/bi/index.cfm), [`usuarios/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/usuarios/index.cfm) e [`crm/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/crm/index.cfm).
 
 ## Convenções que já existem na prática
 
