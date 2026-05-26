@@ -4,6 +4,12 @@
 
 O modelo de dados nao esta centralizado em um unico lugar. Ele precisa ser inferido dos backends e queries embutidas.
 
+Como referencia operacional adicional, ha um snapshot DDL do banco em:
+
+- [_codex/sql/ddl.sql](/Users/Shared/Projects/RunnerHub/Business/_codex/sql/ddl.sql)
+
+Use esse arquivo para consulta estatica de tabelas, sequencias, grants e constraints, mas trate o banco do ambiente alvo como fonte final antes de executar alteracoes.
+
 ## Entidades nucleares observadas
 
 ### Usuarios
@@ -156,5 +162,6 @@ Como nao ha dicionario de dados consolidado no repositorio, futuras integracoes 
 
 1. nome exato das colunas em producao
 2. constraints e defaults reais do banco
-3. se o modulo usa reflection via `information_schema`
-4. se a tabela e do schema `public` ou `news`
+3. diferencas entre o snapshot DDL em `_codex/sql/ddl.sql` e o ambiente alvo
+4. se o modulo usa reflection via `information_schema`
+5. se a tabela e do schema `public` ou `news`
