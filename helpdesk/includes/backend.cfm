@@ -1,6 +1,7 @@
 <cfparam name="URL.pagina" default="1" type="numeric"/>
 <cfset VARIABLES.helpdeskPage = max(1, int(URL.pagina))/>
 <cfset VARIABLES.helpdeskBusinessBaseUrl = "https://" & cgi.http_host/>
+<cfparam name="VARIABLES.helpdeskMode" default="admin"/>
 
 <cfif NOT isDefined("COOKIE.id") OR NOT len(trim(COOKIE.id)) OR NOT isNumeric(COOKIE.id)>
     <cflocation addtoken="false" url="/"/>
@@ -34,7 +35,9 @@
 <cfset VARIABLES.helpdeskIsAdmin = IsBoolean(qPerfil.is_admin) ? qPerfil.is_admin : ListFindNoCase("true,1,yes,sim", trim(qPerfil.is_admin))/>
 <cfset VARIABLES.helpdeskIsPartner = IsBoolean(qPerfil.is_partner) ? qPerfil.is_partner : ListFindNoCase("true,1,yes,sim", trim(qPerfil.is_partner))/>
 <cfset VARIABLES.helpdeskIsPremium = IsBoolean(qPerfil.strava_premium) ? qPerfil.strava_premium : ListFindNoCase("true,1,yes,sim", trim(qPerfil.strava_premium))/>
-<cfset VARIABLES.helpdeskCanAccess = VARIABLES.helpdeskIsAdmin/>
+<cfset VARIABLES.helpdeskPublicMode = VARIABLES.helpdeskMode EQ "support"/>
+<cfset VARIABLES.helpdeskCanManage = VARIABLES.helpdeskIsAdmin AND NOT VARIABLES.helpdeskPublicMode/>
+<cfset VARIABLES.helpdeskCanAccess = VARIABLES.helpdeskCanManage OR VARIABLES.helpdeskPublicMode/>
 
 <cfquery name="qHelpdeskTables">
     SELECT table_name
@@ -314,7 +317,7 @@
     AND VARIABLES.helpdeskTablesReady
     AND VARIABLES.helpdeskCanAccess>
 
-    <cfif FORM.helpdesk_action EQ "salvar_setor" AND VARIABLES.helpdeskIsAdmin>
+    <cfif FORM.helpdesk_action EQ "salvar_setor" AND VARIABLES.helpdeskCanManage>
         <cfset VARIABLES.helpdeskSetorDescricao = isDefined("FORM.setor_descricao") ? trim(FORM.setor_descricao) : ""/>
         <cfset VARIABLES.helpdeskSetorResponsavelId = isDefined("FORM.setor_responsavel_id") ? trim(FORM.setor_responsavel_id) : ""/>
         <cfset VARIABLES.helpdeskSetorAtivo = isDefined("FORM.setor_ativo") AND FORM.setor_ativo EQ "true"/>
@@ -420,7 +423,7 @@
             SELECT id_chamado, id_usuario, id_setor
             FROM tb_helpdesk_chamados
             WHERE id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_id#"/>
-            <cfif NOT VARIABLES.helpdeskIsAdmin>
+            <cfif NOT VARIABLES.helpdeskCanManage>
                 AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
             </cfif>
             LIMIT 1
@@ -428,9 +431,9 @@
 
         <cfif qHelpdeskTicketPermission.recordcount>
             <cfset VARIABLES.helpdeskTicketNextStatus = ""/>
-            <cfif VARIABLES.helpdeskIsAdmin AND isDefined("FORM.ticket_status") AND len(trim(FORM.ticket_status))>
+            <cfif VARIABLES.helpdeskCanManage AND isDefined("FORM.ticket_status") AND len(trim(FORM.ticket_status))>
                 <cfset VARIABLES.helpdeskTicketNextStatus = trim(FORM.ticket_status)/>
-            <cfelseif NOT VARIABLES.helpdeskIsAdmin>
+            <cfelseif NOT VARIABLES.helpdeskCanManage>
                 <cfset VARIABLES.helpdeskTicketNextStatus = "cliente_respondeu"/>
             </cfif>
 
@@ -453,7 +456,7 @@
                     <cfif len(trim(VARIABLES.helpdeskTicketNextStatus))>
                         status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskTicketNextStatus#"/>,
                     </cfif>
-                    <cfif VARIABLES.helpdeskIsAdmin AND isDefined("FORM.ticket_setor_id") AND len(trim(FORM.ticket_setor_id))>
+                    <cfif VARIABLES.helpdeskCanManage AND isDefined("FORM.ticket_setor_id") AND len(trim(FORM.ticket_setor_id))>
                         id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_setor_id#"/>,
                     </cfif>
                     updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
@@ -461,7 +464,7 @@
             </cfquery>
 
             <cftry>
-                <cfif VARIABLES.helpdeskIsAdmin>
+                <cfif VARIABLES.helpdeskCanManage>
                     <cfset helpdeskNotifyTicketOwner(
                         FORM.ticket_id,
                         qPerfil.id
@@ -484,7 +487,7 @@
 </cfif>
 
 <cfif VARIABLES.helpdeskTablesReady
-    AND VARIABLES.helpdeskIsAdmin
+    AND VARIABLES.helpdeskCanManage
     AND isDefined("URL.setor_acao")
     AND isDefined("URL.setor_id")
     AND URL.setor_acao EQ "status"
@@ -517,7 +520,7 @@
         INNER JOIN tb_usuarios usr ON usr.id = cham.id_usuario
         INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
         LEFT JOIN tb_usuarios resp ON resp.id = setr.id_usuario_responsavel
-        <cfif NOT VARIABLES.helpdeskIsAdmin>
+        <cfif NOT VARIABLES.helpdeskCanManage>
             WHERE cham.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
         </cfif>
         ORDER BY cham.updated_at DESC, cham.id_chamado DESC
@@ -526,12 +529,12 @@
     <cfquery name="qHelpdeskStats">
         SELECT
             (SELECT count(*) FROM tb_helpdesk_chamados
-              <cfif NOT VARIABLES.helpdeskIsAdmin>
+              <cfif NOT VARIABLES.helpdeskCanManage>
                 WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
               </cfif>) as total_chamados,
             (SELECT count(*) FROM tb_helpdesk_chamados
               WHERE status NOT IN ('resolvido', 'fechado')
-              <cfif NOT VARIABLES.helpdeskIsAdmin>
+              <cfif NOT VARIABLES.helpdeskCanManage>
                 AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
               </cfif>) as total_abertos,
             (SELECT count(*) FROM tb_helpdesk_setores WHERE ativo = true) as total_setores
@@ -556,7 +559,7 @@
             INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
             LEFT JOIN tb_usuarios resp ON resp.id = setr.id_usuario_responsavel
             WHERE cham.id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.ticket_id#"/>
-            <cfif NOT VARIABLES.helpdeskIsAdmin>
+            <cfif NOT VARIABLES.helpdeskCanManage>
                 AND cham.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
             </cfif>
             LIMIT 1
@@ -580,7 +583,7 @@
         </cfif>
     </cfif>
 
-    <cfif VARIABLES.helpdeskIsAdmin
+    <cfif VARIABLES.helpdeskCanManage
         AND isDefined("URL.setor_id")
         AND len(trim(URL.setor_id))
         AND isNumeric(URL.setor_id)>

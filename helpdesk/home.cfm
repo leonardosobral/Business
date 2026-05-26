@@ -1,5 +1,5 @@
 <cfset VARIABLES.helpdeskShowTicketForm = (isDefined("URL.ticket_novo") AND URL.ticket_novo) OR qHelpdeskTicketEdit.recordcount/>
-<cfset VARIABLES.helpdeskShowSetorForm = VARIABLES.helpdeskIsAdmin AND ((isDefined("URL.setor_novo") AND URL.setor_novo) OR qHelpdeskSetorEdit.recordcount)/>
+<cfset VARIABLES.helpdeskShowSetorForm = VARIABLES.helpdeskCanManage AND ((isDefined("URL.setor_novo") AND URL.setor_novo) OR qHelpdeskSetorEdit.recordcount)/>
 
 <style>
   .helpdesk-board {
@@ -117,7 +117,7 @@
             </div>
             <div class="text-lg-end">
               <div class="small text-muted">Perfil de acesso</div>
-              <div class="fw-semibold"><cfif VARIABLES.helpdeskIsAdmin>Administrador<cfelse>Sem acesso</cfif></div>
+              <div class="fw-semibold"><cfif VARIABLES.helpdeskCanManage>Administrador<cfelse>Sem acesso</cfif></div>
             </div>
           </div>
 
@@ -220,7 +220,7 @@
                     <input type="hidden" name="ticket_id" value="<cfoutput>#qHelpdeskTicketEdit.id_chamado#</cfoutput>"/>
 
                     <div class="row helpdesk-form-grid">
-                      <cfif VARIABLES.helpdeskIsAdmin>
+                      <cfif VARIABLES.helpdeskCanManage>
                         <div class="col-12 col-lg-4">
                           <label class="form-label">Status</label>
                           <select class="form-select" name="ticket_status">
@@ -355,7 +355,7 @@
               </div>
             </div>
 
-            <cfif VARIABLES.helpdeskIsAdmin>
+            <cfif VARIABLES.helpdeskCanManage>
               <hr class="my-4"/>
 
               <div class="helpdesk-section-title mb-3">

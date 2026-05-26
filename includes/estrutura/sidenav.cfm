@@ -194,10 +194,10 @@
         </li>
 
 
-        <!--- SUPORTE --->
+        <!--- AJUDA --->
 
         <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Suporte</span>
+            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ajuda</span>
         </li>
 
         <li class="sidenav-item">
@@ -205,6 +205,9 @@
         </li>
         <li class="sidenav-item">
             <a class="sidenav-link" href="/faq/"><i class="fa-solid fa-circle-question fa-fw me-3"></i>FAQ</a>
+        </li>
+        <li class="sidenav-item">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Suporte</a>
         </li>
         <cfif isDefined("qPerfil") AND qPerfil.is_admin>
             <li class="sidenav-item">
