@@ -19,7 +19,7 @@
     </cfquery>
 
     <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.cuponsRestrictByFornecedor AND NOT listFind(VARIABLES.cuponsEventosFornecedorIds, qAdCheckEvento.id_evento))>
-        <cflocation addtoken="false" url="/cupons/"/>
+        <cflocation addtoken="false" url="/inscricoes/"/>
     </cfif>
 
     <cfset VARIABLES.locais = {}/>
@@ -67,7 +67,7 @@
         )
     </cfquery>
 
-    <cflocation addtoken="false" url="/cupons/"/>
+    <cflocation addtoken="false" url="/inscricoes/"/>
 
 </cfif>
 
@@ -76,7 +76,7 @@
 <cfif isDefined("form.acao") AND form.acao EQ "editar_campanha">
 
     <cfif NOT isDefined("FORM.id_ad_evento") OR NOT isNumeric(FORM.id_ad_evento)>
-        <cflocation addtoken="false" url="/cupons/"/>
+        <cflocation addtoken="false" url="/inscricoes/"/>
     </cfif>
 
     <cfset VARIABLES.locais = {}/>
@@ -123,7 +123,7 @@
         </cfif>
     </cfquery>
 
-    <cflocation addtoken="false" url="/cupons/"/>
+    <cflocation addtoken="false" url="/inscricoes/"/>
 
 </cfif>
 
@@ -140,7 +140,7 @@
         </cfif>
     </cfquery>
 
-    <cflocation addtoken="false" url="/cupons/"/>
+    <cflocation addtoken="false" url="/inscricoes/"/>
 
 </cfif>
 

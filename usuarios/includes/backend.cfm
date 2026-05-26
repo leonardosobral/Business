@@ -1,5 +1,16 @@
 <!--- INCLUIR usuario --->
 
+<cfset VARIABLES.usuariosRestrictByFornecedor = true/>
+<cfset VARIABLES.usuariosFornecedorIds = "0"/>
+
+<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+    <cfset VARIABLES.usuariosRestrictByFornecedor = false/>
+</cfif>
+
+<cfif isDefined("qFornecedor") AND qFornecedor.recordcount AND len(trim(ValueList(qFornecedor.id_fornecedor)))>
+    <cfset VARIABLES.usuariosFornecedorIds = ValueList(qFornecedor.id_fornecedor)/>
+</cfif>
+
 <cfif isDefined("form.acao") AND form.acao EQ "incluir_usuario">
 
     <cfquery name="qAdCheckEvento">
@@ -91,12 +102,19 @@
 
 <!--- ALTERAR STATUS DA usuario --->
 
-<cfif isDefined("URL.acao") AND URL.acao EQ "status_usuario">
+<cfif isDefined("URL.acao") AND URL.acao EQ "status_usuario" AND isDefined("URL.usuario") AND isNumeric(URL.usuario)>
 
     <cfquery>
         UPDATE tb_usuarios
         SET is_partner = true
         WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.usuario#"/>
+        <cfif VARIABLES.usuariosRestrictByFornecedor>
+            AND id IN (
+                SELECT id_usuario
+                FROM tb_usuarios_fornecedores
+                WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosFornecedorIds#" list="true"/>)
+            )
+        </cfif>
     </cfquery>
 
 </cfif>
@@ -110,14 +128,15 @@
     usr.partner_info ->> 'celular' as celular,
     usr.partner_info ->> 'documento' as documento,
     usr.partner_info ->> 'nome_comercial' as nome_comercial
-    from tb_usuarios usr where partner_info is not null
-    or is_partner = true
-    <!---
-    <cfif NOT qPerfil.is_admin>
-        AND evt.tag IN (select perm.tag from tb_permissoes perm WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>)
+    from tb_usuarios usr
+    where (partner_info is not null or is_partner = true)
+    <cfif VARIABLES.usuariosRestrictByFornecedor>
+        AND usr.id IN (
+            SELECT id_usuario
+            FROM tb_usuarios_fornecedores
+            WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosFornecedorIds#" list="true"/>)
+        )
     </cfif>
-    AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#ValueList(qEventosFornecedor.id_evento)#" list="true"/>)
-    --->
 </cfquery>
 
 <cfquery name="qUsuariosBaseAprovar" dbtype="query">

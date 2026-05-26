@@ -79,7 +79,7 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/cupons/">link-warning</cfif>" href="/cupons/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/inscricoes/">link-warning</cfif>" href="/inscricoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Inscrições</span></a>
         </li>
 
@@ -163,21 +163,15 @@
             <a class="sidenav-link" href="/cadastro/">
                 <i class="fa-solid fa-building fa-fw me-3"></i><span>Cadastro</span></a>
         </li>
+
         <li class="sidenav-item">
             <a class="sidenav-link" href="/usuarios/">
                 <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
         </li>
+
         <li class="sidenav-item">
-            <a class="sidenav-link" href="/configuracoes/">
-                <i class="fa-solid fa-screwdriver-wrench fa-fw me-3"></i><span>Configurações</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/assinaturas/">
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/assinaturas/">link-warning</cfif>" href="/assinaturas/">
                 <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
-        </li>
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/manutencao/">
-                <i class="fas fa-file-contract fa-fw me-3"></i><span>Manutenção</span></a>
         </li>
 
 
@@ -188,21 +182,22 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link" href="/documentacao/"><i class="fa-solid fa-book fa-fw me-3"></i><span>Documentação</span></a>
-        </li>
-
-        <li class="sidenav-item">
             <a class="sidenav-link" href="/faq/"><i class="fa-solid fa-circle-question fa-fw me-3"></i>FAQ</a>
         </li>
+
         <li class="sidenav-item">
             <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Suporte</a>
         </li>
 
         <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
-        </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/documentacao/"><i class="fa-solid fa-book fa-fw me-3"></i><span>Documentação</span></a>
+            </li>
 
         </cfif>
 
@@ -233,6 +228,11 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/" OR VARIABLES.template EQ "/treinos-config/inscritos/">link-warning</cfif>" href="/treinos-config/">
                     <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de Treinos</span></a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/manutencao/">
+                    <i class="fas fa-file-contract fa-fw me-3"></i><span>Manutenção</span></a>
             </li>
 
         </cfif>

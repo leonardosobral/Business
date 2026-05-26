@@ -9,7 +9,7 @@
 
 <!--- TEMPLATE --->
 
-<cfset VARIABLES.template = "/cupons/"/>
+<cfset VARIABLES.template = "/inscricoes/"/>
 
 <!--- BACKEND --->
 
@@ -45,4 +45,3 @@
 </body>
 
 </html>
-

@@ -84,7 +84,7 @@
 
         <div class="card-body">
 
-            <h3>Cupons de Desconto</h3>
+            <h3>Inscrições</h3>
 
           <hr/>
 
@@ -259,4 +259,3 @@
   </div>
 
 </section>
-

@@ -1,106 +1,112 @@
-<form method="post">
+<form method="post" class="needs-validation" novalidate>
 
-    <cfif NOT isDefined("VARIABLES.campanha")>
-
-        <div data-mdb-input-init class="form-outline mb-3">
-            <input type="text" name="evento" id="form1Example1" class="form-control"
-                   placeholder="https://roadrunners.run/evento/seu-evento/"
-                   required/>
-            <label class="form-label" for="form1Example1">URL do Evento no Road Runners</label>
-        </div>
-
-   </cfif>
+    <input type="hidden" name="acao" value="salvar_empresa"/>
 
     <div class="row mb-3 g-3">
-
-        <div class="col">
+        <div class="col-md-8">
             <div data-mdb-input-init class="form-outline">
-                <input type="number" name="cpc_max" id="form3Example1" class="form-control"
-                       <cfif isDefined("VARIABLES.campanha")>value="<cfoutput>#VARIABLES.campanha.cpc_max#</cfoutput>"<cfelse>value="1.00"</cfif>
+                <input type="text" name="nome_fornecedor" id="txtNomeFornecedor" class="form-control" maxlength="128"
+                       value="<cfif isDefined("FORM.nome_fornecedor")><cfoutput>#htmlEditFormat(FORM.nome_fornecedor)#</cfoutput></cfif>"
                        required/>
-                <label class="form-label" for="form3Example1">CPC max</label>
+                <label class="form-label" for="txtNomeFornecedor">Nome da empresa</label>
+                <div class="invalid-feedback">Informe o nome da empresa.</div>
             </div>
         </div>
 
-        <div class="col">
-            <div data-mdb-input-init class="form-outline">
-                <input type="number" name="limite_diario" id="form3Example2" class="form-control"
-                       placeholder="20.00"
-                        <cfif isDefined("VARIABLES.campanha")>value="<cfoutput>#VARIABLES.campanha.limite_diario#</cfoutput>"</cfif>
-                        />
-                <label class="form-label" for="form3Example2">Valor max diário</label>
-            </div>
-        </div>
-
-        <div class="col">
-            <div data-mdb-input-init class="form-outline">
-                <input type="number" name="limite_ad" id="form3Example2" class="form-control"
-                       placeholder="500.00"
-                        <cfif isDefined("VARIABLES.campanha")>value="<cfoutput>#VARIABLES.campanha.limite_ad#</cfoutput>"</cfif>/>
-                <label class="form-label" for="form3Example2">Valor max da Campanha</label>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row mb-3 g-3">
-
-        <div class="col">
-            <select name="escopo" data-mdb-select-init data-mdb-placeholder="Locais" multiple required>
-                <option value="home" <cfif isDefined("VARIABLES.campanha") and VARIABLES.campanha.escopo CONTAINS "home">selected</cfif>>Capa/Home</option>
-                <option value="busca" <cfif isDefined("VARIABLES.campanha") and VARIABLES.campanha.escopo CONTAINS "busca">selected</cfif>>Página de Busca</option>
-                <option value="feed" <cfif isDefined("VARIABLES.campanha") and VARIABLES.campanha.escopo CONTAINS "feed">selected</cfif>>Feed de Usuários</option>
-            </select>
-        </div>
-
-        <div class="col">
-
-            <!--- QUERY UFs --->
-
-            <cfquery name="qAdUFs">
-                SELECT uf, nome_uf,
-                    <cfif isDefined("VARIABLES.campanha") AND deserializeJSON(VARIABLES.campanha.locais).nacional>
-                        true as selecionado
-                    <cfelseif isDefined("VARIABLES.campanha") AND NOT deserializeJSON(VARIABLES.campanha.locais).nacional>
-                        CASE
-                            <cfloop array="#deserializeJSON(VARIABLES.campanha.locais).estados#" item="estado">
-                                WHEN (uf = '#estado#') THEN true
-                            </cfloop>
-                            ELSE false
-                        END as selecionado
-                    <cfelse>
-                        false as selecionado
-                    </cfif>
-                from tb_uf
-                ORDER BY uf
-            </cfquery>
-
-            <select name="locais" data-mdb-select-init data-mdb-placeholder="Público" multiple required>
-                <cfoutput query="qAdUFs">
-                    <option value="#qAdUFs.uf#" <cfif qAdUFs.selecionado>selected</cfif> >#qAdUFs.uf# - #qAdUFs.nome_uf#</option>
+        <div class="col-md-4">
+            <select name="id_fornecedor_tipo" class="form-select" required>
+                <option value="">Tipo de atuação</option>
+                <cfoutput query="qCadastroTiposFornecedor">
+                    <option value="#qCadastroTiposFornecedor.id_fornecedor_tipo#"
+                        <cfif isDefined("FORM.id_fornecedor_tipo") AND FORM.id_fornecedor_tipo EQ qCadastroTiposFornecedor.id_fornecedor_tipo>selected</cfif>>
+                        #qCadastroTiposFornecedor.descricao_tipo#
+                    </option>
                 </cfoutput>
             </select>
+            <div class="invalid-feedback">Informe o tipo de atuação.</div>
+        </div>
+    </div>
 
+    <div class="row mb-3 g-3">
+        <div class="col-md-4">
+            <select name="tipo_pessoa" class="form-select" required>
+                <option value="">Pessoa</option>
+                <option value="J" <cfif isDefined("FORM.tipo_pessoa") AND FORM.tipo_pessoa EQ "J">selected</cfif>>Jurídica</option>
+                <option value="F" <cfif isDefined("FORM.tipo_pessoa") AND FORM.tipo_pessoa EQ "F">selected</cfif>>Física</option>
+            </select>
+            <div class="invalid-feedback">Informe o tipo de pessoa.</div>
         </div>
 
-        <div class="col">
-            <div class="form-outline" data-mdb-datepicker-init data-mdb-input-init data-mdb-date-range="true" data-mdb-inline="true">
-                <input type="text" name="datas" class="form-control" id="date-range-inline"
-                    <cfif isDefined("VARIABLES.campanha")>value="<cfoutput>#lsdateformat(VARIABLES.campanha.inicio_ad, 'dd/mm/yyyy')# - #lsdateformat(VARIABLES.campanha.final_ad, 'dd/mm/yyyy')#</cfoutput>"</cfif>
-                />
-                <label for="date-range-inline" class="form-label">Período da Campanha</label>
+        <div class="col-md-4">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" name="cnpj_cpf" id="txtDocumentoEmpresa" class="form-control" maxlength="18"
+                       value="<cfif isDefined("FORM.cnpj_cpf")><cfoutput>#htmlEditFormat(FORM.cnpj_cpf)#</cfoutput></cfif>"
+                       required/>
+                <label class="form-label" for="txtDocumentoEmpresa">CNPJ ou CPF</label>
+                <div class="invalid-feedback">Informe o documento.</div>
             </div>
         </div>
 
+        <div class="col-md-4">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" name="site_fornecedor" id="txtSiteFornecedor" class="form-control" maxlength="256"
+                       value="<cfif isDefined("FORM.site_fornecedor")><cfoutput>#htmlEditFormat(FORM.site_fornecedor)#</cfoutput></cfif>"/>
+                <label class="form-label" for="txtSiteFornecedor">Site</label>
+            </div>
+        </div>
     </div>
 
-    <cfif isDefined("URL.campanha")>
-        <input type="hidden" name="acao" value="editar_campanha">
-        <input type="hidden" name="id_fornecedor" value="<cfoutput>#URL.campanha#</cfoutput>">
-    <cfelse>
-        <input type="hidden" name="acao" value="incluir_campanha">
+    <div class="row mb-3 g-3">
+        <div class="col-md-8">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" name="cidade" id="txtCidadeFornecedor" class="form-control" maxlength="128"
+                       value="<cfif isDefined("FORM.cidade")><cfoutput>#htmlEditFormat(FORM.cidade)#</cfoutput></cfif>"/>
+                <label class="form-label" for="txtCidadeFornecedor">Cidade</label>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" name="estado" id="txtEstadoFornecedor" class="form-control" maxlength="2"
+                       value="<cfif isDefined("FORM.estado")><cfoutput>#htmlEditFormat(FORM.estado)#</cfoutput></cfif>"/>
+                <label class="form-label" for="txtEstadoFornecedor">UF</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div data-mdb-input-init class="form-outline">
+            <textarea name="resumo_fornecedor" id="txtResumoFornecedor" class="form-control" rows="4"><cfif isDefined("FORM.resumo_fornecedor")><cfoutput>#htmlEditFormat(FORM.resumo_fornecedor)#</cfoutput></cfif></textarea>
+            <label class="form-label" for="txtResumoFornecedor">Resumo da empresa</label>
+        </div>
+    </div>
+
+    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block" <cfif NOT qCadastroTiposFornecedor.recordcount>disabled</cfif>>
+        Salvar empresa
+    </button>
+
+    <cfif NOT qCadastroTiposFornecedor.recordcount>
+        <div class="alert alert-warning mt-3 mb-0">
+            Nenhum tipo de atuação foi encontrado. Cadastre os tipos de fornecedores antes de salvar uma empresa.
+        </div>
     </cfif>
 
-    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Salvar Campanha</button>
-
 </form>
+
+<script>
+    (() => {
+        'use strict';
+
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.prototype.slice.call(forms).forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
