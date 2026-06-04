@@ -590,6 +590,8 @@ create unique index tb_evento_corridas_tag_uindex
 
 grant insert, select, update on tb_evento_corridas to runner;
 
+grant select on tb_evento_corridas to liverunners_dba;
+
 create table tb_evento_corridas_cupom
 (
     id_evento_cupom      serial,
@@ -730,6 +732,8 @@ create unique index tb_fornecedores_id_fornecedor_uindex
     on tb_fornecedores (id_fornecedor);
 
 grant insert, select, update on tb_fornecedores to runner;
+
+grant select on tb_fornecedores to liverunners_dba;
 
 create table tb_fornecedores_tipos
 (
@@ -1037,6 +1041,8 @@ create unique index tb_evento_corridas_percursos_id_evento_percurso_uindex_2
 
 grant insert, select, update on tb_evento_corridas_percursos to runner;
 
+grant select on tb_evento_corridas_percursos to liverunners_dba;
+
 create unique index tb_permits_id_permit_uindex
     on tb_permits (id_permit);
 
@@ -1176,6 +1182,8 @@ create unique index tb_resultados_resumo_id_evento_percurso_uindex
     on tb_resultados_resumo (id_evento, percurso, modalidade);
 
 grant insert, select, update on tb_resultados_resumo to runner;
+
+grant select on tb_resultados_resumo to liverunners_dba;
 
 create table tb_resultados_resumo_2025
 (
@@ -2862,6 +2870,8 @@ create index idx_result_nome_norm_trgm
 
 grant insert, select, update on tb_resultados to runner;
 
+grant select on tb_resultados to liverunners_dba;
+
 create table tb_resultados_vinculo
 (
     id_resultado_vinculo   serial
@@ -3539,7 +3549,8 @@ create table tb_leaderboard_config
     data_fim              date,
     observacoes           text,
     data_inclusao         timestamp default now() not null,
-    data_atualizacao      timestamp default now() not null
+    data_atualizacao      timestamp default now() not null,
+    youtube_video_id      varchar
 );
 
 alter table tb_leaderboard_config
@@ -3632,6 +3643,372 @@ create index tb_leaderboard_startlist_num_peito_evento_idx
     on tb_leaderboard_startlist (num_peito, id_evento);
 
 grant delete, insert, select, update on tb_leaderboard_startlist to runner;
+
+grant select on tb_leaderboard_startlist to liverunners_dba;
+
+create table tb_portal_banners
+(
+    id_banner         serial
+        primary key,
+    nome              varchar(160)                                     not null,
+    canal             varchar(80)                                      not null,
+    local_layout      varchar(80)                                      not null,
+    tamanho_nome      varchar(80),
+    largura           integer,
+    altura            integer,
+    formato           varchar(16),
+    alt_text          varchar(255),
+    arquivo_path      varchar(255)                                     not null,
+    arquivo_original  varchar(255),
+    link_destino      varchar(500)                                     not null,
+    link_tipo         varchar(20) default 'interno'::character varying not null,
+    abrir_nova_aba    boolean     default false                        not null,
+    peso_exibicao     integer     default 1                            not null,
+    prioridade        integer     default 1                            not null,
+    limite_impressoes integer,
+    limite_cliques    integer,
+    limite_diario     integer,
+    inicio_exibicao   timestamp,
+    fim_exibicao      timestamp,
+    status            integer     default 2                            not null,
+    observacoes       text,
+    criado_em         timestamp   default now()                        not null,
+    atualizado_em     timestamp   default now()                        not null,
+    criado_por        integer,
+    atualizado_por    integer
+);
+
+alter table tb_portal_banners
+    owner to runner_dba;
+
+create index tb_portal_banners_lookup_idx
+    on tb_portal_banners (canal, local_layout, status);
+
+create index tb_portal_banners_periodo_idx
+    on tb_portal_banners (inicio_exibicao, fim_exibicao);
+
+create table tb_portal_banners_log
+(
+    id_banner_log  bigserial
+        primary key,
+    id_banner      integer                 not null
+        references tb_portal_banners
+            on delete cascade,
+    tipo_evento    varchar(20)             not null,
+    canal          varchar(80),
+    local_layout   varchar(80),
+    host_origem    varchar(255),
+    caminho_origem varchar(500),
+    origem_site    varchar(255),
+    id_usuario     integer,
+    ip_address     varchar(64),
+    user_agent     text,
+    request_data   jsonb,
+    criado_em      timestamp default now() not null
+);
+
+alter table tb_portal_banners_log
+    owner to runner_dba;
+
+create index tb_portal_banners_log_banner_idx
+    on tb_portal_banners_log (id_banner asc, tipo_evento asc, criado_em desc);
+
+create index tb_portal_banners_log_slot_idx
+    on tb_portal_banners_log (canal asc, local_layout asc, tipo_evento asc, criado_em desc);
+
+create table tb_crawlers
+(
+    id_crawler              bigserial
+        primary key,
+    nome_crawler            varchar(160)                                                    not null,
+    site                    varchar(255),
+    area                    varchar(30)                                                     not null
+        constraint tb_crawlers_area_chk
+            check ((area)::text = ANY
+                   ((ARRAY ['evento'::character varying, 'resultado'::character varying, 'link_resultado'::character varying, 'mapeamento'::character varying])::text[])),
+    nome_arquivo            varchar(255)                                                    not null
+        unique,
+    status                  varchar(30)              default 'Verificar'::character varying not null
+        constraint tb_crawlers_status_chk
+            check ((status)::text = ANY
+                   ((ARRAY ['Manual'::character varying, 'Validado'::character varying, 'Verificar'::character varying, 'Em construção'::character varying, 'Erro'::character varying])::text[])),
+    observacao              text,
+    site_url                text,
+    cobertura               text,
+    run_semanal             boolean                  default false                          not null,
+    cron_habilitado         boolean                  default false                          not null,
+    cron_dia_semana         smallint
+        constraint tb_crawlers_cron_dia_semana_chk
+            check ((cron_dia_semana IS NULL) OR ((cron_dia_semana >= 0) AND (cron_dia_semana <= 6))),
+    cron_hora               time,
+    ultimo_webhook_salvo    text,
+    ultimo_log              text,
+    ultima_execucao_em      timestamp with time zone,
+    ultima_execucao_sucesso boolean,
+    ultima_duracao_ms       integer                  default 0                              not null,
+    total_execucoes         integer                  default 0                              not null,
+    created_at              timestamp with time zone default now()                          not null,
+    updated_at              timestamp with time zone default now()                          not null
+);
+
+alter table tb_crawlers
+    owner to runner_dba;
+
+create index tb_crawlers_area_idx
+    on tb_crawlers (area);
+
+create index tb_crawlers_status_idx
+    on tb_crawlers (status);
+
+create index tb_crawlers_run_semanal_idx
+    on tb_crawlers (run_semanal);
+
+create index tb_crawlers_ultima_execucao_em_idx
+    on tb_crawlers (ultima_execucao_em desc);
+
+create table tb_crawlers_execucoes
+(
+    id_execucao   bigserial
+        primary key,
+    id_crawler    bigint                                 not null
+        constraint tb_crawlers_execucoes_crawler_fk
+            references tb_crawlers
+            on delete cascade,
+    data_execucao timestamp with time zone default now() not null,
+    sucesso       boolean                  default false not null,
+    duracao_ms    integer                  default 0     not null,
+    total_itens   integer                  default 0     not null,
+    log_execucao  text,
+    webhook_salvo text,
+    observacao    text,
+    area          varchar(30)                            not null
+);
+
+alter table tb_crawlers_execucoes
+    owner to runner_dba;
+
+create index tb_crawlers_execucoes_id_crawler_idx
+    on tb_crawlers_execucoes (id_crawler);
+
+create index tb_crawlers_execucoes_data_execucao_idx
+    on tb_crawlers_execucoes (data_execucao desc);
+
+create index tb_crawlers_execucoes_area_idx
+    on tb_crawlers_execucoes (area);
+
+create table tb_financeiro_indicadores
+(
+    id_indicador         serial
+        primary key,
+    codigo_indicador     varchar(80)                                         not null
+        unique,
+    grupo_slug           varchar(60)                                         not null,
+    grupo_nome           varchar(120)                                        not null,
+    nome_indicador       varchar(140)                                        not null,
+    tipo_unidade         varchar(30) default 'percentual'::character varying not null
+        constraint ck_tb_financeiro_indicadores_tipo_unidade
+            check ((tipo_unidade)::text = ANY
+                   ((ARRAY ['percentual'::character varying, 'multiplo'::character varying, 'moeda'::character varying, 'numero'::character varying])::text[])),
+    formula_resumida     varchar(500),
+    componentes_formula  varchar(500),
+    descricao_indicador  text,
+    bom_quando           text,
+    fonte_valor          varchar(180),
+    faixa_otima_min      numeric,
+    faixa_otima_max      numeric,
+    faixa_ok_min         numeric,
+    faixa_ok_max         numeric,
+    ordem_exibicao       integer     default 0                               not null,
+    ativo                boolean     default true                            not null,
+    atualizado_em        timestamp   default now()                           not null,
+    criado_em            timestamp   default now()                           not null,
+    periodicidade_padrao varchar(30) default 'anual'::character varying      not null,
+    permite_valor_final  boolean     default true                            not null,
+    usa_componentes      boolean     default false                           not null,
+    casas_decimais       integer     default 2                               not null
+        constraint ck_tb_financeiro_indicadores_casas_decimais
+            check ((casas_decimais >= 0) AND (casas_decimais <= 6))
+);
+
+alter table tb_financeiro_indicadores
+    owner to runner_dba;
+
+create index idx_tb_financeiro_indicadores_grupo
+    on tb_financeiro_indicadores (grupo_slug, ordem_exibicao);
+
+create table tb_financeiro_valores
+(
+    id_valor        serial
+        primary key,
+    id_indicador    integer                                        not null
+        references tb_financeiro_indicadores,
+    periodo_tipo    varchar(30) default 'anual'::character varying not null,
+    periodo_label   varchar(120),
+    referencia_data date,
+    valor_calculado numeric,
+    notas           text,
+    atualizado_por  varchar(180),
+    atualizado_em   timestamp   default now()                      not null
+);
+
+alter table tb_financeiro_valores
+    owner to runner_dba;
+
+create index idx_tb_financeiro_valores_indicador_data
+    on tb_financeiro_valores (id_indicador asc, referencia_data desc, atualizado_em desc);
+
+create index idx_tb_financeiro_valores_indicador
+    on tb_financeiro_valores (id_indicador asc, id_valor desc);
+
+create table tb_financeiro_presets
+(
+    id_preset         serial
+        primary key,
+    slug_preset       varchar(80)             not null
+        unique,
+    nome_preset       varchar(120)            not null,
+    perfil_alvo       varchar(80),
+    descricao_preset  text,
+    insight_preset    text,
+    indicadores_chave varchar(500),
+    ordem_exibicao    integer   default 0     not null,
+    ativo             boolean   default true  not null,
+    criado_em         timestamp default now() not null
+);
+
+alter table tb_financeiro_presets
+    owner to runner_dba;
+
+create index idx_tb_financeiro_presets_ordem
+    on tb_financeiro_presets (ordem_exibicao, slug_preset);
+
+create table tb_financeiro_valor_componentes
+(
+    id_valor_componente serial
+        primary key,
+    id_valor            integer                 not null
+        references tb_financeiro_valores
+            on delete cascade,
+    id_indicador        integer                 not null
+        references tb_financeiro_indicadores,
+    nome_componente     varchar(180)            not null,
+    valor_componente    numeric,
+    ordem_exibicao      integer   default 0     not null,
+    criado_em           timestamp default now() not null
+);
+
+alter table tb_financeiro_valor_componentes
+    owner to runner_dba;
+
+create index idx_tb_financeiro_valor_componentes_indicador
+    on tb_financeiro_valor_componentes (id_indicador, id_valor, ordem_exibicao);
+
+create table tb_portal_runner_app_groups
+(
+    id_group      serial
+        primary key,
+    nome          varchar(120)            not null,
+    descricao     text,
+    ordem         integer   default 1     not null,
+    ativo         boolean   default true  not null,
+    criado_em     timestamp default now() not null,
+    atualizado_em timestamp default now() not null
+);
+
+alter table tb_portal_runner_app_groups
+    owner to runner_dba;
+
+create index tb_portal_runner_app_groups_ordem_idx
+    on tb_portal_runner_app_groups (ativo, ordem, id_group);
+
+create table tb_portal_runner_apps
+(
+    id_app          serial
+        primary key,
+    id_group        integer                 not null
+        references tb_portal_runner_app_groups
+            on delete restrict,
+    nome            varchar(120)            not null,
+    url             text                    not null,
+    imagem_url      text                    not null,
+    imagem_original varchar(255),
+    alt_text        varchar(180),
+    abrir_nova_aba  boolean   default false not null,
+    rel             varchar(120),
+    ordem           integer   default 1     not null,
+    ativo           boolean   default true  not null,
+    criado_em       timestamp default now() not null,
+    atualizado_em   timestamp default now() not null
+);
+
+alter table tb_portal_runner_apps
+    owner to runner_dba;
+
+create index tb_portal_runner_apps_group_ordem_idx
+    on tb_portal_runner_apps (id_group, ativo, ordem, id_app);
+
+create table tb_busca_log
+(
+    id_busca_log        bigserial
+        primary key,
+    id_busca_log_parent bigint
+        references tb_busca_log,
+    log_timestamp       timestamp default now()                   not null,
+    site                varchar   default 'CT'::character varying not null,
+    ambiente            varchar(32),
+    origem              varchar(96),
+    etapa               varchar(32),
+    busca_modo          varchar(32),
+    busca_tipo          varchar(32),
+    busca_scope         varchar(32),
+    tipo_termo          varchar(32),
+    termo_original      varchar,
+    termo_livre         varchar,
+    modelo              varchar(120),
+    usou_ia             boolean   default false                   not null,
+    fallback_usado      boolean   default false                   not null,
+    fallback_motivo     varchar(96),
+    erro                text,
+    http_status         varchar(64),
+    id_usuario          integer,
+    id_pagina           integer,
+    usuario_verificado  boolean   default false                   not null,
+    ip                  varchar(64),
+    user_agent          varchar,
+    filtros_json        jsonb     default '{}'::jsonb             not null,
+    contagens_json      jsonb     default '{}'::jsonb             not null,
+    request_json        jsonb     default '{}'::jsonb             not null,
+    ia_json             jsonb     default '{}'::jsonb             not null,
+    payload_json        jsonb     default '{}'::jsonb             not null
+);
+
+alter table tb_busca_log
+    owner to runner_dba;
+
+grant select, update, usage on sequence tb_busca_log_id_busca_log_seq to runner;
+
+create index idx_tb_busca_log_timestamp
+    on tb_busca_log (log_timestamp desc);
+
+create index idx_tb_busca_log_parent
+    on tb_busca_log (id_busca_log_parent);
+
+create index idx_tb_busca_log_tipo
+    on tb_busca_log (busca_tipo, busca_scope, etapa);
+
+create index idx_tb_busca_log_usuario
+    on tb_busca_log (id_usuario asc, log_timestamp desc);
+
+create index idx_tb_busca_log_termo
+    on tb_busca_log using gin (to_tsvector('simple'::regconfig, COALESCE(termo_original, ''::character varying)::text));
+
+create index idx_tb_busca_log_filtros_json
+    on tb_busca_log using gin (filtros_json);
+
+create index idx_tb_busca_log_payload_json
+    on tb_busca_log using gin (payload_json);
+
+grant insert, select, update on tb_busca_log to runner;
 
 create materialized view vw_resultados_resumo_2025 as
 WITH tot AS (
@@ -4347,6 +4724,68 @@ alter table vwbi_fat_perfil_br_2025
 grant select on vwbi_fat_perfil_br_2025 to runner;
 
 grant select on vwbi_fat_perfil_br_2025 to akkio_user;
+
+create view vw_evento_corridas_cr
+            (id_evento, cidade, estado, tag, homologado, url_resultado, url_wiclax, cod_cidade, id_agrega_evento, pais,
+             data_inicial, data_final, descricao, endereco, coordenadas, imagem, destaque, categorias, url_inscricao,
+             info_duplicado, nome_simplificado, organizador, obs, tipo_corrida, ranking, id_tema, data_processamento,
+             resumo, tag_301, ativo, data_inclusao, nome_evento_full_text, obs_resultado, status_evento,
+             resultado_completo, url_hotsite, url_imagem, id_fornecedor, url_imagem_listagem, descricao_original,
+             obs_homologacao, cronometragem, realizacao, cobertura, url_regulamento)
+as
+SELECT eve.id_evento,
+    eve.cidade,
+    eve.estado,
+    eve.tag,
+    eve.homologado,
+    eve.url_resultado,
+    eve.url_wiclax,
+    eve.cod_cidade,
+    eve.id_agrega_evento,
+    eve.pais,
+    eve.data_inicial,
+    eve.data_final,
+    eve.descricao,
+    eve.endereco,
+    eve.coordenadas,
+    eve.imagem,
+    eve.destaque,
+    eve.categorias,
+    eve.url_inscricao,
+    eve.info_duplicado,
+    eve.nome_simplificado,
+    eve.organizador,
+    eve.obs,
+    eve.tipo_corrida,
+    eve.ranking,
+    eve.id_tema,
+    eve.data_processamento,
+    eve.resumo,
+    eve.tag_301,
+    eve.ativo,
+    eve.data_inclusao,
+    eve.nome_evento_full_text,
+    eve.obs_resultado,
+    eve.status_evento,
+    eve.resultado_completo,
+    eve.url_hotsite,
+    eve.url_imagem,
+    eve.id_fornecedor,
+    eve.url_imagem_listagem,
+    eve.descricao_original,
+    eve.obs_homologacao,
+    eve.cronometragem,
+    eve.realizacao,
+    eve.cobertura,
+    eve.url_regulamento
+   FROM tb_evento_corridas eve
+     JOIN tb_agregadores_eventos age ON age.id_evento = eve.id_evento
+  WHERE age.agregador_tag::text = 'contra-relogio'::text;
+
+alter table vw_evento_corridas_cr
+    owner to runner_dba;
+
+grant insert, select, update on vw_evento_corridas_cr to runner;
 
 create function pg_stat_statements_info(out dealloc bigint, out stats_reset timestamp with time zone) returns record
     strict

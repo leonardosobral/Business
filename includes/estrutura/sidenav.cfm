@@ -60,6 +60,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/busca/">link-warning</cfif>" href="/portal/busca/">
+                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>Busca do site</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/">
                     <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
                 </a>
