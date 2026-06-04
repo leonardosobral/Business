@@ -60,6 +60,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/">
+                    <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/">
                     <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
                 </a>
