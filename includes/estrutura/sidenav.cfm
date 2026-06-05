@@ -66,6 +66,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/erros/">link-warning</cfif>" href="/portal/erros/">
+                    <i class="fa-solid fa-triangle-exclamation fa-fw me-3"></i><span>Erros</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/">
                     <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
                 </a>
