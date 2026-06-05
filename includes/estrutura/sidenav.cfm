@@ -72,6 +72,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/eventos-analytics/">link-warning</cfif>" href="/portal/eventos-analytics/">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Eventos visitados</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/">
                     <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
                 </a>

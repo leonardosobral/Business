@@ -33,12 +33,8 @@ function errorLogItemLabel(value) {
             return "Erro";
         case "404":
             return "404";
-        case "busca":
-            return "Busca";
-        case "evento":
-            return "Evento";
         case "todos":
-            return "Todos";
+            return "Erro + 404";
         default:
             return len(trim(arguments.value & "")) ? arguments.value : "Sem tipo";
     }
@@ -47,7 +43,7 @@ function errorLogItemLabel(value) {
 
 <cfparam name="URL.dias" default="7"/>
 <cfparam name="URL.site" default=""/>
-<cfparam name="URL.item" default="erro"/>
+<cfparam name="URL.item" default="todos"/>
 <cfparam name="URL.termo" default=""/>
 <cfparam name="URL.limite" default="500"/>
 <cfparam name="URL.log_id" default=""/>
@@ -58,10 +54,10 @@ function errorLogItemLabel(value) {
     <cfset VARIABLES.errorLogDays = 7/>
 </cfif>
 
-<cfset VARIABLES.errorLogAllowedItems = "erro,404,busca,evento,todos"/>
+<cfset VARIABLES.errorLogAllowedItems = "todos,erro,404"/>
 <cfset VARIABLES.errorLogItem = lCase(trim(URL.item))/>
 <cfif NOT listFindNoCase(VARIABLES.errorLogAllowedItems, VARIABLES.errorLogItem)>
-    <cfset VARIABLES.errorLogItem = "erro"/>
+    <cfset VARIABLES.errorLogItem = "todos"/>
 </cfif>
 
 <cfset VARIABLES.errorLogAllowedSites = "RR,OR,CT"/>
@@ -114,6 +110,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -171,6 +168,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -238,6 +236,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -291,6 +290,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -330,6 +330,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -396,6 +397,7 @@ function errorLogItemLabel(value) {
             SELECT *
             FROM tb_log
             WHERE log_timestamp >= now() - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.errorLogDays#"/> * interval '1 day')
+              AND log_item IN ('erro', '404')
             <cfif VARIABLES.errorLogItem NEQ "todos">
               AND log_item = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.errorLogItem#"/>
             </cfif>
@@ -459,6 +461,7 @@ function errorLogItemLabel(value) {
                 CASE WHEN coalesce(log_user_agent, '') ~* '(bot|crawler|spider|semrush|bingbot|googlebot)' THEN true ELSE false END AS parece_bot
             FROM tb_log
             WHERE id_log = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.log_id)#"/>
+              AND log_item IN ('erro', '404')
             LIMIT 1
         </cfquery>
     </cfif>

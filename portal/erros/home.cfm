@@ -78,7 +78,7 @@
           <div class="d-flex flex-column flex-xl-row justify-content-between gap-3">
             <div>
               <h3 class="mb-1">Portal - Erros</h3>
-              <p class="text-muted mb-0">Monitore uma amostra recente da <strong>tb_log</strong>, priorizando registros com cara de erro para identificar URLs, origens e padrões recorrentes.</p>
+              <p class="text-muted mb-0">Monitore uma amostra recente da <strong>tb_log</strong>, considerando somente <strong>log_item</strong> igual a <strong>erro</strong> ou <strong>404</strong>.</p>
             </div>
             <div class="text-xl-end">
               <div class="small text-muted">Amostra maxima</div>
@@ -112,11 +112,9 @@
                 <div class="col-md-2">
                   <label class="form-label">Tipo</label>
                   <select class="form-select" name="item">
+                    <option value="todos"<cfif VARIABLES.errorLogItem EQ "todos"> selected</cfif>>Erro + 404</option>
                     <option value="erro"<cfif VARIABLES.errorLogItem EQ "erro"> selected</cfif>>Erro</option>
                     <option value="404"<cfif VARIABLES.errorLogItem EQ "404"> selected</cfif>>404</option>
-                    <option value="busca"<cfif VARIABLES.errorLogItem EQ "busca"> selected</cfif>>Busca</option>
-                    <option value="evento"<cfif VARIABLES.errorLogItem EQ "evento"> selected</cfif>>Evento</option>
-                    <option value="todos"<cfif VARIABLES.errorLogItem EQ "todos"> selected</cfif>>Todos</option>
                   </select>
                 </div>
 
@@ -151,7 +149,7 @@
             </form>
 
             <div class="alert alert-info">
-              A busca textual roda sobre a amostra carregada, nao sobre a tabela inteira. Para investigacao profunda, use filtros mais fechados antes de aumentar a amostra.
+              A busca textual roda sobre a amostra carregada de 404 e erro, nao sobre a tabela inteira. Para investigacao profunda, use filtros mais fechados antes de aumentar a amostra.
             </div>
 
             <div class="row g-3 mb-4">
