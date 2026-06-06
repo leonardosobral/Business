@@ -120,6 +120,18 @@ Gerenciador de banners visuais da plataforma, com:
 - API publica para entrega de banner elegivel
 - tracking de impressoes e cliques
 
+### `portal/runner-apps`
+
+- [portal/runner-apps](/Users/geraldoprotta/IdeaProjects/Business/portal/runner-apps)
+- [api/portal/runner-apps](/Users/geraldoprotta/IdeaProjects/Business/api/portal/runner-apps)
+
+Gerenciador dinamico do menu `Runner Apps` consumido pelo `Road Runners` e outros sites da plataforma, com:
+
+- grupos/linhas ordenaveis
+- apps com nome, icone, URL, target e rel
+- ocultacao e remocao de itens
+- API publica de catalogo
+
 ## Marketing e relacionamento
 
 ### `crm`

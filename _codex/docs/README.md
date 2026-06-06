@@ -12,6 +12,7 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Mapa de Integrações](integration-map.md)
 - [Contexto Plataforma de Notificações](notifications-platform-context.md)
 - [Contexto Portal Banners](portal-banners-context.md)
+- [Contexto Runner Apps API](runner-apps-api-context.md)
 - [Contexto Push PWA no Business](push-pwa-business-context.md)
 - [Checklist para Novas Features](feature-checklist.md)
 

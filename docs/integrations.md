@@ -139,6 +139,7 @@ Ha integracao conceitual e agora tambem operacional com o repositorio News:
 
 - a area [`portal/conteudo-canais`](/Users/geraldoprotta/IdeaProjects/Business/portal/conteudo-canais) governa a exibicao de canais vindos de `news.tb_content_types`
 - a area [`portal/banners`](/Users/geraldoprotta/IdeaProjects/Business/portal/banners) expoe uma API publica para entrega e tracking de banners consumidos por outros sites da plataforma
+- a area [`portal/runner-apps`](/Users/geraldoprotta/IdeaProjects/Business/portal/runner-apps) expoe uma API publica de catalogo para o menu `Runner Apps`, consumido pelo `Road Runners` e demais sites da plataforma
 
 Campos esperados:
 
@@ -152,3 +153,5 @@ Script auxiliar:
 - [portal/banners/portal_banner_schema.sql](/Users/geraldoprotta/IdeaProjects/Business/portal/banners/portal_banner_schema.sql)
 - [api/portal/banners/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/index.cfm)
 - [api/portal/banners/click.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/banners/click.cfm)
+- [portal/runner-apps/runner_apps_schema.sql](/Users/geraldoprotta/IdeaProjects/Business/portal/runner-apps/runner_apps_schema.sql)
+- [api/portal/runner-apps/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/api/portal/runner-apps/index.cfm)
