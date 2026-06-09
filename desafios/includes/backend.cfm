@@ -1,3 +1,15 @@
+<cfset VARIABLES.challengeTag = lcase(trim(URL.desafio))/>
+<cfset VARIABLES.challengeIsCatarinenseCircuit = listFindNoCase("catarinensecorridaderua,catarinensetrailrun", VARIABLES.challengeTag) GT 0/>
+<cfset VARIABLES.challengeIsBrasilGigante = VARIABLES.challengeTag EQ "circuitobrasilgigante"/>
+<cfset VARIABLES.challengeIsRaceParticipation = VARIABLES.challengeIsCatarinenseCircuit OR VARIABLES.challengeIsBrasilGigante/>
+<cfset VARIABLES.challengeHasScore = VARIABLES.challengeIsCatarinenseCircuit/>
+<cfset VARIABLES.challengeCircuitTotalEvents = 3/>
+<cfset VARIABLES.challengeCircuitCompletionTarget = 3/>
+<cfif VARIABLES.challengeIsBrasilGigante>
+    <cfset VARIABLES.challengeCircuitTotalEvents = 8/>
+    <cfset VARIABLES.challengeCircuitCompletionTarget = 8/>
+</cfif>
+
 <!--- ALTERAR STATUS DA CAMPANHA --->
 
 <cfif isDefined("URL.acao") AND URL.acao EQ "alterar_status">
@@ -6,15 +18,172 @@
         UPDATE desafios
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_usuario#"/>
-        AND desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
+        AND desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
     </cfquery>
 
-    <cflocation addtoken="false" url="/ads/#lcase(trim(URL.desafio))#"/>
+    <cflocation addtoken="false" url="/ads/#VARIABLES.challengeTag#"/>
 
 </cfif>
 
 
 <cfquery name="qBase" cachedwithin="#CreateTimeSpan(0, 0, 0, 15)#">
+    <cfif VARIABLES.challengeIsBrasilGigante>
+    WITH brasil_gigante_events AS (
+        SELECT ag.id_evento,
+               evt.id_agrega_evento,
+               evt.data_final
+        FROM tb_agregadores_eventos ag
+        INNER JOIN tb_evento_corridas evt
+            ON evt.id_evento = ag.id_evento
+        WHERE ag.agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="brasil-gigante"/>
+    ),
+    brasil_gigante_results AS (
+        SELECT
+            res.id_usuario,
+            count(DISTINCT bge.id_agrega_evento) AS eventos_concluidos,
+            max(bge.data_final::date) AS data_final,
+            min(bge.data_final::date) AS data_inicial,
+            max((SELECT count(DISTINCT bge_total.id_agrega_evento) FROM brasil_gigante_events bge_total)) AS total_eventos
+        FROM tb_resultados res
+        INNER JOIN brasil_gigante_events bge
+            ON bge.id_evento = res.id_evento
+        WHERE res.percurso = 42
+        AND res.id_usuario <> 0
+        GROUP BY res.id_usuario
+    )
+    SELECT COALESCE(uf.nome_regiao, 'Exterior') as regiao,
+    to_timestamp(usr.strava_expires_at) as strava_expires_at,
+    des.status,
+    des.produto,
+    des.data_inscricao,
+    usr.id,
+    usr.ddi_usuario,
+    usr.ddd_usuario,
+    usr.telefone_usuario,
+    usr.email,
+    usr.strava_id,
+    usr.strava_code,
+    usr.ddi_usuario,
+    usr.ddd_usuario,
+    COALESCE(upper(trim(unaccent(usr.cidade))), upper(trim(unaccent(pag.cidade)))) as cidade,
+    COALESCE(usr.estado, pag.uf) as estado,
+    upper(COALESCE(des.body ->> 'nome_completo', pag.nome, usr.name)) as nome,
+    COALESCE(NULLIF(upper(des.body ->> 'genero'), ''), usr.genero, usr.strava_sex) as genero,
+    usr.tag_usuario,
+    usr.pais,
+    usr.data_statisticas,
+    (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
+    CASE
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') > 1 THEN 'duplicado'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') = 1 THEN 'pago'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id) > 0 THEN 'pendente'
+        ELSE null
+    END as status_transacao,
+    null::integer as distancia_percorrida,
+    bgr.eventos_concluidos as dias_correndo,
+    bgr.eventos_concluidos as atividades,
+    0 as altimetria,
+    bgr.eventos_concluidos as frequencia_fechamento,
+    bgr.eventos_concluidos as nodesafio,
+    bgr.data_final,
+    bgr.data_inicial,
+    CASE WHEN bgr.eventos_concluidos > 0 THEN 1 ELSE 0 END as ativo,
+    COALESCE(bgr.total_eventos, #VARIABLES.challengeCircuitTotalEvents#) as dias_do_ano,
+    pag.tag,
+    pag.verificado,
+    coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem, usr.strava_profile, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario
+    FROM desafios des
+    INNER JOIN tb_usuarios usr ON (des.id_usuario = usr.id)
+    LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
+    LEFT JOIN brasil_gigante_results bgr ON bgr.id_usuario = usr.id
+    LEFT JOIN tb_uf uf ON usr.estado = uf.uf
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+    <cfelseif VARIABLES.challengeIsCatarinenseCircuit>
+    WITH circuit_events AS (
+        <cfif VARIABLES.challengeTag EQ "catarinensecorridaderua">
+            SELECT *
+            FROM (
+                VALUES
+                    (1, 35612, 21),
+                    (2, 35095, 21),
+                    (3, 37004, 21)
+            ) AS cfg(event_order, id_evento, percurso)
+        <cfelse>
+            SELECT *
+            FROM (
+                VALUES
+                    (1, 36281, 10),
+                    (2, 37011, 6),
+                    (3, 36979, 11)
+            ) AS cfg(event_order, id_evento, percurso)
+        </cfif>
+    ),
+    circuit_results AS (
+        SELECT
+            res.id_usuario,
+            count(DISTINCT cfg.event_order) AS eventos_concluidos,
+            sum(obs.obs::int) AS pontos,
+            max(evt.data_final::date) AS data_final,
+            min(evt.data_final::date) AS data_inicial
+        FROM circuit_events cfg
+        INNER JOIN tb_resultados res
+            ON res.id_evento = cfg.id_evento
+           AND res.percurso = cfg.percurso
+        INNER JOIN tb_resultados_obs obs
+            ON obs.id_evento = res.id_evento
+           AND obs.num_peito = res.num_peito
+        LEFT JOIN tb_evento_corridas evt
+            ON evt.id_evento = res.id_evento
+        GROUP BY res.id_usuario
+    )
+    SELECT COALESCE(uf.nome_regiao, 'Exterior') as regiao,
+    to_timestamp(usr.strava_expires_at) as strava_expires_at,
+    des.status,
+    des.produto,
+    des.data_inscricao,
+    usr.id,
+    usr.ddi_usuario,
+    usr.ddd_usuario,
+    usr.telefone_usuario,
+    usr.email,
+    usr.strava_id,
+    usr.strava_code,
+    usr.ddi_usuario,
+    usr.ddd_usuario,
+    COALESCE(upper(trim(unaccent(usr.cidade))), upper(trim(unaccent(pag.cidade)))) as cidade,
+    COALESCE(usr.estado, pag.uf) as estado,
+    upper(COALESCE(pag.nome, usr.name)) as nome,
+    COALESCE(usr.genero, usr.strava_sex) as genero,
+    usr.tag_usuario,
+    usr.pais,
+    usr.data_statisticas,
+    (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
+    CASE
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') > 1 THEN 'duplicado'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') = 1 THEN 'pago'
+        WHEN (select count(*) from tb_transacoes where id_usuario = usr.id) > 0 THEN 'pendente'
+        ELSE null
+    END as status_transacao,
+    cr.pontos as distancia_percorrida,
+    cr.eventos_concluidos as dias_correndo,
+    cr.eventos_concluidos as atividades,
+    0 as altimetria,
+    cr.eventos_concluidos as frequencia_fechamento,
+    cr.eventos_concluidos as nodesafio,
+    cr.data_final,
+    cr.data_inicial,
+    CASE WHEN cr.eventos_concluidos > 0 THEN 1 ELSE 0 END as ativo,
+    #VARIABLES.challengeCircuitTotalEvents# as dias_do_ano,
+    pag.tag,
+    pag.verificado,
+    coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem, usr.strava_profile, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario
+    FROM desafios des
+    INNER JOIN tb_usuarios usr ON (des.id_usuario = usr.id)
+    LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
+    LEFT JOIN circuit_results cr ON cr.id_usuario = usr.id
+    LEFT JOIN tb_uf uf ON usr.estado = uf.uf
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+    <cfelse>
     WITH atv as (
     with atividades as
     (
@@ -163,7 +332,8 @@
     LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
     LEFT JOIN atv on atv.athlete_id = usr.strava_id
     LEFT JOIN tb_uf uf ON usr.estado = uf.uf
-    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+    </cfif>
 </cfquery>
 
 <cfquery name="qCountPendentes" dbtype="query">
@@ -175,7 +345,9 @@
 <cfquery name="qNoDesafio" dbtype="query">
     select count(*) as total
     from qBase
-    <cfif lcase(trim(URL.desafio)) EQ "desafio365">
+    <cfif VARIABLES.challengeIsRaceParticipation>
+        where frequencia_fechamento >= <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitCompletionTarget#"/>
+    <cfelseif VARIABLES.challengeTag EQ "desafio365">
         where frequencia_fechamento = 365
     <cfelse>
         where frequencia_fechamento = dias_do_ano
@@ -187,7 +359,14 @@
 <cfquery name="qPendenteDesafio" dbtype="query">
     select count(*) as total
     from qBase
-    where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
+    <cfif VARIABLES.challengeIsRaceParticipation>
+        where frequencia_fechamento > 0
+        and frequencia_fechamento < <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitCompletionTarget#"/>
+        and status = 'C'
+        and frequencia_fechamento is not null
+    <cfelse>
+        where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
+    </cfif>
 </cfquery>
 
 <cfquery name="qCountVip" dbtype="query">
@@ -205,7 +384,7 @@
 <cfquery name="qCountTotal">
     select count(*) as total
     from desafios
-    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lcase(trim(URL.desafio))#"/>
+    where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
 </cfquery>
 
 <cfquery name="qPeriodo" dbtype="query">
@@ -218,10 +397,21 @@
         where status = 'I'
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "nodesafio">
-        where frequencia_fechamento = dias_do_ano and status = 'C' and frequencia_fechamento is not null
+        <cfif VARIABLES.challengeIsRaceParticipation>
+            where frequencia_fechamento >= <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitCompletionTarget#"/> and status = 'C' and frequencia_fechamento is not null
+        <cfelse>
+            where frequencia_fechamento = dias_do_ano and status = 'C' and frequencia_fechamento is not null
+        </cfif>
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "pendentedesafio">
-        where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
+        <cfif VARIABLES.challengeIsRaceParticipation>
+            where frequencia_fechamento > 0
+            and frequencia_fechamento < <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitCompletionTarget#"/>
+            and status = 'C'
+            and frequencia_fechamento is not null
+        <cfelse>
+            where frequencia_fechamento <> dias_do_ano and status = 'C' and frequencia_fechamento is not null
+        </cfif>
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "vip">
         where produto like '%vip%' and status = 'C'

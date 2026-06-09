@@ -151,13 +151,31 @@
                 order by data_inicio desc
             </cfquery>
 
+            <cfset VARIABLES.menuHasBrasilGiganteChallenge = false/>
             <cfoutput query="qDesafiosBusinessAtivos">
+                <cfif qDesafiosBusinessAtivos.tag EQ "circuitobrasilgigante">
+                    <cfset VARIABLES.menuHasBrasilGiganteChallenge = true/>
+                </cfif>
+                <cfset VARIABLES.challengeMenuTitle = qDesafiosBusinessAtivos.titulo/>
+                <cfif qDesafiosBusinessAtivos.tag EQ "catarinensecorridaderua">
+                    <cfset VARIABLES.challengeMenuTitle = "Catarinense de Rua"/>
+                <cfelseif qDesafiosBusinessAtivos.tag EQ "todosantodia">
+                    <cfset VARIABLES.challengeMenuTitle = "Todo Santo Dia"/>
+                </cfif>
                 <li class="sidenav-item">
                     <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/">
-                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#qDesafiosBusinessAtivos.titulo#</span>
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#VARIABLES.challengeMenuTitle#</span>
                     </a>
                 </li>
             </cfoutput>
+
+            <cfif NOT VARIABLES.menuHasBrasilGiganteChallenge>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "circuitobrasilgigante">link-warning</cfif>" href="/desafios/circuitobrasilgigante/">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span>
+                    </a>
+                </li>
+            </cfif>
 
         </cfif>
 

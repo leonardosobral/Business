@@ -1,3 +1,6 @@
+<cfset VARIABLES.challengeIsCircuitPanel = isDefined("VARIABLES.challengeIsRaceParticipation") AND VARIABLES.challengeIsRaceParticipation/>
+<cfset VARIABLES.challengeShowsScoreColumn = isDefined("VARIABLES.challengeHasScore") AND VARIABLES.challengeHasScore/>
+
 <div class="table-wrapper-l">
 
     <table id="tblEventos" class="table table-stripped table-condensed table-sm mb-0">
@@ -7,10 +10,10 @@
             <td>Nome</td>
             <cfif URL.periodo EQ "pendentes"><td>Email</td></cfif>
             <td>Tel</td>
-            <cfif URL.periodo NEQ "pendentes"><td class="text-end">KM</td></cfif>
+            <cfif URL.periodo NEQ "pendentes" AND (NOT VARIABLES.challengeIsCircuitPanel OR VARIABLES.challengeShowsScoreColumn)><td class="text-end"><cfif VARIABLES.challengeShowsScoreColumn>Pontos<cfelse>KM</cfif></td></cfif>
             <!---td class="text-end">Última</td--->
-            <td class="text-end">Dias</td>
-            <cfif URL.periodo NEQ "pendentes"><td class="text-start">Atualizar</td></cfif>
+            <td class="text-end"><cfif VARIABLES.challengeIsCircuitPanel><cfif isDefined("VARIABLES.challengeIsBrasilGigante") AND VARIABLES.challengeIsBrasilGigante>Provas<cfelse>Etapas</cfif><cfelse>Dias</cfif></td>
+            <cfif URL.periodo NEQ "pendentes" AND NOT VARIABLES.challengeIsCircuitPanel><td class="text-start">Atualizar</td></cfif>
         </tr>
         <tbody>
         <cfoutput query="qStatsEvento">
@@ -31,10 +34,20 @@
             <td nowrap>
                 #qStatsEvento.ddi_usuario# #qStatsEvento.ddd_usuario# #qStatsEvento.telefone_usuario#
             </td>
-            <cfif URL.periodo NEQ "pendentes"><td class="text-end"><cfif len(trim(distancia_percorrida))>#numberFormat(distancia_percorrida/1000, "9")#k</cfif></td></cfif>
+            <cfif URL.periodo NEQ "pendentes" AND (NOT VARIABLES.challengeIsCircuitPanel OR VARIABLES.challengeShowsScoreColumn)>
+                <td class="text-end">
+                    <cfif len(trim(distancia_percorrida))>
+                        <cfif VARIABLES.challengeIsCircuitPanel>
+                            #numberFormat(distancia_percorrida, "9")#
+                        <cfelse>
+                            #numberFormat(distancia_percorrida/1000, "9")#k
+                        </cfif>
+                    </cfif>
+                </td>
+            </cfif>
             <!---td class="text-end">#ultimo_dia#</td--->
-            <td class="text-end"><cfif len(trim(distancia_percorrida))>#dias_correndo#/#dias_do_ano#</cfif></td>
-            <cfif URL.periodo NEQ "pendentes">
+            <td class="text-end"><cfif len(trim(dias_correndo))>#dias_correndo#/#dias_do_ano#</cfif></td>
+            <cfif URL.periodo NEQ "pendentes" AND NOT VARIABLES.challengeIsCircuitPanel>
                 <td class="text-start" nowrap>
                     <cfif isDefined("strava_code") AND len(trim(qStatsEvento.strava_code))>
                         <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true"><div class="badge bg-strava"><i class="fa fa-refresh"></i></div></a>
