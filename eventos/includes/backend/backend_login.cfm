@@ -1,22 +1,7 @@
 <!--- GOOGLE SIGN OUT --->
 
 <cfif isDefined("URL.action") AND URL.action EQ "googlesignout">
-    <cftry>
-        <cfif isDefined("COOKIE.id")>
-        <cfquery>
-            INSERT INTO tb_log
-            (log_item, log_item_id, log_user, site)
-            VALUES
-            ('googlesignout',<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#COOKIE.name#,#COOKIE.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RR')
-        </cfquery>
-        </cfif>
-    <cfcatch type="any"></cfcatch>
-    </cftry>
-    <cfset delSession = StructDelete(COOKIE, "id", true)/>
-    <cfset delSession = StructDelete(COOKIE, "name", true)/>
-    <cfset delSession = StructDelete(COOKIE, "email", true)/>
-    <cfset delSession = StructDelete(COOKIE, "imagem_usuario", true)/>
-    <cflocation addtoken="false" url="/"/>
+    <cflocation addtoken="false" url="/logout.cfm"/>
 </cfif>
 
 <!--- GOOGLE SIGN IN --->
@@ -41,7 +26,7 @@
         ('googlesignin',<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#COOKIE.name#,#COOKIE.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
-    <cflocation addtoken="false" url="/admin/"/>
+    <cflocation addtoken="false" url="/eventos/"/>
 
 </cfif>
 

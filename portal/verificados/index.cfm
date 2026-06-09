@@ -7,6 +7,7 @@
 <cfset VARIABLES.template = "/portal/verificados/"/>
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
+<cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">

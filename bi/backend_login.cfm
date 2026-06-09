@@ -59,20 +59,7 @@
 <!--- GOOGLE SIGN OUT --->
 
 <cfif isDefined("URL.action") AND URL.action EQ "googlesignout">
-    <cftry>
-        <cfquery>
-            INSERT INTO tb_log
-            (log_item, log_item_id, log_user, site)
-            VALUES
-            ('googlesignout',<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#COOKIE.name#,#COOKIE.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>)
-        </cfquery>
-    <cfcatch type="any"></cfcatch>
-    </cftry>
-    <cfset delSession = StructDelete(COOKIE, "id", true)/>
-    <cfset delSession = StructDelete(COOKIE, "name", true)/>
-    <cfset delSession = StructDelete(COOKIE, "email", true)/>
-    <cfset delSession = StructDelete(COOKIE, "imagem_usuario", true)/>
-    <cflocation addtoken="false" url="/bi/"/>
+    <cflocation addtoken="false" url="/logout.cfm"/>
 </cfif>
 
 <!--- GOOGLE SIGN IN --->
@@ -128,14 +115,22 @@
     <cfcookie name="name" secure="yes" encodevalue="yes" value="#qPerfil.name#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
     <cfcookie name="email" secure="yes" encodevalue="yes" value="#qPerfil.email#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
     <cfcookie name="imagem_usuario" secure="yes" encodevalue="yes" value="#qPerfil.imagem_usuario#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
+    <cfheader name="Set-Cookie" value="rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; Secure; SameSite=Lax"/>
+    <cfset VARIABLES.googleSignInRedirect = "/bi/"/>
+    <cfif isDefined("URL.redirect") AND len(trim(URL.redirect))>
+        <cfset VARIABLES.googleSignInRedirect = URL.redirect/>
+    </cfif>
+    <cfif findNoCase("logout=1", VARIABLES.googleSignInRedirect)>
+        <cfset VARIABLES.googleSignInRedirect = "/bi/"/>
+    </cfif>
 
     <cfquery>
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        ('googlesignin',<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#COOKIE.name#,#COOKIE.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>)
+        ('googlesignin',<cfqueryparam cfsqltype="cf_sql_varchar" value="#qPerfil.id#,#qPerfil.name#,#qPerfil.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>)
     </cfquery>
 
-    <cflocation addtoken="false" url="#URL.redirect#"/>
+    <cflocation addtoken="false" url="#VARIABLES.googleSignInRedirect#"/>
 
 </cfif>

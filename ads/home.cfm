@@ -110,9 +110,13 @@
 
             <h3>Turbinar Evento</h3>
 
-            <cfif NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
+            <cfif VARIABLES.adsCanOperate AND NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
 
                 <cfinclude template="includes/form_campanha.cfm"/>
+
+            <cfelseif NOT VARIABLES.adsCanOperate>
+
+                <div class="alert alert-info mb-0" role="alert">Seu acesso permite visualizar campanhas desta conta, mas nao criar ou alterar turbinados.</div>
 
             </cfif>
 
@@ -160,12 +164,14 @@
                         <cfoutput query="qEventosAds">
                             <tr>
                                 <td>
+                                    <cfif VARIABLES.adsCanOperate>
                                     <cfif qEventosAds.status EQ 1><a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=2"><icon class="fa fa-thumbs-up"></icon></a></cfif>
                                     <cfif qEventosAds.status GT 1>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
                                     </cfif>
                                     <a href="/ads/?campanha=#qEventosAds.id_ad_evento#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                    </cfif>
                                 </td>
                                 <td <cfif qEventosAds.data_final LT now()>class="text-danger"</cfif>>#lsDateFormat(qEventosAds.data_final, "dd/mm/yyyy")# - #qEventosAds.nome_evento# <cfif qEventosAds.status EQ 1><span class="badge badge-success">em aprovação</span></cfif></td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_max)#</td>
@@ -177,7 +183,7 @@
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.cpc_medio)#</td>
                                 <td class="text-end">#lsCurrencyFormat(qEventosAds.custo_total)#</td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qEventosAds.id_ad_evento>
+                            <cfif VARIABLES.adsCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qEventosAds.id_ad_evento>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR CAMPANHA --->
@@ -276,4 +282,3 @@
   </div>
 
 </section>
-

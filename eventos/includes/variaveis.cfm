@@ -3,7 +3,9 @@
 <cfset VARIABLES.devMode = false/>
 <cfset VARIABLES.adminIsAdmin = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+    <cfset VARIABLES.adminIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
     <cfset VARIABLES.adminIsAdmin = true/>
 </cfif>
 

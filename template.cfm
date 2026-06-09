@@ -21,7 +21,6 @@
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 
-
     <!--- HEADER --->
 
     <cfinclude template="includes/estrutura/header.cfm"/>
@@ -45,4 +44,3 @@
 </body>
 
 </html>
-

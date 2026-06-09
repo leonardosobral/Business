@@ -55,6 +55,30 @@ grant select, usage on sequence tb_evento_ads_id_evento_ad_seq to runner;
 
 alter type gtrgm owner to runner_dba;
 
+create type tipo_titular_conta as enum ('PF', 'PJ');
+
+alter type tipo_titular_conta owner to runner_dba;
+
+create type status_conta as enum ('ATIVA', 'SUSPENSA', 'CANCELADA', 'PENDENTE');
+
+alter type status_conta owner to runner_dba;
+
+create type status_usuario_conta as enum ('ATIVO', 'INATIVO', 'CONVIDADO', 'BLOQUEADO');
+
+alter type status_usuario_conta owner to runner_dba;
+
+create type papel_usuario_conta as enum ('OWNER', 'ADMIN', 'OPERADOR', 'VISUALIZADOR');
+
+alter type papel_usuario_conta owner to runner_dba;
+
+create type status_conta_evento as enum ('ATIVO', 'INATIVO', 'PENDENTE');
+
+alter type status_conta_evento owner to runner_dba;
+
+create type status_conta_cadastro_solicitacao as enum ('PENDENTE', 'APROVADA', 'RECUSADA', 'CANCELADA');
+
+alter type status_conta_cadastro_solicitacao owner to runner_dba;
+
 create table desafio_leads
 (
     num_inscricao   integer not null
@@ -4010,6 +4034,208 @@ create index idx_tb_busca_log_payload_json
 
 grant insert, select, update on tb_busca_log to runner;
 
+create table tb_resultados_usuario_142x
+(
+    id_resultado            integer,
+    num_peito               integer,
+    nome                    text,
+    data_nascimento         date,
+    id_evento               integer,
+    modalidade              text,
+    pace                    time,
+    percurso                integer,
+    sexo                    text,
+    tempo_bruto             time,
+    tempo_total             time,
+    classificacao_categoria integer,
+    classificacao_sexo      integer,
+    classificacao_total     integer,
+    velocidade_media        integer,
+    equipe                  text,
+    nome_categoria          text,
+    id_usuario              integer,
+    id_categoria            integer,
+    homologado              boolean,
+    concluinte              boolean,
+    chave_processamento     uuid,
+    chave_verificacao       uuid,
+    nacionalidade           text,
+    status_final            integer,
+    hora_largada            time,
+    tempo_f1_categoria      time,
+    tempo_f1_sexo           time,
+    tempo_f1_total          time,
+    posicao_ranking         integer,
+    classificacao_pais      integer,
+    pcd                     boolean,
+    nome_full_text          tsvector,
+    idade_range             int4range,
+    nome_normalizado        text
+);
+
+alter table tb_resultados_usuario_142x
+    owner to runner_dba;
+
+create table tb_contas
+(
+    id_conta           bigserial
+        primary key,
+    nome_conta         varchar(160)                                              not null,
+    tipo_titular       tipo_titular_conta                                        not null,
+    documento          varchar(20)                                               not null
+        constraint unq_tb_contas_documento
+            unique,
+    nome_titular       varchar(200)                                              not null,
+    email_principal    varchar(255),
+    telefone_principal varchar(30),
+    status             status_conta             default 'PENDENTE'::status_conta not null,
+    data_criacao       timestamp with time zone default now()                    not null,
+    data_atualizacao   timestamp with time zone default now()                    not null
+);
+
+alter table tb_contas
+    owner to runner_dba;
+
+grant select, usage on sequence tb_contas_id_conta_seq to runner;
+
+grant delete, insert, references, select, trigger, truncate, update on tb_contas to runner;
+
+create table tb_conta_usuarios
+(
+    id_conta_usuario bigserial
+        primary key,
+    id_conta         bigint                                                             not null
+        constraint fk_conta_usuarios_conta
+            references tb_contas
+            on delete cascade,
+    id_usuario       bigint                                                             not null
+        constraint fk_conta_usuarios_usuario
+            references tb_usuarios
+            on delete cascade,
+    papel            papel_usuario_conta      default 'OPERADOR'::papel_usuario_conta   not null,
+    status           status_usuario_conta     default 'CONVIDADO'::status_usuario_conta not null,
+    usuario_convite  bigint
+        constraint fk_conta_usuarios_convite
+            references tb_usuarios,
+    data_convite     timestamp with time zone,
+    data_aceite      timestamp with time zone,
+    data_criacao     timestamp with time zone default now()                             not null,
+    data_atualizacao timestamp with time zone default now()                             not null,
+    constraint uq_tb_conta_usuarios
+        unique (id_conta, id_usuario)
+);
+
+alter table tb_conta_usuarios
+    owner to runner_dba;
+
+grant select, usage on sequence tb_conta_usuarios_id_conta_usuario_seq to runner;
+
+grant delete, insert, references, select, trigger, truncate, update on tb_conta_usuarios to runner;
+
+create table tb_conta_eventos
+(
+    id_conta_evento  bigserial
+        primary key,
+    id_conta         bigint                                                        not null
+        constraint fk_conta_eventos_conta
+            references tb_contas
+            on delete cascade,
+    id_evento        integer                                                       not null
+        constraint fk_conta_eventos_evento
+            references tb_evento_corridas
+            on delete cascade,
+    status           status_conta_evento      default 'ATIVO'::status_conta_evento not null,
+    usuario_cadastro bigint
+        constraint fk_conta_eventos_usuario_cadastro
+            references tb_usuarios
+            on delete restrict,
+    data_criacao     timestamp with time zone default now()                        not null,
+    data_atualizacao timestamp with time zone default now()                        not null,
+    constraint uq_tb_conta_eventos
+        unique (id_conta, id_evento)
+);
+
+alter table tb_conta_eventos
+    owner to runner_dba;
+
+grant select, usage on sequence tb_conta_eventos_id_conta_evento_seq to runner;
+
+grant delete, insert, references, select, trigger, truncate, update on tb_conta_eventos to runner;
+
+create table tb_conta_evento_solicitacoes
+(
+    id_solicitacao         bigserial
+        primary key,
+    id_conta               bigint                                                         not null
+        references tb_contas,
+    id_evento              integer                                                        not null
+        references tb_evento_corridas,
+    id_usuario_solicitante bigint
+        references tb_usuarios,
+    url_informada          varchar(512),
+    tag_informada          varchar(512),
+    mensagem               text,
+    status                 varchar(20)              default 'PENDENTE'::character varying not null,
+    id_usuario_revisor     bigint
+        references tb_usuarios,
+    observacao_revisor     text,
+    data_criacao           timestamp with time zone default now()                         not null,
+    data_revisao           timestamp with time zone
+);
+
+alter table tb_conta_evento_solicitacoes
+    owner to runner_dba;
+
+grant select, usage on sequence tb_conta_evento_solicitacoes_id_solicitacao_seq to runner;
+
+grant delete, insert, references, select, trigger, truncate, update on tb_conta_evento_solicitacoes to runner;
+
+create table tb_conta_cadastro_solicitacoes
+(
+    id_solicitacao       bigserial
+        primary key,
+    nome_empresa         varchar(160)                                                                            not null,
+    tipo_titular         tipo_titular_conta                                                                      not null,
+    documento            varchar(20)                                                                             not null,
+    nome_responsavel     varchar(200)                                                                            not null,
+    email_responsavel    varchar(255)                                                                            not null,
+    telefone_responsavel varchar(30),
+    site                 varchar(256),
+    cidade               varchar(128),
+    estado               varchar(2),
+    tipo_prestador       varchar(80)                                                                             not null,
+    mensagem             text,
+    id_usuario           bigint
+        constraint fk_conta_cadastro_solicitacoes_usuario
+            references tb_usuarios,
+    id_conta             bigint
+        constraint fk_conta_cadastro_solicitacoes_conta
+            references tb_contas,
+    status               status_conta_cadastro_solicitacao default 'PENDENTE'::status_conta_cadastro_solicitacao not null,
+    id_usuario_revisor   bigint
+        constraint fk_conta_cadastro_solicitacoes_revisor
+            references tb_usuarios,
+    observacao_revisor   text,
+    data_criacao         timestamp with time zone          default now()                                         not null,
+    data_revisao         timestamp with time zone
+);
+
+alter table tb_conta_cadastro_solicitacoes
+    owner to runner_dba;
+
+grant select, usage on sequence tb_conta_cadastro_solicitacoes_id_solicitacao_seq to runner;
+
+create index idx_tb_conta_cadastro_solicitacoes_status
+    on tb_conta_cadastro_solicitacoes (status, data_criacao);
+
+create index idx_tb_conta_cadastro_solicitacoes_documento
+    on tb_conta_cadastro_solicitacoes (documento);
+
+create index idx_tb_conta_cadastro_solicitacoes_email
+    on tb_conta_cadastro_solicitacoes (email_responsavel);
+
+grant insert, select, update on tb_conta_cadastro_solicitacoes to runner;
+
 create materialized view vw_resultados_resumo_2025 as
 WITH tot AS (
          SELECT tb_resultados.id_evento,
@@ -4787,7 +5013,7 @@ alter table vw_evento_corridas_cr
 
 grant insert, select, update on vw_evento_corridas_cr to runner;
 
-create function pg_stat_statements_info(out dealloc bigint, out stats_reset timestamp with time zone) returns record
+create function pg_stat_statements_info(out dealloc unknown, out stats_reset unknown) returns record
     strict
     parallel safe
     language c
@@ -4798,9 +5024,9 @@ begin
 end;
 $$;
 
-alter function pg_stat_statements_info(out bigint, out timestamp with time zone) owner to postgres;
+alter function pg_stat_statements_info(out unknown, out unknown) owner to postgres;
 
-create function pg_stat_statements(showtext boolean, out userid oid, out dbid oid, out toplevel boolean, out queryid bigint, out query text, out plans bigint, out total_plan_time double precision, out min_plan_time double precision, out max_plan_time double precision, out mean_plan_time double precision, out stddev_plan_time double precision, out calls bigint, out total_exec_time double precision, out min_exec_time double precision, out max_exec_time double precision, out mean_exec_time double precision, out stddev_exec_time double precision, out rows bigint, out shared_blks_hit bigint, out shared_blks_read bigint, out shared_blks_dirtied bigint, out shared_blks_written bigint, out local_blks_hit bigint, out local_blks_read bigint, out local_blks_dirtied bigint, out local_blks_written bigint, out temp_blks_read bigint, out temp_blks_written bigint, out shared_blk_read_time double precision, out shared_blk_write_time double precision, out local_blk_read_time double precision, out local_blk_write_time double precision, out temp_blk_read_time double precision, out temp_blk_write_time double precision, out wal_records bigint, out wal_fpi bigint, out wal_bytes numeric, out jit_functions bigint, out jit_generation_time double precision, out jit_inlining_count bigint, out jit_inlining_time double precision, out jit_optimization_count bigint, out jit_optimization_time double precision, out jit_emission_count bigint, out jit_emission_time double precision, out jit_deform_count bigint, out jit_deform_time double precision, out stats_since timestamp with time zone, out minmax_stats_since timestamp with time zone) returns setof record
+create function pg_stat_statements(showtext unknown, out userid unknown, out dbid unknown, out toplevel unknown, out queryid unknown, out query unknown, out plans unknown, out total_plan_time unknown, out min_plan_time unknown, out max_plan_time unknown, out mean_plan_time unknown, out stddev_plan_time unknown, out calls unknown, out total_exec_time unknown, out min_exec_time unknown, out max_exec_time unknown, out mean_exec_time unknown, out stddev_exec_time unknown, out rows unknown, out shared_blks_hit unknown, out shared_blks_read unknown, out shared_blks_dirtied unknown, out shared_blks_written unknown, out local_blks_hit unknown, out local_blks_read unknown, out local_blks_dirtied unknown, out local_blks_written unknown, out temp_blks_read unknown, out temp_blks_written unknown, out shared_blk_read_time unknown, out shared_blk_write_time unknown, out local_blk_read_time unknown, out local_blk_write_time unknown, out temp_blk_read_time unknown, out temp_blk_write_time unknown, out wal_records unknown, out wal_fpi unknown, out wal_bytes unknown, out jit_functions unknown, out jit_generation_time unknown, out jit_inlining_count unknown, out jit_inlining_time unknown, out jit_optimization_count unknown, out jit_optimization_time unknown, out jit_emission_count unknown, out jit_emission_time unknown, out jit_deform_count unknown, out jit_deform_time unknown, out stats_since unknown, out minmax_stats_since unknown) returns setof record
     strict
     parallel safe
     language c
@@ -4811,9 +5037,9 @@ begin
 end;
 $$;
 
-alter function pg_stat_statements(boolean, out oid, out oid, out boolean, out bigint, out text, out bigint, out double precision, out double precision, out double precision, out double precision, out double precision, out bigint, out double precision, out double precision, out double precision, out double precision, out double precision, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out bigint, out double precision, out double precision, out double precision, out double precision, out double precision, out double precision, out bigint, out bigint, out numeric, out bigint, out double precision, out bigint, out double precision, out bigint, out double precision, out bigint, out double precision, out bigint, out double precision, out timestamp with time zone, out timestamp with time zone) owner to postgres;
+alter function pg_stat_statements(unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown, out unknown) owner to postgres;
 
-create function pg_stat_statements_reset(userid oid default 0, dbid oid default 0, queryid bigint default 0, minmax_only boolean default false) returns timestamp with time zone
+create function pg_stat_statements_reset(userid unknown default 0, dbid unknown default 0, queryid unknown default 0, minmax_only unknown default false) returns timestamp with time zone
     strict
     parallel safe
     language c
@@ -4824,9 +5050,9 @@ begin
 end;
 $$;
 
-alter function pg_stat_statements_reset(oid, oid, bigint, boolean) owner to postgres;
+alter function pg_stat_statements_reset(unknown, unknown, unknown, unknown) owner to postgres;
 
-create function unaccent(regdictionary, text) returns text
+create function unaccent(unknown, unknown) returns text
     stable
     strict
     parallel safe
@@ -4838,9 +5064,9 @@ begin
 end;
 $$;
 
-alter function unaccent(regdictionary, text) owner to postgres;
+alter function unaccent(unknown, unknown) owner to postgres;
 
-create function unaccent(text) returns text
+create function unaccent(unknown) returns text
     stable
     strict
     parallel safe
@@ -4852,9 +5078,9 @@ begin
 end;
 $$;
 
-alter function unaccent(text) owner to postgres;
+alter function unaccent(unknown) owner to postgres;
 
-create function unaccent_init(internal) returns internal
+create function unaccent_init(unknown) returns internal
     parallel safe
     language c
 as
@@ -4864,9 +5090,9 @@ begin
 end;
 $$;
 
-alter function unaccent_init(internal) owner to postgres;
+alter function unaccent_init(unknown) owner to postgres;
 
-create function unaccent_lexize(internal, internal, internal, internal) returns internal
+create function unaccent_lexize(unknown, unknown, unknown, unknown) returns internal
     parallel safe
     language c
 as
@@ -4876,7 +5102,7 @@ begin
 end;
 $$;
 
-alter function unaccent_lexize(internal, internal, internal, internal) owner to postgres;
+alter function unaccent_lexize(unknown, unknown, unknown, unknown) owner to postgres;
 
 create procedure atualiza()
     language plpgsql
@@ -5153,9 +5379,9 @@ BEGIN
 END
 $$;
 
-alter procedure atualiza_classific_f1(integer) owner to runner_dba;
+alter procedure atualiza_classific_f1(unknown) owner to runner_dba;
 
-grant execute on procedure atualiza_classific_f1(integer) to runner;
+grant execute on procedure atualiza_classific_f1(unknown) to runner;
 
 create procedure atualiza_classific_f1_v2(IN p_cod_evento integer, IN p_clas_total boolean, IN p_clas_sexo boolean, IN p_clas_categ boolean)
     language plpgsql
@@ -5385,9 +5611,9 @@ BEGIN
 END
 $$;
 
-alter procedure atualiza_classific_f1_v2(integer, boolean, boolean, boolean) owner to runner_dba;
+alter procedure atualiza_classific_f1_v2(unknown, unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on procedure atualiza_classific_f1_v2(integer, boolean, boolean, boolean) to runner;
+grant execute on procedure atualiza_classific_f1_v2(unknown, unknown, unknown, unknown) to runner;
 
 create procedure atualiza_ranking()
     language plpgsql
@@ -5513,7 +5739,7 @@ BEGIN
 END
 $$;
 
-alter procedure atualiza_resultados_resumo(integer) owner to runner_dba;
+alter procedure atualiza_resultados_resumo(unknown) owner to runner_dba;
 
 create procedure atualiza_resultados_resumo_2025(IN p_cod_evento integer)
     language plpgsql
@@ -5694,7 +5920,7 @@ insert into tb_resultados_resumo_2025
 END
 $$;
 
-alter procedure atualiza_resultados_resumo_2025(integer) owner to runner_dba;
+alter procedure atualiza_resultados_resumo_2025(unknown) owner to runner_dba;
 
 create function bi_cria_filtro(filtro jsonb) returns character varying
     language plpgsql
@@ -5785,7 +6011,7 @@ begin
 end;
 $$;
 
-alter function bi_cria_filtro(jsonb) owner to runner_dba;
+alter function bi_cria_filtro(unknown) owner to runner_dba;
 
 create function bi_filtro_categoria() returns json
     language plpgsql
@@ -5829,7 +6055,7 @@ begin
 end;
 $$;
 
-alter function bi_filtro_cidade(varchar, out varchar, out varchar) owner to runner_dba;
+alter function bi_filtro_cidade(unknown, out unknown, out unknown) owner to runner_dba;
 
 create function bi_filtro_data(p_data_ini date DEFAULT NULL::date, p_data_fim date DEFAULT NULL::date, OUT tipo_filtro text, OUT vlr_filtro character varying, OUT seq integer, OUT ordem integer) returns SETOF record
     language plpgsql
@@ -5872,7 +6098,7 @@ begin
 end;
 $$;
 
-alter function bi_filtro_data(date, date, out text, out varchar, out integer, out integer) owner to runner_dba;
+alter function bi_filtro_data(unknown, unknown, out unknown, out unknown, out unknown, out unknown) owner to runner_dba;
 
 create function bi_filtro_estado(OUT uf text, OUT nome_uf text) returns SETOF record
     language sql
@@ -5881,7 +6107,7 @@ $$
    select uf,nome_uf from tb_uf order by uf;
 $$;
 
-alter function bi_filtro_estado(out text, out text) owner to runner_dba;
+alter function bi_filtro_estado(out unknown, out unknown) owner to runner_dba;
 
 create function bi_filtro_percurso() returns json
     language plpgsql
@@ -5925,7 +6151,7 @@ begin
 end;
 $$;
 
-alter function bi_kpi_conta_concluintes(jsonb) owner to runner_dba;
+alter function bi_kpi_conta_concluintes(unknown) owner to runner_dba;
 
 create function bi_kpi_conta_eventos(filtro jsonb) returns integer
     language plpgsql
@@ -5950,7 +6176,7 @@ begin
 end;
 $$;
 
-alter function bi_kpi_conta_eventos(jsonb) owner to runner_dba;
+alter function bi_kpi_conta_eventos(unknown) owner to runner_dba;
 
 create function bi_tab_lista_topnpace(filtro jsonb, p_top integer) returns json
     language plpgsql
@@ -5971,7 +6197,7 @@ begin
 end;
 $$;
 
-alter function bi_tab_lista_topnpace(jsonb, integer) owner to runner_dba;
+alter function bi_tab_lista_topnpace(unknown, unknown) owner to runner_dba;
 
 create function compara_filtro_caract_dominio(p_caracteristica text DEFAULT NULL::text) returns json
     language plpgsql
@@ -5990,7 +6216,7 @@ begin
 end;
 $$;
 
-alter function compara_filtro_caract_dominio(text) owner to runner_dba;
+alter function compara_filtro_caract_dominio(unknown) owner to runner_dba;
 
 create function compara_filtro_caract_produto(p_tipo_produto text DEFAULT NULL::text) returns json
     language plpgsql
@@ -6009,7 +6235,7 @@ begin
 end;
 $$;
 
-alter function compara_filtro_caract_produto(text) owner to runner_dba;
+alter function compara_filtro_caract_produto(unknown) owner to runner_dba;
 
 create procedure gera_resultados(IN p_cod_evento character varying)
     language plpgsql
@@ -6534,7 +6760,7 @@ BEGIN
 END
 $$;
 
-alter procedure gera_resultados(varchar) owner to runner_dba;
+alter procedure gera_resultados(unknown) owner to runner_dba;
 
 create procedure gera_resultados_v2(IN p_cod_evento character varying)
     language plpgsql
@@ -7064,7 +7290,7 @@ BEGIN
 END
 $$;
 
-alter procedure gera_resultados_v2(varchar) owner to runner_dba;
+alter procedure gera_resultados_v2(unknown) owner to runner_dba;
 
 create function get_clima(p_cod_cidade integer, p_dia date, p_hora time without time zone) returns json
     language plpgsql
@@ -7100,9 +7326,9 @@ group by
 END
 $$;
 
-alter function get_clima(integer, date, time) owner to runner_dba;
+alter function get_clima(unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function get_clima(integer, date, time) to runner;
+grant execute on function get_clima(unknown, unknown, unknown) to runner;
 
 create function get_eventos_relacionados(p_id_evento integer, OUT id_evento integer, OUT nome_evento character varying, OUT data_inicial character varying, OUT cidade character varying, OUT endereco character varying) returns SETOF record
     language plpgsql
@@ -7154,7 +7380,7 @@ begin
 end;
 $$;
 
-alter function get_eventos_relacionados(integer, out integer, out varchar, out varchar, out varchar, out varchar) owner to runner_dba;
+alter function get_eventos_relacionados(unknown, out unknown, out unknown, out unknown, out unknown, out unknown) owner to runner_dba;
 
 create function get_id_evento_parceiro(p_id_parceiro integer, p_id_evento integer, p_percurso integer DEFAULT NULL::integer) returns integer
     language plpgsql
@@ -7188,9 +7414,9 @@ BEGIN
 END
 $$;
 
-alter function get_id_evento_parceiro(integer, integer, integer) owner to runner_dba;
+alter function get_id_evento_parceiro(unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function get_id_evento_parceiro(integer, integer, integer) to runner;
+grant execute on function get_id_evento_parceiro(unknown, unknown, unknown) to runner;
 
 create function get_id_evento_parceiro_v1(p_id_parceiro integer, p_id_evento integer, p_percurso integer DEFAULT NULL::integer) returns character varying
     language plpgsql
@@ -7226,9 +7452,9 @@ BEGIN
 END
 $$;
 
-alter function get_id_evento_parceiro_v1(integer, integer, integer) owner to runner_dba;
+alter function get_id_evento_parceiro_v1(unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function get_id_evento_parceiro_v1(integer, integer, integer) to runner;
+grant execute on function get_id_evento_parceiro_v1(unknown, unknown, unknown) to runner;
 
 create function get_id_permit_parceiro(p_id_parceiro integer, p_id_evento integer, p_percurso integer DEFAULT NULL::integer) returns integer
     language plpgsql
@@ -7253,9 +7479,9 @@ BEGIN
 END
 $$;
 
-alter function get_id_permit_parceiro(integer, integer, integer) owner to runner_dba;
+alter function get_id_permit_parceiro(unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function get_id_permit_parceiro(integer, integer, integer) to runner;
+grant execute on function get_id_permit_parceiro(unknown, unknown, unknown) to runner;
 
 create function get_id_permit_parceiro_v1(p_id_evento integer, p_percurso integer DEFAULT NULL::integer) returns integer
     language plpgsql
@@ -7279,9 +7505,9 @@ BEGIN
 END
 $$;
 
-alter function get_id_permit_parceiro_v1(integer, integer) owner to runner_dba;
+alter function get_id_permit_parceiro_v1(unknown, unknown) owner to runner_dba;
 
-grant execute on function get_id_permit_parceiro_v1(integer, integer) to runner;
+grant execute on function get_id_permit_parceiro_v1(unknown, unknown) to runner;
 
 create function get_media(p_id_evento integer, p_limit integer DEFAULT 5) returns json
     language plpgsql
@@ -7334,9 +7560,9 @@ return var_resultado;
 END
 $$;
 
-alter function get_media(integer, integer) owner to runner_dba;
+alter function get_media(unknown, unknown) owner to runner_dba;
 
-grant execute on function get_media(integer, integer) to runner;
+grant execute on function get_media(unknown, unknown) to runner;
 
 create function get_paginas_vinculos(p_id_paginas integer) returns SETOF record
     language plpgsql
@@ -7374,7 +7600,7 @@ where vin.id_pagina_destino = ' || p_id_paginas;
 end;
 $$;
 
-alter function get_paginas_vinculos(integer) owner to runner_dba;
+alter function get_paginas_vinculos(unknown) owner to runner_dba;
 
 create function get_pais_padrao(p_cod_pais character varying) returns character varying
     language plpgsql
@@ -7412,9 +7638,9 @@ end if;
 END
 $$;
 
-alter function get_pais_padrao(varchar) owner to runner_dba;
+alter function get_pais_padrao(unknown) owner to runner_dba;
 
-grant execute on function get_pais_padrao(varchar) to runner;
+grant execute on function get_pais_padrao(unknown) to runner;
 
 create function get_tag(p_desc character varying) returns character varying
     language plpgsql
@@ -7425,9 +7651,9 @@ BEGIN
 END;
 $$;
 
-alter function get_tag(varchar) owner to runner_dba;
+alter function get_tag(unknown) owner to runner_dba;
 
-grant execute on function get_tag(varchar) to runner;
+grant execute on function get_tag(unknown) to runner;
 
 create function get_tempof1(p_id_evento integer, p_percurso integer, p_sexo character varying, p_categoria character varying, p_tempo_total time without time zone) returns time without time zone
     language plpgsql
@@ -7467,9 +7693,9 @@ end if;
 END
 $$;
 
-alter function get_tempof1(integer, integer, varchar, varchar, time) owner to runner_dba;
+alter function get_tempof1(unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function get_tempof1(integer, integer, varchar, varchar, time) to runner;
+grant execute on function get_tempof1(unknown, unknown, unknown, unknown, unknown) to runner;
 
 create function grava_evento_corridas_percursos() returns trigger
     language plpgsql
@@ -7622,9 +7848,9 @@ BEGIN
 END
 $$;
 
-alter procedure grava_evento_corridas_percursos(integer, varchar, date, date, varchar) owner to runner_dba;
+alter procedure grava_evento_corridas_percursos(unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on procedure grava_evento_corridas_percursos(integer, varchar, date, date, varchar) to runner;
+grant execute on procedure grava_evento_corridas_percursos(unknown, unknown, unknown, unknown, unknown) to runner;
 
 create function grava_logs_resultados(p_cod_evento text, p_num_peito integer, p_nome text, p_categoria text, p_id_evento integer, p_chave_proc text, p_msg text) returns integer
     language plpgsql
@@ -7651,9 +7877,9 @@ BEGIN
 END;
 $$;
 
-alter function grava_logs_resultados(text, integer, text, text, integer, text, text) owner to runner_dba;
+alter function grava_logs_resultados(unknown, unknown, unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-grant execute on function grava_logs_resultados(text, integer, text, text, integer, text, text) to runner;
+grant execute on function grava_logs_resultados(unknown, unknown, unknown, unknown, unknown, unknown, unknown) to runner;
 
 create function nome_dia(integer) returns character varying
     language sql
@@ -7671,7 +7897,7 @@ else NULL
 end
 $$;
 
-alter function nome_dia(integer) owner to runner_dba;
+alter function nome_dia(unknown) owner to runner_dba;
 
 create function nome_mes(integer) returns character varying
     language sql
@@ -7694,7 +7920,7 @@ else NULL
 end
 $$;
 
-alter function nome_mes(integer) owner to runner_dba;
+alter function nome_mes(unknown) owner to runner_dba;
 
 create function numero_valido(p_numero character varying) returns boolean
     language plpgsql
@@ -7710,9 +7936,9 @@ BEGIN
 END;
 $$;
 
-alter function numero_valido(varchar) owner to postgres;
+alter function numero_valido(unknown) owner to postgres;
 
-grant execute on function numero_valido(varchar) to runner;
+grant execute on function numero_valido(unknown) to runner;
 
 create function percursos_corrida(p_id_evento integer) returns character varying
     language plpgsql
@@ -7733,9 +7959,9 @@ BEGIN
 END
 $$;
 
-alter function percursos_corrida(integer) owner to runner_dba;
+alter function percursos_corrida(unknown) owner to runner_dba;
 
-grant execute on function percursos_corrida(integer) to runner;
+grant execute on function percursos_corrida(unknown) to runner;
 
 create procedure processa_desafio()
     language plpgsql
@@ -7817,9 +8043,9 @@ BEGIN
 END;
 $$;
 
-alter function tempo_valido(varchar) owner to postgres;
+alter function tempo_valido(unknown) owner to postgres;
 
-grant execute on function tempo_valido(varchar) to runner;
+grant execute on function tempo_valido(unknown) to runner;
 
 create function teste_filtro(filtro jsonb) returns integer
     language plpgsql
@@ -7867,7 +8093,7 @@ begin
 end;
 $$;
 
-alter function teste_filtro(jsonb) owner to runner_dba;
+alter function teste_filtro(unknown) owner to runner_dba;
 
 create function teste_filtro_lista(filtro jsonb) returns json
     language plpgsql
@@ -7918,14 +8144,14 @@ begin
 end;
 $$;
 
-alter function teste_filtro_lista(jsonb) owner to runner_dba;
+alter function teste_filtro_lista(unknown) owner to runner_dba;
 
 create function teste_get_recordset(OUT uf text, OUT nome_cidade text) returns SETOF record
     language sql
 as
 $$ SELECT uf,nome_cidade FROM tb_cidades $$;
 
-alter function teste_get_recordset(out text, out text) owner to runner_dba;
+alter function teste_get_recordset(out unknown, out unknown) owner to runner_dba;
 
 create function teste_get_recordset_json() returns json
     language sql
@@ -8013,9 +8239,9 @@ BEGIN
 END;
 $$;
 
-alter function padrao_nomes(varchar) owner to postgres;
+alter function padrao_nomes(unknown) owner to postgres;
 
-grant execute on function padrao_nomes(varchar) to runner;
+grant execute on function padrao_nomes(unknown) to runner;
 
 create function limpar_assessoria(p_nome character varying) returns character varying
     language plpgsql
@@ -8053,9 +8279,9 @@ BEGIN
 END;
 $$;
 
-alter function limpar_assessoria(varchar) owner to postgres;
+alter function limpar_assessoria(unknown) owner to postgres;
 
-grant execute on function limpar_assessoria(varchar) to runner;
+grant execute on function limpar_assessoria(unknown) to runner;
 
 create procedure atualiza_resumo_geral()
     language plpgsql
@@ -8351,7 +8577,7 @@ BEGIN
 END;
 $$;
 
-alter function extrair_faixa_etaria(text) owner to runner_dba;
+alter function extrair_faixa_etaria(unknown) owner to runner_dba;
 
 create function get_id_dim_faixa(p_percurso numeric, p_tempo_total time without time zone) returns integer
     language plpgsql
@@ -8428,9 +8654,9 @@ BEGIN
 END
 $$;
 
-alter function get_id_dim_faixa(numeric, time) owner to runner_dba;
+alter function get_id_dim_faixa(unknown, unknown) owner to runner_dba;
 
-grant execute on function get_id_dim_faixa(numeric, time) to runner;
+grant execute on function get_id_dim_faixa(unknown, unknown) to runner;
 
 create function get_id_geracao(p_faixa_idade int4range, p_ano_referencia integer) returns integer
     immutable
@@ -8470,7 +8696,7 @@ SELECT
     END;
 $$;
 
-alter function get_id_geracao(int4range, integer) owner to runner_dba;
+alter function get_id_geracao(unknown, unknown) owner to runner_dba;
 
 create function get_id_categoria_cbat(p_faixa_atleta int4range) returns integer
     immutable
@@ -8496,9 +8722,9 @@ SELECT
     END;
 $$;
 
-alter function get_id_categoria_cbat(int4range) owner to runner_dba;
+alter function get_id_categoria_cbat(unknown) owner to runner_dba;
 
-create function set_limit(real) returns real
+create function set_limit(unknown) returns real
     strict
     language c
 as
@@ -8508,7 +8734,7 @@ begin
 end;
 $$;
 
-alter function set_limit(real) owner to runner_dba;
+alter function set_limit(unknown) owner to runner_dba;
 
 create function show_limit() returns real
     stable
@@ -8524,7 +8750,7 @@ $$;
 
 alter function show_limit() owner to runner_dba;
 
-create function show_trgm(text) returns text[]
+create function show_trgm(unknown) returns text[]
     immutable
     strict
     parallel safe
@@ -8536,9 +8762,9 @@ begin
 end;
 $$;
 
-alter function show_trgm(text) owner to runner_dba;
+alter function show_trgm(unknown) owner to runner_dba;
 
-create function similarity(text, text) returns real
+create function similarity(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8550,9 +8776,9 @@ begin
 end;
 $$;
 
-alter function similarity(text, text) owner to runner_dba;
+alter function similarity(unknown, unknown) owner to runner_dba;
 
-create function similarity_op(text, text) returns boolean
+create function similarity_op(unknown, unknown) returns boolean
     stable
     strict
     parallel safe
@@ -8564,9 +8790,9 @@ begin
 end;
 $$;
 
-alter function similarity_op(text, text) owner to runner_dba;
+alter function similarity_op(unknown, unknown) owner to runner_dba;
 
-create function word_similarity(text, text) returns real
+create function word_similarity(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8578,9 +8804,9 @@ begin
 end;
 $$;
 
-alter function word_similarity(text, text) owner to runner_dba;
+alter function word_similarity(unknown, unknown) owner to runner_dba;
 
-create function word_similarity_op(text, text) returns boolean
+create function word_similarity_op(unknown, unknown) returns boolean
     stable
     strict
     parallel safe
@@ -8592,9 +8818,9 @@ begin
 end;
 $$;
 
-alter function word_similarity_op(text, text) owner to runner_dba;
+alter function word_similarity_op(unknown, unknown) owner to runner_dba;
 
-create function word_similarity_commutator_op(text, text) returns boolean
+create function word_similarity_commutator_op(unknown, unknown) returns boolean
     stable
     strict
     parallel safe
@@ -8606,9 +8832,9 @@ begin
 end;
 $$;
 
-alter function word_similarity_commutator_op(text, text) owner to runner_dba;
+alter function word_similarity_commutator_op(unknown, unknown) owner to runner_dba;
 
-create function similarity_dist(text, text) returns real
+create function similarity_dist(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8620,9 +8846,9 @@ begin
 end;
 $$;
 
-alter function similarity_dist(text, text) owner to runner_dba;
+alter function similarity_dist(unknown, unknown) owner to runner_dba;
 
-create function word_similarity_dist_op(text, text) returns real
+create function word_similarity_dist_op(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8634,9 +8860,9 @@ begin
 end;
 $$;
 
-alter function word_similarity_dist_op(text, text) owner to runner_dba;
+alter function word_similarity_dist_op(unknown, unknown) owner to runner_dba;
 
-create function word_similarity_dist_commutator_op(text, text) returns real
+create function word_similarity_dist_commutator_op(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8648,9 +8874,9 @@ begin
 end;
 $$;
 
-alter function word_similarity_dist_commutator_op(text, text) owner to runner_dba;
+alter function word_similarity_dist_commutator_op(unknown, unknown) owner to runner_dba;
 
-create function gtrgm_in(cstring) returns gtrgm
+create function gtrgm_in(unknown) returns gtrgm
     immutable
     strict
     parallel safe
@@ -8662,9 +8888,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_in(cstring) owner to runner_dba;
+alter function gtrgm_in(unknown) owner to runner_dba;
 
-create function gtrgm_out(gtrgm) returns cstring
+create function gtrgm_out(unknown) returns cstring
     immutable
     strict
     parallel safe
@@ -8676,9 +8902,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_out(gtrgm) owner to runner_dba;
+alter function gtrgm_out(unknown) owner to runner_dba;
 
-create function gtrgm_consistent(internal, text, smallint, oid, internal) returns boolean
+create function gtrgm_consistent(unknown, unknown, unknown, unknown, unknown) returns boolean
     immutable
     strict
     parallel safe
@@ -8690,9 +8916,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_consistent(internal, text, smallint, oid, internal) owner to runner_dba;
+alter function gtrgm_consistent(unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-create function gtrgm_distance(internal, text, smallint, oid, internal) returns double precision
+create function gtrgm_distance(unknown, unknown, unknown, unknown, unknown) returns double precision
     immutable
     strict
     parallel safe
@@ -8704,9 +8930,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_distance(internal, text, smallint, oid, internal) owner to runner_dba;
+alter function gtrgm_distance(unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-create function gtrgm_compress(internal) returns internal
+create function gtrgm_compress(unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8718,9 +8944,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_compress(internal) owner to runner_dba;
+alter function gtrgm_compress(unknown) owner to runner_dba;
 
-create function gtrgm_decompress(internal) returns internal
+create function gtrgm_decompress(unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8732,9 +8958,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_decompress(internal) owner to runner_dba;
+alter function gtrgm_decompress(unknown) owner to runner_dba;
 
-create function gtrgm_penalty(internal, internal, internal) returns internal
+create function gtrgm_penalty(unknown, unknown, unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8746,9 +8972,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_penalty(internal, internal, internal) owner to runner_dba;
+alter function gtrgm_penalty(unknown, unknown, unknown) owner to runner_dba;
 
-create function gtrgm_picksplit(internal, internal) returns internal
+create function gtrgm_picksplit(unknown, unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8760,9 +8986,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_picksplit(internal, internal) owner to runner_dba;
+alter function gtrgm_picksplit(unknown, unknown) owner to runner_dba;
 
-create function gtrgm_union(internal, internal) returns gtrgm
+create function gtrgm_union(unknown, unknown) returns gtrgm
     immutable
     strict
     parallel safe
@@ -8774,9 +9000,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_union(internal, internal) owner to runner_dba;
+alter function gtrgm_union(unknown, unknown) owner to runner_dba;
 
-create function gtrgm_same(gtrgm, gtrgm, internal) returns internal
+create function gtrgm_same(unknown, unknown, unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8788,9 +9014,9 @@ begin
 end;
 $$;
 
-alter function gtrgm_same(gtrgm, gtrgm, internal) owner to runner_dba;
+alter function gtrgm_same(unknown, unknown, unknown) owner to runner_dba;
 
-create function gin_extract_value_trgm(text, internal) returns internal
+create function gin_extract_value_trgm(unknown, unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8802,9 +9028,9 @@ begin
 end;
 $$;
 
-alter function gin_extract_value_trgm(text, internal) owner to runner_dba;
+alter function gin_extract_value_trgm(unknown, unknown) owner to runner_dba;
 
-create function gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal) returns internal
+create function gin_extract_query_trgm(unknown, unknown, unknown, unknown, unknown, unknown, unknown) returns internal
     immutable
     strict
     parallel safe
@@ -8816,9 +9042,9 @@ begin
 end;
 $$;
 
-alter function gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal) owner to runner_dba;
+alter function gin_extract_query_trgm(unknown, unknown, unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-create function gin_trgm_consistent(internal, smallint, text, integer, internal, internal, internal, internal) returns boolean
+create function gin_trgm_consistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown) returns boolean
     immutable
     strict
     parallel safe
@@ -8830,9 +9056,9 @@ begin
 end;
 $$;
 
-alter function gin_trgm_consistent(internal, smallint, text, integer, internal, internal, internal, internal) owner to runner_dba;
+alter function gin_trgm_consistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-create function gin_trgm_triconsistent(internal, smallint, text, integer, internal, internal, internal) returns "char"
+create function gin_trgm_triconsistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown) returns "char"
     immutable
     strict
     parallel safe
@@ -8844,9 +9070,9 @@ begin
 end;
 $$;
 
-alter function gin_trgm_triconsistent(internal, smallint, text, integer, internal, internal, internal) owner to runner_dba;
+alter function gin_trgm_triconsistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
-create function strict_word_similarity(text, text) returns real
+create function strict_word_similarity(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8858,9 +9084,9 @@ begin
 end;
 $$;
 
-alter function strict_word_similarity(text, text) owner to runner_dba;
+alter function strict_word_similarity(unknown, unknown) owner to runner_dba;
 
-create function strict_word_similarity_op(text, text) returns boolean
+create function strict_word_similarity_op(unknown, unknown) returns boolean
     stable
     strict
     parallel safe
@@ -8872,9 +9098,9 @@ begin
 end;
 $$;
 
-alter function strict_word_similarity_op(text, text) owner to runner_dba;
+alter function strict_word_similarity_op(unknown, unknown) owner to runner_dba;
 
-create function strict_word_similarity_commutator_op(text, text) returns boolean
+create function strict_word_similarity_commutator_op(unknown, unknown) returns boolean
     stable
     strict
     parallel safe
@@ -8886,9 +9112,9 @@ begin
 end;
 $$;
 
-alter function strict_word_similarity_commutator_op(text, text) owner to runner_dba;
+alter function strict_word_similarity_commutator_op(unknown, unknown) owner to runner_dba;
 
-create function strict_word_similarity_dist_op(text, text) returns real
+create function strict_word_similarity_dist_op(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8900,9 +9126,9 @@ begin
 end;
 $$;
 
-alter function strict_word_similarity_dist_op(text, text) owner to runner_dba;
+alter function strict_word_similarity_dist_op(unknown, unknown) owner to runner_dba;
 
-create function strict_word_similarity_dist_commutator_op(text, text) returns real
+create function strict_word_similarity_dist_commutator_op(unknown, unknown) returns real
     immutable
     strict
     parallel safe
@@ -8914,9 +9140,9 @@ begin
 end;
 $$;
 
-alter function strict_word_similarity_dist_commutator_op(text, text) owner to runner_dba;
+alter function strict_word_similarity_dist_commutator_op(unknown, unknown) owner to runner_dba;
 
-create function gtrgm_options(internal) returns void
+create function gtrgm_options(unknown) returns void
     immutable
     parallel safe
     language c
@@ -8927,7 +9153,7 @@ begin
 end;
 $$;
 
-alter function gtrgm_options(internal) owner to runner_dba;
+alter function gtrgm_options(unknown) owner to runner_dba;
 
 create function grava_logs_results(p_trace_id uuid, p_run_id uuid, p_cod_evento text, p_percurso character varying, p_num_peito character varying, p_severity character varying, p_processing_stage character varying, p_error_code character varying, p_payload jsonb) returns integer
     language plpgsql
@@ -8970,7 +9196,7 @@ BEGIN
 END;
 $$;
 
-alter function grava_logs_results(uuid, uuid, text, varchar, varchar, varchar, varchar, varchar, jsonb) owner to runner_dba;
+alter function grava_logs_results(unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown) owner to runner_dba;
 
 create function sanitize_pace(p_input text) returns time without time zone
     language plpgsql
@@ -9079,7 +9305,7 @@ BEGIN
 END;
 $$;
 
-alter function sanitize_pace(text) owner to runner_dba;
+alter function sanitize_pace(unknown) owner to runner_dba;
 
 create function sanitize_percurso(p_input text) returns numeric
     immutable
@@ -9112,7 +9338,7 @@ begin
 end;
 $$;
 
-alter function sanitize_percurso(text) owner to runner_dba;
+alter function sanitize_percurso(unknown) owner to runner_dba;
 
 create procedure nova_gera_resultados(IN p_cod_evento character varying, IN p_tipo_processamento integer DEFAULT 0)
     language plpgsql
@@ -9997,7 +10223,7 @@ BEGIN
 END
 $$;
 
-alter procedure nova_gera_resultados(varchar, integer) owner to runner_dba;
+alter procedure nova_gera_resultados(unknown, unknown) owner to runner_dba;
 
 create function extrair_dominio(p_url text) returns text
     immutable
@@ -10016,7 +10242,7 @@ SELECT substring(h FROM '([^\.]+)$')
 FROM sem_tld;
 $$;
 
-alter function extrair_dominio(text) owner to runner_dba;
+alter function extrair_dominio(unknown) owner to runner_dba;
 
 create function normaliza_nome(p_nome text) returns text
     language sql
@@ -10033,7 +10259,7 @@ $$
     end
 $$;
 
-alter function normaliza_nome(text) owner to runner_dba;
+alter function normaliza_nome(unknown) owner to runner_dba;
 
 create function fu_processa_lote_backfill_nome()
     returns TABLE(id_lote bigint, id_inicial bigint, id_final bigint, linhas_atualizadas bigint, status character varying)
@@ -10212,23 +10438,23 @@ alter operator family gist_trgm_ops using gist add
     operator 9 %>>(text, text),
     operator 10 <->>>(text, text) for order by float_ops,
     operator 11 =(text,text),
-    function 6(text, text) gtrgm_picksplit(internal, internal),
-    function 7(text, text) gtrgm_same(gtrgm, gtrgm, internal),
-    function 8(text, text) gtrgm_distance(internal, text, smallint, oid, internal),
-    function 10(text, text) gtrgm_options(internal),
-    function 2(text, text) gtrgm_union(internal, internal),
-    function 3(text, text) gtrgm_compress(internal),
-    function 4(text, text) gtrgm_decompress(internal),
-    function 5(text, text) gtrgm_penalty(internal, internal, internal),
-    function 1(text, text) gtrgm_consistent(internal, text, smallint, oid, internal);
+    function 6(text, text) gtrgm_picksplit(unknown, unknown),
+    function 7(text, text) gtrgm_same(unknown, unknown, unknown),
+    function 8(text, text) gtrgm_distance(unknown, unknown, unknown, unknown, unknown),
+    function 10(text, text) gtrgm_options(unknown),
+    function 2(text, text) gtrgm_union(unknown, unknown),
+    function 3(text, text) gtrgm_compress(unknown),
+    function 4(text, text) gtrgm_decompress(unknown),
+    function 5(text, text) gtrgm_penalty(unknown, unknown, unknown),
+    function 1(text, text) gtrgm_consistent(unknown, unknown, unknown, unknown, unknown);
 
 alter operator family gist_trgm_ops using gist owner to runner_dba;
 
-create operator class gist_trgm_ops for type text using gist as storage gtrgm function 6(text, text) gtrgm_picksplit(internal, internal),
-	function 1(text, text) gtrgm_consistent(internal, text, smallint, oid, internal),
-	function 7(text, text) gtrgm_same(gtrgm, gtrgm, internal),
-	function 5(text, text) gtrgm_penalty(internal, internal, internal),
-	function 2(text, text) gtrgm_union(internal, internal);
+create operator class gist_trgm_ops for type text using gist as storage gtrgm function 6(text, text) gtrgm_picksplit(unknown, unknown),
+	function 1(text, text) gtrgm_consistent(unknown, unknown, unknown, unknown, unknown),
+	function 7(text, text) gtrgm_same(unknown, unknown, unknown),
+	function 5(text, text) gtrgm_penalty(unknown, unknown, unknown),
+	function 2(text, text) gtrgm_union(unknown, unknown);
 
 alter operator class gist_trgm_ops using gist owner to runner_dba;
 
@@ -10244,15 +10470,15 @@ alter operator family gin_trgm_ops using gin add
     operator 4 ~~*(text,text),
     operator 5 ~(text,text),
     function 1(text, text) btint4cmp(integer,integer),
-    function 4(text, text) gin_trgm_consistent(internal, smallint, text, integer, internal, internal, internal, internal),
-    function 6(text, text) gin_trgm_triconsistent(internal, smallint, text, integer, internal, internal, internal),
-    function 2(text, text) gin_extract_value_trgm(text, internal),
-    function 3(text, text) gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal);
+    function 4(text, text) gin_trgm_consistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown),
+    function 6(text, text) gin_trgm_triconsistent(unknown, unknown, unknown, unknown, unknown, unknown, unknown),
+    function 2(text, text) gin_extract_value_trgm(unknown, unknown),
+    function 3(text, text) gin_extract_query_trgm(unknown, unknown, unknown, unknown, unknown, unknown, unknown);
 
 alter operator family gin_trgm_ops using gin owner to runner_dba;
 
-create operator class gin_trgm_ops for type text using gin as storage integer function 3(text, text) gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal),
-	function 2(text, text) gin_extract_value_trgm(text, internal);
+create operator class gin_trgm_ops for type text using gin as storage integer function 3(text, text) gin_extract_query_trgm(unknown, unknown, unknown, unknown, unknown, unknown, unknown),
+	function 2(text, text) gin_extract_value_trgm(unknown, unknown);
 
 alter operator class gin_trgm_ops using gin owner to runner_dba;
 
@@ -10295,4 +10521,3 @@ alter operator <->>>(text, text) owner to runner_dba;
 create operator <<<-> (procedure = strict_word_similarity_dist_op, leftarg = text, rightarg = text, commutator = <->>>);
 
 alter operator <<<->(text, text) owner to runner_dba;
-

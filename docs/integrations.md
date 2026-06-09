@@ -76,9 +76,7 @@ Uso de `cfhttp` para consumir JSON de eventos e resultados:
 
 ### Google Maps Geocoding
 
-Uso observado em:
-
-- [admin/api/processar/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/processar/index.cfm)
+Uso antigo observado em `admin/api/processar`, mas esse endpoint nao existe mais na arvore ativa.
 
 ### Endpoints Road Runners / RunnerHub
 
@@ -105,9 +103,12 @@ Padrao:
 
 Exemplos:
 
-- [admin/api/chat/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/chat/index.cfm)
-- [admin/api/importacao/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/importacao/index.cfm)
-- [admin/api/processar/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/processar/index.cfm)
+- [portal/banners](/Users/Shared/Projects/RunnerHub/Business/api/portal/banners)
+- [portal/runner-apps](/Users/Shared/Projects/RunnerHub/Business/api/portal/runner-apps)
+
+Nota:
+
+- `/admin/api/` nao existe mais na arvore ativa; referencias antigas foram tratadas como legado removido.
 
 ## Frontend e assets
 

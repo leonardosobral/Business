@@ -109,8 +109,9 @@
                 <ul class="doc-list">
                   <li>O login carrega <code>qPerfil</code> a partir do <code>COOKIE.id</code>.</li>
                   <li>Usuários precisam ser <code>is_admin</code> ou <code>is_partner</code>.</li>
-                  <li>Empresas do usuário vêm de <code>tb_usuarios_fornecedores</code>.</li>
-                  <li>Eventos do parceiro vêm de <code>tb_evento_corridas_fornecedores</code>.</li>
+                  <li>Estrutura nova de empresa/conta: <code>tb_contas</code>, <code>tb_conta_usuarios</code> e <code>tb_conta_eventos</code>.</li>
+                  <li>Eventos visíveis para parceiros vêm de <code>tb_conta_eventos</code>.</li>
+                  <li>Vínculos com fornecedores permanecem apenas para dados legados ou metadados do evento, nao para escopo de acesso Business.</li>
                 </ul>
               </div>
             </div>
@@ -128,13 +129,13 @@
               <div>
                 <h6>Parceiro</h6>
                 <p class="mb-0">
-                  Usuário parceiro sem admin deve ver apenas dados ligados à empresa, fornecedor, página ou eventos associados ao seu cadastro.
+                  Usuário parceiro sem admin deve ver apenas dados ligados à conta, às páginas liberadas e aos eventos vinculados em <code>tb_conta_eventos</code>.
                 </p>
               </div>
               <div>
                 <h6>Aplicação atual</h6>
                 <p class="mb-0">
-                  As áreas <code>/admin</code>, <code>/ads</code>, <code>/cupons</code>, <code>/cupons-rr</code> e <code>/usuarios</code> seguem esse padrão de restrição.
+                  As áreas <code>/eventos</code>, <code>/ads</code>, <code>/inscricoes</code>, <code>/cupons-rr</code> e <code>/administracao/contas</code> seguem esse padrão de restrição.
                 </p>
               </div>
             </div>
@@ -153,9 +154,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="/admin/">Eventos</a></td>
+                    <td><a href="/eventos/">Eventos</a></td>
                     <td>Cadastro, edição, resultados, percursos, fornecedores, configurações e OR.</td>
-                    <td>Admin abre 2026 por padrão. Parceiro abre Todo o Período e vê apenas eventos ligados à empresa. Abas Configurações e OR são admin-only.</td>
+                    <td>Admin abre 2026 por padrão. Parceiro abre Todo o Período, vê apenas eventos ligados à empresa e pode solicitar novos vínculos para aprovação.</td>
                   </tr>
                   <tr>
                     <td><a href="/ads/">Ads</a></td>
@@ -173,9 +174,14 @@
                     <td>Parceiro vê cupons dos eventos permitidos, circuitos relacionados e páginas vinculadas ao próprio perfil.</td>
                   </tr>
                   <tr>
-                    <td><a href="/usuarios/">Usuários</a></td>
-                    <td>Aprovação e acompanhamento de usuários parceiros.</td>
-                    <td>Admin vê todos. Parceiro vê usuários ligados aos mesmos fornecedores da empresa.</td>
+                    <td><a href="/administracao/contas/">Contas</a></td>
+                    <td>CRUD administrativo de empresas/contas, vínculos de usuários e eventos.</td>
+                    <td>Admin gerencia todas as contas. Donos e admins da conta gerenciam o cadastro e usuários da própria empresa em <code>tb_conta_usuarios</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/administracao/contas/">Usuários da conta</a></td>
+                    <td>Gestão dos usuários ligados à empresa Business.</td>
+                    <td>Substitui o módulo legado <code>/usuarios/</code>, que agora redireciona para contas.</td>
                   </tr>
                   <tr>
                     <td><a href="/notificacoes/">Notificações</a></td>

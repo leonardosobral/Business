@@ -1,12 +1,12 @@
-<cfif NOT isDefined("VARIABLES.adminRestrictByFornecedor")>
-    <cfset VARIABLES.adminRestrictByFornecedor = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
+<cfif NOT isDefined("VARIABLES.adminRestrictByConta")>
+    <cfset VARIABLES.adminRestrictByConta = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
 </cfif>
 
-<cfif NOT isDefined("VARIABLES.adminEventosFornecedorIds")>
-    <cfset VARIABLES.adminEventosFornecedorIds = "0"/>
+<cfif NOT isDefined("VARIABLES.adminEventosContaIds")>
+    <cfset VARIABLES.adminEventosContaIds = "0"/>
 
-    <cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount>
-        <cfset VARIABLES.adminEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+    <cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
+        <cfset VARIABLES.adminEventosContaIds = ValueList(qEventosConta.id_evento)/>
     </cfif>
 </cfif>
 
@@ -75,8 +75,8 @@
             )
         </cfif>
     </cfif--->
-    <cfif VARIABLES.adminRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adminEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adminRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adminEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 

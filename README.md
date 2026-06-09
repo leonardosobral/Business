@@ -11,7 +11,7 @@ Este repositório hoje funciona como um monólito em Adobe ColdFusion/CFML, com 
 - Entrada principal: [`Application.cfc`](/Users/leonardosobral/Git/RunnerHub/Business/Application.cfc).
 - Datasource padrão da aplicação: `runner_dba`.
 - Autenticação: cookies (`COOKIE.id`, `COOKIE.name`, `COOKIE.email`) e fluxo de Google Sign-In.
-- Áreas principais: `admin`, `bi`, `crm`, `emailmkt`, `leaderboard`, `evento`, `inscricao` e módulos satélite para operação.
+- Áreas principais: `eventos`, `bi`, `crm`, `emailmkt`, `leaderboard`, `inscricoes` e módulos satélite para operação.
 
 ## Como o projeto está organizado
 
@@ -29,9 +29,9 @@ Este repositório hoje funciona como um monólito em Adobe ColdFusion/CFML, com 
 
 ### Módulos mais relevantes
 
-- [`admin`](/Users/leonardosobral/Git/RunnerHub/Business/admin): manutenção e edição operacional de eventos, resultados, homologação, usuários e stats.
+- [`eventos`](/Users/Shared/Projects/RunnerHub/Business/eventos): manutenção e edição operacional de eventos, resultados, homologação e solicitações de vínculo entre conta e evento.
+- [`admin`](/Users/Shared/Projects/RunnerHub/Business/admin): rota de compatibilidade que redireciona para `eventos`.
 - [`bi`](/Users/leonardosobral/Git/RunnerHub/Business/bi): portal de BI por permissões, com acessos por tema/agregador/evento.
-- [`evento`](/Users/leonardosobral/Git/RunnerHub/Business/evento): visão detalhada por evento, com blocos de inscrições, treino e saúde.
 - [`leaderboard`](/Users/leonardosobral/Git/RunnerHub/Business/leaderboard): páginas, APIs e assets voltados a rankings, startlists, parciais e transmissão.
 - [`crm`](/Users/leonardosobral/Git/RunnerHub/Business/crm): fila e disparo de comunicação.
 - [`emailmkt`](/Users/leonardosobral/Git/RunnerHub/Business/emailmkt): composição e envio de e-mail marketing.
@@ -51,7 +51,7 @@ Grande parte das páginas protegidas inclui [`includes/backend/backend_login.cfm
 
 - carrega o perfil do usuário a partir de `COOKIE.id`
 - resolve permissões
-- carrega vínculos com fornecedores
+- carrega vínculos com contas, usuários, páginas e eventos
 - trata login/logout com Google
 - faz redirects com `cflocation` quando o contexto não está válido
 
@@ -64,7 +64,7 @@ O padrão mais recorrente é:
 3. incluir template estrutural (`head`, `header`, `footer`)
 4. renderizar `home.cfm` ou alguma view principal do módulo
 
-Isso aparece claramente em módulos como [`bi/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/bi/index.cfm), [`usuarios/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/usuarios/index.cfm) e [`crm/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/crm/index.cfm).
+Isso aparece claramente em módulos como [`bi/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/bi/index.cfm), [`administracao/contas/index.cfm`](/Users/Shared/Projects/RunnerHub/Business/administracao/contas/index.cfm) e [`crm/index.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/crm/index.cfm).
 
 ## Convenções que já existem na prática
 
@@ -111,7 +111,7 @@ Durante a leitura inicial apareceram alguns riscos importantes:
 - Separar melhor leitura/escrita de dados das views.
 - Centralizar autenticação/autorização em uma camada única.
 - Padronizar nomes e responsabilidades de `backend.cfm`.
-- Reduzir duplicação entre raiz, `bi/`, `evento/`, `stats/` e módulos parecidos.
+- Reduzir duplicação entre raiz, `bi/`, `stats/` e módulos parecidos.
 
 ### Longo prazo
 

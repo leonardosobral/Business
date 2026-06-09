@@ -51,6 +51,44 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+    <style>
+        .business-login-panel {
+            margin-top: 22px;
+        }
+
+        .business-login-choice {
+            border-top: 1px solid rgba(255,255,255,.18);
+            padding-top: 18px;
+        }
+
+        .business-login-choice:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .business-login-label {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 6px;
+        }
+
+        .business-login-help {
+            color: rgba(255,255,255,.74);
+            font-size: 13px;
+            line-height: 1.45;
+            margin: 0 0 12px;
+        }
+
+        .business-login-choice + .business-login-choice {
+            margin-top: 18px;
+        }
+
+        .business-login-choice .button_green {
+            margin-top: 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -150,27 +188,42 @@
                             <!--begin register_form -->
                             <div class="register_form">
 
-                                <h3 class="white">Você é um organizador?<br><span class="bold green">Registre-se</span> agora mesmo e solicite o seu <span class="green bold">acesso gratuito</span>.</h3>
+                                <h3 class="white">Run Pro Business para organizadores de eventos.</h3>
 
-                                <div class="row align_center">
-<!--                                    <a href="#" class="button_green"><i class="icon icon-google"></i> REGISTRE-SE AGORA</a>-->
+                                <div class="business-login-panel align_center">
 
                                     <!--- GOOGLE LOGIN NOVO --->
 
-                                    <div id="g_id_onload"
-                                        data-client_id="921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com"
-                                        data-callback="handleCredentialResponse"
-                                        data-auto_select="true"
-                                        data-auto_prompt="false">
+                                    <cfset VARIABLES.googleAutoSelect = "true"/>
+                                    <cfif (isDefined("URL.logout") AND URL.logout EQ "1") OR isDefined("COOKIE.rr_logged_out")>
+                                        <cfset VARIABLES.googleAutoSelect = "false"/>
+                                    </cfif>
+
+                                    <div class="business-login-choice">
+                                        <p class="business-login-label">Já tenho acesso aprovado</p>
+                                        <p class="business-login-help">Entre com o mesmo e-mail Google usado no cadastro da sua empresa.</p>
+
+                                        <div id="g_id_onload"
+                                            data-client_id="921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com"
+                                            data-callback="handleCredentialResponse"
+                                            data-auto_select="<cfoutput>#VARIABLES.googleAutoSelect#</cfoutput>"
+                                            data-auto_prompt="false">
+                                        </div>
+
+                                        <div class="g_id_signin"
+                                            data-type="standard"
+                                            data-size="large"
+                                            data-theme="outline"
+                                            data-text="signin_with"
+                                            data-shape="rectangular"
+                                            data-logo_alignment="left">
+                                        </div>
                                     </div>
 
-                                    <div class="g_id_signin"
-                                        data-type="standard"
-                                        data-size="large"
-                                        data-theme="outline"
-                                        data-text="sign_in_with"
-                                        data-shape="rectangular"
-                                        data-logo_alignment="left">
+                                    <div class="business-login-choice">
+                                        <p class="business-login-label">Ainda não tenho cadastro</p>
+                                        <p class="business-login-help">Solicite o acesso gratuito da sua empresa. Um administrador vai revisar os dados e liberar a conta.</p>
+                                        <a href="/cadastro/" class="button_green">Solicitar acesso da empresa</a>
                                     </div>
 
                                 </div>
@@ -178,17 +231,6 @@
                                 <!--begin success message -->
 <!--                                <p class="register_success_box" style="display:none;">Obrigado!</p>-->
                                 <!--end success message -->
-
-                                <!--begin register form -->
-<!--                                <form id="register-form" class="register" action="register" method="post">-->
-                                    <!---
-                                    <input class="register-input white-input" type="text" required name="register_names" placeholder="Nome completo" />
-                                    <input class="register-input white-input" type="email" required name="register_email" placeholder="Email" />
-                                    <input class="register-input white-input" type="text" required name="register_phone" placeholder="Celular" />
-                                    --->
-<!--                                    <input type="submit" value="REGISTRE-SE GRATUITAMENTE" id="register-button" class="register-submit row" />-->
-<!--                                </form>-->
-                                <!--end register form -->
 
                             </div>
                             <!--end register_form -->
@@ -265,7 +307,7 @@
                     <!--begin twelvecol -->
                     <div class="twelvecol">
 
-                        <a href="#" class="button_green big_button big_top_margin"><i class="icon icon-google"></i> REGISTRE-SE AGORA</a>
+                        <a href="/cadastro/" class="button_green big_button big_top_margin">Solicitar acesso da empresa</a>
 
                     </div>
                     <!--end twelvecol -->
@@ -503,7 +545,7 @@
                     <!--end success_box -->
 
                     <!--begin newsletter-form -->
-                    <a href="#" class="button_green"><i class="icon icon-google"></i> REGISTRE-SE AGORA</a>
+                    <a href="/cadastro/" class="button_green">Solicitar acesso da empresa</a>
 
 <!--                    <a href="https://whatsapp.com/channel/0029VaAE7vc2975GuUCHIK0K" target="_blank" class="button_green"><i class="icon icon-whatsapp"></i> Assine agora!</a>-->
 <!--                    <form id="newsletter-form" class="newsletter_form" action="newsletter" method="post">
@@ -683,15 +725,33 @@
     <script>
 
         function handleCredentialResponse(response) {
+            if (window.location.search.indexOf('logout=1') >= 0 && response && response.select_by === 'auto') {
+                return;
+            }
+
+            document.cookie = 'rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure';
             console.log('Google onSignIn');
-            const urlRedirect = encodeURI('https://business.roadrunners.run/');
-            window.location.href = 'https://business.roadrunners.run/?action=googlesignin&redirect=' + urlRedirect + '&credential=' + response.credential;
+            var urlRedirect = encodeURIComponent('https://business.roadrunners.run/');
+            window.location.href = 'https://business.roadrunners.run/?action=googlesignin&redirect=' + urlRedirect + '&credential=' + encodeURIComponent(response.credential);
         }
 
-        function signOut() {
-            google.accounts.id.disableAutoSelect();
-            console.log('User signed out.');
-            window.location.href = 'https://business.roadrunners.run/?action=googlesignout';
+        function signOut(event) {
+            var logoutUrl = '/logout.cfm';
+
+            if (event && typeof event.preventDefault === 'function') {
+                event.preventDefault();
+            }
+
+            try {
+                if (window.google && google.accounts && google.accounts.id) {
+                    google.accounts.id.disableAutoSelect();
+                }
+            } catch (error) {
+                console.warn('Google signOut indisponivel, usando logout local.', error);
+            }
+
+            window.location.href = logoutUrl;
+            return false;
         }
 
     </script>

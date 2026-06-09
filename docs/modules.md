@@ -6,38 +6,42 @@ Os modulos abaixo foram identificados por estrutura de pastas, rotas e menu late
 
 ## Nucleo administrativo
 
-### `admin`
+### `eventos`
 
 Pasta:
 
-- [admin](/Users/geraldoprotta/IdeaProjects/Business/admin)
+- [eventos](/Users/Shared/Projects/RunnerHub/Business/eventos)
 
 Responsabilidade:
 
 - manutencao operacional de eventos
 - formularios de edicao
+- solicitacao de vinculo entre conta e evento
 
 Observacao:
 
-- a rota principal `/admin/` esta focada na edicao de eventos via `index.cfm` -> `home.cfm`
-- telas antigas que nao participam desse fluxo foram arquivadas em `admin/_legado/`
+- a rota principal de eventos agora e `/eventos/`
+- `/admin/` fica como compatibilidade e redireciona para `/eventos/`
+- usuarios de conta podem solicitar vinculo de evento por URL/tag/texto; o vinculo entra como `PENDENTE` em `tb_conta_eventos`
+- a revisao administrativa usa `tb_conta_evento_solicitacoes`
+- telas antigas que nao participam desse fluxo foram arquivadas em `_legado/admin/`
 
 Arquivos relevantes:
 
-- [admin/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/index.cfm)
-- [admin/includes/backend](/Users/geraldoprotta/IdeaProjects/Business/admin/includes/backend)
+- [eventos/index.cfm](/Users/Shared/Projects/RunnerHub/Business/eventos/index.cfm)
+- [eventos/includes/backend](/Users/Shared/Projects/RunnerHub/Business/eventos/includes/backend)
 
 ### `configuracoes`
 
-- [configuracoes](/Users/geraldoprotta/IdeaProjects/Business/configuracoes)
+- [_legado/configuracoes](/Users/Shared/Projects/RunnerHub/Business/_legado/configuracoes)
 
-Responsavel por configuracoes administrativas da plataforma.
+Modulo removido da arvore ativa e arquivado como legado.
 
 ### `usuarios`
 
-- [usuarios](/Users/geraldoprotta/IdeaProjects/Business/usuarios)
+- [administracao/contas](/Users/Shared/Projects/RunnerHub/Business/administracao/contas)
 
-Gestao de usuarios administrativos e operacionais.
+Gestao de usuarios por conta Business. A rota `/usuarios/` ficou apenas como redirect de compatibilidade para `/administracao/contas/`; o codigo antigo esta em `_legado/usuarios/`.
 
 ## BI e operacao de eventos
 
@@ -61,17 +65,6 @@ Subareas observadas:
 - [bi/elite-supra](/Users/geraldoprotta/IdeaProjects/Business/bi/elite-supra)
 - [bi/stats](/Users/geraldoprotta/IdeaProjects/Business/bi/stats)
 - [bi/assessorias](/Users/geraldoprotta/IdeaProjects/Business/bi/assessorias)
-
-### `evento`
-
-- [evento](/Users/geraldoprotta/IdeaProjects/Business/evento)
-
-Visoes por evento, incluindo:
-
-- inscritos
-- saude
-- treinao
-- tabelas auxiliares
 
 ### `stats`
 
@@ -202,14 +195,9 @@ Arquivos chave:
 
 - [inscricao](/Users/geraldoprotta/IdeaProjects/Business/inscricao)
 
-Fluxo de cadastro e inscricao com:
+Rota de compatibilidade para `/cadastro/`.
 
-- criacao de conta
-- perfil
-- pagamento
-- suporte via WhatsApp
-
-O codigo sugere uso em contextos como `runpro` e desafios especificos.
+O fluxo antigo de cadastro, inscricao e pagamento foi arquivado em `_legado/inscricao/`. O cadastro externo Business ativo fica em `/cadastro/` e grava solicitacoes para aprovacao administrativa.
 
 ## Suporte e operacao interna
 
@@ -233,8 +221,7 @@ Estado atual:
 
 ### `chat`
 
-- [chat](/Users/geraldoprotta/IdeaProjects/Business/chat)
-- [admin/api/chat/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/chat/index.cfm)
+Nao existe mais na arvore ativa. Referencias antigas a `chat` e `admin/api/chat` devem ser tratadas como legado removido.
 
 ## Dominios especializados
 
@@ -273,7 +260,7 @@ Para entender o sistema mais rapido, a ordem sugerida e:
 1. [Application.cfc](/Users/geraldoprotta/IdeaProjects/Business/Application.cfc)
 2. [includes/backend/backend_login.cfm](/Users/geraldoprotta/IdeaProjects/Business/includes/backend/backend_login.cfm)
 3. [includes/estrutura/sidenav.cfm](/Users/geraldoprotta/IdeaProjects/Business/includes/estrutura/sidenav.cfm)
-4. [admin/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/index.cfm)
+4. [eventos/index.cfm](/Users/Shared/Projects/RunnerHub/Business/eventos/index.cfm)
 5. [bi/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/bi/index.cfm)
 6. [leaderboard/api/transmissao.cfc](/Users/geraldoprotta/IdeaProjects/Business/leaderboard/api/transmissao.cfc)
 7. [portal/videos/home.cfm](/Users/geraldoprotta/IdeaProjects/Business/portal/videos/home.cfm)

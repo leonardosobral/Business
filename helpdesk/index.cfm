@@ -14,6 +14,7 @@
 <!--- BACKEND --->
 
 <cfinclude template="includes/backend.cfm"/>
+<cfinclude template="../includes/backend/require_admin.cfm"/>
 
 <!--- HEAD --->
 

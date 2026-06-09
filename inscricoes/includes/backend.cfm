@@ -1,24 +1,43 @@
 <!--- INCLUIR CAMPANHA --->
 
-<cfset VARIABLES.cuponsRestrictByFornecedor = true/>
-<cfset VARIABLES.cuponsEventosFornecedorIds = "0"/>
+<cfset VARIABLES.cuponsRestrictByConta = true/>
+<cfset VARIABLES.cuponsEventosContaIds = "0"/>
+<cfset VARIABLES.cuponsEventosOperacaoIds = "0"/>
 <cfset VARIABLES.cuponsTicketSportsCodEvento = 72611/>
+<cfset VARIABLES.cuponsEffectiveIsAdmin = false/>
+<cfset VARIABLES.cuponsCanOperate = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
-    <cfset VARIABLES.cuponsRestrictByFornecedor = false/>
+<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+    <cfset VARIABLES.cuponsEffectiveIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+    <cfset VARIABLES.cuponsEffectiveIsAdmin = true/>
 </cfif>
 
-<cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount AND len(trim(ValueList(qEventosFornecedor.id_evento)))>
-    <cfset VARIABLES.cuponsEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+<cfif VARIABLES.cuponsEffectiveIsAdmin>
+    <cfset VARIABLES.cuponsRestrictByConta = false/>
+    <cfset VARIABLES.cuponsCanOperate = true/>
+</cfif>
+
+<cfif isDefined("qEventosConta") AND qEventosConta.recordcount AND len(trim(ValueList(qEventosConta.id_evento)))>
+    <cfset VARIABLES.cuponsEventosContaIds = ValueList(qEventosConta.id_evento)/>
+</cfif>
+
+<cfif isDefined("qEventosContaOperacao") AND qEventosContaOperacao.recordcount AND len(trim(ValueList(qEventosContaOperacao.id_evento)))>
+    <cfset VARIABLES.cuponsEventosOperacaoIds = ValueList(qEventosContaOperacao.id_evento)/>
+    <cfset VARIABLES.cuponsCanOperate = true/>
 </cfif>
 
 <cfif isDefined("form.acao") AND form.acao EQ "incluir_campanha">
+
+    <cfif NOT VARIABLES.cuponsCanOperate>
+        <cflocation addtoken="false" url="/inscricoes/"/>
+    </cfif>
 
     <cfquery name="qAdCheckEvento">
         select id_evento from tb_evento_corridas where tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="#replace(replace(FORM.evento, 'https://roadrunners.run/evento/',''),'/','','ALL')#"/>
     </cfquery>
 
-    <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.cuponsRestrictByFornecedor AND NOT listFind(VARIABLES.cuponsEventosFornecedorIds, qAdCheckEvento.id_evento))>
+    <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.cuponsRestrictByConta AND NOT listFind(VARIABLES.cuponsEventosOperacaoIds, qAdCheckEvento.id_evento))>
         <cflocation addtoken="false" url="/inscricoes/"/>
     </cfif>
 
@@ -75,6 +94,10 @@
 
 <cfif isDefined("form.acao") AND form.acao EQ "editar_campanha">
 
+    <cfif NOT VARIABLES.cuponsCanOperate>
+        <cflocation addtoken="false" url="/inscricoes/"/>
+    </cfif>
+
     <cfif NOT isDefined("FORM.id_ad_evento") OR NOT isNumeric(FORM.id_ad_evento)>
         <cflocation addtoken="false" url="/inscricoes/"/>
     </cfif>
@@ -118,8 +141,8 @@
             final_ad = <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.final_ad#" null="#len(trim(VARIABLES.final_ad)) EQ 0#"/>,
             locais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.locais)#"/>::jsonb
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_ad_evento#"/>
-        <cfif VARIABLES.cuponsRestrictByFornecedor>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosFornecedorIds#" list="true"/>)
+        <cfif VARIABLES.cuponsRestrictByConta>
+            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosOperacaoIds#" list="true"/>)
         </cfif>
     </cfquery>
 
@@ -131,12 +154,16 @@
 
 <cfif isDefined("URL.acao") AND URL.acao EQ "status_campanha" AND isDefined("URL.campanha") AND isNumeric(URL.campanha) AND isDefined("URL.status") AND isNumeric(URL.status)>
 
+    <cfif NOT VARIABLES.cuponsCanOperate>
+        <cflocation addtoken="false" url="/inscricoes/"/>
+    </cfif>
+
     <cfquery>
         UPDATE tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
-        <cfif VARIABLES.cuponsRestrictByFornecedor>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosFornecedorIds#" list="true"/>)
+        <cfif VARIABLES.cuponsRestrictByConta>
+            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosOperacaoIds#" list="true"/>)
         </cfif>
     </cfquery>
 
@@ -165,8 +192,8 @@
     where (tsorders.body ->> 'tituloCupom') <> '1'
     and tsorders.cod_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsTicketSportsCodEvento#"/>
     and trim(ttp.body ->> 'status') = 'Pago'
-    <cfif VARIABLES.cuponsRestrictByFornecedor>
-        AND tsorders.cod_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.cuponsRestrictByConta>
+        AND tsorders.cod_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsEventosContaIds#" list="true"/>)
     </cfif>
     --and tsorders.data_pedido::date >= '2025-10-08'
     --and tsorders.data_pedido::date < '2025-04-09'

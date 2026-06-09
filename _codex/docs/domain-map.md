@@ -12,18 +12,26 @@ Entidades principais:
 - `tb_usuarios`
 - `tb_paginas`
 - `tb_paginas_usuarios`
+- `tb_contas`
+- `tb_conta_usuarios`
+- `tb_conta_eventos`
+- `tb_conta_evento_solicitacoes`
 
-## Dominio: admin e manutencao
+## Dominio: eventos e manutencao
 
 Arquivos chave:
 
-- [admin/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/index.cfm)
-- [admin/includes/backend](/Users/geraldoprotta/IdeaProjects/Business/admin/includes/backend)
+- [eventos/index.cfm](/Users/Shared/Projects/RunnerHub/Business/eventos/index.cfm)
+- [eventos/includes/backend](/Users/Shared/Projects/RunnerHub/Business/eventos/includes/backend)
+- [administracao/contas/index.cfm](/Users/Shared/Projects/RunnerHub/Business/administracao/contas/index.cfm)
 
 Notas:
 
-- o fluxo ativo de `/admin/` monta a edicao de eventos a partir de `admin/index.cfm` e `admin/home.cfm`
-- paginas antigas sem ligacao direta com esse fluxo ficam em `admin/_legado/`
+- o fluxo ativo de edicao de eventos fica em `/eventos/`, a partir de `eventos/index.cfm` e `eventos/home.cfm`
+- `/admin/` existe como redirect de compatibilidade para `/eventos/`
+- paginas antigas sem ligacao direta com esse fluxo ficam em `_legado/admin/`
+- `/administracao/contas/` e o CRUD admin da estrutura nova de contas empresariais em `tb_contas`, vinculos de usuarios em `tb_conta_usuarios` e vinculos de eventos em `tb_conta_eventos`
+- usuarios de conta solicitam vinculo de eventos em `/eventos/`; o pedido fica em `tb_conta_evento_solicitacoes` e o vinculo fica `PENDENTE` em `tb_conta_eventos` ate revisao admin
 
 ## Dominio: BI
 
@@ -66,8 +74,12 @@ Arquivos chave:
 Arquivos chave:
 
 - [inscricao/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/inscricao/index.cfm)
-- [inscricao/cadastro.cfm](/Users/geraldoprotta/IdeaProjects/Business/inscricao/cadastro.cfm)
-- [inscricao/inscricao.cfm](/Users/geraldoprotta/IdeaProjects/Business/inscricao/inscricao.cfm)
+
+Notas:
+
+- `/inscricao/` ficou como redirect de compatibilidade para `/cadastro/`
+- o fluxo antigo de inscricao/cadastro/pagamento foi arquivado em `_legado/inscricao/`
+- o cadastro externo Business ativo fica em `/cadastro/`, com solicitacoes em `tb_conta_cadastro_solicitacoes`
 
 ## Dominio: portal
 
@@ -104,4 +116,7 @@ Arquivos chave:
 
 - [racetag/form.cfm](/Users/geraldoprotta/IdeaProjects/Business/racetag/form.cfm)
 - [racetag/parse.cfm](/Users/geraldoprotta/IdeaProjects/Business/racetag/parse.cfm)
-- [admin/api/processar/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/processar/index.cfm)
+
+Nota:
+
+- `admin/api/processar` nao existe mais na arvore ativa; referencias antigas devem ser tratadas como legado removido.

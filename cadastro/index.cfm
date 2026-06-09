@@ -3,46 +3,18 @@
 
 <cfprocessingdirective pageencoding="utf-8"/>
 
-<!--- TEMA --->
-
 <cfset VARIABLES.theme = "dark"/>
-
-<!--- TEMPLATE --->
-
-<cfset VARIABLES.template = "/cadastro/"/>
-
-<!--- BACKEND --->
-
-<cfinclude template="../includes/backend/backend_login.cfm"/>
-
-<!--- HEAD --->
 
 <cfinclude template="../includes/estrutura/head.cfm"/>
 
-<body data-mdb-theme="dark" class="bg-dark-subtle">
+<body data-mdb-theme="dark" class="bg-dark">
 
+    <cfinclude template="home.cfm">
 
-    <!--- HEADER --->
-
-    <cfinclude template="../includes/estrutura/header.cfm"/>
-
-    <!--- CONTEUDO --->
-
-    <main class="" style="margin-top: -55px;">
-
-      <div class="container px-4">
-
-        <cfinclude template="home.cfm">
-
-      </div>
-
-    </main>
-
-    <!--- FOOTER --->
-
-    <cfinclude template="../includes/estrutura/footer.cfm"/>
+    <script type="text/javascript" src="/assets/js/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/js/all.min.js"></script>
+    <script type="text/javascript" src="/assets/js/script.js"></script>
 
 </body>
 
 </html>
-

@@ -21,6 +21,25 @@
   .business-topbar-notification-text {
     min-width: 0;
   }
+
+  .business-account-context-form {
+    min-width: min(420px, calc(100vw - 8rem));
+  }
+
+  .business-account-context-form .form-select {
+    min-width: 260px;
+  }
+
+  @media (max-width: 767.98px) {
+    .business-account-context-form {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .business-account-context-form .form-select {
+      min-width: 0;
+    }
+  }
 </style>
 
 <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top shadow-1" style="background-color: #333333;">
@@ -33,12 +52,40 @@
             <i class="fas fa-bars fa-lg"></i>
         </button>
 
-        <!-- Search form -->
-        <form class="d-none d-md-flex input-group w-auto my-auto">
-            <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
-                   placeholder='Pesquisa [ctrl+alt]' style="min-width: 225px" />
-            <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
-        </form>
+        <!-- Account context -->
+        <cfset VARIABLES.businessNavbarCurrentUrl = CGI.SCRIPT_NAME/>
+        <cfif len(trim(CGI.QUERY_STRING))>
+            <cfset VARIABLES.businessNavbarCurrentUrl = VARIABLES.businessNavbarCurrentUrl & "?" & CGI.QUERY_STRING/>
+        </cfif>
+
+        <cfif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
+            <cfoutput>
+                <form class="d-none d-md-flex input-group w-auto my-auto business-account-context-form" method="get" action="/">
+                    <input type="hidden" name="business_account_context_redirect" value="#htmlEditFormat(VARIABLES.businessNavbarCurrentUrl)#"/>
+                    <span class="input-group-text border-0"><i class="fa-solid fa-building-user text-secondary"></i></span>
+                    <select class="form-select" name="business_account_context_id" onchange="this.form.submit()" <cfif NOT isDefined("qBusinessAccountContextOptions") OR NOT qBusinessAccountContextOptions.recordcount>disabled</cfif>>
+                        <option value="">Admin: todas as contas</option>
+                        <cfif isDefined("qBusinessAccountContextOptions") AND qBusinessAccountContextOptions.recordcount>
+                            <cfloop query="qBusinessAccountContextOptions">
+                                <option value="#qBusinessAccountContextOptions.id_conta#" <cfif isDefined("VARIABLES.businessSimulatedAccountId") AND len(trim(VARIABLES.businessSimulatedAccountId)) AND VARIABLES.businessSimulatedAccountId EQ qBusinessAccountContextOptions.id_conta>selected</cfif>>
+                                    #htmlEditFormat(qBusinessAccountContextOptions.nome_conta)#<cfif qBusinessAccountContextOptions.status NEQ "ATIVA"> - #htmlEditFormat(qBusinessAccountContextOptions.status)#</cfif>
+                                </option>
+                            </cfloop>
+                        </cfif>
+                    </select>
+                    <cfif isDefined("VARIABLES.businessAccountSimulationActive") AND VARIABLES.businessAccountSimulationActive>
+                        <span class="input-group-text border-0 bg-warning text-dark">Simulando</span>
+                    </cfif>
+                </form>
+            </cfoutput>
+        <cfelse>
+            <!-- Search form -->
+            <form class="d-none d-md-flex input-group w-auto my-auto">
+                <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
+                       placeholder='Pesquisa [ctrl+alt]' style="min-width: 225px" />
+                <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
+            </form>
+        </cfif>
 
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -145,7 +192,7 @@
                     <li><a class="dropdown-item" href="https://roadrunners.run/atleta/" target="_blank">Meu Perfil</a></li>
                     <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#" onclick="signOut()">Sair</a></li>
+                    <li><a class="dropdown-item" href="/logout.cfm" onclick="return typeof signOut === 'function' ? signOut(event) : true">Sair</a></li>
                 </ul>
 
             </li>

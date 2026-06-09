@@ -1,14 +1,21 @@
 <!--- INCLUIR usuario --->
 
-<cfset VARIABLES.usuariosRestrictByFornecedor = true/>
-<cfset VARIABLES.usuariosFornecedorIds = "0"/>
+<cfset VARIABLES.usuariosRestrictByAccount = true/>
+<cfset VARIABLES.usuariosAccountUserIds = "0"/>
+<cfset VARIABLES.usuariosEffectiveIsAdmin = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
-    <cfset VARIABLES.usuariosRestrictByFornecedor = false/>
+<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+    <cfset VARIABLES.usuariosEffectiveIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+    <cfset VARIABLES.usuariosEffectiveIsAdmin = true/>
 </cfif>
 
-<cfif isDefined("qFornecedor") AND qFornecedor.recordcount AND len(trim(ValueList(qFornecedor.id_fornecedor)))>
-    <cfset VARIABLES.usuariosFornecedorIds = ValueList(qFornecedor.id_fornecedor)/>
+<cfif VARIABLES.usuariosEffectiveIsAdmin>
+    <cfset VARIABLES.usuariosRestrictByAccount = false/>
+</cfif>
+
+<cfif isDefined("VARIABLES.businessEffectiveUserIds") AND len(trim(VARIABLES.businessEffectiveUserIds))>
+    <cfset VARIABLES.usuariosAccountUserIds = VARIABLES.businessEffectiveUserIds/>
 </cfif>
 
 <cfif isDefined("form.acao") AND form.acao EQ "incluir_usuario">
@@ -108,12 +115,8 @@
         UPDATE tb_usuarios
         SET is_partner = true
         WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.usuario#"/>
-        <cfif VARIABLES.usuariosRestrictByFornecedor>
-            AND id IN (
-                SELECT id_usuario
-                FROM tb_usuarios_fornecedores
-                WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosFornecedorIds#" list="true"/>)
-            )
+        <cfif VARIABLES.usuariosRestrictByAccount>
+            AND id IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosAccountUserIds#" list="true"/>)
         </cfif>
     </cfquery>
 
@@ -130,12 +133,8 @@
     usr.partner_info ->> 'nome_comercial' as nome_comercial
     from tb_usuarios usr
     where (partner_info is not null or is_partner = true)
-    <cfif VARIABLES.usuariosRestrictByFornecedor>
-        AND usr.id IN (
-            SELECT id_usuario
-            FROM tb_usuarios_fornecedores
-            WHERE id_fornecedor IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosFornecedorIds#" list="true"/>)
-        )
+    <cfif VARIABLES.usuariosRestrictByAccount>
+        AND usr.id IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.usuariosAccountUserIds#" list="true"/>)
     </cfif>
 </cfquery>
 

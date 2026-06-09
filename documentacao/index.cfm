@@ -14,6 +14,7 @@
 <!--- BACKEND --->
 
 <cfinclude template="../includes/backend/backend_login.cfm"/>
+<cfinclude template="../includes/backend/require_admin.cfm"/>
 
 <!--- HEAD --->
 
@@ -45,4 +46,3 @@
 </body>
 
 </html>
-

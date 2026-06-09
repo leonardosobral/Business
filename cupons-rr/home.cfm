@@ -112,9 +112,13 @@
 
             <h3>Cupons de Desconto Road Runners</h3>
 
-            <cfif NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
+            <cfif VARIABLES.cuponsRrCanOperate AND NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
 
                 <cfinclude template="includes/form_campanha.cfm"/>
+
+            <cfelseif NOT VARIABLES.cuponsRrCanOperate>
+
+                <div class="alert alert-info mb-0" role="alert">Seu acesso permite visualizar cupons desta conta, mas nao criar ou alterar cupons.</div>
 
             </cfif>
 
@@ -165,14 +169,14 @@
                                     <a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
                                     <a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
                                     </cfif--->
-                                    <a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=editar"><icon class="fa fa-edit"></icon></a>
+                                    <cfif VARIABLES.cuponsRrCanOperate><a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=editar"><icon class="fa fa-edit"></icon></a></cfif>
                                 </td>
                                 <td>#qCupons.cupom# <cfif len(trim(qCupons.data_expiracao)) AND qCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
                                 <td>#qCupons.parceiro#</td>
                                 <td class="text-end">#qCupons.condicoes#</td>
                                 <!---td><small>#qCupons.descricao#</small></td--->
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCupons.id_cupom>
+                            <cfif VARIABLES.cuponsRrCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCupons.id_cupom>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR CAMPANHA --->
@@ -206,7 +210,7 @@
                       <tbody>
                         <cfoutput query="qEventosCupons">
                             <tr>
-                                <td><a href=""><icon class="fa fa-edit"></icon></a> </td>
+                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
                                 <td>#qEventosCupons.nome_evento#</td>
                                 <td>#qEventosCupons.cupom# <cfif len(trim(qEventosCupons.data_expiracao)) AND qEventosCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qEventosCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
                                 <td class="text-end">#lsDateFormat(qEventosCupons.data_validade_inicio, "dd/mm/yyyy")#</td>
@@ -236,7 +240,7 @@
                       <tbody>
                         <cfoutput query="qCircuitosCupons">
                             <tr>
-                                <td><a href=""><icon class="fa fa-edit"></icon></a> </td>
+                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
                                 <td>#qCircuitosCupons.nome_evento_agregado#</td>
                                 <td>#qCircuitosCupons.cupom# <cfif len(trim(qCircuitosCupons.data_expiracao)) AND qCircuitosCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qCircuitosCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
                                 <td class="text-end">#lsDateFormat(qCircuitosCupons.data_validade_inicio, "dd/mm/yyyy")#</td>
@@ -267,7 +271,7 @@
                       <tbody>
                         <cfoutput query="qPaginasCupons">
                             <tr>
-                                <td><a href=""><icon class="fa fa-edit"></icon></a> </td>
+                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
                                 <td>#qPaginasCupons.nome#</td>
                                 <td>#qPaginasCupons.cupom# <cfif len(trim(qPaginasCupons.data_expiracao)) AND qPaginasCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qPaginasCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
                                 <td>#qPaginasCupons.parceiro#</td>
@@ -317,4 +321,3 @@
   </div>
 
 </section>
-

@@ -2,7 +2,6 @@
 
 <div class="row g-3">
 
-
     <cfif NOT qPermissoes.recordcount>
         <div class="col-12">
             <div data-mdb-alert-init class="alert text-center" role="alert" data-mdb-color="light">
@@ -220,10 +219,10 @@
                                 <div class="btn-group w-100" role="group" aria-label="menuEvento">
                                     <a class="btn btn-light px-2" target="_blank" href="https://roadrunners.run/#qPermissoes.tipo_agregacao#/#qPermissoes.tag#/" data-mdb-ripple-init>Calendário</a>
                                     <a class="btn btn-light px-2" target="_blank" href="https://openresults.run/#qPermissoes.tipo_agregacao#/#qPermissoes.tag#/" data-mdb-ripple-init>Resultados</a>
-                                    <a class="btn btn-dark px-2" href="/evento/#qPermissoes.tag#/" data-mdb-ripple-init>ACESSAR</a>
+                                    <a class="btn btn-dark px-2" href="/bi/#qPermissoes.tag#/" data-mdb-ripple-init>ACESSAR</a>
                                 </div>
                             <cfelse>
-                                <a class="btn btn-dark w-100" href="/evento/#qPermissoes.tag#/" data-mdb-ripple-init>ACESSAR</a>
+                                <a class="btn btn-dark w-100" href="/bi/#qPermissoes.tag#/" data-mdb-ripple-init>ACESSAR</a>
                             </cfif>
                         </div>
 

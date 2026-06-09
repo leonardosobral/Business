@@ -5,6 +5,23 @@
      data-mdb-accordion="true"
      data-mdb-content="#content">
 
+<cfset VARIABLES.businessCanShowAdminNavigation = false/>
+<cfset VARIABLES.businessCanShowAccountNavigation = false/>
+<cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
+    <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+        <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
+    <cfelseif isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+        <cfset VARIABLES.businessCanShowAdminNavigation = true/>
+    </cfif>
+
+    <cfif NOT VARIABLES.businessCanShowAdminNavigation
+        AND isDefined("VARIABLES.businessEffectiveAccountIds")
+        AND len(trim(VARIABLES.businessEffectiveAccountIds))
+        AND VARIABLES.businessEffectiveAccountIds NEQ "0">
+        <cfset VARIABLES.businessCanShowAccountNavigation = true/>
+    </cfif>
+</cfif>
+
 
 <a class="ripple d-flex justify-content-center pt-4 pb-2" href="/">
     <!---<img id="MDB-logo" src="../assets/runnerhub_logo_negativo.png"--->
@@ -24,7 +41,8 @@
 
         <!--- PORTAL --->
 
-        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
+
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Portal</span>
             </li>
@@ -50,6 +68,12 @@
             <li class="sidenav-item">
                 <a class="sidenav-link ps-5 <cfif VARIABLES.template EQ "/portal/conteudos/">link-warning</cfif>" href="/portal/conteudos/">
                     <i class="fa-solid fa-file-lines fa-fw me-3"></i><span>Conteúdos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/conteudo/">link-warning</cfif>" href="/portal/conteudo/">
+                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Conteúdo das provas</span>
                 </a>
             </li>
 
@@ -88,6 +112,12 @@
                     <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/">
+                    <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
+            </li>
+
         </cfif>
 
 
@@ -98,8 +128,8 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link" href="/admin/">
-                <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Meus eventos</span></a>
+            <a class="sidenav-link <cfif VARIABLES.template EQ "/eventos/">link-warning</cfif>" href="/eventos/">
+                <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span></a>
         </li>
 
         <li class="sidenav-item">
@@ -131,15 +161,10 @@
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Cupons de Desconto</span></a>
         </li>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/">
-                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Notificações</span></a>
-        </li>
-
 
         <!--- DESAFIOS --->
 
-        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
@@ -182,7 +207,7 @@
 
         <!--- ADMINISTRACAO --->
 
-        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Administração</span>
             </li>
@@ -192,29 +217,50 @@
                     <i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                    <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span>
+                </a>
+            </li>
         </cfif>
 
 
         <!--- EMPRESA --->
 
-        <li class="sidenav-item pt-3">
-            <span class="sidenav-subheading text-muted text-uppercase fw-bold">Empresa</span>
-        </li>
+        <cfif VARIABLES.businessCanShowAccountNavigation OR VARIABLES.businessCanShowAdminNavigation>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/cadastro/">
-                <i class="fa-solid fa-building fa-fw me-3"></i><span>Cadastro</span></a>
-        </li>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Empresa</span>
+            </li>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/usuarios/">
-                <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
-        </li>
+            <cfif VARIABLES.businessCanShowAccountNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Cadastro da conta</span>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                        <i class="fas fa-users fa-fw me-3"></i><span>Usuários da conta</span></a>
+                </li>
+            <cfelseif VARIABLES.businessCanShowAdminNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link" href="/cadastro/">
+                        <i class="fa-solid fa-building fa-fw me-3"></i><span>Cadastro público</span></a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                        <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
+                </li>
+            </cfif>
 
-        <li class="sidenav-item">
-            <a class="sidenav-link <cfif VARIABLES.template EQ "/assinaturas/">link-warning</cfif>" href="/assinaturas/">
-                <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
-        </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/assinaturas/">link-warning</cfif>" href="/assinaturas/">
+                    <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span></a>
+            </li>
+
+        </cfif>
 
 
         <!--- AJUDA --->
@@ -231,7 +277,7 @@
             <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Suporte</a>
         </li>
 
-        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/"><i class="fa-solid fa-life-ring fa-fw me-3"></i>Help Desk</a>
@@ -246,7 +292,7 @@
 
         <!--- DEV --->
 
-        <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.is_admin>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">DEV</span>

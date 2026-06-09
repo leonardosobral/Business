@@ -1,33 +1,52 @@
 <!--- EDITAR DADOS DO EVENTO --->
 
-<cfset VARIABLES.adminRestrictByFornecedor = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
-<cfset VARIABLES.adminEventosFornecedorIds = "0"/>
+<cfset VARIABLES.adminRestrictByConta = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
+<cfset VARIABLES.adminEventosContaIds = "0"/>
+<cfset VARIABLES.adminIsEventoSolicitacaoPost = isDefined("FORM.evento_solicitacao_action")
+    AND ListFindNoCase("solicitar,aprovar,negar", FORM.evento_solicitacao_action)/>
 
-<cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount>
-    <cfset VARIABLES.adminEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+<cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
+    <cfset VARIABLES.adminEventosContaIds = ValueList(qEventosConta.id_evento)/>
 </cfif>
 
-<cfif VARIABLES.adminRestrictByFornecedor
+<cfif VARIABLES.adminRestrictByConta
+    AND isDefined("URL.id_evento")
+    AND len(trim(URL.id_evento))
+    AND isNumeric(URL.id_evento)
+    AND val(URL.id_evento) EQ 0>
+
+    <cflocation addtoken="false" url="./?solicitacao=evento_admin&periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
+</cfif>
+
+<cfif VARIABLES.adminRestrictByConta
     AND isDefined("URL.id_evento")
     AND len(trim(URL.id_evento))
     AND isNumeric(URL.id_evento)
     AND val(URL.id_evento) NEQ 0
-    AND NOT listFind(VARIABLES.adminEventosFornecedorIds, URL.id_evento)>
+    AND NOT listFind(VARIABLES.adminEventosContaIds, URL.id_evento)>
 
     <cflocation addtoken="false" url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
 </cfif>
 
-<cfif VARIABLES.adminRestrictByFornecedor
+<cfif VARIABLES.adminRestrictByConta
+    AND NOT VARIABLES.adminIsEventoSolicitacaoPost
     AND isDefined("FORM.id_evento")
     AND len(trim(FORM.id_evento))
     AND isNumeric(FORM.id_evento)
     AND val(FORM.id_evento) NEQ 0
-    AND NOT listFind(VARIABLES.adminEventosFornecedorIds, FORM.id_evento)>
+    AND NOT listFind(VARIABLES.adminEventosContaIds, FORM.id_evento)>
 
     <cflocation addtoken="false" url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
 </cfif>
 
 <cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_basico" AND isDefined("FORM.nome_evento") AND Len(trim(FORM.nome_evento))>
+
+    <cfif VARIABLES.adminRestrictByConta
+        AND isDefined("FORM.id_evento")
+        AND isNumeric(FORM.id_evento)
+        AND val(FORM.id_evento) EQ 0>
+        <cflocation addtoken="false" url="./?solicitacao=evento_admin&periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
+    </cfif>
 
     <cfquery name="qCidade">
         SELECT cod_cidade, nome_cidade
@@ -66,7 +85,7 @@
             (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
         </cfquery>
 
-        <cflocation addtoken="false" url="/admin/?id_evento=#qInsert.id_evento#"/>
+        <cflocation addtoken="false" url="/eventos/?id_evento=#qInsert.id_evento#"/>
 
     <cfelse>
 
@@ -300,7 +319,7 @@
 
     <cfabort/>
 
-    <cflocation addtoken="false" url="/evento/#qEvento.tag#/"/>
+    <cflocation addtoken="false" url="/bi/#qEvento.tag#/"/>
 
     --->
 

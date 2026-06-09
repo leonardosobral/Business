@@ -1,23 +1,80 @@
 <!--- INCLUIR CAMPANHA --->
 
-<cfset VARIABLES.adsRestrictByFornecedor = true/>
-<cfset VARIABLES.adsEventosFornecedorIds = "0"/>
+<cfset VARIABLES.adsRestrictByConta = true/>
+<cfset VARIABLES.adsEventosContaIds = "0"/>
+<cfset VARIABLES.adsEventosOperacaoIds = "0"/>
+<cfset VARIABLES.adsEffectiveIsAdmin = false/>
+<cfset VARIABLES.adsCanOperate = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
-    <cfset VARIABLES.adsRestrictByFornecedor = false/>
+<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+    <cfset VARIABLES.adsEffectiveIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+    <cfset VARIABLES.adsEffectiveIsAdmin = true/>
 </cfif>
 
-<cfif isDefined("qEventosFornecedor") AND qEventosFornecedor.recordcount>
-    <cfset VARIABLES.adsEventosFornecedorIds = ValueList(qEventosFornecedor.id_evento)/>
+<cfif VARIABLES.adsEffectiveIsAdmin>
+    <cfset VARIABLES.adsRestrictByConta = false/>
+    <cfset VARIABLES.adsCanOperate = true/>
+</cfif>
+
+<cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
+    <cfset VARIABLES.adsEventosContaIds = ValueList(qEventosConta.id_evento)/>
+</cfif>
+
+<cfif isDefined("qEventosContaOperacao") AND qEventosContaOperacao.recordcount>
+    <cfset VARIABLES.adsEventosOperacaoIds = ValueList(qEventosContaOperacao.id_evento)/>
+    <cfset VARIABLES.adsCanOperate = true/>
+</cfif>
+
+<cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
+<cfif VARIABLES.adsRestrictByConta AND VARIABLES.adsEventosOperacaoIds NEQ "0">
+    <cfquery name="qAdsEventosPermitidos">
+        SELECT id_evento,
+               nome_evento,
+               tag,
+               data_inicial,
+               data_final,
+               cidade,
+               estado
+        FROM tb_evento_corridas
+        WHERE ativo = true
+          AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
+        ORDER BY data_final DESC NULLS LAST, nome_evento
+    </cfquery>
 </cfif>
 
 <cfif isDefined("form.acao") AND form.acao EQ "incluir_campanha">
 
-    <cfquery name="qAdCheckEvento">
-        select id_evento from tb_evento_corridas where tag ilike <cfqueryparam cfsqltype="cf_sql_varchar" value="#replace(replace(FORM.evento, 'https://roadrunners.run/evento/',''),'/','','ALL')#"/>
-    </cfquery>
+    <cfif NOT VARIABLES.adsCanOperate>
+        <cflocation addtoken="false" url="/ads/"/>
+    </cfif>
 
-    <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.adsRestrictByFornecedor AND NOT listFind(VARIABLES.adsEventosFornecedorIds, qAdCheckEvento.id_evento))>
+    <cfset qAdCheckEvento = QueryNew("id_evento")/>
+
+    <cfif isDefined("FORM.id_evento") AND len(trim(FORM.id_evento)) AND isNumeric(FORM.id_evento)>
+        <cfquery name="qAdCheckEvento">
+            SELECT id_evento
+            FROM tb_evento_corridas
+            WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
+              AND ativo = true
+            LIMIT 1
+        </cfquery>
+    <cfelseif isDefined("FORM.evento") AND len(trim(FORM.evento))>
+        <cfset VARIABLES.adsEventoReferencia = trim(FORM.evento)/>
+        <cfset VARIABLES.adsEventoReferencia = replaceNoCase(VARIABLES.adsEventoReferencia, "https://roadrunners.run/evento/", "")/>
+        <cfset VARIABLES.adsEventoReferencia = replaceNoCase(VARIABLES.adsEventoReferencia, "http://roadrunners.run/evento/", "")/>
+        <cfset VARIABLES.adsEventoReferencia = listFirst(VARIABLES.adsEventoReferencia, "/?##")/>
+
+        <cfquery name="qAdCheckEvento">
+            SELECT id_evento
+            FROM tb_evento_corridas
+            WHERE tag ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsEventoReferencia#"/>
+              AND ativo = true
+            LIMIT 1
+        </cfquery>
+    </cfif>
+
+    <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.adsRestrictByConta AND NOT listFind(VARIABLES.adsEventosOperacaoIds, qAdCheckEvento.id_evento))>
         <cflocation addtoken="false" url="/ads/"/>
     </cfif>
 
@@ -74,6 +131,10 @@
 
 <cfif isDefined("form.acao") AND form.acao EQ "editar_campanha">
 
+    <cfif NOT VARIABLES.adsCanOperate>
+        <cflocation addtoken="false" url="/ads/"/>
+    </cfif>
+
     <cfif NOT isDefined("FORM.id_ad_evento") OR NOT isNumeric(FORM.id_ad_evento)>
         <cflocation addtoken="false" url="/ads/"/>
     </cfif>
@@ -117,8 +178,8 @@
             final_ad = <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.final_ad#" null="#len(trim(VARIABLES.final_ad)) EQ 0#"/>,
             locais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.locais)#"/>::jsonb
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_ad_evento#"/>
-        <cfif VARIABLES.adsRestrictByFornecedor>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+        <cfif VARIABLES.adsRestrictByConta>
+            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
         </cfif>
     </cfquery>
 
@@ -130,12 +191,16 @@
 
 <cfif isDefined("URL.acao") AND URL.acao EQ "status_campanha" AND isDefined("URL.campanha") AND isNumeric(URL.campanha) AND isDefined("URL.status") AND isNumeric(URL.status)>
 
+    <cfif NOT VARIABLES.adsCanOperate>
+        <cflocation addtoken="false" url="/ads/"/>
+    </cfif>
+
     <cfquery>
         UPDATE tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
-        <cfif VARIABLES.adsRestrictByFornecedor>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+        <cfif VARIABLES.adsRestrictByConta>
+            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
         </cfif>
     </cfquery>
 
@@ -153,8 +218,8 @@
     INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 
@@ -164,8 +229,8 @@
     INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 
@@ -175,8 +240,8 @@
     INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status <= 2
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 
@@ -186,8 +251,8 @@
     INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 
@@ -196,8 +261,8 @@
     FROM tb_ad_eventos ad
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 
@@ -271,8 +336,8 @@
     LEFT JOIN ad_clicks on ad_clicks.id_evento = ad.id_ad_evento
     LEFT JOIN ad_clicks_usuarios on ad_clicks_usuarios.id_evento = ad.id_ad_evento
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
-    <cfif VARIABLES.adsRestrictByFornecedor>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosFornecedorIds#" list="true"/>)
+    <cfif VARIABLES.adsRestrictByConta>
+        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
     </cfif>
 </cfquery>
 

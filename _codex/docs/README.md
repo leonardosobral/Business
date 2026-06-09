@@ -15,10 +15,12 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Contexto Runner Apps API](runner-apps-api-context.md)
 - [Contexto Push PWA no Business](push-pwa-business-context.md)
 - [Checklist para Novas Features](feature-checklist.md)
+- [Plano de Producao Business](plano-producao-business.md)
 
 ## SQL auxiliar
 
 - [DDL do banco](../sql/ddl.sql): snapshot auxiliar do schema para consulta estatica. Antes de aplicar mudancas, validar sempre contra o banco do ambiente alvo.
+- [Cadastro externo Business](../sql/2026-06-09_tb_conta_cadastro_solicitacoes.sql): migration incremental para a fila de solicitacoes de contas.
 
 ## Uso esperado
 

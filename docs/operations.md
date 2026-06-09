@@ -19,8 +19,9 @@ Nao existe receita completa de setup local no repositorio. Pela leitura do codig
 Comportamento:
 
 - se existir `COOKIE.id`, consulta perfil
-- se o usuario tiver `partner_info`, cai na area logada
-- senao, redireciona para `/inscricao/`
+- se o usuario tiver acesso aprovado, cai na area logada
+- se existir uma solicitacao pendente de cadastro Business, mostra o status em `/cadastro/status.cfm`
+- se nao houver acesso aprovado nem solicitacao relacionada, mostra a home publica e orienta o cadastro em `/cadastro/`
 - sem cookie, mostra a landing publica
 
 ### Entrada da area logada principal

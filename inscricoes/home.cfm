@@ -135,7 +135,7 @@
                                 <td class="text-end">#lsCurrencyFormat(qCuponsBase.ticket_medio_repasse)#</td>
                                 <td class="text-end"><cfif qCuponsBase.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsBase.cashback)#</cfif></td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsBase.titulocupom>
+                            <cfif VARIABLES.cuponsCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsBase.titulocupom>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR CAMPANHA --->
@@ -186,7 +186,7 @@
                                 <td class="text-end">#lsCurrencyFormat(qCuponsInflu.ticket_medio_repasse)#</td>
                                 <td class="text-end"><cfif qCuponsInflu.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsInflu.cashback)#</cfif></td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsInflu.titulocupom>
+                            <cfif VARIABLES.cuponsCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsInflu.titulocupom>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR CAMPANHA --->
@@ -231,7 +231,7 @@
                                 <td class="text-end">#lsCurrencyFormat(qCuponsAssessoria.ticket_medio_repasse)#</td>
                                 <td class="text-end"><cfif qCuponsAssessoria.titulocupom CONTAINS "cashback">#lsCurrencyFormat(qCuponsAssessoria.cashback)#</cfif></td>
                             </tr>
-                            <cfif isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsAssessoria.titulocupom>
+                            <cfif VARIABLES.cuponsCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCuponsAssessoria.titulocupom>
                                 <tr>
                                     <td colspan="9" class="p-3">
                                         <!--- EDITAR CAMPANHA --->

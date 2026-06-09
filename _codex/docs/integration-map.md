@@ -36,9 +36,12 @@
 ## Endpoints internos relevantes
 
 - [leaderboard/api/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/leaderboard/api/index.cfm)
-- [admin/api/chat/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/chat/index.cfm)
-- [admin/api/importacao/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/importacao/index.cfm)
-- [admin/api/processar/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/admin/api/processar/index.cfm)
+- [api/portal/banners](/Users/Shared/Projects/RunnerHub/Business/api/portal/banners)
+- [api/portal/runner-apps](/Users/Shared/Projects/RunnerHub/Business/api/portal/runner-apps)
+
+Nota:
+
+- `/admin/api/` nao existe mais na arvore ativa; referencias antigas a chat, importacao e processamento devem ser tratadas como legado removido.
 
 ## Riscos para integracoes futuras
 

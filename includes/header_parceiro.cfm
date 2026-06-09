@@ -66,7 +66,7 @@
                 <li><a class="dropdown-item" href="https://roadrunners.run/atleta/" target="_blank">Meu Perfil</a></li>
                 <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#" onclick="signOut()">Sair</a></li>
+                <li><a class="dropdown-item" href="/logout.cfm" onclick="return typeof signOut === 'function' ? signOut(event) : true">Sair</a></li>
             </ul>
         </div>
 

@@ -19,13 +19,47 @@
         }
     </cfif>
 
-    function signOut() {
-        // logoutFacebook();
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-            window.location.href = '/?action=googlesignout';
-        });
+    function signOut(event) {
+        var logoutUrl = '/logout.cfm';
+        var didRedirect = false;
+
+        if (event && typeof event.preventDefault === 'function') {
+            event.preventDefault();
+        }
+
+        function goToLogout() {
+            if (didRedirect) {
+                return;
+            }
+
+            didRedirect = true;
+            window.location.href = logoutUrl;
+        }
+
+        try {
+            if (window.google && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+            }
+
+            if (window.gapi && gapi.auth2 && typeof gapi.auth2.getAuthInstance === 'function') {
+                var auth2 = gapi.auth2.getAuthInstance();
+
+                if (auth2 && typeof auth2.signOut === 'function') {
+                    var signOutResult = auth2.signOut();
+
+                    if (signOutResult && typeof signOutResult.then === 'function') {
+                        window.setTimeout(goToLogout, 800);
+                        signOutResult.then(goToLogout, goToLogout);
+                        return false;
+                    }
+                }
+            }
+        } catch (error) {
+            console.warn('Google signOut indisponivel, usando logout local.', error);
+        }
+
+        goToLogout();
+        return false;
     }
 
 </script>

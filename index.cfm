@@ -1,26 +1,20 @@
-<cfif isDefined("COOKIE.id")>
+<cfif isDefined("URL.action") AND URL.action EQ "googlesignout">
+    <cflocation addtoken="false" url="/logout.cfm"/>
+</cfif>
 
-    <cfquery name="qPerfil">
-        SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
-        coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
-        pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
-        pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
-        usr.partner_info
-        FROM tb_usuarios usr
-        inner join tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
-        inner join tb_paginas pg on pg.id_pagina = pgusr.id_pagina
-        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
-    </cfquery>
+<cfinclude template="includes/backend/backend_login.cfm"/>
 
-    <cfif qPerfil.recordcount AND len(trim(qPerfil.partner_info))>
+<cfif isDefined("URL.logout") AND URL.logout EQ "1">
 
-        <cfinclude template="template.cfm"/>
+    <cfinclude template="home.cfm"/>
 
-    <cfelse>
+<cfelseif isDefined("VARIABLES.businessAccountPendingAccess") AND VARIABLES.businessAccountPendingAccess>
 
-        <cflocation url="/inscricao/" addtoken="false"/>
+    <cfinclude template="cadastro/status.cfm"/>
 
-    </cfif>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount>
+
+    <cfinclude template="template.cfm"/>
 
 <cfelse>
 

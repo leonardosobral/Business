@@ -2,12 +2,36 @@
 
     <cfif NOT isDefined("VARIABLES.campanha")>
 
-        <div data-mdb-input-init class="form-outline mb-3">
-            <input type="text" name="evento" id="form1Example1" class="form-control"
-                   placeholder="https://roadrunners.run/evento/seu-evento/"
-                   required/>
-            <label class="form-label" for="form1Example1">URL ou tag do Evento no Road Runners</label>
-        </div>
+        <cfif isDefined("qAdsEventosPermitidos") AND qAdsEventosPermitidos.recordcount>
+            <div class="row mb-3 g-3">
+                <div class="col-12 col-lg-6">
+                    <label class="form-label">Evento da conta</label>
+                    <select name="id_evento" class="form-select" data-mdb-select-init data-mdb-filter="true">
+                        <option value="">Selecione um evento</option>
+                        <cfoutput query="qAdsEventosPermitidos">
+                            <option value="#qAdsEventosPermitidos.id_evento#">
+                                <cfif isDate(qAdsEventosPermitidos.data_final)>#dateFormat(qAdsEventosPermitidos.data_final, "dd/mm/yyyy")# - </cfif>#htmlEditFormat(qAdsEventosPermitidos.nome_evento)# (#htmlEditFormat(qAdsEventosPermitidos.cidade)#/#htmlEditFormat(qAdsEventosPermitidos.estado)#)
+                            </option>
+                        </cfoutput>
+                    </select>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div data-mdb-input-init class="form-outline">
+                        <input type="text" name="evento" id="form1Example1" class="form-control"
+                               placeholder="https://roadrunners.run/evento/seu-evento/"/>
+                        <label class="form-label" for="form1Example1">Ou cole a URL/tag do evento</label>
+                    </div>
+                </div>
+            </div>
+        <cfelse>
+            <div data-mdb-input-init class="form-outline mb-3">
+                <input type="text" name="evento" id="form1Example1" class="form-control"
+                       placeholder="https://roadrunners.run/evento/seu-evento/"
+                       required/>
+                <label class="form-label" for="form1Example1">URL ou tag do Evento no Road Runners</label>
+            </div>
+        </cfif>
 
    </cfif>
 
