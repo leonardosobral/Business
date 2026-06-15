@@ -459,7 +459,6 @@
                                 </h2>
                                 <div id="tab#atleta#" class="accordion-collapse collapse" aria-labelledby="heading#atleta#" data-mdb-parent="##accordion">
                                     <div class="accordion-body small py-1 px-3">
-                                        <!---<cfdump var="#dados#"/>--->
                                         <div class="row mb-2">
                                             <div class="col-8 p-0">
                                                 <select data-mdb-select-init data-mdb-visible-options="7" class="form-select w-50" onchange="window.location.href='./?id_usuario=#qStatsEvento.id#&status=' + this.value">>
@@ -649,9 +648,7 @@
                                         <!---td><cfif len(trim(qStatsEvento.strava_code))><a target="_blank" href="https://www.strava.com/athletes/#strava_id#/"><div class="badge bg-strava"><i class="fa-brands fa-strava"></i></div></a></cfif></td--->
                                     </tr>
                                     <tr>
-                                        <td colspan="6">
-                                            <cfdump var="#dados#"/>
-                                        </td>
+                                        <td colspan="6"></td>
                                     </tr>
                                 </cfoutput>
                                 </tbody>

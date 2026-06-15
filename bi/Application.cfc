@@ -30,12 +30,21 @@
             output="false"
             hint="Fires when the application is first created.">
 
+        <cfset var system = createObject("java", "java.lang.System")/>
+        <cfset var environment = system.getenv()/>
+        <cfset var businessLocalConfig = {}/>
+        <cfif fileExists(expandPath("/config/business.local.cfm"))>
+            <cfinclude template="/config/business.local.cfm"/>
+        </cfif>
+        <cfset var eventoApiToken = structKeyExists(environment, "RR_EVENTO_API_TOKEN") ? trim(environment["RR_EVENTO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "eventoApiToken") ? trim(businessLocalConfig.eventoApiToken) : "")/>
+
         <!--- APPLICATION VARIABLES --->
         <cfset APPLICATION.codSite = "RH"/>
         <cfset APPLICATION.nomeSite = "Runner Hub"/>
         <cfset APPLICATION.dominio = "runnerhub.run"/>
         <cfset APPLICATION.baseCanonica = "https://runnerhub.run"/>
         <cfset APPLICATION.ga = ""/>
+        <cfset APPLICATION.eventoApiToken = eventoApiToken/>
 
         <!--- Return out. --->
         <cfreturn true />
@@ -188,71 +197,5 @@
 <!--- Return out. --->
         <cfreturn />
     </cffunction>
-
-
-    <!---cffunction
-            name="OnError"
-            access="public"
-            returntype="void"
-            output="true"
-            hint="Fires when an exception occures that is not caught by a try/catch.">
-
-        <!--- Define arguments. --->
-        <cfargument name="exception" required="true">
-        <cfargument name="eventname" type="string" required="true">
-        <cfset var errortext = "">
-
-        <cfif NOT isDefined("URL.debug")>
-
-            <cfsavecontent variable="errortext">
-                <cfoutput>
-                    An error occurred: http://#cgi.server_name##cgi.script_name#?#cgi.query_string#<br />
-                Time: #dateFormat(now(), "short")# #timeFormat(now(), "short")#<br />
-
-                    <cfdump var="#arguments.exception#" label="Error">
-                    <cfdump var="#form#" label="Form">
-                    <cfdump var="#url#" label="URL">
-
-                </cfoutput>
-            </cfsavecontent>
-
-            <cfmail from="Site Tum Tum <contato@projetocaua.org>" to="leonardo.sobral@gmail.com"
-                    cc="pimenta.carlospimenta@gmail.com"
-                    subject="Erro no site TumTum: #arguments.exception.message#" usetls="true"
-                    server="smtp.gmail.com" username="contato@projetocaua.com" password="Mrmaio##996614Stairway"
-                    charset="utf-8" type="html" port="587">
-                #errortext#
-            </cfmail>
-
-            <cfquery>
-                INSERT INTO webtumtum.logs
-                (texto, tag, tipo, session_id, user_id)
-                VALUES
-                (<cfqueryparam cfsqltype="cf_sql_varchar" value="#ARGUMENTS.EventName#|#ARGUMENTS.Exception#"/>,
-                <cfif isDefined("URL.tag")>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#Replace(cgi.script_name, 'index.cfm', '')##URL.tag#"/>,
-                <cfelse>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#Replace(cgi.script_name, 'index.cfm', '')#"/>,
-                </cfif>
-                'erro',
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#SESSION.SESSIONID#"/>,
-                <cfif isDefined("COOKIE.id_usuario") and len(trim(COOKIE.id_usuario)) AND isDefined("COOKIE.is_admin") and len(trim(COOKIE.is_admin))>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id_usuario#"/>
-                <cfelse>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value=""/>
-                </cfif>)
-            </cfquery>
-
-            <cflocation url="/404/" addtoken="false"/>
-
-        <cfelse>
-
-            <cfthrow object="#arguments.exception#">
-
-        </cfif>
-
-        <cfreturn/>
-
-    </cffunction--->
 
 </cfcomponent>

@@ -5,6 +5,35 @@
 <cfset VARIABLES.adsEventosOperacaoIds = "0"/>
 <cfset VARIABLES.adsEffectiveIsAdmin = false/>
 <cfset VARIABLES.adsCanOperate = false/>
+<cfset VARIABLES.adsVoucherColumnsReady = false/>
+<cfset VARIABLES.adsCreditBalance = 0/>
+<cfset VARIABLES.adsCreditTotal = 0/>
+<cfset VARIABLES.adsCreditSpent = 0/>
+<cfset qAdVoucherCredit = QueryNew("credito_total,consumo_total,saldo_total")/>
+
+<cftry>
+    <cfquery name="qAdsVoucherColumnCheck">
+        SELECT table_name,
+               column_name
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
+          AND column_name IN (
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="credito_disponivel"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>
+          )
+    </cfquery>
+
+    <cfset VARIABLES.adsVoucherColumnNames = ValueList(qAdsVoucherColumnCheck.column_name)/>
+    <cfset VARIABLES.adsVoucherColumnsReady = ListFindNoCase(VARIABLES.adsVoucherColumnNames, "id_conta")
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "credito_disponivel")
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "data_resgate")/>
+
+    <cfcatch type="any">
+        <cfset VARIABLES.adsVoucherColumnsReady = false/>
+    </cfcatch>
+</cftry>
 
 <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
     <cfset VARIABLES.adsEffectiveIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
@@ -24,6 +53,40 @@
 <cfif isDefined("qEventosContaOperacao") AND qEventosContaOperacao.recordcount>
     <cfset VARIABLES.adsEventosOperacaoIds = ValueList(qEventosContaOperacao.id_evento)/>
     <cfset VARIABLES.adsCanOperate = true/>
+</cfif>
+
+<cfif VARIABLES.adsVoucherColumnsReady>
+    <cfquery name="qAdVoucherCredit">
+        WITH voucher_credit AS (
+            SELECT coalesce(sum(credito_disponivel), 0) AS credito_total
+            FROM tb_ad_vouchers
+            WHERE status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
+              AND data_resgate IS NOT NULL
+            <cfif VARIABLES.adsRestrictByConta>
+              AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+            </cfif>
+        ),
+        ad_spend AS (
+            SELECT coalesce(sum(log.valor_ad), 0) AS consumo_total
+            FROM tb_ad_log log
+            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            WHERE log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
+            <cfif VARIABLES.adsRestrictByConta>
+              AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
+            </cfif>
+        )
+        SELECT voucher_credit.credito_total,
+               ad_spend.consumo_total,
+               greatest(voucher_credit.credito_total - ad_spend.consumo_total, 0) AS saldo_total
+        FROM voucher_credit, ad_spend
+    </cfquery>
+
+    <cfif qAdVoucherCredit.recordcount>
+        <cfset VARIABLES.adsCreditTotal = val(qAdVoucherCredit.credito_total)/>
+        <cfset VARIABLES.adsCreditSpent = val(qAdVoucherCredit.consumo_total)/>
+        <cfset VARIABLES.adsCreditBalance = val(qAdVoucherCredit.saldo_total)/>
+    </cfif>
 </cfif>
 
 <cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
@@ -47,6 +110,20 @@
 
     <cfif NOT VARIABLES.adsCanOperate>
         <cflocation addtoken="false" url="/ads/"/>
+    </cfif>
+
+    <cfif VARIABLES.adsRestrictByConta
+        AND VARIABLES.adsVoucherColumnsReady
+        AND VARIABLES.adsCreditBalance LTE 0>
+        <cflocation addtoken="false" url="/ads/?erro=sem_credito"/>
+    </cfif>
+
+    <cfif VARIABLES.adsRestrictByConta
+        AND VARIABLES.adsVoucherColumnsReady
+        AND isDefined("FORM.limite_ad")
+        AND len(trim(FORM.limite_ad))
+        AND val(REReplace(FORM.limite_ad, ",", ".", "all")) GT VARIABLES.adsCreditBalance>
+        <cflocation addtoken="false" url="/ads/?erro=credito_insuficiente"/>
     </cfif>
 
     <cfset qAdCheckEvento = QueryNew("id_evento")/>
@@ -133,6 +210,14 @@
 
     <cfif NOT VARIABLES.adsCanOperate>
         <cflocation addtoken="false" url="/ads/"/>
+    </cfif>
+
+    <cfif VARIABLES.adsRestrictByConta
+        AND VARIABLES.adsVoucherColumnsReady
+        AND isDefined("FORM.limite_ad")
+        AND len(trim(FORM.limite_ad))
+        AND val(REReplace(FORM.limite_ad, ",", ".", "all")) GT VARIABLES.adsCreditBalance>
+        <cflocation addtoken="false" url="/ads/?erro=credito_insuficiente"/>
     </cfif>
 
     <cfif NOT isDefined("FORM.id_ad_evento") OR NOT isNumeric(FORM.id_ad_evento)>

@@ -42,7 +42,6 @@
                 const data = await response.json();
 
                 if (data) {
-                    console.log("H1 da CBAt:", data);
                     if (typeof callback === "function") callback(data);
                     return data;
                 } else {

@@ -105,6 +105,15 @@
         </div>
     </div>
 
+    <div class="mb-3">
+        <div data-mdb-input-init class="form-outline">
+            <input type="text" name="voucher_codigo" id="txtVoucherCodigo" class="form-control" maxlength="80"
+                   value="<cfoutput>#htmlEditFormat(FORM.voucher_codigo)#</cfoutput>"/>
+            <label class="form-label" for="txtVoucherCodigo">Codigo de voucher</label>
+        </div>
+        <div class="form-text text-muted">Preencha somente se recebeu um codigo de credito Run Pro.</div>
+    </div>
+
     <button data-mdb-ripple-init type="submit" class="btn btn-warning btn-block" <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>disabled</cfif>>
         Enviar solicitacao
     </button>

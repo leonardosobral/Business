@@ -13,9 +13,9 @@ O primeiro corte nao deve resolver todo o BI. O BI deve continuar controlado por
 - O modelo novo de contas esta em `tb_contas`, `tb_conta_usuarios`, `tb_conta_eventos` e `tb_conta_evento_solicitacoes`.
 - O vinculo conta-evento ja tem fluxo de solicitacao em `/eventos/`.
 - Admin consegue simular uma conta pelo seletor do topo.
-- `ads`, `inscricoes` e `cupons-rr` ja possuem restricoes por eventos da conta, mas ainda precisam de revisao de criacao/edicao.
-- O `/cadastro` atual ainda usa `tb_fornecedores` e `tb_usuarios_fornecedores`, portanto e legado para o novo fluxo Business.
-- O `/usuarios` atual ainda tem codigo reaproveitado de campanhas e nao deve ser tratado como fonte confiavel de gestao de usuarios da conta.
+- `ads`, `inscricoes` e `cupons-rr` ja possuem restricoes por eventos da conta.
+- O `/cadastro` foi recriado como fluxo publico de solicitacao Business, gravando em `tb_conta_cadastro_solicitacoes`.
+- O `/usuarios` foi aposentado como modulo ativo e redireciona para `/administracao/contas/`.
 - A area `/administracao/contas` e o ponto mais adequado para evoluir a gestao de contas, usuarios e solicitacoes.
 
 ## Fluxo alvo
@@ -88,7 +88,7 @@ Status em 2026-06-09:
 - `/ads/`, `/inscricoes/` e `/cupons-rr/` bloqueiam POST/URL de escrita para quem nao e admin efetivo nem possui papel `OWNER`, `ADMIN` ou `OPERADOR` na conta.
 - `/ads/` lista no seletor de criacao apenas eventos ativos de contas operaveis.
 - Usuarios `VISUALIZADOR` continuam podendo consultar dados da conta, mas nao veem formularios/acoes de edicao nessas telas.
-- `/inscricoes/` ainda usa `cod_evento` TicketSports hardcoded (`72611`); precisa de mapeamento confiavel entre evento Road Runners e codigo TicketSports para virar multi-evento.
+- `/inscricoes/` ainda usa `cod_evento` TicketSports hardcoded (`72611`) por decisao consciente do MVP. Esse modulo deve ser refatorado inteiro em etapa futura para mapear evento Road Runners -> evento TicketSports e virar multi-evento.
 - `/cupons-rr/` ainda conserva partes de formulario/backend reaproveitadas de campanha de ads; precisa ser separado em CRUD proprio de cupom antes de producao ampla.
 
 ### Fase 5 - BI
@@ -111,6 +111,20 @@ Status em 2026-06-09:
   - solicitacao de evento;
   - criacao de ad/cupom;
   - tentativa de acessar dados de outra conta.
+
+Status em 2026-06-14:
+
+- SQL de grants complementares rodado: `_codex/sql/2026-06-09_tb_contas_business_grants.sql`.
+- Teste manual de cadastro, aprovacao e vinculacao de conta passou no ambiente.
+- `/inscricoes/` permanece intencionalmente com `cod_evento = 72611` ate a refatoracao completa do componente.
+- Dumps/debugs visiveis dos fluxos centrais de login/eventos foram removidos.
+- Credenciais hardcoded removidas dos pontos centrais encontrados:
+  - `RR_EVENTO_API_TOKEN` passa a alimentar chamadas antigas de `/api/Evento.cfc` e links de Strava/Desafios.
+  - `RR_MANDRILL_USERNAME` e `RR_MANDRILL_PASSWORD` passam a alimentar `crm/EmailSenderService.cfc` e `emailmkt/EmailSenderService.cfc`.
+  - `RR_PUSH_PUBLIC_KEY` e `RR_PUSH_PRIVATE_KEY` devem alimentar PWA push em producao.
+  - Enquanto o ambiente de teste nao tiver variaveis de ambiente, `config/business.local.cfm` fornece fallback local para esses valores. O arquivo segue ignorado por `config/*.local.cfm`.
+- Modulos isolados sem link no menu Business foram arquivados em `_legado/`: `elite-supra/` da raiz e `racetag/`.
+- Ainda existe `debug=true` em links legados de BI/Desafios/Strava, mas sem token literal no codigo. Nao bloquear o primeiro corte por isso; revisar quando a parte de desafios/BI for redesenhada.
 
 ## Corte recomendado para ir ao ar
 

@@ -126,10 +126,10 @@
                                                 </td>
                                                 <td class="text-start">
                                                     <cfif len(trim(qStatsEvento.strava_code))>
-                                                        <a href="https://roadrunners.run/api/strava/atualizar/?id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true">
+                                                        <a href="https://roadrunners.run/api/strava/atualizar/?id_usuario=#id#&token=#urlEncodedFormat(structKeyExists(APPLICATION, 'eventoApiToken') ? APPLICATION.eventoApiToken : '')#&debug=true">
                                                             <div class="badge bg-strava"><i class="fa fa-refresh"></i></div>
                                                         </a>
-                                                        <!---<a href="https://roadrunners.run/api/strava/atualizar/?id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=true">--->
+                                                        <!---<a href="https://roadrunners.run/api/strava/atualizar/?id_usuario=#id#&token=#urlEncodedFormat(structKeyExists(APPLICATION, 'eventoApiToken') ? APPLICATION.eventoApiToken : '')#&debug=true&full=true">--->
                                                             <div class="badge bg-black me-1"><i class="fa fa-refresh"></i></div>
                                                         <!---</a>--->
                                                     <cfif len(trim(qStatsEvento.start_date))> há <cfif DateDiff("n",start_date, now()) LT 120>#DateDiff("n",start_date, now())# min<cfelse>#DateDiff("h",start_date, now())# horas</cfif> | </cfif>
@@ -141,7 +141,7 @@
                                         </table>
 
                                         <cfif qStatsEvento.recordcount>
-                                            <meta http-equiv="refresh" content="0;URL='<cfoutput>https://roadrunners.run/api/strava/atualizar/?id_usuario=#qStatsEvento.id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&auto=true&order=#URL.order#</cfoutput>'" />
+                                            <meta http-equiv="refresh" content="0;URL='<cfoutput>https://roadrunners.run/api/strava/atualizar/?id_usuario=#qStatsEvento.id#&token=#urlEncodedFormat(structKeyExists(APPLICATION, 'eventoApiToken') ? APPLICATION.eventoApiToken : '')#&debug=true&auto=true&order=#URL.order#</cfoutput>'" />
                                         <cfelse>
                                             <meta http-equiv="refresh" content="15">
                                         </cfif>

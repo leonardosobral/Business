@@ -113,9 +113,6 @@
 
             <cfinclude template="includes/header_parceiro.cfm"/>
 
-            <!---cfdump var="#qPeriodo#"/--->
-
-
             <!--- WIDGETS --->
 
             <div class="row g-2 mb-3">
@@ -559,8 +556,6 @@
                                         </div>
 
                                         <div class="card-body p-2">
-
-                                            <cfdump var="#qAcessosRR#"/>
 
                                             <div class="table-wrapper">
                                                 <table class="table table-stripped table-condensed table-sm mb-0">

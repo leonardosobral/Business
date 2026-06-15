@@ -32,14 +32,19 @@
 
         <cfset var system = createObject("java", "java.lang.System")/>
         <cfset var environment = system.getenv()/>
+        <cfset var businessLocalConfig = {}/>
+        <cfif fileExists(expandPath("/config/business.local.cfm"))>
+            <cfinclude template="/config/business.local.cfm"/>
+        </cfif>
         <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : ""/>
         <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : "https://roadrunners.run/api/push/send.cfm"/>
         <cfset var notificationDispatchUrl = structKeyExists(environment, "RR_NOTIFICATION_DISPATCH_URL") ? trim(environment["RR_NOTIFICATION_DISPATCH_URL"]) : ""/>
         <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : 20/>
-        <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : ""/>
-        <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : ""/>
-        <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : "mailto:contato@runnerhub.run"/>
+        <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : (structKeyExists(businessLocalConfig, "pushPublicKey") ? trim(businessLocalConfig.pushPublicKey) : "")/>
+        <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : (structKeyExists(businessLocalConfig, "pushPrivateKey") ? trim(businessLocalConfig.pushPrivateKey) : "")/>
+        <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : (structKeyExists(businessLocalConfig, "pushSubject") ? trim(businessLocalConfig.pushSubject) : "mailto:contato@runnerhub.run")/>
         <cfset var contentAdminBaseUrl = structKeyExists(environment, "RR_CONTENT_ADMIN_BASE_URL") ? trim(environment["RR_CONTENT_ADMIN_BASE_URL"]) : "https://conteudo.roadrunners.run"/>
+        <cfset var eventoApiToken = structKeyExists(environment, "RR_EVENTO_API_TOKEN") ? trim(environment["RR_EVENTO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "eventoApiToken") ? trim(businessLocalConfig.eventoApiToken) : "")/>
 
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
@@ -77,6 +82,7 @@
         <cfset APPLICATION.contentAdmin = {
             baseUrl = len(contentAdminBaseUrl) ? contentAdminBaseUrl : "https://conteudo.roadrunners.run"
         }/>
+        <cfset APPLICATION.eventoApiToken = eventoApiToken/>
 
         <!--- Return out. --->
         <cfreturn true />
@@ -229,71 +235,5 @@
 <!--- Return out. --->
         <cfreturn />
     </cffunction>
-
-
-    <!---cffunction
-            name="OnError"
-            access="public"
-            returntype="void"
-            output="true"
-            hint="Fires when an exception occures that is not caught by a try/catch.">
-
-        <!--- Define arguments. --->
-        <cfargument name="exception" required="true">
-        <cfargument name="eventname" type="string" required="true">
-        <cfset var errortext = "">
-
-        <cfif NOT isDefined("URL.debug")>
-
-            <cfsavecontent variable="errortext">
-                <cfoutput>
-                    An error occurred: http://#cgi.server_name##cgi.script_name#?#cgi.query_string#<br />
-                Time: #dateFormat(now(), "short")# #timeFormat(now(), "short")#<br />
-
-                    <cfdump var="#arguments.exception#" label="Error">
-                    <cfdump var="#form#" label="Form">
-                    <cfdump var="#url#" label="URL">
-
-                </cfoutput>
-            </cfsavecontent>
-
-            <cfmail from="Site Tum Tum <contato@projetocaua.org>" to="leonardo.sobral@gmail.com"
-                    cc="pimenta.carlospimenta@gmail.com"
-                    subject="Erro no site TumTum: #arguments.exception.message#" usetls="true"
-                    server="smtp.gmail.com" username="contato@projetocaua.com" password="Mrmaio##996614Stairway"
-                    charset="utf-8" type="html" port="587">
-                #errortext#
-            </cfmail>
-
-            <cfquery>
-                INSERT INTO webtumtum.logs
-                (texto, tag, tipo, session_id, user_id)
-                VALUES
-                (<cfqueryparam cfsqltype="cf_sql_varchar" value="#ARGUMENTS.EventName#|#ARGUMENTS.Exception#"/>,
-                <cfif isDefined("URL.tag")>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#Replace(cgi.script_name, 'index.cfm', '')##URL.tag#"/>,
-                <cfelse>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#Replace(cgi.script_name, 'index.cfm', '')#"/>,
-                </cfif>
-                'erro',
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#SESSION.SESSIONID#"/>,
-                <cfif isDefined("COOKIE.id_usuario") and len(trim(COOKIE.id_usuario)) AND isDefined("COOKIE.is_admin") and len(trim(COOKIE.is_admin))>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id_usuario#"/>
-                <cfelse>
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value=""/>
-                </cfif>)
-            </cfquery>
-
-            <cflocation url="/404/" addtoken="false"/>
-
-        <cfelse>
-
-            <cfthrow object="#arguments.exception#">
-
-        </cfif>
-
-        <cfreturn/>
-
-    </cffunction--->
 
 </cfcomponent>

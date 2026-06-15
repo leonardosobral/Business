@@ -7,6 +7,7 @@
 <cfparam name="VARIABLES.accountsUserSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsEventSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsRegistrationSaveErrorMessage" default=""/>
+<cfparam name="VARIABLES.accountsVoucherSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsNoticeMessage" default=""/>
 
 <cfset VARIABLES.accountsPage = max(1, int(URL.pagina))/>
@@ -27,6 +28,8 @@
 <cfset VARIABLES.businessAccountsCanManageUsers = false/>
 <cfset VARIABLES.businessAccountsCanManageEvents = false/>
 <cfset VARIABLES.businessAccountRegistrationTableReady = false/>
+<cfset VARIABLES.businessAccountVoucherTableReady = false/>
+<cfset VARIABLES.businessAccountVoucherColumnsReady = false/>
 
 <cfif isDefined("VARIABLES.businessRealIsAdmin")>
     <cfset VARIABLES.businessAccountsRealIsAdmin = VARIABLES.businessRealIsAdmin/>
@@ -73,15 +76,54 @@
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_contas"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>,
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
+      )
+</cfquery>
+
+<cfquery name="qBusinessAccountColumnCheck">
+    SELECT table_name,
+           column_name
+    FROM information_schema.columns
+    WHERE table_schema = 'public'
+      AND (
+        (
+          table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
+          AND column_name IN (
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_usuario_resgate"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="papel_resgate"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>
+          )
+        )
+        OR
+        (
+          table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
+          AND column_name IN (
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_ad_voucher"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="voucher_codigo"/>
+          )
+        )
       )
 </cfquery>
 
 <cfset VARIABLES.businessAccountTableNames = ValueList(qBusinessAccountTableCheck.table_name)/>
+<cfset VARIABLES.businessAccountColumnNames = ""/>
+<cfloop query="qBusinessAccountColumnCheck">
+    <cfset VARIABLES.businessAccountColumnNames = ListAppend(VARIABLES.businessAccountColumnNames, qBusinessAccountColumnCheck.table_name & "." & qBusinessAccountColumnCheck.column_name)/>
+</cfloop>
 <cfset VARIABLES.businessAccountsTablesReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_contas")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_usuarios")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_eventos")/>
 <cfset VARIABLES.businessAccountRegistrationTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_cadastro_solicitacoes")/>
+<cfset VARIABLES.businessAccountVoucherTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_ad_vouchers")/>
+<cfset VARIABLES.businessAccountVoucherColumnsReady = VARIABLES.businessAccountVoucherTableReady
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_ad_vouchers.id_conta")
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_ad_vouchers.id_usuario_resgate")
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_ad_vouchers.papel_resgate")
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_ad_vouchers.data_resgate")
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_conta_cadastro_solicitacoes.id_ad_voucher")
+    AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_conta_cadastro_solicitacoes.voucher_codigo")/>
 
 <cfif isDefined("URL.sucesso")>
     <cfif URL.sucesso EQ "conta">
@@ -100,7 +142,13 @@
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao aprovada e conta vinculada com sucesso."/>
     <cfelseif URL.sucesso EQ "solicitacao_recusada">
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao recusada com sucesso."/>
+    <cfelseif URL.sucesso EQ "voucher">
+        <cfset VARIABLES.accountsNoticeMessage = "Voucher salvo com sucesso."/>
     </cfif>
+</cfif>
+
+<cfif isDefined("URL.voucher") AND URL.voucher EQ "resgatado">
+    <cfset VARIABLES.accountsNoticeMessage = "Voucher resgatado e usuario vinculado a conta com sucesso."/>
 </cfif>
 
 <cfset qBusinessAccountList = QueryNew("id_conta,nome_conta,tipo_titular,documento,nome_titular,email_principal,telefone_principal,status,data_criacao,data_atualizacao,total_usuarios,usuarios_ativos,total_eventos,eventos_ativos")/>
@@ -109,8 +157,9 @@
 <cfset qBusinessAccountUserSearch = QueryNew("id,name,email,is_admin,is_partner,papel,status")/>
 <cfset qBusinessAccountEvents = QueryNew("id_conta_evento,id_conta,id_evento,status,data_criacao,data_atualizacao,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfset qBusinessAccountEventSearch = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,status")/>
-<cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,data_criacao,nome_conta,usuario_nome")/>
+<cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,data_criacao,nome_conta,usuario_nome,id_ad_voucher,voucher_codigo,voucher_credito,voucher_status,voucher_conta_id")/>
 <cfset qBusinessAccountRegistrationAccountOptions = QueryNew("id_conta,nome_conta,documento,status")/>
+<cfset qBusinessAccountVouchers = QueryNew("id_ad_voucher,codigo,credito,credito_disponivel,status,data_criacao,data_expiracao,data_resgate,papel_resgate,observacao,id_usuario_resgate,usuario_resgate_nome,usuario_resgate_email")/>
 
 <cfset VARIABLES.accountsTotal = 0/>
 <cfset VARIABLES.accountsFilteredTotal = 0/>
@@ -190,8 +239,43 @@
 
                 <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND VARIABLES.accountRegistrationAction EQ "aprovar">
                     <cfset VARIABLES.accountRegistrationTargetAccountId = ""/>
+                    <cfset VARIABLES.accountRegistrationVoucherId = ""/>
+                    <cfset VARIABLES.accountRegistrationVoucherCode = ""/>
 
-                    <cfif len(VARIABLES.accountRegistrationExistingAccountId)>
+                    <cfif VARIABLES.businessAccountVoucherColumnsReady
+                        AND listFindNoCase(qBusinessAccountRegistrationReview.columnList, "id_ad_voucher")
+                        AND len(trim(qBusinessAccountRegistrationReview.id_ad_voucher))>
+
+                        <cfquery name="qBusinessAccountRegistrationVoucher">
+                            SELECT id_ad_voucher,
+                                   codigo,
+                                   id_conta,
+                                   status,
+                                   credito,
+                                   credito_disponivel,
+                                   data_expiracao,
+                                   papel_resgate::text AS papel_resgate
+                            FROM tb_ad_vouchers
+                            WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessAccountRegistrationReview.id_ad_voucher#"/>
+                            LIMIT 1
+                        </cfquery>
+
+                        <cfif NOT qBusinessAccountRegistrationVoucher.recordcount>
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao nao foi encontrado.")/>
+                        <cfelseif qBusinessAccountRegistrationVoucher.status NEQ 1>
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao nao esta disponivel para resgate.")/>
+                        <cfelseif len(trim(qBusinessAccountRegistrationVoucher.data_expiracao)) AND isDate(qBusinessAccountRegistrationVoucher.data_expiracao) AND dateCompare(qBusinessAccountRegistrationVoucher.data_expiracao, now(), "d") LT 0>
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao esta expirado.")/>
+                        <cfelseif NOT len(trim(qBusinessAccountRegistrationVoucher.id_conta))>
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado nao esta vinculado a uma conta.")/>
+                        <cfelse>
+                            <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationVoucher.id_conta/>
+                            <cfset VARIABLES.accountRegistrationVoucherId = qBusinessAccountRegistrationVoucher.id_ad_voucher/>
+                            <cfset VARIABLES.accountRegistrationVoucherCode = qBusinessAccountRegistrationVoucher.codigo/>
+                        </cfif>
+                    </cfif>
+
+                    <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND len(VARIABLES.accountRegistrationExistingAccountId) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
                         <cfquery name="qBusinessAccountRegistrationExistingAccount">
                             SELECT id_conta
                             FROM tb_contas
@@ -204,7 +288,7 @@
                         <cfelse>
                             <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Conta existente nao encontrada.")/>
                         </cfif>
-                    <cfelse>
+                    <cfelseif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
                         <cfquery name="qBusinessAccountRegistrationAccountByDocument">
                             SELECT id_conta
                             FROM tb_contas
@@ -322,6 +406,19 @@
                                 data_revisao = now()
                             WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/>
                         </cfquery>
+
+                        <cfif len(VARIABLES.accountRegistrationVoucherId)>
+                            <cfquery>
+                                UPDATE tb_ad_vouchers
+                                SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
+                                    id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationOwnerUser.id#"/>,
+                                    data_resgate = now(),
+                                    credito_disponivel = COALESCE(credito_disponivel, credito, 0),
+                                    data_atualizacao = now()
+                                WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountRegistrationVoucherId#"/>
+                                  AND status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+                            </cfquery>
+                        </cfif>
 
                         <cfset VARIABLES.accountRegistrationRedirectUrl = "./?conta_id=#VARIABLES.accountRegistrationTargetAccountId#&sucesso=solicitacao_aprovada"/>
                     </cfif>
@@ -483,6 +580,160 @@
         </cftry>
     <cfelse>
         <cfset VARIABLES.accountsSaveErrorMessage = arrayToList(VARIABLES.accountSaveErrors, " ")/>
+    </cfif>
+</cfif>
+
+<cfif VARIABLES.businessAccountsTablesReady
+    AND VARIABLES.businessAccountVoucherColumnsReady
+    AND isDefined("FORM.account_voucher_action")
+    AND FORM.account_voucher_action EQ "salvar">
+
+    <cfset VARIABLES.accountVoucherAccountId = isDefined("FORM.id_conta") ? trim(FORM.id_conta) : ""/>
+    <cfset VARIABLES.accountVoucherCode = isDefined("FORM.codigo") ? uCase(trim(FORM.codigo)) : ""/>
+    <cfset VARIABLES.accountVoucherCode = REReplace(VARIABLES.accountVoucherCode, "[^A-Z0-9-]", "", "all")/>
+    <cfset VARIABLES.accountVoucherCredit = isDefined("FORM.credito") ? val(REReplace(FORM.credito, ",", ".", "all")) : 0/>
+    <cfset VARIABLES.accountVoucherExpiration = isDefined("FORM.data_expiracao") ? trim(FORM.data_expiracao) : ""/>
+    <cfset VARIABLES.accountVoucherPapel = isDefined("FORM.papel_resgate") ? uCase(trim(FORM.papel_resgate)) : "OWNER"/>
+    <cfset VARIABLES.accountVoucherObservation = isDefined("FORM.observacao") ? trim(FORM.observacao) : ""/>
+    <cfset VARIABLES.accountVoucherErrors = []/>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Apenas administradores internos podem criar vouchers.")/>
+    </cfif>
+
+    <cfif NOT len(VARIABLES.accountVoucherAccountId) OR NOT isNumeric(VARIABLES.accountVoucherAccountId)>
+        <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Conta invalida para o voucher.")/>
+    </cfif>
+
+    <cfif NOT len(VARIABLES.accountVoucherCode)>
+        <cfset VARIABLES.accountVoucherCode = "RUNPRO-" & left(uCase(hash(createUUID(), "SHA-256")), 10)/>
+    </cfif>
+
+    <cfif VARIABLES.accountVoucherCredit LTE 0>
+        <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Informe um credito maior que zero.")/>
+    </cfif>
+
+    <cfif NOT listFindNoCase("OWNER,ADMIN,OPERADOR,VISUALIZADOR", VARIABLES.accountVoucherPapel)>
+        <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Informe um papel valido para o resgate.")/>
+    </cfif>
+
+    <cfif len(VARIABLES.accountVoucherExpiration) AND NOT isDate(VARIABLES.accountVoucherExpiration)>
+        <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Informe uma data de expiracao valida.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountVoucherErrors)>
+        <cfquery name="qBusinessAccountVoucherAccountCheck">
+            SELECT id_conta
+            FROM tb_contas
+            WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountVoucherAccountId#"/>
+            LIMIT 1
+        </cfquery>
+
+        <cfif NOT qBusinessAccountVoucherAccountCheck.recordcount>
+            <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Conta nao encontrada para o voucher.")/>
+        </cfif>
+
+        <cfquery name="qBusinessAccountVoucherDuplicate">
+            SELECT id_ad_voucher
+            FROM tb_ad_vouchers
+            WHERE lower(codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#"/>)
+            LIMIT 1
+        </cfquery>
+
+        <cfif qBusinessAccountVoucherDuplicate.recordcount>
+            <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Ja existe um voucher com este codigo.")/>
+        </cfif>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountVoucherErrors)>
+        <cftry>
+            <cfquery>
+                INSERT INTO tb_ad_vouchers
+                (
+                    codigo,
+                    id_conta,
+                    credito,
+                    credito_disponivel,
+                    status,
+                    data_criacao,
+                    data_expiracao,
+                    papel_resgate,
+                    observacao,
+                    data_atualizacao
+                )
+                VALUES
+                (
+                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#" maxlength="80"/>,
+                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountVoucherAccountId#"/>,
+                    <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.accountVoucherCredit#" scale="2"/>,
+                    <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.accountVoucherCredit#" scale="2"/>,
+                    <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>,
+                    now(),
+                    <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.accountVoucherExpiration#" null="#NOT len(VARIABLES.accountVoucherExpiration)#"/>,
+                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherPapel#"/> AS papel_usuario_conta),
+                    <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.accountVoucherObservation#" null="#NOT len(VARIABLES.accountVoucherObservation)#"/>,
+                    now()
+                )
+            </cfquery>
+
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountVoucherAccountId#&sucesso=voucher"/>
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Nao foi possivel salvar o voucher. " & cfcatch.message/>
+            </cfcatch>
+        </cftry>
+    <cfelse>
+        <cfset VARIABLES.accountsVoucherSaveErrorMessage = arrayToList(VARIABLES.accountVoucherErrors, " ")/>
+    </cfif>
+</cfif>
+
+<cfif VARIABLES.businessAccountsTablesReady
+    AND VARIABLES.businessAccountVoucherColumnsReady
+    AND isDefined("URL.account_voucher_action")
+    AND listFindNoCase("cancelar,reativar", URL.account_voucher_action)
+    AND isDefined("URL.conta_id")
+    AND len(trim(URL.conta_id))
+    AND isNumeric(URL.conta_id)
+    AND isDefined("URL.id_ad_voucher")
+    AND len(trim(URL.id_ad_voucher))
+    AND isNumeric(URL.id_ad_voucher)>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Apenas administradores internos podem alterar vouchers."/>
+    <cfelse>
+        <cftry>
+            <cfset VARIABLES.accountVoucherNewStatus = URL.account_voucher_action EQ "reativar" ? 1 : 3/>
+
+            <cfquery name="qBusinessAccountVoucherStatusCheck">
+                SELECT id_ad_voucher,
+                       status,
+                       id_usuario_resgate
+                FROM tb_ad_vouchers
+                WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/>
+                  AND id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.conta_id#"/>
+                LIMIT 1
+            </cfquery>
+
+            <cfif NOT qBusinessAccountVoucherStatusCheck.recordcount>
+                <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Voucher nao encontrado para esta conta."/>
+            <cfelseif len(trim(qBusinessAccountVoucherStatusCheck.id_usuario_resgate))>
+                <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Voucher ja resgatado nao pode ser cancelado ou reativado por esta tela."/>
+            <cfelse>
+                <cfquery>
+                    UPDATE tb_ad_vouchers
+                    SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountVoucherNewStatus#"/>,
+                        data_atualizacao = now()
+                    WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/>
+                      AND id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.conta_id#"/>
+                      AND id_usuario_resgate IS NULL
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&sucesso=voucher"/>
+            </cfif>
+
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Nao foi possivel alterar o voucher. " & cfcatch.message/>
+            </cfcatch>
+        </cftry>
     </cfif>
 </cfif>
 
@@ -932,6 +1183,12 @@
     AND len(trim(FORM.id_conta))
     AND isNumeric(FORM.id_conta)>
     <cfset VARIABLES.accountsEditId = trim(FORM.id_conta)/>
+<cfelseif isDefined("FORM.account_voucher_action")
+    AND FORM.account_voucher_action EQ "salvar"
+    AND isDefined("FORM.id_conta")
+    AND len(trim(FORM.id_conta))
+    AND isNumeric(FORM.id_conta)>
+    <cfset VARIABLES.accountsEditId = trim(FORM.id_conta)/>
 </cfif>
 
 <cfif VARIABLES.businessAccountsTablesReady
@@ -1166,6 +1423,34 @@
                 evt.nome_evento
             </cfquery>
 
+            <cfif VARIABLES.businessAccountVoucherColumnsReady>
+                <cfquery name="qBusinessAccountVouchers">
+                    SELECT vou.id_ad_voucher,
+                           vou.codigo,
+                           coalesce(vou.credito, 0) AS credito,
+                           coalesce(vou.credito_disponivel, vou.credito, 0) AS credito_disponivel,
+                           vou.status,
+                           vou.data_criacao,
+                           vou.data_expiracao,
+                           vou.data_resgate,
+                           vou.papel_resgate::text AS papel_resgate,
+                           vou.observacao,
+                           vou.id_usuario_resgate,
+                           usr.name AS usuario_resgate_nome,
+                           usr.email AS usuario_resgate_email
+                    FROM tb_ad_vouchers vou
+                    LEFT JOIN tb_usuarios usr ON usr.id = vou.id_usuario_resgate
+                    WHERE vou.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountEdit.id_conta#"/>
+                    ORDER BY CASE vou.status
+                        WHEN 1 THEN 1
+                        WHEN 2 THEN 2
+                        ELSE 3
+                    END,
+                    vou.data_criacao DESC,
+                    vou.id_ad_voucher DESC
+                </cfquery>
+            </cfif>
+
             <cfif VARIABLES.businessAccountsCanManageEvents AND len(trim(URL.evento_busca))>
                 <cfset VARIABLES.accountEventSearchTerm = trim(URL.evento_busca)/>
                 <cfquery name="qBusinessAccountEventSearch">
@@ -1241,10 +1526,26 @@
                sol.status::text AS status,
                sol.data_criacao,
                cont.nome_conta,
-               usr.name AS usuario_nome
+               usr.name AS usuario_nome,
+               <cfif VARIABLES.businessAccountVoucherColumnsReady>
+                   sol.id_ad_voucher,
+                   sol.voucher_codigo,
+                   vou.credito AS voucher_credito,
+                   vou.status AS voucher_status,
+                   vou.id_conta AS voucher_conta_id
+               <cfelse>
+                   NULL::integer AS id_ad_voucher,
+                   NULL::varchar AS voucher_codigo,
+                   NULL::numeric AS voucher_credito,
+                   NULL::integer AS voucher_status,
+                   NULL::bigint AS voucher_conta_id
+               </cfif>
         FROM tb_conta_cadastro_solicitacoes sol
         LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
         LEFT JOIN tb_usuarios usr ON usr.id = sol.id_usuario
+        <cfif VARIABLES.businessAccountVoucherColumnsReady>
+            LEFT JOIN tb_ad_vouchers vou ON vou.id_ad_voucher = sol.id_ad_voucher
+        </cfif>
         WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
         ORDER BY sol.data_criacao ASC
         LIMIT 25

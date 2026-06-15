@@ -127,7 +127,7 @@
               <tbody>
                 <cfoutput query="qLogEmail">
                     <tr>
-                        <td><cfdump var="#deserializeJSON(replace(urlDecode(qLogEmail.body), "mandrill_events=", ""))#"></td>
+                        <td>#encodeForHTML(left(qLogEmail.body, 500))#</td>
                         <td>#LSDateTimeFormat(qLogEmail.call_date, "dd/mm/yyyy HH:nn:ss")#</td>
                     </tr>
                 </cfoutput>
@@ -143,4 +143,3 @@
   </div>
 
 </section>
-

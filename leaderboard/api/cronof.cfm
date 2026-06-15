@@ -1,9 +1,7 @@
 <cfhttp result="resultado" url="https://resultadoseventosapi.runking.com.br/transmission/json/iguana-sports/on-sp-city-marathon-2025?modality=42K&gender=F"/>
 
 <cfset resultados = deserializeJSON(resultado.filecontent)/>
-<cfloop array="#resultados#" index="item">
-    <!---cfdump var=#item#/--->
-    <cfoutput><p>#item.ponto_de_controle# | #item.nome# | #item.numero# | #item.time#</p></cfoutput>
+<cfloop array="#resultados#" index="item">    <cfoutput><p>#item.ponto_de_controle# | #item.nome# | #item.numero# | #item.time#</p></cfoutput>
 
     <cfif item.ponto_de_controle EQ "KM 5">
 

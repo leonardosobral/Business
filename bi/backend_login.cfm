@@ -66,19 +66,15 @@
 
 <cfif isDefined("URL.action") AND URL.action EQ "googlesignin" AND isDefined("URL.credential")>
 
-    <cfdump var="#URL.credential#">
-    <br/>
     <cfset id_token = listToArray(URL.credential, ".")/>
     <cfset fb_str = replacelist(id_token[2], "-,_", "+,/")>
     <cfset padding = repeatstring("=",4-len(fb_str) mod 4)>
     <cfset user_data = deserializeJSON(toString(BinaryDecode(fb_str & padding,"base64")))>
-    <cfdump var="#user_data#"/>
 
     <cfset token = Replace(Replace(ListGetAt(URL.credential, 2, "."), "-", "+", "ALL"), "_", "/", "ALL")>
     <cfset jstr = JavaCast("string", token)>
     <cfset decoder = CreateObject("java", "org.apache.commons.codec.binary.Base64")>
     <cfset user_data = deserializeJSON(toString(decoder.decodeBase64(jstr.getBytes())))>
-    <cfdump var="#user_data#"/>
 
     <cfquery>
         INSERT INTO tb_usuarios

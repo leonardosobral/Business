@@ -132,8 +132,9 @@
     </div>
 
     <script>
+        const eventoFornecedorApiTokenParam = "<cfoutput>#JSStringFormat(VARIABLES.eventoApiTokenParam)#</cfoutput>";
         function getFornecedores() {
-            $.getJSON("/api/Evento.cfc?method=getCidades&uf=" + $("#selectEstado").val() + "&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23", function(result) {
+            $.getJSON("/api/Evento.cfc?method=getCidades&uf=" + $("#selectEstado").val() + eventoFornecedorApiTokenParam, function(result) {
                 var $dropdown = $("#selectCidade").find('option').remove().end();
                 $.each(result.data, function() {
                     $dropdown.append($("<option />").val(this.cod_cidade).text(this.nome_cidade));

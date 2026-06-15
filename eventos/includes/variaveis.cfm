@@ -2,6 +2,11 @@
 
 <cfset VARIABLES.devMode = false/>
 <cfset VARIABLES.adminIsAdmin = false/>
+<cfset VARIABLES.eventoApiTokenParam = ""/>
+
+<cfif isDefined("APPLICATION.eventoApiToken") AND len(trim(APPLICATION.eventoApiToken))>
+    <cfset VARIABLES.eventoApiTokenParam = "&token=#urlEncodedFormat(APPLICATION.eventoApiToken)#"/>
+</cfif>
 
 <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
     <cfset VARIABLES.adminIsAdmin = VARIABLES.businessEffectiveIsAdmin/>

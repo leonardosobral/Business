@@ -15,12 +15,20 @@ component
     }
 
     try{
+      var environment = createObject("java", "java.lang.System").getenv();
+      var businessLocalConfig = {};
+      if (fileExists(expandPath("/config/business.local.cfm"))) {
+        include "/config/business.local.cfm";
+      }
       // Set up the mail server settings
       var mailServer = "smtp.mandrillapp.com";
       var mailPort = 587;
-      var mailUsername = "RunnerHub";
-      var mailPassword = "md-kHpL53XqZM3olhBw2z1t1w";
+      var mailUsername = structKeyExists(environment, "RR_MANDRILL_USERNAME") ? trim(environment["RR_MANDRILL_USERNAME"]) : (structKeyExists(businessLocalConfig, "mandrillUsername") ? trim(businessLocalConfig.mandrillUsername) : "");
+      var mailPassword = structKeyExists(environment, "RR_MANDRILL_PASSWORD") ? trim(environment["RR_MANDRILL_PASSWORD"]) : (structKeyExists(businessLocalConfig, "mandrillPassword") ? trim(businessLocalConfig.mandrillPassword) : "");
       var emailBody = conteudo;
+      if (!len(mailUsername) || !len(mailPassword)) {
+        return "ERRO";
+      }
       // Define the email variables
       var from = "Road Runners <contato@roadrunners.run>";
       var to = "#nome# <#emailDestinatario#>";

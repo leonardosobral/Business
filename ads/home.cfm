@@ -88,6 +88,35 @@
       </div>
     </div>
 
+    <div class="col mb-3 mb-lg-0">
+      <div class="card shadow-0">
+        <div class="card-body p-3">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <div class="p-3 badge-primary rounded-4">
+                <i class="fas fa-ticket fa-lg fa-fw"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <p class="text-muted mb-1">Saldo</p>
+              <h4 class="mb-0">
+                <cfif VARIABLES.adsVoucherColumnsReady AND qAdVoucherCredit.recordcount>
+                  <cfoutput>#lsCurrencyFormat(VARIABLES.adsCreditBalance)#</cfoutput>
+                <cfelse>
+                  -
+                </cfif>
+              </h4>
+              <cfif VARIABLES.adsVoucherColumnsReady AND qAdVoucherCredit.recordcount>
+                <div class="small text-muted">
+                  <cfoutput>#lsCurrencyFormat(VARIABLES.adsCreditSpent)# usados de #lsCurrencyFormat(VARIABLES.adsCreditTotal)#</cfoutput>
+                </div>
+              </cfif>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
     
 </section>
@@ -110,9 +139,27 @@
 
             <h3>Turbinar Evento</h3>
 
+            <cfif isDefined("URL.erro") AND URL.erro EQ "sem_credito">
+                <div class="alert alert-warning" role="alert">
+                    Esta conta nao possui saldo de credito disponivel para criar uma campanha.
+                </div>
+            <cfelseif isDefined("URL.erro") AND URL.erro EQ "credito_insuficiente">
+                <div class="alert alert-warning" role="alert">
+                    O limite da campanha ultrapassa o saldo de credito disponivel da conta.
+                </div>
+            </cfif>
+
             <cfif VARIABLES.adsCanOperate AND NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
 
-                <cfinclude template="includes/form_campanha.cfm"/>
+                <cfif VARIABLES.adsRestrictByConta
+                    AND VARIABLES.adsVoucherColumnsReady
+                    AND VARIABLES.adsCreditBalance LTE 0>
+                    <div class="alert alert-info mb-0" role="alert">
+                        Solicite ou resgate um voucher de credito antes de criar uma campanha.
+                    </div>
+                <cfelse>
+                    <cfinclude template="includes/form_campanha.cfm"/>
+                </cfif>
 
             <cfelseif NOT VARIABLES.adsCanOperate>
 

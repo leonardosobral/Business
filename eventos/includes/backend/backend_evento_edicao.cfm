@@ -260,69 +260,6 @@
         )
     </cfquery>
 
-    <!---
-
-    <cfdump var="#FORM#"/>
-
-    <cfloop list="#FORM.fieldnames#" item="item" index="index" delimiters=",">
-
-        <cfif item NEQ "ACTION" AND item NEQ "ID_EVENTO">
-
-            <cfif item EQ "id_rr" AND len(trim(FORM.id_rr))>
-                <cfquery>
-                    INSERT INTO tb_evento_corridas_relaciona
-                    (id_evento_parceiro, id_parceiro, percurso, id_evento)
-                    VALUES
-                    (
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_rr#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
-                        null,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-                    )
-                </cfquery>
-            <cfelseif item EQ "id_fr" AND len(trim(FORM.id_rr))>
-                <cfquery>
-                    INSERT INTO tb_evento_corridas_relaciona
-                    (id_evento_parceiro, id_parceiro, percurso, id_evento)
-                    VALUES
-                    (
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_fr#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>,
-                        null,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-                    )
-                </cfquery>
-            <cfelse>
-                <cfif len(trim(form[item]))>
-                    <cfquery>
-                        INSERT INTO tb_evento_corridas_relaciona
-                        (id_evento_parceiro, id_parceiro, percurso, id_evento)
-                        VALUES
-                        (
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#form[item]#"/>,
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>,
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#replace(item, 'ID_FR_', '')#"/>,
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-                        )
-                        ON CONFLICT (id_evento, id_parceiro, id_evento_parceiro, percurso)
-                        DO UPDATE SET
-                        data_cadastro  = now(),
-                        id_evento_parceiro  = excluded.id_evento_parceiro
-                        RETURNING *;
-                    </cfquery>
-                </cfif>
-            </cfif>
-
-        </cfif>
-
-    </cfloop>
-
-    <cfabort/>
-
-    <cflocation addtoken="false" url="/bi/#qEvento.tag#/"/>
-
-    --->
-
     <cfquery>
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)

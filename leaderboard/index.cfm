@@ -607,7 +607,6 @@
         }
         document.getElementById(id_usuario).classList.add("listed-selected");
         document.getElementById("divAthlete").style.display="block";
-        console.log("Ficha atualizada.");
       } catch (erro) {
         console.error("Erro ao buscar dados:", erro);
       }
@@ -633,7 +632,6 @@
         const resposta = await fetch("/leaderboard/fetch/leaderboard.cfm?percurso=<cfoutput>#URL.percurso#</cfoutput>&genero=M"); // coloque sua URL real aqui
         const html = await resposta.text(); // espera resposta como HTML
         tbodyElM.innerHTML = html; // injeta no tbody
-        console.log("Tabela atualizada.");
       } catch (erro) {
         console.error("Erro ao buscar dados:", erro);
       }
@@ -641,7 +639,6 @@
         const resposta = await fetch("/leaderboard/fetch/leaderboard.cfm?percurso=<cfoutput>#URL.percurso#</cfoutput>&genero=F"); // coloque sua URL real aqui
         const html = await resposta.text(); // espera resposta como HTML
         tbodyElF.innerHTML = html; // injeta no tbody
-        console.log("Tabela atualizada.");
       } catch (erro) {
         console.error("Erro ao buscar dados:", erro);
       }
@@ -657,7 +654,6 @@
         const resposta = await fetch("/leaderboard/fetch/startlist.cfm?percurso=<cfoutput>#URL.percurso#</cfoutput>&genero=M"); // coloque sua URL real aqui
         const html = await resposta.text(); // espera resposta como HTML
         tbodyElMStartlist.innerHTML = html; // injeta no tbody
-        console.log("Tabela atualizada.");
       } catch (erro) {
         console.error("Erro ao buscar dados:", erro);
       }
@@ -665,7 +661,6 @@
         const resposta = await fetch("/leaderboard/fetch/startlist.cfm?percurso=<cfoutput>#URL.percurso#</cfoutput>&genero=F"); // coloque sua URL real aqui
         const html = await resposta.text(); // espera resposta como HTML
         tbodyElFStartlist.innerHTML = html; // injeta no tbody
-        console.log("Tabela atualizada.");
       } catch (erro) {
         console.error("Erro ao buscar dados:", erro);
       }

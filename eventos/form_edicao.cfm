@@ -194,8 +194,9 @@
                         </form>
 
                         <script>
+                            const eventoApiTokenParam = "<cfoutput>#JSStringFormat(VARIABLES.eventoApiTokenParam)#</cfoutput>";
                             function getCidades() {
-                                $.getJSON("/api/Evento.cfc?method=getCidades&uf=" + $("#selectEstado").val() + "&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23", function(result) {
+                                $.getJSON("/api/Evento.cfc?method=getCidades&uf=" + $("#selectEstado").val() + eventoApiTokenParam, function(result) {
                                     var $dropdown = $("#selectCidade").find('option').remove().end();
                                     $.each(result.data, function() {
                                         $dropdown.append($("<option />").val(this.cod_cidade).text(this.nome_cidade));
@@ -206,8 +207,7 @@
                             }
                             function getTag() {
                                 if ($("#txtTagEvento").val().length === 0) {
-                                    $.getJSON("/api/Evento.cfc?method=getTag&nome_evento=" + $("#txtNomeEvento").val() + "&data_final=" + $("#dataFinal").val() + "&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23", function(result) {
-                                        console.log(result.data);
+                                    $.getJSON("/api/Evento.cfc?method=getTag&nome_evento=" + $("#txtNomeEvento").val() + "&data_final=" + $("#dataFinal").val() + eventoApiTokenParam, function(result) {
                                         $("#txtTagEvento").val(result.data);
                                     });
                                 }
@@ -363,7 +363,6 @@
             function handlePaste(e) {
                 for (var i = 0 ; i < e.clipboardData.items.length ; i++) {
                     var item = e.clipboardData.items[i];
-                    console.log("Item type: " + item.type);
                     if (item.type.indexOf("image") != -1) {
                         uploadFile(item.getAsFile(), 'M');
                     } else {
@@ -377,7 +376,6 @@
 
                 xhr.upload.onprogress = function(e) {
                     var percentComplete = (e.loaded / e.total) * 100;
-                    console.log("Uploaded: " + percentComplete + "%");
                 };
 
                 xhr.onload = function() {

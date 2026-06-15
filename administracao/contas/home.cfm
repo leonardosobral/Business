@@ -282,6 +282,12 @@
             </div>
           </cfif>
 
+          <cfif len(trim(VARIABLES.accountsVoucherSaveErrorMessage))>
+            <div class="alert alert-danger" role="alert">
+              <cfoutput>#htmlEditFormat(VARIABLES.accountsVoucherSaveErrorMessage)#</cfoutput>
+            </div>
+          </cfif>
+
           <cfif VARIABLES.businessAccountsCanAdminAll>
             <div class="accounts-panel p-3 mb-4">
               <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
@@ -304,6 +310,9 @@
                         <span class="accounts-status">## #qBusinessAccountRegistrationRequests.id_solicitacao#</span>
                         <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_prestador)#</span>
                         <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_titular)#</span>
+                        <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
+                          <span class="accounts-status">Voucher #htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#</span>
+                        </cfif>
                       </div>
                       <div class="fw-bold fs-6">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_empresa)#</div>
                       <div class="accounts-request-grid small">
@@ -339,6 +348,12 @@
                           <div>
                             <span class="accounts-request-label">Site</span>
                             <span class="accounts-request-value"><a href="#htmlEditFormat(VARIABLES.accountRegistrationSiteUrl)#" target="_blank" rel="noopener">#htmlEditFormat(qBusinessAccountRegistrationRequests.site)#</a></span>
+                          </div>
+                        </cfif>
+                        <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
+                          <div>
+                            <span class="accounts-request-label">Voucher</span>
+                            <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#<cfif len(trim(qBusinessAccountRegistrationRequests.voucher_credito))> - #LSCurrencyFormat(qBusinessAccountRegistrationRequests.voucher_credito)#</cfif></span>
                           </div>
                         </cfif>
                       </div>
@@ -733,6 +748,126 @@
                       <div class="text-muted py-3">Nenhum usuário vinculado a esta conta.</div>
                     </cfif>
                   </div>
+
+                  <cfif VARIABLES.businessAccountsCanAdminAll>
+                    <hr class="my-4"/>
+
+                    <div class="mb-3">
+                      <h5 class="mb-1">Vouchers de ads</h5>
+                      <div class="text-muted small">
+                        Códigos de crédito vinculados a esta conta. Quem resgatar o código será associado à conta.
+                      </div>
+                    </div>
+
+                    <cfif NOT VARIABLES.businessAccountVoucherColumnsReady>
+                      <div class="alert alert-warning" role="alert">
+                        A estrutura de vouchers Business ainda depende do SQL <code>_codex/sql/2026-06-14_tb_ad_vouchers_contas.sql</code>.
+                      </div>
+                    <cfelse>
+                      <cfoutput>
+                        <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#" class="accounts-panel p-3 mb-3">
+                          <input type="hidden" name="account_voucher_action" value="salvar"/>
+                          <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
+                          <div class="row g-3">
+                            <div class="col-12 col-lg-5">
+                              <label class="form-label">Código</label>
+                              <input class="form-control" type="text" name="codigo" maxlength="80" placeholder="Gerar automaticamente"/>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                              <label class="form-label">Crédito</label>
+                              <input class="form-control" type="number" name="credito" min="1" step="0.01" value="500.00" required/>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <label class="form-label">Validade</label>
+                              <input class="form-control" type="date" name="data_expiracao"/>
+                            </div>
+                            <div class="col-12 col-lg-5">
+                              <label class="form-label">Papel no resgate</label>
+                              <select class="form-select" name="papel_resgate">
+                                <option value="OWNER" selected>OWNER</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="OPERADOR">OPERADOR</option>
+                                <option value="VISUALIZADOR">VISUALIZADOR</option>
+                              </select>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                              <label class="form-label">Observação</label>
+                              <input class="form-control" type="text" name="observacao" maxlength="500"/>
+                            </div>
+                            <div class="col-12">
+                              <button class="btn btn-warning w-100" type="submit">Criar voucher</button>
+                            </div>
+                          </div>
+                        </form>
+                      </cfoutput>
+
+                      <cfif qBusinessAccountVouchers.recordcount>
+                        <div class="table-responsive">
+                          <table class="table table-sm accounts-table align-middle mb-0">
+                            <thead>
+                              <tr>
+                                <th>Código</th>
+                                <th>Crédito</th>
+                                <th>Status</th>
+                                <th>Resgate</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <cfoutput query="qBusinessAccountVouchers">
+                                <tr>
+                                  <td class="accounts-cell">
+                                    <div class="fw-bold">#htmlEditFormat(qBusinessAccountVouchers.codigo)#</div>
+                                    <cfif len(trim(qBusinessAccountVouchers.observacao))>
+                                      <div class="small text-muted">#htmlEditFormat(qBusinessAccountVouchers.observacao)#</div>
+                                    </cfif>
+                                  </td>
+                                  <td>
+                                    <div>#LSCurrencyFormat(qBusinessAccountVouchers.credito)#</div>
+                                    <div class="small text-muted">saldo #LSCurrencyFormat(qBusinessAccountVouchers.credito_disponivel)#</div>
+                                  </td>
+                                  <td>
+                                    <cfif qBusinessAccountVouchers.status EQ 1>
+                                      <span class="accounts-status">Disponível</span>
+                                    <cfelseif qBusinessAccountVouchers.status EQ 2>
+                                      <span class="accounts-status">Resgatado</span>
+                                    <cfelse>
+                                      <span class="accounts-status">Inativo</span>
+                                    </cfif>
+                                    <cfif len(trim(qBusinessAccountVouchers.data_expiracao))>
+                                      <div class="small text-muted">até #dateFormat(qBusinessAccountVouchers.data_expiracao, "dd/mm/yyyy")#</div>
+                                    </cfif>
+                                  </td>
+                                  <td class="accounts-cell">
+                                    <cfif len(trim(qBusinessAccountVouchers.id_usuario_resgate))>
+                                      <div>#htmlEditFormat(qBusinessAccountVouchers.usuario_resgate_nome)#</div>
+                                      <div class="small text-muted">#htmlEditFormat(qBusinessAccountVouchers.usuario_resgate_email)#</div>
+                                      <cfif len(trim(qBusinessAccountVouchers.data_resgate))>
+                                        <div class="small text-muted">#dateTimeFormat(qBusinessAccountVouchers.data_resgate, "dd/mm/yyyy HH:nn")#</div>
+                                      </cfif>
+                                    <cfelse>
+                                      <span class="text-muted">Aguardando resgate</span>
+                                    </cfif>
+                                  </td>
+                                  <td class="text-end">
+                                    <cfif NOT len(trim(qBusinessAccountVouchers.id_usuario_resgate))>
+                                      <cfif qBusinessAccountVouchers.status EQ 1>
+                                        <a class="btn btn-sm btn-outline-danger" href="./?account_voucher_action=cancelar&conta_id=#qBusinessAccountEdit.id_conta#&id_ad_voucher=#qBusinessAccountVouchers.id_ad_voucher#" onclick="return confirm('Cancelar este voucher?');">Cancelar</a>
+                                      <cfelseif qBusinessAccountVouchers.status EQ 3>
+                                        <a class="btn btn-sm btn-outline-warning" href="./?account_voucher_action=reativar&conta_id=#qBusinessAccountEdit.id_conta#&id_ad_voucher=#qBusinessAccountVouchers.id_ad_voucher#">Reativar</a>
+                                      </cfif>
+                                    </cfif>
+                                  </td>
+                                </tr>
+                              </cfoutput>
+                            </tbody>
+                          </table>
+                        </div>
+                      <cfelse>
+                        <div class="text-muted py-3">Nenhum voucher criado para esta conta.</div>
+                      </cfif>
+                    </cfif>
+                  </cfif>
 
                   <hr class="my-4"/>
 
