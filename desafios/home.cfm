@@ -13,6 +13,14 @@
 <!--- BACKEND --->
 
 <cfinclude template="includes/backend.cfm"/>
+<cfset VARIABLES.challengeConfirmedTotal = 0/>
+<cfset VARIABLES.challengeNoTotal = 0/>
+<cfset VARIABLES.challengePendingChallengeTotal = 0/>
+<cfset VARIABLES.challengeVipTotal = 0/>
+<cfif qCountConfirmados.recordcount GT 0 AND NOT isNull(qCountConfirmados.total)><cfset VARIABLES.challengeConfirmedTotal = val(qCountConfirmados.total)/></cfif>
+<cfif qNoDesafio.recordcount GT 0 AND NOT isNull(qNoDesafio.total)><cfset VARIABLES.challengeNoTotal = val(qNoDesafio.total)/></cfif>
+<cfif qPendenteDesafio.recordcount GT 0 AND NOT isNull(qPendenteDesafio.total)><cfset VARIABLES.challengePendingChallengeTotal = val(qPendenteDesafio.total)/></cfif>
+<cfif qCountVip.recordcount GT 0 AND NOT isNull(qCountVip.total)><cfset VARIABLES.challengeVipTotal = val(qCountVip.total)/></cfif>
 
 <style>
     a {
@@ -52,8 +60,8 @@
     <div class="col-md">
         <a href="./?periodo=nodesafio">
         <div class="card bg-5k py-2 px-3">
-            <p class="h4 m-0"><cfoutput>#numberFormat(qNoDesafio.total, "9")#/#numberFormat(qCountConfirmados.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) AND len(trim(qNoDesafio.total)) ? numberFormat((qNoDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% <cfif VARIABLES.challengeIsRaceParticipation>com #VARIABLES.challengeCircuitCompletionTarget# <cfif VARIABLES.challengeIsBrasilGigante>provas<cfelse>etapas</cfif><cfelse>no desafio</cfif></cfoutput></p>
+            <p class="h4 m-0"><cfoutput>#numberFormat(VARIABLES.challengeNoTotal, "9")#/#numberFormat(VARIABLES.challengeConfirmedTotal, "9")#</cfoutput></p>
+            <p class="m-0"><cfoutput>#VARIABLES.challengeConfirmedTotal GT 0 ? numberFormat((VARIABLES.challengeNoTotal*100)/VARIABLES.challengeConfirmedTotal, "9,9") : 0#% <cfif VARIABLES.challengeIsRaceParticipation>com #VARIABLES.challengeCircuitCompletionTarget# <cfif VARIABLES.challengeIsBrasilGigante>provas<cfelse>etapas</cfif><cfelse>no desafio</cfif></cfoutput></p>
         </div>
         </a>
     </div>
@@ -61,8 +69,8 @@
     <div class="col-md">
         <a href="./?periodo=pendentedesafio">
         <div class="card bg-8k py-2 px-3">
-            <p class="h4 m-0"><cfoutput>#numberFormat(qPendenteDesafio.total, "9")#/#numberFormat(qCountConfirmados.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#len(trim(qCountConfirmados.total)) AND len(trim(qPendenteDesafio.total)) ? numberFormat((qPendenteDesafio.total*100)/qCountConfirmados.total, "9,9") : 0#% <cfif VARIABLES.challengeIsRaceParticipation>com <cfif VARIABLES.challengeIsBrasilGigante>provas<cfelse>etapas</cfif></cfif><cfif NOT VARIABLES.challengeIsRaceParticipation>correndo</cfif></cfoutput></p>
+            <p class="h4 m-0"><cfoutput>#numberFormat(VARIABLES.challengePendingChallengeTotal, "9")#/#numberFormat(VARIABLES.challengeConfirmedTotal, "9")#</cfoutput></p>
+            <p class="m-0"><cfoutput>#VARIABLES.challengeConfirmedTotal GT 0 ? numberFormat((VARIABLES.challengePendingChallengeTotal*100)/VARIABLES.challengeConfirmedTotal, "9,9") : 0#% <cfif VARIABLES.challengeIsRaceParticipation>com <cfif VARIABLES.challengeIsBrasilGigante>provas<cfelse>etapas</cfif></cfif><cfif NOT VARIABLES.challengeIsRaceParticipation>correndo</cfif></cfoutput></p>
         </div>
         </a>
     </div>
@@ -71,8 +79,8 @@
     <div class="col-md">
         <a href="./?periodo=vip">
         <div class="card bg-21k py-2 px-3">
-            <p class="h4 m-0"><cfoutput>#numberFormat(qCountVip.total, "9")#</cfoutput></p>
-            <p class="m-0"><cfoutput>#numberFormat((qCountVip.total*100)/qCountConfirmados.total, "9,9")#% VIP</cfoutput></p>
+            <p class="h4 m-0"><cfoutput>#numberFormat(VARIABLES.challengeVipTotal, "9")#</cfoutput></p>
+            <p class="m-0"><cfoutput>#VARIABLES.challengeConfirmedTotal GT 0 ? numberFormat((VARIABLES.challengeVipTotal*100)/VARIABLES.challengeConfirmedTotal, "9,9") : 0#% VIP</cfoutput></p>
         </div>
         </a>
     </div>

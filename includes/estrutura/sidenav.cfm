@@ -304,6 +304,11 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/temas/">link-warning</cfif>" href="/temas/">
+                    <i class="fa-solid fa-palette fa-fw me-3"></i><span>Temas</span></a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/emailmkt/">link-warning</cfif>" href="/emailmkt/">
                     <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Email Marketing</span></a>
             </li>
