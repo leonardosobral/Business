@@ -3,6 +3,7 @@
 <cfparam name="URL.user_busca" default=""/>
 <cfparam name="URL.evento_busca" default=""/>
 <cfparam name="URL.conta_id" default=""/>
+<cfparam name="URL.tab" default=""/>
 <cfparam name="VARIABLES.accountsSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsUserSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsEventSaveErrorMessage" default=""/>
@@ -420,7 +421,7 @@
                             </cfquery>
                         </cfif>
 
-                        <cfset VARIABLES.accountRegistrationRedirectUrl = "./?conta_id=#VARIABLES.accountRegistrationTargetAccountId#&sucesso=solicitacao_aprovada"/>
+                        <cfset VARIABLES.accountRegistrationRedirectUrl = "./?conta_id=#VARIABLES.accountRegistrationTargetAccountId#&sucesso=solicitacao_aprovada##conta-gerenciamento"/>
                     </cfif>
                 </cfif>
             </cftransaction>
@@ -569,7 +570,7 @@
             </cfif>
 
             <cfif qBusinessAccountSave.recordcount>
-                <cflocation addtoken="false" url="./?conta_id=#qBusinessAccountSave.id_conta#&sucesso=conta"/>
+                <cflocation addtoken="false" url="./?conta_id=#qBusinessAccountSave.id_conta#&sucesso=conta##conta-gerenciamento"/>
             <cfelse>
                 <cfset VARIABLES.accountsSaveErrorMessage = "Nao foi possivel salvar a conta informada."/>
             </cfif>
@@ -676,7 +677,7 @@
                 )
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountVoucherAccountId#&sucesso=voucher"/>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountVoucherAccountId#&tab=vouchers&sucesso=voucher##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Nao foi possivel salvar o voucher. " & cfcatch.message/>
             </cfcatch>
@@ -727,7 +728,7 @@
                       AND id_usuario_resgate IS NULL
                 </cfquery>
 
-                <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&sucesso=voucher"/>
+                <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&tab=vouchers&sucesso=voucher##conta-gerenciamento"/>
             </cfif>
 
             <cfcatch type="any">
@@ -782,7 +783,7 @@
                   AND id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.id_usuario#"/>
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&sucesso=removido"/>
+            <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&tab=usuarios&sucesso=removido##conta-gerenciamento"/>
             </cfif>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsUserSaveErrorMessage = "Nao foi possivel remover o vinculo. " & cfcatch.message/>
@@ -908,7 +909,7 @@
                 </cfquery>
             </cftransaction>
 
-            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountUserInviteAccountId#&sucesso=usuario"/>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountUserInviteAccountId#&tab=usuarios&sucesso=usuario##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsUserSaveErrorMessage = "Nao foi possivel adicionar o usuario. " & cfcatch.message/>
             </cfcatch>
@@ -1039,7 +1040,7 @@
                     data_atualizacao = now()
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountUserAccountId#&sucesso=usuario"/>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountUserAccountId#&tab=usuarios&sucesso=usuario##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsUserSaveErrorMessage = "Nao foi possivel salvar o vinculo. " & cfcatch.message/>
             </cfcatch>
@@ -1069,7 +1070,7 @@
                   AND id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_evento#"/>
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&sucesso=evento_removido"/>
+            <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&tab=eventos&sucesso=evento_removido##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsEventSaveErrorMessage = "Nao foi possivel remover o vinculo de evento. " & cfcatch.message/>
             </cfcatch>
@@ -1153,7 +1154,7 @@
                     data_atualizacao = now()
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountEventAccountId#&sucesso=evento"/>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountEventAccountId#&tab=eventos&sucesso=evento##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsEventSaveErrorMessage = "Nao foi possivel salvar o vinculo de evento. " & cfcatch.message/>
             </cfcatch>
@@ -1198,7 +1199,7 @@
     <cfif NOT len(VARIABLES.accountsEditId)>
         <cfset VARIABLES.accountsEditId = VARIABLES.accountsDefaultScopedAccountId/>
     <cfelseif NOT ListFind(VARIABLES.businessAccountsScopedAccountIds, VARIABLES.accountsEditId)>
-        <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountsDefaultScopedAccountId#"/>
+        <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountsDefaultScopedAccountId###conta-gerenciamento"/>
     </cfif>
 </cfif>
 

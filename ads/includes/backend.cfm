@@ -10,6 +10,8 @@
 <cfset VARIABLES.adsCreditTotal = 0/>
 <cfset VARIABLES.adsCreditSpent = 0/>
 <cfset qAdVoucherCredit = QueryNew("credito_total,consumo_total,saldo_total")/>
+<cfset qAdCreditVouchers = QueryNew("codigo,nome_conta,credito,credito_disponivel,data_resgate,data_expiracao,status")/>
+<cfset qAdCreditSpendByCampaign = QueryNew("id_ad_evento,nome_evento,views,clicks,cpc_medio,custo_total,ultimo_consumo")/>
 
 <cftry>
     <cfquery name="qAdsVoucherColumnCheck">
@@ -87,6 +89,47 @@
         <cfset VARIABLES.adsCreditSpent = val(qAdVoucherCredit.consumo_total)/>
         <cfset VARIABLES.adsCreditBalance = val(qAdVoucherCredit.saldo_total)/>
     </cfif>
+
+    <cfquery name="qAdCreditVouchers">
+        SELECT vou.codigo,
+               cont.nome_conta,
+               coalesce(vou.credito, 0) AS credito,
+               coalesce(vou.credito_disponivel, vou.credito, 0) AS credito_disponivel,
+               vou.data_resgate,
+               vou.data_expiracao,
+               vou.status
+        FROM tb_ad_vouchers vou
+        LEFT JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+        WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
+          AND vou.data_resgate IS NOT NULL
+        <cfif VARIABLES.adsRestrictByConta>
+          AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+        </cfif>
+        ORDER BY vou.data_resgate DESC, vou.id_ad_voucher DESC
+        LIMIT 20
+    </cfquery>
+
+    <cfquery name="qAdCreditSpendByCampaign">
+        SELECT ad.id_ad_evento,
+               evt.nome_evento,
+               count(log.id_ad_log) AS views,
+               count(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN 1 END) AS clicks,
+               avg(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad END) AS cpc_medio,
+               coalesce(sum(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad ELSE 0 END), 0) AS custo_total,
+               max(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.data_insercao END) AS ultimo_consumo
+        FROM tb_ad_eventos ad
+        INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+        INNER JOIN tb_ad_log log ON log.id_ad = ad.id_ad_evento
+        WHERE log.status <= <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
+        <cfif VARIABLES.adsRestrictByConta>
+          AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
+        </cfif>
+        GROUP BY ad.id_ad_evento,
+                 evt.nome_evento
+        HAVING coalesce(sum(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad ELSE 0 END), 0) > 0
+        ORDER BY custo_total DESC, clicks DESC, views DESC
+        LIMIT 20
+    </cfquery>
 </cfif>
 
 <cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>

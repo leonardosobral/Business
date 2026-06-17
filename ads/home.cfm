@@ -121,6 +121,103 @@
     
 </section>
 
+<cfif VARIABLES.adsVoucherColumnsReady>
+  <section class="mb-4">
+    <div class="card shadow-0">
+      <div class="card-body">
+        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+          <div>
+            <h5 class="mb-1">Credito de ads</h5>
+            <p class="text-muted mb-0">Extrato resumido dos vouchers resgatados e do consumo registrado.</p>
+          </div>
+          <div class="text-lg-end">
+            <div class="small text-muted">Saldo disponivel</div>
+            <h4 class="mb-0"><cfoutput>#lsCurrencyFormat(VARIABLES.adsCreditBalance)#</cfoutput></h4>
+          </div>
+        </div>
+
+        <div class="row gx-xl-4">
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <h6 class="mb-3">Vouchers resgatados</h6>
+            <cfif qAdCreditVouchers.recordcount>
+              <div class="table-responsive">
+                <table class="table table-sm table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th>Codigo</th>
+                      <th class="text-end">Credito</th>
+                      <th>Resgate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <cfoutput query="qAdCreditVouchers">
+                      <tr>
+                        <td>
+                          <strong>#htmlEditFormat(qAdCreditVouchers.codigo)#</strong>
+                          <cfif len(trim(qAdCreditVouchers.nome_conta))>
+                            <div class="small text-muted">#htmlEditFormat(qAdCreditVouchers.nome_conta)#</div>
+                          </cfif>
+                        </td>
+                        <td class="text-end">#lsCurrencyFormat(qAdCreditVouchers.credito_disponivel)#</td>
+                        <td>
+                          <cfif isDate(qAdCreditVouchers.data_resgate)>
+                            #lsDateFormat(qAdCreditVouchers.data_resgate, "dd/mm/yyyy")#
+                          <cfelse>
+                            -
+                          </cfif>
+                        </td>
+                      </tr>
+                    </cfoutput>
+                  </tbody>
+                </table>
+              </div>
+            <cfelse>
+              <div class="alert alert-light mb-0" role="alert">Nenhum voucher resgatado para esta visao.</div>
+            </cfif>
+          </div>
+
+          <div class="col-lg-7">
+            <h6 class="mb-3">Consumo por campanha</h6>
+            <cfif qAdCreditSpendByCampaign.recordcount>
+              <div class="table-responsive">
+                <table class="table table-sm table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th>Evento</th>
+                      <th class="text-end">Views</th>
+                      <th class="text-end">Clicks</th>
+                      <th class="text-end">CPC medio</th>
+                      <th class="text-end">Custo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <cfoutput query="qAdCreditSpendByCampaign">
+                      <tr>
+                        <td>
+                          #htmlEditFormat(qAdCreditSpendByCampaign.nome_evento)#
+                          <cfif isDate(qAdCreditSpendByCampaign.ultimo_consumo)>
+                            <div class="small text-muted">Ultimo consumo em #lsDateFormat(qAdCreditSpendByCampaign.ultimo_consumo, "dd/mm/yyyy")#</div>
+                          </cfif>
+                        </td>
+                        <td class="text-end">#LSNumberFormat(qAdCreditSpendByCampaign.views, "9,999,999")#</td>
+                        <td class="text-end">#LSNumberFormat(qAdCreditSpendByCampaign.clicks, "9,999,999")#</td>
+                        <td class="text-end">#lsCurrencyFormat(qAdCreditSpendByCampaign.cpc_medio)#</td>
+                        <td class="text-end">#lsCurrencyFormat(qAdCreditSpendByCampaign.custo_total)#</td>
+                      </tr>
+                    </cfoutput>
+                  </tbody>
+                </table>
+              </div>
+            <cfelse>
+              <div class="alert alert-light mb-0" role="alert">Ainda nao ha consumo registrado para esta visao.</div>
+            </cfif>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</cfif>
+
 <!--- CONTEUDO --->
 
 <section class="">
