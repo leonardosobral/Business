@@ -159,7 +159,7 @@
                             <cfset VARIABLES.mediaDurationFormatted = numberFormat(VARIABLES.mediaDurationHours, "00") & ":" & numberFormat(VARIABLES.mediaDurationMinutes, "00") & ":" & numberFormat(VARIABLES.mediaDurationRemainderSeconds, "00")/>
                           </cfif>
                           <td class="media-cell">
-                            #htmlEditFormat(VARIABLES.mediaDurationFormatted)#
+                            <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LTE 180>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
                           </td>
                         </cfif>
                         <cfif NOT ListFindNoCase(VARIABLES.mediaHiddenColumns, VARIABLES.mediaColumnName)>
@@ -169,6 +169,9 @@
                               <span class="badge <cfif VARIABLES.mediaCellPublished>badge-success<cfelse>badge-danger</cfif>">
                                 <cfif VARIABLES.mediaCellPublished>Publicado<cfelse>Oculto</cfif>
                               </span>
+                            <cfelseif ListFindNoCase("data_publicação,data_publicacao", VARIABLES.mediaColumnName) AND NOT isNull(VARIABLES.mediaColumnValue) AND isDate(VARIABLES.mediaColumnValue)>
+                              #lsDateFormat(VARIABLES.mediaColumnValue, "dd/mm/yyyy")#
+                              <small class="text-muted d-block">#lsTimeFormat(VARIABLES.mediaColumnValue, "HH:mm")#</small>
                             <cfelse>
                               #htmlEditFormat(VARIABLES.mediaColumnValue)#
                             </cfif>
