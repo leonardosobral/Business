@@ -24,6 +24,10 @@
 
     <cfif NOT #qPermissoes.recordcount#>Seu cadastro está em análise, você receberá um email ou mensagem no momento da ativação.</cfif>
 
+    <cfif isDefined("qPerfil") AND qPerfil.recordcount AND qPerfil.is_admin>
+        <cfinclude template="includes/estrutura/uptime_status.cfm"/>
+    </cfif>
+
 
     <!--- VERIFICA TAGS COM CARACTERES ESPECIAIS --->
 

@@ -33,8 +33,12 @@
         <cfset var system = createObject("java", "java.lang.System")/>
         <cfset var environment = system.getenv()/>
         <cfset var businessLocalConfig = {}/>
-        <cfif fileExists(expandPath("/config/business.local.cfm"))>
-            <cfinclude template="/config/business.local.cfm"/>
+        <cfset var businessLocalConfigPath = getDirectoryFromPath(getCurrentTemplatePath()) & "../config/business.local.cfm"/>
+        <cfif fileExists(businessLocalConfigPath)>
+            <cfinclude template="../config/business.local.cfm"/>
+            <cfif structKeyExists(VARIABLES, "businessLocalConfig") AND isStruct(VARIABLES.businessLocalConfig)>
+                <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
+            </cfif>
         </cfif>
         <cfset var eventoApiToken = structKeyExists(environment, "RR_EVENTO_API_TOKEN") ? trim(environment["RR_EVENTO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "eventoApiToken") ? trim(businessLocalConfig.eventoApiToken) : "")/>
 

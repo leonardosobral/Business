@@ -89,6 +89,30 @@ Esse estilo aparece em varios modulos, inclusive Portal e BI.
 
 - modulo gerencia videos, canais de YouTube e canais editoriais integrados ao News
 
+### Uptime Server Status
+
+O dashboard logado do Business pode exibir um painel de status operacional para usuarios admin, usando a API read-only do UptimeRobot.
+
+Arquivos:
+
+- [includes/backend/uptime_status.cfm](/Users/geraldoprotta/IdeaProjects/Business/includes/backend/uptime_status.cfm)
+- [includes/estrutura/uptime_status.cfm](/Users/geraldoprotta/IdeaProjects/Business/includes/estrutura/uptime_status.cfm)
+- [home_logado.cfm](/Users/geraldoprotta/IdeaProjects/Business/home_logado.cfm)
+
+Configuracao:
+
+- Preferencial: variavel de ambiente `UPTIMEROBOT_API_KEY`
+- Alternativa sem reiniciar ColdFusion inteiro: criar/editar `config/business.local.cfm` com `businessLocalConfig.uptimeRobotApiKey`
+- Exemplo versionado: [config/business.local.example.cfm](/Users/geraldoprotta/IdeaProjects/Business/config/business.local.example.cfm)
+
+Variaveis opcionais:
+
+- `UPTIMEROBOT_API_URL`, padrao `https://api.uptimerobot.com/v2/getMonitors`
+- `UPTIMEROBOT_TIMEOUT_SECONDS`, padrao `15`
+- `UPTIMEROBOT_CACHE_SECONDS`, padrao `120`
+
+Depois de alterar a configuracao local, acesse `/?resetApp` para recarregar `APPLICATION.uptimeRobot`.
+
 ## Semantica de arquivos
 
 - `index.cfm`: casca da pagina

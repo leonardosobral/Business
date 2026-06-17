@@ -33,8 +33,12 @@
         <cfset var system = createObject("java", "java.lang.System")/>
         <cfset var environment = system.getenv()/>
         <cfset var businessLocalConfig = {}/>
-        <cfif fileExists(expandPath("/config/business.local.cfm"))>
-            <cfinclude template="/config/business.local.cfm"/>
+        <cfset var businessLocalConfigPath = getDirectoryFromPath(getCurrentTemplatePath()) & "config/business.local.cfm"/>
+        <cfif fileExists(businessLocalConfigPath)>
+            <cfinclude template="config/business.local.cfm"/>
+            <cfif structKeyExists(VARIABLES, "businessLocalConfig") AND isStruct(VARIABLES.businessLocalConfig)>
+                <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
+            </cfif>
         </cfif>
         <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : ""/>
         <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : "https://roadrunners.run/api/push/send.cfm"/>
@@ -45,6 +49,10 @@
         <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : (structKeyExists(businessLocalConfig, "pushSubject") ? trim(businessLocalConfig.pushSubject) : "mailto:contato@runnerhub.run")/>
         <cfset var contentAdminBaseUrl = structKeyExists(environment, "RR_CONTENT_ADMIN_BASE_URL") ? trim(environment["RR_CONTENT_ADMIN_BASE_URL"]) : "https://conteudo.roadrunners.run"/>
         <cfset var eventoApiToken = structKeyExists(environment, "RR_EVENTO_API_TOKEN") ? trim(environment["RR_EVENTO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "eventoApiToken") ? trim(businessLocalConfig.eventoApiToken) : "")/>
+        <cfset var uptimeRobotApiKey = structKeyExists(environment, "UPTIMEROBOT_API_KEY") ? trim(environment["UPTIMEROBOT_API_KEY"]) : (structKeyExists(businessLocalConfig, "uptimeRobotApiKey") ? trim(businessLocalConfig.uptimeRobotApiKey) : "")/>
+        <cfset var uptimeRobotApiUrl = structKeyExists(environment, "UPTIMEROBOT_API_URL") ? trim(environment["UPTIMEROBOT_API_URL"]) : (structKeyExists(businessLocalConfig, "uptimeRobotApiUrl") ? trim(businessLocalConfig.uptimeRobotApiUrl) : "https://api.uptimerobot.com/v2/getMonitors")/>
+        <cfset var uptimeRobotTimeoutSeconds = structKeyExists(environment, "UPTIMEROBOT_TIMEOUT_SECONDS") ? val(environment["UPTIMEROBOT_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotTimeoutSeconds") ? val(businessLocalConfig.uptimeRobotTimeoutSeconds) : 15)/>
+        <cfset var uptimeRobotCacheSeconds = structKeyExists(environment, "UPTIMEROBOT_CACHE_SECONDS") ? val(environment["UPTIMEROBOT_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotCacheSeconds") ? val(businessLocalConfig.uptimeRobotCacheSeconds) : 120)/>
 
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
@@ -83,6 +91,13 @@
             baseUrl = len(contentAdminBaseUrl) ? contentAdminBaseUrl : "https://conteudo.roadrunners.run"
         }/>
         <cfset APPLICATION.eventoApiToken = eventoApiToken/>
+        <cfset APPLICATION.uptimeRobot = {
+            enabled = len(uptimeRobotApiKey) GT 0,
+            apiKey = uptimeRobotApiKey,
+            apiUrl = len(uptimeRobotApiUrl) ? uptimeRobotApiUrl : "https://api.uptimerobot.com/v2/getMonitors",
+            timeoutSeconds = uptimeRobotTimeoutSeconds GT 0 ? uptimeRobotTimeoutSeconds : 15,
+            cacheSeconds = uptimeRobotCacheSeconds GT 0 ? uptimeRobotCacheSeconds : 120
+        }/>
 
         <!--- Return out. --->
         <cfreturn true />

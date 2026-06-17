@@ -1,5 +1,14 @@
 <cfinclude template="../includes/media_backend.cfm"/>
-<cfset VARIABLES.mediaHiddenColumns = "id_media,media_url,media_tipo,media_metatags,media_canal_slug"/>
+<cfset VARIABLES.mediaHiddenColumns = "id_media,media_url,media_tipo,media_metatags,media_canal_slug,youtube_duration_iso,youtube_duration_seconds"/>
+<cfset VARIABLES.mediaHasDurationSeconds = false/>
+<cfset VARIABLES.mediaHasDurationIso = false/>
+<cfloop query="qMediaColumns">
+  <cfif qMediaColumns.column_name EQ "youtube_duration_seconds">
+    <cfset VARIABLES.mediaHasDurationSeconds = true/>
+  <cfelseif qMediaColumns.column_name EQ "youtube_duration_iso">
+    <cfset VARIABLES.mediaHasDurationIso = true/>
+  </cfif>
+</cfloop>
 
 <style>
   .media-table {
@@ -87,6 +96,10 @@
                   <tr>
                     <th class="media-thumbnail-cell">Thumb</th>
                     <cfoutput query="qMediaColumns">
+                      <cfif (qMediaColumns.column_name EQ "youtube_duration_iso" AND VARIABLES.mediaHasDurationIso)
+                        OR (qMediaColumns.column_name EQ "youtube_duration_seconds" AND VARIABLES.mediaHasDurationSeconds AND NOT VARIABLES.mediaHasDurationIso)>
+                        <th>Duração</th>
+                      </cfif>
                       <cfif NOT ListFindNoCase(VARIABLES.mediaHiddenColumns, qMediaColumns.column_name)>
                         <cfswitch expression="#qMediaColumns.column_name#">
                           <cfcase value="media_titulo"><cfset VARIABLES.mediaColumnLabel = "Titulo"/></cfcase>
@@ -118,6 +131,37 @@
                       <cfloop query="qMediaColumns">
                         <cfset VARIABLES.mediaColumnName = qMediaColumns.column_name/>
                         <cfset VARIABLES.mediaColumnValue = qMedia[VARIABLES.mediaColumnName][qMedia.currentRow]/>
+                        <cfif (VARIABLES.mediaColumnName EQ "youtube_duration_iso" AND VARIABLES.mediaHasDurationIso)
+                          OR (VARIABLES.mediaColumnName EQ "youtube_duration_seconds" AND VARIABLES.mediaHasDurationSeconds AND NOT VARIABLES.mediaHasDurationIso)>
+                          <cfset VARIABLES.mediaDurationSeconds = 0/>
+                          <cfset VARIABLES.mediaDurationFormatted = "-"/>
+                          <cfif VARIABLES.mediaHasDurationSeconds AND NOT isNull(qMedia["youtube_duration_seconds"][qMedia.currentRow]) AND isNumeric(qMedia["youtube_duration_seconds"][qMedia.currentRow])>
+                            <cfset VARIABLES.mediaDurationSeconds = val(qMedia["youtube_duration_seconds"][qMedia.currentRow])/>
+                          <cfelseif VARIABLES.mediaHasDurationIso AND NOT isNull(qMedia["youtube_duration_iso"][qMedia.currentRow]) AND len(trim(qMedia["youtube_duration_iso"][qMedia.currentRow]))>
+                            <cfset VARIABLES.mediaDurationIso = qMedia["youtube_duration_iso"][qMedia.currentRow]/>
+                            <cfset VARIABLES.mediaDurationHoursMatch = reFindNoCase("([0-9]+)H", VARIABLES.mediaDurationIso, 1, true)/>
+                            <cfset VARIABLES.mediaDurationMinutesMatch = reFindNoCase("([0-9]+)M", VARIABLES.mediaDurationIso, 1, true)/>
+                            <cfset VARIABLES.mediaDurationSecondsMatch = reFindNoCase("([0-9]+)S", VARIABLES.mediaDurationIso, 1, true)/>
+                            <cfif arrayLen(VARIABLES.mediaDurationHoursMatch.pos) GTE 2 AND VARIABLES.mediaDurationHoursMatch.pos[2] GT 0>
+                              <cfset VARIABLES.mediaDurationSeconds = VARIABLES.mediaDurationSeconds + (val(mid(VARIABLES.mediaDurationIso, VARIABLES.mediaDurationHoursMatch.pos[2], VARIABLES.mediaDurationHoursMatch.len[2])) * 3600)/>
+                            </cfif>
+                            <cfif arrayLen(VARIABLES.mediaDurationMinutesMatch.pos) GTE 2 AND VARIABLES.mediaDurationMinutesMatch.pos[2] GT 0>
+                              <cfset VARIABLES.mediaDurationSeconds = VARIABLES.mediaDurationSeconds + (val(mid(VARIABLES.mediaDurationIso, VARIABLES.mediaDurationMinutesMatch.pos[2], VARIABLES.mediaDurationMinutesMatch.len[2])) * 60)/>
+                            </cfif>
+                            <cfif arrayLen(VARIABLES.mediaDurationSecondsMatch.pos) GTE 2 AND VARIABLES.mediaDurationSecondsMatch.pos[2] GT 0>
+                              <cfset VARIABLES.mediaDurationSeconds = VARIABLES.mediaDurationSeconds + val(mid(VARIABLES.mediaDurationIso, VARIABLES.mediaDurationSecondsMatch.pos[2], VARIABLES.mediaDurationSecondsMatch.len[2]))/>
+                            </cfif>
+                          </cfif>
+                          <cfif VARIABLES.mediaDurationSeconds GT 0>
+                            <cfset VARIABLES.mediaDurationHours = int(VARIABLES.mediaDurationSeconds / 3600)/>
+                            <cfset VARIABLES.mediaDurationMinutes = int((VARIABLES.mediaDurationSeconds MOD 3600) / 60)/>
+                            <cfset VARIABLES.mediaDurationRemainderSeconds = VARIABLES.mediaDurationSeconds MOD 60/>
+                            <cfset VARIABLES.mediaDurationFormatted = numberFormat(VARIABLES.mediaDurationHours, "00") & ":" & numberFormat(VARIABLES.mediaDurationMinutes, "00") & ":" & numberFormat(VARIABLES.mediaDurationRemainderSeconds, "00")/>
+                          </cfif>
+                          <td class="media-cell">
+                            #htmlEditFormat(VARIABLES.mediaDurationFormatted)#
+                          </td>
+                        </cfif>
                         <cfif NOT ListFindNoCase(VARIABLES.mediaHiddenColumns, VARIABLES.mediaColumnName)>
                           <td class="media-cell">
                             <cfif VARIABLES.mediaColumnName EQ "pub_status">
