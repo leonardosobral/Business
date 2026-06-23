@@ -43,6 +43,22 @@ Modulo removido da arvore ativa e arquivado como legado.
 
 Gestao de usuarios por conta Business. A rota `/usuarios/` ficou apenas como redirect de compatibilidade para `/administracao/contas/`; o codigo antigo esta em `_legado/usuarios/`.
 
+### `cron-jobs`
+
+- [administracao/cron-jobs](/Users/geraldoprotta/IdeaProjects/Business/administracao/cron-jobs)
+- [cron-jobs/runner.cfm](/Users/geraldoprotta/IdeaProjects/Business/cron-jobs/runner.cfm)
+
+Gerenciador operacional de jobs recorrentes para acionar APIs do Business, Road Runners, Conteudo e demais projetos integrados.
+
+Recursos:
+
+- CRUD de jobs HTTP
+- agenda por intervalo em minutos
+- execucao manual
+- runner protegido por token
+- autenticacao por bearer, API key ou HMAC SHA-256
+- historico de execucoes em `tb_cron_job_runs`
+
 ## BI e operacao de eventos
 
 ### `bi`

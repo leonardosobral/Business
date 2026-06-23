@@ -53,6 +53,9 @@
         <cfset var uptimeRobotApiUrl = structKeyExists(environment, "UPTIMEROBOT_API_URL") ? trim(environment["UPTIMEROBOT_API_URL"]) : (structKeyExists(businessLocalConfig, "uptimeRobotApiUrl") ? trim(businessLocalConfig.uptimeRobotApiUrl) : "https://api.uptimerobot.com/v2/getMonitors")/>
         <cfset var uptimeRobotTimeoutSeconds = structKeyExists(environment, "UPTIMEROBOT_TIMEOUT_SECONDS") ? val(environment["UPTIMEROBOT_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotTimeoutSeconds") ? val(businessLocalConfig.uptimeRobotTimeoutSeconds) : 15)/>
         <cfset var uptimeRobotCacheSeconds = structKeyExists(environment, "UPTIMEROBOT_CACHE_SECONDS") ? val(environment["UPTIMEROBOT_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotCacheSeconds") ? val(businessLocalConfig.uptimeRobotCacheSeconds) : 120)/>
+        <cfset var cronRunnerToken = structKeyExists(environment, "RR_BUSINESS_CRON_RUNNER_TOKEN") ? trim(environment["RR_BUSINESS_CRON_RUNNER_TOKEN"]) : (structKeyExists(businessLocalConfig, "cronRunnerToken") ? trim(businessLocalConfig.cronRunnerToken) : "")/>
+        <cfset var cronDefaultTimeoutSeconds = structKeyExists(environment, "RR_BUSINESS_CRON_TIMEOUT_SECONDS") ? val(environment["RR_BUSINESS_CRON_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "cronDefaultTimeoutSeconds") ? val(businessLocalConfig.cronDefaultTimeoutSeconds) : 30)/>
+        <cfset var cronSecrets = structKeyExists(businessLocalConfig, "cronSecrets") AND isStruct(businessLocalConfig.cronSecrets) ? duplicate(businessLocalConfig.cronSecrets) : {}/>
 
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
@@ -97,6 +100,12 @@
             apiUrl = len(uptimeRobotApiUrl) ? uptimeRobotApiUrl : "https://api.uptimerobot.com/v2/getMonitors",
             timeoutSeconds = uptimeRobotTimeoutSeconds GT 0 ? uptimeRobotTimeoutSeconds : 15,
             cacheSeconds = uptimeRobotCacheSeconds GT 0 ? uptimeRobotCacheSeconds : 120
+        }/>
+        <cfset APPLICATION.cronJobs = {
+            enabled = len(cronRunnerToken) GT 0,
+            runnerToken = cronRunnerToken,
+            defaultTimeoutSeconds = cronDefaultTimeoutSeconds GT 0 ? cronDefaultTimeoutSeconds : 30,
+            secrets = cronSecrets
         }/>
 
         <!--- Return out. --->

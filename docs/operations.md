@@ -113,6 +113,24 @@ Variaveis opcionais:
 
 Depois de alterar a configuracao local, acesse `/?resetApp` para recarregar `APPLICATION.uptimeRobot`.
 
+### Cron Jobs
+
+O Business possui um gerenciador de cron jobs em `/administracao/cron-jobs/`.
+
+Arquivos:
+
+- [administracao/cron-jobs](/Users/geraldoprotta/IdeaProjects/Business/administracao/cron-jobs)
+- [cron-jobs/runner.cfm](/Users/geraldoprotta/IdeaProjects/Business/cron-jobs/runner.cfm)
+- [docs/cron-jobs.md](/Users/geraldoprotta/IdeaProjects/Business/docs/cron-jobs.md)
+
+Setup minimo:
+
+1. aplicar `administracao/cron-jobs/cron_jobs_schema.sql`
+2. configurar `RR_BUSINESS_CRON_RUNNER_TOKEN` ou `businessLocalConfig.cronRunnerToken`
+3. configurar `businessLocalConfig.cronSecrets` quando jobs exigirem autenticacao
+4. acessar `/?resetApp`
+5. configurar o cron real do servidor para chamar `/cron-jobs/runner.cfm`
+
 ## Semantica de arquivos
 
 - `index.cfm`: casca da pagina

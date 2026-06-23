@@ -223,6 +223,12 @@
                     <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/cron-jobs/">link-warning</cfif>" href="/administracao/cron-jobs/">
+                    <i class="fa-solid fa-clock-rotate-left fa-fw me-3"></i><span>Cron Jobs</span>
+                </a>
+            </li>
         </cfif>
 
 
