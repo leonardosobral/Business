@@ -50,11 +50,6 @@
     align-items: end;
   }
 
-  .content-importer-card {
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 1rem;
-    background: rgba(255,255,255,0.02);
-  }
 </style>
 
 <section>
@@ -137,6 +132,12 @@
 
               <div>
                 <button class="btn btn-outline-warning" type="submit">Filtrar</button>
+              </div>
+
+              <div>
+                <a class="btn btn-outline-secondary" href="<cfoutput>#htmlEditFormat(VARIABLES.contentAdminBaseUrl)#/admin/importers</cfoutput>" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrows-rotate me-1"></i>Central de importadores
+                </a>
               </div>
             </form>
 
@@ -255,34 +256,6 @@
               </nav>
             </cfif>
 
-            <hr class="my-4"/>
-
-            <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-              <div>
-                <h5 class="mb-1">Importadores remotos</h5>
-                <p class="text-muted small mb-0">Acesse daqui os importadores dos parceiros já existentes no projeto Conteúdo, sem precisar navegar manualmente até o outro painel.</p>
-              </div>
-              <a class="btn btn-outline-secondary" href="<cfoutput>#htmlEditFormat(VARIABLES.contentAdminBaseUrl)#/admin/importers</cfoutput>" target="_blank" rel="noopener">Central de importadores</a>
-            </div>
-
-            <div class="row g-4">
-              <cfloop array="#VARIABLES.contentImporters#" index="contentImporter">
-                <div class="col-12 col-xl-4">
-                  <div class="content-importer-card p-4 h-100">
-                    <div class="text-uppercase small fw-semibold text-warning mb-2"><cfoutput>#htmlEditFormat(contentImporter.type)#</cfoutput></div>
-                    <h6 class="mb-2"><cfoutput>#htmlEditFormat(contentImporter.name)#</cfoutput></h6>
-                    <p class="text-muted small mb-3"><cfoutput>#htmlEditFormat(contentImporter.description)#</cfoutput></p>
-                    <div class="small text-muted mb-3">
-                      Feed:
-                      <cfoutput><a href="#htmlEditFormat(contentImporter.feed)#" target="_blank" rel="noopener">#htmlEditFormat(contentImporter.feed)#</a></cfoutput>
-                    </div>
-                    <cfoutput>
-                      <a class="btn btn-primary" href="<cfoutput>#htmlEditFormat(contentImporter.url)#</cfoutput>" target="_blank" rel="noopener">Abrir importador</a>
-                    </cfoutput>
-                  </div>
-                </div>
-              </cfloop>
-            </div>
           </cfif>
         </div>
       </div>

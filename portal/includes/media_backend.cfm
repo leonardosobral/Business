@@ -32,7 +32,20 @@
 
 <cfset VARIABLES.mediaHasPubStatus = ListFindNoCase(VARIABLES.mediaColumns, "pub_status")/>
 <cfset VARIABLES.mediaHasUrl = ListFindNoCase(VARIABLES.mediaColumns, "media_url")/>
+<cfset VARIABLES.mediaHasDurationSeconds = ListFindNoCase(VARIABLES.mediaColumns, "youtube_duration_seconds")/>
+<cfset VARIABLES.mediaMinimumPublishDurationSeconds = 210/>
 <cfset VARIABLES.mediaOrderColumn = len(trim(VARIABLES.mediaPk)) ? VARIABLES.mediaPk : (qMediaColumns.recordcount ? qMediaColumns.column_name : "")/>
+
+<!--- Mantem a publicacao alinhada ao mesmo limite visual usado pela listagem. --->
+<cfif VARIABLES.mediaHasPubStatus AND VARIABLES.mediaHasDurationSeconds>
+    <cfquery>
+        UPDATE tb_media
+        SET pub_status = false
+        WHERE pub_status = true
+          AND youtube_duration_seconds > 0
+          AND youtube_duration_seconds < <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.mediaMinimumPublishDurationSeconds#"/>
+    </cfquery>
+</cfif>
 
 <cfif isDefined("URL.acao")
     AND isDefined("qPerfil")
@@ -45,14 +58,23 @@
         AND VARIABLES.mediaHasPubStatus
         AND isDefined("URL.status")>
 
+        <cfset VARIABLES.mediaRequestedPubStatus = IsBoolean(URL.status) ? URL.status : ListFindNoCase("true,1,yes,sim", trim(URL.status & "")) GT 0/>
+
         <cfquery>
             UPDATE tb_media
-            SET pub_status = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
+            SET pub_status = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.mediaRequestedPubStatus#"/>
             WHERE "#Replace(VARIABLES.mediaPk, '"', '""', 'all')#" =
             <cfif IsNumeric(URL.media_id)>
                 <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.media_id#"/>
             <cfelse>
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.media_id#"/>
+            </cfif>
+            <cfif VARIABLES.mediaRequestedPubStatus AND VARIABLES.mediaHasDurationSeconds>
+                AND (
+                    youtube_duration_seconds IS NULL
+                    OR youtube_duration_seconds = 0
+                    OR youtube_duration_seconds >= <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.mediaMinimumPublishDurationSeconds#"/>
+                )
             </cfif>
         </cfquery>
 

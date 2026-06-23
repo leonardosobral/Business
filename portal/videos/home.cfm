@@ -117,6 +117,7 @@
                 <tbody>
                   <cfoutput query="qMedia">
                     <cfset VARIABLES.mediaPkValue = qMedia[VARIABLES.mediaPk][qMedia.currentRow]/>
+                    <cfset VARIABLES.mediaDurationSeconds = 0/>
                     <tr>
                       <td class="media-thumbnail-cell">
                         <cfif VARIABLES.mediaHasUrl AND len(trim(qMedia["media_url"][qMedia.currentRow]))>
@@ -133,7 +134,6 @@
                         <cfset VARIABLES.mediaColumnValue = qMedia[VARIABLES.mediaColumnName][qMedia.currentRow]/>
                         <cfif (VARIABLES.mediaColumnName EQ "youtube_duration_iso" AND VARIABLES.mediaHasDurationIso)
                           OR (VARIABLES.mediaColumnName EQ "youtube_duration_seconds" AND VARIABLES.mediaHasDurationSeconds AND NOT VARIABLES.mediaHasDurationIso)>
-                          <cfset VARIABLES.mediaDurationSeconds = 0/>
                           <cfset VARIABLES.mediaDurationFormatted = "-"/>
                           <cfif VARIABLES.mediaHasDurationSeconds AND NOT isNull(qMedia["youtube_duration_seconds"][qMedia.currentRow]) AND isNumeric(qMedia["youtube_duration_seconds"][qMedia.currentRow])>
                             <cfset VARIABLES.mediaDurationSeconds = val(qMedia["youtube_duration_seconds"][qMedia.currentRow])/>
@@ -159,7 +159,7 @@
                             <cfset VARIABLES.mediaDurationFormatted = numberFormat(VARIABLES.mediaDurationHours, "00") & ":" & numberFormat(VARIABLES.mediaDurationMinutes, "00") & ":" & numberFormat(VARIABLES.mediaDurationRemainderSeconds, "00")/>
                           </cfif>
                           <td class="media-cell">
-                            <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT 210>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
+                            <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
                           </td>
                         </cfif>
                         <cfif NOT ListFindNoCase(VARIABLES.mediaHiddenColumns, VARIABLES.mediaColumnName)>
@@ -184,9 +184,13 @@
                           <cfif VARIABLES.mediaHasPubStatus>
                             <cfset VARIABLES.mediaCurrentPubStatus = qMedia["pub_status"][qMedia.currentRow]/>
                             <cfset VARIABLES.mediaIsPublished = IsBoolean(VARIABLES.mediaCurrentPubStatus) ? VARIABLES.mediaCurrentPubStatus : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.mediaCurrentPubStatus))/>
-                            <a class="btn btn-sm <cfif VARIABLES.mediaIsPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&status=#NOT VARIABLES.mediaIsPublished#&pagina=#VARIABLES.mediaPage#">
-                              <cfif VARIABLES.mediaIsPublished>Ocultar<cfelse>Exibir</cfif>
-                            </a>
+                            <cfif NOT VARIABLES.mediaIsPublished AND VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>
+                              <button class="btn btn-sm btn-outline-secondary" type="button" disabled title="Videos com menos de 3 minutos e 30 segundos permanecem ocultos">Exibir</button>
+                            <cfelse>
+                              <a class="btn btn-sm <cfif VARIABLES.mediaIsPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&status=#NOT VARIABLES.mediaIsPublished#&pagina=#VARIABLES.mediaPage#">
+                                <cfif VARIABLES.mediaIsPublished>Ocultar<cfelse>Exibir</cfif>
+                              </a>
+                            </cfif>
                           </cfif>
 
                           <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&pagina=#VARIABLES.mediaPage#" onclick="return confirm('Tem certeza que deseja remover este video do banco de dados?');">

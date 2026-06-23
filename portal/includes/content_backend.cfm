@@ -265,32 +265,3 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
     LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.contentPageSize#"/>
     OFFSET <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.contentOffset#"/>
 </cfquery>
-
-<cfscript>
-VARIABLES.contentImporters = [
-    {
-        key = "corridanoar",
-        name = "Corrida no Ar",
-        type = "RSS WordPress",
-        feed = "https://corridanoar.com/feed/",
-        description = "Importador dedicado com deduplicacao por origem, autoria fixa e mapeamento editorial automatico.",
-        url = VARIABLES.contentAdminBaseUrl & "/admin/importer_corridanoar"
-    },
-    {
-        key = "contrarelogio",
-        name = "Contra Relogio",
-        type = "RSS WordPress",
-        feed = "https://contrarelogio.com.br/feed/",
-        description = "Importador com autoria dinamica, pagina inicial configuravel e controle por blocos para evitar timeout.",
-        url = VARIABLES.contentAdminBaseUrl & "/admin/importer_contrarelogio"
-    },
-    {
-        key = "correriacampinas",
-        name = "Correria Campinas",
-        type = "RSS WordPress",
-        feed = "https://correriacampinas.com.br/feed/",
-        description = "Importador dedicado com varredura retroativa, deduplicacao e mapeamento editorial automatico.",
-        url = VARIABLES.contentAdminBaseUrl & "/admin/importer_correriacampinas"
-    }
-];
-</cfscript>
