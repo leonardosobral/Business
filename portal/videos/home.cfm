@@ -159,7 +159,7 @@
                             <cfset VARIABLES.mediaDurationFormatted = numberFormat(VARIABLES.mediaDurationHours, "00") & ":" & numberFormat(VARIABLES.mediaDurationMinutes, "00") & ":" & numberFormat(VARIABLES.mediaDurationRemainderSeconds, "00")/>
                           </cfif>
                           <td class="media-cell">
-                            <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LTE 180>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
+                            <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT 210>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
                           </td>
                         </cfif>
                         <cfif NOT ListFindNoCase(VARIABLES.mediaHiddenColumns, VARIABLES.mediaColumnName)>

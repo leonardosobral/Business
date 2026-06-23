@@ -4,9 +4,8 @@
 <cfset VARIABLES.contentChannelTable = "tb_content_types"/>
 <cfset VARIABLES.contentChannelPk = ""/>
 <cfset VARIABLES.contentChannelPortalColumn = "rr_portal_enabled"/>
-<cfset VARIABLES.contentChannelHomeFeaturedColumn = "rr_home_featured_enabled"/>
 <cfset VARIABLES.contentChannelNewsFeaturedColumn = "rr_news_featured_enabled"/>
-<cfset VARIABLES.contentChannelAllowedToggleColumns = "rr_portal_enabled,rr_home_featured_enabled,rr_news_featured_enabled"/>
+<cfset VARIABLES.contentChannelAllowedToggleColumns = "rr_portal_enabled,rr_news_featured_enabled"/>
 
 <cfquery name="qContentChannelColumns">
     SELECT column_name, data_type, is_nullable
@@ -29,9 +28,8 @@
 </cfif>
 
 <cfset VARIABLES.contentChannelHasPortalColumn = ListFindNoCase(VARIABLES.contentChannelColumns, VARIABLES.contentChannelPortalColumn)/>
-<cfset VARIABLES.contentChannelHasHomeFeaturedColumn = ListFindNoCase(VARIABLES.contentChannelColumns, VARIABLES.contentChannelHomeFeaturedColumn)/>
 <cfset VARIABLES.contentChannelHasNewsFeaturedColumn = ListFindNoCase(VARIABLES.contentChannelColumns, VARIABLES.contentChannelNewsFeaturedColumn)/>
-<cfset VARIABLES.contentChannelAllFlagsReady = VARIABLES.contentChannelHasPortalColumn AND VARIABLES.contentChannelHasHomeFeaturedColumn AND VARIABLES.contentChannelHasNewsFeaturedColumn/>
+<cfset VARIABLES.contentChannelAllFlagsReady = VARIABLES.contentChannelHasPortalColumn AND VARIABLES.contentChannelHasNewsFeaturedColumn/>
 <cfset VARIABLES.contentChannelHasNameColumn = ListFindNoCase(VARIABLES.contentChannelColumns, "name")/>
 <cfset VARIABLES.contentChannelHasSlugColumn = ListFindNoCase(VARIABLES.contentChannelColumns, "slug")/>
 <cfset VARIABLES.contentChannelHasWebsiteUrlColumn = ListFindNoCase(VARIABLES.contentChannelColumns, "website_url")/>
@@ -81,7 +79,6 @@
             <cfif VARIABLES.contentChannelHasSlugColumn>"slug"<cfelse>NULL::text AS slug</cfif>,
             <cfif VARIABLES.contentChannelHasWebsiteUrlColumn>"website_url"<cfelse>NULL::text AS website_url</cfif>,
             <cfif VARIABLES.contentChannelHasPortalColumn>"#Replace(VARIABLES.contentChannelPortalColumn, '"', '""', 'all')#"<cfelse>false AS "#VARIABLES.contentChannelPortalColumn#"</cfif>,
-            <cfif VARIABLES.contentChannelHasHomeFeaturedColumn>"#Replace(VARIABLES.contentChannelHomeFeaturedColumn, '"', '""', 'all')#"<cfelse>false AS "#VARIABLES.contentChannelHomeFeaturedColumn#"</cfif>,
             <cfif VARIABLES.contentChannelHasNewsFeaturedColumn>"#Replace(VARIABLES.contentChannelNewsFeaturedColumn, '"', '""', 'all')#"<cfelse>false AS "#VARIABLES.contentChannelNewsFeaturedColumn#"</cfif>
         FROM news.tb_content_types
         ORDER BY

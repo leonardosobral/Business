@@ -17,7 +17,7 @@
   }
 
   .content-actions-cell {
-    min-width: 180px;
+    min-width: 260px;
   }
 
   .content-thumb-cell {
@@ -81,6 +81,10 @@
                 <div class="small text-muted">Ocultos</div>
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qContentStats.total_ocultos)#</cfoutput></div>
               </div>
+              <div>
+                <div class="small text-muted">Destaques</div>
+                <div class="h4 mb-0 text-warning"><cfoutput>#LSNumberFormat(qContentStats.total_destaques)#</cfoutput></div>
+              </div>
             </div>
           </div>
 
@@ -119,6 +123,15 @@
                   <option value="todos" <cfif VARIABLES.contentStatusFilter EQ "todos">selected</cfif>>Todos</option>
                   <option value="publicados" <cfif VARIABLES.contentStatusFilter EQ "publicados">selected</cfif>>Publicados</option>
                   <option value="ocultos" <cfif VARIABLES.contentStatusFilter EQ "ocultos">selected</cfif>>Ocultos</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">Destaque na home</label>
+                <select class="form-select" name="destaque">
+                  <option value="todos" <cfif VARIABLES.contentFeaturedFilter EQ "todos">selected</cfif>>Todos</option>
+                  <option value="sim" <cfif VARIABLES.contentFeaturedFilter EQ "sim">selected</cfif>>Em destaque</option>
+                  <option value="nao" <cfif VARIABLES.contentFeaturedFilter EQ "nao">selected</cfif>>Sem destaque</option>
                 </select>
               </div>
 
@@ -185,14 +198,21 @@
                             </span>
                           </div>
                           <cfif VARIABLES.contentFeatured>
-                            <div class="small text-muted">destaque</div>
+                            <div><span class="badge badge-warning text-dark"><i class="fa-solid fa-star me-1"></i>Destaque na home</span></div>
                           </cfif>
                         </td>
                         <td class="content-actions-cell">
                           <div class="d-flex flex-wrap gap-2">
-                            <a class="btn btn-sm <cfif VARIABLES.contentPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&content_id=#qContents.id#&published=#NOT VARIABLES.contentPublished#&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#">
+                            <a class="btn btn-sm <cfif VARIABLES.contentPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&content_id=#qContents.id#&published=#NOT VARIABLES.contentPublished#&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">
                               <cfif VARIABLES.contentPublished>Ocultar<cfelse>Exibir</cfif>
                             </a>
+                            <cfif VARIABLES.contentHasIsFeatured>
+                              <cfif VARIABLES.contentPublished OR VARIABLES.contentFeatured>
+                                <a class="btn btn-sm <cfif VARIABLES.contentFeatured>btn-warning<cfelse>btn-outline-warning</cfif>" href="./?acao=destaque&content_id=#qContents.id#&featured=#NOT VARIABLES.contentFeatured#&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#" title="<cfif VARIABLES.contentFeatured>Remover da home<cfelse>Destacar na home</cfif>">
+                                  <i class="fa-<cfif VARIABLES.contentFeatured>solid<cfelse>regular</cfif> fa-star me-1"></i><cfif VARIABLES.contentFeatured>Remover destaque<cfelse>Destacar</cfif>
+                                </a>
+                              </cfif>
+                            </cfif>
                             <a class="btn btn-sm btn-outline-secondary" href="<cfoutput>#htmlEditFormat(VARIABLES.contentAdminBaseUrl)#/admin/content_edit?id=#qContents.id#</cfoutput>" target="_blank" rel="noopener">
                               Editar
                             </a>
@@ -214,21 +234,21 @@
                 <ul class="pagination pagination-sm justify-content-center flex-wrap mt-3 mb-0">
                   <cfoutput>
                     <li class="page-item <cfif VARIABLES.contentPage LTE 1>disabled</cfif>">
-                      <a class="page-link" href="./?pagina=#max(1, VARIABLES.contentPage - 1)#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#">Anterior</a>
+                      <a class="page-link" href="./?pagina=#max(1, VARIABLES.contentPage - 1)#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">Anterior</a>
                     </li>
                   </cfoutput>
 
                   <cfloop from="#max(1, VARIABLES.contentPage - 3)#" to="#min(VARIABLES.contentTotalPages, VARIABLES.contentPage + 3)#" index="contentPageIndex">
                     <cfoutput>
                       <li class="page-item <cfif contentPageIndex EQ VARIABLES.contentPage>active</cfif>">
-                        <a class="page-link" href="./?pagina=#contentPageIndex#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#">#contentPageIndex#</a>
+                        <a class="page-link" href="./?pagina=#contentPageIndex#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">#contentPageIndex#</a>
                       </li>
                     </cfoutput>
                   </cfloop>
 
                   <cfoutput>
                     <li class="page-item <cfif VARIABLES.contentPage GTE VARIABLES.contentTotalPages>disabled</cfif>">
-                      <a class="page-link" href="./?pagina=#min(VARIABLES.contentTotalPages, VARIABLES.contentPage + 1)#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#">Proxima</a>
+                      <a class="page-link" href="./?pagina=#min(VARIABLES.contentTotalPages, VARIABLES.contentPage + 1)#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">Proxima</a>
                     </li>
                   </cfoutput>
                 </ul>

@@ -32,7 +32,7 @@
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
             <div>
               <h3 class="mb-1">Portal - Canais de Conteúdo</h3>
-              <p class="text-muted mb-0">Controle quais canais editoriais do repositório News podem aparecer no Road Runners e nos destaques principais.</p>
+              <p class="text-muted mb-0">Controle quais canais editoriais do repositório News podem aparecer no Portal Road Runners e na pagina de noticias.</p>
             </div>
             <div class="text-lg-end">
               <div class="small text-muted">Total de canais</div>
@@ -67,7 +67,6 @@
                     <th>Slug</th>
                     <th>Site</th>
                     <th>Portal RR</th>
-                    <th>Destaque Home</th>
                     <th>Destaque Noticias</th>
                     <th class="content-channel-actions">Acoes</th>
                   </tr>
@@ -78,8 +77,6 @@
                       <cfset VARIABLES.contentChannelPkValue = qContentChannels[VARIABLES.contentChannelPk][qContentChannels.currentRow]/>
                       <cfset VARIABLES.contentChannelPortalEnabled = qContentChannels[VARIABLES.contentChannelPortalColumn][qContentChannels.currentRow]/>
                       <cfset VARIABLES.contentChannelPortalEnabled = IsBoolean(VARIABLES.contentChannelPortalEnabled) ? VARIABLES.contentChannelPortalEnabled : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.contentChannelPortalEnabled))/>
-                      <cfset VARIABLES.contentChannelHomeFeaturedEnabled = qContentChannels[VARIABLES.contentChannelHomeFeaturedColumn][qContentChannels.currentRow]/>
-                      <cfset VARIABLES.contentChannelHomeFeaturedEnabled = IsBoolean(VARIABLES.contentChannelHomeFeaturedEnabled) ? VARIABLES.contentChannelHomeFeaturedEnabled : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.contentChannelHomeFeaturedEnabled))/>
                       <cfset VARIABLES.contentChannelNewsFeaturedEnabled = qContentChannels[VARIABLES.contentChannelNewsFeaturedColumn][qContentChannels.currentRow]/>
                       <cfset VARIABLES.contentChannelNewsFeaturedEnabled = IsBoolean(VARIABLES.contentChannelNewsFeaturedEnabled) ? VARIABLES.contentChannelNewsFeaturedEnabled : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.contentChannelNewsFeaturedEnabled))/>
                       <tr>
@@ -105,15 +102,6 @@
                           </cfif>
                         </td>
                         <td>
-                          <cfif VARIABLES.contentChannelHasHomeFeaturedColumn>
-                            <span class="badge <cfif VARIABLES.contentChannelHomeFeaturedEnabled>badge-success<cfelse>badge-secondary</cfif>">
-                              <cfif VARIABLES.contentChannelHomeFeaturedEnabled>Ligado<cfelse>Desligado</cfif>
-                            </span>
-                          <cfelse>
-                            <span class="badge badge-secondary">Indisponivel</span>
-                          </cfif>
-                        </td>
-                        <td>
                           <cfif VARIABLES.contentChannelHasNewsFeaturedColumn>
                             <span class="badge <cfif VARIABLES.contentChannelNewsFeaturedEnabled>badge-success<cfelse>badge-secondary</cfif>">
                               <cfif VARIABLES.contentChannelNewsFeaturedEnabled>Ligado<cfelse>Desligado</cfif>
@@ -129,17 +117,12 @@
                                 <cfif VARIABLES.contentChannelPortalEnabled>Ocultar no Portal<cfelse>Exibir no Portal</cfif>
                               </a>
                             </cfif>
-                            <cfif VARIABLES.contentChannelHasHomeFeaturedColumn>
-                              <a class="btn btn-sm <cfif VARIABLES.contentChannelHomeFeaturedEnabled>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=toggle&campo=#urlEncodedFormat(VARIABLES.contentChannelHomeFeaturedColumn)#&status=#NOT VARIABLES.contentChannelHomeFeaturedEnabled#&canal_id=#urlEncodedFormat(VARIABLES.contentChannelPkValue)#&pagina=#VARIABLES.contentChannelPage#">
-                                <cfif VARIABLES.contentChannelHomeFeaturedEnabled>Remover da Home<cfelse>Destacar na Home</cfif>
-                              </a>
-                            </cfif>
                             <cfif VARIABLES.contentChannelHasNewsFeaturedColumn>
                               <a class="btn btn-sm <cfif VARIABLES.contentChannelNewsFeaturedEnabled>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=toggle&campo=#urlEncodedFormat(VARIABLES.contentChannelNewsFeaturedColumn)#&status=#NOT VARIABLES.contentChannelNewsFeaturedEnabled#&canal_id=#urlEncodedFormat(VARIABLES.contentChannelPkValue)#&pagina=#VARIABLES.contentChannelPage#">
                                 <cfif VARIABLES.contentChannelNewsFeaturedEnabled>Remover de Noticias<cfelse>Destacar em Noticias</cfif>
                               </a>
                             </cfif>
-                            <cfif NOT VARIABLES.contentChannelHasPortalColumn AND NOT VARIABLES.contentChannelHasHomeFeaturedColumn AND NOT VARIABLES.contentChannelHasNewsFeaturedColumn>
+                            <cfif NOT VARIABLES.contentChannelHasPortalColumn AND NOT VARIABLES.contentChannelHasNewsFeaturedColumn>
                               <span class="text-muted small">Aplique o SQL auxiliar para habilitar os controles.</span>
                             </cfif>
                           </div>
@@ -148,7 +131,7 @@
                     </cfoutput>
                   <cfelse>
                     <tr>
-                      <td colspan="8" class="text-center text-muted py-4">Nenhum canal de conteudo encontrado.</td>
+                      <td colspan="7" class="text-center text-muted py-4">Nenhum canal de conteudo encontrado.</td>
                     </tr>
                   </cfif>
                 </tbody>

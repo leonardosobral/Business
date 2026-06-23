@@ -2,6 +2,7 @@
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.canal" default=""/>
 <cfparam name="URL.status" default="todos"/>
+<cfparam name="URL.destaque" default="todos"/>
 <cfparam name="URL.published" default=""/>
 
 <cfset VARIABLES.contentPageSize = 20/>
@@ -15,9 +16,13 @@
 <cfset VARIABLES.contentMediaTable = "tb_media"/>
 <cfset VARIABLES.contentAdminBaseUrl = structKeyExists(APPLICATION, "contentAdmin") AND isStruct(APPLICATION.contentAdmin) AND structKeyExists(APPLICATION.contentAdmin, "baseUrl") ? trim(APPLICATION.contentAdmin.baseUrl) : "https://conteudo.roadrunners.run"/>
 <cfset VARIABLES.contentStatusFilter = lCase(trim(URL.status))/>
+<cfset VARIABLES.contentFeaturedFilter = lCase(trim(URL.destaque))/>
 
 <cfif NOT listFindNoCase("todos,publicados,ocultos", VARIABLES.contentStatusFilter)>
     <cfset VARIABLES.contentStatusFilter = "todos"/>
+</cfif>
+<cfif NOT listFindNoCase("todos,sim,nao", VARIABLES.contentFeaturedFilter)>
+    <cfset VARIABLES.contentFeaturedFilter = "todos"/>
 </cfif>
 
 <cfquery name="qContentColumns">
@@ -84,6 +89,9 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
     <cfquery>
         UPDATE news.tb_content
         SET published = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentTogglePublished#"/>,
+            <cfif VARIABLES.contentHasIsFeatured AND NOT VARIABLES.contentTogglePublished>
+                is_featured = false,
+            </cfif>
             <cfif VARIABLES.contentHasEditorialStatus>
                 editorial_status =
                 <cfif VARIABLES.contentTogglePublished>
@@ -103,7 +111,52 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.content_id#"/>
     </cfquery>
 
-    <cflocation addtoken="false" url="./?pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#"/>
+    <cflocation addtoken="false" url="./?pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#"/>
+</cfif>
+
+<cfif isDefined("URL.acao")
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin
+    AND URL.acao EQ "destaque"
+    AND VARIABLES.contentHasIsFeatured
+    AND isDefined("URL.content_id")
+    AND isNumeric(URL.content_id)
+    AND isDefined("URL.featured")
+    AND len(trim(URL.featured))>
+
+    <cfset VARIABLES.contentToggleFeatured = IsBoolean(URL.featured) ? URL.featured : ListFindNoCase("true,1,yes,sim", trim(URL.featured & "")) GT 0/>
+
+    <cftransaction>
+        <cfif VARIABLES.contentToggleFeatured>
+            <cfquery name="qContentFeaturedTarget">
+                SELECT id
+                FROM news.tb_content
+                WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.content_id#"/>
+                  AND published = true
+                FOR UPDATE
+            </cfquery>
+
+            <cfif qContentFeaturedTarget.recordcount>
+                <cfquery>
+                    UPDATE news.tb_content
+                    SET is_featured = false
+                    WHERE is_featured = true
+                      AND id <> <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.content_id#"/>
+                </cfquery>
+            </cfif>
+        </cfif>
+
+        <cfquery>
+            UPDATE news.tb_content
+            SET is_featured = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentToggleFeatured#"/>
+                <cfif VARIABLES.contentHasUpdatedAt>, updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/></cfif>
+            WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.content_id#"/>
+              <cfif VARIABLES.contentToggleFeatured>AND published = true</cfif>
+        </cfquery>
+    </cftransaction>
+
+    <cflocation addtoken="false" url="./?pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#"/>
 </cfif>
 
 <cfquery name="qContentTypes">
@@ -123,6 +176,11 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         AND cnt.published = true
       <cfelseif VARIABLES.contentStatusFilter EQ "ocultos">
         AND cnt.published = false
+      </cfif>
+      <cfif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "sim">
+        AND cnt.is_featured = true
+      <cfelseif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "nao">
+        AND cnt.is_featured = false
       </cfif>
       <cfif len(trim(URL.canal))>
         AND lower(coalesce(typ.slug, '')) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(URL.canal))#"/>
@@ -181,6 +239,11 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         AND cnt.published = true
       <cfelseif VARIABLES.contentStatusFilter EQ "ocultos">
         AND cnt.published = false
+      </cfif>
+      <cfif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "sim">
+        AND cnt.is_featured = true
+      <cfelseif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "nao">
+        AND cnt.is_featured = false
       </cfif>
       <cfif len(trim(URL.canal))>
         AND lower(coalesce(typ.slug, '')) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(URL.canal))#"/>
