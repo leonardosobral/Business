@@ -30,6 +30,10 @@
 <cfset qCronJobs = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
 <cfset qCronJobEdit = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
 <cfset qCronJobRuns = queryNew("id_cron_job_run,id_cron_job,nome,trigger_type,attempt,started_at,finished_at,duration_ms,status,http_status,response_preview,error_message,endpoint_url")/>
+
+<cfif cronJobsTablesReady()>
+    <cfset cronJobsReconcileStaleRuns()/>
+</cfif>
 <cfset qCronJobStats = queryNew("total_jobs,ativos,inativos,vencidos,sucesso,erro")/>
 <cfset VARIABLES.cronJobsTotal = 0/>
 <cfset VARIABLES.cronJobsTotalPages = 1/>

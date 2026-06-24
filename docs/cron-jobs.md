@@ -93,6 +93,7 @@ signature = HMAC_SHA256(timestamp + "." + body, secret)
 
 - O runner executa apenas jobs ativos e vencidos (`next_run_at <= now()`).
 - Cada job usa `pg_try_advisory_lock` para evitar execucao simultanea.
+- Execucoes `running` que excedem `max_runtime_seconds` sao reconciliadas automaticamente como `timeout`.
 - Cada execucao grava log antes e depois da chamada HTTP.
 - O tempo de resposta, HTTP status e preview da resposta sao armazenados.
 - `retry_limit` permite ate 3 novas tentativas.
@@ -120,6 +121,7 @@ Road Runners:
 
 - Endpoints Road Runners que aceitam handoff devem usar `auth_mode = hmac_sha256` e `secret_ref = road_runners_handoff`.
 - Health checks publicos podem usar `auth_mode = none`.
+- A fila Strava usa `POST /api/integrations/strava/batch-refresh.cfm`; consulte `docs/strava-batch-cron.md`.
 
 ## Operacao recomendada
 

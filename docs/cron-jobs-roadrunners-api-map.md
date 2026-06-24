@@ -181,13 +181,14 @@ Recomendacao: nao cadastrar no cron. Para monitorar estes contratos, criar um en
 
 | Endpoint | Status para cron | Observacao |
 |---|---|---|
-| `/api/strava/atualizar/index.cfm?id_usuario={id}&token=...` | Candidato com refatoracao | Atualiza um usuario especifico, renova token, busca atleta/atividades e altera banco. Usa token fixo e tem acoes destrutivas por query string. |
+| `/api/integrations/strava/batch-refresh.cfm` | Pronto para cron | POST HMAC, lote limitado, dry-run, locks e resposta JSON. Substitui a fila em navegador. |
+| `/api/strava/atualizar/index.cfm?id_usuario={id}&token=...` | Legado, nao agendar | Fluxo manual por usuario. Nao deve ser usado pelo gerenciador de cron. |
 | `/api/strava/fetch/index.cfm?verification_key={key}&token=...` | Candidato com refatoracao | Atualiza por `verification_key`. Precisa virar batch/fila. |
 | `/api/strava/activities/index.cfm` | Nao agendar | API de leitura/apoio de atividades. |
 | `/api/strava/segments/index.cfm` | Nao agendar | API especifica de segmentos. |
 | `/api/strava/index.cfm` | Nao agendar | Fluxo OAuth/retorno. |
 
-Recomendacao: criar um endpoint novo, por exemplo `/api/integrations/strava/batch-refresh.cfm`, com HMAC, `limit`, `desafio`, `dryRun`, sem query destrutiva, retornando JSON com contadores.
+Configuracao operacional: consulte `docs/strava-batch-cron.md` e aplique `administracao/cron-jobs/strava_batch_job.sql`.
 
 ## APIs de telemetria, ads e eventos de interacao
 

@@ -571,7 +571,18 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   <cfset VARIABLES.cronRunDuration = isNull(qCronJobRuns.duration_ms) ? "" : qCronJobRuns.duration_ms/>
                   <cfset VARIABLES.cronRunError = isNull(qCronJobRuns.error_message) ? "" : qCronJobRuns.error_message/>
                   <cfset VARIABLES.cronRunResponse = isNull(qCronJobRuns.response_preview) ? "" : qCronJobRuns.response_preview/>
-                  <cfset VARIABLES.cronRunSummary = cronJobsBuildFriendlySummary(VARIABLES.cronRunResponse, VARIABLES.cronRunError)/>
+                  <cfif qCronJobRuns.status EQ "running">
+                    <cfset VARIABLES.cronRunSummary = {
+                      message = "Execucao em andamento.",
+                      status = "running",
+                      metrics = [],
+                      errors = [],
+                      raw = "",
+                      isJson = false
+                    }/>
+                  <cfelse>
+                    <cfset VARIABLES.cronRunSummary = cronJobsBuildFriendlySummary(VARIABLES.cronRunResponse, VARIABLES.cronRunError)/>
+                  </cfif>
                   <tr>
                     <td nowrap>#lsDateFormat(qCronJobRuns.started_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobRuns.started_at, "HH:mm:ss")#</td>
                     <td>#htmlEditFormat(qCronJobRuns.nome)#</td>

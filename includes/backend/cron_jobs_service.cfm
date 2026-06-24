@@ -37,6 +37,32 @@ function cronJobsTablesReady() {
         AND listFindNoCase(valueList(qCronTables.table_name), "tb_cron_job_runs");
 }
 
+function cronJobsReconcileStaleRuns() {
+    var staleRuns = "";
+
+    if (!cronJobsTablesReady()) {
+        return 0;
+    }
+
+    staleRuns = queryExecute(
+        "UPDATE tb_cron_job_runs run
+         SET finished_at = now(),
+             duration_ms = LEAST(2147483647, GREATEST(0, (extract(epoch FROM (now() - run.started_at)) * 1000)::bigint))::integer,
+             status = 'timeout',
+             error_message = coalesce(run.error_message, 'Execucao encerrada por exceder o tempo maximo configurado.')
+         FROM tb_cron_jobs job
+         WHERE job.id_cron_job = run.id_cron_job
+           AND run.status = 'running'
+           AND run.finished_at IS NULL
+           AND run.started_at < now() - (interval '1 second' * GREATEST(30, job.max_runtime_seconds))
+         RETURNING run.id_cron_job_run",
+        {},
+        { datasource = "runner_dba" }
+    );
+
+    return staleRuns.recordcount;
+}
+
 function cronJobsGetSecret(required string secretRef) {
     var diskSecret = "";
 
@@ -158,6 +184,8 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
         result.message = "As tabelas de cron jobs ainda nao foram criadas.";
         return result;
     }
+
+    cronJobsReconcileStaleRuns();
 
     cfquery(name = "qCronLock") {
         writeOutput("SELECT pg_try_advisory_lock(");

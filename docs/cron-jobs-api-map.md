@@ -40,13 +40,19 @@ Catalogo detalhado especifico do projeto:
 | API central de notificacoes DEV | `https://dev.roadrunners.run/api/notifications/integrations/dispatch.cfm` | POST | `hmac_sha256` | sob demanda | Endpoint central ja aceita `X-RR-Handoff-Timestamp` e `X-RR-Handoff-Signature`. Nao e cron recorrente classico; usar para jobs de materializacao/dispatch quando houver payload. |
 | API central de notificacoes PROD | `https://roadrunners.run/api/notifications/integrations/dispatch.cfm` | POST | `hmac_sha256` | sob demanda | Mesmo contrato do DEV, quando estiver disponivel no ambiente alvo. |
 
+### Prontos
+
+| Nome sugerido | URL | Metodo | Auth | Intervalo | Observacao |
+|---|---|---:|---|---:|---|
+| Road Runners - Fila Strava | `https://roadrunners.run/api/integrations/strava/batch-refresh.cfm` | POST | `hmac_sha256` | 5 min | Lote idempotente, locks, backoff por atleta e resposta JSON. Consulte `docs/strava-batch-cron.md`. |
+
 ### Candidatos
 
 | Endpoint | Ajuste recomendado | Observacao |
 |---|---|---|
 | `https://beta.roadrunners.run/api/push/runtime.cfm` | Criar endpoint de health publico ou HMAC que retorne se VAPID esta configurado. | O arquivo atual e include/runtime helper, nao um health tecnico completo. |
 | `https://beta.roadrunners.run/api/push/status.cfm` | Nao usar como cron global; depende de usuario autenticado. | Bom para debug de usuario logado, ruim para monitoramento. |
-| `https://roadrunners.run/api/strava/atualizar/?id_usuario={id}&token=...` | Substituir token fixo por HMAC/API dedicada e criar endpoint de fila. | Hoje atualiza um usuario especifico e tem acoes destrutivas via query string. Nao cadastrar em cron generico. |
+| `https://roadrunners.run/api/strava/atualizar/?id_usuario={id}&token=...` | Manter apenas para operacao manual legada. | Agora valida token externo, mas nao deve ser cadastrado como cron. |
 | `https://roadrunners.run/api/strava/fetch/?verification_key={key}&token=...` | Criar endpoint batch por fila/limite. | Atualiza por `verification_key`; nao e rotina recorrente segura sem fila. |
 
 ### Nao agendar
@@ -134,7 +140,7 @@ Recomendacao de auth: `hmac_sha256` com `secret_ref = road_runners_handoff` ou u
 5. `RunnerHub Update Feed`, com Bearer e segredo fora do banco
 6. `Importador YouTube RunnerHub`, se o token estiver configurado
 7. Criar endpoints tecnicos HMAC para importadores do Conteudo
-8. Criar endpoint batch/fila para atualizacao Strava no Road Runners
+8. Aplicar o schema e cadastrar o job batch da fila Strava do Road Runners
 9. Criar endpoint batch/fila para importacao de eventos no RunnerHub
 
 ## Padrao recomendado para novos endpoints de cron
