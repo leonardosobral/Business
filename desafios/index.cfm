@@ -41,6 +41,8 @@
 
     </main>
 
+    <cfinclude template="includes/query_debug_bar.cfm"/>
+
     <!--- FOOTER --->
 
     <cfinclude template="../includes/estrutura/footer.cfm"/>

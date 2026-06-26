@@ -368,6 +368,7 @@
 
                         <cfif URL.periodo NEQ "pendentes">
 
+                            <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                             <cfquery name="qStatsEvento" dbtype="query">
                                 select *
                                 from qStatsBase
@@ -381,6 +382,7 @@
                                     order by data_inicial desc
                                 </cfif>
                             </cfquery>
+                            <cfset desafiosAddQueryTiming("qStatsEvento:inscritos", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
 
                             <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=inscritos"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                             <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
@@ -389,11 +391,13 @@
 
                             <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
 
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao = 'duplicado' OR status_transacao = 'pago'
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:pendentes_interacao_count", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
                                   class="nav-link active"
@@ -404,11 +408,13 @@
                                   aria-selected="true">Pendentes de Interação (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
 
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where strava_code is null
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:sem_strava_count", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
                                   class="nav-link"
@@ -419,11 +425,13 @@
                                   aria-selected="false">Sem Strava (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
 
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao is null and strava_code is not null
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:sem_pedido_count", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
                                   class="nav-link"
@@ -434,11 +442,13 @@
                                   aria-selected="false">Sem Pedido (<cfoutput>#qStatsEvento.recordcount#</cfoutput>)</a>
                               </li>
 
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao = 'pendente'
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:pagamento_pendente_count", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                               <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init
                                   class="nav-link"
@@ -454,44 +464,52 @@
                             <div class="tab-content" id="ex1-content">
 
                               <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao = 'duplicado' OR status_transacao = 'pago'
                                     order by data_inscricao
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:pendentes_interacao_tab", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
                               <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where strava_code is null
                                     order by data_inscricao
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:sem_strava_tab", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                                 <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=semstrava"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
                               <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao is null and strava_code is not null
                                     order by data_inscricao
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:sem_pedido_tab", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                                 <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=sempedido"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
 
                               <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+                                <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                                 <cfquery name="qStatsEvento" dbtype="query">
                                     select *
                                     from qStatsBase
                                     where status_transacao = 'pendente'
                                     order by data_inscricao
                                 </cfquery>
+                                <cfset desafiosAddQueryTiming("qStatsEvento:pagamento_pendente_tab", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
                                 <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=pendente"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
                                 <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
                               </div>
