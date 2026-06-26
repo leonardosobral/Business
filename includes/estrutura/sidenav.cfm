@@ -4,9 +4,22 @@
      data-mdb-hidden="false"
      data-mdb-accordion="true"
      data-mdb-content="#content">
+<style>
+    .business-foco-review-pending-badge {
+        background-color: #fab120;
+        color: #1d1608;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: .25rem;
+        min-width: 1.55rem;
+    }
+</style>
 
 <cfset VARIABLES.businessCanShowAdminNavigation = false/>
 <cfset VARIABLES.businessCanShowAccountNavigation = false/>
+<cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
+<cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
 <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
         <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
@@ -20,6 +33,46 @@
         AND VARIABLES.businessEffectiveAccountIds NEQ "0">
         <cfset VARIABLES.businessCanShowAccountNavigation = true/>
     </cfif>
+</cfif>
+
+<cfif VARIABLES.businessCanShowAdminNavigation>
+    <cftry>
+        <cfquery name="qBusinessFocoReviewPending">
+            SELECT count(*) AS total
+            FROM tb_foco_event_match_state state
+            WHERE state.status IN ('review', 'linked')
+              AND EXISTS (
+                  SELECT 1
+                  FROM tb_foco_event_match_candidates pending_candidate
+                  WHERE pending_candidate.id_evento = state.id_evento
+                    AND pending_candidate.status = 'active'
+                    AND pending_candidate.exact_place = true
+                    AND pending_candidate.score >= 60
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM tb_evento_foco_vinculos pending_link
+                        WHERE pending_link.status = 'active'
+                          AND pending_link.competition_id = pending_candidate.competition_id
+                    )
+              )
+        </cfquery>
+        <cfset VARIABLES.businessFocoReviewPendingTotal = val(qBusinessFocoReviewPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
+        <cfquery name="qBusinessAgregaReviewPending">
+            SELECT count(*) AS total
+            FROM tb_evento_agrega_review_groups
+            WHERE status = 'review'
+        </cfquery>
+        <cfset VARIABLES.businessAgregaReviewPendingTotal = val(qBusinessAgregaReviewPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
 </cfif>
 
 
@@ -227,6 +280,24 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/cron-jobs/">link-warning</cfif>" href="/administracao/cron-jobs/">
                     <i class="fa-solid fa-clock-rotate-left fa-fw me-3"></i><span>Cron Jobs</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/foco-revisao/">link-warning</cfif>" href="/administracao/foco-revisao/">
+                    <i class="fa-solid fa-camera-retro fa-fw me-3"></i><span>Revisão Foco Radical</span>
+                    <cfif VARIABLES.businessFocoReviewPendingTotal GT 0>
+                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessFocoReviewPendingTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agrega-revisao/">link-warning</cfif>" href="/administracao/agrega-revisao/">
+                    <i class="fa-solid fa-object-group fa-fw me-3"></i><span>Revisão Agregadores</span>
+                    <cfif VARIABLES.businessAgregaReviewPendingTotal GT 0>
+                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessAgregaReviewPendingTotal#</cfoutput></span>
+                    </cfif>
                 </a>
             </li>
         </cfif>

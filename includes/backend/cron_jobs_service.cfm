@@ -106,7 +106,7 @@ function cronJobsResponsePreview(required any value) {
     var parsedPayload = {};
     var compactPayload = {};
     var previewKey = "";
-    var summaryKeys = listToArray("success,status,message,importados,created,updated,duplicados,skipped,vinculados,filtrados,ignorados,canais_processados,processed,pages,executed,erros,fatal_error");
+    var summaryKeys = listToArray("success,status,message,importados,created,updated,duplicados,skipped,vinculados,filtrados,ignorados,canais_processados,selected,processed,linked,review,high_confidence_matches,not_found,conflicts,errors,pages,executed,erros,fatal_error");
 
     if (isNull(arguments.value)) {
         return "";

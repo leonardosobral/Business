@@ -63,6 +63,57 @@ Depois de configurar o token, acesse `/?resetApp` para recarregar `APPLICATION.c
 
 O painel nao grava segredos reais no banco. Cada job guarda apenas `secret_ref`.
 
+### Ticket Sports no RunnerHub
+
+O importador automatizado usa um endpoint separado da pagina manual:
+
+- endpoint: `POST https://runnerhub.run/api/ticketsports/jobs/import.cfm`
+- autenticacao: Bearer
+- secret ref no Business: `runnerhub_ticketsports`
+- token correspondente no RunnerHub: campo `jobToken` de `ticketsports.local.cfm`
+- schema de estado no RunnerHub: `/api/ticketsports/jobs/ticketsports_job_schema.sql`
+- cadastro inicial do evento 72611: `/administracao/cron-jobs/ticketsports_72611_job.sql`
+
+O job nasce inativo e em `dryRun`. Depois de validar a resposta, altere `dryRun`
+para `false`, execute uma pagina manualmente e somente entao ative o agendamento.
+O cursor e salvo por evento, portanto o corpo do cron nao precisa informar a pagina.
+
+### Vinculacao de eventos da Foco Radical
+
+O vinculador automatizado usa uma implementacao separada da pagina manual legada:
+
+- endpoint: `POST https://runnerhub.run/api/foco/jobs/match-events.cfm`
+- autenticacao: Bearer
+- secret ref no Business: `runnerhub_foco_eventos`
+- schema no RunnerHub: `/api/foco/jobs/foco_match_schema.sql`
+- cadastro inicial: `/administracao/cron-jobs/foco_event_match_job.sql`
+
+O job nasce inativo, mas pronto para gravar candidatos de revisao
+(`dryRun=false`) e com `autoLink=true`. Ele percorre toda a paginacao retornada
+pela Foco, ignora candidatos abaixo de `minReviewScore` 60, manda candidatos de
+60 ate 84,99 para revisao manual e vincula automaticamente candidato(s) com
+score 85 ou superior, desde que data e UF sejam compativeis.
+Candidatos de cidade diferente da cidade do evento Road Runners nao entram na
+fila de revisao.
+
+Na revisao manual feita em producao, candidatos acima de 80 pontos se mostraram
+equivalentes ao mesmo evento, enquanto alguns candidatos pouco acima de 60 tambem
+eram corretos, mas precisavam de avaliacao humana. Por isso, a configuracao
+padrao revisa a faixa intermediaria e automatiza a faixa alta.
+
+Os casos `review` e `conflict` sao tratados no painel administrativo
+`/administracao/foco-revisao/`. A vinculacao manual valida novamente o candidato,
+bloqueia candidatos abaixo de 60 pontos e impede reutilizacao da mesma competicao
+Foco em outro evento Road Runners. Candidatos incorretos podem ser ignorados
+individualmente, ficando fora da fila mesmo depois de novos processamentos do
+job.
+
+O vinculo principal agora fica em `tb_evento_foco_vinculos`, permitindo multiplas
+galerias Foco para um unico evento Road Runners. O `tb_badges` continua sendo
+atualizado com uma galeria principal por compatibilidade com telas antigas.
+Quando uma galeria e vinculada manualmente, o caso permanece em revisao enquanto
+existirem outros candidatos elegiveis ainda nao vinculados para o mesmo evento.
+
 Os segredos reais devem ficar em:
 
 ```cfm
