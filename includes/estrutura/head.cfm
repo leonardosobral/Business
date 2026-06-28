@@ -24,5 +24,6 @@
     <!--- CUSTOM STYLES --->
     <link rel="stylesheet" href="/assets/css/style.css?2026062704" />
     <link rel="stylesheet" href="/assets/css/cores_admin.css?202512062" />
+    <link rel="stylesheet" href="/assets/css/business-ui.css?2026062801" />
 
 </head>

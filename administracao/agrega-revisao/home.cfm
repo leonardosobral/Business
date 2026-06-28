@@ -1,19 +1,4 @@
 <style>
-  .agrega-review-page .agrega-review-kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: .75rem;
-  }
-  .agrega-review-page .agrega-review-kpi,
-  .agrega-review-page .agrega-review-case {
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 10px;
-    background: rgba(255,255,255,.025);
-  }
-  .agrega-review-page .agrega-review-kpi { padding: .9rem 1rem; }
-  .agrega-review-page .agrega-review-kpi small { color: var(--mdb-secondary-color); text-transform: uppercase; }
-  .agrega-review-page .agrega-review-kpi strong { display: block; font-size: 1.55rem; }
-  .agrega-review-page .agrega-review-case { padding: 1rem; }
   .agrega-review-page .agrega-review-event {
     border-top: 1px solid rgba(255,255,255,.08);
     display: grid;
@@ -41,11 +26,11 @@
   }
 </style>
 
-<section class="agrega-review-page pb-5">
-  <div class="pt-5 pb-3 d-flex flex-wrap justify-content-between align-items-end gap-3">
+<section class="agrega-review-page business-page pb-5">
+  <div class="business-page-header pt-5 pb-3 d-flex flex-wrap justify-content-between align-items-end gap-3">
     <div>
       <div class="text-warning text-uppercase small fw-bold">Administração</div>
-      <h1 class="h3 mb-1">Revisão de Agregadores</h1>
+      <h1 class="business-page-title mb-1">Revisão de Agregadores</h1>
       <p class="text-muted mb-0">Agrupe edições anuais do mesmo evento por similaridade de nome e cidade, sem considerar datas.</p>
     </div>
     <a class="btn btn-outline-light btn-sm" href="/eventos/">Eventos</a>
@@ -69,8 +54,8 @@
       <div class="agrega-review-kpi"><small>Ignorados</small><strong><cfoutput>#qAgregaReviewStats.ignored#</cfoutput></strong></div>
     </div>
 
-    <form class="card shadow-0 mb-4" method="post">
-      <div class="card-body row g-3 align-items-end">
+    <form class="card shadow-0 mb-4 business-page-card" method="post">
+      <div class="card-body business-page-body row g-3 align-items-end">
         <input type="hidden" name="acao" value="gerar_sugestoes" />
         <div class="col-12 col-lg-5">
           <label class="form-label">Gerar sugestões</label>
@@ -90,8 +75,8 @@
       </div>
     </form>
 
-    <form class="card shadow-0 mb-4" method="get">
-      <div class="card-body row g-3 align-items-end">
+    <form class="card shadow-0 mb-4 business-page-card" method="get">
+      <div class="card-body business-page-body row g-3 align-items-end">
         <div class="col-12 col-lg-5">
           <label class="form-label">Evento, ID ou cidade</label>
           <input class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewSearch)#</cfoutput>" />
