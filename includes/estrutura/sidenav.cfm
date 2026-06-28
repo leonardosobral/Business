@@ -16,6 +16,25 @@
         min-width: 1.55rem;
     }
 
+    .business-sidenav .sidenav-menu {
+        padding-left: .5rem !important;
+        padding-right: .5rem !important;
+    }
+
+    .business-sidenav .sidenav-link {
+        min-height: 34px;
+        padding-bottom: .38rem;
+        padding-top: .38rem;
+    }
+
+    .business-sidenav .sidenav-link i.me-3 {
+        margin-right: .65rem !important;
+    }
+
+    .business-sidenav .sidenav-item.pt-3 {
+        padding-top: .7rem !important;
+    }
+
     .business-sidenav-section-toggle {
         appearance: none;
         background: transparent;
@@ -26,7 +45,7 @@
         justify-content: space-between;
         gap: .5rem;
         width: 100%;
-        padding: .65rem .75rem .35rem;
+        padding: .45rem .55rem .25rem;
         font-size: .72rem;
         font-weight: 700;
         letter-spacing: 0;
@@ -353,10 +372,6 @@
                 </li>
             <cfelseif VARIABLES.businessCanShowAdminNavigation>
                 <li class="sidenav-item">
-                    <a class="sidenav-link" href="/cadastro/">
-                        <i class="fa-solid fa-building fa-fw me-3"></i><span>Cadastro público</span></a>
-                </li>
-                <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
                         <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão de contas</span></a>
                 </li>
@@ -428,11 +443,6 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/" OR VARIABLES.template EQ "/treinos-config/inscritos/">link-warning</cfif>" href="/treinos-config/">
                     <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de Treinos</span></a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link" href="/manutencao/">
-                    <i class="fas fa-file-contract fa-fw me-3"></i><span>Manutenção</span></a>
             </li>
 
         </cfif>
