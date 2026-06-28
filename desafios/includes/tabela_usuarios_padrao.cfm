@@ -6,6 +6,10 @@
 <cfif isDefined("VARIABLES.challengeHasScore") AND isBoolean(VARIABLES.challengeHasScore)>
     <cfset VARIABLES.challengeShowsScoreColumn = VARIABLES.challengeHasScore/>
 </cfif>
+<cfset VARIABLES.challengeEventoApiToken = ""/>
+<cfif structKeyExists(APPLICATION, "eventoApiToken")>
+    <cfset VARIABLES.challengeEventoApiToken = trim(APPLICATION.eventoApiToken)/>
+</cfif>
 
 <div class="table-wrapper-l">
 
@@ -91,10 +95,10 @@
             <td class="text-end"><cfif len(trim(VARIABLES.rowDiasCorrendo))>#VARIABLES.rowDiasCorrendo#<cfif len(trim(VARIABLES.rowDiasDoAno))>/#VARIABLES.rowDiasDoAno#</cfif></cfif></td>
             <cfif URL.periodo NEQ "pendentes" AND NOT VARIABLES.challengeIsCircuitPanel>
                 <td class="text-start" nowrap>
-                    <cfif len(trim(VARIABLES.rowStravaCode))>
-                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true"><div class="badge bg-strava"><i class="fa fa-refresh"></i></div></a>
-                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=true"><div class="badge bg-black me-1"><i class="fa fa-refresh"></i></div></a>
-                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=jf8w3ynr73840rync848udq07yrc89q2h4nr08ync743c9r8h328f42fc8n23&debug=true&full=promax"><div class="badge <cfif len(trim(VARIABLES.rowDataEstatisticas))>bg-secondary<cfelse>bg-black</cfif> me-1"><i class="fa fa-mobile"></i></div></a>
+                    <cfif len(trim(VARIABLES.rowStravaCode)) AND len(trim(VARIABLES.challengeEventoApiToken))>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=#urlEncodedFormat(VARIABLES.challengeEventoApiToken)#&debug=true"><div class="badge bg-strava"><i class="fa fa-refresh"></i></div></a>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=#urlEncodedFormat(VARIABLES.challengeEventoApiToken)#&debug=true&full=true"><div class="badge bg-black me-1"><i class="fa fa-refresh"></i></div></a>
+                        <a target="_blank" href="https://roadrunners.run/api/strava/atualizar/?desafio=#URL.desafio#&id_usuario=#id#&token=#urlEncodedFormat(VARIABLES.challengeEventoApiToken)#&debug=true&full=promax"><div class="badge <cfif len(trim(VARIABLES.rowDataEstatisticas))>bg-secondary<cfelse>bg-black</cfif> me-1"><i class="fa fa-mobile"></i></div></a>
                         <cfif len(trim(VARIABLES.rowDataInicial))>#lsDateFormat(VARIABLES.rowDataInicial,'mm/yyyy')# | </cfif>
                         <cfif len(trim(VARIABLES.rowDataFinal))> há <cfif DateDiff("n",VARIABLES.rowDataFinal, now()) LT 120>#DateDiff("n",VARIABLES.rowDataFinal, now())# min<cfelse>#DateDiff("h",VARIABLES.rowDataFinal, now())# horas</cfif> | </cfif>
                         <cfif len(trim(VARIABLES.rowStravaExpiresAt))> <cfif DateDiff("n",VARIABLES.rowStravaExpiresAt, now()) LT 0>#DateDiff("n",VARIABLES.rowStravaExpiresAt, now()) * -1# min válido<cfelse><span class="text-danger">token expirado</span></cfif></cfif>

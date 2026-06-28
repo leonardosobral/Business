@@ -2,6 +2,14 @@
 
 <cfinclude template="includes/backend.cfm"/>
 
+<cfset VARIABLES.cuponsRrTotalLinkedCoupons = qCupons.recordcount + qEventosCupons.recordcount + qCircuitosCupons.recordcount + qPaginasCupons.recordcount/>
+<cfset VARIABLES.cuponsRrHasLinkedCoupons = VARIABLES.cuponsRrTotalLinkedCoupons GT 0/>
+<cfset VARIABLES.cuponsRrHasLinkedEvents = NOT (VARIABLES.cuponsRrRestrictByConta AND VARIABLES.cuponsRrEventosContaIds EQ "0")/>
+<cfset VARIABLES.cuponsRrShowOnboarding = VARIABLES.cuponsRrRestrictByConta
+    AND NOT VARIABLES.cuponsRrHasLinkedCoupons
+    AND NOT isDefined("URL.acao")
+    AND NOT isDefined("URL.campanha")/>
+
 <!--- WIDGETS
 
 <section class="mb-4">
@@ -96,6 +104,11 @@
 
 <!--- CONTEUDO --->
 
+<cfif VARIABLES.cuponsRrShowOnboarding>
+  <cfinclude template="onboarding_cupons.cfm"/>
+</cfif>
+
+<cfif NOT VARIABLES.cuponsRrShowOnboarding>
 <section class="">
 
   <div class="row gx-xl-5">
@@ -118,7 +131,11 @@
 
             <cfelseif NOT VARIABLES.cuponsRrCanOperate>
 
-                <div class="alert alert-info mb-0" role="alert">Seu acesso permite visualizar cupons desta conta, mas nao criar ou alterar cupons.</div>
+                <cfif VARIABLES.cuponsRrRestrictByConta AND VARIABLES.cuponsRrEventosContaIds EQ "0">
+                    <div class="alert alert-info mb-0" role="alert">Sua conta ainda nao possui eventos aprovados para gerenciar cupons. Solicite o vinculo do evento em <a href="/eventos/">Eventos</a>.</div>
+                <cfelse>
+                    <div class="alert alert-info mb-0" role="alert">Seu acesso permite visualizar cupons desta conta, mas nao criar ou alterar cupons.</div>
+                </cfif>
 
             </cfif>
 
@@ -321,3 +338,4 @@
   </div>
 
 </section>
+</cfif>

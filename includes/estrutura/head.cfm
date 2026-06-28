@@ -22,7 +22,7 @@
     <meta name="google-signin-client_id" content="921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com">
 
     <!--- CUSTOM STYLES --->
-    <link rel="stylesheet" href="/assets/css/style.css?202512062" />
+    <link rel="stylesheet" href="/assets/css/style.css?2026062704" />
     <link rel="stylesheet" href="/assets/css/cores_admin.css?202512062" />
 
 </head>

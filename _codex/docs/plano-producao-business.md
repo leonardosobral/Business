@@ -90,6 +90,8 @@ Status em 2026-06-09:
 - Usuarios `VISUALIZADOR` continuam podendo consultar dados da conta, mas nao veem formularios/acoes de edicao nessas telas.
 - `/inscricoes/` ainda usa `cod_evento` TicketSports hardcoded (`72611`) por decisao consciente do MVP. Esse modulo deve ser refatorado inteiro em etapa futura para mapear evento Road Runners -> evento TicketSports e virar multi-evento.
 - `/cupons-rr/` ainda conserva partes de formulario/backend reaproveitadas de campanha de ads; precisa ser separado em CRUD proprio de cupom antes de producao ampla.
+- Em 2026-06-27, `/ads/`, `/inscricoes/` e `/cupons-rr/` ganharam mensagens claras para contas sem eventos aprovados ou sem dados liberados, mantendo as regras de permissao existentes.
+- Em 2026-06-27, foi criado o plano de evolucao de `/ads/` como tela central de valor do Business: `_codex/docs/plano-turbinados-business.md`.
 
 ### Fase 5 - BI
 
@@ -125,6 +127,7 @@ Status em 2026-06-14:
   - Enquanto o ambiente de teste nao tiver variaveis de ambiente, `config/business.local.cfm` fornece fallback local para esses valores. O arquivo segue ignorado por `config/*.local.cfm`.
 - Modulos isolados sem link no menu Business foram arquivados em `_legado/`: `elite-supra/` da raiz e `racetag/`.
 - Ainda existe `debug=true` em links legados de BI/Desafios/Strava, mas sem token literal no codigo. Nao bloquear o primeiro corte por isso; revisar quando a parte de desafios/BI for redesenhada.
+- Em 2026-06-27, o token literal remanescente em `desafios/includes/tabela_usuarios_padrao.cfm` foi trocado por `APPLICATION.eventoApiToken`, respeitando `RR_EVENTO_API_TOKEN` ou o fallback local de teste.
 
 ## Corte recomendado para ir ao ar
 

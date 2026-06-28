@@ -86,6 +86,16 @@
 
             <h3>Inscrições</h3>
 
+          <cfif VARIABLES.cuponsRestrictByConta AND VARIABLES.cuponsEventosContaIds EQ "0">
+            <div class="alert alert-info" role="alert">
+              Sua conta ainda nao possui eventos aprovados para exibir inscricoes. Solicite o vinculo do evento em <a href="/eventos/">Eventos</a>.
+            </div>
+          <cfelseif VARIABLES.cuponsRestrictByConta AND NOT qCuponsBase.recordcount>
+            <div class="alert alert-light" role="alert">
+              Ainda nao ha dados de inscricoes liberados para os eventos desta conta.
+            </div>
+          </cfif>
+
           <hr/>
 
           <!--- ABAS --->

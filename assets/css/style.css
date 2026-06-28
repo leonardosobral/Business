@@ -1,6 +1,12 @@
 body {
 }
 
+:root {
+    --business-sidebar-width: 216px;
+    --business-page-max-width: 1120px;
+    --business-page-gutter: 1rem;
+}
+
 .btn-primary {
     --mdb-btn-bg: #f4b120;
     --mdb-btn-color: #fff;
@@ -56,10 +62,110 @@ body {
     --mdb-nav-tabs-link-active-border-color: #f4b120 !important;
 }
 
-@media (min-width: 1400px) {
-    main,
-    header,
+main > .container,
+main > .container-fluid {
+    max-width: var(--business-page-max-width);
+    padding-left: var(--business-page-gutter) !important;
+    padding-right: var(--business-page-gutter) !important;
+}
+
+.card {
+    border-radius: .5rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.table-responsive,
+.tableFixHead {
+    max-width: 100%;
+}
+
+.table {
+    font-size: .92rem;
+}
+
+.business-sidenav {
+    width: var(--business-sidebar-width) !important;
+    min-width: var(--business-sidebar-width);
+    max-width: var(--business-sidebar-width);
+}
+
+#main-sidenav > .ripple {
+    min-height: 86px;
+}
+
+#main-sidenav .ripple svg {
+    width: 196px;
+    max-width: calc(var(--business-sidebar-width) - 28px);
+    height: auto;
+}
+
+#main-sidenav .sidenav-menu {
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+}
+
+#main-sidenav .sidenav-link {
+    min-height: 2.35rem;
+    padding: .55rem .7rem;
+    font-size: .86rem;
+    line-height: 1.2;
+}
+
+#main-sidenav .sidenav-link i {
+    margin-right: .65rem !important;
+}
+
+#main-sidenav .sidenav-link.ps-5 {
+    padding-left: 1.95rem !important;
+}
+
+#main-sidenav .sidenav-subheading {
+    font-size: .68rem;
+    letter-spacing: 0;
+}
+
+@media (min-width: 1200px) {
     #main-navbar {
-        padding-left: 240px;
+        padding-left: var(--business-sidebar-width);
+    }
+
+    main {
+        margin-left: var(--business-sidebar-width) !important;
+        padding-left: 0 !important;
+        width: calc(100% - var(--business-sidebar-width)) !important;
+    }
+
+    main > .container,
+    main > .container-fluid {
+        width: 100%;
+        max-width: min(var(--business-page-max-width), calc(100vw - var(--business-sidebar-width) - 2rem));
+    }
+
+    #main-sidenav {
+        left: 0 !important;
+        transform: translateX(0) !important;
+        visibility: visible !important;
+    }
+}
+
+@media (min-width: 1366px) {
+    :root {
+        --business-page-max-width: 1140px;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --business-page-max-width: 1280px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    main > .container,
+    main > .container-fluid {
+        max-width: 100%;
     }
 }

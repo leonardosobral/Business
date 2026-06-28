@@ -1,201 +1,50 @@
 <!--- CONTEUDO --->
 
+<cfset VARIABLES.businessHomeIsAdmin = false/>
+<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+    <cfif IsBoolean(VARIABLES.businessEffectiveIsAdmin)>
+        <cfset VARIABLES.businessHomeIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
+    <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(VARIABLES.businessEffectiveIsAdmin))>
+        <cfset VARIABLES.businessHomeIsAdmin = true/>
+    </cfif>
+<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin")>
+    <cfif IsBoolean(qPerfil.is_admin)>
+        <cfset VARIABLES.businessHomeIsAdmin = qPerfil.is_admin/>
+    <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(qPerfil.is_admin))>
+        <cfset VARIABLES.businessHomeIsAdmin = true/>
+    </cfif>
+</cfif>
+<cfif isDefined("VARIABLES.businessAccountSimulationActive") AND VARIABLES.businessAccountSimulationActive>
+    <cfset VARIABLES.businessHomeIsAdmin = false/>
+</cfif>
+
 <div class="row g-3">
 
-    <cfif NOT qPermissoes.recordcount>
+    <cfif VARIABLES.businessHomeIsAdmin>
+
+        <cfinclude template="includes/estrutura/home_admin_dashboard.cfm"/>
+
+    </cfif>
+
+    <cfif NOT VARIABLES.businessHomeIsAdmin
+        AND isDefined("VARIABLES.businessEffectiveAccountIds")
+        AND len(trim(VARIABLES.businessEffectiveAccountIds))
+        AND VARIABLES.businessEffectiveAccountIds NEQ "0">
         <div class="col-12">
-            <div data-mdb-alert-init class="alert text-center" role="alert" data-mdb-color="light">
-                <b>Cadastro inicial realizado com sucesso.</b><br>Seu perfil está sob análise.
+            <cfinclude template="includes/estrutura/home_conta_dashboard.cfm"/>
+        </div>
+    <cfelseif NOT VARIABLES.businessHomeIsAdmin>
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <strong>Acesso Business em analise.</strong>
+                Seu usuario ainda nao esta vinculado a uma conta ativa. Se voce ja solicitou acesso, aguarde a aprovacao da equipe.
+                <a class="btn btn-sm btn-warning ms-2" href="/cadastro/">Solicitar acesso da empresa</a>
             </div>
         </div>
     </cfif>
 
-    <div class="col-12">
-        <div class="card bg-warning bg-opacity-50">
-            <div class="row p-3">
-                <div class="col-md-6 text-center align-content-center"><img src="/lib/images/runpro.svg" class="w-50"></div>
-                <div class="col-md-6 align-content-center">
-                    Plataforma Ads disponível a partir de <b>05 de janeiro</b>.
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    <cfif NOT #qPermissoes.recordcount#>Seu cadastro está em análise, você receberá um email ou mensagem no momento da ativação.</cfif>
-
-    <cfif isDefined("qPerfil") AND qPerfil.recordcount AND qPerfil.is_admin>
-        <cfinclude template="includes/estrutura/uptime_status.cfm"/>
-    </cfif>
-
-
-    <!--- VERIFICA TAGS COM CARACTERES ESPECIAIS --->
-
-    <cfquery name="qManutencaoItem">
-        select id_pagina, id_usuario_cadastro, nome, tag from tb_paginas where tag ilike '% %' OR tag = '' OR tag is null or tag ilike '%/%' or tag ilike '%|%' or tag ilike '%\%';
-    </cfquery>
-
-    <cfif qManutencaoItem.recordcount>
-
-        <div class="col-md-6">
-
-            <div class="card">
-
-                <div class="card-header">Tags com caracteres especiais</div>
-
-                <div class="card-body">
-
-                  <table class="table table-sm table-striped table-hover">
-                    <thead>
-                      <tr>
-                          <th></th>
-                          <th>ID</th>
-                          <th>Nome</th>
-                          <th>Tag</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <cfoutput query="qManutencaoItem">
-                          <tr>
-                              <td>
-                                  <a href="/emailmkt/?campanha=#qManutencaoItem.id_pagina#&acao=editar"><icon class="fa fa-edit"></icon></a>
-                              </td>
-                              <td>#qManutencaoItem.id_pagina#</td>
-                              <td>#qManutencaoItem.nome#</td>
-                              <td>#qManutencaoItem.tag#</td>
-                          </tr>
-                      </cfoutput>
-                    </tbody>
-                  </table>
-
-                    <div class="font-monospace">--update tb_paginas set tag = replace(lower(tag), ' ', '-') where tag ilike '% %';</div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </cfif>
-
-
-    <!--- AD LOGS DE BOTS --->
-
-    <cfquery name="qManutencaoItem">
-        select data_insercao::date as data,
-        contexto ->> 'HTTP_USER_AGENT' as agente,
-        count(*) as total
-        from tb_ad_log
-        where (contexto ->> 'HTTP_USER_AGENT' ilike '%bot%' OR contexto ->> 'HTTP_USER_AGENT' ilike '%crawl%' OR contexto ->> 'HTTP_USER_AGENT' ilike '%spider%')
-        group by contexto ->> 'HTTP_USER_AGENT', data_insercao::date
-        order by total desc;
-    </cfquery>
-
-    <cfif qManutencaoItem.recordcount>
-
-        <div class="col-md-6">
-
-            <div class="card">
-
-                <div class="card-header">AD Logs de Bots</div>
-
-                <div class="card-body">
-
-                    <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Agente</th>
-                            <th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qManutencaoItem">
-                            <tr>
-                                <td>#qManutencaoItem.data#</td>
-                                <td>#qManutencaoItem.agente#</td>
-                                <td>#qManutencaoItem.total#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-                    <div class="font-monospace">
-                        update tb_ad_log set status = 4 where (contexto ->> 'HTTP_USER_AGENT' ilike '%bot%' OR contexto ->> 'HTTP_USER_AGENT' ilike '%crawl%' OR contexto ->> 'HTTP_USER_AGENT' ilike '%spider%');
-                        update tb_ad_log set status = 4 where id_usuario IN (select id from tb_usuarios where is_admin = true OR  is_dev = true);
-                        delete from tb_ad_log where status = 4 and data_insercao < '2025-12-02';
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </cfif>
-
-
-    <!--- VERIFICA USUARIO PARA AUTORIZAR NO BUSINESS --->
-
-    <cfquery name="qManutencaoItem">
-        select usr.*,
-        usr.partner_info ->> 'perfil' as perfil,
-        usr.partner_info ->> 'celular' as celular,
-        usr.partner_info ->> 'documento' as documento,
-        usr.partner_info ->> 'nome_comercial' as nome_comercial
-        from tb_usuarios usr where partner_info is not null;
-    </cfquery>
-
-    <cfif qManutencaoItem.recordcount>
-
-        <div class="col-md-12">
-
-            <div class="card">
-
-                <div class="card-header">Verifica usuario para autorizar no business</div>
-
-                <div class="card-body">
-
-                    <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>perfil</th>
-                            <th>nome_comercial</th>
-                            <th>celular</th>
-                            <th>documento</th>
-                            <th>Partner</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qManutencaoItem">
-                            <tr>
-                                <td>
-                                    <a href="/emailmkt/?campanha=#qManutencaoItem.email#&acao=editar"><icon class="fa fa-edit"></icon></a>
-                                </td>
-                                <td>#qManutencaoItem.name#</td>
-                                <td>#qManutencaoItem.email#</td>
-                                <td>#qManutencaoItem.perfil#</td>
-                                <td>#qManutencaoItem.nome_comercial#</td>
-                                <td>#qManutencaoItem.celular#</td>
-                                <td>#qManutencaoItem.documento#</td>
-                                <td>#qManutencaoItem.is_partner#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </cfif>
-
-
+    <cfif VARIABLES.businessHomeIsAdmin>
     <cfoutput query="qPermissoes" group="tipo">
 
         <cfif qPermissoes.tipo EQ "bi">
@@ -239,5 +88,6 @@
         </cfif>
 
     </cfoutput>
+    </cfif>
 
 </div>

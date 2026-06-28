@@ -1,9 +1,10 @@
 <nav id="main-sidenav"
      data-mdb-sidenav-init
-     class="sidenav sidenav-sm shadow-1"
+     class="sidenav business-sidenav shadow-1"
      data-mdb-hidden="false"
      data-mdb-accordion="true"
-     data-mdb-content="#content">
+     data-mdb-mode="side"
+     data-mdb-width="216">
 <style>
     .business-foco-review-pending-badge {
         background-color: #fab120;
@@ -13,6 +14,43 @@
         justify-content: center;
         margin-left: .25rem;
         min-width: 1.55rem;
+    }
+
+    .business-sidenav-section-toggle {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        color: rgba(255, 255, 255, .52);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+        width: 100%;
+        padding: .65rem .75rem .35rem;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .business-sidenav-section-toggle:hover,
+    .business-sidenav-section-toggle:focus {
+        color: rgba(255, 255, 255, .82);
+    }
+
+    .business-sidenav-section-toggle .business-sidenav-section-icon {
+        color: rgba(255, 255, 255, .45);
+        font-size: .7rem;
+        transition: transform .16s ease;
+    }
+
+    .business-sidenav-section-toggle[aria-expanded="false"] .business-sidenav-section-icon {
+        transform: rotate(-90deg);
+    }
+
+    .business-sidenav-section-collapsed {
+        display: none !important;
     }
 </style>
 
@@ -85,12 +123,6 @@
     <hr class="hr">
 
     <ul class="sidenav-menu px-2 pb-5">
-
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/">
-            <i class="fa-solid fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span></a>
-        </li>
-
 
         <!--- PORTAL --->
 
@@ -191,10 +223,12 @@
         </li>
 
 
-        <li class="sidenav-item">
-            <a class="sidenav-link" href="/bi/">
-                <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
-        </li>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/bi/">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Business Intelligence</span></a>
+            </li>
+        </cfif>
 
 
 
@@ -314,12 +348,8 @@
             <cfif VARIABLES.businessCanShowAccountNavigation>
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
-                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Cadastro da conta</span>
+                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão da conta</span>
                     </a>
-                </li>
-                <li class="sidenav-item">
-                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
-                        <i class="fas fa-users fa-fw me-3"></i><span>Usuários da conta</span></a>
                 </li>
             <cfelseif VARIABLES.businessCanShowAdminNavigation>
                 <li class="sidenav-item">
@@ -328,7 +358,7 @@
                 </li>
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
-                        <i class="fas fa-users fa-fw me-3"></i><span>Usuários</span></a>
+                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão de contas</span></a>
                 </li>
             </cfif>
 
@@ -410,6 +440,99 @@
 
     </ul>
 
+    <script>
+        (function () {
+            var isAdminNavigation = <cfif VARIABLES.businessCanShowAdminNavigation>true<cfelse>false</cfif>;
+            var defaultExpandedSections = isAdminNavigation ? ["portal"] : ["ferramentas", "marketing"];
+            var storageKey = "business:sidenav:section-state:v2:" + (isAdminNavigation ? "admin" : "account");
+
+            function readSectionStates() {
+                try {
+                    return JSON.parse(window.localStorage.getItem(storageKey) || "{}");
+                } catch (error) {
+                    return {};
+                }
+            }
+
+            function writeSectionStates(sectionStates) {
+                try {
+                    window.localStorage.setItem(storageKey, JSON.stringify(sectionStates));
+                } catch (error) {}
+            }
+
+            function hasOwn(object, key) {
+                return Object.prototype.hasOwnProperty.call(object, key);
+            }
+
+            function sectionKey(label) {
+                return label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+            }
+
+            function sectionItems(headingItem) {
+                var items = [];
+                var currentItem = headingItem.nextElementSibling;
+
+                while (currentItem && !currentItem.querySelector(".sidenav-subheading")) {
+                    items.push(currentItem);
+                    currentItem = currentItem.nextElementSibling;
+                }
+
+                return items;
+            }
+
+            function setSectionState(button, items, collapsed) {
+                button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+
+                items.forEach(function (item) {
+                    item.classList.toggle("business-sidenav-section-collapsed", collapsed);
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var sidenavMenu = document.querySelector("#main-sidenav .sidenav-menu");
+
+                if (!sidenavMenu) {
+                    return;
+                }
+
+                var sectionStates = readSectionStates();
+                var headings = Array.prototype.slice.call(sidenavMenu.querySelectorAll(".sidenav-subheading"));
+
+                headings.forEach(function (heading) {
+                    var headingItem = heading.closest(".sidenav-item");
+                    var label = heading.textContent.trim();
+                    var key = sectionKey(label);
+                    var items = sectionItems(headingItem);
+                    var isDefaultExpanded = defaultExpandedSections.indexOf(key) >= 0;
+                    var isExpanded = hasOwn(sectionStates, key) ? sectionStates[key] : isDefaultExpanded;
+                    var collapsed = !isExpanded;
+                    var button = document.createElement("button");
+                    var labelSpan = document.createElement("span");
+                    var icon = document.createElement("i");
+
+                    button.type = "button";
+                    button.className = "business-sidenav-section-toggle";
+
+                    labelSpan.textContent = label;
+                    icon.className = "fa-solid fa-chevron-down business-sidenav-section-icon";
+                    button.appendChild(labelSpan);
+                    button.appendChild(icon);
+
+                    heading.replaceWith(button);
+                    setSectionState(button, items, collapsed);
+
+                    button.addEventListener("click", function () {
+                        var shouldCollapse = button.getAttribute("aria-expanded") === "true";
+
+                        sectionStates[key] = !shouldCollapse;
+                        writeSectionStates(sectionStates);
+                        setSectionState(button, items, shouldCollapse);
+                    });
+                });
+            });
+        })();
+    </script>
+
 </nav>
 
 <!--- Navbar --->
@@ -420,7 +543,7 @@
 
 <!--- Toggler --->
 <button data-mdb-toggle="sidenav" data-mdb-target="#main-sidenav"
-  class="btn shadow-0 p-0 me-3 d-block d-xxl-none" data-mdb-ripple-init aria-controls="#main-sidenav"
+  class="btn shadow-0 p-0 me-3 d-block d-xl-none" data-mdb-ripple-init aria-controls="#main-sidenav"
   aria-haspopup="true">
   <i class="fas fa-bars fa-lg"></i>
 </button>
