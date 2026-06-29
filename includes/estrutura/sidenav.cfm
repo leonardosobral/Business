@@ -380,24 +380,17 @@
 
         <!--- EMPRESA --->
 
-        <cfif VARIABLES.businessCanShowAccountNavigation OR VARIABLES.businessCanShowAdminNavigation>
+        <cfif VARIABLES.businessCanShowAccountNavigation>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Empresa</span>
             </li>
 
-            <cfif VARIABLES.businessCanShowAccountNavigation>
-                <li class="sidenav-item">
-                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
-                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão da conta</span>
-                    </a>
-                </li>
-            <cfelseif VARIABLES.businessCanShowAdminNavigation>
-                <li class="sidenav-item">
-                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
-                        <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão de contas</span></a>
-                </li>
-            </cfif>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                    <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão da conta</span>
+                </a>
+            </li>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/assinaturas/">link-warning</cfif>" href="/assinaturas/">

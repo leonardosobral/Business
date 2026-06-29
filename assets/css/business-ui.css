@@ -177,6 +177,146 @@
     word-break: break-word;
 }
 
+.business-page .business-step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: .75rem;
+}
+
+.business-page .business-step {
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+    padding: 1rem;
+    border: 1px solid var(--business-ui-border);
+    border-radius: .5rem;
+    background: var(--business-ui-surface);
+}
+
+.business-page .business-step.is-current {
+    border-color: rgba(244,177,32,.55);
+    background: rgba(244,177,32,.08);
+}
+
+.business-page .business-step.is-complete {
+    border-color: rgba(20,164,77,.45);
+    background: rgba(20,164,77,.08);
+}
+
+.business-page .business-step.is-muted {
+    opacity: .72;
+}
+
+.business-page .business-step-top {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    align-items: flex-start;
+    margin-bottom: .8rem;
+}
+
+.business-page .business-step-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    color: var(--mdb-body-color);
+    font-weight: 800;
+}
+
+.business-page .business-step.is-current .business-step-marker {
+    background: var(--mdb-warning);
+    color: #111;
+}
+
+.business-page .business-step.is-complete .business-step-marker {
+    background: var(--mdb-success);
+    color: #fff;
+}
+
+.business-page .business-step-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+    padding: .15rem .45rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.09);
+    color: var(--business-ui-muted);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.business-page .business-step h4,
+.business-page .business-step h5 {
+    line-height: 1.2;
+}
+
+.business-page .business-step-action {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.business-page .business-empty-state {
+    border: 1px solid rgba(244,177,32,.28);
+    border-radius: .5rem;
+    background: rgba(244,177,32,.06);
+    padding: 1rem;
+}
+
+.business-page .business-empty-actions,
+.business-page .business-metric-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.business-page .business-mini-metric {
+    min-width: 130px;
+    flex: 1 1 130px;
+    padding: .75rem;
+    border: 1px solid var(--business-ui-border);
+    border-radius: .5rem;
+    background: var(--business-ui-surface);
+}
+
+.business-page .business-mini-metric strong {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.15;
+}
+
+.business-page .events-client-table-wrap {
+    max-height: 62vh;
+    overflow: auto;
+    border: 1px solid var(--business-ui-border);
+    border-radius: .5rem;
+}
+
+.business-page .events-client-table-wrap table {
+    margin-bottom: 0;
+}
+
+.business-page .events-client-table-wrap th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #2f2f2f;
+}
+
+.business-page .events-list-more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    color: var(--business-ui-muted);
+}
+
 @media (max-width: 991.98px) {
     .business-page .business-kpi-grid,
     .foco-review-page .foco-review-kpis,

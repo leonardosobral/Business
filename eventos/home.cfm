@@ -20,11 +20,24 @@
     <cfset VARIABLES.eventosShowOnboarding = true/>
 </cfif>
 
+<cfset VARIABLES.eventosShowRequestPanel = true/>
+<cfif VARIABLES.eventosShowOnboarding
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoReferencia))
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoErrorMessage))
+    AND NOT (VARIABLES.eventoSolicitacaoCanReview AND qEventoSolicitacoesPendentes.recordcount GT 0)
+    AND qEventoMinhasSolicitacoes.recordcount EQ 0>
+    <cfset VARIABLES.eventosShowRequestPanel = false/>
+</cfif>
+
 <cfif VARIABLES.eventosShowOnboarding>
     <cfinclude template="onboarding_eventos.cfm"/>
 </cfif>
 
-<cfinclude template="solicitacoes_eventos.cfm"/>
+<cfif VARIABLES.eventosShowRequestPanel>
+    <cfinclude template="solicitacoes_eventos.cfm"/>
+</cfif>
+<cfinclude template="guia_cliente_eventos.cfm"/>
 
 <cfif NOT VARIABLES.eventosShowOnboarding>
     <cfinclude template="filtro_resultados.cfm"/>
@@ -36,7 +49,7 @@
 <cfif NOT VARIABLES.eventosShowOnboarding>
 <div class="row">
 
-    <cfif isDefined("URL.id_evento") and URL.id_evento NEQ 0>
+    <cfif NOT (Len(trim(URL.id_evento)) AND isNumeric(URL.id_evento) AND val(URL.id_evento) EQ 0)>
         <cfinclude template="listagem_eventos.cfm"/>
     </cfif>
 

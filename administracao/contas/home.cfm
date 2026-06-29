@@ -49,6 +49,49 @@
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
 </cfif>
 
+<cfset VARIABLES.accountsClientOverviewReady = NOT VARIABLES.businessAccountsCanAdminAll AND VARIABLES.businessAccountsTablesReady/>
+<cfset VARIABLES.accountsClientHasAccount = false/>
+<cfset VARIABLES.accountsClientSelectedId = ""/>
+<cfset VARIABLES.accountsClientName = "Conta Business"/>
+<cfset VARIABLES.accountsClientStatus = ""/>
+<cfset VARIABLES.accountsClientUsersTotal = 0/>
+<cfset VARIABLES.accountsClientUsersActive = 0/>
+<cfset VARIABLES.accountsClientEventsTotal = 0/>
+<cfset VARIABLES.accountsClientEventsActive = 0/>
+<cfset VARIABLES.accountsClientRole = isDefined("VARIABLES.businessCurrentAccountRole") ? uCase(trim(VARIABLES.businessCurrentAccountRole)) : ""/>
+<cfset VARIABLES.accountsClientRoleLabel = "Acesso Business"/>
+<cfif VARIABLES.accountsClientRole EQ "OWNER">
+    <cfset VARIABLES.accountsClientRoleLabel = "Proprietário"/>
+<cfelseif VARIABLES.accountsClientRole EQ "ADMIN">
+    <cfset VARIABLES.accountsClientRoleLabel = "Administrador"/>
+<cfelseif VARIABLES.accountsClientRole EQ "OPERADOR">
+    <cfset VARIABLES.accountsClientRoleLabel = "Operador"/>
+<cfelseif VARIABLES.accountsClientRole EQ "VISUALIZADOR">
+    <cfset VARIABLES.accountsClientRoleLabel = "Visualizador"/>
+</cfif>
+
+<cfif VARIABLES.accountsClientOverviewReady>
+    <cfif qBusinessAccountEdit.recordcount>
+        <cfset VARIABLES.accountsClientHasAccount = true/>
+        <cfset VARIABLES.accountsClientSelectedId = qBusinessAccountEdit.id_conta/>
+        <cfset VARIABLES.accountsClientName = qBusinessAccountEdit.nome_conta/>
+        <cfset VARIABLES.accountsClientStatus = qBusinessAccountEdit.status/>
+        <cfset VARIABLES.accountsClientUsersTotal = val(qBusinessAccountEdit.total_usuarios)/>
+        <cfset VARIABLES.accountsClientUsersActive = val(qBusinessAccountEdit.usuarios_ativos)/>
+        <cfset VARIABLES.accountsClientEventsTotal = val(qBusinessAccountEdit.total_eventos)/>
+        <cfset VARIABLES.accountsClientEventsActive = val(qBusinessAccountEdit.eventos_ativos)/>
+    <cfelseif qBusinessAccountList.recordcount>
+        <cfset VARIABLES.accountsClientHasAccount = true/>
+        <cfset VARIABLES.accountsClientSelectedId = qBusinessAccountList.id_conta/>
+        <cfset VARIABLES.accountsClientName = qBusinessAccountList.nome_conta/>
+        <cfset VARIABLES.accountsClientStatus = qBusinessAccountList.status/>
+        <cfset VARIABLES.accountsClientUsersTotal = val(qBusinessAccountList.total_usuarios)/>
+        <cfset VARIABLES.accountsClientUsersActive = val(qBusinessAccountList.usuarios_ativos)/>
+        <cfset VARIABLES.accountsClientEventsTotal = val(qBusinessAccountList.total_eventos)/>
+        <cfset VARIABLES.accountsClientEventsActive = val(qBusinessAccountList.eventos_ativos)/>
+    </cfif>
+</cfif>
+
 <style>
   .accounts-page .accounts-kpis {
     display: grid;
@@ -244,6 +287,149 @@
     color: var(--mdb-body-color);
   }
 
+  .accounts-page .accounts-client-overview {
+    border: 0;
+    background: transparent;
+    padding: 0 !important;
+  }
+
+  .accounts-page .accounts-client-hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: .7rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .accounts-page .accounts-client-chipbar,
+  .accounts-page .accounts-client-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .accounts-page .accounts-client-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.7rem;
+    padding: .2rem .55rem;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    color: var(--mdb-secondary-color);
+    font-size: .78rem;
+    font-weight: 700;
+  }
+
+  .accounts-page .accounts-client-task {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .65rem;
+    align-items: center;
+    flex: 1 1 260px;
+    min-height: 66px;
+    padding: .6rem .7rem;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    background: rgba(255,255,255,.025);
+  }
+
+  .accounts-page .accounts-client-task.is-current {
+    border-color: rgba(244,177,32,.5);
+    background: rgba(244,177,32,.06);
+  }
+
+  .accounts-page .accounts-client-task.is-complete {
+    border-color: rgba(20,164,77,.36);
+  }
+
+  .accounts-page .accounts-client-task.is-muted {
+    opacity: .72;
+  }
+
+  .accounts-page .accounts-client-task-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    font-weight: 800;
+  }
+
+  .accounts-page .accounts-client-task.is-complete .accounts-client-task-marker {
+    background: var(--mdb-success);
+    color: #fff;
+  }
+
+  .accounts-page .accounts-client-task.is-current .accounts-client-task-marker {
+    background: var(--mdb-warning);
+    color: #111;
+  }
+
+  .accounts-page .accounts-collapsible {
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    background: rgba(255,255,255,.025);
+  }
+
+  .accounts-page .accounts-collapsible summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+    padding: .7rem .85rem;
+  }
+
+  .accounts-page .accounts-collapsible summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accounts-page .accounts-collapsible summary i {
+    color: var(--mdb-secondary-color);
+    transition: transform .16s ease;
+  }
+
+  .accounts-page .accounts-collapsible[open] summary {
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .accounts-page .accounts-collapsible[open] summary i {
+    transform: rotate(180deg);
+  }
+
+  .accounts-page .accounts-collapsible-body {
+    padding: 1rem;
+  }
+
+  .accounts-page .accounts-management-header.is-client {
+    margin-bottom: .65rem;
+    padding-bottom: .65rem;
+  }
+
+  .accounts-page .accounts-panel.accounts-client-management {
+    border: 0;
+    background: transparent;
+    padding: 0 !important;
+  }
+
+  .accounts-page .accounts-client-management .accounts-management-header {
+    display: none;
+  }
+
+  .accounts-page .accounts-client-management .accounts-management-tabs {
+    margin-bottom: .9rem !important;
+  }
+
+  .accounts-page .accounts-client-management .accounts-tab-panel > .mb-3 {
+    margin-bottom: .75rem !important;
+  }
+
   .accounts-page .accounts-tab-panel.d-none {
     display: none !important;
   }
@@ -262,23 +448,32 @@
     .accounts-page .accounts-management-header {
       flex-direction: column;
     }
+
+    .accounts-page .accounts-client-task {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .accounts-page .accounts-client-task .btn {
+      grid-column: 2;
+      justify-self: start;
+    }
   }
 </style>
 
-<section class="accounts-page">
+<section class="accounts-page business-page">
   <div class="row gx-xl-5">
     <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-      <div class="card shadow-0">
-        <div class="card-body">
+      <div class="card shadow-0 business-page-card">
+        <div class="card-body business-page-body">
 
-          <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
+          <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
             <div>
-              <h3 class="mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Administração de contas<cfelse>Minha conta</cfif></h3>
+              <h3 class="business-page-title mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Administração de contas<cfelse>Minha conta</cfif></h3>
               <p class="text-muted mb-0">
                 <cfif VARIABLES.businessAccountsCanAdminAll>
                   Cadastre empresas, aprove solicitações de acesso e gerencie usuários e eventos vinculados.
                 <cfelse>
-                  Gerencie os usuários vinculados à sua conta Business e acompanhe os eventos já aprovados.
+                  Veja o status da sua empresa, cuide da equipe e acompanhe os eventos vinculados.
                 </cfif>
               </p>
             </div>
@@ -289,36 +484,34 @@
             </cfif>
           </div>
 
-          <hr/>
-
-          <div class="accounts-kpis mb-4">
-            <div class="accounts-kpi">
-              <div class="accounts-kpi-label">Contas</div>
-              <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsTotal)#</cfoutput></div>
-            </div>
-            <div class="accounts-kpi">
-              <div class="accounts-kpi-label">Ativas</div>
-              <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsActiveTotal)#</cfoutput></div>
-            </div>
-            <div class="accounts-kpi">
-              <div class="accounts-kpi-label">Pendentes</div>
-              <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsPendingTotal)#</cfoutput></div>
-            </div>
-            <cfif VARIABLES.businessAccountsCanAdminAll>
-              <div class="accounts-kpi">
+          <cfif VARIABLES.businessAccountsCanAdminAll>
+            <div class="accounts-kpis business-kpi-grid mb-4">
+              <div class="accounts-kpi business-kpi">
+                <div class="accounts-kpi-label">Contas</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsTotal)#</cfoutput></div>
+              </div>
+              <div class="accounts-kpi business-kpi">
+                <div class="accounts-kpi-label">Ativas</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsActiveTotal)#</cfoutput></div>
+              </div>
+              <div class="accounts-kpi business-kpi">
+                <div class="accounts-kpi-label">Pendentes</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsPendingTotal)#</cfoutput></div>
+              </div>
+              <div class="accounts-kpi business-kpi">
                 <div class="accounts-kpi-label">Solicitações</div>
                 <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsRegistrationPendingTotal)#</cfoutput></div>
               </div>
-            </cfif>
-            <div class="accounts-kpi">
-              <div class="accounts-kpi-label">Usuários vinculados</div>
-              <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsLinkedUsersTotal)#</cfoutput></div>
+              <div class="accounts-kpi business-kpi">
+                <div class="accounts-kpi-label">Usuários vinculados</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsLinkedUsersTotal)#</cfoutput></div>
+              </div>
+              <div class="accounts-kpi business-kpi">
+                <div class="accounts-kpi-label">Eventos ativos</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsLinkedEventsTotal)#</cfoutput></div>
+              </div>
             </div>
-            <div class="accounts-kpi">
-              <div class="accounts-kpi-label">Eventos ativos</div>
-              <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsLinkedEventsTotal)#</cfoutput></div>
-            </div>
-          </div>
+          </cfif>
 
           <cfif len(trim(VARIABLES.accountsNoticeMessage))>
             <div class="alert alert-success" role="alert">
@@ -366,6 +559,66 @@
             <div class="alert alert-danger" role="alert">
               <cfoutput>#htmlEditFormat(VARIABLES.accountsVoucherSaveErrorMessage)#</cfoutput>
             </div>
+          </cfif>
+
+          <cfif VARIABLES.accountsClientOverviewReady>
+            <cfif VARIABLES.accountsClientHasAccount>
+              <div class="business-panel accounts-client-overview p-3 mb-3">
+                <div class="accounts-client-hero mb-3">
+                  <div>
+                    <div class="business-label mb-1">Sua empresa no Business</div>
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                      <h4 class="mb-0"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientName)#</cfoutput></h4>
+                      <span class="accounts-status"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientStatus)#</cfoutput></span>
+                    </div>
+                    <div class="accounts-client-chipbar">
+                      <span class="accounts-client-chip"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientRoleLabel)#</cfoutput></span>
+                      <span class="accounts-client-chip"><cfoutput>#LSNumberFormat(VARIABLES.accountsClientUsersActive)#</cfoutput> usuário(s)</span>
+                      <span class="accounts-client-chip"><cfoutput>#LSNumberFormat(VARIABLES.accountsClientEventsActive)#</cfoutput> evento(s) ativo(s)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accounts-client-tasks">
+                  <div class="accounts-client-task <cfif VARIABLES.accountsClientStatus EQ 'ATIVA'>is-complete<cfelse>is-current</cfif>">
+                    <span class="accounts-client-task-marker"><cfif VARIABLES.accountsClientStatus EQ "ATIVA"><i class="fa-solid fa-check"></i><cfelse>1</cfif></span>
+                    <div>
+                      <h6 class="mb-1">Conta aprovada</h6>
+                      <p class="text-muted small mb-0"><cfif VARIABLES.accountsClientStatus EQ "ATIVA">Acesso liberado para operar a empresa.<cfelse>Aguardando aprovação da conta.</cfif></p>
+                    </div>
+                    <span class="accounts-status"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientStatus)#</cfoutput></span>
+                  </div>
+
+                  <div class="accounts-client-task <cfif VARIABLES.accountsClientUsersActive GT 0>is-complete<cfelse>is-current</cfif>">
+                    <span class="accounts-client-task-marker"><cfif VARIABLES.accountsClientUsersActive GT 0><i class="fa-solid fa-check"></i><cfelse>2</cfif></span>
+                    <div>
+                      <h6 class="mb-1">Equipe</h6>
+                      <p class="text-muted small mb-0"><cfoutput>#LSNumberFormat(VARIABLES.accountsClientUsersActive)#</cfoutput> usuário(s) ativo(s) nesta conta.</p>
+                    </div>
+                    <cfoutput><a class="btn btn-sm btn-outline-warning" href="./?conta_id=#urlEncodedFormat(VARIABLES.accountsClientSelectedId)#&tab=usuarios##conta-gerenciamento">Gerenciar</a></cfoutput>
+                  </div>
+
+                  <div class="accounts-client-task <cfif VARIABLES.accountsClientEventsActive GT 0>is-complete<cfelseif VARIABLES.accountsClientStatus EQ 'ATIVA'>is-current<cfelse>is-muted</cfif>">
+                    <span class="accounts-client-task-marker"><cfif VARIABLES.accountsClientEventsActive GT 0><i class="fa-solid fa-check"></i><cfelse>3</cfif></span>
+                    <div>
+                      <h6 class="mb-1">Eventos</h6>
+                      <p class="text-muted small mb-0"><cfif VARIABLES.accountsClientEventsActive GT 0>Eventos ativos liberados para operação.<cfelse>Solicite o primeiro evento para liberar inscrições e marketing.</cfif></p>
+                    </div>
+                    <cfif VARIABLES.accountsClientEventsActive GT 0>
+                      <a class="btn btn-sm btn-outline-warning" href="/inscricoes/">Operar</a>
+                    <cfelse>
+                      <a class="btn btn-sm btn-warning" href="/eventos/">Solicitar</a>
+                    </cfif>
+                  </div>
+                </div>
+              </div>
+            <cfelse>
+              <div class="business-empty-state mb-4">
+                <h5 class="mb-2">Conta ainda não localizada</h5>
+                <p class="text-muted mb-3">Quando sua empresa for aprovada, este espaço mostrará equipe, eventos e próximas ações.</p>
+                <a class="btn btn-sm btn-outline-warning" href="/cadastro/">Abrir cadastro</a>
+              </div>
+            </cfif>
           </cfif>
 
           <cfif VARIABLES.businessAccountsCanAdminAll>
@@ -589,89 +842,95 @@
           </cfif>
 
           <div class="row g-4">
-            <div class="col-12">
-              <div class="accounts-panel p-3">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div>
-                    <h5 class="mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Contas cadastradas<cfelse>Contas da empresa</cfif></h5>
-                    <div class="small text-muted"><cfoutput>#LSNumberFormat(VARIABLES.accountsFilteredTotal)# contas encontradas</cfoutput></div>
-                  </div>
-                  <div class="small text-muted"><cfoutput>Página #VARIABLES.accountsPage# de #VARIABLES.accountsTotalPages#</cfoutput></div>
-                </div>
-
-                <div class="table-responsive">
-                  <table class="table table-sm accounts-table align-middle mb-0">
-                    <thead>
-                      <tr>
-                        <th>Conta</th>
-                        <th>Documento</th>
-                        <th>Status</th>
-                        <th>Usuários</th>
-                        <th>Eventos</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <cfif qBusinessAccountList.recordcount>
-                        <cfoutput query="qBusinessAccountList">
-                          <tr <cfif qBusinessAccountEdit.recordcount AND qBusinessAccountList.id_conta EQ qBusinessAccountEdit.id_conta>class="table-active"</cfif>>
-                            <td class="accounts-cell">
-                              <div class="fw-bold">#htmlEditFormat(qBusinessAccountList.nome_conta)#</div>
-                              <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.nome_titular)#</div>
-                              <cfif len(trim(qBusinessAccountList.email_principal))>
-                                <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.email_principal)#</div>
-                              </cfif>
-                            </td>
-                            <td>
-                              <div>#htmlEditFormat(qBusinessAccountList.documento)#</div>
-                              <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.tipo_titular)#</div>
-                            </td>
-                            <td><span class="accounts-status">#htmlEditFormat(qBusinessAccountList.status)#</span></td>
-                            <td>
-                              <div>#LSNumberFormat(qBusinessAccountList.total_usuarios)#</div>
-                              <div class="small text-muted">#LSNumberFormat(qBusinessAccountList.usuarios_ativos)# ativos</div>
-                            </td>
-                            <td>
-                              <div>#LSNumberFormat(qBusinessAccountList.total_eventos)#</div>
-                              <div class="small text-muted">#LSNumberFormat(qBusinessAccountList.eventos_ativos)# ativos</div>
-                            </td>
-                            <td class="text-end">
-                              <a class="btn btn-sm btn-outline-warning" href="./?conta_id=#qBusinessAccountList.id_conta#&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">Gerenciar</a>
-                            </td>
-                          </tr>
-                        </cfoutput>
-                      <cfelse>
-                        <tr>
-                          <td colspan="6" class="text-muted py-4">Nenhuma conta encontrada.</td>
-                        </tr>
-                      </cfif>
-                    </tbody>
-                  </table>
-                </div>
-
-                <cfif VARIABLES.accountsTotalPages GT 1>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <cfoutput>
-                      <a class="btn btn-sm btn-outline-secondary <cfif VARIABLES.accountsPage LTE 1>disabled</cfif>" href="./?pagina=#max(1, VARIABLES.accountsPage - 1)#&busca=#urlEncodedFormat(URL.busca)#">Anterior</a>
-                      <a class="btn btn-sm btn-outline-secondary <cfif VARIABLES.accountsPage GTE VARIABLES.accountsTotalPages>disabled</cfif>" href="./?pagina=#min(VARIABLES.accountsTotalPages, VARIABLES.accountsPage + 1)#&busca=#urlEncodedFormat(URL.busca)#">Próxima</a>
-                    </cfoutput>
-                  </div>
-                </cfif>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <div class="accounts-panel p-3" id="conta-gerenciamento">
-                <cfif qBusinessAccountEdit.recordcount>
-                  <div class="accounts-management-header">
+            <cfif VARIABLES.businessAccountsCanAdminAll OR qBusinessAccountList.recordcount GT 1 OR len(trim(URL.busca)) GT 0>
+              <div class="col-12">
+                <div class="accounts-panel p-3">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
-                      <div class="accounts-action-title mb-1">Conta selecionada</div>
-                      <h4 class="mb-2"><cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</cfoutput></h4>
+                      <h5 class="mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Contas cadastradas<cfelse>Contas da empresa</cfif></h5>
+                      <div class="small text-muted"><cfoutput>#LSNumberFormat(VARIABLES.accountsFilteredTotal)# contas encontradas</cfoutput></div>
+                    </div>
+                    <div class="small text-muted"><cfoutput>Página #VARIABLES.accountsPage# de #VARIABLES.accountsTotalPages#</cfoutput></div>
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="table table-sm accounts-table align-middle mb-0">
+                      <thead>
+                        <tr>
+                          <th>Conta</th>
+                          <th>Documento</th>
+                          <th>Status</th>
+                          <th>Usuários</th>
+                          <th>Eventos</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <cfif qBusinessAccountList.recordcount>
+                          <cfoutput query="qBusinessAccountList">
+                            <tr <cfif qBusinessAccountEdit.recordcount AND qBusinessAccountList.id_conta EQ qBusinessAccountEdit.id_conta>class="table-active"</cfif>>
+                              <td class="accounts-cell">
+                                <div class="fw-bold">#htmlEditFormat(qBusinessAccountList.nome_conta)#</div>
+                                <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.nome_titular)#</div>
+                                <cfif len(trim(qBusinessAccountList.email_principal))>
+                                  <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.email_principal)#</div>
+                                </cfif>
+                              </td>
+                              <td>
+                                <div>#htmlEditFormat(qBusinessAccountList.documento)#</div>
+                                <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.tipo_titular)#</div>
+                              </td>
+                              <td><span class="accounts-status">#htmlEditFormat(qBusinessAccountList.status)#</span></td>
+                              <td>
+                                <div>#LSNumberFormat(qBusinessAccountList.total_usuarios)#</div>
+                                <div class="small text-muted">#LSNumberFormat(qBusinessAccountList.usuarios_ativos)# ativos</div>
+                              </td>
+                              <td>
+                                <div>#LSNumberFormat(qBusinessAccountList.total_eventos)#</div>
+                                <div class="small text-muted">#LSNumberFormat(qBusinessAccountList.eventos_ativos)# ativos</div>
+                              </td>
+                              <td class="text-end">
+                                <a class="btn btn-sm btn-outline-warning" href="./?conta_id=#qBusinessAccountList.id_conta#&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">Gerenciar</a>
+                              </td>
+                            </tr>
+                          </cfoutput>
+                        <cfelse>
+                          <tr>
+                            <td colspan="6" class="text-muted py-4">Nenhuma conta encontrada.</td>
+                          </tr>
+                        </cfif>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <cfif VARIABLES.accountsTotalPages GT 1>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                      <cfoutput>
+                        <a class="btn btn-sm btn-outline-secondary <cfif VARIABLES.accountsPage LTE 1>disabled</cfif>" href="./?pagina=#max(1, VARIABLES.accountsPage - 1)#&busca=#urlEncodedFormat(URL.busca)#">Anterior</a>
+                        <a class="btn btn-sm btn-outline-secondary <cfif VARIABLES.accountsPage GTE VARIABLES.accountsTotalPages>disabled</cfif>" href="./?pagina=#min(VARIABLES.accountsTotalPages, VARIABLES.accountsPage + 1)#&busca=#urlEncodedFormat(URL.busca)#">Próxima</a>
+                      </cfoutput>
+                    </div>
+                  </cfif>
+                </div>
+              </div>
+            </cfif>
+
+            <div class="col-12">
+              <div class="accounts-panel p-3 <cfif NOT VARIABLES.businessAccountsCanAdminAll>accounts-client-management</cfif>" id="conta-gerenciamento">
+                <cfif qBusinessAccountEdit.recordcount>
+                  <div class="accounts-management-header <cfif NOT VARIABLES.businessAccountsCanAdminAll>is-client</cfif>">
+                    <div>
+                      <div class="accounts-action-title mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Conta selecionada<cfelse>Configuração</cfif></div>
+                      <h4 class="mb-2"><cfif VARIABLES.businessAccountsCanAdminAll><cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</cfoutput><cfelse>Equipe e eventos</cfif></h4>
                       <div class="accounts-management-meta small text-muted">
                         <cfoutput>
-                          <span>Documento: #htmlEditFormat(qBusinessAccountEdit.documento)#</span>
-                          <span>Titular: #htmlEditFormat(qBusinessAccountEdit.nome_titular)#</span>
-                          <span>Status: #htmlEditFormat(qBusinessAccountEdit.status)#</span>
+                          <cfif VARIABLES.businessAccountsCanAdminAll>
+                            <span>Documento: #htmlEditFormat(qBusinessAccountEdit.documento)#</span>
+                            <span>Titular: #htmlEditFormat(qBusinessAccountEdit.nome_titular)#</span>
+                            <span>Status: #htmlEditFormat(qBusinessAccountEdit.status)#</span>
+                          <cfelse>
+                            <span>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</span>
+                          </cfif>
                           <span>#LSNumberFormat(qBusinessAccountUsers.recordcount)# usuários</span>
                           <span>#LSNumberFormat(qBusinessAccountEvents.recordcount)# eventos</span>
                         </cfoutput>
@@ -681,7 +940,9 @@
                       <cfif VARIABLES.businessAccountsCanAdminAll>
                         <cfoutput><a class="btn btn-sm btn-outline-warning" href="./?conta_id=#qBusinessAccountEdit.id_conta#&editar_conta=1&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">Editar dados</a></cfoutput>
                       </cfif>
-                      <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage#">Fechar conta</a></cfoutput>
+                      <cfif VARIABLES.businessAccountsCanAdminAll OR qBusinessAccountList.recordcount GT 1 OR len(trim(URL.busca)) GT 0>
+                        <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage#">Fechar conta</a></cfoutput>
+                      </cfif>
                     </div>
                   </div>
 
@@ -716,50 +977,80 @@
                   </div>
 
                   <cfif VARIABLES.businessAccountsCanManageUsers>
-                    <cfoutput>
-                      <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=usuarios##conta-gerenciamento" class="accounts-panel p-3 mb-3">
-                        <input type="hidden" name="account_user_action" value="convidar"/>
-                        <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
-                        <div class="row g-3">
-                          <div class="col-12">
-                            <label class="form-label">Nome</label>
-                            <input class="form-control" type="text" name="nome_usuario" maxlength="256" required/>
+                    <div class="row g-3 mb-3">
+                      <div class="col-12 col-xl-6">
+                        <details class="accounts-collapsible">
+                          <summary>
+                            <span>
+                              <span class="fw-semibold d-block">Adicionar novo usuário</span>
+                              <span class="small text-muted">Convide alguém que ainda não aparece na conta.</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                          </summary>
+                          <div class="accounts-collapsible-body">
+                            <cfoutput>
+                              <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=usuarios##conta-gerenciamento">
+                                <input type="hidden" name="account_user_action" value="convidar"/>
+                                <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
+                                <div class="row g-3">
+                                  <div class="col-12">
+                                    <label class="form-label">Nome</label>
+                                    <input class="form-control" type="text" name="nome_usuario" maxlength="256" required/>
+                                  </div>
+                                  <div class="col-12">
+                                    <label class="form-label">E-mail Google</label>
+                                    <input class="form-control" type="email" name="email_usuario" maxlength="256" required/>
+                                  </div>
+                                  <div class="col-12 col-lg-7">
+                                    <label class="form-label">Papel</label>
+                                    <select class="form-select" name="papel">
+                            </cfoutput>
+                                      <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
+                                        <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#accountPapelOption#</option></cfoutput>
+                                      </cfloop>
+                            <cfoutput>
+                                    </select>
+                                  </div>
+                                  <div class="col-12 col-lg-5 d-flex align-items-end">
+                                    <button class="btn btn-warning w-100" type="submit">Adicionar</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </cfoutput>
                           </div>
-                          <div class="col-12">
-                            <label class="form-label">E-mail Google</label>
-                            <input class="form-control" type="email" name="email_usuario" maxlength="256" required/>
-                          </div>
-                          <div class="col-12 col-lg-7">
-                            <label class="form-label">Papel</label>
-                            <select class="form-select" name="papel">
-                    </cfoutput>
-                              <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#accountPapelOption#</option></cfoutput>
-                              </cfloop>
-                    <cfoutput>
-                            </select>
-                          </div>
-                          <div class="col-12 col-lg-5 d-flex align-items-end">
-                            <button class="btn btn-warning w-100" type="submit">Adicionar</button>
-                          </div>
-                        </div>
-                      </form>
+                        </details>
+                      </div>
 
-                      <form method="get" action="./##conta-gerenciamento" class="mb-3">
-                        <input type="hidden" name="conta_id" value="#qBusinessAccountEdit.id_conta#"/>
-                        <input type="hidden" name="busca" value="#htmlEditFormat(URL.busca)#"/>
-                        <input type="hidden" name="tab" value="usuarios"/>
-                        <div class="row g-2 align-items-end">
-                          <div class="col-12 col-lg-8">
-                            <label class="form-label">Buscar usuário existente</label>
-                            <input class="form-control" type="text" name="user_busca" value="#htmlEditFormat(URL.user_busca)#" placeholder="Nome, e-mail ou ID"/>
+                      <div class="col-12 col-xl-6">
+                        <details class="accounts-collapsible" <cfif len(trim(URL.user_busca))>open</cfif>>
+                          <summary>
+                            <span>
+                              <span class="fw-semibold d-block">Vincular usuário existente</span>
+                              <span class="small text-muted">Busque por nome, e-mail ou ID.</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                          </summary>
+                          <div class="accounts-collapsible-body">
+                            <cfoutput>
+                              <form method="get" action="./##conta-gerenciamento">
+                                <input type="hidden" name="conta_id" value="#qBusinessAccountEdit.id_conta#"/>
+                                <input type="hidden" name="busca" value="#htmlEditFormat(URL.busca)#"/>
+                                <input type="hidden" name="tab" value="usuarios"/>
+                                <div class="row g-2 align-items-end">
+                                  <div class="col-12 col-lg-8">
+                                    <label class="form-label">Buscar usuário</label>
+                                    <input class="form-control" type="text" name="user_busca" value="#htmlEditFormat(URL.user_busca)#" placeholder="Nome, e-mail ou ID"/>
+                                  </div>
+                                  <div class="col-12 col-lg-4">
+                                    <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </cfoutput>
                           </div>
-                          <div class="col-12 col-lg-4">
-                            <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
-                          </div>
-                        </div>
-                      </form>
-                    </cfoutput>
+                        </details>
+                      </div>
+                    </div>
 
                     <cfif len(trim(URL.user_busca))>
                       <cfif qBusinessAccountUserSearch.recordcount>
@@ -1118,7 +1409,17 @@
                         </cfoutput>
                       </div>
                     <cfelse>
-                      <div class="text-muted py-3">Nenhum evento vinculado a esta conta.</div>
+                      <cfif VARIABLES.businessAccountsCanAdminAll>
+                        <div class="text-muted py-3">Nenhum evento vinculado a esta conta.</div>
+                      <cfelse>
+                        <div class="business-empty-state">
+                          <h5 class="mb-2">Vincule seu primeiro evento</h5>
+                          <p class="text-muted mb-3">
+                            Após a aprovação do vínculo, inscrições, cupons, conteúdo e campanhas passam a trabalhar com essa conta.
+                          </p>
+                          <a class="btn btn-sm btn-outline-warning" href="/eventos/">Abrir eventos</a>
+                        </div>
+                      </cfif>
                     </cfif>
                   </div>
                   </div>

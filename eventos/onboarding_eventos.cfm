@@ -24,7 +24,7 @@
     border-radius: .5rem;
     display: flex;
     flex-direction: column;
-    min-height: 220px;
+    min-height: 190px;
     padding: 1rem;
   }
 
@@ -61,7 +61,9 @@
         <h4 class="mb-1">Vincule uma prova à sua conta</h4>
         <p class="text-muted mb-0">Busque o evento no RoadRunners e envie a solicitação. Depois da aprovação, ele aparece para edição, conteúdo, Turbinados e cupons.</p>
       </div>
-      <a class="btn btn-outline-warning align-self-lg-start" href="#event-request-panel">Ver solicitações</a>
+      <cfif isDefined("VARIABLES.eventosShowRequestPanel") AND VARIABLES.eventosShowRequestPanel>
+        <a class="btn btn-outline-warning align-self-lg-start" href="#event-request-panel">Ver solicitações</a>
+      </cfif>
     </div>
 
     <div class="events-onboarding-steps">
@@ -91,7 +93,11 @@
         <h5 class="mb-2">Solicite o vínculo</h5>
         <p class="text-muted mb-0">Ao encontrar a prova, clique em Solicitar. O evento fica pendente até a validação da equipe RunnerHub.</p>
         <div class="events-onboarding-action">
-          <a class="btn btn-warning w-100" href="#event-request-panel">Acompanhar busca</a>
+          <cfif isDefined("VARIABLES.eventosShowRequestPanel") AND VARIABLES.eventosShowRequestPanel>
+            <a class="btn btn-warning w-100" href="#event-request-panel">Acompanhar busca</a>
+          <cfelse>
+            <span class="btn btn-outline-light disabled w-100">Busque acima</span>
+          </cfif>
         </div>
       </div>
 

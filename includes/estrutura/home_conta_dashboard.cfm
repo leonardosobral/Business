@@ -251,6 +251,38 @@
 </cfif>
 
 <cfif VARIABLES.businessHomeDashboardReady>
+    <cfset VARIABLES.businessHomeActiveEvents = 0/>
+    <cfset VARIABLES.businessHomeUpcomingEventsCount = 0/>
+    <cfset VARIABLES.businessHomePendingItems = 0/>
+    <cfif qBusinessHomeSummary.recordcount>
+        <cfset VARIABLES.businessHomeActiveEvents = val(qBusinessHomeSummary.eventos_ativos)/>
+        <cfset VARIABLES.businessHomeUpcomingEventsCount = val(qBusinessHomeSummary.eventos_proximos)/>
+        <cfset VARIABLES.businessHomePendingItems = val(qBusinessHomeSummary.solicitacoes_pendentes) + val(qBusinessHomeSummary.eventos_pendentes)/>
+    </cfif>
+    <cfset VARIABLES.businessHomeHasActiveEvents = VARIABLES.businessHomeActiveEvents GT 0/>
+    <cfset VARIABLES.businessHomeHasPendingEvents = VARIABLES.businessHomePendingItems GT 0/>
+    <cfset VARIABLES.businessHomeHasContentPending = qBusinessHomeContentAttention.recordcount GT 0/>
+    <cfset VARIABLES.businessHomeContentReady = VARIABLES.businessHomeHasActiveEvents AND NOT VARIABLES.businessHomeHasContentPending/>
+    <cfset VARIABLES.businessHomeMarketingStarted = VARIABLES.businessHomeAdsTotal GT 0 OR VARIABLES.businessHomeVouchersResgatados GT 0/>
+    <cfset VARIABLES.businessHomeActivationScore = 0/>
+    <cfif VARIABLES.businessHomeHasActiveEvents>
+        <cfset VARIABLES.businessHomeActivationScore = VARIABLES.businessHomeActivationScore + 1/>
+    </cfif>
+    <cfif VARIABLES.businessHomeContentReady>
+        <cfset VARIABLES.businessHomeActivationScore = VARIABLES.businessHomeActivationScore + 1/>
+    </cfif>
+    <cfif VARIABLES.businessHomeMarketingStarted>
+        <cfset VARIABLES.businessHomeActivationScore = VARIABLES.businessHomeActivationScore + 1/>
+    </cfif>
+    <cfset VARIABLES.businessHomeFirstEventId = ""/>
+    <cfif qBusinessHomeUpcomingEvents.recordcount>
+        <cfset VARIABLES.businessHomeFirstEventId = qBusinessHomeUpcomingEvents.id_evento/>
+    </cfif>
+    <cfset VARIABLES.businessHomeFirstContentEventId = VARIABLES.businessHomeFirstEventId/>
+    <cfif qBusinessHomeContentAttention.recordcount>
+        <cfset VARIABLES.businessHomeFirstContentEventId = qBusinessHomeContentAttention.id_evento/>
+    </cfif>
+
     <style>
         .business-account-dashboard .dashboard-kpi {
             min-height: 120px;
@@ -307,9 +339,49 @@
             font-weight: 700;
             padding: .75rem 0 0;
         }
+
+        .business-account-dashboard .dashboard-first-action {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1rem;
+            align-items: center;
+            border: 1px solid rgba(244,177,32,.38);
+            border-radius: .5rem;
+            background: rgba(244,177,32,.06);
+            padding: 1rem;
+        }
+
+        .business-account-dashboard .dashboard-next-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+
+        .business-account-dashboard .dashboard-next-item {
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: .5rem;
+            background: rgba(255,255,255,.025);
+            padding: .75rem;
+            color: var(--mdb-secondary-color);
+        }
+
+        .business-account-dashboard .dashboard-operational-empty {
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: .5rem;
+            background: rgba(255,255,255,.025);
+            padding: 1rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .business-account-dashboard .dashboard-first-action,
+            .business-account-dashboard .dashboard-next-list {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 
-    <section class="business-account-dashboard mb-4">
+    <section class="business-account-dashboard business-page mb-4">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-3">
             <div>
                 <cfoutput>
@@ -320,59 +392,171 @@
             </div>
             <div class="dashboard-actions">
                 <a class="btn btn-outline-light btn-sm" href="/eventos/"><i class="fa-solid fa-person-running me-2"></i>Eventos</a>
-                <a class="btn btn-outline-light btn-sm" href="/ads/"><i class="fa-solid fa-rocket me-2"></i>Ads</a>
-                <a class="btn btn-outline-light btn-sm" href="/inscricoes/"><i class="fa-solid fa-ticket me-2"></i>Inscricoes</a>
+                <cfif VARIABLES.businessHomeHasActiveEvents>
+                    <a class="btn btn-outline-light btn-sm" href="/ads/"><i class="fa-solid fa-rocket me-2"></i>Ads</a>
+                    <a class="btn btn-outline-light btn-sm" href="/inscricoes/"><i class="fa-solid fa-ticket me-2"></i>Inscrições</a>
+                </cfif>
             </div>
         </div>
 
-        <div class="row g-3 mb-3">
-            <div class="col-6 col-xl">
-                <div class="card dashboard-kpi">
-                    <div class="card-body p-3">
-                        <div class="text-muted small">Eventos ativos</div>
-                        <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.eventos_ativos), "9,999")#</cfoutput></div>
-                        <div class="small text-muted mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.eventos_proximos), "9,999")# proximos</cfoutput></div>
+        <div class="card business-page-card mb-3">
+            <div class="card-body business-page-body">
+                <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+                    <div>
+                        <div class="business-label mb-1">Comece por aqui</div>
+                        <h4 class="mb-1">Ative a operação da sua conta</h4>
+                        <p class="text-muted mb-0">Siga o próximo passo disponível para liberar eventos, conteúdo, divulgação e acompanhamento comercial.</p>
                     </div>
+                    <span class="badge rounded-pill badge-warning align-self-lg-start">
+                        <cfif VARIABLES.businessHomeHasActiveEvents>
+                            <cfoutput>#VARIABLES.businessHomeActivationScore#</cfoutput>/3 etapas concluídas
+                        <cfelseif VARIABLES.businessHomeHasPendingEvents>
+                            Em análise
+                        <cfelse>
+                            Primeiro passo
+                        </cfif>
+                    </span>
                 </div>
-            </div>
-            <div class="col-6 col-xl">
-                <div class="card dashboard-kpi">
-                    <div class="card-body p-3">
-                        <div class="text-muted small">Usuarios</div>
-                        <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.usuarios_ativos), "9,999")#</cfoutput></div>
-                        <div class="small text-muted mt-2">ativos na conta</div>
+
+                <cfif NOT VARIABLES.businessHomeHasActiveEvents>
+                    <div class="dashboard-first-action">
+                        <div>
+                            <h5 class="mb-2"><cfif VARIABLES.businessHomeHasPendingEvents>Pedido de vínculo em análise<cfelse>Vincule a primeira prova</cfif></h5>
+                            <p class="text-muted mb-0">
+                                <cfif VARIABLES.businessHomeHasPendingEvents>
+                                    Assim que a aprovação sair, a home libera conteúdo, marketing e acompanhamento comercial.
+                                <cfelse>
+                                    Encontre a prova no RoadRunners e peça o vínculo com esta conta para começar a operar.
+                                </cfif>
+                            </p>
+                        </div>
+                        <a class="btn btn-warning" href="/eventos/#primeiro-evento">
+                            <cfif VARIABLES.businessHomeHasPendingEvents>Acompanhar pedido<cfelse>Solicitar vínculo</cfif>
+                        </a>
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-xl">
-                <div class="card dashboard-kpi">
-                    <div class="card-body p-3">
-                        <div class="text-muted small">Saldo Ads</div>
-                        <div class="dashboard-kpi-value mt-2"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeSaldoAds)#</cfoutput></div>
-                        <div class="small text-muted mt-2"><cfoutput>#numberFormat(VARIABLES.businessHomeVouchersResgatados, "9,999")# vouchers</cfoutput></div>
+
+                    <div class="dashboard-next-list">
+                        <div class="dashboard-next-item">
+                            <div class="fw-bold mb-1">Depois: conteúdo</div>
+                            <div class="small">Complete página, inscrição, local e imagem.</div>
+                        </div>
+                        <div class="dashboard-next-item">
+                            <div class="fw-bold mb-1">Depois: divulgação</div>
+                            <div class="small">Use turbinados e cupons quando houver evento.</div>
+                        </div>
+                        <div class="dashboard-next-item">
+                            <div class="fw-bold mb-1">Depois: vendas</div>
+                            <div class="small">Acompanhe inscrições e sinais comerciais.</div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-xl">
-                <div class="card dashboard-kpi">
-                    <div class="card-body p-3">
-                        <div class="text-muted small">Campanhas</div>
-                        <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(VARIABLES.businessHomeAdsAtivos, "9,999")#</cfoutput></div>
-                        <div class="small text-muted mt-2"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeAdsBudgetTotal)# planejado</cfoutput></div>
+                <cfelse>
+                    <div class="business-step-grid">
+                        <div class="business-step is-complete">
+                            <div class="business-step-top">
+                                <span class="business-step-marker"><i class="fa-solid fa-check"></i></span>
+                                <span class="business-step-status">Concluído</span>
+                            </div>
+                            <h5 class="mb-2">Evento vinculado</h5>
+                            <p class="text-muted mb-0">Sua conta já possui eventos ativos para operar.</p>
+                            <div class="business-step-action">
+                                <a class="btn btn-sm btn-outline-warning w-100" href="/eventos/">Ver eventos</a>
+                            </div>
+                        </div>
+
+                        <div class="business-step <cfif VARIABLES.businessHomeContentReady>is-complete<cfelse>is-current</cfif>">
+                            <div class="business-step-top">
+                                <span class="business-step-marker"><cfif VARIABLES.businessHomeContentReady><i class="fa-solid fa-check"></i><cfelse>2</cfif></span>
+                                <span class="business-step-status"><cfif VARIABLES.businessHomeContentReady>Concluído<cfelse>Pendente</cfif></span>
+                            </div>
+                            <h5 class="mb-2">Completar a página</h5>
+                            <p class="text-muted mb-0"><cfif VARIABLES.businessHomeContentReady>As próximas provas estão com o conteúdo principal completo.<cfelse>Complete inscrição, descrição, local, organizador e imagem.</cfif></p>
+                            <div class="business-step-action">
+                                <cfif len(trim(VARIABLES.businessHomeFirstContentEventId))>
+                                    <cfoutput><a class="btn btn-sm <cfif VARIABLES.businessHomeContentReady>btn-outline-warning<cfelse>btn-warning</cfif> w-100" href="/eventos/?id_evento=#VARIABLES.businessHomeFirstContentEventId#"><cfif VARIABLES.businessHomeContentReady>Revisar conteúdo<cfelse>Completar agora</cfif></a></cfoutput>
+                                <cfelse>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="/eventos/">Revisar eventos</a>
+                                </cfif>
+                            </div>
+                        </div>
+
+                        <div class="business-step <cfif VARIABLES.businessHomeMarketingStarted>is-complete<cfelse>is-current</cfif>">
+                            <div class="business-step-top">
+                                <span class="business-step-marker"><cfif VARIABLES.businessHomeMarketingStarted><i class="fa-solid fa-check"></i><cfelse>3</cfif></span>
+                                <span class="business-step-status"><cfif VARIABLES.businessHomeMarketingStarted>Ativo<cfelse>Disponível</cfif></span>
+                            </div>
+                            <h5 class="mb-2">Divulgar e vender</h5>
+                            <p class="text-muted mb-0"><cfif VARIABLES.businessHomeMarketingStarted>Já existe crédito, voucher ou campanha conectado à conta.<cfelse>Use Turbinados, Cupons e Inscrições para acompanhar a operação.</cfif></p>
+                            <div class="business-step-action d-grid gap-2">
+                                <a class="btn btn-sm btn-warning" href="/ads/">Abrir marketing</a>
+                                <a class="btn btn-sm btn-outline-warning" href="/inscricoes/">Ver inscrições</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl">
-                <div class="card dashboard-kpi">
-                    <div class="card-body p-3">
-                        <div class="text-muted small">Pendencias</div>
-                        <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.solicitacoes_pendentes) + val(qBusinessHomeSummary.eventos_pendentes), "9,999")#</cfoutput></div>
-                        <div class="small text-muted mt-2">vinculos e solicitacoes</div>
-                    </div>
-                </div>
+                </cfif>
             </div>
         </div>
 
+        <cfif VARIABLES.businessHomeHasActiveEvents>
+            <div class="row g-3 mb-3">
+                <div class="col-6 col-xl">
+                    <div class="card dashboard-kpi">
+                        <div class="card-body p-3">
+                            <div class="text-muted small">Eventos ativos</div>
+                            <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.eventos_ativos), "9,999")#</cfoutput></div>
+                            <div class="small text-muted mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.eventos_proximos), "9,999")# próximos</cfoutput></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-xl">
+                    <div class="card dashboard-kpi">
+                        <div class="card-body p-3">
+                            <div class="text-muted small">Usuários</div>
+                            <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.usuarios_ativos), "9,999")#</cfoutput></div>
+                            <div class="small text-muted mt-2">ativos na conta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-xl">
+                    <div class="card dashboard-kpi">
+                        <div class="card-body p-3">
+                            <div class="text-muted small">Saldo Ads</div>
+                            <div class="dashboard-kpi-value mt-2"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeSaldoAds)#</cfoutput></div>
+                            <div class="small text-muted mt-2"><cfoutput>#numberFormat(VARIABLES.businessHomeVouchersResgatados, "9,999")# vouchers</cfoutput></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-xl">
+                    <div class="card dashboard-kpi">
+                        <div class="card-body p-3">
+                            <div class="text-muted small">Campanhas</div>
+                            <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(VARIABLES.businessHomeAdsAtivos, "9,999")#</cfoutput></div>
+                            <div class="small text-muted mt-2"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeAdsBudgetTotal)# planejado</cfoutput></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl">
+                    <div class="card dashboard-kpi">
+                        <div class="card-body p-3">
+                            <div class="text-muted small">Pendências</div>
+                            <div class="dashboard-kpi-value mt-2"><cfoutput>#numberFormat(val(qBusinessHomeSummary.solicitacoes_pendentes) + val(qBusinessHomeSummary.eventos_pendentes), "9,999")#</cfoutput></div>
+                            <div class="small text-muted mt-2">vínculos e solicitações</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <cfelse>
+            <div class="dashboard-operational-empty mb-3">
+                <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 align-items-lg-center">
+                    <div>
+                        <h5 class="mb-1">Operação ainda não liberada</h5>
+                        <p class="text-muted mb-0">Métricas, campanhas e vendas aparecem aqui depois que uma prova estiver vinculada e aprovada.</p>
+                    </div>
+                    <a class="btn btn-sm btn-outline-warning" href="/eventos/#primeiro-evento">Abrir eventos</a>
+                </div>
+            </div>
+        </cfif>
+
+        <cfif VARIABLES.businessHomeHasActiveEvents>
         <div class="row g-3">
             <div class="col-xl-6">
                 <div class="card h-100">
@@ -544,6 +728,7 @@
                 </div>
             </div>
         </div>
+        </cfif>
         <script>
             document.querySelectorAll("[data-business-list-toggle]").forEach(function (button) {
                 button.addEventListener("click", function () {
