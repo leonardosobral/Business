@@ -9,7 +9,8 @@
     --business-ui-border-strong: rgba(255,255,255,.18);
     --business-ui-surface: rgba(255,255,255,.025);
     --business-ui-surface-strong: rgba(255,255,255,.06);
-    --business-ui-muted: var(--mdb-secondary-color);
+    --business-ui-muted: rgba(255,255,255,.68);
+    --business-ui-muted-strong: rgba(255,255,255,.82);
 }
 
 .business-page .business-page-card {
@@ -80,6 +81,10 @@
 .business-page .business-kpi-value {
     font-size: 1.35rem;
     line-height: 1.1;
+}
+
+.business-page .text-muted {
+    color: var(--business-ui-muted) !important;
 }
 
 .business-page .business-label,
@@ -243,8 +248,8 @@
     min-height: 1.5rem;
     padding: .15rem .45rem;
     border-radius: 999px;
-    background: rgba(255,255,255,.09);
-    color: var(--business-ui-muted);
+    background: rgba(255,255,255,.14);
+    color: var(--business-ui-muted-strong);
     font-size: .72rem;
     font-weight: 700;
     letter-spacing: 0;
@@ -290,31 +295,73 @@
     line-height: 1.15;
 }
 
-.business-page .events-client-table-wrap {
+.events-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: .75rem;
+}
+
+.events-summary-kpi {
+    min-height: 76px;
+    padding: .75rem .9rem;
+    border: 1px solid var(--business-ui-border);
+    border-left: 3px solid var(--mdb-warning);
+    border-radius: .5rem;
+    background: var(--business-ui-surface);
+}
+
+.events-summary-kpi strong {
+    display: block;
+    color: var(--mdb-body-color);
+    font-size: 1.55rem;
+    line-height: 1.1;
+}
+
+.events-summary-kpi span {
+    display: block;
+    margin-top: .2rem;
+    color: var(--business-ui-muted);
+    font-weight: 700;
+}
+
+.events-list-table-wrap {
     max-height: 62vh;
     overflow: auto;
     border: 1px solid var(--business-ui-border);
     border-radius: .5rem;
 }
 
-.business-page .events-client-table-wrap table {
+.events-list-table-wrap table {
     margin-bottom: 0;
 }
 
-.business-page .events-client-table-wrap th {
+.events-list-table-wrap th {
     position: sticky;
     top: 0;
     z-index: 2;
     background: #2f2f2f;
 }
 
-.business-page .events-list-more {
+.events-list-more,
+.events-list-note {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: .75rem;
     color: var(--business-ui-muted);
+}
+
+.events-list-more span,
+.events-list-note span {
+    color: var(--business-ui-muted-strong);
+}
+
+.events-list-note {
+    border: 1px solid var(--business-ui-border);
+    border-radius: .5rem;
+    padding: .65rem .75rem;
+    background: var(--business-ui-surface);
 }
 
 @media (max-width: 991.98px) {

@@ -23,7 +23,7 @@ Objetivo: telas da area nao-admin devem mostrar a proxima acao clara antes de mo
 ## Telas migradas
 
 - Home da conta: checklist de ativacao da operacao.
-- `/administracao/contas/`: painel compacto de conta para cliente final, com chips de contexto, tarefas curtas e formularios avancados colapsados.
+- `/administracao/contas/`: painel compacto de conta para cliente final, focado em equipe/usuarios; eventos aparecem como contexto e CTA para `/eventos/`, enquanto a aba de eventos fica restrita ao admin. No admin, lista de contas e detalhe ficam lado a lado quando houver espaco, e a busca de eventos permite vinculo em lote.
 - `/assinaturas/`: plano atual, recursos incluidos e caminho de atendimento comercial sem valores ficticios.
-- `/eventos/`: guia pos-vinculo para completar publicacao e operar a prova; estado sem evento mostra apenas um caminho inicial e a lista de muitos eventos fica limitada/rolavel por padrao.
+- `/eventos/`: guia pos-vinculo para completar publicacao e operar a prova; estado sem evento mostra apenas um caminho inicial, o pedido de novo vinculo fica colapsado quando nao e a acao principal, e listas grandes ficam limitadas/rolaveis por padrao tambem no admin.
 - `/inscricoes/`: estados vazios para sem evento e sem dados integrados.

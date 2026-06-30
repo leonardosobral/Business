@@ -570,7 +570,8 @@
             </cfif>
 
             <cfif qBusinessAccountSave.recordcount>
-                <cflocation addtoken="false" url="./?conta_id=#qBusinessAccountSave.id_conta#&sucesso=conta##conta-gerenciamento"/>
+                <cfset VARIABLES.accountSaveRedirectTab = len(VARIABLES.accountFormId) ? "dados" : "usuarios"/>
+                <cflocation addtoken="false" url="./?conta_id=#qBusinessAccountSave.id_conta#&tab=#VARIABLES.accountSaveRedirectTab#&sucesso=conta##conta-gerenciamento"/>
             <cfelse>
                 <cfset VARIABLES.accountsSaveErrorMessage = "Nao foi possivel salvar a conta informada."/>
             </cfif>
@@ -1083,7 +1084,8 @@
     AND FORM.account_event_action EQ "salvar">
 
     <cfset VARIABLES.accountEventAccountId = isDefined("FORM.id_conta") ? trim(FORM.id_conta) : ""/>
-    <cfset VARIABLES.accountEventId = isDefined("FORM.id_evento") ? trim(FORM.id_evento) : ""/>
+    <cfset VARIABLES.accountEventIdRaw = isDefined("FORM.id_evento") ? trim(FORM.id_evento) : ""/>
+    <cfset VARIABLES.accountEventIdList = ""/>
     <cfset VARIABLES.accountEventStatus = isDefined("FORM.status") ? uCase(trim(FORM.status)) : ""/>
     <cfset VARIABLES.accountEventSaveErrors = []/>
 
@@ -1095,8 +1097,19 @@
         <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Conta invalida para o vinculo de evento.")/>
     </cfif>
 
-    <cfif NOT len(VARIABLES.accountEventId) OR NOT isNumeric(VARIABLES.accountEventId)>
-        <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Evento invalido para o vinculo.")/>
+    <cfloop list="#VARIABLES.accountEventIdRaw#" item="accountEventIdItem">
+        <cfset VARIABLES.accountEventIdItem = trim(accountEventIdItem)/>
+        <cfif len(VARIABLES.accountEventIdItem) AND isNumeric(VARIABLES.accountEventIdItem)>
+            <cfif NOT listFind(VARIABLES.accountEventIdList, VARIABLES.accountEventIdItem)>
+                <cfset VARIABLES.accountEventIdList = listAppend(VARIABLES.accountEventIdList, VARIABLES.accountEventIdItem)/>
+            </cfif>
+        <cfelseif len(VARIABLES.accountEventIdItem)>
+            <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Evento invalido para o vinculo.")/>
+        </cfif>
+    </cfloop>
+
+    <cfif NOT len(VARIABLES.accountEventIdList)>
+        <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Selecione pelo menos um evento para vincular.")/>
     </cfif>
 
     <cfif NOT listFindNoCase(VARIABLES.accountEventStatusList, VARIABLES.accountEventStatus)>
@@ -1118,12 +1131,11 @@
         <cfquery name="qBusinessAccountEventCheck">
             SELECT id_evento
             FROM tb_evento_corridas
-            WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountEventId#"/>
-            LIMIT 1
+            WHERE id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountEventIdList#" list="true"/>)
         </cfquery>
 
-        <cfif NOT qBusinessAccountEventCheck.recordcount>
-            <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Evento nao encontrado.")/>
+        <cfif qBusinessAccountEventCheck.recordcount NEQ listLen(VARIABLES.accountEventIdList)>
+            <cfset arrayAppend(VARIABLES.accountEventSaveErrors, "Um ou mais eventos selecionados nao foram encontrados.")/>
         </cfif>
     </cfif>
 
@@ -1137,24 +1149,25 @@
                     status,
                     usuario_cadastro
                 )
-                VALUES
-                (
+                SELECT
                     <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountEventAccountId#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountEventId#"/>,
+                    evt.id_evento,
                     CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountEventStatus#"/> AS status_conta_evento),
                     <cfif isDefined("COOKIE.id") AND isNumeric(COOKIE.id)>
                         <cfqueryparam cfsqltype="cf_sql_bigint" value="#COOKIE.id#"/>
                     <cfelse>
                         NULL
                     </cfif>
-                )
+                FROM tb_evento_corridas evt
+                WHERE evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountEventIdList#" list="true"/>)
                 ON CONFLICT (id_conta, id_evento)
                 DO UPDATE SET
                     status = EXCLUDED.status,
                     data_atualizacao = now()
             </cfquery>
 
-            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountEventAccountId#&tab=eventos&sucesso=evento##conta-gerenciamento"/>
+            <cfset VARIABLES.accountEventRedirectSearch = len(trim(URL.evento_busca)) ? "&evento_busca=#urlEncodedFormat(URL.evento_busca)#" : ""/>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountEventAccountId#&tab=eventos#VARIABLES.accountEventRedirectSearch#&sucesso=evento##conta-gerenciamento"/>
             <cfcatch type="any">
                 <cfset VARIABLES.accountsEventSaveErrorMessage = "Nao foi possivel salvar o vinculo de evento. " & cfcatch.message/>
             </cfcatch>

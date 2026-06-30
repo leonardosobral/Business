@@ -21,6 +21,16 @@
 </cfif>
 
 <cfset VARIABLES.eventosShowRequestPanel = true/>
+<cfset VARIABLES.eventosRequestPanelCollapsed = false/>
+<cfif NOT VARIABLES.eventosShowOnboarding
+    AND VARIABLES.eventoSolicitacaoCanReview
+    AND NOT VARIABLES.eventoSolicitacaoCanRequest
+    AND VARIABLES.eventoSolicitacaoTablesReady
+    AND qEventoSolicitacoesPendentes.recordcount EQ 0
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoErrorMessage))>
+    <cfset VARIABLES.eventosShowRequestPanel = false/>
+</cfif>
 <cfif VARIABLES.eventosShowOnboarding
     AND NOT len(trim(VARIABLES.eventoSolicitacaoReferencia))
     AND NOT len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))
@@ -28,6 +38,16 @@
     AND NOT (VARIABLES.eventoSolicitacaoCanReview AND qEventoSolicitacoesPendentes.recordcount GT 0)
     AND qEventoMinhasSolicitacoes.recordcount EQ 0>
     <cfset VARIABLES.eventosShowRequestPanel = false/>
+</cfif>
+<cfif VARIABLES.eventosShowRequestPanel
+    AND NOT VARIABLES.eventosShowOnboarding
+    AND VARIABLES.eventoSolicitacaoCanRequest
+    AND qEventos.recordcount GT 0
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoReferencia))
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))
+    AND NOT len(trim(VARIABLES.eventoSolicitacaoErrorMessage))
+    AND VARIABLES.eventoMinhasSolicitacoesPendentes EQ 0>
+    <cfset VARIABLES.eventosRequestPanelCollapsed = true/>
 </cfif>
 
 <cfif VARIABLES.eventosShowOnboarding>

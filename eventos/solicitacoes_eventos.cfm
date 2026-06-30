@@ -36,6 +36,42 @@
   .event-request-history[open] summary {
     border-bottom: 1px solid rgba(255,255,255,.08);
   }
+
+  .event-request-panel-summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    list-style: none;
+    padding: .85rem 1rem;
+  }
+
+  .event-request-panel-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .event-request-panel-summary strong {
+    display: block;
+  }
+
+  .event-request-panel-summary small {
+    color: var(--mdb-secondary-color);
+    display: block;
+    margin-top: .15rem;
+  }
+
+  .event-request-panel-summary .fa-chevron-down {
+    transition: transform .15s ease;
+  }
+
+  .event-request-panel[open] .event-request-panel-summary {
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .event-request-panel[open] .event-request-panel-summary .fa-chevron-down {
+    transform: rotate(180deg);
+  }
 </style>
 
 <cfif len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))>
@@ -56,8 +92,27 @@
   </div>
 </cfif>
 
+<cfset VARIABLES.eventRequestPanelIsCollapsed = isDefined("VARIABLES.eventosRequestPanelCollapsed") AND VARIABLES.eventosRequestPanelCollapsed/>
+
 <cfif VARIABLES.eventoSolicitacaoTablesReady AND (VARIABLES.eventoSolicitacaoCanRequest OR VARIABLES.eventoSolicitacaoCanReview)>
-  <div class="event-request-panel p-3 p-lg-4 mb-4" id="event-request-panel">
+  <cfif VARIABLES.eventRequestPanelIsCollapsed>
+    <details class="event-request-panel mb-4" id="event-request-panel">
+      <summary class="event-request-panel-summary">
+        <span>
+          <strong>Solicitar outro evento</strong>
+          <small>Busque uma prova para pedir novo vínculo à conta.</small>
+        </span>
+        <span class="d-inline-flex align-items-center gap-2">
+          <cfif VARIABLES.eventoMinhasSolicitacoesHistorico GT 0>
+            <span class="badge badge-secondary"><cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# no historico</cfoutput></span>
+          </cfif>
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="p-3 p-lg-4">
+  <cfelse>
+    <div class="event-request-panel p-3 p-lg-4 mb-4" id="event-request-panel">
+  </cfif>
     <div class="row g-4">
       <cfif VARIABLES.eventoSolicitacaoCanRequest>
         <div class="col-12 <cfif VARIABLES.eventoSolicitacaoCanReview>col-xl-7<cfelse>col-xl-12</cfif>">
@@ -277,5 +332,10 @@
         </div>
       </cfif>
     </div>
-  </div>
+  <cfif VARIABLES.eventRequestPanelIsCollapsed>
+      </div>
+    </details>
+  <cfelse>
+    </div>
+  </cfif>
 </cfif>
