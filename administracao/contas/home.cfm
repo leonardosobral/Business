@@ -136,6 +136,33 @@
     background: rgba(255,255,255,.025);
   }
 
+  .accounts-detail-modal .modal-dialog {
+    max-width: min(1480px, calc(100vw - 2rem));
+  }
+
+  .accounts-detail-modal .modal-content {
+    border: 1px solid rgba(255,255,255,.14);
+    background: #444;
+    color: var(--mdb-body-color);
+  }
+
+  .accounts-detail-modal .modal-body {
+    max-height: calc(100vh - 3rem);
+    overflow: auto;
+  }
+
+  .accounts-detail-modal .accounts-selected-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .accounts-detail-modal .accounts-management-header {
+    padding-right: .25rem;
+  }
+
   .accounts-page .accounts-table td,
   .accounts-page .accounts-table th {
     vertical-align: middle;
@@ -276,16 +303,11 @@
     align-items: flex-start;
   }
 
-  .accounts-page .accounts-list-panel,
   .accounts-page .accounts-selected-panel {
     min-width: 0;
-  }
-
-  .accounts-page .accounts-selected-panel {
-    position: sticky;
-    top: 84px;
-    max-height: calc(100vh - 104px);
-    overflow: auto;
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 
   .accounts-page .accounts-list-panel .accounts-table {
@@ -297,8 +319,55 @@
     overflow: auto;
   }
 
+  .accounts-page .accounts-list-panel .table-responsive {
+    overflow: visible;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table,
+  .accounts-page .accounts-list-panel .accounts-table tbody {
+    display: block;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table thead {
+    display: none;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table tbody {
+    display: grid;
+    gap: .45rem;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: .25rem .6rem;
+    align-items: center;
+    padding: .65rem .5rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table td {
+    border-bottom: 0;
+    padding: 0;
+  }
+
   .accounts-page .accounts-list-panel .accounts-cell {
-    max-width: 210px;
+    max-width: none;
+    min-width: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-cell .fw-bold,
+  .accounts-page .accounts-list-panel .accounts-cell .small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .accounts-page .accounts-list-panel .accounts-account-email {
@@ -312,6 +381,52 @@
   .accounts-page .accounts-list-panel .accounts-table .btn {
     min-width: 0;
     padding: .32rem .6rem;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table td:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table td:nth-child(5) {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: .85rem;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-table td:nth-child(6) {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    justify-self: end;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-page-count {
+    display: none;
+  }
+
+  .accounts-page .accounts-list-search-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(130px, 180px);
+    gap: .5rem;
+    align-items: end;
+  }
+
+  .accounts-page .accounts-list-panel .accounts-list-search-row {
+    grid-template-columns: 1fr;
+  }
+
+  .accounts-page .accounts-selected-panel .accounts-user-row {
+    grid-template-columns: minmax(180px, 1fr) minmax(110px, 135px) minmax(110px, 135px) auto;
+  }
+
+  .accounts-page .accounts-selected-panel .accounts-user-row .d-flex {
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .accounts-page .accounts-requests-compact {
@@ -589,6 +704,10 @@
     }
 
     .accounts-page .accounts-event-bulk-toolbar {
+      grid-template-columns: 1fr;
+    }
+
+    .accounts-page .accounts-list-search-row {
       grid-template-columns: 1fr;
     }
   }
@@ -869,22 +988,6 @@
             </div>
           </cfif>
 
-          <cfif VARIABLES.businessAccountsCanAdminAll OR qBusinessAccountList.recordcount GT 1 OR len(trim(URL.busca)) GT 0>
-            <cfoutput>
-              <form method="get" action="./" class="mb-4">
-                <div class="row g-3 align-items-end">
-                  <div class="col-12 col-lg-9">
-                    <label class="form-label">Buscar conta</label>
-                    <input class="form-control" type="text" name="busca" value="#htmlEditFormat(URL.busca)#" placeholder="Nome, titular, documento ou e-mail"/>
-                  </div>
-                  <div class="col-12 col-lg-3">
-                    <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
-                  </div>
-                </div>
-              </form>
-            </cfoutput>
-          </cfif>
-
           <cfif VARIABLES.accountsShowNewForm AND VARIABLES.businessAccountsTablesReady>
             <div class="accounts-panel p-4 mb-4">
               <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
@@ -974,15 +1077,25 @@
 
           <div class="row g-4 <cfif VARIABLES.businessAccountsCanAdminAll>accounts-admin-workspace</cfif>">
             <cfif VARIABLES.businessAccountsCanAdminAll OR qBusinessAccountList.recordcount GT 1 OR len(trim(URL.busca)) GT 0>
-              <div class="<cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>col-12 col-xl-5<cfelse>col-12</cfif>">
-                <div class="accounts-panel p-3 <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>accounts-list-panel</cfif>">
+              <div class="col-12">
+                <div class="accounts-panel p-3">
                   <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                       <h5 class="mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Contas cadastradas<cfelse>Contas da empresa</cfif></h5>
                       <div class="small text-muted"><cfoutput>#LSNumberFormat(VARIABLES.accountsFilteredTotal)# contas encontradas</cfoutput></div>
                     </div>
-                    <div class="small text-muted"><cfoutput>Página #VARIABLES.accountsPage# de #VARIABLES.accountsTotalPages#</cfoutput></div>
+                    <div class="small text-muted accounts-page-count"><cfoutput>Página #VARIABLES.accountsPage# de #VARIABLES.accountsTotalPages#</cfoutput></div>
                   </div>
+
+                  <cfoutput>
+                    <form method="get" action="./" class="mb-3">
+                      <label class="form-label">Buscar conta</label>
+                      <div class="accounts-list-search-row">
+                        <input class="form-control" type="text" name="busca" value="#htmlEditFormat(URL.busca)#" placeholder="Nome, titular, documento ou e-mail"/>
+                        <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
+                      </div>
+                    </form>
+                  </cfoutput>
 
                   <div class="table-responsive">
                     <table class="table table-sm accounts-table align-middle mb-0">
@@ -1046,13 +1159,22 @@
               </div>
             </cfif>
 
-            <div class="<cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>col-12 col-xl-7<cfelse>col-12</cfif>">
-              <div class="accounts-panel p-3 <cfif NOT VARIABLES.businessAccountsCanAdminAll>accounts-client-management</cfif> <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>accounts-selected-panel</cfif>" id="conta-gerenciamento">
+            <cfif qBusinessAccountEdit.recordcount OR NOT VARIABLES.businessAccountsCanAdminAll>
+              <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>
+                <div class="modal fade accounts-detail-modal" id="accountDetailModal" tabindex="-1" aria-labelledby="accountDetailModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-body p-3">
+                        <div class="accounts-panel p-3 accounts-selected-panel" id="conta-gerenciamento">
+              <cfelse>
+                <div class="col-12">
+                  <div class="accounts-panel p-3 accounts-client-management" id="conta-gerenciamento">
+              </cfif>
                 <cfif qBusinessAccountEdit.recordcount>
                   <div class="accounts-management-header <cfif NOT VARIABLES.businessAccountsCanAdminAll>is-client</cfif>">
                     <div>
                       <div class="accounts-action-title mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Conta selecionada<cfelse>Configuração</cfif></div>
-                      <h4 class="mb-2"><cfif VARIABLES.businessAccountsCanAdminAll><cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</cfoutput><cfelse>Equipe da conta</cfif></h4>
+                      <h4 class="mb-2"<cfif VARIABLES.businessAccountsCanAdminAll> id="accountDetailModalLabel"</cfif>><cfif VARIABLES.businessAccountsCanAdminAll><cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</cfoutput><cfelse>Equipe da conta</cfif></h4>
                       <div class="accounts-management-meta small text-muted">
                         <cfoutput>
                           <cfif VARIABLES.businessAccountsCanAdminAll>
@@ -1674,8 +1796,17 @@
                     </cfif>
                   </div>
                 </cfif>
-              </div>
-            </div>
+                  <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <cfelse>
+                  </div>
+                </div>
+              </cfif>
+            </cfif>
           </div>
 
         </div>
@@ -1683,3 +1814,26 @@
     </div>
   </div>
 </section>
+
+<cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>
+  <cfoutput>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var modalElement = document.getElementById('accountDetailModal');
+        if (!modalElement || !window.mdb) return;
+
+        var modal = new mdb.Modal(modalElement);
+        var closeUrl = './?busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage#';
+
+        modalElement.addEventListener('hidden.mdb.modal', function () {
+          window.location.href = closeUrl;
+        });
+        modalElement.addEventListener('hidden.bs.modal', function () {
+          window.location.href = closeUrl;
+        });
+
+        modal.show();
+      });
+    </script>
+  </cfoutput>
+</cfif>
