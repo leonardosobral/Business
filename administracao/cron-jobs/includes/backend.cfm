@@ -6,6 +6,9 @@
 <cfparam name="URL.projeto" default=""/>
 <cfparam name="URL.ambiente" default=""/>
 <cfparam name="URL.status" default=""/>
+<cfparam name="URL.aba" default="jobs"/>
+<cfparam name="URL.historico_status" default=""/>
+<cfparam name="URL.historico_job_id" default=""/>
 <cfparam name="URL.job_id" default=""/>
 <cfparam name="URL.sucesso" default=""/>
 <cfparam name="FORM.acao" default=""/>
@@ -21,6 +24,21 @@
 <cfset VARIABLES.cronJobsNotice = ""/>
 <cfset VARIABLES.cronJobsError = ""/>
 <cfset VARIABLES.cronJobsSchemaReady = cronJobsTablesReady()/>
+<cfset VARIABLES.cronJobsActiveTab = lCase(trim(URL.aba))/>
+<cfif NOT listFindNoCase("jobs,historico,erros", VARIABLES.cronJobsActiveTab)>
+    <cfset VARIABLES.cronJobsActiveTab = "jobs"/>
+</cfif>
+<cfset VARIABLES.cronJobsStatusFilter = lCase(trim(URL.status))/>
+<cfif NOT listFindNoCase("true,false,erro,error,http_error,failed,timeout,sucesso,success,vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
+    <cfset VARIABLES.cronJobsStatusFilter = ""/>
+</cfif>
+<cfset VARIABLES.cronHistoryStatusFilter = lCase(trim(URL.historico_status))/>
+<cfif VARIABLES.cronJobsActiveTab EQ "erros">
+    <cfset VARIABLES.cronHistoryStatusFilter = "erro"/>
+</cfif>
+<cfif NOT listFindNoCase("erro,error,http_error,failed,timeout,sucesso,success,running", VARIABLES.cronHistoryStatusFilter)>
+    <cfset VARIABLES.cronHistoryStatusFilter = ""/>
+</cfif>
 <cfset VARIABLES.cronJobsCanAdmin = false/>
 <cfif isDefined("qPerfil") AND qPerfil.recordcount AND NOT isNull(qPerfil.is_admin)>
     <cfset VARIABLES.cronJobsCanAdmin = isBoolean(qPerfil.is_admin) ? qPerfil.is_admin : listFindNoCase("true,t,1,yes,sim", trim(qPerfil.is_admin))/>
@@ -35,6 +53,7 @@
     <cfset cronJobsReconcileStaleRuns()/>
 </cfif>
 <cfset qCronJobStats = queryNew("total_jobs,ativos,inativos,vencidos,sucesso,erro")/>
+<cfset qCronJobRunStats = queryNew("total_runs,sucesso,erro,running,ultimas_24h")/>
 <cfset VARIABLES.cronJobsTotal = 0/>
 <cfset VARIABLES.cronJobsTotalPages = 1/>
 
@@ -216,7 +235,7 @@
                count(*) FILTER (WHERE NOT ativo) AS inativos,
                count(*) FILTER (WHERE ativo AND next_run_at <= now()) AS vencidos,
                count(*) FILTER (WHERE last_status = 'success') AS sucesso,
-               count(*) FILTER (WHERE last_status IN ('error', 'http_error')) AS erro
+               count(*) FILTER (WHERE lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro
         FROM tb_cron_jobs
     </cfquery>
 
@@ -234,12 +253,21 @@
         <cfif len(trim(URL.ambiente))>
             AND ambiente = <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(URL.ambiente)#"/>
         </cfif>
-        <cfif len(trim(URL.status))>
-            AND ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
+        <cfif VARIABLES.cronJobsStatusFilter EQ "true" OR VARIABLES.cronJobsStatusFilter EQ "false">
+            AND ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobsStatusFilter#"/>
+        <cfelseif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronJobsStatusFilter)>
+            AND lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')
+        <cfelseif listFindNoCase("sucesso,success", VARIABLES.cronJobsStatusFilter)>
+            AND last_status = 'success'
+        <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
+            AND ativo = true
+            AND next_run_at <= now()
         </cfif>
     </cfquery>
     <cfset VARIABLES.cronJobsTotal = qCronJobsCount.total/>
     <cfset VARIABLES.cronJobsTotalPages = max(1, ceiling(VARIABLES.cronJobsTotal / VARIABLES.cronJobsPerPage))/>
+    <cfset VARIABLES.cronJobsPage = min(VARIABLES.cronJobsPage, VARIABLES.cronJobsTotalPages)/>
+    <cfset VARIABLES.cronJobsOffset = (VARIABLES.cronJobsPage - 1) * VARIABLES.cronJobsPerPage/>
 
     <cfquery name="qCronJobs">
         SELECT *
@@ -255,20 +283,43 @@
         <cfif len(trim(URL.ambiente))>
             AND ambiente = <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(URL.ambiente)#"/>
         </cfif>
-        <cfif len(trim(URL.status))>
-            AND ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
+        <cfif VARIABLES.cronJobsStatusFilter EQ "true" OR VARIABLES.cronJobsStatusFilter EQ "false">
+            AND ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobsStatusFilter#"/>
+        <cfelseif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronJobsStatusFilter)>
+            AND lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')
+        <cfelseif listFindNoCase("sucesso,success", VARIABLES.cronJobsStatusFilter)>
+            AND last_status = 'success'
+        <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
+            AND ativo = true
+            AND next_run_at <= now()
         </cfif>
         ORDER BY ativo DESC, next_run_at ASC, id_cron_job DESC
         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobsPerPage#"/>
         OFFSET <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobsOffset#"/>
     </cfquery>
 
+    <cfquery name="qCronJobRunStats">
+        SELECT count(*) AS total_runs,
+               count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'success') AS sucesso,
+               count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro,
+               count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'running') AS running,
+               count(*) FILTER (WHERE started_at >= now() - interval '24 hours') AS ultimas_24h
+        FROM tb_cron_job_runs
+    </cfquery>
+
     <cfquery name="qCronJobRunsCount">
         SELECT count(*) AS total
         FROM tb_cron_job_runs run
         WHERE 1 = 1
-        <cfif isNumeric(URL.job_id)>
-            AND run.id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
+        <cfif isNumeric(URL.historico_job_id)>
+            AND run.id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.historico_job_id#"/>
+        </cfif>
+        <cfif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronHistoryStatusFilter)>
+            AND lower(trim(coalesce(run.status, ''))) IN ('error', 'http_error', 'failed', 'timeout')
+        <cfelseif listFindNoCase("sucesso,success", VARIABLES.cronHistoryStatusFilter)>
+            AND lower(trim(coalesce(run.status, ''))) = 'success'
+        <cfelseif VARIABLES.cronHistoryStatusFilter EQ "running">
+            AND lower(trim(coalesce(run.status, ''))) = 'running'
         </cfif>
     </cfquery>
     <cfset VARIABLES.cronHistoryTotal = qCronJobRunsCount.total/>
@@ -282,8 +333,15 @@
         FROM tb_cron_job_runs run
         INNER JOIN tb_cron_jobs job ON job.id_cron_job = run.id_cron_job
         WHERE 1 = 1
-        <cfif isNumeric(URL.job_id)>
-            AND run.id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
+        <cfif isNumeric(URL.historico_job_id)>
+            AND run.id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.historico_job_id#"/>
+        </cfif>
+        <cfif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronHistoryStatusFilter)>
+            AND lower(trim(coalesce(run.status, ''))) IN ('error', 'http_error', 'failed', 'timeout')
+        <cfelseif listFindNoCase("sucesso,success", VARIABLES.cronHistoryStatusFilter)>
+            AND lower(trim(coalesce(run.status, ''))) = 'success'
+        <cfelseif VARIABLES.cronHistoryStatusFilter EQ "running">
+            AND lower(trim(coalesce(run.status, ''))) = 'running'
         </cfif>
         ORDER BY run.started_at DESC, run.id_cron_job_run DESC
         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronHistoryPerPage#"/>

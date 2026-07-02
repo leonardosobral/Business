@@ -14,6 +14,64 @@
     color: var(--mdb-secondary-color);
     font-size: .85rem;
   }
+
+  .event-request-scroll {
+    max-height: 275px;
+    overflow-y: auto;
+  }
+
+  .event-request-history {
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: .5rem;
+    background: rgba(255,255,255,.03);
+  }
+
+  .event-request-history summary {
+    cursor: pointer;
+    padding: .75rem 1rem;
+    color: var(--mdb-secondary-color);
+    font-weight: 600;
+  }
+
+  .event-request-history[open] summary {
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .event-request-panel-summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    list-style: none;
+    padding: .85rem 1rem;
+  }
+
+  .event-request-panel-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .event-request-panel-summary strong {
+    display: block;
+  }
+
+  .event-request-panel-summary small {
+    color: var(--mdb-secondary-color);
+    display: block;
+    margin-top: .15rem;
+  }
+
+  .event-request-panel-summary .fa-chevron-down {
+    transition: transform .15s ease;
+  }
+
+  .event-request-panel[open] .event-request-panel-summary {
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .event-request-panel[open] .event-request-panel-summary .fa-chevron-down {
+    transform: rotate(180deg);
+  }
 </style>
 
 <cfif len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))>
@@ -34,8 +92,27 @@
   </div>
 </cfif>
 
+<cfset VARIABLES.eventRequestPanelIsCollapsed = isDefined("VARIABLES.eventosRequestPanelCollapsed") AND VARIABLES.eventosRequestPanelCollapsed/>
+
 <cfif VARIABLES.eventoSolicitacaoTablesReady AND (VARIABLES.eventoSolicitacaoCanRequest OR VARIABLES.eventoSolicitacaoCanReview)>
-  <div class="event-request-panel p-3 p-lg-4 mb-4">
+  <cfif VARIABLES.eventRequestPanelIsCollapsed>
+    <details class="event-request-panel mb-4" id="event-request-panel">
+      <summary class="event-request-panel-summary">
+        <span>
+          <strong>Solicitar outro evento</strong>
+          <small>Busque uma prova para pedir novo vínculo à conta.</small>
+        </span>
+        <span class="d-inline-flex align-items-center gap-2">
+          <cfif VARIABLES.eventoMinhasSolicitacoesHistorico GT 0>
+            <span class="badge badge-secondary"><cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# no historico</cfoutput></span>
+          </cfif>
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="p-3 p-lg-4">
+  <cfelse>
+    <div class="event-request-panel p-3 p-lg-4 mb-4" id="event-request-panel">
+  </cfif>
     <div class="row g-4">
       <cfif VARIABLES.eventoSolicitacaoCanRequest>
         <div class="col-12 <cfif VARIABLES.eventoSolicitacaoCanReview>col-xl-7<cfelse>col-xl-12</cfif>">
@@ -140,31 +217,70 @@
 
           <cfif qEventoMinhasSolicitacoes.recordcount>
             <h6 class="mt-4 mb-2">Minhas solicitacoes</h6>
-            <div class="table-responsive">
-              <table class="table table-sm table-dark table-striped mb-0">
-                <thead>
-                  <tr>
-                    <th>Evento</th>
-                    <th>Conta</th>
-                    <th>Status</th>
-                    <th>Solicitado em</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <cfoutput query="qEventoMinhasSolicitacoes">
+            <cfif VARIABLES.eventoMinhasSolicitacoesPendentes GT 0>
+              <div class="table-responsive event-request-scroll mb-3">
+                <table class="table table-sm table-dark table-striped mb-0">
+                  <thead>
                     <tr>
-                      <td>
-                        <div class="fw-semibold">#htmlEditFormat(qEventoMinhasSolicitacoes.nome_evento)#</div>
-                        <div class="event-request-meta">#htmlEditFormat(qEventoMinhasSolicitacoes.cidade)#/#htmlEditFormat(qEventoMinhasSolicitacoes.estado)# - #htmlEditFormat(qEventoMinhasSolicitacoes.tag)#</div>
-                      </td>
-                      <td>#htmlEditFormat(qEventoMinhasSolicitacoes.nome_conta)#</td>
-                      <td>#htmlEditFormat(qEventoMinhasSolicitacoes.status)#</td>
-                      <td><cfif isDate(qEventoMinhasSolicitacoes.data_criacao)>#dateFormat(qEventoMinhasSolicitacoes.data_criacao, "dd/mm/yyyy")#</cfif></td>
+                      <th>Evento</th>
+                      <th>Conta</th>
+                      <th>Status</th>
+                      <th>Solicitado em</th>
                     </tr>
-                  </cfoutput>
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    <cfoutput query="qEventoMinhasSolicitacoes">
+                      <cfif compareNoCase(qEventoMinhasSolicitacoes.status, "PENDENTE") EQ 0>
+                        <tr>
+                          <td>
+                            <div class="fw-semibold">#htmlEditFormat(qEventoMinhasSolicitacoes.nome_evento)#</div>
+                            <div class="event-request-meta">#htmlEditFormat(qEventoMinhasSolicitacoes.cidade)#/#htmlEditFormat(qEventoMinhasSolicitacoes.estado)# - #htmlEditFormat(qEventoMinhasSolicitacoes.tag)#</div>
+                          </td>
+                          <td>#htmlEditFormat(qEventoMinhasSolicitacoes.nome_conta)#</td>
+                          <td><span class="badge badge-warning">#htmlEditFormat(qEventoMinhasSolicitacoes.status)#</span></td>
+                          <td><cfif isDate(qEventoMinhasSolicitacoes.data_criacao)>#dateFormat(qEventoMinhasSolicitacoes.data_criacao, "dd/mm/yyyy")#</cfif></td>
+                        </tr>
+                      </cfif>
+                    </cfoutput>
+                  </tbody>
+                </table>
+              </div>
+            </cfif>
+
+            <cfif VARIABLES.eventoMinhasSolicitacoesHistorico GT 0>
+              <details class="event-request-history">
+                <summary>
+                  <cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# solicitacoes revisadas no historico</cfoutput>
+                </summary>
+                <div class="table-responsive event-request-scroll">
+                  <table class="table table-sm table-dark table-striped mb-0">
+                    <thead>
+                      <tr>
+                        <th>Evento</th>
+                        <th>Conta</th>
+                        <th>Status</th>
+                        <th>Solicitado em</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <cfoutput query="qEventoMinhasSolicitacoes">
+                        <cfif compareNoCase(qEventoMinhasSolicitacoes.status, "PENDENTE") NEQ 0>
+                          <tr>
+                            <td>
+                              <div class="fw-semibold">#htmlEditFormat(qEventoMinhasSolicitacoes.nome_evento)#</div>
+                              <div class="event-request-meta">#htmlEditFormat(qEventoMinhasSolicitacoes.cidade)#/#htmlEditFormat(qEventoMinhasSolicitacoes.estado)# - #htmlEditFormat(qEventoMinhasSolicitacoes.tag)#</div>
+                            </td>
+                            <td>#htmlEditFormat(qEventoMinhasSolicitacoes.nome_conta)#</td>
+                            <td><span class="badge badge-secondary">#htmlEditFormat(qEventoMinhasSolicitacoes.status)#</span></td>
+                            <td><cfif isDate(qEventoMinhasSolicitacoes.data_criacao)>#dateFormat(qEventoMinhasSolicitacoes.data_criacao, "dd/mm/yyyy")#</cfif></td>
+                          </tr>
+                        </cfif>
+                      </cfoutput>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </cfif>
           </cfif>
         </div>
       </cfif>
@@ -216,5 +332,10 @@
         </div>
       </cfif>
     </div>
-  </div>
+  <cfif VARIABLES.eventRequestPanelIsCollapsed>
+      </div>
+    </details>
+  <cfelse>
+    </div>
+  </cfif>
 </cfif>

@@ -2,21 +2,6 @@
 
     <input type="hidden" name="acao" value="solicitar_acesso"/>
 
-    <div class="cadastro-side p-3 mb-3">
-        <div class="row g-3 align-items-end">
-            <div class="col-12 col-md-8">
-                <label class="form-label" for="txtVoucherCodigo">Tem voucher?</label>
-                <input type="text" name="voucher_codigo" id="txtVoucherCodigo" class="form-control" maxlength="80"
-                       value="<cfoutput>#htmlEditFormat(FORM.voucher_codigo)#</cfoutput>"
-                       placeholder="Digite o codigo recebido"/>
-                <div class="form-text text-muted">Opcional. Use se recebeu um codigo de credito Run Pro para vincular sua empresa.</div>
-            </div>
-            <div class="col-12 col-md-4">
-                <span class="d-inline-flex align-items-center border rounded-pill px-3 py-2 small">Credito de ads</span>
-            </div>
-        </div>
-    </div>
-
     <div class="row mb-3 g-3">
         <div class="col-md-8">
             <div data-mdb-input-init class="form-outline">

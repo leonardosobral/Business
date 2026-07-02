@@ -1,19 +1,4 @@
 <style>
-  .foco-review-page .foco-review-kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: .75rem;
-  }
-  .foco-review-page .foco-review-kpi,
-  .foco-review-page .foco-review-case {
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 10px;
-    background: rgba(255,255,255,.025);
-  }
-  .foco-review-page .foco-review-kpi { padding: .9rem 1rem; }
-  .foco-review-page .foco-review-kpi small { color: var(--mdb-secondary-color); text-transform: uppercase; }
-  .foco-review-page .foco-review-kpi strong { display: block; font-size: 1.55rem; }
-  .foco-review-page .foco-review-case { padding: 1rem; }
   .foco-review-page .foco-review-candidate {
     border-top: 1px solid rgba(255,255,255,.08);
     display: grid;
@@ -39,11 +24,11 @@
   }
 </style>
 
-<section class="foco-review-page pb-5" id="focoReviewShortcutScope" tabindex="-1">
-  <div class="pt-5 pb-3 d-flex flex-wrap justify-content-between align-items-end gap-3">
+<section class="foco-review-page business-page pb-5" id="focoReviewShortcutScope" tabindex="-1">
+  <div class="business-page-header pt-5 pb-3 d-flex flex-wrap justify-content-between align-items-end gap-3">
     <div>
       <div class="text-warning text-uppercase small fw-bold">Administração</div>
-      <h1 class="h3 mb-1">Revisão Foco Radical</h1>
+      <h1 class="business-page-title mb-1">Revisão Foco Radical</h1>
       <p class="text-muted mb-0">Valide candidatos ambíguos antes de criar vínculos visíveis no site.</p>
       <div class="small text-muted mt-2">
         Atalhos: <kbd>V</kbd> vincula a primeira galeria acionável · <kbd>I</kbd> ignora a primeira galeria acionável
@@ -106,8 +91,8 @@
       <div class="foco-review-kpi"><small>Descartados</small><strong><cfoutput>#qFocoReviewStats.dismissed#</cfoutput></strong></div>
     </div>
 
-    <form class="card shadow-0 mb-4" method="get">
-      <div class="card-body row g-3 align-items-end">
+    <form class="card shadow-0 mb-4 business-page-card" method="get">
+      <div class="card-body business-page-body row g-3 align-items-end">
         <div class="col-12 col-lg-5">
           <label class="form-label">Evento, ID ou competição</label>
           <input class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.focoReviewSearch)#</cfoutput>" />

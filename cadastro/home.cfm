@@ -124,23 +124,6 @@
               </div>
             </div>
           <cfelse>
-            <cfif isDefined("COOKIE.id") AND len(trim(COOKIE.id))>
-              <form method="post" action="/cadastro/" class="cadastro-side p-3 mb-4">
-                <input type="hidden" name="acao" value="resgatar_voucher"/>
-                <h3 class="h5 mb-2">Tenho um voucher</h3>
-                <p class="text-muted mb-3">Use o codigo recebido para vincular seu usuario a conta da empresa e liberar o credito de ads.</p>
-                <div class="row g-2 align-items-end">
-                  <div class="col-12 col-lg-8">
-                    <label class="form-label" for="txtVoucherResgate">Codigo do voucher</label>
-                    <input class="form-control" type="text" id="txtVoucherResgate" name="voucher_codigo" maxlength="80" value="<cfoutput>#htmlEditFormat(FORM.voucher_codigo)#</cfoutput>" required/>
-                  </div>
-                  <div class="col-12 col-lg-4">
-                    <button class="btn btn-warning w-100" type="submit">Resgatar</button>
-                  </div>
-                </div>
-              </form>
-            </cfif>
-
             <cfinclude template="includes/form.cfm"/>
           </cfif>
         </div>

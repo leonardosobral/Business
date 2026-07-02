@@ -1,5 +1,6 @@
 const sidenav = document.getElementById("main-sidenav");
-const sidenavInstance = mdb.Sidenav.getInstance(sidenav);
+const sidenavInstance = sidenav ? mdb.Sidenav.getOrCreateInstance(sidenav) : null;
+const SIDENAV_DESKTOP_BREAKPOINT = 1200;
 
 let innerWidth = null;
 
@@ -11,7 +12,11 @@ const setMode = (e) => {
 
   innerWidth = window.innerWidth;
 
-  if (window.innerWidth < 1400) {
+  if (!sidenavInstance) {
+    return;
+  }
+
+  if (window.innerWidth < SIDENAV_DESKTOP_BREAKPOINT) {
     sidenavInstance.changeMode("over");
     sidenavInstance.hide();
   } else {
@@ -32,6 +37,10 @@ const keys = [
 ];
 
 window.addEventListener('keydown', (e) => {
+  if (!searchFocus) {
+    return;
+  }
+
   keys.forEach((obj) => {
     if (obj.keyCode === e.code) {
       obj.isTriggered = true;

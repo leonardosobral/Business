@@ -1,45 +1,80 @@
-<div class="<cfif Len(trim(URL.id_evento))>col-md-6<cfelse>col-md-12</cfif>">
+<cfset VARIABLES.eventosClientListMode = isDefined("VARIABLES.adminRestrictByConta")
+    AND VARIABLES.adminRestrictByConta
+    AND NOT VARIABLES.adminIsAdmin
+    AND NOT Len(trim(URL.id_evento))/>
+<cfset VARIABLES.eventosAdminListMode = isDefined("VARIABLES.adminIsAdmin")
+    AND VARIABLES.adminIsAdmin
+    AND NOT Len(trim(URL.id_evento))/>
+<cfset VARIABLES.eventosScrollableListMode = VARIABLES.eventosClientListMode OR VARIABLES.eventosAdminListMode/>
+<cfset VARIABLES.eventosListMaxRows = qEventos.recordcount/>
+<cfset VARIABLES.eventosListIsLimited = false/>
+<cfset VARIABLES.eventosListBaseQuery = "preset=#urlEncodedFormat(URL.preset)#&periodo=#urlEncodedFormat(URL.periodo)#&busca=#urlEncodedFormat(URL.busca)#&regiao=#urlEncodedFormat(URL.regiao)#&estado=#urlEncodedFormat(URL.estado)#&cidade=#urlEncodedFormat(URL.cidade)#&id_agrega_evento=#urlEncodedFormat(URL.id_agrega_evento)#&agregador_tag=#urlEncodedFormat(URL.agregador_tag)#&sessao=#urlEncodedFormat(URL.sessao)#"/>
 
-    <div class="card">
+<cfif VARIABLES.eventosClientListMode AND compareNoCase(URL.mostrar, "todos") NEQ 0 AND qEventos.recordcount GT 80>
+    <cfset VARIABLES.eventosListMaxRows = 80/>
+    <cfset VARIABLES.eventosListIsLimited = true/>
+<cfelseif VARIABLES.eventosAdminListMode AND compareNoCase(URL.mostrar, "todos") NEQ 0 AND qEventos.recordcount GT 150>
+    <cfset VARIABLES.eventosListMaxRows = 150/>
+    <cfset VARIABLES.eventosListIsLimited = true/>
+</cfif>
 
-        <div class="card-body p-3 g-3">
+<div class="<cfif Len(trim(URL.id_evento))>col-md-6<cfelse>col-md-12</cfif> <cfif VARIABLES.eventosScrollableListMode>business-page events-list-section</cfif>">
+
+    <div class="card <cfif VARIABLES.eventosScrollableListMode>shadow-0 business-page-card events-list-card</cfif>">
+
+        <div class="card-body <cfif VARIABLES.eventosScrollableListMode>business-page-body<cfelse>p-3 g-3</cfif>">
+
+            <cfif VARIABLES.eventosClientListMode>
+                <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+                    <div>
+                        <div class="business-label mb-1">Lista da conta</div>
+                        <h4 class="mb-1">Eventos vinculados</h4>
+                        <p class="text-muted mb-0">
+                            <cfif VARIABLES.eventosListIsLimited>
+                                <cfoutput>Mostrando #VARIABLES.eventosListMaxRows# de #qEventos.recordcount# eventos. Use a busca ou filtros para encontrar uma prova específica.</cfoutput>
+                            <cfelseif qEventos.recordcount>
+                                <cfoutput>#qEventos.recordcount# eventos encontrados com os filtros atuais.</cfoutput>
+                            <cfelse>
+                                Nenhum evento encontrado com os filtros atuais.
+                            </cfif>
+                        </p>
+                    </div>
+                    <div class="business-page-actions">
+                        <cfif VARIABLES.eventosListIsLimited>
+                            <cfoutput><a class="btn btn-sm btn-outline-warning" href="/eventos/?#VARIABLES.eventosListBaseQuery#&mostrar=todos">Ver todos</a></cfoutput>
+                        <cfelseif compareNoCase(URL.mostrar, "todos") EQ 0 AND qEventos.recordcount GT 80>
+                            <cfoutput><a class="btn btn-sm btn-outline-light" href="/eventos/?#VARIABLES.eventosListBaseQuery#">Compactar lista</a></cfoutput>
+                        </cfif>
+                    </div>
+                </div>
+            </cfif>
 
 
             <!--- WIDGETS --->
 
-            <cfif qEventos.recordcount>
-                <div class="row g-3">
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-primary py-2 px-3">
-                            <p class="h4 m-0"><cfoutput>#numberFormat((qStatsInsc.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></p>
-                            <p class="m-0">Inscrição</p>
-                        </div>
+            <cfif qEventos.recordcount AND NOT VARIABLES.eventosClientListMode>
+                <div class="events-summary-grid mb-3">
+                    <div class="events-summary-kpi">
+                        <strong><cfoutput>#numberFormat((qStatsInsc.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></strong>
+                        <span>Inscrição</span>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-primary py-2 px-3">
-                            <p class="h4 m-0"><cfoutput>#numberFormat((qStatsEnd.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></p>
-                            <p class="m-0">Endereço</p>
-                        </div>
+                    <div class="events-summary-kpi">
+                        <strong><cfoutput>#numberFormat((qStatsEnd.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></strong>
+                        <span>Endereço</span>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-primary py-2 px-3">
-                            <p class="h4 m-0"><cfoutput>#numberFormat((qStatsConteudo.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></p>
-                            <p class="m-0">Conteúdo</p>
-                        </div>
+                    <div class="events-summary-kpi">
+                        <strong><cfoutput>#numberFormat((qStatsConteudo.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></strong>
+                        <span>Conteúdo</span>
                     </div>
                     <cfif URL.preset EQ "futuros">
-                        <div class="col-md-3 mb-3">
-                            <div class="card bg-primary py-2 px-3">
-                                <p class="h4 m-0"><cfoutput>#numberFormat((qStatsDistancias.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></p>
-                                <p class="m-0">Distancias</p>
-                            </div>
+                        <div class="events-summary-kpi">
+                            <strong><cfoutput>#numberFormat((qStatsDistancias.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></strong>
+                            <span>Distâncias</span>
                         </div>
                     <cfelse>
-                        <div class="col-md-3 mb-3">
-                            <div class="card bg-primary py-2 px-3">
-                                <p class="h4 m-0"><cfoutput>#numberFormat((qStatsResultados.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></p>
-                                <p class="m-0">Resultados</p>
-                            </div>
+                        <div class="events-summary-kpi">
+                            <strong><cfoutput>#numberFormat((qStatsResultados.recordcount*100)/qEventos.recordcount, "9.9")#%</cfoutput></strong>
+                            <span>Resultados</span>
                         </div>
                     </cfif>
                 </div>
@@ -48,6 +83,16 @@
 
             <!--- LISTAGEM DE EVENTOS --->
 
+            <cfif VARIABLES.eventosListIsLimited AND NOT VARIABLES.eventosClientListMode>
+                <div class="events-list-note mb-3">
+                    <cfoutput>
+                        <span>Mostrando #VARIABLES.eventosListMaxRows# de #qEventos.recordcount# eventos. Use filtros ou busca para reduzir a lista.</span>
+                        <a class="btn btn-sm btn-outline-warning" href="/eventos/?#VARIABLES.eventosListBaseQuery#&mostrar=todos">Ver todos</a>
+                    </cfoutput>
+                </div>
+            </cfif>
+
+            <div class="<cfif VARIABLES.eventosScrollableListMode>events-list-table-wrap<cfelse>table-responsive</cfif>">
             <table id="tblEventos" class="table table-stripped table-bordered table-condensed table-sm mb-0">
 
                 <tr>
@@ -79,7 +124,8 @@
 
                 </tr>
 
-                <cfoutput query="qEventos">
+                <cfif qEventos.recordcount>
+                <cfoutput query="qEventos" maxrows="#VARIABLES.eventosListMaxRows#">
 
                     <cfif Len(trim(URL.id_evento))>
 
@@ -144,8 +190,23 @@
                     </tr>
 
                 </cfoutput>
+                <cfelse>
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-4">Nenhum evento encontrado.</td>
+                    </tr>
+                </cfif>
 
             </table>
+            </div>
+
+            <cfif VARIABLES.eventosListIsLimited>
+                <div class="events-list-more mt-3">
+                    <cfoutput>
+                        <span>Existem mais #qEventos.recordcount - VARIABLES.eventosListMaxRows# eventos ocultos para manter a tela leve.</span>
+                        <a class="btn btn-sm btn-outline-warning" href="/eventos/?#VARIABLES.eventosListBaseQuery#&mostrar=todos">Mostrar todos</a>
+                    </cfoutput>
+                </div>
+            </cfif>
 
         </div>
 

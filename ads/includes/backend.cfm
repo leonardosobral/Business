@@ -6,12 +6,53 @@
 <cfset VARIABLES.adsEffectiveIsAdmin = false/>
 <cfset VARIABLES.adsCanOperate = false/>
 <cfset VARIABLES.adsVoucherColumnsReady = false/>
+<cfset VARIABLES.adsVoucherActionMessage = ""/>
+<cfset VARIABLES.adsVoucherActionError = ""/>
 <cfset VARIABLES.adsCreditBalance = 0/>
 <cfset VARIABLES.adsCreditTotal = 0/>
 <cfset VARIABLES.adsCreditSpent = 0/>
+<cfset VARIABLES.adsMetricasDiaReady = false/>
+<cfset VARIABLES.adsConversionLogReady = false/>
+<cfparam name="URL.ads_periodo" default="30"/>
+<cfif NOT ListFind("7,30", URL.ads_periodo)>
+    <cfset URL.ads_periodo = "30"/>
+</cfif>
+<cfset VARIABLES.adsPeriodoDias = val(URL.ads_periodo)/>
 <cfset qAdVoucherCredit = QueryNew("credito_total,consumo_total,saldo_total")/>
 <cfset qAdCreditVouchers = QueryNew("codigo,nome_conta,credito,credito_disponivel,data_resgate,data_expiracao,status")/>
-<cfset qAdCreditSpendByCampaign = QueryNew("id_ad_evento,nome_evento,views,clicks,cpc_medio,custo_total,ultimo_consumo")/>
+<cfset qAdAvailableVouchers = QueryNew("id_ad_voucher,codigo,nome_conta,credito,credito_disponivel,data_expiracao,papel_resgate,observacao")/>
+<cfset qAdMetricasDia = QueryNew("data_metrica,views,clicks,custo,ctr")/>
+<cfset qAdMetricasComparativo = QueryNew("views_atual,views_anterior,clicks_atual,clicks_anterior,custo_atual,custo_anterior")/>
+<cfset qAdConversionSummary = QueryNew("conversoes_periodo,valor_periodo")/>
+<cfparam name="FORM.voucher_codigo" default=""/>
+
+<cftry>
+    <cfquery name="qAdsMetricasDiaTableCheck">
+        SELECT count(*)::integer AS total
+        FROM information_schema.tables
+        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="public"/>
+          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_evento_metricas_dia"/>
+    </cfquery>
+    <cfset VARIABLES.adsMetricasDiaReady = qAdsMetricasDiaTableCheck.recordcount AND val(qAdsMetricasDiaTableCheck.total) GT 0/>
+
+    <cfcatch type="any">
+        <cfset VARIABLES.adsMetricasDiaReady = false/>
+    </cfcatch>
+</cftry>
+
+<cftry>
+    <cfquery name="qAdsConversionLogTableCheck">
+        SELECT count(*)::integer AS total
+        FROM information_schema.tables
+        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="public"/>
+          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_conversion_log"/>
+    </cfquery>
+    <cfset VARIABLES.adsConversionLogReady = qAdsConversionLogTableCheck.recordcount AND val(qAdsConversionLogTableCheck.total) GT 0/>
+
+    <cfcatch type="any">
+        <cfset VARIABLES.adsConversionLogReady = false/>
+    </cfcatch>
+</cftry>
 
 <cftry>
     <cfquery name="qAdsVoucherColumnCheck">
@@ -23,14 +64,20 @@
           AND column_name IN (
             <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
             <cfqueryparam cfsqltype="cf_sql_varchar" value="credito_disponivel"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_usuario_resgate"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="papel_resgate"/>,
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="observacao"/>
           )
     </cfquery>
 
     <cfset VARIABLES.adsVoucherColumnNames = ValueList(qAdsVoucherColumnCheck.column_name)/>
     <cfset VARIABLES.adsVoucherColumnsReady = ListFindNoCase(VARIABLES.adsVoucherColumnNames, "id_conta")
         AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "credito_disponivel")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "data_resgate")/>
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "data_resgate")
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "id_usuario_resgate")
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "papel_resgate")
+        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "observacao")/>
 
     <cfcatch type="any">
         <cfset VARIABLES.adsVoucherColumnsReady = false/>
@@ -57,7 +104,113 @@
     <cfset VARIABLES.adsCanOperate = true/>
 </cfif>
 
+<cfif isDefined("URL.voucher") AND URL.voucher EQ "ativado">
+    <cfset VARIABLES.adsVoucherActionMessage = "Voucher ativado com sucesso. O credito ja esta disponivel para os turbinados desta conta."/>
+</cfif>
+
+<cfif isDefined("FORM.acao") AND FORM.acao EQ "ativar_voucher_ads">
+    <cfset VARIABLES.adsVoucherCode = uCase(trim(FORM.voucher_codigo))/>
+    <cfset VARIABLES.adsVoucherCode = REReplace(VARIABLES.adsVoucherCode, "[^A-Z0-9-]", "", "all")/>
+    <cfset VARIABLES.adsVoucherErrors = []/>
+
+    <cfif NOT len(VARIABLES.adsVoucherCode)>
+        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Informe o codigo do voucher.")/>
+    </cfif>
+
+    <cfif NOT VARIABLES.adsVoucherColumnsReady>
+        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "A estrutura de vouchers ainda nao foi aplicada.")/>
+    </cfif>
+
+    <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT len(trim(qPerfil.id))>
+        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Nao foi possivel identificar o usuario logado.")/>
+    </cfif>
+
+    <cfif NOT VARIABLES.adsRestrictByConta>
+        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Selecione uma conta no topo antes de ativar um voucher.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
+        <cftry>
+            <cftransaction>
+                <cfquery name="qAdsVoucherActivation">
+                    SELECT vou.id_ad_voucher,
+                           vou.codigo,
+                           vou.id_conta,
+                           vou.status,
+                           vou.credito,
+                           vou.data_expiracao,
+                           vou.papel_resgate::text AS papel_resgate,
+                           cont.nome_conta
+                    FROM tb_ad_vouchers vou
+                    INNER JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+                    WHERE lower(vou.codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsVoucherCode#"/>)
+                      AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+                    LIMIT 1
+                    FOR UPDATE
+                </cfquery>
+
+                <cfif NOT qAdsVoucherActivation.recordcount>
+                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Voucher nao encontrado para esta conta.")/>
+                <cfelseif qAdsVoucherActivation.status NEQ 1>
+                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Este voucher nao esta disponivel para ativacao.")/>
+                <cfelseif len(trim(qAdsVoucherActivation.data_expiracao)) AND isDate(qAdsVoucherActivation.data_expiracao) AND dateCompare(qAdsVoucherActivation.data_expiracao, now(), "d") LT 0>
+                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Este voucher esta expirado.")/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
+                    <cfquery>
+                        UPDATE tb_ad_vouchers
+                        SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
+                            id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
+                            data_resgate = now(),
+                            credito_disponivel = COALESCE(credito_disponivel, credito, 0),
+                            data_atualizacao = now()
+                        WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsVoucherActivation.id_ad_voucher#"/>
+                          AND status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+                    </cfquery>
+                </cfif>
+            </cftransaction>
+
+            <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
+                <cflocation addtoken="false" url="/ads/?voucher=ativado##credito-ads"/>
+            </cfif>
+
+            <cfcatch type="any">
+                <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Nao foi possivel ativar o voucher. " & cfcatch.message)/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif arrayLen(VARIABLES.adsVoucherErrors)>
+        <cfset VARIABLES.adsVoucherActionError = arrayToList(VARIABLES.adsVoucherErrors, " ")/>
+    </cfif>
+</cfif>
+
 <cfif VARIABLES.adsVoucherColumnsReady>
+    <cfif VARIABLES.adsRestrictByConta>
+        <cfquery name="qAdAvailableVouchers">
+            SELECT vou.id_ad_voucher,
+                   vou.codigo,
+                   cont.nome_conta,
+                   coalesce(vou.credito, 0) AS credito,
+                   coalesce(vou.credito_disponivel, vou.credito, 0) AS credito_disponivel,
+                   vou.data_expiracao,
+                   vou.papel_resgate::text AS papel_resgate,
+                   vou.observacao
+            FROM tb_ad_vouchers vou
+            LEFT JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+            WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+              AND vou.id_usuario_resgate IS NULL
+              AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+              AND (
+                  vou.data_expiracao IS NULL
+                  OR vou.data_expiracao >= current_date
+              )
+            ORDER BY vou.data_expiracao ASC NULLS LAST, vou.data_criacao DESC, vou.id_ad_voucher DESC
+            LIMIT 5
+        </cfquery>
+    </cfif>
+
     <cfquery name="qAdVoucherCredit">
         WITH voucher_credit AS (
             SELECT coalesce(sum(credito_disponivel), 0) AS credito_total
@@ -109,30 +262,10 @@
         LIMIT 20
     </cfquery>
 
-    <cfquery name="qAdCreditSpendByCampaign">
-        SELECT ad.id_ad_evento,
-               evt.nome_evento,
-               count(log.id_ad_log) AS views,
-               count(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN 1 END) AS clicks,
-               avg(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad END) AS cpc_medio,
-               coalesce(sum(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad ELSE 0 END), 0) AS custo_total,
-               max(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.data_insercao END) AS ultimo_consumo
-        FROM tb_ad_eventos ad
-        INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-        INNER JOIN tb_ad_log log ON log.id_ad = ad.id_ad_evento
-        WHERE log.status <= <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
-        <cfif VARIABLES.adsRestrictByConta>
-          AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-        </cfif>
-        GROUP BY ad.id_ad_evento,
-                 evt.nome_evento
-        HAVING coalesce(sum(CASE WHEN log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/> THEN log.valor_ad ELSE 0 END), 0) > 0
-        ORDER BY custo_total DESC, clicks DESC, views DESC
-        LIMIT 20
-    </cfquery>
 </cfif>
 
 <cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
+<cfset qAdsEventosSemCampanha = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfif VARIABLES.adsRestrictByConta AND VARIABLES.adsEventosOperacaoIds NEQ "0">
     <cfquery name="qAdsEventosPermitidos">
         SELECT id_evento,
@@ -146,6 +279,28 @@
         WHERE ativo = true
           AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
         ORDER BY data_final DESC NULLS LAST, nome_evento
+    </cfquery>
+
+    <cfquery name="qAdsEventosSemCampanha">
+        SELECT evt.id_evento,
+               evt.nome_evento,
+               evt.tag,
+               evt.data_inicial,
+               evt.data_final,
+               evt.cidade,
+               evt.estado
+        FROM tb_evento_corridas evt
+        WHERE evt.ativo = true
+          AND evt.data_final >= current_date
+          AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
+          AND NOT EXISTS (
+              SELECT 1
+              FROM tb_ad_eventos ad
+              WHERE ad.id_evento = evt.id_evento
+                AND ad.status < <cfqueryparam cfsqltype="cf_sql_integer" value="3"/>
+          )
+        ORDER BY evt.data_inicial ASC NULLS LAST, evt.nome_evento
+        LIMIT 3
     </cfquery>
 </cfif>
 
@@ -394,6 +549,167 @@
     </cfif>
 </cfquery>
 
+<cfif VARIABLES.adsMetricasDiaReady>
+    <cfquery name="qAdMetricasDia">
+        WITH dias AS (
+            SELECT generate_series(
+                current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
+                current_date,
+                interval '1 day'
+            )::date AS data_metrica
+        ),
+        metricas AS (
+            SELECT data_metrica,
+                   sum(views) AS views,
+                   sum(clicks) AS clicks,
+                   coalesce(sum(custo), 0) AS custo
+            FROM tb_ad_evento_metricas_dia
+            WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+            <cfif VARIABLES.adsRestrictByConta>
+                AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+            </cfif>
+            GROUP BY data_metrica
+        )
+        SELECT dias.data_metrica,
+               coalesce(metricas.views, 0) AS views,
+               coalesce(metricas.clicks, 0) AS clicks,
+               coalesce(metricas.custo, 0) AS custo,
+               CASE WHEN coalesce(metricas.views, 0) > 0
+                    THEN coalesce(metricas.clicks, 0)::numeric * 100 / metricas.views
+                    ELSE 0
+               END AS ctr
+        FROM dias
+        LEFT JOIN metricas ON metricas.data_metrica = dias.data_metrica
+        ORDER BY dias.data_metrica
+    </cfquery>
+
+    <cfquery name="qAdMetricasComparativo">
+        WITH metricas AS (
+            SELECT data_metrica,
+                   sum(views) AS views,
+                   sum(clicks) AS clicks,
+                   coalesce(sum(custo), 0) AS custo
+            FROM tb_ad_evento_metricas_dia
+            WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
+            <cfif VARIABLES.adsRestrictByConta>
+                AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+            </cfif>
+            GROUP BY data_metrica
+        )
+        SELECT coalesce(sum(views) FILTER (
+                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS views_atual,
+               coalesce(sum(views) FILTER (
+                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS views_anterior,
+               coalesce(sum(clicks) FILTER (
+                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS clicks_atual,
+               coalesce(sum(clicks) FILTER (
+                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS clicks_anterior,
+               coalesce(sum(custo) FILTER (
+                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS custo_atual,
+               coalesce(sum(custo) FILTER (
+                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ), 0) AS custo_anterior
+        FROM metricas
+    </cfquery>
+<cfelse>
+    <cfquery name="qAdMetricasDia">
+        WITH dias AS (
+            SELECT generate_series(
+                current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
+                current_date,
+                interval '1 day'
+            )::date AS data_metrica
+        ),
+        metricas AS (
+            SELECT log.data_insercao::date AS data_metrica,
+                   count(*) FILTER (WHERE log.status <= 2) AS views,
+                   count(*) FILTER (WHERE log.status = 2) AS clicks,
+                   coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo
+            FROM tb_ad_log log
+            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+            <cfif VARIABLES.adsRestrictByConta>
+                AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
+            </cfif>
+            GROUP BY log.data_insercao::date
+        )
+        SELECT dias.data_metrica,
+               coalesce(metricas.views, 0) AS views,
+               coalesce(metricas.clicks, 0) AS clicks,
+               coalesce(metricas.custo, 0) AS custo,
+               CASE WHEN coalesce(metricas.views, 0) > 0
+                    THEN coalesce(metricas.clicks, 0)::numeric * 100 / metricas.views
+                    ELSE 0
+               END AS ctr
+        FROM dias
+        LEFT JOIN metricas ON metricas.data_metrica = dias.data_metrica
+        ORDER BY dias.data_metrica
+    </cfquery>
+
+    <cfquery name="qAdMetricasComparativo">
+        WITH logs_periodo AS (
+            SELECT log.status,
+                   log.valor_ad,
+                   log.data_insercao
+            FROM tb_ad_log log
+            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
+            <cfif VARIABLES.adsRestrictByConta>
+                AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
+            </cfif>
+        )
+        SELECT count(*) FILTER (
+                   WHERE status <= 2
+                     AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ) AS views_atual,
+               count(*) FILTER (
+                   WHERE status <= 2
+                     AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ) AS views_anterior,
+               count(*) FILTER (
+                   WHERE status = 2
+                     AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ) AS clicks_atual,
+               count(*) FILTER (
+                   WHERE status = 2
+                     AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+               ) AS clicks_anterior,
+               coalesce(sum(CASE
+                   WHEN status = 2
+                    AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+                   THEN valor_ad ELSE 0 END), 0) AS custo_atual,
+               coalesce(sum(CASE
+                   WHEN status = 2
+                    AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+                   THEN valor_ad ELSE 0 END), 0) AS custo_anterior
+        FROM logs_periodo
+    </cfquery>
+</cfif>
+
+<cfif VARIABLES.adsConversionLogReady>
+    <cfquery name="qAdConversionSummary">
+        SELECT count(*) FILTER (
+                   WHERE tipo_conversion IN (
+                       <cfqueryparam cfsqltype="cf_sql_varchar" value="INSCRICAO_CLICK"/>,
+                       <cfqueryparam cfsqltype="cf_sql_varchar" value="INSCRICAO_CONFIRMADA"/>
+                   )
+               ) AS conversoes_periodo,
+               coalesce(sum(valor), 0) AS valor_periodo
+        FROM tb_ad_conversion_log
+        WHERE data_criacao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
+        <cfif VARIABLES.adsRestrictByConta>
+            AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+        </cfif>
+    </cfquery>
+</cfif>
+
 
 <!--- QUERY BASE DE EVENTOS --->
 
@@ -437,6 +753,17 @@
         AND id_usuario is not null
         group by id_ad
     )
+    <cfif VARIABLES.adsConversionLogReady>
+    ,
+    ad_conversions AS (
+        SELECT
+            id_ad_evento,
+            count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CLICK') AS conversoes,
+            count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CONFIRMADA') AS inscricoes_confirmadas
+        FROM tb_ad_conversion_log
+        GROUP BY id_ad_evento
+    )
+    </cfif>
     SELECT evt.*,
            ad.id_ad_evento,
            ad.status,
@@ -456,6 +783,13 @@
            ad_clicks_usuarios.clicks as clicks_usuarios,
            ad_clicks_usuarios.cpc_medio as cpc_medio_usuarios,
            ad_clicks_usuarios.custo_total as custo_total_usuarios,
+           <cfif VARIABLES.adsConversionLogReady>
+           coalesce(ad_conversions.conversoes, 0) AS conversoes,
+           coalesce(ad_conversions.inscricoes_confirmadas, 0) AS inscricoes_confirmadas,
+           <cfelse>
+           0 AS conversoes,
+           0 AS inscricoes_confirmadas,
+           </cfif>
            (ad.qualidade * ad.cpc_max) as ad_rank
     FROM tb_ad_eventos ad
     INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
@@ -463,6 +797,9 @@
     LEFT JOIN ad_views_usuarios on ad_views_usuarios.id_evento = ad.id_ad_evento
     LEFT JOIN ad_clicks on ad_clicks.id_evento = ad.id_ad_evento
     LEFT JOIN ad_clicks_usuarios on ad_clicks_usuarios.id_evento = ad.id_ad_evento
+    <cfif VARIABLES.adsConversionLogReady>
+    LEFT JOIN ad_conversions on ad_conversions.id_ad_evento = ad.id_ad_evento
+    </cfif>
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -484,5 +821,12 @@
 <cfquery name="qEventosAdsFinalizados" dbtype="query">
     select * from qEventosAdsBase
     where status = 4
+    order by clicks desc, views desc
+</cfquery>
+
+<cfquery name="qAdsTopCampaigns" dbtype="query" maxrows="5">
+    select *
+    from qEventosAdsBase
+    where views > 0 or clicks > 0
     order by clicks desc, views desc
 </cfquery>

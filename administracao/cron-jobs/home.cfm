@@ -18,19 +18,38 @@ function cronJobsReadTruncatedJsonValue(required string rawResponse, required st
 }
 
 function cronJobsHistoryPageUrl(required numeric pageNumber) {
+    var activeTab = structKeyExists(VARIABLES, "cronJobsActiveTab") ? VARIABLES.cronJobsActiveTab : "historico";
     var queryParts = [
-        "pagina=" & max(1, val(URL.pagina)),
         "historico_pagina=" & max(1, val(arguments.pageNumber))
     ];
     var filterName = "";
 
-    for (filterName in ["busca", "projeto", "ambiente", "status", "job_id"]) {
+    if (listFindNoCase("historico,erros", activeTab)) {
+        arrayAppend(queryParts, "aba=" & urlEncodedFormat(activeTab));
+    }
+
+    for (filterName in ["historico_job_id", "historico_status"]) {
         if (structKeyExists(URL, filterName) AND len(trim(URL[filterName] & ""))) {
             arrayAppend(queryParts, urlEncodedFormat(filterName) & "=" & urlEncodedFormat(URL[filterName] & ""));
         }
     }
 
     return "./?" & arrayToList(queryParts, "&") & "##historico-recente";
+}
+
+function cronJobsPageUrl(required numeric pageNumber) {
+    var queryParts = [
+        "pagina=" & max(1, val(arguments.pageNumber))
+    ];
+    var filterName = "";
+
+    for (filterName in ["busca", "projeto", "ambiente", "status"]) {
+        if (structKeyExists(URL, filterName) AND len(trim(URL[filterName] & ""))) {
+            arrayAppend(queryParts, urlEncodedFormat(filterName) & "=" & urlEncodedFormat(URL[filterName] & ""));
+        }
+    }
+
+    return "./?" & arrayToList(queryParts, "&");
 }
 
 function cronJobsBuildFriendlySummary(required string rawResponse, string rawError = "") {
@@ -71,7 +90,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
         completed_with_errors = "Concluido com erros",
         success = "Sucesso",
         skipped = "Ignorado",
-        locked = "Em execucao",
+        locked = "Em execução",
         failed = "Falhou",
         error = "Erro",
         unauthorized = "Nao autorizado"
@@ -187,6 +206,9 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
 </cfscript>
 
 <cfset VARIABLES.cronJobsShowForm = (isDefined("URL.job_novo") AND val(URL.job_novo) EQ 1) OR qCronJobEdit.recordcount OR FORM.acao EQ "salvar_job"/>
+<cfif VARIABLES.cronJobsShowForm>
+    <cfset VARIABLES.cronJobsActiveTab = "jobs"/>
+</cfif>
 
 <cfif FORM.acao EQ "salvar_job" AND len(trim(VARIABLES.cronJobsError))>
     <cfset VARIABLES.cronJobFormId = isDefined("FORM.id_cron_job") ? FORM.id_cron_job : ""/>
@@ -251,20 +273,6 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
 </cfif>
 
 <style>
-  .cron-page .cron-kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: .75rem;
-  }
-
-  .cron-page .cron-kpi {
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: .75rem;
-    padding: .9rem 1rem;
-    background: rgba(255,255,255,.03);
-  }
-
-  .cron-page .cron-kpi small,
   .cron-page .cron-meta {
     color: var(--mdb-secondary-color);
   }
@@ -275,8 +283,10 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     word-break: break-word;
   }
 
-  .cron-page .cron-actions {
-    white-space: nowrap;
+  .cron-page .cron-row-error {
+    max-width: 640px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .cron-page textarea.form-control {
@@ -286,7 +296,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
 
   .cron-page .cron-run-summary {
     min-width: 260px;
-    max-width: 560px;
+    max-width: 520px;
   }
 
   .cron-page .cron-run-metrics {
@@ -326,19 +336,21 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
+
+  .cron-page .cron-history-table td { vertical-align: top; }
 </style>
 
-<section class="cron-page">
-  <div class="card shadow-0">
-    <div class="card-body">
-      <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+<section class="cron-page business-page">
+  <div class="card shadow-0 business-page-card">
+    <div class="card-body business-page-body">
+      <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
         <div>
-          <h3 class="mb-1">Gerenciador de Cron Jobs</h3>
+          <h3 class="business-page-title mb-1">Gerenciador de Cron Jobs</h3>
           <p class="text-muted mb-0">Orquestre chamadas recorrentes para APIs do Business, Road Runners e demais serviços da plataforma.</p>
         </div>
-        <div class="d-flex gap-2 align-items-start">
-          <a class="btn btn-warning" href="./?job_novo=1">Novo job</a>
-          <a class="btn btn-outline-light" href="/cron-jobs/runner.cfm?token=SEU_TOKEN" target="_blank" rel="noopener">Runner</a>
+        <div class="business-page-actions">
+          <a class="btn btn-sm btn-warning" href="./?job_novo=1">Novo job</a>
+          <a class="btn btn-sm btn-outline-light" href="/cron-jobs/runner.cfm?token=SEU_TOKEN" target="_blank" rel="noopener">Runner</a>
         </div>
       </div>
 
@@ -354,15 +366,34 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
           Aplique o schema em <a href="/administracao/cron-jobs/cron_jobs_schema.sql" target="_blank" rel="noopener">/administracao/cron-jobs/cron_jobs_schema.sql</a> para habilitar o gerenciador.
         </div>
       <cfelse>
-        <div class="cron-kpis mb-4">
-          <div class="cron-kpi"><small>Total</small><div class="h3 mb-0"><cfoutput>#qCronJobStats.total_jobs#</cfoutput></div></div>
-          <div class="cron-kpi"><small>Ativos</small><div class="h3 mb-0 text-success"><cfoutput>#qCronJobStats.ativos#</cfoutput></div></div>
-          <div class="cron-kpi"><small>Vencidos</small><div class="h3 mb-0 text-warning"><cfoutput>#qCronJobStats.vencidos#</cfoutput></div></div>
-          <div class="cron-kpi"><small>Com erro</small><div class="h3 mb-0 text-danger"><cfoutput>#qCronJobStats.erro#</cfoutput></div></div>
+        <div class="business-kpi-grid mb-3">
+          <a class="business-kpi" href="./"><small>Total</small><div class="business-kpi-value h3 mb-0"><cfoutput>#qCronJobStats.total_jobs#</cfoutput></div></a>
+          <a class="business-kpi" href="./?status=true"><small>Ativos</small><div class="business-kpi-value h3 mb-0 text-success"><cfoutput>#qCronJobStats.ativos#</cfoutput></div></a>
+          <a class="business-kpi" href="./?status=vencidos"><small>Vencidos</small><div class="business-kpi-value h3 mb-0 text-warning"><cfoutput>#qCronJobStats.vencidos#</cfoutput></div></a>
+          <a class="business-kpi" href="./?status=erro"><small>Com erro</small><div class="business-kpi-value h3 mb-0 text-danger"><cfoutput>#qCronJobStats.erro#</cfoutput></div></a>
         </div>
 
+        <ul class="nav business-tabs mb-3" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <cfif VARIABLES.cronJobsActiveTab EQ "jobs">active</cfif>" href="./" role="tab">
+              Jobs <span class="business-tab-count"><cfoutput>#qCronJobStats.total_jobs#</cfoutput></span>
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <cfif VARIABLES.cronJobsActiveTab EQ "historico">active</cfif>" href="./?aba=historico#historico-recente" role="tab">
+              Histórico <span class="business-tab-count"><cfoutput>#qCronJobRunStats.total_runs#</cfoutput></span>
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <cfif VARIABLES.cronJobsActiveTab EQ "erros">active</cfif>" href="./?aba=erros#historico-recente" role="tab">
+              Erros <span class="business-tab-count text-danger"><cfoutput>#qCronJobRunStats.erro#</cfoutput></span>
+            </a>
+          </li>
+        </ul>
+
+        <cfif VARIABLES.cronJobsActiveTab EQ "jobs">
         <cfif VARIABLES.cronJobsShowForm>
-          <div class="border rounded-4 p-3 mb-4 bg-black bg-opacity-10">
+          <div class="business-panel mb-4">
             <h5 class="mb-3"><cfif len(trim(VARIABLES.cronJobFormId))>Editar job<cfelse>Novo job</cfif></h5>
             <form method="post" action="./">
               <input type="hidden" name="acao" value="salvar_job">
@@ -473,8 +504,8 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
           </div>
         </cfif>
 
-        <form class="row g-2 mb-3" method="get" action="./">
-          <div class="col-lg-5">
+        <form class="business-filterbar row g-2 mb-3" method="get" action="./">
+          <div class="col-lg-4">
             <input class="form-control" name="busca" placeholder="Buscar por nome ou URL" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>">
           </div>
           <div class="col-lg-2">
@@ -486,17 +517,21 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
           <div class="col-lg-2">
             <select class="form-select" name="status">
               <option value="">Todos</option>
-              <option value="true" <cfif URL.status EQ "true">selected</cfif>>Ativos</option>
-              <option value="false" <cfif URL.status EQ "false">selected</cfif>>Inativos</option>
+              <option value="true" <cfif VARIABLES.cronJobsStatusFilter EQ "true">selected</cfif>>Ativos</option>
+              <option value="false" <cfif VARIABLES.cronJobsStatusFilter EQ "false">selected</cfif>>Inativos</option>
+              <option value="erro" <cfif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronJobsStatusFilter)>selected</cfif>>Com erro</option>
+              <option value="vencidos" <cfif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>selected</cfif>>Vencidos</option>
+              <option value="sucesso" <cfif listFindNoCase("sucesso,success", VARIABLES.cronJobsStatusFilter)>selected</cfif>>Com sucesso</option>
             </select>
           </div>
-          <div class="col-lg-1">
-            <button class="btn btn-outline-light w-100" type="submit">Filtrar</button>
+          <div class="col-lg-2 d-flex gap-2">
+            <button class="btn btn-outline-light flex-fill" type="submit">Filtrar</button>
+            <a class="btn btn-outline-light" href="./" title="Limpar filtros"><i class="fa-solid fa-rotate-left"></i></a>
           </div>
         </form>
 
         <div class="table-responsive">
-          <table class="table table-sm table-striped align-middle">
+          <table class="table table-sm table-striped align-middle business-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -510,14 +545,19 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
             <tbody>
               <cfoutput query="qCronJobs">
                 <cfset VARIABLES.cronRowLastStatus = isNull(qCronJobs.last_status) ? "" : qCronJobs.last_status/>
+                <cfset VARIABLES.cronRowLastStatusNormalized = lCase(trim(VARIABLES.cronRowLastStatus))/>
                 <cfset VARIABLES.cronRowLastHttpStatus = isNull(qCronJobs.last_http_status) ? "" : qCronJobs.last_http_status/>
                 <cfset VARIABLES.cronRowLastDuration = isNull(qCronJobs.last_duration_ms) ? "" : qCronJobs.last_duration_ms/>
+                <cfset VARIABLES.cronRowLastError = isNull(qCronJobs.last_error) ? "" : qCronJobs.last_error/>
                 <tr>
                   <td nowrap>#qCronJobs.id_cron_job#</td>
                   <td>
                     <div class="fw-semibold">#htmlEditFormat(qCronJobs.nome)#</div>
                     <div class="cron-meta">#htmlEditFormat(qCronJobs.projeto)# / #htmlEditFormat(qCronJobs.ambiente)# / #htmlEditFormat(qCronJobs.http_method)#</div>
                     <div class="small cron-url">#htmlEditFormat(qCronJobs.endpoint_url)#</div>
+                    <cfif listFindNoCase("error,http_error,failed,timeout", VARIABLES.cronRowLastStatusNormalized) AND len(trim(VARIABLES.cronRowLastError))>
+                      <div class="small text-danger cron-row-error">#htmlEditFormat(left(VARIABLES.cronRowLastError, 180))#<cfif len(VARIABLES.cronRowLastError) GT 180>...</cfif></div>
+                    </cfif>
                   </td>
                   <td>
                     <div>A cada #qCronJobs.interval_minutes# min</div>
@@ -526,7 +566,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   <td>
                     <span class="badge <cfif qCronJobs.ativo>badge-success<cfelse>badge-secondary</cfif>"><cfif qCronJobs.ativo>Ativo<cfelse>Inativo</cfif></span>
                     <cfif len(trim(VARIABLES.cronRowLastStatus))>
-                      <span class="badge <cfif VARIABLES.cronRowLastStatus EQ 'success'>badge-success<cfelseif VARIABLES.cronRowLastStatus EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#htmlEditFormat(VARIABLES.cronRowLastStatus)#</span>
+                      <span class="badge <cfif VARIABLES.cronRowLastStatusNormalized EQ 'success'>badge-success<cfelseif VARIABLES.cronRowLastStatusNormalized EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#htmlEditFormat(VARIABLES.cronRowLastStatus)#</span>
                     </cfif>
                   </td>
                   <td>
@@ -537,8 +577,9 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                       <span class="text-muted">-</span>
                     </cfif>
                   </td>
-                  <td class="text-end cron-actions">
+                  <td class="text-end business-row-actions">
                     <a class="btn btn-sm btn-outline-light" href="./?job_id=#qCronJobs.id_cron_job#" title="Editar"><i class="fa-solid fa-pen"></i></a>
+                    <a class="btn btn-sm btn-outline-light" href="./?aba=historico&historico_job_id=#qCronJobs.id_cron_job###historico-recente" title="Histórico"><i class="fa-solid fa-clock"></i></a>
                     <a class="btn btn-sm btn-outline-info" href="./?acao=executar&job_id=#qCronJobs.id_cron_job#" title="Executar agora"><i class="fa-solid fa-play"></i></a>
                     <a class="btn btn-sm <cfif qCronJobs.ativo>btn-outline-warning<cfelse>btn-outline-success</cfif>" href="./?acao=status&job_id=#qCronJobs.id_cron_job#&ativo=<cfif qCronJobs.ativo>false<cfelse>true</cfif>" title="<cfif qCronJobs.ativo>Pausar<cfelse>Ativar</cfif>"><i class="fa-solid <cfif qCronJobs.ativo>fa-pause<cfelse>fa-toggle-on</cfif>"></i></a>
                     <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&job_id=#qCronJobs.id_cron_job#" onclick="return confirm('Remover este cron job e seu historico?');" title="Excluir"><i class="fa-solid fa-trash"></i></a>
@@ -551,16 +592,87 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
             </tbody>
           </table>
         </div>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mt-3">
+          <div class="small cron-meta">
+            <cfoutput>#VARIABLES.cronJobsTotal# jobs &middot; Página #VARIABLES.cronJobsPage# de #VARIABLES.cronJobsTotalPages#</cfoutput>
+          </div>
+          <cfif VARIABLES.cronJobsTotalPages GT 1>
+            <cfset VARIABLES.cronJobsPageStart = max(1, VARIABLES.cronJobsPage - 2)/>
+            <cfset VARIABLES.cronJobsPageEnd = min(VARIABLES.cronJobsTotalPages, VARIABLES.cronJobsPage + 2)/>
+            <nav aria-label="Paginação de cron jobs">
+              <ul class="pagination pagination-sm justify-content-end mb-0">
+                <li class="page-item <cfif VARIABLES.cronJobsPage LTE 1>disabled</cfif>">
+                  <cfif VARIABLES.cronJobsPage GT 1>
+                    <cfoutput><a class="page-link" href="#cronJobsPageUrl(VARIABLES.cronJobsPage - 1)#" aria-label="Página anterior">Anterior</a></cfoutput>
+                  <cfelse>
+                    <span class="page-link">Anterior</span>
+                  </cfif>
+                </li>
+                <cfif VARIABLES.cronJobsPageStart GT 1>
+                  <cfoutput><li class="page-item"><a class="page-link" href="#cronJobsPageUrl(1)#">1</a></li></cfoutput>
+                  <cfif VARIABLES.cronJobsPageStart GT 2><li class="page-item disabled"><span class="page-link">&hellip;</span></li></cfif>
+                </cfif>
+                <cfloop from="#VARIABLES.cronJobsPageStart#" to="#VARIABLES.cronJobsPageEnd#" index="cronJobsPageNumber">
+                  <cfoutput>
+                    <li class="page-item <cfif cronJobsPageNumber EQ VARIABLES.cronJobsPage>active</cfif>">
+                      <a class="page-link" href="#cronJobsPageUrl(cronJobsPageNumber)#">#cronJobsPageNumber#</a>
+                    </li>
+                  </cfoutput>
+                </cfloop>
+                <cfif VARIABLES.cronJobsPageEnd LT VARIABLES.cronJobsTotalPages>
+                  <cfif VARIABLES.cronJobsPageEnd LT VARIABLES.cronJobsTotalPages - 1><li class="page-item disabled"><span class="page-link">&hellip;</span></li></cfif>
+                  <cfoutput><li class="page-item"><a class="page-link" href="#cronJobsPageUrl(VARIABLES.cronJobsTotalPages)#">#VARIABLES.cronJobsTotalPages#</a></li></cfoutput>
+                </cfif>
+                <li class="page-item <cfif VARIABLES.cronJobsPage GTE VARIABLES.cronJobsTotalPages>disabled</cfif>">
+                  <cfif VARIABLES.cronJobsPage LT VARIABLES.cronJobsTotalPages>
+                    <cfoutput><a class="page-link" href="#cronJobsPageUrl(VARIABLES.cronJobsPage + 1)#" aria-label="Próxima página">Próxima</a></cfoutput>
+                  <cfelse>
+                    <span class="page-link">Próxima</span>
+                  </cfif>
+                </li>
+              </ul>
+            </nav>
+          </cfif>
+        </div>
+        </cfif>
 
-        <div class="mt-4" id="historico-recente">
+        <cfif VARIABLES.cronJobsActiveTab NEQ "jobs">
+        <div id="historico-recente">
           <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-2">
-            <h5 class="mb-0">Histórico recente</h5>
+            <div>
+              <h5 class="mb-0"><cfif VARIABLES.cronJobsActiveTab EQ "erros">Histórico de erros<cfelse>Histórico recente</cfif></h5>
+              <div class="small cron-meta">
+                <cfif VARIABLES.cronJobsActiveTab EQ "erros">Execuções com último status de falha.<cfelse>Auditoria das execuções mais recentes.</cfif>
+              </div>
+            </div>
             <div class="small cron-meta">
               <cfoutput>#VARIABLES.cronHistoryTotal# execuções &middot; Página #VARIABLES.cronHistoryPage# de #VARIABLES.cronHistoryTotalPages#</cfoutput>
             </div>
           </div>
+          <form class="business-filterbar row g-2 align-items-center mb-3" method="get" action="./">
+            <input type="hidden" name="aba" value="historico">
+            <div class="col-md-3 col-xl-2">
+              <input class="form-control" name="historico_job_id" inputmode="numeric" placeholder="ID do job" value="<cfoutput>#htmlEditFormat(URL.historico_job_id)#</cfoutput>">
+            </div>
+            <div class="col-md-3 col-xl-2">
+              <select class="form-select" name="historico_status">
+                <option value="">Todos os status</option>
+                <option value="erro" <cfif listFindNoCase("erro,error,http_error,failed,timeout", VARIABLES.cronHistoryStatusFilter)>selected</cfif>>Só erros</option>
+                <option value="sucesso" <cfif listFindNoCase("sucesso,success", VARIABLES.cronHistoryStatusFilter)>selected</cfif>>Sucesso</option>
+                <option value="running" <cfif VARIABLES.cronHistoryStatusFilter EQ "running">selected</cfif>>Em execução</option>
+              </select>
+            </div>
+            <div class="col-md-auto d-flex gap-2">
+              <button class="btn btn-sm btn-outline-light" type="submit">Filtrar</button>
+              <a class="btn btn-sm <cfif VARIABLES.cronJobsActiveTab EQ "erros">btn-danger<cfelse>btn-outline-danger</cfif>" href="./?aba=erros#historico-recente">Só erros</a>
+              <a class="btn btn-sm btn-outline-light" href="./?aba=historico#historico-recente">Limpar</a>
+            </div>
+            <div class="col cron-meta small text-md-end">
+              <cfoutput>#qCronJobRunStats.ultimas_24h# nas últimas 24h &middot; #qCronJobRunStats.erro# falhas no histórico</cfoutput>
+            </div>
+          </form>
           <div class="table-responsive">
-            <table class="table table-sm table-hover align-middle">
+            <table class="table table-sm table-hover align-middle business-table cron-history-table">
               <thead>
                 <tr>
                   <th>Data</th>
@@ -669,6 +781,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
             </nav>
           </cfif>
         </div>
+        </cfif>
       </cfif>
     </div>
   </div>

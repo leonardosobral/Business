@@ -8,7 +8,7 @@
 
         <div class="col-md-3 mb-3">
 
-            <select data-mdb-select-init data-mdb-visible-options="12" class="form-select" onchange="window.location.href='<cfoutput>#VARIABLES.template#?preset=#URL.preset#&regiao=#URL.regiao#&estado=#URL.estado#&cidade=#URL.cidade#&id_agrega_evento=#URL.id_agrega_evento#&agregador_tag=#URL.agregador_tag#&periodo=</cfoutput>' + this.value">>
+            <select data-mdb-select-init data-mdb-visible-options="12" class="form-select" onchange="window.location.href='<cfoutput>#VARIABLES.template#?preset=#URL.preset#&regiao=#URL.regiao#&estado=#URL.estado#&cidade=#URL.cidade#&id_agrega_evento=#URL.id_agrega_evento#&agregador_tag=#URL.agregador_tag#&periodo=</cfoutput>' + this.value">
                 <option value="" <cfif URL.periodo EQ "">selected</cfif> >Todo o Período</option>
                 <option value="semana" <cfif URL.periodo EQ "semana">selected</cfif> >Esta Semana</option>
                 <option value="mes" <cfif URL.periodo EQ "mes">selected</cfif> >Este Mês</option>
@@ -25,7 +25,7 @@
 
         <div class="col-md-3 mb-3">
 
-            <select data-mdb-select-init class="form-select" onchange="window.location.href='<cfoutput>./?estado=</cfoutput>' + this.value">>
+            <select data-mdb-select-init class="form-select" onchange="window.location.href='<cfoutput>./?estado=</cfoutput>' + this.value">
                 <option value="" <cfif URL.estado EQ "">selected</cfif> >Estado</option>
                 <cfoutput query="qEstados">
                     <option value="#qEstados.estado#" <cfif URL.estado EQ qEstados.estado>selected</cfif> >#qEstados.estado#</option>
@@ -46,6 +46,7 @@
                 <input type="hidden" name="cidade" value=""/>
                 <input type="hidden" name="agregador_tag" value=""/>
                 <input type="hidden" name="id_agrega_evento" value=""/>
+                <input type="hidden" name="mostrar" value=""/>
             </form>
 
         </div>

@@ -91,15 +91,15 @@
   }
 </style>
 
-<section>
+<section class="business-page">
   <div class="row gx-xl-5">
     <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-      <div class="card shadow-0">
-        <div class="card-body">
+      <div class="card shadow-0 business-page-card">
+        <div class="card-body business-page-body">
 
-          <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
+          <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
             <div>
-              <h3 class="mb-1">Administração - Permissões</h3>
+              <h3 class="business-page-title mb-1">Administração - Permissões</h3>
               <p class="text-muted mb-0">Gerencie os usuários com status especiais de <strong>ADMIN</strong>, <strong>DEV</strong> e <strong>PARTNER</strong> na <strong>tb_usuarios</strong>.</p>
             </div>
             <div class="text-lg-end d-flex gap-4">
@@ -114,14 +114,12 @@
             </div>
           </div>
 
-          <hr/>
-
           <div class="d-flex justify-content-end mb-3">
             <cfoutput><a class="btn btn-warning" href="./?pagina=#VARIABLES.permissionsPage#&user_novo=1">Adicionar permissão</a></cfoutput>
           </div>
 
           <cfif VARIABLES.permissionsShowForm>
-            <div class="permissions-form-card p-4 mb-4">
+            <div class="permissions-form-card business-panel mb-4">
               <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
                 <div>
                   <h5 class="mb-1"><cfif qPermissionUserEdit.recordcount>Editar permissões<cfelse>Novo usuário especial</cfif></h5>
@@ -138,7 +136,7 @@
 
               <cfif NOT qPermissionUserEdit.recordcount>
                 <cfoutput>
-                  <form method="get" action="./" class="mb-4">
+                  <form method="get" action="./" class="business-filterbar mb-4">
                     <input type="hidden" name="pagina" value="#VARIABLES.permissionsPage#"/>
                     <input type="hidden" name="user_novo" value="1"/>
                     <div class="row g-3 align-items-end">
@@ -286,7 +284,7 @@
 
           <h5 class="mb-3">Equipe interna</h5>
           <div class="table-responsive mb-5">
-            <table class="table table-sm table-striped table-hover permissions-table">
+            <table class="table table-sm table-striped table-hover permissions-table business-table">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -342,7 +340,7 @@
                           <span class="text-muted small">Sem permissões correlacionadas</span>
                         </cfif>
                       </td>
-                      <td class="permissions-actions-cell">
+                      <td class="permissions-actions-cell business-row-actions">
                         <div class="d-flex flex-wrap gap-2">
                           <a class="btn btn-sm btn-outline-warning" href="./?pagina=#VARIABLES.permissionsPage#&user_id=#qPermissionUsers.id#" title="Editar">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -365,7 +363,7 @@
 
           <h5 class="mb-3">Partners</h5>
           <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover permissions-table">
+            <table class="table table-sm table-striped table-hover permissions-table business-table">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -413,7 +411,7 @@
                           <span class="text-muted small">Sem permissões correlacionadas</span>
                         </cfif>
                       </td>
-                      <td class="permissions-actions-cell">
+                      <td class="permissions-actions-cell business-row-actions">
                         <div class="d-flex flex-wrap gap-2">
                           <a class="btn btn-sm btn-outline-warning" href="./?pagina=#VARIABLES.permissionsPage#&user_id=#qPartnerUsers.id#" title="Editar">
                             <i class="fa-solid fa-pen-to-square"></i>

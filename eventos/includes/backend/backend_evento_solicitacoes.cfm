@@ -17,6 +17,8 @@
 <cfset VARIABLES.eventoSolicitacaoSearchTerm = ""/>
 <cfset VARIABLES.eventoSolicitacaoEffectiveAccountIds = "0"/>
 <cfset VARIABLES.eventoSolicitacaoUsingSimulatedAccount = false/>
+<cfset VARIABLES.eventoMinhasSolicitacoesPendentes = 0/>
+<cfset VARIABLES.eventoMinhasSolicitacoesHistorico = 0/>
 
 <cfset qEventoSolicitacaoContas = QueryNew("id_conta,nome_conta")/>
 <cfset qEventoSolicitacaoBusca = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,status_vinculo,status_solicitacao")/>
@@ -413,9 +415,18 @@
                 INNER JOIN tb_contas cont ON cont.id_conta = sol.id_conta
                 INNER JOIN tb_evento_corridas evt ON evt.id_evento = sol.id_evento
                 WHERE sol.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoEffectiveAccountIds#" list="true"/>)
-                ORDER BY sol.data_criacao DESC
+                ORDER BY CASE WHEN sol.status::text = 'PENDENTE' THEN 0 ELSE 1 END,
+                         sol.data_criacao DESC
                 LIMIT 20
             </cfquery>
+
+            <cfloop query="qEventoMinhasSolicitacoes">
+                <cfif compareNoCase(qEventoMinhasSolicitacoes.status, "PENDENTE") EQ 0>
+                    <cfset VARIABLES.eventoMinhasSolicitacoesPendentes = VARIABLES.eventoMinhasSolicitacoesPendentes + 1/>
+                <cfelse>
+                    <cfset VARIABLES.eventoMinhasSolicitacoesHistorico = VARIABLES.eventoMinhasSolicitacoesHistorico + 1/>
+                </cfif>
+            </cfloop>
         </cfif>
 
         <cfif VARIABLES.eventoSolicitacaoCanReview>

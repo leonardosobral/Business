@@ -29,6 +29,7 @@
     </cfif>
 </cfif>
 <cfparam name="URL.busca" default=""/>
+<cfparam name="URL.mostrar" default=""/>
 <cfparam name="URL.sessao" default="dados"/>
 
 <cfif NOT VARIABLES.adminIsAdmin AND listFindNoCase("configuracoes,or", URL.sessao)>
