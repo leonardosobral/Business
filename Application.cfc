@@ -40,10 +40,10 @@
                 <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
             </cfif>
         </cfif>
-        <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : ""/>
-        <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : "https://roadrunners.run/api/push/send.cfm"/>
-        <cfset var notificationDispatchUrl = structKeyExists(environment, "RR_NOTIFICATION_DISPATCH_URL") ? trim(environment["RR_NOTIFICATION_DISPATCH_URL"]) : ""/>
-        <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : 20/>
+        <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : (structKeyExists(businessLocalConfig, "notificationDispatchSecret") ? trim(businessLocalConfig.notificationDispatchSecret) : "")/>
+        <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : (structKeyExists(businessLocalConfig, "notificationDispatchUrl") ? trim(businessLocalConfig.notificationDispatchUrl) : "https://roadrunners.run/api/notifications/integrations/dispatch.cfm")/>
+        <cfset var notificationDispatchUrl = structKeyExists(environment, "RR_NOTIFICATION_DISPATCH_URL") ? trim(environment["RR_NOTIFICATION_DISPATCH_URL"]) : (structKeyExists(businessLocalConfig, "notificationDispatchUrl") ? trim(businessLocalConfig.notificationDispatchUrl) : "")/>
+        <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "notificationDispatchTimeoutSeconds") ? val(businessLocalConfig.notificationDispatchTimeoutSeconds) : 20)/>
         <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : (structKeyExists(businessLocalConfig, "pushPublicKey") ? trim(businessLocalConfig.pushPublicKey) : "")/>
         <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : (structKeyExists(businessLocalConfig, "pushPrivateKey") ? trim(businessLocalConfig.pushPrivateKey) : "")/>
         <cfset var pushSubject = structKeyExists(environment, "RR_PUSH_SUBJECT") ? trim(environment["RR_PUSH_SUBJECT"]) : (structKeyExists(businessLocalConfig, "pushSubject") ? trim(businessLocalConfig.pushSubject) : "mailto:contato@runnerhub.run")/>
@@ -56,6 +56,11 @@
         <cfset var cronRunnerToken = structKeyExists(environment, "RR_BUSINESS_CRON_RUNNER_TOKEN") ? trim(environment["RR_BUSINESS_CRON_RUNNER_TOKEN"]) : (structKeyExists(businessLocalConfig, "cronRunnerToken") ? trim(businessLocalConfig.cronRunnerToken) : "")/>
         <cfset var cronDefaultTimeoutSeconds = structKeyExists(environment, "RR_BUSINESS_CRON_TIMEOUT_SECONDS") ? val(environment["RR_BUSINESS_CRON_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "cronDefaultTimeoutSeconds") ? val(businessLocalConfig.cronDefaultTimeoutSeconds) : 30)/>
         <cfset var cronSecrets = structKeyExists(businessLocalConfig, "cronSecrets") AND isStruct(businessLocalConfig.cronSecrets) ? duplicate(businessLocalConfig.cronSecrets) : {}/>
+        <cfif NOT len(pushDispatchSecret)
+            AND structKeyExists(cronSecrets, "road_runners_handoff")
+            AND len(trim(cronSecrets.road_runners_handoff & ""))>
+            <cfset pushDispatchSecret = trim(cronSecrets.road_runners_handoff & "")/>
+        </cfif>
 
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
@@ -75,7 +80,7 @@
         <cfset APPLICATION.baseCanonica = "https://runnerhub.run"/>
         <cfset APPLICATION.ga = ""/>
         <cfset APPLICATION.pushDispatch = {
-            url = len(pushDispatchUrl) ? pushDispatchUrl : "https://roadrunners.run/api/push/send.cfm",
+            url = len(notificationDispatchUrl) ? notificationDispatchUrl : "https://roadrunners.run/api/notifications/integrations/dispatch.cfm",
             secret = len(pushDispatchSecret) ? pushDispatchSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
             timeoutSeconds = pushDispatchTimeoutSeconds GT 0 ? pushDispatchTimeoutSeconds : 20
         }/>

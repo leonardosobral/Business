@@ -120,27 +120,6 @@
     ))/>
 
     <cfset dispatchUrlAttempts = [ dispatchUrl ]/>
-    <cfif findNoCase("://roadrunners.run/", dispatchUrl)>
-        <cfset arrayAppend(
-            dispatchUrlAttempts,
-            replaceNoCase(
-                dispatchUrl,
-                "://roadrunners.run/",
-                "://dev.roadrunners.run/",
-                "one"
-            )
-        )/>
-    <cfelseif findNoCase("://beta.roadrunners.run/", dispatchUrl)>
-        <cfset arrayAppend(
-            dispatchUrlAttempts,
-            replaceNoCase(
-                dispatchUrl,
-                "://beta.roadrunners.run/",
-                "://dev.roadrunners.run/",
-                "one"
-            )
-        )/>
-    </cfif>
 
     <cftry>
         <cfloop array="#dispatchUrlAttempts#" item="dispatchUrlAttempt">
@@ -233,7 +212,10 @@
         data_expiracao = dateTimeFormat(notificationExpiresAt, "yyyy-mm-dd HH:nn:ss"),
         userIds = [ val(qHelpdeskNotificationTarget.id_usuario_responsavel) ],
         options = {
-            sendPush = true
+            sendPush = true,
+            pushCategory = "atendimento",
+            pushUrgency = "high",
+            pushTtlSeconds = 300
         }
     }/>
 
@@ -283,7 +265,10 @@
         data_expiracao = dateTimeFormat(notificationExpiresAt, "yyyy-mm-dd HH:nn:ss"),
         userIds = [ val(qHelpdeskTicketOwner.id_usuario) ],
         options = {
-            sendPush = true
+            sendPush = true,
+            pushCategory = "atendimento",
+            pushUrgency = "high",
+            pushTtlSeconds = 300
         }
     }/>
 

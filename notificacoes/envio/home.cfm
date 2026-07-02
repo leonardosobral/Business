@@ -158,6 +158,13 @@
               <div class="alert alert-secondary">
                 As notificações foram materializadas, mas o Push do PWA não está habilitado neste ambiente do Road Runners.
               </div>
+            <cfelseif VARIABLES.notificationSendPushStatus EQ "dispatch_failed">
+              <div class="alert alert-warning">
+                As notificações foram materializadas, mas o Road Runners não conseguiu confirmar nenhuma entrega Push.
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+              </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "scheduled">
               <div class="alert alert-secondary">
                 As notificações foram agendadas com sucesso. O Push não foi disparado agora porque a publicação está programada para uma data futura.

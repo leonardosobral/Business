@@ -1,5 +1,8 @@
 <cfscript>
 businessLocalConfig = {
+    "notificationDispatchUrl" = "https://roadrunners.run/api/notifications/integrations/dispatch.cfm",
+    "notificationDispatchSecret" = "SEGREDO_COMPARTILHADO_COM_ROAD_RUNNERS",
+    "notificationDispatchTimeoutSeconds" = 20,
     "uptimeRobotApiKey" = "COLOQUE_AQUI_A_READ_ONLY_API_KEY",
     "uptimeRobotApiUrl" = "https://api.uptimerobot.com/v2/getMonitors",
     "uptimeRobotTimeoutSeconds" = 15,

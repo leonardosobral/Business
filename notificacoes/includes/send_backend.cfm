@@ -244,7 +244,7 @@
     subject = "mailto:contato@runnerhub.run"
 }/>
 
-<cfif fileExists(expandPath("/config/pwa_push.local.cfm"))>
+<cfif 1 EQ 0 AND fileExists(expandPath("/config/pwa_push.local.cfm"))>
     <cfinclude template="/config/pwa_push.local.cfm"/>
     <cfif isDefined("localPushConfig") AND isStruct(localPushConfig)>
         <cfif structKeyExists(localPushConfig, "publicKey")>
@@ -659,7 +659,12 @@
     </cfif>
 
     <cfif VARIABLES.notificationSendPublicationDate LTE now()>
-        <cfset VARIABLES.notificationSendDispatchPayload.options = { sendPush = true }/>
+        <cfset VARIABLES.notificationSendDispatchPayload.options = {
+            sendPush = true,
+            pushCategory = "sistema",
+            pushUrgency = "normal",
+            pushTtlSeconds = 300
+        }/>
     </cfif>
 
     <cfset VARIABLES.notificationSendDispatchRawBody = serializeJSON(VARIABLES.notificationSendDispatchPayload)/>
@@ -674,27 +679,6 @@
     </cfif>
 
     <cfset VARIABLES.notificationSendDispatchUrlAttempts = [ VARIABLES.notificationSendDispatchUrl ]/>
-    <cfif findNoCase("://roadrunners.run/", VARIABLES.notificationSendDispatchUrl)>
-        <cfset arrayAppend(
-            VARIABLES.notificationSendDispatchUrlAttempts,
-            replaceNoCase(
-                VARIABLES.notificationSendDispatchUrl,
-                "://roadrunners.run/",
-                "://dev.roadrunners.run/",
-                "one"
-            )
-        )/>
-    <cfelseif findNoCase("://beta.roadrunners.run/", VARIABLES.notificationSendDispatchUrl)>
-        <cfset arrayAppend(
-            VARIABLES.notificationSendDispatchUrlAttempts,
-            replaceNoCase(
-                VARIABLES.notificationSendDispatchUrl,
-                "://beta.roadrunners.run/",
-                "://dev.roadrunners.run/",
-                "one"
-            )
-        )/>
-    </cfif>
 
     <cfloop array="#VARIABLES.notificationSendDispatchUrlAttempts#" item="VARIABLES.notificationSendDispatchUrlAttempt">
         <cfhttp
@@ -778,6 +762,7 @@
     </cfif>
 
     <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=api_falhou"/>
+    <cfabort>
 
     <cfquery name="qNotificationSendInsert">
         INSERT INTO tb_notifica (
