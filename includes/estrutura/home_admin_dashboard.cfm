@@ -510,6 +510,8 @@
     </div>
 </section>
 
+<cfinclude template="uptime_status.cfm"/>
+
 <cfif VARIABLES.businessAdminHomeReady>
     <section class="col-xl-5 business-admin-home business-page">
         <div class="card h-100 business-page-card">

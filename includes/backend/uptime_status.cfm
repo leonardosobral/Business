@@ -7,6 +7,8 @@
     loaded = false,
     fetchedAt = "",
     error = "",
+    rawPayload = {},
+    apiHttpStatus = "",
     monitors = [],
     total = 0,
     up = 0,
@@ -76,16 +78,21 @@
     <cfset VARIABLES.uptimeCacheKey = "uptimeRobotStatus"/>
     <cfset VARIABLES.uptimeCacheSeconds = APPLICATION.uptimeRobot.cacheSeconds/>
     <cfset VARIABLES.uptimeFetchRequired = true/>
+    <cfif isDefined("URL.uptime_refresh") AND val(URL.uptime_refresh) EQ 1>
+        <cfset VARIABLES.uptimeFetchRequired = true/>
+    </cfif>
 
-    <cflock scope="application" type="readonly" timeout="5">
-        <cfif structKeyExists(APPLICATION, VARIABLES.uptimeCacheKey)
-            AND structKeyExists(APPLICATION[VARIABLES.uptimeCacheKey], "expiresAt")
-            AND APPLICATION[VARIABLES.uptimeCacheKey].expiresAt GT now()
-            AND structKeyExists(APPLICATION[VARIABLES.uptimeCacheKey], "status")>
-            <cfset VARIABLES.uptimeStatus = duplicate(APPLICATION[VARIABLES.uptimeCacheKey].status)/>
-            <cfset VARIABLES.uptimeFetchRequired = false/>
-        </cfif>
-    </cflock>
+    <cfif NOT (isDefined("URL.uptime_refresh") AND val(URL.uptime_refresh) EQ 1)>
+        <cflock scope="application" type="readonly" timeout="5">
+            <cfif structKeyExists(APPLICATION, VARIABLES.uptimeCacheKey)
+                AND structKeyExists(APPLICATION[VARIABLES.uptimeCacheKey], "expiresAt")
+                AND APPLICATION[VARIABLES.uptimeCacheKey].expiresAt GT now()
+                AND structKeyExists(APPLICATION[VARIABLES.uptimeCacheKey], "status")>
+                <cfset VARIABLES.uptimeStatus = duplicate(APPLICATION[VARIABLES.uptimeCacheKey].status)/>
+                <cfset VARIABLES.uptimeFetchRequired = false/>
+            </cfif>
+        </cflock>
+    </cfif>
 
     <cfif VARIABLES.uptimeFetchRequired>
         <cftry>
@@ -93,14 +100,19 @@
                 <cfhttpparam type="formfield" name="api_key" value="#APPLICATION.uptimeRobot.apiKey#"/>
                 <cfhttpparam type="formfield" name="format" value="json"/>
                 <cfhttpparam type="formfield" name="logs" value="1"/>
+                <cfhttpparam type="formfield" name="logs_limit" value="10"/>
                 <cfhttpparam type="formfield" name="response_times" value="1"/>
-                <cfhttpparam type="formfield" name="response_times_limit" value="1"/>
+                <cfhttpparam type="formfield" name="response_times_limit" value="20"/>
                 <cfhttpparam type="formfield" name="all_time_uptime_ratio" value="1"/>
                 <cfhttpparam type="formfield" name="custom_uptime_ratios" value="7-30"/>
+                <cfhttpparam type="formfield" name="alert_contacts" value="1"/>
             </cfhttp>
+
+            <cfset VARIABLES.uptimeStatus.apiHttpStatus = structKeyExists(qUptimeRobotHttp, "statusCode") ? trim(qUptimeRobotHttp.statusCode) : ""/>
 
             <cfif left(qUptimeRobotHttp.statusCode, 3) EQ "200" AND isJSON(qUptimeRobotHttp.fileContent)>
                 <cfset VARIABLES.uptimeRobotPayload = deserializeJSON(qUptimeRobotHttp.fileContent)/>
+                <cfset VARIABLES.uptimeStatus.rawPayload = VARIABLES.uptimeRobotPayload/>
 
                 <cfif structKeyExists(VARIABLES.uptimeRobotPayload, "stat") AND VARIABLES.uptimeRobotPayload.stat EQ "ok" AND structKeyExists(VARIABLES.uptimeRobotPayload, "monitors") AND isArray(VARIABLES.uptimeRobotPayload.monitors)>
                     <cfset VARIABLES.uptimeStatus.loaded = true/>
@@ -182,7 +194,8 @@
                             responseTime = VARIABLES.uptimeMonitorResponse,
                             customRatio = VARIABLES.uptimeMonitorCustomRatio,
                             incident = VARIABLES.uptimeMonitorIncident,
-                            incidentAt = VARIABLES.uptimeMonitorIncidentAt
+                            incidentAt = VARIABLES.uptimeMonitorIncidentAt,
+                            raw = uptimeMonitor
                         })/>
                     </cfloop>
 
@@ -211,4 +224,11 @@
             }/>
         </cflock>
     </cfif>
+</cfif>
+
+<cfif NOT structKeyExists(VARIABLES.uptimeStatus, "rawPayload")>
+    <cfset VARIABLES.uptimeStatus.rawPayload = {}/>
+</cfif>
+<cfif NOT structKeyExists(VARIABLES.uptimeStatus, "apiHttpStatus")>
+    <cfset VARIABLES.uptimeStatus.apiHttpStatus = ""/>
 </cfif>

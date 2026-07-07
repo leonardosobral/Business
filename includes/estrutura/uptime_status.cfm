@@ -1,4 +1,7 @@
 <cfinclude template="../backend/uptime_status.cfm"/>
+<cfif NOT structKeyExists(VARIABLES.uptimeStatus, "monitors") OR NOT isArray(VARIABLES.uptimeStatus.monitors)>
+    <cfset VARIABLES.uptimeStatus.monitors = []/>
+</cfif>
 
 <cfif VARIABLES.uptimeStatus.configured>
     <section class="col-12">
@@ -15,11 +18,18 @@
                     </small>
                 </div>
                 <cfif VARIABLES.uptimeStatus.loaded>
-                    <cfoutput>
-                        <span class="badge badge-#VARIABLES.uptimeStatus.down GT 0 ? 'danger' : (VARIABLES.uptimeStatus.warning GT 0 ? 'warning' : 'success')#">
-                            #VARIABLES.uptimeStatus.down GT 0 ? 'Atenção necessária' : (VARIABLES.uptimeStatus.warning GT 0 ? 'Instabilidade detectada' : 'Todos online')#
-                        </span>
-                    </cfoutput>
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <cfif arrayLen(VARIABLES.uptimeStatus.monitors)>
+                            <button class="btn btn-sm btn-outline-warning" type="button" data-uptime-toggle="business-dashboard-uptime-monitors" aria-expanded="false">
+                                Exibir monitores
+                            </button>
+                        </cfif>
+                        <cfoutput>
+                            <span class="badge badge-#VARIABLES.uptimeStatus.down GT 0 ? 'danger' : (VARIABLES.uptimeStatus.warning GT 0 ? 'warning' : 'success')#">
+                                #VARIABLES.uptimeStatus.down GT 0 ? 'Atenção necessária' : (VARIABLES.uptimeStatus.warning GT 0 ? 'Instabilidade detectada' : 'Todos online')#
+                            </span>
+                        </cfoutput>
+                    </div>
                 </cfif>
             </div>
 
@@ -68,7 +78,7 @@
                         </div>
                     </div>
 
-                    <div class="table-responsive">
+                    <div id="business-dashboard-uptime-monitors" class="table-responsive d-none">
                         <table class="table table-sm align-middle mb-0">
                             <thead>
                                 <tr>
@@ -118,6 +128,23 @@
             </div>
         </div>
     </section>
+    <script>
+        (function () {
+            document.querySelectorAll("[data-uptime-toggle]").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    var target = document.getElementById(button.getAttribute("data-uptime-toggle"));
+
+                    if (!target) {
+                        return;
+                    }
+
+                    var isHidden = target.classList.toggle("d-none");
+                    button.setAttribute("aria-expanded", isHidden ? "false" : "true");
+                    button.textContent = isHidden ? "Exibir monitores" : "Ocultar monitores";
+                });
+            });
+        })();
+    </script>
 <cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND qPerfil.is_admin>
     <section class="col-12">
         <div class="alert alert-info">

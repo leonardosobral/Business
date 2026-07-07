@@ -6,7 +6,8 @@
      data-mdb-mode="side"
      data-mdb-width="216">
 <style>
-    .business-foco-review-pending-badge {
+    .business-foco-review-pending-badge,
+    .business-status-attention-badge {
         background-color: #fab120;
         color: #1d1608;
         display: inline-flex;
@@ -102,6 +103,7 @@
 <cfset VARIABLES.businessCanShowAccountNavigation = false/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+<cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
 <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
         <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
@@ -153,6 +155,24 @@
         <cfset VARIABLES.businessAgregaReviewPendingTotal = val(qBusinessAgregaReviewPending.total)/>
         <cfcatch type="any">
             <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
+        <cfif structKeyExists(APPLICATION, "uptimeRobotStatus")
+            AND isStruct(APPLICATION.uptimeRobotStatus)
+            AND structKeyExists(APPLICATION.uptimeRobotStatus, "status")
+            AND isStruct(APPLICATION.uptimeRobotStatus.status)>
+            <cfset VARIABLES.businessUptimeStatusCached = APPLICATION.uptimeRobotStatus.status/>
+            <cfset VARIABLES.businessUptimeStatusAttentionTotal = (structKeyExists(VARIABLES.businessUptimeStatusCached, "down") ? val(VARIABLES.businessUptimeStatusCached.down) : 0) + (structKeyExists(VARIABLES.businessUptimeStatusCached, "warning") ? val(VARIABLES.businessUptimeStatusCached.warning) : 0)/>
+        <cfelse>
+            <cfinclude template="../backend/uptime_status.cfm"/>
+            <cfif structKeyExists(VARIABLES, "uptimeStatus") AND isStruct(VARIABLES.uptimeStatus)>
+                <cfset VARIABLES.businessUptimeStatusAttentionTotal = (structKeyExists(VARIABLES.uptimeStatus, "down") ? val(VARIABLES.uptimeStatus.down) : 0) + (structKeyExists(VARIABLES.uptimeStatus, "warning") ? val(VARIABLES.uptimeStatus.warning) : 0)/>
+            </cfif>
+        </cfif>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
         </cfcatch>
     </cftry>
 </cfif>
@@ -372,6 +392,15 @@
                     <i class="fa-solid fa-object-group fa-fw me-3"></i><span>Revisão Agregadores</span>
                     <cfif VARIABLES.businessAgregaReviewPendingTotal GT 0>
                         <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessAgregaReviewPendingTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/status/">link-warning</cfif>" href="/administracao/status/">
+                    <i class="fa-solid fa-heart-pulse fa-fw me-3"></i><span>Status</span>
+                    <cfif VARIABLES.businessUptimeStatusAttentionTotal GT 0>
+                        <span class="badge rounded-pill business-status-attention-badge"><cfoutput>#VARIABLES.businessUptimeStatusAttentionTotal#</cfoutput></span>
                     </cfif>
                 </a>
             </li>
