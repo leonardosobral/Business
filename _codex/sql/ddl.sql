@@ -1,3 +1,7 @@
+create schema if not exists ads authorization runner_dba;
+
+grant usage on schema ads to runner;
+
 create sequence tb_bagdes_id_badge_seq
     as integer;
 
@@ -44,12 +48,12 @@ alter sequence tb_carga_crono_num_inscricao_seq owner to runner_dba;
 
 grant select, usage on sequence tb_carga_crono_num_inscricao_seq to runner;
 
-create sequence tb_evento_ads_id_evento_ad_seq
+create sequence ads.tb_evento_ads_id_evento_ad_seq
     as integer;
 
-alter sequence tb_evento_ads_id_evento_ad_seq owner to runner_dba;
+alter sequence ads.tb_evento_ads_id_evento_ad_seq owner to runner_dba;
 
-grant select, usage on sequence tb_evento_ads_id_evento_ad_seq to runner;
+grant select, usage on sequence ads.tb_evento_ads_id_evento_ad_seq to runner;
 
 -- Unknown how to generate base type type
 
@@ -2358,9 +2362,9 @@ alter table tb_carga_racezone
 
 grant insert, select, update on tb_carga_racezone to runner;
 
-create table tb_ad_eventos
+create table ads.tb_ad_eventos
 (
-    id_ad_evento  integer default nextval('tb_evento_ads_id_evento_ad_seq'::regclass) not null,
+    id_ad_evento  integer default nextval('ads.tb_evento_ads_id_evento_ad_seq'::regclass) not null,
     id_evento     integer                                                             not null,
     escopo        varchar,
     cpc_max       numeric(14, 2),
@@ -2374,14 +2378,14 @@ create table tb_ad_eventos
     locais        jsonb
 );
 
-alter table tb_ad_eventos
+alter table ads.tb_ad_eventos
     owner to runner_dba;
 
-alter sequence tb_evento_ads_id_evento_ad_seq owned by tb_ad_eventos.id_ad_evento;
+alter sequence ads.tb_evento_ads_id_evento_ad_seq owned by ads.tb_ad_eventos.id_ad_evento;
 
-grant insert, select, update on tb_ad_eventos to runner;
+grant insert, select, update on ads.tb_ad_eventos to runner;
 
-create table tb_ad_vouchers
+create table ads.tb_ad_vouchers
 (
     id_ad_voucher      serial,
     codigo             varchar,
@@ -2393,14 +2397,14 @@ create table tb_ad_vouchers
     data_expiracao     date
 );
 
-alter table tb_ad_vouchers
+alter table ads.tb_ad_vouchers
     owner to runner_dba;
 
-grant select, usage on sequence tb_ad_vouchers_id_ad_voucher_seq to runner;
+grant select, usage on sequence ads.tb_ad_vouchers_id_ad_voucher_seq to runner;
 
-grant insert, select, update on tb_ad_vouchers to runner;
+grant insert, select, update on ads.tb_ad_vouchers to runner;
 
-create table tb_ad_log
+create table ads.tb_ad_log
 (
     id_ad_log     serial,
     tipo_ad       varchar,
@@ -2412,26 +2416,26 @@ create table tb_ad_log
     status        integer        default 1     not null
 );
 
-alter table tb_ad_log
+alter table ads.tb_ad_log
     owner to runner_dba;
 
-grant select, usage on sequence tb_ad_log_id_ad_log_seq to runner;
+grant select, usage on sequence ads.tb_ad_log_id_ad_log_seq to runner;
 
-grant insert, select, update on tb_ad_log to runner;
+grant insert, select, update on ads.tb_ad_log to runner;
 
-create table click_nonce
+create table ads.click_nonce
 (
     nonce      text                                   not null
         primary key,
     created_at timestamp with time zone default now() not null
 );
 
-alter table click_nonce
+alter table ads.click_nonce
     owner to runner_dba;
 
-grant insert, select, update on click_nonce to runner;
+grant insert, select, update on ads.click_nonce to runner;
 
-create table click_rate_limit
+create table ads.click_rate_limit
 (
     id         bigserial
         primary key,
@@ -2440,12 +2444,12 @@ create table click_rate_limit
     created_at timestamp with time zone default now() not null
 );
 
-alter table click_rate_limit
+alter table ads.click_rate_limit
     owner to runner_dba;
 
-grant insert, select, update on click_rate_limit to runner;
+grant insert, select, update on ads.click_rate_limit to runner;
 
-create table clicks
+create table ads.clicks
 (
     id         bigserial
         primary key,
@@ -2460,12 +2464,12 @@ create table clicks
     created_at timestamp with time zone default now() not null
 );
 
-alter table clicks
+alter table ads.clicks
     owner to runner_dba;
 
-grant insert, select, update on clicks to runner;
+grant insert, select, update on ads.clicks to runner;
 
-create table pings
+create table ads.pings
 (
     id         bigserial
         primary key,
@@ -2476,24 +2480,24 @@ create table pings
     created_at timestamp with time zone default now() not null
 );
 
-alter table pings
+alter table ads.pings
     owner to runner_dba;
 
-grant insert, select, update on pings to runner;
+grant insert, select, update on ads.pings to runner;
 
-create table ping_nonce
+create table ads.ping_nonce
 (
     nonce      text                                   not null
         primary key,
     created_at timestamp with time zone default now() not null
 );
 
-alter table ping_nonce
+alter table ads.ping_nonce
     owner to runner_dba;
 
-grant insert, select, update on ping_nonce to runner;
+grant insert, select, update on ads.ping_nonce to runner;
 
-create table click_audit
+create table ads.click_audit
 (
     id         bigserial
         primary key,
@@ -2503,12 +2507,12 @@ create table click_audit
     created_at timestamp with time zone default now() not null
 );
 
-alter table click_audit
+alter table ads.click_audit
     owner to runner_dba;
 
-grant insert, select, update on click_audit to runner;
+grant insert, select, update on ads.click_audit to runner;
 
-create table impressions
+create table ads.impressions
 (
     impression_id text                                   not null
         primary key,
@@ -2524,10 +2528,10 @@ create table impressions
     created_at    timestamp with time zone default now() not null
 );
 
-alter table impressions
+alter table ads.impressions
     owner to runner_dba;
 
-grant insert, select, update on impressions to runner;
+grant insert, select, update on ads.impressions to runner;
 
 create table desafios_eventos
 (
@@ -3670,7 +3674,7 @@ grant delete, insert, select, update on tb_leaderboard_startlist to runner;
 
 grant select on tb_leaderboard_startlist to liverunners_dba;
 
-create table tb_portal_banners
+create table ads.tb_portal_banners
 (
     id_banner         serial
         primary key,
@@ -3702,21 +3706,21 @@ create table tb_portal_banners
     atualizado_por    integer
 );
 
-alter table tb_portal_banners
+alter table ads.tb_portal_banners
     owner to runner_dba;
 
 create index tb_portal_banners_lookup_idx
-    on tb_portal_banners (canal, local_layout, status);
+    on ads.tb_portal_banners (canal, local_layout, status);
 
 create index tb_portal_banners_periodo_idx
-    on tb_portal_banners (inicio_exibicao, fim_exibicao);
+    on ads.tb_portal_banners (inicio_exibicao, fim_exibicao);
 
-create table tb_portal_banners_log
+create table ads.tb_portal_banners_log
 (
     id_banner_log  bigserial
         primary key,
     id_banner      integer                 not null
-        references tb_portal_banners
+        references ads.tb_portal_banners
             on delete cascade,
     tipo_evento    varchar(20)             not null,
     canal          varchar(80),
@@ -3731,14 +3735,14 @@ create table tb_portal_banners_log
     criado_em      timestamp default now() not null
 );
 
-alter table tb_portal_banners_log
+alter table ads.tb_portal_banners_log
     owner to runner_dba;
 
 create index tb_portal_banners_log_banner_idx
-    on tb_portal_banners_log (id_banner asc, tipo_evento asc, criado_em desc);
+    on ads.tb_portal_banners_log (id_banner asc, tipo_evento asc, criado_em desc);
 
 create index tb_portal_banners_log_slot_idx
-    on tb_portal_banners_log (canal asc, local_layout asc, tipo_evento asc, criado_em desc);
+    on ads.tb_portal_banners_log (canal asc, local_layout asc, tipo_evento asc, criado_em desc);
 
 create table tb_crawlers
 (

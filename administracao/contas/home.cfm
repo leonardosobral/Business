@@ -1202,26 +1202,26 @@
                     <ul class="nav nav-tabs accounts-management-tabs mb-4">
                       <cfif VARIABLES.businessAccountsCanAdminAll>
                         <li class="nav-item">
-                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'dados'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=dados&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">
+                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'dados'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=dados&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="dados">
                             Dados
                           </a>
                         </li>
                       </cfif>
                       <li class="nav-item">
-                        <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'usuarios'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=usuarios&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">
+                        <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'usuarios'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=usuarios&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="usuarios">
                           Usuários (#LSNumberFormat(qBusinessAccountUsers.recordcount)#)
                         </a>
                       </li>
                       <cfif VARIABLES.businessAccountsCanAdminAll>
                         <li class="nav-item">
-                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'vouchers'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=vouchers&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">
+                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'vouchers'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=vouchers&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="vouchers">
                             Vouchers (#LSNumberFormat(qBusinessAccountVouchers.recordcount)#)
                           </a>
                         </li>
                       </cfif>
                       <cfif VARIABLES.businessAccountsCanAdminAll>
                         <li class="nav-item">
-                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'eventos'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=eventos&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">
+                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'eventos'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=eventos&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="eventos">
                             Eventos (#LSNumberFormat(qBusinessAccountEvents.recordcount)#)
                           </a>
                         </li>
@@ -1230,7 +1230,7 @@
                   </cfoutput>
 
                   <cfif VARIABLES.businessAccountsCanAdminAll>
-                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'dados'>d-none</cfif>">
+                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'dados'>d-none</cfif>" data-account-tab-panel="dados">
                       <div class="mb-3">
                         <h5 class="mb-1">Dados da conta</h5>
                         <div class="text-muted small">Edite cadastro, titularidade e status operacional desta conta.</div>
@@ -1311,7 +1311,7 @@
                     </div>
                   </cfif>
 
-                  <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'usuarios'>d-none</cfif>">
+                  <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'usuarios'>d-none</cfif>" data-account-tab-panel="usuarios">
                   <div class="mb-3">
                     <h5 class="mb-1">Usuários da conta</h5>
                     <div class="text-muted small">
@@ -1510,7 +1510,7 @@
                   </div>
 
                   <cfif VARIABLES.businessAccountsCanAdminAll>
-                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'vouchers'>d-none</cfif>">
+                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'vouchers'>d-none</cfif>" data-account-tab-panel="vouchers">
 
                     <div class="mb-3">
                       <h5 class="mb-1">Vouchers de ads</h5>
@@ -1631,7 +1631,7 @@
                   </cfif>
 
                   <cfif VARIABLES.businessAccountsCanAdminAll>
-                  <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'eventos'>d-none</cfif>">
+                  <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'eventos'>d-none</cfif>" data-account-tab-panel="eventos">
 
                   <div class="mb-3">
                     <h5 class="mb-1">Eventos da conta</h5>
@@ -1814,6 +1814,50 @@
     </div>
   </div>
 </section>
+
+<cfif qBusinessAccountEdit.recordcount>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var tabButtons = Array.prototype.slice.call(document.querySelectorAll('[data-account-tab]'));
+      var tabPanels = Array.prototype.slice.call(document.querySelectorAll('[data-account-tab-panel]'));
+
+      if (!tabButtons.length || !tabPanels.length) return;
+
+      function activateAccountTab(tabName, updateUrl) {
+        tabButtons.forEach(function (button) {
+          var isActive = button.getAttribute('data-account-tab') === tabName;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        tabPanels.forEach(function (panel) {
+          panel.classList.toggle('d-none', panel.getAttribute('data-account-tab-panel') !== tabName);
+        });
+
+        if (!updateUrl || !window.history || !window.history.replaceState) return;
+
+        try {
+          var nextUrl = new URL(window.location.href);
+          nextUrl.searchParams.set('tab', tabName);
+          nextUrl.hash = 'conta-gerenciamento';
+          window.history.replaceState({}, '', nextUrl.toString());
+        } catch (error) {
+          // A troca visual da aba continua mesmo se a URL nao puder ser atualizada.
+        }
+      }
+
+      tabButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          var tabName = button.getAttribute('data-account-tab');
+          if (!tabName) return;
+
+          event.preventDefault();
+          activateAccountTab(tabName, true);
+        });
+      });
+    });
+  </script>
+</cfif>
 
 <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountEdit.recordcount>
   <cfoutput>

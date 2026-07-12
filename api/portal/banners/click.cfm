@@ -31,7 +31,7 @@ function portalBannerClickResolveOriginSite() {
 <cfquery name="qPortalBannerClickTables">
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = current_schema()
+    WHERE table_schema = 'ads'
       AND table_name IN ('tb_portal_banners', 'tb_portal_banners_log')
 </cfquery>
 
@@ -44,7 +44,7 @@ function portalBannerClickResolveOriginSite() {
 
 <cfquery name="qPortalBannerClick">
     SELECT *
-    FROM tb_portal_banners
+    FROM ads.tb_portal_banners
     WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.id_banner)#"/>
 </cfquery>
 
@@ -54,7 +54,7 @@ function portalBannerClickResolveOriginSite() {
 </cfif>
 
 <cfquery>
-    INSERT INTO tb_portal_banners_log
+    INSERT INTO ads.tb_portal_banners_log
     (
         id_banner,
         tipo_evento,

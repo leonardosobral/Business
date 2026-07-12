@@ -1,7 +1,7 @@
 -- Log de conversoes de turbinados.
 -- Objetivo: separar taxa de click (clicks/views) de conversao real.
 
-CREATE TABLE IF NOT EXISTS tb_ad_conversion_log (
+CREATE TABLE IF NOT EXISTS ads.tb_ad_conversion_log (
     id_conversion bigserial PRIMARY KEY,
     id_ad_evento bigint NOT NULL,
     id_evento integer NOT NULL,
@@ -21,16 +21,16 @@ CREATE TABLE IF NOT EXISTS tb_ad_conversion_log (
 );
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_conversion_log_conta_data
-    ON tb_ad_conversion_log (id_conta, data_criacao DESC);
+    ON ads.tb_ad_conversion_log (id_conta, data_criacao DESC);
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_conversion_log_ad_data
-    ON tb_ad_conversion_log (id_ad_evento, data_criacao DESC);
+    ON ads.tb_ad_conversion_log (id_ad_evento, data_criacao DESC);
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_conversion_log_evento_data
-    ON tb_ad_conversion_log (id_evento, data_criacao DESC);
+    ON ads.tb_ad_conversion_log (id_evento, data_criacao DESC);
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_conversion_log_tipo_data
-    ON tb_ad_conversion_log (tipo_conversion, data_criacao DESC);
+    ON ads.tb_ad_conversion_log (tipo_conversion, data_criacao DESC);
 
-GRANT SELECT, INSERT ON tb_ad_conversion_log TO runner;
-GRANT SELECT, USAGE ON SEQUENCE tb_ad_conversion_log_id_conversion_seq TO runner;
+GRANT SELECT, INSERT ON ads.tb_ad_conversion_log TO runner;
+GRANT SELECT, USAGE ON SEQUENCE ads.tb_ad_conversion_log_id_conversion_seq TO runner;

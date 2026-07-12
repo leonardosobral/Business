@@ -67,7 +67,7 @@ function portalBannerApiSafeJson(required any payload) {
 <cfquery name="qPortalBannerApiTables">
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = current_schema()
+    WHERE table_schema = 'ads'
       AND table_name IN ('tb_portal_banners', 'tb_portal_banners_log')
 </cfquery>
 
@@ -92,19 +92,19 @@ function portalBannerApiSafeJson(required any payload) {
 <cfquery name="qPortalBannerApiCandidates">
     WITH banner_views AS (
         SELECT id_banner, count(*) AS total
-        FROM tb_portal_banners_log
+        FROM ads.tb_portal_banners_log
         WHERE tipo_evento = 'view'
         GROUP BY id_banner
     ),
     banner_clicks AS (
         SELECT id_banner, count(*) AS total
-        FROM tb_portal_banners_log
+        FROM ads.tb_portal_banners_log
         WHERE tipo_evento = 'click'
         GROUP BY id_banner
     ),
     banner_daily_views AS (
         SELECT id_banner, count(*) AS total
-        FROM tb_portal_banners_log
+        FROM ads.tb_portal_banners_log
         WHERE tipo_evento = 'view'
           AND criado_em::date = current_date
         GROUP BY id_banner
@@ -113,7 +113,7 @@ function portalBannerApiSafeJson(required any payload) {
            coalesce(banner_views.total, 0) AS views,
            coalesce(banner_clicks.total, 0) AS clicks,
            coalesce(banner_daily_views.total, 0) AS daily_views
-    FROM tb_portal_banners bnr
+    FROM ads.tb_portal_banners bnr
     LEFT JOIN banner_views ON banner_views.id_banner = bnr.id_banner
     LEFT JOIN banner_clicks ON banner_clicks.id_banner = bnr.id_banner
     LEFT JOIN banner_daily_views ON banner_daily_views.id_banner = bnr.id_banner
@@ -187,7 +187,7 @@ function portalBannerApiSafeJson(required any payload) {
 </cfif>
 
 <cfquery>
-    INSERT INTO tb_portal_banners_log
+    INSERT INTO ads.tb_portal_banners_log
     (
         id_banner,
         tipo_evento,

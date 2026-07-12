@@ -81,7 +81,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 <cfquery name="qBannerManagementTables">
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = current_schema()
+    WHERE table_schema = 'ads'
       AND table_name IN (
         'tb_portal_banners',
         'tb_portal_banners_log'
@@ -241,7 +241,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfelse>
             <cfif len(VARIABLES.bannerRecordId)>
                 <cfquery name="qBannerManagementUpdate">
-                    UPDATE tb_portal_banners
+                    UPDATE ads.tb_portal_banners
                     SET nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerNome#"/>,
                         canal = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerCanal#"/>,
                         local_layout = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerLocalLayout#"/>,
@@ -272,7 +272,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                 <cflocation addtoken="false" url="/portal/banners/?sucesso=atualizado"/>
             <cfelse>
                 <cfquery name="qBannerManagementInsert">
-                    INSERT INTO tb_portal_banners
+                    INSERT INTO ads.tb_portal_banners
                     (
                         nome,
                         canal,
@@ -342,7 +342,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
         <cfif URL.acao EQ "status" AND isDefined("URL.status") AND isNumeric(URL.status)>
             <cfquery>
-                UPDATE tb_portal_banners
+                UPDATE ads.tb_portal_banners
                 SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.status)#"/>,
                     atualizado_em = now(),
                     atualizado_por = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
@@ -355,12 +355,12 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfif URL.acao EQ "excluir">
             <cfquery name="qBannerDeleteLookup">
                 SELECT arquivo_path
-                FROM tb_portal_banners
+                FROM ads.tb_portal_banners
                 WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
             </cfquery>
 
             <cfquery>
-                DELETE FROM tb_portal_banners
+                DELETE FROM ads.tb_portal_banners
                 WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
             </cfquery>
 
@@ -382,13 +382,13 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
     <cfquery name="qBannerManagementStats">
         WITH log_views AS (
             SELECT id_banner, count(*) AS total
-            FROM tb_portal_banners_log
+            FROM ads.tb_portal_banners_log
             WHERE tipo_evento = 'view'
             GROUP BY id_banner
         ),
         log_clicks AS (
             SELECT id_banner, count(*) AS total
-            FROM tb_portal_banners_log
+            FROM ads.tb_portal_banners_log
             WHERE tipo_evento = 'click'
             GROUP BY id_banner
         )
@@ -397,14 +397,14 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             count(*) FILTER (WHERE status = 2) AS total_ativos,
             coalesce(sum(log_views.total), 0) AS total_views,
             coalesce(sum(log_clicks.total), 0) AS total_clicks
-        FROM tb_portal_banners bnr
+        FROM ads.tb_portal_banners bnr
         LEFT JOIN log_views ON log_views.id_banner = bnr.id_banner
         LEFT JOIN log_clicks ON log_clicks.id_banner = bnr.id_banner
     </cfquery>
 
     <cfquery name="qBannerManagementChannels">
         SELECT DISTINCT canal
-        FROM tb_portal_banners
+        FROM ads.tb_portal_banners
         WHERE canal IS NOT NULL
           AND trim(canal) <> ''
         ORDER BY canal
@@ -412,7 +412,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
     <cfquery name="qBannerManagementSlots">
         SELECT DISTINCT local_layout
-        FROM tb_portal_banners
+        FROM ads.tb_portal_banners
         WHERE local_layout IS NOT NULL
           AND trim(local_layout) <> ''
         ORDER BY local_layout
@@ -421,20 +421,20 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
     <cfquery name="qBannerManagementList">
         WITH banner_views AS (
             SELECT id_banner, count(*) AS total
-            FROM tb_portal_banners_log
+            FROM ads.tb_portal_banners_log
             WHERE tipo_evento = 'view'
             GROUP BY id_banner
         ),
         banner_clicks AS (
             SELECT id_banner, count(*) AS total
-            FROM tb_portal_banners_log
+            FROM ads.tb_portal_banners_log
             WHERE tipo_evento = 'click'
             GROUP BY id_banner
         )
         SELECT bnr.*,
                coalesce(banner_views.total, 0) AS views,
                coalesce(banner_clicks.total, 0) AS clicks
-        FROM tb_portal_banners bnr
+        FROM ads.tb_portal_banners bnr
         LEFT JOIN banner_views ON banner_views.id_banner = bnr.id_banner
         LEFT JOIN banner_clicks ON banner_clicks.id_banner = bnr.id_banner
         WHERE 1 = 1
@@ -456,7 +456,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
     <cfquery name="qBannerManagementEdit">
         SELECT *
-        FROM tb_portal_banners
+        FROM ads.tb_portal_banners
         WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#isNumeric(URL.banner_editar) ? val(URL.banner_editar) : 0#"/>
     </cfquery>
 <cfelse>

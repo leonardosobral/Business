@@ -54,7 +54,7 @@
     </cfif>
 
     <cfquery name="qAdIncluirusuario">
-        insert into tb_ad_eventos
+        insert into ads.tb_ad_eventos
         (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
         values
         (
@@ -94,7 +94,7 @@
     </cfif>
 
     <cfquery name="qAdIncluirUsuario">
-        UPDATE tb_ad_eventos
+        UPDATE ads.tb_ad_eventos
         SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
             cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
             limite_diario = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_diario#"/>,

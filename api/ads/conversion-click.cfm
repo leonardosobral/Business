@@ -47,13 +47,14 @@ function adsConversionClickNormalizeDestination(required string destination) {
 <cfquery name="qAdsConversionClickTables">
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = current_schema()
-      AND table_name IN (
-          'tb_ad_eventos',
-          'tb_ad_conversion_log',
-          'tb_conta_eventos',
-          'tb_evento_corridas'
-      )
+    WHERE (
+            table_schema = 'ads'
+            AND table_name IN ('tb_ad_eventos', 'tb_ad_conversion_log')
+          )
+       OR (
+            table_schema = 'public'
+            AND table_name IN ('tb_conta_eventos', 'tb_evento_corridas')
+          )
 </cfquery>
 
 <cfset VARIABLES.adsConversionClickTables = ValueList(qAdsConversionClickTables.table_name)/>
@@ -71,9 +72,9 @@ function adsConversionClickNormalizeDestination(required string destination) {
            evt.url_inscricao,
            evt.url_hotsite,
            ce.id_conta
-    FROM tb_ad_eventos ad
-    INNER JOIN tb_evento_corridas evt ON evt.id_evento = ad.id_evento
-    LEFT JOIN tb_conta_eventos ce
+    FROM ads.tb_ad_eventos ad
+    INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ad.id_evento
+    LEFT JOIN public.tb_conta_eventos ce
            ON ce.id_evento = ad.id_evento
           AND ce.status::text = 'ATIVO'
     WHERE ad.status = 2
@@ -94,7 +95,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
     <cfif isNumeric(URL.id_evento) AND val(URL.id_evento) GT 0>
         <cfquery name="qAdsConversionFallbackEvent" maxrows="1">
             SELECT tag, url_inscricao, url_hotsite
-            FROM tb_evento_corridas
+            FROM public.tb_evento_corridas
             WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.id_evento)#"/>
         </cfquery>
 
@@ -125,7 +126,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
 
 <cfif ListFindNoCase(VARIABLES.adsConversionClickTables, "tb_ad_conversion_log")>
     <cfquery>
-        INSERT INTO tb_ad_conversion_log
+        INSERT INTO ads.tb_ad_conversion_log
         (
             id_ad_evento,
             id_evento,

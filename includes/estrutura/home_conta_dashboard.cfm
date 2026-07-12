@@ -29,7 +29,7 @@
             SELECT id_conta,
                    nome_conta,
                    status::text AS status
-            FROM tb_contas
+            FROM public.tb_contas
             WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
             ORDER BY nome_conta
         </cfquery>
@@ -47,8 +47,8 @@
                 SELECT count(DISTINCT ce.id_evento) FILTER (WHERE ce.status::text = 'ATIVO') AS eventos_ativos,
                        count(DISTINCT ce.id_evento) FILTER (WHERE ce.status::text = 'ATIVO' AND evt.data_final >= current_date) AS eventos_proximos,
                        count(DISTINCT ce.id_evento) FILTER (WHERE ce.status::text <> 'ATIVO') AS eventos_pendentes
-                FROM tb_conta_eventos ce
-                INNER JOIN tb_evento_corridas evt ON evt.id_evento = ce.id_evento
+                FROM public.tb_conta_eventos ce
+                INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ce.id_evento
                 WHERE ce.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
             ),
             user_summary AS (
@@ -73,7 +73,7 @@
         <cfquery name="qBusinessHomeUpcomingEvents">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
-                FROM tb_conta_eventos
+                FROM public.tb_conta_eventos
                 WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
                   AND status::text = 'ATIVO'
             )
@@ -94,7 +94,7 @@
                        CASE WHEN length(trim(coalesce(evt.imagem, evt.url_imagem, evt.url_imagem_listagem, ''))) > 0 THEN 0 ELSE 1 END
                    ) AS missing_count
             FROM linked_events ce
-            INNER JOIN tb_evento_corridas evt ON evt.id_evento = ce.id_evento
+            INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ce.id_evento
             WHERE evt.ativo = true
               AND evt.data_final >= current_date
             ORDER BY evt.data_inicial ASC, evt.nome_evento
@@ -104,7 +104,7 @@
         <cfquery name="qBusinessHomeContentAttention">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
-                FROM tb_conta_eventos
+                FROM public.tb_conta_eventos
                 WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
                   AND status::text = 'ATIVO'
             ),
@@ -123,7 +123,7 @@
                        CASE WHEN length(trim(coalesce(evt.cidade, ''))) > 0 AND length(trim(coalesce(evt.estado, ''))) > 0 THEN 1 ELSE 0 END AS has_local,
                        CASE WHEN length(trim(coalesce(evt.imagem, evt.url_imagem, evt.url_imagem_listagem, ''))) > 0 THEN 1 ELSE 0 END AS has_imagem
                 FROM linked_events ce
-                INNER JOIN tb_evento_corridas evt ON evt.id_evento = ce.id_evento
+                INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ce.id_evento
                 WHERE evt.ativo = true
                   AND evt.data_final >= current_date
             ),
@@ -149,7 +149,7 @@
         <cfquery name="qBusinessHomeVoucherColumnCheck">
             SELECT count(*)::integer AS total_columns
             FROM information_schema.columns
-            WHERE table_schema = 'public'
+            WHERE table_schema = 'ads'
               AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
               AND column_name IN (
                   <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
@@ -164,7 +164,7 @@
         <cfquery name="qBusinessHomeMarketingSummary">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
-                FROM tb_conta_eventos
+                FROM public.tb_conta_eventos
                 WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
                   AND status::text = 'ATIVO'
             ),
@@ -172,7 +172,7 @@
             voucher_summary AS (
                 SELECT coalesce(sum(CASE WHEN status = 2 AND data_resgate IS NOT NULL THEN coalesce(credito_disponivel, credito, 0) ELSE 0 END), 0) AS saldo_ads,
                        count(*) FILTER (WHERE status = 2 AND data_resgate IS NOT NULL) AS vouchers_resgatados
-                FROM tb_ad_vouchers
+                FROM ads.tb_ad_vouchers
                 WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
             ),
             <cfelse>
@@ -194,7 +194,7 @@
                              AND (ad.inicio_ad IS NULL OR ad.inicio_ad <= now())
                              AND (ad.final_ad IS NULL OR ad.final_ad >= now())
                        ), 0) AS ads_daily_limit
-                FROM tb_ad_eventos ad
+                FROM ads.tb_ad_eventos ad
                 INNER JOIN linked_events evt ON evt.id_evento = ad.id_evento
             )
             SELECT coalesce(voucher_summary.saldo_ads, 0) AS saldo_ads,
@@ -218,7 +218,7 @@
         <cfquery name="qBusinessHomeAdCampaigns">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
-                FROM tb_conta_eventos
+                FROM public.tb_conta_eventos
                 WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
                   AND status::text = 'ATIVO'
             )
@@ -231,8 +231,8 @@
                    ad.limite_ad,
                    ad.inicio_ad,
                    ad.final_ad
-            FROM tb_ad_eventos ad
-            INNER JOIN tb_evento_corridas evt ON evt.id_evento = ad.id_evento
+            FROM ads.tb_ad_eventos ad
+            INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ad.id_evento
             INNER JOIN linked_events ce ON ce.id_evento = evt.id_evento
             ORDER BY ad.status ASC, ad.final_ad DESC NULLS LAST, evt.nome_evento
             LIMIT 5

@@ -30,7 +30,7 @@
     <cfquery name="qAdsMetricasDiaTableCheck">
         SELECT count(*)::integer AS total
         FROM information_schema.tables
-        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="public"/>
+        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
           AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_evento_metricas_dia"/>
     </cfquery>
     <cfset VARIABLES.adsMetricasDiaReady = qAdsMetricasDiaTableCheck.recordcount AND val(qAdsMetricasDiaTableCheck.total) GT 0/>
@@ -44,7 +44,7 @@
     <cfquery name="qAdsConversionLogTableCheck">
         SELECT count(*)::integer AS total
         FROM information_schema.tables
-        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="public"/>
+        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
           AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_conversion_log"/>
     </cfquery>
     <cfset VARIABLES.adsConversionLogReady = qAdsConversionLogTableCheck.recordcount AND val(qAdsConversionLogTableCheck.total) GT 0/>
@@ -59,7 +59,7 @@
         SELECT table_name,
                column_name
         FROM information_schema.columns
-        WHERE table_schema = 'public'
+        WHERE table_schema = 'ads'
           AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
           AND column_name IN (
             <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
@@ -141,8 +141,8 @@
                            vou.data_expiracao,
                            vou.papel_resgate::text AS papel_resgate,
                            cont.nome_conta
-                    FROM tb_ad_vouchers vou
-                    INNER JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+                    FROM ads.tb_ad_vouchers vou
+                    INNER JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
                     WHERE lower(vou.codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsVoucherCode#"/>)
                       AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
                     LIMIT 1
@@ -159,7 +159,7 @@
 
                 <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
                     <cfquery>
-                        UPDATE tb_ad_vouchers
+                        UPDATE ads.tb_ad_vouchers
                         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
                             id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
                             data_resgate = now(),
@@ -197,8 +197,8 @@
                    vou.data_expiracao,
                    vou.papel_resgate::text AS papel_resgate,
                    vou.observacao
-            FROM tb_ad_vouchers vou
-            LEFT JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+            FROM ads.tb_ad_vouchers vou
+            LEFT JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
             WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
               AND vou.id_usuario_resgate IS NULL
               AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
@@ -214,7 +214,7 @@
     <cfquery name="qAdVoucherCredit">
         WITH voucher_credit AS (
             SELECT coalesce(sum(credito_disponivel), 0) AS credito_total
-            FROM tb_ad_vouchers
+            FROM ads.tb_ad_vouchers
             WHERE status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
               AND data_resgate IS NOT NULL
             <cfif VARIABLES.adsRestrictByConta>
@@ -223,9 +223,9 @@
         ),
         ad_spend AS (
             SELECT coalesce(sum(log.valor_ad), 0) AS consumo_total
-            FROM tb_ad_log log
-            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            FROM ads.tb_ad_log log
+            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
             WHERE log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
             <cfif VARIABLES.adsRestrictByConta>
               AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -251,8 +251,8 @@
                vou.data_resgate,
                vou.data_expiracao,
                vou.status
-        FROM tb_ad_vouchers vou
-        LEFT JOIN tb_contas cont ON cont.id_conta = vou.id_conta
+        FROM ads.tb_ad_vouchers vou
+        LEFT JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
         WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
           AND vou.data_resgate IS NOT NULL
         <cfif VARIABLES.adsRestrictByConta>
@@ -275,7 +275,7 @@
                data_final,
                cidade,
                estado
-        FROM tb_evento_corridas
+        FROM public.tb_evento_corridas
         WHERE ativo = true
           AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
         ORDER BY data_final DESC NULLS LAST, nome_evento
@@ -289,13 +289,13 @@
                evt.data_final,
                evt.cidade,
                evt.estado
-        FROM tb_evento_corridas evt
+        FROM public.tb_evento_corridas evt
         WHERE evt.ativo = true
           AND evt.data_final >= current_date
           AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
           AND NOT EXISTS (
               SELECT 1
-              FROM tb_ad_eventos ad
+              FROM ads.tb_ad_eventos ad
               WHERE ad.id_evento = evt.id_evento
                 AND ad.status < <cfqueryparam cfsqltype="cf_sql_integer" value="3"/>
           )
@@ -329,7 +329,7 @@
     <cfif isDefined("FORM.id_evento") AND len(trim(FORM.id_evento)) AND isNumeric(FORM.id_evento)>
         <cfquery name="qAdCheckEvento">
             SELECT id_evento
-            FROM tb_evento_corridas
+            FROM public.tb_evento_corridas
             WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
               AND ativo = true
             LIMIT 1
@@ -342,7 +342,7 @@
 
         <cfquery name="qAdCheckEvento">
             SELECT id_evento
-            FROM tb_evento_corridas
+            FROM public.tb_evento_corridas
             WHERE tag ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsEventoReferencia#"/>
               AND ativo = true
             LIMIT 1
@@ -383,7 +383,7 @@
     </cfif>
 
     <cfquery name="qAdIncluirCampanha">
-        insert into tb_ad_eventos
+        insert into ads.tb_ad_eventos
         (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
         values
         (
@@ -452,7 +452,7 @@
     </cfif>
 
     <cfquery name="qAdIncluirCampanha">
-        UPDATE tb_ad_eventos
+        UPDATE ads.tb_ad_eventos
         SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
             cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
             limite_diario = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_diario#"/>,
@@ -479,7 +479,7 @@
     </cfif>
 
     <cfquery>
-        UPDATE tb_ad_eventos
+        UPDATE ads.tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
         <cfif VARIABLES.adsRestrictByConta>
@@ -497,9 +497,9 @@
 
 <cfquery name="qAdValorTotal">
     SELECT sum(valor_ad) as total
-    FROM tb_ad_log log
-    INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -508,9 +508,9 @@
 
 <cfquery name="qAdValorMedio">
     SELECT avg(valor_ad) as total
-    FROM tb_ad_log log
-    INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -519,9 +519,9 @@
 
 <cfquery name="qAdCountViews">
     SELECT count(id_ad_log) as total
-    FROM tb_ad_log log
-    INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status <= 2
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -530,9 +530,9 @@
 
 <cfquery name="qAdCountClicks">
     SELECT count(id_ad_log) as total
-    FROM tb_ad_log log
-    INNER JOIN tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE log.status = 2
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -541,8 +541,8 @@
 
 <cfquery name="qAdCountAds">
     SELECT count(ad.*) as total
-    FROM tb_ad_eventos ad
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_eventos ad
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
     <cfif VARIABLES.adsRestrictByConta>
         AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -563,7 +563,7 @@
                    sum(views) AS views,
                    sum(clicks) AS clicks,
                    coalesce(sum(custo), 0) AS custo
-            FROM tb_ad_evento_metricas_dia
+            FROM ads.tb_ad_evento_metricas_dia
             WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
             <cfif VARIABLES.adsRestrictByConta>
                 AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
@@ -589,7 +589,7 @@
                    sum(views) AS views,
                    sum(clicks) AS clicks,
                    coalesce(sum(custo), 0) AS custo
-            FROM tb_ad_evento_metricas_dia
+            FROM ads.tb_ad_evento_metricas_dia
             WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
             <cfif VARIABLES.adsRestrictByConta>
                 AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
@@ -630,9 +630,9 @@
                    count(*) FILTER (WHERE log.status <= 2) AS views,
                    count(*) FILTER (WHERE log.status = 2) AS clicks,
                    coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo
-            FROM tb_ad_log log
-            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            FROM ads.tb_ad_log log
+            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
             WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
             <cfif VARIABLES.adsRestrictByConta>
                 AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -657,9 +657,9 @@
             SELECT log.status,
                    log.valor_ad,
                    log.data_insercao
-            FROM tb_ad_log log
-            INNER JOIN tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+            FROM ads.tb_ad_log log
+            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
+            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
             WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
             <cfif VARIABLES.adsRestrictByConta>
                 AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
@@ -702,7 +702,7 @@
                    )
                ) AS conversoes_periodo,
                coalesce(sum(valor), 0) AS valor_periodo
-        FROM tb_ad_conversion_log
+        FROM ads.tb_ad_conversion_log
         WHERE data_criacao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
         <cfif VARIABLES.adsRestrictByConta>
             AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
@@ -719,7 +719,7 @@
         SELECT
             id_ad as id_evento,
             count(*) as views
-        FROM tb_ad_log
+        FROM ads.tb_ad_log
         WHERE tb_ad_log.status <= 2
         GROUP BY id_ad
     ),
@@ -727,7 +727,7 @@
         SELECT
             id_ad as id_evento,
             count(*) as views
-        FROM tb_ad_log
+        FROM ads.tb_ad_log
         WHERE tb_ad_log.status <= 2
         AND id_usuario is not null
         GROUP BY id_ad
@@ -738,7 +738,7 @@
         count(*) as clicks,
         avg(valor_ad) as cpc_medio,
         sum(valor_ad) as custo_total
-        FROM tb_ad_log
+        FROM ads.tb_ad_log
         WHERE status = 2
         group by id_ad
     ),
@@ -748,7 +748,7 @@
         count(*) as clicks,
         avg(valor_ad) as cpc_medio,
         sum(valor_ad) as custo_total
-        FROM tb_ad_log
+        FROM ads.tb_ad_log
         WHERE status = 2
         AND id_usuario is not null
         group by id_ad
@@ -760,7 +760,7 @@
             id_ad_evento,
             count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CLICK') AS conversoes,
             count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CONFIRMADA') AS inscricoes_confirmadas
-        FROM tb_ad_conversion_log
+        FROM ads.tb_ad_conversion_log
         GROUP BY id_ad_evento
     )
     </cfif>
@@ -791,8 +791,8 @@
            0 AS inscricoes_confirmadas,
            </cfif>
            (ad.qualidade * ad.cpc_max) as ad_rank
-    FROM tb_ad_eventos ad
-    INNER JOIN tb_evento_corridas evt ON ad.id_evento = evt.id_evento
+    FROM ads.tb_ad_eventos ad
+    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
     LEFT JOIN ad_views on ad_views.id_evento = ad.id_ad_evento
     LEFT JOIN ad_views_usuarios on ad_views_usuarios.id_evento = ad.id_ad_evento
     LEFT JOIN ad_clicks on ad_clicks.id_evento = ad.id_ad_evento

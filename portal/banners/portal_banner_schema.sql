@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS tb_portal_banners (
+CREATE TABLE IF NOT EXISTS ads.tb_portal_banners (
     id_banner serial PRIMARY KEY,
     nome varchar(160) NOT NULL,
     canal varchar(80) NOT NULL,
@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS tb_portal_banners (
 );
 
 CREATE INDEX IF NOT EXISTS tb_portal_banners_lookup_idx
-    ON tb_portal_banners (canal, local_layout, status);
+    ON ads.tb_portal_banners (canal, local_layout, status);
 
 CREATE INDEX IF NOT EXISTS tb_portal_banners_periodo_idx
-    ON tb_portal_banners (inicio_exibicao, fim_exibicao);
+    ON ads.tb_portal_banners (inicio_exibicao, fim_exibicao);
 
-CREATE TABLE IF NOT EXISTS tb_portal_banners_log (
+CREATE TABLE IF NOT EXISTS ads.tb_portal_banners_log (
     id_banner_log bigserial PRIMARY KEY,
-    id_banner integer NOT NULL REFERENCES tb_portal_banners (id_banner) ON DELETE CASCADE,
+    id_banner integer NOT NULL REFERENCES ads.tb_portal_banners (id_banner) ON DELETE CASCADE,
     tipo_evento varchar(20) NOT NULL,
     canal varchar(80),
     local_layout varchar(80),
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS tb_portal_banners_log (
 );
 
 CREATE INDEX IF NOT EXISTS tb_portal_banners_log_banner_idx
-    ON tb_portal_banners_log (id_banner, tipo_evento, criado_em DESC);
+    ON ads.tb_portal_banners_log (id_banner, tipo_evento, criado_em DESC);
 
 CREATE INDEX IF NOT EXISTS tb_portal_banners_log_slot_idx
-    ON tb_portal_banners_log (canal, local_layout, tipo_evento, criado_em DESC);
+    ON ads.tb_portal_banners_log (canal, local_layout, tipo_evento, criado_em DESC);

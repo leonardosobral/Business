@@ -72,13 +72,16 @@
 <cfquery name="qBusinessAccountTableCheck">
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = 'public'
+    WHERE (
+      table_schema = 'public'
       AND table_name IN (
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_contas"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
+      )) OR (
+        table_schema = 'ads'
+        AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
       )
 </cfquery>
 
@@ -86,8 +89,9 @@
     SELECT table_name,
            column_name
     FROM information_schema.columns
-    WHERE table_schema = 'public'
-      AND (
+    WHERE (
+        table_schema = 'ads'
+        AND
         (
           table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
           AND column_name IN (
@@ -97,7 +101,9 @@
             <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>
           )
         )
-        OR
+      ) OR (
+        table_schema = 'public'
+        AND
         (
           table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
           AND column_name IN (
@@ -256,7 +262,7 @@
                                    credito_disponivel,
                                    data_expiracao,
                                    papel_resgate::text AS papel_resgate
-                            FROM tb_ad_vouchers
+                            FROM ads.tb_ad_vouchers
                             WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessAccountRegistrationReview.id_ad_voucher#"/>
                             LIMIT 1
                         </cfquery>
@@ -410,7 +416,7 @@
 
                         <cfif len(VARIABLES.accountRegistrationVoucherId)>
                             <cfquery>
-                                UPDATE tb_ad_vouchers
+                                UPDATE ads.tb_ad_vouchers
                                 SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
                                     id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationOwnerUser.id#"/>,
                                     data_resgate = now(),
@@ -637,7 +643,7 @@
 
         <cfquery name="qBusinessAccountVoucherDuplicate">
             SELECT id_ad_voucher
-            FROM tb_ad_vouchers
+            FROM ads.tb_ad_vouchers
             WHERE lower(codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#"/>)
             LIMIT 1
         </cfquery>
@@ -650,7 +656,7 @@
     <cfif NOT arrayLen(VARIABLES.accountVoucherErrors)>
         <cftry>
             <cfquery>
-                INSERT INTO tb_ad_vouchers
+                INSERT INTO ads.tb_ad_vouchers
                 (
                     codigo,
                     id_conta,
@@ -709,7 +715,7 @@
                 SELECT id_ad_voucher,
                        status,
                        id_usuario_resgate
-                FROM tb_ad_vouchers
+                FROM ads.tb_ad_vouchers
                 WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/>
                   AND id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.conta_id#"/>
                 LIMIT 1
@@ -721,7 +727,7 @@
                 <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Voucher ja resgatado nao pode ser cancelado ou reativado por esta tela."/>
             <cfelse>
                 <cfquery>
-                    UPDATE tb_ad_vouchers
+                    UPDATE ads.tb_ad_vouchers
                     SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountVoucherNewStatus#"/>,
                         data_atualizacao = now()
                     WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/>
@@ -1452,7 +1458,7 @@
                            vou.id_usuario_resgate,
                            usr.name AS usuario_resgate_nome,
                            usr.email AS usuario_resgate_email
-                    FROM tb_ad_vouchers vou
+                    FROM ads.tb_ad_vouchers vou
                     LEFT JOIN tb_usuarios usr ON usr.id = vou.id_usuario_resgate
                     WHERE vou.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountEdit.id_conta#"/>
                     ORDER BY CASE vou.status
@@ -1558,7 +1564,7 @@
         LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
         LEFT JOIN tb_usuarios usr ON usr.id = sol.id_usuario
         <cfif VARIABLES.businessAccountVoucherColumnsReady>
-            LEFT JOIN tb_ad_vouchers vou ON vou.id_ad_voucher = sol.id_ad_voucher
+            LEFT JOIN ads.tb_ad_vouchers vou ON vou.id_ad_voucher = sol.id_ad_voucher
         </cfif>
         WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
         ORDER BY sol.data_criacao ASC

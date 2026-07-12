@@ -1,7 +1,7 @@
 -- Agregacao diaria de metricas de turbinados.
 -- Objetivo: alimentar graficos de /ads/ sem varrer tb_ad_log em tempo real.
 
-CREATE TABLE IF NOT EXISTS tb_ad_evento_metricas_dia (
+CREATE TABLE IF NOT EXISTS ads.tb_ad_evento_metricas_dia (
     id_metrica_dia bigserial PRIMARY KEY,
     data_metrica date NOT NULL,
     id_ad_evento bigint NOT NULL,
@@ -16,20 +16,20 @@ CREATE TABLE IF NOT EXISTS tb_ad_evento_metricas_dia (
 );
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_evento_metricas_dia_conta_data
-    ON tb_ad_evento_metricas_dia (id_conta, data_metrica DESC);
+    ON ads.tb_ad_evento_metricas_dia (id_conta, data_metrica DESC);
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_evento_metricas_dia_ad_data
-    ON tb_ad_evento_metricas_dia (id_ad_evento, data_metrica DESC);
+    ON ads.tb_ad_evento_metricas_dia (id_ad_evento, data_metrica DESC);
 
 CREATE INDEX IF NOT EXISTS idx_tb_ad_evento_metricas_dia_evento_data
-    ON tb_ad_evento_metricas_dia (id_evento, data_metrica DESC);
+    ON ads.tb_ad_evento_metricas_dia (id_evento, data_metrica DESC);
 
-GRANT SELECT, INSERT, UPDATE ON tb_ad_evento_metricas_dia TO runner;
-GRANT SELECT, USAGE ON SEQUENCE tb_ad_evento_metricas_dia_id_metrica_dia_seq TO runner;
+GRANT SELECT, INSERT, UPDATE ON ads.tb_ad_evento_metricas_dia TO runner;
+GRANT SELECT, USAGE ON SEQUENCE ads.tb_ad_evento_metricas_dia_id_metrica_dia_seq TO runner;
 
 -- Carga inicial/fallback para consolidar dados ja existentes.
 -- Pode ser reexecutada; em conflito, atualiza a linha do dia/campanha/conta.
-INSERT INTO tb_ad_evento_metricas_dia (
+INSERT INTO ads.tb_ad_evento_metricas_dia (
     data_metrica,
     id_ad_evento,
     id_evento,
@@ -47,9 +47,9 @@ SELECT log.data_insercao::date AS data_metrica,
        count(*) FILTER (WHERE log.status = 2)::integer AS clicks,
        coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo,
        now() AS updated_at
-FROM tb_ad_log log
-INNER JOIN tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
-INNER JOIN tb_conta_eventos ce ON ce.id_evento = ad.id_evento
+FROM ads.tb_ad_log log
+INNER JOIN ads.tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
+INNER JOIN public.tb_conta_eventos ce ON ce.id_evento = ad.id_evento
 WHERE ce.status::text = 'ATIVO'
 GROUP BY log.data_insercao::date,
          ad.id_ad_evento,
@@ -63,7 +63,7 @@ DO UPDATE SET
     custo = EXCLUDED.custo,
     updated_at = now();
 
-CREATE OR REPLACE FUNCTION refresh_tb_ad_evento_metricas_dia(
+CREATE OR REPLACE FUNCTION ads.refresh_tb_ad_evento_metricas_dia(
     p_data_inicio date DEFAULT current_date - 30,
     p_data_fim date DEFAULT current_date
 )
@@ -71,10 +71,10 @@ RETURNS void
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    DELETE FROM tb_ad_evento_metricas_dia
+    DELETE FROM ads.tb_ad_evento_metricas_dia
     WHERE data_metrica BETWEEN p_data_inicio AND p_data_fim;
 
-    INSERT INTO tb_ad_evento_metricas_dia (
+    INSERT INTO ads.tb_ad_evento_metricas_dia (
         data_metrica,
         id_ad_evento,
         id_evento,
@@ -92,9 +92,9 @@ BEGIN
            count(*) FILTER (WHERE log.status = 2)::integer AS clicks,
            coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo,
            now() AS updated_at
-    FROM tb_ad_log log
-    INNER JOIN tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
-    INNER JOIN tb_conta_eventos ce ON ce.id_evento = ad.id_evento
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
+    INNER JOIN public.tb_conta_eventos ce ON ce.id_evento = ad.id_evento
     WHERE ce.status::text = 'ATIVO'
       AND log.data_insercao::date BETWEEN p_data_inicio AND p_data_fim
     GROUP BY log.data_insercao::date,
@@ -104,7 +104,7 @@ BEGIN
 END;
 $$;
 
-GRANT EXECUTE ON FUNCTION refresh_tb_ad_evento_metricas_dia(date, date) TO runner;
+GRANT EXECUTE ON FUNCTION ads.refresh_tb_ad_evento_metricas_dia(date, date) TO runner;
 
 -- Sugestao de uso diario:
--- SELECT refresh_tb_ad_evento_metricas_dia(current_date - 2, current_date);
+-- SELECT ads.refresh_tb_ad_evento_metricas_dia(current_date - 2, current_date);

@@ -33,14 +33,14 @@
     <cfquery name="qBusinessAdminHomeTableCheck">
         SELECT table_name
         FROM information_schema.tables
-        WHERE table_schema = 'public'
+        WHERE (
+          table_schema = 'public'
           AND table_name IN (
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_contas"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_evento_solicitacoes"/>,
-              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_eventos"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_evento_corridas"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_usuarios"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_log"/>,
@@ -53,6 +53,9 @@
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_cron_jobs"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_cron_job_runs"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_notifica"/>
+          )) OR (
+              table_schema = 'ads'
+              AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_eventos"/>
           )
     </cfquery>
 
@@ -99,7 +102,7 @@
             (SELECT count(*)::integer FROM tb_conta_evento_solicitacoes WHERE status::text = 'PENDENTE') AS solicitacoes_eventos,
             (
                 SELECT count(*)::integer
-                FROM tb_ad_eventos
+                FROM ads.tb_ad_eventos
                 WHERE status = 1
                   AND (inicio_ad IS NULL OR inicio_ad <= now())
                   AND (final_ad IS NULL OR final_ad >= now())
