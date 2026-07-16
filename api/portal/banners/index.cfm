@@ -81,6 +81,28 @@ function portalBannerApiSafeJson(required any payload) {
     })/>
 </cfif>
 
+<cfquery name="qPortalBannerApiColumns">
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_schema = 'ads'
+      AND table_name = 'tb_portal_banners'
+</cfquery>
+<cfset VARIABLES.portalBannerApiColumnList = ValueList(qPortalBannerApiColumns.column_name)/>
+<cfset VARIABLES.portalBannerApiResponsiveReady =
+    ListFindNoCase(VARIABLES.portalBannerApiColumnList, "arquivo_mobile_path")
+    AND ListFindNoCase(VARIABLES.portalBannerApiColumnList, "arquivo_mobile_original")
+    AND ListFindNoCase(VARIABLES.portalBannerApiColumnList, "formato_mobile")
+    AND ListFindNoCase(VARIABLES.portalBannerApiColumnList, "largura_mobile")
+    AND ListFindNoCase(VARIABLES.portalBannerApiColumnList, "altura_mobile")/>
+
+<cfif NOT VARIABLES.portalBannerApiResponsiveReady>
+    <cfset portalBannerApiSafeJson({
+        success = false,
+        status = "schema_outdated",
+        message = "A estrutura responsiva de banners ainda nao foi aplicada. Rode portal_banner_schema.sql no Business."
+    })/>
+</cfif>
+
 <cfif NOT len(trim(URL.canal)) OR NOT len(trim(URL.local))>
     <cfset portalBannerApiSafeJson({
         success = false,
@@ -177,6 +199,8 @@ function portalBannerApiSafeJson(required any payload) {
 <cfset VARIABLES.portalBannerSelectedTarget = VARIABLES.portalBannerOpenInNewTab ? "_blank" : "_self"/>
 <cfset VARIABLES.portalBannerSelectedCtr = qPortalBannerApiCandidates.views[VARIABLES.portalBannerSelectedRow] GT 0 ? (qPortalBannerApiCandidates.clicks[VARIABLES.portalBannerSelectedRow] * 100 / qPortalBannerApiCandidates.views[VARIABLES.portalBannerSelectedRow]) : 0/>
 <cfset VARIABLES.portalBannerClickUrl = VARIABLES.portalBannerApiBaseUrl & "/api/portal/banners/click.cfm?id_banner=" & VARIABLES.portalBannerSelectedId & "&canal=" & urlEncodedFormat(trim(URL.canal)) & "&local=" & urlEncodedFormat(trim(URL.local))/>
+<cfset VARIABLES.portalBannerDesktopImageUrl = VARIABLES.portalBannerApiBaseUrl & qPortalBannerApiCandidates.arquivo_path[VARIABLES.portalBannerSelectedRow]/>
+<cfset VARIABLES.portalBannerMobileImageUrl = VARIABLES.portalBannerApiBaseUrl & qPortalBannerApiCandidates.arquivo_mobile_path[VARIABLES.portalBannerSelectedRow]/>
 
 <cfif len(VARIABLES.portalBannerOriginSite)>
     <cfset VARIABLES.portalBannerClickUrl = VARIABLES.portalBannerClickUrl & "&site_url=" & urlEncodedFormat(VARIABLES.portalBannerOriginSite)/>
@@ -234,7 +258,23 @@ function portalBannerApiSafeJson(required any payload) {
         height = qPortalBannerApiCandidates.altura[VARIABLES.portalBannerSelectedRow],
         format = qPortalBannerApiCandidates.formato[VARIABLES.portalBannerSelectedRow],
         alt = qPortalBannerApiCandidates.alt_text[VARIABLES.portalBannerSelectedRow],
-        imageUrl = VARIABLES.portalBannerApiBaseUrl & qPortalBannerApiCandidates.arquivo_path[VARIABLES.portalBannerSelectedRow],
+        imageUrl = VARIABLES.portalBannerDesktopImageUrl,
+        desktopImageUrl = VARIABLES.portalBannerDesktopImageUrl,
+        mobileImageUrl = VARIABLES.portalBannerMobileImageUrl,
+        images = {
+            desktop = {
+                imageUrl = VARIABLES.portalBannerDesktopImageUrl,
+                width = qPortalBannerApiCandidates.largura[VARIABLES.portalBannerSelectedRow],
+                height = qPortalBannerApiCandidates.altura[VARIABLES.portalBannerSelectedRow],
+                format = qPortalBannerApiCandidates.formato[VARIABLES.portalBannerSelectedRow]
+            },
+            mobile = {
+                imageUrl = VARIABLES.portalBannerMobileImageUrl,
+                width = qPortalBannerApiCandidates.largura_mobile[VARIABLES.portalBannerSelectedRow],
+                height = qPortalBannerApiCandidates.altura_mobile[VARIABLES.portalBannerSelectedRow],
+                format = qPortalBannerApiCandidates.formato_mobile[VARIABLES.portalBannerSelectedRow]
+            }
+        },
         clickUrl = VARIABLES.portalBannerClickUrl,
         target = VARIABLES.portalBannerSelectedTarget,
         linkType = qPortalBannerApiCandidates.link_tipo[VARIABLES.portalBannerSelectedRow],

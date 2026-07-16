@@ -19,6 +19,22 @@
     height: auto;
   }
 
+  .portal-banner-thumb-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .portal-banner-thumb-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--mdb-secondary-color, rgba(255, 255, 255, 0.6));
+  }
+
   .portal-banner-table td,
   .portal-banner-table th {
     vertical-align: middle;
@@ -64,6 +80,12 @@
               As tabelas do gerenciador de banners ainda nao existem. Rode o script em
               <a href="/portal/banners/portal_banner_schema.sql" target="_blank" rel="noopener">/portal/banners/portal_banner_schema.sql</a>
               e recarregue esta pagina.
+            </div>
+          <cfelseif NOT VARIABLES.bannerManagementResponsiveReady>
+            <div class="alert alert-warning mb-0">
+              A estrutura responsiva dos banners ainda nao existe. Rode novamente
+              <a href="/portal/banners/portal_banner_schema.sql" target="_blank" rel="noopener">/portal/banners/portal_banner_schema.sql</a>
+              para adicionar os arquivos desktop e mobile.
             </div>
           <cfelse>
             <cfif len(trim(VARIABLES.bannerManagementAlert.type)) AND len(trim(VARIABLES.bannerManagementAlert.message))>
@@ -115,13 +137,40 @@
 
             <cfif VARIABLES.bannerShowForm>
               <cfset VARIABLES.bannerFormRow = qBannerManagementEdit.recordcount ? qBannerManagementEdit.currentRow : 0/>
+              <cfset VARIABLES.bannerFormRecordId = qBannerManagementEdit.recordcount ? qBannerManagementEdit.id_banner[1] : (isDefined("FORM.banner_id") ? trim(FORM.banner_id & "") : "")/>
               <cfset VARIABLES.bannerFormCanal = qBannerManagementEdit.recordcount ? qBannerManagementEdit.canal[1] : (isDefined("FORM.banner_canal") ? FORM.banner_canal : "")/>
               <cfset VARIABLES.bannerFormLocalLayout = qBannerManagementEdit.recordcount ? qBannerManagementEdit.local_layout[1] : (isDefined("FORM.banner_local_layout") ? FORM.banner_local_layout : "")/>
+              <cfset VARIABLES.bannerFormDesktopPath = isDefined("FORM.banner_arquivo_desktop_atual") ? trim(FORM.banner_arquivo_desktop_atual & "") : ""/>
+              <cfset VARIABLES.bannerFormDesktopOriginal = isDefined("FORM.banner_arquivo_desktop_original_atual") ? trim(FORM.banner_arquivo_desktop_original_atual & "") : ""/>
+              <cfset VARIABLES.bannerFormDesktopFormat = isDefined("FORM.banner_formato_desktop_atual") ? trim(FORM.banner_formato_desktop_atual & "") : ""/>
+              <cfset VARIABLES.bannerFormMobilePath = isDefined("FORM.banner_arquivo_mobile_atual") ? trim(FORM.banner_arquivo_mobile_atual & "") : ""/>
+              <cfset VARIABLES.bannerFormMobileOriginal = isDefined("FORM.banner_arquivo_mobile_original_atual") ? trim(FORM.banner_arquivo_mobile_original_atual & "") : ""/>
+              <cfset VARIABLES.bannerFormMobileFormat = isDefined("FORM.banner_formato_mobile_atual") ? trim(FORM.banner_formato_mobile_atual & "") : ""/>
+              <cfif qBannerManagementEdit.recordcount>
+                <cfif NOT isNull(qBannerManagementEdit.arquivo_path)>
+                  <cfset VARIABLES.bannerFormDesktopPath = trim(qBannerManagementEdit.arquivo_path & "")/>
+                </cfif>
+                <cfif NOT isNull(qBannerManagementEdit.arquivo_original)>
+                  <cfset VARIABLES.bannerFormDesktopOriginal = trim(qBannerManagementEdit.arquivo_original & "")/>
+                </cfif>
+                <cfif NOT isNull(qBannerManagementEdit.formato)>
+                  <cfset VARIABLES.bannerFormDesktopFormat = trim(qBannerManagementEdit.formato & "")/>
+                </cfif>
+                <cfif NOT isNull(qBannerManagementEdit.arquivo_mobile_path)>
+                  <cfset VARIABLES.bannerFormMobilePath = trim(qBannerManagementEdit.arquivo_mobile_path & "")/>
+                </cfif>
+                <cfif NOT isNull(qBannerManagementEdit.arquivo_mobile_original)>
+                  <cfset VARIABLES.bannerFormMobileOriginal = trim(qBannerManagementEdit.arquivo_mobile_original & "")/>
+                </cfif>
+                <cfif NOT isNull(qBannerManagementEdit.formato_mobile)>
+                  <cfset VARIABLES.bannerFormMobileFormat = trim(qBannerManagementEdit.formato_mobile & "")/>
+                </cfif>
+              </cfif>
               <div class="card shadow-0 border border-white border-opacity-10 mb-4">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-start gap-3">
                     <div>
-                      <h5 class="mb-1"><cfif qBannerManagementEdit.recordcount>Editar banner<cfelse>Novo banner</cfif></h5>
+                      <h5 class="mb-1"><cfif len(VARIABLES.bannerFormRecordId)>Editar banner<cfelse>Novo banner</cfif></h5>
                       <p class="text-muted mb-0">Cadastre a peca, defina o slot de exibicao e deixe a API entregar a melhor opcao disponivel para cada consumo.</p>
                     </div>
                     <a class="btn btn-sm btn-outline-light" href="./">Fechar</a>
@@ -131,10 +180,13 @@
 
                   <form action="./" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="acao" value="salvar_banner"/>
-                    <input type="hidden" name="banner_id" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.id_banner#</cfoutput></cfif>"/>
-                    <input type="hidden" name="banner_arquivo_atual" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.arquivo_path)#</cfoutput></cfif>"/>
-                    <input type="hidden" name="banner_arquivo_original_atual" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.arquivo_original)#</cfoutput></cfif>"/>
-                    <input type="hidden" name="banner_formato_atual" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.formato)#</cfoutput></cfif>"/>
+                    <input type="hidden" name="banner_id" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormRecordId)#</cfoutput>"/>
+                    <input type="hidden" name="banner_arquivo_desktop_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormDesktopPath)#</cfoutput>"/>
+                    <input type="hidden" name="banner_arquivo_desktop_original_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormDesktopOriginal)#</cfoutput>"/>
+                    <input type="hidden" name="banner_formato_desktop_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormDesktopFormat)#</cfoutput>"/>
+                    <input type="hidden" name="banner_arquivo_mobile_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormMobilePath)#</cfoutput>"/>
+                    <input type="hidden" name="banner_arquivo_mobile_original_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormMobileOriginal)#</cfoutput>"/>
+                    <input type="hidden" name="banner_formato_mobile_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormMobileFormat)#</cfoutput>"/>
 
                     <div class="row g-3">
                       <div class="col-md-6">
@@ -150,22 +202,43 @@
                         <input type="text" class="form-control" name="banner_local_layout" placeholder="home-side-banner" required value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormLocalLayout)#</cfoutput>"/>
                       </div>
 
-                      <div class="col-md-4">
-                        <label class="form-label">Arquivo do banner</label>
-                        <input type="file" class="form-control" name="banner_arquivo" accept=".jpg,.jpeg,.png,.gif"/>
-                        <div class="form-text">Aceita JPG, PNG ou GIF. Em edicao, envie um novo arquivo apenas se quiser substituir o atual.</div>
+                      <div class="col-12">
+                        <hr class="my-1"/>
+                        <div class="fw-semibold">Pecas responsivas</div>
+                        <div class="small text-muted">Desktop e mobile sao obrigatorios. Na edicao, o arquivo atual pode ser mantido.</div>
                       </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">Arquivo do banner - desktop *</label>
+                        <input type="file" class="form-control" name="banner_arquivo_desktop" accept=".jpg,.jpeg,.png,.gif"<cfif NOT len(VARIABLES.bannerFormDesktopPath)> required</cfif>/>
+                        <div class="form-text">Aceita JPG, PNG ou GIF.</div>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label">Largura desktop</label>
+                        <input type="number" min="1" class="form-control" name="banner_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura#</cfoutput><cfelseif isDefined('FORM.banner_largura')><cfoutput>#FORM.banner_largura#</cfoutput></cfif>"/>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label">Altura desktop</label>
+                        <input type="number" min="1" class="form-control" name="banner_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura#</cfoutput><cfelseif isDefined('FORM.banner_altura')><cfoutput>#FORM.banner_altura#</cfoutput></cfif>"/>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">Arquivo do banner - mobile *</label>
+                        <input type="file" class="form-control" name="banner_arquivo_mobile" accept=".jpg,.jpeg,.png,.gif"<cfif NOT len(VARIABLES.bannerFormMobilePath)> required</cfif>/>
+                        <div class="form-text">Aceita JPG, PNG ou GIF.</div>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label">Largura mobile</label>
+                        <input type="number" min="1" class="form-control" name="banner_mobile_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_largura')><cfoutput>#FORM.banner_mobile_largura#</cfoutput></cfif>"/>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label">Altura mobile</label>
+                        <input type="number" min="1" class="form-control" name="banner_mobile_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_altura')><cfoutput>#FORM.banner_mobile_altura#</cfoutput></cfif>"/>
+                      </div>
+
                       <div class="col-md-4">
                         <label class="form-label">Tamanho nomeado</label>
                         <input type="text" class="form-control" name="banner_tamanho_nome" placeholder="sidebar-300x250" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.tamanho_nome)#</cfoutput><cfelseif isDefined('FORM.banner_tamanho_nome')><cfoutput>#htmlEditFormat(FORM.banner_tamanho_nome)#</cfoutput></cfif>"/>
-                      </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Largura</label>
-                        <input type="number" min="1" class="form-control" name="banner_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura#</cfoutput><cfelseif isDefined('FORM.banner_largura')><cfoutput>#FORM.banner_largura#</cfoutput></cfif>"/>
-                      </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Altura</label>
-                        <input type="number" min="1" class="form-control" name="banner_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura#</cfoutput><cfelseif isDefined('FORM.banner_altura')><cfoutput>#FORM.banner_altura#</cfoutput></cfif>"/>
                       </div>
 
                       <div class="col-md-8">
@@ -238,17 +311,32 @@
                         <textarea class="form-control" rows="3" name="banner_observacoes"><cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.observacoes)#</cfoutput><cfelseif isDefined("FORM.banner_observacoes")><cfoutput>#htmlEditFormat(FORM.banner_observacoes)#</cfoutput></cfif></textarea>
                       </div>
 
-                      <cfif qBannerManagementEdit.recordcount AND len(trim(qBannerManagementEdit.arquivo_path))>
+                      <cfif qBannerManagementEdit.recordcount>
                         <div class="col-12">
-                          <div class="portal-banner-thumb">
-                            <img src="<cfoutput>#bannerManagementBuildAssetUrl(qBannerManagementEdit.arquivo_path)#</cfoutput>" alt="Preview do banner"/>
+                          <div class="portal-banner-thumb-set">
+                            <cfif len(VARIABLES.bannerFormDesktopPath)>
+                              <div>
+                                <span class="portal-banner-thumb-label">Desktop atual</span>
+                                <div class="portal-banner-thumb">
+                                  <img src="<cfoutput>#bannerManagementBuildAssetUrl(VARIABLES.bannerFormDesktopPath)#</cfoutput>" alt="Preview desktop do banner"/>
+                                </div>
+                              </div>
+                            </cfif>
+                            <cfif len(VARIABLES.bannerFormMobilePath)>
+                              <div>
+                                <span class="portal-banner-thumb-label">Mobile atual</span>
+                                <div class="portal-banner-thumb">
+                                  <img src="<cfoutput>#bannerManagementBuildAssetUrl(VARIABLES.bannerFormMobilePath)#</cfoutput>" alt="Preview mobile do banner"/>
+                                </div>
+                              </div>
+                            </cfif>
                           </div>
                         </div>
                       </cfif>
                     </div>
 
                     <div class="mt-4 d-flex gap-2">
-                      <button type="submit" class="btn btn-warning"><cfif qBannerManagementEdit.recordcount>Salvar alteracoes<cfelse>Cadastrar banner</cfif></button>
+                      <button type="submit" class="btn btn-warning"><cfif len(VARIABLES.bannerFormRecordId)>Salvar alteracoes<cfelse>Cadastrar banner</cfif></button>
                       <a class="btn btn-outline-light" href="./">Cancelar</a>
                     </div>
                   </form>
@@ -276,7 +364,7 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="small text-muted mb-1">Campos principais retornados</div>
-                    <div class="bg-black bg-opacity-25 rounded p-3 portal-banner-code"><code>banner.imageUrl, banner.clickUrl, banner.target, banner.alt, banner.width, banner.height, banner.linkType</code></div>
+                    <div class="bg-black bg-opacity-25 rounded p-3 portal-banner-code"><code>banner.images.desktop.imageUrl, banner.images.mobile.imageUrl, banner.clickUrl, banner.target, banner.alt, banner.linkType</code></div>
                   </div>
                 </div>
               </div>
@@ -342,8 +430,19 @@
                       <tr>
                         <td>
                           <div class="d-flex align-items-start gap-3">
-                            <div class="portal-banner-thumb">
-                              <img src="#bannerManagementBuildAssetUrl(qBannerManagementList.arquivo_path)#" alt="#htmlEditFormat(qBannerManagementList.nome)#"/>
+                            <div class="portal-banner-thumb-set">
+                              <div>
+                                <span class="portal-banner-thumb-label">Desktop</span>
+                                <div class="portal-banner-thumb">
+                                  <img src="#bannerManagementBuildAssetUrl(qBannerManagementList.arquivo_path)#" alt="#htmlEditFormat(qBannerManagementList.nome)# desktop"/>
+                                </div>
+                              </div>
+                              <div>
+                                <span class="portal-banner-thumb-label">Mobile</span>
+                                <div class="portal-banner-thumb">
+                                  <img src="#bannerManagementBuildAssetUrl(qBannerManagementList.arquivo_mobile_path)#" alt="#htmlEditFormat(qBannerManagementList.nome)# mobile"/>
+                                </div>
+                              </div>
                             </div>
                             <div>
                               <div class="fw-semibold">#htmlEditFormat(qBannerManagementList.nome)#</div>
@@ -352,9 +451,12 @@
                                 <div class="small text-muted">
                                   <cfif len(trim(qBannerManagementList.tamanho_nome))>#htmlEditFormat(qBannerManagementList.tamanho_nome)#</cfif>
                                   <cfif len(trim(qBannerManagementList.largura)) AND len(trim(qBannerManagementList.altura))>
-                                    <cfif len(trim(qBannerManagementList.tamanho_nome))> · </cfif>#qBannerManagementList.largura#x#qBannerManagementList.altura#
+                                    <cfif len(trim(qBannerManagementList.tamanho_nome))> · </cfif>Desktop #qBannerManagementList.largura#x#qBannerManagementList.altura#
                                   </cfif>
                                 </div>
+                              </cfif>
+                              <cfif len(trim(qBannerManagementList.largura_mobile)) AND len(trim(qBannerManagementList.altura_mobile))>
+                                <div class="small text-muted">Mobile #qBannerManagementList.largura_mobile#x#qBannerManagementList.altura_mobile#</div>
                               </cfif>
                               <div class="small text-muted">Peso #qBannerManagementList.peso_exibicao# · Prioridade #qBannerManagementList.prioridade#</div>
                             </div>

@@ -6,7 +6,7 @@ O modulo [`/Users/geraldoprotta/IdeaProjects/Business/portal/banners/`](/Users/g
 
 Ele substitui o modelo antigo de banners hardcoded e randomizados no front por uma API com:
 
-- cadastro de criativos `jpg`, `png` ou `gif`
+- cadastro obrigatorio de criativos desktop e mobile em `jpg`, `png` ou `gif`
 - segmentacao por `canal` e `local_layout`
 - campos de tamanho e prioridade
 - janela de exibicao por data/hora
@@ -39,9 +39,10 @@ Campos relevantes do cadastro:
 - `canal`
 - `local_layout`
 - `tamanho_nome`
-- `largura`
-- `altura`
-- `arquivo_path`
+- `largura` e `altura` para desktop
+- `arquivo_path`, `arquivo_original` e `formato` para desktop
+- `largura_mobile` e `altura_mobile`
+- `arquivo_mobile_path`, `arquivo_mobile_original` e `formato_mobile`
 - `link_destino`
 - `link_tipo`
 - `abrir_nova_aba`
@@ -81,15 +82,35 @@ Consulta JSON:
 GET /api/portal/banners/?canal=roadrunners&local=home-side-banner&tamanho=sidebar-300x250&site_url=https://beta.roadrunners.run
 ```
 
-Resposta esperada:
+Resposta esperada para os arquivos responsivos:
 
-- `banner.imageUrl`
+- `banner.images.desktop.imageUrl`
+- `banner.images.desktop.width`
+- `banner.images.desktop.height`
+- `banner.images.desktop.format`
+- `banner.images.mobile.imageUrl`
+- `banner.images.mobile.width`
+- `banner.images.mobile.height`
+- `banner.images.mobile.format`
 - `banner.clickUrl`
 - `banner.target`
 - `banner.alt`
-- `banner.width`
-- `banner.height`
 - `banner.linkType`
+
+Os campos `banner.imageUrl`, `banner.desktopImageUrl`, `banner.width`, `banner.height` e `banner.format` continuam representando a peca desktop por compatibilidade com consumidores anteriores. Novas integracoes devem usar `banner.images`.
+
+Exemplo de renderizacao no consumidor:
+
+```html
+<a href="banner.clickUrl" target="banner.target">
+  <picture>
+    <source media="(max-width: 767px)" srcset="banner.images.mobile.imageUrl">
+    <img src="banner.images.desktop.imageUrl" alt="banner.alt">
+  </picture>
+</a>
+```
+
+O breakpoint pertence ao layout do site consumidor; a API apenas identifica e entrega as duas versoes.
 
 `site_url` e importante quando o banner usa `link_tipo = interno`, porque o redirect de clique usa esse host para montar a URL final relativa do site consumidor.
 
@@ -97,7 +118,7 @@ Sem `site_url`, o fallback atual para links internos aponta para `https://roadru
 
 ## Uploads
 
-Os arquivos enviados pelo Business sao gravados em:
+Os dois arquivos enviados pelo Business sao gravados em:
 
 - URL publica: `/portal/banners/assets/`
 - pasta local esperada: `portal/banners/assets/`

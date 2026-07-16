@@ -3,7 +3,20 @@
 <cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
 <cfset VARIABLES.businessSkipCookieLogin = false/>
 <cfset VARIABLES.businessAccountPendingAccess = false/>
+<cfset VARIABLES.businessUserManagementStatusReady = false/>
 <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,nome_empresa,tipo_prestador,status,data_criacao,nome_responsavel,email_responsavel")/>
+
+<cftry>
+    <cfquery name="qBusinessUserManagementSchema">
+        SELECT to_regclass('public.tb_usuarios_gestao') IS NOT NULL AS ready
+    </cfquery>
+    <cfset VARIABLES.businessUserManagementStatusReady = isBoolean(qBusinessUserManagementSchema.ready)
+        ? qBusinessUserManagementSchema.ready
+        : listFindNoCase("1,true,yes,on", trim(qBusinessUserManagementSchema.ready & "")) GT 0/>
+    <cfcatch type="any">
+        <cfset VARIABLES.businessUserManagementStatusReady = false/>
+    </cfcatch>
+</cftry>
 
 <cfif isDefined("URL.logout") AND URL.logout EQ "1">
     <cfset VARIABLES.businessSkipCookieLogin = true/>
@@ -43,18 +56,30 @@
 
 <cfif NOT VARIABLES.businessSkipCookieLogin AND isDefined("COOKIE.id")>
     <cfquery name="qPerfil">
-        SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
+        SELECT usr.id, usr.name, usr.email,
+        coalesce(usr.is_admin, false) AS is_admin,
+        coalesce(usr.is_partner, false) AS is_partner,
+        coalesce(usr.is_dev, false) AS is_dev,
+        usr.strava_id, usr.aka, usr.fonte_lead,
         coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
         pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
         pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
         usr.partner_info
         FROM tb_usuarios usr
+        <cfif VARIABLES.businessUserManagementStatusReady>
+            LEFT JOIN tb_usuarios_gestao usrgest ON usrgest.id_usuario = usr.id
+        </cfif>
         LEFT JOIN tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
         LEFT JOIN tb_paginas pg on pg.id_pagina = pgusr.id_pagina
         WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        <cfif VARIABLES.businessUserManagementStatusReady>
+            AND coalesce(usrgest.ativo, true) = true
+            AND coalesce(usrgest.excluido, false) = false
+        </cfif>
         AND (
-            is_admin = true
-            OR is_partner = true
+            usr.is_admin = true
+            OR usr.is_dev = true
+            OR usr.is_partner = true
             OR EXISTS (
                 SELECT 1
                 FROM tb_conta_usuarios cu

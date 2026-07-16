@@ -101,6 +101,8 @@
 
 <cfset VARIABLES.businessCanShowAdminNavigation = false/>
 <cfset VARIABLES.businessCanShowAccountNavigation = false/>
+<cfset VARIABLES.businessCanShowAgendaNavigation = false/>
+<cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
@@ -116,6 +118,17 @@
         AND len(trim(VARIABLES.businessEffectiveAccountIds))
         AND VARIABLES.businessEffectiveAccountIds NEQ "0">
         <cfset VARIABLES.businessCanShowAccountNavigation = true/>
+    </cfif>
+
+    <cfif (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
+        OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)
+        OR (isDefined("qPerfil.is_partner") AND qPerfil.is_partner)>
+        <cfset VARIABLES.businessCanShowAgendaNavigation = true/>
+    </cfif>
+
+    <cfif (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
+        OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)>
+        <cfset VARIABLES.businessCanShowUserManagementNavigation = true/>
     </cfif>
 </cfif>
 
@@ -286,6 +299,14 @@
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Inscrições</span></a>
         </li>
 
+        <cfif VARIABLES.businessCanShowAgendaNavigation>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/agendas/">link-warning</cfif>" href="/portal/agendas/">
+                    <i class="fa-solid fa-calendar-days fa-fw me-3"></i><span>Agendas</span>
+                </a>
+            </li>
+        </cfif>
+
         <cfif VARIABLES.businessCanShowAdminNavigation>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="/bi/">
@@ -355,11 +376,20 @@
 
         <!--- ADMINISTRACAO --->
 
-        <cfif VARIABLES.businessCanShowAdminNavigation>
+        <cfif VARIABLES.businessCanShowAdminNavigation OR VARIABLES.businessCanShowUserManagementNavigation>
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Administração</span>
             </li>
 
+            <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/usuarios/">link-warning</cfif>" href="/administracao/usuarios/">
+                        <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Usuários</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanShowAdminNavigation>
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/permissoes/">link-warning</cfif>" href="/administracao/permissoes/">
                     <i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span>
@@ -404,6 +434,7 @@
                     </cfif>
                 </a>
             </li>
+            </cfif>
         </cfif>
 
 

@@ -4,12 +4,17 @@ CREATE TABLE IF NOT EXISTS ads.tb_portal_banners (
     canal varchar(80) NOT NULL,
     local_layout varchar(80) NOT NULL,
     tamanho_nome varchar(80),
-    largura integer,
-    altura integer,
-    formato varchar(16),
+    largura integer, -- desktop (mantido assim por compatibilidade)
+    altura integer, -- desktop (mantido assim por compatibilidade)
+    formato varchar(16), -- desktop (mantido assim por compatibilidade)
     alt_text varchar(255),
-    arquivo_path varchar(255) NOT NULL,
-    arquivo_original varchar(255),
+    arquivo_path varchar(255) NOT NULL, -- desktop (mantido assim por compatibilidade)
+    arquivo_original varchar(255), -- desktop (mantido assim por compatibilidade)
+    arquivo_mobile_path varchar(255) NOT NULL,
+    arquivo_mobile_original varchar(255),
+    formato_mobile varchar(16),
+    largura_mobile integer,
+    altura_mobile integer,
     link_destino varchar(500) NOT NULL,
     link_tipo varchar(20) NOT NULL DEFAULT 'interno',
     abrir_nova_aba boolean NOT NULL DEFAULT false,
@@ -27,6 +32,25 @@ CREATE TABLE IF NOT EXISTS ads.tb_portal_banners (
     criado_por integer,
     atualizado_por integer
 );
+
+-- Migra instalacoes anteriores mantendo a imagem atual como fallback mobile.
+ALTER TABLE ads.tb_portal_banners
+    ADD COLUMN IF NOT EXISTS arquivo_mobile_path varchar(255),
+    ADD COLUMN IF NOT EXISTS arquivo_mobile_original varchar(255),
+    ADD COLUMN IF NOT EXISTS formato_mobile varchar(16),
+    ADD COLUMN IF NOT EXISTS largura_mobile integer,
+    ADD COLUMN IF NOT EXISTS altura_mobile integer;
+
+UPDATE ads.tb_portal_banners
+SET arquivo_mobile_path = arquivo_path,
+    arquivo_mobile_original = coalesce(arquivo_mobile_original, arquivo_original),
+    formato_mobile = coalesce(formato_mobile, formato),
+    largura_mobile = coalesce(largura_mobile, largura),
+    altura_mobile = coalesce(altura_mobile, altura)
+WHERE arquivo_mobile_path IS NULL OR trim(arquivo_mobile_path) = '';
+
+ALTER TABLE ads.tb_portal_banners
+    ALTER COLUMN arquivo_mobile_path SET NOT NULL;
 
 CREATE INDEX IF NOT EXISTS tb_portal_banners_lookup_idx
     ON ads.tb_portal_banners (canal, local_layout, status);

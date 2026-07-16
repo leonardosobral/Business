@@ -90,6 +90,23 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
 <cfset VARIABLES.bannerManagementTablesList = ValueList(qBannerManagementTables.table_name)/>
 <cfset VARIABLES.bannerManagementTablesReady = ListFindNoCase(VARIABLES.bannerManagementTablesList, "tb_portal_banners") AND ListFindNoCase(VARIABLES.bannerManagementTablesList, "tb_portal_banners_log")/>
+<cfset VARIABLES.bannerManagementResponsiveReady = false/>
+
+<cfif VARIABLES.bannerManagementTablesReady>
+    <cfquery name="qBannerManagementColumns">
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_schema = 'ads'
+          AND table_name = 'tb_portal_banners'
+    </cfquery>
+    <cfset VARIABLES.bannerManagementColumnList = ValueList(qBannerManagementColumns.column_name)/>
+    <cfset VARIABLES.bannerManagementResponsiveReady =
+        ListFindNoCase(VARIABLES.bannerManagementColumnList, "arquivo_mobile_path")
+        AND ListFindNoCase(VARIABLES.bannerManagementColumnList, "arquivo_mobile_original")
+        AND ListFindNoCase(VARIABLES.bannerManagementColumnList, "formato_mobile")
+        AND ListFindNoCase(VARIABLES.bannerManagementColumnList, "largura_mobile")
+        AND ListFindNoCase(VARIABLES.bannerManagementColumnList, "altura_mobile")/>
+</cfif>
 
 <cfif VARIABLES.bannerManagementTablesReady>
     <cfif NOT DirectoryExists(VARIABLES.bannerUploadDiskPath)>
@@ -111,6 +128,13 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         AND isDefined("qPerfil")
         AND qPerfil.recordcount
         AND qPerfil.is_admin>
+
+        <cfif NOT VARIABLES.bannerManagementResponsiveReady>
+            <cfset VARIABLES.bannerManagementAlert = {
+                type = "danger",
+                message = "A estrutura de arquivos desktop e mobile ainda nao foi aplicada. Rode novamente portal_banner_schema.sql."
+            }/>
+        <cfelse>
 
         <cfset VARIABLES.bannerSaveErrors = []/>
         <cfset VARIABLES.bannerRecordId = isDefined("FORM.banner_id") ? trim(FORM.banner_id) : ""/>
@@ -135,11 +159,47 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfset VARIABLES.bannerFimExibicaoParsed = ""/>
         <cfset VARIABLES.bannerStatus = isDefined("FORM.banner_status") ? trim(FORM.banner_status) : "2"/>
         <cfset VARIABLES.bannerObservacoes = isDefined("FORM.banner_observacoes") ? trim(FORM.banner_observacoes) : ""/>
-        <cfset VARIABLES.bannerHasNewFile = isDefined("FORM.banner_arquivo")/>
-        <cfset VARIABLES.bannerAssetPath = isDefined("FORM.banner_arquivo_atual") ? trim(FORM.banner_arquivo_atual) : ""/>
-        <cfset VARIABLES.bannerAssetOriginal = isDefined("FORM.banner_arquivo_original_atual") ? trim(FORM.banner_arquivo_original_atual) : ""/>
-        <cfset VARIABLES.bannerAssetFormat = isDefined("FORM.banner_formato_atual") ? trim(FORM.banner_formato_atual) : ""/>
-        <cfset VARIABLES.bannerUploadedServerFile = ""/>
+        <cfset VARIABLES.bannerMobileLargura = isDefined("FORM.banner_mobile_largura") ? trim(FORM.banner_mobile_largura) : ""/>
+        <cfset VARIABLES.bannerMobileAltura = isDefined("FORM.banner_mobile_altura") ? trim(FORM.banner_mobile_altura) : ""/>
+        <cfset VARIABLES.bannerHasNewDesktopFile = isDefined("FORM.banner_arquivo_desktop") AND len(trim(FORM.banner_arquivo_desktop & ""))/>
+        <cfset VARIABLES.bannerHasNewMobileFile = isDefined("FORM.banner_arquivo_mobile") AND len(trim(FORM.banner_arquivo_mobile & ""))/>
+        <cfset VARIABLES.bannerDesktopAssetPath = isDefined("FORM.banner_arquivo_desktop_atual") ? trim(FORM.banner_arquivo_desktop_atual) : ""/>
+        <cfset VARIABLES.bannerDesktopAssetOriginal = isDefined("FORM.banner_arquivo_desktop_original_atual") ? trim(FORM.banner_arquivo_desktop_original_atual) : ""/>
+        <cfset VARIABLES.bannerDesktopAssetFormat = isDefined("FORM.banner_formato_desktop_atual") ? trim(FORM.banner_formato_desktop_atual) : ""/>
+        <cfset VARIABLES.bannerMobileAssetPath = isDefined("FORM.banner_arquivo_mobile_atual") ? trim(FORM.banner_arquivo_mobile_atual) : ""/>
+        <cfset VARIABLES.bannerMobileAssetOriginal = isDefined("FORM.banner_arquivo_mobile_original_atual") ? trim(FORM.banner_arquivo_mobile_original_atual) : ""/>
+        <cfset VARIABLES.bannerMobileAssetFormat = isDefined("FORM.banner_formato_mobile_atual") ? trim(FORM.banner_formato_mobile_atual) : ""/>
+        <cfset VARIABLES.bannerDesktopUploadedServerFile = ""/>
+        <cfset VARIABLES.bannerMobileUploadedServerFile = ""/>
+
+        <cfif len(VARIABLES.bannerRecordId)>
+            <cfif isNumeric(VARIABLES.bannerRecordId)>
+                <cfquery name="qBannerManagementCurrentAssets">
+                    SELECT arquivo_path,
+                           arquivo_original,
+                           formato,
+                           arquivo_mobile_path,
+                           arquivo_mobile_original,
+                           formato_mobile
+                    FROM ads.tb_portal_banners
+                    WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerRecordId)#"/>
+                    LIMIT 1
+                </cfquery>
+
+                <cfif qBannerManagementCurrentAssets.recordcount>
+                    <cfset VARIABLES.bannerDesktopAssetPath = isNull(qBannerManagementCurrentAssets.arquivo_path) ? "" : trim(qBannerManagementCurrentAssets.arquivo_path & "")/>
+                    <cfset VARIABLES.bannerDesktopAssetOriginal = isNull(qBannerManagementCurrentAssets.arquivo_original) ? "" : trim(qBannerManagementCurrentAssets.arquivo_original & "")/>
+                    <cfset VARIABLES.bannerDesktopAssetFormat = isNull(qBannerManagementCurrentAssets.formato) ? "" : trim(qBannerManagementCurrentAssets.formato & "")/>
+                    <cfset VARIABLES.bannerMobileAssetPath = isNull(qBannerManagementCurrentAssets.arquivo_mobile_path) ? "" : trim(qBannerManagementCurrentAssets.arquivo_mobile_path & "")/>
+                    <cfset VARIABLES.bannerMobileAssetOriginal = isNull(qBannerManagementCurrentAssets.arquivo_mobile_original) ? "" : trim(qBannerManagementCurrentAssets.arquivo_mobile_original & "")/>
+                    <cfset VARIABLES.bannerMobileAssetFormat = isNull(qBannerManagementCurrentAssets.formato_mobile) ? "" : trim(qBannerManagementCurrentAssets.formato_mobile & "")/>
+                <cfelse>
+                    <cfset arrayAppend(VARIABLES.bannerSaveErrors, "O banner informado para edicao nao foi encontrado.")/>
+                </cfif>
+            <cfelse>
+                <cfset arrayAppend(VARIABLES.bannerSaveErrors, "O banner informado para edicao e invalido.")/>
+            </cfif>
+        </cfif>
 
         <cfif NOT len(VARIABLES.bannerNome)>
             <cfset arrayAppend(VARIABLES.bannerSaveErrors, "Informe o nome interno do banner.")/>
@@ -163,10 +223,16 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A prioridade deve ser um numero maior ou igual a 1.")/>
         </cfif>
         <cfif len(VARIABLES.bannerLargura) AND (NOT isNumeric(VARIABLES.bannerLargura) OR val(VARIABLES.bannerLargura) LT 1)>
-            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A largura deve ser um numero positivo.")/>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A largura desktop deve ser um numero positivo.")/>
         </cfif>
         <cfif len(VARIABLES.bannerAltura) AND (NOT isNumeric(VARIABLES.bannerAltura) OR val(VARIABLES.bannerAltura) LT 1)>
-            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A altura deve ser um numero positivo.")/>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A altura desktop deve ser um numero positivo.")/>
+        </cfif>
+        <cfif len(VARIABLES.bannerMobileLargura) AND (NOT isNumeric(VARIABLES.bannerMobileLargura) OR val(VARIABLES.bannerMobileLargura) LT 1)>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A largura mobile deve ser um numero positivo.")/>
+        </cfif>
+        <cfif len(VARIABLES.bannerMobileAltura) AND (NOT isNumeric(VARIABLES.bannerMobileAltura) OR val(VARIABLES.bannerMobileAltura) LT 1)>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A altura mobile deve ser um numero positivo.")/>
         </cfif>
         <cfif len(VARIABLES.bannerLimiteImpressoes) AND (NOT isNumeric(VARIABLES.bannerLimiteImpressoes) OR val(VARIABLES.bannerLimiteImpressoes) LT 1)>
             <cfset arrayAppend(VARIABLES.bannerSaveErrors, "O limite de impressoes deve ser um numero positivo.")/>
@@ -186,8 +252,11 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfif len(VARIABLES.bannerInicioExibicao) AND len(VARIABLES.bannerFimExibicao) AND isDate(VARIABLES.bannerInicioExibicao) AND isDate(VARIABLES.bannerFimExibicao) AND parseDateTime(VARIABLES.bannerFimExibicao) LT parseDateTime(VARIABLES.bannerInicioExibicao)>
             <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A data final precisa ser posterior a data inicial.")/>
         </cfif>
-        <cfif NOT len(VARIABLES.bannerRecordId) AND NOT VARIABLES.bannerHasNewFile>
-            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "Envie o arquivo do banner em JPG, PNG ou GIF.")/>
+        <cfif NOT VARIABLES.bannerHasNewDesktopFile AND NOT len(VARIABLES.bannerDesktopAssetPath)>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "Envie o arquivo desktop do banner em JPG, PNG ou GIF.")/>
+        </cfif>
+        <cfif NOT VARIABLES.bannerHasNewMobileFile AND NOT len(VARIABLES.bannerMobileAssetPath)>
+            <cfset arrayAppend(VARIABLES.bannerSaveErrors, "Envie o arquivo mobile do banner em JPG, PNG ou GIF.")/>
         </cfif>
 
         <cfif len(VARIABLES.bannerInicioExibicao) AND isDate(VARIABLES.bannerInicioExibicao)>
@@ -196,32 +265,33 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfif len(VARIABLES.bannerFimExibicao) AND isDate(VARIABLES.bannerFimExibicao)>
             <cfset VARIABLES.bannerFimExibicaoParsed = parseDateTime(VARIABLES.bannerFimExibicao)/>
         </cfif>
-        <cfif (VARIABLES.bannerHasNewFile OR NOT len(VARIABLES.bannerRecordId)) AND NOT bannerManagementDirectoryWritable(VARIABLES.bannerUploadDiskPath)>
+        <cfif (VARIABLES.bannerHasNewDesktopFile OR VARIABLES.bannerHasNewMobileFile) AND NOT bannerManagementDirectoryWritable(VARIABLES.bannerUploadDiskPath)>
             <cfset arrayAppend(VARIABLES.bannerSaveErrors, "A pasta de upload nao esta gravavel pelo servidor: " & VARIABLES.bannerUploadDiskPath) />
         </cfif>
 
-        <cfif NOT arrayLen(VARIABLES.bannerSaveErrors) AND (VARIABLES.bannerHasNewFile OR NOT len(VARIABLES.bannerRecordId))>
+        <cfif NOT arrayLen(VARIABLES.bannerSaveErrors) AND VARIABLES.bannerHasNewDesktopFile>
             <cftry>
                 <cffile action="upload"
-                        filefield="banner_arquivo"
+                        filefield="banner_arquivo_desktop"
                         destination="#VARIABLES.bannerUploadDiskPath#"
                         nameconflict="makeunique"
-                        result="bannerUploadResult"/>
-                <cfset VARIABLES.bannerUploadedServerFile = bannerUploadResult.serverFile/>
-                <cfset VARIABLES.bannerUploadedExtension = lCase(bannerUploadResult.serverFileExt)/>
+                        result="bannerDesktopUploadResult"/>
+                <cfset VARIABLES.bannerDesktopUploadedServerFile = bannerDesktopUploadResult.serverFile/>
+                <cfset VARIABLES.bannerDesktopUploadedExtension = lCase(bannerDesktopUploadResult.serverFileExt)/>
 
-                <cfif NOT ListFindNoCase("jpg,jpeg,png,gif", VARIABLES.bannerUploadedExtension)>
-                    <cfif len(trim(VARIABLES.bannerUploadedServerFile)) AND FileExists(VARIABLES.bannerUploadDiskPath & VARIABLES.bannerUploadedServerFile)>
-                        <cffile action="delete" file="#VARIABLES.bannerUploadDiskPath##VARIABLES.bannerUploadedServerFile#"/>
+                <cfif NOT ListFindNoCase("jpg,jpeg,png,gif", VARIABLES.bannerDesktopUploadedExtension)>
+                    <cfif len(trim(VARIABLES.bannerDesktopUploadedServerFile)) AND FileExists(VARIABLES.bannerUploadDiskPath & VARIABLES.bannerDesktopUploadedServerFile)>
+                        <cffile action="delete" file="#VARIABLES.bannerUploadDiskPath##VARIABLES.bannerDesktopUploadedServerFile#"/>
                     </cfif>
-                    <cfset arrayAppend(VARIABLES.bannerSaveErrors, "Nao foi possivel enviar o arquivo do banner. Use JPG, PNG ou GIF.")/>
+                    <cfset VARIABLES.bannerDesktopUploadedServerFile = ""/>
+                    <cfset arrayAppend(VARIABLES.bannerSaveErrors, "O arquivo desktop deve ser JPG, PNG ou GIF.")/>
                 <cfelse>
-                    <cfset VARIABLES.bannerAssetPath = VARIABLES.bannerUploadWebRoot & bannerUploadResult.serverFile/>
-                    <cfset VARIABLES.bannerAssetOriginal = bannerUploadResult.clientFile/>
-                    <cfset VARIABLES.bannerAssetFormat = VARIABLES.bannerUploadedExtension/>
+                    <cfset VARIABLES.bannerDesktopAssetPath = VARIABLES.bannerUploadWebRoot & bannerDesktopUploadResult.serverFile/>
+                    <cfset VARIABLES.bannerDesktopAssetOriginal = bannerDesktopUploadResult.clientFile/>
+                    <cfset VARIABLES.bannerDesktopAssetFormat = VARIABLES.bannerDesktopUploadedExtension/>
                 </cfif>
             <cfcatch type="any">
-                <cfset VARIABLES.bannerUploadErrorMessage = "Nao foi possivel enviar o arquivo do banner."/>
+                <cfset VARIABLES.bannerUploadErrorMessage = "Nao foi possivel enviar o arquivo desktop do banner."/>
                 <cfif len(trim(cfcatch.message))>
                     <cfset VARIABLES.bannerUploadErrorMessage = VARIABLES.bannerUploadErrorMessage & " " & trim(cfcatch.message)/>
                 </cfif>
@@ -231,6 +301,51 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                 <cfset arrayAppend(VARIABLES.bannerSaveErrors, VARIABLES.bannerUploadErrorMessage)/>
             </cfcatch>
             </cftry>
+        </cfif>
+
+        <cfif NOT arrayLen(VARIABLES.bannerSaveErrors) AND VARIABLES.bannerHasNewMobileFile>
+            <cftry>
+                <cffile action="upload"
+                        filefield="banner_arquivo_mobile"
+                        destination="#VARIABLES.bannerUploadDiskPath#"
+                        nameconflict="makeunique"
+                        result="bannerMobileUploadResult"/>
+                <cfset VARIABLES.bannerMobileUploadedServerFile = bannerMobileUploadResult.serverFile/>
+                <cfset VARIABLES.bannerMobileUploadedExtension = lCase(bannerMobileUploadResult.serverFileExt)/>
+
+                <cfif NOT ListFindNoCase("jpg,jpeg,png,gif", VARIABLES.bannerMobileUploadedExtension)>
+                    <cfif len(trim(VARIABLES.bannerMobileUploadedServerFile)) AND FileExists(VARIABLES.bannerUploadDiskPath & VARIABLES.bannerMobileUploadedServerFile)>
+                        <cffile action="delete" file="#VARIABLES.bannerUploadDiskPath##VARIABLES.bannerMobileUploadedServerFile#"/>
+                    </cfif>
+                    <cfset VARIABLES.bannerMobileUploadedServerFile = ""/>
+                    <cfset arrayAppend(VARIABLES.bannerSaveErrors, "O arquivo mobile deve ser JPG, PNG ou GIF.")/>
+                <cfelse>
+                    <cfset VARIABLES.bannerMobileAssetPath = VARIABLES.bannerUploadWebRoot & bannerMobileUploadResult.serverFile/>
+                    <cfset VARIABLES.bannerMobileAssetOriginal = bannerMobileUploadResult.clientFile/>
+                    <cfset VARIABLES.bannerMobileAssetFormat = VARIABLES.bannerMobileUploadedExtension/>
+                </cfif>
+            <cfcatch type="any">
+                <cfset VARIABLES.bannerUploadErrorMessage = "Nao foi possivel enviar o arquivo mobile do banner."/>
+                <cfif len(trim(cfcatch.message))>
+                    <cfset VARIABLES.bannerUploadErrorMessage = VARIABLES.bannerUploadErrorMessage & " " & trim(cfcatch.message)/>
+                </cfif>
+                <cfif len(trim(cfcatch.detail))>
+                    <cfset VARIABLES.bannerUploadErrorMessage = VARIABLES.bannerUploadErrorMessage & " " & trim(cfcatch.detail)/>
+                </cfif>
+                <cfset arrayAppend(VARIABLES.bannerSaveErrors, VARIABLES.bannerUploadErrorMessage)/>
+            </cfcatch>
+            </cftry>
+        </cfif>
+
+        <cfif arrayLen(VARIABLES.bannerSaveErrors)>
+            <cfloop list="#VARIABLES.bannerDesktopUploadedServerFile#,#VARIABLES.bannerMobileUploadedServerFile#" item="bannerUploadedFileToRemove">
+                <cfif len(trim(bannerUploadedFileToRemove)) AND FileExists(VARIABLES.bannerUploadDiskPath & bannerUploadedFileToRemove)>
+                    <cftry>
+                        <cffile action="delete" file="#VARIABLES.bannerUploadDiskPath##bannerUploadedFileToRemove#"/>
+                    <cfcatch type="any"></cfcatch>
+                    </cftry>
+                </cfif>
+            </cfloop>
         </cfif>
 
         <cfif arrayLen(VARIABLES.bannerSaveErrors)>
@@ -248,10 +363,15 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                         tamanho_nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerTamanhoNome#" null="#NOT len(VARIABLES.bannerTamanhoNome)#"/>,
                         largura = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerLargura)#" null="#NOT len(VARIABLES.bannerLargura)#"/>,
                         altura = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerAltura)#" null="#NOT len(VARIABLES.bannerAltura)#"/>,
-                        formato = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetFormat#" null="#NOT len(VARIABLES.bannerAssetFormat)#"/>,
+                        formato = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetFormat#" null="#NOT len(VARIABLES.bannerDesktopAssetFormat)#"/>,
                         alt_text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAltText#" null="#NOT len(VARIABLES.bannerAltText)#"/>,
-                        arquivo_path = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetPath#"/>,
-                        arquivo_original = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetOriginal#" null="#NOT len(VARIABLES.bannerAssetOriginal)#"/>,
+                        arquivo_path = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetPath#"/>,
+                        arquivo_original = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetOriginal#" null="#NOT len(VARIABLES.bannerDesktopAssetOriginal)#"/>,
+                        arquivo_mobile_path = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetPath#"/>,
+                        arquivo_mobile_original = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetOriginal#" null="#NOT len(VARIABLES.bannerMobileAssetOriginal)#"/>,
+                        formato_mobile = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetFormat#" null="#NOT len(VARIABLES.bannerMobileAssetFormat)#"/>,
+                        largura_mobile = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerMobileLargura)#" null="#NOT len(VARIABLES.bannerMobileLargura)#"/>,
+                        altura_mobile = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerMobileAltura)#" null="#NOT len(VARIABLES.bannerMobileAltura)#"/>,
                         link_destino = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerLinkDestino#"/>,
                         link_tipo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerLinkTipo#"/>,
                         abrir_nova_aba = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.bannerAbrirNovaAba#"/>,
@@ -284,6 +404,11 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                         alt_text,
                         arquivo_path,
                         arquivo_original,
+                        arquivo_mobile_path,
+                        arquivo_mobile_original,
+                        formato_mobile,
+                        largura_mobile,
+                        altura_mobile,
                         link_destino,
                         link_tipo,
                         abrir_nova_aba,
@@ -307,10 +432,15 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerTamanhoNome#" null="#NOT len(VARIABLES.bannerTamanhoNome)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerLargura)#" null="#NOT len(VARIABLES.bannerLargura)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerAltura)#" null="#NOT len(VARIABLES.bannerAltura)#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetFormat#" null="#NOT len(VARIABLES.bannerAssetFormat)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetFormat#" null="#NOT len(VARIABLES.bannerDesktopAssetFormat)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAltText#" null="#NOT len(VARIABLES.bannerAltText)#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetPath#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerAssetOriginal#" null="#NOT len(VARIABLES.bannerAssetOriginal)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetPath#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerDesktopAssetOriginal#" null="#NOT len(VARIABLES.bannerDesktopAssetOriginal)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetPath#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetOriginal#" null="#NOT len(VARIABLES.bannerMobileAssetOriginal)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerMobileAssetFormat#" null="#NOT len(VARIABLES.bannerMobileAssetFormat)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerMobileLargura)#" null="#NOT len(VARIABLES.bannerMobileLargura)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.bannerMobileAltura)#" null="#NOT len(VARIABLES.bannerMobileAltura)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerLinkDestino#"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerLinkTipo#"/>,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.bannerAbrirNovaAba#"/>,
@@ -331,6 +461,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                 <cflocation addtoken="false" url="/portal/banners/?sucesso=cadastrado"/>
             </cfif>
         </cfif>
+    </cfif>
     </cfif>
 
     <cfif isDefined("URL.acao")
@@ -354,7 +485,8 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
         <cfif URL.acao EQ "excluir">
             <cfquery name="qBannerDeleteLookup">
-                SELECT arquivo_path
+                SELECT arquivo_path,
+                       <cfif VARIABLES.bannerManagementResponsiveReady>arquivo_mobile_path<cfelse>NULL::varchar AS arquivo_mobile_path</cfif>
                 FROM ads.tb_portal_banners
                 WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
             </cfquery>
@@ -364,15 +496,18 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                 WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
             </cfquery>
 
-            <cfif qBannerDeleteLookup.recordcount AND len(trim(qBannerDeleteLookup.arquivo_path))>
-                <cfset VARIABLES.bannerDeleteDiskPath = expandPath(".." & qBannerDeleteLookup.arquivo_path)/>
-                <cfif FileExists(VARIABLES.bannerDeleteDiskPath)>
-                    <cftry>
-                        <cffile action="delete" file="#VARIABLES.bannerDeleteDiskPath#"/>
-                    <cfcatch type="any">
-                    </cfcatch>
-                    </cftry>
-                </cfif>
+            <cfif qBannerDeleteLookup.recordcount>
+                <cfloop list="#qBannerDeleteLookup.arquivo_path#,#qBannerDeleteLookup.arquivo_mobile_path#" item="bannerDeleteAssetPath">
+                    <cfif len(trim(bannerDeleteAssetPath))>
+                        <cfset VARIABLES.bannerDeleteDiskPath = expandPath(".." & bannerDeleteAssetPath)/>
+                        <cfif FileExists(VARIABLES.bannerDeleteDiskPath)>
+                            <cftry>
+                                <cffile action="delete" file="#VARIABLES.bannerDeleteDiskPath#"/>
+                            <cfcatch type="any"></cfcatch>
+                            </cftry>
+                        </cfif>
+                    </cfif>
+                </cfloop>
             </cfif>
 
             <cflocation addtoken="false" url="/portal/banners/?sucesso=excluido"/>
