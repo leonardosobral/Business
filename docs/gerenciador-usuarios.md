@@ -21,10 +21,10 @@ Tokens, senhas e credenciais de integrações não são carregados ou exibidos n
 
 ## Autorização
 
-- `ADMIN`: acesso integral, inclusive alteração de `ADMIN`, `DEV` e `PARTNER`.
-- `DEV`: pode gerir contas comuns e Partners, mas não pode alterar contas `ADMIN` ou `DEV` nem elevar papéis.
+- `ADMIN` e `DEV`: acesso operacional integral, inclusive alteração de `ADMIN`, `DEV` e `PARTNER`.
+- durante a simulação de uma conta, o item é ocultado e o acesso direto à gestão global de usuários retorna `403`;
 - o próprio usuário logado não pode desativar ou excluir sua conta;
-- um Admin não pode remover de si mesmo a flag `ADMIN` por este painel;
+- o gestor não pode remover simultaneamente de si mesmo as flags `ADMIN` e `DEV`;
 - toda mutação usa `POST`, token CSRF e registro de auditoria.
 
 ## Exclusão lógica

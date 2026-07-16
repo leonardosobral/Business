@@ -8,6 +8,7 @@
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin_dev.cfm"/>
+<cfinclude template="../../includes/backend/require_real_platform_context.cfm"/>
 <cfinclude template="includes/backend.cfm"/>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 

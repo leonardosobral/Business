@@ -90,11 +90,6 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
         return result;
     }
 
-    if (!VARIABLES.userManagerActorIsAdmin && (userManagerBoolean(targetQuery.is_admin) || userManagerBoolean(targetQuery.is_dev))) {
-        result.message = "Usuários DEV não podem alterar contas ADMIN ou DEV.";
-        return result;
-    }
-
     if (!arguments.allowDeleted && userManagerBoolean(targetQuery.gestao_excluido)) {
         result.message = "Restaure a conta excluída antes de realizar esta operação.";
         return result;
@@ -119,6 +114,7 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
 <cfset VARIABLES.userManagerActorId = val(qPerfil.id)/>
 <cfset VARIABLES.userManagerActorIsAdmin = userManagerBoolean(qPerfil.is_admin)/>
 <cfset VARIABLES.userManagerActorIsDev = userManagerBoolean(qPerfil.is_dev)/>
+<cfset VARIABLES.userManagerActorCanManageAll = VARIABLES.userManagerActorIsAdmin OR VARIABLES.userManagerActorIsDev/>
 <cfset VARIABLES.userManagerPage = max(1, val(URL.pagina))/>
 <cfset VARIABLES.userManagerPerPage = 30/>
 <cfset VARIABLES.userManagerOffset = (VARIABLES.userManagerPage - 1) * VARIABLES.userManagerPerPage/>
@@ -290,9 +286,9 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                         <cfthrow message="#VARIABLES.userManagerAccess.message#"/>
                     </cfif>
                     <cfif VARIABLES.userManagerSaveUserId EQ VARIABLES.userManagerActorId
-                        AND VARIABLES.userManagerActorIsAdmin
-                        AND NOT userManagerFormBoolean("is_admin")>
-                        <cfthrow message="Você não pode remover a própria permissão ADMIN por este painel."/>
+                        AND NOT userManagerFormBoolean("is_admin")
+                        AND NOT userManagerFormBoolean("is_dev")>
+                        <cfthrow message="Mantenha pelo menos uma permissão ADMIN ou DEV na própria conta para não perder o acesso administrativo."/>
                     </cfif>
 
                     <cfquery name="qUserManagerBeforeSave">
@@ -328,7 +324,7 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                             manychat_subscriber_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#val(userManagerFormValue('manychat_subscriber_id'))#" null="#val(userManagerFormValue('manychat_subscriber_id')) LTE 0#"/>,
                             is_email_verified = <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_email_verified')#"/>,
                             optin_usuario = <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('optin_usuario')#"/>,
-                            <cfif VARIABLES.userManagerActorIsAdmin>
+                            <cfif VARIABLES.userManagerActorCanManageAll>
                                 is_admin = <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_admin')#"/>,
                                 is_dev = <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_dev')#"/>,
                                 is_partner = <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_partner')#"/>,
@@ -353,7 +349,7 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                                 name, email, password, verification_key, is_email_verified, optin_usuario,
                                 genero, pais, estado, cidade, data_nascimento, ano_nascimento, cbat, assessoria,
                                 ddi_usuario, ddd_usuario, telefone_usuario, imagem_usuario,
-                                <cfif VARIABLES.userManagerActorIsAdmin>is_admin, is_dev, is_partner,</cfif>
+                                <cfif VARIABLES.userManagerActorCanManageAll>is_admin, is_dev, is_partner,</cfif>
                                 fonte_lead
                             )
                             VALUES
@@ -376,7 +372,7 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#userManagerFormValue('ddd_usuario')#" null="#!len(userManagerFormValue('ddd_usuario'))#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#userManagerFormValue('telefone_usuario')#" null="#!len(userManagerFormValue('telefone_usuario'))#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#userManagerFormValue('imagem_usuario')#" null="#!len(userManagerFormValue('imagem_usuario'))#"/>,
-                                <cfif VARIABLES.userManagerActorIsAdmin>
+                                <cfif VARIABLES.userManagerActorCanManageAll>
                                     <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_admin')#"/>,
                                     <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_dev')#"/>,
                                     <cfqueryparam cfsqltype="cf_sql_bit" value="#userManagerFormBoolean('is_partner')#"/>,

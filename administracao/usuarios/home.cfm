@@ -9,7 +9,7 @@ function userManagerDateInput(any value = "") {
 </cfscript>
 
 <cfset VARIABLES.userManagerShowingDetail = qUserManagerUser.recordcount GT 0/>
-<cfset VARIABLES.userManagerCanMutateDetail = VARIABLES.userManagerShowingDetail AND (VARIABLES.userManagerActorIsAdmin OR (!userManagerBoolean(qUserManagerUser.is_admin) AND !userManagerBoolean(qUserManagerUser.is_dev)))/>
+<cfset VARIABLES.userManagerCanMutateDetail = VARIABLES.userManagerShowingDetail AND VARIABLES.userManagerActorCanManageAll/>
 
 <style>
   .user-manager-shell {
@@ -317,9 +317,6 @@ function userManagerDateInput(any value = "") {
                 <h5 class="mb-1"><cfif VARIABLES.userManagerShowingDetail>Dados da conta<cfelse>Criar conta</cfif></h5>
                 <p class="text-muted small mb-0">Credenciais e tokens de integrações não são exibidos nem editados por segurança.</p>
               </div>
-              <cfif VARIABLES.userManagerShowingDetail AND NOT VARIABLES.userManagerCanMutateDetail>
-                <span class="badge badge-secondary">Somente leitura para DEV</span>
-              </cfif>
             </div>
 
             <form method="post" action="./">
@@ -435,7 +432,7 @@ function userManagerDateInput(any value = "") {
                       <div class="form-check"><input class="form-check-input" type="checkbox" name="is_email_verified" value="true" id="um-email-verified"<cfif !VARIABLES.userManagerShowingDetail OR userManagerBoolean(qUserManagerUser.is_email_verified)> checked</cfif>/><label class="form-check-label" for="um-email-verified">E-mail verificado</label></div>
                       <div class="form-check"><input class="form-check-input" type="checkbox" name="optin_usuario" value="true" id="um-optin"<cfif !VARIABLES.userManagerShowingDetail OR userManagerBoolean(qUserManagerUser.optin_usuario)> checked</cfif>/><label class="form-check-label" for="um-optin">Opt-in</label></div>
                     </div>
-                    <cfif VARIABLES.userManagerActorIsAdmin>
+                    <cfif VARIABLES.userManagerActorCanManageAll>
                       <div class="col-12 d-flex flex-wrap gap-4 pt-2 border-top border-secondary-subtle">
                         <div class="form-check"><input class="form-check-input" type="checkbox" name="is_admin" value="true" id="um-admin"<cfif VARIABLES.userManagerShowingDetail AND userManagerBoolean(qUserManagerUser.is_admin)> checked</cfif>/><label class="form-check-label" for="um-admin">ADMIN</label></div>
                         <div class="form-check"><input class="form-check-input" type="checkbox" name="is_dev" value="true" id="um-dev"<cfif VARIABLES.userManagerShowingDetail AND userManagerBoolean(qUserManagerUser.is_dev)> checked</cfif>/><label class="form-check-label" for="um-dev">DEV</label></div>
