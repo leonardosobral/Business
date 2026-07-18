@@ -4,8 +4,8 @@
 </cfif>
 
 <cfif VARIABLES.uptimeStatus.configured>
-    <section class="col-12">
-        <div class="card shadow-0 overflow-hidden">
+    <section class="col-12 col-xl-6">
+        <div class="card shadow-0 overflow-hidden h-100">
             <div class="card-header bg-black bg-opacity-25 d-flex flex-wrap gap-2 justify-content-between align-items-center">
                 <div>
                     <h5 class="mb-0">Uptime Server Status</h5>
@@ -39,46 +39,46 @@
                         <strong>Status indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.uptimeStatus.error)#</cfoutput>
                     </div>
                 <cfelseif VARIABLES.uptimeStatus.loaded>
-                    <div class="row g-3 mb-4">
-                        <div class="col-6 col-lg-2">
-                            <div class="border rounded-4 p-3 h-100">
+                    <div class="row g-2 business-admin-status-metrics">
+                        <div class="col-2">
+                            <div class="border rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Monitores</small>
                                 <strong class="fs-3"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.total, "9")#</cfoutput></strong>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="border border-success rounded-4 p-3 h-100">
+                        <div class="col-2">
+                            <div class="border border-success rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Online</small>
                                 <strong class="fs-3 text-success"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.up, "9")#</cfoutput></strong>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="border border-warning rounded-4 p-3 h-100">
+                        <div class="col-2">
+                            <div class="border border-warning rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Instáveis</small>
                                 <strong class="fs-3 text-warning"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.warning, "9")#</cfoutput></strong>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="border border-danger rounded-4 p-3 h-100">
+                        <div class="col-2">
+                            <div class="border border-danger rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Offline</small>
                                 <strong class="fs-3 text-danger"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.down, "9")#</cfoutput></strong>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="border rounded-4 p-3 h-100">
+                        <div class="col-2">
+                            <div class="border rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Uptime médio</small>
                                 <strong class="fs-3"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.averageUptime, "99.99")#%</cfoutput></strong>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="border rounded-4 p-3 h-100">
+                        <div class="col-2">
+                            <div class="border rounded-4 h-100 business-admin-status-metric">
                                 <small class="text-muted d-block">Resposta média</small>
                                 <strong class="fs-3"><cfoutput>#numberFormat(VARIABLES.uptimeStatus.averageResponseTime, "9")#ms</cfoutput></strong>
                             </div>
                         </div>
                     </div>
 
-                    <div id="business-dashboard-uptime-monitors" class="table-responsive d-none">
+                    <div id="business-dashboard-uptime-monitors" class="table-responsive d-none mt-4">
                         <table class="table table-sm align-middle mb-0">
                             <thead>
                                 <tr>
@@ -146,8 +146,8 @@
         })();
     </script>
 <cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND qPerfil.is_admin>
-    <section class="col-12">
-        <div class="alert alert-info">
+    <section class="col-12 col-xl-6">
+        <div class="alert alert-info h-100 mb-0">
             Configure a chave read-only do UptimeRobot em <code>UPTIMEROBOT_API_KEY</code> ou <code>config/business.local.cfm</code> para exibir o Server Status.
             <cfif isDefined("URL.uptime_debug") AND val(URL.uptime_debug) EQ 1>
                 <hr>

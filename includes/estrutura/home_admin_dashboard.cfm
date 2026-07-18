@@ -11,6 +11,7 @@
 <cfset VARIABLES.businessAdminHomeHasFocoTables = false/>
 <cfset VARIABLES.businessAdminHomeHasAgregaTables = false/>
 <cfset VARIABLES.businessAdminHomeHasCronTables = false/>
+<cfset VARIABLES.businessAdminHomeCronLoaded = false/>
 <cfset VARIABLES.businessAdminHomeHasNotificationTable = false/>
 <cfset VARIABLES.businessAdminHomeFocoPendingTotal = 0/>
 <cfset VARIABLES.businessAdminHomeAgregaPendingTotal = 0/>
@@ -22,6 +23,7 @@
 <cfset VARIABLES.businessAdminHomeContentIncomplete = 0/>
 <cfset VARIABLES.businessAdminHomeContentCritical = 0/>
 <cfset VARIABLES.businessAdminHomeContentNext30 = 0/>
+<cfset VARIABLES.businessAdminHomeCronTotal = 0/>
 <cfset VARIABLES.businessAdminHomeCronActive = 0/>
 <cfset VARIABLES.businessAdminHomeCronDue = 0/>
 <cfset VARIABLES.businessAdminHomeCronErrors = 0/>
@@ -366,15 +368,20 @@
         <cftry>
             <cfquery name="qBusinessAdminHomeCronStats">
                 SELECT
+                    count(*)::integer AS total_jobs,
                     (count(*) FILTER (WHERE ativo = true))::integer AS ativos,
                     (count(*) FILTER (WHERE ativo = true AND next_run_at <= now()))::integer AS vencidos,
                     (count(*) FILTER (WHERE lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')))::integer AS erros
                 FROM tb_cron_jobs
             </cfquery>
+            <cfset VARIABLES.businessAdminHomeCronTotal = val(qBusinessAdminHomeCronStats.total_jobs)/>
             <cfset VARIABLES.businessAdminHomeCronActive = val(qBusinessAdminHomeCronStats.ativos)/>
             <cfset VARIABLES.businessAdminHomeCronDue = val(qBusinessAdminHomeCronStats.vencidos)/>
             <cfset VARIABLES.businessAdminHomeCronErrors = val(qBusinessAdminHomeCronStats.erros)/>
+            <cfset VARIABLES.businessAdminHomeCronLoaded = true/>
             <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeCronLoaded = false/>
+                <cfset VARIABLES.businessAdminHomeCronTotal = 0/>
                 <cfset VARIABLES.businessAdminHomeCronActive = 0/>
                 <cfset VARIABLES.businessAdminHomeCronDue = 0/>
                 <cfset VARIABLES.businessAdminHomeCronErrors = 0/>
@@ -435,6 +442,42 @@
     .business-admin-home .admin-home-text {
         overflow-wrap: anywhere;
         word-break: break-word;
+    }
+
+    .business-admin-status-metrics {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+    }
+
+    .business-admin-status-metrics > [class*="col-"] {
+        min-width: 0;
+    }
+
+    .business-admin-status-metric {
+        min-height: 66px;
+        padding: .55rem .5rem !important;
+    }
+
+    .business-admin-status-metric small {
+        font-size: .64rem;
+        line-height: 1.1;
+    }
+
+    .business-admin-status-metric strong {
+        display: block;
+        font-size: 1.15rem !important;
+        line-height: 1.2;
+        margin-top: .15rem;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 767.98px) {
+        .business-admin-status-metrics > [class*="col-"] {
+            flex: 0 0 6.5rem;
+            max-width: 6.5rem;
+        }
     }
 </style>
 
@@ -514,6 +557,7 @@
 </section>
 
 <cfinclude template="uptime_status.cfm"/>
+<cfinclude template="cron_jobs_status.cfm"/>
 
 <cfif VARIABLES.businessAdminHomeReady>
     <section class="col-xl-5 business-admin-home business-page">

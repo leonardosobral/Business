@@ -7,6 +7,9 @@
 <cfparam name="URL.direcao" default="desc" />
 <cfparam name="URL.grupo" default="0" />
 <cfparam name="URL.agregador_busca" default="" />
+<cfparam name="URL.evento_busca" default="" />
+<cfparam name="URL.manual_nome" default="" />
+<cfparam name="URL.manual_cidade" default="" />
 <cfparam name="URL.sucesso" default="" />
 <cfparam name="FORM.acao" default="" />
 
@@ -138,6 +141,13 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
 <cfset VARIABLES.agregaReviewDirection = lCase(trim(URL.direcao)) />
 <cfset VARIABLES.agregaReviewFocusGroupId = val(URL.grupo) />
 <cfset VARIABLES.agregaReviewAggregatorSearchTerm = trim(URL.agregador_busca) />
+<cfset VARIABLES.agregaReviewEventSearchTerm = trim(URL.evento_busca) />
+<cfset VARIABLES.agregaReviewEventSearchRequested = len(VARIABLES.agregaReviewEventSearchTerm) GTE 2 />
+<cfset VARIABLES.agregaReviewEventSearchLimit = 100 />
+<cfset VARIABLES.agregaReviewManualName = trim(URL.manual_nome) />
+<cfset VARIABLES.agregaReviewManualCity = trim(URL.manual_cidade) />
+<cfset VARIABLES.agregaReviewManualSearchError = "" />
+<cfset VARIABLES.agregaReviewManualSearchLimit = 100 />
 <cfset VARIABLES.agregaReviewAllowedStatuses = "review,applied,ignored,all" />
 <cfset VARIABLES.agregaReviewAllowedOrders = "score,nome,atualizacao" />
 <cfset VARIABLES.agregaReviewAllowedDirections = "asc,desc" />
@@ -145,6 +155,17 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
 <cfset VARIABLES.agregaReviewError = "" />
 <cfset VARIABLES.agregaReviewGeneratedGroups = 0 />
 <cfset VARIABLES.agregaReviewGeneratedCandidates = 0 />
+<cfset qAgregaReviewManualEvents = queryNew("id_evento") />
+<cfset qAgregaReviewEventSearch = queryNew("id_evento") />
+
+<cfif lCase(trim(FORM.acao)) EQ "criar_grupo_manual">
+    <cfif isDefined("FORM.manual_nome")>
+        <cfset VARIABLES.agregaReviewManualName = trim(FORM.manual_nome) />
+    </cfif>
+    <cfif isDefined("FORM.manual_cidade")>
+        <cfset VARIABLES.agregaReviewManualCity = trim(FORM.manual_cidade) />
+    </cfif>
+</cfif>
 
 <cfif !listFindNoCase(VARIABLES.agregaReviewAllowedStatuses, VARIABLES.agregaReviewStatus)>
     <cfset VARIABLES.agregaReviewStatus = "review" />
@@ -190,6 +211,10 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
     <cfset VARIABLES.agregaReviewNotice = "Agregador criado e selecionado para o grupo de revisao." />
 <cfelseif URL.sucesso EQ "agregador_existente">
     <cfset VARIABLES.agregaReviewNotice = "Ja existia um agregador com este nome ou tag. Ele foi selecionado para o grupo de revisao." />
+<cfelseif URL.sucesso EQ "grupo_manual">
+    <cfset VARIABLES.agregaReviewNotice = "Grupo criado manualmente e adicionado a revisao." />
+<cfelseif URL.sucesso EQ "candidatos_adicionados">
+    <cfset VARIABLES.agregaReviewNotice = "Os eventos selecionados foram adicionados ao grupo de revisao." />
 </cfif>
 
 <cfif VARIABLES.agregaReviewSchemaReady AND len(trim(FORM.acao))>
@@ -476,6 +501,190 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
             </cftransaction>
 
             <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=gerado" />
+        <cfelseif VARIABLES.agregaReviewAction EQ "criar_grupo_manual">
+            <cfset VARIABLES.agregaReviewManualSelectedEvents = "" />
+            <cfif isDefined("FORM.eventos")>
+                <cfloop list="#FORM.eventos#" index="VARIABLES.agregaReviewManualEventIdRaw">
+                    <cfset VARIABLES.agregaReviewManualEventId = val(VARIABLES.agregaReviewManualEventIdRaw) />
+                    <cfif VARIABLES.agregaReviewManualEventId GT 0
+                        AND NOT listFind(VARIABLES.agregaReviewManualSelectedEvents, VARIABLES.agregaReviewManualEventId)>
+                        <cfset VARIABLES.agregaReviewManualSelectedEvents = listAppend(VARIABLES.agregaReviewManualSelectedEvents, VARIABLES.agregaReviewManualEventId) />
+                    </cfif>
+                </cfloop>
+            </cfif>
+
+            <cfif listLen(VARIABLES.agregaReviewManualSelectedEvents) LT 2>
+                <cfthrow type="AgregaReview.Validation" message="Selecione ao menos dois eventos para criar o grupo de revisao." />
+            </cfif>
+
+            <cfquery name="qAgregaReviewManualSelected">
+                SELECT evt.id_evento,
+                       evt.nome_evento,
+                       coalesce(evt.cidade, '') AS cidade,
+                       coalesce(evt.estado, '') AS estado,
+                       coalesce(evt.tag, '') AS tag,
+                       evt.data_inicial,
+                       evt.id_agrega_evento
+                FROM tb_evento_corridas evt
+                WHERE evt.ativo = true
+                  AND evt.id_evento IN (
+                      <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualSelectedEvents#" list="true" />
+                  )
+                  AND NOT EXISTS (
+                      SELECT 1
+                      FROM tb_evento_agrega_review_candidates pending_cand
+                      INNER JOIN tb_evento_agrega_review_groups pending_grp
+                          ON pending_grp.id_evento_agrega_review_group = pending_cand.id_evento_agrega_review_group
+                      WHERE pending_cand.id_evento = evt.id_evento
+                        AND pending_cand.status = 'active'
+                        AND pending_grp.status = 'review'
+                  )
+                ORDER BY evt.data_inicial ASC NULLS LAST, evt.id_evento
+            </cfquery>
+
+            <cfif qAgregaReviewManualSelected.recordcount NEQ listLen(VARIABLES.agregaReviewManualSelectedEvents)>
+                <cfthrow type="AgregaReview.Validation" message="Um ou mais eventos selecionados ja participam de outra revisao ou nao estao mais ativos. Atualize a busca e tente novamente." />
+            </cfif>
+
+            <cfset VARIABLES.agregaReviewManualEventsData = [] />
+            <cfset VARIABLES.agregaReviewManualExistingAggregatorIds = "" />
+            <cfset VARIABLES.agregaReviewManualHasMissingAggregator = false />
+
+            <cfloop query="qAgregaReviewManualSelected">
+                <cfset VARIABLES.agregaReviewManualEvent = {
+                    idEvento = qAgregaReviewManualSelected.id_evento,
+                    nomeEvento = qAgregaReviewManualSelected.nome_evento,
+                    cidade = qAgregaReviewManualSelected.cidade,
+                    estado = qAgregaReviewManualSelected.estado,
+                    tag = qAgregaReviewManualSelected.tag,
+                    dataInicial = qAgregaReviewManualSelected.data_inicial,
+                    idAgregaEvento = val(qAgregaReviewManualSelected.id_agrega_evento),
+                    normalizedName = agregaReviewNormalizeText(qAgregaReviewManualSelected.nome_evento),
+                    score = 0,
+                    nameScore = 0,
+                    cityScore = 0
+                } />
+                <cfset arrayAppend(VARIABLES.agregaReviewManualEventsData, VARIABLES.agregaReviewManualEvent) />
+
+                <cfif VARIABLES.agregaReviewManualEvent.idAgregaEvento GT 0>
+                    <cfif NOT listFind(VARIABLES.agregaReviewManualExistingAggregatorIds, VARIABLES.agregaReviewManualEvent.idAgregaEvento)>
+                        <cfset VARIABLES.agregaReviewManualExistingAggregatorIds = listAppend(VARIABLES.agregaReviewManualExistingAggregatorIds, VARIABLES.agregaReviewManualEvent.idAgregaEvento) />
+                    </cfif>
+                <cfelse>
+                    <cfset VARIABLES.agregaReviewManualHasMissingAggregator = true />
+                </cfif>
+            </cfloop>
+
+            <cfif NOT VARIABLES.agregaReviewManualHasMissingAggregator
+                AND listLen(VARIABLES.agregaReviewManualExistingAggregatorIds) EQ 1>
+                <cfthrow type="AgregaReview.Validation" message="Todos os eventos selecionados ja usam o mesmo agregador; nao ha uma revisao pendente para criar." />
+            </cfif>
+
+            <cfset VARIABLES.agregaReviewManualMaxScore = 0 />
+            <cfloop from="1" to="#arrayLen(VARIABLES.agregaReviewManualEventsData)#" index="VARIABLES.agregaReviewManualLeftIndex">
+                <cfloop from="1" to="#arrayLen(VARIABLES.agregaReviewManualEventsData)#" index="VARIABLES.agregaReviewManualRightIndex">
+                    <cfif VARIABLES.agregaReviewManualLeftIndex EQ VARIABLES.agregaReviewManualRightIndex>
+                        <cfcontinue />
+                    </cfif>
+
+                    <cfset VARIABLES.agregaReviewManualLeftEvent = VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualLeftIndex] />
+                    <cfset VARIABLES.agregaReviewManualRightEvent = VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualRightIndex] />
+                    <cfset VARIABLES.agregaReviewManualPairNameScore = agregaReviewTokenScore(VARIABLES.agregaReviewManualLeftEvent.nomeEvento, VARIABLES.agregaReviewManualRightEvent.nomeEvento) />
+                    <cfset VARIABLES.agregaReviewManualPairCityScore = 0 />
+                    <cfif len(agregaReviewNormalizeText(VARIABLES.agregaReviewManualLeftEvent.cidade))
+                        AND agregaReviewNormalizeText(VARIABLES.agregaReviewManualLeftEvent.cidade) EQ agregaReviewNormalizeText(VARIABLES.agregaReviewManualRightEvent.cidade)
+                        AND uCase(trim(VARIABLES.agregaReviewManualLeftEvent.estado)) EQ uCase(trim(VARIABLES.agregaReviewManualRightEvent.estado))>
+                        <cfset VARIABLES.agregaReviewManualPairCityScore = 100 />
+                    </cfif>
+                    <cfset VARIABLES.agregaReviewManualPairScore = round(((VARIABLES.agregaReviewManualPairNameScore * 0.80) + (VARIABLES.agregaReviewManualPairCityScore * 0.20)) * 100) / 100 />
+
+                    <cfif VARIABLES.agregaReviewManualPairScore GT VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualLeftIndex].score>
+                        <cfset VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualLeftIndex].score = VARIABLES.agregaReviewManualPairScore />
+                        <cfset VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualLeftIndex].nameScore = VARIABLES.agregaReviewManualPairNameScore />
+                        <cfset VARIABLES.agregaReviewManualEventsData[VARIABLES.agregaReviewManualLeftIndex].cityScore = VARIABLES.agregaReviewManualPairCityScore />
+                    </cfif>
+                    <cfif VARIABLES.agregaReviewManualPairScore GT VARIABLES.agregaReviewManualMaxScore>
+                        <cfset VARIABLES.agregaReviewManualMaxScore = VARIABLES.agregaReviewManualPairScore />
+                    </cfif>
+                </cfloop>
+            </cfloop>
+
+            <cfset VARIABLES.agregaReviewManualFirstEvent = VARIABLES.agregaReviewManualEventsData[1] />
+            <cfset VARIABLES.agregaReviewManualSuggestedId = 0 />
+            <cfif listLen(VARIABLES.agregaReviewManualExistingAggregatorIds) EQ 1>
+                <cfset VARIABLES.agregaReviewManualSuggestedId = val(listFirst(VARIABLES.agregaReviewManualExistingAggregatorIds)) />
+            </cfif>
+            <cfset VARIABLES.agregaReviewManualGroupKey = lCase(hash("manual|" & qPerfil.id & "|" & createUUID() & "|" & VARIABLES.agregaReviewManualSelectedEvents, "SHA-256")) />
+
+            <cftransaction>
+                <cfif VARIABLES.agregaReviewHasDisplayName>
+                    <cfquery name="qAgregaReviewManualInsertGroup">
+                        INSERT INTO tb_evento_agrega_review_groups
+                            (group_key, normalized_name, display_name, cidade, estado, candidate_count, max_score,
+                             suggested_id_agrega_evento, status, created_by, data_atualizacao)
+                        VALUES (
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualGroupKey#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.normalizedName#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#agregaReviewDisplayName(VARIABLES.agregaReviewManualFirstEvent.nomeEvento)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.cidade#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.estado#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#arrayLen(VARIABLES.agregaReviewManualEventsData)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewManualMaxScore#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualSuggestedId#" null="#VARIABLES.agregaReviewManualSuggestedId LTE 0#" />,
+                            'review',
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#" />,
+                            now()
+                        )
+                        RETURNING id_evento_agrega_review_group
+                    </cfquery>
+                <cfelse>
+                    <cfquery name="qAgregaReviewManualInsertGroup">
+                        INSERT INTO tb_evento_agrega_review_groups
+                            (group_key, normalized_name, cidade, estado, candidate_count, max_score,
+                             suggested_id_agrega_evento, status, created_by, data_atualizacao)
+                        VALUES (
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualGroupKey#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.normalizedName#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.cidade#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualFirstEvent.estado#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#arrayLen(VARIABLES.agregaReviewManualEventsData)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewManualMaxScore#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualSuggestedId#" null="#VARIABLES.agregaReviewManualSuggestedId LTE 0#" />,
+                            'review',
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#" />,
+                            now()
+                        )
+                        RETURNING id_evento_agrega_review_group
+                    </cfquery>
+                </cfif>
+
+                <cfloop array="#VARIABLES.agregaReviewManualEventsData#" index="VARIABLES.agregaReviewManualEvent">
+                    <cfquery>
+                        INSERT INTO tb_evento_agrega_review_candidates
+                            (id_evento_agrega_review_group, id_evento, id_agrega_evento_atual, nome_evento,
+                             normalized_name, cidade, estado, tag, data_inicial, score, name_score, city_score,
+                             status, data_atualizacao)
+                        VALUES (
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qAgregaReviewManualInsertGroup.id_evento_agrega_review_group#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualEvent.idEvento#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualEvent.idAgregaEvento#" null="#VARIABLES.agregaReviewManualEvent.idAgregaEvento LTE 0#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualEvent.nomeEvento#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualEvent.normalizedName#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualEvent.cidade#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualEvent.estado#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualEvent.tag#" null="#!len(trim(VARIABLES.agregaReviewManualEvent.tag))#" />,
+                            <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.agregaReviewManualEvent.dataInicial#" null="#!isDate(VARIABLES.agregaReviewManualEvent.dataInicial)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewManualEvent.score#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewManualEvent.nameScore#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewManualEvent.cityScore#" />,
+                            'active',
+                            now()
+                        )
+                    </cfquery>
+                </cfloop>
+            </cftransaction>
+
+            <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=grupo_manual&grupo=#qAgregaReviewManualInsertGroup.id_evento_agrega_review_group#" />
         <cfelseif VARIABLES.agregaReviewAction EQ "criar_agregador">
             <cfset VARIABLES.agregaReviewGroupId = 0 />
             <cfif isDefined("FORM.id_grupo")>
@@ -584,7 +793,143 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
                 </cfquery>
             </cftransaction>
 
-            <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=#VARIABLES.agregaReviewAggregatorSuccess#&grupo=#VARIABLES.agregaReviewGroupId#" />
+            <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=#VARIABLES.agregaReviewAggregatorSuccess#&grupo=#VARIABLES.agregaReviewGroupId#&evento_busca=#urlEncodedFormat(VARIABLES.agregaReviewAggregatorName)#" />
+        <cfelseif VARIABLES.agregaReviewAction EQ "adicionar_candidatos_grupo">
+            <cfset VARIABLES.agregaReviewGroupId = 0 />
+            <cfif isDefined("FORM.id_grupo")>
+                <cfset VARIABLES.agregaReviewGroupId = val(FORM.id_grupo) />
+            </cfif>
+            <cfset VARIABLES.agregaReviewAdditionalEventIds = "" />
+
+            <cfif isDefined("FORM.eventos_adicionais")>
+                <cfloop list="#FORM.eventos_adicionais#" index="VARIABLES.agregaReviewAdditionalEventIdRaw">
+                    <cfset VARIABLES.agregaReviewAdditionalEventId = val(VARIABLES.agregaReviewAdditionalEventIdRaw) />
+                    <cfif VARIABLES.agregaReviewAdditionalEventId GT 0
+                        AND NOT listFind(VARIABLES.agregaReviewAdditionalEventIds, VARIABLES.agregaReviewAdditionalEventId)>
+                        <cfset VARIABLES.agregaReviewAdditionalEventIds = listAppend(VARIABLES.agregaReviewAdditionalEventIds, VARIABLES.agregaReviewAdditionalEventId) />
+                    </cfif>
+                </cfloop>
+            </cfif>
+
+            <cfif VARIABLES.agregaReviewGroupId LTE 0 OR NOT len(VARIABLES.agregaReviewAdditionalEventIds)>
+                <cfthrow type="AgregaReview.Validation" message="Selecione ao menos um evento para adicionar ao grupo." />
+            </cfif>
+
+            <cftransaction>
+                <cfquery name="qAgregaReviewAdditionalGroupLock">
+                    SELECT grp.id_evento_agrega_review_group,
+                           grp.cidade,
+                           grp.estado,
+                           grp.suggested_id_agrega_evento,
+                           coalesce(
+                               nullif(trim(agr.nome_evento_agregado), ''),
+                               <cfif VARIABLES.agregaReviewHasDisplayName>
+                                   nullif(trim(grp.display_name), ''),
+                               </cfif>
+                               grp.normalized_name
+                           ) AS reference_name
+                    FROM tb_evento_agrega_review_groups grp
+                    LEFT JOIN tb_agrega_eventos agr ON agr.id_agrega_evento = grp.suggested_id_agrega_evento
+                    WHERE grp.id_evento_agrega_review_group = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewGroupId#" />
+                      AND grp.status = 'review'
+                    FOR UPDATE OF grp
+                </cfquery>
+
+                <cfif NOT qAgregaReviewAdditionalGroupLock.recordcount>
+                    <cfthrow type="AgregaReview.Validation" message="Grupo de revisao nao encontrado ou ja finalizado." />
+                </cfif>
+
+                <cfquery name="qAgregaReviewAdditionalEvents">
+                    SELECT evt.id_evento,
+                           evt.nome_evento,
+                           coalesce(evt.cidade, '') AS cidade,
+                           coalesce(evt.estado, '') AS estado,
+                           coalesce(evt.tag, '') AS tag,
+                           evt.data_inicial,
+                           evt.id_agrega_evento
+                    FROM tb_evento_corridas evt
+                    WHERE evt.ativo = true
+                      AND evt.id_evento IN (
+                          <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewAdditionalEventIds#" list="true" />
+                      )
+                      AND NOT EXISTS (
+                          SELECT 1
+                          FROM tb_evento_agrega_review_candidates own_cand
+                          WHERE own_cand.id_evento_agrega_review_group = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewGroupId#" />
+                            AND own_cand.id_evento = evt.id_evento
+                      )
+                      AND NOT EXISTS (
+                          SELECT 1
+                          FROM tb_evento_agrega_review_candidates pending_cand
+                          INNER JOIN tb_evento_agrega_review_groups pending_grp
+                              ON pending_grp.id_evento_agrega_review_group = pending_cand.id_evento_agrega_review_group
+                          WHERE pending_cand.id_evento = evt.id_evento
+                            AND pending_cand.status = 'active'
+                            AND pending_grp.status = 'review'
+                            AND pending_grp.id_evento_agrega_review_group <> <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewGroupId#" />
+                      )
+                    <cfif val(qAgregaReviewAdditionalGroupLock.suggested_id_agrega_evento) GT 0>
+                      AND coalesce(evt.id_agrega_evento, 0) <> <cfqueryparam cfsqltype="cf_sql_integer" value="#qAgregaReviewAdditionalGroupLock.suggested_id_agrega_evento#" />
+                    </cfif>
+                    ORDER BY evt.data_inicial ASC NULLS LAST, evt.id_evento
+                </cfquery>
+
+                <cfif qAgregaReviewAdditionalEvents.recordcount NEQ listLen(VARIABLES.agregaReviewAdditionalEventIds)>
+                    <cfthrow type="AgregaReview.Validation" message="Um ou mais eventos ja pertencem ao grupo, estao em outra revisao, ja usam este agregador ou nao estao mais ativos. Atualize a busca." />
+                </cfif>
+
+                <cfset VARIABLES.agregaReviewAdditionalMaxScore = 0 />
+                <cfloop query="qAgregaReviewAdditionalEvents">
+                    <cfset VARIABLES.agregaReviewAdditionalNameScore = agregaReviewTokenScore(qAgregaReviewAdditionalGroupLock.reference_name, qAgregaReviewAdditionalEvents.nome_evento) />
+                    <cfset VARIABLES.agregaReviewAdditionalCityScore = 0 />
+                    <cfif len(agregaReviewNormalizeText(qAgregaReviewAdditionalGroupLock.cidade))
+                        AND agregaReviewNormalizeText(qAgregaReviewAdditionalGroupLock.cidade) EQ agregaReviewNormalizeText(qAgregaReviewAdditionalEvents.cidade)
+                        AND uCase(trim(qAgregaReviewAdditionalGroupLock.estado)) EQ uCase(trim(qAgregaReviewAdditionalEvents.estado))>
+                        <cfset VARIABLES.agregaReviewAdditionalCityScore = 100 />
+                    </cfif>
+                    <cfset VARIABLES.agregaReviewAdditionalScore = round(((VARIABLES.agregaReviewAdditionalNameScore * 0.80) + (VARIABLES.agregaReviewAdditionalCityScore * 0.20)) * 100) / 100 />
+                    <cfif VARIABLES.agregaReviewAdditionalScore GT VARIABLES.agregaReviewAdditionalMaxScore>
+                        <cfset VARIABLES.agregaReviewAdditionalMaxScore = VARIABLES.agregaReviewAdditionalScore />
+                    </cfif>
+
+                    <cfquery>
+                        INSERT INTO tb_evento_agrega_review_candidates
+                            (id_evento_agrega_review_group, id_evento, id_agrega_evento_atual, nome_evento,
+                             normalized_name, cidade, estado, tag, data_inicial, score, name_score, city_score,
+                             status, data_atualizacao)
+                        VALUES (
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewGroupId#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qAgregaReviewAdditionalEvents.id_evento#" />,
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qAgregaReviewAdditionalEvents.id_agrega_evento#" null="#val(qAgregaReviewAdditionalEvents.id_agrega_evento) LTE 0#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#qAgregaReviewAdditionalEvents.nome_evento#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#agregaReviewNormalizeText(qAgregaReviewAdditionalEvents.nome_evento)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#qAgregaReviewAdditionalEvents.cidade#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#qAgregaReviewAdditionalEvents.estado#" />,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#qAgregaReviewAdditionalEvents.tag#" null="#!len(trim(qAgregaReviewAdditionalEvents.tag))#" />,
+                            <cfqueryparam cfsqltype="cf_sql_date" value="#qAgregaReviewAdditionalEvents.data_inicial#" null="#!isDate(qAgregaReviewAdditionalEvents.data_inicial)#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewAdditionalScore#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewAdditionalNameScore#" />,
+                            <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewAdditionalCityScore#" />,
+                            'active',
+                            now()
+                        )
+                    </cfquery>
+                </cfloop>
+
+                <cfquery>
+                    UPDATE tb_evento_agrega_review_groups grp
+                    SET candidate_count = (
+                            SELECT count(*)
+                            FROM tb_evento_agrega_review_candidates cand
+                            WHERE cand.id_evento_agrega_review_group = grp.id_evento_agrega_review_group
+                        ),
+                        max_score = greatest(coalesce(grp.max_score, 0), <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.agregaReviewAdditionalMaxScore#" />),
+                        data_atualizacao = now()
+                    WHERE grp.id_evento_agrega_review_group = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewGroupId#" />
+                </cfquery>
+            </cftransaction>
+
+            <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=candidatos_adicionados&grupo=#VARIABLES.agregaReviewGroupId#" />
         <cfelseif VARIABLES.agregaReviewAction EQ "aplicar_agregador">
             <cfset VARIABLES.agregaReviewGroupId = 0 />
             <cfif isDefined("FORM.id_grupo")>
@@ -593,6 +938,14 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
             <cfset VARIABLES.agregaReviewSelectedAgregaId = 0 />
             <cfif isDefined("FORM.id_agrega_evento")>
                 <cfset VARIABLES.agregaReviewSelectedAgregaId = val(FORM.id_agrega_evento) />
+            </cfif>
+            <cfset VARIABLES.agregaReviewSelectedAgregaName = "" />
+            <cfif isDefined("FORM.nome_agregador_aplicacao")>
+                <cfset VARIABLES.agregaReviewSelectedAgregaName = trim(FORM.nome_agregador_aplicacao) />
+            </cfif>
+            <cfset VARIABLES.agregaReviewSelectedAgregaType = "" />
+            <cfif isDefined("FORM.tipo_agregador_aplicacao")>
+                <cfset VARIABLES.agregaReviewSelectedAgregaType = trim(FORM.tipo_agregador_aplicacao) />
             </cfif>
             <cfset VARIABLES.agregaReviewSelectedEvents = "" />
             <cfif isDefined("FORM.eventos")>
@@ -603,15 +956,20 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
                 <cfset VARIABLES.agregaReviewNote = trim(FORM.observacao) />
             </cfif>
 
-            <cfif VARIABLES.agregaReviewGroupId LTE 0 OR VARIABLES.agregaReviewSelectedAgregaId LTE 0 OR !len(VARIABLES.agregaReviewSelectedEvents)>
-                <cfthrow type="AgregaReview.Validation" message="Selecione o grupo, o agregador e ao menos um evento." />
+            <cfif VARIABLES.agregaReviewGroupId LTE 0
+                OR VARIABLES.agregaReviewSelectedAgregaId LTE 0
+                OR !len(VARIABLES.agregaReviewSelectedAgregaName)
+                OR !len(VARIABLES.agregaReviewSelectedAgregaType)
+                OR !len(VARIABLES.agregaReviewSelectedEvents)>
+                <cfthrow type="AgregaReview.Validation" message="Selecione o grupo, o agregador, informe o nome e o tipo finais e marque ao menos um evento." />
             </cfif>
 
             <cftransaction>
                 <cfquery name="qAgregaReviewAggregatorLock">
-                    SELECT id_agrega_evento
+                    SELECT id_agrega_evento, nome_evento_agregado, tipo_agregacao
                     FROM tb_agrega_eventos
                     WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewSelectedAgregaId#" />
+                    FOR UPDATE
                 </cfquery>
 
                 <cfif !qAgregaReviewAggregatorLock.recordcount>
@@ -628,6 +986,16 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
 
                 <cfif !qAgregaReviewGroupLock.recordcount>
                     <cfthrow type="AgregaReview.Validation" message="Grupo de revisao nao encontrado ou ja finalizado." />
+                </cfif>
+
+                <cfif trim(qAgregaReviewAggregatorLock.nome_evento_agregado & "") NEQ VARIABLES.agregaReviewSelectedAgregaName
+                    OR trim(qAgregaReviewAggregatorLock.tipo_agregacao & "") NEQ VARIABLES.agregaReviewSelectedAgregaType>
+                    <cfquery>
+                        UPDATE tb_agrega_eventos
+                        SET nome_evento_agregado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewSelectedAgregaName#" />,
+                            tipo_agregacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewSelectedAgregaType#" />
+                        WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewSelectedAgregaId#" />
+                    </cfquery>
                 </cfif>
 
                 <cfquery>
@@ -756,6 +1124,58 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
 <cfif VARIABLES.agregaReviewSchemaReady>
     <cfset qAgregaReviewStats = queryNew("review,applied,ignored", "integer,integer,integer", [{review = 0, applied = 0, ignored = 0}]) />
 
+    <cfif (len(VARIABLES.agregaReviewManualName) OR len(VARIABLES.agregaReviewManualCity))
+        AND len(VARIABLES.agregaReviewManualName) LT 2>
+        <cfset VARIABLES.agregaReviewManualSearchError = "Informe ao menos 2 caracteres do nome do evento." />
+    <cfelseif len(VARIABLES.agregaReviewManualName) GTE 2>
+        <cfquery name="qAgregaReviewManualEvents">
+            SELECT evt.id_evento,
+                   evt.nome_evento,
+                   coalesce(evt.cidade, '') AS cidade,
+                   coalesce(evt.estado, '') AS estado,
+                   coalesce(evt.tag, '') AS tag,
+                   evt.data_inicial,
+                   evt.id_agrega_evento,
+                   agr.nome_evento_agregado AS atual_nome_evento_agregado,
+                   agr.tipo_agregacao AS atual_tipo_agregacao,
+                   pending.id_evento_agrega_review_group AS pending_group_id,
+                   pending.pending_group_name
+            FROM tb_evento_corridas evt
+            LEFT JOIN tb_agrega_eventos agr ON agr.id_agrega_evento = evt.id_agrega_evento
+            LEFT JOIN LATERAL (
+                SELECT grp.id_evento_agrega_review_group,
+                       <cfif VARIABLES.agregaReviewHasDisplayName>
+                           coalesce(nullif(trim(grp.display_name), ''), grp.normalized_name) AS pending_group_name
+                       <cfelse>
+                           grp.normalized_name AS pending_group_name
+                       </cfif>
+                FROM tb_evento_agrega_review_candidates cand
+                INNER JOIN tb_evento_agrega_review_groups grp
+                    ON grp.id_evento_agrega_review_group = cand.id_evento_agrega_review_group
+                WHERE cand.id_evento = evt.id_evento
+                  AND cand.status = 'active'
+                  AND grp.status = 'review'
+                ORDER BY grp.data_atualizacao DESC, grp.id_evento_agrega_review_group DESC
+                LIMIT 1
+            ) pending ON true
+            WHERE evt.ativo = true
+              AND coalesce(evt.nome_evento, '') ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.agregaReviewManualName#%" />
+            <cfif len(VARIABLES.agregaReviewManualCity)>
+              AND coalesce(evt.cidade, '') ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.agregaReviewManualCity#%" />
+            </cfif>
+            ORDER BY
+                CASE
+                    WHEN coalesce(evt.nome_evento, '') ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.agregaReviewManualName#%" /> THEN 0
+                    ELSE 1
+                END,
+                evt.cidade,
+                evt.estado,
+                evt.nome_evento,
+                evt.data_inicial DESC NULLS LAST
+            LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewManualSearchLimit#" />
+        </cfquery>
+    </cfif>
+
     <cfquery name="qAgregaReviewAggregatorTypes" cachedwithin="#CreateTimeSpan(0, 1, 0, 0)#">
         SELECT tipo_agregacao
         FROM (
@@ -800,6 +1220,9 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
     <cfset VARIABLES.agregaReviewOffset = 0 />
     <cfset VARIABLES.agregaReviewSuggestedAggregators = {} />
     <cfset VARIABLES.agregaReviewSearchAggregators = {} />
+    <cfset VARIABLES.agregaReviewEventSearchInput = VARIABLES.agregaReviewEventSearchTerm />
+    <cfset VARIABLES.agregaReviewEventSearchTargetId = 0 />
+    <cfset VARIABLES.agregaReviewEventSearchTargetName = "" />
     <cfset VARIABLES.agregaReviewRecentWindowSize = 50000 />
 
     <cfquery name="qAgregaReviewLatestGroupId">
@@ -868,6 +1291,73 @@ function agregaUnionParent(parentStruct, leftId, rightId) {
                     tag = qAgregaReviewSuggestedAggregatorLookup.tag
                 } />
             </cfloop>
+        </cfif>
+
+        <cfif VARIABLES.agregaReviewFocusGroupId GT 0>
+            <cfset VARIABLES.agregaReviewEventSearchTargetId = val(qAgregaReviewGroups.suggested_id_agrega_evento[1]) />
+            <cfset VARIABLES.agregaReviewEventSearchTargetName = qAgregaReviewGroups.group_display_name[1] />
+
+            <cfif VARIABLES.agregaReviewEventSearchTargetId GT 0
+                AND structKeyExists(VARIABLES.agregaReviewSuggestedAggregators, toString(VARIABLES.agregaReviewEventSearchTargetId))>
+                <cfset VARIABLES.agregaReviewEventSearchTargetName = VARIABLES.agregaReviewSuggestedAggregators[toString(VARIABLES.agregaReviewEventSearchTargetId)].nome />
+            </cfif>
+
+            <cfif NOT len(VARIABLES.agregaReviewEventSearchInput)>
+                <cfset VARIABLES.agregaReviewEventSearchInput = VARIABLES.agregaReviewEventSearchTargetName />
+            </cfif>
+
+            <cfif VARIABLES.agregaReviewEventSearchRequested>
+                <cfquery name="qAgregaReviewEventSearch">
+                    SELECT evt.id_evento,
+                           evt.nome_evento,
+                           coalesce(evt.cidade, '') AS cidade,
+                           coalesce(evt.estado, '') AS estado,
+                           coalesce(evt.tag, '') AS tag,
+                           evt.data_inicial,
+                           evt.id_agrega_evento,
+                           agr.nome_evento_agregado AS atual_nome_evento_agregado,
+                           agr.tipo_agregacao AS atual_tipo_agregacao,
+                           pending.id_evento_agrega_review_group AS pending_group_id,
+                           pending.pending_group_name
+                    FROM tb_evento_corridas evt
+                    LEFT JOIN tb_agrega_eventos agr ON agr.id_agrega_evento = evt.id_agrega_evento
+                    LEFT JOIN LATERAL (
+                        SELECT grp.id_evento_agrega_review_group,
+                               <cfif VARIABLES.agregaReviewHasDisplayName>
+                                   coalesce(nullif(trim(grp.display_name), ''), grp.normalized_name) AS pending_group_name
+                               <cfelse>
+                                   grp.normalized_name AS pending_group_name
+                               </cfif>
+                        FROM tb_evento_agrega_review_candidates cand
+                        INNER JOIN tb_evento_agrega_review_groups grp
+                            ON grp.id_evento_agrega_review_group = cand.id_evento_agrega_review_group
+                        WHERE cand.id_evento = evt.id_evento
+                          AND cand.status = 'active'
+                          AND grp.status = 'review'
+                          AND grp.id_evento_agrega_review_group <> <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewFocusGroupId#" />
+                        ORDER BY grp.data_atualizacao DESC, grp.id_evento_agrega_review_group DESC
+                        LIMIT 1
+                    ) pending ON true
+                    WHERE evt.ativo = true
+                      AND coalesce(evt.nome_evento, '') ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.agregaReviewEventSearchTerm#%" />
+                      AND NOT EXISTS (
+                          SELECT 1
+                          FROM tb_evento_agrega_review_candidates own_cand
+                          WHERE own_cand.id_evento_agrega_review_group = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.agregaReviewFocusGroupId#" />
+                            AND own_cand.id_evento = evt.id_evento
+                      )
+                    ORDER BY
+                        CASE
+                            WHEN lower(trim(coalesce(evt.cidade, ''))) = lower(trim(<cfqueryparam cfsqltype="cf_sql_varchar" value="#qAgregaReviewGroups.cidade[1]#" />))
+                             AND upper(trim(coalesce(evt.estado, ''))) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(trim(qAgregaReviewGroups.estado[1]))#" /> THEN 0
+                            ELSE 1
+                        END,
+                        evt.data_inicial DESC NULLS LAST,
+                        evt.nome_evento,
+                        evt.id_evento
+                    LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.agregaReviewEventSearchLimit#" />
+                </cfquery>
+            </cfif>
         </cfif>
 
         <cfif VARIABLES.agregaReviewFocusGroupId GT 0
