@@ -15,7 +15,7 @@
            usr.is_partner,
            usr.is_dev,
            usr.strava_premium,
-           coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
+           coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png') as imagem_usuario,
            pg.tag,
            pg.tag_prefix,
            pg.id_pagina,

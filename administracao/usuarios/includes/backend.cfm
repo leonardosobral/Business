@@ -110,6 +110,11 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
 <cfparam name="URL.aba" default="conta"/>
 <cfparam name="URL.feedback" default=""/>
 <cfparam name="URL.mensagem" default=""/>
+<cfparam name="URL.merge" default="0"/>
+<cfparam name="URL.merge_manter" default="0"/>
+<cfparam name="URL.merge_migrar" default="0"/>
+<cfparam name="URL.busca_manter" default=""/>
+<cfparam name="URL.busca_migrar" default=""/>
 
 <cfset VARIABLES.userManagerActorId = val(qPerfil.id)/>
 <cfset VARIABLES.userManagerActorIsAdmin = userManagerBoolean(qPerfil.is_admin)/>
@@ -126,16 +131,23 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
 <cfset VARIABLES.userManagerTab = listFindNoCase("conta,paginas,agendas,resultados,social,auditoria", URL.aba & "") ? lCase(URL.aba) : "conta"/>
 <cfset VARIABLES.userManagerFeedback = trim(URL.feedback & "")/>
 <cfset VARIABLES.userManagerMessage = trim(URL.mensagem & "")/>
+<cfset VARIABLES.userManagerMergeMode = userManagerBoolean(URL.merge)/>
+<cfset VARIABLES.userManagerMergeKeepId = val(URL.merge_manter)/>
+<cfset VARIABLES.userManagerMergeSourceId = val(URL.merge_migrar)/>
+<cfset VARIABLES.userManagerMergeKeepSearch = trim(URL.busca_manter & "")/>
+<cfset VARIABLES.userManagerMergeSourceSearch = trim(URL.busca_migrar & "")/>
 
 <cfquery name="qUserManagerSchema">
     SELECT
         to_regclass('public.tb_usuarios_gestao') IS NOT NULL AS has_user_state,
         to_regclass('public.tb_paginas_gestao') IS NOT NULL AS has_page_state,
         to_regclass('public.tb_usuarios_gestao_auditoria') IS NOT NULL AS has_audit,
-        to_regclass('public.tb_agendas') IS NOT NULL AS has_agendas
+        to_regclass('public.tb_agendas') IS NOT NULL AS has_agendas,
+        to_regprocedure('public.user_manager_merge_users(integer,integer,integer)') IS NOT NULL AS has_merge
 </cfquery>
 <cfset VARIABLES.userManagerSchemaReady = userManagerBoolean(qUserManagerSchema.has_user_state) AND userManagerBoolean(qUserManagerSchema.has_page_state) AND userManagerBoolean(qUserManagerSchema.has_audit)/>
 <cfset VARIABLES.userManagerHasAgendas = userManagerBoolean(qUserManagerSchema.has_agendas)/>
+<cfset VARIABLES.userManagerHasMerge = userManagerBoolean(qUserManagerSchema.has_merge)/>
 
 <cfif NOT structKeyExists(SESSION, "businessUserManagerCsrf") OR !len(trim(SESSION.businessUserManagerCsrf & ""))>
     <cfset SESSION.businessUserManagerCsrf = hash(createUUID() & now() & VARIABLES.userManagerActorId, "SHA-256")/>
@@ -160,6 +172,34 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
 
     <cftry>
         <cfswitch expression="#VARIABLES.userManagerAction#">
+            <cfcase value="mesclar_usuarios">
+                <cfset VARIABLES.userManagerMergeKeepId = val(userManagerFormValue("keep_user_id", "0"))/>
+                <cfset VARIABLES.userManagerMergeSourceId = val(userManagerFormValue("source_user_id", "0"))/>
+                <cfset VARIABLES.userManagerMergeConfirmation = userManagerFormValue("merge_confirmation")/>
+
+                <cfif !VARIABLES.userManagerHasMerge>
+                    <cfthrow message="A função de merge ainda não foi instalada. Reaplique user_management_schema.sql."/>
+                </cfif>
+                <cfif VARIABLES.userManagerMergeKeepId LTE 0 OR VARIABLES.userManagerMergeSourceId LTE 0 OR VARIABLES.userManagerMergeKeepId EQ VARIABLES.userManagerMergeSourceId>
+                    <cfthrow message="Selecione duas contas diferentes para realizar o merge."/>
+                </cfif>
+                <cfif VARIABLES.userManagerMergeSourceId EQ VARIABLES.userManagerActorId>
+                    <cfthrow message="A conta usada nesta sessão não pode ser removida pelo merge."/>
+                </cfif>
+                <cfif VARIABLES.userManagerMergeConfirmation NEQ "MESCLAR #VARIABLES.userManagerMergeSourceId# EM #VARIABLES.userManagerMergeKeepId#">
+                    <cfthrow message="A frase de confirmação não confere."/>
+                </cfif>
+
+                <cfquery name="qUserManagerMergeResult">
+                    SELECT user_manager_merge_users(
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerMergeKeepId#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerMergeSourceId#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerActorId#"/>
+                    ) AS resumo
+                </cfquery>
+                <cflocation addtoken="false" url="./?user_id=#VARIABLES.userManagerMergeKeepId#&aba=auditoria&feedback=sucesso&mensagem=#urlEncodedFormat('Contas mescladas com sucesso. Todos os vínculos foram processados e a conta duplicada foi removida.')#"/>
+            </cfcase>
+
             <cfcase value="logar_como_dev">
                 <cfset VARIABLES.userManagerAccess = userManagerMutationAccess(VARIABLES.userManagerActionUserId)/>
                 <cfif !VARIABLES.userManagerAccess.allowed>
@@ -857,7 +897,11 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
             </cfdefaultcase>
         </cfswitch>
         <cfcatch type="any">
-            <cfset VARIABLES.userManagerErrorTarget = VARIABLES.userManagerActionUserId GT 0 ? "&user_id=" & VARIABLES.userManagerActionUserId & "&aba=" & VARIABLES.userManagerRedirectTab : ""/>
+            <cfif VARIABLES.userManagerAction EQ "mesclar_usuarios">
+                <cfset VARIABLES.userManagerErrorTarget = "&merge=1&merge_manter=" & VARIABLES.userManagerMergeKeepId & "&merge_migrar=" & VARIABLES.userManagerMergeSourceId/>
+            <cfelse>
+                <cfset VARIABLES.userManagerErrorTarget = VARIABLES.userManagerActionUserId GT 0 ? "&user_id=" & VARIABLES.userManagerActionUserId & "&aba=" & VARIABLES.userManagerRedirectTab : ""/>
+            </cfif>
             <cfset VARIABLES.userManagerErrorUrl = "./?feedback=erro&mensagem=" & urlEncodedFormat(len(trim(cfcatch.message & "")) ? cfcatch.message : "Não foi possível concluir a operação.") & VARIABLES.userManagerErrorTarget/>
             <cflocation addtoken="false" url="#VARIABLES.userManagerErrorUrl#"/>
         </cfcatch>
@@ -880,6 +924,67 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
 <cfset qUserManagerResults = queryNew("id_resultado")/>
 <cfset qUserManagerSocial = queryNew("id_pagina_origem")/>
 <cfset qUserManagerAudit = queryNew("id_auditoria")/>
+<cfset qUserManagerMergeKeepCandidates = queryNew("id")/>
+<cfset qUserManagerMergeSourceCandidates = queryNew("id")/>
+<cfset qUserManagerMergePreview = queryNew("keep_id")/>
+
+<cfif VARIABLES.userManagerMergeMode>
+    <cfif len(VARIABLES.userManagerMergeKeepSearch)>
+        <cfquery name="qUserManagerMergeKeepCandidates">
+            SELECT usr.id, usr.name, usr.email, usr.imagem_usuario,
+                   count(DISTINCT pu.id_pagina) AS paginas,
+                   count(DISTINCT res.id_resultado) AS resultados
+            FROM tb_usuarios usr
+            LEFT JOIN tb_paginas_usuarios pu ON pu.id_usuario = usr.id
+            LEFT JOIN tb_resultados res ON res.id_usuario = usr.id
+            WHERE usr.name ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.userManagerMergeKeepSearch#%"/>
+               OR usr.email ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.userManagerMergeKeepSearch#%"/>
+               <cfif isValid("integer", VARIABLES.userManagerMergeKeepSearch)>
+                   OR usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.userManagerMergeKeepSearch)#"/>
+               </cfif>
+            GROUP BY usr.id, usr.name, usr.email, usr.imagem_usuario
+            ORDER BY usr.id DESC LIMIT 12
+        </cfquery>
+    </cfif>
+    <cfif len(VARIABLES.userManagerMergeSourceSearch)>
+        <cfquery name="qUserManagerMergeSourceCandidates">
+            SELECT usr.id, usr.name, usr.email, usr.imagem_usuario,
+                   count(DISTINCT pu.id_pagina) AS paginas,
+                   count(DISTINCT res.id_resultado) AS resultados
+            FROM tb_usuarios usr
+            LEFT JOIN tb_paginas_usuarios pu ON pu.id_usuario = usr.id
+            LEFT JOIN tb_resultados res ON res.id_usuario = usr.id
+            WHERE usr.name ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.userManagerMergeSourceSearch#%"/>
+               OR usr.email ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.userManagerMergeSourceSearch#%"/>
+               <cfif isValid("integer", VARIABLES.userManagerMergeSourceSearch)>
+                   OR usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(VARIABLES.userManagerMergeSourceSearch)#"/>
+               </cfif>
+            GROUP BY usr.id, usr.name, usr.email, usr.imagem_usuario
+            ORDER BY usr.id DESC LIMIT 12
+        </cfquery>
+    </cfif>
+    <cfif VARIABLES.userManagerMergeKeepId GT 0 AND VARIABLES.userManagerMergeSourceId GT 0 AND VARIABLES.userManagerMergeKeepId NEQ VARIABLES.userManagerMergeSourceId>
+        <cfquery name="qUserManagerMergePreview">
+            SELECT keep_usr.id AS keep_id, keep_usr.name AS keep_name, keep_usr.email AS keep_email,
+                   source_usr.id AS source_id, source_usr.name AS source_name, source_usr.email AS source_email,
+                   (SELECT count(DISTINCT id_pagina) FROM tb_paginas_usuarios WHERE id_usuario = source_usr.id) AS source_pages,
+                   (
+                       SELECT count(*)
+                       FROM (
+                           SELECT id_resultado FROM tb_resultados WHERE id_usuario = source_usr.id
+                           UNION
+                           SELECT id_resultado FROM tb_resultados_vinculo WHERE id_usuario = source_usr.id
+                       ) source_resultados_unicos
+                   ) AS source_results_total,
+                   <cfif VARIABLES.userManagerHasAgendas>(SELECT count(*) FROM tb_agendas WHERE id_usuario = source_usr.id)<cfelse>0</cfif> AS source_agendas,
+                   (SELECT count(*) FROM tb_paginas_vinculos WHERE id_pagina_origem IN (SELECT id_pagina FROM tb_paginas_usuarios WHERE id_usuario = source_usr.id)
+                                                        OR id_pagina_destino IN (SELECT id_pagina FROM tb_paginas_usuarios WHERE id_usuario = source_usr.id)) AS source_social
+            FROM tb_usuarios keep_usr CROSS JOIN tb_usuarios source_usr
+            WHERE keep_usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerMergeKeepId#"/>
+              AND source_usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerMergeSourceId#"/>
+        </cfquery>
+    </cfif>
+</cfif>
 
 <cfif VARIABLES.userManagerUserId GT 0>
     <cfquery name="qUserManagerUser">

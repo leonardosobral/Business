@@ -184,8 +184,8 @@
                 <!--- USER --->
 
                 <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
-                    <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : 'https://roadrunners.run/assets/user.png'#"
-                    style="max-height: 22px;" alt="imagem do usuário" class="rounded-circle" onerror="this.onerror=null;this.src='https://roadrunners.run/assets/user.png';"/></cfoutput>
+                    <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : '/assets/user.png'#"
+                    style="max-height: 22px;" alt="imagem do usuário" class="rounded-circle" onerror="this.onerror=null;this.src='/assets/user.png';"/></cfoutput>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="z-index: 999999;">
                     <li><a class="dropdown-item" href="/">Meus Painéis</a></li>

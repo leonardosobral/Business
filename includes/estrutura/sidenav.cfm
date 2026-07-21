@@ -128,6 +128,7 @@
 <cfset VARIABLES.businessCanShowAccountNavigation = false/>
 <cfset VARIABLES.businessCanShowAgendaNavigation = false/>
 <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
+<cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
@@ -155,6 +156,8 @@
         OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)>
         <cfset VARIABLES.businessCanShowUserManagementNavigation = true/>
     </cfif>
+
+    <cfinclude template="../backend/catarinense_challenge_access.cfm"/>
 
     <cfif VARIABLES.businessCanShowUserManagementNavigation
         AND isDefined("VARIABLES.businessAccountSimulationActive")
@@ -330,6 +333,14 @@
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span></a>
         </li>
 
+        <cfif VARIABLES.businessCanShowAdminNavigation OR VARIABLES.businessCanShowAccountNavigation>
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/">
+                    <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
+                </a>
+            </li>
+        </cfif>
+
         <li class="sidenav-item">
             <a class="sidenav-link <cfif VARIABLES.template EQ "/inscricoes/">link-warning</cfif>" href="/inscricoes/">
                 <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Inscrições</span></a>
@@ -369,7 +380,7 @@
 
         <!--- DESAFIOS --->
 
-        <cfif VARIABLES.businessCanShowAdminNavigation>
+        <cfif VARIABLES.businessCanShowAdminNavigation OR VARIABLES.businessCanManageCatarinenseChallenges>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
@@ -377,7 +388,19 @@
 
             <cfquery name="qDesafiosBusinessAtivos">
                 select * from desafios_eventos
-                where ativo = true and data_fim+30 > current_date
+                where (
+                    (ativo = true and data_fim+30 > current_date)
+                    OR tag IN (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
+                    )
+                )
+                <cfif NOT VARIABLES.businessCanShowAdminNavigation>
+                    AND tag IN (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
+                    )
+                </cfif>
                 order by data_inicio desc
             </cfquery>
 
@@ -399,7 +422,7 @@
                 </li>
             </cfoutput>
 
-            <cfif NOT VARIABLES.menuHasBrasilGiganteChallenge>
+            <cfif VARIABLES.businessCanShowAdminNavigation AND NOT VARIABLES.menuHasBrasilGiganteChallenge>
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "circuitobrasilgigante">link-warning</cfif>" href="/desafios/circuitobrasilgigante/">
                         <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span>

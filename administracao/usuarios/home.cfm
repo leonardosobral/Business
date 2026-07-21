@@ -156,6 +156,14 @@ function userManagerDateInput(any value = "") {
     background: rgba(255, 107, 107, .045);
   }
 
+  .user-manager-merge-arrow {
+    color: var(--um-accent);
+  }
+
+  .user-manager-merge-arrow .fa-arrow-down {
+    display: none;
+  }
+
   .user-manager-empty {
     min-height: 180px;
     display: flex;
@@ -166,6 +174,14 @@ function userManagerDateInput(any value = "") {
   }
 
   @media (max-width: 767.98px) {
+    .user-manager-merge-arrow .fa-arrow-right {
+      display: none;
+    }
+
+    .user-manager-merge-arrow .fa-arrow-down {
+      display: inline-block;
+    }
+
     .user-manager-table thead {
       display: none;
     }
@@ -223,6 +239,74 @@ function userManagerDateInput(any value = "") {
         </div>
       </cfif>
 
+      <cfif VARIABLES.userManagerMergeMode>
+        <div class="user-manager-hero p-3 p-lg-4 mb-4">
+          <div class="d-flex justify-content-between align-items-start gap-3 position-relative" style="z-index:1;">
+            <div><h3 class="mb-1">Mesclar contas duplicadas</h3><p class="text-muted mb-0">Os dados da conta de origem serão migrados para a conta de destino. A origem será removida ao final.</p></div>
+            <a class="btn btn-sm btn-outline-secondary" href="./"><i class="fa-solid fa-arrow-left me-2"></i>Voltar</a>
+          </div>
+        </div>
+
+        <cfif !VARIABLES.userManagerHasMerge>
+          <div class="alert alert-warning">Reaplique <code>user_management_schema.sql</code> antes de executar merges. A busca e a prévia continuam disponíveis.</div>
+        </cfif>
+
+        <div class="row g-3 mb-4">
+          <cfloop list="migrar,manter" index="VARIABLES.mergeSide">
+            <cfset VARIABLES.mergeIsKeep = VARIABLES.mergeSide EQ "manter"/>
+            <cfset VARIABLES.mergeSearch = VARIABLES.mergeIsKeep ? VARIABLES.userManagerMergeKeepSearch : VARIABLES.userManagerMergeSourceSearch/>
+            <cfset VARIABLES.mergeCandidates = VARIABLES.mergeIsKeep ? qUserManagerMergeKeepCandidates : qUserManagerMergeSourceCandidates/>
+            <cfset VARIABLES.mergeOtherSearchName = VARIABLES.mergeIsKeep ? "busca_migrar" : "busca_manter"/>
+            <cfset VARIABLES.mergeOtherSearchValue = VARIABLES.mergeIsKeep ? VARIABLES.userManagerMergeSourceSearch : VARIABLES.userManagerMergeKeepSearch/>
+            <div class="col-12 col-lg-6">
+              <div class="user-manager-panel p-3 h-100">
+                <h5><span class="badge <cfif VARIABLES.mergeIsKeep>badge-success<cfelse>badge-danger</cfif> me-2"><cfif VARIABLES.mergeIsKeep>2<cfelse>1</cfif></span><cfif VARIABLES.mergeIsKeep>Destino — conta mantida<cfelse>Origem — conta removida</cfif></h5>
+                <p class="small text-muted"><cfif VARIABLES.mergeIsKeep>Esta conta receberá os dados e continuará existindo.<cfelse>Os dados sairão desta conta; ela será excluída ao final.</cfif></p>
+                <form method="get" action="./" class="input-group mb-3">
+                  <input type="hidden" name="merge" value="1"/><input type="hidden" name="merge_manter" value="<cfoutput>#VARIABLES.userManagerMergeKeepId#</cfoutput>"/><input type="hidden" name="merge_migrar" value="<cfoutput>#VARIABLES.userManagerMergeSourceId#</cfoutput>"/>
+                  <input type="hidden" name="<cfoutput>#VARIABLES.mergeOtherSearchName#</cfoutput>" value="<cfoutput>#htmlEditFormat(VARIABLES.mergeOtherSearchValue)#</cfoutput>"/>
+                  <input class="form-control" name="busca_<cfoutput>#VARIABLES.mergeSide#</cfoutput>" value="<cfoutput>#htmlEditFormat(VARIABLES.mergeSearch)#</cfoutput>" placeholder="Nome, e-mail ou ID" required/>
+                  <button class="btn btn-outline-warning" type="submit"><i class="fa-solid fa-search"></i></button>
+                </form>
+                <cfloop query="#VARIABLES.mergeCandidates#">
+                  <cfset VARIABLES.mergeCandidateId = val(VARIABLES.mergeCandidates.id)/>
+                  <cfset VARIABLES.mergeCandidateSelected = (VARIABLES.mergeIsKeep AND VARIABLES.mergeCandidateId EQ VARIABLES.userManagerMergeKeepId) OR (!VARIABLES.mergeIsKeep AND VARIABLES.mergeCandidateId EQ VARIABLES.userManagerMergeSourceId)/>
+                  <cfset VARIABLES.mergeLinkKeepId = VARIABLES.mergeIsKeep ? VARIABLES.mergeCandidateId : VARIABLES.userManagerMergeKeepId/>
+                  <cfset VARIABLES.mergeLinkSourceId = !VARIABLES.mergeIsKeep ? VARIABLES.mergeCandidateId : VARIABLES.userManagerMergeSourceId/>
+                  <cfoutput><a class="d-block border rounded p-2 mb-2 text-reset <cfif VARIABLES.mergeCandidateSelected>border-warning bg-warning bg-opacity-10</cfif>" href="./?merge=1&amp;merge_manter=#VARIABLES.mergeLinkKeepId#&amp;merge_migrar=#VARIABLES.mergeLinkSourceId#&amp;busca_manter=#urlEncodedFormat(VARIABLES.userManagerMergeKeepSearch)#&amp;busca_migrar=#urlEncodedFormat(VARIABLES.userManagerMergeSourceSearch)#">
+                    <div class="fw-semibold">#htmlEditFormat(VARIABLES.mergeCandidates.name)# <span class="text-muted">###VARIABLES.mergeCandidateId#</span></div>
+                    <div class="small text-muted">#htmlEditFormat(VARIABLES.mergeCandidates.email)# · #VARIABLES.mergeCandidates.paginas# página(s) · #VARIABLES.mergeCandidates.resultados# resultado(s)</div>
+                  </a></cfoutput>
+                </cfloop>
+              </div>
+            </div>
+          </cfloop>
+        </div>
+
+        <cfif qUserManagerMergePreview.recordcount>
+          <div class="user-manager-panel p-3 p-lg-4 mb-4">
+            <h5 class="mb-1">Confirmação da migração</h5>
+            <p class="text-muted mb-3">Confira a direção: os dados saem da conta vermelha e entram na conta verde.</p>
+            <div class="row g-3 mb-4">
+              <div class="col-md-5"><div class="user-manager-form-section user-manager-danger-zone h-100"><div class="text-danger small text-uppercase fw-semibold"><i class="fa-solid fa-box-open me-1"></i>Origem — será removida</div><div class="h5 mt-2 mb-1"><cfoutput>#htmlEditFormat(qUserManagerMergePreview.source_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.source_id# · #htmlEditFormat(qUserManagerMergePreview.source_email)#</cfoutput></div><div class="small text-danger mt-2">Os dados saem desta conta.</div></div></div>
+              <div class="col-md-2 d-flex flex-column align-items-center justify-content-center user-manager-merge-arrow"><span class="small fw-semibold mb-2">MIGRAR DADOS</span><i class="fa-solid fa-arrow-right fa-2x"></i><i class="fa-solid fa-arrow-down fa-2x"></i></div>
+              <div class="col-md-5"><div class="user-manager-form-section h-100 border border-success"><div class="text-success small text-uppercase fw-semibold"><i class="fa-solid fa-circle-check me-1"></i>Destino — será mantida</div><div class="h5 mt-2 mb-1"><cfoutput>#htmlEditFormat(qUserManagerMergePreview.keep_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.keep_id# · #htmlEditFormat(qUserManagerMergePreview.keep_email)#</cfoutput></div><div class="small text-success mt-2">Esta conta recebe os dados e permanece ativa.</div></div></div>
+            </div>
+            <div class="text-muted small mb-2">Dados encontrados na conta de origem:</div>
+            <div class="row g-2 mb-4 text-center">
+              <cfoutput><div class="col"><div class="user-manager-metric"><div class="h4">#qUserManagerMergePreview.source_pages#</div><small>Páginas/perfis</small></div></div><div class="col"><div class="user-manager-metric"><div class="h4">#qUserManagerMergePreview.source_results_total#</div><small>Resultados únicos</small></div></div><div class="col"><div class="user-manager-metric"><div class="h4">#qUserManagerMergePreview.source_agendas#</div><small>Agendas</small></div></div><div class="col"><div class="user-manager-metric"><div class="h4">#qUserManagerMergePreview.source_social#</div><small>Relações sociais</small></div></div></cfoutput>
+            </div>
+            <cfoutput><div class="alert alert-warning small"><strong>O que acontecerá:</strong> páginas do mesmo tipo serão consolidadas; páginas sem equivalente serão transferidas. Inscrições e vínculos repetidos serão deduplicados, mantendo o registro que já pertence ao destino. Tudo ocorrerá em uma única transação. Somente após a migração, a conta de origem ###qUserManagerMergePreview.source_id# será excluída fisicamente.</div></cfoutput>
+            <cfoutput><form method="post" action="./" data-confirm="Confirmar: migrar os dados da conta ###qUserManagerMergePreview.source_id# para a conta ###qUserManagerMergePreview.keep_id# e excluir a conta de origem?">
+              <input type="hidden" name="user_manager_action" value="mesclar_usuarios"/><input type="hidden" name="user_manager_csrf" value="#htmlEditFormat(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="keep_user_id" value="#qUserManagerMergePreview.keep_id#"/><input type="hidden" name="source_user_id" value="#qUserManagerMergePreview.source_id#"/>
+              <label class="form-label">Para confirmar <strong>origem → destino</strong>, digite <code>MESCLAR #qUserManagerMergePreview.source_id# EM #qUserManagerMergePreview.keep_id#</code></label>
+              <div class="input-group"><input class="form-control" name="merge_confirmation" required autocomplete="off" placeholder="MESCLAR #qUserManagerMergePreview.source_id# EM #qUserManagerMergePreview.keep_id#"/><button class="btn btn-danger" type="submit" <cfif !VARIABLES.userManagerHasMerge>disabled</cfif>><i class="fa-solid fa-code-merge me-2"></i>Migrar para ###qUserManagerMergePreview.keep_id# e excluir ###qUserManagerMergePreview.source_id#</button></div>
+            </form></cfoutput>
+          </div>
+        <cfelseif VARIABLES.userManagerMergeKeepId GT 0 OR VARIABLES.userManagerMergeSourceId GT 0>
+          <div class="alert alert-info">Selecione duas contas existentes e diferentes para gerar a prévia.</div>
+        </cfif>
+      <cfelse>
       <cfif VARIABLES.userManagerIsNew OR VARIABLES.userManagerShowingDetail>
         <cfset VARIABLES.userManagerFormUserId = VARIABLES.userManagerShowingDetail ? val(qUserManagerUser.id) : 0/>
         <cfset VARIABLES.userManagerFormIsDeleted = VARIABLES.userManagerShowingDetail AND userManagerBoolean(qUserManagerUser.gestao_excluido)/>
@@ -232,7 +316,7 @@ function userManagerDateInput(any value = "") {
         <div class="user-manager-hero p-3 p-lg-4 mb-4">
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 position-relative" style="z-index:1;">
             <div class="d-flex align-items-center gap-3">
-              <img class="user-manager-avatar" src="<cfoutput>#htmlEditFormat(VARIABLES.userManagerAvatar)#</cfoutput>" alt=""/>
+              <img class="user-manager-avatar" src="<cfoutput>#htmlEditFormat(VARIABLES.userManagerAvatar)#</cfoutput>" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
               <div>
                 <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
                   <h3 class="mb-0"><cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(qUserManagerUser.name)#</cfoutput><cfelse>Novo usuário</cfif></h3>
@@ -624,7 +708,7 @@ function userManagerDateInput(any value = "") {
       <cfelse>
         <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
           <div><h3 class="business-page-title mb-1">Administração - Usuários</h3><p class="text-muted mb-0">Gerencie contas, perfis e relacionamentos da plataforma em um único lugar.</p></div>
-          <a class="btn btn-warning align-self-lg-start" href="./?novo=1"><i class="fa-solid fa-user-plus me-2"></i>Novo usuário</a>
+          <div class="d-flex gap-2 align-self-lg-start"><a class="btn btn-outline-warning" href="./?merge=1"><i class="fa-solid fa-code-merge me-2"></i>Mesclar duplicados</a><a class="btn btn-warning" href="./?novo=1"><i class="fa-solid fa-user-plus me-2"></i>Novo usuário</a></div>
         </div>
 
         <div class="row g-3 mb-4">
@@ -652,7 +736,7 @@ function userManagerDateInput(any value = "") {
                 <cfset VARIABLES.userManagerListAvatar = userManagerDisplayValue(qUserManagerUsers.imagem_usuario, userManagerDisplayValue(qUserManagerUsers.strava_profile, "/assets/user.png"))/>
                 <tr>
                   <td class="user-manager-id" data-label="ID">#qUserManagerUsers.id#</td>
-                  <td data-label="Usuário"><div class="d-flex align-items-center gap-2"><img class="user-manager-avatar-sm" src="#htmlEditFormat(VARIABLES.userManagerListAvatar)#" alt=""/><div><div class="fw-semibold">#htmlEditFormat(qUserManagerUsers.name)#</div><div class="small text-muted">#htmlEditFormat(qUserManagerUsers.email)#</div><div class="d-flex flex-wrap gap-1 mt-1"><cfif userManagerBoolean(qUserManagerUsers.is_admin)><span class="badge badge-warning">ADMIN</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_dev)><span class="badge badge-info">DEV</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_partner)><span class="badge badge-primary">PARTNER</span></cfif></div></div></div></td>
+                  <td data-label="Usuário"><div class="d-flex align-items-center gap-2"><img class="user-manager-avatar-sm" src="#htmlEditFormat(VARIABLES.userManagerListAvatar)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/><div><div class="fw-semibold">#htmlEditFormat(qUserManagerUsers.name)#</div><div class="small text-muted">#htmlEditFormat(qUserManagerUsers.email)#</div><div class="d-flex flex-wrap gap-1 mt-1"><cfif userManagerBoolean(qUserManagerUsers.is_admin)><span class="badge badge-warning">ADMIN</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_dev)><span class="badge badge-info">DEV</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_partner)><span class="badge badge-primary">PARTNER</span></cfif></div></div></div></td>
                   <td data-label="Status"><div class="d-flex align-items-center gap-2"><span class="user-manager-status-dot <cfif userManagerBoolean(qUserManagerUsers.gestao_excluido)>is-deleted<cfelseif NOT userManagerBoolean(qUserManagerUsers.gestao_ativo)>is-inactive</cfif>"></span><span><cfif userManagerBoolean(qUserManagerUsers.gestao_excluido)>Excluído<cfelseif userManagerBoolean(qUserManagerUsers.gestao_ativo)>Ativo<cfelse>Inativo</cfif></span></div></td>
                   <td data-label="Perfis"><div class="fw-semibold">#LSNumberFormat(qUserManagerUsers.total_paginas)#</div><cfif len(trim(qUserManagerUsers.pagina_principal & ""))><div class="small text-muted">#htmlEditFormat(qUserManagerUsers.pagina_principal)#</div></cfif></td>
                   <td data-label="Resultados">#LSNumberFormat(qUserManagerUsers.total_resultados)#</td>
@@ -672,6 +756,7 @@ function userManagerDateInput(any value = "") {
             </ul></nav>
           </cfif>
         </div>
+      </cfif>
       </cfif>
     </div>
   </div>

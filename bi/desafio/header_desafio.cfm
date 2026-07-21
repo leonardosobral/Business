@@ -20,7 +20,7 @@
         <!--- USER --->
         <div class="g-signin2 d-none" data-onsuccess="onSignIn"></div>
         <div class="btn-group rounded-circle">
-            <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : '/assets/user.png'#" style="max-height: 38px; cursor: pointer;" alt="imagem do usuário" class="rounded-circle" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false"/></cfoutput>
+            <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : '/assets/user.png'#" style="max-height: 38px; cursor: pointer;" alt="imagem do usuário" class="rounded-circle" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false" onerror="this.onerror=null;this.src='/assets/user.png';"/></cfoutput>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="z-index: 999999;">
                 <li><a class="dropdown-item" href="https://roadrunners.run/perfil/">Meu Perfil</a></li>
                 <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->

@@ -65,7 +65,7 @@
 
             <cfquery name="qPerfil">
                 SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
-                coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario,
+                coalesce('/assets/paginas/' || pg.path_imagem, usr.imagem_usuario, '/assets/user.png') as imagem_usuario,
                 pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
                 pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
                 usr.partner_info

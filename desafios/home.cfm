@@ -1,14 +1,21 @@
 <!--- VARIAVEIS --->
+<cfset VARIABLES.challengePeriodWasProvided = structKeyExists(URL, "periodo")/>
 <cfparam name="URL.periodo" default="pendentes"/>
 <cfparam name="URL.preset" default=""/>
 <cfparam name="URL.busca" default=""/>
 <cfparam name="URL.regiao" default=""/>
 <cfparam name="URL.estado" default=""/>
 <cfparam name="URL.cidade" default=""/>
+<cfparam name="URL.genero" default=""/>
+<cfparam name="URL.medalha" default=""/>
 <cfparam name="URL.desafio" default="todosantodia"/>
 
 <!--- TAG PARAM TREAT --->
 <cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
+<cfif NOT VARIABLES.challengePeriodWasProvided
+    AND listFindNoCase("catarinensecorridaderua,catarinensetrailrun", URL.desafio)>
+    <cfset URL.periodo = ""/>
+</cfif>
 
 <!--- BACKEND --->
 
@@ -51,6 +58,10 @@
         display:inline-block;
     }
 </style>
+
+<cfif VARIABLES.challengeIsCatarinenseCircuit>
+    <cfinclude template="includes/catarinense_panel.cfm"/>
+<cfelse>
 
 
 <!--- WIDGETS TEMPORAIS --->
@@ -529,3 +540,5 @@
     <!---</div>--->
 
 <!---</div>--->
+
+</cfif>

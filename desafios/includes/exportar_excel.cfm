@@ -81,7 +81,7 @@
         atv.dias_do_ano,
         pag.tag,
         pag.verificado,
-        coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem, usr.strava_profile, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario
+        coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem, usr.strava_profile, usr.imagem_usuario, '/assets/user.png') as imagem_usuario
         FROM desafios des
         INNER JOIN tb_usuarios usr ON (des.id_usuario = usr.id)
         LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'

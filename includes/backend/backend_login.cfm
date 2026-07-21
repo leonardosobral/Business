@@ -65,7 +65,7 @@
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.roadRunnersBaseUrl#/assets/paginas/"/> || nullif(trim(pg.path_imagem), ''),
             nullif(trim(usr.strava_profile), ''),
             nullif(trim(usr.imagem_usuario), ''),
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.roadRunnersBaseUrl#/assets/user.png"/>
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="/assets/user.png"/>
         ) AS imagem_usuario,
         pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
         pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,

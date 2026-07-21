@@ -14,7 +14,13 @@
 <!--- BACKEND --->
 
 <cfinclude template="../includes/backend/backend_login.cfm"/>
-<cfinclude template="../includes/backend/require_admin.cfm"/>
+<cfparam name="URL.desafio" default="todosantodia"/>
+<cfset VARIABLES.challengeAccessTag = lcase(trim(replace(URL.desafio, "/", "")))/>
+<cfif listFindNoCase("catarinensecorridaderua,catarinensetrailrun", VARIABLES.challengeAccessTag)>
+    <cfinclude template="../includes/backend/require_catarinense_challenge_access.cfm"/>
+<cfelse>
+    <cfinclude template="../includes/backend/require_admin.cfm"/>
+</cfif>
 
 <!--- HEAD --->
 

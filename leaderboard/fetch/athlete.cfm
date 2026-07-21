@@ -9,7 +9,7 @@
     usr.id as id_usuario, usr.cbat, usr.assessoria,
     usr.inscricao_366, (select produto from desafio_cna where id_usuario = usr.id and status = 'C') as inscricao_365,
     usr.strava_id, usr.data_nascimento, usr.pais, usr.strava_bio, coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem,
-    pag.tag, pag.instagram, usr.strava_profile, usr.cbat, usr.imagem_usuario, '/assets/user.png?') as imagem_usuario
+    pag.tag, pag.instagram, usr.strava_profile, usr.cbat, usr.imagem_usuario, '/assets/user.png') as imagem_usuario
     from tb_paginas pag
     inner join tb_paginas_usuarios pgusr on pag.id_pagina = pgusr.id_pagina
     inner join tb_usuarios usr on usr.id = pgusr.id_usuario
@@ -169,7 +169,7 @@
 
         <div class="row m-0 atleteprofile">
             <div class="col-10 lh-sm">
-                <img src="https://roadrunners.run/assets/paginas/#qPagina.path_imagem#" class="rounded-3 bg-light m-2 border border-1 p-1 border-dark float-start" style="width: 100px;height:120px; object-fit: cover; object-position: top center;" alt="imagem do atleta" onerror="this.src='https://roadrunners.run/assets/user.png';">
+                <img src="https://roadrunners.run/assets/paginas/#qPagina.path_imagem#" class="rounded-3 bg-light m-2 border border-1 p-1 border-dark float-start" style="width: 100px;height:120px; object-fit: cover; object-position: top center;" alt="imagem do atleta" onerror="this.onerror=null;this.src='/assets/user.png';">
                 <h5 class="mt-2">#qPagina.nome#</h5>
                 <h6 class="mb-1"><img src="https://roadrunners.run/assets/flags/svg/#lCase(qPagina.pais)#.svg" style="width:22px" title="#uCase(qCorridasAtleta.nacionalidade)#"> #uCase(qCorridasAtleta.nacionalidade)#<cfif len(trim(qPagina.cidade))>#qPagina.cidade#</cfif><cfif len(trim(qPagina.uf))>/#qPagina.uf#</cfif></h6>
                 <h6 class="mb-1 small"><span class="small opacity-50 me-1">Equipe:</span>#qPagina.assessoria#</h6>
