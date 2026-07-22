@@ -10,6 +10,7 @@
 <!--- TEMPLATE --->
 
 <cfset VARIABLES.template = "/desafios/"/>
+<cfset VARIABLES.desafiosQueryDebugEnabled = false/>
 
 <!--- BACKEND --->
 
@@ -18,6 +19,8 @@
 <cfset VARIABLES.challengeAccessTag = lcase(trim(replace(URL.desafio, "/", "")))/>
 <cfif listFindNoCase("catarinensecorridaderua,catarinensetrailrun", VARIABLES.challengeAccessTag)>
     <cfinclude template="../includes/backend/require_catarinense_challenge_access.cfm"/>
+<cfelseif VARIABLES.challengeAccessTag EQ "circuitobrasilgigante">
+    <cfinclude template="../includes/backend/require_brasil_gigante_challenge_access.cfm"/>
 <cfelse>
     <cfinclude template="../includes/backend/require_admin.cfm"/>
 </cfif>
@@ -47,7 +50,9 @@
 
     </main>
 
-    <cfinclude template="includes/query_debug_bar.cfm"/>
+    <cfif VARIABLES.desafiosQueryDebugEnabled>
+        <cfinclude template="includes/query_debug_bar.cfm"/>
+    </cfif>
 
     <!--- FOOTER --->
 

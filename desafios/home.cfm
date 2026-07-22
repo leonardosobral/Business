@@ -8,12 +8,13 @@
 <cfparam name="URL.cidade" default=""/>
 <cfparam name="URL.genero" default=""/>
 <cfparam name="URL.medalha" default=""/>
+<cfparam name="URL.mandala" default=""/>
 <cfparam name="URL.desafio" default="todosantodia"/>
 
 <!--- TAG PARAM TREAT --->
 <cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
 <cfif NOT VARIABLES.challengePeriodWasProvided
-    AND listFindNoCase("catarinensecorridaderua,catarinensetrailrun", URL.desafio)>
+    AND listFindNoCase("catarinensecorridaderua,catarinensetrailrun,circuitobrasilgigante", URL.desafio)>
     <cfset URL.periodo = ""/>
 </cfif>
 
@@ -61,6 +62,8 @@
 
 <cfif VARIABLES.challengeIsCatarinenseCircuit>
     <cfinclude template="includes/catarinense_panel.cfm"/>
+<cfelseif VARIABLES.challengeIsBrasilGigante>
+    <cfinclude template="includes/brasil_gigante_panel.cfm"/>
 <cfelse>
 
 

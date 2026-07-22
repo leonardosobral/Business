@@ -34,6 +34,9 @@
 
 <cftry>
     <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
+    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
+    <cfset StructDelete(SESSION, "businessAccountSelectionConfirmed", false)/>
+    <cfset StructDelete(SESSION, "businessAccountContextCsrf", false)/>
 <cfcatch type="any"></cfcatch>
 </cftry>
 

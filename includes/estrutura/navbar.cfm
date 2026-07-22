@@ -22,22 +22,78 @@
     min-width: 0;
   }
 
-  .business-account-context-form {
-    min-width: min(420px, calc(100vw - 8rem));
+  .business-navbar-account-context {
+    align-items: center;
+    display: flex;
+    gap: .55rem;
+    min-width: 0;
   }
 
-  .business-account-context-form .form-select {
-    min-width: 260px;
+  .business-navbar-account-icon {
+    align-items: center;
+    background: rgba(250, 177, 32, .12);
+    border-radius: .6rem;
+    color: #fab120;
+    display: inline-flex;
+    flex: 0 0 2.15rem;
+    height: 2.15rem;
+    justify-content: center;
+  }
+
+  .business-navbar-account-copy {
+    min-width: 0;
+  }
+
+  .business-navbar-account-label {
+    color: rgba(255, 255, 255, .52);
+    display: block;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1;
+    margin-bottom: .25rem;
+    text-transform: uppercase;
+  }
+
+  .business-navbar-account-name {
+    color: #fff;
+    display: block;
+    font-size: .92rem;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: min(38vw, 28rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .business-navbar-account-switch {
+    align-items: center;
+    border-color: rgba(255, 255, 255, .18);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .78);
+    display: inline-flex;
+    flex: 0 0 2rem;
+    height: 2rem;
+    justify-content: center;
+    padding: 0;
+    width: 2rem;
+  }
+
+  .business-navbar-account-switch:hover,
+  .business-navbar-account-switch:focus {
+    border-color: #fab120;
+    color: #fab120;
   }
 
   @media (max-width: 767.98px) {
-    .business-account-context-form {
-      min-width: 0;
-      width: 100%;
+    .business-navbar-account-icon,
+    .business-navbar-account-label {
+      display: none;
     }
 
-    .business-account-context-form .form-select {
-      min-width: 0;
+    .business-navbar-account-name {
+      max-width: 42vw;
     }
   }
 </style>
@@ -53,39 +109,24 @@
         </button>
 
         <!-- Account context -->
-        <cfset VARIABLES.businessNavbarCurrentUrl = CGI.SCRIPT_NAME/>
-        <cfif len(trim(CGI.QUERY_STRING))>
-            <cfset VARIABLES.businessNavbarCurrentUrl = VARIABLES.businessNavbarCurrentUrl & "?" & CGI.QUERY_STRING/>
+        <cfset VARIABLES.businessNavbarAccountName = "Road Runners Business"/>
+        <cfif isDefined("VARIABLES.businessActiveAccountName") AND len(trim(VARIABLES.businessActiveAccountName))>
+            <cfset VARIABLES.businessNavbarAccountName = VARIABLES.businessActiveAccountName/>
+        <cfelseif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
+            <cfset VARIABLES.businessNavbarAccountName = "Todas as contas"/>
         </cfif>
-
-        <cfif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
-            <cfoutput>
-                <form class="d-none d-md-flex input-group w-auto my-auto business-account-context-form" method="get" action="/">
-                    <input type="hidden" name="business_account_context_redirect" value="#htmlEditFormat(VARIABLES.businessNavbarCurrentUrl)#"/>
-                    <span class="input-group-text border-0"><i class="fa-solid fa-building-user text-secondary"></i></span>
-                    <select class="form-select" name="business_account_context_id" onchange="this.form.submit()" <cfif NOT isDefined("qBusinessAccountContextOptions") OR NOT qBusinessAccountContextOptions.recordcount>disabled</cfif>>
-                        <option value="">Admin: todas as contas</option>
-                        <cfif isDefined("qBusinessAccountContextOptions") AND qBusinessAccountContextOptions.recordcount>
-                            <cfloop query="qBusinessAccountContextOptions">
-                                <option value="#qBusinessAccountContextOptions.id_conta#" <cfif isDefined("VARIABLES.businessSimulatedAccountId") AND len(trim(VARIABLES.businessSimulatedAccountId)) AND VARIABLES.businessSimulatedAccountId EQ qBusinessAccountContextOptions.id_conta>selected</cfif>>
-                                    #htmlEditFormat(qBusinessAccountContextOptions.nome_conta)#<cfif qBusinessAccountContextOptions.status NEQ "ATIVA"> - #htmlEditFormat(qBusinessAccountContextOptions.status)#</cfif>
-                                </option>
-                            </cfloop>
-                        </cfif>
-                    </select>
-                    <cfif isDefined("VARIABLES.businessAccountSimulationActive") AND VARIABLES.businessAccountSimulationActive>
-                        <span class="input-group-text border-0 bg-warning text-dark">Simulando</span>
-                    </cfif>
-                </form>
-            </cfoutput>
-        <cfelse>
-            <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
-                <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
-                       placeholder='Pesquisa [ctrl+alt]' style="min-width: 225px" />
-                <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
-            </form>
-        </cfif>
+        <div class="business-navbar-account-context my-auto">
+            <span class="business-navbar-account-icon"><i class="fa-solid fa-building"></i></span>
+            <span class="business-navbar-account-copy">
+                <span class="business-navbar-account-label">Conta ativa</span>
+                <cfoutput><span class="business-navbar-account-name" title="#htmlEditFormat(VARIABLES.businessNavbarAccountName)#">#htmlEditFormat(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
+            </span>
+            <cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+                <button class="btn btn-outline-light business-navbar-account-switch" type="button" data-business-account-modal-open aria-label="Trocar conta" title="Trocar conta">
+                    <i class="fa-solid fa-right-left"></i>
+                </button>
+            </cfif>
+        </div>
 
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -200,3 +241,8 @@
     </div>
     <!-- Container wrapper -->
 </nav>
+
+<cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+    <cfset VARIABLES.businessAccountModalRequired = false/>
+    <cfinclude template="account_context_modal.cfm"/>
+</cfif>

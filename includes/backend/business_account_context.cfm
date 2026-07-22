@@ -2,6 +2,11 @@
 <cfset VARIABLES.businessEffectiveIsAdmin = false/>
 <cfset VARIABLES.businessAccountSimulationActive = false/>
 <cfset VARIABLES.businessSimulatedAccountId = ""/>
+<cfset VARIABLES.businessActiveAccountId = ""/>
+<cfset VARIABLES.businessActiveAccountName = ""/>
+<cfset VARIABLES.businessAccountSelectionRequired = false/>
+<cfset VARIABLES.businessAccountSwitchAvailable = false/>
+<cfset VARIABLES.businessAccountContextCsrf = ""/>
 <cfset VARIABLES.businessEffectiveAccountIds = "0"/>
 <cfset VARIABLES.businessEffectiveAccountManagerIds = "0"/>
 <cfset VARIABLES.businessEffectiveAccountOperatorIds = "0"/>
@@ -12,7 +17,7 @@
 <cfset VARIABLES.businessAccountContextTablesReady = false/>
 
 <cfset qBusinessAccountContextOptions = QueryNew("id_conta,nome_conta,status,total_usuarios")/>
-<cfset qBusinessAccountContextAccounts = QueryNew("id_conta,nome_conta,status")/>
+<cfset qBusinessAccountContextAccounts = QueryNew("id_conta,nome_conta,status,papel")/>
 <cfset qBusinessSimulatedAccount = QueryNew("id_conta,nome_conta,status")/>
 <cfset qBusinessAccountContextMemberships = QueryNew("id_conta,papel,status")/>
 <cfset qBusinessAccountContextUsers = QueryNew("id_usuario,name,email,papel,status")/>
@@ -51,6 +56,104 @@
             AND ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_conta_eventos")/>
 
         <cfif VARIABLES.businessAccountContextTablesReady>
+            <cfif NOT StructKeyExists(SESSION, "businessAccountContextCsrf")
+                OR NOT len(trim(SESSION.businessAccountContextCsrf & ""))>
+                <cfset SESSION.businessAccountContextCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
+            </cfif>
+            <cfset VARIABLES.businessAccountContextCsrf = SESSION.businessAccountContextCsrf/>
+
+            <cfquery name="qBusinessAccountContextMemberships">
+                SELECT cu.id_conta,
+                       cu.papel::text AS papel,
+                       cu.status::text AS status
+                FROM tb_conta_usuarios cu
+                INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                WHERE cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                  AND cu.status = 'ATIVO'::status_usuario_conta
+                  AND cont.status = 'ATIVA'::status_conta
+                ORDER BY CASE cu.papel
+                    WHEN 'OWNER'::papel_usuario_conta THEN 1
+                    WHEN 'ADMIN'::papel_usuario_conta THEN 2
+                    WHEN 'OPERADOR'::papel_usuario_conta THEN 3
+                    ELSE 4
+                END,
+                cu.id_conta
+            </cfquery>
+
+            <cfquery name="qBusinessAccountContextAccounts">
+                SELECT DISTINCT cont.id_conta,
+                       cont.nome_conta,
+                       cont.status::text AS status,
+                       cu.papel::text AS papel
+                FROM tb_conta_usuarios cu
+                INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                WHERE cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                  AND cu.status = 'ATIVO'::status_usuario_conta
+                  AND cont.status = 'ATIVA'::status_conta
+                ORDER BY cont.nome_conta
+            </cfquery>
+
+            <cfif VARIABLES.businessRealIsAdmin
+                AND qBusinessAccountContextAccounts.recordcount GT 1
+                AND NOT StructKeyExists(SESSION, "businessAccountSelectionConfirmed")
+                AND NOT StructKeyExists(SESSION, "businessSimulatedAccountId")>
+                <cfset VARIABLES.businessAccountSelectionRequired = true/>
+            </cfif>
+
+            <cfif isDefined("FORM.business_account_context_action")
+                AND FORM.business_account_context_action EQ "select"
+                AND isDefined("FORM.business_account_context_csrf")
+                AND FORM.business_account_context_csrf EQ VARIABLES.businessAccountContextCsrf>
+                <cfset VARIABLES.businessAccountContextRequestedId = isDefined("FORM.business_account_context_id") ? trim(FORM.business_account_context_id) : ""/>
+                <cfset VARIABLES.businessAccountContextSelectionValid = false/>
+
+                <cfif VARIABLES.businessRealIsAdmin
+                    AND VARIABLES.businessAccountContextRequestedId EQ "all">
+                    <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
+                    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
+                    <cfset SESSION.businessAccountSelectionConfirmed = true/>
+                    <cfset VARIABLES.businessAccountContextSelectionValid = true/>
+                <cfelseif isNumeric(VARIABLES.businessAccountContextRequestedId)
+                    AND val(VARIABLES.businessAccountContextRequestedId) GT 0>
+                    <cfquery name="qBusinessAccountContextSelectionCheck">
+                        SELECT cont.id_conta
+                        FROM tb_contas cont
+                        <cfif NOT VARIABLES.businessRealIsAdmin>
+                            INNER JOIN tb_conta_usuarios cu
+                                ON cu.id_conta = cont.id_conta
+                               AND cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                               AND cu.status = 'ATIVO'::status_usuario_conta
+                        </cfif>
+                        WHERE cont.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessAccountContextRequestedId#"/>
+                          AND cont.status = 'ATIVA'::status_conta
+                        LIMIT 1
+                    </cfquery>
+
+                    <cfif qBusinessAccountContextSelectionCheck.recordcount>
+                        <cfif VARIABLES.businessRealIsAdmin>
+                            <cfset SESSION.businessSimulatedAccountId = qBusinessAccountContextSelectionCheck.id_conta/>
+                            <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
+                        <cfelse>
+                            <cfset SESSION.businessActiveAccountId = qBusinessAccountContextSelectionCheck.id_conta/>
+                        </cfif>
+                        <cfset SESSION.businessAccountSelectionConfirmed = true/>
+                        <cfset VARIABLES.businessAccountContextSelectionValid = true/>
+                    </cfif>
+                </cfif>
+
+                <cfif VARIABLES.businessAccountContextSelectionValid>
+                    <cfset VARIABLES.businessAccountContextRedirect = isDefined("FORM.business_account_context_redirect") ? trim(FORM.business_account_context_redirect) : "/"/>
+                    <cfif NOT len(VARIABLES.businessAccountContextRedirect)
+                        OR left(VARIABLES.businessAccountContextRedirect, 1) NEQ "/"
+                        OR reFindNoCase("^//|^https?://", VARIABLES.businessAccountContextRedirect)
+                        OR findNoCase("business_account_context", VARIABLES.businessAccountContextRedirect)
+                        OR findNoCase("/selecionar-conta/", VARIABLES.businessAccountContextRedirect)>
+                        <cfset VARIABLES.businessAccountContextRedirect = "/"/>
+                    </cfif>
+                    <cflocation addtoken="false" url="#VARIABLES.businessAccountContextRedirect#"/>
+                </cfif>
+            </cfif>
+
             <cfif VARIABLES.businessRealIsAdmin AND isDefined("URL.business_account_context_id")>
                 <cfset VARIABLES.businessAccountContextRequestedId = trim(URL.business_account_context_id)/>
 
@@ -99,6 +202,7 @@
                     END,
                     cont.nome_conta
                 </cfquery>
+                <cfset VARIABLES.businessAccountSwitchAvailable = qBusinessAccountContextOptions.recordcount GT 0/>
             </cfif>
 
             <cfif VARIABLES.businessRealIsAdmin
@@ -119,6 +223,8 @@
                     <cfset VARIABLES.businessAccountSimulationActive = true/>
                     <cfset VARIABLES.businessEffectiveIsAdmin = false/>
                     <cfset VARIABLES.businessSimulatedAccountId = qBusinessSimulatedAccount.id_conta/>
+                    <cfset VARIABLES.businessActiveAccountId = qBusinessSimulatedAccount.id_conta/>
+                    <cfset VARIABLES.businessActiveAccountName = qBusinessSimulatedAccount.nome_conta/>
                     <cfset VARIABLES.businessEffectiveAccountIds = qBusinessSimulatedAccount.id_conta/>
                     <cfset VARIABLES.businessEffectiveAccountManagerIds = qBusinessSimulatedAccount.id_conta/>
                     <cfset VARIABLES.businessEffectiveAccountOperatorIds = qBusinessSimulatedAccount.id_conta/>
@@ -130,63 +236,40 @@
             </cfif>
 
             <cfif NOT VARIABLES.businessRealIsAdmin>
-                <cfquery name="qBusinessAccountContextMemberships">
-                    SELECT cu.id_conta,
-                           cu.papel::text AS papel,
-                           cu.status::text AS status
-                    FROM tb_conta_usuarios cu
-                    INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
-                    WHERE cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
-                      AND cu.status = 'ATIVO'::status_usuario_conta
-                      AND cont.status = 'ATIVA'::status_conta
-                    ORDER BY CASE cu.papel
-                        WHEN 'OWNER'::papel_usuario_conta THEN 1
-                        WHEN 'ADMIN'::papel_usuario_conta THEN 2
-                        WHEN 'OPERADOR'::papel_usuario_conta THEN 3
-                        ELSE 4
-                    END,
-                    cu.id_conta
-                </cfquery>
+                <cfif StructKeyExists(SESSION, "businessActiveAccountId")
+                    AND isNumeric(SESSION.businessActiveAccountId)
+                    AND listFind(ValueList(qBusinessAccountContextMemberships.id_conta), SESSION.businessActiveAccountId)>
+                    <cfset VARIABLES.businessActiveAccountId = SESSION.businessActiveAccountId/>
+                <cfelseif qBusinessAccountContextMemberships.recordcount EQ 1>
+                    <cfset VARIABLES.businessActiveAccountId = qBusinessAccountContextMemberships.id_conta/>
+                    <cfset SESSION.businessActiveAccountId = VARIABLES.businessActiveAccountId/>
+                    <cfset SESSION.businessAccountSelectionConfirmed = true/>
+                <cfelse>
+                    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
+                </cfif>
 
-                <cfquery name="qBusinessAccountContextAccounts">
-                    SELECT DISTINCT cont.id_conta,
-                           cont.nome_conta,
-                           cont.status::text AS status
-                    FROM tb_conta_usuarios cu
-                    INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
-                    WHERE cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
-                      AND cu.status = 'ATIVO'::status_usuario_conta
-                      AND cont.status = 'ATIVA'::status_conta
-                    ORDER BY cont.nome_conta
-                </cfquery>
+                <cfset VARIABLES.businessAccountSwitchAvailable = qBusinessAccountContextAccounts.recordcount GT 1/>
+                <cfif qBusinessAccountContextAccounts.recordcount GT 1 AND NOT len(VARIABLES.businessActiveAccountId)>
+                    <cfset VARIABLES.businessAccountSelectionRequired = true/>
+                </cfif>
 
-                <cfif qBusinessAccountContextMemberships.recordcount AND len(trim(ValueList(qBusinessAccountContextMemberships.id_conta)))>
-                    <cfset VARIABLES.businessEffectiveAccountIds = ValueList(qBusinessAccountContextMemberships.id_conta)/>
-                    <cfset VARIABLES.businessEffectiveAccountViewerIds = VARIABLES.businessEffectiveAccountIds/>
-                    <cfset VARIABLES.businessAccountManagerIdList = ""/>
-                    <cfset VARIABLES.businessAccountOperatorIdList = ""/>
+                <cfif len(VARIABLES.businessActiveAccountId)>
+                    <cfloop query="qBusinessAccountContextAccounts">
+                        <cfif qBusinessAccountContextAccounts.id_conta EQ VARIABLES.businessActiveAccountId>
+                            <cfset VARIABLES.businessActiveAccountName = qBusinessAccountContextAccounts.nome_conta/>
+                            <cfset VARIABLES.businessCurrentAccountRole = qBusinessAccountContextAccounts.papel/>
+                            <cfset VARIABLES.businessEffectiveAccountIds = qBusinessAccountContextAccounts.id_conta/>
+                            <cfset VARIABLES.businessEffectiveAccountViewerIds = qBusinessAccountContextAccounts.id_conta/>
 
-                    <cfloop query="qBusinessAccountContextMemberships">
-                        <cfif NOT len(VARIABLES.businessCurrentAccountRole)>
-                            <cfset VARIABLES.businessCurrentAccountRole = qBusinessAccountContextMemberships.papel/>
-                        </cfif>
+                            <cfif ListFindNoCase("OWNER,ADMIN", qBusinessAccountContextAccounts.papel)>
+                                <cfset VARIABLES.businessEffectiveAccountManagerIds = qBusinessAccountContextAccounts.id_conta/>
+                            </cfif>
 
-                        <cfif ListFindNoCase("OWNER,ADMIN", qBusinessAccountContextMemberships.papel)>
-                            <cfset VARIABLES.businessAccountManagerIdList = ListAppend(VARIABLES.businessAccountManagerIdList, qBusinessAccountContextMemberships.id_conta)/>
-                        </cfif>
-
-                        <cfif ListFindNoCase("OWNER,ADMIN,OPERADOR", qBusinessAccountContextMemberships.papel)>
-                            <cfset VARIABLES.businessAccountOperatorIdList = ListAppend(VARIABLES.businessAccountOperatorIdList, qBusinessAccountContextMemberships.id_conta)/>
+                            <cfif ListFindNoCase("OWNER,ADMIN,OPERADOR", qBusinessAccountContextAccounts.papel)>
+                                <cfset VARIABLES.businessEffectiveAccountOperatorIds = qBusinessAccountContextAccounts.id_conta/>
+                            </cfif>
                         </cfif>
                     </cfloop>
-
-                    <cfif len(trim(VARIABLES.businessAccountManagerIdList))>
-                        <cfset VARIABLES.businessEffectiveAccountManagerIds = VARIABLES.businessAccountManagerIdList/>
-                    </cfif>
-
-                    <cfif len(trim(VARIABLES.businessAccountOperatorIdList))>
-                        <cfset VARIABLES.businessEffectiveAccountOperatorIds = VARIABLES.businessAccountOperatorIdList/>
-                    </cfif>
                 </cfif>
             </cfif>
 
@@ -230,6 +313,10 @@
         <cfcatch type="any">
             <cfset VARIABLES.businessAccountContextTablesReady = false/>
             <cfset VARIABLES.businessAccountSimulationActive = false/>
+            <cfset VARIABLES.businessActiveAccountId = ""/>
+            <cfset VARIABLES.businessActiveAccountName = ""/>
+            <cfset VARIABLES.businessAccountSelectionRequired = false/>
+            <cfset VARIABLES.businessAccountSwitchAvailable = false/>
             <cfset VARIABLES.businessEffectiveIsAdmin = VARIABLES.businessRealIsAdmin/>
             <cfset VARIABLES.businessEffectiveAccountIds = "0"/>
             <cfset VARIABLES.businessEffectiveAccountManagerIds = "0"/>

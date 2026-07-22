@@ -96,6 +96,12 @@
         )
     </cfquery>
     <cfinclude template="business_account_context.cfm"/>
+    <cfif qPerfil.recordcount
+        AND isDefined("VARIABLES.businessAccountSelectionRequired")
+        AND VARIABLES.businessAccountSelectionRequired
+        AND NOT findNoCase("/selecionar-conta/", CGI.SCRIPT_NAME)>
+        <cflocation addtoken="false" url="/selecionar-conta/"/>
+    </cfif>
     <cftry>
         <cfquery name="qBusinessPendingRegistration">
             SELECT sol.id_solicitacao,
@@ -343,6 +349,10 @@
         select * from tb_usuarios
         where email = <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>
     </cfquery>
+
+    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
+    <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
+    <cfset StructDelete(SESSION, "businessAccountSelectionConfirmed", false)/>
 
     <cfcookie name="id" secure="yes" encodevalue="yes" value="#qPerfil.id#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
     <cfcookie name="name" secure="yes" encodevalue="yes" value="#qPerfil.name#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>

@@ -1,5 +1,6 @@
 <cfset VARIABLES.challengeTag = lcase(trim(URL.desafio))/>
-<cfif NOT structKeyExists(REQUEST, "desafiosQueryDebug")>
+<cfparam name="VARIABLES.desafiosQueryDebugEnabled" default="false"/>
+<cfif VARIABLES.desafiosQueryDebugEnabled AND NOT structKeyExists(REQUEST, "desafiosQueryDebug")>
     <cfset REQUEST.desafiosQueryDebug = []/>
 </cfif>
 
@@ -8,6 +9,10 @@
     <cfargument name="startTick" type="numeric" required="true"/>
     <cfargument name="rows" type="numeric" required="false" default="-1"/>
     <cfargument name="type" type="string" required="false" default="db"/>
+
+    <cfif NOT VARIABLES.desafiosQueryDebugEnabled>
+        <cfreturn/>
+    </cfif>
 
     <cfset LOCAL.item = structNew()/>
     <cfset LOCAL.item.label = ARGUMENTS.label/>
@@ -28,6 +33,16 @@
 <cfif VARIABLES.challengeIsBrasilGigante>
     <cfset VARIABLES.challengeCircuitTotalEvents = 8/>
     <cfset VARIABLES.challengeCircuitCompletionTarget = 8/>
+    <cfset VARIABLES.challengeCircuitEvents = [
+        {ordem = 1, idAgregador = 17, nome = "Maratona de São Paulo", sigla = "SP"},
+        {ordem = 2, idAgregador = 1000, nome = "Maratona do Paraná", sigla = "PR"},
+        {ordem = 3, idAgregador = 26, nome = "Maratona de Porto Alegre", sigla = "POA"},
+        {ordem = 4, idAgregador = 9, nome = "Maratona de Campo Grande", sigla = "CGR"},
+        {ordem = 5, idAgregador = 14, nome = "Maratona de João Pessoa", sigla = "JPA"},
+        {ordem = 6, idAgregador = 28, nome = "Maratona de Floripa", sigla = "FLN"},
+        {ordem = 7, idAgregador = 15, nome = "Maratona de Salvador", sigla = "SSA"},
+        {ordem = 8, idAgregador = 77, nome = "Maratona de Aracaju", sigla = "AJU"}
+    ]/>
 <cfelseif VARIABLES.challengeIsCatarinenseCircuit>
     <cfset VARIABLES.challengeCircuitTotalEvents = 6/>
     <cfset VARIABLES.challengeCircuitCompletionTarget = 5/>
@@ -52,6 +67,9 @@
         ]/>
     </cfif>
 
+</cfif>
+
+<cfif VARIABLES.challengeIsRaceParticipation>
     <cfif NOT structKeyExists(SESSION, "challengeMedalCsrf") OR NOT len(trim(SESSION.challengeMedalCsrf & ""))>
         <cfset SESSION.challengeMedalCsrf = lcase(hash(createUUID() & now() & CGI.REMOTE_ADDR, "SHA-256"))/>
     </cfif>
@@ -60,14 +78,88 @@
 
 <cfparam name="URL.genero" default=""/>
 <cfparam name="URL.medalha" default=""/>
+<cfparam name="URL.mandala" default=""/>
 <cfparam name="URL.challenge_refresh" default=""/>
 <cfset URL.genero = lcase(trim(URL.genero))/>
 <cfset URL.medalha = lcase(trim(URL.medalha))/>
+<cfset URL.mandala = lcase(trim(URL.mandala))/>
 <cfif NOT listFindNoCase("masculino,feminino,nao_informado", URL.genero)>
     <cfset URL.genero = ""/>
 </cfif>
 <cfif NOT listFindNoCase("progresso,proxima_etapa,imediata,entregue", URL.medalha)>
     <cfset URL.medalha = ""/>
+</cfif>
+<cfif NOT listFindNoCase("progresso,proxima_etapa,imediata,entregue", URL.mandala)>
+    <cfset URL.mandala = ""/>
+</cfif>
+
+<!--- ENTREGA DE MANDALA DO CIRCUITO BRASIL GIGANTE --->
+
+<cfif VARIABLES.challengeIsBrasilGigante
+    AND isDefined("FORM.challenge_action")
+    AND FORM.challenge_action EQ "entregar_mandala">
+    <cfset VARIABLES.challengeMandalaUserId = isDefined("FORM.id_usuario") ? val(FORM.id_usuario) : 0/>
+    <cfset VARIABLES.challengeMandalaPostedCsrf = isDefined("FORM.challenge_medal_csrf") ? trim(FORM.challenge_medal_csrf) : ""/>
+
+    <cfif VARIABLES.challengeMandalaUserId LTE 0
+        OR NOT len(VARIABLES.challengeMandalaPostedCsrf)
+        OR VARIABLES.challengeMandalaPostedCsrf NEQ VARIABLES.challengeMedalCsrf>
+        <cfthrow type="Challenge.Validation" message="A solicitacao de entrega da mandala e invalida ou expirou."/>
+    </cfif>
+
+    <cfquery name="qChallengeMandalaEligibility">
+        SELECT count(DISTINCT evt.id_agrega_evento) AS etapas
+        FROM tb_resultados res
+        INNER JOIN tb_evento_corridas evt
+            ON evt.id_evento = res.id_evento
+        INNER JOIN tb_agregadores_eventos agr
+            ON agr.id_evento = evt.id_evento
+           AND agr.agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="brasil-gigante"/>
+        WHERE res.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeMandalaUserId#"/>
+          AND res.percurso = <cfqueryparam cfsqltype="cf_sql_decimal" value="42"/>
+          AND evt.id_agrega_evento IN (
+              <cfqueryparam cfsqltype="cf_sql_integer" value="17,1000,26,9,14,28,15,77" list="true"/>
+          )
+    </cfquery>
+
+    <cfif NOT qChallengeMandalaEligibility.recordcount OR val(qChallengeMandalaEligibility.etapas) LT 7>
+        <cfthrow type="Challenge.Validation" message="O atleta ainda nao possui sete etapas reconhecidas no Circuito Brasil Gigante."/>
+    </cfif>
+
+    <cfquery name="qChallengeMandalaDelivery">
+        WITH target AS (
+            SELECT id_usuario
+            FROM desafios
+            WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeMandalaUserId#"/>
+              AND desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+        ),
+        inserted AS (
+            INSERT INTO desafios_obs (id_usuario, produto, obs, id_atendente)
+            SELECT target.id_usuario,
+                   <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>,
+                   <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>,
+                   <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+            FROM target
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM desafios_obs history
+                WHERE history.id_usuario = target.id_usuario
+                  AND history.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+                  AND history.obs = <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>
+            )
+            RETURNING id_usuario
+        )
+        SELECT id_usuario FROM inserted
+        UNION ALL
+        SELECT id_usuario FROM target
+        LIMIT 1
+    </cfquery>
+
+    <cfif NOT qChallengeMandalaDelivery.recordcount>
+        <cfthrow type="Challenge.Validation" message="A inscricao do atleta nao foi encontrada no Circuito Brasil Gigante."/>
+    </cfif>
+
+    <cflocation addtoken="false" url="/desafios/#VARIABLES.challengeTag#/?sucesso=mandala_entregue&challenge_refresh=#getTickCount()#&busca=#urlEncodedFormat(URL.busca)#&mandala=#urlEncodedFormat(URL.mandala)#&regiao=#urlEncodedFormat(URL.regiao)#&estado=#urlEncodedFormat(URL.estado)#&cidade=#urlEncodedFormat(URL.cidade)#"/>
 </cfif>
 
 <!--- ENTREGA DE MEDALHA DOS CIRCUITOS CATARINENSES --->
@@ -167,31 +259,79 @@
     <!--- BRASIL GIGANTE --->
 
     <cfif VARIABLES.challengeIsBrasilGigante>
-        WITH brasil_gigante_events AS (
-            SELECT ag.id_evento,
-                   evt.id_agrega_evento,
-                   evt.data_final
-            FROM tb_agregadores_eventos ag
-            INNER JOIN tb_evento_corridas evt
-                ON evt.id_evento = ag.id_evento
-            WHERE ag.agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="brasil-gigante"/>
+        WITH circuit_config (event_order, id_agrega_evento) AS (
+            VALUES
+            <cfloop array="#VARIABLES.challengeCircuitEvents#" item="VARIABLES.challengeCircuitEvent" index="VARIABLES.challengeCircuitEventIndex">
+                (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitEvent.ordem#"/>,
+                 <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeCircuitEvent.idAgregador#"/>)<cfif VARIABLES.challengeCircuitEventIndex LT arrayLen(VARIABLES.challengeCircuitEvents)>,</cfif>
+            </cfloop>
         ),
-        brasil_gigante_results AS (
+        registrations AS (
+            SELECT DISTINCT ON (desafio.id_usuario)
+                   desafio.id_usuario,
+                   desafio.status,
+                   desafio.produto,
+                   desafio.data_inscricao,
+                   desafio.body
+            FROM desafios desafio
+            WHERE desafio.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+            ORDER BY desafio.id_usuario, desafio.data_inscricao ASC NULLS LAST
+        ),
+        circuit_events AS (
+            SELECT DISTINCT cfg.event_order,
+                   cfg.id_agrega_evento,
+                   evt.id_evento,
+                   evt.data_final
+            FROM circuit_config cfg
+            INNER JOIN tb_evento_corridas evt
+                ON evt.id_agrega_evento = cfg.id_agrega_evento
+            INNER JOIN tb_agregadores_eventos event_map
+                ON event_map.id_evento = evt.id_evento
+               AND event_map.agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="brasil-gigante"/>
+        ),
+        circuit_participation AS (
             SELECT
                 res.id_usuario,
-                count(DISTINCT bge.id_agrega_evento) AS eventos_concluidos,
-                max(bge.data_final::date) AS data_final,
-                min(bge.data_final::date) AS data_inicial,
-                max((SELECT count(DISTINCT bge_total.id_agrega_evento) FROM brasil_gigante_events bge_total)) AS total_eventos
+                evt.event_order,
+                evt.id_agrega_evento,
+                max(extract(year FROM evt.data_final))::integer AS ano,
+                max(evt.data_final::date) AS data_final,
+                min(evt.data_final::date) AS data_inicial
             FROM tb_resultados res
-            INNER JOIN brasil_gigante_events bge
-                ON bge.id_evento = res.id_evento
+            INNER JOIN registrations enrolled
+                ON enrolled.id_usuario = res.id_usuario
+            INNER JOIN circuit_events evt
+                ON evt.id_evento = res.id_evento
             WHERE res.percurso = 42
-            AND res.id_usuario <> 0
-            GROUP BY res.id_usuario
+              AND res.id_usuario > 0
+            GROUP BY res.id_usuario, evt.event_order, evt.id_agrega_evento
+        ),
+        circuit_results AS (
+            SELECT id_usuario,
+                   count(DISTINCT id_agrega_evento) AS eventos_concluidos,
+                   count(*) FILTER (WHERE event_order = 1) AS participou_1,
+                   count(*) FILTER (WHERE event_order = 2) AS participou_2,
+                   count(*) FILTER (WHERE event_order = 3) AS participou_3,
+                   count(*) FILTER (WHERE event_order = 4) AS participou_4,
+                   count(*) FILTER (WHERE event_order = 5) AS participou_5,
+                   count(*) FILTER (WHERE event_order = 6) AS participou_6,
+                   count(*) FILTER (WHERE event_order = 7) AS participou_7,
+                   count(*) FILTER (WHERE event_order = 8) AS participou_8,
+                   max(ano) FILTER (WHERE event_order = 1) AS ano_1,
+                   max(ano) FILTER (WHERE event_order = 2) AS ano_2,
+                   max(ano) FILTER (WHERE event_order = 3) AS ano_3,
+                   max(ano) FILTER (WHERE event_order = 4) AS ano_4,
+                   max(ano) FILTER (WHERE event_order = 5) AS ano_5,
+                   max(ano) FILTER (WHERE event_order = 6) AS ano_6,
+                   max(ano) FILTER (WHERE event_order = 7) AS ano_7,
+                   max(ano) FILTER (WHERE event_order = 8) AS ano_8,
+                   max(data_final) AS data_final,
+                   min(data_inicial) AS data_inicial
+            FROM circuit_participation
+            GROUP BY id_usuario
         )
-        SELECT COALESCE(uf.nome_regiao, 'Exterior') as regiao,
-        to_timestamp(usr.strava_expires_at) as strava_expires_at,
+        SELECT COALESCE(uf.nome_regiao, 'Exterior') AS regiao,
+        null::timestamp AS strava_expires_at,
         des.status,
         des.produto,
         des.data_inscricao,
@@ -200,43 +340,95 @@
         usr.ddd_usuario,
         usr.telefone_usuario,
         usr.email,
-        usr.strava_id,
-        usr.strava_code,
-        usr.ddi_usuario,
-        usr.ddd_usuario,
-        COALESCE(upper(trim(unaccent(usr.cidade))), upper(trim(unaccent(pag.cidade)))) as cidade,
-        COALESCE(usr.estado, pag.uf) as estado,
-        upper(COALESCE(des.body ->> 'nome_completo', pag.nome, usr.name)) as nome,
-        COALESCE(NULLIF(upper(des.body ->> 'genero'), ''), usr.genero, usr.strava_sex) as genero,
+        null::bigint AS strava_id,
+        null::varchar AS strava_code,
+        COALESCE(
+            upper(trim(unaccent(NULLIF(des.body ->> 'cidade', '')))),
+            upper(trim(unaccent(usr.cidade))),
+            upper(trim(unaccent(pag.cidade))),
+            ''
+        ) AS cidade,
+        COALESCE(NULLIF(upper(trim(des.body ->> 'UF')), ''), usr.estado, pag.uf, '') AS estado,
+        upper(COALESCE(NULLIF(trim(des.body ->> 'nome_completo'), ''), pag.nome, usr.name)) AS nome,
+        CASE
+            WHEN upper(COALESCE(NULLIF(trim(des.body ->> 'genero'), ''), usr.genero, usr.strava_sex, '')) LIKE 'FEM%' THEN 'FEMININO'
+            WHEN upper(COALESCE(NULLIF(trim(des.body ->> 'genero'), ''), usr.genero, usr.strava_sex, '')) LIKE 'MAS%' THEN 'MASCULINO'
+            ELSE 'NAO INFORMADO'
+        END AS genero,
+        upper(NULLIF(trim(des.body ->> 'equipe'), '')) AS equipe,
         usr.tag_usuario,
         usr.pais,
         usr.data_statisticas,
-        (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
-        CASE
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') > 1 THEN 'duplicado'
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') = 1 THEN 'pago'
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id) > 0 THEN 'pendente'
-            ELSE null
-        END as status_transacao,
-        null::integer as distancia_percorrida,
-        bgr.eventos_concluidos as dias_correndo,
-        bgr.eventos_concluidos as atividades,
-        0 as altimetria,
-        bgr.eventos_concluidos as frequencia_fechamento,
-        bgr.eventos_concluidos as nodesafio,
-        bgr.data_final,
-        bgr.data_inicial,
-        CASE WHEN bgr.eventos_concluidos > 0 THEN 1 ELSE 0 END as ativo,
-        COALESCE(bgr.total_eventos, #VARIABLES.challengeCircuitTotalEvents#) as dias_do_ano,
+        null::varchar AS status_crm,
+        null::varchar AS status_transacao,
+        null::integer AS distancia_percorrida,
+        coalesce(cr.eventos_concluidos, 0) AS dias_correndo,
+        coalesce(cr.eventos_concluidos, 0) AS atividades,
+        0 AS altimetria,
+        coalesce(cr.eventos_concluidos, 0) AS frequencia_fechamento,
+        coalesce(cr.eventos_concluidos, 0) AS nodesafio,
+        cr.data_final,
+        cr.data_inicial,
+        CASE WHEN cr.eventos_concluidos > 0 THEN 1 ELSE 0 END AS ativo,
+        #VARIABLES.challengeCircuitTotalEvents# AS dias_do_ano,
         pag.tag,
         pag.verificado,
-        coalesce('https://roadrunners.run/assets/paginas/' || pag.path_imagem, usr.strava_profile, usr.imagem_usuario, '/assets/user.png') as imagem_usuario
-        FROM desafios des
-        INNER JOIN tb_usuarios usr ON (des.id_usuario = usr.id)
-        LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
-        LEFT JOIN brasil_gigante_results bgr ON bgr.id_usuario = usr.id
-        LEFT JOIN tb_uf uf ON usr.estado = uf.uf
-        where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+        coalesce(
+            'https://roadrunners.run/assets/paginas/' || nullif(trim(pag.path_imagem), ''),
+            nullif(trim(usr.strava_profile), ''),
+            nullif(trim(usr.imagem_usuario), ''),
+            '/assets/user.png'
+        ) AS imagem_usuario,
+        coalesce(cr.participou_1, 0) AS participou_1,
+        coalesce(cr.participou_2, 0) AS participou_2,
+        coalesce(cr.participou_3, 0) AS participou_3,
+        coalesce(cr.participou_4, 0) AS participou_4,
+        coalesce(cr.participou_5, 0) AS participou_5,
+        coalesce(cr.participou_6, 0) AS participou_6,
+        coalesce(cr.participou_7, 0) AS participou_7,
+        coalesce(cr.participou_8, 0) AS participou_8,
+        cr.ano_1,
+        cr.ano_2,
+        cr.ano_3,
+        cr.ano_4,
+        cr.ano_5,
+        cr.ano_6,
+        cr.ano_7,
+        cr.ano_8,
+        CASE WHEN mandala.data_entrega IS NOT NULL THEN 1 ELSE 0 END AS mandala_entregue,
+        to_char(mandala.data_entrega, 'YYYY-MM-DD HH24:MI:SS') AS mandala_entregue_em,
+        CASE
+            WHEN mandala.data_entrega IS NOT NULL THEN 'entregue'
+            WHEN coalesce(cr.eventos_concluidos, 0) >= 8 THEN 'imediata'
+            WHEN coalesce(cr.eventos_concluidos, 0) = 7 THEN 'proxima_etapa'
+            ELSE 'progresso'
+        END AS mandala_status
+        FROM registrations des
+        INNER JOIN tb_usuarios usr ON des.id_usuario = usr.id
+        LEFT JOIN LATERAL (
+            SELECT pagina.nome,
+                   pagina.cidade,
+                   pagina.uf,
+                   pagina.tag,
+                   pagina.verificado,
+                   pagina.path_imagem
+            FROM tb_paginas pagina
+            WHERE pagina.id_usuario_cadastro = usr.id
+              AND pagina.tag_prefix = 'atleta'
+            ORDER BY pagina.verificado DESC NULLS LAST, pagina.id_pagina
+            LIMIT 1
+        ) pag ON true
+        LEFT JOIN LATERAL (
+            SELECT max(history.data_obs) AS data_entrega
+            FROM desafios_obs history
+            WHERE history.id_usuario = usr.id
+              AND history.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+              AND history.obs = <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>
+        ) mandala ON true
+        LEFT JOIN circuit_results cr ON cr.id_usuario = usr.id
+        LEFT JOIN tb_uf uf
+            ON upper(coalesce(NULLIF(trim(des.body ->> 'UF'), ''), usr.estado, pag.uf, '')) = upper(uf.uf)
+        WHERE length(<cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.challenge_refresh#"/>) >= 0
 
     <!--- CIRCUITO CATARINENSE --->
 
@@ -819,6 +1011,9 @@
     <cfif VARIABLES.challengeIsCatarinenseCircuit AND len(URL.medalha)>
         and medalha_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.medalha#"/>
     </cfif>
+    <cfif VARIABLES.challengeIsBrasilGigante AND len(URL.mandala)>
+        and mandala_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.mandala#"/>
+    </cfif>
 </cfquery>
 <cfset desafiosAddQueryTiming("qStatsBase", VARIABLES.desafiosQueryStart, qStatsBase.recordcount, "qoq")/>
 
@@ -858,6 +1053,32 @@
         FROM qStatsBase
         WHERE genero = 'NAO INFORMADO'
         ORDER BY distancia_percorrida DESC, data_nascimento ASC, nome
+    </cfquery>
+</cfif>
+
+<cfif VARIABLES.challengeIsBrasilGigante>
+    <cfset VARIABLES.challengeCircuitMetrics = {
+        inscritos = qBase.recordcount,
+        comResultado = 0,
+        proximaEtapa = 0,
+        imediata = 0,
+        entregue = 0
+    }/>
+    <cfloop query="qBase">
+        <cfif val(qBase.nodesafio) GT 0>
+            <cfset VARIABLES.challengeCircuitMetrics.comResultado++/>
+        </cfif>
+        <cfswitch expression="#qBase.mandala_status#">
+            <cfcase value="proxima_etapa"><cfset VARIABLES.challengeCircuitMetrics.proximaEtapa++/></cfcase>
+            <cfcase value="imediata"><cfset VARIABLES.challengeCircuitMetrics.imediata++/></cfcase>
+            <cfcase value="entregue"><cfset VARIABLES.challengeCircuitMetrics.entregue++/></cfcase>
+        </cfswitch>
+    </cfloop>
+
+    <cfquery name="qBrasilGiganteRanking" dbtype="query">
+        SELECT *
+        FROM qStatsBase
+        ORDER BY nodesafio DESC, nome
     </cfquery>
 </cfif>
 

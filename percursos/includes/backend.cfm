@@ -18,6 +18,24 @@ function percursoTablesReady() {
         return check.recordCount AND percursoBoolean(check.ready[1]);
     } catch (any ignored) { return false; }
 }
+function percursoEventLinksTableReady() {
+    try {
+        var check = queryExecute("SELECT to_regclass('public.tb_evento_percursos_gpx') IS NOT NULL AS ready");
+        return check.recordCount AND percursoBoolean(check.ready[1]);
+    } catch (any ignored) { return false; }
+}
+function percursoHasEventRouteColumn() {
+    try {
+        var check = queryExecute("SELECT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='tb_evento_percursos_gpx' AND column_name='id_evento_percurso') AS ready");
+        return check.recordCount AND percursoBoolean(check.ready[1]);
+    } catch (any ignored) { return false; }
+}
+function percursoStravaMigrationTableReady() {
+    try {
+        var check = queryExecute("SELECT to_regclass('public.tb_percurso_migracoes_strava') IS NOT NULL AS ready");
+        return check.recordCount AND percursoBoolean(check.ready[1]);
+    } catch (any ignored) { return false; }
+}
 function percursoStorageRoot() {
     var configured = "";
     try { configured = trim(createObject("java", "java.lang.System").getenv("BUSINESS_PERCURSOS_STORAGE_PATH") & ""); } catch (any ignored) {}
@@ -40,19 +58,35 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfparam name="URL.q" default=""/>
 <cfparam name="URL.estado" default=""/>
 <cfparam name="URL.status" default=""/>
+<cfparam name="URL.owner_busca" default=""/>
+<cfparam name="URL.evento_busca" default=""/>
 <cfparam name="URL.sucesso" default=""/>
 <cfparam name="FORM.acao" default=""/>
 <cfparam name="FORM.csrf_token" default=""/>
 
 <cfset VARIABLES.percursoSchemaReady = percursoTablesReady()/>
+<cfset VARIABLES.percursoEventLinksReady = percursoEventLinksTableReady()/>
+<cfset VARIABLES.percursoEventRouteColumnReady = VARIABLES.percursoEventLinksReady AND percursoHasEventRouteColumn()/>
+<cfset VARIABLES.percursoStravaMigrationReady = percursoStravaMigrationTableReady()/>
 <cfset VARIABLES.percursoAlert = {type="", message=""}/>
 <cfset VARIABLES.percursoActorId = isDefined("qPerfil") AND qPerfil.recordcount ? val(qPerfil.id) : 0/>
 <cfset VARIABLES.percursoIsAdmin = isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin/>
+<cfset VARIABLES.percursoIsSystemAdmin = isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND listFindNoCase(qPerfil.columnList, "is_admin")
+    AND percursoBoolean(qPerfil.is_admin)/>
+<cfset VARIABLES.percursoIsDev = isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND listFindNoCase(qPerfil.columnList, "is_dev")
+    AND percursoBoolean(qPerfil.is_dev)/>
+<cfset VARIABLES.percursoCanViewAll = VARIABLES.percursoIsSystemAdmin OR VARIABLES.percursoIsDev/>
 <cfset VARIABLES.percursoAccountIds = isDefined("VARIABLES.businessEffectiveAccountIds") ? VARIABLES.businessEffectiveAccountIds : "0"/>
 <cfset VARIABLES.percursoWriteAccountIds = isDefined("VARIABLES.businessEffectiveAccountOperatorIds") ? VARIABLES.businessEffectiveAccountOperatorIds : "0"/>
 <cfset VARIABLES.percursoCanWrite = VARIABLES.percursoIsAdmin OR (len(trim(VARIABLES.percursoWriteAccountIds)) AND VARIABLES.percursoWriteAccountIds NEQ "0")/>
 <cfset VARIABLES.percursoSelectedId = isNumeric(URL.id) ? val(URL.id) : 0/>
 <cfset VARIABLES.percursoIsOwner = false/>
+<cfset VARIABLES.percursoCanManageEventLinks = false/>
+<cfset VARIABLES.percursoCanLinkEvents = false/>
 <cfset VARIABLES.percursoStoragePath = percursoStorageRoot()/>
 <cfset VARIABLES.percursoStorageConfigured = false/>
 <cftry><cfset VARIABLES.percursoStorageConfigured = len(trim(createObject("java", "java.lang.System").getenv("BUSINESS_PERCURSOS_STORAGE_PATH") & "")) GT 0/><cfcatch type="any"></cfcatch></cftry>
@@ -70,6 +104,10 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfset qPercurso = queryNew("id_percurso,codigo_publico,nome,cidade,estado,pais,distancia_nominal_m,tipo_percurso,descricao,visibilidade,status,id_usuario_criador,id_conta_responsavel,criado_em,atualizado_em")/>
 <cfset qPercursoArquivos = queryNew("id_percurso_arquivo,versao,nome_original,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,ativo,criado_em")/>
 <cfset qPercursoHistorico = queryNew("acao,dados,endereco_ip,criado_em,usuario_nome")/>
+<cfset qPercursoOwner = queryNew("id,name,email")/>
+<cfset qPercursoOwnerSearch = queryNew("id,name,email")/>
+<cfset qPercursoEventos = queryNew("id_evento_percurso_gpx,id_evento,id_evento_percurso,percurso_evento,unidade_de_medida,nome_evento,tag,data_inicial,data_final,cidade,estado,contas")/>
+<cfset qPercursoEventSearch = queryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,contas")/>
 
 <cfif NOT structKeyExists(SESSION, "percursoCsrfToken") OR NOT len(trim(SESSION.percursoCsrfToken & ""))>
     <cfset SESSION.percursoCsrfToken = lCase(hash(createUUID() & now() & rand(), "SHA-256"))/>
@@ -80,10 +118,176 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfif URL.sucesso EQ "salvo"><cfset VARIABLES.percursoAlert={type="success",message="Dados do percurso atualizados."}/></cfif>
 <cfif URL.sucesso EQ "versao"><cfset VARIABLES.percursoAlert={type="success",message="Nova versao do GPX adicionada."}/></cfif>
 <cfif URL.sucesso EQ "status"><cfset VARIABLES.percursoAlert={type="success",message="Status do percurso atualizado."}/></cfif>
+<cfif URL.sucesso EQ "proprietario"><cfset VARIABLES.percursoAlert={type="success",message="Proprietario do percurso atualizado."}/></cfif>
+<cfif URL.sucesso EQ "evento_vinculado"><cfset VARIABLES.percursoAlert={type="success",message="Evento vinculado ao percurso. Os membros das contas associadas ja podem visualiza-lo."}/></cfif>
+<cfif URL.sucesso EQ "evento_desvinculado"><cfset VARIABLES.percursoAlert={type="success",message="Vinculo do evento removido do percurso."}/></cfif>
 
 <cfif VARIABLES.percursoSchemaReady AND len(trim(FORM.acao))>
     <cfif compareNoCase(trim(FORM.csrf_token), VARIABLES.percursoCsrfToken) NEQ 0>
         <cfset VARIABLES.percursoAlert={type="danger",message="A sessao do formulario expirou. Recarregue a pagina."}/>
+    <cfelseif FORM.acao EQ "alterar_proprietario">
+        <cfif NOT VARIABLES.percursoIsSystemAdmin>
+            <cfset VARIABLES.percursoAlert={type="danger",message="Somente ADMINs do sistema podem alterar o proprietario de um percurso."}/>
+        <cfelse>
+            <cfset VARIABLES.ownerRouteId = isDefined("FORM.id_percurso") AND isNumeric(FORM.id_percurso) ? val(FORM.id_percurso) : 0/>
+            <cfset VARIABLES.ownerUserId = isDefined("FORM.id_usuario_criador") AND isNumeric(FORM.id_usuario_criador) ? val(FORM.id_usuario_criador) : 0/>
+            <cfquery name="qPercursoOwnerChangeCheck">
+                SELECT percurso.id_percurso,
+                       percurso.id_usuario_criador AS id_usuario_anterior,
+                       usuario.id AS id_usuario_novo
+                FROM tb_percursos percurso
+                LEFT JOIN tb_usuarios usuario
+                    ON usuario.id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.ownerUserId#"/>
+                WHERE percurso.id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.ownerRouteId#"/>
+                LIMIT 1
+            </cfquery>
+
+            <cfif VARIABLES.ownerRouteId LTE 0
+                OR VARIABLES.ownerUserId LTE 0
+                OR NOT qPercursoOwnerChangeCheck.recordcount
+                OR NOT len(qPercursoOwnerChangeCheck.id_usuario_novo & "")>
+                <cfset VARIABLES.percursoAlert={type="danger",message="Selecione um usuario valido para receber o percurso."}/>
+            <cfelseif val(qPercursoOwnerChangeCheck.id_usuario_anterior) EQ VARIABLES.ownerUserId>
+                <cfset VARIABLES.percursoAlert={type="warning",message="O usuario selecionado ja e o proprietario deste percurso."}/>
+            <cfelse>
+                <cftransaction>
+                    <cfquery>
+                        UPDATE tb_percursos
+                        SET id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.ownerUserId#"/>,
+                            atualizado_em = now()
+                        WHERE id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.ownerRouteId#"/>
+                    </cfquery>
+                    <cfset percursoAudit(VARIABLES.ownerRouteId, 0, "alterar_proprietario", {
+                        id_usuario_anterior = val(qPercursoOwnerChangeCheck.id_usuario_anterior),
+                        id_usuario_novo = VARIABLES.ownerUserId
+                    })/>
+                </cftransaction>
+                <cflocation addtoken="false" url="./?id=#VARIABLES.ownerRouteId#&sucesso=proprietario"/>
+            </cfif>
+        </cfif>
+    <cfelseif listFindNoCase("vincular_evento,desvincular_evento", FORM.acao)>
+        <cfset VARIABLES.eventLinkRouteId = isDefined("FORM.id_percurso") AND isNumeric(FORM.id_percurso) ? val(FORM.id_percurso) : 0/>
+        <cfset VARIABLES.eventLinkEventId = isDefined("FORM.id_evento") AND isNumeric(FORM.id_evento) ? val(FORM.id_evento) : 0/>
+        <cfset VARIABLES.eventLinkEventRouteId = isDefined("FORM.id_evento_percurso") AND isNumeric(FORM.id_evento_percurso) ? val(FORM.id_evento_percurso) : 0/>
+
+        <cfif NOT VARIABLES.percursoEventLinksReady>
+            <cfset VARIABLES.percursoAlert={type="danger",message="A estrutura de vinculos entre eventos e percursos ainda nao foi aplicada no banco."}/>
+        <cfelseif VARIABLES.eventLinkRouteId LTE 0 OR VARIABLES.eventLinkEventId LTE 0>
+            <cfset VARIABLES.percursoAlert={type="danger",message="Percurso ou evento invalido para o vinculo."}/>
+        <cfelse>
+            <cfquery name="qPercursoEventLinkRouteCheck">
+                SELECT percurso.id_percurso,
+                       percurso.id_usuario_criador
+                FROM tb_percursos percurso
+                WHERE percurso.id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventLinkRouteId#"/>
+                <cfif NOT VARIABLES.percursoIsSystemAdmin>
+                    AND (
+                        percurso.id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                        OR percurso.id_conta_responsavel IN (
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoWriteAccountIds#" list="true"/>
+                        )
+                    )
+                </cfif>
+                LIMIT 1
+            </cfquery>
+
+            <cfif NOT qPercursoEventLinkRouteCheck.recordcount>
+                <cfset VARIABLES.percursoAlert={type="danger",message="Percurso nao encontrado ou sem permissao para gerenciar seus eventos."}/>
+            <cfelseif FORM.acao EQ "vincular_evento">
+                <cfquery name="qPercursoEventLinkEventCheck">
+                    SELECT evento.id_evento
+                    FROM tb_evento_corridas evento
+                    WHERE evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventId#"/>
+                    <cfif NOT VARIABLES.percursoIsSystemAdmin>
+                        AND EXISTS (
+                            SELECT 1
+                            FROM tb_conta_eventos conta_evento
+                            INNER JOIN tb_contas conta
+                                ON conta.id_conta = conta_evento.id_conta
+                               AND conta.status = 'ATIVA'::status_conta
+                            WHERE conta_evento.id_evento = evento.id_evento
+                              AND conta_evento.id_conta IN (
+                                  <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoWriteAccountIds#" list="true"/>
+                              )
+                              AND conta_evento.status = 'ATIVO'::status_conta_evento
+                        )
+                    </cfif>
+                    LIMIT 1
+                </cfquery>
+
+                <cfif NOT qPercursoEventLinkEventCheck.recordcount>
+                    <cfset VARIABLES.percursoAlert={type="danger",message="Evento nao encontrado ou indisponivel para operacao nesta conta."}/>
+                <cfelse>
+                    <cfquery name="qPercursoEventLinkExists">
+                        SELECT id_evento_percurso_gpx
+                        FROM tb_evento_percursos_gpx
+                        WHERE id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventLinkRouteId#"/>
+                          AND id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventId#"/>
+                        LIMIT 1
+                    </cfquery>
+                    <cfif qPercursoEventLinkExists.recordcount>
+                        <cfset VARIABLES.percursoAlert={type="warning",message="Este evento ja esta vinculado ao percurso."}/>
+                    <cfelse>
+                        <cftransaction>
+                            <cfquery>
+                                INSERT INTO tb_evento_percursos_gpx
+                                    (id_evento, id_percurso, id_usuario_criador)
+                                VALUES (
+                                    <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventId#"/>,
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventLinkRouteId#"/>,
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                                )
+                            </cfquery>
+                            <cfset percursoAudit(VARIABLES.eventLinkRouteId, 0, "vincular_evento", {
+                                id_evento = VARIABLES.eventLinkEventId
+                            })/>
+                        </cftransaction>
+                        <cflocation addtoken="false" url="./?id=#VARIABLES.eventLinkRouteId#&sucesso=evento_vinculado"/>
+                    </cfif>
+                </cfif>
+            <cfelse>
+                <cfquery name="qPercursoEventLinkExists">
+                    SELECT id_evento_percurso_gpx
+                    FROM tb_evento_percursos_gpx
+                    WHERE id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventLinkRouteId#"/>
+                      AND id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventId#"/>
+                      <cfif VARIABLES.percursoEventRouteColumnReady>
+                          <cfif VARIABLES.eventLinkEventRouteId GT 0>
+                              AND id_evento_percurso = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventRouteId#"/>
+                          <cfelse>
+                              AND id_evento_percurso IS NULL
+                          </cfif>
+                      </cfif>
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qPercursoEventLinkExists.recordcount>
+                    <cfset VARIABLES.percursoAlert={type="warning",message="O evento informado nao esta vinculado a este percurso."}/>
+                <cfelse>
+                    <cftransaction>
+                        <cfquery>
+                            DELETE FROM tb_evento_percursos_gpx
+                            WHERE id_evento_percurso_gpx = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPercursoEventLinkExists.id_evento_percurso_gpx#"/>
+                        </cfquery>
+                        <cfif VARIABLES.percursoStravaMigrationReady AND VARIABLES.eventLinkEventRouteId GT 0>
+                            <cfquery>
+                                UPDATE tb_percurso_migracoes_strava
+                                SET status = 'revisao',
+                                    mensagem = 'O vinculo com a modalidade foi removido manualmente no repositorio de percursos.',
+                                    id_usuario_ultima_acao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>,
+                                    data_atualizacao = now(),
+                                    data_conclusao = NULL
+                                WHERE id_evento_percurso = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventLinkEventRouteId#"/>
+                            </cfquery>
+                        </cfif>
+                        <cfset percursoAudit(VARIABLES.eventLinkRouteId, 0, "desvincular_evento", {
+                            id_evento = VARIABLES.eventLinkEventId,
+                            id_evento_percurso = VARIABLES.eventLinkEventRouteId
+                        })/>
+                    </cftransaction>
+                    <cflocation addtoken="false" url="./?id=#VARIABLES.eventLinkRouteId#&sucesso=evento_desvinculado"/>
+                </cfif>
+            </cfif>
+        </cfif>
     <cfelseif NOT VARIABLES.percursoCanWrite>
         <cfset VARIABLES.percursoAlert={type="danger",message="Sua conta nao possui permissao para alterar percursos."}/>
     <cfelseif listFindNoCase("criar,adicionar_versao", FORM.acao)>
@@ -182,22 +386,200 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
     <cfif VARIABLES.percursoSelectedId GT 0>
         <cfquery name="qPercurso">
             SELECT * FROM tb_percursos WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/>
-            <cfif NOT VARIABLES.percursoIsAdmin>AND (id_usuario_criador=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/> OR id_conta_responsavel IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>) OR visibilidade IN ('compartilhado','publico'))</cfif>
+            <cfif NOT VARIABLES.percursoCanViewAll>
+                AND (
+                    id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                    OR id_conta_responsavel IN (
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>
+                    )
+                    <cfif VARIABLES.percursoEventLinksReady>
+                        OR EXISTS (
+                            SELECT 1
+                            FROM tb_evento_percursos_gpx evento_percurso
+                            INNER JOIN tb_conta_eventos conta_evento
+                                ON conta_evento.id_evento = evento_percurso.id_evento
+                               AND conta_evento.status = 'ATIVO'::status_conta_evento
+                            INNER JOIN tb_contas conta
+                                ON conta.id_conta = conta_evento.id_conta
+                               AND conta.status = 'ATIVA'::status_conta
+                            WHERE evento_percurso.id_percurso = tb_percursos.id_percurso
+                              AND conta_evento.id_conta IN (
+                                  <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>
+                              )
+                        )
+                    </cfif>
+                )
+            </cfif>
         </cfquery>
         <cfif qPercurso.recordcount>
             <cfset VARIABLES.percursoIsOwner = val(qPercurso.id_usuario_criador) EQ VARIABLES.percursoActorId/>
+            <cfset VARIABLES.percursoRouteUsesWritableAccount = len(qPercurso.id_conta_responsavel & "")
+                AND VARIABLES.percursoWriteAccountIds NEQ "0"
+                AND listFind(VARIABLES.percursoWriteAccountIds, qPercurso.id_conta_responsavel)/>
+            <cfset VARIABLES.percursoCanManageEventLinks = VARIABLES.percursoIsSystemAdmin
+                OR VARIABLES.percursoIsOwner
+                OR VARIABLES.percursoRouteUsesWritableAccount/>
+            <cfset VARIABLES.percursoCanLinkEvents = VARIABLES.percursoIsSystemAdmin
+                OR (VARIABLES.percursoCanManageEventLinks
+                    AND VARIABLES.percursoWriteAccountIds NEQ "0")/>
+            <cfquery name="qPercursoOwner">
+                SELECT id, name, email
+                FROM tb_usuarios
+                WHERE id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPercurso.id_usuario_criador#"/>
+                LIMIT 1
+            </cfquery>
+            <cfif VARIABLES.percursoIsSystemAdmin>
+                <cfif len(trim(URL.owner_busca)) GTE 2 OR (isNumeric(trim(URL.owner_busca)) AND val(URL.owner_busca) GT 0)>
+                    <cfset VARIABLES.ownerSearchTerm = trim(URL.owner_busca)/>
+                    <cfquery name="qPercursoOwnerSearch">
+                        SELECT usr.id, usr.name, usr.email
+                        FROM tb_usuarios usr
+                        WHERE usr.id::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.ownerSearchTerm#"/>
+                           OR unaccent(coalesce(usr.name, '')) ILIKE unaccent(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.ownerSearchTerm#%"/>)
+                           OR coalesce(usr.email, '') ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.ownerSearchTerm#%"/>
+                        ORDER BY CASE WHEN usr.id::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.ownerSearchTerm#"/> THEN 0 ELSE 1 END,
+                                 usr.name,
+                                 usr.id
+                        LIMIT 20
+                    </cfquery>
+                </cfif>
+            </cfif>
+            <cfif VARIABLES.percursoEventLinksReady>
+                <cfquery name="qPercursoEventos">
+                    SELECT evento_percurso.id_evento_percurso_gpx,
+                           evento.id_evento,
+                           <cfif VARIABLES.percursoEventRouteColumnReady>
+                               evento_percurso.id_evento_percurso,
+                               modalidade.percurso_evento,
+                               modalidade.unidade_de_medida,
+                           <cfelse>
+                               NULL::integer AS id_evento_percurso,
+                               NULL::numeric AS percurso_evento,
+                               NULL::varchar AS unidade_de_medida,
+                           </cfif>
+                           evento.nome_evento,
+                           evento.tag,
+                           evento.data_inicial,
+                           evento.data_final,
+                           evento.cidade,
+                           evento.estado,
+                           coalesce((
+                               SELECT string_agg(DISTINCT conta.nome_conta, ', ' ORDER BY conta.nome_conta)
+                               FROM tb_conta_eventos conta_evento
+                               INNER JOIN tb_contas conta
+                                   ON conta.id_conta = conta_evento.id_conta
+                                  AND conta.status = 'ATIVA'::status_conta
+                               WHERE conta_evento.id_evento = evento.id_evento
+                                 AND conta_evento.status = 'ATIVO'::status_conta_evento
+                           ), '') AS contas
+                    FROM tb_evento_percursos_gpx evento_percurso
+                    INNER JOIN tb_evento_corridas evento
+                        ON evento.id_evento = evento_percurso.id_evento
+                    <cfif VARIABLES.percursoEventRouteColumnReady>
+                        LEFT JOIN tb_evento_corridas_percursos modalidade
+                            ON modalidade.id_evento_percurso = evento_percurso.id_evento_percurso
+                    </cfif>
+                    WHERE evento_percurso.id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/>
+                    ORDER BY evento.data_inicial DESC NULLS LAST,
+                             evento.nome_evento,
+                             evento.id_evento
+                </cfquery>
+
+                <cfif VARIABLES.percursoCanLinkEvents
+                    AND (len(trim(URL.evento_busca)) GTE 2 OR (isNumeric(trim(URL.evento_busca)) AND val(URL.evento_busca) GT 0))>
+                    <cfset VARIABLES.eventSearchTerm = trim(URL.evento_busca)/>
+                    <cfquery name="qPercursoEventSearch">
+                        SELECT evento.id_evento,
+                               evento.nome_evento,
+                               evento.tag,
+                               evento.data_inicial,
+                               evento.data_final,
+                               evento.cidade,
+                               evento.estado,
+                               coalesce((
+                                   SELECT string_agg(DISTINCT conta.nome_conta, ', ' ORDER BY conta.nome_conta)
+                                   FROM tb_conta_eventos conta_evento
+                                   INNER JOIN tb_contas conta
+                                       ON conta.id_conta = conta_evento.id_conta
+                                      AND conta.status = 'ATIVA'::status_conta
+                                   WHERE conta_evento.id_evento = evento.id_evento
+                                     AND conta_evento.status = 'ATIVO'::status_conta_evento
+                               ), '') AS contas
+                        FROM tb_evento_corridas evento
+                        WHERE NOT EXISTS (
+                              SELECT 1
+                              FROM tb_evento_percursos_gpx evento_percurso
+                              WHERE evento_percurso.id_evento = evento.id_evento
+                                AND evento_percurso.id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/>
+                          )
+                        <cfif NOT VARIABLES.percursoIsSystemAdmin>
+                          AND EXISTS (
+                              SELECT 1
+                              FROM tb_conta_eventos conta_evento
+                              INNER JOIN tb_contas conta
+                                  ON conta.id_conta = conta_evento.id_conta
+                                 AND conta.status = 'ATIVA'::status_conta
+                              WHERE conta_evento.id_evento = evento.id_evento
+                                AND conta_evento.id_conta IN (
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoWriteAccountIds#" list="true"/>
+                                )
+                                AND conta_evento.status = 'ATIVO'::status_conta_evento
+                          )
+                        </cfif>
+                          AND (
+                              evento.id_evento::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.eventSearchTerm#"/>
+                              OR unaccent(coalesce(evento.nome_evento, '')) ILIKE unaccent(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventSearchTerm#%"/>)
+                              OR unaccent(coalesce(evento.tag, '')) ILIKE unaccent(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventSearchTerm#%"/>)
+                              OR unaccent(coalesce(evento.cidade, '')) ILIKE unaccent(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventSearchTerm#%"/>)
+                          )
+                        ORDER BY CASE
+                                     WHEN evento.id_evento::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.eventSearchTerm#"/> THEN 0
+                                     ELSE 1
+                                 END,
+                                 evento.data_inicial DESC NULLS LAST,
+                                 evento.nome_evento,
+                                 evento.id_evento
+                        LIMIT 20
+                    </cfquery>
+                </cfif>
+            </cfif>
             <cfquery name="qPercursoArquivos">SELECT id_percurso_arquivo,versao,nome_original,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,ativo,criado_em FROM tb_percurso_arquivos WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/> ORDER BY versao DESC</cfquery>
-            <cfif VARIABLES.percursoIsOwner>
+            <cfif VARIABLES.percursoIsOwner OR VARIABLES.percursoIsSystemAdmin>
                 <cfquery name="qPercursoHistorico">SELECT hist.acao,hist.dados,hist.endereco_ip,hist.criado_em,usr.name AS usuario_nome FROM tb_percurso_historico hist LEFT JOIN tb_usuarios usr ON usr.id=hist.id_usuario WHERE hist.id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/> ORDER BY hist.criado_em DESC LIMIT 30</cfquery>
             </cfif>
         </cfif>
     </cfif>
-    <cfquery name="qPercursos">
-        SELECT p.*, latest.versao,latest.distancia_gpx_m,latest.quantidade_pontos FROM tb_percursos p LEFT JOIN LATERAL (SELECT versao,distancia_gpx_m,quantidade_pontos FROM tb_percurso_arquivos a WHERE a.id_percurso=p.id_percurso ORDER BY versao DESC LIMIT 1) latest ON true WHERE 1=1
-        <cfif NOT VARIABLES.percursoIsAdmin>AND (p.id_usuario_criador=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/> OR p.id_conta_responsavel IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>) OR p.visibilidade IN ('compartilhado','publico'))</cfif>
-        <cfif len(trim(URL.q))>AND (p.nome ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.q)#%"/> OR p.cidade ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.q)#%"/>)</cfif>
-        <cfif len(trim(URL.estado))>AND p.estado=<cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(trim(URL.estado))#"/></cfif>
-        <cfif listFindNoCase("rascunho,publicado,arquivado",URL.status)>AND p.status=<cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(URL.status)#"/></cfif>
-        ORDER BY p.atualizado_em DESC LIMIT 500
-    </cfquery>
+    <cfif VARIABLES.percursoSelectedId LTE 0>
+        <cfquery name="qPercursos">
+            SELECT p.*, latest.versao,latest.distancia_gpx_m,latest.quantidade_pontos FROM tb_percursos p LEFT JOIN LATERAL (SELECT versao,distancia_gpx_m,quantidade_pontos FROM tb_percurso_arquivos a WHERE a.id_percurso=p.id_percurso ORDER BY versao DESC LIMIT 1) latest ON true WHERE 1=1
+            <cfif NOT VARIABLES.percursoCanViewAll>
+                AND (
+                    p.id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                    OR p.id_conta_responsavel IN (
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>
+                    )
+                    <cfif VARIABLES.percursoEventLinksReady>
+                        OR EXISTS (
+                            SELECT 1
+                            FROM tb_evento_percursos_gpx evento_percurso
+                            INNER JOIN tb_conta_eventos conta_evento
+                                ON conta_evento.id_evento = evento_percurso.id_evento
+                               AND conta_evento.status = 'ATIVO'::status_conta_evento
+                            INNER JOIN tb_contas conta
+                                ON conta.id_conta = conta_evento.id_conta
+                               AND conta.status = 'ATIVA'::status_conta
+                            WHERE evento_percurso.id_percurso = p.id_percurso
+                              AND conta_evento.id_conta IN (
+                                  <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoAccountIds#" list="true"/>
+                              )
+                        )
+                    </cfif>
+                )
+            </cfif>
+            <cfif len(trim(URL.q))>AND (p.nome ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.q)#%"/> OR p.cidade ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.q)#%"/>)</cfif>
+            <cfif len(trim(URL.estado))>AND p.estado=<cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(trim(URL.estado))#"/></cfif>
+            <cfif listFindNoCase("rascunho,publicado,arquivado",URL.status)>AND p.status=<cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(URL.status)#"/></cfif>
+            ORDER BY p.atualizado_em DESC LIMIT 500
+        </cfquery>
+    </cfif>
 </cfif>

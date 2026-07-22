@@ -129,6 +129,7 @@
 <cfset VARIABLES.businessCanShowAgendaNavigation = false/>
 <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
 <cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
+<cfset VARIABLES.businessCanManageBrasilGiganteChallenge = false/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
@@ -158,6 +159,7 @@
     </cfif>
 
     <cfinclude template="../backend/catarinense_challenge_access.cfm"/>
+    <cfinclude template="../backend/brasil_gigante_challenge_access.cfm"/>
 
     <cfif VARIABLES.businessCanShowUserManagementNavigation
         AND isDefined("VARIABLES.businessAccountSimulationActive")
@@ -333,7 +335,9 @@
                 <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span></a>
         </li>
 
-        <cfif VARIABLES.businessCanShowAdminNavigation OR VARIABLES.businessCanShowAccountNavigation>
+        <cfif VARIABLES.businessCanShowAdminNavigation
+            OR VARIABLES.businessCanShowAccountNavigation
+            OR VARIABLES.businessCanShowUserManagementNavigation>
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/">
                     <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
@@ -380,7 +384,9 @@
 
         <!--- DESAFIOS --->
 
-        <cfif VARIABLES.businessCanShowAdminNavigation OR VARIABLES.businessCanManageCatarinenseChallenges>
+        <cfif VARIABLES.businessCanShowAdminNavigation
+            OR VARIABLES.businessCanManageCatarinenseChallenges
+            OR VARIABLES.businessCanManageBrasilGiganteChallenge>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
@@ -392,13 +398,22 @@
                     (ativo = true and data_fim+30 > current_date)
                     OR tag IN (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
                     )
                 )
                 <cfif NOT VARIABLES.businessCanShowAdminNavigation>
-                    AND tag IN (
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
+                    AND (
+                        1 = 0
+                        <cfif VARIABLES.businessCanManageCatarinenseChallenges>
+                            OR tag IN (
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
+                            )
+                        </cfif>
+                        <cfif VARIABLES.businessCanManageBrasilGiganteChallenge>
+                            OR tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
+                        </cfif>
                     )
                 </cfif>
                 order by data_inicio desc
@@ -422,7 +437,7 @@
                 </li>
             </cfoutput>
 
-            <cfif VARIABLES.businessCanShowAdminNavigation AND NOT VARIABLES.menuHasBrasilGiganteChallenge>
+            <cfif VARIABLES.businessCanManageBrasilGiganteChallenge AND NOT VARIABLES.menuHasBrasilGiganteChallenge>
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "circuitobrasilgigante">link-warning</cfif>" href="/desafios/circuitobrasilgigante/">
                         <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span>

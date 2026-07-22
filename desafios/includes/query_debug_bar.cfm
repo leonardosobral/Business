@@ -1,4 +1,7 @@
-<cfif structKeyExists(REQUEST, "desafiosQueryDebug") AND arrayLen(REQUEST.desafiosQueryDebug)>
+<cfif isDefined("VARIABLES.desafiosQueryDebugEnabled")
+    AND VARIABLES.desafiosQueryDebugEnabled
+    AND structKeyExists(REQUEST, "desafiosQueryDebug")
+    AND arrayLen(REQUEST.desafiosQueryDebug)>
     <cfset qDesafiosQueryDebug = queryNew("label,type,ms,rows", "varchar,varchar,integer,integer")/>
     <cfset VARIABLES.desafiosQueryTotalMs = 0/>
 
