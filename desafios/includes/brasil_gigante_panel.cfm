@@ -23,7 +23,8 @@
   }
 
   .cbg-dashboard-filter,
-  .cbg-dashboard-ranking {
+  .cbg-dashboard-ranking,
+  .cbg-validation-panel {
     border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 1rem;
     overflow: hidden;
@@ -71,6 +72,125 @@
     width: 36px;
   }
 
+  .cbg-dashboard-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .cbg-validation-card {
+    background: rgba(255, 255, 255, .035);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-left: 4px solid rgba(255, 255, 255, .15);
+    border-radius: .9rem;
+    transition: border-color .2s ease, transform .2s ease, background .2s ease;
+  }
+
+  .cbg-validation-card:hover {
+    background: rgba(255, 255, 255, .055);
+    transform: translateY(-1px);
+  }
+
+  .cbg-validation-card--pendente { border-left-color: #ffc107; }
+  .cbg-validation-card--aprovado { border-left-color: #20c997; }
+  .cbg-validation-card--desaprovado { border-left-color: #dc3545; }
+
+  .cbg-validation-filterbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: .75rem;
+    margin-bottom: 1rem;
+    border-radius: .8rem;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .07);
+  }
+
+  .cbg-validation-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 999px;
+    padding: .45rem .75rem;
+    color: inherit;
+    background: transparent;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+
+  .cbg-validation-filter.is-active {
+    color: #111;
+    background: #ffc107;
+    border-color: #ffc107;
+  }
+
+  .cbg-validation-status {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    border-radius: 999px;
+    padding: .42rem .7rem;
+    font-size: .72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .cbg-validation-status--pendente { color: #ffe69c; background: rgba(255, 193, 7, .13); }
+  .cbg-validation-status--aprovado { color: #75e6c0; background: rgba(32, 201, 151, .13); }
+  .cbg-validation-status--desaprovado { color: #ff9ca6; background: rgba(220, 53, 69, .14); }
+
+  .cbg-validation-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(110px, .55fr));
+    gap: .65rem;
+    margin: .9rem 0;
+  }
+
+  .cbg-validation-summary-item {
+    min-width: 0;
+    padding: .65rem .75rem;
+    border-radius: .65rem;
+    background: rgba(0, 0, 0, .14);
+  }
+
+  .cbg-validation-summary-label {
+    display: block;
+    margin-bottom: .15rem;
+    color: var(--mdb-secondary-color, rgba(255,255,255,.6));
+    font-size: .66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .cbg-validation-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+    gap: 1rem;
+    padding-top: .85rem;
+    border-top: 1px solid rgba(255, 255, 255, .07);
+  }
+
+  .cbg-validation-actions {
+    margin-top: 1rem;
+    padding-top: .85rem;
+    border-top: 1px solid rgba(255, 255, 255, .07);
+  }
+
+  @media (max-width: 767.98px) {
+    .cbg-validation-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cbg-validation-summary-item:first-child { grid-column: 1 / -1; }
+    .cbg-validation-detail-grid { grid-template-columns: 1fr; }
+  }
+
+  .cbg-validation-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+
   @media (max-width: 1199.98px) {
     .cbg-dashboard-stages {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -93,15 +213,26 @@
     <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
       <div>
         <div class="small text-uppercase text-muted fw-bold">Circuito de Maratonas</div>
-        <h1 class="h3 mb-1">Circuito Brasil Gigante</h1>
-        <p class="text-muted mb-0">Ranking por etapas reconhecidas nas oito maratonas oficiais, sem dependência de Strava ou pagamento, com controle de entrega da mandala.</p>
+        <h1 class="h3 mb-1"><cfif URL.tela EQ "validacoes">Validações documentais<cfelse>Participantes do Brasil Gigante</cfif></h1>
+        <p class="text-muted mb-0"><cfif URL.tela EQ "validacoes">Analise os comprovantes enviados pelos atletas e registre participações reconhecidas manualmente.<cfelse>Ranking por etapas reconhecidas nas oito maratonas oficiais, com controle de entrega da mandala.</cfif></p>
       </div>
-      <a class="btn btn-outline-success btn-sm" href="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
-        <i class="fa-solid fa-file-excel me-1"></i> Exportar lista filtrada
-      </a>
+      <div class="cbg-dashboard-navigation">
+        <a class="btn btn-sm <cfif URL.tela EQ 'participantes'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="/desafios/circuitobrasilgigante/">
+          <i class="fa-solid fa-users me-1"></i>Participantes
+        </a>
+        <a class="btn btn-sm <cfif URL.tela EQ 'validacoes'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="/desafios/circuitobrasilgigante/?tela=validacoes">
+          <i class="fa-solid fa-file-shield me-1"></i>Validações documentais
+        </a>
+        <cfif URL.tela EQ "participantes">
+          <a class="btn btn-outline-success btn-sm" href="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
+            <i class="fa-solid fa-file-excel me-1"></i>Exportar lista
+          </a>
+        </cfif>
+      </div>
     </div>
 
-    <div class="row g-2">
+    <cfif URL.tela EQ "participantes">
+      <div class="row g-2">
       <div class="col-6 col-lg">
         <div class="cbg-dashboard-metric p-3">
           <div class="cbg-dashboard-metric-value"><cfoutput>#numberFormat(VARIABLES.challengeCircuitMetrics.inscritos, "9")#</cfoutput></div>
@@ -138,8 +269,13 @@
           </div>
         </a>
       </div>
-    </div>
+      </div>
+    </cfif>
   </div>
+
+  <cfif URL.tela EQ "validacoes">
+    <cfinclude template="brasil_gigante_validacoes_panel.cfm"/>
+  <cfelse>
 
   <div class="card cbg-dashboard-filter mb-3">
     <div class="card-body p-3">
@@ -203,4 +339,5 @@
   </div>
 
   <cfinclude template="brasil_gigante_table.cfm"/>
+  </cfif>
 </section>

@@ -1,4 +1,9 @@
 <cfset VARIABLES.challengeTag = lcase(trim(URL.desafio))/>
+<cfparam name="URL.tela" default="participantes"/>
+<cfset URL.tela = lcase(trim(URL.tela))/>
+<cfif NOT listFindNoCase("participantes,validacoes", URL.tela)>
+    <cfset URL.tela = "participantes"/>
+</cfif>
 <cfparam name="VARIABLES.desafiosQueryDebugEnabled" default="false"/>
 <cfif VARIABLES.desafiosQueryDebugEnabled AND NOT structKeyExists(REQUEST, "desafiosQueryDebug")>
     <cfset REQUEST.desafiosQueryDebug = []/>
@@ -74,6 +79,13 @@
         <cfset SESSION.challengeMedalCsrf = lcase(hash(createUUID() & now() & CGI.REMOTE_ADDR, "SHA-256"))/>
     </cfif>
     <cfset VARIABLES.challengeMedalCsrf = SESSION.challengeMedalCsrf/>
+</cfif>
+
+<cfif VARIABLES.challengeIsBrasilGigante
+    AND (URL.tela EQ "validacoes"
+        OR (isDefined("FORM.challenge_action")
+            AND listFindNoCase("aprovar_validacao_documental,vincular_resultado_oficial,desaprovar_validacao_documental", FORM.challenge_action)))>
+    <cfinclude template="brasil_gigante_validacoes_backend.cfm"/>
 </cfif>
 
 <cfparam name="URL.genero" default=""/>
@@ -302,7 +314,8 @@
                 ON enrolled.id_usuario = res.id_usuario
             INNER JOIN circuit_events evt
                 ON evt.id_evento = res.id_evento
-            WHERE res.percurso = 42
+            WHERE res.percurso >= 42
+              AND res.percurso < 43
               AND res.id_usuario > 0
             GROUP BY res.id_usuario, evt.event_order, evt.id_agrega_evento
         ),

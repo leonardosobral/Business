@@ -7,6 +7,7 @@
      data-mdb-width="216">
 <style>
     .business-foco-review-pending-badge,
+    .business-cbg-validation-pending-badge,
     .business-status-attention-badge {
         background-color: #fab120;
         color: #1d1608;
@@ -130,6 +131,7 @@
 <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
 <cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
 <cfset VARIABLES.businessCanManageBrasilGiganteChallenge = false/>
+<cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
@@ -166,6 +168,28 @@
         AND VARIABLES.businessAccountSimulationActive>
         <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
     </cfif>
+</cfif>
+
+<cfif VARIABLES.businessCanManageBrasilGiganteChallenge>
+    <cftry>
+        <cfquery name="qBusinessCbgValidationPending">
+            SELECT count(*) AS total
+            FROM desafios des
+            CROSS JOIN LATERAL jsonb_array_elements(
+                CASE
+                    WHEN jsonb_typeof(des.body -> 'validacoes_documentais') = 'array'
+                        THEN des.body -> 'validacoes_documentais'
+                    ELSE '[]'::jsonb
+                END
+            ) AS validacao
+            WHERE des.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
+              AND coalesce(nullif(lower(trim(validacao ->> 'status_analise')), ''), 'pendente') = 'pendente'
+        </cfquery>
+        <cfset VARIABLES.businessCbgValidationPendingTotal = val(qBusinessCbgValidationPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
 </cfif>
 
 <cfif VARIABLES.businessCanShowAdminNavigation>
@@ -433,6 +457,9 @@
                 <li class="sidenav-item">
                     <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/">
                         <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#VARIABLES.challengeMenuTitle#</span>
+                        <cfif qDesafiosBusinessAtivos.tag EQ "circuitobrasilgigante" AND VARIABLES.businessCbgValidationPendingTotal GT 0>
+                            <span class="badge rounded-pill business-cbg-validation-pending-badge">#VARIABLES.businessCbgValidationPendingTotal#</span>
+                        </cfif>
                     </a>
                 </li>
             </cfoutput>
@@ -441,6 +468,9 @@
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "circuitobrasilgigante">link-warning</cfif>" href="/desafios/circuitobrasilgigante/">
                         <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span>
+                        <cfif VARIABLES.businessCbgValidationPendingTotal GT 0>
+                            <span class="badge rounded-pill business-cbg-validation-pending-badge"><cfoutput>#VARIABLES.businessCbgValidationPendingTotal#</cfoutput></span>
+                        </cfif>
                     </a>
                 </li>
             </cfif>

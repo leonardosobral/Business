@@ -2861,7 +2861,8 @@ create table tb_resultados
     pcd                     boolean default false                                                    not null,
     nome_full_text          tsvector,
     idade_range             int4range,
-    nome_normalizado        text
+    nome_normalizado        text,
+    origem_resultado        varchar(30) default 'oficial'::character varying not null
 );
 
 alter table tb_resultados
