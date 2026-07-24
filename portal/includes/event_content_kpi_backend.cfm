@@ -38,6 +38,7 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
 <cfparam name="URL.recorte" default="futuros"/>
 <cfparam name="URL.situacao" default="ativos"/>
 <cfparam name="URL.estado" default=""/>
+<cfparam name="URL.site" default=""/>
 <cfparam name="URL.falta" default="incompletos"/>
 <cfparam name="URL.busca" default=""/>
 
@@ -66,8 +67,10 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
     <cfset VARIABLES.eventContentKpiEstado = left(VARIABLES.eventContentKpiEstado, 2)/>
 </cfif>
 
+<cfset VARIABLES.eventContentKpiSite = lCase(trim(URL.site))/>
+
 <cfset VARIABLES.eventContentKpiMissingFilter = lCase(trim(URL.falta))/>
-<cfif NOT listFindNoCase("incompletos,todos,descricao,inscricao,categorias,organizador,local,endereco,imagem", VARIABLES.eventContentKpiMissingFilter)>
+<cfif NOT listFindNoCase("incompletos,todos,descricao,descricao_original,inscricao,categorias,organizador,local,endereco,imagem,precos,valor_inscricao", VARIABLES.eventContentKpiMissingFilter)>
     <cfset VARIABLES.eventContentKpiMissingFilter = "incompletos"/>
 </cfif>
 
@@ -81,19 +84,23 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
     proximos30 = 0,
     completudeMedia = 0,
     descricao = 0,
+    descricao_original = 0,
     inscricao = 0,
     categorias = 0,
     organizador = 0,
     local = 0,
     endereco = 0,
-    imagem = 0
+    imagem = 0,
+    precos = 0,
+    valor_inscricao = 0
 }/>
 <cfset VARIABLES.eventContentKpiAttackTotal = 0/>
 
-<cfset VARIABLES.eventContentKpiEventColumns = "id_evento,nome_evento,cidade,estado,tag,data_inicial,data_final,status_evento,ativo,url_inscricao,url_hotsite,organizador_label,has_descricao,has_inscricao,has_categorias,has_organizador,has_local,has_endereco,has_imagem,required_count,missing_count,completude,faltando,dias_ate_evento"/>
+<cfset VARIABLES.eventContentKpiEventColumns = "id_evento,nome_evento,cidade,estado,tag,data_inicial,data_final,status_evento,ativo,url_inscricao,url_hotsite,site_label,organizador_label,has_descricao,has_descricao_original,has_inscricao,has_categorias,has_organizador,has_local,has_endereco,has_imagem,has_precos,has_valor_inscricao,required_count,missing_count,completude,faltando,dias_ate_evento"/>
 
 <cfset qEventContentKpiYears = queryNew("ano")/>
 <cfset qEventContentKpiStates = queryNew("estado")/>
+<cfset qEventContentKpiSites = queryNew("site")/>
 <cfset qEventContentKpiEvents = queryNew(VARIABLES.eventContentKpiEventColumns)/>
 <cfset qEventContentKpiAttack = queryNew(VARIABLES.eventContentKpiEventColumns)/>
 <cfset qEventContentKpiFields = queryNew("campo,total_ok,total_missing,percentual")/>
@@ -110,11 +117,31 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
 <cfset VARIABLES.eventContentKpiTablesList = ValueList(qEventContentKpiTables.table_name)/>
 <cfset VARIABLES.eventContentKpiTablesReady = ListFindNoCase(VARIABLES.eventContentKpiTablesList, "tb_evento_corridas")/>
 <cfset VARIABLES.eventContentKpiHasFornecedorTable = ListFindNoCase(VARIABLES.eventContentKpiTablesList, "tb_evento_corridas_fornecedores")/>
+<cfset VARIABLES.eventContentKpiColumns = ""/>
+<cfset VARIABLES.eventContentKpiHasDescricaoOriginal = false/>
+<cfset VARIABLES.eventContentKpiHasPrecos = false/>
+<cfset VARIABLES.eventContentKpiHasValorInscricao = false/>
 
 <cfif VARIABLES.eventContentKpiTablesReady
     AND isDefined("qPerfil")
     AND qPerfil.recordcount
     AND qPerfil.is_admin>
+
+    <cfquery name="qEventContentKpiColumns">
+        SELECT DISTINCT column_name
+        FROM information_schema.columns
+        WHERE table_name = 'tb_evento_corridas'
+          AND table_schema IN (current_schema(), 'public')
+    </cfquery>
+
+    <cfset VARIABLES.eventContentKpiColumns = ValueList(qEventContentKpiColumns.column_name)/>
+    <cfset VARIABLES.eventContentKpiHasDescricaoOriginal = ListFindNoCase(VARIABLES.eventContentKpiColumns, "descricao_original") GT 0/>
+    <cfset VARIABLES.eventContentKpiHasPrecos = ListFindNoCase(VARIABLES.eventContentKpiColumns, "precos") GT 0/>
+    <cfset VARIABLES.eventContentKpiHasValorInscricao = ListFindNoCase(VARIABLES.eventContentKpiColumns, "valor_inscricao") GT 0/>
+    <cfset VARIABLES.eventContentKpiRequiredFields = VARIABLES.eventContentKpiRequiredFields
+        + (VARIABLES.eventContentKpiHasDescricaoOriginal ? 1 : 0)
+        + (VARIABLES.eventContentKpiHasPrecos ? 1 : 0)
+        + (VARIABLES.eventContentKpiHasValorInscricao ? 1 : 0)/>
 
     <cfquery name="qEventContentKpiYears">
         SELECT DISTINCT extract(year from data_inicial)::integer AS ano
@@ -133,6 +160,67 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         ORDER BY estado
     </cfquery>
 
+    <cfquery name="qEventContentKpiSites">
+        WITH enriched AS (
+            SELECT
+                lower(
+                    replace(
+                        replace(
+                            replace(
+                                substring(coalesce(nullif(trim(evt.url_inscricao), ''), nullif(trim(evt.url_hotsite), ''), '') from '(?:.*://)?(?:www\.)?([^/?]*)'),
+                                '.com.br',
+                                ''
+                            ),
+                            '.com',
+                            ''
+                        ),
+                        'site.',
+                        ''
+                    )
+                ) AS site_label
+            FROM tb_evento_corridas evt
+            <cfif VARIABLES.eventContentKpiHasFornecedorTable>
+                LEFT JOIN LATERAL (
+                    SELECT count(*)::integer AS total_organizadores
+                    FROM tb_evento_corridas_fornecedores forn
+                    WHERE forn.id_evento = evt.id_evento
+                      AND forn.id_fornecedor_tipo = 1
+                ) org ON true
+            <cfelse>
+                LEFT JOIN LATERAL (
+                    SELECT 0::integer AS total_organizadores
+                ) org ON true
+            </cfif>
+            WHERE evt.data_inicial BETWEEN <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.eventContentKpiStartDate#"/>
+                AND <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.eventContentKpiEndDate#"/>
+            <cfif VARIABLES.eventContentKpiRecorte EQ "futuros">
+              AND evt.data_final >= current_date
+            <cfelseif VARIABLES.eventContentKpiRecorte EQ "passados">
+              AND evt.data_final < current_date
+            </cfif>
+            <cfif VARIABLES.eventContentKpiSituacao EQ "ativos">
+              AND evt.ativo = true
+            <cfelseif VARIABLES.eventContentKpiSituacao EQ "inativos">
+              AND evt.ativo = false
+            </cfif>
+            <cfif len(VARIABLES.eventContentKpiEstado)>
+              AND evt.estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.eventContentKpiEstado#"/>
+            </cfif>
+            <cfif len(VARIABLES.eventContentKpiSearch)>
+              AND (
+                  evt.nome_evento ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventContentKpiSearch#%"/>
+                  OR evt.tag ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventContentKpiSearch#%"/>
+                  OR evt.cidade ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventContentKpiSearch#%"/>
+                  OR evt.organizador ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.eventContentKpiSearch#%"/>
+              )
+            </cfif>
+        )
+        SELECT DISTINCT site_label AS site
+        FROM enriched
+        WHERE trim(coalesce(site_label, '')) <> ''
+        ORDER BY site_label
+    </cfquery>
+
     <cfquery name="qEventContentKpiEvents">
         WITH enriched AS (
             SELECT
@@ -147,12 +235,32 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
                 evt.ativo,
                 coalesce(evt.url_inscricao, '') AS url_inscricao,
                 coalesce(evt.url_hotsite, '') AS url_hotsite,
+                lower(
+                    replace(
+                        replace(
+                            replace(
+                                substring(coalesce(nullif(trim(evt.url_inscricao), ''), nullif(trim(evt.url_hotsite), ''), '') from '(?:.*://)?(?:www\.)?([^/?]*)'),
+                                '.com.br',
+                                ''
+                            ),
+                            '.com',
+                            ''
+                        ),
+                        'site.',
+                        ''
+                    )
+                ) AS site_label,
                 CASE
                     WHEN length(trim(coalesce(evt.organizador, ''))) > 0 THEN evt.organizador
                     WHEN coalesce(org.total_organizadores, 0) > 0 THEN coalesce(org.total_organizadores, 0)::varchar || ' fornecedor(es)'
                     ELSE ''
                 END AS organizador_label,
                 CASE WHEN length(trim(coalesce(evt.descricao, ''))) > 0 THEN 1 ELSE 0 END AS has_descricao,
+                <cfif VARIABLES.eventContentKpiHasDescricaoOriginal>
+                CASE WHEN length(trim(coalesce(evt.descricao_original, ''))) > 0 THEN 1 ELSE 0 END AS has_descricao_original,
+                <cfelse>
+                0 AS has_descricao_original,
+                </cfif>
                 CASE WHEN length(trim(coalesce(evt.url_inscricao, ''))) > 0 THEN 1 ELSE 0 END AS has_inscricao,
                 CASE WHEN length(trim(coalesce(evt.categorias, ''))) > 0 THEN 1 ELSE 0 END AS has_categorias,
                 CASE WHEN length(trim(coalesce(evt.organizador, ''))) > 0 OR coalesce(org.total_organizadores, 0) > 0 THEN 1 ELSE 0 END AS has_organizador,
@@ -163,7 +271,17 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
                     WHEN length(trim(coalesce(evt.url_imagem, ''))) > 0 THEN 1
                     WHEN length(trim(coalesce(evt.url_imagem_listagem, ''))) > 0 THEN 1
                     ELSE 0
-                END AS has_imagem
+                END AS has_imagem,
+                <cfif VARIABLES.eventContentKpiHasPrecos>
+                CASE WHEN length(trim(coalesce(evt.precos::text, ''))) > 0 THEN 1 ELSE 0 END AS has_precos,
+                <cfelse>
+                0 AS has_precos,
+                </cfif>
+                <cfif VARIABLES.eventContentKpiHasValorInscricao>
+                CASE WHEN nullif(trim(coalesce(evt.valor_inscricao::text, '')), '') IS NOT NULL THEN 1 ELSE 0 END AS has_valor_inscricao
+                <cfelse>
+                0 AS has_valor_inscricao
+                </cfif>
             FROM tb_evento_corridas evt
             <cfif VARIABLES.eventContentKpiHasFornecedorTable>
                 LEFT JOIN LATERAL (
@@ -204,23 +322,30 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         scored AS (
             SELECT
                 enriched.*,
-                (has_descricao + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem)::integer AS required_count,
-                (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventContentKpiRequiredFields#"/> - (has_descricao + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem))::integer AS missing_count,
-                round(((has_descricao + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem)::numeric * 100) / <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventContentKpiRequiredFields#"/>, 1) AS completude,
+                (has_descricao + has_descricao_original + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem + has_precos + has_valor_inscricao)::integer AS required_count,
+                (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventContentKpiRequiredFields#"/> - (has_descricao + has_descricao_original + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem + has_precos + has_valor_inscricao))::integer AS missing_count,
+                round(((has_descricao + has_descricao_original + has_inscricao + has_categorias + has_organizador + has_local + has_endereco + has_imagem + has_precos + has_valor_inscricao)::numeric * 100) / <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.eventContentKpiRequiredFields#"/>, 1) AS completude,
                 concat_ws(', ',
                     CASE WHEN has_descricao = 0 THEN 'Descricao' END,
+                    CASE WHEN has_descricao_original = 0 <cfif NOT VARIABLES.eventContentKpiHasDescricaoOriginal>AND 1 = 0</cfif> THEN 'Descricao original' END,
                     CASE WHEN has_inscricao = 0 THEN 'Link inscricao' END,
                     CASE WHEN has_categorias = 0 THEN 'Categorias' END,
                     CASE WHEN has_organizador = 0 THEN 'Organizador' END,
                     CASE WHEN has_local = 0 THEN 'Local' END,
                     CASE WHEN has_endereco = 0 THEN 'Endereco' END,
-                    CASE WHEN has_imagem = 0 THEN 'Imagem' END
+                    CASE WHEN has_imagem = 0 THEN 'Imagem' END,
+                    CASE WHEN has_precos = 0 <cfif NOT VARIABLES.eventContentKpiHasPrecos>AND 1 = 0</cfif> THEN 'Precos' END,
+                    CASE WHEN has_valor_inscricao = 0 <cfif NOT VARIABLES.eventContentKpiHasValorInscricao>AND 1 = 0</cfif> THEN 'Valor inscricao' END
                 ) AS faltando,
                 (data_inicial - current_date)::integer AS dias_ate_evento
             FROM enriched
         )
         SELECT *
         FROM scored
+        WHERE 1 = 1
+        <cfif len(VARIABLES.eventContentKpiSite)>
+          AND site_label = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.eventContentKpiSite#"/>
+        </cfif>
         ORDER BY data_inicial ASC, missing_count DESC, nome_evento
         LIMIT 5000
     </cfquery>
@@ -236,12 +361,15 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         rowDate = qEventContentKpiEvents.data_inicial[rowIndex];
 
         VARIABLES.eventContentKpiStats.descricao = VARIABLES.eventContentKpiStats.descricao + val(qEventContentKpiEvents.has_descricao[rowIndex]);
+        VARIABLES.eventContentKpiStats.descricao_original = VARIABLES.eventContentKpiStats.descricao_original + val(qEventContentKpiEvents.has_descricao_original[rowIndex]);
         VARIABLES.eventContentKpiStats.inscricao = VARIABLES.eventContentKpiStats.inscricao + val(qEventContentKpiEvents.has_inscricao[rowIndex]);
         VARIABLES.eventContentKpiStats.categorias = VARIABLES.eventContentKpiStats.categorias + val(qEventContentKpiEvents.has_categorias[rowIndex]);
         VARIABLES.eventContentKpiStats.organizador = VARIABLES.eventContentKpiStats.organizador + val(qEventContentKpiEvents.has_organizador[rowIndex]);
         VARIABLES.eventContentKpiStats.local = VARIABLES.eventContentKpiStats.local + val(qEventContentKpiEvents.has_local[rowIndex]);
         VARIABLES.eventContentKpiStats.endereco = VARIABLES.eventContentKpiStats.endereco + val(qEventContentKpiEvents.has_endereco[rowIndex]);
         VARIABLES.eventContentKpiStats.imagem = VARIABLES.eventContentKpiStats.imagem + val(qEventContentKpiEvents.has_imagem[rowIndex]);
+        VARIABLES.eventContentKpiStats.precos = VARIABLES.eventContentKpiStats.precos + val(qEventContentKpiEvents.has_precos[rowIndex]);
+        VARIABLES.eventContentKpiStats.valor_inscricao = VARIABLES.eventContentKpiStats.valor_inscricao + val(qEventContentKpiEvents.has_valor_inscricao[rowIndex]);
 
         if (rowMissing EQ 0) {
             VARIABLES.eventContentKpiStats.completos = VARIABLES.eventContentKpiStats.completos + 1;
@@ -292,12 +420,15 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
     if (VARIABLES.eventContentKpiStats.total GT 0) {
         VARIABLES.eventContentKpiStats.completudeMedia = (
             VARIABLES.eventContentKpiStats.descricao
+            + VARIABLES.eventContentKpiStats.descricao_original
             + VARIABLES.eventContentKpiStats.inscricao
             + VARIABLES.eventContentKpiStats.categorias
             + VARIABLES.eventContentKpiStats.organizador
             + VARIABLES.eventContentKpiStats.local
             + VARIABLES.eventContentKpiStats.endereco
             + VARIABLES.eventContentKpiStats.imagem
+            + VARIABLES.eventContentKpiStats.precos
+            + VARIABLES.eventContentKpiStats.valor_inscricao
         ) * 100 / (VARIABLES.eventContentKpiStats.total * VARIABLES.eventContentKpiRequiredFields);
     }
 
@@ -310,6 +441,18 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         {campo = "Endereco", ok = VARIABLES.eventContentKpiStats.endereco},
         {campo = "Imagem", ok = VARIABLES.eventContentKpiStats.imagem}
     ];
+
+    if (VARIABLES.eventContentKpiHasDescricaoOriginal) {
+        arrayAppend(VARIABLES.eventContentKpiFieldRows, {campo = "Descricao original", ok = VARIABLES.eventContentKpiStats.descricao_original});
+    }
+
+    if (VARIABLES.eventContentKpiHasPrecos) {
+        arrayAppend(VARIABLES.eventContentKpiFieldRows, {campo = "Precos", ok = VARIABLES.eventContentKpiStats.precos});
+    }
+
+    if (VARIABLES.eventContentKpiHasValorInscricao) {
+        arrayAppend(VARIABLES.eventContentKpiFieldRows, {campo = "Valor inscricao", ok = VARIABLES.eventContentKpiStats.valor_inscricao});
+    }
 
     for (fieldIndex = 1; fieldIndex <= arrayLen(VARIABLES.eventContentKpiFieldRows); fieldIndex = fieldIndex + 1) {
         fieldRow = VARIABLES.eventContentKpiFieldRows[fieldIndex];
@@ -342,6 +485,7 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         querySetCell(qEventContentKpiByMonth, "incompletos", monthItem.incompletos);
         querySetCell(qEventContentKpiByMonth, "completude_media", eventContentKpiPercent(monthItem.required, monthItem.total * VARIABLES.eventContentKpiRequiredFields));
     }
+
     </cfscript>
 
     <cfquery name="qEventContentKpiAttackAll" dbtype="query">
@@ -352,6 +496,8 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
             AND missing_count > 0
         <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "descricao">
             AND has_descricao = 0
+        <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "descricao_original">
+            AND has_descricao_original = 0
         <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "inscricao">
             AND has_inscricao = 0
         <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "categorias">
@@ -364,6 +510,10 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
             AND has_endereco = 0
         <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "imagem">
             AND has_imagem = 0
+        <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "precos">
+            AND has_precos = 0
+        <cfelseif VARIABLES.eventContentKpiMissingFilter EQ "valor_inscricao">
+            AND has_valor_inscricao = 0
         </cfif>
         ORDER BY data_inicial ASC, missing_count DESC, nome_evento
     </cfquery>

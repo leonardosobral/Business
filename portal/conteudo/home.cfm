@@ -62,7 +62,7 @@
           <div class="d-flex flex-column flex-xl-row justify-content-between gap-3">
             <div>
               <h3 class="mb-1">Portal - Conteudo das provas</h3>
-              <p class="text-muted mb-0">KPIs de completude para saber quais provas precisam de conteudo, inscricao, categorias, organizador e dados basicos.</p>
+              <p class="text-muted mb-0">KPIs de completude para saber quais provas precisam de conteudo, descricao original, inscricao, categorias, organizador, precificacao e dados basicos.</p>
             </div>
             <div class="text-xl-end">
               <div class="small text-muted">Ano monitorado</div>
@@ -125,13 +125,32 @@
                   <select class="form-select" name="falta">
                     <option value="incompletos"<cfif VARIABLES.eventContentKpiMissingFilter EQ "incompletos"> selected</cfif>>Qualquer campo</option>
                     <option value="descricao"<cfif VARIABLES.eventContentKpiMissingFilter EQ "descricao"> selected</cfif>>Descricao</option>
+                    <cfif VARIABLES.eventContentKpiHasDescricaoOriginal>
+                      <option value="descricao_original"<cfif VARIABLES.eventContentKpiMissingFilter EQ "descricao_original"> selected</cfif>>Descricao original</option>
+                    </cfif>
                     <option value="inscricao"<cfif VARIABLES.eventContentKpiMissingFilter EQ "inscricao"> selected</cfif>>Link inscricao</option>
                     <option value="categorias"<cfif VARIABLES.eventContentKpiMissingFilter EQ "categorias"> selected</cfif>>Categorias</option>
                     <option value="organizador"<cfif VARIABLES.eventContentKpiMissingFilter EQ "organizador"> selected</cfif>>Organizador</option>
                     <option value="local"<cfif VARIABLES.eventContentKpiMissingFilter EQ "local"> selected</cfif>>Local</option>
                     <option value="endereco"<cfif VARIABLES.eventContentKpiMissingFilter EQ "endereco"> selected</cfif>>Endereco</option>
                     <option value="imagem"<cfif VARIABLES.eventContentKpiMissingFilter EQ "imagem"> selected</cfif>>Imagem</option>
+                    <cfif VARIABLES.eventContentKpiHasPrecos>
+                      <option value="precos"<cfif VARIABLES.eventContentKpiMissingFilter EQ "precos"> selected</cfif>>Precos</option>
+                    </cfif>
+                    <cfif VARIABLES.eventContentKpiHasValorInscricao>
+                      <option value="valor_inscricao"<cfif VARIABLES.eventContentKpiMissingFilter EQ "valor_inscricao"> selected</cfif>>Valor inscricao</option>
+                    </cfif>
                     <option value="todos"<cfif VARIABLES.eventContentKpiMissingFilter EQ "todos"> selected</cfif>>Todas as provas</option>
+                  </select>
+                </div>
+
+                <div class="col-md-2">
+                  <label class="form-label">Site</label>
+                  <select class="form-select" name="site">
+                    <option value="">Todos</option>
+                    <cfoutput query="qEventContentKpiSites">
+                      <option value="#htmlEditFormat(qEventContentKpiSites.site)#"<cfif VARIABLES.eventContentKpiSite EQ qEventContentKpiSites.site> selected</cfif>>#htmlEditFormat(qEventContentKpiSites.site)#</option>
+                    </cfoutput>
                   </select>
                 </div>
 
