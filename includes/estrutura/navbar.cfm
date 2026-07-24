@@ -22,6 +22,20 @@
     min-width: 0;
   }
 
+  .business-navbar-maintenance-indicator {
+    color: rgba(255, 255, 255, .62);
+    cursor: default;
+    position: relative;
+  }
+
+  .business-navbar-maintenance-indicator:hover {
+    color: rgba(255, 255, 255, .62);
+  }
+
+  .business-navbar-maintenance-indicator.is-clear {
+    opacity: .28;
+  }
+
   .business-navbar-account-context {
     align-items: center;
     display: flex;
@@ -130,6 +144,18 @@
 
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">
+            <cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+                <li class="nav-item d-flex">
+                    <span class="nav-link me-3 me-lg-0 hidden-arrow business-navbar-maintenance-indicator<cfif VARIABLES.businessPendingTasksTotal EQ 0> is-clear</cfif>"
+                          title="Tarefas pendentes de serviço e manutenção"
+                          aria-label="<cfoutput>#VARIABLES.businessPendingTasksTotal# tarefa<cfif VARIABLES.businessPendingTasksTotal NEQ 1>s</cfif> pendente<cfif VARIABLES.businessPendingTasksTotal NEQ 1>s</cfif> de serviço e manutenção</cfoutput>">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <cfif VARIABLES.businessPendingTasksTotal GT 0>
+                            <span class="badge rounded-pill badge-notification bg-danger"><cfoutput>#VARIABLES.businessPendingTasksTotal#</cfoutput></span>
+                        </cfif>
+                    </span>
+                </li>
+            </cfif>
             <!-- Notification dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications"

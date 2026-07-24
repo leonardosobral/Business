@@ -18,7 +18,7 @@
 <cfset VARIABLES.contentStatusFilter = lCase(trim(URL.status))/>
 <cfset VARIABLES.contentFeaturedFilter = lCase(trim(URL.destaque))/>
 
-<cfif NOT listFindNoCase("todos,publicados,ocultos", VARIABLES.contentStatusFilter)>
+<cfif NOT listFindNoCase("todos,publicados,ocultos,pendentes,rejeitados", VARIABLES.contentStatusFilter)>
     <cfset VARIABLES.contentStatusFilter = "todos"/>
 </cfif>
 <cfif NOT listFindNoCase("todos,sim,nao", VARIABLES.contentFeaturedFilter)>
@@ -74,6 +74,54 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
     : "''";
 </cfscript>
 
+<cfif isDefined("FORM.content_bulk_action")
+    AND FORM.content_bulk_action EQ "apply_status"
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin
+    AND isDefined("FORM.content_ids")
+    AND isDefined("FORM.bulk_status")>
+
+    <cfset VARIABLES.contentBulkStatus = lCase(trim(FORM.bulk_status & ""))/>
+    <cfset VARIABLES.contentBulkIds = []/>
+
+    <cfloop list="#FORM.content_ids#" index="contentBulkId">
+        <cfif isNumeric(contentBulkId) AND int(contentBulkId) GT 0>
+            <cfset arrayAppend(VARIABLES.contentBulkIds, int(contentBulkId))/>
+        </cfif>
+    </cfloop>
+
+    <cfif arrayLen(VARIABLES.contentBulkIds)
+        AND listFindNoCase("published,review,rejected,draft", VARIABLES.contentBulkStatus)>
+
+        <cfset VARIABLES.contentBulkPublished = VARIABLES.contentBulkStatus EQ "published"/>
+
+        <cfquery>
+            UPDATE news.tb_content
+            SET published = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentBulkPublished#"/>,
+                <cfif VARIABLES.contentHasEditorialStatus>
+                    editorial_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.contentBulkStatus#"/>,
+                </cfif>
+                <cfif VARIABLES.contentHasPublishedAt AND VARIABLES.contentBulkPublished>
+                    published_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
+                </cfif>
+                <cfif VARIABLES.contentHasIsFeatured AND NOT VARIABLES.contentBulkPublished>
+                    is_featured = false,
+                </cfif>
+                <cfif VARIABLES.contentHasUpdatedAt>
+                    updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                <cfelse>
+                    id = id
+                </cfif>
+            WHERE id IN (
+                <cfqueryparam cfsqltype="cf_sql_integer" value="#arrayToList(VARIABLES.contentBulkIds)#" list="true"/>
+            )
+        </cfquery>
+    </cfif>
+
+    <cflocation addtoken="false" url="./?pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#"/>
+</cfif>
+
 <cfif isDefined("URL.acao")
     AND isDefined("qPerfil")
     AND qPerfil.recordcount
@@ -89,6 +137,9 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
     <cfquery>
         UPDATE news.tb_content
         SET published = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentTogglePublished#"/>,
+            <cfif VARIABLES.contentHasPublishedAt AND VARIABLES.contentTogglePublished>
+                published_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
+            </cfif>
             <cfif VARIABLES.contentHasIsFeatured AND NOT VARIABLES.contentTogglePublished>
                 is_featured = false,
             </cfif>
@@ -102,6 +153,37 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
                         ELSE editorial_status
                     END,
                 </cfif>
+            </cfif>
+            <cfif VARIABLES.contentHasUpdatedAt>
+                updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+            <cfelse>
+                id = id
+            </cfif>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.content_id#"/>
+    </cfquery>
+
+    <cflocation addtoken="false" url="./?pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#"/>
+</cfif>
+
+<cfif isDefined("URL.acao")
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin
+    AND URL.acao EQ "editorial_status"
+    AND VARIABLES.contentHasEditorialStatus
+    AND isDefined("URL.content_id")
+    AND isNumeric(URL.content_id)
+    AND isDefined("URL.editorial_status")
+    AND listFindNoCase("review,rejected", trim(URL.editorial_status))>
+
+    <cfset VARIABLES.contentEditorialStatus = lCase(trim(URL.editorial_status))/>
+
+    <cfquery>
+        UPDATE news.tb_content
+        SET published = false,
+            editorial_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.contentEditorialStatus#"/>,
+            <cfif VARIABLES.contentHasIsFeatured>
+                is_featured = false,
             </cfif>
             <cfif VARIABLES.contentHasUpdatedAt>
                 updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
@@ -176,6 +258,20 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         AND cnt.published = true
       <cfelseif VARIABLES.contentStatusFilter EQ "ocultos">
         AND cnt.published = false
+      <cfelseif VARIABLES.contentStatusFilter EQ "pendentes">
+        AND cnt.published = false
+        <cfif VARIABLES.contentHasEditorialStatus>
+          AND lower(coalesce(cnt.editorial_status, '')) = 'review'
+        <cfelse>
+          AND 1 = 0
+        </cfif>
+      <cfelseif VARIABLES.contentStatusFilter EQ "rejeitados">
+        AND cnt.published = false
+        <cfif VARIABLES.contentHasEditorialStatus>
+          AND lower(coalesce(cnt.editorial_status, '')) = 'rejected'
+        <cfelse>
+          AND 1 = 0
+        </cfif>
       </cfif>
       <cfif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "sim">
         AND cnt.is_featured = true
@@ -239,6 +335,20 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         AND cnt.published = true
       <cfelseif VARIABLES.contentStatusFilter EQ "ocultos">
         AND cnt.published = false
+      <cfelseif VARIABLES.contentStatusFilter EQ "pendentes">
+        AND cnt.published = false
+        <cfif VARIABLES.contentHasEditorialStatus>
+          AND lower(coalesce(cnt.editorial_status, '')) = 'review'
+        <cfelse>
+          AND 1 = 0
+        </cfif>
+      <cfelseif VARIABLES.contentStatusFilter EQ "rejeitados">
+        AND cnt.published = false
+        <cfif VARIABLES.contentHasEditorialStatus>
+          AND lower(coalesce(cnt.editorial_status, '')) = 'rejected'
+        <cfelse>
+          AND 1 = 0
+        </cfif>
       </cfif>
       <cfif VARIABLES.contentHasIsFeatured AND VARIABLES.contentFeaturedFilter EQ "sim">
         AND cnt.is_featured = true

@@ -8,6 +8,7 @@
 <style>
     .business-foco-review-pending-badge,
     .business-cbg-validation-pending-badge,
+    .business-content-curation-pending-badge,
     .business-status-attention-badge {
         background-color: #fab120;
         color: #1d1608;
@@ -134,7 +135,9 @@
 <cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
 <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
 <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+<cfset VARIABLES.businessContentCurationPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
+<cfset VARIABLES.businessPendingTasksTotal = 0/>
 <cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
         <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
@@ -194,6 +197,19 @@
 
 <cfif VARIABLES.businessCanShowAdminNavigation>
     <cftry>
+        <cfquery name="qBusinessContentCurationPending">
+            SELECT count(*) AS total
+            FROM news.tb_content
+            WHERE published = false
+              AND lower(coalesce(editorial_status, '')) = 'review'
+        </cfquery>
+        <cfset VARIABLES.businessContentCurationPendingTotal = val(qBusinessContentCurationPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessContentCurationPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
         <cfquery name="qBusinessFocoReviewPending">
             SELECT count(*) AS total
             FROM tb_foco_event_match_state state
@@ -250,6 +266,15 @@
     </cftry>
 </cfif>
 
+<cfif VARIABLES.businessCanShowAdminNavigation>
+    <cfset VARIABLES.businessPendingTasksTotal =
+        val(VARIABLES.businessCbgValidationPendingTotal)
+        + val(VARIABLES.businessContentCurationPendingTotal)
+        + val(VARIABLES.businessFocoReviewPendingTotal)
+        + val(VARIABLES.businessAgregaReviewPendingTotal)
+        + val(VARIABLES.businessUptimeStatusAttentionTotal)/>
+</cfif>
+
 
 <a class="ripple d-flex justify-content-center business-sidenav-logo" href="/" aria-label="Road Runners Business">
     <!---<img id="MDB-logo" src="../assets/runnerhub_logo_negativo.png"--->
@@ -295,6 +320,9 @@
             <li class="sidenav-item">
                 <a class="sidenav-link ps-5 <cfif VARIABLES.template EQ "/portal/conteudos/">link-warning</cfif>" href="/portal/conteudos/">
                     <i class="fa-solid fa-file-lines fa-fw me-3"></i><span>Conteúdos</span>
+                    <cfif VARIABLES.businessContentCurationPendingTotal GT 0>
+                        <span class="badge rounded-pill business-content-curation-pending-badge"><cfoutput>#VARIABLES.businessContentCurationPendingTotal#</cfoutput></span>
+                    </cfif>
                 </a>
             </li>
 
