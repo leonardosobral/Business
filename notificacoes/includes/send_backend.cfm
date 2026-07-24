@@ -400,6 +400,95 @@
 <cfset VARIABLES.notificationSendPushNotifications = (isDefined("URL.envio_push_notifications") AND isNumeric(URL.envio_push_notifications)) ? int(URL.envio_push_notifications) : 0/>
 <cfset VARIABLES.notificationSendPushDeliveries = (isDefined("URL.envio_push_deliveries") AND isNumeric(URL.envio_push_deliveries)) ? int(URL.envio_push_deliveries) : 0/>
 <cfset VARIABLES.notificationSendPushSubscriptions = (isDefined("URL.envio_push_subscriptions") AND isNumeric(URL.envio_push_subscriptions)) ? int(URL.envio_push_subscriptions) : 0/>
+<cfset VARIABLES.notificationPushMetricsAvailable = false/>
+<cfset VARIABLES.notificationPushActiveDevices = 0/>
+<cfset VARIABLES.notificationPushEligibleUsers = 0/>
+<cfset VARIABLES.notificationPushQueued7d = 0/>
+<cfset VARIABLES.notificationPushAccepted7d = 0/>
+<cfset VARIABLES.notificationPushFailed7d = 0/>
+<cfset VARIABLES.notificationPushDisplayed7d = 0/>
+<cfset VARIABLES.notificationPushClicked7d = 0/>
+<cfset VARIABLES.notificationPushPendingNow = 0/>
+<cfset VARIABLES.notificationPushRetryNow = 0/>
+<cfset VARIABLES.notificationPushProcessingNow = 0/>
+
+<cftry>
+    <cfquery name="qNotificationPushMetrics">
+        SELECT
+            (SELECT count(*) FROM tb_push_subscription WHERE ativo = true) AS active_devices,
+            (SELECT count(DISTINCT id_usuario) FROM tb_push_subscription WHERE ativo = true) AS eligible_users,
+            count(*) FILTER (WHERE queue.created_at >= now() - interval '7 days') AS queued_7d,
+            count(*) FILTER (WHERE queue.created_at >= now() - interval '7 days' AND queue.status = 'accepted') AS accepted_7d,
+            count(*) FILTER (WHERE queue.created_at >= now() - interval '7 days' AND queue.status = 'failed') AS failed_7d,
+            count(*) FILTER (WHERE queue.status = 'pending') AS pending_now,
+            count(*) FILTER (WHERE queue.status = 'retry') AS retry_now,
+            count(*) FILTER (WHERE queue.status = 'processing') AS processing_now,
+            (
+                SELECT count(*)
+                FROM tb_push_notification_event evt
+                WHERE evt.event_at >= now() - interval '7 days' AND evt.event_type = 'displayed'
+            ) AS displayed_7d,
+            (
+                SELECT count(*)
+                FROM tb_push_notification_event evt
+                WHERE evt.event_at >= now() - interval '7 days' AND evt.event_type = 'clicked'
+            ) AS clicked_7d
+        FROM tb_push_delivery_queue queue
+    </cfquery>
+    <cfset VARIABLES.notificationPushMetricsAvailable = true/>
+    <cfset VARIABLES.notificationPushActiveDevices = val(qNotificationPushMetrics.active_devices)/>
+    <cfset VARIABLES.notificationPushEligibleUsers = val(qNotificationPushMetrics.eligible_users)/>
+    <cfset VARIABLES.notificationPushQueued7d = val(qNotificationPushMetrics.queued_7d)/>
+    <cfset VARIABLES.notificationPushAccepted7d = val(qNotificationPushMetrics.accepted_7d)/>
+    <cfset VARIABLES.notificationPushFailed7d = val(qNotificationPushMetrics.failed_7d)/>
+    <cfset VARIABLES.notificationPushDisplayed7d = val(qNotificationPushMetrics.displayed_7d)/>
+    <cfset VARIABLES.notificationPushClicked7d = val(qNotificationPushMetrics.clicked_7d)/>
+    <cfset VARIABLES.notificationPushPendingNow = val(qNotificationPushMetrics.pending_now)/>
+    <cfset VARIABLES.notificationPushRetryNow = val(qNotificationPushMetrics.retry_now)/>
+    <cfset VARIABLES.notificationPushProcessingNow = val(qNotificationPushMetrics.processing_now)/>
+    <cfquery name="qNotificationPushRecentFailures">
+        SELECT queue.id_push_delivery, queue.status, queue.attempts,
+               queue.last_http_status, queue.last_error, queue.updated_at,
+               sub.platform, sub.browser
+        FROM tb_push_delivery_queue queue
+        LEFT JOIN tb_push_subscription sub
+            ON sub.id_push_subscription = queue.id_push_subscription
+        WHERE queue.status IN ('retry', 'failed')
+        ORDER BY queue.updated_at DESC
+        LIMIT 10
+    </cfquery>
+    <cfquery name="qNotificationPushPlatformMetrics">
+        SELECT coalesce(nullif(sub.platform, ''), 'desconhecido') AS platform,
+               count(DISTINCT sub.id_push_subscription) FILTER (WHERE sub.ativo = true) AS active_devices,
+               count(DISTINCT queue.id_push_delivery) FILTER (
+                   WHERE queue.created_at >= now() - interval '7 days'
+               ) AS queued_7d,
+               count(DISTINCT queue.id_push_delivery) FILTER (
+                   WHERE queue.created_at >= now() - interval '7 days' AND queue.status = 'accepted'
+               ) AS accepted_7d,
+               count(evt.id_push_notification_event) FILTER (
+                   WHERE evt.event_at >= now() - interval '7 days' AND evt.event_type = 'displayed'
+               ) AS displayed_7d,
+               count(evt.id_push_notification_event) FILTER (
+                   WHERE evt.event_at >= now() - interval '7 days' AND evt.event_type = 'clicked'
+               ) AS clicked_7d,
+               avg(extract(epoch FROM (evt.event_at - queue.accepted_at))) FILTER (
+                   WHERE evt.event_type = 'clicked' AND queue.accepted_at IS NOT NULL
+               ) AS avg_click_seconds
+        FROM tb_push_subscription sub
+        LEFT JOIN tb_push_delivery_queue queue
+            ON queue.id_push_subscription = sub.id_push_subscription
+        LEFT JOIN tb_push_notification_event evt
+            ON evt.id_push_delivery = queue.id_push_delivery
+        GROUP BY coalesce(nullif(sub.platform, ''), 'desconhecido')
+        ORDER BY active_devices DESC, platform
+    </cfquery>
+    <cfcatch type="any">
+        <cfset VARIABLES.notificationPushMetricsAvailable = false/>
+        <cfset qNotificationPushPlatformMetrics = queryNew("platform,active_devices,queued_7d,accepted_7d,displayed_7d,clicked_7d,avg_click_seconds")/>
+        <cfset qNotificationPushRecentFailures = queryNew("id_push_delivery,status,attempts,last_http_status,last_error,updated_at,platform,browser")/>
+    </cfcatch>
+</cftry>
 
 <cfset VARIABLES.notificationSendRedirectUrl = "./?pagina=" & VARIABLES.notificationSendPage/>
 <cfif len(trim(VARIABLES.notificationSendTemplateId))><cfset VARIABLES.notificationSendRedirectUrl &= "&template_id=" & urlEncodedFormat(VARIABLES.notificationSendTemplateId)/></cfif>
@@ -503,6 +592,13 @@
                     FROM desafios des
                     WHERE des.id_usuario = usr.id
                 )
+            <cfelseif len(VARIABLES.notificationSendDesafio)>
+                AND EXISTS (
+                    SELECT 1
+                    FROM desafios des
+                    WHERE des.id_usuario = usr.id
+                      AND des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendDesafio#"/>
+                )
             </cfif>
             <cfif VARIABLES.notificationSendAssessoria EQ "true">
                 AND trim(coalesce(usr.assessoria, '')) <> ''
@@ -589,6 +685,13 @@
                 FROM desafios des
                 WHERE des.id_usuario = usr.id
             )
+        <cfelseif len(VARIABLES.notificationSendDesafio)>
+            AND EXISTS (
+                SELECT 1
+                FROM desafios des
+                WHERE des.id_usuario = usr.id
+                  AND des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendDesafio#"/>
+            )
         </cfif>
         <cfif VARIABLES.notificationSendAssessoria EQ "true">
             AND trim(coalesce(usr.assessoria, '')) <> ''
@@ -658,14 +761,12 @@
         <cfset VARIABLES.notificationSendDispatchPayload.data_expiracao = dateTimeFormat(VARIABLES.notificationSendExpirationDate, "yyyy-mm-dd HH:nn:ss")/>
     </cfif>
 
-    <cfif VARIABLES.notificationSendPublicationDate LTE now()>
-        <cfset VARIABLES.notificationSendDispatchPayload.options = {
-            sendPush = true,
-            pushCategory = "sistema",
-            pushUrgency = "normal",
-            pushTtlSeconds = 300
-        }/>
-    </cfif>
+    <cfset VARIABLES.notificationSendDispatchPayload.options = {
+        sendPush = true,
+        pushCategory = "sistema",
+        pushUrgency = "normal",
+        pushTtlSeconds = 300
+    }/>
 
     <cfset VARIABLES.notificationSendDispatchRawBody = serializeJSON(VARIABLES.notificationSendDispatchPayload)/>
     <cfset VARIABLES.notificationSendDispatchTimestamp = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")/>
@@ -728,10 +829,17 @@
                 AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.notificationsProcessed)
                 ? int(VARIABLES.notificationSendDispatchResponse.push_result.notificationsProcessed)
                 : 0/>
-            <cfset VARIABLES.notificationSendPushDeliveriesValue = structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "deliveriesAccepted")
-                AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
-                ? int(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
-                : 0/>
+            <cfset VARIABLES.notificationSendPushDeliveriesValue =
+                listFindNoCase("queued,delivery_retry,delivery_failed,worker_failed", VARIABLES.notificationSendPushStatusValue)
+                    AND structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "deliveriesQueued")
+                    AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesQueued)
+                ? int(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesQueued)
+                : (
+                    structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "deliveriesAccepted")
+                        AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
+                    ? int(VARIABLES.notificationSendDispatchResponse.push_result.deliveriesAccepted)
+                    : 0
+                )/>
             <cfset VARIABLES.notificationSendPushSubscriptionsValue = structKeyExists(VARIABLES.notificationSendDispatchResponse.push_result, "subscriptionsTargeted")
                 AND isNumeric(VARIABLES.notificationSendDispatchResponse.push_result.subscriptionsTargeted)
                 ? int(VARIABLES.notificationSendDispatchResponse.push_result.subscriptionsTargeted)
@@ -822,6 +930,13 @@
                     SELECT 1
                     FROM desafios des
                     WHERE des.id_usuario = usr.id
+                )
+            <cfelseif len(VARIABLES.notificationSendDesafio)>
+                AND EXISTS (
+                    SELECT 1
+                    FROM desafios des
+                    WHERE des.id_usuario = usr.id
+                      AND des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendDesafio#"/>
                 )
             </cfif>
             <cfif VARIABLES.notificationSendAssessoria EQ "true">
@@ -1235,6 +1350,15 @@
     <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=enviado&envio_total=#qNotificationSendInsert.recordcount##VARIABLES.notificationSendPushRedirectSuffix#"/>
 </cfif>
 
+<cfquery name="qNotificationSendChallenges">
+    SELECT des.desafio,
+           count(DISTINCT des.id_usuario) AS total_usuarios
+    FROM desafios des
+    WHERE trim(coalesce(des.desafio, '')) <> ''
+    GROUP BY des.desafio
+    ORDER BY upper(des.desafio)
+</cfquery>
+
 <cfquery name="qNotificationSendCountries">
     SELECT DISTINCT usr.pais,
            COALESCE(iso.nome_pais_br, iso.nome_pais, usr.pais) AS nome_pais
@@ -1302,6 +1426,13 @@
                 SELECT 1
                 FROM desafios des
                 WHERE des.id_usuario = usr.id
+            )
+        <cfelseif len(VARIABLES.notificationSendDesafio)>
+            AND EXISTS (
+                SELECT 1
+                FROM desafios des
+                WHERE des.id_usuario = usr.id
+                  AND des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendDesafio#"/>
             )
         </cfif>
         <cfif VARIABLES.notificationSendAssessoria EQ "true">
@@ -1404,6 +1535,13 @@
             SELECT 1
             FROM desafios des
             WHERE des.id_usuario = usr.id
+        )
+    <cfelseif len(VARIABLES.notificationSendDesafio)>
+        AND EXISTS (
+            SELECT 1
+            FROM desafios des
+            WHERE des.id_usuario = usr.id
+              AND des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.notificationSendDesafio#"/>
         )
     </cfif>
     <cfif VARIABLES.notificationSendAssessoria EQ "true">

@@ -1,4 +1,10 @@
 <cfinclude template="../includes/send_backend.cfm"/>
+<cfset VARIABLES.notificationSendView = lCase(trim(isDefined("URL.view") ? URL.view : "compose"))/>
+<cfif VARIABLES.notificationSendView EQ "recipients">
+  <cfset VARIABLES.notificationSendView = "compose"/>
+<cfelseif NOT listFindNoCase("compose,push", VARIABLES.notificationSendView)>
+  <cfset VARIABLES.notificationSendView = "compose"/>
+</cfif>
 
 <style>
   .notification-nav {
@@ -88,6 +94,53 @@
     border: 1px solid rgba(255,255,255,0.08);
     font-size: 0.82rem;
   }
+
+  .notification-send-workspace-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.4rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.025);
+  }
+
+  .notification-send-workspace-nav .btn {
+    flex: 1 1 190px;
+  }
+
+  .notification-user-search {
+    position: relative;
+  }
+
+  .notification-user-search-results {
+    position: absolute;
+    z-index: 1050;
+    top: calc(100% + 0.35rem);
+    right: 0;
+    left: 0;
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0.75rem;
+    background: #242424;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.35);
+  }
+
+  .notification-user-search-result {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: inherit;
+    text-align: left;
+    background: transparent;
+  }
+
+  .notification-user-search-result:hover,
+  .notification-user-search-result:focus {
+    background: rgba(245,196,81,0.12);
+  }
 </style>
 
 <cfset VARIABLES.notificationTemplateCurrentCampaign = ""/>
@@ -135,6 +188,83 @@
             <a class="btn btn-warning <cfif VARIABLES.template EQ "/notificacoes/envio/">active</cfif>" href="/notificacoes/envio/">Envio</a>
           </div>
 
+          <div class="notification-send-workspace-nav mb-4">
+            <cfoutput>
+              <a class="btn <cfif VARIABLES.notificationSendView EQ 'compose'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="#VARIABLES.notificationSendRedirectUrl#&view=compose">
+                <i class="fa-solid fa-paper-plane me-2"></i>Novo envio
+              </a>
+              <a class="btn <cfif VARIABLES.notificationSendView EQ 'push'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="#VARIABLES.notificationSendRedirectUrl#&view=push">
+                <i class="fa-solid fa-chart-line me-2"></i>Monitoramento Push
+                <cfif VARIABLES.notificationPushRetryNow GT 0 OR VARIABLES.notificationPushProcessingNow GT 0>
+                  <span class="badge text-bg-danger ms-1">#LSNumberFormat(VARIABLES.notificationPushRetryNow + VARIABLES.notificationPushProcessingNow)#</span>
+                </cfif>
+              </a>
+            </cfoutput>
+          </div>
+
+          <cfif VARIABLES.notificationSendView EQ "push">
+          <cfif VARIABLES.notificationPushMetricsAvailable>
+            <div class="row g-3 mb-4">
+              <div class="col-6 col-lg"><div class="notification-send-field-card"><div class="small text-muted">Dispositivos ativos</div><div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushActiveDevices)#</cfoutput></div></div></div>
+              <div class="col-6 col-lg"><div class="notification-send-field-card"><div class="small text-muted">Usuários alcançáveis</div><div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushEligibleUsers)#</cfoutput></div></div></div>
+              <div class="col-6 col-lg"><div class="notification-send-field-card"><div class="small text-muted">Fila em 7 dias</div><div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushQueued7d)#</cfoutput></div></div></div>
+              <div class="col-6 col-lg"><div class="notification-send-field-card"><div class="small text-muted">Aceitas em 7 dias</div><div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushAccepted7d)#</cfoutput></div></div></div>
+              <div class="col-6 col-lg"><div class="notification-send-field-card"><div class="small text-muted">Exibidas / cliques</div><div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushDisplayed7d)# / #LSNumberFormat(VARIABLES.notificationPushClicked7d)#</cfoutput></div><div class="small text-muted"><cfoutput>#LSNumberFormat(VARIABLES.notificationPushFailed7d)# falhas definitivas</cfoutput></div></div></div>
+            </div>
+            <cfif VARIABLES.notificationPushPendingNow GT 0 OR VARIABLES.notificationPushRetryNow GT 0 OR VARIABLES.notificationPushProcessingNow GT 0>
+              <div class="alert alert-warning py-2">
+                <cfoutput>
+                  Fila atual: #LSNumberFormat(VARIABLES.notificationPushPendingNow)# pendente(s),
+                  #LSNumberFormat(VARIABLES.notificationPushRetryNow)# aguardando nova tentativa e
+                  #LSNumberFormat(VARIABLES.notificationPushProcessingNow)# em processamento.
+                </cfoutput>
+              </div>
+            </cfif>
+            <cfif qNotificationPushPlatformMetrics.recordcount>
+              <div class="table-responsive mb-4">
+                <table class="table table-sm align-middle mb-0">
+                  <thead><tr><th>Plataforma</th><th>Dispositivos</th><th>Fila 7d</th><th>Aceitas</th><th>Exibidas</th><th>Cliques</th><th>Tempo médio até clique</th></tr></thead>
+                  <tbody>
+                    <cfoutput query="qNotificationPushPlatformMetrics">
+                      <tr>
+                        <td class="text-capitalize">#htmlEditFormat(platform)#</td>
+                        <td>#LSNumberFormat(active_devices)#</td>
+                        <td>#LSNumberFormat(queued_7d)#</td>
+                        <td>#LSNumberFormat(accepted_7d)#</td>
+                        <td>#LSNumberFormat(displayed_7d)#</td>
+                        <td>#LSNumberFormat(clicked_7d)#</td>
+                        <td><cfif val(avg_click_seconds) GT 0>#LSNumberFormat(avg_click_seconds / 60, "9.9")# min<cfelse>—</cfif></td>
+                      </tr>
+                    </cfoutput>
+                  </tbody>
+                </table>
+              </div>
+            </cfif>
+            <cfif qNotificationPushRecentFailures.recordcount>
+              <div class="table-responsive mb-4">
+                <table class="table table-sm align-middle mb-0">
+                  <thead><tr><th>Entrega</th><th>Status</th><th>Dispositivo</th><th>HTTP</th><th>Tentativas</th><th>Último erro</th><th>Atualização</th></tr></thead>
+                  <tbody>
+                    <cfoutput query="qNotificationPushRecentFailures">
+                      <tr>
+                        <td>##<span>#LSNumberFormat(id_push_delivery)#</span></td>
+                        <td><span class="badge text-bg-#status EQ 'retry' ? 'warning' : 'danger'#">#htmlEditFormat(status)#</span></td>
+                        <td>#htmlEditFormat(platform)# / #htmlEditFormat(browser)#</td>
+                        <td><cfif val(last_http_status) GT 0>#int(last_http_status)#<cfelse>—</cfif></td>
+                        <td>#LSNumberFormat(attempts)#</td>
+                        <td class="small">#htmlEditFormat(left(last_error & "", 300))#</td>
+                        <td class="small">#dateTimeFormat(updated_at, "dd/mm/yyyy HH:nn:ss")#</td>
+                      </tr>
+                    </cfoutput>
+                  </tbody>
+                </table>
+              </div>
+            </cfif>
+          <cfelse>
+            <div class="alert alert-secondary">As métricas de Push ainda não estão disponíveis neste ambiente.</div>
+          </cfif>
+          </cfif>
+
           <cfif VARIABLES.notificationSendStatus EQ "enviado">
             <div class="alert alert-success">
               <cfoutput>#LSNumberFormat(VARIABLES.notificationSendTotalSent)#</cfoutput> notificações foram materializadas com sucesso pela API central.
@@ -149,6 +279,45 @@
                 <cfoutput>
                   Push aceito para #LSNumberFormat(VARIABLES.notificationSendPushNotifications)# notificações, com #LSNumberFormat(VARIABLES.notificationSendPushDeliveries)# entrega(s) aceita(s) em #LSNumberFormat(VARIABLES.notificationSendPushSubscriptions)# subscription(s).
                 </cfoutput>
+              </div>
+            <cfelseif VARIABLES.notificationSendPushStatus EQ "queued">
+              <div class="alert alert-info">
+                <cfoutput>
+                  #LSNumberFormat(VARIABLES.notificationSendPushDeliveries)# entrega(s) Push foram enfileiradas para processamento assíncrono em #LSNumberFormat(VARIABLES.notificationSendPushSubscriptions)# dispositivo(s).
+                </cfoutput>
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+                <cfif len(trim(VARIABLES.notificationSendPushDetail))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                </cfif>
+              </div>
+            <cfelseif VARIABLES.notificationSendPushStatus EQ "delivery_retry">
+              <div class="alert alert-warning">
+                O serviço Push não aceitou a entrega nesta tentativa. Ela permanece na fila para uma nova tentativa.
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+              </div>
+            <cfelseif VARIABLES.notificationSendPushStatus EQ "delivery_failed">
+              <div class="alert alert-danger">
+                O worker processou a fila, mas nenhuma entrega foi aceita pelo serviço Push.
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+                <cfif len(trim(VARIABLES.notificationSendPushDetail))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                </cfif>
+              </div>
+            <cfelseif VARIABLES.notificationSendPushStatus EQ "worker_failed">
+              <div class="alert alert-danger">
+                A entrega foi enfileirada, mas o worker de Push falhou antes de confirmar o envio.
+                <cfif len(trim(VARIABLES.notificationSendPushMessage))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                </cfif>
+                <cfif len(trim(VARIABLES.notificationSendPushDetail))>
+                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "no_active_subscriptions">
               <div class="alert alert-secondary">
@@ -221,9 +390,11 @@
             </div>
           </cfif>
 
+          <cfif VARIABLES.notificationSendView EQ "compose">
           <div class="notification-send-card p-4 mb-4">
             <form method="get" action="./">
               <input type="hidden" name="pagina" value="<cfoutput>#VARIABLES.notificationSendPage#</cfoutput>"/>
+              <input type="hidden" name="view" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendView)#</cfoutput>"/>
 
               <div class="row notification-send-grid">
                 <div class="col-12 col-xl-4">
@@ -242,10 +413,17 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-xl-2">
+                <div class="col-12">
                   <div class="notification-send-field-card">
-                    <label class="form-label">ID do Usuário</label>
-                    <input class="form-control" type="number" name="user_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput>" step="1" inputmode="numeric"/>
+                    <label class="form-label">Usuário específico</label>
+                    <div class="notification-user-search">
+                      <input class="form-control" type="search" id="notification_user_search"
+                        value="<cfif len(trim(VARIABLES.notificationSendUserId))><cfoutput>ID #htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput></cfif>"
+                        placeholder="Nome, ID ou e-mail" autocomplete="off"/>
+                      <input type="hidden" id="notification_user_id" name="user_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput>"/>
+                      <div class="notification-user-search-results d-none" id="notification_user_search_results"></div>
+                    </div>
+                    <div class="form-text">Selecione um resultado para limitar o envio.</div>
                   </div>
                 </div>
 
@@ -297,8 +475,9 @@
                     <label class="form-label">Inscrito em desafio</label>
                     <select class="form-select" name="desafio">
                       <option value="" <cfif VARIABLES.notificationSendDesafio EQ "">selected</cfif>>Todos</option>
-                      <option value="true" <cfif VARIABLES.notificationSendDesafio EQ "true">selected</cfif>>Sim</option>
-                      <option value="false" <cfif VARIABLES.notificationSendDesafio EQ "false">selected</cfif>>Não</option>
+                      <cfoutput query="qNotificationSendChallenges">
+                        <option value="#htmlEditFormat(desafio)#" <cfif VARIABLES.notificationSendDesafio EQ desafio>selected</cfif>>#htmlEditFormat(desafio)# (#LSNumberFormat(total_usuarios)#)</option>
+                      </cfoutput>
                     </select>
                   </div>
                 </div>
@@ -395,12 +574,14 @@
               </div>
 
               <div class="d-flex flex-wrap gap-2 justify-content-end mt-4">
-                <a class="btn btn-outline-secondary" href="/notificacoes/envio/">Limpar filtros</a>
+                <a class="btn btn-outline-secondary" href="/notificacoes/envio/?view=<cfoutput>#urlEncodedFormat(VARIABLES.notificationSendView)#</cfoutput>">Limpar filtros</a>
                 <button type="submit" class="btn btn-warning">Atualizar lista</button>
               </div>
             </form>
           </div>
+          </cfif>
 
+          <cfif VARIABLES.notificationSendView EQ "compose">
           <cfif len(trim(VARIABLES.notificationSendTemplateId)) OR len(trim(VARIABLES.notificationSendUserId)) OR len(trim(VARIABLES.notificationSendAdmin)) OR len(trim(VARIABLES.notificationSendStrava)) OR len(trim(VARIABLES.notificationSendDesafio)) OR len(trim(VARIABLES.notificationSendAssessoria)) OR len(trim(VARIABLES.notificationSendDev)) OR len(trim(VARIABLES.notificationSendPartner)) OR len(trim(VARIABLES.notificationSendGenero)) OR len(trim(VARIABLES.notificationSendCBAT)) OR len(trim(VARIABLES.notificationSendPais)) OR len(trim(VARIABLES.notificationSendEstado)) OR len(trim(VARIABLES.notificationSendVerificado))>
             <div class="d-flex flex-wrap gap-2 mb-4">
               <cfif len(trim(VARIABLES.notificationSendTemplateId))><span class="notification-send-filter-chip">Template: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendTemplateId)#</cfoutput></span></cfif>
@@ -418,8 +599,11 @@
               <cfif len(trim(VARIABLES.notificationSendVerificado))><span class="notification-send-filter-chip">Verificado: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendVerificado)#</cfoutput></span></cfif>
             </div>
           </cfif>
+          </cfif>
 
+          <cfif VARIABLES.notificationSendView EQ "compose">
           <div class="row g-4">
+            <cfif VARIABLES.notificationSendView EQ "compose">
             <div class="col-12 col-xl-4">
               <div class="notification-send-template-card p-4 h-100">
                 <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
@@ -466,7 +650,11 @@
                       <input type="hidden" name="notification_send_dias_expiracao" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDiasExpiracao)#</cfoutput>"/>
 
                       <div class="small text-muted mb-3">Destinatários atuais: <cfoutput>#LSNumberFormat(qNotificationSendRecipientsCount.total)#</cfoutput></div>
-                      <button type="submit" class="btn btn-warning w-100" onclick="return confirm('Confirma o envio desta notificação para os destinatários filtrados?');">Enviar notificação</button>
+                      <button type="submit" class="btn btn-warning w-100"
+                        <cfif val(qNotificationSendRecipientsCount.total) LTE 0>disabled</cfif>
+                        onclick="return confirm('Confirma o envio do template <cfoutput>#jsStringFormat(VARIABLES.notificationSendTemplateId)#</cfoutput> para <cfoutput>#int(qNotificationSendRecipientsCount.total)#</cfoutput> destinatário(s)? Esta ação materializará as notificações imediatamente.');">
+                        <i class="fa-solid fa-paper-plane me-2"></i>Enviar para <cfoutput>#LSNumberFormat(qNotificationSendRecipientsCount.total)#</cfoutput> destinatário(s)
+                      </button>
                     </form>
                   </div>
                 <cfelse>
@@ -474,7 +662,9 @@
                 </cfif>
               </div>
             </div>
+            </cfif>
 
+            <cfif VARIABLES.notificationSendView EQ "compose">
             <div class="col-12 col-xl-8">
               <div class="notification-send-preview-card p-4 h-100">
                 <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
@@ -549,10 +739,168 @@
                 </div>
               </div>
             </div>
+            </cfif>
           </div>
+          </cfif>
 
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('notification_user_search');
+    const userIdInput = document.getElementById('notification_user_id');
+    const resultsBox = document.getElementById('notification_user_search_results');
+
+    if (!searchInput || !userIdInput || !resultsBox) {
+      return;
+    }
+
+    let searchTimer = null;
+    let searchController = null;
+
+    function closeResults() {
+      resultsBox.classList.add('d-none');
+      resultsBox.replaceChildren();
+    }
+
+    function selectUser(user) {
+      userIdInput.value = String(user.id);
+      searchInput.value = `${user.name || 'Usuário'} — ID ${user.id}${user.email ? ` — ${user.email}` : ''}`;
+      searchInput.dataset.selectedLabel = searchInput.value;
+      closeResults();
+    }
+
+    function renderResults(users) {
+      resultsBox.replaceChildren();
+
+      if (!users.length) {
+        const emptyState = document.createElement('div');
+        emptyState.className = 'small text-muted p-3';
+        emptyState.textContent = 'Nenhum usuário encontrado.';
+        resultsBox.appendChild(emptyState);
+      } else {
+        users.forEach(function (user) {
+          const button = document.createElement('button');
+          const name = document.createElement('span');
+          const detail = document.createElement('span');
+
+          button.type = 'button';
+          button.className = 'notification-user-search-result';
+          name.className = 'd-block fw-semibold';
+          detail.className = 'd-block small text-muted';
+          name.textContent = user.name || 'Usuário sem nome';
+          detail.textContent = `ID ${user.id}${user.email ? ` — ${user.email}` : ''}`;
+          button.append(name, detail);
+          button.addEventListener('click', function () {
+            selectUser(user);
+          });
+          resultsBox.appendChild(button);
+        });
+      }
+
+      resultsBox.classList.remove('d-none');
+    }
+
+    function renderSearchMessage(message, isError) {
+      const state = document.createElement('div');
+      resultsBox.replaceChildren();
+      state.className = `small p-3 ${isError ? 'text-danger' : 'text-muted'}`;
+      state.textContent = message;
+      resultsBox.appendChild(state);
+      resultsBox.classList.remove('d-none');
+    }
+
+    searchInput.addEventListener('input', function () {
+      const term = searchInput.value.trim();
+
+      if (searchInput.dataset.selectedLabel !== searchInput.value) {
+        userIdInput.value = '';
+      }
+
+      window.clearTimeout(searchTimer);
+      if (searchController) {
+        searchController.abort();
+      }
+
+      if (!term) {
+        delete searchInput.dataset.selectedLabel;
+        closeResults();
+        return;
+      }
+
+      if (term.length < 2 && !/^\d+$/.test(term)) {
+        closeResults();
+        return;
+      }
+
+      searchTimer = window.setTimeout(async function () {
+        searchController = new AbortController();
+        renderSearchMessage('Buscando usuários…', false);
+        try {
+          const response = await fetch(`/notificacoes/envio/user-search.cfm?q=${encodeURIComponent(term)}`, {
+            headers: {'Accept': 'application/json'},
+            credentials: 'same-origin',
+            signal: searchController.signal
+          });
+          const responseText = await response.text();
+          if (!response.ok) {
+            throw new Error(`A busca respondeu HTTP ${response.status}.`);
+          }
+
+          let payload;
+          try {
+            payload = JSON.parse(responseText);
+          } catch (parseError) {
+            throw new Error('A busca não retornou uma resposta JSON válida.');
+          }
+
+          const requestSucceeded = payload && (payload.success === true || payload.SUCCESS === true);
+          if (!requestSucceeded) {
+            throw new Error(
+              payload && (payload.message || payload.MESSAGE)
+                ? (payload.message || payload.MESSAGE)
+                : 'Não foi possível pesquisar usuários.'
+            );
+          }
+
+          const rawResults = Array.isArray(payload.results)
+            ? payload.results
+            : (Array.isArray(payload.RESULTS) ? payload.RESULTS : []);
+          const normalizedResults = rawResults.map(function (user) {
+            return {
+              id: user.id ?? user.ID,
+              name: user.name ?? user.NAME ?? '',
+              email: user.email ?? user.EMAIL ?? ''
+            };
+          }).filter(function (user) {
+            return user.id !== undefined && user.id !== null;
+          });
+
+          renderResults(normalizedResults);
+        } catch (error) {
+          if (error.name !== 'AbortError') {
+            renderSearchMessage(error.message || 'Não foi possível pesquisar usuários.', true);
+          }
+        }
+      }, 250);
+    });
+
+    searchInput.closest('form').addEventListener('submit', function (event) {
+      if (searchInput.value.trim() && !userIdInput.value) {
+        event.preventDefault();
+        window.alert('Selecione um usuário na lista de resultados ou limpe o campo de busca.');
+        searchInput.focus();
+      }
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.notification-user-search')) {
+        closeResults();
+      }
+    });
+  });
+</script>

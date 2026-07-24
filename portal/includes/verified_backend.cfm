@@ -4,6 +4,54 @@
 <cfparam name="URL.filter_desafio" default=""/>
 <cfparam name="URL.filter_produto" default=""/>
 <cfparam name="URL.filter_status" default="active"/>
+
+<cffunction name="verifiedDispatchWelcomeNotification" access="private" returntype="boolean" output="false">
+    <cfargument name="userId" type="numeric" required="true"/>
+    <cfset var dispatchConfig = structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch)
+        ? APPLICATION.notificationDispatch
+        : {url="https://roadrunners.run/api/notifications/integrations/dispatch.cfm", secret=hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"), timeoutSeconds=20}/>
+    <cfset var payload = {
+        origin = "business",
+        category = "verificados",
+        id_notifica_template = 13,
+        data_publicacao = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss"),
+        data_expiracao = dateTimeFormat(dateAdd("d", 30, now()), "yyyy-mm-dd HH:nn:ss"),
+        userIds = [int(arguments.userId)],
+        options = {
+            sendPush = true,
+            pushCategory = "sistema",
+            pushUrgency = "normal",
+            pushTtlSeconds = 86400
+        }
+    }/>
+    <cfset var rawBody = serializeJSON(payload)/>
+    <cfset var timestampHeader = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")/>
+    <cfset var signatureHeader = lCase(hmac(timestampHeader & "." & rawBody, dispatchConfig.secret, "HmacSHA256"))/>
+    <cfset var httpResult = {}/>
+    <cfset var responsePayload = {}/>
+    <cfset var timeoutSeconds = structKeyExists(dispatchConfig, "timeoutSeconds") AND val(dispatchConfig.timeoutSeconds) GT 0
+        ? int(dispatchConfig.timeoutSeconds)
+        : 20/>
+
+    <cftry>
+        <cfhttp url="#dispatchConfig.url#" method="post" result="httpResult" timeout="#timeoutSeconds#" throwOnError="false">
+            <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
+            <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#timestampHeader#"/>
+            <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#signatureHeader#"/>
+            <cfhttpparam type="body" value="#rawBody#"/>
+        </cfhttp>
+        <cfif structKeyExists(httpResult, "fileContent")
+            AND len(trim(toString(httpResult.fileContent)))
+            AND isJSON(toString(httpResult.fileContent))>
+            <cfset responsePayload = deserializeJSON(toString(httpResult.fileContent))/>
+        </cfif>
+        <cfreturn structKeyExists(responsePayload, "success") AND responsePayload.success/>
+        <cfcatch type="any">
+            <cfreturn false/>
+        </cfcatch>
+    </cftry>
+</cffunction>
+
 <cfset VARIABLES.verifiedPage = max(1, int(URL.pagina))/>
 <cfset VARIABLES.verifiedFilterLogic = lcase(trim(URL.filter_logic))/>
 <cfif NOT listFindNoCase("any,all", VARIABLES.verifiedFilterLogic)>
@@ -57,6 +105,8 @@
     <cfset VARIABLES.verifiedPageId = ""/>
     <cfset VARIABLES.verifiedPageIds = ""/>
     <cfset VARIABLES.verifiedStatus = false/>
+    <cfset VARIABLES.verifiedNotifyUserId = 0/>
+    <cfset VARIABLES.verifiedWasActive = false/>
 
     <cfif isDefined("FORM.verified_page_id")>
         <cfset VARIABLES.verifiedPageId = trim(FORM.verified_page_id)/>
@@ -87,11 +137,33 @@
             )
         </cfquery>
     <cfelseif len(VARIABLES.verifiedPageId) AND isNumeric(VARIABLES.verifiedPageId)>
+        <cfif FORM.verified_action EQ "salvar">
+            <cfquery name="qVerifiedNotificationTarget">
+                SELECT usr.id AS id_usuario,
+                       coalesce(pg.verificado, false) AS verificado
+                FROM tb_paginas pg
+                INNER JOIN tb_paginas_usuarios pgusr ON pgusr.id_pagina = pg.id_pagina
+                INNER JOIN tb_usuarios usr ON usr.id = pgusr.id_usuario
+                WHERE pg.id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedPageId#"/>
+                ORDER BY usr.id
+                LIMIT 1
+            </cfquery>
+            <cfif qVerifiedNotificationTarget.recordcount>
+                <cfset VARIABLES.verifiedNotifyUserId = int(qVerifiedNotificationTarget.id_usuario)/>
+                <cfset VARIABLES.verifiedWasActive = qVerifiedNotificationTarget.verificado/>
+            </cfif>
+        </cfif>
         <cfquery>
             UPDATE tb_paginas
             SET verificado = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.verifiedStatus#"/>
             WHERE id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedPageId#"/>
         </cfquery>
+        <cfif FORM.verified_action EQ "salvar"
+            AND VARIABLES.verifiedStatus
+            AND NOT VARIABLES.verifiedWasActive
+            AND VARIABLES.verifiedNotifyUserId GT 0>
+            <cfset verifiedDispatchWelcomeNotification(VARIABLES.verifiedNotifyUserId)/>
+        </cfif>
     </cfif>
 
     <cflocation addtoken="false" url="./?#VARIABLES.verifiedBaseQueryString#"/>

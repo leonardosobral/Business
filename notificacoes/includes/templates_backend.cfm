@@ -38,6 +38,15 @@
     AND qNotificationTemplateColumns.recordcount>
 
     <cfset VARIABLES.notificationTemplateSavedRecordId = ""/>
+    <!--- Conteúdo visual é editado como texto simples. A marcação final é
+          controlada pelo backend para evitar wrappers inseridos por editores WYSIWYG. --->
+    <cfif ListFindNoCase(VARIABLES.notificationTemplateColumns, "conteudo_template")
+        AND StructKeyExists(FORM, "template_content_title")
+        AND StructKeyExists(FORM, "template_content_text")>
+        <cfset FORM.template_conteudo_template =
+            "<strong>" & encodeForHTML(trim(FORM.template_content_title & "")) & "</strong><br><small>"
+            & encodeForHTML(trim(FORM.template_content_text & "")) & "</small>"/>
+    </cfif>
 
     <cfif isDefined("FORM.template_record_id") AND len(trim(FORM.template_record_id))>
         <cfset VARIABLES.notificationTemplateSavedRecordId = FORM.template_record_id/>

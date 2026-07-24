@@ -1,6 +1,8 @@
 <cfinclude template="../includes/templates_backend.cfm"/>
 <cfset VARIABLES.notificationTemplateShowForm = qNotificationTemplateEdit.recordcount OR (isDefined("URL.template_novo") AND URL.template_novo)/>
 
+<link rel="stylesheet" href="/assets/vendor/bootstrap-icons/bootstrap-icons.min.css"/>
+
 <style>
   .notification-nav {
     display: flex;
@@ -119,6 +121,7 @@
   {value = "fa-solid fa-bullhorn", label = "Aviso"},
   {value = "fa-solid fa-circle-info", label = "Informação"},
   {value = "fa-solid fa-circle-check", label = "Confirmação"},
+  {value = "bi bi-patch-check-fill", label = "Verificado (Bootstrap Icons)"},
   {value = "fa-solid fa-triangle-exclamation", label = "Alerta"},
   {value = "fa-solid fa-gift", label = "Presente"},
   {value = "fa-solid fa-ticket", label = "Ingresso"},
@@ -205,6 +208,7 @@
                           OR FindNoCase("conteudo", qNotificationTemplateColumns.column_name)
                           OR FindNoCase("body", qNotificationTemplateColumns.column_name)
                           OR FindNoCase("content", qNotificationTemplateColumns.column_name)/>
+                        <cfset VARIABLES.notificationTemplateIsComposedContentField = qNotificationTemplateColumns.column_name EQ "conteudo_template"/>
                         <cfset VARIABLES.notificationTemplateIsIconField = qNotificationTemplateColumns.column_name EQ "icone"
                           OR qNotificationTemplateColumns.column_name EQ "icon"
                           OR qNotificationTemplateColumns.column_name EQ "icone_class"
@@ -241,8 +245,46 @@
                                   <input class="form-check-input" type="checkbox" role="switch" id="#VARIABLES.notificationTemplateFieldName#" name="#VARIABLES.notificationTemplateFieldName#" value="true" <cfif IsBoolean(VARIABLES.notificationTemplateFieldValue) ? VARIABLES.notificationTemplateFieldValue : ListFindNoCase('true,1,yes,sim', trim(VARIABLES.notificationTemplateFieldValue))>checked</cfif>>
                                   <label class="form-check-label" for="#VARIABLES.notificationTemplateFieldName#">Template ativo</label>
                                 </div>
+                              <cfelseif VARIABLES.notificationTemplateIsComposedContentField>
+                                <cfset VARIABLES.notificationTemplateContentTitleValue = ""/>
+                                <cfset VARIABLES.notificationTemplateContentTextValue = ""/>
+                                <cfif len(trim(VARIABLES.notificationTemplateFieldValueFormatted))>
+                                  <cfif reFindNoCase("<strong[^>]*>.*?</strong>", VARIABLES.notificationTemplateFieldValueFormatted)>
+                                    <cfset VARIABLES.notificationTemplateContentTitleValue = reReplaceNoCase(
+                                      VARIABLES.notificationTemplateFieldValueFormatted,
+                                      "(?s)^.*?<strong[^>]*>(.*?)</strong>.*$",
+                                      "\1"
+                                    )/>
+                                  </cfif>
+                                  <cfif reFindNoCase("<small[^>]*>.*?</small>", VARIABLES.notificationTemplateFieldValueFormatted)>
+                                    <cfset VARIABLES.notificationTemplateContentTextValue = reReplaceNoCase(
+                                      VARIABLES.notificationTemplateFieldValueFormatted,
+                                      "(?s)^.*?<small[^>]*>(.*?)</small>.*$",
+                                      "\1"
+                                    )/>
+                                  <cfelse>
+                                    <cfset VARIABLES.notificationTemplateContentTextValue = VARIABLES.notificationTemplateFieldValueFormatted/>
+                                  </cfif>
+                                  <cfset VARIABLES.notificationTemplateContentTitleValue = trim(reReplace(VARIABLES.notificationTemplateContentTitleValue, "<[^>]+>", "", "all"))/>
+                                  <cfset VARIABLES.notificationTemplateContentTextValue = trim(reReplace(VARIABLES.notificationTemplateContentTextValue, "<[^>]+>", "", "all"))/>
+                                  <!--- Desfaz integralmente o encodeForHTML usado na persistência.
+                                        htmlEditFormat abaixo fará apenas o escape necessário ao atributo. --->
+                                  <cfset VARIABLES.notificationTemplateContentTitleValue = canonicalize(VARIABLES.notificationTemplateContentTitleValue, false, false)/>
+                                  <cfset VARIABLES.notificationTemplateContentTextValue = canonicalize(VARIABLES.notificationTemplateContentTextValue, false, false)/>
+                                </cfif>
+                                <div class="row g-3">
+                                  <div class="col-12 col-md-5">
+                                    <label class="form-label" for="template_content_title">Título da notificação</label>
+                                    <input class="form-control" type="text" id="template_content_title" name="template_content_title" value="#htmlEditFormat(VARIABLES.notificationTemplateContentTitleValue)#" required/>
+                                  </div>
+                                  <div class="col-12 col-md-7">
+                                    <label class="form-label" for="template_content_text">Conteúdo da notificação</label>
+                                    <input class="form-control" type="text" id="template_content_text" name="template_content_text" value="#htmlEditFormat(VARIABLES.notificationTemplateContentTextValue)#" required/>
+                                  </div>
+                                </div>
+                                <div class="form-text">Será salvo como: &lt;strong&gt;título&lt;/strong&gt;&lt;br&gt;&lt;small&gt;conteúdo&lt;/small&gt;</div>
                               <cfelseif VARIABLES.notificationTemplateIsContentField>
-                                <textarea class="form-control js-notification-template-editor" name="#VARIABLES.notificationTemplateFieldName#" rows="10">#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
+                                <textarea class="form-control" name="#VARIABLES.notificationTemplateFieldName#" rows="5">#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
                               <cfelseif VARIABLES.notificationTemplateIsDateTimeField>
                                 <input class="form-control" type="datetime-local" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#" step="60"/>
                               <cfelseif VARIABLES.notificationTemplateIsDateField>
@@ -371,45 +413,8 @@
   </div>
 </section>
 
-<script src="https://cdn.tiny.cloud/1/qyhsll57zrdqocv3z0c6z92ge88db2wygo5toc6fon8wtkd1/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    if (window.tinymce && document.querySelector('.js-notification-template-editor')) {
-      tinymce.init({
-        selector: '.js-notification-template-editor',
-        menubar: false,
-        statusbar: false,
-        branding: false,
-        plugins: 'autoresize code',
-        toolbar: 'smalltext bold italic | code',
-        formats: {
-          smalltext: { inline: 'small' }
-        },
-        setup: function (editor) {
-          editor.ui.registry.addToggleButton('smalltext', {
-            text: 'Pequeno',
-            tooltip: 'Alternar texto pequeno',
-            onAction: function () {
-              editor.formatter.toggle('smalltext');
-            },
-            onSetup: function (api) {
-              var handler = function () {
-                api.setActive(editor.formatter.match('smalltext'));
-              };
-
-              editor.on('NodeChange', handler);
-              return function () {
-                editor.off('NodeChange', handler);
-              };
-            }
-          });
-        },
-        min_height: 280,
-        autoresize_bottom_margin: 16,
-        content_style: 'body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; }'
-      });
-    }
-
     document.querySelectorAll('.js-notification-template-icon-select').forEach(function (selectEl) {
       selectEl.addEventListener('change', function () {
         var inputEl = document.getElementById(selectEl.dataset.targetInput);
@@ -431,14 +436,6 @@
       });
 
       updateNotificationTemplateIconPreview(inputEl);
-    });
-
-    document.querySelectorAll('form[action*="/notificacoes/templates/"], form[action^="./?pagina="]').forEach(function (formEl) {
-      formEl.addEventListener('submit', function () {
-        if (window.tinymce) {
-          tinymce.triggerSave();
-        }
-      });
     });
   });
 
