@@ -368,8 +368,8 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         )
       </cfif>
     ORDER BY
-      <cfif VARIABLES.contentHasPublishedAt>
-        cnt.published_at DESC NULLS LAST,
+      <cfif VARIABLES.contentHasUpdatedAt>
+        cnt.updated_at DESC NULLS LAST,
       </cfif>
       cnt.id DESC
     LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.contentPageSize#"/>

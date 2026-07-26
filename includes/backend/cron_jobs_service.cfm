@@ -180,6 +180,47 @@ function cronJobsExtractNewItemCount(any rawResponse = "") {
     return 0;
 }
 
+function cronJobsNormalizeNewsImporterRequestBody(
+    required string endpointUrl,
+    string contentType = "application/json",
+    any requestBody = ""
+) {
+    var normalizedEndpoint = lCase(listFirst(trim(arguments.endpointUrl), "?"));
+    var normalizedContentType = lCase(trim(arguments.contentType));
+    var rawBody = trim(arguments.requestBody & "");
+    var payload = {};
+    var importerEndpointPattern = "/api/admin/importers/(contrarelogio|corridanoar|cbat|cbat-corrida-de-rua)\.cfm$";
+
+    if (!reFindNoCase(importerEndpointPattern, normalizedEndpoint)
+        OR left(normalizedContentType, 16) NEQ "application/json") {
+        return arguments.requestBody & "";
+    }
+
+    if (len(rawBody)) {
+        if (!isJSON(rawBody)) {
+            return arguments.requestBody & "";
+        }
+
+        try {
+            payload = deserializeJSON(rawBody);
+        } catch (any parseError) {
+            return arguments.requestBody & "";
+        }
+
+        if (!isStruct(payload)) {
+            return arguments.requestBody & "";
+        }
+    }
+
+    /*
+     * Jobs de importacao de noticias nunca devem publicar diretamente.
+     * A API tambem usa review como padrao, mas a normalizacao protege jobs
+     * antigos cujo payload ainda contenha import_status = published.
+     */
+    payload.import_status = "review";
+    return serializeJSON(payload);
+}
+
 function cronJobsResolveNotificationDispatchUrl(any configuredUrl = "") {
     var resolvedUrl = trim(arguments.configuredUrl & "");
 
@@ -460,6 +501,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
     var authMode = "none";
     var rawResponse = "";
     var newItemsCount = 0;
+    var requestTimeoutSeconds = 60;
 
     if (!cronJobsTablesReady()) {
         result.message = "O schema de cron jobs esta incompleto.";
@@ -502,8 +544,20 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
         contentType = len(trim(qCronJob.content_type)) ? trim(qCronJob.content_type) : "application/json";
         timeoutSeconds = val(qCronJob.timeout_seconds) GT 0 ? val(qCronJob.timeout_seconds) : 30;
         maxAttempts = min(4, max(1, val(qCronJob.retry_limit) + 1));
+        /*
+         * Application.cfc limita requisicoes comuns a 20 segundos, mas um job
+         * pode aguardar timeoutSeconds em cada tentativa. Reserva tambem tempo
+         * para persistir o resultado, liberar o lock e enviar notificacoes.
+         */
+        requestTimeoutSeconds = max(60, (timeoutSeconds * maxAttempts) + 60);
+        setting requesttimeout = requestTimeoutSeconds;
         authMode = lCase(trim(qCronJob.auth_mode));
         requestBody = isNull(qCronJob.request_body) ? "" : toString(qCronJob.request_body);
+        requestBody = cronJobsNormalizeNewsImporterRequestBody(
+            endpointUrl = endpointUrl,
+            contentType = contentType,
+            requestBody = requestBody
+        );
         if (!isNull(qCronJob.headers_json) AND isStruct(qCronJob.headers_json)) {
             headers = duplicate(qCronJob.headers_json);
         } else {
