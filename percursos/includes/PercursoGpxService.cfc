@@ -67,6 +67,122 @@ component output="false" {
         return finalizeAnalysis(result);
     }
 
+    public struct function enrichElevationFromGoogle(
+        required struct analysis,
+        required string apiKey,
+        numeric maxSamples=2000
+    ) {
+        var enrichment = {
+            success=false,
+            analysis=arguments.analysis,
+            source="google_elevation",
+            sampledPoints=0,
+            error=""
+        };
+        var totalPoints = arrayLen(arguments.analysis.points);
+        var sampleLimit = min(5000, max(2, int(arguments.maxSamples)));
+        var sampleIndexes = [];
+        var sampleElevations = [];
+        var samplePosition = 0;
+        var sampleIndex = 0;
+        var batchStart = 1;
+        var batchEnd = 0;
+        var locations = [];
+        var response = {};
+        var payload = {};
+        var resultIndex = 0;
+
+        if (!arguments.analysis.valid) {
+            enrichment.error = "O percurso precisa ser válido antes da consulta de altimetria.";
+            return enrichment;
+        }
+        if (arguments.analysis.elevationPointCount GT 0) {
+            enrichment.success = true;
+            enrichment.source = "original";
+            return enrichment;
+        }
+        if (!len(trim(arguments.apiKey))) {
+            enrichment.error = "A chave da Google Elevation API não está configurada.";
+            return enrichment;
+        }
+        if (totalPoints LT 2) {
+            enrichment.error = "O percurso não possui pontos suficientes para consultar altimetria.";
+            return enrichment;
+        }
+
+        if (totalPoints LTE sampleLimit) {
+            for (sampleIndex = 1; sampleIndex LTE totalPoints; sampleIndex++) {
+                arrayAppend(sampleIndexes, sampleIndex);
+            }
+        } else {
+            for (samplePosition = 0; samplePosition LT sampleLimit; samplePosition++) {
+                sampleIndex = 1 + round(samplePosition * (totalPoints - 1) / (sampleLimit - 1));
+                if (!arrayLen(sampleIndexes) OR sampleIndexes[arrayLen(sampleIndexes)] NEQ sampleIndex) {
+                    arrayAppend(sampleIndexes, sampleIndex);
+                }
+            }
+        }
+
+        try {
+            while (batchStart LTE arrayLen(sampleIndexes)) {
+                batchEnd = min(arrayLen(sampleIndexes), batchStart + 199);
+                locations = [];
+
+                for (samplePosition = batchStart; samplePosition LTE batchEnd; samplePosition++) {
+                    sampleIndex = sampleIndexes[samplePosition];
+                    arrayAppend(
+                        locations,
+                        gpxNumber(arguments.analysis.points[sampleIndex].lat, "0.0000000")
+                            & ","
+                            & gpxNumber(arguments.analysis.points[sampleIndex].lng, "0.0000000")
+                    );
+                }
+
+                cfhttp(
+                    url="https://maps.googleapis.com/maps/api/elevation/json",
+                    method="get",
+                    result="response",
+                    timeout="30",
+                    throwOnError=false
+                ) {
+                    cfhttpparam(type="url", name="locations", value=arrayToList(locations, "|"));
+                    cfhttpparam(type="url", name="key", value=trim(arguments.apiKey));
+                }
+
+                if (!structKeyExists(response, "statusCode") OR left(trim(response.statusCode & ""), 1) NEQ "2") {
+                    throw(message="A Google Elevation API retornou HTTP " & (response.statusCode ?: "desconhecido") & ".");
+                }
+
+                payload = deserializeJSON(response.fileContent & "");
+                if (!isStruct(payload)
+                    OR !structKeyExists(payload, "status")
+                    OR payload.status NEQ "OK"
+                    OR !structKeyExists(payload, "results")
+                    OR !isArray(payload.results)
+                    OR arrayLen(payload.results) NEQ (batchEnd - batchStart + 1)) {
+                    throw(message="Resposta inválida da Google Elevation API: " & (payload.status ?: "sem status") & ".");
+                }
+
+                for (resultIndex = 1; resultIndex LTE arrayLen(payload.results); resultIndex++) {
+                    arrayAppend(sampleElevations, val(payload.results[resultIndex].elevation));
+                }
+                batchStart = batchEnd + 1;
+            }
+        } catch (any elevationError) {
+            enrichment.error = elevationError.message;
+            return enrichment;
+        }
+
+        applyInterpolatedElevations(arguments.analysis, sampleIndexes, sampleElevations);
+        enrichment.analysis = rebuildAnalysis(arguments.analysis);
+        enrichment.success = enrichment.analysis.valid AND enrichment.analysis.elevationPointCount EQ totalPoints;
+        enrichment.sampledPoints = arrayLen(sampleIndexes);
+        if (!enrichment.success) {
+            enrichment.error = "Não foi possível aplicar elevação a todos os pontos do percurso.";
+        }
+        return enrichment;
+    }
+
     public void function writeGeoJson(required struct analysis, required string destination) {
         var segmentCoordinates = [];
         var geometryType = "LineString";
@@ -170,6 +286,72 @@ component output="false" {
             segmentCount=0,
             sha256=""
         };
+    }
+
+    private void function applyInterpolatedElevations(
+        required struct analysis,
+        required array sampleIndexes,
+        required array sampleElevations
+    ) {
+        var totalPoints = arrayLen(arguments.analysis.points);
+        var sampleCursor = 1;
+        var pointIndex = 1;
+        var leftIndex = 1;
+        var rightIndex = 1;
+        var leftElevation = 0;
+        var rightElevation = 0;
+        var interpolationRatio = 0;
+        var segmentIndex = 0;
+        var segmentPointIndex = 0;
+        var interpolatedElevation = 0;
+
+        for (pointIndex = 1; pointIndex LTE totalPoints; pointIndex++) {
+            while (
+                sampleCursor LT arrayLen(arguments.sampleIndexes)
+                AND arguments.sampleIndexes[sampleCursor + 1] LT pointIndex
+            ) {
+                sampleCursor++;
+            }
+
+            leftIndex = arguments.sampleIndexes[sampleCursor];
+            leftElevation = arguments.sampleElevations[sampleCursor];
+            if (sampleCursor LT arrayLen(arguments.sampleIndexes)) {
+                rightIndex = arguments.sampleIndexes[sampleCursor + 1];
+                rightElevation = arguments.sampleElevations[sampleCursor + 1];
+            } else {
+                rightIndex = leftIndex;
+                rightElevation = leftElevation;
+            }
+
+            interpolationRatio = rightIndex EQ leftIndex
+                ? 0
+                : (pointIndex - leftIndex) / (rightIndex - leftIndex);
+            interpolatedElevation =
+                leftElevation + ((rightElevation - leftElevation) * interpolationRatio);
+            arguments.analysis.points[pointIndex].elevation = interpolatedElevation;
+            arguments.analysis.points[pointIndex].hasElevation = true;
+
+            segmentPointIndex++;
+            while (
+                segmentIndex LT arrayLen(arguments.analysis.segments)
+                AND segmentPointIndex GT arrayLen(arguments.analysis.segments[segmentIndex + 1])
+            ) {
+                segmentIndex++;
+                segmentPointIndex = 1;
+            }
+            if (segmentIndex LT arrayLen(arguments.analysis.segments)) {
+                arguments.analysis.segments[segmentIndex + 1][segmentPointIndex].elevation = interpolatedElevation;
+                arguments.analysis.segments[segmentIndex + 1][segmentPointIndex].hasElevation = true;
+            }
+        }
+    }
+
+    private struct function rebuildAnalysis(required struct analysis) {
+        var rebuilt = newResult();
+        rebuilt.format = arguments.analysis.format;
+        rebuilt.sha256 = arguments.analysis.sha256;
+        rebuilt.segments = arguments.analysis.segments;
+        return finalizeAnalysis(rebuilt);
     }
 
     private string function detectFormat(required string filePath) {

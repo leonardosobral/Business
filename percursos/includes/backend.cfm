@@ -99,6 +99,21 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfif NOT VARIABLES.percursoStorageConfigured AND structKeyExists(VARIABLES.percursoLocalConfig,"storagePath") AND len(trim(VARIABLES.percursoLocalConfig.storagePath & ""))><cfset VARIABLES.percursoStorageConfigured=true/></cfif>
 <cfset VARIABLES.percursoStorageReady=false/>
 <cfset VARIABLES.percursoStorageError=""/>
+<cfset VARIABLES.percursoElevationApiKey=""/>
+<cfset VARIABLES.percursoElevationMaxSamples=2000/>
+<cftry>
+    <cfset VARIABLES.percursoElevationApiKey=trim(createObject("java","java.lang.System").getenv("GOOGLE_MAPS_ELEVATION_API_KEY") & "")/>
+    <cfcatch type="any"></cfcatch>
+</cftry>
+<cfif NOT len(VARIABLES.percursoElevationApiKey)
+    AND structKeyExists(VARIABLES.percursoLocalConfig,"googleElevationApiKey")>
+    <cfset VARIABLES.percursoElevationApiKey=trim(VARIABLES.percursoLocalConfig.googleElevationApiKey & "")/>
+</cfif>
+<cfif structKeyExists(VARIABLES.percursoLocalConfig,"elevationMaxSamples")
+    AND isNumeric(VARIABLES.percursoLocalConfig.elevationMaxSamples)>
+    <cfset VARIABLES.percursoElevationMaxSamples=min(5000,max(2,int(VARIABLES.percursoLocalConfig.elevationMaxSamples)))/>
+</cfif>
+<cfset VARIABLES.percursoElevationConfigured=len(VARIABLES.percursoElevationApiKey) GT 0/>
 <cftry>
     <cfif NOT directoryExists(VARIABLES.percursoStoragePath)><cfdirectory action="create" directory="#VARIABLES.percursoStoragePath#" recurse="true"/></cfif>
     <cfset VARIABLES.percursoStorageReady=createObject("java","java.io.File").init(VARIABLES.percursoStoragePath).canWrite()/>
@@ -404,11 +419,28 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
                 </cfswitch>
                 <cfif NOT listFindNoCase("gpx,kml,kmz,geojson,fit", VARIABLES.uploadFormat)><cfset arrayAppend(VARIABLES.uploadErrors,"O arquivo precisa ser GPX, KML, KMZ, GeoJSON ou FIT.")/></cfif>
                 <cfif percursoUpload.fileSize GT 20971520><cfset arrayAppend(VARIABLES.uploadErrors,"O arquivo excede o limite de 20 MB.")/></cfif>
-                <cfif NOT arrayLen(VARIABLES.uploadErrors)>
-                    <cfset VARIABLES.gpxService = createObject("component","percursos.includes.PercursoGpxService")/>
-                    <cfset VARIABLES.gpxAnalysis = VARIABLES.gpxService.analyze(VARIABLES.uploadTempFile, VARIABLES.uploadFormat)/>
-                    <cfif NOT VARIABLES.gpxAnalysis.valid><cfset VARIABLES.uploadErrors=VARIABLES.gpxAnalysis.errors/></cfif>
-                </cfif>
+	                <cfif NOT arrayLen(VARIABLES.uploadErrors)>
+	                    <cfset VARIABLES.gpxService = createObject("component","percursos.includes.PercursoGpxService")/>
+	                    <cfset VARIABLES.gpxAnalysis = VARIABLES.gpxService.analyze(VARIABLES.uploadTempFile, VARIABLES.uploadFormat)/>
+	                    <cfif NOT VARIABLES.gpxAnalysis.valid><cfset VARIABLES.uploadErrors=VARIABLES.gpxAnalysis.errors/></cfif>
+	                    <cfif VARIABLES.gpxAnalysis.valid AND VARIABLES.gpxAnalysis.elevationPointCount EQ 0>
+	                        <cfsetting requesttimeout="180"/>
+	                        <cfset VARIABLES.elevationEnrichment = VARIABLES.gpxService.enrichElevationFromGoogle(
+	                            VARIABLES.gpxAnalysis,
+	                            VARIABLES.percursoElevationApiKey,
+	                            VARIABLES.percursoElevationMaxSamples
+	                        )/>
+	                        <cfif VARIABLES.elevationEnrichment.success>
+	                            <cfset VARIABLES.gpxAnalysis = VARIABLES.elevationEnrichment.analysis/>
+	                        <cfelse>
+	                            <cfset arrayAppend(
+	                                VARIABLES.uploadErrors,
+	                                "O arquivo não possui altimetria e a consulta externa falhou: "
+	                                    & VARIABLES.elevationEnrichment.error
+	                            )/>
+	                        </cfif>
+	                    </cfif>
+	                </cfif>
                 <cfif NOT arrayLen(VARIABLES.uploadErrors)>
                     <cfquery name="qDuplicateGpx">
                         SELECT arquivo.id_percurso, arquivo.versao
@@ -451,7 +483,16 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
                             INSERT INTO tb_percurso_arquivos (id_percurso,versao,storage_key,geojson_storage_key,nome_original,mime_type,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,id_usuario_criador)
                             VALUES (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.uploadRouteId#"/>,<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.uploadVersion#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.routeGpxKey#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.routeGeoKey#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#percursoUpload.clientFile#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.uploadMimeType#"/>,<cfqueryparam cfsqltype="cf_sql_bigint" value="#percursoUpload.fileSize#"/>,<cfqueryparam cfsqltype="cf_sql_char" value="#VARIABLES.gpxAnalysis.sha256#"/>,<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.gpxAnalysis.pointCount#"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.distanceM#" scale="2"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.elevationMin#" null="#!len(VARIABLES.gpxAnalysis.elevationMin & '')#" scale="2"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.elevationMax#" null="#!len(VARIABLES.gpxAnalysis.elevationMax & '')#" scale="2"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.elevationGainM#" null="#VARIABLES.gpxAnalysis.elevationPointCount LTE 0#" scale="2"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.minLat#" scale="7"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.minLng#" scale="7"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.maxLat#" scale="7"/>,<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.gpxAnalysis.maxLng#" scale="7"/>,<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>) RETURNING id_percurso_arquivo
                         </cfquery>
-                        <cfset percursoAudit(VARIABLES.uploadRouteId,qNewFile.id_percurso_arquivo,FORM.acao,{versao=VARIABLES.uploadVersion,sha256=VARIABLES.gpxAnalysis.sha256,formato=VARIABLES.gpxAnalysis.format,pontos=VARIABLES.gpxAnalysis.pointCount,segmentos=VARIABLES.gpxAnalysis.segmentCount})/>
+	                        <cfset percursoAudit(VARIABLES.uploadRouteId,qNewFile.id_percurso_arquivo,FORM.acao,{
+	                            versao=VARIABLES.uploadVersion,
+	                            sha256=VARIABLES.gpxAnalysis.sha256,
+	                            formato=VARIABLES.gpxAnalysis.format,
+	                            pontos=VARIABLES.gpxAnalysis.pointCount,
+	                            segmentos=VARIABLES.gpxAnalysis.segmentCount,
+	                            fonte_altimetria=VARIABLES.gpxAnalysis.elevationPointCount GT 0
+	                                ? (isDefined("VARIABLES.elevationEnrichment") AND VARIABLES.elevationEnrichment.success ? VARIABLES.elevationEnrichment.source : "original")
+	                                : "indisponivel"
+	                        })/>
                     </cftransaction>
                     <cflocation addtoken="false" url="./?id=#VARIABLES.uploadRouteId#&sucesso=#(FORM.acao EQ 'criar' ? 'criado' : 'versao')#"/>
                 </cfif>

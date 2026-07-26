@@ -53,6 +53,7 @@
 <cfelse>
   <cfif NOT VARIABLES.percursoStorageConfigured><div class="alert alert-warning"><strong>Storage temporário.</strong> Configure <code>config/percursos.local.cfm</code> antes de usar este módulo em produção. Arquivos no diretório temporário do servidor não são persistentes.</div></cfif>
   <cfif NOT VARIABLES.percursoStorageReady><div class="alert alert-danger"><strong>Storage indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.percursoStorageError)#</cfoutput><div class="small mt-1"><code><cfoutput>#htmlEditFormat(VARIABLES.percursoStoragePath)#</cfoutput></code></div></div></cfif>
+  <cfif NOT VARIABLES.percursoElevationConfigured><div class="alert alert-warning"><strong>Altimetria externa indisponível.</strong> Configure <code>GOOGLE_MAPS_ELEVATION_API_KEY</code> ou <code>googleElevationApiKey</code> em <code>config/percursos.local.cfm</code>. Arquivos sem elevação não poderão ser cadastrados.</div></cfif>
   <cfif isDefined("URL.novo") AND URL.novo EQ "1">
     <cfif NOT VARIABLES.percursoCanCreate>
       <div class="alert alert-warning"><strong>Selecione uma conta antes de cadastrar.</strong> O novo percurso sempre pertence à conta ativa e exige papel OWNER, ADMIN ou OPERADOR.</div>
