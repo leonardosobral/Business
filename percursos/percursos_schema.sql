@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.tb_percursos (
     visibilidade varchar(20) NOT NULL DEFAULT 'privado',
     status varchar(20) NOT NULL DEFAULT 'rascunho',
     id_usuario_criador bigint NOT NULL,
-    id_conta_responsavel bigint,
+    id_conta_responsavel bigint NOT NULL REFERENCES public.tb_contas(id_conta) ON UPDATE CASCADE ON DELETE RESTRICT,
     criado_em timestamp without time zone NOT NULL DEFAULT now(),
     atualizado_em timestamp without time zone NOT NULL DEFAULT now(),
     CONSTRAINT tb_percursos_distancia_chk CHECK (distancia_nominal_m > 0),

@@ -341,7 +341,7 @@ function stravaMigrationUpdate(
                                 INNER JOIN tb_evento_corridas evento
                                     ON evento.id_evento = modalidade.id_evento
                                 LEFT JOIN LATERAL (
-                                    SELECT count(*) AS total,
+                                    SELECT count(DISTINCT conta_evento.id_conta) AS total,
                                            min(conta_evento.id_conta) AS id_conta
                                     FROM tb_conta_eventos conta_evento
                                     INNER JOIN tb_contas conta
@@ -501,6 +501,12 @@ function stravaMigrationUpdate(
                                             <cfset VARIABLES.stravaMigrationReviews++/>
                                         </cfif>
                                     <cfelse>
+                                        <cfset VARIABLES.stravaMigrationAccountId = val(qStravaMigrationSource.total_contas) EQ 1
+                                            ? val(qStravaMigrationSource.id_conta)
+                                            : 0/>
+                                        <cfif VARIABLES.stravaMigrationAccountId LTE 0>
+                                            <cfthrow message="O evento precisa estar associado a uma unica conta ativa para que o percurso seja criado ou reutilizado."/>
+                                        </cfif>
                                         <cfquery name="qStravaMigrationDuplicate">
                                             SELECT percurso.id_percurso,
                                                    arquivo.id_percurso_arquivo
@@ -517,6 +523,7 @@ function stravaMigrationUpdate(
                                                 LIMIT 1
                                             ) arquivo ON true
                                             WHERE arquivo.sha256 = <cfqueryparam cfsqltype="cf_sql_char" value="#VARIABLES.stravaMigrationAnalysis.sha256#"/>
+                                              AND percurso.id_conta_responsavel = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.stravaMigrationAccountId#"/>
                                             ORDER BY arquivo.criado_em, arquivo.id_percurso_arquivo
                                             LIMIT 1
                                         </cfquery>
@@ -582,9 +589,6 @@ function stravaMigrationUpdate(
                                                 & " - " & qStravaMigrationSource.percurso_evento
                                                 & " " & qStravaMigrationSource.unidade_de_medida/>
                                             <cfset VARIABLES.stravaMigrationResolvedRouteType = stravaMigrationRouteType(qStravaMigrationSource.tipo_corrida)/>
-                                            <cfset VARIABLES.stravaMigrationAccountId = val(qStravaMigrationSource.total_contas) EQ 1
-                                                ? val(qStravaMigrationSource.id_conta)
-                                                : 0/>
                                             <cftransaction>
                                                 <cfquery name="qStravaMigrationNewRoute">
                                                     INSERT INTO tb_percursos
@@ -601,7 +605,7 @@ function stravaMigrationUpdate(
                                                         'privado',
                                                         'rascunho',
                                                         <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.stravaMigrationActorId#"/>,
-                                                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.stravaMigrationAccountId#" null="#VARIABLES.stravaMigrationAccountId LTE 0#"/>
+                                                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.stravaMigrationAccountId#"/>
                                                     )
                                                     RETURNING id_percurso
                                                 </cfquery>

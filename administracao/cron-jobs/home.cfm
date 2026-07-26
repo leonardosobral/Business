@@ -227,9 +227,12 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     <cfset VARIABLES.cronJobFormTimeout = isDefined("FORM.timeout_seconds") ? FORM.timeout_seconds : 30/>
     <cfset VARIABLES.cronJobFormRetry = isDefined("FORM.retry_limit") ? FORM.retry_limit : 0/>
     <cfset VARIABLES.cronJobFormMaxRuntime = isDefined("FORM.max_runtime_seconds") ? FORM.max_runtime_seconds : 300/>
+    <cfset VARIABLES.cronJobFormNewItemsDestination = isDefined("FORM.notificacao_novos_itens_destino") ? FORM.notificacao_novos_itens_destino : ""/>
     <cfset VARIABLES.cronJobFormNextRun = isDefined("FORM.next_run_at") ? FORM.next_run_at : ""/>
     <cfset VARIABLES.cronJobFormActive = isDefined("FORM.ativo")/>
     <cfset VARIABLES.cronJobFormLate = isDefined("FORM.executar_em_atraso")/>
+    <cfset VARIABLES.cronJobFormErrorAdminIds = isDefined("FORM.notificar_erro_admin_ids") ? FORM.notificar_erro_admin_ids : ""/>
+    <cfset VARIABLES.cronJobFormNewItemsAdminIds = isDefined("FORM.notificar_novos_itens_admin_ids") ? FORM.notificar_novos_itens_admin_ids : ""/>
 <cfelseif qCronJobEdit.recordcount>
     <cfset VARIABLES.cronJobFormId = qCronJobEdit.id_cron_job/>
     <cfset VARIABLES.cronJobFormNome = qCronJobEdit.nome/>
@@ -247,9 +250,20 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     <cfset VARIABLES.cronJobFormTimeout = qCronJobEdit.timeout_seconds/>
     <cfset VARIABLES.cronJobFormRetry = qCronJobEdit.retry_limit/>
     <cfset VARIABLES.cronJobFormMaxRuntime = qCronJobEdit.max_runtime_seconds/>
+    <cfset VARIABLES.cronJobFormNewItemsDestination = isNull(qCronJobEdit.notificacao_novos_itens_destino) ? "" : qCronJobEdit.notificacao_novos_itens_destino/>
     <cfset VARIABLES.cronJobFormNextRun = isNull(qCronJobEdit.next_run_at) ? "" : dateTimeFormat(qCronJobEdit.next_run_at, "yyyy-mm-dd'T'HH:nn")/>
     <cfset VARIABLES.cronJobFormActive = qCronJobEdit.ativo/>
     <cfset VARIABLES.cronJobFormLate = qCronJobEdit.executar_em_atraso/>
+    <cfset VARIABLES.cronJobFormErrorAdminIds = ""/>
+    <cfset VARIABLES.cronJobFormNewItemsAdminIds = ""/>
+    <cfloop query="qCronJobNotificationRecipients">
+        <cfif qCronJobNotificationRecipients.notificar_erro>
+            <cfset VARIABLES.cronJobFormErrorAdminIds = listAppend(VARIABLES.cronJobFormErrorAdminIds, qCronJobNotificationRecipients.id_usuario)/>
+        </cfif>
+        <cfif qCronJobNotificationRecipients.notificar_novos_itens>
+            <cfset VARIABLES.cronJobFormNewItemsAdminIds = listAppend(VARIABLES.cronJobFormNewItemsAdminIds, qCronJobNotificationRecipients.id_usuario)/>
+        </cfif>
+    </cfloop>
 <cfelse>
     <cfset VARIABLES.cronJobFormId = ""/>
     <cfset VARIABLES.cronJobFormNome = ""/>
@@ -267,10 +281,16 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     <cfset VARIABLES.cronJobFormTimeout = 30/>
     <cfset VARIABLES.cronJobFormRetry = 0/>
     <cfset VARIABLES.cronJobFormMaxRuntime = 300/>
+    <cfset VARIABLES.cronJobFormNewItemsDestination = ""/>
     <cfset VARIABLES.cronJobFormNextRun = dateTimeFormat(now(), "yyyy-mm-dd'T'HH:nn")/>
     <cfset VARIABLES.cronJobFormActive = true/>
     <cfset VARIABLES.cronJobFormLate = true/>
+    <cfset VARIABLES.cronJobFormErrorAdminIds = ""/>
+    <cfset VARIABLES.cronJobFormNewItemsAdminIds = ""/>
 </cfif>
+
+<cfset VARIABLES.cronJobSelectedErrorAdminIds = cronJobsParseAdminIds(VARIABLES.cronJobFormErrorAdminIds)/>
+<cfset VARIABLES.cronJobSelectedNewItemsAdminIds = cronJobsParseAdminIds(VARIABLES.cronJobFormNewItemsAdminIds)/>
 
 <style>
   .cron-page .cron-meta {
@@ -338,6 +358,28 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
   }
 
   .cron-page .cron-history-table td { vertical-align: top; }
+
+  .cron-page .cron-notification-admins {
+    max-height: 360px;
+    overflow: auto;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: .5rem;
+  }
+
+  .cron-page .cron-notification-admins table {
+    margin-bottom: 0;
+  }
+
+  .cron-page .cron-notification-admins thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--mdb-body-bg, #212529);
+  }
+
+  .cron-page .cron-notification-admins .cron-admin-email {
+    overflow-wrap: anywhere;
+  }
 </style>
 
 <section class="cron-page business-page">
@@ -481,6 +523,88 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                 <div class="col-lg-6">
                   <label class="form-label">Body</label>
                   <textarea class="form-control" name="request_body"><cfoutput>#htmlEditFormat(VARIABLES.cronJobFormBody)#</cfoutput></textarea>
+                </div>
+
+                <div class="col-12">
+                  <div class="business-panel">
+                    <h6 class="mb-2">Notificações web + push</h6>
+                    <p class="text-muted small mb-3">Selecione os eventos que cada administrador deve receber. As notificações são exibidas no site e também enviadas por push.</p>
+
+                    <div class="mb-3">
+                      <label class="form-label" for="cronJobNewItemsDestination">Destino ao clicar em “Novos itens”</label>
+                      <div class="input-group">
+                        <span class="input-group-text">https://business.roadrunners.run</span>
+                        <input
+                          class="form-control"
+                          id="cronJobNewItemsDestination"
+                          name="notificacao_novos_itens_destino"
+                          placeholder="/administracao/exemplo/"
+                          value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormNewItemsDestination)#</cfoutput>">
+                      </div>
+                      <div class="form-text">
+                        Informe somente o caminho interno. Notificações de erro sempre direcionam para
+                        <code>https://business.roadrunners.run/administracao/cron-jobs/</code>.
+                      </div>
+                    </div>
+
+                    <div class="row g-2 align-items-center mb-2">
+                      <div class="col-lg-6">
+                        <input class="form-control form-control-sm" id="cronAdminSearch" type="search" placeholder="Buscar administrador por nome ou e-mail">
+                      </div>
+                      <div class="col-lg-6 d-flex flex-wrap justify-content-lg-end gap-2">
+                        <button class="btn btn-sm btn-outline-danger" type="button" data-cron-toggle="error" data-checked="true">Marcar erros visíveis</button>
+                        <button class="btn btn-sm btn-outline-light" type="button" data-cron-toggle="error" data-checked="false">Limpar erros visíveis</button>
+                        <button class="btn btn-sm btn-outline-warning" type="button" data-cron-toggle="new-items" data-checked="true">Marcar novos visíveis</button>
+                        <button class="btn btn-sm btn-outline-light" type="button" data-cron-toggle="new-items" data-checked="false">Limpar novos visíveis</button>
+                      </div>
+                    </div>
+
+                    <div class="cron-notification-admins">
+                      <table class="table table-sm align-middle">
+                        <thead>
+                          <tr>
+                            <th>Administrador</th>
+                            <th class="text-center" style="width: 130px;">Erros</th>
+                            <th class="text-center" style="width: 150px;">Novos itens</th>
+                          </tr>
+                        </thead>
+                        <tbody id="cronAdminRows">
+                          <cfoutput query="qCronJobAvailableAdmins">
+                            <cfset VARIABLES.cronAdminReceivesErrors = arrayFind(VARIABLES.cronJobSelectedErrorAdminIds, val(qCronJobAvailableAdmins.id)) GT 0/>
+                            <cfset VARIABLES.cronAdminReceivesNewItems = arrayFind(VARIABLES.cronJobSelectedNewItemsAdminIds, val(qCronJobAvailableAdmins.id)) GT 0/>
+                            <tr data-cron-admin-search="#htmlEditFormat(lCase(qCronJobAvailableAdmins.name & ' ' & qCronJobAvailableAdmins.email))#">
+                              <td>
+                                <div>#htmlEditFormat(qCronJobAvailableAdmins.name)#</div>
+                                <div class="small text-muted cron-admin-email">#htmlEditFormat(qCronJobAvailableAdmins.email)# · ID #qCronJobAvailableAdmins.id#</div>
+                              </td>
+                              <td class="text-center">
+                                <input
+                                  class="form-check-input cron-notify-error"
+                                  type="checkbox"
+                                  name="notificar_erro_admin_ids"
+                                  value="#qCronJobAvailableAdmins.id#"
+                                  aria-label="Notificar #htmlEditFormat(qCronJobAvailableAdmins.name)# em caso de erro"
+                                  <cfif VARIABLES.cronAdminReceivesErrors>checked</cfif>>
+                              </td>
+                              <td class="text-center">
+                                <input
+                                  class="form-check-input cron-notify-new-items"
+                                  type="checkbox"
+                                  name="notificar_novos_itens_admin_ids"
+                                  value="#qCronJobAvailableAdmins.id#"
+                                  aria-label="Notificar #htmlEditFormat(qCronJobAvailableAdmins.name)# quando houver novos itens"
+                                  <cfif VARIABLES.cronAdminReceivesNewItems>checked</cfif>>
+                              </td>
+                            </tr>
+                          </cfoutput>
+                          <cfif NOT qCronJobAvailableAdmins.recordcount>
+                            <tr><td colspan="3" class="text-muted text-center py-3">Nenhum administrador disponível.</td></tr>
+                          </cfif>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="form-text">“Erro” cobre falha, timeout e HTTP não 2xx. “Novos itens” usa os contadores retornados no JSON do job.</div>
+                  </div>
                 </div>
 
                 <div class="col-md-3">
@@ -786,3 +910,35 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("cronAdminSearch");
+  const adminRows = Array.from(document.querySelectorAll("#cronAdminRows tr[data-cron-admin-search]"));
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      adminRows.forEach(function (row) {
+        row.hidden = query !== "" && !row.dataset.cronAdminSearch.includes(query);
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-cron-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const selector = button.dataset.cronToggle === "error"
+        ? ".cron-notify-error"
+        : ".cron-notify-new-items";
+      const checked = button.dataset.checked === "true";
+
+      adminRows.forEach(function (row) {
+        if (!row.hidden) {
+          const checkbox = row.querySelector(selector);
+          if (checkbox) checkbox.checked = checked;
+        }
+      });
+    });
+  });
+});
+</script>

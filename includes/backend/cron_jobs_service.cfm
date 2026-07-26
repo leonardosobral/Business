@@ -23,18 +23,297 @@
 <cfscript>
 function cronJobsTablesReady() {
     var qCronTables = "";
+    var qCronColumns = "";
 
     cfquery(name = "qCronTables") {
         writeOutput("
             SELECT table_name
             FROM information_schema.tables
             WHERE table_schema = 'public'
-              AND table_name IN ('tb_cron_jobs', 'tb_cron_job_runs')
+              AND table_name IN ('tb_cron_jobs', 'tb_cron_job_runs', 'tb_cron_job_notification_recipients')
         ");
     }
 
-    return listFindNoCase(valueList(qCronTables.table_name), "tb_cron_jobs")
-        AND listFindNoCase(valueList(qCronTables.table_name), "tb_cron_job_runs");
+    if (!(listFindNoCase(valueList(qCronTables.table_name), "tb_cron_jobs")
+        AND listFindNoCase(valueList(qCronTables.table_name), "tb_cron_job_runs")
+        AND listFindNoCase(valueList(qCronTables.table_name), "tb_cron_job_notification_recipients"))) {
+        return false;
+    }
+
+    cfquery(name = "qCronColumns") {
+        writeOutput("
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_schema = 'public'
+              AND table_name = 'tb_cron_jobs'
+              AND column_name = 'notificacao_novos_itens_destino'
+        ");
+    }
+
+    return qCronColumns.recordcount GT 0;
+}
+
+function cronJobsParseAdminIds(any rawIds = "") {
+    var normalized = reReplace(trim(arguments.rawIds & ""), "[^0-9]+", ",", "all");
+    var parsedIds = [];
+    var seenIds = {};
+    var rawId = "";
+    var numericId = 0;
+
+    for (rawId in listToArray(normalized)) {
+        numericId = val(rawId);
+        if (numericId GT 0 AND !structKeyExists(seenIds, numericId & "")) {
+            seenIds[numericId & ""] = true;
+            arrayAppend(parsedIds, numericId);
+        }
+    }
+
+    return parsedIds;
+}
+
+function cronJobsReplaceNotificationRecipients(
+    required numeric jobId,
+    array errorAdminIds = [],
+    array newItemsAdminIds = []
+) {
+    var recipients = {};
+    var adminId = 0;
+    var recipientKey = "";
+
+    for (adminId in arguments.errorAdminIds) {
+        recipientKey = val(adminId) & "";
+        recipients[recipientKey] = {
+            id = val(adminId),
+            notifyError = true,
+            notifyNewItems = false
+        };
+    }
+
+    for (adminId in arguments.newItemsAdminIds) {
+        recipientKey = val(adminId) & "";
+        if (!structKeyExists(recipients, recipientKey)) {
+            recipients[recipientKey] = {
+                id = val(adminId),
+                notifyError = false,
+                notifyNewItems = true
+            };
+        } else {
+            recipients[recipientKey].notifyNewItems = true;
+        }
+    }
+
+    queryExecute(
+        "DELETE FROM tb_cron_job_notification_recipients WHERE id_cron_job = :jobId",
+        { jobId = { value = arguments.jobId, cfsqltype = "cf_sql_bigint" } },
+        { datasource = "runner_dba" }
+    );
+
+    for (recipientKey in recipients) {
+        queryExecute(
+            "INSERT INTO tb_cron_job_notification_recipients
+                (id_cron_job, id_usuario, notificar_erro, notificar_novos_itens)
+             VALUES
+                (:jobId, :userId, :notifyError, :notifyNewItems)",
+            {
+                jobId = { value = arguments.jobId, cfsqltype = "cf_sql_bigint" },
+                userId = { value = recipients[recipientKey].id, cfsqltype = "cf_sql_bigint" },
+                notifyError = { value = recipients[recipientKey].notifyError, cfsqltype = "cf_sql_bit" },
+                notifyNewItems = { value = recipients[recipientKey].notifyNewItems, cfsqltype = "cf_sql_bit" }
+            },
+            { datasource = "runner_dba" }
+        );
+    }
+}
+
+function cronJobsExtractNewItemCount(any rawResponse = "") {
+    var payload = {};
+    var metricGroups = [
+        ["new_items", "novos_itens"],
+        ["created", "criados", "inserted", "inseridos"],
+        ["imported", "importados"]
+    ];
+    var metricGroup = [];
+    var keyName = "";
+    var groupHasMetric = false;
+    var groupValue = 0;
+    var metricValue = 0;
+
+    if (!len(trim(arguments.rawResponse & "")) OR !isJSON(arguments.rawResponse & "")) {
+        return 0;
+    }
+
+    try {
+        payload = deserializeJSON(arguments.rawResponse & "");
+        if (!isStruct(payload)) {
+            return 0;
+        }
+
+        /*
+         * Os grupos sao alternativas em ordem de confiabilidade, nao valores
+         * cumulativos. Alguns importadores retornam importados = created +
+         * updated; somar ambos gera duplicidade e falso positivo. Vinculados
+         * tambem nao significa item novo e, por isso, nao participa da regra.
+         */
+        for (metricGroup in metricGroups) {
+            groupHasMetric = false;
+            groupValue = 0;
+
+            for (keyName in metricGroup) {
+                if (structKeyExists(payload, keyName)
+                    AND !isNull(payload[keyName])
+                    AND isSimpleValue(payload[keyName])
+                    AND isNumeric(payload[keyName])) {
+                    groupHasMetric = true;
+                    metricValue = max(0, val(payload[keyName]));
+                    groupValue = max(groupValue, metricValue);
+                }
+            }
+
+            if (groupHasMetric) {
+                return int(groupValue);
+            }
+        }
+    } catch (any parseError) {
+        return 0;
+    }
+
+    return 0;
+}
+
+function cronJobsResolveNotificationDispatchUrl(any configuredUrl = "") {
+    var resolvedUrl = trim(arguments.configuredUrl & "");
+
+    if (!len(resolvedUrl)) {
+        return "https://roadrunners.run/api/notifications/integrations/dispatch.cfm";
+    }
+    if (findNoCase("/api/notifications/integrations/dispatch.cfm", resolvedUrl)) {
+        return resolvedUrl;
+    }
+    if (findNoCase("/api/push/send.cfm", resolvedUrl)) {
+        return replaceNoCase(resolvedUrl, "/api/push/send.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+    }
+    if (findNoCase("/api/push/send-notifications.cfm", resolvedUrl)) {
+        return replaceNoCase(resolvedUrl, "/api/push/send-notifications.cfm", "/api/notifications/integrations/dispatch.cfm", "one");
+    }
+    return resolvedUrl;
+}
+
+function cronJobsDispatchNotification(required struct payload) {
+    var dispatchUrl = "https://roadrunners.run/api/notifications/integrations/dispatch.cfm";
+    var dispatchSecret = hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256");
+    var dispatchTimeoutSeconds = 20;
+    var rawBody = "";
+    var timestampHeader = "";
+    var signatureHeader = "";
+    var dispatchResult = {};
+    var responsePayload = {};
+
+    if (structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch)) {
+        if (structKeyExists(APPLICATION.notificationDispatch, "url")) {
+            dispatchUrl = cronJobsResolveNotificationDispatchUrl(APPLICATION.notificationDispatch.url);
+        }
+        if (structKeyExists(APPLICATION.notificationDispatch, "secret") AND len(trim(APPLICATION.notificationDispatch.secret & ""))) {
+            dispatchSecret = trim(APPLICATION.notificationDispatch.secret & "");
+        }
+        if (structKeyExists(APPLICATION.notificationDispatch, "timeoutSeconds") AND val(APPLICATION.notificationDispatch.timeoutSeconds) GT 0) {
+            dispatchTimeoutSeconds = int(APPLICATION.notificationDispatch.timeoutSeconds);
+        }
+    }
+
+    rawBody = serializeJSON(arguments.payload);
+    timestampHeader = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss");
+    signatureHeader = lCase(hmac(timestampHeader & "." & rawBody, dispatchSecret, "HmacSHA256"));
+
+    try {
+        cfhttp(
+            url = dispatchUrl,
+            method = "post",
+            result = "dispatchResult",
+            timeout = dispatchTimeoutSeconds,
+            throwOnError = false
+        ) {
+            cfhttpparam(type = "header", name = "Content-Type", value = "application/json; charset=utf-8");
+            cfhttpparam(type = "header", name = "X-RR-Handoff-Timestamp", value = timestampHeader);
+            cfhttpparam(type = "header", name = "X-RR-Handoff-Signature", value = signatureHeader);
+            cfhttpparam(type = "body", value = rawBody);
+        }
+
+        if (structKeyExists(dispatchResult, "fileContent")
+            AND len(trim(dispatchResult.fileContent & ""))
+            AND isJSON(dispatchResult.fileContent & "")) {
+            responsePayload = deserializeJSON(dispatchResult.fileContent & "");
+        }
+
+        return structKeyExists(responsePayload, "success")
+            AND responsePayload.success
+            AND structKeyExists(responsePayload, "status")
+            AND trim(responsePayload.status & "") EQ "dispatched";
+    } catch (any dispatchError) {
+        return false;
+    }
+}
+
+function cronJobsNotifyRecipients(
+    required numeric jobId,
+    required string eventType,
+    required string jobName,
+    numeric runId = 0,
+    numeric newItemsCount = 0,
+    string detail = "",
+    string newItemsDestination = ""
+) {
+    var qRecipients = "";
+    var recipientIds = [];
+    var notificationText = "";
+    var notificationPayload = {};
+    var preferenceColumn = arguments.eventType EQ "error" ? "notificar_erro" : "notificar_novos_itens";
+    var notificationLink = "https://business.roadrunners.run/administracao/cron-jobs/";
+
+    qRecipients = queryExecute(
+        "SELECT id_usuario
+         FROM tb_cron_job_notification_recipients
+         WHERE id_cron_job = :jobId
+           AND " & preferenceColumn & " = true
+         ORDER BY id_usuario",
+        { jobId = { value = arguments.jobId, cfsqltype = "cf_sql_bigint" } },
+        { datasource = "runner_dba" }
+    );
+
+    if (!qRecipients.recordcount) {
+        return false;
+    }
+
+    recipientIds = listToArray(valueList(qRecipients.id_usuario));
+    if (arguments.eventType EQ "error") {
+        notificationText = "Erro no Cron Job " & arguments.jobName;
+        if (len(trim(arguments.detail))) {
+            notificationText &= ": " & left(trim(arguments.detail), 170);
+        }
+    } else {
+        notificationText = arguments.newItemsCount & " novo(s) item(ns) no Cron Job " & arguments.jobName & ".";
+        if (len(trim(arguments.newItemsDestination))) {
+            notificationLink = "https://business.roadrunners.run/" & reReplace(trim(arguments.newItemsDestination), "^/+", "", "all");
+        }
+    }
+
+    notificationPayload = {
+        origin = "business",
+        category = "cron_jobs",
+        conteudo_notifica = left(notificationText, 240),
+        icone = "fa-solid fa-clock-rotate-left",
+        link = notificationLink,
+        data_publicacao = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss"),
+        data_expiracao = dateTimeFormat(dateAdd("d", 30, now()), "yyyy-mm-dd HH:nn:ss"),
+        userIds = recipientIds,
+        options = {
+            sendPush = true,
+            pushCategory = "sistema",
+            pushUrgency = arguments.eventType EQ "error" ? "high" : "normal",
+            pushTtlSeconds = 300
+        }
+    };
+
+    return cronJobsDispatchNotification(notificationPayload);
 }
 
 function cronJobsReconcileStaleRuns() {
@@ -179,9 +458,11 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
     var currentAttempt = 1;
     var attemptError = "";
     var authMode = "none";
+    var rawResponse = "";
+    var newItemsCount = 0;
 
     if (!cronJobsTablesReady()) {
-        result.message = "As tabelas de cron jobs ainda nao foram criadas.";
+        result.message = "O schema de cron jobs esta incompleto.";
         return result;
     }
 
@@ -310,7 +591,8 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
                 }
 
                 result.httpStatus = structKeyExists(httpResult, "statusCode") ? trim(httpResult.statusCode) : "";
-                responsePreview = cronJobsResponsePreview(structKeyExists(httpResult, "fileContent") ? httpResult.fileContent : "");
+                rawResponse = structKeyExists(httpResult, "fileContent") ? (httpResult.fileContent & "") : "";
+                responsePreview = cronJobsResponsePreview(rawResponse);
 
                 if (len(result.httpStatus) AND left(result.httpStatus, 1) EQ "2") {
                     break;
@@ -402,6 +684,38 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
             writeOutput("SELECT pg_advisory_unlock(");
             cfqueryparam(cfsqltype = "cf_sql_bigint", value = 930000000 + val(arguments.jobId));
             writeOutput(")");
+        }
+
+        if (qCronJob.recordcount AND result.runId GT 0) {
+            try {
+                if (listFindNoCase("error,http_error,failed,timeout", runStatus)) {
+                    cronJobsNotifyRecipients(
+                        arguments.jobId,
+                        "error",
+                        qCronJob.nome,
+                        result.runId,
+                        0,
+                        len(errorMessage) ? errorMessage : result.message
+                    );
+                } else if (runStatus EQ "success") {
+                    newItemsCount = cronJobsExtractNewItemCount(rawResponse);
+                    if (newItemsCount GT 0) {
+                        cronJobsNotifyRecipients(
+                            arguments.jobId,
+                            "new_items",
+                            qCronJob.nome,
+                            result.runId,
+                            newItemsCount,
+                            "",
+                            isNull(qCronJob.notificacao_novos_itens_destino)
+                                ? ""
+                                : qCronJob.notificacao_novos_itens_destino
+                        );
+                    }
+                }
+            } catch (any notificationError) {
+                // Notificacoes sao acessorias e nunca devem alterar o resultado do job.
+            }
         }
     }
 

@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS public.tb_cron_jobs (
     ativo boolean NOT NULL DEFAULT true,
     executar_em_atraso boolean NOT NULL DEFAULT true,
     max_runtime_seconds integer NOT NULL DEFAULT 300,
+    notificacao_novos_itens_destino text,
     last_run_at timestamp without time zone,
     next_run_at timestamp without time zone NOT NULL DEFAULT now(),
     last_status varchar(40),
@@ -33,6 +34,9 @@ CREATE TABLE IF NOT EXISTS public.tb_cron_jobs (
     CONSTRAINT tb_cron_jobs_timeout_chk CHECK (timeout_seconds BETWEEN 1 AND 120),
     CONSTRAINT tb_cron_jobs_retry_chk CHECK (retry_limit BETWEEN 0 AND 3)
 );
+
+ALTER TABLE public.tb_cron_jobs
+    ADD COLUMN IF NOT EXISTS notificacao_novos_itens_destino text;
 
 CREATE INDEX IF NOT EXISTS tb_cron_jobs_due_idx
     ON public.tb_cron_jobs (ativo, next_run_at);
@@ -65,3 +69,18 @@ CREATE INDEX IF NOT EXISTS tb_cron_job_runs_started_idx
 
 CREATE INDEX IF NOT EXISTS tb_cron_job_runs_status_idx
     ON public.tb_cron_job_runs (status, started_at DESC);
+
+CREATE TABLE IF NOT EXISTS public.tb_cron_job_notification_recipients (
+    id_cron_job bigint NOT NULL REFERENCES public.tb_cron_jobs(id_cron_job) ON DELETE CASCADE,
+    id_usuario bigint NOT NULL REFERENCES public.tb_usuarios(id) ON DELETE CASCADE,
+    notificar_erro boolean NOT NULL DEFAULT false,
+    notificar_novos_itens boolean NOT NULL DEFAULT false,
+    data_criacao timestamp without time zone NOT NULL DEFAULT now(),
+    data_atualizacao timestamp without time zone NOT NULL DEFAULT now(),
+    PRIMARY KEY (id_cron_job, id_usuario),
+    CONSTRAINT tb_cron_job_notification_recipients_tipo_chk
+        CHECK (notificar_erro OR notificar_novos_itens)
+);
+
+CREATE INDEX IF NOT EXISTS tb_cron_job_notification_recipients_usuario_idx
+    ON public.tb_cron_job_notification_recipients (id_usuario, id_cron_job);

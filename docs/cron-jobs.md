@@ -1,6 +1,6 @@
 # Gerenciador de Cron Jobs
 
-Atualizado em: 2026-06-22
+Atualizado em: 2026-07-25
 
 ## Objetivo
 
@@ -28,6 +28,7 @@ Tabelas:
 
 - `tb_cron_jobs`: cadastro do job, endpoint, agenda, metodo HTTP, autenticacao e ultimo estado.
 - `tb_cron_job_runs`: historico de execucoes, status, HTTP status, duracao, erro e preview da resposta.
+- `tb_cron_job_notification_recipients`: administradores que recebem notificacoes de erro e/ou novos itens por job.
 
 O schema fica em:
 
@@ -149,6 +150,47 @@ signature = HMAC_SHA256(timestamp + "." + body, secret)
 - O tempo de resposta, HTTP status e preview da resposta sao armazenados.
 - `retry_limit` permite ate 3 novas tentativas.
 - Falhas de uma API nao bloqueiam os demais jobs.
+
+## Notificacoes web e push
+
+Cada job possui uma matriz de administradores, com nome, e-mail e ID, na qual
+podem ser marcadas duas preferências independentes:
+
+- erro: dispara para `error`, `http_error`, `failed` e `timeout`;
+- novos itens: dispara quando uma resposta JSON de sucesso possui contador positivo
+  de novos registros.
+
+A identificação de novos registros usa grupos alternativos em ordem de
+precedência:
+
+1. `new_items` ou `novos_itens`;
+2. `created`, `criados`, `inserted` ou `inseridos`;
+3. `imported` ou `importados`.
+
+Somente o primeiro grupo presente na resposta é considerado. Os valores não são
+somados entre grupos. Isso evita falsos positivos em APIs que retornam
+`importados = created + updated`. Os campos `linked` e `vinculados` não são
+considerados, pois podem representar vínculos já existentes.
+
+As opcoes sao carregadas de `tb_usuarios.is_admin = true` e os IDs continuam
+sendo validados no salvamento. Um administrador pode receber os dois tipos. A
+interface também oferece busca por nome/e-mail e seleção/limpeza em massa para
+cada tipo de notificação.
+
+O clique usa destinos distintos:
+
+- erro: destino fixo em
+  `https://business.roadrunners.run/administracao/cron-jobs/`;
+- novos itens: caminho interno configurado individualmente no job, sempre
+  montado sob `https://business.roadrunners.run/`.
+
+O cadastro aceita somente um caminho interno, como
+`/administracao/foco-revisao/`; URLs externas não são aceitas.
+
+O envio usa a API central de notificacoes configurada em
+`APPLICATION.notificationDispatch`, com `sendPush = true`. Assim, a mesma
+operacao materializa a notificacao web e solicita o push. Falhas no dispatch sao
+acessorias: ficam isoladas e nao alteram o status da execucao do job.
 
 ## Endpoints ja mapeados como bons candidatos
 

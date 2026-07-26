@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <cfprocessingdirective pageencoding="utf-8"/>
+<cfsetting requesttimeout="180"/>
 <cfset VARIABLES.theme = "dark"/>
 <cfset VARIABLES.template = "/percursos/"/>
 <cfinclude template="../includes/backend/backend_login.cfm"/>

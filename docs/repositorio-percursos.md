@@ -1,6 +1,6 @@
 # Repositório de Percursos
 
-O módulo `/percursos/` mantém percursos GPX privados e versionados no Business. Os percursos podem ser vinculados aos eventos e, no caso da migração Strava, à modalidade exata identificada por `tb_evento_corridas_percursos.id_evento_percurso`.
+O módulo `/percursos/` mantém arquivos de percurso privados e versionados no Business. Aceita GPX, KML, KMZ, GeoJSON e FIT, normaliza a geometria e gera também um GPX otimizado. Os percursos podem ser vinculados à modalidade exata identificada por `tb_evento_corridas_percursos.id_evento_percurso`.
 
 ## Instalação
 
@@ -19,11 +19,11 @@ O arquivo local é lido a cada requisição e não exige reinício do ColdFusion
 - migração das rotas Strava limitada a ADMINs reais do sistema;
 - CSRF em todas as mutações;
 - limite de upload de 20 MB;
-- limite de 250 mil pontos por arquivo;
-- somente extensão `.gpx`;
+- limite de 1 milhão de pontos por arquivo;
+- extensões `.gpx`, `.kml`, `.kmz`, `.geojson` e `.fit`;
 - rejeição de DTD e entidades XML;
 - validação de coordenadas e quantidade mínima de pontos;
-- arquivos GPX e GeoJSON sem URL pública direta;
+- arquivos originais, GPX otimizado e GeoJSON sem URL pública direta;
 - autorização refeita no endpoint privado de geometria;
 - auditoria das criações, versões e alterações.
 - reserva atômica de cada modalidade no PostgreSQL para impedir processamento concorrente;
@@ -35,8 +35,9 @@ O arquivo local é lido a cada requisição e não exige reinício do ColdFusion
 {storage}/
   {id_percurso}/
     {versao}/
-      original.gpx
+      original.{gpx|kml|kmz|geojson|fit}
       route.geojson
+      optimized.gpx
 ```
 
 O banco guarda apenas as chaves relativas. Isso permite substituir o filesystem por storage de objetos posteriormente.
@@ -75,3 +76,5 @@ Se a modalidade já estiver associada a outro GPX, o item vai para `revisao` e n
 Durante a transição, o consumidor deve procurar primeiro `tb_evento_percursos_gpx.id_evento_percurso` e usar `tb_evento_corridas_percursos.mapa` apenas como fallback. Depois da conferência integral, o fallback pode ser desativado sem limpar o campo antigo.
 
 Para rollback, basta o Road Runners voltar a usar `mapa`. Os IDs originais do Strava permanecem tanto na tabela histórica quanto em `tb_percurso_migracoes_strava`.
+
+A arquitetura pública, o contrato da API, a geometria derivada para web, a integração Mapbox e o plano de rollout estão definidos em [Percursos de eventos no Road Runners com Mapbox](/Users/geraldoprotta/IdeaProjects/Business/docs/road-runners-percursos-mapbox.md).

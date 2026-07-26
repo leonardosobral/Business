@@ -45,9 +45,11 @@
 </cfif>
 <cfset VARIABLES.cronJobsMethodList = "GET,POST,PUT,PATCH,DELETE"/>
 <cfset VARIABLES.cronJobsAuthModeList = "none,bearer,api_key_header,api_key_query,hmac_sha256"/>
-<cfset qCronJobs = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
-<cfset qCronJobEdit = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
+<cfset qCronJobs = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,notificacao_novos_itens_destino,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
+<cfset qCronJobEdit = queryNew("id_cron_job,nome,descricao,projeto,ambiente,endpoint_url,http_method,content_type,request_body,headers_json,auth_mode,secret_ref,interval_minutes,timeout_seconds,retry_limit,ativo,executar_em_atraso,max_runtime_seconds,notificacao_novos_itens_destino,last_run_at,next_run_at,last_status,last_http_status,last_duration_ms,last_error,data_criacao,data_atualizacao")/>
 <cfset qCronJobRuns = queryNew("id_cron_job_run,id_cron_job,nome,trigger_type,attempt,started_at,finished_at,duration_ms,status,http_status,response_preview,error_message,endpoint_url")/>
+<cfset qCronJobNotificationRecipients = queryNew("id_usuario,notificar_erro,notificar_novos_itens")/>
+<cfset qCronJobAvailableAdmins = queryNew("id,name,email")/>
 
 <cfif cronJobsTablesReady()>
     <cfset cronJobsReconcileStaleRuns()/>
@@ -72,8 +74,17 @@
 </cfif>
 
 <cfif NOT VARIABLES.cronJobsSchemaReady>
-    <cfset VARIABLES.cronJobsError = "As tabelas de cron jobs ainda nao existem. Aplique o script /administracao/cron-jobs/cron_jobs_schema.sql."/>
+    <cfset VARIABLES.cronJobsError = "O schema de cron jobs está incompleto. Aplique o script /administracao/cron-jobs/cron_jobs_schema.sql."/>
 <cfelse>
+    <cfquery name="qCronJobAvailableAdmins">
+        SELECT id,
+               name,
+               email
+        FROM tb_usuarios
+        WHERE is_admin = true
+        ORDER BY lower(name), lower(email), id
+    </cfquery>
+
     <cfif isDefined("URL.acao") AND URL.acao EQ "status" AND isNumeric(URL.job_id) AND isDefined("URL.ativo")>
         <cfquery>
             UPDATE tb_cron_jobs
@@ -115,12 +126,21 @@
         <cfset VARIABLES.cronJobTimeout = isDefined("FORM.timeout_seconds") ? min(120, max(1, val(FORM.timeout_seconds))) : 30/>
         <cfset VARIABLES.cronJobRetryLimit = isDefined("FORM.retry_limit") ? min(3, max(0, val(FORM.retry_limit))) : 0/>
         <cfset VARIABLES.cronJobMaxRuntime = isDefined("FORM.max_runtime_seconds") ? max(30, val(FORM.max_runtime_seconds)) : 300/>
+        <cfset VARIABLES.cronJobNewItemsDestination = isDefined("FORM.notificacao_novos_itens_destino") ? trim(FORM.notificacao_novos_itens_destino) : ""/>
         <cfset VARIABLES.cronJobActive = isDefined("FORM.ativo")/>
         <cfset VARIABLES.cronJobExecuteLate = isDefined("FORM.executar_em_atraso")/>
         <cfset VARIABLES.cronJobNextRun = isDefined("FORM.next_run_at") ? trim(FORM.next_run_at) : ""/>
         <cfset VARIABLES.cronJobNextRunValue = now()/>
         <cfset VARIABLES.cronJobHeadersParsed = {}/>
         <cfset VARIABLES.cronJobErrors = []/>
+        <cfset VARIABLES.cronJobErrorAdminIds = cronJobsParseAdminIds(isDefined("FORM.notificar_erro_admin_ids") ? FORM.notificar_erro_admin_ids : "")/>
+        <cfset VARIABLES.cronJobNewItemsAdminIds = cronJobsParseAdminIds(isDefined("FORM.notificar_novos_itens_admin_ids") ? FORM.notificar_novos_itens_admin_ids : "")/>
+        <cfset VARIABLES.cronJobAllAdminIds = duplicate(VARIABLES.cronJobErrorAdminIds)/>
+        <cfloop array="#VARIABLES.cronJobNewItemsAdminIds#" index="VARIABLES.cronJobNotificationAdminId">
+            <cfif NOT arrayFind(VARIABLES.cronJobAllAdminIds, VARIABLES.cronJobNotificationAdminId)>
+                <cfset arrayAppend(VARIABLES.cronJobAllAdminIds, VARIABLES.cronJobNotificationAdminId)/>
+            </cfif>
+        </cfloop>
 
         <cfif NOT len(VARIABLES.cronJobNome)>
             <cfset arrayAppend(VARIABLES.cronJobErrors, "Informe o nome do job.")/>
@@ -158,6 +178,33 @@
         <cfif len(VARIABLES.cronJobNextRun) AND isDate(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))>
             <cfset VARIABLES.cronJobNextRunValue = parseDateTime(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))/>
         </cfif>
+        <cfif len(VARIABLES.cronJobNewItemsDestination)>
+            <cfset VARIABLES.cronJobNewItemsDestination = "/" & reReplace(VARIABLES.cronJobNewItemsDestination, "^/+", "", "all")/>
+            <cfif find("://", VARIABLES.cronJobNewItemsDestination)
+                OR left(VARIABLES.cronJobNewItemsDestination, 2) EQ "//"
+                OR reFind("[\r\n]", VARIABLES.cronJobNewItemsDestination)>
+                <cfset arrayAppend(VARIABLES.cronJobErrors, "O destino de novos itens deve ser um caminho interno do Business.")/>
+            </cfif>
+        </cfif>
+        <cfif arrayLen(VARIABLES.cronJobNewItemsAdminIds) AND NOT len(VARIABLES.cronJobNewItemsDestination)>
+            <cfset arrayAppend(VARIABLES.cronJobErrors, "Informe o destino da notificação de novos itens.")/>
+        </cfif>
+        <cfif arrayLen(VARIABLES.cronJobAllAdminIds)>
+            <cfquery name="qCronJobValidNotificationAdmins">
+                SELECT id
+                FROM tb_usuarios
+                WHERE is_admin = true
+                  AND id IN (
+                      <cfqueryparam
+                          cfsqltype="cf_sql_bigint"
+                          value="#arrayToList(VARIABLES.cronJobAllAdminIds)#"
+                          list="true"/>
+                  )
+            </cfquery>
+            <cfif qCronJobValidNotificationAdmins.recordcount NEQ arrayLen(VARIABLES.cronJobAllAdminIds)>
+                <cfset arrayAppend(VARIABLES.cronJobErrors, "Um ou mais IDs informados não pertencem a administradores válidos.")/>
+            </cfif>
+        </cfif>
 
         <cfif arrayLen(VARIABLES.cronJobErrors)>
             <cfset VARIABLES.cronJobsError = arrayToList(VARIABLES.cronJobErrors, " ")/>
@@ -181,16 +228,22 @@
                     ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobActive#"/>,
                     executar_em_atraso = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobExecuteLate#"/>,
                     max_runtime_seconds = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobMaxRuntime#"/>,
+                    notificacao_novos_itens_destino = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cronJobNewItemsDestination#" null="#NOT len(VARIABLES.cronJobNewItemsDestination)#"/>,
                     next_run_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.cronJobNextRunValue#"/>,
                     data_atualizacao = now(),
                     id_usuario_atualizacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
                 WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cronJobId#"/>
             </cfquery>
+            <cfset cronJobsReplaceNotificationRecipients(
+                val(VARIABLES.cronJobId),
+                VARIABLES.cronJobErrorAdminIds,
+                VARIABLES.cronJobNewItemsAdminIds
+            )/>
             <cflocation addtoken="false" url="./?sucesso=salvo&job_id=#VARIABLES.cronJobId#"/>
         <cfelse>
             <cfquery name="qCronJobInsert">
                 INSERT INTO tb_cron_jobs
-                    (nome, descricao, projeto, ambiente, endpoint_url, http_method, content_type, request_body, headers_json, auth_mode, secret_ref, interval_minutes, timeout_seconds, retry_limit, ativo, executar_em_atraso, max_runtime_seconds, next_run_at, id_usuario_criacao, id_usuario_atualizacao)
+                    (nome, descricao, projeto, ambiente, endpoint_url, http_method, content_type, request_body, headers_json, auth_mode, secret_ref, interval_minutes, timeout_seconds, retry_limit, ativo, executar_em_atraso, max_runtime_seconds, notificacao_novos_itens_destino, next_run_at, id_usuario_criacao, id_usuario_atualizacao)
                 VALUES
                     (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cronJobNome#"/>,
@@ -210,12 +263,18 @@
                         <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobActive#"/>,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.cronJobExecuteLate#"/>,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobMaxRuntime#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cronJobNewItemsDestination#" null="#NOT len(VARIABLES.cronJobNewItemsDestination)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.cronJobNextRunValue#"/>,
                         <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
                         <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
                     )
                 RETURNING id_cron_job
             </cfquery>
+            <cfset cronJobsReplaceNotificationRecipients(
+                val(qCronJobInsert.id_cron_job),
+                VARIABLES.cronJobErrorAdminIds,
+                VARIABLES.cronJobNewItemsAdminIds
+            )/>
             <cflocation addtoken="false" url="./?sucesso=salvo&job_id=#qCronJobInsert.id_cron_job#"/>
         </cfif>
     </cfif>
@@ -226,6 +285,14 @@
             FROM tb_cron_jobs
             WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
             LIMIT 1
+        </cfquery>
+        <cfquery name="qCronJobNotificationRecipients">
+            SELECT id_usuario,
+                   notificar_erro,
+                   notificar_novos_itens
+            FROM tb_cron_job_notification_recipients
+            WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
+            ORDER BY id_usuario
         </cfquery>
     </cfif>
 
