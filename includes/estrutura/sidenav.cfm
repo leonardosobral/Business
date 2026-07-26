@@ -566,6 +566,12 @@
                     </cfif>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/api-monitor/">link-warning</cfif>" href="/administracao/api-monitor/">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span>
+                </a>
+            </li>
             </cfif>
         </cfif>
 

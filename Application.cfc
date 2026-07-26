@@ -53,6 +53,9 @@
         <cfset var uptimeRobotApiUrl = structKeyExists(environment, "UPTIMEROBOT_API_URL") ? trim(environment["UPTIMEROBOT_API_URL"]) : (structKeyExists(businessLocalConfig, "uptimeRobotApiUrl") ? trim(businessLocalConfig.uptimeRobotApiUrl) : "https://api.uptimerobot.com/v2/getMonitors")/>
         <cfset var uptimeRobotTimeoutSeconds = structKeyExists(environment, "UPTIMEROBOT_TIMEOUT_SECONDS") ? val(environment["UPTIMEROBOT_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotTimeoutSeconds") ? val(businessLocalConfig.uptimeRobotTimeoutSeconds) : 15)/>
         <cfset var uptimeRobotCacheSeconds = structKeyExists(environment, "UPTIMEROBOT_CACHE_SECONDS") ? val(environment["UPTIMEROBOT_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "uptimeRobotCacheSeconds") ? val(businessLocalConfig.uptimeRobotCacheSeconds) : 120)/>
+        <cfset var apiMonitorLogPath = structKeyExists(environment, "RR_BUSINESS_API_MONITOR_LOG_PATH") ? trim(environment["RR_BUSINESS_API_MONITOR_LOG_PATH"]) : (structKeyExists(businessLocalConfig, "apiMonitorLogPath") ? trim(businessLocalConfig.apiMonitorLogPath) : "/var/log/apache2/api.roadrunners.run-telemetry.log")/>
+        <cfset var apiMonitorMaxBytes = structKeyExists(environment, "RR_BUSINESS_API_MONITOR_MAX_BYTES") ? val(environment["RR_BUSINESS_API_MONITOR_MAX_BYTES"]) : (structKeyExists(businessLocalConfig, "apiMonitorMaxBytes") ? val(businessLocalConfig.apiMonitorMaxBytes) : 16777216)/>
+        <cfset var apiMonitorCacheSeconds = structKeyExists(environment, "RR_BUSINESS_API_MONITOR_CACHE_SECONDS") ? val(environment["RR_BUSINESS_API_MONITOR_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "apiMonitorCacheSeconds") ? val(businessLocalConfig.apiMonitorCacheSeconds) : 60)/>
         <cfset var cronRunnerToken = structKeyExists(environment, "RR_BUSINESS_CRON_RUNNER_TOKEN") ? trim(environment["RR_BUSINESS_CRON_RUNNER_TOKEN"]) : (structKeyExists(businessLocalConfig, "cronRunnerToken") ? trim(businessLocalConfig.cronRunnerToken) : "")/>
         <cfset var cronDefaultTimeoutSeconds = structKeyExists(environment, "RR_BUSINESS_CRON_TIMEOUT_SECONDS") ? val(environment["RR_BUSINESS_CRON_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "cronDefaultTimeoutSeconds") ? val(businessLocalConfig.cronDefaultTimeoutSeconds) : 30)/>
         <cfset var cronSecrets = structKeyExists(businessLocalConfig, "cronSecrets") AND isStruct(businessLocalConfig.cronSecrets) ? duplicate(businessLocalConfig.cronSecrets) : {}/>
@@ -105,6 +108,12 @@
             apiUrl = len(uptimeRobotApiUrl) ? uptimeRobotApiUrl : "https://api.uptimerobot.com/v2/getMonitors",
             timeoutSeconds = uptimeRobotTimeoutSeconds GT 0 ? uptimeRobotTimeoutSeconds : 15,
             cacheSeconds = uptimeRobotCacheSeconds GT 0 ? uptimeRobotCacheSeconds : 120
+        }/>
+        <cfset APPLICATION.apiMonitor = {
+            enabled = len(apiMonitorLogPath) GT 0,
+            logPath = apiMonitorLogPath,
+            maxBytes = min(67108864, max(1048576, int(apiMonitorMaxBytes))),
+            cacheSeconds = min(600, max(15, int(apiMonitorCacheSeconds)))
         }/>
         <cfset APPLICATION.cronJobs = {
             enabled = len(cronRunnerToken) GT 0,
