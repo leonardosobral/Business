@@ -4,6 +4,55 @@
 <cfset VARIABLES.adminEventosContaIds = "0"/>
 <cfset VARIABLES.adminIsEventoSolicitacaoPost = isDefined("FORM.evento_solicitacao_action")
     AND ListFindNoCase("solicitar,aprovar,negar", FORM.evento_solicitacao_action)/>
+<cfset VARIABLES.adminEventoTagAdjusted = false/>
+<cfset VARIABLES.adminEventoRequestedTag = ""/>
+<cfset VARIABLES.adminEventoResolvedTag = ""/>
+
+<cfscript>
+function adminEventoResolveUniqueTag(required string requestedTag, numeric eventId=0) {
+    var baseTag = trim(arguments.requestedTag);
+    var candidateTag = baseTag;
+    var suffix = "";
+    var attempt = 1;
+    var qTagConflict = "";
+
+    if (!len(baseTag)) {
+        baseTag = arguments.eventId GT 0
+            ? "evento-" & int(arguments.eventId)
+            : "evento-" & lCase(replace(createUUID(), "-", "", "all"));
+        candidateTag = baseTag;
+    }
+
+    while (attempt LTE 100) {
+        qTagConflict = queryExecute(
+            "SELECT id_evento
+             FROM tb_evento_corridas
+             WHERE tag = :tag
+               AND id_evento <> :eventId
+             LIMIT 1",
+            {
+                tag = {value=candidateTag, cfsqltype="cf_sql_varchar"},
+                eventId = {value=val(arguments.eventId), cfsqltype="cf_sql_integer"}
+            }
+        );
+
+        if (!qTagConflict.recordcount) {
+            return candidateTag;
+        }
+
+        suffix = arguments.eventId GT 0
+            ? "-" & int(arguments.eventId) & (attempt GT 1 ? "-" & attempt : "")
+            : "-" & (attempt + 1);
+        candidateTag = left(baseTag, max(1, 512 - len(suffix))) & suffix;
+        attempt++;
+    }
+
+    throw(
+        type="EventoTagConflict",
+        message="Não foi possível gerar uma tag única para o evento."
+    );
+}
+</cfscript>
 
 <cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
     <cfset VARIABLES.adminEventosContaIds = ValueList(qEventosConta.id_evento)/>
@@ -55,6 +104,16 @@
         order by nome_cidade
     </cfquery>
 
+    <cfset VARIABLES.adminEventoRequestedTag = trim(FORM.tag & "")/>
+    <cfset VARIABLES.adminEventoResolvedTag = adminEventoResolveUniqueTag(
+        VARIABLES.adminEventoRequestedTag,
+        isNumeric(FORM.id_evento) ? val(FORM.id_evento) : 0
+    )/>
+    <cfset VARIABLES.adminEventoTagAdjusted = compare(
+        VARIABLES.adminEventoRequestedTag,
+        VARIABLES.adminEventoResolvedTag
+    ) NEQ 0/>
+
     <cfif FORM.id_evento EQ 0>
 
         <cfquery name="qInsert">
@@ -69,7 +128,7 @@
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.estado#"/>,
              <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
              <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tag#"/>,
+	             <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adminEventoResolvedTag#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
@@ -98,7 +157,7 @@
             estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.estado#"/>,
             data_inicial = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
             data_final = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
-            tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tag#"/>,
+            tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adminEventoResolvedTag#"/>,
             tipo_corrida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
             endereco = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
             coordenadas = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,

@@ -124,6 +124,18 @@
     .business-sidenav-section-collapsed {
         display: none !important;
     }
+
+    .business-sidenav-submenu {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .business-sidenav-submenu .sidenav-link {
+        min-height: 30px;
+        padding-left: 2.35rem !important;
+        font-size: .78rem;
+    }
 </style>
 
 <cfset VARIABLES.businessCanShowAdminNavigation = false/>
@@ -550,17 +562,24 @@
             </li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agrega-revisao/">link-warning</cfif>" href="/administracao/agrega-revisao/">
-                    <i class="fa-solid fa-object-group fa-fw me-3"></i><span>Revisão Agregadores</span>
-                    <cfif VARIABLES.businessAgregaReviewPendingTotal GT 0>
-                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessAgregaReviewPendingTotal#</cfoutput></span>
-                    </cfif>
+                <a class="sidenav-link <cfif listFindNoCase("/administracao/agregadores/,/administracao/agrega-revisao/", VARIABLES.template)>link-warning</cfif>" href="/administracao/agregadores/">
+                    <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Agregadores</span>
                 </a>
+                <ul class="business-sidenav-submenu list-unstyled">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link ps-5 <cfif VARIABLES.template EQ "/administracao/agrega-revisao/">link-warning</cfif>" href="/administracao/agrega-revisao/">
+                            <i class="fa-solid fa-code-branch fa-fw me-2"></i><span>Revisão</span>
+                            <cfif VARIABLES.businessAgregaReviewPendingTotal GT 0>
+                                <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessAgregaReviewPendingTotal#</cfoutput></span>
+                            </cfif>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/status/">link-warning</cfif>" href="/administracao/status/">
-                    <i class="fa-solid fa-heart-pulse fa-fw me-3"></i><span>Status</span>
+                    <i class="fa-solid fa-heart-pulse fa-fw me-3"></i><span>Status dos Sites</span>
                     <cfif VARIABLES.businessUptimeStatusAttentionTotal GT 0>
                         <span class="badge rounded-pill business-status-attention-badge"><cfoutput>#VARIABLES.businessUptimeStatusAttentionTotal#</cfoutput></span>
                     </cfif>

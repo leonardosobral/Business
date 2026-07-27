@@ -48,9 +48,17 @@
 
                     <!--- DADOS PRINCIPAIS --->
 
-                    <div class="tab-pane fade <cfif URL.sessao EQ "dados">show active</cfif>" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1" tabindex="0">
+	                    <div class="tab-pane fade <cfif URL.sessao EQ "dados">show active</cfif>" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1" tabindex="0">
 
-                        <cfquery name="qEstados">
+	                        <cfif isDefined("VARIABLES.adminEventoTagAdjusted") AND VARIABLES.adminEventoTagAdjusted>
+	                            <div class="alert alert-warning">
+	                                A tag <code><cfoutput>#htmlEditFormat(VARIABLES.adminEventoRequestedTag)#</cfoutput></code>
+	                                já pertencia a outro evento. Este evento foi salvo com
+	                                <code><cfoutput>#htmlEditFormat(VARIABLES.adminEventoResolvedTag)#</cfoutput></code>.
+	                            </div>
+	                        </cfif>
+
+	                        <cfquery name="qEstados">
                             SELECT DISTINCT uf from tb_cidades ORDER BY uf
                         </cfquery>
 
