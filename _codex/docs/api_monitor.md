@@ -18,6 +18,12 @@ O painel lê o arquivo atual e o `.1`, limita a leitura a 16 MB por padrão e ma
 o resultado em cache por 60 segundos. A interface aceita janelas de 1, 6, 24 e 72
 horas.
 
+O snapshot possui `schemaVersion` e o cache inclui uma versão própria. Em deploys,
+subir juntos `includes/backend/api_monitor_service.cfm`,
+`administracao/api-monitor/includes/backend.cfm` e
+`administracao/api-monitor/home.cfm`. A view detecta arquivos incompatíveis e
+mostra um aviso controlado em vez de tentar renderizar um snapshot antigo.
+
 Campos deliberadamente ausentes da telemetria:
 
 - header `Authorization`;
@@ -29,6 +35,23 @@ Campos deliberadamente ausentes da telemetria:
 
 O IP é usado somente para agrupamento de abuso e vira um prefixo de hash SHA-256
 antes de ser armazenado no snapshot em memória ou exibido.
+
+## Classificação do tráfego
+
+O painel separa cada linha em uma única classe:
+
+- `authenticated`: token válido identificado pelo header de resposta
+  `X-Api-Client-Id`;
+- `publicSurface`: landing, OpenAPI, health check e JavaScript do playground com
+  resposta bem-sucedida;
+- `rejected`: chamada a uma rota versionada da API sem credencial válida ou sem
+  permissão;
+- `probe`: rota fora do contrato, scanner ou requisição malformada.
+
+A taxa de sucesso e a latência p95 principais usam somente `authenticated`. Isso
+evita que crawlers, documentação pública e sondagens distorçam a saúde percebida
+da API. O gráfico por hora continua mostrando todo o tráfego, mas com as quatro
+classes empilhadas.
 
 ## Configuração opcional
 
@@ -56,10 +79,16 @@ O logrotate usa o grupo dedicado `rr-api-monitor`. Antes do primeiro deploy:
 ps -eo user,group,args | grep -E '[c]fusion|[c]oldfusion|[t]omcat'
 sudo groupadd --system rr-api-monitor
 sudo usermod -aG rr-api-monitor USUARIO_DO_COLDFUSION
-sudo install -o root -g rr-api-monitor -m 0640 /dev/null \
-  /var/log/apache2/api.roadrunners.run-telemetry.log
+sudo touch /var/log/apache2/api.roadrunners.run-telemetry.log
+sudo chown root:rr-api-monitor /var/log/apache2/api.roadrunners.run-telemetry.log
+sudo chmod 0640 /var/log/apache2/api.roadrunners.run-telemetry.log
+sudo apt-get install acl
+sudo setfacl -m g:rr-api-monitor:--x /var/log/apache2
 sudo a2enmod remoteip
 ```
+
+O ACL no diretório concede somente travessia para o nome conhecido do arquivo.
+Ele não permite ao grupo listar ou ler os demais logs do Apache.
 
 Depois, instalar:
 

@@ -1,8 +1,12 @@
 # Publicidade: chaveamento do Business para o schema `ads`
 
-Atualizado em: 2026-07-12
+Atualizado em: 2026-07-26
 
-Status: código e SQL locais preparados. A migration da Fase 1 do RoadRunners ainda não foi executada; este chaveamento não foi publicado e não deve ser publicado antes dela.
+Status: migration da Fase 1 aplicada em produção em 2026-07-12 e Business chaveado para `ads.*`. Em 2026-07-26 o RoadRunners corrigido foi publicado, o hardening do refresh foi aplicado e auditado e o endpoint protegido foi publicado com suas barreiras externas validadas. O job `9` foi cadastrado, seu teste manual terminou com sucesso e ele foi ativado; ainda faltam documentar a conferência do dashboard e observar a primeira execução agendada.
+
+O roadmap único do domínio está em
+[publicidade_ads_plano_mestre.md](../../../RoadRunners/_codex/docs/publicidade_ads_plano_mestre.md). Este documento mantém
+somente o inventário e o registro operacional do Business.
 
 ## 1. Escopo
 
@@ -32,6 +36,7 @@ Documentos antigos que citam nomes lógicos sem schema são descritivos e não c
 
 - `ads/includes/backend.cfm`
 - `api/ads/conversion-click.cfm`
+- `api/ads/refresh-metrics.cfm`
 - `administracao/contas/includes/backend.cfm`
 - `cupons-rr/includes/backend.cfm`
 - `inscricoes/includes/backend.cfm`
@@ -49,6 +54,7 @@ Documentos antigos que citam nomes lógicos sem schema são descritivos e não c
 - `_codex/sql/2026-06-27_tb_ad_conversion_log.sql`
 - `_codex/sql/ddl.sql`
 - `portal/banners/portal_banner_schema.sql`
+- `administracao/cron-jobs/ads_metrics_refresh_job.sql`
 
 Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantida intacta e não pertence a este chaveamento.
 
@@ -59,9 +65,12 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
 - Relações cruzadas relevantes foram mantidas em `public`, com qualificação explícita nos pontos alterados, incluindo eventos, contas, vínculos de conta e usuários.
 - A FK inversa permanece definida como `public.tb_conta_cadastro_solicitacoes.id_ad_voucher -> ads.tb_ad_vouchers.id_ad_voucher`.
 - Referências diretas a sequences passaram a usar `ads.*`.
-- A fotografia `_codex/sql/ddl.sql` cria o schema `ads`, concede `USAGE` a `runner` e cria as tabelas de publicidade no schema correto.
+- A fotografia `_codex/sql/ddl.sql`, atualizada a partir do banco em 2026-07-26, confirma as 14 tabelas em `ads`, as 14 views em `public`, a FK de voucher e a função de refresh. Ela é snapshot de auditoria, não migration executável.
 - O SQL standalone de banners cria tabelas e índices em `ads`.
 - Nenhuma view de compatibilidade em `public` foi removida ou redefinida.
+- O endpoint `/api/ads/refresh-metrics.cfm` executa uma janela móvel limitada, exige credencial interna e usa advisory lock transacional.
+- O cadastro do cron cria o job inativo, a cada 60 minutos, para teste manual antes da ativação.
+- A migration do RoadRunners que cria o índice concorrente em `ads.tb_ad_log(data_insercao)` e torna o filtro da função indexável foi aplicada e auditada em 2026-07-26.
 
 ## 5. `information_schema` corrigido
 
@@ -87,7 +96,7 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
 - O datasource padrão do Business continua sendo `runner_dba`, definido em `Application.cfc`; os consumidores alterados não sobrescrevem o datasource em `<cfquery>`.
 - A migration do RoadRunners cria `ads` com owner `runner_dba`. Portanto, o datasource do Business mantém acesso direto como owner.
 - A migration também concede `USAGE ON SCHEMA ads` e privilégios explícitos históricos ao papel `runner`, necessário aos consumidores do RoadRunners.
-- Owners, ACLs adicionais e roles reais ainda precisam ser conferidos no banco pela auditoria da migration antes de produção; nenhuma permissão foi testada contra o banco nesta tarefa.
+- O snapshot atualizado confirma `runner_dba` como owner das tabelas legadas. Isso é compatível com a Fase 1, mas não será aceito para o ledger da Ads V1.
 
 ## 8. Validações estáticas
 
@@ -95,14 +104,43 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
 - auditoria por contexto SQL para `FROM`, `JOIN`, `INSERT INTO`, `UPDATE`, `DELETE FROM`, `CREATE TABLE`, `ALTER TABLE` e `REFERENCES` sem `ads.`;
 - auditoria separada de sequences, casts `regclass`, `information_schema` e `current_schema()`;
 - revisão manual das ocorrências de `clicks` para separar tabela de coluna, alias e label;
-- `git diff --check` sem erros de whitespace;
+- `git diff --check` dos arquivos desta entrega sem erros de whitespace; o diff
+  global continua apontando apenas uma linha vazia no fim do snapshot
+  `_codex/sql/ddl.sql` atualizado pelo usuário;
 - revisão do datasource padrão e de overrides nos consumidores alterados.
+- revisão estática do endpoint e do cadastro idempotente do cron;
+- conferência do snapshot atualizado do banco para tabelas, views, FK e funções.
+- auditoria do hardening em produção: índice válido e pronto com owner
+  `runner_dba`; função com owner `runner_dba`, execução de `runner`, advisory
+  lock e limites de timestamp confirmados;
+- `EXPLAIN` confirmando `Index Scan` por
+  `ads.idx_tb_ad_log_data_insercao`;
+- checkpoint antes do refresh manual: origem em
+  `2026-07-26 22:07:04.015491`, agregado até `2026-07-25`, atualizado em
+  `2026-07-26 02:13:23.860406`;
+- `RoadRunners/_codex/scripts/audit_ads_phase1_static.sh` executado com resultado
+  `APROVADA` para os dois repositórios;
+- chamada sem token ao runner de produção retornou HTTP 401, confirmando que o
+  endpoint está ativo e protegido sem disparar jobs.
+- smoke test externo do endpoint publicado: `GET` retornou HTTP 405 com
+  `Allow: POST` e `POST` sem credencial retornou HTTP 401, sem executar refresh.
+- cadastro idempotente executado em produção: job `9`,
+  `Business - Metricas de publicidade`, inativo, intervalo de 60 minutos.
+- execução manual em `2026-07-26 22:29:24`: status `success`, HTTP 200, duração
+  total de 88 ms e resposta `status = refreshed`;
+- janela recalculada de `2026-07-24` a `2026-07-26`: 3 linhas, 21.554 views,
+  141 clicks e custo 141;
+- freshness após o refresh: origem em `2026-07-26 22:29:04`, agregado até
+  `2026-07-26`, atualizado em `2026-07-26 22:29:24`.
 
-O repositório não oferece linter ou suíte automatizada de CFML. Não houve conexão com PostgreSQL, execução de migration, smoke test em ambiente ou deploy.
+O repositório não oferece linter ou suíte automatizada de CFML. O endpoint e o
+job preparados em 2026-07-26 foram executados de forma autenticada contra
+PostgreSQL com sucesso; o job está ativo.
 
 ## 9. Dependências e consumidores ainda não resolvidos
 
-- A migration da Fase 1 e o código qualificado do RoadRunners estão preparados, mas ainda não executados/publicados.
+- A primeira execução com trigger `scheduled` ainda precisa ser conferida no
+  histórico.
 - Jobs, BI, integrações, funções do banco e scripts manuais externos aos dois repositórios precisam ser observados com a auditoria SQL e `pg_stat_statements` após o deploy.
 - A atividade da rota `_legado/usuarios/` continua incerta; seu SQL foi qualificado para evitar regressão caso volte a ser chamado.
 - As views temporárias `public.*` devem permanecer durante uma janela que cubra tráfego, rotinas diárias, semanais e mensais.
@@ -110,12 +148,20 @@ O repositório não oferece linter ou suíte automatizada de CFML. Não houve co
 
 ## 10. Riscos e ordem coordenada de deploy
 
-O principal risco é publicar este Business antes da migration: `ads.*` ainda não existe e as consultas falharão. Também é arriscado remover as views antes de observar consumidores externos ou executar um incremental antigo não qualificado depois da limpeza.
+O principal risco atual é deixar o agregado diário sem agendamento ou remover as
+views enquanto elas ainda mascaram consumidores regressivos. A Ads V1 canônica
+continua em `NO-GO` e não faz parte deste deploy.
 
-Ordem obrigatória:
+Ordem atual:
 
-1. backup, inventário real e migration do banco em dev, beta e depois produção;
-2. deploy do RoadRunners já qualificado;
-3. deploy do Business já qualificado;
-4. observação de tráfego, jobs, BI, integrações, ACLs e `pg_stat_statements`;
-5. remoção futura das views de compatibilidade somente por migration separada e após evidência de ausência de consumidores.
+1. ~~deploy da correção do RoadRunners~~ — concluído em 2026-07-26;
+2. ~~migration e auditoria de endurecimento do refresh~~ — concluídas em
+   2026-07-26;
+3. ~~deploy do endpoint do Business~~ — concluído e validado em 2026-07-26;
+4. ~~execução do SQL de cadastro do job~~ — job `9` cadastrado inativo em
+   2026-07-26;
+5. ~~smoke test manual no gerenciador de cron~~ — HTTP 200 e
+   `status = refreshed` em 2026-07-26;
+6. ativação concluída; confirmação da primeira execução agendada pendente;
+7. observação de tráfego, jobs, BI, integrações, ACLs e `pg_stat_statements`;
+8. remoção futura das views somente por migration separada.

@@ -1,6 +1,28 @@
 <cfscript>
+function apiMonitorNewTrafficBucket(required string label, required string description) {
+    return {
+        label = arguments.label,
+        description = arguments.description,
+        total = 0,
+        success = 0,
+        redirects = 0,
+        clientErrors = 0,
+        serverErrors = 0,
+        unauthorized = 0,
+        forbidden = 0,
+        notFound = 0,
+        methodNotAllowed = 0,
+        rateLimited = 0,
+        durationTotalMs = 0,
+        averageDurationMs = 0,
+        p95DurationMs = 0,
+        maxDurationMs = 0
+    };
+}
+
 function apiMonitorEmptySnapshot(required numeric hours) {
     return {
+        schemaVersion = 2,
         loaded = false,
         error = "",
         hours = arguments.hours,
@@ -31,8 +53,28 @@ function apiMonitorEmptySnapshot(required numeric hours) {
             p95DurationMs = 0,
             peakRequestsPerMinute = 0
         },
+        traffic = {
+            authenticated = apiMonitorNewTrafficBucket(
+                "Clientes autenticados",
+                "Chamadas com token valido, incluindo respostas sem o escopo exigido."
+            ),
+            publicSurface = apiMonitorNewTrafficBucket(
+                "Documentacao publica",
+                "Landing, contrato OpenAPI, health check e JavaScript do playground."
+            ),
+            rejected = apiMonitorNewTrafficBucket(
+                "Rejeicoes protegidas",
+                "Chamadas a rotas da API sem credencial valida ou sem permissao."
+            ),
+            probe = apiMonitorNewTrafficBucket(
+                "Probes e ruido",
+                "Rotas fora do contrato, scanners e requisicoes malformadas."
+            )
+        },
         clients = [],
         routes = [],
+        authenticatedRoutes = [],
+        probeRoutes = [],
         statuses = [],
         timeline = [],
         abuseSignals = [],
@@ -44,6 +86,47 @@ function apiMonitorSafeLogValue(any rawValue = "") {
     var value = trim(arguments.rawValue & "");
 
     return value EQ "-" ? "" : value;
+}
+
+function apiMonitorIsPublicSurface(
+    required string method,
+    required string route,
+    required numeric statusCode
+) {
+    var publicRoutes = "/,/index.cfm,/openapi.json,/health.cfm,/assets/playground.js";
+
+    return listFindNoCase("GET,HEAD", arguments.method)
+        AND arguments.statusCode GTE 200
+        AND arguments.statusCode LT 400
+        AND listFindNoCase(publicRoutes, arguments.route);
+}
+
+function apiMonitorIsApiRoute(required string route) {
+    return reFindNoCase(
+        "^/v1/(athletes|events|results|discovery|editorial|feed|challenges|training|coupons|session|me)/[a-z0-9-]+\.cfm$",
+        arguments.route
+    ) GT 0;
+}
+
+function apiMonitorClassifyTraffic(
+    required string method,
+    required string route,
+    required numeric statusCode,
+    required string clientId
+) {
+    if (arguments.clientId NEQ "nao-autenticado") {
+        return "authenticated";
+    }
+
+    if (apiMonitorIsPublicSurface(arguments.method, arguments.route, arguments.statusCode)) {
+        return "publicSurface";
+    }
+
+    if (apiMonitorIsApiRoute(arguments.route)) {
+        return "rejected";
+    }
+
+    return "probe";
 }
 
 function apiMonitorReadTail(required string filePath, required numeric maxBytes) {
@@ -135,6 +218,7 @@ function apiMonitorBucket(required struct collection, required string keyValue, 
             label = arguments.label,
             total = 0,
             success = 0,
+            redirects = 0,
             clientErrors = 0,
             serverErrors = 0,
             unauthorized = 0,
@@ -145,6 +229,10 @@ function apiMonitorBucket(required struct collection, required string keyValue, 
             durationTotalMs = 0,
             averageDurationMs = 0,
             maxDurationMs = 0,
+            authenticated = 0,
+            publicSurface = 0,
+            rejected = 0,
+            probe = 0,
             score = 0
         };
     }
@@ -152,13 +240,20 @@ function apiMonitorBucket(required struct collection, required string keyValue, 
     return arguments.collection[arguments.keyValue];
 }
 
-function apiMonitorUpdateBucket(required struct bucket, required numeric statusCode, required numeric durationMs) {
+function apiMonitorUpdateBucket(
+    required struct bucket,
+    required numeric statusCode,
+    required numeric durationMs,
+    string classification = ""
+) {
     arguments.bucket.total += 1;
     arguments.bucket.durationTotalMs += arguments.durationMs;
     arguments.bucket.maxDurationMs = max(arguments.bucket.maxDurationMs, arguments.durationMs);
 
-    if (arguments.statusCode GTE 200 AND arguments.statusCode LT 400) {
+    if (arguments.statusCode GTE 200 AND arguments.statusCode LT 300) {
         arguments.bucket.success += 1;
+    } else if (arguments.statusCode GTE 300 AND arguments.statusCode LT 400) {
+        arguments.bucket.redirects += 1;
     } else if (arguments.statusCode GTE 400 AND arguments.statusCode LT 500) {
         arguments.bucket.clientErrors += 1;
     } else if (arguments.statusCode GTE 500) {
@@ -175,6 +270,13 @@ function apiMonitorUpdateBucket(required struct bucket, required numeric statusC
         arguments.bucket.methodNotAllowed += 1;
     } else if (arguments.statusCode EQ 429) {
         arguments.bucket.rateLimited += 1;
+    }
+
+    if (
+        len(arguments.classification)
+        AND structKeyExists(arguments.bucket, arguments.classification)
+    ) {
+        arguments.bucket[arguments.classification] += 1;
     }
 }
 
@@ -221,6 +323,8 @@ function apiMonitorLoadSnapshot(
     var cutoffEpoch = currentEpoch - (arguments.hours * 3600);
     var clientBuckets = {};
     var routeBuckets = {};
+    var authenticatedRouteBuckets = {};
+    var probeRouteBuckets = {};
     var statusBuckets = {};
     var ipBuckets = {};
     var hourBuckets = {};
@@ -228,12 +332,14 @@ function apiMonitorLoadSnapshot(
     var uniqueClients = {};
     var uniqueIps = {};
     var durations = [];
+    var authenticatedDurations = [];
     var lineValue = "";
     var fields = [];
     var eventEpoch = 0;
     var eventDate = "";
     var method = "";
     var route = "";
+    var routeKey = "";
     var statusCode = 0;
     var responseBytes = 0;
     var durationMs = 0;
@@ -247,6 +353,8 @@ function apiMonitorLoadSnapshot(
     var bucket = {};
     var statusKey = "";
     var recentItem = {};
+    var classification = "";
+    var trafficKey = "";
     var index = 0;
 
     try {
@@ -272,6 +380,7 @@ function apiMonitorLoadSnapshot(
 
             method = uCase(apiMonitorSafeLogValue(fields[5]));
             route = apiMonitorSafeLogValue(fields[6]);
+            routeKey = method & " " & route;
             statusCode = val(fields[7]);
             responseBytes = val(fields[8]);
             durationMs = val(fields[9]) / 1000;
@@ -302,6 +411,7 @@ function apiMonitorLoadSnapshot(
             hourKey = dateFormat(eventDate, "yyyy-mm-dd") & " " & timeFormat(eventDate, "HH:00");
             minuteKey = dateFormat(eventDate, "yyyy-mm-dd") & " " & timeFormat(eventDate, "HH:nn");
             statusKey = statusCode & "";
+            classification = apiMonitorClassifyTraffic(method, route, statusCode, clientId);
 
             snapshot.parsedLines += 1;
             snapshot.totals.requests += 1;
@@ -330,23 +440,33 @@ function apiMonitorLoadSnapshot(
             }
 
             arrayAppend(durations, durationMs);
+            apiMonitorUpdateBucket(snapshot.traffic[classification], statusCode, durationMs);
 
             if (clientId NEQ "nao-autenticado") {
                 uniqueClients[clientId] = true;
+                arrayAppend(authenticatedDurations, durationMs);
+
+                bucket = apiMonitorBucket(clientBuckets, clientId, clientId);
+                apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
+
+                bucket = apiMonitorBucket(authenticatedRouteBuckets, routeKey, routeKey);
+                apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
             }
             uniqueIps[ipHash] = true;
 
-            bucket = apiMonitorBucket(clientBuckets, clientId, clientId);
-            apiMonitorUpdateBucket(bucket, statusCode, durationMs);
+            bucket = apiMonitorBucket(routeBuckets, routeKey, routeKey);
+            apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
 
-            bucket = apiMonitorBucket(routeBuckets, route, method & " " & route);
-            apiMonitorUpdateBucket(bucket, statusCode, durationMs);
+            if (classification EQ "probe") {
+                bucket = apiMonitorBucket(probeRouteBuckets, routeKey, routeKey);
+                apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
+            }
 
             bucket = apiMonitorBucket(statusBuckets, statusKey, statusKey);
-            apiMonitorUpdateBucket(bucket, statusCode, durationMs);
+            apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
 
             bucket = apiMonitorBucket(ipBuckets, ipHash, ipHash);
-            apiMonitorUpdateBucket(bucket, statusCode, durationMs);
+            apiMonitorUpdateBucket(bucket, statusCode, durationMs, classification);
             bucket.score = (bucket.unauthorized * 4)
                 + (bucket.forbidden * 2)
                 + bucket.notFound
@@ -360,7 +480,11 @@ function apiMonitorLoadSnapshot(
                     total = 0,
                     success = 0,
                     errors = 0,
-                    rateLimited = 0
+                    rateLimited = 0,
+                    authenticated = 0,
+                    publicSurface = 0,
+                    rejected = 0,
+                    probe = 0
                 };
             }
 
@@ -368,6 +492,7 @@ function apiMonitorLoadSnapshot(
             hourBuckets[hourKey].success += statusCode GTE 200 AND statusCode LT 400 ? 1 : 0;
             hourBuckets[hourKey].errors += statusCode GTE 400 ? 1 : 0;
             hourBuckets[hourKey].rateLimited += statusCode EQ 429 ? 1 : 0;
+            hourBuckets[hourKey][classification] += 1;
 
             if (!structKeyExists(minuteBuckets, minuteKey)) {
                 minuteBuckets[minuteKey] = 0;
@@ -385,7 +510,8 @@ function apiMonitorLoadSnapshot(
                     durationMs = durationMs,
                     responseBytes = responseBytes,
                     ipHash = ipHash,
-                    requestId = requestId
+                    requestId = requestId,
+                    classification = classification
                 };
                 arrayAppend(snapshot.recentErrors, recentItem);
 
@@ -411,6 +537,20 @@ function apiMonitorLoadSnapshot(
             snapshot.totals.p95DurationMs = durations[max(1, ceiling(arrayLen(durations) * 0.95))];
         }
 
+        for (trafficKey in snapshot.traffic) {
+            snapshot.traffic[trafficKey].averageDurationMs = snapshot.traffic[trafficKey].total GT 0
+                ? snapshot.traffic[trafficKey].durationTotalMs / snapshot.traffic[trafficKey].total
+                : 0;
+        }
+
+        if (arrayLen(authenticatedDurations)) {
+            arraySort(authenticatedDurations, "numeric", "asc");
+            snapshot.traffic.authenticated.p95DurationMs =
+                authenticatedDurations[max(1, ceiling(arrayLen(authenticatedDurations) * 0.95))];
+        } else {
+            snapshot.traffic.authenticated.p95DurationMs = 0;
+        }
+
         for (minuteKey in minuteBuckets) {
             snapshot.totals.peakRequestsPerMinute = max(
                 snapshot.totals.peakRequestsPerMinute,
@@ -420,6 +560,8 @@ function apiMonitorLoadSnapshot(
 
         snapshot.clients = apiMonitorTopBuckets(clientBuckets, 12, "total");
         snapshot.routes = apiMonitorTopBuckets(routeBuckets, 15, "total");
+        snapshot.authenticatedRoutes = apiMonitorTopBuckets(authenticatedRouteBuckets, 12, "total");
+        snapshot.probeRoutes = apiMonitorTopBuckets(probeRouteBuckets, 12, "total");
         snapshot.statuses = apiMonitorTopBuckets(statusBuckets, 12, "total");
         snapshot.abuseSignals = apiMonitorTopBuckets(ipBuckets, 15, "score");
 

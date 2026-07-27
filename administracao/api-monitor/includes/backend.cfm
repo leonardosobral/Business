@@ -15,7 +15,9 @@
         cacheSeconds = 60
     }/>
 <cfset VARIABLES.apiMonitorSnapshot = apiMonitorEmptySnapshot(VARIABLES.apiMonitorHours)/>
-<cfset VARIABLES.apiMonitorCacheKey = "apiMonitorSnapshot" & VARIABLES.apiMonitorHours/>
+<cfset VARIABLES.apiMonitorExpectedSchemaVersion = 2/>
+<cfset VARIABLES.apiMonitorCacheKey = "apiMonitorSnapshotV3" & VARIABLES.apiMonitorHours/>
+<cfset VARIABLES.apiMonitorCachedSnapshot = {}/>
 <cfset VARIABLES.apiMonitorNeedsLoad = true/>
 
 <cfif VARIABLES.apiMonitorConfig.enabled AND NOT VARIABLES.apiMonitorForceRefresh>
@@ -25,8 +27,16 @@
             AND structKeyExists(APPLICATION[VARIABLES.apiMonitorCacheKey], "expiresAt")
             AND APPLICATION[VARIABLES.apiMonitorCacheKey].expiresAt GT now()
             AND structKeyExists(APPLICATION[VARIABLES.apiMonitorCacheKey], "snapshot")>
-            <cfset VARIABLES.apiMonitorSnapshot = duplicate(APPLICATION[VARIABLES.apiMonitorCacheKey].snapshot)/>
-            <cfset VARIABLES.apiMonitorNeedsLoad = false/>
+            <cfset VARIABLES.apiMonitorCachedSnapshot = duplicate(APPLICATION[VARIABLES.apiMonitorCacheKey].snapshot)/>
+
+            <cfif structKeyExists(VARIABLES.apiMonitorCachedSnapshot, "schemaVersion")
+                AND val(VARIABLES.apiMonitorCachedSnapshot.schemaVersion) EQ VARIABLES.apiMonitorExpectedSchemaVersion
+                AND structKeyExists(VARIABLES.apiMonitorCachedSnapshot, "traffic")
+                AND isStruct(VARIABLES.apiMonitorCachedSnapshot.traffic)
+                AND structKeyExists(VARIABLES.apiMonitorCachedSnapshot.traffic, "authenticated")>
+                <cfset VARIABLES.apiMonitorSnapshot = VARIABLES.apiMonitorCachedSnapshot/>
+                <cfset VARIABLES.apiMonitorNeedsLoad = false/>
+            </cfif>
         </cfif>
     </cflock>
 </cfif>
@@ -40,10 +50,18 @@
         VARIABLES.apiMonitorConfig.maxBytes
     )/>
 
-    <cflock scope="application" type="exclusive" timeout="5">
-        <cfset APPLICATION[VARIABLES.apiMonitorCacheKey] = {
-            expiresAt = dateAdd("s", VARIABLES.apiMonitorConfig.cacheSeconds, now()),
-            snapshot = duplicate(VARIABLES.apiMonitorSnapshot)
-        }/>
-    </cflock>
+    <cfif structKeyExists(VARIABLES.apiMonitorSnapshot, "schemaVersion")
+        AND val(VARIABLES.apiMonitorSnapshot.schemaVersion) EQ VARIABLES.apiMonitorExpectedSchemaVersion
+        AND structKeyExists(VARIABLES.apiMonitorSnapshot, "traffic")
+        AND isStruct(VARIABLES.apiMonitorSnapshot.traffic)
+        AND structKeyExists(VARIABLES.apiMonitorSnapshot.traffic, "authenticated")>
+        <cflock scope="application" type="exclusive" timeout="5">
+            <cfset APPLICATION[VARIABLES.apiMonitorCacheKey] = {
+                expiresAt = dateAdd("s", VARIABLES.apiMonitorConfig.cacheSeconds, now()),
+                snapshot = duplicate(VARIABLES.apiMonitorSnapshot)
+            }/>
+        </cflock>
+    <cfelse>
+        <cfset VARIABLES.apiMonitorSnapshot.error = "Os arquivos do monitor estao em versoes diferentes. Atualize o servico, o backend e a view no mesmo deploy."/>
+    </cfif>
 </cfif>
