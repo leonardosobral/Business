@@ -350,6 +350,14 @@
         where email = <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>
     </cfquery>
 
+    <cfset SESSION.cadastroGoogleIdentity = {
+        sub = user_data.sub & "",
+        email = lCase(trim(qPerfil.email & "")),
+        name = trim(qPerfil.name & ""),
+        picture = isDefined("user_data.picture") ? trim(user_data.picture & "") : "",
+        authenticatedAt = now()
+    }/>
+
     <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
     <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
     <cfset StructDelete(SESSION, "businessAccountSelectionConfirmed", false)/>

@@ -1,20 +1,26 @@
-<form method="post" action="/cadastro/" class="needs-validation" novalidate>
+<form method="post" action="/cadastro/" class="needs-validation cadastro-form" novalidate>
 
     <input type="hidden" name="acao" value="solicitar_acesso"/>
+    <input type="hidden" name="cadastro_csrf" value="<cfoutput>#htmlEditFormat(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
+
+    <div class="cadastro-form-section-heading">
+        <span>Empresa</span>
+        <small>Campos obrigatórios *</small>
+    </div>
 
     <div class="row mb-3 g-3">
         <div class="col-md-8">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="nome_empresa" id="txtNomeEmpresa" class="form-control" maxlength="160"
                        value="<cfoutput>#htmlEditFormat(FORM.nome_empresa)#</cfoutput>" required/>
-                <label class="form-label" for="txtNomeEmpresa">Nome da empresa</label>
+                <label class="form-label" for="txtNomeEmpresa">Nome da empresa *</label>
                 <div class="invalid-feedback">Informe o nome da empresa.</div>
             </div>
         </div>
 
         <div class="col-md-4">
             <select name="tipo_prestador" class="form-select" required>
-                <option value="">Tipo de prestador</option>
+                <option value="">Tipo de atuação *</option>
                 <cfloop list="#VARIABLES.cadastroTipoPrestadorList#" item="tipoPrestadorOption">
                     <cfoutput>
                         <option value="#htmlEditFormat(tipoPrestadorOption)#" <cfif FORM.tipo_prestador EQ tipoPrestadorOption>selected</cfif>>#htmlEditFormat(tipoPrestadorOption)#</option>
@@ -28,8 +34,8 @@
     <div class="row mb-3 g-3">
         <div class="col-md-4">
             <select name="tipo_titular" class="form-select" required>
-                <option value="PJ" <cfif FORM.tipo_titular EQ "PJ">selected</cfif>>Pessoa juridica</option>
-                <option value="PF" <cfif FORM.tipo_titular EQ "PF">selected</cfif>>Pessoa fisica</option>
+                <option value="PJ" <cfif FORM.tipo_titular EQ "PJ">selected</cfif>>Pessoa jurídica</option>
+                <option value="PF" <cfif FORM.tipo_titular EQ "PF">selected</cfif>>Pessoa física</option>
             </select>
             <div class="invalid-feedback">Informe o tipo de titular.</div>
         </div>
@@ -38,7 +44,7 @@
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="documento" id="txtDocumentoEmpresa" class="form-control" maxlength="20"
                        value="<cfoutput>#htmlEditFormat(FORM.documento)#</cfoutput>" required/>
-                <label class="form-label" for="txtDocumentoEmpresa">CNPJ ou CPF</label>
+                <label class="form-label" for="txtDocumentoEmpresa">CNPJ ou CPF *</label>
                 <div class="invalid-feedback">Informe o documento.</div>
             </div>
         </div>
@@ -52,22 +58,25 @@
         </div>
     </div>
 
+    <div class="cadastro-form-section-heading">
+        <span>Responsável pela conta</span>
+        <small>Contato principal</small>
+    </div>
+
     <div class="row mb-3 g-3">
         <div class="col-md-5">
             <div data-mdb-input-init class="form-outline">
-                <input type="text" name="nome_responsavel" id="txtNomeResponsavel" class="form-control" maxlength="200"
-                       value="<cfoutput>#htmlEditFormat(FORM.nome_responsavel)#</cfoutput>" required/>
-                <label class="form-label" for="txtNomeResponsavel">Responsavel</label>
-                <div class="invalid-feedback">Informe o responsavel.</div>
+                <input type="text" name="nome_responsavel" id="txtNomeResponsavel" class="form-control cadastro-identity-field" maxlength="200"
+                       value="<cfoutput>#htmlEditFormat(FORM.nome_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
+                <label class="form-label" for="txtNomeResponsavel">Responsável confirmado</label>
             </div>
         </div>
 
         <div class="col-md-4">
             <div data-mdb-input-init class="form-outline">
-                <input type="email" name="email_responsavel" id="txtEmailResponsavel" class="form-control" maxlength="255"
-                       value="<cfoutput>#htmlEditFormat(FORM.email_responsavel)#</cfoutput>" required/>
-                <label class="form-label" for="txtEmailResponsavel">E-mail</label>
-                <div class="invalid-feedback">Informe um e-mail valido.</div>
+                <input type="email" name="email_responsavel" id="txtEmailResponsavel" class="form-control cadastro-identity-field" maxlength="255"
+                       value="<cfoutput>#htmlEditFormat(FORM.email_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
+                <label class="form-label" for="txtEmailResponsavel">E-mail Google confirmado</label>
             </div>
         </div>
 
@@ -78,6 +87,11 @@
                 <label class="form-label" for="txtTelefoneResponsavel">Telefone</label>
             </div>
         </div>
+    </div>
+
+    <div class="cadastro-form-section-heading">
+        <span>Localização e contexto</span>
+        <small>Opcional</small>
     </div>
 
     <div class="row mb-3 g-3">
@@ -101,12 +115,13 @@
     <div class="mb-3">
         <div data-mdb-input-init class="form-outline">
             <textarea name="mensagem" id="txtMensagemCadastro" class="form-control" rows="4"><cfoutput>#htmlEditFormat(FORM.mensagem)#</cfoutput></textarea>
-            <label class="form-label" for="txtMensagemCadastro">Mensagem para analise</label>
+            <label class="form-label" for="txtMensagemCadastro">Como sua empresa atua na corrida?</label>
         </div>
     </div>
 
-    <button data-mdb-ripple-init type="submit" class="btn btn-warning btn-block" <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>disabled</cfif>>
-        Enviar solicitacao
+    <button data-mdb-ripple-init type="submit" class="btn btn-block cadastro-submit-button" <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>disabled</cfif>>
+        Enviar solicitação
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     </button>
 
     <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>

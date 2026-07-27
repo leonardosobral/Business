@@ -26,4 +26,12 @@
     <link rel="stylesheet" href="/assets/css/cores_admin.css?202512062" />
     <link rel="stylesheet" href="/assets/css/business-ui.css?2026062905" />
 
+    <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/cadastro/">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/assets/css/runpro-cadastro.css?v=20260727-9" />
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    </cfif>
+
 </head>

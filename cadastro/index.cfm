@@ -4,10 +4,11 @@
 <cfprocessingdirective pageencoding="utf-8"/>
 
 <cfset VARIABLES.theme = "dark"/>
+<cfset VARIABLES.template = "/cadastro/"/>
 
 <cfinclude template="../includes/estrutura/head.cfm"/>
 
-<body data-mdb-theme="dark" class="bg-dark">
+<body data-mdb-theme="dark" class="runpro-registration-body">
 
     <cfinclude template="home.cfm">
 

@@ -1,6 +1,11 @@
 <cfparam name="VARIABLES.cadastroErro" default=""/>
 <cfparam name="VARIABLES.cadastroSucesso" default=""/>
 <cfparam name="VARIABLES.cadastroSolicitacaoTablesReady" default="false"/>
+<cfset VARIABLES.cadastroGoogleClientId = "921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com"/>
+
+<cfif NOT structKeyExists(SESSION, "cadastroGoogleCsrf") OR NOT len(trim(SESSION.cadastroGoogleCsrf & ""))>
+    <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
+</cfif>
 
 <cfparam name="FORM.nome_empresa" default=""/>
 <cfparam name="FORM.tipo_titular" default="PJ"/>
@@ -13,9 +18,35 @@
 <cfparam name="FORM.estado" default=""/>
 <cfparam name="FORM.tipo_prestador" default=""/>
 <cfparam name="FORM.mensagem" default=""/>
+<cfparam name="FORM.acao" default=""/>
+<cfparam name="FORM.cadastro_csrf" default=""/>
 <cfset VARIABLES.cadastroTipoTitularList = "PF,PJ"/>
 <cfset VARIABLES.cadastroTipoPrestadorList = "Organizador,Cronometragem,Assessoria,Marca/Patrocinador,Midia/Criador,Fornecedor,Agencia,Outro"/>
 <cfset VARIABLES.cadastroSolicitacaoId = isDefined("URL.id") AND isNumeric(URL.id) ? int(URL.id) : 0/>
+
+<cfif FORM.acao EQ "trocar_conta_google">
+    <cfif len(trim(FORM.cadastro_csrf)) AND compare(FORM.cadastro_csrf, SESSION.cadastroGoogleCsrf) EQ 0>
+        <cfset structDelete(SESSION, "cadastroGoogleIdentity", false)/>
+        <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
+        <cflocation addtoken="false" url="/cadastro/"/>
+    <cfelse>
+        <cfset VARIABLES.cadastroErro = "A sessão expirou. Atualize a página e tente novamente."/>
+    </cfif>
+</cfif>
+
+<cfset VARIABLES.cadastroGoogleAuthenticated = structKeyExists(SESSION, "cadastroGoogleIdentity")
+    AND isStruct(SESSION.cadastroGoogleIdentity)
+    AND structKeyExists(SESSION.cadastroGoogleIdentity, "sub")
+    AND len(trim(SESSION.cadastroGoogleIdentity.sub & ""))
+    AND structKeyExists(SESSION.cadastroGoogleIdentity, "email")
+    AND isValid("email", SESSION.cadastroGoogleIdentity.email & "")
+    AND structKeyExists(SESSION.cadastroGoogleIdentity, "name")
+    AND len(trim(SESSION.cadastroGoogleIdentity.name & ""))/>
+
+<cfif VARIABLES.cadastroGoogleAuthenticated>
+    <cfset FORM.nome_responsavel = SESSION.cadastroGoogleIdentity.name/>
+    <cfset FORM.email_responsavel = SESSION.cadastroGoogleIdentity.email/>
+</cfif>
 
 <cftry>
     <cfquery name="qCadastroSolicitacaoTableCheck">
@@ -46,8 +77,8 @@
     <cfset VARIABLES.cadastroNomeEmpresa = trim(FORM.nome_empresa)/>
     <cfset VARIABLES.cadastroTipoTitular = uCase(trim(FORM.tipo_titular))/>
     <cfset VARIABLES.cadastroDocumento = REReplace(trim(FORM.documento), "[^0-9]", "", "all")/>
-    <cfset VARIABLES.cadastroNomeResponsavel = trim(FORM.nome_responsavel)/>
-    <cfset VARIABLES.cadastroEmailResponsavel = lCase(trim(FORM.email_responsavel))/>
+    <cfset VARIABLES.cadastroNomeResponsavel = VARIABLES.cadastroGoogleAuthenticated ? trim(SESSION.cadastroGoogleIdentity.name) : ""/>
+    <cfset VARIABLES.cadastroEmailResponsavel = VARIABLES.cadastroGoogleAuthenticated ? lCase(trim(SESSION.cadastroGoogleIdentity.email)) : ""/>
     <cfset VARIABLES.cadastroTelefoneResponsavel = trim(FORM.telefone_responsavel)/>
     <cfset VARIABLES.cadastroSite = trim(FORM.site)/>
     <cfset VARIABLES.cadastroCidade = trim(FORM.cidade)/>
@@ -55,6 +86,14 @@
     <cfset VARIABLES.cadastroTipoPrestador = trim(FORM.tipo_prestador)/>
     <cfset VARIABLES.cadastroMensagem = trim(FORM.mensagem)/>
     <cfset VARIABLES.cadastroErrors = []/>
+
+    <cfif NOT VARIABLES.cadastroGoogleAuthenticated>
+        <cfset arrayAppend(VARIABLES.cadastroErrors, "Confirme sua identidade com o Google antes de enviar a solicitação.")/>
+    </cfif>
+
+    <cfif NOT len(trim(FORM.cadastro_csrf)) OR compare(FORM.cadastro_csrf, SESSION.cadastroGoogleCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.cadastroErrors, "A sessão do formulário expirou. Atualize a página e tente novamente.")/>
+    </cfif>
 
     <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>
         <cfset arrayAppend(VARIABLES.cadastroErrors, "O cadastro externo ainda depende da aplicacao da DDL de solicitacoes de conta.")/>
@@ -98,6 +137,7 @@
         </cfquery>
 
         <cfif qCadastroSolicitacaoExistente.recordcount>
+            <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
             <cflocation addtoken="false" url="/cadastro/?solicitacao=recebida&id=#qCadastroSolicitacaoExistente.id_solicitacao#"/>
         </cfif>
     </cfif>
@@ -145,6 +185,7 @@
                 RETURNING id_solicitacao
             </cfquery>
 
+            <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
             <cflocation addtoken="false" url="/cadastro/?solicitacao=recebida&id=#qCadastroSolicitacaoSalvar.id_solicitacao#"/>
 
             <cfcatch type="any">
