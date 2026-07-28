@@ -67,15 +67,16 @@ component output="false" {
         return finalizeAnalysis(result);
     }
 
-    public struct function enrichElevationFromGoogle(
+    public struct function enrichElevationFromMapbox(
         required struct analysis,
-        required string apiKey,
-        numeric maxSamples=2000
+        required string accessToken,
+        numeric maxSamples=2000,
+        boolean force=false
     ) {
         var enrichment = {
             success=false,
             analysis=arguments.analysis,
-            source="google_elevation",
+            source="mapbox_terrain_rgb",
             sampledPoints=0,
             error=""
         };
@@ -85,24 +86,45 @@ component output="false" {
         var sampleElevations = [];
         var samplePosition = 0;
         var sampleIndex = 0;
-        var batchStart = 1;
-        var batchEnd = 0;
-        var locations = [];
+        var zoom = 15;
+        var tileCount = 2 ^ zoom;
+        var mathPi = 3.141592653589793;
+        var tileCache = {};
+        var point = {};
+        var latitudeRadians = 0;
+        var tileXFloat = 0;
+        var tileYFloat = 0;
+        var tileX = 0;
+        var tileY = 0;
+        var pixelX = 0;
+        var pixelY = 0;
+        var pixelXRatio = 0;
+        var pixelYRatio = 0;
+        var imageWidth = 0;
+        var imageHeight = 0;
+        var tileKey = "";
         var response = {};
-        var payload = {};
-        var resultIndex = 0;
+        var responseBody = "";
+        var responsePayload = {};
+        var responseMessage = "";
+        var imageStream = {};
+        var image = {};
+        var rgb = 0;
+        var red = 0;
+        var green = 0;
+        var blue = 0;
 
         if (!arguments.analysis.valid) {
             enrichment.error = "O percurso precisa ser válido antes da consulta de altimetria.";
             return enrichment;
         }
-        if (arguments.analysis.elevationPointCount GT 0) {
+        if (arguments.analysis.elevationPointCount GT 0 AND !arguments.force) {
             enrichment.success = true;
             enrichment.source = "original";
             return enrichment;
         }
-        if (!len(trim(arguments.apiKey))) {
-            enrichment.error = "A chave da Google Elevation API não está configurada.";
+        if (!len(trim(arguments.accessToken))) {
+            enrichment.error = "O token Mapbox para o servidor não está configurado.";
             return enrichment;
         }
         if (totalPoints LT 2) {
@@ -124,55 +146,91 @@ component output="false" {
         }
 
         try {
-            while (batchStart LTE arrayLen(sampleIndexes)) {
-                batchEnd = min(arrayLen(sampleIndexes), batchStart + 199);
-                locations = [];
+            for (samplePosition = 1; samplePosition LTE arrayLen(sampleIndexes); samplePosition++) {
+                sampleIndex = sampleIndexes[samplePosition];
+                point = arguments.analysis.points[sampleIndex];
+                latitudeRadians = max(-85.05112878, min(85.05112878, point.lat)) * mathPi / 180;
+                tileXFloat = ((point.lng + 180) / 360) * tileCount;
+                tileYFloat = (
+                    1 - (
+                        log(tan(latitudeRadians) + (1 / cos(latitudeRadians)))
+                        / mathPi
+                    )
+                ) / 2 * tileCount;
+                tileX = max(0, min(tileCount - 1, floor(tileXFloat)));
+                tileY = max(0, min(tileCount - 1, floor(tileYFloat)));
+                pixelXRatio = tileXFloat - tileX;
+                pixelYRatio = tileYFloat - tileY;
+                tileKey = tileX & "_" & tileY;
 
-                for (samplePosition = batchStart; samplePosition LTE batchEnd; samplePosition++) {
-                    sampleIndex = sampleIndexes[samplePosition];
-                    arrayAppend(
-                        locations,
-                        gpxNumber(arguments.analysis.points[sampleIndex].lat, "0.0000000")
-                            & ","
-                            & gpxNumber(arguments.analysis.points[sampleIndex].lng, "0.0000000")
-                    );
+                if (!structKeyExists(tileCache, tileKey)) {
+                    cfhttp(
+                        url="https://api.mapbox.com/v4/mapbox.terrain-rgb/"
+                            & zoom & "/" & tileX & "/" & tileY & ".pngraw",
+                        method="get",
+                        result="response",
+                        timeout="30",
+                        throwOnError=false,
+                        getAsBinary="yes"
+                    ) {
+                        cfhttpparam(type="url", name="access_token", value=trim(arguments.accessToken));
+                    }
+
+                    if (!structKeyExists(response, "statusCode")
+                        OR left(trim(response.statusCode & ""), 1) NEQ "2") {
+                        responseBody = "";
+                        responseMessage = "";
+                        try {
+                            responseBody = isBinary(response.fileContent)
+                                ? charsetEncode(response.fileContent, "utf-8")
+                                : (response.fileContent & "");
+                            responsePayload = deserializeJSON(responseBody);
+                            if (isStruct(responsePayload)
+                                AND structKeyExists(responsePayload, "message")) {
+                                responseMessage = trim(responsePayload.message & "");
+                            }
+                        } catch (any ignoredResponseError) {}
+                        throw(
+                            message="A Mapbox Raster Tiles API retornou HTTP "
+                                & (response.statusCode ?: "desconhecido")
+                                & "."
+                                & (len(responseMessage) ? " " & responseMessage & "." : "")
+                                & " Use no servidor um token secreto sk.* com o escopo map:read e sem restricao de URL."
+                        );
+                    }
+
+                    imageStream = createObject("java", "java.io.ByteArrayInputStream")
+                        .init(response.fileContent);
+                    image = createObject("java", "javax.imageio.ImageIO").read(imageStream);
+                    imageStream.close();
+                    if (isNull(image)) {
+                        throw(message="A Mapbox retornou um tile Terrain-RGB inválido.");
+                    }
+                    tileCache[tileKey] = image;
                 }
 
-                cfhttp(
-                    url="https://maps.googleapis.com/maps/api/elevation/json",
-                    method="get",
-                    result="response",
-                    timeout="30",
-                    throwOnError=false
-                ) {
-                    cfhttpparam(type="url", name="locations", value=arrayToList(locations, "|"));
-                    cfhttpparam(type="url", name="key", value=trim(arguments.apiKey));
+                imageWidth = tileCache[tileKey].getWidth();
+                imageHeight = tileCache[tileKey].getHeight();
+                if (imageWidth LTE 0 OR imageHeight LTE 0) {
+                    throw(message="A Mapbox retornou um tile Terrain-RGB sem dimensoes validas.");
                 }
-
-                if (!structKeyExists(response, "statusCode") OR left(trim(response.statusCode & ""), 1) NEQ "2") {
-                    throw(message="A Google Elevation API retornou HTTP " & (response.statusCode ?: "desconhecido") & ".");
-                }
-
-                payload = deserializeJSON(response.fileContent & "");
-                if (!isStruct(payload)
-                    OR !structKeyExists(payload, "status")
-                    OR payload.status NEQ "OK"
-                    OR !structKeyExists(payload, "results")
-                    OR !isArray(payload.results)
-                    OR arrayLen(payload.results) NEQ (batchEnd - batchStart + 1)) {
-                    throw(message="Resposta inválida da Google Elevation API: " & (payload.status ?: "sem status") & ".");
-                }
-
-                for (resultIndex = 1; resultIndex LTE arrayLen(payload.results); resultIndex++) {
-                    arrayAppend(sampleElevations, val(payload.results[resultIndex].elevation));
-                }
-                batchStart = batchEnd + 1;
+                pixelX = max(0, min(imageWidth - 1, floor(pixelXRatio * imageWidth)));
+                pixelY = max(0, min(imageHeight - 1, floor(pixelYRatio * imageHeight)));
+                rgb = tileCache[tileKey].getRGB(pixelX, pixelY);
+                red = bitAnd(bitSHRN(rgb, 16), 255);
+                green = bitAnd(bitSHRN(rgb, 8), 255);
+                blue = bitAnd(rgb, 255);
+                arrayAppend(
+                    sampleElevations,
+                    -10000 + ((red * 256 * 256 + green * 256 + blue) * 0.1)
+                );
             }
         } catch (any elevationError) {
             enrichment.error = elevationError.message;
             return enrichment;
         }
 
+        sampleElevations = smoothElevationSamples(sampleElevations, 2);
         applyInterpolatedElevations(arguments.analysis, sampleIndexes, sampleElevations);
         enrichment.analysis = rebuildAnalysis(arguments.analysis);
         enrichment.success = enrichment.analysis.valid AND enrichment.analysis.elevationPointCount EQ totalPoints;
@@ -181,6 +239,35 @@ component output="false" {
             enrichment.error = "Não foi possível aplicar elevação a todos os pontos do percurso.";
         }
         return enrichment;
+    }
+
+    private array function smoothElevationSamples(required array elevations, numeric radius=2) {
+        var smoothed = [];
+        var sampleIndex = 0;
+        var neighborIndex = 0;
+        var firstNeighbor = 0;
+        var lastNeighbor = 0;
+        var weightedTotal = 0;
+        var totalWeight = 0;
+        var weight = 0;
+
+        if (arrayLen(arguments.elevations) LTE 2 OR arguments.radius LTE 0) {
+            return duplicate(arguments.elevations);
+        }
+
+        for (sampleIndex = 1; sampleIndex LTE arrayLen(arguments.elevations); sampleIndex++) {
+            firstNeighbor = max(1, sampleIndex - arguments.radius);
+            lastNeighbor = min(arrayLen(arguments.elevations), sampleIndex + arguments.radius);
+            weightedTotal = 0;
+            totalWeight = 0;
+            for (neighborIndex = firstNeighbor; neighborIndex LTE lastNeighbor; neighborIndex++) {
+                weight = arguments.radius + 1 - abs(neighborIndex - sampleIndex);
+                weightedTotal += arguments.elevations[neighborIndex] * weight;
+                totalWeight += weight;
+            }
+            arrayAppend(smoothed, weightedTotal / totalWeight);
+        }
+        return smoothed;
     }
 
     public void function writeGeoJson(required struct analysis, required string destination) {

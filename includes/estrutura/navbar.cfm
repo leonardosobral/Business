@@ -22,6 +22,10 @@
     min-width: 0;
   }
 
+  .business-topbar-notification-actions {
+    background: var(--mdb-body-bg);
+  }
+
   .business-navbar-maintenance-indicator {
     color: rgba(255, 255, 255, .62);
     cursor: default;
@@ -161,10 +165,34 @@
                 <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications"
                    role="button" data-mdb-dropdown-init aria-expanded="false">
                     <i class="fas fa-bell link-secondary"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger"><cfif isDefined("qNotificacoesNaoLidas") AND qNotificacoesNaoLidas.recordcount>1</cfif></span>
+                    <cfif isDefined("qNotificacoesNaoLidas")
+                        AND qNotificacoesNaoLidas.recordcount
+                        AND val(qNotificacoesNaoLidas.total) GT 0>
+                        <span class="badge rounded-pill badge-notification bg-danger"
+                              aria-label="<cfoutput>Notificações não lidas: #val(qNotificacoesNaoLidas.total)#</cfoutput>"><cfoutput>#val(qNotificacoesNaoLidas.total)#</cfoutput></span>
+                    </cfif>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end business-topbar-notification-menu" aria-labelledby="navbarDropdownNotifications">
                     <li class="bg-light-subtle"><span class="dropdown-header text-center">Notificações</span></li>
+                    <cfif isDefined("qNotificacoesNaoLidas")
+                        AND qNotificacoesNaoLidas.recordcount
+                        AND val(qNotificacoesNaoLidas.total) GT 0
+                        AND isDefined("VARIABLES.businessNotificationCsrf")>
+                        <cfset VARIABLES.businessNotificationReturnUrl = CGI.SCRIPT_NAME/>
+                        <cfif len(trim(CGI.QUERY_STRING))>
+                            <cfset VARIABLES.businessNotificationReturnUrl &= "?" & CGI.QUERY_STRING/>
+                        </cfif>
+                        <li class="business-topbar-notification-actions border-top border-1 border-light-subtle p-2">
+                            <form method="post" action="<cfoutput>#htmlEditFormat(CGI.SCRIPT_NAME)#</cfoutput>" class="m-0">
+                                <input type="hidden" name="action" value="marcar_todas_notificacoes_lidas"/>
+                                <input type="hidden" name="business_notification_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.businessNotificationCsrf)#</cfoutput>"/>
+                                <input type="hidden" name="business_notification_return" value="<cfoutput>#htmlEditFormat(VARIABLES.businessNotificationReturnUrl)#</cfoutput>"/>
+                                <button type="submit" class="btn btn-sm btn-outline-secondary w-100">
+                                    <i class="fa-solid fa-check-double me-2"></i>Marcar todas como lidas
+                                </button>
+                            </form>
+                        </li>
+                    </cfif>
                     <cfif isDefined("qNotificacoes") AND qNotificacoes.recordcount>
                         <cfoutput query="qNotificacoes">
                             <cfset VARIABLES.businessNotificationHref = trim(qNotificacoes.link)/>

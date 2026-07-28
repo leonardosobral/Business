@@ -8,6 +8,13 @@ O módulo `/percursos/` mantém arquivos de percurso privados e versionados no B
 2. Copie `config/percursos.local.example.cfm` para `config/percursos.local.cfm` e informe um diretório persistente, privado e gravável pelo ColdFusion.
 3. Garanta backup do banco e do diretório de storage como uma unidade lógica.
 
+O preview e a altimetria usam Mapbox. Configure:
+
+- `mapboxPublicAccessToken` ou `BUSINESS_MAPBOX_PUBLIC_TOKEN` para os mapas de ruas e satélite no navegador;
+- `mapboxServerAccessToken` ou `BUSINESS_MAPBOX_SERVER_TOKEN` para consultar Terrain-RGB no ColdFusion. Use um token secreto `sk.*` com o escopo `map:read`.
+
+`MAPBOX_ACCESS_TOKEN` também é aceito como fallback somente para o preview. O token público pode ter restrição de URL. O token do servidor é obrigatório para a altimetria, deve começar com `sk.`, possuir apenas os escopos mínimos necessários — incluindo `map:read` — e não ter restrição de URL. O Business não reutiliza automaticamente o token público no servidor, evitando bloqueios `403` causados pela ausência do cabeçalho `Referer`.
+
 Em instalações que já possuem o repositório, aplique também `_codex/sql/2026-07-21_strava_percursos_migration.sql`. O script adiciona o vínculo por modalidade e o controle da migração sem apagar ou modificar `tb_evento_corridas_percursos.mapa`.
 
 O arquivo local é lido a cada requisição e não exige reinício do ColdFusion. A variável de ambiente `BUSINESS_PERCURSOS_STORAGE_PATH`, quando disponível, continua tendo prioridade. Sem nenhuma das duas configurações, o módulo usa uma pasta dentro de `getTempDirectory()`; esse fallback serve apenas para desenvolvimento.
@@ -42,9 +49,35 @@ O arquivo local é lido a cada requisição e não exige reinício do ColdFusion
 
 O banco guarda apenas as chaves relativas. Isso permite substituir o filesystem por storage de objetos posteriormente.
 
+## Altimetria
+
+Arquivos enviados sem elevação são enriquecidos pelo Mapbox Terrain-RGB quando `BUSINESS_MAPBOX_SERVER_TOKEN` ou `mapboxServerAccessToken` estiver configurado. O limite de amostras pode ser ajustado por `elevationMaxSamples`; os valores intermediários são interpolados sobre todos os pontos da geometria.
+
+O processamento usa zoom 15, converte cada coordenada para o pixel Web Mercator correspondente usando as dimensões reais do tile recebido e aplica uma suavização ponderada de cinco amostras antes de calcular ganho e perda. Isso reduz o ruído natural do modelo digital de elevação sem deslocar a geometria do percurso.
+
+Para percursos antigos cuja versão atual não possui elevação, usuários com permissão de edição veem a ação **Gerar altimetria** na página do percurso. A operação:
+
+- consulta somente a geometria da versão atual;
+- cria um novo GPX com `<ele>` em todos os pontos;
+- regenera o GeoJSON e o GPX otimizado;
+- cria uma nova versão, sem sobrescrever o arquivo anterior;
+- recalcula ganho, altitude mínima e máxima;
+- registra a origem e a quantidade de pontos consultados na auditoria.
+
+Quando a versão atual já possui elevação, a ação passa a se chamar **Regerar altimetria**. Ela ignora os valores anteriores, consulta novamente o Mapbox Terrain-RGB e cria outra versão preservando todas as anteriores.
+
+## Gestão de versões
+
+Usuários com permissão de edição podem:
+
+- **Voltar** para uma versão anterior: os arquivos escolhidos são copiados para uma nova versão, que passa a ser a atual. A versão original e toda a sequência histórica permanecem intactas;
+- **Excluir** uma versão: o registro é desativado logicamente e deixa de participar do preview, dos downloads e da API pública. Os arquivos privados não são apagados, permitindo rastreabilidade pela auditoria.
+
+A única versão ativa de um percurso não pode ser excluída.
+
 ## Preview administrativo
 
-O preview autenticado oferece mapa de ruas e satélite, tela cheia, recentralização, escala métrica, largada e chegada, setas de direção, marcadores configuráveis a cada 1 ou 5 km, resumo de distância e elevação e perfil de elevação sincronizado com um marcador no mapa. A autorização considera propriedade, administração, conta responsável e contas ativas ligadas aos eventos vinculados.
+O preview autenticado usa Mapbox GL JS com os estilos Mapbox Streets e Satellite Streets. Ele oferece tela cheia, recentralização, navegação, escala métrica, largada e chegada, linha com contorno, setas de direção, marcadores configuráveis a cada 1 ou 5 km, resumo de distância e elevação e perfil de elevação sincronizado com um marcador no mapa. A autorização considera propriedade, administração, conta responsável e contas ativas ligadas aos eventos vinculados.
 
 ## Migração dos mapas Strava
 

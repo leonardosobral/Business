@@ -143,6 +143,44 @@
     </cfif>
 
     <cfif qPerfil.recordcount>
+        <cfif NOT StructKeyExists(SESSION, "businessNotificationCsrf")
+            OR NOT len(trim(SESSION.businessNotificationCsrf & ""))>
+            <cfset SESSION.businessNotificationCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
+        </cfif>
+        <cfset VARIABLES.businessNotificationCsrf = SESSION.businessNotificationCsrf/>
+
+        <cfif isDefined("FORM.action")
+            AND FORM.action EQ "marcar_todas_notificacoes_lidas"
+            AND isDefined("FORM.business_notification_csrf")
+            AND FORM.business_notification_csrf EQ VARIABLES.businessNotificationCsrf>
+
+            <cfquery>
+                UPDATE tb_notifica
+                SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
+                  AND data_leitura IS NULL
+                  AND data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                  AND (
+                      data_expiracao IS NULL
+                      OR data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                  )
+            </cfquery>
+
+            <cfset VARIABLES.businessNotificationReturnUrl = "/"/>
+            <cfif isDefined("FORM.business_notification_return")>
+                <cfset VARIABLES.businessNotificationRequestedReturn = trim(FORM.business_notification_return & "")/>
+                <cfif left(VARIABLES.businessNotificationRequestedReturn, 1) EQ "/"
+                    AND left(VARIABLES.businessNotificationRequestedReturn, 2) NEQ "//"
+                    AND NOT find(chr(10), VARIABLES.businessNotificationRequestedReturn)
+                    AND NOT find(chr(13), VARIABLES.businessNotificationRequestedReturn)
+                    AND NOT find("\", VARIABLES.businessNotificationRequestedReturn)>
+                    <cfset VARIABLES.businessNotificationReturnUrl = VARIABLES.businessNotificationRequestedReturn/>
+                </cfif>
+            </cfif>
+
+            <cflocation addtoken="false" url="#VARIABLES.businessNotificationReturnUrl#"/>
+        </cfif>
+
         <cfif qPerfil.is_admin>
             <cftry>
                 <cfquery>
@@ -201,13 +239,12 @@
         </cfquery>
 
         <cfquery name="qNotificacoesNaoLidas">
-            SELECT ntf.id_notifica
+            SELECT count(*) AS total
             FROM tb_notifica ntf
             WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
             AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
             AND ntf.data_leitura IS NULL
             AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
-            LIMIT 1
         </cfquery>
 
         <cfif isDefined("URL.notificacao")>
@@ -220,7 +257,7 @@
         </cfif>
     <cfelse>
         <cfset qNotificacoes = queryNew("id_notifica,id_usuario,data_publicacao,data_expiracao,data_leitura,id_notifica_template,link,icone,conteudo_notifica")/>
-        <cfset qNotificacoesNaoLidas = queryNew("id_notifica")/>
+        <cfset qNotificacoesNaoLidas = queryNew("total")/>
     </cfif>
     <cfset qEventosConta = queryNew("id_evento")/>
     <cfset qEventosContaOperacao = queryNew("id_evento")/>

@@ -13,8 +13,11 @@ percursoLocalConfig = {
     "apiAllowedOrigins" = [
         "https://roadrunners.run"
     ],
-    // Chave de servidor com a Elevation API habilitada e restrita por IP.
-    "googleElevationApiKey" = "",
+    // Token público Mapbox (pk.*) para o preview administrativo.
+    "mapboxPublicAccessToken" = "",
+    // Token secreto Mapbox (sk.*), somente no servidor, para consultar Terrain-RGB.
+    // Deve possuir map:read e não pode ter restrição de URL.
+    "mapboxServerAccessToken" = "",
     // Máximo de pontos consultados; os demais recebem interpolação.
     "elevationMaxSamples" = 2000
 };

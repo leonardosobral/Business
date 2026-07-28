@@ -13,7 +13,7 @@
   <cfcatch type="any"><cfset VARIABLES.geometryEventLinksReady=false/></cfcatch>
 </cftry>
 <cfquery name="qGeometry">
-  SELECT a.geojson_storage_key FROM tb_percurso_arquivos a INNER JOIN tb_percursos p ON p.id_percurso=a.id_percurso WHERE a.id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.id#"/>
+  SELECT a.geojson_storage_key FROM tb_percurso_arquivos a INNER JOIN tb_percursos p ON p.id_percurso=a.id_percurso WHERE a.id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.id#"/> AND a.ativo=true
   <cfif NOT VARIABLES.geometryCanViewAll>
     AND (
       (p.id_conta_responsavel IS NULL

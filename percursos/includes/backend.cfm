@@ -99,21 +99,32 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfif NOT VARIABLES.percursoStorageConfigured AND structKeyExists(VARIABLES.percursoLocalConfig,"storagePath") AND len(trim(VARIABLES.percursoLocalConfig.storagePath & ""))><cfset VARIABLES.percursoStorageConfigured=true/></cfif>
 <cfset VARIABLES.percursoStorageReady=false/>
 <cfset VARIABLES.percursoStorageError=""/>
-<cfset VARIABLES.percursoElevationApiKey=""/>
+<cfset VARIABLES.percursoMapboxPublicToken=""/>
+<cfset VARIABLES.percursoMapboxServerToken=""/>
 <cfset VARIABLES.percursoElevationMaxSamples=2000/>
 <cftry>
-    <cfset VARIABLES.percursoElevationApiKey=trim(createObject("java","java.lang.System").getenv("GOOGLE_MAPS_ELEVATION_API_KEY") & "")/>
+    <cfset VARIABLES.percursoMapboxPublicToken=trim(createObject("java","java.lang.System").getenv("BUSINESS_MAPBOX_PUBLIC_TOKEN") & "")/>
+    <cfset VARIABLES.percursoMapboxServerToken=trim(createObject("java","java.lang.System").getenv("BUSINESS_MAPBOX_SERVER_TOKEN") & "")/>
     <cfcatch type="any"></cfcatch>
 </cftry>
-<cfif NOT len(VARIABLES.percursoElevationApiKey)
-    AND structKeyExists(VARIABLES.percursoLocalConfig,"googleElevationApiKey")>
-    <cfset VARIABLES.percursoElevationApiKey=trim(VARIABLES.percursoLocalConfig.googleElevationApiKey & "")/>
+<cfif NOT len(VARIABLES.percursoMapboxPublicToken)>
+    <cftry><cfset VARIABLES.percursoMapboxPublicToken=trim(createObject("java","java.lang.System").getenv("MAPBOX_ACCESS_TOKEN") & "")/><cfcatch type="any"></cfcatch></cftry>
+</cfif>
+<cfif NOT len(VARIABLES.percursoMapboxPublicToken)
+    AND structKeyExists(VARIABLES.percursoLocalConfig,"mapboxPublicAccessToken")>
+    <cfset VARIABLES.percursoMapboxPublicToken=trim(VARIABLES.percursoLocalConfig.mapboxPublicAccessToken & "")/>
+</cfif>
+<cfif NOT len(VARIABLES.percursoMapboxServerToken)
+    AND structKeyExists(VARIABLES.percursoLocalConfig,"mapboxServerAccessToken")>
+    <cfset VARIABLES.percursoMapboxServerToken=trim(VARIABLES.percursoLocalConfig.mapboxServerAccessToken & "")/>
 </cfif>
 <cfif structKeyExists(VARIABLES.percursoLocalConfig,"elevationMaxSamples")
     AND isNumeric(VARIABLES.percursoLocalConfig.elevationMaxSamples)>
     <cfset VARIABLES.percursoElevationMaxSamples=min(5000,max(2,int(VARIABLES.percursoLocalConfig.elevationMaxSamples)))/>
 </cfif>
-<cfset VARIABLES.percursoElevationConfigured=len(VARIABLES.percursoElevationApiKey) GT 0/>
+<cfset VARIABLES.percursoMapboxPreviewConfigured=len(VARIABLES.percursoMapboxPublicToken) GT 0/>
+<cfset VARIABLES.percursoElevationConfigured=len(VARIABLES.percursoMapboxServerToken) GT 0
+    AND left(VARIABLES.percursoMapboxServerToken,3) EQ "sk."/>
 <cftry>
     <cfif NOT directoryExists(VARIABLES.percursoStoragePath)><cfdirectory action="create" directory="#VARIABLES.percursoStoragePath#" recurse="true"/></cfif>
     <cfset VARIABLES.percursoStorageReady=createObject("java","java.io.File").init(VARIABLES.percursoStoragePath).canWrite()/>
@@ -142,6 +153,9 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 <cfif URL.sucesso EQ "criado"><cfset VARIABLES.percursoAlert={type="success",message="Percurso criado e arquivo processado com sucesso."}/></cfif>
 <cfif URL.sucesso EQ "salvo"><cfset VARIABLES.percursoAlert={type="success",message="Dados do percurso atualizados."}/></cfif>
 <cfif URL.sucesso EQ "versao"><cfset VARIABLES.percursoAlert={type="success",message="Nova versao do percurso adicionada."}/></cfif>
+<cfif URL.sucesso EQ "versao_restaurada"><cfset VARIABLES.percursoAlert={type="success",message="A versao selecionada foi restaurada como uma nova versao atual."}/></cfif>
+<cfif URL.sucesso EQ "versao_excluida"><cfset VARIABLES.percursoAlert={type="success",message="A versao foi excluida do percurso. Os arquivos permanecem preservados no storage e na auditoria."}/></cfif>
+<cfif URL.sucesso EQ "altimetria"><cfset VARIABLES.percursoAlert={type="success",message="Altimetria gerada com o Mapbox Terrain-RGB. Uma nova versao do percurso foi criada e o arquivo anterior permanece preservado."}/></cfif>
 <cfif URL.sucesso EQ "status"><cfset VARIABLES.percursoAlert={type="success",message="Status do percurso atualizado."}/></cfif>
 <cfif URL.sucesso EQ "conta_proprietaria"><cfset VARIABLES.percursoAlert={type="success",message="Conta proprietaria do percurso atualizada."}/></cfif>
 <cfif URL.sucesso EQ "evento_vinculado"><cfset VARIABLES.percursoAlert={type="success",message="Arquivo vinculado ao percurso do evento. Os membros das contas associadas ja podem visualiza-lo."}/></cfif>
@@ -378,8 +392,325 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
                 </cfif>
             </cfif>
         </cfif>
-    <cfelseif NOT VARIABLES.percursoCanWrite>
+    <cfelseif NOT VARIABLES.percursoCanWrite AND FORM.acao NEQ "gerar_altimetria_mapbox">
         <cfset VARIABLES.percursoAlert={type="danger",message="Sua conta nao possui permissao para alterar percursos."}/>
+    <cfelseif FORM.acao EQ "gerar_altimetria_mapbox">
+        <cfset VARIABLES.elevationRouteId=isDefined("FORM.id_percurso") AND isNumeric(FORM.id_percurso) ? val(FORM.id_percurso) : 0/>
+        <cfset VARIABLES.elevationFileId=isDefined("FORM.id_percurso_arquivo") AND isNumeric(FORM.id_percurso_arquivo) ? val(FORM.id_percurso_arquivo) : 0/>
+        <cfset VARIABLES.elevationDiskDir=""/>
+        <cfif NOT VARIABLES.percursoElevationConfigured>
+            <cfset VARIABLES.percursoAlert={type="danger",message="Configure no servidor um token secreto Mapbox sk.* com escopo map:read e sem restricao de URL."}/>
+        <cfelseif VARIABLES.elevationRouteId LTE 0 OR VARIABLES.elevationFileId LTE 0>
+            <cfset VARIABLES.percursoAlert={type="danger",message="Percurso ou versao invalida para gerar altimetria."}/>
+        <cfelse>
+            <cfquery name="qElevationSource">
+                SELECT percurso.id_percurso,
+                       percurso.nome,
+                       arquivo.id_percurso_arquivo,
+                       arquivo.versao,
+                       arquivo.storage_key,
+                       arquivo.nome_original,
+                       arquivo.ganho_elevacao_m,
+                       arquivo.elevacao_min_m,
+                       arquivo.elevacao_max_m
+                FROM tb_percursos percurso
+                INNER JOIN tb_percurso_arquivos arquivo
+                    ON arquivo.id_percurso = percurso.id_percurso
+                WHERE percurso.id_percurso = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationRouteId#"/>
+                  AND arquivo.id_percurso_arquivo = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationFileId#"/>
+                  AND arquivo.ativo=true
+                  AND arquivo.versao = (
+                      SELECT max(atual.versao)
+                      FROM tb_percurso_arquivos atual
+                      WHERE atual.id_percurso = percurso.id_percurso
+                        AND atual.ativo=true
+                  )
+                  <cfif NOT VARIABLES.percursoIsAdmin AND NOT VARIABLES.percursoIsSystemAdmin>
+                      AND (
+                          percurso.id_conta_responsavel IN (
+                              <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoWriteAccountIds#" list="true"/>
+                          )
+                          OR (
+                              percurso.id_conta_responsavel IS NULL
+                              AND percurso.id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                          )
+                      )
+                  </cfif>
+                LIMIT 1
+            </cfquery>
+            <cfif NOT qElevationSource.recordcount>
+                <cfset VARIABLES.percursoAlert={type="danger",message="A versao atual do percurso nao foi encontrada ou sua conta nao possui permissao para altera-la."}/>
+            <cfelseif NOT reFind("^[0-9]+/[0-9]+/[A-Za-z0-9._-]+$", qElevationSource.storage_key & "")>
+                <cfset VARIABLES.percursoAlert={type="danger",message="O arquivo desta versao possui uma referencia de armazenamento invalida."}/>
+            <cfelse>
+                <cfset VARIABLES.elevationSourcePath=VARIABLES.percursoStoragePath & "/" & qElevationSource.storage_key/>
+                <cfset VARIABLES.elevationSourceFormat=lCase(listLast(qElevationSource.storage_key & "", "."))/>
+                <cfset VARIABLES.elevationStage="validacao_arquivo"/>
+                <cfif VARIABLES.elevationSourceFormat EQ "json"><cfset VARIABLES.elevationSourceFormat="geojson"/></cfif>
+                <cftry>
+                    <cfsetting requesttimeout="240"/>
+                    <cfif NOT fileExists(VARIABLES.elevationSourcePath)>
+                        <cfthrow message="O arquivo original da versao nao foi encontrado no storage privado."/>
+                    </cfif>
+                    <cfset VARIABLES.gpxService=createObject("component","percursos.includes.PercursoGpxService")/>
+                    <cfset VARIABLES.elevationAnalysis=VARIABLES.gpxService.analyze(VARIABLES.elevationSourcePath,VARIABLES.elevationSourceFormat)/>
+                    <cfif NOT VARIABLES.elevationAnalysis.valid>
+                        <cfthrow message="#arrayToList(VARIABLES.elevationAnalysis.errors,' ')#"/>
+                    </cfif>
+                    <cfset VARIABLES.elevationStage="mapbox_terrain_rgb"/>
+                    <cfset VARIABLES.elevationEnrichment=VARIABLES.gpxService.enrichElevationFromMapbox(
+                        VARIABLES.elevationAnalysis,
+                        VARIABLES.percursoMapboxServerToken,
+                        VARIABLES.percursoElevationMaxSamples,
+                        true
+                    )/>
+                    <cfif NOT VARIABLES.elevationEnrichment.success>
+                        <cfthrow message="#VARIABLES.elevationEnrichment.error#"/>
+                    </cfif>
+                    <cfset VARIABLES.elevationStage="persistencia"/>
+                    <cftransaction>
+                        <cfquery name="qElevationRouteLock">
+                            SELECT id_percurso
+                            FROM tb_percursos
+                            WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationRouteId#"/>
+                            FOR UPDATE
+                        </cfquery>
+                        <cfquery name="qElevationNextVersion">
+                            SELECT coalesce(max(versao),0)+1 AS versao
+                            FROM tb_percurso_arquivos
+                            WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationRouteId#"/>
+                        </cfquery>
+                        <cfif val(qElevationNextVersion.versao) NEQ val(qElevationSource.versao)+1>
+                            <cfthrow message="Uma nova versao foi adicionada enquanto a altimetria era processada. Recarregue o percurso e tente novamente."/>
+                        </cfif>
+                        <cfset VARIABLES.elevationVersion=val(qElevationNextVersion.versao)/>
+                        <cfset VARIABLES.elevationRelativeDir=VARIABLES.elevationRouteId & "/" & VARIABLES.elevationVersion/>
+                        <cfset VARIABLES.elevationDiskDir=VARIABLES.percursoStoragePath & "/" & VARIABLES.elevationRelativeDir/>
+                        <cfdirectory action="create" directory="#VARIABLES.elevationDiskDir#" recurse="true"/>
+                        <cfset VARIABLES.elevationGpxKey=VARIABLES.elevationRelativeDir & "/original.gpx"/>
+                        <cfset VARIABLES.elevationGeoKey=VARIABLES.elevationRelativeDir & "/route.geojson"/>
+                        <cfset VARIABLES.elevationOptimizedKey=VARIABLES.elevationRelativeDir & "/optimized.gpx"/>
+                        <cfset VARIABLES.gpxService.writeGpx(VARIABLES.elevationEnrichment.analysis,VARIABLES.percursoStoragePath & "/" & VARIABLES.elevationGpxKey,qElevationSource.nome)/>
+                        <cfset VARIABLES.gpxService.writeGeoJson(VARIABLES.elevationEnrichment.analysis,VARIABLES.percursoStoragePath & "/" & VARIABLES.elevationGeoKey)/>
+                        <cffile action="copy" source="#VARIABLES.percursoStoragePath#/#VARIABLES.elevationGpxKey#" destination="#VARIABLES.percursoStoragePath#/#VARIABLES.elevationOptimizedKey#"/>
+                        <cfset VARIABLES.elevationFinalAnalysis=VARIABLES.gpxService.analyze(VARIABLES.percursoStoragePath & "/" & VARIABLES.elevationGpxKey,"gpx")/>
+                        <cfif NOT VARIABLES.elevationFinalAnalysis.valid OR VARIABLES.elevationFinalAnalysis.elevationPointCount LTE 0>
+                            <cfthrow message="O GPX enriquecido nao passou na validacao final."/>
+                        </cfif>
+                        <cfset VARIABLES.elevationFileInfo=getFileInfo(VARIABLES.percursoStoragePath & "/" & VARIABLES.elevationGpxKey)/>
+                        <cfquery name="qElevationNewFile">
+                            INSERT INTO tb_percurso_arquivos
+                                (id_percurso,versao,storage_key,geojson_storage_key,nome_original,mime_type,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,id_usuario_criador)
+                            VALUES (
+                                <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationRouteId#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.elevationVersion#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.elevationGpxKey#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.elevationGeoKey#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#reReplace(reReplace(qElevationSource.nome_original,'\.[^.]+$','','one'),'-altimetria-(google|mapbox)$','','one')#-altimetria-mapbox.gpx"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="application/gpx+xml"/>,
+                                <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationFileInfo.size#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_char" value="#VARIABLES.elevationFinalAnalysis.sha256#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.elevationFinalAnalysis.pointCount#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.distanceM#" scale="2"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.elevationMin#" scale="2"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.elevationMax#" scale="2"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.elevationGainM#" scale="2"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.minLat#" scale="7"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.minLng#" scale="7"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.maxLat#" scale="7"/>,
+                                <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.elevationFinalAnalysis.maxLng#" scale="7"/>,
+                                <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                            )
+                            RETURNING id_percurso_arquivo
+                        </cfquery>
+                        <cfquery>
+                            UPDATE tb_percursos
+                            SET atualizado_em=now()
+                            WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.elevationRouteId#"/>
+                        </cfquery>
+                        <cfset percursoAudit(
+                            VARIABLES.elevationRouteId,
+                            qElevationNewFile.id_percurso_arquivo,
+                            VARIABLES.elevationAnalysis.elevationPointCount GT 0
+                                ? "regerar_altimetria_mapbox"
+                                : "gerar_altimetria_mapbox",
+                        {
+                            versao_origem=val(qElevationSource.versao),
+                            id_arquivo_origem=val(qElevationSource.id_percurso_arquivo),
+                            versao=VARIABLES.elevationVersion,
+                            pontos=VARIABLES.elevationFinalAnalysis.pointCount,
+                            pontos_consultados=VARIABLES.elevationEnrichment.sampledPoints,
+                            fonte_altimetria="mapbox_terrain_rgb",
+                            metodo_altimetria="terrain_rgb_z15_tile_dinamico_suavizacao_5"
+                        })/>
+                    </cftransaction>
+                    <cflocation addtoken="false" url="./?id=#VARIABLES.elevationRouteId#&sucesso=altimetria"/>
+                    <cfcatch type="any">
+                        <cfset VARIABLES.elevationErrorId=lCase(left(replace(createUUID(),"-","","all"),12))/>
+                        <cflog file="business-percursos" type="error" text="Falha #VARIABLES.elevationErrorId# na etapa #VARIABLES.elevationStage# ao gerar altimetria para percurso #VARIABLES.elevationRouteId#, arquivo #VARIABLES.elevationFileId#, usuario #VARIABLES.percursoActorId#: #cfcatch.message# #cfcatch.detail#"/>
+                        <cfif len(VARIABLES.elevationDiskDir) AND directoryExists(VARIABLES.elevationDiskDir)>
+                            <cfdirectory action="delete" directory="#VARIABLES.elevationDiskDir#" recurse="true"/>
+                        </cfif>
+                        <cfif VARIABLES.elevationStage EQ "mapbox_terrain_rgb">
+                            <cfset VARIABLES.percursoAlert={
+                                type="danger",
+                                message="A Mapbox Terrain-RGB API recusou ou nao concluiu a consulta: "
+                                    & cfcatch.message
+                                    & " Referencia: "
+                                    & VARIABLES.elevationErrorId
+                            }/>
+                        <cfelseif VARIABLES.elevationStage EQ "validacao_arquivo">
+                            <cfset VARIABLES.percursoAlert={
+                                type="danger",
+                                message="Nao foi possivel ler a geometria da versao atual: "
+                                    & cfcatch.message
+                                    & " Referencia: "
+                                    & VARIABLES.elevationErrorId
+                            }/>
+                        <cfelse>
+                            <cfset VARIABLES.percursoAlert={
+                                type="danger",
+                                message="A altimetria foi consultada, mas nao foi possivel criar a nova versao. Referencia: "
+                                    & VARIABLES.elevationErrorId
+                            }/>
+                        </cfif>
+                    </cfcatch>
+                </cftry>
+            </cfif>
+        </cfif>
+    <cfelseif listFindNoCase("restaurar_versao,excluir_versao",FORM.acao)>
+        <cfset VARIABLES.versionRouteId=isDefined("FORM.id_percurso") AND isNumeric(FORM.id_percurso) ? val(FORM.id_percurso) : 0/>
+        <cfset VARIABLES.versionFileId=isDefined("FORM.id_percurso_arquivo") AND isNumeric(FORM.id_percurso_arquivo) ? val(FORM.id_percurso_arquivo) : 0/>
+        <cfset VARIABLES.versionDiskDir=""/>
+        <cfquery name="qVersionActionSource">
+            SELECT percurso.id_percurso,
+                   arquivo.id_percurso_arquivo,
+                   arquivo.versao,
+                   arquivo.storage_key,
+                   arquivo.geojson_storage_key,
+                   arquivo.ativo
+            FROM tb_percursos percurso
+            INNER JOIN tb_percurso_arquivos arquivo
+                ON arquivo.id_percurso=percurso.id_percurso
+            WHERE percurso.id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+              AND arquivo.id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionFileId#"/>
+              AND percurso.id_conta_responsavel IS NOT NULL
+              <cfif NOT VARIABLES.percursoIsAdmin>
+                  AND percurso.id_conta_responsavel IN (
+                      <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoWriteAccountIds#" list="true"/>
+                  )
+              </cfif>
+            LIMIT 1
+        </cfquery>
+        <cfif NOT qVersionActionSource.recordcount>
+            <cfset VARIABLES.percursoAlert={type="danger",message="Versao nao encontrada ou sem permissao para gerencia-la."}/>
+        <cfelseif FORM.acao EQ "excluir_versao">
+            <cfif NOT percursoBoolean(qVersionActionSource.ativo)>
+                <cfset VARIABLES.percursoAlert={type="warning",message="Esta versao ja esta excluida."}/>
+            <cfelse>
+                <cfset VARIABLES.versionDeleted=false/>
+                <cftransaction>
+                    <cfquery name="qVersionDeleteRouteLock">
+                        SELECT id_percurso FROM tb_percursos
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                        FOR UPDATE
+                    </cfquery>
+                    <cfquery name="qVersionActiveCount">
+                        SELECT count(*) AS total
+                        FROM tb_percurso_arquivos
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                          AND ativo=true
+                    </cfquery>
+                    <cfif val(qVersionActiveCount.total) LTE 1>
+                        <cfset VARIABLES.percursoAlert={type="danger",message="Nao e possivel excluir a unica versao ativa do percurso."}/>
+                    <cfelse>
+                    <cfquery>
+                        UPDATE tb_percurso_arquivos
+                        SET ativo=false
+                        WHERE id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionFileId#"/>
+                          AND id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                          AND ativo=true
+                    </cfquery>
+                    <cfquery>
+                        UPDATE tb_percursos SET atualizado_em=now()
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                    </cfquery>
+                    <cfset percursoAudit(VARIABLES.versionRouteId,VARIABLES.versionFileId,"excluir_versao",{
+                        versao=val(qVersionActionSource.versao),
+                        exclusao_logica=true
+                    })/>
+                    <cfset VARIABLES.versionDeleted=true/>
+                    </cfif>
+                </cftransaction>
+                <cfif VARIABLES.versionDeleted>
+                    <cflocation addtoken="false" url="./?id=#VARIABLES.versionRouteId#&sucesso=versao_excluida"/>
+                </cfif>
+            </cfif>
+        <cfelse>
+            <cftry>
+                <cftransaction>
+                    <cfquery name="qVersionRouteLock">
+                        SELECT id_percurso FROM tb_percursos
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                        FOR UPDATE
+                    </cfquery>
+                    <cfquery name="qVersionNext">
+                        SELECT coalesce(max(versao),0)+1 AS versao
+                        FROM tb_percurso_arquivos
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                    </cfquery>
+                    <cfset VARIABLES.versionNewNumber=val(qVersionNext.versao)/>
+                    <cfset VARIABLES.versionRelativeDir=VARIABLES.versionRouteId & "/" & VARIABLES.versionNewNumber/>
+                    <cfset VARIABLES.versionDiskDir=VARIABLES.percursoStoragePath & "/" & VARIABLES.versionRelativeDir/>
+                    <cfset VARIABLES.versionSourceOriginal=VARIABLES.percursoStoragePath & "/" & qVersionActionSource.storage_key/>
+                    <cfset VARIABLES.versionSourceGeo=VARIABLES.percursoStoragePath & "/" & qVersionActionSource.geojson_storage_key/>
+                    <cfset VARIABLES.versionSourceOptimized=VARIABLES.percursoStoragePath & "/" & reReplace(qVersionActionSource.geojson_storage_key,"[^/]+$","optimized.gpx")/>
+                    <cfif NOT fileExists(VARIABLES.versionSourceOriginal) OR NOT fileExists(VARIABLES.versionSourceGeo)>
+                        <cfthrow message="Os arquivos da versao selecionada nao existem no storage privado."/>
+                    </cfif>
+                    <cfdirectory action="create" directory="#VARIABLES.versionDiskDir#" recurse="true"/>
+                    <cfset VARIABLES.versionOriginalName=listLast(qVersionActionSource.storage_key,"/")/>
+                    <cfset VARIABLES.versionNewOriginalKey=VARIABLES.versionRelativeDir & "/" & VARIABLES.versionOriginalName/>
+                    <cfset VARIABLES.versionNewGeoKey=VARIABLES.versionRelativeDir & "/route.geojson"/>
+                    <cffile action="copy" source="#VARIABLES.versionSourceOriginal#" destination="#VARIABLES.percursoStoragePath#/#VARIABLES.versionNewOriginalKey#"/>
+                    <cffile action="copy" source="#VARIABLES.versionSourceGeo#" destination="#VARIABLES.percursoStoragePath#/#VARIABLES.versionNewGeoKey#"/>
+                    <cfif fileExists(VARIABLES.versionSourceOptimized)>
+                        <cffile action="copy" source="#VARIABLES.versionSourceOptimized#" destination="#VARIABLES.versionDiskDir#/optimized.gpx"/>
+                    </cfif>
+                    <cfquery name="qVersionRestored">
+                        INSERT INTO tb_percurso_arquivos
+                            (id_percurso,versao,storage_key,geojson_storage_key,nome_original,mime_type,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,ativo,id_usuario_criador)
+                        SELECT id_percurso,
+                               <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.versionNewNumber#"/>,
+                               <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.versionNewOriginalKey#"/>,
+                               <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.versionNewGeoKey#"/>,
+                               nome_original,mime_type,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,true,
+                               <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoActorId#"/>
+                        FROM tb_percurso_arquivos
+                        WHERE id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionFileId#"/>
+                          AND id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                        RETURNING id_percurso_arquivo
+                    </cfquery>
+                    <cfquery>
+                        UPDATE tb_percursos SET atualizado_em=now()
+                        WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.versionRouteId#"/>
+                    </cfquery>
+                    <cfset percursoAudit(VARIABLES.versionRouteId,qVersionRestored.id_percurso_arquivo,"restaurar_versao",{
+                        id_arquivo_origem=VARIABLES.versionFileId,
+                        versao_origem=val(qVersionActionSource.versao),
+                        nova_versao=VARIABLES.versionNewNumber
+                    })/>
+                </cftransaction>
+                <cflocation addtoken="false" url="./?id=#VARIABLES.versionRouteId#&sucesso=versao_restaurada"/>
+                <cfcatch type="any">
+                    <cflog file="business-percursos" type="error" text="Falha ao restaurar versao #VARIABLES.versionFileId# do percurso #VARIABLES.versionRouteId#: #cfcatch.message# #cfcatch.detail#"/>
+                    <cfif len(VARIABLES.versionDiskDir) AND directoryExists(VARIABLES.versionDiskDir)>
+                        <cfdirectory action="delete" directory="#VARIABLES.versionDiskDir#" recurse="true"/>
+                    </cfif>
+                    <cfset VARIABLES.percursoAlert={type="danger",message="Nao foi possivel restaurar a versao selecionada. Consulte o log do modulo."}/>
+                </cfcatch>
+            </cftry>
+        </cfif>
     <cfelseif listFindNoCase("criar,adicionar_versao", FORM.acao)>
         <cfset VARIABLES.uploadErrors=[]/>
         <cfset VARIABLES.uploadRouteId = FORM.acao EQ "adicionar_versao" AND isDefined("FORM.id_percurso") AND isNumeric(FORM.id_percurso) ? val(FORM.id_percurso) : 0/>
@@ -425,9 +756,9 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
 	                    <cfif NOT VARIABLES.gpxAnalysis.valid><cfset VARIABLES.uploadErrors=VARIABLES.gpxAnalysis.errors/></cfif>
 	                    <cfif VARIABLES.gpxAnalysis.valid AND VARIABLES.gpxAnalysis.elevationPointCount EQ 0>
 	                        <cfsetting requesttimeout="180"/>
-	                        <cfset VARIABLES.elevationEnrichment = VARIABLES.gpxService.enrichElevationFromGoogle(
+	                        <cfset VARIABLES.elevationEnrichment = VARIABLES.gpxService.enrichElevationFromMapbox(
 	                            VARIABLES.gpxAnalysis,
-	                            VARIABLES.percursoElevationApiKey,
+	                            VARIABLES.percursoMapboxServerToken,
 	                            VARIABLES.percursoElevationMaxSamples
 	                        )/>
 	                        <cfif VARIABLES.elevationEnrichment.success>
@@ -726,7 +1057,7 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
                     </cfquery>
                 </cfif>
             </cfif>
-            <cfquery name="qPercursoArquivos">SELECT id_percurso_arquivo,versao,nome_original,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,ativo,criado_em FROM tb_percurso_arquivos WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/> ORDER BY versao DESC</cfquery>
+            <cfquery name="qPercursoArquivos">SELECT id_percurso_arquivo,versao,nome_original,tamanho_bytes,sha256,quantidade_pontos,distancia_gpx_m,elevacao_min_m,elevacao_max_m,ganho_elevacao_m,bbox_min_lat,bbox_min_lng,bbox_max_lat,bbox_max_lng,ativo,criado_em FROM tb_percurso_arquivos WHERE id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/> AND ativo=true ORDER BY versao DESC</cfquery>
             <cfif VARIABLES.percursoCanViewAudit>
                 <cfquery name="qPercursoHistorico">SELECT hist.acao,hist.dados,hist.endereco_ip,hist.criado_em,usr.name AS usuario_nome FROM tb_percurso_historico hist LEFT JOIN tb_usuarios usr ON usr.id=hist.id_usuario WHERE hist.id_percurso=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.percursoSelectedId#"/> ORDER BY hist.criado_em DESC LIMIT 30</cfquery>
             </cfif>
@@ -737,7 +1068,7 @@ function percursoAudit(required numeric routeId, numeric fileId=0, required stri
             SELECT p.*, conta.nome_conta AS conta_proprietaria, latest.versao,latest.distancia_gpx_m,latest.quantidade_pontos
             FROM tb_percursos p
             LEFT JOIN tb_contas conta ON conta.id_conta = p.id_conta_responsavel
-            LEFT JOIN LATERAL (SELECT versao,distancia_gpx_m,quantidade_pontos FROM tb_percurso_arquivos a WHERE a.id_percurso=p.id_percurso ORDER BY versao DESC LIMIT 1) latest ON true
+            LEFT JOIN LATERAL (SELECT versao,distancia_gpx_m,quantidade_pontos FROM tb_percurso_arquivos a WHERE a.id_percurso=p.id_percurso AND a.ativo=true ORDER BY versao DESC LIMIT 1) latest ON true
             WHERE 1=1
             <cfif NOT VARIABLES.percursoCanViewAll>
                 AND (

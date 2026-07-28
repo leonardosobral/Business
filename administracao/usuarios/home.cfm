@@ -542,7 +542,22 @@ function userManagerDateInput(any value = "") {
               <div class="user-manager-form-section mt-4">
                 <div class="user-manager-form-section-title mb-3">Integrações protegidas</div>
                 <div class="row g-3 small">
-                  <div class="col-12 col-md-4"><div class="text-muted">Strava</div><div class="fw-semibold"><cfif val(qUserManagerUser.strava_id) GT 0><cfoutput>Ativo · atleta ## #qUserManagerUser.strava_id#</cfoutput><cfelse>Não conectado</cfif></div></div>
+                  <div class="col-12 col-md-4">
+                    <div class="text-muted">Strava</div>
+                    <div class="fw-semibold"><cfif userManagerBoolean(qUserManagerUser.strava_conectado)><cfoutput>Ativo<cfif val(qUserManagerUser.strava_id) GT 0> · atleta ## #qUserManagerUser.strava_id#</cfif></cfoutput><cfelse>Não conectado</cfif></div>
+                    <cfif userManagerBoolean(qUserManagerUser.strava_conectado)
+                        AND VARIABLES.userManagerCanMutateDetail
+                        AND NOT VARIABLES.userManagerFormIsDeleted
+                        AND VARIABLES.userManagerSchemaReady>
+                      <form method="post" action="./" class="mt-2" data-confirm="Desvincular o Strava deste usuário? As credenciais e os dados protegidos da integração serão removidos.">
+                        <input type="hidden" name="user_manager_action" value="desvincular_strava"/>
+                        <input type="hidden" name="user_manager_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.userManagerCsrf)#</cfoutput>"/>
+                        <input type="hidden" name="user_id" value="<cfoutput>#qUserManagerUser.id#</cfoutput>"/>
+                        <input type="hidden" name="return_tab" value="conta"/>
+                        <button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-link-slash me-2"></i>Desvincular</button>
+                      </form>
+                    </cfif>
+                  </div>
                   <div class="col-12 col-md-4"><div class="text-muted">Última alteração da conta</div><div class="fw-semibold"><cfif isDate(qUserManagerUser.data_alteracao)><cfoutput>#dateTimeFormat(qUserManagerUser.data_alteracao, "dd/mm/yyyy HH:nn")#</cfoutput><cfelse>-</cfif></div></div>
                   <div class="col-12 col-md-4"><div class="text-muted">Chaves e tokens</div><div class="fw-semibold">Ocultos por segurança</div></div>
                 </div>

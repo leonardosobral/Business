@@ -514,6 +514,86 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                 <cflocation addtoken="false" url="./?user_id=#VARIABLES.userManagerActionUserId#&aba=conta&feedback=sucesso&mensagem=#urlEncodedFormat(VARIABLES.userManagerNextActive ? 'Conta ativada.' : 'Conta desativada e o acesso à plataforma foi bloqueado.')#"/>
             </cfcase>
 
+            <cfcase value="desvincular_strava">
+                <cfset VARIABLES.userManagerAccess = userManagerMutationAccess(VARIABLES.userManagerActionUserId)/>
+                <cfif !VARIABLES.userManagerAccess.allowed><cfthrow message="#VARIABLES.userManagerAccess.message#"/></cfif>
+
+                <cfquery name="qUserManagerStravaBefore">
+                    SELECT strava_id,
+                           (
+                               strava_id IS NOT NULL
+                               OR nullif(trim(strava_code), '') IS NOT NULL
+                               OR nullif(trim(strava_access_token), '') IS NOT NULL
+                               OR nullif(trim(strava_refresh_token), '') IS NOT NULL
+                           ) AS conectado
+                    FROM tb_usuarios
+                    WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerActionUserId#"/>
+                </cfquery>
+                <cfif NOT qUserManagerStravaBefore.recordcount>
+                    <cfthrow message="Usuário não encontrado."/>
+                </cfif>
+
+                <cfquery>
+                    UPDATE tb_usuarios
+                    SET strava_code = NULL,
+                        strava_scope = NULL,
+                        strava_access_token = NULL,
+                        strava_expires_at = NULL,
+                        strava_expires_in = NULL,
+                        strava_refresh_token = NULL,
+                        strava_token_type = NULL,
+                        strava_id = NULL,
+                        strava_bio = NULL,
+                        strava_city = NULL,
+                        strava_country = NULL,
+                        strava_created_at = NULL,
+                        strava_firstname = NULL,
+                        strava_follower = NULL,
+                        strava_friend = NULL,
+                        strava_badge_type_id = NULL,
+                        strava_lastname = NULL,
+                        strava_premium = NULL,
+                        strava_profile = NULL,
+                        strava_profile_medium = NULL,
+                        strava_resource_state = NULL,
+                        strava_sex = NULL,
+                        strava_state = NULL,
+                        strava_summit = NULL,
+                        strava_updated_at = NULL,
+                        strava_username = NULL,
+                        strava_weight = NULL,
+                        strava_full_athlete_type = NULL,
+                        strava_full_can_follow = NULL,
+                        strava_full_blocked = NULL,
+                        strava_full_date_preference = NULL,
+                        strava_full_follower_count = NULL,
+                        strava_full_friend_count = NULL,
+                        strava_full_ftp = NULL,
+                        strava_full_is_winback_via_upload = NULL,
+                        strava_full_is_winback_via_view = NULL,
+                        strava_full_measurement_preference = NULL,
+                        strava_full_mutual_friend_count = NULL,
+                        strava_full_clubs = NULL,
+                        strava_full_shoes = NULL,
+                        strava_full_bikes = NULL,
+                        data_alteracao = now()
+                    WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerActionUserId#"/>
+                </cfquery>
+
+                <cfset VARIABLES.userManagerPreviousStravaId = isNull(qUserManagerStravaBefore.strava_id) ? 0 : val(qUserManagerStravaBefore.strava_id)/>
+                <cfset userManagerAudit(
+                    "integracao_strava_desvinculada",
+                    VARIABLES.userManagerActionUserId,
+                    0,
+                    {
+                        conectado = userManagerBoolean(qUserManagerStravaBefore.conectado),
+                        strava_id = VARIABLES.userManagerPreviousStravaId
+                    },
+                    { conectado = false }
+                )/>
+                <cflocation addtoken="false" url="./?user_id=#VARIABLES.userManagerActionUserId#&aba=conta&feedback=sucesso&mensagem=#urlEncodedFormat('Integração com o Strava desvinculada com sucesso.')#"/>
+            </cfcase>
+
             <cfcase value="excluir_usuario">
                 <cfset VARIABLES.userManagerAccess = userManagerMutationAccess(VARIABLES.userManagerActionUserId, true)/>
                 <cfif !VARIABLES.userManagerAccess.allowed><cfthrow message="#VARIABLES.userManagerAccess.message#"/></cfif>
@@ -991,6 +1071,12 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
         SELECT usr.id, usr.name, usr.email, usr.is_email_verified, usr.data_criacao,
                usr.ddd_usuario, usr.telefone_usuario, usr.imagem_usuario, usr.is_admin, usr.optin_usuario,
                usr.strava_id, usr.strava_profile, usr.data_alteracao, usr.username, usr.tag_usuario,
+               (
+                   usr.strava_id IS NOT NULL
+                   OR nullif(trim(usr.strava_code), '') IS NOT NULL
+                   OR nullif(trim(usr.strava_access_token), '') IS NOT NULL
+                   OR nullif(trim(usr.strava_refresh_token), '') IS NOT NULL
+               ) AS strava_conectado,
                usr.url_usuario, usr.fonte_lead, usr.cidade, usr.estado, usr.data_nascimento, usr.aka,
                usr.assessoria, usr.is_dev, usr.is_partner, usr.genero, usr.cbat, usr.pais, usr.cep,
                usr.ddi_usuario, usr.endereco, usr.manychat_subscriber_id, usr.ano_nascimento,

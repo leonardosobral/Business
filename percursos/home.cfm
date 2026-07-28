@@ -53,7 +53,8 @@
 <cfelse>
   <cfif NOT VARIABLES.percursoStorageConfigured><div class="alert alert-warning"><strong>Storage temporário.</strong> Configure <code>config/percursos.local.cfm</code> antes de usar este módulo em produção. Arquivos no diretório temporário do servidor não são persistentes.</div></cfif>
   <cfif NOT VARIABLES.percursoStorageReady><div class="alert alert-danger"><strong>Storage indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.percursoStorageError)#</cfoutput><div class="small mt-1"><code><cfoutput>#htmlEditFormat(VARIABLES.percursoStoragePath)#</cfoutput></code></div></div></cfif>
-  <cfif NOT VARIABLES.percursoElevationConfigured><div class="alert alert-warning"><strong>Altimetria externa indisponível.</strong> Configure <code>GOOGLE_MAPS_ELEVATION_API_KEY</code> ou <code>googleElevationApiKey</code> em <code>config/percursos.local.cfm</code>. Arquivos sem elevação não poderão ser cadastrados.</div></cfif>
+  <cfif NOT VARIABLES.percursoMapboxPreviewConfigured><div class="alert alert-warning"><strong>Preview Mapbox indisponível.</strong> Configure <code>BUSINESS_MAPBOX_PUBLIC_TOKEN</code> ou <code>mapboxPublicAccessToken</code> em <code>config/percursos.local.cfm</code>.</div></cfif>
+  <cfif NOT VARIABLES.percursoElevationConfigured><div class="alert alert-warning"><strong>Altimetria Mapbox indisponível.</strong> Configure um token secreto <code>sk.*</code> com escopo <code>map:read</code> em <code>BUSINESS_MAPBOX_SERVER_TOKEN</code> ou <code>mapboxServerAccessToken</code>. Arquivos sem elevação não poderão ser cadastrados.</div></cfif>
   <cfif isDefined("URL.novo") AND URL.novo EQ "1">
     <cfif NOT VARIABLES.percursoCanCreate>
       <div class="alert alert-warning"><strong>Selecione uma conta antes de cadastrar.</strong> O novo percurso sempre pertence à conta ativa e exige papel OWNER, ADMIN ou OPERADOR.</div>
@@ -84,6 +85,9 @@
     <cfelse>
       <cfset VARIABLES.routeCanEdit = (VARIABLES.percursoIsAdmin AND len(qPercurso.id_conta_responsavel & ""))
         OR (VARIABLES.percursoWriteAccountIds NEQ "0" AND len(qPercurso.id_conta_responsavel & "") AND listFind(VARIABLES.percursoWriteAccountIds,qPercurso.id_conta_responsavel))/>
+      <cfset VARIABLES.routeCanGenerateElevation = VARIABLES.routeCanEdit
+        OR VARIABLES.percursoIsSystemAdmin
+        OR VARIABLES.percursoIsLegacyCreator/>
       <div class="card bg-dark border-secondary mb-4"><div class="card-body">
         <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
           <div>
@@ -97,7 +101,7 @@
           <a href="./" class="btn btn-sm btn-outline-secondary align-self-start">Voltar à lista</a>
         </div>
         <cfif qPercursoArquivos.recordcount>
-          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+          <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css"/>
           <div id="route-preview-shell" class="route-preview-shell mb-3">
             <div class="route-map-toolbar">
               <button class="btn btn-sm btn-warning" type="button" id="route-layer-street"><i class="fa-solid fa-map me-1"></i>Ruas</button>
@@ -119,9 +123,30 @@
             <div class="route-stat border rounded p-2"><div class="small text-muted">Altitude mín./máx.</div><strong id="route-elevation-range">—</strong></div>
             <div class="route-stat border rounded p-2"><div class="small text-muted">Versão atual</div><strong><cfoutput>v#qPercursoArquivos.versao#</cfoutput></strong></div>
           </div>
+          <cfif VARIABLES.routeCanGenerateElevation>
+            <cfset VARIABLES.routeHasElevation = len(qPercursoArquivos.elevacao_min_m & "")
+              AND len(qPercursoArquivos.elevacao_max_m & "")/>
+            <div class="alert alert-warning d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
+              <div>
+                <strong><cfif VARIABLES.routeHasElevation>Altimetria disponível.<cfelse>Este percurso não possui altimetria.</cfif></strong>
+                <div class="small mt-1">A geometria da versão atual será consultada no Mapbox Terrain-RGB. O resultado será incorporado a um novo GPX e a versão anterior continuará preservada.</div>
+              </div>
+              <form method="post" action="./?id=<cfoutput>#qPercurso.id_percurso#</cfoutput>" onsubmit="return confirm('<cfif VARIABLES.routeHasElevation>Regerar<cfelse>Gerar</cfif> a altimetria pelo Mapbox Terrain-RGB e criar uma nova versão deste percurso?');">
+                <input type="hidden" name="acao" value="gerar_altimetria_mapbox"/>
+                <input type="hidden" name="id_percurso" value="<cfoutput>#qPercurso.id_percurso#</cfoutput>"/>
+                <input type="hidden" name="id_percurso_arquivo" value="<cfoutput>#qPercursoArquivos.id_percurso_arquivo#</cfoutput>"/>
+                <input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.percursoCsrfToken#</cfoutput>"/>
+                <button class="btn btn-warning text-nowrap" type="submit" <cfif NOT VARIABLES.percursoElevationConfigured OR NOT VARIABLES.percursoStorageReady>disabled</cfif>>
+                  <i class="fa-solid fa-mountain me-1"></i><cfif VARIABLES.routeHasElevation>Regerar<cfelse>Gerar</cfif> altimetria
+                </button>
+              </form>
+              <cfif NOT VARIABLES.percursoElevationConfigured><div class="small text-danger">O token Mapbox do servidor não está configurado.</div></cfif>
+            </div>
+          </cfif>
           <div class="route-elevation-panel mb-4"><div class="d-flex justify-content-between align-items-center mb-2"><strong>Perfil de elevação</strong><span class="small text-muted" id="route-elevation-hover">Passe o cursor sobre o gráfico</span></div><canvas id="route-elevation-chart" class="route-elevation-canvas" height="190"></canvas></div>
           <cfset VARIABLES.routeDistanceDifferencePct=abs(qPercursoArquivos.distancia_gpx_m-qPercurso.distancia_nominal_m)/qPercurso.distancia_nominal_m*100/>
           <cfif VARIABLES.routeDistanceDifferencePct GT 5><div class="alert alert-warning">A distância calculada do arquivo diverge <cfoutput>#numberFormat(VARIABLES.routeDistanceDifferencePct,'0.0')#%</cfoutput> da distância nominal. Revise o percurso antes de publicar.</div></cfif>
+          <cfif false>
           <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
           <script>
             fetch('./geometry.cfm?id=<cfoutput>#qPercursoArquivos.id_percurso_arquivo#</cfoutput>', {credentials:'same-origin'}).then(async r => {
@@ -149,8 +174,12 @@
               const pointAtDistance=target => { const hi=indexAtDistance(target); if(hi<1) return latLngs[0]; const lo=hi-1, span=cumulative[hi]-cumulative[lo], ratio=span ? (target-cumulative[lo])/span : 0; return L.latLng(latLngs[lo].lat+(latLngs[hi].lat-latLngs[lo].lat)*ratio,latLngs[lo].lng+(latLngs[hi].lng-latLngs[lo].lng)*ratio); };
               const bearing=(a,b) => { const rad=Math.PI/180, y=Math.sin((b.lng-a.lng)*rad)*Math.cos(b.lat*rad), x=Math.cos(a.lat*rad)*Math.sin(b.lat*rad)-Math.sin(a.lat*rad)*Math.cos(b.lat*rad)*Math.cos((b.lng-a.lng)*rad); return (Math.atan2(y,x)*180/Math.PI+360)%360; };
 
-              const street=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'});
-              const satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles &copy; Esri'});
+              const mapboxToken=<cfoutput>#serializeJSON(VARIABLES.percursoMapboxPublicToken)#</cfoutput>;
+              if(!mapboxToken) throw new Error('O token público Mapbox não está configurado.');
+              const mapboxTiles=(style)=>'https://api.mapbox.com/styles/v1/mapbox/'+style+'/tiles/256/{z}/{x}/{y}@2x?access_token='+encodeURIComponent(mapboxToken);
+              const mapboxAttribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+              const street=L.tileLayer(mapboxTiles('streets-v12'),{maxZoom:19,tileSize:256,zoomOffset:0,attribution:mapboxAttribution});
+              const satellite=L.tileLayer(mapboxTiles('satellite-streets-v12'),{maxZoom:19,tileSize:256,zoomOffset:0,attribution:mapboxAttribution});
               const map=L.map('route-map',{layers:[street]}); L.control.scale({imperial:false,position:'bottomleft'}).addTo(map);
               const line=L.polyline(latLngSegments,{color:'#f4b120',weight:5,opacity:.95}).addTo(map); const routeBounds=line.getBounds(); map.fitBounds(routeBounds,{padding:[25,25]});
               const markerIcon=(label,kind) => L.divIcon({className:'',html:'<div class="route-map-marker route-map-marker-'+kind+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]});
@@ -183,6 +212,15 @@
               } else { canvas.replaceWith(Object.assign(document.createElement('div'),{className:'route-elevation-empty',textContent:'Este arquivo não contém dados de elevação.'})); }
             }).catch(error => { document.getElementById('route-map').innerHTML='<div class="alert alert-danger m-3"><strong>Não foi possível carregar a geometria privada.</strong><div class="small mt-1"></div></div>'; document.querySelector('#route-map .small').textContent=error.message; });
           </script>
+          </cfif>
+          <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
+          <script>
+            window.routeMapboxConfig = {
+              token: <cfoutput>#serializeJSON(VARIABLES.percursoMapboxPublicToken)#</cfoutput>,
+              geometryUrl: './geometry.cfm?id=<cfoutput>#qPercursoArquivos.id_percurso_arquivo#</cfoutput>'
+            };
+          </script>
+          <script src="./assets/route-mapbox.js?v=20260727"></script>
         </cfif>
 
         <form method="post" action="./?id=<cfoutput>#qPercurso.id_percurso#</cfoutput>">
@@ -390,7 +428,41 @@
         </div></div>
       </cfif>
 
-      <div class="card bg-dark border-secondary mb-4"><div class="card-body"><h5>Versões</h5><div class="table-responsive"><table class="table table-dark table-hover align-middle"><thead><tr><th>Versão</th><th>Arquivo</th><th>Distância</th><th>Pontos</th><th>Elevação</th><th>SHA-256</th><th>Data</th></tr></thead><tbody><cfoutput query="qPercursoArquivos"><tr><td>v#versao#</td><td>#htmlEditFormat(nome_original)#</td><td>#numberFormat(distancia_gpx_m/1000,'0.000')# km</td><td>#numberFormat(quantidade_pontos)#</td><td><cfif len(ganho_elevacao_m & "")>#numberFormat(ganho_elevacao_m,'0')# m<cfelse>—</cfif></td><td><div class="route-hash" title="#sha256#">#sha256#</div></td><td>#dateTimeFormat(criado_em,'dd/mm/yyyy HH:nn')#</td></tr></cfoutput></tbody></table></div></div></div>
+      <div class="card bg-dark border-secondary mb-4"><div class="card-body"><h5>Versões</h5><div class="table-responsive"><table class="table table-dark table-hover align-middle"><thead><tr><th>Versão</th><th>Arquivo</th><th>Distância</th><th>Pontos</th><th>Elevação</th><th>SHA-256</th><th>Data</th><cfif VARIABLES.routeCanEdit><th class="text-end">Ações</th></cfif></tr></thead><tbody>
+        <cfoutput query="qPercursoArquivos">
+          <tr>
+            <td>v#versao# <cfif currentRow EQ 1><span class="badge bg-warning text-dark ms-1">Atual</span></cfif></td>
+            <td>#htmlEditFormat(nome_original)#</td>
+            <td>#numberFormat(distancia_gpx_m/1000,'0.000')# km</td>
+            <td>#numberFormat(quantidade_pontos)#</td>
+            <td><cfif len(ganho_elevacao_m & "")>#numberFormat(ganho_elevacao_m,'0')# m<cfelse>—</cfif></td>
+            <td><div class="route-hash" title="#sha256#">#sha256#</div></td>
+            <td>#dateTimeFormat(criado_em,'dd/mm/yyyy HH:nn')#</td>
+            <cfif VARIABLES.routeCanEdit>
+              <td class="text-end text-nowrap">
+                <cfif currentRow GT 1>
+                  <form method="post" action="./?id=#qPercurso.id_percurso#" class="d-inline" onsubmit="return confirm('Restaurar a versão v#versao# como uma nova versão atual?');">
+                    <input type="hidden" name="acao" value="restaurar_versao"/>
+                    <input type="hidden" name="id_percurso" value="#qPercurso.id_percurso#"/>
+                    <input type="hidden" name="id_percurso_arquivo" value="#id_percurso_arquivo#"/>
+                    <input type="hidden" name="csrf_token" value="#VARIABLES.percursoCsrfToken#"/>
+                    <button class="btn btn-sm btn-outline-warning" type="submit"><i class="fa-solid fa-clock-rotate-left me-1"></i>Voltar</button>
+                  </form>
+                </cfif>
+                <cfif qPercursoArquivos.recordcount GT 1>
+                  <form method="post" action="./?id=#qPercurso.id_percurso#" class="d-inline" onsubmit="return confirm('Excluir a versão v#versao#? Os arquivos permanecerão preservados no storage e na auditoria.');">
+                    <input type="hidden" name="acao" value="excluir_versao"/>
+                    <input type="hidden" name="id_percurso" value="#qPercurso.id_percurso#"/>
+                    <input type="hidden" name="id_percurso_arquivo" value="#id_percurso_arquivo#"/>
+                    <input type="hidden" name="csrf_token" value="#VARIABLES.percursoCsrfToken#"/>
+                    <button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-trash me-1"></i>Excluir</button>
+                  </form>
+                </cfif>
+              </td>
+            </cfif>
+          </tr>
+        </cfoutput>
+      </tbody></table></div></div></div>
 
       <cfif VARIABLES.percursoCanViewAudit><div class="card bg-dark border-secondary mb-4"><div class="card-body"><h5>Auditoria</h5><div class="table-responsive"><table class="table table-dark table-sm"><thead><tr><th>Data</th><th>Ação</th><th>Usuário</th><th>IP</th></tr></thead><tbody><cfoutput query="qPercursoHistorico"><tr><td>#dateTimeFormat(criado_em,'dd/mm/yyyy HH:nn')#</td><td>#htmlEditFormat(acao)#</td><td>#htmlEditFormat(usuario_nome)#</td><td>#htmlEditFormat(endereco_ip)#</td></tr></cfoutput></tbody></table></div></div></div></cfif>
     </cfif>

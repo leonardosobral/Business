@@ -17,6 +17,7 @@
   FROM tb_percurso_arquivos a
   INNER JOIN tb_percursos p ON p.id_percurso=a.id_percurso
   WHERE a.id_percurso_arquivo=<cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.id#"/>
+    AND a.ativo=true
   <cfif NOT VARIABLES.downloadCanViewAll>
     AND (
       (p.id_conta_responsavel IS NULL
