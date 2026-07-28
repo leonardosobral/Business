@@ -17,6 +17,21 @@
         <cfreturn trim(businessLocalConfig.cronSecrets[normalizedSecretRef])/>
     </cfif>
 
+    <!--- Compatibilidade durante a migracao da API Foco do RunnerHub para o Business. --->
+    <cfif normalizedSecretRef EQ "business_foco_eventos"
+        AND structKeyExists(businessLocalConfig, "cronSecrets")
+        AND isStruct(businessLocalConfig.cronSecrets)
+        AND structKeyExists(businessLocalConfig.cronSecrets, "runnerhub_foco_eventos")>
+        <cfreturn trim(businessLocalConfig.cronSecrets.runnerhub_foco_eventos & "")/>
+    </cfif>
+
+    <cfif normalizedSecretRef EQ "business_youtube"
+        AND structKeyExists(businessLocalConfig, "cronSecrets")
+        AND isStruct(businessLocalConfig.cronSecrets)
+        AND structKeyExists(businessLocalConfig.cronSecrets, "runnerhub_youtube")>
+        <cfreturn trim(businessLocalConfig.cronSecrets.runnerhub_youtube & "")/>
+    </cfif>
+
     <cfreturn ""/>
 </cffunction>
 

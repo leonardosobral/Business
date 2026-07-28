@@ -82,7 +82,7 @@
     </div>
   </cfif>
   <cfif !VARIABLES.focoReviewSchemaReady>
-    <div class="alert alert-warning">Aplique novamente <code>/api/foco/jobs/foco_match_schema.sql</code> no banco RunnerHub.</div>
+    <div class="alert alert-warning">Aplique novamente <code>/api/foco/jobs/foco_match_schema.sql</code> no banco usado pelo Business.</div>
   <cfelse>
     <div class="foco-review-kpis mb-4">
       <div class="foco-review-kpi"><small>Para revisão</small><strong><cfoutput>#qFocoReviewStats.review#</cfoutput></strong></div>

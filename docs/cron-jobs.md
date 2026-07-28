@@ -69,7 +69,7 @@ O painel nao grava segredos reais no banco. Cada job guarda apenas `secret_ref`.
 O importador automatizado usa um endpoint separado da pagina manual:
 
 - endpoint: `POST https://runnerhub.run/api/ticketsports/jobs/import.cfm`
-- autenticacao: Bearer
+- autenticacao: `X-API-Key` (`auth_mode = api_key_header`)
 - secret ref no Business: `runnerhub_ticketsports`
 - token correspondente no RunnerHub: campo `jobToken` de `ticketsports.local.cfm`
 - schema de estado no RunnerHub: `/api/ticketsports/jobs/ticketsports_job_schema.sql`
@@ -81,13 +81,23 @@ O cursor e salvo por evento, portanto o corpo do cron nao precisa informar a pag
 
 ### Vinculacao de eventos da Foco Radical
 
-O vinculador automatizado usa uma implementacao separada da pagina manual legada:
+O vinculador automatizado roda no Business. O endpoint original no RunnerHub
+permanece disponível temporariamente para compatibilidade, mas não é mais usado
+pelo cron do Business:
 
-- endpoint: `POST https://runnerhub.run/api/foco/jobs/match-events.cfm`
+- endpoint: `POST https://business.roadrunners.run/api/foco/jobs/match-events.cfm`
 - autenticacao: Bearer
-- secret ref no Business: `runnerhub_foco_eventos`
-- schema no RunnerHub: `/api/foco/jobs/foco_match_schema.sql`
+- secret ref no Business: `business_foco_eventos`
+- token da Competition API: `focoApiToken` em `config/business.local.cfm`
+- schema no Business: `/api/foco/jobs/foco_match_schema.sql`
 - cadastro inicial: `/administracao/cron-jobs/foco_event_match_job.sql`
+
+Sem acesso direto ao banco ou ao arquivo local, um administrador DEV pode
+configurar os tokens em `/administracao/config-check/`, na seção
+`Integração Foco Radical`. O formulário grava `business.local.cfm` com backup
+automático e não exige reinício do ColdFusion. Se o token Bearer for deixado
+vazio na primeira configuração, o Business reutiliza o token legado do
+RunnerHub quando disponível ou gera um valor forte automaticamente.
 
 O job nasce inativo, mas pronto para gravar candidatos de revisao
 (`dryRun=false`) e com `autoLink=true`. Ele percorre toda a paginacao retornada
@@ -114,6 +124,33 @@ galerias Foco para um unico evento Road Runners. O `tb_badges` continua sendo
 atualizado com uma galeria principal por compatibilidade com telas antigas.
 Quando uma galeria e vinculada manualmente, o caso permanece em revisao enquanto
 existirem outros candidatos elegiveis ainda nao vinculados para o mesmo evento.
+
+### Importacao de videos do YouTube
+
+O importador tecnico roda no Business:
+
+- endpoint: `POST https://business.roadrunners.run/api/youtube-import.cfm`
+- autenticacao: HMAC-SHA256 (`auth_mode = hmac_sha256`)
+- secret ref: `business_youtube`
+- chave externa: `youtubeApiKey` em `config/business.local.cfm`
+- schema de referencia: `/api/youtube/jobs/schema.sql`
+- cadastro inicial: `/administracao/cron-jobs/youtube_import_job.sql`
+
+Durante a migracao, `runnerhub_youtube` e aceito como fallback da chave do job. A API
+original `https://runnerhub.run/api/youtube/` permanece disponivel, mas somente
+um agendamento deve ficar ativo.
+
+Se a chave Google local estiver ausente ou invalida, o importador reutiliza
+automaticamente `RUNNERHUB_YOUTUBE_API_KEY` do ambiente legado ou de
+`/var/www/runnerhub.run/jobs/runnerhub-jobs.env`. A origem efetivamente usada
+aparece em `api_key_source` na resposta, sem expor a credencial.
+As consultas também enviam `Referer: https://business.roadrunners.run/`, que já
+está autorizado na restricao da chave legada.
+
+O body inicial recomendado usa `dryRun=true` e `maxPages=1`. Depois de validar
+o historico, altere `dryRun` para `false` e aumente o limite de paginas de forma
+gradual. Os tokens podem ser configurados em `/administracao/config-check/`
+sem reiniciar o ColdFusion.
 
 Os segredos reais devem ficar em:
 

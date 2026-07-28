@@ -42,6 +42,14 @@ function configCheckMask(any rawValue) {
     return "configurado · " & len(valueText) & " chars · sha256:" & left(lCase(hash(valueText, "SHA-256")), 12);
 }
 
+function configCheckLooksLikeGoogleApiKey(any rawValue) {
+    if (isNull(arguments.rawValue) OR !isSimpleValue(arguments.rawValue)) {
+        return false;
+    }
+
+    return reFind("^AIza[0-9A-Za-z_-]{35}$", trim(arguments.rawValue & "")) EQ 1;
+}
+
 function configCheckStructValue(required struct source, required string keyName) {
     if (structKeyExists(arguments.source, arguments.keyName) AND !isNull(arguments.source[arguments.keyName])) {
         return arguments.source[arguments.keyName];
@@ -181,12 +189,153 @@ configCheckExpectedKeys = [
     { label = "Notification dispatch secret", key = "notificationDispatchSecret", env = "RR_HANDOFF_SECRET", app = "APPLICATION.notificationDispatch.secret" },
     { label = "Notification timeout", key = "notificationDispatchTimeoutSeconds", env = "RR_PUSH_DISPATCH_TIMEOUT_SECONDS", app = "APPLICATION.notificationDispatch.timeoutSeconds" },
     { label = "UptimeRobot API key", key = "uptimeRobotApiKey", env = "UPTIMEROBOT_API_KEY", app = "APPLICATION.uptimeRobot.apiKey" },
+    { label = "Foco Competition API token", key = "focoApiToken", env = "", app = "" },
+    { label = "YouTube Data API key", key = "youtubeApiKey", env = "", app = "" },
     { label = "Cron runner token", key = "cronRunnerToken", env = "RR_BUSINESS_CRON_RUNNER_TOKEN", app = "APPLICATION.cronJobs.runnerToken" },
     { label = "Cron timeout", key = "cronDefaultTimeoutSeconds", env = "RR_BUSINESS_CRON_TIMEOUT_SECONDS", app = "APPLICATION.cronJobs.defaultTimeoutSeconds" }
 ];
-configCheckExpectedSecrets = listToArray("road_runners_handoff,business_internal,runnerhub_update_feed,runnerhub_youtube,runnerhub_ticketsports,runnerhub_foco_eventos");
+configCheckExpectedSecrets = listToArray("road_runners_handoff,business_internal,runnerhub_update_feed,runnerhub_youtube,business_youtube,runnerhub_ticketsports,runnerhub_foco_eventos,business_foco_eventos");
 configCheckActionNotice = "";
 configCheckActionError = "";
+
+if (!structKeyExists(SESSION, "businessConfigCheckCsrf") || !len(trim(SESSION.businessConfigCheckCsrf & ""))) {
+    SESSION.businessConfigCheckCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"));
+}
+configCheckCsrf = SESSION.businessConfigCheckCsrf;
+
+if (structKeyExists(FORM, "acao") && FORM.acao EQ "salvar_foco_config") {
+    try {
+        configCheckPostedCsrf = structKeyExists(FORM, "config_check_csrf") ? trim(FORM.config_check_csrf & "") : "";
+        configCheckPostedFocoApiToken = structKeyExists(FORM, "foco_api_token") ? trim(FORM.foco_api_token & "") : "";
+        configCheckPostedFocoJobToken = structKeyExists(FORM, "foco_job_token") ? trim(FORM.foco_job_token & "") : "";
+        configCheckCurrentFocoApiToken = configCheckStructValue(VARIABLES.configCheckLocalConfig, "focoApiToken");
+        configCheckCurrentFocoJobToken = (
+            structKeyExists(VARIABLES.configCheckLocalConfig, "cronSecrets")
+            && isStruct(VARIABLES.configCheckLocalConfig.cronSecrets)
+        ) ? configCheckStructValue(VARIABLES.configCheckLocalConfig.cronSecrets, "business_foco_eventos") : "";
+        configCheckLegacyFocoJobToken = (
+            structKeyExists(VARIABLES.configCheckLocalConfig, "cronSecrets")
+            && isStruct(VARIABLES.configCheckLocalConfig.cronSecrets)
+        ) ? configCheckStructValue(VARIABLES.configCheckLocalConfig.cronSecrets, "runnerhub_foco_eventos") : "";
+
+        if (!len(configCheckPostedCsrf) || configCheckPostedCsrf NEQ configCheckCsrf) {
+            throw(message = "A sessao do formulario expirou. Recarregue a pagina e tente novamente.");
+        }
+        if (!len(configCheckPostedFocoApiToken) && !len(configCheckCurrentFocoApiToken)) {
+            throw(message = "Informe o token da Competition API da Foco.");
+        }
+        configCheckConfigToPersist = duplicate(VARIABLES.configCheckLocalConfig);
+        configCheckConfigToPersist.cronSecrets = (
+            structKeyExists(configCheckConfigToPersist, "cronSecrets")
+            && isStruct(configCheckConfigToPersist.cronSecrets)
+        ) ? duplicate(configCheckConfigToPersist.cronSecrets) : {};
+
+        if (len(configCheckPostedFocoApiToken)) {
+            configCheckConfigToPersist.focoApiToken = configCheckPostedFocoApiToken;
+        }
+        if (len(configCheckPostedFocoJobToken)) {
+            configCheckConfigToPersist.cronSecrets.business_foco_eventos = configCheckPostedFocoJobToken;
+        } else if (!len(configCheckCurrentFocoJobToken)) {
+            configCheckConfigToPersist.cronSecrets.business_foco_eventos = len(configCheckLegacyFocoJobToken)
+                ? configCheckLegacyFocoJobToken
+                : lCase(hash(createUUID() & now() & getTickCount() & rand(), "SHA-256"));
+        }
+
+        configCheckBackupPath = VARIABLES.configCheckLocalPath & ".bak-" & dateTimeFormat(now(), "yyyymmddHHnnss");
+        configCheckFileContent = configCheckBuildBusinessLocalFile(configCheckConfigToPersist);
+
+        if (fileExists(VARIABLES.configCheckLocalPath)) {
+            try {
+                fileCopy(VARIABLES.configCheckLocalPath, configCheckBackupPath);
+            } catch (any configCheckFocoBackupError) {
+                configCheckRecoveredPath = configCheckWriteRecoveryFile(configCheckFileContent);
+                throw(message = "O backup falhou e a configuracao nao foi alterada. Arquivo de recuperacao: " & configCheckRecoveredPath & ".");
+            }
+        }
+
+        try {
+            fileWrite(VARIABLES.configCheckLocalPath, configCheckFileContent, "utf-8");
+        } catch (any configCheckFocoWriteError) {
+            configCheckRecoveredPath = configCheckWriteRecoveryFile(configCheckFileContent);
+            throw(message = "Nao foi possivel gravar business.local.cfm. Arquivo de recuperacao: " & configCheckRecoveredPath & ".");
+        }
+
+        VARIABLES.configCheckLocalConfig = duplicate(configCheckConfigToPersist);
+        VARIABLES.configCheckLocalExists = true;
+        configCheckActionNotice = "Configuracao da Foco salva. O endpoint e o cron ja podem usar os novos valores, sem reiniciar o ColdFusion.";
+    } catch (any configCheckFocoPersistError) {
+        configCheckActionError = configCheckFocoPersistError.message;
+    }
+}
+
+if (structKeyExists(FORM, "acao") && FORM.acao EQ "salvar_youtube_config") {
+    try {
+        configCheckPostedCsrf = structKeyExists(FORM, "config_check_csrf") ? trim(FORM.config_check_csrf & "") : "";
+        configCheckPostedYoutubeApiKey = structKeyExists(FORM, "youtube_api_key") ? trim(FORM.youtube_api_key & "") : "";
+        configCheckPostedYoutubeJobToken = structKeyExists(FORM, "youtube_job_token") ? trim(FORM.youtube_job_token & "") : "";
+        configCheckCurrentYoutubeApiKey = configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey");
+        configCheckCurrentYoutubeJobToken = (
+            structKeyExists(VARIABLES.configCheckLocalConfig, "cronSecrets")
+            && isStruct(VARIABLES.configCheckLocalConfig.cronSecrets)
+        ) ? configCheckStructValue(VARIABLES.configCheckLocalConfig.cronSecrets, "business_youtube") : "";
+        configCheckLegacyYoutubeJobToken = (
+            structKeyExists(VARIABLES.configCheckLocalConfig, "cronSecrets")
+            && isStruct(VARIABLES.configCheckLocalConfig.cronSecrets)
+        ) ? configCheckStructValue(VARIABLES.configCheckLocalConfig.cronSecrets, "runnerhub_youtube") : "";
+
+        if (!len(configCheckPostedCsrf) || configCheckPostedCsrf NEQ configCheckCsrf) {
+            throw(message = "A sessao do formulario expirou. Recarregue a pagina e tente novamente.");
+        }
+        if (!len(configCheckPostedYoutubeApiKey) && !len(configCheckCurrentYoutubeApiKey)) {
+            throw(message = "Informe a chave da YouTube Data API.");
+        }
+        if (len(configCheckPostedYoutubeApiKey) && !configCheckLooksLikeGoogleApiKey(configCheckPostedYoutubeApiKey)) {
+            throw(message = "A chave informada nao tem o formato de uma Google API key. Ela deve iniciar com AIza e ter 39 caracteres. Nao use aqui a chave privada business_youtube.");
+        }
+
+        configCheckConfigToPersist = duplicate(VARIABLES.configCheckLocalConfig);
+        configCheckConfigToPersist.cronSecrets = (
+            structKeyExists(configCheckConfigToPersist, "cronSecrets")
+            && isStruct(configCheckConfigToPersist.cronSecrets)
+        ) ? duplicate(configCheckConfigToPersist.cronSecrets) : {};
+
+        if (len(configCheckPostedYoutubeApiKey)) {
+            configCheckConfigToPersist.youtubeApiKey = configCheckPostedYoutubeApiKey;
+        }
+        if (len(configCheckPostedYoutubeJobToken)) {
+            configCheckConfigToPersist.cronSecrets.business_youtube = configCheckPostedYoutubeJobToken;
+        } else if (!len(configCheckCurrentYoutubeJobToken)) {
+            configCheckConfigToPersist.cronSecrets.business_youtube = len(configCheckLegacyYoutubeJobToken)
+                ? configCheckLegacyYoutubeJobToken
+                : lCase(hash(createUUID() & now() & getTickCount() & rand(), "SHA-256"));
+        }
+
+        configCheckBackupPath = VARIABLES.configCheckLocalPath & ".bak-" & dateTimeFormat(now(), "yyyymmddHHnnss");
+        configCheckFileContent = configCheckBuildBusinessLocalFile(configCheckConfigToPersist);
+
+        if (fileExists(VARIABLES.configCheckLocalPath)) {
+            try {
+                fileCopy(VARIABLES.configCheckLocalPath, configCheckBackupPath);
+            } catch (any configCheckYoutubeBackupError) {
+                configCheckRecoveredPath = configCheckWriteRecoveryFile(configCheckFileContent);
+                throw(message = "O backup falhou e a configuracao nao foi alterada. Arquivo de recuperacao: " & configCheckRecoveredPath & ".");
+            }
+        }
+
+        try {
+            fileWrite(VARIABLES.configCheckLocalPath, configCheckFileContent, "utf-8");
+        } catch (any configCheckYoutubeWriteError) {
+            configCheckRecoveredPath = configCheckWriteRecoveryFile(configCheckFileContent);
+            throw(message = "Nao foi possivel gravar business.local.cfm. Arquivo de recuperacao: " & configCheckRecoveredPath & ".");
+        }
+
+        VARIABLES.configCheckLocalConfig = duplicate(configCheckConfigToPersist);
+        VARIABLES.configCheckLocalExists = true;
+        configCheckActionNotice = "Configuracao do YouTube salva. O endpoint e o cron ja podem usar os novos valores, sem reiniciar o ColdFusion.";
+    } catch (any configCheckYoutubePersistError) {
+        configCheckActionError = configCheckYoutubePersistError.message;
+    }
+}
 
 if (structKeyExists(FORM, "acao") AND FORM.acao EQ "persistir_cron_memory") {
     try {
@@ -360,6 +509,76 @@ for (secretRef in configCheckExpectedSecrets) {
                 <div class="small text-muted text-break">Secrets: <cfoutput>#htmlEditFormat(configCheckApplicationCronSecrets)#</cfoutput></div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="card shadow-0 mb-4">
+          <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+              <div>
+                <h2 class="h5 mb-1">Integração Foco Radical</h2>
+                <p class="text-muted small mb-0">Grava os tokens no arquivo privado do Business. Os valores atuais nunca são exibidos e campos vazios preservam a configuração existente.</p>
+              </div>
+              <div class="small text-muted">
+                API: <cfoutput>#htmlEditFormat(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "focoApiToken")))#</cfoutput><br>
+                Bearer: <cfoutput>#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_foco_eventos")))#</cfoutput>
+              </div>
+            </div>
+            <form method="post" autocomplete="off">
+              <input type="hidden" name="acao" value="salvar_foco_config">
+              <input type="hidden" name="config_check_csrf" value="<cfoutput>#htmlEditFormat(configCheckCsrf)#</cfoutput>">
+              <div class="row g-3">
+                <div class="col-lg-5">
+                  <label class="form-label" for="configCheckFocoApiToken">Token da Competition API da Foco</label>
+                  <input class="form-control" id="configCheckFocoApiToken" name="foco_api_token" type="password" autocomplete="new-password" placeholder="Deixe vazio para manter o atual">
+                </div>
+                <div class="col-lg-5">
+                  <label class="form-label" for="configCheckFocoJobToken">Token Bearer do endpoint Business</label>
+                  <input class="form-control" id="configCheckFocoJobToken" name="foco_job_token" type="password" autocomplete="new-password" placeholder="Vazio mantém ou gera um token seguro">
+                </div>
+                <div class="col-lg-2 d-flex align-items-end">
+                  <button class="btn btn-warning w-100" type="submit">Salvar configuração</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card shadow-0 mb-4">
+          <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+              <div>
+                <h2 class="h5 mb-1">Integração YouTube</h2>
+                <p class="text-muted small mb-0">Configura a YouTube Data API e o Bearer do importador no arquivo privado. Campos vazios preservam os valores existentes.</p>
+              </div>
+              <div class="small text-muted">
+                API: <cfoutput>#htmlEditFormat(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey")))#</cfoutput><br>
+                Formato Google:
+                <cfif configCheckLooksLikeGoogleApiKey(configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey"))>
+                  <span class="text-success">válido</span>
+                <cfelse>
+                  <span class="text-danger">inválido</span>
+                </cfif><br>
+                Chave do job: <cfoutput>#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_youtube")))#</cfoutput>
+              </div>
+            </div>
+            <form method="post" autocomplete="off">
+              <input type="hidden" name="acao" value="salvar_youtube_config">
+              <input type="hidden" name="config_check_csrf" value="<cfoutput>#htmlEditFormat(configCheckCsrf)#</cfoutput>">
+              <div class="row g-3">
+                <div class="col-lg-5">
+                  <label class="form-label" for="configCheckYoutubeApiKey">Chave da YouTube Data API v3</label>
+                  <input class="form-control" id="configCheckYoutubeApiKey" name="youtube_api_key" type="password" autocomplete="new-password" placeholder="Deixe vazio para manter a atual">
+                </div>
+                <div class="col-lg-5">
+                  <label class="form-label" for="configCheckYoutubeJobToken">Chave privada do endpoint Business</label>
+                  <input class="form-control" id="configCheckYoutubeJobToken" name="youtube_job_token" type="password" autocomplete="new-password" placeholder="Vazio mantém ou gera um token seguro">
+                </div>
+                <div class="col-lg-2 d-flex align-items-end">
+                  <button class="btn btn-warning w-100" type="submit">Salvar configuração</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
 

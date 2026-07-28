@@ -13,6 +13,8 @@
         "uptimeRobotApiUrl" = "https://api.uptimerobot.com/v2/getMonitors",
         "uptimeRobotTimeoutSeconds" = 15,
         "uptimeRobotCacheSeconds" = 120,
+        "focoApiToken" = "TOKEN_DA_COMPETITION_API_DA_FOCO",
+        "youtubeApiKey" = "CHAVE_DA_YOUTUBE_DATA_API_V3",
         "apiMonitorLogPath" = "/var/log/apache2/api.roadrunners.run-telemetry.log",
         "apiMonitorMaxBytes" = 16777216,
         "apiMonitorCacheSeconds" = 60,
@@ -24,8 +26,10 @@
             "conteudo_internal" = "SEGREDO_INTERNO_DO_BUSINESS",
             "runnerhub_update_feed" = "MESMO_VALOR_DE_RUNNERHUB_UPDATE_FEED_JOB_TOKEN",
             "runnerhub_youtube" = "MESMO_VALOR_DE_RUNNERHUB_YOUTUBE_JOB_TOKEN",
+            "business_youtube" = "TOKEN_FORTE_EXCLUSIVO_DO_ENDPOINT_YOUTUBE_NO_BUSINESS",
             "runnerhub_ticketsports" = "MESMO_VALOR_DE_RUNNERHUB_TICKETSPORTS_JOB_TOKEN",
-            "runnerhub_foco_eventos" = "MESMO_VALOR_DO_JOBTOKEN_EM_FOCO.LOCAL.CFM"
+            "runnerhub_foco_eventos" = "TOKEN_DO_ENDPOINT_ORIGINAL_MANTIDO_NO_RUNNERHUB",
+            "business_foco_eventos" = "TOKEN_FORTE_EXCLUSIVO_DO_ENDPOINT_FOCO_NO_BUSINESS"
         }
     };
 </cfscript>

@@ -127,7 +127,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <a target="_blank" class="btn btn-outline-primary me-2" href="https://runnerhub.run/api/foco/eventos.cfm?id_evento=<cfoutput>#qEvento.id_evento#</cfoutput>">Verificar API</a>
+            <a target="_blank" class="btn btn-outline-primary me-2" href="/administracao/foco-revisao/?busca=<cfoutput>#qEvento.id_evento#</cfoutput>&amp;status=all">Revisar integração Foco</a>
         </div>
     </div>
 
