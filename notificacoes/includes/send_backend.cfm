@@ -359,6 +359,12 @@
 
 <cfset VARIABLES.notificationSendTemplateId = trim(isDefined("FORM.notification_send_template_id") ? FORM.notification_send_template_id : (isDefined("URL.template_id") ? URL.template_id : ""))/>
 <cfset VARIABLES.notificationSendUserId = trim(isDefined("FORM.notification_send_user_id") ? FORM.notification_send_user_id : (isDefined("URL.user_id") ? URL.user_id : ""))/>
+<cfset VARIABLES.notificationSendEventId = trim(isDefined("FORM.notification_send_id_evento") ? FORM.notification_send_id_evento : (isDefined("URL.id_evento") ? URL.id_evento : ""))/>
+<cfif len(VARIABLES.notificationSendEventId) AND !reFind("^[1-9][0-9]*$", VARIABLES.notificationSendEventId)>
+    <cfset VARIABLES.notificationSendEventId = ""/>
+<cfelseif len(VARIABLES.notificationSendEventId)>
+    <cfset VARIABLES.notificationSendEventId = int(VARIABLES.notificationSendEventId)/>
+</cfif>
 <cfset VARIABLES.notificationSendAdmin = trim(isDefined("FORM.notification_send_admin") ? FORM.notification_send_admin : (isDefined("URL.admin") ? URL.admin : ""))/>
 <cfset VARIABLES.notificationSendStrava = trim(isDefined("FORM.notification_send_strava") ? FORM.notification_send_strava : (isDefined("URL.strava") ? URL.strava : ""))/>
 <cfset VARIABLES.notificationSendDesafio = trim(isDefined("FORM.notification_send_desafio") ? FORM.notification_send_desafio : (isDefined("URL.desafio") ? URL.desafio : ""))/>
@@ -493,6 +499,7 @@
 <cfset VARIABLES.notificationSendRedirectUrl = "./?pagina=" & VARIABLES.notificationSendPage/>
 <cfif len(trim(VARIABLES.notificationSendTemplateId))><cfset VARIABLES.notificationSendRedirectUrl &= "&template_id=" & urlEncodedFormat(VARIABLES.notificationSendTemplateId)/></cfif>
 <cfif len(trim(VARIABLES.notificationSendUserId))><cfset VARIABLES.notificationSendRedirectUrl &= "&user_id=" & urlEncodedFormat(VARIABLES.notificationSendUserId)/></cfif>
+<cfif len(VARIABLES.notificationSendEventId)><cfset VARIABLES.notificationSendRedirectUrl &= "&id_evento=" & int(VARIABLES.notificationSendEventId)/></cfif>
 <cfif len(trim(VARIABLES.notificationSendAdmin))><cfset VARIABLES.notificationSendRedirectUrl &= "&admin=" & urlEncodedFormat(VARIABLES.notificationSendAdmin)/></cfif>
 <cfif len(trim(VARIABLES.notificationSendStrava))><cfset VARIABLES.notificationSendRedirectUrl &= "&strava=" & urlEncodedFormat(VARIABLES.notificationSendStrava)/></cfif>
 <cfif len(trim(VARIABLES.notificationSendDesafio))><cfset VARIABLES.notificationSendRedirectUrl &= "&desafio=" & urlEncodedFormat(VARIABLES.notificationSendDesafio)/></cfif>
@@ -568,6 +575,14 @@
             WHERE 1 = 1
             <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
                 AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
+            </cfif>
+            <cfif len(VARIABLES.notificationSendEventId)>
+                AND EXISTS (
+                    SELECT 1
+                    FROM tb_inscricoes ins_evento
+                    WHERE ins_evento.id_usuario = usr.id
+                      AND ins_evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendEventId#"/>
+                )
             </cfif>
             <cfif VARIABLES.notificationSendAdmin EQ "true">
                 AND usr.is_admin = true
@@ -661,6 +676,14 @@
         WHERE 1 = 1
         <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
             AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
+        </cfif>
+        <cfif len(VARIABLES.notificationSendEventId)>
+            AND EXISTS (
+                SELECT 1
+                FROM tb_inscricoes ins_evento
+                WHERE ins_evento.id_usuario = usr.id
+                  AND ins_evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendEventId#"/>
+            )
         </cfif>
         <cfif VARIABLES.notificationSendAdmin EQ "true">
             AND usr.is_admin = true
@@ -782,17 +805,22 @@
     <cfset VARIABLES.notificationSendDispatchUrlAttempts = [ VARIABLES.notificationSendDispatchUrl ]/>
 
     <cfloop array="#VARIABLES.notificationSendDispatchUrlAttempts#" item="VARIABLES.notificationSendDispatchUrlAttempt">
-        <cfhttp
-            url="#VARIABLES.notificationSendDispatchUrlAttempt#"
-            method="post"
-            result="notificationSendDispatchHttpResult"
-            timeout="#VARIABLES.notificationSendDispatchTimeoutValue#"
-            throwOnError="false">
-            <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
-            <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#VARIABLES.notificationSendDispatchTimestamp#"/>
-            <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#VARIABLES.notificationSendDispatchSignature#"/>
-            <cfhttpparam type="body" value="#VARIABLES.notificationSendDispatchRawBody#"/>
-        </cfhttp>
+        <cftry>
+            <cfhttp
+                url="#VARIABLES.notificationSendDispatchUrlAttempt#"
+                method="post"
+                result="notificationSendDispatchHttpResult"
+                timeout="#VARIABLES.notificationSendDispatchTimeoutValue#"
+                throwOnError="false">
+                <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
+                <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#VARIABLES.notificationSendDispatchTimestamp#"/>
+                <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#VARIABLES.notificationSendDispatchSignature#"/>
+                <cfhttpparam type="body" value="#VARIABLES.notificationSendDispatchRawBody#"/>
+            </cfhttp>
+            <cfcatch type="any">
+                <cflocation addtoken="false" url="#VARIABLES.notificationSendRedirectUrl#&envio_status=api_timeout"/>
+            </cfcatch>
+        </cftry>
 
         <cfset VARIABLES.notificationSendDispatchHttpStatusCode = structKeyExists(notificationSendDispatchHttpResult, "statusCode") ? trim(notificationSendDispatchHttpResult.statusCode) : ""/>
         <cfset VARIABLES.notificationSendDispatchHttpStatusPrefix = len(VARIABLES.notificationSendDispatchHttpStatusCode) GTE 3 ? left(VARIABLES.notificationSendDispatchHttpStatusCode, 3) : ""/>
@@ -907,6 +935,14 @@
             WHERE 1 = 1
             <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
                 AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
+            </cfif>
+            <cfif len(VARIABLES.notificationSendEventId)>
+                AND EXISTS (
+                    SELECT 1
+                    FROM tb_inscricoes ins_evento
+                    WHERE ins_evento.id_usuario = usr.id
+                      AND ins_evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendEventId#"/>
+                )
             </cfif>
             <cfif VARIABLES.notificationSendAdmin EQ "true">
                 AND usr.is_admin = true
@@ -1404,6 +1440,14 @@
         <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
             AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
         </cfif>
+        <cfif len(VARIABLES.notificationSendEventId)>
+            AND EXISTS (
+                SELECT 1
+                FROM tb_inscricoes ins_evento
+                WHERE ins_evento.id_usuario = usr.id
+                  AND ins_evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendEventId#"/>
+            )
+        </cfif>
         <cfif VARIABLES.notificationSendAdmin EQ "true">
             AND usr.is_admin = true
         <cfelseif VARIABLES.notificationSendAdmin EQ "false">
@@ -1512,6 +1556,14 @@
     WHERE 1 = 1
     <cfif len(trim(VARIABLES.notificationSendUserId)) AND isNumeric(VARIABLES.notificationSendUserId)>
         AND usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendUserId#"/>
+    </cfif>
+    <cfif len(VARIABLES.notificationSendEventId)>
+        AND EXISTS (
+            SELECT 1
+            FROM tb_inscricoes ins_evento
+            WHERE ins_evento.id_usuario = usr.id
+              AND ins_evento.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificationSendEventId#"/>
+        )
     </cfif>
     <cfif VARIABLES.notificationSendAdmin EQ "true">
         AND usr.is_admin = true

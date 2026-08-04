@@ -375,6 +375,8 @@
             <div class="alert alert-danger">O endpoint de dispatch da API central não foi encontrado no Road Runners.</div>
           <cfelseif VARIABLES.notificationSendStatus EQ "api_http_500">
             <div class="alert alert-danger">A API central de notificações retornou HTTP 500 ao processar o dispatch.</div>
+          <cfelseif VARIABLES.notificationSendStatus EQ "api_timeout">
+            <div class="alert alert-danger">A API central de notificações não respondeu dentro do limite. Verifique o histórico antes de tentar novamente.</div>
           <cfelseif VARIABLES.notificationSendStatus EQ "api_falhou">
             <div class="alert alert-danger">
               O dispatch não foi aceito pela API central do Road Runners.
@@ -424,6 +426,16 @@
                       <div class="notification-user-search-results d-none" id="notification_user_search_results"></div>
                     </div>
                     <div class="form-text">Selecione um resultado para limitar o envio.</div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="notification-send-field-card">
+                    <label class="form-label" for="notification_event_id">Inscritos no evento</label>
+                    <input class="form-control" type="number" id="notification_event_id" name="id_evento"
+                      value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendEventId)#</cfoutput>"
+                      min="1" step="1" inputmode="numeric" placeholder="ID do evento"/>
+                    <div class="form-text">Limita aos usuários presentes na <code>tb_inscricoes</code> para esse <code>id_evento</code>.</div>
                   </div>
                 </div>
 
@@ -582,10 +594,11 @@
           </cfif>
 
           <cfif VARIABLES.notificationSendView EQ "compose">
-          <cfif len(trim(VARIABLES.notificationSendTemplateId)) OR len(trim(VARIABLES.notificationSendUserId)) OR len(trim(VARIABLES.notificationSendAdmin)) OR len(trim(VARIABLES.notificationSendStrava)) OR len(trim(VARIABLES.notificationSendDesafio)) OR len(trim(VARIABLES.notificationSendAssessoria)) OR len(trim(VARIABLES.notificationSendDev)) OR len(trim(VARIABLES.notificationSendPartner)) OR len(trim(VARIABLES.notificationSendGenero)) OR len(trim(VARIABLES.notificationSendCBAT)) OR len(trim(VARIABLES.notificationSendPais)) OR len(trim(VARIABLES.notificationSendEstado)) OR len(trim(VARIABLES.notificationSendVerificado))>
+          <cfif len(trim(VARIABLES.notificationSendTemplateId)) OR len(trim(VARIABLES.notificationSendUserId)) OR len(VARIABLES.notificationSendEventId) OR len(trim(VARIABLES.notificationSendAdmin)) OR len(trim(VARIABLES.notificationSendStrava)) OR len(trim(VARIABLES.notificationSendDesafio)) OR len(trim(VARIABLES.notificationSendAssessoria)) OR len(trim(VARIABLES.notificationSendDev)) OR len(trim(VARIABLES.notificationSendPartner)) OR len(trim(VARIABLES.notificationSendGenero)) OR len(trim(VARIABLES.notificationSendCBAT)) OR len(trim(VARIABLES.notificationSendPais)) OR len(trim(VARIABLES.notificationSendEstado)) OR len(trim(VARIABLES.notificationSendVerificado))>
             <div class="d-flex flex-wrap gap-2 mb-4">
               <cfif len(trim(VARIABLES.notificationSendTemplateId))><span class="notification-send-filter-chip">Template: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendTemplateId)#</cfoutput></span></cfif>
               <cfif len(trim(VARIABLES.notificationSendUserId))><span class="notification-send-filter-chip">Usuário: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput></span></cfif>
+              <cfif len(VARIABLES.notificationSendEventId)><span class="notification-send-filter-chip">Evento: <cfoutput>###int(VARIABLES.notificationSendEventId)#</cfoutput></span></cfif>
               <cfif len(trim(VARIABLES.notificationSendAdmin))><span class="notification-send-filter-chip">Admin: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendAdmin)#</cfoutput></span></cfif>
               <cfif len(trim(VARIABLES.notificationSendStrava))><span class="notification-send-filter-chip">Strava: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendStrava)#</cfoutput></span></cfif>
               <cfif len(trim(VARIABLES.notificationSendDesafio))><span class="notification-send-filter-chip">Desafio: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendDesafio)#</cfoutput></span></cfif>
@@ -635,6 +648,7 @@
                       <input type="hidden" name="notification_send_action" value="enviar"/>
                       <input type="hidden" name="notification_send_template_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendTemplateId)#</cfoutput>"/>
                       <input type="hidden" name="notification_send_user_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_id_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendEventId)#</cfoutput>"/>
                       <input type="hidden" name="notification_send_admin" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendAdmin)#</cfoutput>"/>
                       <input type="hidden" name="notification_send_strava" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendStrava)#</cfoutput>"/>
                       <input type="hidden" name="notification_send_desafio" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDesafio)#</cfoutput>"/>
