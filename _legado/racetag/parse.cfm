@@ -33,6 +33,10 @@
 
 
         <cfset VARIABLES.arrModalidades = eventoJSON.routes/>
+        <cfset VARIABLES.raceTagReferenceYear = Year(now())/>
+        <cfif isDefined("VARIABLES.evento.endDate") AND isDate(VARIABLES.evento.endDate)>
+            <cfset VARIABLES.raceTagReferenceYear = Year(VARIABLES.evento.endDate)/>
+        </cfif>
 
         <!---cfdump var="#VARIABLES.qCategorias#"/--->
 
@@ -49,11 +53,29 @@
 
         <!--- PASSO 4 --->
 
-        <cfhttp result="resultado" url="#FORM.url_racetag#data/#VARIABLES.evento.id#/results.json"></cfhttp>
+        <cfif isDefined("raceTagResultsPreflight")
+            AND isStruct(raceTagResultsPreflight)
+            AND isDefined("raceTagResultsPreflight.fileContent")>
+            <cfset resultado = raceTagResultsPreflight/>
+        <cfelse>
+            <cfhttp result="resultado"
+                    url="#FORM.url_racetag#data/#VARIABLES.evento.id#/results.json"
+                    timeout="60"
+                    redirect="false"
+                    throwonerror="false"></cfhttp>
+        </cfif>
 
         <cfif resultado.statuscode CONTAINS "200" and len(trim(resultado.filecontent))>
 
             <cfset mydoc = deserializeJSON(resultado.filecontent)>
+
+            <cfif NOT isArray(mydoc)>
+                <cfthrow type="RaceTag.InvalidResults" message="O results.json precisa conter uma lista de atletas."/>
+            </cfif>
+
+            <cfif arrayLen(mydoc) GT 100000>
+                <cfthrow type="RaceTag.ResultsLimit" message="O results.json ultrapassa o limite manual de 100.000 atletas."/>
+            </cfif>
 
             <cfloop array="#VARIABLES.arrModalidades#" item="modalidade">
 
@@ -61,6 +83,20 @@
 
                     <cfloop array="#mydoc#" index="item">
                         <cfif isDefined("modalidade.d") AND isDefined("item.r") AND modalidade.i EQ item.r>
+                            <cfset VARIABLES.raceTagBirthDate = ""/>
+                            <cfset VARIABLES.raceTagStartTime = ""/>
+                            <cfset VARIABLES.raceTagGrossTime = isDefined("item.tg") ? left(item.tg & "", 12) : ""/>
+                            <cfset VARIABLES.raceTagNetTime = isDefined("item.s") ? item.s & "" : (isDefined("item.tn") ? left(item.tn & "", 12) : "")/>
+
+                            <cfif isDefined("item.a") AND isNumeric(item.a) AND val(item.a) GTE 0 AND val(item.a) LTE 120>
+                                <cfset VARIABLES.raceTagBirthDate = (VARIABLES.raceTagReferenceYear - val(item.a)) & "-12-31"/>
+                            </cfif>
+                            <cfif isDefined("item.start") AND len(trim(item.start & ""))>
+                                <cfset VARIABLES.raceTagStartTime = left(item.start & "", 12)/>
+                            <cfelseif isDefined("item.st") AND find("T", item.st & "")>
+                                <cfset VARIABLES.raceTagStartTime = left(listLast(item.st & "", "T"), 12)/>
+                            </cfif>
+
                             <cfif isDefined('item.c') and len(trim(item.c))>
                                 <cfquery name="qCategoria" dbtype="query">
                                     SELECT * from VARIABLES.qCategorias
@@ -76,7 +112,7 @@
                             <cfquery>
                                 insert into tb_resultados_temp
                                 (
-                                num_peito, nome, categoria, id_evento, modalidade, percurso, sexo, equipe, data_nascimento, nacionalidade, hora_largada, pace, tempo_total, status_final
+                                num_peito, nome, categoria, id_evento, modalidade, percurso, sexo, equipe, data_nascimento, nacionalidade, hora_largada, pace, tempo_bruto, tempo_total, status_final
                                 )
                                 values
                                 (
@@ -88,11 +124,12 @@
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.c') ? round(modalidade.d/1000) : ''#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.g') ? item.g : ''#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#(isDefined('item.t') and isDefined('qEquipe')) ? qEquipe.n : ''#"/>,
-                                <cfqueryparam cfsqltype="cf_sql_date" value="#isDefined('item.a') ? (Year(now()) - item.a) & '-12-31' : ''#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.raceTagBirthDate#" null="#NOT len(VARIABLES.raceTagBirthDate)#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.na') ? item.na : ''#"/>,
-                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.start') ? item.start : ''#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagStartTime#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.pace') ? item.pace : ''#" null="#NOT isDefined('item.pace')#"/>,
-                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.s') ? item.s : isDefined('item.tn') ? left(item.tn,8) : ''#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagGrossTime#" null="#NOT len(VARIABLES.raceTagGrossTime)#"/>,
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagNetTime#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('item.s') ? item.s : ''#"/>
                                 );
                             </cfquery>
@@ -110,7 +147,7 @@
                         <p>
                             <cfoutput>Carregando #modalidade.n#...</cfoutput>
                             <br/>Total de atletas: <cfoutput>#lsNumberFormat(qMax.total)#</cfoutput>
-                        </>
+                        </p>
                     </cfif>
 
                 <!---cfcatch type="any">
@@ -124,8 +161,7 @@
 
         <cfelse>
 
-            <cfdump var="#resultado.statuscode#" label="resultado"/>
-            <cfabort/>
+            <cfthrow type="RaceTag.ResultsUnavailable" message="Não foi possível carregar o results.json do evento selecionado."/>
 
         </cfif>
 

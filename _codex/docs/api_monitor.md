@@ -44,8 +44,8 @@ O painel separa cada linha em uma única classe:
   `X-Api-Client-Id`;
 - `publicSurface`: landing, OpenAPI, health check e JavaScript do playground com
   resposta bem-sucedida;
-- `rejected`: chamada a uma rota versionada da API sem credencial válida ou sem
-  permissão;
+- `rejected`: chamada a uma rota versionada da API, incluindo `result-imports`,
+  sem credencial valida ou sem permissao;
 - `probe`: rota fora do contrato, scanner ou requisição malformada.
 
 A taxa de sucesso e a latência p95 principais usam somente `authenticated`. Isso
@@ -86,6 +86,18 @@ sudo apt-get install acl
 sudo setfacl -m g:rr-api-monitor:--x /var/log/apache2
 sudo a2enmod remoteip
 ```
+
+Se o log ja tiver sido rotacionado antes dessa configuracao, ajuste uma vez o
+arquivo ainda lido pelo monitor:
+
+```bash
+sudo chown root:rr-api-monitor /var/log/apache2/api.roadrunners.run-telemetry.log.1
+sudo chmod 0640 /var/log/apache2/api.roadrunners.run-telemetry.log.1
+sudo -u nobody test -r /var/log/apache2/api.roadrunners.run-telemetry.log.1
+```
+
+O monitor ignora individualmente um arquivo rotacionado inacessivel e sinaliza
+que a leitura esta parcial, sem deixar de processar o log atual.
 
 O ACL no diretório concede somente travessia para o nome conhecido do arquivo.
 Ele não permite ao grupo listar ou ler os demais logs do Apache.

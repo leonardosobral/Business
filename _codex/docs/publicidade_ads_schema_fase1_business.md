@@ -12,7 +12,9 @@ somente o inventário e o registro operacional do Business.
 
 O Business passou a acessar diretamente os objetos canônicos `ads.*` no PostgreSQL principal. As views temporárias homônimas em `public` continuam sendo responsabilidade da migration da Fase 1 e não são removidas por este projeto.
 
-Banco dedicado, fila assíncrona e FDW permanecem adiados para a Fase 2.
+Banco dedicado, AWS separada, fila assíncrona e FDW não fazem parte do rollout
+atual. Só serão considerados se volume, latência ou operação justificarem sair
+do schema `ads` no PostgreSQL principal.
 
 ## 2. Inventário final
 
@@ -144,7 +146,9 @@ PostgreSQL com sucesso; o job está ativo.
 - Jobs, BI, integrações, funções do banco e scripts manuais externos aos dois repositórios precisam ser observados com a auditoria SQL e `pg_stat_statements` após o deploy.
 - A atividade da rota `_legado/usuarios/` continua incerta; seu SQL foi qualificado para evitar regressão caso volte a ser chamado.
 - As views temporárias `public.*` devem permanecer durante uma janela que cubra tráfego, rotinas diárias, semanais e mensais.
-- A remoção das views, do wrapper temporário de função e qualquer alteração de banco dedicado/FDW/fila são trabalhos futuros.
+- A remoção das views e do wrapper temporário de função é trabalho futuro.
+  Banco dedicado, AWS separada, FDW ou fila só serão considerados mediante
+  evidência de capacidade insuficiente no banco principal.
 
 ## 10. Riscos e ordem coordenada de deploy
 

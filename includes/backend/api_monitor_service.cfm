@@ -28,6 +28,7 @@ function apiMonitorEmptySnapshot(required numeric hours) {
         hours = arguments.hours,
         fetchedAt = now(),
         sourceFiles = [],
+        skippedFiles = [],
         bytesRead = 0,
         linesRead = 0,
         parsedLines = 0,
@@ -103,7 +104,7 @@ function apiMonitorIsPublicSurface(
 
 function apiMonitorIsApiRoute(required string route) {
     return reFindNoCase(
-        "^/v1/(athletes|events|results|discovery|editorial|feed|challenges|training|coupons|session|me)/[a-z0-9-]+\.cfm$",
+        "^/v1/(athletes|events|results|result-imports|discovery|editorial|feed|challenges|training|coupons|session|me)/[a-z0-9-]+\.cfm$",
         arguments.route
     ) GT 0;
 }
@@ -172,6 +173,7 @@ function apiMonitorReadFiles(required string logPath, required numeric maxBytes)
     var result = {
         lines = [],
         files = [],
+        skippedFiles = [],
         bytesRead = 0,
         truncated = false
     };
@@ -198,7 +200,16 @@ function apiMonitorReadFiles(required string logPath, required numeric maxBytes)
     bytesPerFile = max(524288, int(arguments.maxBytes / arrayLen(paths)));
 
     for (pathValue in paths) {
-        tailResult = apiMonitorReadTail(pathValue, bytesPerFile);
+        try {
+            tailResult = apiMonitorReadTail(pathValue, bytesPerFile);
+        } catch (any readException) {
+            arrayAppend(result.skippedFiles, {
+                path = pathValue,
+                error = readException.message
+            });
+            continue;
+        }
+
         result.bytesRead += tailResult.bytesRead;
         result.truncated = result.truncated OR tailResult.truncated;
         arrayAppend(result.files, pathValue);
@@ -206,6 +217,15 @@ function apiMonitorReadFiles(required string logPath, required numeric maxBytes)
         if (arrayLen(tailResult.lines)) {
             arrayAppend(result.lines, tailResult.lines, true);
         }
+    }
+
+    if (!arrayLen(result.files)) {
+        throw(
+            type = "ApiMonitor.LogUnreadable",
+            message = arrayLen(result.skippedFiles)
+                ? result.skippedFiles[1].path & " (" & result.skippedFiles[1].error & ")"
+                : "O arquivo de telemetria da API ainda nao existe ou nao esta acessivel."
+        );
     }
 
     return result;
@@ -360,6 +380,7 @@ function apiMonitorLoadSnapshot(
     try {
         readResult = apiMonitorReadFiles(arguments.logPath, arguments.maxBytes);
         snapshot.sourceFiles = readResult.files;
+        snapshot.skippedFiles = readResult.skippedFiles;
         snapshot.bytesRead = readResult.bytesRead;
         snapshot.linesRead = arrayLen(readResult.lines);
         snapshot.truncated = readResult.truncated;

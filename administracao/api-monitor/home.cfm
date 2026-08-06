@@ -288,6 +288,19 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
       <div class="small mt-2"><cfoutput>#htmlEditFormat(apiMonitorDisplayHint)#</cfoutput></div>
     </div>
   <cfelse>
+    <cfif structKeyExists(VARIABLES.apiMonitorSnapshot, "skippedFiles")
+        AND arrayLen(VARIABLES.apiMonitorSnapshot.skippedFiles)>
+      <div class="alert alert-warning">
+        <strong>Telemetria parcial.</strong>
+        Um arquivo rotacionado nao pôde ser lido; os dados abaixo usam somente os arquivos acessíveis.
+        <cfloop array="#VARIABLES.apiMonitorSnapshot.skippedFiles#" index="apiMonitorSkippedFile">
+          <div class="small mt-2">
+            <cfoutput>#htmlEditFormat(apiMonitorSkippedFile.path)# (#htmlEditFormat(apiMonitorSkippedFile.error)#)</cfoutput>
+          </div>
+        </cfloop>
+      </div>
+    </cfif>
+
     <div class="api-monitor-metrics mb-4">
       <div class="api-monitor-metric">
         <span class="api-monitor-label">Tráfego total</span>

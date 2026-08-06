@@ -38,6 +38,7 @@
 - [leaderboard/api/index.cfm](/Users/geraldoprotta/IdeaProjects/Business/leaderboard/api/index.cfm)
 - [api/portal/banners](/Users/Shared/Projects/RunnerHub/Business/api/portal/banners)
 - [api/portal/runner-apps](/Users/Shared/Projects/RunnerHub/Business/api/portal/runner-apps)
+- [racetag](/Users/Shared/Projects/RunnerHub/Business/racetag): importador administrativo manual RaceTag Pro
 
 Nota:
 

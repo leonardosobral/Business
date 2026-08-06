@@ -13,6 +13,8 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Contexto Plataforma de Notificações](notifications-platform-context.md)
 - [Contexto Portal Banners](portal-banners-context.md)
 - [Contexto Runner Apps API](runner-apps-api-context.md)
+- [Fila de Importações de Resultados](result_import_queue.md)
+- [Importador Manual RaceTag Pro](racetag_manual_importer.md)
 - [Contexto Push PWA no Business](push-pwa-business-context.md)
 - [Checklist para Novas Features](feature-checklist.md)
 - [Plano de Producao Business](plano-producao-business.md)

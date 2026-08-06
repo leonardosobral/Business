@@ -125,7 +125,10 @@ Status em 2026-06-14:
   - `RR_MANDRILL_USERNAME` e `RR_MANDRILL_PASSWORD` passam a alimentar `crm/EmailSenderService.cfc` e `emailmkt/EmailSenderService.cfc`.
   - `RR_PUSH_PUBLIC_KEY` e `RR_PUSH_PRIVATE_KEY` devem alimentar PWA push em producao.
   - Enquanto o ambiente de teste nao tiver variaveis de ambiente, `config/business.local.cfm` fornece fallback local para esses valores. O arquivo segue ignorado por `config/*.local.cfm`.
-- Modulos isolados sem link no menu Business foram arquivados em `_legado/`: `elite-supra/` da raiz e `racetag/`.
+- Módulos isolados sem link no menu Business foram arquivados em `_legado/`. O
+  `elite-supra/` permanece arquivado; o `racetag/` foi reativado em 2026-08-06
+  como importador administrativo manual, mantendo temporariamente a transformação
+  consolidada em `_legado/racetag/parse.cfm`.
 - Ainda existe `debug=true` em links legados de BI/Desafios/Strava, mas sem token literal no codigo. Nao bloquear o primeiro corte por isso; revisar quando a parte de desafios/BI for redesenhada.
 - Em 2026-06-27, o token literal remanescente em `desafios/includes/tabela_usuarios_padrao.cfm` foi trocado por `APPLICATION.eventoApiToken`, respeitando `RR_EVENTO_API_TOKEN` ou o fallback local de teste.
 

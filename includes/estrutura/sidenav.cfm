@@ -591,6 +591,18 @@
                     <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span>
                 </a>
             </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/">
+                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/">
+                    <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
+                </a>
+            </li>
             </cfif>
         </cfif>
 
