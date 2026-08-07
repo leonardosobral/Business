@@ -1,5 +1,15 @@
 <!--- DADOS DO USUARIO LOGADO --->
 
+<!---
+    Este backend e incluido tanto pela pagina quanto por estruturas compartilhadas
+    (template/header). Carrega-lo novamente na mesma requisicao repete consultas e
+    tenta redeclarar funcoes de permissao no escopo da pagina.
+--->
+<cfif structKeyExists(REQUEST, "businessBackendLoginLoaded") AND REQUEST.businessBackendLoginLoaded>
+    <cfexit method="exittemplate"/>
+</cfif>
+<cfset REQUEST.businessBackendLoginLoaded = true/>
+
 <cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
 <cfset VARIABLES.businessSkipCookieLogin = false/>
 <cfset VARIABLES.businessAccountPendingAccess = false/>
