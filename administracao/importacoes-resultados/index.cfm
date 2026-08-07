@@ -7,7 +7,8 @@
 <cfset VARIABLES.template = "/administracao/importacoes-resultados/"/>
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
-<cfinclude template="../../includes/backend/require_admin.cfm"/>
+<cfset VARIABLES.requiredBusinessPermission = "result_imports.view"/>
+<cfinclude template="../../includes/backend/require_business_permission.cfm"/>
 <cfinclude template="includes/backend.cfm"/>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 

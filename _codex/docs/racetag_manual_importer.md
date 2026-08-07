@@ -6,7 +6,9 @@ O módulo `/racetag/` é a etapa manual entre a fila pública de submissões e a
 publicação dos resultados. Ele foi reativado para validar a integração RaceZone
 antes de qualquer automatização por cron.
 
-Somente administradores podem acessar ou executar o módulo.
+Administradores internos podem acessar todas as submissões e manter o modo
+avulso. Usuários de conta podem executar o módulo quando seu papel possui
+`result_imports.process` e a submissão pertence a uma integração ativa da conta.
 
 ## Diferenças entre os processadores encontrados
 
@@ -40,6 +42,9 @@ corrige a etapa anterior:
 - sugere vínculos por datas e UF, priorizando cidade exata;
 - preserva todos os campos do formulário entre as confirmações;
 - exige `POST` com CSRF antes de alterar resultados;
+- reaplica o escopo da conta ao abrir e ao reservar a submissão;
+- impede que usuários externos troquem a URL validada pela API ou processem uma
+  submissão de outro cliente;
 - reserva e atualiza o estado da submissão da fila;
 - executa carga, procedures e atualização da fila dentro de transação;
 - atualiza `url_wiclax` e `url_resultado` somente após execução válida.
@@ -61,6 +66,8 @@ inspeção inicial.
 ## Limites desta fase
 
 - execução exclusivamente manual;
+- contas externas precisam iniciar pela fila; somente administradores internos
+  podem usar uma URL avulsa;
 - formato atual RaceTag Pro com `results.json` agregado;
 - nenhum evento Road Runners é criado automaticamente;
 - o formato antigo com um arquivo `result/{route}.json` por percurso continua no

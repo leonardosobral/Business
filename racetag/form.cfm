@@ -307,6 +307,13 @@ function raceTagPlace(required string rawPlace) {
     <cfset VARIABLES.raceTagCanProcess = qRaceTagSelectedEvent.recordcount GT 0/>
 </cfif>
 
+<cfif NOT VARIABLES.raceTagStandaloneAllowed AND NOT VARIABLES.raceTagSubmissionReady>
+    <div class="alert alert-warning">
+        <strong>Selecione uma submissão da sua conta.</strong>
+        O processamento externo começa pela fila para preservar o escopo da integração.
+        <a class="alert-link" href="/administracao/importacoes-resultados/">Abrir fila de resultados</a>.
+    </div>
+<cfelse>
 <form id="formRaceTag" action="./" method="post">
     <input type="hidden" name="submission_id" value="<cfoutput>#htmlEditFormat(VARIABLES.raceTagSubmissionId)#</cfoutput>"/>
     <input type="hidden" name="external_event_id" value="<cfoutput>#htmlEditFormat(FORM.external_event_id)#</cfoutput>"/>
@@ -319,6 +326,7 @@ function raceTagPlace(required string rawPlace) {
                id="inputRaceTagUrl"
                name="url_resultado"
                required
+               <cfif NOT VARIABLES.raceTagUnscopedAccess>readonly</cfif>
                value="<cfoutput>#htmlEditFormat(FORM.url_resultado)#</cfoutput>"
                placeholder="https://.../data/ID/event.json ou https://.../#/evento"/>
         <div class="form-text">Aceita o <code>event.json</code> direto ou a página pública RaceTag Pro.</div>
@@ -330,6 +338,7 @@ function raceTagPlace(required string rawPlace) {
                class="form-control"
                id="inputRaceTagPublicUrl"
                name="url_resultado_publica"
+               <cfif NOT VARIABLES.raceTagUnscopedAccess>readonly</cfif>
                value="<cfoutput>#htmlEditFormat(FORM.url_resultado_publica)#</cfoutput>"
                placeholder="https://.../#/evento"/>
         <div class="form-text">Quando a submissão vem da fila, este campo já utiliza <code>url_resultado_publica</code>.</div>
@@ -489,7 +498,23 @@ function raceTagPlace(required string rawPlace) {
                             erro_codigo = NULL,
                             erro_detalhe = NULL
                         WHERE public_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagSubmissionId#"/> AS uuid)
+                          AND lower(trim(cod_timer)) = 'racezone'
                           AND status_processamento IN ('pendente', 'falhou')
+                        <cfif NOT VARIABLES.raceTagUnscopedAccess>
+                          AND EXISTS (
+                              SELECT 1
+                              FROM public.tb_conta_integracoes_resultados account_integration
+                              WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.raceTagScopeAccountId#"/>
+                                AND account_integration.ativo = true
+                                AND lower(trim(account_integration.client_id)) = lower(trim(tb_resultados_importacoes.client_id))
+                                AND lower(trim(account_integration.cod_timer)) = lower(trim(tb_resultados_importacoes.cod_timer))
+                                AND (
+                                  account_integration.abrange_contas_externas = true
+                                  OR nullif(trim(account_integration.external_account_id), '')
+                                      IS NOT DISTINCT FROM nullif(trim(tb_resultados_importacoes.external_account_id), '')
+                                )
+                          )
+                        </cfif>
                         RETURNING id_resultado_importacao
                     </cfquery>
 
@@ -587,3 +612,4 @@ function raceTagPlace(required string rawPlace) {
         </cfif>
     </cfif>
 </form>
+</cfif>

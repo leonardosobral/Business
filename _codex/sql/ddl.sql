@@ -164,6 +164,14 @@ create sequence gorunners.push_devices_id_seq;
 
 create sequence gorunners.club_join_requests_id_seq;
 
+create sequence public.tb_conta_integracoes_resultad_id_conta_integracao_resultado_seq;
+
+alter sequence public.tb_conta_integracoes_resultad_id_conta_integracao_resultado_seq owner to runner_dba;
+
+create sequence public.tb_conta_resultados_integracao_id_seq;
+
+alter sequence public.tb_conta_resultados_integracao_id_seq owner to runner_dba;
+
 -- Unknown how to generate base type type
 
 alter type public.gtrgm owner to runner_dba;
@@ -2027,30 +2035,39 @@ grant delete, insert, references, select, trigger, truncate, update on public.tb
 
 create table public.tb_strava_activities
 (
-    activity_id          bigint                                               not null
+    activity_id                    bigint                                                      not null
         constraint tb_strava_activities_pk
             primary key,
-    athlete_id           bigint                                               not null,
-    distance             double precision,
-    type                 varchar,
-    start_date           timestamp,
-    title                varchar,
-    moving_time          integer,
-    strava_raw           jsonb,
-    resource_state       integer          default 1                           not null,
-    processed            boolean          default false,
-    id_athlete_owner     integer          default 0                           not null,
-    id_athlete_donation  integer          default 0                           not null,
-    activity_date        date,
-    activity_source      varchar          default 'strava'::character varying not null,
-    total_elevation_gain double precision default 0                           not null,
-    updated              timestamp        default now()                       not null,
-    calories             double precision default 0                           not null,
-    fingerprint          varchar(64),
-    processed_at         timestamp,
-    hex_count            integer          default 0                           not null,
-    gorunners_user_id    uuid,
-    elapsed_time         integer
+    athlete_id                     bigint                                                      not null,
+    distance                       double precision,
+    type                           varchar,
+    start_date                     timestamp,
+    title                          varchar,
+    moving_time                    integer,
+    strava_raw                     jsonb,
+    resource_state                 integer          default 1                                  not null,
+    processed                      boolean          default false,
+    id_athlete_owner               integer          default 0                                  not null,
+    id_athlete_donation            integer          default 0                                  not null,
+    activity_date                  date,
+    activity_source                varchar          default 'strava'::character varying        not null,
+    total_elevation_gain           double precision default 0                                  not null,
+    updated                        timestamp        default now()                              not null,
+    calories                       double precision default 0                                  not null,
+    fingerprint                    varchar(64),
+    processed_at                   timestamp,
+    hex_count                      integer          default 0                                  not null,
+    gorunners_user_id              uuid,
+    elapsed_time                   integer,
+    strava_streams                 jsonb,
+    strava_streams_status          varchar(20)      default 'not_requested'::character varying not null
+        constraint tb_strava_activities_streams_status_ck
+            check ((strava_streams_status)::text = ANY
+                   ((ARRAY ['not_requested'::character varying, 'pending'::character varying, 'fetched'::character varying, 'unavailable'::character varying, 'retry'::character varying])::text[])),
+    strava_streams_fetched_at      timestamp,
+    strava_streams_attempts        integer          default 0                                  not null,
+    strava_streams_next_attempt_at timestamp,
+    strava_streams_last_error      text
 );
 
 alter table public.tb_strava_activities
@@ -2079,6 +2096,11 @@ create index tb_strava_activities_gorunners_user_id_idx
 create index tb_strava_activities_pending_idx
     on public.tb_strava_activities (gorunners_user_id, start_date)
     where (processed_at IS NULL);
+
+create index tb_strava_activities_streams_pending_idx
+    on public.tb_strava_activities (start_date, athlete_id)
+    where ((strava_streams_status)::text = ANY
+           ((ARRAY ['pending'::character varying, 'retry'::character varying])::text[]));
 
 grant insert, select, update on public.tb_strava_activities to runner;
 
@@ -2579,6 +2601,9 @@ alter table public.tb_paginas_vinculos
 
 create index tb_paginas_vinculos_id_pagina_destino_id_pagina_origem_index
     on public.tb_paginas_vinculos (id_pagina_destino, id_pagina_origem);
+
+create index idx_paginas_vinculos_chat_permission
+    on public.tb_paginas_vinculos (id_pagina_origem, id_pagina_destino, tipo_vinculo, vinculo_validado);
 
 grant delete, insert, select, update on public.tb_paginas_vinculos to runner;
 
@@ -3104,6 +3129,9 @@ alter table ads.tb_ad_log
     owner to runner_dba;
 
 grant select, usage on sequence ads.tb_ad_log_id_ad_log_seq to runner;
+
+create index idx_tb_ad_log_data_insercao
+    on ads.tb_ad_log (data_insercao);
 
 grant insert, select, update on ads.tb_ad_log to runner;
 
@@ -4838,7 +4866,10 @@ create table gorunners.achievement_definitions
     category    unknown
         constraint achievement_definitions_category_check
             check (category = ANY
-                   (ARRAY ['territory'::text, 'distance'::text, 'steals'::text, 'streak'::text, 'social'::text, 'activities'::text, 'hall'::text, 'cluster'::text])),
+                   (ARRAY ['territory'::text, 'distance'::text, 'steals'::text, 'streak'::text, 'social'::text, 'activities'::text, 'hall'::text, 'cluster'::text]))
+        constraint achievement_definitions_category_check
+            check (category = ANY
+                   (ARRAY ['territory'::text, 'distance'::text, 'steals'::text, 'streak'::text, 'social'::text, 'activities'::text, 'hall'::text, 'cluster'::text, 'challenge'::text])),
     sort_order  unknown,
     tier        unknown
         constraint achievement_definitions_tier_check
@@ -4859,8 +4890,10 @@ create table gorunners.challenges
     ends_at     unknown,
     created_at  unknown,
     primary key (
-)
-    );
+) ,
+	constraint challenges_badge_tier_check
+		check (badge_tier = ANY (ARRAY['bronze'::text, 'silver'::text, 'gold'::text, 'platinum'::text]))
+);
 
 create table gorunners.onboarding_steps
 (
@@ -8246,6 +8279,195 @@ create table gorunners.system_metrics_samples
     disk_total unknown
 );
 
+create table public.tb_evento_duplicidade_descartes
+(
+    id_evento_a    integer                             not null
+        constraint tb_evento_duplicidade_descartes_evento_a_fk
+            references public.tb_evento_corridas
+            on update cascade on delete cascade,
+    id_evento_b    integer                             not null
+        constraint tb_evento_duplicidade_descartes_evento_b_fk
+            references public.tb_evento_corridas
+            on update cascade on delete cascade,
+    descartado_por varchar(512),
+    data_cadastro  timestamp default CURRENT_TIMESTAMP not null,
+    constraint tb_evento_duplicidade_descartes_pk
+        primary key (id_evento_a, id_evento_b),
+    constraint tb_evento_duplicidade_descartes_ordem_ck
+        check (id_evento_a < id_evento_b)
+);
+
+alter table public.tb_evento_duplicidade_descartes
+    owner to runner_dba;
+
+grant delete, insert, select on public.tb_evento_duplicidade_descartes to runner;
+
+create table public.tb_resultados_importacoes
+(
+    id_resultado_importacao bigserial
+        constraint tb_resultados_importacoes_pk
+            primary key,
+    public_id               uuid                                              not null
+        constraint tb_resultados_importacoes_public_id_uq
+            unique,
+    id_evento               integer
+        constraint tb_resultados_importacoes_evento_fk
+            references public.tb_evento_corridas,
+    client_id               varchar(128)                                      not null,
+    cod_timer               varchar(64)                                       not null,
+    external_event_id       varchar(128),
+    url_resultado           text                                              not null,
+    url_resultado_publica   text                                              not null,
+    status_publicacao       varchar(24)                                       not null
+        constraint tb_resultados_importacoes_status_publicacao_ck
+            check ((status_publicacao)::text = ANY
+                   ((ARRAY ['extraoficial'::character varying, 'final'::character varying, 'atualizacao'::character varying])::text[])),
+    status_processamento    varchar(24) default 'pendente'::character varying not null
+        constraint tb_resultados_importacoes_status_processamento_ck
+            check ((status_processamento)::text = ANY
+                   ((ARRAY ['pendente'::character varying, 'processando'::character varying, 'processado'::character varying, 'falhou'::character varying, 'cancelado'::character varying])::text[])),
+    idempotency_key         varchar(128)                                      not null,
+    payload_hash            char(64)                                          not null,
+    tentativas              smallint    default 0                             not null
+        constraint tb_resultados_importacoes_tentativas_ck
+            check (tentativas >= 0),
+    total_resultados        integer,
+    erro_codigo             varchar(64),
+    erro_detalhe            varchar(1024),
+    data_recebimento        timestamp   default now()                         not null,
+    data_inicio             timestamp,
+    data_processamento      timestamp,
+    data_atualizacao        timestamp   default now()                         not null,
+    id_evento_informado     integer,
+    tag_evento_informada    varchar(256),
+    external_account_id     varchar(128),
+    constraint tb_resultados_importacoes_idempotency_uq
+        unique (client_id, idempotency_key)
+);
+
+alter table public.tb_resultados_importacoes
+    owner to runner_dba;
+
+grant select, usage on sequence public.tb_resultados_importacoes_id_resultado_importacao_seq to runner;
+
+create index tb_resultados_importacoes_fila_idx
+    on public.tb_resultados_importacoes (status_processamento, data_recebimento, id_resultado_importacao);
+
+create index tb_resultados_importacoes_evento_idx
+    on public.tb_resultados_importacoes (id_evento asc, data_recebimento desc);
+
+create index tb_resultados_importacoes_timer_idx
+    on public.tb_resultados_importacoes (cod_timer asc, data_recebimento desc);
+
+grant insert, select, update on public.tb_resultados_importacoes to runner;
+
+create table public.tb_business_permissoes
+(
+    id_permissao     bigserial
+        constraint tb_business_permissoes_pk
+            primary key,
+    codigo           varchar(100)                           not null
+        constraint tb_business_permissoes_codigo_uq
+            unique
+        constraint tb_business_permissoes_codigo_ck
+            check ((codigo)::text ~ '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$'::text),
+    descricao        varchar(255)                           not null,
+    ativo            boolean                  default true  not null,
+    data_criacao     timestamp with time zone default now() not null,
+    data_atualizacao timestamp with time zone default now() not null
+);
+
+alter table public.tb_business_permissoes
+    owner to runner_dba;
+
+grant select, usage on sequence public.tb_business_permissoes_id_permissao_seq to runner;
+
+create table public.tb_conta_permissoes
+(
+    id_conta_permissao bigserial
+        constraint tb_conta_permissoes_pk
+            primary key,
+    id_conta           bigint                                 not null
+        constraint tb_conta_permissoes_conta_fk
+            references public.tb_contas
+            on delete cascade,
+    id_permissao       bigint                                 not null
+        constraint tb_conta_permissoes_permissao_fk
+            references public.tb_business_permissoes
+            on delete cascade,
+    papel              papel_usuario_conta                    not null,
+    ativo              boolean                  default true  not null,
+    usuario_concessao  bigint
+        constraint tb_conta_permissoes_usuario_fk
+            references public.tb_usuarios
+            on delete set null,
+    data_criacao       timestamp with time zone default now() not null,
+    data_atualizacao   timestamp with time zone default now() not null,
+    constraint tb_conta_permissoes_conta_permissao_papel_uq
+        unique (id_conta, id_permissao, papel)
+);
+
+alter table public.tb_conta_permissoes
+    owner to runner_dba;
+
+grant select, usage on sequence public.tb_conta_permissoes_id_conta_permissao_seq to runner;
+
+create index tb_conta_permissoes_acesso_idx
+    on public.tb_conta_permissoes (id_conta, papel, ativo, id_permissao);
+
+create table public.tb_conta_integracoes_resultados
+(
+    id_conta_integracao_resultado bigint                   default nextval('tb_conta_resultados_integracao_id_seq'::regclass) not null
+        constraint tb_conta_integracoes_resultados_pk
+            primary key,
+    id_conta                      bigint                                                                                      not null
+        constraint tb_conta_integracoes_resultados_conta_fk
+            references public.tb_contas
+            on delete cascade,
+    client_id                     varchar(128)                                                                                not null
+        constraint tb_conta_integracoes_resultados_client_id_ck
+            check ((length(TRIM(BOTH FROM client_id)) >= 1) AND (length(TRIM(BOTH FROM client_id)) <= 128)),
+    cod_timer                     varchar(64)                                                                                 not null
+        constraint tb_conta_integracoes_resultados_timer_ck
+            check ((length(TRIM(BOTH FROM cod_timer)) >= 1) AND (length(TRIM(BOTH FROM cod_timer)) <= 64)),
+    external_account_id           varchar(128),
+    abrange_contas_externas       boolean                  default false                                                      not null,
+    ativo                         boolean                  default true                                                       not null,
+    usuario_cadastro              bigint
+        constraint tb_conta_integracoes_resultados_usuario_fk
+            references public.tb_usuarios
+            on delete set null,
+    data_criacao                  timestamp with time zone default now()                                                      not null,
+    data_atualizacao              timestamp with time zone default now()                                                      not null,
+    constraint tb_conta_integracoes_resultados_escopo_ck
+        check (((abrange_contas_externas = true) AND (external_account_id IS NULL)) OR (abrange_contas_externas = false))
+);
+
+alter table public.tb_conta_integracoes_resultados
+    owner to runner_dba;
+
+alter sequence public.tb_conta_integracoes_resultad_id_conta_integracao_resultado_seq owned by public.tb_conta_integracoes_resultados.id_conta_integracao_resultado;
+
+create unique index tb_conta_integracoes_resultados_escopo_uq
+    on public.tb_conta_integracoes_resultados (id_conta, lower(TRIM(BOTH FROM client_id)),
+                                               lower(TRIM(BOTH FROM cod_timer)),
+                                               COALESCE(TRIM(BOTH FROM external_account_id), ''::text),
+                                               abrange_contas_externas)
+    where (ativo = true);
+
+create unique index tb_conta_integracoes_resultados_client_global_uq
+    on public.tb_conta_integracoes_resultados (lower(TRIM(BOTH FROM client_id)), lower(TRIM(BOTH FROM cod_timer)))
+    where ((ativo = true) AND (abrange_contas_externas = true));
+
+create unique index tb_conta_integracoes_resultados_conta_externa_uq
+    on public.tb_conta_integracoes_resultados (lower(TRIM(BOTH FROM client_id)), lower(TRIM(BOTH FROM cod_timer)),
+                                               COALESCE(TRIM(BOTH FROM external_account_id), ''::text))
+    where ((ativo = true) AND (abrange_contas_externas = false));
+
+create index tb_conta_integracoes_resultados_consulta_idx
+    on public.tb_conta_integracoes_resultados (id_conta, ativo, lower(TRIM(BOTH FROM client_id)),
+                                               lower(TRIM(BOTH FROM cod_timer)));
+
 create table pg_catalog.pg_aggregate
 (
     aggfnoid         regproc  not null
@@ -8338,6 +8560,7 @@ create table pg_catalog.pg_attribute
     atttypid       oid                               not null,
     attlen         smallint                          not null,
     attnum         smallint                          not null,
+    attcacheoff    integer                           not null,
     atttypmod      integer                           not null,
     attndims       smallint                          not null,
     attbyval       boolean                           not null,
@@ -8437,7 +8660,6 @@ create table pg_catalog.pg_class
     relpages            integer                           not null,
     reltuples           real                              not null,
     relallvisible       integer                           not null,
-    relallfrozen        integer                           not null,
     reltoastrelid       oid                               not null,
     relhasindex         boolean                           not null,
     relisshared         boolean                           not null,
@@ -8496,7 +8718,6 @@ create table pg_catalog.pg_constraint
     contype        "char"                            not null,
     condeferrable  boolean                           not null,
     condeferred    boolean                           not null,
-    conenforced    boolean                           not null,
     convalidated   boolean                           not null,
     conrelid       oid                               not null,
     contypid       oid                               not null,
@@ -8509,7 +8730,6 @@ create table pg_catalog.pg_constraint
     conislocal     boolean                           not null,
     coninhcount    smallint                          not null,
     connoinherit   boolean                           not null,
-    conperiod      boolean                           not null,
     conkey         smallint[],
     confkey        smallint[],
     conpfeqop      oid[],
@@ -8959,8 +9179,7 @@ create table pg_catalog.pg_publication
     pubupdate    boolean                           not null,
     pubdelete    boolean                           not null,
     pubtruncate  boolean                           not null,
-    pubviaroot   boolean                           not null,
-    pubgencols   "char"                            not null
+    pubviaroot   boolean                           not null
 );
 
 create table pg_catalog.pg_publication_namespace
@@ -11818,239 +12037,9 @@ create procedure public.atualiza_classific_f1(IN p_cod_evento integer)
     language plpgsql
 as
 $$
-DECLARE
-
-var_class_percurso  integer;
-var_class_sexo      integer;
-var_class_categ     integer;
-var_class_pais      integer;
-var_tempo_f1        time;
-
-var_percurso_ant    decimal;
-var_sexo_ant        varchar;
-var_categ_ant       varchar;
-var_nacionalidade_ant varchar;
-var_modalidade_ant  varchar;
-
-rec_percurso        record;
-rec_categ           record;
-rec_pais            record;
-rec_atualiza        record;
-
-
-cur_percurso cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte      = true and
-    status_final    = 0
-order by modalidade,sexo,percurso,pace,tempo_total,nome_categoria desc;
-
-cur_categ cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte = true and
-    status_final = 0
-order by modalidade,sexo,percurso,nome_categoria,pace,tempo_total;
-
-cur_pais cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    nacionalidade,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte = true and
-    status_final = 0
-order by modalidade,sexo,percurso,nacionalidade,pace,tempo_total,nome_categoria desc;
-
-
-BEGIN
-    var_class_percurso  := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_modalidade_ant  := ' ';
-    var_tempo_f1        := null;
-
-    -- update tb_resultados
-    -- set
-    --     classificacao_total     = null,
-    --     classificacao_sexo      = null,
-    --     tempo_f1_sexo           = null
-    -- where
-    --     id_evento = p_cod_evento;
-
-    select
-        sum(coalesce(classificacao_categoria,0)) as atualiza_categ,
-        sum(coalesce(classificacao_total,0)) as atualiza_total,
-        sum(coalesce(classificacao_sexo,0)) as atualiza_sexo
-    into
-        rec_atualiza
-    from
-        tb_resultados
-    where
-        id_evento = p_cod_evento;
-
-    open cur_percurso;
-    loop
-        fetch cur_percurso into rec_percurso;
-        exit when not found;
-
-        if rec_percurso.percurso != var_percurso_ant or rec_percurso.sexo != var_sexo_ant or rec_percurso.modalidade != var_modalidade_ant then
-            var_percurso_ant    := rec_percurso.percurso;
-            var_sexo_ant        := rec_percurso.sexo;
-            var_modalidade_ant  := rec_percurso.modalidade;
-            var_class_percurso  := 0;
-            var_tempo_f1        := rec_percurso.tempo_total;
-        end if;
-
-        var_class_percurso  := var_class_percurso + 1;
-
-        if rec_atualiza.atualiza_total = 0 then
-            update tb_resultados
-            set
-                classificacao_total     = var_class_percurso
-            where
-                id_evento = rec_percurso.id_evento and
-                id_resultado = rec_percurso.id_resultado;
-        end if;
-
-        if rec_atualiza.atualiza_sexo = 0 then
-            update tb_resultados
-            set
-                classificacao_sexo      = var_class_percurso,
-                tempo_f1_sexo           = rec_percurso.tempo_total - var_tempo_f1
-            where
-                id_evento = rec_percurso.id_evento and
-                id_resultado = rec_percurso.id_resultado;
-        end if;
-
-        update tb_resultados
-        set
-            tempo_f1_sexo           = rec_percurso.tempo_total - var_tempo_f1
-        where
-            id_evento = rec_percurso.id_evento and
-            id_resultado = rec_percurso.id_resultado;
-
-    end loop;
-
-    close cur_percurso;
-
-    var_class_percurso  := 0;
-    var_class_categ     := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_categ_ant       := ' ';
-    var_modalidade_ant  := ' ';
-    var_tempo_f1        := null;
-
-    open cur_categ;
-    loop
-        fetch cur_categ into rec_categ;
-        exit when not found;
-
-        if rec_categ.percurso != var_percurso_ant or rec_categ.sexo != var_sexo_ant or rec_categ.nome_categoria != var_categ_ant or rec_categ.modalidade != var_modalidade_ant then
-            var_percurso_ant    := rec_categ.percurso;
-            var_sexo_ant        := rec_categ.sexo;
-            var_modalidade_ant  := rec_categ.modalidade;
-            var_categ_ant       := rec_categ.nome_categoria;
-            var_tempo_f1        := rec_categ.tempo_total;
-            var_class_categ     := 0;
-        end if;
-
-        var_class_categ  := var_class_categ + 1;
-
-        if rec_atualiza.atualiza_categ = 0 then
-            update tb_resultados
-            set
-                classificacao_categoria = var_class_categ,
-                tempo_f1_categoria      = rec_categ.tempo_total - var_tempo_f1
-            where
-                id_evento = rec_categ.id_evento and
-                id_resultado = rec_categ.id_resultado;
-        end if;
-
-        update tb_resultados
-        set
-            tempo_f1_categoria      = rec_categ.tempo_total - var_tempo_f1
-        where
-            id_evento = rec_categ.id_evento and
-            id_resultado = rec_categ.id_resultado;
-
-    end loop;
-    close cur_categ;
-
-    var_class_pais      := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_categ_ant       := ' ';
-    var_modalidade_ant  := ' ';
-    var_nacionalidade_ant := ' ';
-
-    open cur_pais;
-    loop
-        fetch cur_pais into rec_pais;
-        exit when not found;
-
-        if rec_pais.percurso != var_percurso_ant or rec_pais.sexo != var_sexo_ant or rec_pais.nacionalidade != var_nacionalidade_ant or rec_pais.modalidade != var_modalidade_ant  then
-            var_percurso_ant        := rec_pais.percurso;
-            var_sexo_ant            := rec_pais.sexo;
-            var_modalidade_ant      := rec_pais.modalidade;
-            var_nacionalidade_ant   := rec_pais.nacionalidade;
-            var_tempo_f1            := rec_pais.tempo_total;
-            var_class_pais          := 0;
-        end if;
-
-        var_class_pais  := var_class_pais + 1;
-
-        update tb_resultados
-        set
-            classificacao_pais  = var_class_pais
-        where
-            id_evento = rec_pais.id_evento and
-            id_resultado = rec_pais.id_resultado;
-
-    end loop;
-    close cur_pais;
-
-    update tb_resultados
-    set
-        classificacao_total     = null,
-        classificacao_categoria = null,
-        classificacao_sexo      = null,
-        tempo_f1_categoria      = null,
-        tempo_f1_sexo           = null
-    where
-        id_evento    = rec_percurso.id_evento and
-        ( concluinte = false or status_final > 0 );
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.atualiza_classific_f1(integer) owner to runner_dba;
@@ -12061,228 +12050,9 @@ create procedure public.atualiza_classific_f1_v2(IN p_cod_evento integer, IN p_c
     language plpgsql
 as
 $$
-DECLARE
-
-var_class_percurso  integer;
-var_class_sexo      integer;
-var_class_categ     integer;
-var_class_pais      integer;
-var_tempo_f1        time;
-
-var_percurso_ant    decimal;
-var_sexo_ant        varchar;
-var_categ_ant       varchar;
-var_nacionalidade_ant varchar;
-var_modalidade_ant  varchar;
-
-rec_percurso        record;
-rec_categ           record;
-rec_pais            record;
-
-
-cur_percurso cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte      = true and
-    status_final    = 0
-order by modalidade,sexo,percurso,pace,tempo_total,nome_categoria desc;
-
-cur_categ cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte = true and
-    status_final = 0
-order by modalidade,sexo,percurso,nome_categoria,pace,tempo_total;
-
-cur_pais cursor for
-select
-    id_evento,
-    id_resultado,
-    modalidade,
-    num_peito,
-    nome_categoria,
-    nacionalidade,
-    sexo,
-    percurso,
-    pace,
-    tempo_total
-from
-    tb_resultados where id_evento = p_cod_evento and
-    concluinte = true and
-    status_final = 0
-order by modalidade,sexo,percurso,nacionalidade,pace,tempo_total,nome_categoria desc;
-
-
-BEGIN
-    var_class_percurso  := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_modalidade_ant  := ' ';
-    var_tempo_f1        := null;
-
-    if p_clas_total = true then
-        update tb_resultados
-        set
-            classificacao_total     = null,
-            tempo_f1_sexo           = null
-        where
-            id_evento = p_cod_evento;
-        insert into tb_resultados_processa_logs
-            ( cod_evento, data_processamento, erro_execucao, log_execucao )
-        values
-            ( p_cod_evento, current_timestamp, false,'Atualização da classificação total foi executada');
-    end if;
-
-    if p_clas_sexo = true then
-        update tb_resultados
-        set
-            classificacao_sexo      = null,
-            tempo_f1_sexo           = null
-        where
-            id_evento = p_cod_evento;
-    end if;
-
-
-    open cur_percurso;
-    loop
-        fetch cur_percurso into rec_percurso;
-        exit when not found;
-
-        if rec_percurso.percurso != var_percurso_ant or rec_percurso.sexo != var_sexo_ant or rec_percurso.modalidade != var_modalidade_ant then
-            var_percurso_ant    := rec_percurso.percurso;
-            var_sexo_ant        := rec_percurso.sexo;
-            var_modalidade_ant  := rec_percurso.modalidade;
-            var_class_percurso  := 0;
-            var_tempo_f1        := rec_percurso.tempo_total;
-        end if;
-
-        var_class_percurso  := var_class_percurso + 1;
-
-        if p_clas_total = true then
-            update tb_resultados
-            set
-                classificacao_total     = var_class_percurso,
-                tempo_f1_sexo           = rec_percurso.tempo_total - var_tempo_f1
-            where
-                id_evento = rec_percurso.id_evento and
-                id_resultado = rec_percurso.id_resultado;
-        end if;
-
-        if p_clas_sexo = true then
-            update tb_resultados
-            set
-                classificacao_sexo      = var_class_percurso,
-                tempo_f1_sexo           = rec_percurso.tempo_total - var_tempo_f1
-            where
-                id_evento = rec_percurso.id_evento and
-                id_resultado = rec_percurso.id_resultado;
-        end if;
-    end loop;
-
-    close cur_percurso;
-
-    var_class_percurso  := 0;
-    var_class_categ     := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_categ_ant       := ' ';
-    var_modalidade_ant  := ' ';
-    var_tempo_f1        := null;
-
-    if p_clas_categ = true then
-        open cur_categ;
-        loop
-            fetch cur_categ into rec_categ;
-            exit when not found;
-
-            if rec_categ.percurso != var_percurso_ant or rec_categ.sexo != var_sexo_ant or rec_categ.nome_categoria != var_categ_ant or rec_categ.modalidade != var_modalidade_ant then
-                var_percurso_ant := rec_categ.percurso;
-                var_sexo_ant     := rec_categ.sexo;
-                var_modalidade_ant  := rec_categ.modalidade;
-                var_categ_ant    := rec_categ.nome_categoria;
-                var_tempo_f1     := rec_categ.tempo_total;
-                var_class_categ  := 0;
-            end if;
-
-            var_class_categ  := var_class_categ + 1;
-
-            update tb_resultados
-            set
-                classificacao_categoria = var_class_categ,
-                tempo_f1_categoria      = rec_categ.tempo_total - var_tempo_f1
-            where
-                id_evento = rec_categ.id_evento and
-                id_resultado = rec_categ.id_resultado;
-
-        end loop;
-        close cur_categ;
-    end if;
-
-    var_class_pais      := 0;
-    var_percurso_ant    := 0;
-    var_sexo_ant        := ' ';
-    var_categ_ant       := ' ';
-    var_modalidade_ant  := ' ';
-    var_nacionalidade_ant := ' ';
-
-    open cur_pais;
-    loop
-        fetch cur_pais into rec_pais;
-        exit when not found;
-
-        if rec_pais.percurso != var_percurso_ant or rec_pais.sexo != var_sexo_ant or rec_pais.nacionalidade != var_nacionalidade_ant or rec_pais.modalidade != var_modalidade_ant  then
-            var_percurso_ant        := rec_pais.percurso;
-            var_sexo_ant            := rec_pais.sexo;
-            var_modalidade_ant      := rec_pais.modalidade;
-            var_nacionalidade_ant   := rec_pais.nacionalidade;
-            var_tempo_f1            := rec_pais.tempo_total;
-            var_class_pais          := 0;
-        end if;
-
-        var_class_pais  := var_class_pais + 1;
-
-        update tb_resultados
-        set
-            classificacao_pais  = var_class_pais
-        where
-            id_evento = rec_pais.id_evento and
-            id_resultado = rec_pais.id_resultado;
-
-    end loop;
-    close cur_pais;
-
-    update tb_resultados
-    set
-        classificacao_total     = null,
-        classificacao_categoria = null,
-        classificacao_sexo      = null,
-        tempo_f1_categoria      = null,
-        tempo_f1_sexo           = null
-    where
-        id_evento    = rec_percurso.id_evento and
-        ( concluinte = false or status_final > 0 );
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.atualiza_classific_f1_v2(integer, boolean, boolean, boolean) owner to runner_dba;
@@ -12372,45 +12142,9 @@ create procedure public.atualiza_resultados_resumo(IN p_cod_evento integer)
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-    delete from tb_resultados_resumo where id_evento = p_cod_evento;
-
-    insert into tb_resultados_resumo
-    ( id_evento, percurso, modalidade, concluintes,inscritos,pace_medio,pace_medio_top_10,pace_medio_top_100,concluintes_sub3 )
-      select
-        id_evento,
-        percurso,
-        modalidade,
-        count(*) FILTER (WHERE homologado = true and concluinte=true and status_final=0) as concluintes,
-        count(*) as inscritos,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_medio,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 10 or classificacao_sexo <= 10) ) as pace_medio_top_10,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 100 or classificacao_sexo <= 100)) as pace_medio_top_100,
-        count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < '03:00:00'::time and percurso >= 42) as concluintes_sub3    from tb_resultados
-    where id_evento  = p_cod_evento
-    group by id_evento,percurso,modalidade;
-
-    UPDATE tb_resultados_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo.id_evento  = p_cod_evento
-    and tb_resultados_resumo.id_evento = subquery.id_evento
-    and tb_resultados_resumo.percurso = subquery.percurso_evento;
-
-    UPDATE tb_resultados_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo.tipo_corrida is null
-    and tb_resultados_resumo.id_evento = subquery.id_evento
-    and tb_resultados_resumo.percurso = subquery.percurso_evento;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.atualiza_resultados_resumo(integer) owner to runner_dba;
@@ -12419,179 +12153,9 @@ create procedure public.atualiza_resultados_resumo_2025(IN p_cod_evento integer)
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-    delete from tb_resultados_resumo_2025 where id_evento = p_cod_evento;
-
-    insert into tb_resultados_resumo_2025
-    (   id_evento,
-        percurso,
-        modalidade,
-        sexo,
-        concluintes,
-        inscritos,
-        pace_menor,
-        pace_medio,
-        pace_maior,
-        pace_medio_top_10,
-        pace_medio_top_100,
-        pace_medio_5_porcento,
-        pace_medio_10_porcento,
-        pace_medio_50_porcento,
-        limite_a,
-        limite_a_concluintes,
-        limite_b,
-        limite_b_concluintes,
-        limite_elite,
-        limite_elite_concluintes,
-        percentil,
-        percentil_sem_desvio
-    )
-    WITH tot AS (
-        SELECT
-            id_evento,
-            percurso,
-            modalidade,
-            sexo,
-            count(*) as tot_atletas
-        FROM
-            tb_resultados
-        where
-            id_evento = p_cod_evento
-        GROUP BY
-            id_evento,
-            percurso,
-            modalidade,
-            sexo
-    )
-        select
-            res.id_evento,
-            res.percurso,
-            res.modalidade,
-            res.sexo,
-            count(*) FILTER (WHERE homologado = true and concluinte=true and status_final=0) as concluintes,
-            count(*) as inscritos,
-            min(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_menor,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_medio,
-            max(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_maior,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 10  or classificacao_sexo <= 10)) as pace_medio_top_10,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 100 or classificacao_sexo <= 100)) as pace_medio_top_100,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.05) or classificacao_sexo <= (tot_atletas * 0.05))) as pace_medio_5_porcento,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.10) or classificacao_sexo <= (tot_atletas * 0.10))) as pace_medio_10_porcento,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.50) or classificacao_sexo <= (tot_atletas * 0.50))) as pace_medio_50_porcento,
-            (select limite_a from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_a,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_a from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_a_concluintes,
-            (select limite_b from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_b,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_b from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_b_concluintes,
-            (select limite_elite from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_elite,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_elite from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_elite_concluintes,
-            percentile_cont(0.5) within group (order by pace asc) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as percentil,
-            ( select percentile_cont(0.5) within group (order by pace asc)
-              from tb_resultados ris
-              where ris.id_evento = res.id_evento and
-              ris.percurso = res.percurso and
-              ris.modalidade = res.modalidade and
-              ris.sexo = res.sexo and
-              ris.pace >= ( select percentile_cont(0.1) within group (order by pace asc) from tb_resultados r1 where r1.id_evento = res.id_evento and r1.percurso = res.percurso and r1.modalidade = res.modalidade and r1.sexo = res.sexo ) and
-              ris.pace <= ( select percentile_cont(0.7) within group (order by pace asc) from tb_resultados r1 where r1.id_evento = res.id_evento and r1.percurso = res.percurso and r1.modalidade = res.modalidade and r1.sexo = res.sexo )
-            ) as percentil_sem_desvio
-        from tb_resultados res
-            inner join tot on tot.id_evento = res.id_evento and tot.percurso = res.percurso and tot.modalidade = res.modalidade and tot.sexo = res.sexo
-            where res.id_evento  = p_cod_evento
-            group by res.id_evento,res.percurso,res.modalidade,res.sexo;
-
-insert into tb_resultados_resumo_2025
-    (   id_evento,
-        percurso,
-        modalidade,
-        concluintes,
-        inscritos,
-        pace_menor,
-        pace_medio,
-        pace_maior,
-        pace_medio_top_10,
-        pace_medio_top_100,
-        pace_medio_5_porcento,
-        pace_medio_10_porcento,
-        pace_medio_50_porcento,
-        limite_a,
-        limite_a_concluintes,
-        limite_b,
-        limite_b_concluintes,
-        limite_elite,
-        limite_elite_concluintes,
-        percentil,
-        percentil_sem_desvio
-    )
-    WITH tot AS (
-        SELECT
-            id_evento,
-            percurso,
-            modalidade,
-            count(*) as tot_atletas
-        FROM
-            tb_resultados
-        where
-            id_evento = p_cod_evento
-        GROUP BY
-            id_evento,
-            percurso,
-            modalidade
-    )
-        select
-            res.id_evento,
-            res.percurso,
-            res.modalidade,
-            count(*) FILTER (WHERE homologado = true and concluinte=true and status_final=0) as concluintes,
-            count(*) as inscritos,
-            min(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_menor,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_medio,
-            max(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_maior,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 10  or classificacao_sexo <= 10)) as pace_medio_top_10,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 100 or classificacao_sexo <= 100)) as pace_medio_top_100,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.05) or classificacao_sexo <= (tot_atletas * 0.05))) as pace_medio_5_porcento,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.10) or classificacao_sexo <= (tot_atletas * 0.10))) as pace_medio_10_porcento,
-            avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= (tot_atletas * 0.50) or classificacao_sexo <= (tot_atletas * 0.50))) as pace_medio_50_porcento,
-            (select limite_a from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_a,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_a from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_a_concluintes,
-            (select limite_b from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_b,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_b from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_b_concluintes,
-            (select limite_elite from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null) order by case when id_evento is null then 1 else 0 end limit 1) as limite_elite,
-            count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < (select limite_elite from tb_resultados_resumo_limites where percurso = res.percurso and (id_evento = res.id_evento or id_evento is null))  ) as limite_elite_concluintes,
-            percentile_cont(0.5) within group (order by pace asc) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as percentil,
-            ( select percentile_cont(0.5) within group (order by pace asc)
-              from tb_resultados ris
-              where ris.id_evento = res.id_evento and
-              ris.percurso = res.percurso and
-              ris.modalidade = res.modalidade and
-              ris.pace >= ( select percentile_cont(0.1) within group (order by pace asc) from tb_resultados r1 where r1.id_evento = res.id_evento and r1.percurso = res.percurso and r1.modalidade = res.modalidade) and
-              ris.pace <= ( select percentile_cont(0.7) within group (order by pace asc) from tb_resultados r1 where r1.id_evento = res.id_evento and r1.percurso = res.percurso and r1.modalidade = res.modalidade)
-            ) as percentil_sem_desvio
-        from tb_resultados res
-            inner join tot on tot.id_evento = res.id_evento and tot.percurso = res.percurso and tot.modalidade = res.modalidade
-            where res.id_evento  = p_cod_evento
-            group by res.id_evento,res.percurso,res.modalidade;
-
-    UPDATE tb_resultados_resumo_2025
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo_2025.id_evento  = p_cod_evento
-    and tb_resultados_resumo_2025.id_evento = subquery.id_evento
-    and tb_resultados_resumo_2025.percurso = subquery.percurso_evento;
-
-    UPDATE tb_resultados_resumo_2025
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo_2025.tipo_corrida is null
-    and tb_resultados_resumo_2025.id_evento = subquery.id_evento
-    and tb_resultados_resumo_2025.percurso = subquery.percurso_evento;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.atualiza_resultados_resumo_2025(integer) owner to runner_dba;
@@ -12600,88 +12164,8 @@ create function public.bi_cria_filtro(filtro jsonb) returns character varying
     language plpgsql
 as
 $$
-declare
-    p_where  boolean := false;
-    p_virgula varchar := '';
-    p_estado varchar;
-    i_estado varchar;
-    p_cidade varchar;
-    i_cidade varchar;
-    p_categoria varchar;
-    i_categoria varchar;
-    p_percurso varchar;
-    i_percurso varchar;
-    p_sql    varchar;
-    i varchar;
-
 begin
-
-   p_estado := filtro->'estado';
-
-    if p_estado is not null then
-       FOREACH i IN ARRAY string_to_array(trim(p_estado,'"'),',') LOOP
-            i_estado := concat(i_estado,p_virgula,quote_literal(i));
-            p_virgula := ',';
-       END LOOP;
-        if p_where = false then
-           p_sql    := concat(p_sql,' where ');
-           p_where  := true;
-        else
-           p_sql := concat(p_sql,' and ');
-        end if;
-        p_sql := concat(p_sql,' estado in (', i_estado,')');
-    end if;
-
-    p_cidade := filtro->'cidade';
-    p_virgula := '';
-    if p_cidade is not null then
-       FOREACH i IN ARRAY string_to_array(trim(p_cidade,'"'),',') LOOP
-            i_cidade := concat(i_cidade,p_virgula,quote_literal(i));
-            p_virgula := ',';
-       END LOOP;
-        if p_where = false then
-           p_sql    := concat(p_sql,' where ');
-           p_where  := true;
-        else
-           p_sql := concat(p_sql,' and ');
-        end if;
-        p_sql := concat(p_sql,' cidade in (', i_cidade,')');
-    end if;
-
-   p_categoria := filtro->'categoria';
-   p_virgula := '';
-   if p_categoria is not null then
-       FOREACH i IN ARRAY string_to_array(trim(p_categoria,'"'),',') LOOP
-            i_categoria := concat(i_categoria,p_virgula,quote_literal(i));
-            p_virgula := ',';
-       END LOOP;
-        if p_where = false then
-           p_sql    := concat(p_sql,' where ');
-           p_where  := true;
-        else
-           p_sql := concat(p_sql,' and ');
-        end if;
-        p_sql := concat(p_sql,' nome_categoria in (', i_categoria,')');
-    end if;
-
-    p_percurso := filtro->'percurso';
-    p_virgula := '';
-    if p_percurso is not null then
-       FOREACH i IN ARRAY string_to_array(trim(p_percurso,'"'),',') LOOP
-            i_percurso := concat(i_percurso,p_virgula,i);
-            p_percurso := ',';
-       END LOOP;
-        if p_where = false then
-           p_sql    := concat(p_sql,' where ');
-           p_where  := true;
-        else
-           p_sql := concat(p_sql,' and ');
-        end if;
-        p_sql := concat(p_sql,' percurso in (', i_percurso,')');
-    end if;
-
-    return p_sql;
-
+    -- missing source code
 end;
 $$;
 
@@ -12710,22 +12194,8 @@ create function public.bi_filtro_cidade(p_estado character varying DEFAULT NULL:
     language plpgsql
 as
 $$
-declare
-    p_sql varchar;
-    rec_return record;
 begin
-   p_sql := 'select uf,nome_cidade from tb_cidades ';
-   if p_estado is not null then
-      p_sql := p_sql || ' where uf = ' || quote_literal(p_estado);
-   end if;
-   p_sql := p_sql || 'order by uf,nome_cidade';
-
-   --EXECUTE p_sql into rec_return;
-
-   --return rec_return;
-
-    return query execute p_sql;
-
+    -- missing source code
 end;
 $$;
 
@@ -12735,40 +12205,8 @@ create function public.bi_filtro_data(p_data_ini date DEFAULT NULL::date, p_data
     language plpgsql
 as
 $$
-declare
-    p_sql varchar;
-    rec_return record;
 begin
-   if p_data_ini is null then
-      p_data_ini := '2010-01-01'::date;
-   end if;
-   if p_data_fim is null then
-      p_data_fim := '2029-12-31'::date;
-   end if;
-   p_sql := 'select distinct ' || '''Ano''' || ' as tipo_filtro, ano::varchar as vlr_filtro, ano::integer as seq, 1 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' ||'''Trimestre''' || ' as tipo_filtro, trimestre::varchar as vlr_filtro, replace(trimestre,' || '''T''' || ',' || '''' || '''' || ')::integer as seq, 2 as ordem from tbbi_dim_data  ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' ||'''Mês''' || ' as tipo_filtro, mes_extenso::varchar as vlr_filtro, mes as seq, 3 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' ||'''Semana''' || ' as tipo_filtro, semana_calendario::varchar as vlr_filtro, semana_calendario as seq, 4 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' ||'''Dia Semana''' || ' as tipo_filtro, dia_da_semana as vlr_filtro, date_part(' || '''' || 'dow'|| '''' ||',data_referencia)::integer as seq, 5 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' ||'''Tipo Dia Semana''' || ' as tipo_filtro, tipo_dia_semana as vlr_filtro, 1 as seq, 6 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-   p_sql := p_sql || ' union all ';
-   p_sql := p_sql || 'select distinct ' || '''Feriado''' || ' as tipo_filtro, feriado_nacional as vlr_filtro, 1 as seq, 7 as ordem from tbbi_dim_data ';
-   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';
-    p_sql := p_sql || ' order by 4,3';
-
-    return query execute p_sql;
-
+    -- missing source code
 end;
 $$;
 
@@ -12806,22 +12244,8 @@ create function public.bi_kpi_conta_concluintes(filtro jsonb) returns integer
     language plpgsql
 as
 $$
-declare
-    contador integer;
-    p_where  varchar;
-    p_query  varchar := 'select count(*) ' ||
-                        'from tb_evento_corridas eve inner join tb_resultados res on ' ||
-                        'res.id_evento = eve.id_evento';
 begin
-
-   p_where  := bi_cria_filtro(filtro);
-   p_query  := concat(p_query,p_where,' and eve.homologado = true and res.homologado = true and res.concluinte = true ');
-
-   --RAISE exception 'Value: %', p_sql;
-
-    EXECUTE p_query  INTO contador;
-
-    return contador;
+    -- missing source code
 end;
 $$;
 
@@ -12831,22 +12255,8 @@ create function public.bi_kpi_conta_eventos(filtro jsonb) returns integer
     language plpgsql
 as
 $$
-declare
-    contador integer;
-    p_where  varchar;
-    p_query  varchar := 'select count(distinct eve.id_evento) ' ||
-                        'from tb_evento_corridas eve inner join tb_resultados res on ' ||
-                        'res.id_evento = eve.id_evento';
 begin
-
-   p_where  := bi_cria_filtro(filtro);
-   p_query  := concat(p_query,p_where);
-
-   --RAISE exception 'Value: %', p_sql;
-
-    EXECUTE p_query  INTO contador;
-
-    return contador;
+    -- missing source code
 end;
 $$;
 
@@ -12856,18 +12266,8 @@ create function public.bi_tab_lista_topnpace(filtro jsonb, p_top integer) return
     language plpgsql
 as
 $$
-declare
-    ret_json json;
-    p_query  varchar := 'select nome, pace ' ||
-                    'from tb_evento_corridas eve inner join tb_resultados res on ' ||
-                    'res.id_evento = eve.id_evento ';
 begin
-   p_query := concat(p_query, bi_cria_filtro(filtro), ' order by pace limit ', p_top);
-   p_query := concat('select json_agg(row_to_json(linha)) from (', p_query,') linha');
-
-   EXECUTE p_query into ret_json;
-
-   return ret_json;
+    -- missing source code
 end;
 $$;
 
@@ -12877,16 +12277,8 @@ create function public.compara_filtro_caract_dominio(p_caracteristica text DEFAU
     language plpgsql
 as
 $$
-declare
-    ret_json json;
-    p_sql varchar;
 begin
-   if p_caracteristica is null then
-       return ret_json;
-   end if;
-   p_sql := concat('select json_agg(row_to_json(linha)) from (select distinct caracteristica_dominio as dominio from comparador.tb_caracteristica_dominio where tag_caracteristica = ',quote_literal(p_caracteristica), 'order by 1) linha');
-   EXECUTE p_sql into ret_json;
-   return ret_json;
+    -- missing source code
 end;
 $$;
 
@@ -12896,16 +12288,8 @@ create function public.compara_filtro_caract_produto(p_tipo_produto text DEFAULT
     language plpgsql
 as
 $$
-declare
-    ret_json json;
-    p_sql varchar;
 begin
-   if p_tipo_produto is null then
-       return ret_json;
-   end if;
-   p_sql := concat('select json_agg(row_to_json(linha)) from (select distinct tag_caracteristica as caracteristica from comparador.tb_caracteristica_compara where tag_tipo_produto = ',quote_literal(p_tipo_produto), 'order by 1) linha');
-   EXECUTE p_sql into ret_json;
-   return ret_json;
+    -- missing source code
 end;
 $$;
 
@@ -12915,523 +12299,9 @@ create procedure public.gera_resultados(IN p_cod_evento character varying)
     language plpgsql
 as
 $$
-DECLARE
-
-var_gera_resultado_ini          timestamp;
-var_id_evento                   integer;
-var_nome                        varchar;
-var_tempo_valido                boolean;
-var_total_registros             integer;
-var_total_registros_processados integer;
-var_erros_ocorridos             boolean;
-var_chave_processamento         varchar;
-var_chave_verificacao           varchar;
-var_pace                        varchar;
-var_tempo_bruto                 varchar;
-var_tempo_total                 varchar;
-var_hora_largada                varchar;
-var_modalidade                  varchar;
-var_percurso                    varchar;
-var_homologado                  boolean;
-var_concluinte                  boolean;
-var_msg_erro                    varchar;
-var_retorno                     integer;
-var_status_final                integer;
-var_np                          integer;
-var_pcd                         boolean;
-rec_resultados                  record;
-
-
-cur_resultados cursor for
-select distinct
-    num_peito,
-    nome,
-    categoria               ,
-    id_evento               ,
-    modalidade,
-    pace,
-    regexp_replace(percurso, '[^0-9.]','','g') as percurso,
-    substring(upper(sexo),1,1) as sexo,
-    trim(tempo_bruto) as tempo_bruto,
-    trim(tempo_total) as tempo_total,
-    classificacao_categoria,
-    classificacao_sexo,
-    classificacao_total,
-    velocidade_media,
-    upper(trim(REPLACE(equipe,' ',' '))) as equipe,
-    data_nascimento,
-    substring(trim(nacionalidade),1,8) as nacionalidade,
-    chave_processamento,
-    hora_largada,
-    regexp_replace(np, '\D','','g') as np
-from
-    tb_resultados_temp where id_evento = p_cod_evento
-    and modalidade not in('KIDS')
-    and chave_processamento is null
-order by
-    tempo_total desc, tempo_bruto desc;
-
-
-BEGIN
-    var_gera_resultado_ini          := current_timestamp;
-    var_id_evento                   := null;
-    var_erros_ocorridos             := false;
-    var_total_registros             := 0;
-    var_total_registros_processados := 0;
-    var_chave_processamento         := md5(concat(var_gera_resultado_ini::varchar,p_cod_evento))::varchar;
-
-    -- verifica se evento foi cadastrado
-    select
-        id_evento
-    into
-        var_id_evento
-    from
-         tb_evento_corridas
-    where
-         id_evento = p_cod_evento::integer;
-
-    if var_id_evento is null then
-        insert into tb_resultados_processa_logs
-            ( cod_evento, data_processamento, erro_execucao, log_execucao )
-        values
-            ( p_cod_evento, current_timestamp, true,'Código do evento não encontrado na lista de corridas cadastradas');
-        return;
-    end if;
-
-    open cur_resultados;
-    loop
-        fetch cur_resultados into rec_resultados;
-        exit when not found;
-        var_total_registros := var_total_registros + 1;
-    end loop;
-    close cur_resultados;
-
-    if var_total_registros = 0 then
-        insert into tb_resultados_processa_logs
-            ( cod_evento, data_processamento, erro_execucao, log_execucao )
-        values
-            ( p_cod_evento, current_timestamp, true,'Não existem registros do evento para processamento');
-        return;
-    end if;
-
-    insert into
-        tb_resultados_processa
-    values
-        (
-        p_cod_evento,
-        var_id_evento,
-        var_gera_resultado_ini,
-        null,
-        var_chave_processamento::uuid,
-        false,
-        null
-        );
-
-    open cur_resultados;
-    loop
-        fetch cur_resultados into rec_resultados;
-        exit when not found;
-
-        var_homologado  := true;
-        var_concluinte  := true;
-        var_status_final:= 0;
-
-        if length(rec_resultados.np) > 0  and rec_resultados.np::integer = 1 then
-            var_np := 1;
-        else
-            var_np := 0;
-        end if;
-
-        -- verifica nome
-        var_nome := upper(trim(REPLACE(rec_resultados.nome,' ',' ')));
-        if length(var_nome) < 1 or var_nome is null then
-            var_msg_erro := concat('Nome do atleta não foi informado para o atleta número - ',rec_resultados.num_peito);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            var_erros_ocorridos := true;
-            continue;
-        end if;
-        if var_nome = 'NAO ENCONTRADO' then
-            var_msg_erro := concat('Registro ignorado devido à regra de exclusão - ',rec_resultados.num_peito, ' - ', var_nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            continue;
-        end if;
-
-        -- Padroniza nome de atleta desconhecido
-        if position('NÃO CADASTRADO' in var_nome) > 0 or
-           position('COMPETIDOR DESCONHECIDO' in var_nome) > 0 or
-           position('SEM CADASTRO' in var_nome) > 0 then
-           var_nome := 'ATLETA DESCONHECIDO';
-        end if;
-
-        -- verifica pace
-        var_pace := rec_resultados.pace;
-        if var_np = 1 then
-            var_concluinte := false;
-            var_pace := null;
-        end if;
-
-        if var_pace is not null then
-            if length(var_pace) < 8 then
-                var_pace := right(concat('00:',rec_resultados.pace),8);
-            end if;
-            var_tempo_valido := tempo_valido(var_pace::varchar);
-            if  var_tempo_valido = false then
-                var_msg_erro := concat('Pace incorreto para o atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_pace);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida tempo total
-        var_tempo_total := rec_resultados.tempo_total;
-        if var_np = 1 then
-            var_tempo_total := null;
-        end if;
-        -- verifica se existem tempos de conclusão de prova
-        if var_tempo_total is null then
-           var_concluinte   := false;
-           var_status_final := 4;
-        end if;
-
-        -- testa desclassificados
-        if upper(trim(rec_resultados.modalidade)) = 'DESCLASSIFICADO'   or
-           upper(trim(rec_resultados.modalidade)) = 'DSQ'   or
-           -- upper(trim(rec_resultados.percurso))   = 'DESCLASSIFICADO'   or
-           -- upper(trim(rec_resultados.percurso))   = 'DSQ'   or
-           upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'DESCLASSIFICADO' then
-           var_status_final := 2;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        -- não processa percurso incorreto
-        -- var_percurso := trim(LEADING '0' from regexp_replace(rec_resultados.percurso, '[^0-9.]','','g'));
-        if rec_resultados.percurso ~ '^([0-9]+[.]?[0-9]*|[.][0-9]+)$' = false then
-            var_msg_erro := concat('Percurso não reconhecido para o atleta - ',rec_resultados.num_peito, ' - ', var_nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            continue;
-         end if;
-
-
-        -- não processa modalidade incorreta
-        var_modalidade := rec_resultados.modalidade;
-        --var_modalidade := concat(trim(LEADING '0' from regexp_replace(rec_resultados.modalidade, '[^0-9.]','','g')),'K');
-
-        --if var_modalidade = 'K' then
-        --    var_msg_erro := concat('Modalidade não reconhecida para o atleta - ',rec_resultados.num_peito, ' - ', var_nome);
-        --    var_retorno := grava_logs_resultados(
-        --                rec_resultados.id_evento,
-        --                rec_resultados.num_peito::integer,
-        --                rec_resultados.nome,
-        --                rec_resultados.categoria,
-        --                var_id_evento::integer,
-        --                var_chave_processamento,
-        --                var_msg_erro);
-        --    continue;
-        --end if;
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'RETIRADA' then
-           var_status_final := 1;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'NÃO TERMINOU' then
-           var_concluinte  := false;
-           var_tempo_total := null;
-        end if;
-
-        if var_np = 1 then
-           var_status_final := 3;
-        end if;
-
-
-        if  var_tempo_total is not null then
-            var_tempo_total := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.tempo_total,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_tempo_total::varchar);
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Tempo Total incorreto para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_tempo_total);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            else
-                -- calcula o pace caso pace seja nulo
-                if var_pace is null and var_tempo_total is not null then
-                    var_pace := (var_tempo_total::time / rec_resultados.percurso::numeric)::time;
-                else
-                    if var_pace::time < ((var_tempo_total::time / rec_resultados.percurso::numeric)::time - '00:00:05'::interval)::time or
-                       var_pace::time > ((var_tempo_total::time / rec_resultados.percurso::numeric)::time + '00:00:05'::interval)::time then
-                        --var_msg_erro := concat('Pace informado não pode ser homologado para o atleta - ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',rec_resultados.pace);
-                        var_msg_erro := concat('Pace inconsistente. Foi recalculado para o atleta - ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',rec_resultados.pace);
-                        var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                            var_pace := (var_tempo_total::time / rec_resultados.percurso::numeric)::time;
-                            -- nesse caso vai ser recalculado o pace e considerar o resultado como homologado
-                            --var_homologado := false;
-                    end if;
-                end if;
-            end if;
-        end if;
-
-        -- valida tempo bruto
-        var_tempo_bruto := rec_resultados.tempo_bruto;
-        if var_np = 1 then
-            var_tempo_bruto := null;
-        end if;
-        if  var_tempo_bruto is not null then
-            var_tempo_bruto := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.tempo_bruto,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_tempo_bruto::varchar);
-
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Tempo Bruto incorreto para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_tempo_bruto);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida hora_largada
-        var_hora_largada := trim(rec_resultados.hora_largada);
-        if var_np = 1 or length(var_hora_largada) < 1 then
-            var_hora_largada := null;
-        end if;
-        if  var_hora_largada is not null  then
-            var_hora_largada := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.hora_largada,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_hora_largada::varchar);
-
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Hora da largada incorreta para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_hora_largada);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida sexo
-        if rec_resultados.sexo <> 'M' and rec_resultados.sexo <> 'F' and rec_resultados.sexo <> 'X' and rec_resultados.sexo <> 'N' then
-            var_msg_erro := concat('Gênero informado incorretamente para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            var_erros_ocorridos := true;
-            continue;
-        end if;
-
-        if strpos(upper(concat(rec_resultados.nome,' ',rec_resultados.categoria,' ',rec_resultados.percurso,' ', rec_resultados.modalidade,' ', rec_resultados.equipe)),'PCD') > 0 then
-           var_pcd := true;
-        else
-           var_pcd := false;
-        end if;
-
-        insert into tb_resultados
-        (   num_peito               ,
-            nome                    ,
-            id_evento               ,
-            modalidade              ,
-            pace                    ,
-            percurso                ,
-            sexo                    ,
-            tempo_bruto             ,
-            tempo_total             ,
-            classificacao_categoria ,
-            classificacao_sexo      ,
-            classificacao_total     ,
-            velocidade_media        ,
-            equipe,
-            nome_categoria,
-            homologado,
-            concluinte,
-            data_nascimento,
-            nacionalidade,
-            chave_processamento,
-            chave_verificacao,
-            status_final,
-            hora_largada,
-            pcd,
-            idade_range
-        ) values (
-            rec_resultados.num_peito::integer,
-            var_nome,
-            var_id_evento,
-            var_modalidade,
-            var_pace::time,
-            rec_resultados.percurso::numeric,
-            rec_resultados.sexo,
-            var_tempo_bruto::time,
-            var_tempo_total::time,
-            rec_resultados.classificacao_categoria::integer,
-            rec_resultados.classificacao_sexo::integer,
-            rec_resultados.classificacao_total::integer,
-            rec_resultados.velocidade_media::numeric,
-            rec_resultados.equipe,
-            rec_resultados.categoria,
-            var_homologado,
-            var_concluinte,
-            rec_resultados.data_nascimento::date,
-            rec_resultados.nacionalidade,
-            var_chave_processamento::uuid,
-            md5(concat(rec_resultados.num_peito::varchar,var_nome,var_tempo_bruto::varchar,var_pace::varchar))::uuid,
-            var_status_final,
-            var_hora_largada::time,
-            var_pcd,
-            extrair_faixa_etaria(rec_resultados.categoria)::int4range
-        )
-        ON CONFLICT (id_evento,percurso,num_peito) DO UPDATE
-        SET
-            nome            = excluded.nome,
-            modalidade      = excluded.modalidade,
-            pace            = excluded.pace,
-            percurso        = excluded.percurso,
-            sexo            = excluded.sexo,
-            tempo_bruto     = excluded.tempo_bruto,
-            tempo_total     = excluded.tempo_total,
-            classificacao_categoria = excluded.classificacao_categoria,
-            classificacao_sexo      = excluded.classificacao_sexo,
-            classificacao_total     = excluded.classificacao_total,
-            velocidade_media        = excluded.velocidade_media,
-            equipe                  = excluded.equipe,
-            nome_categoria          = excluded.nome_categoria,
-            data_nascimento         = excluded.data_nascimento,
-            nacionalidade           = excluded.nacionalidade,
-            homologado              = excluded.homologado,
-            concluinte              = excluded.concluinte,
-            chave_processamento     = excluded.chave_processamento,
-            chave_verificacao       = excluded.chave_verificacao,
-            status_final            = excluded.status_final,
-            hora_largada            = excluded.hora_largada,
-            pcd                     = excluded.pcd,
-            idade_range             = excluded.idade_range;
-
-        update
-            tb_resultados_temp
-        set
-            chave_processamento = var_chave_processamento::uuid
-        where
-            id_evento   =   rec_resultados.id_evento and
-            num_peito   =   rec_resultados.num_peito and
-            nome        =   rec_resultados.nome      and
-            categoria   =   rec_resultados.categoria;
-
-    end loop;
-    close cur_resultados;
-
-    call atualiza_resultados_resumo_2025(var_id_evento);
-
-    delete from tb_resultados_resumo where id_evento = var_id_evento;
-
-    insert into tb_resultados_resumo
-    ( id_evento, percurso, modalidade, concluintes,inscritos,pace_medio,pace_medio_top_10,pace_medio_top_100,concluintes_sub3 )
-      select
-        id_evento,
-        percurso,
-        modalidade,
-        count(*) FILTER (WHERE homologado = true and concluinte=true and status_final=0) as concluintes,
-        count(*) as inscritos,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_medio,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 10 or classificacao_sexo <= 10) ) as pace_medio_top_10,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 100 or classificacao_sexo <= 100)) as pace_medio_top_100,
-        count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < '03:00:00'::time and percurso >= 42) as concluintes_sub3    from tb_resultados
-    where id_evento  = var_id_evento
-    group by id_evento,percurso,modalidade;
-
-    UPDATE tb_resultados_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo.id_evento  = var_id_evento
-    and tb_resultados_resumo.id_evento = subquery.id_evento
-    and tb_resultados_resumo.percurso = subquery.percurso_evento;
-
-    UPDATE tb_resultados_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    tb_resultados_resumo.tipo_corrida is null
-    and tb_resultados_resumo.id_evento = subquery.id_evento
-    and tb_resultados_resumo.percurso = subquery.percurso_evento;
-
-    select
-        md5(concat(sum(num_peito)::varchar,sum(tempo_bruto)::varchar))::varchar
-    into
-        var_chave_verificacao
-    from
-        tb_resultados where id_evento = var_id_evento;
-
-    update
-        tb_resultados_processa
-    set
-        data_processamento_final    = now(),
-        erro_execucao               = var_erros_ocorridos,
-        chave_verificacao           = var_chave_verificacao::uuid
-    where
-        cod_evento      = p_cod_evento  and
-        id_evento       = var_id_evento and
-        chave_processamento = var_chave_processamento::uuid;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.gera_resultados(varchar) owner to runner_dba;
@@ -13440,528 +12310,9 @@ create procedure public.gera_resultados_v2(IN p_cod_evento character varying)
     language plpgsql
 as
 $$
-DECLARE
-
-var_classificacao_total         boolean;
-var_classificacao_sexo          boolean;
-var_classificacao_categoria     boolean;
-
-var_gera_resultado_ini          timestamp;
-var_id_evento                   integer;
-var_nome                        varchar;
-var_tempo_valido                boolean;
-var_total_registros             integer;
-var_total_registros_processados integer;
-var_erros_ocorridos             boolean;
-var_chave_processamento         varchar;
-var_chave_verificacao           varchar;
-var_pace                        varchar;
-var_tempo_bruto                 varchar;
-var_tempo_total                 varchar;
-var_hora_largada                varchar;
-var_modalidade                  varchar;
-var_homologado                  boolean;
-var_concluinte                  boolean;
-var_msg_erro                    varchar;
-var_retorno                     integer;
-var_status_final                integer;
-var_np                          integer;
-rec_resultados                  record;
-
-
-cur_resultados cursor for
-select distinct
-    num_peito,
-    nome,
-    categoria               ,
-    id_evento               ,
-    modalidade,
-    pace,
-    regexp_replace(percurso, '\D','','g') as percurso,
-    substring(upper(sexo),1,1) as sexo,
-    trim(tempo_bruto) as tempo_bruto,
-    trim(tempo_total) as tempo_total,
-    classificacao_categoria,
-    classificacao_sexo,
-    classificacao_total,
-    velocidade_media,
-    upper(trim(REPLACE(equipe,' ',' '))) as equipe,
-    data_nascimento,
-    substring(trim(nacionalidade),1,8) as nacionalidade,
-    chave_processamento,
-    hora_largada,
-    regexp_replace(np, '\D','','g') as np
-from
-    tb_resultados_temp where id_evento = p_cod_evento
-    and modalidade not in('KIDS','PCD')
-    and chave_processamento is null
-order by
-    tempo_total desc, tempo_bruto desc;
-
-
-BEGIN
-    var_gera_resultado_ini          := current_timestamp;
-    var_id_evento                   := null;
-    var_erros_ocorridos             := false;
-    var_total_registros             := 0;
-    var_total_registros_processados := 0;
-    var_chave_processamento         := md5(concat(var_gera_resultado_ini::varchar,p_cod_evento))::varchar;
-
-    -- verifica se evento foi cadastrado
-    select
-        id_evento
-    into
-        var_id_evento
-    from
-         tb_evento_corridas
-    where
-         id_evento = p_cod_evento::integer;
-
-    if var_id_evento is null then
-        insert into tb_resultados_processa_logs
-            ( cod_evento, data_processamento, erro_execucao, log_execucao )
-        values
-            ( p_cod_evento, current_timestamp, true,'Código do evento não encontrado na lista de corridas cadastradas');
-        return;
-    end if;
-
-    open cur_resultados;
-    loop
-        fetch cur_resultados into rec_resultados;
-        exit when not found;
-        var_total_registros := var_total_registros + 1;
-    end loop;
-    close cur_resultados;
-
-    if var_total_registros = 0 then
-        insert into tb_resultados_processa_logs
-            ( cod_evento, data_processamento, erro_execucao, log_execucao )
-        values
-            ( p_cod_evento, current_timestamp, true,'Não existem registros do evento para processamento');
-        return;
-    end if;
-
-    insert into
-        tb_resultados_processa
-    values
-        (
-        p_cod_evento,
-        var_id_evento,
-        var_gera_resultado_ini,
-        null,
-        var_chave_processamento::uuid,
-        false,
-        null
-        );
-
-    var_classificacao_total := false;
-    var_classificacao_sexo  := false;
-    var_classificacao_categoria := false;
-
-    open cur_resultados;
-    loop
-        fetch cur_resultados into rec_resultados;
-        exit when not found;
-
-        var_homologado  := true;
-        var_concluinte  := true;
-        var_status_final:= 0;
-
-        if length(rec_resultados.np) > 0  and rec_resultados.np::integer = 1 then
-            var_np := 1;
-        else
-            var_np := 0;
-        end if;
-
-        -- verifica nome
-        var_nome := upper(trim(REPLACE(rec_resultados.nome,' ',' ')));
-        if length(var_nome) < 1 or var_nome is null then
-            var_msg_erro := concat('Nome do atleta não foi informado para o atleta número - ',rec_resultados.num_peito);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            var_erros_ocorridos := true;
-            continue;
-        end if;
-        if var_nome = 'NAO ENCONTRADO' then
-            var_msg_erro := concat('Registro ignorado devido à regra de exclusão - ',rec_resultados.num_peito, ' - ', var_nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            continue;
-        end if;
-
-        -- Padroniza nome de atleta desconhecido
-        if position('NÃO CADASTRADO' in var_nome) > 0 or
-           position('COMPETIDOR DESCONHECIDO' in var_nome) > 0 or
-           position('SEM CADASTRO' in var_nome) > 0 then
-           var_nome := 'ATLETA DESCONHECIDO';
-        end if;
-
-        -- verifica pace
-        var_pace := rec_resultados.pace;
-        if var_np = 1 then
-            var_concluinte := false;
-            var_pace := null;
-        end if;
-
-        if var_pace is not null then
-            if length(var_pace) < 8 then
-                var_pace := right(concat('00:',rec_resultados.pace),8);
-            end if;
-            var_tempo_valido := tempo_valido(var_pace::varchar);
-            if  var_tempo_valido = false then
-                var_msg_erro := concat('Pace incorreto para o atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_pace);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida tempo total
-        var_tempo_total := rec_resultados.tempo_total;
-        if var_np = 1 then
-            var_tempo_total := null;
-        end if;
-        -- verifica se existem tempos de conclusão de prova
-        if var_tempo_total is null then
-           var_concluinte   := false;
-           var_status_final := 4;
-        end if;
-
-        -- testa desclassificados
-        if upper(trim(rec_resultados.modalidade)) = 'DESCLASSIFICADO'   or
-           upper(trim(rec_resultados.percurso))   = 'DESCLASSIFICADO'   or
-           upper(trim(rec_resultados.categoria))   = 'DESCLASSIFICADO'   or
-           upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'DESCLASSIFICADO' then
-           var_status_final := 2;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        -- não processa modalidade incorreta
-        var_modalidade := concat(trim(LEADING '0' from regexp_replace(rec_resultados.modalidade, '\D','','g')),'K');
-        if var_modalidade = 'K' then
-            var_msg_erro := concat('Modalidade não reconhecida para o atleta - ',rec_resultados.num_peito, ' - ', var_nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            continue;
-        end if;
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'RETIRADA' then
-           var_status_final := 1;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'NÃO TERMINOU' then
-           var_concluinte  := false;
-           var_tempo_total := null;
-        end if;
-
-        if var_np = 1 then
-           var_status_final := 3;
-        end if;
-
-
-        if  var_tempo_total is not null then
-            var_tempo_total := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.tempo_total,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_tempo_total::varchar);
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Tempo Total incorreto para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_tempo_total);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            else
-                -- calcula o pace caso pace seja nulo
-                if var_pace is null and var_tempo_total is not null then
-                    var_pace := (var_tempo_total::time / rec_resultados.percurso::numeric)::time;
-                else
-                    if var_pace::time < ((var_tempo_total::time / rec_resultados.percurso::numeric)::time - '00:00:05'::interval)::time or
-                       var_pace::time > ((var_tempo_total::time / rec_resultados.percurso::numeric)::time + '00:00:05'::interval)::time then
-                        var_msg_erro := concat('Pace informado não pode ser homologado para o atleta - ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',rec_resultados.pace);
-                        var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                            var_homologado := false;
-                    end if;
-                end if;
-            end if;
-        end if;
-
-        -- valida tempo bruto
-        var_tempo_bruto := rec_resultados.tempo_bruto;
-        if var_np = 1 then
-            var_tempo_bruto := null;
-        end if;
-        if  var_tempo_bruto is not null then
-            var_tempo_bruto := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.tempo_bruto,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_tempo_bruto::varchar);
-
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Tempo Bruto incorreto para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_tempo_bruto);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida hora_largada
-        var_hora_largada := trim(rec_resultados.hora_largada);
-        if var_np = 1 or length(var_hora_largada) < 1 then
-            var_hora_largada := null;
-        end if;
-        if  var_hora_largada is not null  then
-            var_hora_largada := replace(replace(replace(REGEXP_REPLACE(REGEXP_REPLACE(rec_resultados.hora_largada,'^0\:','00:'),'^1\:','01:'),'h',':'),'''',':'),',','.');
-            var_tempo_valido := tempo_valido(var_hora_largada::varchar);
-
-            if var_tempo_valido = false then
-                var_msg_erro := concat('Hora da largada incorreta para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome,' - ',var_hora_largada);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        end if;
-
-        -- valida sexo
-        if rec_resultados.sexo <> 'M' and rec_resultados.sexo <> 'F' then
-            var_msg_erro := concat('Gênero informado incorretamente para atleta ',rec_resultados.num_peito,' - ',rec_resultados.nome);
-            var_retorno := grava_logs_resultados(
-                        rec_resultados.id_evento,
-                        rec_resultados.num_peito::integer,
-                        rec_resultados.nome,
-                        rec_resultados.categoria,
-                        var_id_evento::integer,
-                        var_chave_processamento,
-                        var_msg_erro);
-            var_erros_ocorridos := true;
-            continue;
-        end if;
-
-        -- valida classificacao_total
-        if rec_resultados.classificacao_total is not null then
-            if var_homologado = true and var_concluinte = true and numero_valido(rec_resultados.classificacao_total) = false then
-                var_msg_erro := concat('Classificacao_total não numérica ',rec_resultados.num_peito,' - ',rec_resultados.nome);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_total := true;
-        end if;
-
-        -- valida classificacao_sexo
-        if rec_resultados.classificacao_sexo is not null then
-            if var_homologado = true and var_concluinte = true and numero_valido(rec_resultados.classificacao_sexo) = false then
-                var_msg_erro := concat('Classificacao_sexo não numérica ',rec_resultados.num_peito,' - ',rec_resultados.nome);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_sexo := true;
-        end if;
-
-        -- valida classificacao_categoria
-        if rec_resultados.classificacao_categoria is not null then
-            if var_homologado = true and var_concluinte = true and numero_valido(rec_resultados.classificacao_categoria) = false then
-                var_msg_erro := concat('Classificacao_categoria não numérica ',rec_resultados.num_peito,' - ',rec_resultados.nome);
-                var_retorno := grava_logs_resultados(
-                            rec_resultados.id_evento,
-                            rec_resultados.num_peito::integer,
-                            rec_resultados.nome,
-                            rec_resultados.categoria,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_categoria := true;
-        end if;
-
-        insert into tb_resultados
-        (   num_peito               ,
-            nome                    ,
-            id_evento               ,
-            modalidade              ,
-            pace                    ,
-            percurso                ,
-            sexo                    ,
-            tempo_bruto             ,
-            tempo_total             ,
-            classificacao_categoria ,
-            classificacao_sexo      ,
-            classificacao_total     ,
-            velocidade_media        ,
-            equipe,
-            nome_categoria,
-            homologado,
-            concluinte,
-            data_nascimento,
-            nacionalidade,
-            chave_processamento,
-            chave_verificacao,
-            status_final,
-            hora_largada
-        ) values (
-            rec_resultados.num_peito::integer,
-            var_nome,
-            var_id_evento,
-            var_modalidade,
-            var_pace::time,
-            rec_resultados.percurso::numeric,
-            rec_resultados.sexo,
-            var_tempo_bruto::time,
-            var_tempo_total::time,
-            rec_resultados.classificacao_categoria::integer,
-            rec_resultados.classificacao_sexo::integer,
-            rec_resultados.classificacao_total::integer,
-            rec_resultados.velocidade_media::numeric,
-            rec_resultados.equipe,
-            rec_resultados.categoria,
-            var_homologado,
-            var_concluinte,
-            rec_resultados.data_nascimento::date,
-            rec_resultados.nacionalidade,
-            var_chave_processamento::uuid,
-            md5(concat(rec_resultados.num_peito::varchar,var_nome,var_tempo_bruto::varchar,var_pace::varchar))::uuid,
-            var_status_final,
-            var_hora_largada::time
-        )
-        ON CONFLICT (id_evento,percurso,num_peito) DO UPDATE
-        SET
-            nome            = excluded.nome,
-            modalidade      = excluded.modalidade,
-            pace            = excluded.pace,
-            percurso        = excluded.percurso,
-            sexo            = excluded.sexo,
-            tempo_bruto     = excluded.tempo_bruto,
-            tempo_total     = excluded.tempo_total,
-            classificacao_categoria = excluded.classificacao_categoria,
-            classificacao_sexo      = excluded.classificacao_sexo,
-            classificacao_total     = excluded.classificacao_total,
-            velocidade_media        = excluded.velocidade_media,
-            equipe                  = excluded.equipe,
-            nome_categoria          = excluded.nome_categoria,
-            data_nascimento         = excluded.data_nascimento,
-            nacionalidade           = excluded.nacionalidade,
-            homologado              = excluded.homologado,
-            concluinte              = excluded.concluinte,
-            chave_processamento     = excluded.chave_processamento,
-            chave_verificacao       = excluded.chave_verificacao,
-            status_final            = excluded.status_final,
-            hora_largada            = excluded.hora_largada;
-
-        update
-            tb_resultados_temp
-        set
-            chave_processamento = var_chave_processamento::uuid
-        where
-            id_evento   =   rec_resultados.id_evento and
-            num_peito   =   rec_resultados.num_peito and
-            nome        =   rec_resultados.nome      and
-            categoria   =   rec_resultados.categoria;
-
-    end loop;
-    close cur_resultados;
-
-    if var_classificacao_total = true or var_classificacao_sexo = true or var_classificacao_categoria = true then
-       var_msg_erro := concat('Atualização de classificação foi executada total/Sexo/Categoria',var_classificacao_total,'/',var_classificacao_sexo,'/',var_classificacao_categoria);
-       var_retorno := grava_logs_resultados(
-                            var_id_evento::text,
-                            0::integer,
-                            'nome'::text,
-                            'categoria'::text,
-                            var_id_evento::integer,
-                            var_chave_processamento,
-                            var_msg_erro);
-       call atualiza_classific_f1_v2(var_id_evento,var_classificacao_total,var_classificacao_sexo,var_classificacao_categoria);
-    end if;
-
-    select
-        md5(concat(sum(num_peito)::varchar,sum(tempo_bruto)::varchar))::varchar
-    into
-        var_chave_verificacao
-    from
-        tb_resultados where id_evento = var_id_evento;
-
-    update
-        tb_resultados_processa
-    set
-        data_processamento_final    = now(),
-        erro_execucao               = var_erros_ocorridos,
-        chave_verificacao           = var_chave_verificacao::uuid
-    where
-        cod_evento      = p_cod_evento  and
-        id_evento       = var_id_evento and
-        chave_processamento = var_chave_processamento::uuid;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.gera_resultados_v2(varchar) owner to runner_dba;
@@ -13970,34 +12321,9 @@ create function public.get_clima(p_cod_cidade integer, p_dia date, p_hora time w
     language plpgsql
 as
 $$
-DECLARE
-
-var_registro_tempo       record;
-BEGIN
-select
- data_tempo,
- concat(hora_tempo)::time at time zone 'posix/Brazil/East',
- avg(precipitacao_total) as precipitacao_total,
- avg(radiacao) as radiacao,
- avg(temperatura) as temperatura,
- avg(umidade) as umidade,
- avg(vento_velocidade) as vento_velocidade
-into
- var_registro_tempo
-from
- tb_clima_historico his
-inner join tb_clima_estacoes est on est.cod_estacao = his.cod_estacao
-where
- est.cod_cidade = p_cod_cidade and
- his.data_tempo = p_dia  and
- extract( hour from hora_tempo::time at time zone 'posix/Brazil/East') = extract(hour from p_hora::time)
-group by
-  data_tempo,
-  concat(hora_tempo)::time;
-
-  return row_to_json(var_registro_tempo);
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_clima(integer, date, time) owner to runner_dba;
@@ -14007,50 +12333,9 @@ grant execute on function public.get_clima(integer, date, time) to runner;
 create function public.get_eventos_relacionados(p_id_evento integer, OUT id_evento integer, OUT nome_evento character varying, OUT data_inicial character varying, OUT cidade character varying, OUT endereco character varying) returns SETOF record
     language plpgsql
 as
-$$declare
-    rec_evento_ref record;
-    p_sql varchar;
-    result integer;
+$$
 begin
-   select
-    evt.nome_evento,
-    (evt.data_inicial - 15)::text as data_inicial,
-    (evt.data_final + 15)::text as data_final,
-    evt.cidade,
-    evt.estado,
-    array_to_string(array_agg(percurso_evento),',') as percursos
-   into
-    rec_evento_ref
-   from
-    tb_evento_corridas evt
-    inner join tb_evento_corridas_percursos prc on prc.id_evento = evt.id_evento
-   where
-    evt.id_evento = p_id_evento
-   group by
-    evt.nome_evento,
-    evt.data_inicial,
-    evt.data_final,
-    evt.cidade,
-    evt.estado;
-
-    GET DIAGNOSTICS result = ROW_COUNT;
-
-  if result > 0 then
-    p_sql := 'select id_evento, nome_evento, data_inicial::varchar, cidade, endereco from tb_evento_corridas';
-    p_sql := p_sql || ' where data_inicial::date between ' || quote_literal(rec_evento_ref.data_inicial) || '::date and ' || quote_literal(rec_evento_ref.data_final) || '::date';
-    p_sql := p_sql || ' and  cidade = ' || quote_literal(rec_evento_ref.cidade);
-    p_sql := p_sql || ' and  id_evento  != ' || p_id_evento;
-    p_sql := p_sql || ' union ';
-    p_sql := p_sql || 'select evt.id_evento, evt.nome_evento, evt.data_inicial::varchar, evt.cidade, evt.endereco from tb_evento_corridas evt ';
-    p_sql := p_sql || 'inner join tb_evento_corridas_percursos pcr on pcr.id_evento = evt.id_evento';
-    p_sql := p_sql || ' where evt.data_inicial::date between ' || quote_literal(rec_evento_ref.data_inicial) || '::date and ' || quote_literal(rec_evento_ref.data_final) || '::date';
-    p_sql := p_sql || ' and  evt.id_evento   != ' || p_id_evento;
-    p_sql := p_sql || ' and  pcr.percurso_evento in (' || rec_evento_ref.percursos || ')';
-    p_sql := p_sql || ' limit 10';
-
-    return query execute p_sql;
-   end if;
-
+    -- missing source code
 end;
 $$;
 
@@ -14060,32 +12345,9 @@ create function public.get_id_evento_parceiro(p_id_parceiro integer, p_id_evento
     language plpgsql
 as
 $$
-DECLARE
-
-var_id_evento_parceiro       integer;
-BEGIN
-    var_id_evento_parceiro := null;
-
-    select min(id_evento_parceiro)
-    FROM tb_evento_corridas_relaciona
-    WHERE
-    id_parceiro = p_id_parceiro and
-    id_evento   = p_id_evento   and
-    percurso    = p_percurso
-    into var_id_evento_parceiro;
-
-    if var_id_evento_parceiro is null then
-        select min(id_evento_parceiro)
-        FROM tb_evento_corridas_relaciona
-        WHERE
-        id_parceiro = p_id_parceiro and
-        id_evento   = p_id_evento
-        into var_id_evento_parceiro;
-    end if;
-
-    return var_id_evento_parceiro;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_id_evento_parceiro(integer, integer, integer) owner to runner_dba;
@@ -14096,34 +12358,9 @@ create function public.get_id_evento_parceiro_v1(p_id_parceiro integer, p_id_eve
     language plpgsql
 as
 $$
-DECLARE
-
-var_id_evento_parceiro       varchar;
-BEGIN
-    var_id_evento_parceiro := null;
-
-    select concat(nome_variavel,'|',min(id_evento_parceiro))
-    FROM tb_evento_corridas_relaciona
-    WHERE
-    id_parceiro = p_id_parceiro and
-    id_evento   = p_id_evento   and
-    percurso    = p_percurso
-    group by nome_variavel,id_evento_parceiro
-    into var_id_evento_parceiro;
-
-    if var_id_evento_parceiro is null then
-        select concat(nome_variavel,'|',min(id_evento_parceiro))
-        FROM tb_evento_corridas_relaciona
-        WHERE
-        id_parceiro = p_id_parceiro and
-        id_evento   = p_id_evento
-        group by nome_variavel,id_evento_parceiro
-        into var_id_evento_parceiro;
-    end if;
-
-    return var_id_evento_parceiro;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_id_evento_parceiro_v1(integer, integer, integer) owner to runner_dba;
@@ -14134,23 +12371,9 @@ create function public.get_id_permit_parceiro(p_id_parceiro integer, p_id_evento
     language plpgsql
 as
 $$
-DECLARE
-
-var_id_evento_parceiro       integer;
-BEGIN
-    var_id_evento_parceiro := null;
-
-    select min(id_evento_parceiro)
-    FROM tb_evento_corridas_relaciona
-    WHERE
-    id_parceiro = p_id_parceiro and
-    id_evento   = p_id_evento   and
-    percurso    = p_percurso
-    into var_id_evento_parceiro;
-
-    return var_id_evento_parceiro;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_id_permit_parceiro(integer, integer, integer) owner to runner_dba;
@@ -14161,22 +12384,9 @@ create function public.get_id_permit_parceiro_v1(p_id_evento integer, p_percurso
     language plpgsql
 as
 $$
-DECLARE
-
-var_id_evento_parceiro       integer;
-BEGIN
-    var_id_evento_parceiro := null;
-
-    select id_permit
-    FROM tb_evento_corridas_percursos
-    WHERE
-    id_evento       = p_id_evento   and
-    percurso_evento = p_percurso
-    into var_id_evento_parceiro;
-
-    return var_id_evento_parceiro;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_id_permit_parceiro_v1(integer, integer) owner to runner_dba;
@@ -14187,51 +12397,9 @@ create function public.get_media(p_id_evento integer, p_limit integer DEFAULT 5)
     language plpgsql
 as
 $$
-DECLARE
-
-var_resultado            json;
-var_nome_evento          varchar;
-
-BEGIN
-
-var_nome_evento := null;
-
-select nome_evento into var_nome_evento
-from tb_evento_corridas
-where id_evento = p_id_evento;
-
-if var_nome_evento is null then
-   return null;
-end if;
-
-SELECT json_agg(qrf) into var_resultado from (
-                              select *
-                              from (
-                                       select ts_rank(
-                                                      to_tsvector(concat(unaccent(media_titulo), unaccent(media_descricao)))
-                                                  ,
-                                                      to_tsquery(unaccent(replace(var_nome_evento, ' ', '|')))) as ranking,
-                                              id_media,
-                                              media_url,
-                                              media_tipo,
-                                              media_titulo,
-                                              media_descricao,
-                                              media_metatags
-                                       from tb_media
-                                       where media_titulo is not null
-                                         and concat(to_tsvector(unaccent(media_titulo)),
-                                                    to_tsvector(unaccent(media_titulo)))
-                                           @@
-                                             to_tsquery(unaccent(replace(var_nome_evento, ' ', '|')))
-                                       order by 1 desc
-                                       limit p_limit
-                                   ) as qry
-                          ) as qrf;
-
-
-return var_resultado;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_media(integer, integer) owner to runner_dba;
@@ -14242,35 +12410,8 @@ create function public.get_paginas_vinculos(p_id_paginas integer) returns SETOF 
     language plpgsql
 as
 $$
-declare
-    p_sql varchar;
 begin
-
-   p_sql := 'select
-    vin.id_pagina_origem,
-    vin.id_pagina_destino,
-    pag.id_pagina,
-    pag.id_usuario_cadastro,
-    pag.nome,
-    pag.apelido
-from
-    tb_paginas_vinculos vin
-inner join tb_paginas pag on pag.id_pagina = vin.id_pagina_destino
-where vin.id_pagina_origem = ' || p_id_paginas ||
-' union all
-select
-    vin.id_pagina_origem,
-    vin.id_pagina_destino,
-    pag.id_pagina,
-    pag.id_usuario_cadastro,
-    pag.nome,
-    pag.apelido
-from
-    tb_paginas_vinculos vin
-inner join tb_paginas pag on pag.id_pagina = vin.id_pagina_origem
-where vin.id_pagina_destino = ' || p_id_paginas;
-
-   return query execute p_sql;
+    -- missing source code
 end;
 $$;
 
@@ -14280,36 +12421,9 @@ create function public.get_pais_padrao(p_cod_pais character varying) returns cha
     language plpgsql
 as
 $$
-DECLARE
-
-var_pais_padrao  varchar;
-BEGIN
-
-var_pais_padrao := null;
-
-if length(p_cod_pais) = 3 then
-  select
-  cod_alpha2
-  into
-  var_pais_padrao
-  from
-  tb_paises_iso3166
-  where
-  cod_alpha3 = p_cod_pais;
-else
-  select
-  cod_alpha2
-  into
-  var_pais_padrao
-  from
-  tb_paises_iso3166
-  where
-  cod_alpha2 = p_cod_pais;
-end if;
-
-  return var_pais_padrao;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_pais_padrao(varchar) owner to runner_dba;
@@ -14320,9 +12434,9 @@ create function public.get_tag(p_desc character varying) returns character varyi
     language plpgsql
 as
 $$
-BEGIN
-    RETURN translate(REGEXP_REPLACE(replace(REGEXP_REPLACE(unaccent(lower(translate(p_desc,'ª&!?:\',''))),'[^\w]+',' ','g'),'-',''),'(( ){2,}|\t+)', ' ', 'g'),' ','-');
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_tag(varchar) owner to runner_dba;
@@ -14333,38 +12447,9 @@ create function public.get_tempof1(p_id_evento integer, p_percurso integer, p_se
     language plpgsql
 as
 $$
-DECLARE
-
-var_query   varchar;
-var_tempof1 time;
-BEGIN
-
-if p_categoria is not null then
-   select min(tempo_total)
-   into var_tempof1
-   from tb_resultados
-   where id_evento = p_id_evento
-   and sexo = p_sexo
-   and nome_categoria = p_categoria
-   and percurso = p_percurso
-   and homologado = true and concluinte = true and status_final = 0;
-else
-    select min(tempo_total)
-   into var_tempof1
-   from tb_resultados
-   where id_evento = p_id_evento
-   and percurso = p_percurso
-   and sexo = p_sexo
-   and homologado = true and concluinte = true and status_final = 0;
-end if;
-
-if var_tempof1 is not null then
-   return p_tempo_total - var_tempof1;
-  else
-   return null;
-end if;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_tempof1(integer, integer, varchar, varchar, time) owner to runner_dba;
@@ -14462,64 +12547,9 @@ create procedure public.grava_evento_corridas_percursos(IN p_id_evento integer, 
     language plpgsql
 as
 $$
-DECLARE
-
-var_percurso        integer;
-var_data_percurso   date;
-var_num_dias        integer;
-var_arr_percursos   numeric[];
-var_unidade         varchar;
-prc                 integer;
-
-BEGIN
-    if p_categorias is null then
-        return;
-    end if;
-    if position('km' in lower(p_categorias)) > 0 then
-        var_unidade := 'km';
-    else
-        if position('milha' in lower(p_categorias)) > 0 or position('milha' in lower(p_nome_evento)) > 0  then
-            var_unidade := 'mi';
-        else
-            var_unidade := '--';
-        end if;
-    end if;
-
-    var_arr_percursos := array_remove(string_to_array(regexp_replace(p_categorias, '[^0-9.,]','','g'),','),'');
-    var_num_dias := (p_data_fim - p_data_ini) + 1;
-
-    foreach prc in array var_arr_percursos loop
-        if prc < 21 then
-           var_data_percurso := p_data_ini;
-        else
-            if prc < 42 then
-                if var_num_dias = 1 then
-                   var_data_percurso := p_data_ini;
-                 else
-                   var_data_percurso := p_data_ini + 1;
-                end if;
-            else
-                if var_num_dias = 1 then
-                   var_data_percurso := p_data_ini;
-                 else
-                   var_data_percurso := p_data_fim;
-                end if;
-            end if;
-        end if;
-
-        insert into tb_evento_corridas_percursos
-          ( percurso_evento, unidade_de_medida, id_evento, data_percurso )
-        values
-          ( prc, var_unidade, p_id_evento, var_data_percurso )
-        on CONFLICT (percurso_evento, id_evento) DO UPDATE
-        SET
-            percurso_evento   = excluded.percurso_evento,
-            unidade_de_medida = excluded.unidade_de_medida,
-            id_evento         = excluded.id_evento,
-            data_percurso     = excluded.data_percurso;
-    end loop;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.grava_evento_corridas_percursos(integer, varchar, date, date, varchar) owner to runner_dba;
@@ -14530,25 +12560,9 @@ create function public.grava_logs_resultados(p_cod_evento text, p_num_peito inte
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-    insert into tb_resultados_processa_logs
-        ( cod_evento, id_evento, data_processamento, chave_processamento, erro_execucao, log_execucao )
-            values
-        ( p_cod_evento, p_id_evento, current_timestamp, p_chave_proc::uuid, true,p_msg);
-    --update
-    --    new_tb_resultados_temp
-    --set
-    --    chave_processamento = p_chave_proc::uuid
-    --where
-    --    id_evento   =   p_cod_evento and
-    --    num_peito   =   p_num_peito  and
-    --    nome        =   p_nome       and
-    --    categoria   =   p_categoria;
-
-    return 0;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.grava_logs_resultados(text, integer, text, text, integer, text, text) owner to runner_dba;
@@ -14559,16 +12573,9 @@ create function public.nome_dia(integer) returns character varying
     language sql
 as
 $$
-SELECT Case $1
-when 0 then 'Domingo'
-when 1 then 'Segunda-feira'
-when 2 then 'Terça-feira'
-when 3 then 'Quarta-feira'
-when 4 then 'Quinta-feira'
-when 5 then 'Sexta-feira'
-when 6 then 'Sábado'
-else NULL
-end
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.nome_dia(integer) owner to runner_dba;
@@ -14577,21 +12584,9 @@ create function public.nome_mes(integer) returns character varying
     language sql
 as
 $$
-SELECT Case $1
-when 1 then 'Janeiro'
-when 2 then 'Fevereiro'
-when 3 then 'Março'
-when 4 then 'Abril'
-when 5 then 'Maio'
-when 6 then 'Junho'
-when 7 then 'Julho'
-when 8 then 'Agosto'
-when 9 then 'Setembro'
-when 10 then 'Outubro'
-when 11 then 'Novembro'
-when 12 then 'Dezembro'
-else NULL
-end
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.nome_mes(integer) owner to runner_dba;
@@ -14600,14 +12595,9 @@ create function public.numero_valido(p_numero character varying) returns boolean
     language plpgsql
 as
 $$
-DECLARE
-    numero_valido boolean := p_numero ~ '^([0-9]{0,10})\.?([0-9]{0,10})$';
-BEGIN
-    if p_numero is null then
-        RETURN true;
-    end if;
-    RETURN numero_valido;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.numero_valido(varchar) owner to postgres;
@@ -14618,19 +12608,9 @@ create function public.percursos_corrida(p_id_evento integer) returns character 
     language plpgsql
 as
 $$
-DECLARE
-
-var_percursos       varchar;
-BEGIN
-    select array(SELECT distinct percurso
-    FROM tb_resultados res
-    WHERE
-    res.id_evento = p_id_evento and
-    percurso is not null) into var_percursos;
-
-    return var_percursos;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.percursos_corrida(integer) owner to runner_dba;
@@ -14709,12 +12689,9 @@ create function public.tempo_valido(p_tempo character varying) returns boolean
     language plpgsql
 as
 $$
-DECLARE
-    --tempo_valido boolean := p_tempo ~ '^([0-1]{1}[0-9]{1}|[2-2]{1}[0-3]{1}):([0-5]{1}[0-9]{1}|[2-2]{1}[0-4]{1}):([0-5]{1}[0-9]{1}|[2-2]{1}[0-4]{1})$';
-    tempo_valido boolean := p_tempo ~ '^(([01]?[0-9])|([2][0-3])):([0-5][0-9])(:[0-5][0-9](?:[.]\d{1,3})?)?$';
-BEGIN
-    RETURN tempo_valido;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.tempo_valido(varchar) owner to postgres;
@@ -14725,45 +12702,8 @@ create function public.teste_filtro(filtro jsonb) returns integer
     language plpgsql
 as
 $$
-declare
-    contador integer;
-    p_filtro text;
-    p_where  boolean := false;
-    p_sql text := 'SELECT count(*)::integer as contador FROM tb_evento_corridas';
-    p_estado varchar;
-    p_cidade varchar;
-    i jsonb;
 begin
-
-   p_estado := filtro->'estado';
-
-    if p_estado is not null then
-        if p_where = false then
-            p_sql := concat(p_sql,' where estado = ', quote_literal (TRIM(p_estado, '"')));
-            p_where := true;
-        else
-            p_sql := concat(p_sql,' and estado = ',quote_literal (TRIM(p_estado, '"')));
-        end if;
-    end if;
-
-      --RAISE exception 'Value: %', p_sql;
-
-   p_cidade := filtro->'cidade';
-
-    if p_cidade is not null then
-        if p_where = false then
-            p_sql := concat(p_sql,' where cidade = ',quote_literal (TRIM(p_cidade, '"')));
-            p_where := true;
-        else
-            p_sql := concat(p_sql,' and cidade = ',quote_literal (TRIM(p_cidade, '"')));
-        end if;
-    end if;
-
-   --RAISE exception 'Value: %', p_sql;
-
-    EXECUTE p_sql  INTO contador;
-
-    return contador;
+    -- missing source code
 end;
 $$;
 
@@ -14773,48 +12713,8 @@ create function public.teste_filtro_lista(filtro jsonb) returns json
     language plpgsql
 as
 $$
-declare
-    ret_json json;
-    contador integer;
-    p_filtro text;
-    p_where  boolean := false;
-    p_sql text := 'SELECT nome_evento, estado, cidade, data_inicial FROM tb_evento_corridas';
-    p_estado varchar;
-    p_cidade varchar;
-    i jsonb;
 begin
-
-   p_estado := filtro->'estado';
-
-    if p_estado is not null then
-        if p_where = false then
-            p_sql := concat(p_sql,' where estado = ', quote_literal (TRIM(p_estado, '"')));
-            p_where := true;
-        else
-            p_sql := concat(p_sql,' and estado = ',quote_literal (TRIM(p_estado, '"')));
-        end if;
-    end if;
-
-      --RAISE exception 'Value: %', p_sql;
-
-   p_cidade := filtro->'cidade';
-
-    if p_cidade is not null then
-        if p_where = false then
-            p_sql := concat(p_sql,' where cidade = ',quote_literal (TRIM(p_cidade, '"')));
-            p_where := true;
-        else
-            p_sql := concat(p_sql,' and cidade = ',quote_literal (TRIM(p_cidade, '"')));
-        end if;
-    end if;
-
-   p_sql := concat('select json_agg(row_to_json(linha)) from (', p_sql,') linha');
-
-   --RAISE exception 'Value: %', p_sql;
-
-   EXECUTE p_sql into ret_json;
-
-   return ret_json;
+    -- missing source code
 end;
 $$;
 
@@ -14877,40 +12777,9 @@ create function public.padrao_nomes(p_nome character varying) returns character 
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-    p_nome = initcap(p_nome);
-    p_nome = replace(p_nome,' De ',' de ');
-    p_nome = replace(p_nome,' A ',' a ');
-    p_nome = replace(p_nome,' E ',' e ');
-    p_nome = replace(p_nome,' Com ',' com ');
-    p_nome = replace(p_nome,' De ',' de ');
-    p_nome = replace(p_nome,' Da ',' da ');
-    p_nome = replace(p_nome,' Do ',' do ');
-    p_nome = replace(p_nome,' Dos ',' dos ');
-    p_nome = replace(p_nome,' Das ',' das ');
-    p_nome = replace(p_nome,' Em ',' em ');
-    p_nome = replace(p_nome,' Xp ',' XP ');
-    p_nome = replace(p_nome,' Na ',' na ');
-    p_nome = replace(p_nome,' No ',' no ');
-    p_nome = replace(p_nome,' Nas ',' nas ');
-    p_nome = replace(p_nome,' Nos ',' nos ');
-    p_nome = replace(p_nome,' ','');
-    p_nome = replace(p_nome,'Xxvi','XXVI');
-    p_nome = replace(p_nome,'Xxv','XXV');
-    p_nome = replace(p_nome,'Ii','II');
-    p_nome = replace(p_nome,'Iii','III');
-    p_nome = replace(p_nome,'Iv ','IV ');
-    p_nome = replace(p_nome,'Vi ','VI ');
-    p_nome = replace(p_nome,'Ttt ','TTT ');
-    p_nome = replace(p_nome,'Sp','SP');
-    p_nome = replace(p_nome,'Rj','RJ');
-    p_nome = replace(p_nome,'Mg','MG');
-    p_nome = replace(p_nome,'Pb','PB');
-
-   return p_nome;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.padrao_nomes(varchar) owner to postgres;
@@ -14921,36 +12790,9 @@ create function public.limpar_assessoria(p_nome character varying) returns chara
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-    p_nome = upper(p_nome);
-    p_nome = replace(p_nome,' ','');
-    p_nome = replace(p_nome,'ASSESSORIA','');
-    p_nome = replace(p_nome,'ACESSORIA','');
-    p_nome = replace(p_nome,'ESPORTIVA','');
-    p_nome = replace(p_nome,'NÃO POSSUO','');
-    p_nome = replace(p_nome,'NÃO POSSUO','');
-    p_nome = replace(p_nome,'INDIVIDUAL','');
-    --p_nome = replace(p_nome,'NA','');
-    p_nome = replace(p_nome,'SIM','');
-    p_nome = replace(p_nome,'N/A','');
-    p_nome = replace(p_nome,'NAO TENHO','');
-    p_nome = replace(p_nome,'NÃO','');
-    p_nome = replace(p_nome,'NAO','');
-    p_nome = replace(p_nome,'-','');
-    p_nome = replace(p_nome,'.','');
-    p_nome = replace(p_nome,'NÃO TEM','');
-    p_nome = replace(p_nome,'NENHUMA','');
-    p_nome = replace(p_nome,'SEM','');
-    p_nome = replace(p_nome,'NAO TEM','');
-    p_nome = replace(p_nome,'NENHUM','');
-    p_nome = replace(p_nome,'AVULSO','');
-    p_nome = replace(p_nome,'NÃO TENHO','');
-    p_nome = trim(p_nome);
-
-   return p_nome;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.limpar_assessoria(varchar) owner to postgres;
@@ -15170,85 +13012,9 @@ create function public.extrair_faixa_etaria(texto text) returns text
     language plpgsql
 as
 $$
-DECLARE
-    v_min TEXT;
-    v_max TEXT;
-    v_lim_f TEXT;
-BEGIN
-    -- 1) Faixas explícitas: 10-17, 10/17, 10 a 17, 10A17
-    SELECT
-        m[1], m[2]
-    INTO
-        v_min, v_max
-    FROM regexp_matches(
-        texto,
-        '(?<!\d)(\d{2})\s*(?:-|/|A|a|\s+a\s+)\s*(\d{2})(?!\d)'
-    ) AS m
-    LIMIT 1;
-
-    IF v_min > v_max THEN
-        RETURN null;
-    end if;
-
-    if v_max = '99' THEN
-        v_lim_f := ']';
-    else
-        if substring(v_max,2,1) = '9' or substring(v_max,2,1) = '4' then
-            v_max = (cast(v_max as integer) + 1)::text;
-        end if;
-        v_lim_f := ')';
-    end if;
-
-    IF v_min IS NOT NULL THEN
-        RETURN '[' || v_min || ',' || v_max || v_lim_f;
-    END IF;
-
-    -- 2) Faixa concatenada: 1019, 1629, 5559
-    SELECT
-        m[1], m[2]
-    INTO
-        v_min, v_max
-    FROM regexp_matches(
-        texto,
-        '(?<!\d)(\d{2})(\d{2})(?!\d)'
-    ) AS m
-    LIMIT 1;
-
-    IF v_min > v_max THEN
-        RETURN null;
-    end if;
-
-    if v_max = '99' THEN
-        v_lim_f := ']';
-    else
-        if substring(v_max,2,1) = '9' or substring(v_max,2,1) = '4' then
-            v_max = (cast(v_max as integer) + 1)::text;
-        end if;
-        v_lim_f := ')';
-    end if;
-
-    IF v_min IS NOT NULL THEN
-        RETURN '[' || v_min || ',' || v_max || v_lim_f;
-    END IF;
-
-    -- 3) Faixa aberta: 60+, 70 +
-    SELECT
-        m[1]
-    INTO
-        v_min
-    FROM regexp_matches(
-        texto,
-        '(?<!\d)(\d{2})\s*\+(?!\d)'
-    ) AS m
-    LIMIT 1;
-
-    IF v_min IS NOT NULL THEN
-        RETURN '[' || v_min || ',99]';
-    END IF;
-
-    -- Nenhuma faixa encontrada
-    RETURN NULL;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.extrair_faixa_etaria(text) owner to runner_dba;
@@ -15257,75 +13023,9 @@ create function public.get_id_dim_faixa(p_percurso numeric, p_tempo_total time w
     language plpgsql
 as
 $$
-DECLARE
-
-var_id_dim_faixa       integer;
-BEGIN
-    var_id_dim_faixa := 0;
-
-    if p_tempo_total is null then
-        return var_id_dim_faixa;
-    end if;
-
-    if p_percurso >= 5 and p_percurso < 6 then
-        CASE
-            WHEN p_tempo_total < TIME '00:15:00' THEN var_id_dim_faixa := 1; -- Faixa Preta < 15 min
-            WHEN p_tempo_total < TIME '00:17:00' THEN var_id_dim_faixa := 2; -- Faixa Marrom < 17 min
-            WHEN p_tempo_total < TIME '00:20:00' THEN var_id_dim_faixa := 3; -- Faixa Vermelha < 20 min
-            WHEN p_tempo_total < TIME '00:22:00' THEN var_id_dim_faixa := 4; -- Faixa Azul < 22 min
-            WHEN p_tempo_total < TIME '00:25:00' THEN var_id_dim_faixa := 5; -- Faixa Amarela < 25 min
-            WHEN p_tempo_total < TIME '00:27:00' THEN var_id_dim_faixa := 6; -- Faixa Laranja < 27 min
-            WHEN p_tempo_total < TIME '00:30:00' THEN var_id_dim_faixa := 7; -- Faixa Branca < 30 min
-            ELSE var_id_dim_faixa := 8;
-        END CASE;
-        RETURN var_id_dim_faixa;
-    end if;
-
-    if p_percurso >= 10 and p_percurso < 11 then
-        CASE
-            WHEN p_tempo_total < TIME '00:35:00' THEN var_id_dim_faixa := 9; -- Faixa Preta < 35 min
-            WHEN p_tempo_total < TIME '00:40:00' THEN var_id_dim_faixa := 10; -- Faixa Marrom < 37 min
-            WHEN p_tempo_total < TIME '00:42:00' THEN var_id_dim_faixa := 11; -- Faixa Vermelha < 40 min
-            WHEN p_tempo_total < TIME '00:45:00' THEN var_id_dim_faixa := 12; -- Faixa Azul < 45 min
-            WHEN p_tempo_total < TIME '00:50:00' THEN var_id_dim_faixa := 13; -- Faixa Amarela < 50 min
-            WHEN p_tempo_total < TIME '00:55:00' THEN var_id_dim_faixa := 14; -- Faixa Laranja < 55 min
-            WHEN p_tempo_total < TIME '01:00:00' THEN var_id_dim_faixa := 15; -- Faixa Branca < 60 min
-            ELSE var_id_dim_faixa := 16;
-        END CASE;
-        RETURN var_id_dim_faixa;
-    end if;
-
-    if p_percurso >= 21 and p_percurso < 22 then
-        CASE
-            WHEN p_tempo_total < TIME '01:20:00' THEN var_id_dim_faixa := 17; -- Faixa Preta < 1h20
-            WHEN p_tempo_total < TIME '01:25:00' THEN var_id_dim_faixa := 18; -- Faixa Marrom < 1h25
-            WHEN p_tempo_total < TIME '01:30:00' THEN var_id_dim_faixa := 19; -- Faixa Vermelha < 1h30
-            WHEN p_tempo_total < TIME '01:40:00' THEN var_id_dim_faixa := 20; -- Faixa Azul < 1h35
-            WHEN p_tempo_total < TIME '01:45:00' THEN var_id_dim_faixa := 21;-- Faixa Amarela < 1h40
-            WHEN p_tempo_total < TIME '01:50:00' THEN var_id_dim_faixa := 22; -- Faixa Laranja < 1h45
-            WHEN p_tempo_total < TIME '02:00:00' THEN var_id_dim_faixa := 23; -- Faixa Branca < 1h50
-            ELSE var_id_dim_faixa := 24;
-        END CASE;
-        RETURN var_id_dim_faixa;
-    end if;
-
-    if p_percurso >= 42 and p_percurso < 43 then
-        CASE
-            WHEN p_tempo_total < TIME '02:30:00' THEN var_id_dim_faixa := 25; -- Faixa Preta < 2h30
-            WHEN p_tempo_total < TIME '02:45:00' THEN var_id_dim_faixa := 26;
-            WHEN p_tempo_total < TIME '03:00:00' THEN var_id_dim_faixa := 27;
-            WHEN p_tempo_total < TIME '03:15:00' THEN var_id_dim_faixa := 28;
-            WHEN p_tempo_total < TIME '03:30:00' THEN var_id_dim_faixa := 29;
-            WHEN p_tempo_total < TIME '03:45:00' THEN var_id_dim_faixa := 30;
-            WHEN p_tempo_total < TIME '04:00:00' THEN var_id_dim_faixa := 31;
-            ELSE var_id_dim_faixa := 32;
-        END CASE;
-        RETURN var_id_dim_faixa;
-    end if;
-
-    return var_id_dim_faixa;
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.get_id_dim_faixa(numeric, time) owner to runner_dba;
@@ -15337,37 +13037,9 @@ create function public.get_id_geracao(p_faixa_idade int4range, p_ano_referencia 
     language sql
 as
 $$
-SELECT
-    CASE
-
-        WHEN p_faixa_idade IS NULL OR p_ano_referencia IS NULL THEN 0
-        WHEN int4range(
-                 p_ano_referencia - upper(p_faixa_idade),
-                 p_ano_referencia - lower(p_faixa_idade),
-                 '[)'
-             ) && int4range(1946, 1965, '[)') THEN 1
-        WHEN int4range(
-                 p_ano_referencia - upper(p_faixa_idade),
-                 p_ano_referencia - lower(p_faixa_idade),
-                 '[)'
-             ) && int4range(1965, 1981, '[)') THEN 2
-        WHEN int4range(
-                 p_ano_referencia - upper(p_faixa_idade),
-                 p_ano_referencia - lower(p_faixa_idade),
-                 '[)'
-             ) && int4range(1981, 1996, '[)') THEN 3
-        WHEN int4range(
-                 p_ano_referencia - upper(p_faixa_idade),
-                 p_ano_referencia - lower(p_faixa_idade),
-                 '[)'
-             ) && int4range(1996, 2011, '[)') THEN 4
-        WHEN int4range(
-                 p_ano_referencia - upper(p_faixa_idade),
-                 p_ano_referencia - lower(p_faixa_idade),
-                 '[)'
-             ) && int4range(2010, NULL, '[)') THEN 0
-        ELSE 0
-    END;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.get_id_geracao(int4range, integer) owner to runner_dba;
@@ -15377,23 +13049,9 @@ create function public.get_id_categoria_cbat(p_faixa_atleta int4range) returns i
     language sql
 as
 $$
-SELECT
-    CASE
-        WHEN p_faixa_atleta IS NULL THEN 0
-        WHEN p_faixa_atleta && int4range(13, 20, '[)') THEN 1
-        WHEN p_faixa_atleta && int4range(20, 25, '[)') THEN 2
-        WHEN p_faixa_atleta && int4range(25, 30, '[)') THEN 3
-        WHEN p_faixa_atleta && int4range(30, 35, '[)') THEN 4
-        WHEN p_faixa_atleta && int4range(35, 40, '[)') THEN 5
-        WHEN p_faixa_atleta && int4range(40, 45, '[)') THEN 6
-        WHEN p_faixa_atleta && int4range(45, 50, '[)') THEN 7
-        WHEN p_faixa_atleta && int4range(50, 55, '[)') THEN 8
-        WHEN p_faixa_atleta && int4range(55, 60, '[)') THEN 9
-        WHEN p_faixa_atleta && int4range(60, 65, '[)') THEN 10
-        WHEN p_faixa_atleta && int4range(65, 70, '[)') THEN 11
-        WHEN p_faixa_atleta && int4range(70, null, '[)') THEN 12
-        ELSE 0
-    END;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.get_id_categoria_cbat(int4range) owner to runner_dba;
@@ -15833,12 +13491,9 @@ create function mercado.upsert_pessoa(p_nome text) returns bigint
     language plpgsql
 as
 $$
-DECLARE v_id BIGINT;
-BEGIN
-  v_id := mercado.upsert_entidade('pessoa'::mercado.entity_type_enum, p_nome);
-  INSERT INTO mercado.pessoa (id_entidade) VALUES (v_id) ON CONFLICT DO NOTHING;
-  RETURN v_id;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.upsert_pessoa(text) owner to runner_dba;
@@ -15847,12 +13502,9 @@ create function mercado.upsert_organizacao(p_nome text) returns bigint
     language plpgsql
 as
 $$
-DECLARE v_id BIGINT;
-BEGIN
-  v_id := mercado.upsert_entidade('organizacao'::mercado.entity_type_enum, p_nome);
-  INSERT INTO mercado.organizacao (id_entidade) VALUES (v_id) ON CONFLICT DO NOTHING;
-  RETURN v_id;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.upsert_organizacao(text) owner to runner_dba;
@@ -15861,7 +13513,9 @@ create function mercado.try_num(p_text text) returns numeric
     language sql
 as
 $$
-  SELECT NULLIF(regexp_replace(coalesce(p_text,''), '[^0-9\.\-]', '', 'g'), '')::numeric;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function mercado.try_num(text) owner to runner_dba;
@@ -15870,16 +13524,9 @@ create function mercado.upsert_entidade(p_entity_type mercado.entity_type_enum, 
     language plpgsql
 as
 $$
-DECLARE v_id BIGINT;
-BEGIN
-  INSERT INTO mercado.entidade (entity_type, nome)
-  VALUES (p_entity_type, p_nome)
-  ON CONFLICT (entity_type, nome_canonico)
-  DO UPDATE SET updated_at = now()
-  RETURNING id_entidade INTO v_id;
-
-  RETURN v_id;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.upsert_entidade(mercado.entity_type_enum, text) owner to runner_dba;
@@ -15888,17 +13535,9 @@ create function mercado.map_status_verificacao(p_text text) returns mercado.stat
     language sql
 as
 $$
-  SELECT CASE lower(trim(coalesce(p_text,'')))
-    WHEN 'pendente' THEN 'parcial_a_refinar'::mercado.status_verificacao_enum
-    WHEN 'parcial'  THEN 'parcial_a_refinar'::mercado.status_verificacao_enum
-    WHEN 'a_refinar' THEN 'parcial_a_refinar'::mercado.status_verificacao_enum
-    WHEN 'estimado_com_evidencia' THEN 'estimado_com_evidencia'::mercado.status_verificacao_enum
-    WHEN 'estimado' THEN 'estimado_com_modelagem'::mercado.status_verificacao_enum
-    WHEN 'nao_verificado' THEN 'nao_verificado'::mercado.status_verificacao_enum
-    WHEN 'não verificado' THEN 'nao_verificado'::mercado.status_verificacao_enum
-    WHEN '' THEN 'nao_verificado'::mercado.status_verificacao_enum
-    ELSE 'nao_verificado'::mercado.status_verificacao_enum
-  END;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function mercado.map_status_verificacao(text) owner to runner_dba;
@@ -15907,16 +13546,9 @@ create function mercado.map_entity_type(p_text text) returns mercado.entity_type
     language sql
 as
 $$
-  SELECT CASE
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'pessoa%' THEN 'pessoa'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'organiza%' THEN 'organizacao'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'marca%' THEN 'organizacao'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'evento%' THEN 'organizacao'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'crew%' THEN 'organizacao'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'crew/comunidade%' THEN 'organizacao'::mercado.entity_type_enum
-    WHEN lower(trim(coalesce(p_text,''))) LIKE 'comunidade%' THEN 'organizacao'::mercado.entity_type_enum
-    ELSE 'organizacao'::mercado.entity_type_enum
-  END;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function mercado.map_entity_type(text) owner to runner_dba;
@@ -15925,10 +13557,9 @@ create function mercado.norm_txt(p text) returns text
     language sql
 as
 $$
-  SELECT lower(regexp_replace(
-    coalesce(unaccent(trim(p)), trim(p)),
-    '\s+',' ','g'
-  ));
+    begin
+-- missing source code
+end;
 $$;
 
 alter function mercado.norm_txt(text) owner to runner_dba;
@@ -15937,86 +13568,9 @@ create function mercado.merge_entidades(p_origem bigint, p_destino bigint, p_mot
     language plpgsql
 as
 $$
-DECLARE
-  v_nome_origem TEXT;
-  v_nome_destino TEXT;
-  v_tipo_origem TEXT;
-  v_tipo_destino TEXT;
-BEGIN
-  IF p_origem = p_destino THEN
-    RAISE EXCEPTION 'origem e destino não podem ser iguais';
-  END IF;
-
-  -- captura nomes/tipos para auditoria
-  SELECT nome, entity_type::text INTO v_nome_origem, v_tipo_origem
-  FROM mercado.entidade WHERE id_entidade = p_origem;
-
-  SELECT nome, entity_type::text INTO v_nome_destino, v_tipo_destino
-  FROM mercado.entidade WHERE id_entidade = p_destino;
-
-  -- snapshots
-  UPDATE mercado.entidade_snapshot SET id_entidade = p_destino WHERE id_entidade = p_origem;
-
-  -- evidências
-  UPDATE mercado.evidencia SET id_entidade = p_destino WHERE id_entidade = p_origem;
-
-  -- scores: inserir origem no destino se não conflitar
-  INSERT INTO mercado.entidade_score
-  SELECT es.id_run, p_destino,
-         es.poder_estrutural_0_10, es.impacto_econ_0_10, es.influencia_dir_0_10, es.impacto_sist_0_10,
-         es.power_index_0_100, es.status_verificacao, es.racional
-  FROM mercado.entidade_score es
-  WHERE es.id_entidade = p_origem
-  ON CONFLICT (id_run, id_entidade) DO NOTHING;
-
-  DELETE FROM mercado.entidade_score WHERE id_entidade = p_origem;
-
-  -- pilares
-  INSERT INTO mercado.entidade_pilar
-  SELECT p_destino, ep.id_pilar, ep.score_0_10, ep.is_dominante, ep.notas
-  FROM mercado.entidade_pilar ep
-  WHERE ep.id_entidade = p_origem
-  ON CONFLICT (id_entidade, id_pilar) DO NOTHING;
-
-  DELETE FROM mercado.entidade_pilar WHERE id_entidade = p_origem;
-
-  -- vínculos
-  UPDATE mercado.vinculo SET id_pessoa = p_destino WHERE id_pessoa = p_origem;
-  UPDATE mercado.vinculo SET id_organizacao = p_destino WHERE id_organizacao = p_origem;
-
-  -- tipagem: garantir que destino tenha as tabelas-filhas que origem tinha
-  IF EXISTS (SELECT 1 FROM mercado.pessoa WHERE id_entidade = p_origem)
-     AND NOT EXISTS (SELECT 1 FROM mercado.pessoa WHERE id_entidade = p_destino) THEN
-    INSERT INTO mercado.pessoa (id_entidade) VALUES (p_destino) ON CONFLICT DO NOTHING;
-  END IF;
-
-  IF EXISTS (SELECT 1 FROM mercado.organizacao WHERE id_entidade = p_origem)
-     AND NOT EXISTS (SELECT 1 FROM mercado.organizacao WHERE id_entidade = p_destino) THEN
-    INSERT INTO mercado.organizacao (id_entidade, tipo_organizacao)
-    SELECT p_destino, tipo_organizacao
-    FROM mercado.organizacao WHERE id_entidade = p_origem
-    ON CONFLICT (id_entidade) DO NOTHING;
-  END IF;
-
-  -- apagar filhos origem (entidade vai cair por cascade depois)
-  DELETE FROM mercado.pessoa WHERE id_entidade = p_origem;
-  DELETE FROM mercado.organizacao WHERE id_entidade = p_origem;
-
-  -- AUDIT (não referencia entidade -> não some)
-  INSERT INTO mercado.merge_audit (
-    id_origem, nome_origem, entity_type_origem,
-    id_destino, nome_destino, entity_type_destino,
-    motivo
-  )
-  VALUES (
-    p_origem, v_nome_origem, v_tipo_origem,
-    p_destino, v_nome_destino, v_tipo_destino,
-    p_motivo
-  );
-
-  -- apagar entidade origem
-  DELETE FROM mercado.entidade WHERE id_entidade = p_origem;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.merge_entidades(bigint, bigint, text) owner to runner_dba;
@@ -16025,12 +13579,9 @@ create function mercado.grafo_novo_run(p_nome text, p_notas text DEFAULT NULL::t
     language plpgsql
 as
 $$
-DECLARE v_id BIGINT;
-BEGIN
-  INSERT INTO mercado.grafo_run(run_nome, notas) VALUES (p_nome, p_notas)
-  RETURNING id_grafo_run INTO v_id;
-  RETURN v_id;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.grafo_novo_run(text, text) owner to runner_dba;
@@ -16039,36 +13590,9 @@ create function mercado.grafo_add_rel(p_run bigint, p_origem bigint, p_destino b
     language plpgsql
 as
 $$
-BEGIN
-  INSERT INTO mercado.relacionamento(
-    id_grafo_run, id_origem, id_destino, tipo, direcao,
-    peso_0_1, confianca_0_1, racional, fonte_url, fonte_tipo, fonte_data
-  )
-  VALUES (
-    p_run, p_origem, p_destino, p_tipo,
-    CASE WHEN p_bidirecional THEN 'bidirecional'::mercado.rel_direcao_enum ELSE 'direto'::mercado.rel_direcao_enum END,
-    p_peso, p_confianca, p_racional, p_fonte_url, p_fonte_tipo, p_fonte_data
-  )
-  ON CONFLICT (id_grafo_run, id_origem, id_destino, tipo) DO UPDATE SET
-    peso_0_1 = EXCLUDED.peso_0_1,
-    confianca_0_1 = EXCLUDED.confianca_0_1,
-    racional = COALESCE(EXCLUDED.racional, mercado.relacionamento.racional),
-    fonte_url = COALESCE(EXCLUDED.fonte_url, mercado.relacionamento.fonte_url),
-    fonte_tipo = COALESCE(EXCLUDED.fonte_tipo, mercado.relacionamento.fonte_tipo),
-    fonte_data = COALESCE(EXCLUDED.fonte_data, mercado.relacionamento.fonte_data);
-
-  IF p_bidirecional THEN
-    INSERT INTO mercado.relacionamento(
-      id_grafo_run, id_origem, id_destino, tipo, direcao,
-      peso_0_1, confianca_0_1, racional, fonte_url, fonte_tipo, fonte_data
-    )
-    VALUES (
-      p_run, p_destino, p_origem, p_tipo, 'bidirecional'::mercado.rel_direcao_enum,
-      p_peso, p_confianca, p_racional, p_fonte_url, p_fonte_tipo, p_fonte_data
-    )
-    ON CONFLICT (id_grafo_run, id_origem, id_destino, tipo) DO NOTHING;
-  END IF;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function mercado.grafo_add_rel(bigint, bigint, bigint, mercado.rel_tipo_enum, numeric, numeric, text, text, text, date, boolean) owner to runner_dba;
@@ -16077,41 +13601,9 @@ create function public.grava_logs_results(p_trace_id uuid, p_run_id uuid, p_cod_
     language plpgsql
 as
 $$
-DECLARE
-
-BEGIN
-
-    INSERT INTO tb_resultados_logs (
-        trace_id,
-        run_id,
-        cod_evento,
-        percurso,
-        num_peito,
-        severity,
-        processing_stage,
-        error_code,
-        payload
-    )
-    VALUES (
-        p_trace_id::uuid,
-        p_run_id::uuid,
-        p_cod_evento,
-        p_percurso,
-        p_num_peito,
-        p_severity,
-        p_processing_stage,
-        p_error_code,
-        p_payload
-        )
-    ON CONFLICT (cod_evento, percurso, num_peito, severity, processing_stage)
-    DO UPDATE SET
-        payload            = EXCLUDED.payload,
-        trace_id           = EXCLUDED.trace_id,
-        run_id             = EXCLUDED.run_id,
-        event_timestamp    = CURRENT_TIMESTAMP;
-
-    return 0;
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.grava_logs_results(uuid, uuid, text, varchar, varchar, varchar, varchar, varchar, jsonb) owner to runner_dba;
@@ -16120,107 +13612,9 @@ create function public.sanitize_pace(p_input text) returns time without time zon
     language plpgsql
 as
 $$
-DECLARE
-    v_clean   text;
-    v_match   text[];
-    v_h int;
-    v_m int;
-    v_s numeric;
-    v_frac numeric := 0;
-BEGIN
-
-    IF p_input IS NULL OR btrim(p_input) = '' THEN
-        RETURN NULL;
-    END IF;
-
-    v_clean := btrim(p_input);
-
-    /*
-    ============================================================
-    1️⃣ FORMATO: HHhMM'SS[,MS]
-       Ex:
-       01h11'44,07
-       01h18'09
-    ============================================================
-    */
-    v_match := regexp_match(
-        v_clean,
-        '^(\d{1,2})h(\d{2})''(\d{2})(?:,(\d+))?$'
-    );
-
-    IF v_match IS NOT NULL THEN
-
-        v_h := v_match[1]::int;
-        v_m := v_match[2]::int;
-        v_s := v_match[3]::int;
-
-        -- Se houver milissegundo
-        IF v_match[4] IS NOT NULL THEN
-            v_frac := v_match[4]::numeric / power(10, length(v_match[4]));
-        ELSE
-            v_frac := 0;
-        END IF;
-
-        IF v_h BETWEEN 0 AND 23
-           AND v_m BETWEEN 0 AND 59
-           AND v_s BETWEEN 0 AND 59 THEN
-            RETURN make_time(v_h, v_m, v_s + v_frac);
-        ELSE
-            RETURN NULL;
-        END IF;
-    END IF;
-
-    -- Padronização vírgula → dois pontos
-    v_clean := replace(v_clean, ',', ':');
-
-    /*
-    ============================================================
-    2️⃣ FORMATO COM ":" (MM:SS ou HH:MI:SS)
-    ============================================================
-    */
-    v_match := regexp_match(
-        v_clean,
-        '^\D*(\d{1,2}):(\d{2})(?::(\d{2}))?\D*$'
-    );
-
-    IF v_match IS NOT NULL THEN
-
-        IF v_match[3] IS NULL THEN
-            v_h := 0;
-            v_m := v_match[1]::int;
-            v_s := v_match[2]::int;
-        ELSE
-            v_h := v_match[1]::int;
-            v_m := v_match[2]::int;
-            v_s := v_match[3]::int;
-        END IF;
-
-        IF v_h BETWEEN 0 AND 23
-           AND v_m BETWEEN 0 AND 59
-           AND v_s BETWEEN 0 AND 59 THEN
-            RETURN make_time(v_h, v_m, v_s);
-        ELSE
-            RETURN NULL;
-        END IF;
-    END IF;
-
-    /*
-    ============================================================
-    3️⃣ DECIMAL EXCEL (fração de dia)
-    ============================================================
-    */
-    v_match := regexp_match(
-        v_clean,
-        '^\D*(\d+\.\d+)\D*$'
-    );
-
-    IF v_match IS NOT NULL THEN
-        RETURN (v_match[1]::numeric * interval '1 day')::time;
-    END IF;
-
-    RETURN NULL;
-
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.sanitize_pace(text) owner to runner_dba;
@@ -16230,29 +13624,8 @@ create function public.sanitize_percurso(p_input text) returns numeric
     language plpgsql
 as
 $$
-declare
-    v_match text;
-    v_value numeric;
 begin
-
-    -- Extrai primeiro número inteiro ou decimal
-    v_match := substring(p_input from '(\d+(?:\.\d+)?)');
-
-    -- Se não encontrou número
-    if v_match is null then
-        return null;
-    end if;
-
-    -- Converte para numeric (remove zeros à esquerda automaticamente)
-    v_value := v_match::numeric;
-
-    -- Ignora valores maiores que 999
-    if v_value > 999 or v_value = 0 then
-        return null;
-    end if;
-
-    return v_value;
-
+    -- missing source code
 end;
 $$;
 
@@ -16262,883 +13635,9 @@ create procedure public.nova_gera_resultados(IN p_cod_evento character varying, 
     language plpgsql
 as
 $$
-DECLARE
--- tipo de processamento = 0 - Insere ou atualiza registros na tabela pimenta_tb_rs e gera resumo
--- tipo de processamento = 1 - Apaga todos os registros do evento e insere os registros novamente ( utilizado para reprocessamento completo do evento em caso de falhas ou inconsistências graves identificadas após o processamento inicial )
--- tipo de processamento = 2 - Somente verifica registros sem atualizar a base de dados e gera logs de erros encontrados durante a validação dos dados (utilizado para homologação do processo de geração de resultados)
-
-var_classificacao_total         boolean;
-var_classificacao_sexo          boolean;
-var_classificacao_categoria     boolean;
-
-var_gera_resultado_ini          timestamp;
-var_id_evento                   integer;
-var_nome                        varchar;
-var_tempo_valido                boolean;
-var_total_registros             integer;
-var_total_registros_processados integer;
-var_total_erros_encontrados     integer;
-var_erros_ocorridos             boolean;
-var_chave_processamento         varchar;
-var_chave_verificacao           varchar;
-var_pace                        varchar;
-var_tempo_bruto                 varchar;
-var_tempo_total                 varchar;
-var_hora_largada                varchar;
-var_modalidade                  varchar;
-var_percurso                    varchar;
-var_homologado                  boolean;
-var_concluinte                  boolean;
-var_msg_erro                    varchar;
-var_retorno                     integer;
-var_status_final                integer;
-var_np                          integer;
-var_pcd                         boolean;
-rec_resultados                  record;
-
-
-cur_resultados cursor for
-select distinct
-    num_peito,
-    nome,
-    categoria,
-    id_evento,
-    modalidade,
-    pace,
-    percurso,
-    substring(upper(sexo),1,1) as sexo,
-    trim(tempo_bruto) as tempo_bruto,
-    trim(tempo_total) as tempo_total,
-    classificacao_categoria,
-    classificacao_sexo,
-    classificacao_total,
-    velocidade_media,
-    upper(trim(REPLACE(equipe,' ',' '))) as equipe,
-    data_nascimento,
-    substring(trim(nacionalidade),1,8) as nacionalidade,
-    chave_processamento,
-    hora_largada,
-    regexp_replace(np, '\D','','g') as np
-from
-    pimenta_tb_rs_temp where
-    id_evento::integer = p_cod_evento::integer
-    and modalidade not in('KIDS')
-    and chave_processamento is null
-order by
-    tempo_total desc, tempo_bruto desc;
-
-
-BEGIN
-    var_classificacao_total         := false;
-    var_classificacao_sexo          := false;
-    var_classificacao_categoria     := false;
-
-    var_gera_resultado_ini          := current_timestamp;
-    var_id_evento                   := null;
-    var_erros_ocorridos             := false;
-    var_total_registros             := 0;
-    var_total_registros_processados := 0;
-    var_total_erros_encontrados     := 0;
-    var_chave_processamento         := md5(concat(var_gera_resultado_ini::varchar,p_cod_evento))::varchar;
-
-    -- verifica se evento foi cadastrado
-    select
-        id_evento
-    into
-        var_id_evento
-    from
-         tb_evento_corridas
-    where
-         id_evento = p_cod_evento::integer;
-
-    if var_id_evento is null then
-        var_retorno :=  grava_logs_results(
-                        var_chave_processamento::uuid,  -- trace_id
-                        gen_random_uuid(),              -- run_id
-                        p_cod_evento,                   -- cod_evento
-                        '0',                            -- percurso
-                        '0',                            -- num_peito
-                        'ERROR',                        -- severity
-                        'INICIALIZACAO',                -- processing_stage
-                        '0001',                         -- error_code
-                        jsonb_build_object(
-                            'evento', p_cod_evento,
-                            'percurso', '0',
-                            'num_peito', '0',
-                            'codigo_erro', '0001',
-                            'motivo', 'Código do evento não encontrado na lista de corridas cadastradas'
-                            )                           -- payload
-                        );
-        return;
-    end if;
-
-    var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    '0',                            -- percurso
-                    '0',                            -- num_peito
-                    'INFO',                         -- severity
-                    'INICIALIZACAO',                -- processing_stage
-                    '0000',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', '0',
-                        'num_peito', '0',
-                        'codigo_erro', '0000',
-                        'motivo', 'Iniciando processamento de resultados do evento'
-                        )                           -- payload
-                    );
-
-    -- Remove registros da tabela de resultados para reprocessamento completo
-    if p_tipo_processamento = 1 then
-        delete from pimenta_tb_rs where id_evento = p_cod_evento::integer;
-        delete from pimenta_tb_rs_versao where id_evento = p_cod_evento::integer;
-    end if;
-
-    -- Gera versões para resultados já capturados pelos usuários
-     if p_tipo_processamento < 2 then
-        insert into pimenta_tb_rs_versao
-        (       id_resultado,
-                id_resultado_versao,
-                num_peito,
-                nome,
-                data_nascimento,
-                id_evento,
-                modalidade,
-                pace,
-                percurso,
-                sexo,
-                tempo_bruto,
-                tempo_total,
-                classificacao_categoria,
-                classificacao_sexo,
-                classificacao_total,
-                velocidade_media,
-                equipe,
-                nome_categoria,
-                id_usuario,
-                id_categoria,
-                homologado,
-                concluinte,
-                chave_processamento,
-                chave_verificacao,
-                nacionalidade,
-                status_final,
-                hora_largada,
-                tempo_f1_categoria,
-                tempo_f1_sexo,
-                tempo_f1_total,
-                posicao_ranking,
-                classificacao_pais,
-                pcd,
-                nome_full_text,
-                idade_range
-                )
-        ( select
-                id_resultado,
-                1,
-                num_peito,
-                nome,
-                data_nascimento,
-                id_evento,
-                modalidade,
-                pace,
-                percurso,
-                sexo,
-                tempo_bruto,
-                tempo_total,
-                classificacao_categoria,
-                classificacao_sexo,
-                classificacao_total,
-                velocidade_media,
-                equipe,
-                nome_categoria,
-                id_usuario,
-                id_categoria,
-                homologado,
-                concluinte,
-                chave_processamento,
-                chave_verificacao,
-                nacionalidade,
-                status_final,
-                hora_largada,
-                tempo_f1_categoria,
-                tempo_f1_sexo,
-                tempo_f1_total,
-                posicao_ranking,
-                classificacao_pais,
-                pcd,
-                nome_full_text,
-                idade_range
-          from pimenta_tb_rs
-          where
-          id_evento = p_cod_evento::integer and
-          id_usuario  is not null
-        )
-        ON CONFLICT (id_evento,percurso,num_peito) DO UPDATE
-        SET
-                id_resultado_versao  = pimenta_tb_rs_versao.id_resultado_versao::integer + 1,
-                id_resultado_versao_atual = null;
-    end if;
-
-    -- Quando do reprocessamento, elimina registros que não constam do novo processamento
-    if p_tipo_processamento = 0 then
-        delete from pimenta_tb_rs res
-        where id_evento::integer = p_cod_evento::integer and
-        not exists
-        ( select id_evento
-          from pimenta_tb_rs_temp tmp
-          where
-          tmp.id_evento = res.id_evento::varchar and
-          tmp.num_peito = res.num_peito::varchar and
-          sanitize_percurso(tmp.percurso)::numeric  = res.percurso::numeric  and
-          tmp.chave_processamento is null
-        );
-    end if;
-
-
-    open cur_resultados;
-    loop
-        fetch cur_resultados into rec_resultados;
-        exit when not found;
-
-        var_total_registros := var_total_registros + 1;
-        var_homologado  := true;
-        var_concluinte  := true;
-        var_status_final:= 0;
-
-        -- não processa percurso incorreto
-        -- var_percurso := trim(LEADING '0' from regexp_replace(rec_resultados.percurso, '[^0-9.]','','g'));
-        var_percurso := sanitize_percurso(rec_resultados.percurso);
-        if var_percurso is null then
-                    var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    rec_resultados.percurso,        -- percurso
-                    rec_resultados.num_peito,       -- num_peito
-                    'ERROR',                        -- severity
-                    'VALIDACAO',                    -- processing_stage
-                    '0002',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', rec_resultados.percurso,
-                        'num_peito', rec_resultados.num_peito,
-                        'codigo_erro', '0002',
-                        'motivo', concat('Informação de percurso incorreta para o atleta número - ',rec_resultados.num_peito, ' - Percurso : ', rec_resultados.percurso)
-                        )                           -- payload
-                 );
-            var_erros_ocorridos := true;
-            var_total_erros_encontrados := var_total_erros_encontrados + 1;
-            continue;
-         end if;
-
-        -- verifica sexo
-        if rec_resultados.sexo <> 'M' and rec_resultados.sexo <> 'F' and rec_resultados.sexo <> 'X' and rec_resultados.sexo <> 'N' then
-            var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    rec_resultados.percurso,        -- percurso
-                    rec_resultados.num_peito,       -- num_peito
-                    'ERROR',                         -- severity
-                    'VALIDACAO',                    -- processing_stage
-                    '0003',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', rec_resultados.percurso,
-                        'num_peito', rec_resultados.num_peito,
-                        'codigo_erro', '0003',
-                        'motivo', concat('Gênero informado incorretamente para atleta número - ',rec_resultados.num_peito,' - ', rec_resultados.nome,' - Sexo : ', rec_resultados.sexo)
-                        )                           -- payload
-                 );
-            var_erros_ocorridos := true;
-            var_total_erros_encontrados := var_total_erros_encontrados + 1;
-            continue;
-        end if;
-
-        -- verifica nome
-        var_nome := upper(trim(REPLACE(rec_resultados.nome,' ',' ')));
-        if length(var_nome) < 1 or var_nome is null then
-            var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    rec_resultados.percurso,        -- percurso
-                    rec_resultados.num_peito,       -- num_peito
-                    'ERROR',                         -- severity
-                    'VALIDACAO',                    -- processing_stage
-                    '0004',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', rec_resultados.percurso,
-                        'num_peito', rec_resultados.num_peito,
-                        'codigo_erro', '0004',
-                        'motivo', concat('Nome do atleta não foi informado para o atleta número - ',rec_resultados.num_peito)
-                        )                           -- payload
-                 );
-            var_erros_ocorridos := true;
-            var_total_erros_encontrados := var_total_erros_encontrados + 1;
-            continue;
-        end if;
-
-        if var_nome ~* 'N[ÃA]O\s+ENCONTRADO' THEN
-           var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    rec_resultados.percurso,        -- percurso
-                    rec_resultados.num_peito,       -- num_peito
-                    'ERROR',                         -- severity
-                    'VALIDACAO',                    -- processing_stage
-                    '0005',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', rec_resultados.percurso,
-                        'num_peito', rec_resultados.num_peito,
-                        'codigo_erro', '0005',
-                        'motivo', concat('Registro ignorado devido à regra de exclusão para o atleta número - ',rec_resultados.num_peito, ' - Nome : ', var_nome)
-                        )                           -- payload
-                 );
-            var_erros_ocorridos := true;
-            var_total_erros_encontrados := var_total_erros_encontrados + 1;
-            continue;
-        end if;
-
-        -- Padroniza nome de atleta desconhecido
-        IF unaccent(var_nome) ~*  '(NAO\s+CADASTRADO|DESCONHECIDO|SEM\s+CADASTRO)'
-            THEN
-                var_nome := 'ATLETA DESCONHECIDO';
-        END IF;
-
-        -- 1 = Não Participou do evento
-        -- 0 = Participou do evento
-        if length(rec_resultados.np) > 0  and rec_resultados.np::integer = 1 then
-            var_np := 1;
-        else
-            var_np := 0;
-        end if;
-
-        var_pace            := rec_resultados.pace;
-        var_tempo_total     := rec_resultados.tempo_total;
-        var_tempo_bruto     := rec_resultados.tempo_bruto;
-        var_hora_largada    := trim(rec_resultados.hora_largada);
-
-        -- verifica pace e considera nulo para não participantes ( np = 1 )
-
-        if var_np = 1 then
-            var_concluinte := false;
-            var_pace := null;
-            var_tempo_total := null;
-        end if;
-
-        -- status final do resultado
-        -- 0 = concluinte
-        -- 1 = retirada
-        -- 2 = desclassificado
-        -- 3 = não participou
-        -- 4 = Sem tempo de conclusão
-
-        -- testa desclassificados ( geralmente informado na coluna modalidade ou no tempo total )
-        if upper(trim(rec_resultados.modalidade)) = 'DESCLASSIFICADO'   or
-           upper(trim(rec_resultados.modalidade)) = 'DSQ'   or
-           upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'DESCLASSIFICADO' then
-           var_status_final := 2;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        -- Se não existir tempo total, considerar como não concluinte e status final = 4
-        if var_tempo_total is null then
-           var_concluinte   := false;
-           var_status_final := 4;
-        end if;
-
-        -- Verifica tempo total para atletas retirados das provas ou que não terminaram a prova
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'RETIRAD' then
-           var_status_final := 1;
-           var_concluinte   := false;
-           var_tempo_total  := null;
-        end if;
-
-        if upper(replace(REGEXP_REPLACE(var_tempo_total,'[[:digit:]]','','g' ),':','')) = 'NÃO TERMINOU' then
-           var_concluinte  := false;
-           var_tempo_total := null;
-        end if;
-
-        if var_np = 1 then
-           var_status_final := 3;
-           var_tempo_bruto  := null;
-           var_hora_largada := null;
-        end if;
-
-        var_modalidade := rec_resultados.modalidade;
-
-        -- valida classificacao_total
-        if rec_resultados.classificacao_total is not null then
-            if var_concluinte = true and numero_valido(rec_resultados.classificacao_total) = false then
-                var_retorno :=  grava_logs_results(
-                            var_chave_processamento::uuid,  -- trace_id
-                            gen_random_uuid(),              -- run_id
-                            p_cod_evento,                   -- cod_evento
-                            rec_resultados.percurso,        -- percurso
-                            rec_resultados.num_peito,       -- num_peito
-                            'ERROR',                        -- severity
-                            'VALIDACAO',                    -- processing_stage
-                            '0020',                         -- error_code
-                            jsonb_build_object(
-                                'evento', p_cod_evento,
-                                'percurso', rec_resultados.percurso,
-                                'num_peito', rec_resultados.num_peito,
-                                'codigo_erro', '0020',
-                                'motivo', concat('Classificacao total não numérica para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.classificacao_total)
-                                )                           -- payload
-                     );
-                    var_erros_ocorridos := true;
-                    var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                    continue;
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_total := true;
-        end if;
-
-        -- valida classificacao_sexo
-        if rec_resultados.classificacao_sexo is not null then
-            if var_concluinte = true and numero_valido(rec_resultados.classificacao_sexo) = false then
-                var_retorno :=  grava_logs_results(
-                            var_chave_processamento::uuid,  -- trace_id
-                            gen_random_uuid(),              -- run_id
-                            p_cod_evento,                   -- cod_evento
-                            rec_resultados.percurso,        -- percurso
-                            rec_resultados.num_peito,       -- num_peito
-                            'ERROR',                        -- severity
-                            'VALIDACAO',                    -- processing_stage
-                            '0021',                         -- error_code
-                            jsonb_build_object(
-                                'evento', p_cod_evento,
-                                'percurso', rec_resultados.percurso,
-                                'num_peito', rec_resultados.num_peito,
-                                'codigo_erro', '0021',
-                                'motivo', concat('Classificacao sexo não numérica para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.classificacao_sexo)
-                                )                           -- payload
-                     );
-                    var_erros_ocorridos := true;
-                    var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                    continue;
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_sexo := true;
-        end if;
-
-        -- valida classificacao_categoria
-        if rec_resultados.classificacao_categoria is not null then
-            if var_concluinte = true and numero_valido(rec_resultados.classificacao_categoria) = false then
-                var_retorno :=  grava_logs_results(
-                            var_chave_processamento::uuid,  -- trace_id
-                            gen_random_uuid(),              -- run_id
-                            p_cod_evento,                   -- cod_evento
-                            rec_resultados.percurso,        -- percurso
-                            rec_resultados.num_peito,       -- num_peito
-                            'ERROR',                        -- severity
-                            'VALIDACAO',                    -- processing_stage
-                            '0021',                         -- error_code
-                            jsonb_build_object(
-                                'evento', p_cod_evento,
-                                'percurso', rec_resultados.percurso,
-                                'num_peito', rec_resultados.num_peito,
-                                'codigo_erro', '0021',
-                                'motivo', concat('Classificacao categoria não numérica para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.classificacao_categoria)
-                                )                           -- payload
-                     );
-                    var_erros_ocorridos := true;
-                    var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                    continue;
-                var_erros_ocorridos := true;
-                continue;
-            end if;
-        else
-            var_classificacao_categoria := true;
-        end if;
-
-
-        -- Verifica se o tempo total é válido
-        if var_np = 0 and var_tempo_total is not null then
-                if sanitize_pace(var_tempo_total) is null then
-                   var_retorno :=  grava_logs_results(
-                            var_chave_processamento::uuid,  -- trace_id
-                            gen_random_uuid(),              -- run_id
-                            p_cod_evento,                   -- cod_evento
-                            rec_resultados.percurso,        -- percurso
-                            rec_resultados.num_peito,       -- num_peito
-                            'ERROR',                        -- severity
-                            'VALIDACAO',                    -- processing_stage
-                            '0006',                         -- error_code
-                            jsonb_build_object(
-                                'evento', p_cod_evento,
-                                'percurso', rec_resultados.percurso,
-                                'num_peito', rec_resultados.num_peito,
-                                'codigo_erro', '0006',
-                                'motivo', concat('Tempo Total incorreto para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - Tempo Total : ', rec_resultados.tempo_total)
-                                )                           -- payload
-                     );
-                    var_erros_ocorridos := true;
-                    var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                    continue;
-                -- calcula pace caso tempo total seja válido e pace seja nulo
-                end if;
-         end if;
-
-        if rec_resultados.pace is not null and sanitize_pace(rec_resultados.pace) is null and var_np = 0 then
-           var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    rec_resultados.percurso,        -- percurso
-                    rec_resultados.num_peito,       -- num_peito
-                    'ERROR',                         -- severity
-                    'VALIDACAO',                    -- processing_stage
-                    '0007',                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', rec_resultados.percurso,
-                        'num_peito', rec_resultados.num_peito,
-                        'codigo_erro', '0007',
-                        'motivo', concat('Pace incorreto para o atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.pace)
-                        )                           -- payload
-                 );
-                var_erros_ocorridos := true;
-                var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                continue;
-        end if;
-
-        var_pace            := sanitize_pace(var_pace);
-        var_tempo_total     := sanitize_pace(var_tempo_total);
-        var_hora_largada    := sanitize_pace(rec_resultados.hora_largada);
-
-        -- calcula pace caso tempo total seja válido e pace seja nulo para participantes ( np = 0 )
-        if  rec_resultados.pace is null and var_np = 0 then
-            var_pace := (var_tempo_total::time / var_percurso::numeric)::time;
-        end if;
-
-        -- Valida tempo bruto
-
-        if  var_tempo_bruto is not null and var_status_final = 0 then
-            if sanitize_pace(var_tempo_bruto) is null then
-                   var_retorno :=  grava_logs_results(
-                            var_chave_processamento::uuid,  -- trace_id
-                            gen_random_uuid(),              -- run_id
-                            p_cod_evento,                   -- cod_evento
-                            rec_resultados.percurso,        -- percurso
-                            rec_resultados.num_peito,       -- num_peito
-                            'ERROR',                        -- severity
-                            'VALIDACAO',                    -- processing_stage
-                            '0008',                         -- error_code
-                            jsonb_build_object(
-                                'evento', p_cod_evento,
-                                'percurso', rec_resultados.percurso,
-                                'num_peito', rec_resultados.num_peito,
-                                'codigo_erro', '0008',
-                                'motivo', concat('Tempo Bruto incorreto para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.tempo_bruto)
-                                )                           -- payload
-                     );
-                    var_erros_ocorridos := true;
-                    var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                    continue;
-            end if;
-        end if;
-
-        -- valida hora_largada
-
-        if rec_resultados.hora_largada is not null and var_hora_largada is null and var_status_final = 0 then
-                var_retorno :=  grava_logs_results(
-                        var_chave_processamento::uuid,  -- trace_id
-                        gen_random_uuid(),              -- run_id
-                        p_cod_evento,                   -- cod_evento
-                        rec_resultados.percurso,        -- percurso
-                        rec_resultados.num_peito,       -- num_peito
-                        'ERROR',                        -- severity
-                        'VALIDACAO',                    -- processing_stage
-                        '0009',                         -- error_code
-                        jsonb_build_object(
-                            'evento', p_cod_evento,
-                            'percurso', rec_resultados.percurso,
-                            'num_peito', rec_resultados.num_peito,
-                            'codigo_erro', '0009',
-                            'motivo', concat('Hora da largada incorreta para atleta número - ',rec_resultados.num_peito, ' - ', var_nome, ' - ', rec_resultados.hora_largada)
-                            )                           -- payload
-                    );
-                var_erros_ocorridos := true;
-                var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                continue;
-        end if;
-
-        -- Valida número de peito
-        if rec_resultados.num_peito ~ '^[+-]?[0-9]+$' = false then
-                var_retorno :=  grava_logs_results(
-                        var_chave_processamento::uuid,  -- trace_id
-                        gen_random_uuid(),              -- run_id
-                        p_cod_evento,                   -- cod_evento
-                        rec_resultados.percurso,        -- percurso
-                        rec_resultados.num_peito,       -- num_peito
-                        'ERROR',                        -- severity
-                        'VALIDACAO',                    -- processing_stage
-                        '0010',                         -- error_code
-                        jsonb_build_object(
-                            'evento', p_cod_evento,
-                            'percurso', rec_resultados.percurso,
-                            'num_peito', rec_resultados.num_peito,
-                            'codigo_erro', '0010',
-                            'motivo', concat('Número de peito inválido - ',rec_resultados.num_peito, ' - ', var_nome)
-                            )                           -- payload
-                    );
-                var_erros_ocorridos := true;
-                var_total_erros_encontrados := var_total_erros_encontrados + 1;
-                continue;
-        end if;
-
-        if strpos(upper(concat(rec_resultados.nome,' ',rec_resultados.categoria,' ',rec_resultados.percurso,' ', rec_resultados.modalidade,' ', rec_resultados.equipe)),'PCD') > 0 then
-           var_pcd := true;
-        else
-           var_pcd := false;
-        end if;
-
-        if p_tipo_processamento < 2 then
-            insert into pimenta_tb_rs
-            (   num_peito               ,
-                nome                    ,
-                id_evento               ,
-                modalidade              ,
-                pace                    ,
-                percurso                ,
-                sexo                    ,
-                tempo_bruto             ,
-                tempo_total             ,
-                classificacao_categoria ,
-                classificacao_sexo      ,
-                classificacao_total     ,
-                velocidade_media        ,
-                equipe,
-                nome_categoria,
-                homologado,
-                concluinte,
-                data_nascimento,
-                nacionalidade,
-                chave_processamento,
-                chave_verificacao,
-                status_final,
-                hora_largada,
-                pcd,
-                idade_range
-            ) values (
-                rec_resultados.num_peito::integer,
-                var_nome,
-                var_id_evento,
-                var_modalidade,
-                var_pace::time,
-                var_percurso::numeric,
-                rec_resultados.sexo,
-                var_tempo_bruto::time,
-                var_tempo_total::time,
-                rec_resultados.classificacao_categoria::integer,
-                rec_resultados.classificacao_sexo::integer,
-                rec_resultados.classificacao_total::integer,
-                rec_resultados.velocidade_media::numeric,
-                rec_resultados.equipe,
-                rec_resultados.categoria,
-                var_homologado,
-                var_concluinte,
-                rec_resultados.data_nascimento::date,
-                rec_resultados.nacionalidade,
-                var_chave_processamento::uuid,
-                md5(concat(rec_resultados.num_peito::varchar,var_nome,var_tempo_bruto::varchar,var_pace::varchar))::uuid,
-                var_status_final,
-                var_hora_largada::time,
-                var_pcd,
-                extrair_faixa_etaria(rec_resultados.categoria)::int4range
-            )
-            ON CONFLICT (id_evento,percurso,num_peito) DO UPDATE
-            SET
-                nome            = excluded.nome,
-                modalidade      = excluded.modalidade,
-                pace            = excluded.pace,
-                percurso        = excluded.percurso,
-                sexo            = excluded.sexo,
-                tempo_bruto     = excluded.tempo_bruto,
-                tempo_total     = excluded.tempo_total,
-                classificacao_categoria = excluded.classificacao_categoria,
-                classificacao_sexo      = excluded.classificacao_sexo,
-                classificacao_total     = excluded.classificacao_total,
-                velocidade_media        = excluded.velocidade_media,
-                equipe                  = excluded.equipe,
-                nome_categoria          = excluded.nome_categoria,
-                data_nascimento         = excluded.data_nascimento,
-                nacionalidade           = excluded.nacionalidade,
-                homologado              = excluded.homologado,
-                concluinte              = excluded.concluinte,
-                chave_processamento     = excluded.chave_processamento,
-                chave_verificacao       = excluded.chave_verificacao,
-                status_final            = excluded.status_final,
-                hora_largada            = excluded.hora_largada,
-                pcd                     = excluded.pcd,
-                idade_range             = excluded.idade_range;
-
-            update
-                pimenta_tb_rs_temp
-            set
-                chave_processamento = var_chave_processamento::uuid
-            where
-                id_evento   =   p_cod_evento             and
-                percurso    =   rec_resultados.percurso  and
-                num_peito   =   rec_resultados.num_peito and
-                nome        =   rec_resultados.nome      and
-                categoria   =   rec_resultados.categoria and
-                chave_processamento is null;
-
-        end if;
-
-    end loop;
-
--- verifica se existem registros para processamento
-    if var_total_registros = 0 then
-       var_retorno :=  grava_logs_results(
-                        var_chave_processamento::uuid,  -- trace_id
-                        gen_random_uuid(),              -- run_id
-                        p_cod_evento,                   -- cod_evento
-                        '0',                            -- percurso
-                        '0',                            -- num_peito
-                        'WARN',                         -- severity
-                        'INICIALIZACAO',                -- processing_stage
-                        '0002',                         -- error_code
-                        jsonb_build_object(
-                            'evento', p_cod_evento,
-                            'percurso', '0',
-                            'num_peito', '0',
-                            'codigo_erro', '0002',
-                            'motivo', 'Não existem registros do evento para processamento'
-                            )                           -- payload
-                        );
-        return;
-    end if;
-
-    close cur_resultados;
-
-    if p_tipo_processamento = 0  then
-        UPDATE pimenta_tb_rs_versao AS t1
-            SET id_resultado_versao_atual = t2.id_resultado::integer
-            FROM pimenta_tb_rs AS t2
-        WHERE
-            t1.id_evento = p_cod_evento::integer and
-            t1.id_evento = t2.id_evento::integer and
-            t1.num_peito = t2.num_peito::integer and
-            t1.percurso  = t2.percurso::numeric  and
-            t1.id_resultado_versao_atual is null;
-    end if;
-
-    if p_tipo_processamento < 2  then
-       if var_classificacao_total = true or var_classificacao_sexo = true or var_classificacao_categoria = true then
-            var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    '0',                            -- percurso
-                    '0',                            -- num_peito
-                    'WARN',                         -- severity
-                    'FINALIZACAO',                  -- processing_stage
-                    '0',                            -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', '0',
-                        'num_peito', '0',
-                        'codigo_erro', '0',
-                        'motivo', concat('Atualização de classificação foi executada total/Sexo/Categoria',var_classificacao_total,'/',var_classificacao_sexo,'/',var_classificacao_categoria)
-                        )                           -- payload
-                    );
-            -- call atualiza_classific_f1_v2(var_id_evento,var_classificacao_total,var_classificacao_sexo,var_classificacao_categoria);
-        end if;
-    end if;
-
-/*
-    call atualiza_resultados_resumo_2025(var_id_evento);
-
-    delete from pimenta_tb_rs_resumo where id_evento = var_id_evento;
-
-    insert into pimenta_tb_rs_resumo
-    ( id_evento, percurso, modalidade, concluintes,inscritos,pace_medio,pace_medio_top_10,pace_medio_top_100,concluintes_sub3 )
-      select
-        id_evento,
-        percurso,
-        modalidade,
-        count(*) FILTER (WHERE homologado = true and concluinte=true and status_final=0) as concluintes,
-        count(*) as inscritos,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null) as pace_medio,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 10 or classificacao_sexo <= 10) ) as pace_medio_top_10,
-        avg(pace) FILTER (WHERE homologado = true and concluinte=true and status_final=0 and pace is not null and ( classificacao_total <= 100 or classificacao_sexo <= 100)) as pace_medio_top_100,
-        count(*)  FILTER (WHERE homologado = true and concluinte=true and status_final=0 and tempo_total < '03:00:00'::time and percurso >= 42) as concluintes_sub3    from pimenta_tb_rs
-    where id_evento  = var_id_evento
-    group by id_evento,percurso,modalidade;
-
-    UPDATE pimenta_tb_rs_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    pimenta_tb_rs_resumo.id_evento  = var_id_evento
-    and pimenta_tb_rs_resumo.id_evento = subquery.id_evento
-    and pimenta_tb_rs_resumo.percurso = subquery.percurso_evento;
-
-    UPDATE pimenta_tb_rs_resumo
-    SET tipo_corrida=subquery.tipo_corrida
-    FROM (SELECT id_evento,percurso_evento,tipo_corrida from tb_evento_corridas_percursos
-    ) AS subquery
-    WHERE
-    pimenta_tb_rs_resumo.tipo_corrida is null
-    and pimenta_tb_rs_resumo.id_evento = subquery.id_evento
-    and pimenta_tb_rs_resumo.percurso = subquery.percurso_evento;
-
-    select
-        md5(concat(sum(num_peito)::varchar,sum(tempo_bruto)::varchar))::varchar
-    into
-        var_chave_verificacao
-    from
-        pimenta_tb_rs where id_evento = var_id_evento;
-
-    update
-        pimenta_tb_rs_processa
-    set
-        data_processamento_final    = now(),
-        erro_execucao               = var_erros_ocorridos,
-        chave_verificacao           = var_chave_verificacao::uuid
-    where
-        cod_evento      = p_cod_evento  and
-        id_evento       = var_id_evento and
-        chave_processamento = var_chave_processamento::uuid;
-*/
-
-    var_retorno :=  grava_logs_results(
-                    var_chave_processamento::uuid,  -- trace_id
-                    gen_random_uuid(),              -- run_id
-                    p_cod_evento,                   -- cod_evento
-                    '0',                            -- percurso
-                    '0',                            -- num_peito
-                    'INFO',                         -- severity
-                    'FINALIZACAO',                  -- processing_stage
-                    LPAD(var_total_erros_encontrados::varchar,4,'0'),                         -- error_code
-                    jsonb_build_object(
-                        'evento', p_cod_evento,
-                        'percurso', '0',
-                        'num_peito', '0',
-                        'codigo_erro', LPAD(var_total_erros_encontrados::varchar,4,'0'),
-                        'motivo', concat('Final de processamento de resultados do evento', ' - Total de registros processados : ', var_total_registros, ' - Total de erros encontrados : ', var_total_erros_encontrados)
-                        )                           -- payload
-                    );
-
-END
+begin
+    -- missing source code
+end;
 $$;
 
 alter procedure public.nova_gera_resultados(varchar, integer) owner to runner_dba;
@@ -17149,15 +13648,9 @@ create function public.extrair_dominio(p_url text) returns text
     language sql
 as
 $$
-WITH host AS (
-    SELECT substring(p_url FROM '(?:https?://)?([^/?#:]+)') AS h
-),
-sem_tld AS (
-    SELECT regexp_replace(h, '\.(com\.br|com|net\.br|net|org\.br|org)$', '', 'i') AS h
-    FROM host
-)
-SELECT substring(h FROM '([^\.]+)$')
-FROM sem_tld;
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.extrair_dominio(text) owner to runner_dba;
@@ -17166,15 +13659,9 @@ create function public.normaliza_nome(p_nome text) returns text
     language sql
 as
 $$
-    select case
-        when p_nome is null then null
-        else regexp_replace(
-            unaccent(lower(trim(p_nome))),
-            '\s+',
-            ' ',
-            'g'
-        )
-    end
+    begin
+-- missing source code
+end;
 $$;
 
 alter function public.normaliza_nome(text) owner to runner_dba;
@@ -22799,7 +19286,9 @@ create function crm.crm_only_digits(p_value text) returns text
     language sql
 as
 $$
-    select nullif(regexp_replace(coalesce(p_value, ''), '[^0-9]', '', 'g'), '');
+    begin
+-- missing source code
+end;
 $$;
 
 alter function crm.crm_only_digits(text) owner to runner_dba;
@@ -22810,10 +19299,9 @@ create function crm.crm_normalize_text(p_value text) returns text
     language sql
 as
 $$
-    select nullif(
-        trim(regexp_replace(upper(unaccent(coalesce(p_value, ''))), '\s+', ' ', 'g')),
-        ''
-    );
+    begin
+-- missing source code
+end;
 $$;
 
 alter function crm.crm_normalize_text(text) owner to runner_dba;
@@ -22824,29 +19312,8 @@ create function crm.crm_parse_decimal_br(p_value text) returns numeric
     language plpgsql
 as
 $$
-declare
-    v_value text;
 begin
-    v_value := trim(coalesce(p_value, ''));
-
-    if v_value = '' then
-        return null;
-    end if;
-
-    v_value := regexp_replace(v_value, '[^0-9,\.\-]', '', 'g');
-
-    if v_value = '' or v_value = '-' then
-        return null;
-    end if;
-
-    if position(',' in v_value) > 0 then
-        v_value := replace(replace(v_value, '.', ''), ',', '.');
-    end if;
-
-    return v_value::numeric;
-exception
-    when others then
-        return null;
+    -- missing source code
 end;
 $$;
 
@@ -22858,27 +19325,8 @@ create function crm.crm_parse_date_br(p_value text) returns date
     language plpgsql
 as
 $$
-declare
-    v_value text;
 begin
-    v_value := trim(coalesce(p_value, ''));
-
-    if v_value = '' then
-        return null;
-    end if;
-
-    if v_value ~ '^\d{4}-\d{2}-\d{2}' then
-        return left(v_value, 10)::date;
-    end if;
-
-    if v_value ~ '^\d{2}/\d{2}/\d{4}' then
-        return to_date(left(v_value, 10), 'DD/MM/YYYY');
-    end if;
-
-    return null;
-exception
-    when others then
-        return null;
+    -- missing source code
 end;
 $$;
 
@@ -22890,31 +19338,8 @@ create function crm.crm_parse_timestamp_br(p_value text) returns timestamp witho
     language plpgsql
 as
 $$
-declare
-    v_value text;
 begin
-    v_value := trim(coalesce(p_value, ''));
-
-    if v_value = '' then
-        return null;
-    end if;
-
-    if v_value ~ '^\d{4}-\d{2}-\d{2}' then
-        return v_value::timestamp;
-    end if;
-
-    if v_value ~ '^\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}' then
-        return to_timestamp(v_value, 'DD/MM/YYYY HH24:MI');
-    end if;
-
-    if v_value ~ '^\d{2}/\d{2}/\d{4}$' then
-        return to_timestamp(v_value || ' 00:00', 'DD/MM/YYYY HH24:MI');
-    end if;
-
-    return null;
-exception
-    when others then
-        return null;
+    -- missing source code
 end;
 $$;
 
@@ -22926,32 +19351,8 @@ create function crm.crm_infer_percurso(p_modalidade text) returns numeric
     language plpgsql
 as
 $$
-declare
-    v_text text;
 begin
-    v_text := crm_normalize_text(p_modalidade);
-
-    if v_text is null then
-        return null;
-    end if;
-
-    if v_text like '%42K%' or v_text like '%42 KM%' or v_text like '%MARATONA 42%' then
-        return 42;
-    end if;
-
-    if v_text like '%21K%' or v_text like '%21 KM%' or v_text like '%MEIA MARATONA%' then
-        return 21;
-    end if;
-
-    if v_text like '%10K%' or v_text like '%10 KM%' then
-        return 10;
-    end if;
-
-    if v_text like '%5K%' or v_text like '%5 KM%' then
-        return 5;
-    end if;
-
-    return null;
+    -- missing source code
 end;
 $$;
 
@@ -22963,817 +19364,8 @@ create function crm.crm_sync_ticketsports(p_cod_evento integer DEFAULT NULL::int
     language plpgsql
 as
 $$
-declare
-    v_id_crm_evento_serie integer;
 begin
-    insert into tb_crm_evento_series (
-        nome_serie,
-        slug_serie,
-        descricao
-    )
-    values (
-        p_nome_serie,
-        p_slug_serie,
-        'Serie criada para consolidar importacoes TicketSports/API e arquivos historicos no CRM.'
-    )
-    on conflict (slug_serie) do update
-        set nome_serie = excluded.nome_serie,
-            data_atualizacao = current_timestamp
-    returning id_crm_evento_serie
-    into v_id_crm_evento_serie;
-
-    with eventos as (
-        select
-            ped.cod_evento::varchar as cod_evento_externo,
-            max(nullif(ped.body #>> '{evento,tituloEvento}', '')) as nome_evento_externo,
-            max(crm_parse_date_br(ped.body #>> '{evento,realizacao}')) as data_evento,
-            count(*)::integer as total_pedidos
-        from tb_ticketsports_pedidos ped
-        where p_cod_evento is null
-           or ped.cod_evento = p_cod_evento
-        group by ped.cod_evento
-    )
-    insert into tb_crm_evento_versoes (
-        id_crm_evento_serie,
-        id_evento,
-        fonte,
-        cod_evento_externo,
-        nome_evento_externo,
-        ano_evento,
-        data_evento,
-        payload
-    )
-    select
-        v_id_crm_evento_serie,
-        evt.id_evento,
-        'ticketsports',
-        eventos.cod_evento_externo,
-        coalesce(eventos.nome_evento_externo, 'TicketSports ' || eventos.cod_evento_externo),
-        extract(year from eventos.data_evento)::integer,
-        eventos.data_evento,
-        jsonb_build_object(
-            'origem', 'tb_ticketsports_pedidos',
-            'total_pedidos', eventos.total_pedidos
-        )
-    from eventos
-    left join lateral (
-        select candidato.id_evento
-        from (
-            select rel.id_evento,
-                   10 as prioridade
-            from public.tb_evento_corridas_relaciona rel
-            left join public.tb_parceiros par
-                on par.id_parceiro = rel.id_parceiro
-            where rel.ativo = true
-              and rel.id_evento_parceiro = eventos.cod_evento_externo::integer
-              and unaccent(lower(par.nome_parceiro)) like '%ticket%'
-
-            union all
-
-            select imp.id_evento_match as id_evento,
-                   20 as prioridade
-            from public.tb_evento_corridas_importacao imp
-            where imp.cod_evento = eventos.cod_evento_externo
-              and imp.id_evento_match is not null
-
-            union all
-
-            select evt_url.id_evento,
-                   30 as prioridade
-            from public.tb_evento_corridas evt_url
-            where (
-                  coalesce(evt_url.url_inscricao, '') ilike '%ticketsports%'
-                  or coalesce(evt_url.url_hotsite, '') ilike '%ticketsports%'
-              )
-              and (
-                  coalesce(evt_url.url_inscricao, '') ilike '%' || eventos.cod_evento_externo || '%'
-                  or coalesce(evt_url.url_hotsite, '') ilike '%' || eventos.cod_evento_externo || '%'
-              )
-
-            union all
-
-            select evt_id.id_evento,
-                   90 as prioridade
-            from public.tb_evento_corridas evt_id
-            where evt_id.id_evento::varchar = eventos.cod_evento_externo
-        ) candidato
-        order by candidato.prioridade, candidato.id_evento
-        limit 1
-    ) evt on true
-    on conflict (fonte, cod_evento_externo)
-        where cod_evento_externo is not null and cod_evento_externo <> ''
-    do update
-        set id_crm_evento_serie = excluded.id_crm_evento_serie,
-            id_evento = coalesce(excluded.id_evento, tb_crm_evento_versoes.id_evento),
-            nome_evento_externo = excluded.nome_evento_externo,
-            ano_evento = excluded.ano_evento,
-            data_evento = excluded.data_evento,
-            payload = excluded.payload,
-            data_atualizacao = current_timestamp;
-
-    insert into tb_crm_conta_evento_versoes (
-        id_conta,
-        id_crm_evento_versao,
-        status,
-        origem
-    )
-    select
-        cev.id_conta,
-        vers.id_crm_evento_versao,
-        cev.status,
-        'tb_conta_eventos'
-    from tb_crm_evento_versoes vers
-    inner join public.tb_conta_eventos cev
-        on cev.id_evento = vers.id_evento
-    where vers.fonte = 'ticketsports'
-      and (p_cod_evento is null or vers.cod_evento_externo = p_cod_evento::varchar)
-    on conflict (id_conta, id_crm_evento_versao) do update
-        set status = excluded.status,
-            origem = excluded.origem,
-            data_atualizacao = now();
-
-    update tb_crm_importacoes imp
-    set id_crm_evento_versao = vers.id_crm_evento_versao,
-        id_evento = vers.id_evento,
-        cod_evento_externo = vers.cod_evento_externo,
-        nome_importacao = 'TicketSports API ' || vers.cod_evento_externo,
-        total_linhas = coalesce(cont.total_linhas, 0),
-        total_validas = coalesce(cont.total_linhas, 0),
-        status_processamento = 'processado',
-        data_fim = current_timestamp,
-        data_atualizacao = current_timestamp
-    from tb_crm_evento_versoes vers
-    left join lateral (
-        select count(*)::integer as total_linhas
-        from tb_ticketsports_participantes tsp
-        where tsp.cod_evento::varchar = vers.cod_evento_externo
-    ) cont on true
-    where imp.fonte = 'ticketsports'
-      and imp.origem_tipo = 'api'
-      and imp.tipo_entidade = 'participantes'
-      and imp.api_endpoint = 'tb_ticketsports'
-      and imp.api_parametros ->> 'cod_evento' = vers.cod_evento_externo
-      and (p_cod_evento is null or vers.cod_evento_externo = p_cod_evento::varchar);
-
-    insert into tb_crm_importacoes (
-        id_crm_evento_versao,
-        id_evento,
-        fonte,
-        cod_evento_externo,
-        origem_tipo,
-        tipo_entidade,
-        nome_importacao,
-        api_endpoint,
-        api_parametros,
-        status_processamento,
-        total_linhas,
-        total_validas,
-        data_inicio,
-        data_fim
-    )
-    select
-        vers.id_crm_evento_versao,
-        vers.id_evento,
-        'ticketsports',
-        vers.cod_evento_externo,
-        'api',
-        'participantes',
-        'TicketSports API ' || vers.cod_evento_externo,
-        'tb_ticketsports',
-        jsonb_build_object('cod_evento', vers.cod_evento_externo),
-        'processado',
-        coalesce(cont.total_linhas, 0),
-        coalesce(cont.total_linhas, 0),
-        current_timestamp,
-        current_timestamp
-    from tb_crm_evento_versoes vers
-    left join lateral (
-        select count(*)::integer as total_linhas
-        from tb_ticketsports_participantes tsp
-        where tsp.cod_evento::varchar = vers.cod_evento_externo
-    ) cont on true
-    where vers.fonte = 'ticketsports'
-      and (p_cod_evento is null or vers.cod_evento_externo = p_cod_evento::varchar)
-      and not exists (
-          select 1
-          from tb_crm_importacoes imp
-          where imp.fonte = 'ticketsports'
-            and imp.origem_tipo = 'api'
-            and imp.tipo_entidade = 'participantes'
-            and imp.api_endpoint = 'tb_ticketsports'
-            and imp.api_parametros ->> 'cod_evento' = vers.cod_evento_externo
-      );
-
-    insert into tb_crm_pedidos (
-        id_crm_evento_versao,
-        id_crm_importacao,
-        fonte,
-        cod_evento_externo,
-        numero_pedido,
-        status_pedido,
-        data_pedido,
-        data_pagamento,
-        forma_pagamento,
-        tipo_dispositivo,
-        qtd_inscricoes,
-        valor_total,
-        valor_taxa,
-        valor_desconto,
-        valor_repasse,
-        responsavel_nome,
-        responsavel_email,
-        responsavel_email_norm,
-        responsavel_documento,
-        responsavel_doc_norm,
-        responsavel_telefone,
-        responsavel_tel_norm,
-        responsavel_nascimento,
-        responsavel_endereco,
-        responsavel_numero,
-        responsavel_bairro,
-        responsavel_cidade,
-        responsavel_estado,
-        responsavel_cep,
-        raw
-    )
-    select
-        vers.id_crm_evento_versao,
-        imp.id_crm_importacao,
-        'ticketsports',
-        ped.cod_evento::varchar,
-        ped.numero_pedido::varchar,
-        nullif(ped.body ->> 'status', ''),
-        coalesce(ped.data_pedido, crm_parse_timestamp_br(ped.body ->> 'dataPedido')),
-        crm_parse_timestamp_br(ped.body ->> 'dataPagamento'),
-        nullif(ped.body ->> 'formaDePagamento', ''),
-        nullif(ped.body ->> 'tipoDispositivo', ''),
-        case
-            when (ped.body ->> 'qtdeInscricao') ~ '^\d+$' then (ped.body ->> 'qtdeInscricao')::integer
-            else null
-        end,
-        crm_parse_decimal_br(ped.body ->> 'valor'),
-        crm_parse_decimal_br(ped.body ->> 'taxa'),
-        crm_parse_decimal_br(ped.body ->> 'desconto'),
-        crm_parse_decimal_br(coalesce(ped.body ->> 'valorRepassePedido', ped.body ->> 'valorRepasse')),
-        nullif(ped.body #>> '{responsavel,responsavel}', ''),
-        lower(nullif(ped.body #>> '{responsavel,emailResponsavel}', '')),
-        lower(nullif(ped.body #>> '{responsavel,emailResponsavel}', '')),
-        nullif(ped.body #>> '{responsavel,documentoResponsavel}', ''),
-        crm_only_digits(ped.body #>> '{responsavel,documentoResponsavel}'),
-        nullif(ped.body #>> '{responsavel,celularResponsavel}', ''),
-        crm_only_digits(ped.body #>> '{responsavel,celularResponsavel}'),
-        crm_parse_date_br(ped.body #>> '{responsavel,datanascResponsavel}'),
-        nullif(ped.body #>> '{responsavel,endereco}', ''),
-        nullif(ped.body #>> '{responsavel,numero}', ''),
-        nullif(ped.body #>> '{responsavel,bairro}', ''),
-        nullif(ped.body #>> '{responsavel,cidade}', ''),
-        nullif(ped.body #>> '{responsavel,estado}', ''),
-        crm_only_digits(ped.body #>> '{responsavel,cep}'),
-        ped.body
-    from tb_ticketsports_pedidos ped
-    inner join tb_crm_evento_versoes vers
-        on vers.fonte = 'ticketsports'
-       and vers.cod_evento_externo = ped.cod_evento::varchar
-    left join tb_crm_importacoes imp
-        on imp.fonte = 'ticketsports'
-       and imp.origem_tipo = 'api'
-       and imp.tipo_entidade = 'participantes'
-       and imp.api_endpoint = 'tb_ticketsports'
-       and imp.api_parametros ->> 'cod_evento' = ped.cod_evento::varchar
-    where p_cod_evento is null
-       or ped.cod_evento = p_cod_evento
-    on conflict (fonte, cod_evento_externo, numero_pedido) do update
-        set id_crm_evento_versao = excluded.id_crm_evento_versao,
-            id_crm_importacao = excluded.id_crm_importacao,
-            status_pedido = excluded.status_pedido,
-            data_pedido = excluded.data_pedido,
-            data_pagamento = excluded.data_pagamento,
-            forma_pagamento = excluded.forma_pagamento,
-            tipo_dispositivo = excluded.tipo_dispositivo,
-            qtd_inscricoes = excluded.qtd_inscricoes,
-            valor_total = excluded.valor_total,
-            valor_taxa = excluded.valor_taxa,
-            valor_desconto = excluded.valor_desconto,
-            valor_repasse = excluded.valor_repasse,
-            responsavel_nome = excluded.responsavel_nome,
-            responsavel_email = excluded.responsavel_email,
-            responsavel_email_norm = excluded.responsavel_email_norm,
-            responsavel_documento = excluded.responsavel_documento,
-            responsavel_doc_norm = excluded.responsavel_doc_norm,
-            responsavel_telefone = excluded.responsavel_telefone,
-            responsavel_tel_norm = excluded.responsavel_tel_norm,
-            responsavel_nascimento = excluded.responsavel_nascimento,
-            responsavel_endereco = excluded.responsavel_endereco,
-            responsavel_numero = excluded.responsavel_numero,
-            responsavel_bairro = excluded.responsavel_bairro,
-            responsavel_cidade = excluded.responsavel_cidade,
-            responsavel_estado = excluded.responsavel_estado,
-            responsavel_cep = excluded.responsavel_cep,
-            raw = excluded.raw,
-            data_atualizacao = current_timestamp;
-
-    insert into tb_crm_importacao_linhas (
-        id_crm_importacao,
-        numero_linha,
-        entidade_origem,
-        chave_externa,
-        raw,
-        normalizado,
-        nome_atleta,
-        nome_norm,
-        email,
-        email_norm,
-        tipo_documento,
-        documento,
-        documento_norm,
-        telefone,
-        telefone_norm,
-        data_nascimento,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        numero_inscricao,
-        numero_pedido,
-        protocolo,
-        percurso,
-        modalidade,
-        categoria,
-        status_inscricao,
-        origem,
-        campanha,
-        cupom,
-        assessoria,
-        data_pedido,
-        valor,
-        status_validacao
-    )
-    select
-        imp.id_crm_importacao,
-        tsp.numero_inscricao,
-        'ticketsports_participante',
-        tsp.numero_inscricao::varchar,
-        tsp.body,
-        jsonb_build_object(
-            'fonte', 'ticketsports',
-            'cod_evento', tsp.cod_evento,
-            'numero_pedido', tsp.numero_pedido,
-            'numero_inscricao', tsp.numero_inscricao
-        ),
-        nullif(coalesce(tsp.body ->> 'nome', tsp.nome), ''),
-        crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)),
-        lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')),
-        lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')),
-        nullif(tsp.body ->> 'tipoDocumento', ''),
-        nullif(coalesce(tsp.body ->> 'documento', tsp.documento), ''),
-        crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)),
-        nullif(tsp.body ->> 'celular', ''),
-        crm_only_digits(tsp.body ->> 'celular'),
-        crm_parse_date_br(tsp.body ->> 'nascimento'),
-        nullif(tsp.body ->> 'sexo', ''),
-        nullif(coalesce(tsp.body ->> 'cidade', tsp.cidade), ''),
-        nullif(coalesce(tsp.body ->> 'estado', tsp.estado), ''),
-        nullif(tsp.body ->> 'pais', ''),
-        tsp.numero_inscricao::varchar,
-        tsp.numero_pedido::varchar,
-        nullif(tsp.body ->> 'protocolo', ''),
-        crm_infer_percurso(coalesce(tsp.body ->> 'modalidade', tsp.modalidade)),
-        nullif(coalesce(tsp.body ->> 'modalidade', tsp.modalidade), ''),
-        nullif(tsp.body ->> 'categoria', ''),
-        ped.status_pedido,
-        nullif(tsp.body ->> 'origem', ''),
-        nullif(tsp.body ->> 'campanha', ''),
-        coalesce(nullif(tsp.body ->> 'tituloCupom', ''), nullif(tsp.body ->> 'codigoCupom', '')),
-        nullif(tsp.body ->> 'nome_grupo', ''),
-        tsp.data_pedido,
-        crm_parse_decimal_br(tsp.body ->> 'valorUnitario'),
-        case
-            when crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) is null then 'invalido'
-            else 'valido'
-        end
-    from tb_ticketsports_participantes tsp
-    inner join tb_crm_importacoes imp
-        on imp.fonte = 'ticketsports'
-       and imp.origem_tipo = 'api'
-       and imp.tipo_entidade = 'participantes'
-       and imp.api_endpoint = 'tb_ticketsports'
-       and imp.api_parametros ->> 'cod_evento' = tsp.cod_evento::varchar
-    left join tb_crm_pedidos ped
-        on ped.fonte = 'ticketsports'
-       and ped.cod_evento_externo = tsp.cod_evento::varchar
-       and ped.numero_pedido = tsp.numero_pedido::varchar
-    where p_cod_evento is null
-       or tsp.cod_evento = p_cod_evento
-    on conflict (id_crm_importacao, numero_linha, entidade_origem) do update
-        set chave_externa = excluded.chave_externa,
-            raw = excluded.raw,
-            normalizado = excluded.normalizado,
-            nome_atleta = excluded.nome_atleta,
-            nome_norm = excluded.nome_norm,
-            email = excluded.email,
-            email_norm = excluded.email_norm,
-            tipo_documento = excluded.tipo_documento,
-            documento = excluded.documento,
-            documento_norm = excluded.documento_norm,
-            telefone = excluded.telefone,
-            telefone_norm = excluded.telefone_norm,
-            data_nascimento = excluded.data_nascimento,
-            sexo = excluded.sexo,
-            cidade = excluded.cidade,
-            estado = excluded.estado,
-            pais = excluded.pais,
-            numero_inscricao = excluded.numero_inscricao,
-            numero_pedido = excluded.numero_pedido,
-            protocolo = excluded.protocolo,
-            percurso = excluded.percurso,
-            modalidade = excluded.modalidade,
-            categoria = excluded.categoria,
-            status_inscricao = excluded.status_inscricao,
-            origem = excluded.origem,
-            campanha = excluded.campanha,
-            cupom = excluded.cupom,
-            assessoria = excluded.assessoria,
-            data_pedido = excluded.data_pedido,
-            valor = excluded.valor,
-            status_validacao = excluded.status_validacao,
-            data_atualizacao = current_timestamp;
-
-    with src as (
-        select distinct on (crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)))
-            nullif(coalesce(tsp.body ->> 'nome', tsp.nome), '') as nome,
-            crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) as nome_norm,
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) as email,
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) as email_norm,
-            nullif(coalesce(tsp.body ->> 'documento', tsp.documento), '') as documento,
-            crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)) as documento_norm,
-            nullif(tsp.body ->> 'celular', '') as telefone,
-            crm_only_digits(tsp.body ->> 'celular') as telefone_norm,
-            crm_parse_date_br(tsp.body ->> 'nascimento') as data_nascimento,
-            nullif(tsp.body ->> 'sexo', '') as sexo,
-            nullif(coalesce(tsp.body ->> 'cidade', tsp.cidade), '') as cidade,
-            nullif(coalesce(tsp.body ->> 'estado', tsp.estado), '') as estado,
-            coalesce(nullif(tsp.body ->> 'pais', ''), 'BR') as pais,
-            nullif(tsp.body ->> 'nome_grupo', '') as assessoria
-        from tb_ticketsports_participantes tsp
-        where (p_cod_evento is null or tsp.cod_evento = p_cod_evento)
-          and crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)) is not null
-          and crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) is not null
-        order by
-            crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)),
-            tsp.data_pedido desc nulls last
-    )
-    insert into tb_crm_pessoas (
-        nome,
-        nome_norm,
-        email,
-        email_norm,
-        documento,
-        documento_norm,
-        telefone,
-        telefone_norm,
-        data_nascimento,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        assessoria,
-        origem_primeiro_contato
-    )
-    select
-        src.nome,
-        src.nome_norm,
-        src.email,
-        src.email_norm,
-        src.documento,
-        src.documento_norm,
-        src.telefone,
-        src.telefone_norm,
-        src.data_nascimento,
-        src.sexo,
-        src.cidade,
-        src.estado,
-        src.pais,
-        src.assessoria,
-        'ticketsports'
-    from src
-    on conflict (documento_norm)
-        where documento_norm is not null and documento_norm <> ''
-    do update
-        set nome = coalesce(excluded.nome, tb_crm_pessoas.nome),
-            nome_norm = coalesce(excluded.nome_norm, tb_crm_pessoas.nome_norm),
-            email = coalesce(excluded.email, tb_crm_pessoas.email),
-            email_norm = coalesce(excluded.email_norm, tb_crm_pessoas.email_norm),
-            telefone = coalesce(excluded.telefone, tb_crm_pessoas.telefone),
-            telefone_norm = coalesce(excluded.telefone_norm, tb_crm_pessoas.telefone_norm),
-            data_nascimento = coalesce(excluded.data_nascimento, tb_crm_pessoas.data_nascimento),
-            sexo = coalesce(excluded.sexo, tb_crm_pessoas.sexo),
-            cidade = coalesce(excluded.cidade, tb_crm_pessoas.cidade),
-            estado = coalesce(excluded.estado, tb_crm_pessoas.estado),
-            pais = coalesce(excluded.pais, tb_crm_pessoas.pais),
-            assessoria = coalesce(excluded.assessoria, tb_crm_pessoas.assessoria),
-            data_atualizacao = current_timestamp;
-
-    with src as (
-        select distinct on (
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')),
-            crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)),
-            crm_parse_date_br(tsp.body ->> 'nascimento')
-        )
-            nullif(coalesce(tsp.body ->> 'nome', tsp.nome), '') as nome,
-            crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) as nome_norm,
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) as email,
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) as email_norm,
-            nullif(tsp.body ->> 'celular', '') as telefone,
-            crm_only_digits(tsp.body ->> 'celular') as telefone_norm,
-            crm_parse_date_br(tsp.body ->> 'nascimento') as data_nascimento,
-            nullif(tsp.body ->> 'sexo', '') as sexo,
-            nullif(coalesce(tsp.body ->> 'cidade', tsp.cidade), '') as cidade,
-            nullif(coalesce(tsp.body ->> 'estado', tsp.estado), '') as estado,
-            coalesce(nullif(tsp.body ->> 'pais', ''), 'BR') as pais,
-            nullif(tsp.body ->> 'nome_grupo', '') as assessoria
-        from tb_ticketsports_participantes tsp
-        where (p_cod_evento is null or tsp.cod_evento = p_cod_evento)
-          and crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)) is null
-          and lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) is not null
-          and crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) is not null
-          and crm_parse_date_br(tsp.body ->> 'nascimento') is not null
-        order by
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')),
-            crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)),
-            crm_parse_date_br(tsp.body ->> 'nascimento'),
-            tsp.data_pedido desc nulls last
-    )
-    insert into tb_crm_pessoas (
-        nome,
-        nome_norm,
-        email,
-        email_norm,
-        telefone,
-        telefone_norm,
-        data_nascimento,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        assessoria,
-        origem_primeiro_contato
-    )
-    select
-        src.nome,
-        src.nome_norm,
-        src.email,
-        src.email_norm,
-        src.telefone,
-        src.telefone_norm,
-        src.data_nascimento,
-        src.sexo,
-        src.cidade,
-        src.estado,
-        src.pais,
-        src.assessoria,
-        'ticketsports'
-    from src
-    on conflict (email_norm, nome_norm, data_nascimento)
-        where documento_norm is null
-          and email_norm is not null
-          and email_norm <> ''
-          and data_nascimento is not null
-    do update
-        set telefone = coalesce(excluded.telefone, tb_crm_pessoas.telefone),
-            telefone_norm = coalesce(excluded.telefone_norm, tb_crm_pessoas.telefone_norm),
-            sexo = coalesce(excluded.sexo, tb_crm_pessoas.sexo),
-            cidade = coalesce(excluded.cidade, tb_crm_pessoas.cidade),
-            estado = coalesce(excluded.estado, tb_crm_pessoas.estado),
-            pais = coalesce(excluded.pais, tb_crm_pessoas.pais),
-            assessoria = coalesce(excluded.assessoria, tb_crm_pessoas.assessoria),
-            data_atualizacao = current_timestamp;
-
-    with src as (
-        select
-            tsp.*,
-            crm_only_digits(coalesce(tsp.body ->> 'documento', tsp.documento)) as documento_norm,
-            lower(nullif(coalesce(tsp.body ->> 'email', tsp.email), '')) as email_norm,
-            crm_normalize_text(coalesce(tsp.body ->> 'nome', tsp.nome)) as nome_norm,
-            crm_parse_date_br(tsp.body ->> 'nascimento') as data_nascimento_norm,
-            crm_infer_percurso(coalesce(tsp.body ->> 'modalidade', tsp.modalidade)) as percurso_norm
-        from tb_ticketsports_participantes tsp
-        where p_cod_evento is null
-           or tsp.cod_evento = p_cod_evento
-    ),
-    vinculada as (
-        select
-            src.*,
-            coalesce(pessoa_doc.id_crm_pessoa, pessoa_email.id_crm_pessoa) as id_crm_pessoa,
-            vers.id_crm_evento_versao,
-            vers.id_evento,
-            vers.ano_evento,
-            vers.nome_evento_externo,
-            vers.data_evento,
-            ped.id_crm_pedido,
-            ped.status_pedido,
-            ped.data_pagamento,
-            linha.id_crm_importacao_linha
-        from src
-        inner join tb_crm_evento_versoes vers
-            on vers.fonte = 'ticketsports'
-           and vers.cod_evento_externo = src.cod_evento::varchar
-        left join tb_crm_pedidos ped
-            on ped.fonte = 'ticketsports'
-           and ped.cod_evento_externo = src.cod_evento::varchar
-           and ped.numero_pedido = src.numero_pedido::varchar
-        left join tb_crm_importacoes imp
-            on imp.fonte = 'ticketsports'
-           and imp.origem_tipo = 'api'
-           and imp.tipo_entidade = 'participantes'
-           and imp.api_endpoint = 'tb_ticketsports'
-           and imp.api_parametros ->> 'cod_evento' = src.cod_evento::varchar
-        left join tb_crm_importacao_linhas linha
-            on linha.id_crm_importacao = imp.id_crm_importacao
-           and linha.numero_linha = src.numero_inscricao
-           and linha.entidade_origem = 'ticketsports_participante'
-        left join tb_crm_pessoas pessoa_doc
-            on pessoa_doc.documento_norm = src.documento_norm
-           and src.documento_norm is not null
-        left join tb_crm_pessoas pessoa_email
-            on pessoa_doc.id_crm_pessoa is null
-           and pessoa_email.documento_norm is null
-           and pessoa_email.email_norm = src.email_norm
-           and pessoa_email.nome_norm = src.nome_norm
-           and pessoa_email.data_nascimento = src.data_nascimento_norm
-    )
-    insert into tb_crm_participacoes (
-        id_crm_pessoa,
-        id_crm_pedido,
-        id_crm_evento_versao,
-        id_crm_importacao_linha,
-        id_evento,
-        fonte,
-        cod_evento_externo,
-        ano_evento,
-        nome_evento_externo,
-        data_evento,
-        numero_inscricao,
-        numero_pedido,
-        protocolo,
-        id_categoria_externo,
-        lote,
-        percurso,
-        percurso_label,
-        modalidade,
-        categoria,
-        status_inscricao,
-        status_pedido,
-        data_pedido,
-        data_pagamento,
-        origem,
-        campanha,
-        cupom,
-        valor_unitario,
-        valor_taxa,
-        valor_desconto,
-        valor_desconto_cupom,
-        valor_repasse,
-        assessoria,
-        produtos,
-        questionario,
-        raw,
-        lead_score,
-        lead_score_componentes
-    )
-    select
-        vinculada.id_crm_pessoa,
-        vinculada.id_crm_pedido,
-        vinculada.id_crm_evento_versao,
-        vinculada.id_crm_importacao_linha,
-        vinculada.id_evento,
-        'ticketsports',
-        vinculada.cod_evento::varchar,
-        vinculada.ano_evento,
-        vinculada.nome_evento_externo,
-        vinculada.data_evento,
-        vinculada.numero_inscricao::varchar,
-        vinculada.numero_pedido::varchar,
-        nullif(vinculada.body ->> 'protocolo', ''),
-        nullif(vinculada.body ->> 'id_Categoria', ''),
-        case
-            when (vinculada.body ->> 'lote') ~ '^\d+$' then (vinculada.body ->> 'lote')::integer
-            else null
-        end,
-        vinculada.percurso_norm,
-        case when vinculada.percurso_norm is not null then vinculada.percurso_norm::varchar || 'K' end,
-        nullif(coalesce(vinculada.body ->> 'modalidade', vinculada.modalidade), ''),
-        nullif(vinculada.body ->> 'categoria', ''),
-        vinculada.status_pedido,
-        vinculada.status_pedido,
-        coalesce(vinculada.data_pedido, crm_parse_timestamp_br(vinculada.body ->> 'dataPedido')),
-        vinculada.data_pagamento,
-        nullif(vinculada.body ->> 'origem', ''),
-        nullif(vinculada.body ->> 'campanha', ''),
-        coalesce(nullif(vinculada.body ->> 'tituloCupom', ''), nullif(vinculada.body ->> 'codigoCupom', '')),
-        crm_parse_decimal_br(vinculada.body ->> 'valorUnitario'),
-        crm_parse_decimal_br(vinculada.body ->> 'valorTaxa'),
-        crm_parse_decimal_br(vinculada.body ->> 'valorDesconto'),
-        crm_parse_decimal_br(vinculada.body ->> 'valorDescontoCupom'),
-        crm_parse_decimal_br(vinculada.body ->> 'valorRepasse'),
-        nullif(vinculada.body ->> 'nome_grupo', ''),
-        vinculada.body -> 'produtos',
-        vinculada.body -> 'questionario',
-        vinculada.body,
-        (
-            case when coalesce(vinculada.status_pedido, '') ilike 'Pago' then 50 else 10 end
-            + case when vinculada.documento_norm is not null then 15 else 0 end
-            + case when vinculada.email_norm is not null then 10 else 0 end
-            + case when vinculada.percurso_norm >= 21 then 10 when vinculada.percurso_norm is not null then 5 else 0 end
-        )::numeric,
-        jsonb_build_object(
-            'status_pago', case when coalesce(vinculada.status_pedido, '') ilike 'Pago' then 50 else 10 end,
-            'documento', case when vinculada.documento_norm is not null then 15 else 0 end,
-            'email', case when vinculada.email_norm is not null then 10 else 0 end,
-            'percurso', case when vinculada.percurso_norm >= 21 then 10 when vinculada.percurso_norm is not null then 5 else 0 end
-        )
-    from vinculada
-    where vinculada.id_crm_pessoa is not null
-    on conflict (fonte, cod_evento_externo, numero_inscricao)
-        where numero_inscricao is not null and numero_inscricao <> ''
-    do update
-        set id_crm_pessoa = excluded.id_crm_pessoa,
-            id_crm_pedido = excluded.id_crm_pedido,
-            id_crm_evento_versao = excluded.id_crm_evento_versao,
-            id_crm_importacao_linha = excluded.id_crm_importacao_linha,
-            id_evento = excluded.id_evento,
-            ano_evento = excluded.ano_evento,
-            nome_evento_externo = excluded.nome_evento_externo,
-            data_evento = excluded.data_evento,
-            numero_pedido = excluded.numero_pedido,
-            protocolo = excluded.protocolo,
-            id_categoria_externo = excluded.id_categoria_externo,
-            lote = excluded.lote,
-            percurso = excluded.percurso,
-            percurso_label = excluded.percurso_label,
-            modalidade = excluded.modalidade,
-            categoria = excluded.categoria,
-            status_inscricao = excluded.status_inscricao,
-            status_pedido = excluded.status_pedido,
-            data_pedido = excluded.data_pedido,
-            data_pagamento = excluded.data_pagamento,
-            origem = excluded.origem,
-            campanha = excluded.campanha,
-            cupom = excluded.cupom,
-            valor_unitario = excluded.valor_unitario,
-            valor_taxa = excluded.valor_taxa,
-            valor_desconto = excluded.valor_desconto,
-            valor_desconto_cupom = excluded.valor_desconto_cupom,
-            valor_repasse = excluded.valor_repasse,
-            assessoria = excluded.assessoria,
-            produtos = excluded.produtos,
-            questionario = excluded.questionario,
-            raw = excluded.raw,
-            lead_score = excluded.lead_score,
-            lead_score_componentes = excluded.lead_score_componentes,
-            data_atualizacao = current_timestamp;
-
-    perform 1
-    from crm.crm_match_resultados(null, null)
-    limit 1;
-
-    perform 1
-    from crm.crm_match_usuarios(null)
-    limit 1;
-
-    return query
-    select
-        (
-            select count(*)::integer
-            from tb_crm_evento_versoes vers
-            where vers.fonte = 'ticketsports'
-              and (p_cod_evento is null or vers.cod_evento_externo = p_cod_evento::varchar)
-        ) as total_versoes,
-        (
-            select count(*)::integer
-            from tb_crm_importacoes imp
-            where imp.fonte = 'ticketsports'
-              and imp.origem_tipo = 'api'
-              and imp.tipo_entidade = 'participantes'
-              and (p_cod_evento is null or imp.api_parametros ->> 'cod_evento' = p_cod_evento::varchar)
-        ) as total_importacoes,
-        (
-            select count(*)::integer
-            from tb_crm_pedidos ped
-            where ped.fonte = 'ticketsports'
-              and (p_cod_evento is null or ped.cod_evento_externo = p_cod_evento::varchar)
-        ) as total_pedidos,
-        (
-            select count(distinct part.id_crm_pessoa)::integer
-            from tb_crm_participacoes part
-            where part.fonte = 'ticketsports'
-              and (p_cod_evento is null or part.cod_evento_externo = p_cod_evento::varchar)
-        ) as total_pessoas,
-        (
-            select count(*)::integer
-            from tb_crm_participacoes part
-            where part.fonte = 'ticketsports'
-              and (p_cod_evento is null or part.cod_evento_externo = p_cod_evento::varchar)
-        ) as total_participacoes;
+    -- missing source code
 end;
 $$;
 
@@ -23802,149 +19394,8 @@ create function crm.crm_match_usuarios(p_id_conta bigint DEFAULT NULL::bigint)
     language plpgsql
 as
 $$
-declare
-    v_pessoas_avaliadas integer := 0;
-    v_pessoas_vinculadas integer := 0;
-    v_pessoas_pendentes integer := 0;
 begin
-    with elegiveis as (
-        select distinct pessoa.id_crm_pessoa
-        from crm.tb_crm_pessoas pessoa
-        where pessoa.id_usuario is null
-          and pessoa.email_norm is not null
-          and pessoa.email_norm <> ''
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_participacoes part
-                  inner join crm.tb_crm_conta_evento_versoes link
-                      on link.id_crm_evento_versao = part.id_crm_evento_versao
-                     and link.status = 'ATIVO'::public.status_conta_evento
-                  where part.id_crm_pessoa = pessoa.id_crm_pessoa
-                    and link.id_conta = p_id_conta
-              )
-          )
-    )
-    select count(*)::integer
-    into v_pessoas_avaliadas
-    from elegiveis;
-
-    with elegiveis as (
-        select distinct pessoa.*
-        from crm.tb_crm_pessoas pessoa
-        where pessoa.id_usuario is null
-          and pessoa.email_norm is not null
-          and pessoa.email_norm <> ''
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_participacoes part
-                  inner join crm.tb_crm_conta_evento_versoes link
-                      on link.id_crm_evento_versao = part.id_crm_evento_versao
-                     and link.status = 'ATIVO'::public.status_conta_evento
-                  where part.id_crm_pessoa = pessoa.id_crm_pessoa
-                    and link.id_conta = p_id_conta
-              )
-          )
-    ),
-    crm_email_stats as (
-        select email_norm,
-               count(*)::integer as pessoas_email
-        from crm.tb_crm_pessoas
-        where email_norm is not null
-          and email_norm <> ''
-        group by email_norm
-    ),
-    usuario_email_stats as (
-        select nullif(lower(trim(usr.email)), '') as email_norm,
-               count(*)::integer as usuarios_email
-        from public.tb_usuarios usr
-        where nullif(lower(trim(usr.email)), '') is not null
-        group by nullif(lower(trim(usr.email)), '')
-    ),
-    candidatos as (
-        select
-            elegiveis.id_crm_pessoa,
-            usr.id as id_usuario,
-            case
-                when crm.crm_normalize_text(usr.name) = elegiveis.nome_norm then 'email_nome'
-                when elegiveis.data_nascimento is not null and usr.data_nascimento = elegiveis.data_nascimento then 'email_nascimento'
-                when crm_email_stats.pessoas_email = 1 then 'email_unico'
-            end as match_status,
-            case
-                when crm.crm_normalize_text(usr.name) = elegiveis.nome_norm then 0.95
-                when elegiveis.data_nascimento is not null and usr.data_nascimento = elegiveis.data_nascimento then 0.95
-                when crm_email_stats.pessoas_email = 1 then 0.80
-            end as match_confianca
-        from elegiveis
-        inner join public.tb_usuarios usr
-            on nullif(lower(trim(usr.email)), '') = elegiveis.email_norm
-        inner join usuario_email_stats
-            on usuario_email_stats.email_norm = elegiveis.email_norm
-           and usuario_email_stats.usuarios_email = 1
-        inner join crm_email_stats
-            on crm_email_stats.email_norm = elegiveis.email_norm
-        where crm.crm_normalize_text(usr.name) = elegiveis.nome_norm
-           or (elegiveis.data_nascimento is not null and usr.data_nascimento = elegiveis.data_nascimento)
-           or crm_email_stats.pessoas_email = 1
-    ),
-    melhores as (
-        select distinct on (candidatos.id_crm_pessoa)
-            candidatos.id_crm_pessoa,
-            candidatos.id_usuario,
-            candidatos.match_status,
-            candidatos.match_confianca
-        from candidatos
-        where candidatos.match_status is not null
-        order by candidatos.id_crm_pessoa,
-                 candidatos.match_confianca desc,
-                 candidatos.id_usuario
-    ),
-    atualizados as (
-        update crm.tb_crm_pessoas pessoa
-        set id_usuario = melhores.id_usuario,
-            match_usuario_status = melhores.match_status,
-            match_usuario_confianca = melhores.match_confianca,
-            data_atualizacao = current_timestamp
-        from melhores
-        where pessoa.id_crm_pessoa = melhores.id_crm_pessoa
-          and pessoa.id_usuario is null
-        returning pessoa.id_crm_pessoa
-    )
-    select count(*)::integer
-    into v_pessoas_vinculadas
-    from atualizados;
-
-    with elegiveis_pendentes as (
-        select distinct pessoa.id_crm_pessoa
-        from crm.tb_crm_pessoas pessoa
-        where pessoa.id_usuario is null
-          and pessoa.email_norm is not null
-          and pessoa.email_norm <> ''
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_participacoes part
-                  inner join crm.tb_crm_conta_evento_versoes link
-                      on link.id_crm_evento_versao = part.id_crm_evento_versao
-                     and link.status = 'ATIVO'::public.status_conta_evento
-                  where part.id_crm_pessoa = pessoa.id_crm_pessoa
-                    and link.id_conta = p_id_conta
-              )
-          )
-    )
-    select count(*)::integer
-    into v_pessoas_pendentes
-    from elegiveis_pendentes;
-
-    return query
-    select
-        coalesce(v_pessoas_avaliadas, 0),
-        coalesce(v_pessoas_vinculadas, 0),
-        coalesce(v_pessoas_pendentes, 0);
+    -- missing source code
 end;
 $$;
 
@@ -23960,290 +19411,8 @@ create function crm.crm_match_resultados(p_id_conta bigint DEFAULT NULL::bigint,
     language plpgsql
 as
 $$
-declare
-    v_participacoes_avaliadas integer := 0;
-    v_participacoes_vinculadas integer := 0;
-    v_pessoas_vinculadas integer := 0;
-    v_participacoes_pendentes integer := 0;
 begin
-    with elegiveis as (
-        select part.id_crm_participacao
-        from crm.tb_crm_participacoes part
-        where part.id_evento is not null
-          and part.id_resultado is null
-          and (p_id_evento is null or part.id_evento = p_id_evento)
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_conta_evento_versoes link
-                  where link.id_crm_evento_versao = part.id_crm_evento_versao
-                    and link.status = 'ATIVO'::public.status_conta_evento
-                    and link.id_conta = p_id_conta
-              )
-          )
-    )
-    select count(*)::integer
-    into v_participacoes_avaliadas
-    from elegiveis;
-
-    with elegiveis as (
-        select
-            part.id_crm_participacao,
-            part.id_crm_pessoa,
-            part.id_evento,
-            part.percurso,
-            case
-                when nullif(crm.crm_only_digits(part.numero_peito), '') ~ '^\d{1,9}$'
-                    then nullif(crm.crm_only_digits(part.numero_peito), '')::integer
-                else null
-            end as numero_peito_num,
-            pessoa.nome_norm,
-            pessoa.data_nascimento
-        from crm.tb_crm_participacoes part
-        inner join crm.tb_crm_pessoas pessoa
-            on pessoa.id_crm_pessoa = part.id_crm_pessoa
-        where part.id_evento is not null
-          and part.id_resultado is null
-          and (p_id_evento is null or part.id_evento = p_id_evento)
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_conta_evento_versoes link
-                  where link.id_crm_evento_versao = part.id_crm_evento_versao
-                    and link.status = 'ATIVO'::public.status_conta_evento
-                    and link.id_conta = p_id_conta
-              )
-          )
-    ),
-    resultados as (
-        select
-            res.id_resultado,
-            res.id_evento,
-            res.num_peito,
-            crm.crm_normalize_text(res.nome) as nome_norm,
-            res.data_nascimento,
-            res.percurso,
-            res.id_usuario,
-            res.concluinte,
-            res.status_final,
-            res.tempo_total,
-            res.pace
-        from public.tb_resultados res
-        where res.id_evento is not null
-          and (p_id_evento is null or res.id_evento = p_id_evento)
-    ),
-    crm_nome_stats as (
-        select id_evento,
-               nome_norm,
-               count(*)::integer as total
-        from elegiveis
-        where nome_norm is not null
-          and nome_norm <> ''
-        group by id_evento, nome_norm
-    ),
-    res_nome_stats as (
-        select id_evento,
-               nome_norm,
-               count(*)::integer as total
-        from resultados
-        where nome_norm is not null
-          and nome_norm <> ''
-        group by id_evento, nome_norm
-    ),
-    crm_nome_percurso_stats as (
-        select id_evento,
-               nome_norm,
-               percurso,
-               count(*)::integer as total
-        from elegiveis
-        where nome_norm is not null
-          and nome_norm <> ''
-          and percurso is not null
-        group by id_evento, nome_norm, percurso
-    ),
-    res_nome_percurso_stats as (
-        select id_evento,
-               nome_norm,
-               percurso,
-               count(*)::integer as total
-        from resultados
-        where nome_norm is not null
-          and nome_norm <> ''
-          and percurso is not null
-        group by id_evento, nome_norm, percurso
-    ),
-    candidatos as (
-        select
-            elegiveis.id_crm_participacao,
-            elegiveis.id_crm_pessoa,
-            resultados.id_resultado,
-            resultados.id_usuario,
-            resultados.concluinte,
-            resultados.status_final,
-            resultados.tempo_total,
-            resultados.pace,
-            case
-                when elegiveis.numero_peito_num is not null
-                     and resultados.num_peito = elegiveis.numero_peito_num
-                     and resultados.nome_norm = elegiveis.nome_norm
-                    then 'resultado_numero_nome'
-                when elegiveis.data_nascimento is not null
-                     and resultados.data_nascimento = elegiveis.data_nascimento
-                     and resultados.nome_norm = elegiveis.nome_norm
-                    then 'resultado_nome_nascimento'
-                when elegiveis.percurso is not null
-                     and resultados.percurso is not null
-                     and abs(resultados.percurso - elegiveis.percurso) < 0.01
-                     and resultados.nome_norm = elegiveis.nome_norm
-                     and crm_nome_percurso_stats.total = 1
-                     and res_nome_percurso_stats.total = 1
-                    then 'resultado_nome_percurso_unico'
-                when resultados.nome_norm = elegiveis.nome_norm
-                     and crm_nome_stats.total = 1
-                     and res_nome_stats.total = 1
-                    then 'resultado_nome_unico'
-            end as match_status,
-            case
-                when elegiveis.numero_peito_num is not null
-                     and resultados.num_peito = elegiveis.numero_peito_num
-                     and resultados.nome_norm = elegiveis.nome_norm
-                    then 0.99
-                when elegiveis.data_nascimento is not null
-                     and resultados.data_nascimento = elegiveis.data_nascimento
-                     and resultados.nome_norm = elegiveis.nome_norm
-                    then 0.98
-                when elegiveis.percurso is not null
-                     and resultados.percurso is not null
-                     and abs(resultados.percurso - elegiveis.percurso) < 0.01
-                     and resultados.nome_norm = elegiveis.nome_norm
-                     and crm_nome_percurso_stats.total = 1
-                     and res_nome_percurso_stats.total = 1
-                    then 0.92
-                when resultados.nome_norm = elegiveis.nome_norm
-                     and crm_nome_stats.total = 1
-                     and res_nome_stats.total = 1
-                    then 0.88
-            end as match_confianca
-        from elegiveis
-        inner join resultados
-            on resultados.id_evento = elegiveis.id_evento
-        left join crm_nome_stats
-            on crm_nome_stats.id_evento = elegiveis.id_evento
-           and crm_nome_stats.nome_norm = elegiveis.nome_norm
-        left join res_nome_stats
-            on res_nome_stats.id_evento = resultados.id_evento
-           and res_nome_stats.nome_norm = resultados.nome_norm
-        left join crm_nome_percurso_stats
-            on crm_nome_percurso_stats.id_evento = elegiveis.id_evento
-           and crm_nome_percurso_stats.nome_norm = elegiveis.nome_norm
-           and crm_nome_percurso_stats.percurso = elegiveis.percurso
-        left join res_nome_percurso_stats
-            on res_nome_percurso_stats.id_evento = resultados.id_evento
-           and res_nome_percurso_stats.nome_norm = resultados.nome_norm
-           and res_nome_percurso_stats.percurso = resultados.percurso
-        where (
-            elegiveis.numero_peito_num is not null
-            and resultados.num_peito = elegiveis.numero_peito_num
-            and resultados.nome_norm = elegiveis.nome_norm
-        )
-        or (
-            elegiveis.data_nascimento is not null
-            and resultados.data_nascimento = elegiveis.data_nascimento
-            and resultados.nome_norm = elegiveis.nome_norm
-        )
-        or (
-            elegiveis.percurso is not null
-            and resultados.percurso is not null
-            and abs(resultados.percurso - elegiveis.percurso) < 0.01
-            and resultados.nome_norm = elegiveis.nome_norm
-            and crm_nome_percurso_stats.total = 1
-            and res_nome_percurso_stats.total = 1
-        )
-        or (
-            resultados.nome_norm = elegiveis.nome_norm
-            and crm_nome_stats.total = 1
-            and res_nome_stats.total = 1
-        )
-    ),
-    melhores as (
-        select distinct on (candidatos.id_crm_participacao)
-            candidatos.*
-        from candidatos
-        where candidatos.match_status is not null
-        order by candidatos.id_crm_participacao,
-                 candidatos.match_confianca desc,
-                 (candidatos.id_usuario is not null) desc,
-                 candidatos.id_resultado
-    ),
-    participacoes_atualizadas as (
-        update crm.tb_crm_participacoes part
-        set id_resultado = melhores.id_resultado,
-            correu = true,
-            concluinte = coalesce(melhores.concluinte, true),
-            status_resultado = melhores.status_final,
-            tempo_total = melhores.tempo_total,
-            pace_resultado = melhores.pace,
-            match_resultado_status = melhores.match_status,
-            match_resultado_confianca = melhores.match_confianca,
-            lead_score = coalesce(part.lead_score, 0)
-                + case when melhores.id_usuario is not null then 40 else 25 end,
-            lead_score_componentes = coalesce(part.lead_score_componentes, '{}'::jsonb)
-                || jsonb_build_object(
-                    'resultado', case when melhores.id_usuario is not null then 40 else 25 end,
-                    'resultado_match', melhores.match_status
-                ),
-            data_atualizacao = current_timestamp
-        from melhores
-        where part.id_crm_participacao = melhores.id_crm_participacao
-          and part.id_resultado is null
-        returning part.id_crm_participacao
-    ),
-    pessoas_atualizadas as (
-        update crm.tb_crm_pessoas pessoa
-        set id_usuario = melhores.id_usuario,
-            match_usuario_status = 'resultado_' || melhores.match_status,
-            match_usuario_confianca = melhores.match_confianca,
-            data_atualizacao = current_timestamp
-        from melhores
-        where pessoa.id_crm_pessoa = melhores.id_crm_pessoa
-          and pessoa.id_usuario is null
-          and melhores.id_usuario is not null
-        returning pessoa.id_crm_pessoa
-    )
-    select
-        (select count(*)::integer from participacoes_atualizadas),
-        (select count(*)::integer from pessoas_atualizadas)
-    into v_participacoes_vinculadas, v_pessoas_vinculadas;
-
-    with elegiveis_pendentes as (
-        select part.id_crm_participacao
-        from crm.tb_crm_participacoes part
-        where part.id_evento is not null
-          and part.id_resultado is null
-          and (p_id_evento is null or part.id_evento = p_id_evento)
-          and (
-              p_id_conta is null
-              or exists (
-                  select 1
-                  from crm.tb_crm_conta_evento_versoes link
-                  where link.id_crm_evento_versao = part.id_crm_evento_versao
-                    and link.status = 'ATIVO'::public.status_conta_evento
-                    and link.id_conta = p_id_conta
-              )
-          )
-    )
-    select count(*)::integer
-    into v_participacoes_pendentes
-    from elegiveis_pendentes;
-
-    return query
-    select
-        coalesce(v_participacoes_avaliadas, 0),
-        coalesce(v_participacoes_vinculadas, 0),
-        coalesce(v_pessoas_vinculadas, 0),
-        coalesce(v_participacoes_pendentes, 0);
+    -- missing source code
 end;
 $$;
 
@@ -24259,223 +19428,8 @@ create function crm.crm_link_fonte_evento(p_fonte character varying, p_id_evento
     language plpgsql
 as
 $$
-declare
-    v_fonte varchar;
-    v_cod_evento_externo varchar;
-    v_id_crm_evento_serie integer;
-    v_id_crm_evento_versao integer;
-    v_match record;
 begin
-    v_fonte := nullif(lower(trim(coalesce(p_fonte, ''))), '');
-    v_cod_evento_externo := nullif(trim(coalesce(p_cod_evento_externo, '')), '');
-
-    if v_fonte is null then
-        raise exception 'p_fonte e obrigatorio';
-    end if;
-
-    if p_id_evento is null then
-        raise exception 'p_id_evento e obrigatorio';
-    end if;
-
-    if not exists (
-        select 1
-        from public.tb_evento_corridas evt
-        where evt.id_evento = p_id_evento
-    ) then
-        raise exception 'Evento Road Runners % nao encontrado', p_id_evento;
-    end if;
-
-    if p_id_parceiro is not null and not exists (
-        select 1
-        from public.tb_parceiros par
-        where par.id_parceiro = p_id_parceiro
-    ) then
-        raise exception 'Parceiro % nao encontrado', p_id_parceiro;
-    end if;
-
-    insert into crm.tb_crm_evento_series (
-        nome_serie,
-        slug_serie,
-        descricao
-    )
-    values (
-        'Eventos Road Runners CRM',
-        'eventos-roadrunners-crm',
-        'Serie generica para fontes de inscricao vinculadas diretamente a eventos Road Runners.'
-    )
-    on conflict (slug_serie) do update
-        set nome_serie = excluded.nome_serie,
-            data_atualizacao = current_timestamp
-    returning id_crm_evento_serie
-    into v_id_crm_evento_serie;
-
-    select vers.id_crm_evento_versao
-    into v_id_crm_evento_versao
-    from crm.tb_crm_evento_versoes vers
-    where vers.fonte = v_fonte
-      and (
-          (v_cod_evento_externo is not null and vers.cod_evento_externo = v_cod_evento_externo)
-          or (
-              v_cod_evento_externo is null
-              and (vers.cod_evento_externo is null or vers.cod_evento_externo = '')
-              and vers.id_evento = p_id_evento
-              and coalesce(vers.id_parceiro, -1) = coalesce(p_id_parceiro, -1)
-          )
-      )
-    order by case when vers.id_evento = p_id_evento then 0 else 1 end,
-             vers.id_crm_evento_versao
-    limit 1;
-
-    if v_id_crm_evento_versao is null then
-        insert into crm.tb_crm_evento_versoes (
-            id_crm_evento_serie,
-            id_evento,
-            id_parceiro,
-            fonte,
-            cod_evento_externo,
-            nome_evento_externo,
-            ano_evento,
-            data_evento,
-            payload
-        )
-        select
-            v_id_crm_evento_serie,
-            evt.id_evento,
-            p_id_parceiro,
-            v_fonte,
-            v_cod_evento_externo,
-            coalesce(p_nome_evento_externo, evt.nome_evento),
-            extract(year from evt.data_inicial)::integer,
-            evt.data_inicial,
-            coalesce(p_payload, '{}'::jsonb)
-                || jsonb_build_object(
-                    'id_evento_origem', 'manual',
-                    'id_evento_usuario_cadastro', p_usuario_cadastro
-                )
-        from public.tb_evento_corridas evt
-        where evt.id_evento = p_id_evento
-        returning id_crm_evento_versao
-        into v_id_crm_evento_versao;
-    else
-        update crm.tb_crm_evento_versoes vers
-        set id_crm_evento_serie = coalesce(vers.id_crm_evento_serie, v_id_crm_evento_serie),
-            id_evento = p_id_evento,
-            id_parceiro = coalesce(p_id_parceiro, vers.id_parceiro),
-            cod_evento_externo = coalesce(v_cod_evento_externo, vers.cod_evento_externo),
-            nome_evento_externo = coalesce(p_nome_evento_externo, vers.nome_evento_externo),
-            ano_evento = coalesce(vers.ano_evento, extract(year from evt.data_inicial)::integer),
-            data_evento = coalesce(vers.data_evento, evt.data_inicial),
-            payload = coalesce(vers.payload, '{}'::jsonb)
-                || coalesce(p_payload, '{}'::jsonb)
-                || jsonb_build_object(
-                    'id_evento_origem', 'manual',
-                    'id_evento_usuario_cadastro', p_usuario_cadastro
-                ),
-            data_atualizacao = current_timestamp
-        from public.tb_evento_corridas evt
-        where vers.id_crm_evento_versao = v_id_crm_evento_versao
-          and evt.id_evento = p_id_evento;
-    end if;
-
-    update crm.tb_crm_importacoes imp
-    set id_crm_evento_versao = v_id_crm_evento_versao,
-        id_evento = p_id_evento,
-        id_parceiro = coalesce(p_id_parceiro, imp.id_parceiro),
-        cod_evento_externo = coalesce(v_cod_evento_externo, imp.cod_evento_externo),
-        data_atualizacao = current_timestamp
-    where imp.fonte = v_fonte
-      and (
-          (v_cod_evento_externo is not null and (
-              imp.cod_evento_externo = v_cod_evento_externo
-              or imp.api_parametros ->> 'cod_evento' = v_cod_evento_externo
-          ))
-          or (
-              v_cod_evento_externo is null
-              and imp.id_evento = p_id_evento
-              and imp.id_crm_evento_versao is null
-          )
-      );
-
-    update crm.tb_crm_participacoes part
-    set id_crm_evento_versao = v_id_crm_evento_versao,
-        id_evento = p_id_evento,
-        id_parceiro = coalesce(p_id_parceiro, part.id_parceiro),
-        data_atualizacao = current_timestamp
-    where part.fonte = v_fonte
-      and (
-          (v_cod_evento_externo is not null and part.cod_evento_externo = v_cod_evento_externo)
-          or (
-              v_cod_evento_externo is null
-              and part.id_evento = p_id_evento
-              and part.id_crm_evento_versao is null
-          )
-      );
-
-    update crm.tb_crm_pedidos ped
-    set id_crm_evento_versao = v_id_crm_evento_versao,
-        id_parceiro = coalesce(p_id_parceiro, ped.id_parceiro),
-        data_atualizacao = current_timestamp
-    where ped.fonte = v_fonte
-      and (
-          (v_cod_evento_externo is not null and ped.cod_evento_externo = v_cod_evento_externo)
-          or (
-              v_cod_evento_externo is null
-              and ped.id_crm_evento_versao is null
-              and exists (
-                  select 1
-                  from crm.tb_crm_importacoes imp
-                  where imp.id_crm_importacao = ped.id_crm_importacao
-                    and imp.fonte = v_fonte
-                    and imp.id_evento = p_id_evento
-              )
-          )
-      );
-
-    insert into crm.tb_crm_conta_evento_versoes (
-        id_conta,
-        id_crm_evento_versao,
-        status,
-        usuario_cadastro,
-        origem
-    )
-    select
-        cev.id_conta,
-        v_id_crm_evento_versao,
-        cev.status,
-        p_usuario_cadastro,
-        'tb_conta_eventos'
-    from public.tb_conta_eventos cev
-    where cev.id_evento = p_id_evento
-    on conflict (id_conta, id_crm_evento_versao) do update
-        set status = excluded.status,
-            usuario_cadastro = coalesce(excluded.usuario_cadastro, crm.tb_crm_conta_evento_versoes.usuario_cadastro),
-            origem = excluded.origem,
-            data_atualizacao = now();
-
-    select *
-    into v_match
-    from crm.crm_match_resultados(null, p_id_evento)
-    limit 1;
-
-    return query
-    select
-        vers.fonte,
-        vers.cod_evento_externo,
-        evt.id_evento,
-        evt.nome_evento,
-        vers.id_parceiro,
-        vers.id_crm_evento_versao,
-        (
-            select count(*)::integer
-            from crm.tb_crm_participacoes part
-            where part.id_crm_evento_versao = vers.id_crm_evento_versao
-        ) as total_participacoes,
-        coalesce(v_match.participacoes_vinculadas, 0)::integer as total_resultados_vinculados,
-        coalesce(v_match.pessoas_vinculadas, 0)::integer as total_usuarios_vinculados
-    from crm.tb_crm_evento_versoes vers
-    inner join public.tb_evento_corridas evt
-        on evt.id_evento = p_id_evento
-    where vers.id_crm_evento_versao = v_id_crm_evento_versao;
+    -- missing source code
 end;
 $$;
 
@@ -24492,32 +19446,7 @@ create function crm.crm_link_ticketsports_evento(p_cod_evento integer, p_id_even
 as
 $$
 begin
-    if p_cod_evento is null then
-        raise exception 'p_cod_evento e obrigatorio';
-    end if;
-
-    perform 1
-    from crm.crm_sync_ticketsports(p_cod_evento)
-    limit 1;
-
-    return query
-    select
-        link.evento_codigo_externo,
-        link.evento_rr_id,
-        link.evento_rr_nome,
-        link.crm_evento_versao_id,
-        link.total_participacoes,
-        link.total_resultados_vinculados,
-        link.total_usuarios_vinculados
-    from crm.crm_link_fonte_evento(
-        'ticketsports',
-        p_id_evento,
-        p_cod_evento::varchar,
-        null,
-        p_usuario_cadastro,
-        null,
-        jsonb_build_object('wrapper', 'crm_link_ticketsports_evento')
-    ) link;
+    -- missing source code
 end;
 $$;
 
@@ -24533,89 +19462,8 @@ create function crm.crm_criar_importacao_arquivo(p_id_evento integer, p_fonte ch
     language plpgsql
 as
 $$
-declare
-    v_link record;
 begin
-    select *
-    into v_link
-    from crm.crm_link_fonte_evento(
-        p_fonte,
-        p_id_evento,
-        p_cod_evento_externo,
-        p_id_parceiro,
-        p_usuario_importacao,
-        null,
-        jsonb_build_object('origem', 'arquivo')
-    )
-    limit 1;
-
-    return query
-    insert into crm.tb_crm_importacoes (
-        id_crm_evento_versao,
-        id_evento,
-        id_parceiro,
-        id_usuario_importacao,
-        fonte,
-        cod_evento_externo,
-        origem_tipo,
-        tipo_entidade,
-        nome_importacao,
-        arquivo_nome,
-        arquivo_hash,
-        arquivo_mime,
-        arquivo_tamanho_bytes,
-        mapeamento,
-        status_processamento,
-        data_inicio
-    )
-    values (
-        v_link.crm_evento_versao_id,
-        p_id_evento,
-        p_id_parceiro,
-        p_usuario_importacao,
-        nullif(lower(trim(coalesce(p_fonte, ''))), ''),
-        nullif(trim(coalesce(p_cod_evento_externo, '')), ''),
-        'arquivo',
-        'participantes',
-        coalesce(nullif(trim(p_nome_importacao), ''), p_arquivo_nome, 'Importacao arquivo CRM'),
-        p_arquivo_nome,
-        nullif(trim(coalesce(p_arquivo_hash, '')), ''),
-        p_arquivo_mime,
-        p_arquivo_tamanho_bytes,
-        p_mapeamento,
-        'recebido',
-        current_timestamp
-    )
-    on conflict (arquivo_hash, coalesce(aba_nome, ''), tipo_entidade)
-        where arquivo_hash is not null and arquivo_hash <> ''
-    do update
-        set id_crm_evento_versao = excluded.id_crm_evento_versao,
-            id_evento = excluded.id_evento,
-            id_parceiro = excluded.id_parceiro,
-            id_usuario_importacao = coalesce(excluded.id_usuario_importacao, crm.tb_crm_importacoes.id_usuario_importacao),
-            fonte = excluded.fonte,
-            cod_evento_externo = excluded.cod_evento_externo,
-            nome_importacao = excluded.nome_importacao,
-            arquivo_nome = excluded.arquivo_nome,
-            arquivo_mime = excluded.arquivo_mime,
-            arquivo_tamanho_bytes = excluded.arquivo_tamanho_bytes,
-            mapeamento = excluded.mapeamento,
-            status_processamento = 'recebido',
-            total_linhas = 0,
-            total_validas = 0,
-            total_invalidas = 0,
-            total_duplicadas = 0,
-            erro_processamento = null,
-            data_inicio = current_timestamp,
-            data_fim = null,
-            data_atualizacao = current_timestamp
-    returning
-        tb_crm_importacoes.id_crm_importacao,
-        tb_crm_importacoes.id_crm_evento_versao,
-        tb_crm_importacoes.id_evento,
-        tb_crm_importacoes.fonte,
-        tb_crm_importacoes.cod_evento_externo,
-        tb_crm_importacoes.status_processamento;
+    -- missing source code
 end;
 $$;
 
@@ -24631,411 +19479,8 @@ create function crm.crm_processar_importacao_arquivo(p_id_crm_importacao bigint)
     language plpgsql
 as
 $$
-declare
-    v_importacao record;
-    v_linhas_total integer := 0;
-    v_linhas_validas integer := 0;
-    v_linhas_invalidas integer := 0;
-    v_pessoas_total integer := 0;
-    v_row_count integer := 0;
-    v_participacoes_total integer := 0;
-    v_match record;
 begin
-    select imp.*
-    into v_importacao
-    from crm.tb_crm_importacoes imp
-    where imp.id_crm_importacao = p_id_crm_importacao;
-
-    if not found then
-        raise exception 'Importacao CRM % nao encontrada', p_id_crm_importacao;
-    end if;
-
-    update crm.tb_crm_importacao_linhas linha
-    set nome_norm = crm_normalize_text(linha.nome_atleta),
-        email_norm = lower(nullif(trim(coalesce(linha.email, '')), '')),
-        documento_norm = crm_only_digits(linha.documento),
-        telefone_norm = crm_only_digits(linha.telefone),
-        estado = upper(nullif(trim(coalesce(linha.estado, '')), '')),
-        pais = coalesce(nullif(trim(linha.pais), ''), 'BR'),
-        percurso = coalesce(linha.percurso, crm_infer_percurso(coalesce(linha.modalidade, linha.categoria))),
-        status_validacao = case
-            when crm_normalize_text(linha.nome_atleta) is null then 'invalido'
-            else 'valido'
-        end,
-        erros = case
-            when crm_normalize_text(linha.nome_atleta) is null
-                then jsonb_build_array('nome_obrigatorio')
-            else null
-        end,
-        data_atualizacao = current_timestamp
-    where linha.id_crm_importacao = p_id_crm_importacao;
-
-    select
-        count(*)::integer,
-        count(*) filter (where linha.status_validacao = 'valido')::integer,
-        count(*) filter (where linha.status_validacao <> 'valido')::integer
-    into v_linhas_total, v_linhas_validas, v_linhas_invalidas
-    from crm.tb_crm_importacao_linhas linha
-    where linha.id_crm_importacao = p_id_crm_importacao;
-
-    delete from crm.tb_crm_participacoes part
-    using crm.tb_crm_importacao_linhas linha
-    where part.id_crm_importacao_linha = linha.id_crm_importacao_linha
-      and linha.id_crm_importacao = p_id_crm_importacao
-      and linha.status_validacao <> 'valido';
-
-    with src as (
-        select distinct on (linha.documento_norm)
-            linha.*
-        from crm.tb_crm_importacao_linhas linha
-        where linha.id_crm_importacao = p_id_crm_importacao
-          and linha.status_validacao = 'valido'
-          and linha.documento_norm is not null
-          and linha.documento_norm <> ''
-        order by linha.documento_norm, linha.numero_linha
-    )
-    insert into crm.tb_crm_pessoas (
-        nome,
-        nome_norm,
-        email,
-        email_norm,
-        documento,
-        documento_norm,
-        telefone,
-        telefone_norm,
-        data_nascimento,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        assessoria,
-        origem_primeiro_contato
-    )
-    select
-        src.nome_atleta,
-        src.nome_norm,
-        src.email,
-        src.email_norm,
-        src.documento,
-        src.documento_norm,
-        src.telefone,
-        src.telefone_norm,
-        src.data_nascimento,
-        src.sexo,
-        src.cidade,
-        src.estado,
-        coalesce(src.pais, 'BR'),
-        src.assessoria,
-        v_importacao.fonte
-    from src
-    on conflict (documento_norm)
-        where documento_norm is not null and documento_norm <> ''
-    do update
-        set nome = coalesce(excluded.nome, tb_crm_pessoas.nome),
-            nome_norm = coalesce(excluded.nome_norm, tb_crm_pessoas.nome_norm),
-            email = coalesce(excluded.email, tb_crm_pessoas.email),
-            email_norm = coalesce(excluded.email_norm, tb_crm_pessoas.email_norm),
-            telefone = coalesce(excluded.telefone, tb_crm_pessoas.telefone),
-            telefone_norm = coalesce(excluded.telefone_norm, tb_crm_pessoas.telefone_norm),
-            data_nascimento = coalesce(excluded.data_nascimento, tb_crm_pessoas.data_nascimento),
-            sexo = coalesce(excluded.sexo, tb_crm_pessoas.sexo),
-            cidade = coalesce(excluded.cidade, tb_crm_pessoas.cidade),
-            estado = coalesce(excluded.estado, tb_crm_pessoas.estado),
-            pais = coalesce(excluded.pais, tb_crm_pessoas.pais),
-            assessoria = coalesce(excluded.assessoria, tb_crm_pessoas.assessoria),
-            data_atualizacao = current_timestamp;
-
-    get diagnostics v_row_count = row_count;
-    v_pessoas_total := v_pessoas_total + v_row_count;
-
-    with src as (
-        select distinct on (linha.email_norm, linha.nome_norm, linha.data_nascimento)
-            linha.*
-        from crm.tb_crm_importacao_linhas linha
-        where linha.id_crm_importacao = p_id_crm_importacao
-          and linha.status_validacao = 'valido'
-          and linha.documento_norm is null
-          and linha.email_norm is not null
-          and linha.email_norm <> ''
-          and linha.nome_norm is not null
-          and linha.data_nascimento is not null
-        order by linha.email_norm, linha.nome_norm, linha.data_nascimento, linha.numero_linha
-    )
-    insert into crm.tb_crm_pessoas (
-        nome,
-        nome_norm,
-        email,
-        email_norm,
-        telefone,
-        telefone_norm,
-        data_nascimento,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        assessoria,
-        origem_primeiro_contato
-    )
-    select
-        src.nome_atleta,
-        src.nome_norm,
-        src.email,
-        src.email_norm,
-        src.telefone,
-        src.telefone_norm,
-        src.data_nascimento,
-        src.sexo,
-        src.cidade,
-        src.estado,
-        coalesce(src.pais, 'BR'),
-        src.assessoria,
-        v_importacao.fonte
-    from src
-    on conflict (email_norm, nome_norm, data_nascimento)
-        where documento_norm is null
-          and email_norm is not null
-          and email_norm <> ''
-          and data_nascimento is not null
-    do update
-        set telefone = coalesce(excluded.telefone, tb_crm_pessoas.telefone),
-            telefone_norm = coalesce(excluded.telefone_norm, tb_crm_pessoas.telefone_norm),
-            sexo = coalesce(excluded.sexo, tb_crm_pessoas.sexo),
-            cidade = coalesce(excluded.cidade, tb_crm_pessoas.cidade),
-            estado = coalesce(excluded.estado, tb_crm_pessoas.estado),
-            pais = coalesce(excluded.pais, tb_crm_pessoas.pais),
-            assessoria = coalesce(excluded.assessoria, tb_crm_pessoas.assessoria),
-            data_atualizacao = current_timestamp;
-
-    get diagnostics v_row_count = row_count;
-    v_pessoas_total := v_pessoas_total + v_row_count;
-
-    with src as (
-        select distinct on (linha.email_norm, linha.nome_norm)
-            linha.*
-        from crm.tb_crm_importacao_linhas linha
-        where linha.id_crm_importacao = p_id_crm_importacao
-          and linha.status_validacao = 'valido'
-          and linha.documento_norm is null
-          and linha.data_nascimento is null
-          and linha.email_norm is not null
-          and linha.email_norm <> ''
-          and linha.nome_norm is not null
-        order by linha.email_norm, linha.nome_norm, linha.numero_linha
-    )
-    insert into crm.tb_crm_pessoas (
-        nome,
-        nome_norm,
-        email,
-        email_norm,
-        telefone,
-        telefone_norm,
-        sexo,
-        cidade,
-        estado,
-        pais,
-        assessoria,
-        origem_primeiro_contato
-    )
-    select
-        src.nome_atleta,
-        src.nome_norm,
-        src.email,
-        src.email_norm,
-        src.telefone,
-        src.telefone_norm,
-        src.sexo,
-        src.cidade,
-        src.estado,
-        coalesce(src.pais, 'BR'),
-        src.assessoria,
-        v_importacao.fonte
-    from src
-    where not exists (
-        select 1
-        from crm.tb_crm_pessoas pessoa
-        where pessoa.documento_norm is null
-          and pessoa.email_norm = src.email_norm
-          and pessoa.nome_norm = src.nome_norm
-    );
-
-    get diagnostics v_row_count = row_count;
-    v_pessoas_total := v_pessoas_total + v_row_count;
-
-    with vinculada as (
-        select
-            linha.*,
-            coalesce(pessoa_doc.id_crm_pessoa, pessoa_email_data.id_crm_pessoa, pessoa_email_nome.id_crm_pessoa) as id_crm_pessoa
-        from crm.tb_crm_importacao_linhas linha
-        left join crm.tb_crm_pessoas pessoa_doc
-            on pessoa_doc.documento_norm = linha.documento_norm
-           and linha.documento_norm is not null
-           and linha.documento_norm <> ''
-        left join crm.tb_crm_pessoas pessoa_email_data
-            on pessoa_doc.id_crm_pessoa is null
-           and pessoa_email_data.documento_norm is null
-           and pessoa_email_data.email_norm = linha.email_norm
-           and pessoa_email_data.nome_norm = linha.nome_norm
-           and pessoa_email_data.data_nascimento = linha.data_nascimento
-           and linha.email_norm is not null
-           and linha.data_nascimento is not null
-        left join lateral (
-            select pessoa_email.id_crm_pessoa
-            from crm.tb_crm_pessoas pessoa_email
-            where pessoa_doc.id_crm_pessoa is null
-              and pessoa_email_data.id_crm_pessoa is null
-              and pessoa_email.documento_norm is null
-              and pessoa_email.email_norm = linha.email_norm
-              and pessoa_email.nome_norm = linha.nome_norm
-              and linha.email_norm is not null
-            order by pessoa_email.data_atualizacao desc, pessoa_email.id_crm_pessoa desc
-            limit 1
-        ) pessoa_email_nome on true
-        where linha.id_crm_importacao = p_id_crm_importacao
-          and linha.status_validacao = 'valido'
-    )
-    insert into crm.tb_crm_participacoes (
-        id_crm_pessoa,
-        id_crm_evento_versao,
-        id_crm_importacao_linha,
-        id_evento,
-        id_parceiro,
-        fonte,
-        cod_evento_externo,
-        ano_evento,
-        nome_evento_externo,
-        data_evento,
-        numero_inscricao,
-        numero_pedido,
-        protocolo,
-        numero_peito,
-        percurso,
-        percurso_label,
-        modalidade,
-        categoria,
-        status_inscricao,
-        status_pedido,
-        data_pedido,
-        data_pagamento,
-        origem,
-        campanha,
-        cupom,
-        valor_unitario,
-        camiseta,
-        assessoria,
-        raw,
-        lead_score,
-        lead_score_componentes
-    )
-    select
-        vinculada.id_crm_pessoa,
-        v_importacao.id_crm_evento_versao,
-        vinculada.id_crm_importacao_linha,
-        v_importacao.id_evento,
-        v_importacao.id_parceiro,
-        v_importacao.fonte,
-        v_importacao.cod_evento_externo,
-        extract(year from evt.data_inicial)::integer,
-        evt.nome_evento,
-        evt.data_inicial,
-        coalesce(nullif(vinculada.numero_inscricao, ''), vinculada.id_crm_importacao_linha::varchar),
-        nullif(vinculada.numero_pedido, ''),
-        nullif(vinculada.protocolo, ''),
-        nullif(vinculada.numero_peito, ''),
-        vinculada.percurso,
-        case when vinculada.percurso is not null then vinculada.percurso::varchar || 'K' end,
-        nullif(vinculada.modalidade, ''),
-        nullif(vinculada.categoria, ''),
-        coalesce(nullif(vinculada.status_inscricao, ''), 'importado'),
-        coalesce(nullif(vinculada.status_inscricao, ''), 'importado'),
-        vinculada.data_pedido,
-        vinculada.data_pagamento,
-        nullif(vinculada.origem, ''),
-        nullif(vinculada.campanha, ''),
-        nullif(vinculada.cupom, ''),
-        vinculada.valor,
-        nullif(vinculada.camiseta, ''),
-        nullif(vinculada.assessoria, ''),
-        vinculada.raw,
-        (
-            25
-            + case when vinculada.documento_norm is not null then 15 else 0 end
-            + case when vinculada.email_norm is not null then 10 else 0 end
-            + case when vinculada.percurso >= 21 then 10 when vinculada.percurso is not null then 5 else 0 end
-        )::numeric,
-        jsonb_build_object(
-            'importado_arquivo', 25,
-            'documento', case when vinculada.documento_norm is not null then 15 else 0 end,
-            'email', case when vinculada.email_norm is not null then 10 else 0 end,
-            'percurso', case when vinculada.percurso >= 21 then 10 when vinculada.percurso is not null then 5 else 0 end
-        )
-    from vinculada
-    left join public.tb_evento_corridas evt
-        on evt.id_evento = v_importacao.id_evento
-    where vinculada.id_crm_pessoa is not null
-    on conflict (id_crm_importacao_linha)
-        where id_crm_importacao_linha is not null
-    do update
-        set id_crm_pessoa = excluded.id_crm_pessoa,
-            id_crm_evento_versao = excluded.id_crm_evento_versao,
-            id_evento = excluded.id_evento,
-            id_parceiro = excluded.id_parceiro,
-            fonte = excluded.fonte,
-            cod_evento_externo = excluded.cod_evento_externo,
-            ano_evento = excluded.ano_evento,
-            nome_evento_externo = excluded.nome_evento_externo,
-            data_evento = excluded.data_evento,
-            numero_inscricao = excluded.numero_inscricao,
-            numero_pedido = excluded.numero_pedido,
-            protocolo = excluded.protocolo,
-            numero_peito = excluded.numero_peito,
-            percurso = excluded.percurso,
-            percurso_label = excluded.percurso_label,
-            modalidade = excluded.modalidade,
-            categoria = excluded.categoria,
-            status_inscricao = excluded.status_inscricao,
-            status_pedido = excluded.status_pedido,
-            data_pedido = excluded.data_pedido,
-            data_pagamento = excluded.data_pagamento,
-            origem = excluded.origem,
-            campanha = excluded.campanha,
-            cupom = excluded.cupom,
-            valor_unitario = excluded.valor_unitario,
-            camiseta = excluded.camiseta,
-            assessoria = excluded.assessoria,
-            raw = excluded.raw,
-            lead_score = excluded.lead_score,
-            lead_score_componentes = excluded.lead_score_componentes,
-            data_atualizacao = current_timestamp;
-
-    get diagnostics v_participacoes_total = row_count;
-
-    update crm.tb_crm_importacoes imp
-    set status_processamento = case when v_linhas_invalidas > 0 then 'processado_com_erros' else 'processado' end,
-        total_linhas = v_linhas_total,
-        total_validas = v_linhas_validas,
-        total_invalidas = v_linhas_invalidas,
-        data_fim = current_timestamp,
-        data_atualizacao = current_timestamp
-    where imp.id_crm_importacao = p_id_crm_importacao;
-
-    select *
-    into v_match
-    from crm.crm_match_resultados(null, v_importacao.id_evento)
-    limit 1;
-
-    perform 1
-    from crm.crm_match_usuarios(null)
-    limit 1;
-
-    return query
-    select
-        v_linhas_total,
-        v_linhas_validas,
-        v_linhas_invalidas,
-        v_pessoas_total,
-        v_participacoes_total,
-        coalesce(v_match.participacoes_vinculadas, 0)::integer,
-        coalesce(v_match.pessoas_vinculadas, 0)::integer;
+    -- missing source code
 end;
 $$;
 
@@ -25052,60 +19497,7 @@ create function crm.crm_link_ticketsports_conta(p_cod_evento integer, p_id_conta
 as
 $$
 begin
-    if p_cod_evento is null then
-        raise exception 'p_cod_evento e obrigatorio';
-    end if;
-
-    if not exists (
-        select 1
-        from public.tb_contas cont
-        where cont.id_conta = p_id_conta
-    ) then
-        raise exception 'Conta % nao encontrada', p_id_conta;
-    end if;
-
-    perform 1
-    from crm.crm_sync_ticketsports(p_cod_evento)
-    limit 1;
-
-    insert into crm.tb_crm_conta_evento_versoes (
-        id_conta,
-        id_crm_evento_versao,
-        status,
-        usuario_cadastro,
-        origem
-    )
-    select
-        p_id_conta,
-        vers.id_crm_evento_versao,
-        'ATIVO'::public.status_conta_evento,
-        p_usuario_cadastro,
-        'manual'
-    from crm.tb_crm_evento_versoes vers
-    where vers.fonte = 'ticketsports'
-      and vers.cod_evento_externo = p_cod_evento::varchar
-    on conflict (id_conta, id_crm_evento_versao) do update
-        set status = 'ATIVO'::public.status_conta_evento,
-            usuario_cadastro = coalesce(excluded.usuario_cadastro, crm.tb_crm_conta_evento_versoes.usuario_cadastro),
-            origem = excluded.origem,
-            data_atualizacao = now();
-
-    return query
-    select
-        cont.id_conta,
-        cont.nome_conta,
-        vers.id_crm_evento_versao,
-        vers.cod_evento_externo,
-        vers.nome_evento_externo,
-        link.status::varchar
-    from crm.tb_crm_conta_evento_versoes link
-    inner join public.tb_contas cont
-        on cont.id_conta = link.id_conta
-    inner join crm.tb_crm_evento_versoes vers
-        on vers.id_crm_evento_versao = link.id_crm_evento_versao
-    where link.id_conta = p_id_conta
-      and vers.fonte = 'ticketsports'
-      and vers.cod_evento_externo = p_cod_evento::varchar;
+    -- missing source code
 end;
 $$;
 
@@ -25119,39 +19511,54 @@ create function ads.refresh_tb_ad_evento_metricas_dia(p_data_inicio date DEFAULT
     language plpgsql
 as
 $$
-            BEGIN
-                DELETE FROM ads.tb_ad_evento_metricas_dia
-                WHERE data_metrica BETWEEN p_data_inicio AND p_data_fim;
+BEGIN
+    IF p_data_inicio IS NULL OR p_data_fim IS NULL THEN
+        RAISE EXCEPTION 'O periodo do refresh nao pode ser nulo.';
+    END IF;
 
-                INSERT INTO ads.tb_ad_evento_metricas_dia (
-                    data_metrica,
-                    id_ad_evento,
-                    id_evento,
-                    id_conta,
-                    views,
-                    clicks,
-                    custo,
-                    updated_at
-                )
-                SELECT log.data_insercao::date AS data_metrica,
-                       ad.id_ad_evento,
-                       ad.id_evento,
-                       ce.id_conta,
-                       count(*) FILTER (WHERE log.status <= 2)::integer AS views,
-                       count(*) FILTER (WHERE log.status = 2)::integer AS clicks,
-                       coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo,
-                       now() AS updated_at
-                FROM ads.tb_ad_log log
-                INNER JOIN ads.tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
-                INNER JOIN public.tb_conta_eventos ce ON ce.id_evento = ad.id_evento
-                WHERE ce.status::text = 'ATIVO'
-                  AND log.data_insercao::date BETWEEN p_data_inicio AND p_data_fim
-                GROUP BY log.data_insercao::date,
-                         ad.id_ad_evento,
-                         ad.id_evento,
-                         ce.id_conta;
-            END;
-            $$;
+    IF p_data_inicio > p_data_fim THEN
+        RAISE EXCEPTION
+            'Periodo invalido: data inicial % posterior a data final %.',
+            p_data_inicio,
+            p_data_fim;
+    END IF;
+
+    -- Serializa chamadas diretas e as originadas pelo endpoint do Business.
+    PERFORM pg_advisory_xact_lock(940000001::bigint);
+
+    DELETE FROM ads.tb_ad_evento_metricas_dia
+    WHERE data_metrica BETWEEN p_data_inicio AND p_data_fim;
+
+    INSERT INTO ads.tb_ad_evento_metricas_dia (
+        data_metrica,
+        id_ad_evento,
+        id_evento,
+        id_conta,
+        views,
+        clicks,
+        custo,
+        updated_at
+    )
+    SELECT log.data_insercao::date AS data_metrica,
+           ad.id_ad_evento,
+           ad.id_evento,
+           ce.id_conta,
+           count(*) FILTER (WHERE log.status <= 2)::integer AS views,
+           count(*) FILTER (WHERE log.status = 2)::integer AS clicks,
+           coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo,
+           now() AS updated_at
+    FROM ads.tb_ad_log log
+    INNER JOIN ads.tb_ad_eventos ad ON ad.id_ad_evento = log.id_ad
+    INNER JOIN public.tb_conta_eventos ce ON ce.id_evento = ad.id_evento
+    WHERE ce.status::text = 'ATIVO'
+      AND log.data_insercao >= p_data_inicio::timestamp
+      AND log.data_insercao < (p_data_fim + 1)::timestamp
+    GROUP BY log.data_insercao::date,
+             ad.id_ad_evento,
+             ad.id_evento,
+             ce.id_conta;
+END;
+$$;
 
 alter function ads.refresh_tb_ad_evento_metricas_dia(date, date) owner to runner_dba;
 
@@ -25161,8 +19568,10 @@ create function public.refresh_tb_ad_evento_metricas_dia(p_data_inicio date DEFA
     language sql
 as
 $$
-                SELECT ads.refresh_tb_ad_evento_metricas_dia(p_data_inicio, p_data_fim)
-            $$;
+    begin
+-- missing source code
+end;
+$$;
 
 alter function public.refresh_tb_ad_evento_metricas_dia(date, date) owner to runner_dba;
 
@@ -25174,31 +19583,9 @@ create function public.user_manager_merge_reference(p_schema text, p_table text,
     language plpgsql
 as
 $$
-DECLARE
-    v_row record;
-    v_moved integer := 0;
-    v_deduplicated integer := 0;
-BEGIN
-    FOR v_row IN EXECUTE format(
-        'SELECT ctid FROM %I.%I WHERE %I = $1 FOR UPDATE',
-        p_schema, p_table, p_column
-    ) USING p_source
-    LOOP
-        BEGIN
-            EXECUTE format(
-                'UPDATE %I.%I SET %I = $1 WHERE ctid = $2',
-                p_schema, p_table, p_column
-            ) USING p_keep, v_row.ctid;
-            v_moved := v_moved + 1;
-        EXCEPTION WHEN unique_violation OR check_violation OR exclusion_violation THEN
-            EXECUTE format('DELETE FROM %I.%I WHERE ctid = $1', p_schema, p_table)
-                USING v_row.ctid;
-            v_deduplicated := v_deduplicated + 1;
-        END;
-    END LOOP;
-
-    RETURN jsonb_build_object('migrados', v_moved, 'deduplicados', v_deduplicated);
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.user_manager_merge_reference(text, text, text, bigint, bigint) owner to runner_dba;
@@ -25209,216 +19596,9 @@ create function public.user_manager_merge_users(p_keep_user integer, p_source_us
     language plpgsql
 as
 $$
-DECLARE
-    v_source_page record;
-    v_keep_page integer;
-    v_reference record;
-    v_result jsonb;
-    v_operations jsonb := '[]'::jsonb;
-    v_pages_merged integer := 0;
-    v_pages_transferred integer := 0;
-BEGIN
-    IF p_keep_user IS NULL OR p_source_user IS NULL OR p_keep_user = p_source_user THEN
-        RAISE EXCEPTION 'As contas de origem e destino devem ser diferentes.';
-    END IF;
-    IF p_source_user = p_actor_user THEN
-        RAISE EXCEPTION 'A conta da sessão administrativa não pode ser removida.';
-    END IF;
-
-    -- Serializa merges concorrentes e confirma que ambas as contas existem.
-    PERFORM id FROM public.tb_usuarios
-     WHERE id IN (p_keep_user, p_source_user)
-     ORDER BY id FOR UPDATE;
-    IF NOT EXISTS (SELECT 1 FROM public.tb_usuarios WHERE id = p_keep_user)
-       OR NOT EXISTS (SELECT 1 FROM public.tb_usuarios WHERE id = p_source_user) THEN
-        RAISE EXCEPTION 'Uma das contas selecionadas não existe mais.';
-    END IF;
-
-    -- A conta mantida tem prioridade; lacunas cadastrais são preenchidas pela origem.
-    WITH source_values AS (
-        SELECT * FROM public.tb_usuarios WHERE id = p_source_user
-    ), source AS (
-        -- Libera identificadores únicos, preservando os valores antigos no CTE.
-        UPDATE public.tb_usuarios usr
-           SET username = NULL, strava_id = NULL
-          FROM source_values old
-         WHERE usr.id = old.id
-         RETURNING old.*
-    )
-    UPDATE public.tb_usuarios keep
-       SET name = coalesce(nullif(btrim(keep.name), ''), source.name),
-           username = coalesce(nullif(btrim(keep.username), ''), source.username),
-           aka = coalesce(nullif(btrim(keep.aka), ''), source.aka),
-           genero = coalesce(nullif(btrim(keep.genero), ''), source.genero),
-           pais = coalesce(nullif(btrim(keep.pais), ''), source.pais),
-           estado = coalesce(nullif(btrim(keep.estado), ''), source.estado),
-           cidade = coalesce(nullif(btrim(keep.cidade), ''), source.cidade),
-           cep = coalesce(nullif(btrim(keep.cep), ''), source.cep),
-           endereco = coalesce(nullif(btrim(keep.endereco), ''), source.endereco),
-           data_nascimento = coalesce(keep.data_nascimento, source.data_nascimento),
-           ano_nascimento = coalesce(keep.ano_nascimento, source.ano_nascimento),
-           cbat = coalesce(nullif(btrim(keep.cbat), ''), source.cbat),
-           assessoria = coalesce(nullif(btrim(keep.assessoria), ''), source.assessoria),
-           ddi_usuario = coalesce(nullif(btrim(keep.ddi_usuario), ''), source.ddi_usuario),
-           ddd_usuario = coalesce(nullif(btrim(keep.ddd_usuario), ''), source.ddd_usuario),
-           telefone_usuario = coalesce(nullif(btrim(keep.telefone_usuario), ''), source.telefone_usuario),
-           imagem_usuario = coalesce(nullif(btrim(keep.imagem_usuario), ''), source.imagem_usuario),
-           strava_id = coalesce(keep.strava_id, source.strava_id),
-           strava_profile = coalesce(nullif(btrim(keep.strava_profile), ''), source.strava_profile),
-           tag_usuario = coalesce(nullif(btrim(keep.tag_usuario), ''), source.tag_usuario),
-           url_usuario = coalesce(nullif(btrim(keep.url_usuario), ''), source.url_usuario),
-           fonte_lead = coalesce(nullif(btrim(keep.fonte_lead), ''), source.fonte_lead),
-           manychat_subscriber_id = coalesce(keep.manychat_subscriber_id, source.manychat_subscriber_id),
-           is_admin = coalesce(keep.is_admin, false) OR coalesce(source.is_admin, false),
-           is_dev = coalesce(keep.is_dev, false) OR coalesce(source.is_dev, false),
-           is_partner = coalesce(keep.is_partner, false) OR coalesce(source.is_partner, false),
-           is_email_verified = coalesce(keep.is_email_verified, false) OR coalesce(source.is_email_verified, false),
-           optin_usuario = coalesce(keep.optin_usuario, false) OR coalesce(source.optin_usuario, false),
-           data_alteracao = now()
-      FROM public.tb_usuarios source
-     WHERE keep.id = p_keep_user AND source.id = p_source_user;
-
-    -- Perfis do mesmo tipo são consolidados. Tipos que só existem na origem são transferidos.
-    FOR v_source_page IN
-        SELECT DISTINCT pag.id_pagina, pag.tag_prefix
-          FROM public.tb_paginas pag
-          JOIN public.tb_paginas_usuarios pu ON pu.id_pagina = pag.id_pagina
-         WHERE pu.id_usuario = p_source_user
-         ORDER BY pag.id_pagina
-    LOOP
-        SELECT min(pag.id_pagina) INTO v_keep_page
-          FROM public.tb_paginas pag
-          JOIN public.tb_paginas_usuarios pu ON pu.id_pagina = pag.id_pagina
-         WHERE pu.id_usuario = p_keep_user
-           AND pag.tag_prefix = v_source_page.tag_prefix
-           AND pag.id_pagina <> v_source_page.id_pagina;
-
-        IF v_keep_page IS NULL THEN
-            UPDATE public.tb_paginas SET id_usuario_cadastro = p_keep_user
-             WHERE id_pagina = v_source_page.id_pagina AND id_usuario_cadastro = p_source_user;
-            INSERT INTO public.tb_paginas_usuarios (id_pagina, id_usuario)
-            SELECT v_source_page.id_pagina, p_keep_user
-             WHERE NOT EXISTS (
-                SELECT 1 FROM public.tb_paginas_usuarios
-                 WHERE id_pagina = v_source_page.id_pagina AND id_usuario = p_keep_user
-             );
-            DELETE FROM public.tb_paginas_usuarios
-             WHERE id_pagina = v_source_page.id_pagina AND id_usuario = p_source_user;
-            v_pages_transferred := v_pages_transferred + 1;
-        ELSE
-            UPDATE public.tb_paginas keep
-               SET nome = coalesce(nullif(btrim(keep.nome), ''), source.nome),
-                   apelido = coalesce(nullif(btrim(keep.apelido), ''), source.apelido),
-                   instagram = coalesce(nullif(btrim(keep.instagram), ''), source.instagram),
-                   whatsapp = coalesce(nullif(btrim(keep.whatsapp), ''), source.whatsapp),
-                   facebook = coalesce(nullif(btrim(keep.facebook), ''), source.facebook),
-                   website = coalesce(nullif(btrim(keep.website), ''), source.website),
-                   youtube = coalesce(nullif(btrim(keep.youtube), ''), source.youtube),
-                   tiktok = coalesce(nullif(btrim(keep.tiktok), ''), source.tiktok),
-                   loja = coalesce(nullif(btrim(keep.loja), ''), source.loja),
-                   path_imagem = coalesce(nullif(btrim(keep.path_imagem), ''), source.path_imagem),
-                   cidade = coalesce(nullif(btrim(keep.cidade), ''), source.cidade),
-                   uf = coalesce(nullif(btrim(keep.uf), ''), source.uf),
-                   descricao = coalesce(nullif(btrim(keep.descricao), ''), source.descricao),
-                   verificado = coalesce(keep.verificado, false) OR coalesce(source.verificado, false),
-                   profissional = coalesce(keep.profissional, false) OR coalesce(source.profissional, false)
-              FROM public.tb_paginas source
-             WHERE keep.id_pagina = v_keep_page AND source.id_pagina = v_source_page.id_pagina;
-
-            FOR v_reference IN
-                SELECT DISTINCT n.nspname AS schema_name, c.relname AS table_name, a.attname AS column_name
-                  FROM pg_constraint fk
-                  JOIN pg_class c ON c.oid = fk.conrelid
-                  JOIN pg_namespace n ON n.oid = c.relnamespace
-                  JOIN pg_class parent ON parent.oid = fk.confrelid
-                  JOIN unnest(fk.conkey) WITH ORDINALITY cols(attnum, ord) ON true
-                  JOIN pg_attribute a ON a.attrelid = fk.conrelid AND a.attnum = cols.attnum
-                 WHERE fk.contype = 'f' AND parent.oid = 'public.tb_paginas'::regclass
-                   AND n.nspname NOT IN ('pg_catalog', 'information_schema')
-                   AND c.oid <> 'public.tb_paginas'::regclass
-            LOOP
-                v_result := public.user_manager_merge_reference(v_reference.schema_name, v_reference.table_name,
-                    v_reference.column_name, v_source_page.id_pagina, v_keep_page);
-                v_operations := v_operations || jsonb_build_array(jsonb_build_object(
-                    'tabela', v_reference.schema_name || '.' || v_reference.table_name,
-                    'coluna', v_reference.column_name, 'resumo', v_result));
-            END LOOP;
-            DELETE FROM public.tb_paginas WHERE id_pagina = v_source_page.id_pagina;
-            v_pages_merged := v_pages_merged + 1;
-        END IF;
-    END LOOP;
-
-    DELETE FROM public.tb_paginas_usuarios a
-     USING public.tb_paginas_usuarios b
-     WHERE a.ctid > b.ctid AND a.id_pagina = b.id_pagina AND a.id_usuario = b.id_usuario;
-    DELETE FROM public.tb_paginas_vinculos WHERE id_pagina_origem = id_pagina_destino;
-
-    -- Todas as referências FK da conta são migradas, inclusive módulos adicionados no futuro.
-    FOR v_reference IN
-        SELECT DISTINCT n.nspname AS schema_name, c.relname AS table_name, a.attname AS column_name
-          FROM pg_constraint fk
-          JOIN pg_class c ON c.oid = fk.conrelid
-          JOIN pg_namespace n ON n.oid = c.relnamespace
-          JOIN pg_class parent ON parent.oid = fk.confrelid
-          JOIN unnest(fk.conkey) WITH ORDINALITY cols(attnum, ord) ON true
-          JOIN pg_attribute a ON a.attrelid = fk.conrelid AND a.attnum = cols.attnum
-         WHERE fk.contype = 'f' AND parent.oid = 'public.tb_usuarios'::regclass
-           AND n.nspname NOT IN ('pg_catalog', 'information_schema')
-           AND c.oid <> 'public.tb_usuarios'::regclass
-    LOOP
-        v_result := public.user_manager_merge_reference(v_reference.schema_name, v_reference.table_name,
-            v_reference.column_name, p_source_user, p_keep_user);
-        v_operations := v_operations || jsonb_build_array(jsonb_build_object(
-            'tabela', v_reference.schema_name || '.' || v_reference.table_name,
-            'coluna', v_reference.column_name, 'resumo', v_result));
-    END LOOP;
-
-    -- A troca do usuário pode fazer duas associações da mesma página convergirem.
-    DELETE FROM public.tb_paginas_usuarios a
-     USING public.tb_paginas_usuarios b
-     WHERE a.ctid > b.ctid AND a.id_pagina = b.id_pagina AND a.id_usuario = b.id_usuario;
-
-    -- Colunas históricas sem FK, mas com o nome canônico, também são preservadas.
-    FOR v_reference IN
-        SELECT c.table_schema AS schema_name, c.table_name, c.column_name
-          FROM information_schema.columns c
-          JOIN information_schema.tables tbl ON tbl.table_schema = c.table_schema
-                                             AND tbl.table_name = c.table_name
-                                             AND tbl.table_type = 'BASE TABLE'
-         WHERE c.column_name = 'id_usuario'
-           AND c.table_schema NOT IN ('pg_catalog', 'information_schema')
-           AND c.table_name <> 'tb_usuarios'
-           AND NOT EXISTS (
-                SELECT 1
-                  FROM pg_constraint fk
-                  JOIN pg_class rel ON rel.oid = fk.conrelid
-                  JOIN pg_namespace ns ON ns.oid = rel.relnamespace
-                  JOIN unnest(fk.conkey) key(attnum) ON true
-                  JOIN pg_attribute att ON att.attrelid = rel.oid AND att.attnum = key.attnum
-                 WHERE fk.contype = 'f' AND ns.nspname = c.table_schema
-                   AND rel.relname = c.table_name AND att.attname = c.column_name
-           )
-    LOOP
-        v_result := public.user_manager_merge_reference(v_reference.schema_name, v_reference.table_name,
-            v_reference.column_name, p_source_user, p_keep_user);
-        v_operations := v_operations || jsonb_build_array(jsonb_build_object(
-            'tabela', v_reference.schema_name || '.' || v_reference.table_name,
-            'coluna', v_reference.column_name, 'resumo', v_result));
-    END LOOP;
-
-    DELETE FROM public.tb_usuarios WHERE id = p_source_user;
-
-    INSERT INTO public.tb_usuarios_gestao_auditoria
-        (id_usuario_alvo, id_usuario_autor, acao, dados_anteriores, dados_novos)
-    VALUES (p_keep_user, p_actor_user, 'usuarios_mesclados',
-        jsonb_build_object('id_usuario_origem', p_source_user),
-        jsonb_build_object('id_usuario_mantido', p_keep_user, 'paginas_mescladas', v_pages_merged,
-                           'paginas_transferidas', v_pages_transferred, 'operacoes', v_operations));
-
-    RETURN jsonb_build_object('id_usuario_mantido', p_keep_user, 'id_usuario_removido', p_source_user,
-        'paginas_mescladas', v_pages_merged, 'paginas_transferidas', v_pages_transferred,
-        'operacoes', v_operations);
-END;
+begin
+    -- missing source code
+end;
 $$;
 
 alter function public.user_manager_merge_users(integer, integer, integer) owner to runner_dba;
@@ -69623,30 +63803,6 @@ create operator pg_catalog.&> (procedure = pg_catalog.poly_overright, leftarg = 
 
 comment on operator pg_catalog.&>(polygon, polygon) is 'overlaps or is right of';
 
-create operator pg_catalog.* (procedure = pg_catalog.multirange_intersect, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(anymultirange, anymultirange) is 'multirange intersect';
-
-create operator pg_catalog.* (procedure = pg_catalog.range_intersect, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(anyrange, anyrange) is 'range intersection';
-
-create operator pg_catalog.* (procedure = pg_catalog.int8mul, leftarg = bigint, rightarg = bigint, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(bigint, bigint) is 'multiply';
-
-create operator pg_catalog.* (procedure = pg_catalog.int84mul, leftarg = bigint, rightarg = integer, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(bigint, integer) is 'multiply';
-
-create operator pg_catalog.* (procedure = pg_catalog.int8_mul_cash, leftarg = bigint, rightarg = money, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(bigint, money) is 'multiply';
-
-create operator pg_catalog.* (procedure = pg_catalog.int82mul, leftarg = bigint, rightarg = smallint, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(bigint, smallint) is 'multiply';
-
 create operator pg_catalog.* (procedure = pg_catalog.box_mul, leftarg = box, rightarg = point);
 
 comment on operator pg_catalog.*(box, point) is 'multiply box by point (scale)';
@@ -69691,10 +63847,6 @@ create operator pg_catalog.* (procedure = pg_catalog.interval_mul, leftarg = int
 
 comment on operator pg_catalog.*(interval, double precision) is 'multiply';
 
-create operator pg_catalog.* (procedure = pg_catalog.cash_mul_int8, leftarg = money, rightarg = bigint, commutator = pg_catalog.*);
-
-comment on operator pg_catalog.*(money, bigint) is 'multiply';
-
 create operator pg_catalog.* (procedure = pg_catalog.cash_mul_flt8, leftarg = money, rightarg = double precision, commutator = pg_catalog.*);
 
 comment on operator pg_catalog.*(money, double precision) is 'multiply';
@@ -69722,6 +63874,34 @@ comment on operator pg_catalog.*(path, point) is 'multiply (rotate/scale path)';
 create operator pg_catalog.* (procedure = pg_catalog.point_mul, leftarg = point, rightarg = point, commutator = pg_catalog.*);
 
 comment on operator pg_catalog.*(point, point) is 'multiply points (scale/rotate)';
+
+create operator pg_catalog.* (procedure = pg_catalog.multirange_intersect, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(anymultirange, anymultirange) is 'multirange intersect';
+
+create operator pg_catalog.* (procedure = pg_catalog.range_intersect, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(anyrange, anyrange) is 'range intersection';
+
+create operator pg_catalog.* (procedure = pg_catalog.int8mul, leftarg = bigint, rightarg = bigint, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(bigint, bigint) is 'multiply';
+
+create operator pg_catalog.* (procedure = pg_catalog.int84mul, leftarg = bigint, rightarg = integer, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(bigint, integer) is 'multiply';
+
+create operator pg_catalog.* (procedure = pg_catalog.int8_mul_cash, leftarg = bigint, rightarg = money, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(bigint, money) is 'multiply';
+
+create operator pg_catalog.* (procedure = pg_catalog.int82mul, leftarg = bigint, rightarg = smallint, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(bigint, smallint) is 'multiply';
+
+create operator pg_catalog.* (procedure = pg_catalog.cash_mul_int8, leftarg = money, rightarg = bigint, commutator = pg_catalog.*);
+
+comment on operator pg_catalog.*(money, bigint) is 'multiply';
 
 create operator pg_catalog.* (procedure = pg_catalog.float48mul, leftarg = real, rightarg = double precision, commutator = pg_catalog.*);
 
@@ -74887,6 +69067,10 @@ create operator pg_catalog.<< (procedure = pg_catalog.range_before, leftarg = an
 
 comment on operator pg_catalog.<<(anyrange, anyrange) is 'is left of';
 
+create operator pg_catalog.<< (procedure = pg_catalog.network_sub, leftarg = inet, rightarg = inet, commutator = pg_catalog.>>, join = pg_catalog.networkjoinsel, restrict = pg_catalog.networksel);
+
+comment on operator pg_catalog.<<(inet, inet) is 'is subnet';
+
 create operator pg_catalog.>> (procedure = pg_catalog.multirange_after_range, leftarg = anymultirange, rightarg = anyrange, commutator = pg_catalog.<<, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.multirangesel);
 
 comment on operator pg_catalog.>>(anymultirange, anyrange) is 'is right of';
@@ -74898,12 +69082,6 @@ comment on operator pg_catalog.>>(anyrange, anymultirange) is 'is right of';
 create operator pg_catalog.>> (procedure = pg_catalog.range_after, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.<<, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.rangesel);
 
 comment on operator pg_catalog.>>(anyrange, anyrange) is 'is right of';
-
--- Cyclic dependencies found
-
-create operator pg_catalog.<< (procedure = pg_catalog.network_sub, leftarg = inet, rightarg = inet, commutator = pg_catalog.>>, join = pg_catalog.networkjoinsel, restrict = pg_catalog.networksel);
-
-comment on operator pg_catalog.<<(inet, inet) is 'is subnet';
 
 create operator pg_catalog.>> (procedure = pg_catalog.network_sup, leftarg = inet, rightarg = inet, commutator = pg_catalog.<<, join = pg_catalog.networkjoinsel, restrict = pg_catalog.networksel);
 
@@ -74943,14 +69121,6 @@ create operator pg_catalog.<> (procedure = pg_catalog.enum_ne, leftarg = anyenum
 
 comment on operator pg_catalog.<>(anyenum, anyenum) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.multirange_ne, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(anymultirange, anymultirange) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.range_ne, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(anyrange, anyrange) is 'not equal';
-
 create operator pg_catalog.<> (procedure = pg_catalog.int8ne, leftarg = bigint, rightarg = bigint, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(bigint, bigint) is 'not equal';
@@ -74982,10 +69152,6 @@ comment on operator pg_catalog.<>(bytea, bytea) is 'not equal';
 create operator pg_catalog.<> (procedure = pg_catalog.bpcharne, leftarg = char, rightarg = char, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(char, char) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.circle_ne, leftarg = circle, rightarg = circle, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(circle, circle) is 'not equal by area';
 
 create operator pg_catalog.<> (procedure = pg_catalog.date_ne, leftarg = date, rightarg = date, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
@@ -75027,10 +69193,6 @@ create operator pg_catalog.<> (procedure = pg_catalog.interval_ne, leftarg = int
 
 comment on operator pg_catalog.<>(interval, interval) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.jsonb_ne, leftarg = jsonb, rightarg = jsonb, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(jsonb, jsonb) is 'not equal';
-
 create operator pg_catalog.<> (procedure = pg_catalog.lseg_ne, leftarg = lseg, rightarg = lseg, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(lseg, lseg) is 'not equal';
@@ -75039,10 +69201,6 @@ create operator pg_catalog.<> (procedure = pg_catalog.macaddr_ne, leftarg = maca
 
 comment on operator pg_catalog.<>(macaddr, macaddr) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.macaddr8_ne, leftarg = macaddr8, rightarg = macaddr8, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(macaddr8, macaddr8) is 'not equal';
-
 create operator pg_catalog.<> (procedure = pg_catalog.cash_ne, leftarg = money, rightarg = money, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(money, money) is 'not equal';
@@ -75050,10 +69208,6 @@ comment on operator pg_catalog.<>(money, money) is 'not equal';
 create operator pg_catalog.<> (procedure = pg_catalog.namene, leftarg = name, rightarg = name, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(name, name) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.namenetext, leftarg = name, rightarg = text, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(name, text) is 'not equal';
 
 create operator pg_catalog.<> (procedure = pg_catalog.numeric_ne, leftarg = numeric, rightarg = numeric, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
@@ -75067,10 +69221,6 @@ create operator pg_catalog.<> (procedure = pg_catalog.oidvectorne, leftarg = oid
 
 comment on operator pg_catalog.<>(oidvector, oidvector) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.pg_lsn_ne, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(pg_lsn, pg_lsn) is 'not equal';
-
 create operator pg_catalog.= (procedure = pg_catalog.aclitemeq, leftarg = aclitem, rightarg = aclitem, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes);
 
 comment on operator pg_catalog.=(aclitem, aclitem) is 'equal';
@@ -75082,14 +69232,6 @@ comment on operator pg_catalog.=(anyarray, anyarray) is 'equal';
 create operator pg_catalog.= (procedure = pg_catalog.enum_eq, leftarg = anyenum, rightarg = anyenum, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(anyenum, anyenum) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.multirange_eq, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
-
-comment on operator pg_catalog.=(anymultirange, anymultirange) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.range_eq, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
-
-comment on operator pg_catalog.=(anyrange, anyrange) is 'equal';
 
 create operator pg_catalog.= (procedure = pg_catalog.int8eq, leftarg = bigint, rightarg = bigint, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
@@ -75103,14 +69245,6 @@ create operator pg_catalog.= (procedure = pg_catalog.int82eq, leftarg = bigint, 
 
 comment on operator pg_catalog.=(bigint, smallint) is 'equal';
 
-create operator pg_catalog.= (procedure = pg_catalog.varbiteq, leftarg = bit varying, rightarg = bit varying, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
-
-comment on operator pg_catalog.=(bit varying, bit varying) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.biteq, leftarg = bit, rightarg = bit, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
-
-comment on operator pg_catalog.=(bit, bit) is 'equal';
-
 create operator pg_catalog.= (procedure = pg_catalog.booleq, leftarg = boolean, rightarg = boolean, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(boolean, boolean) is 'equal';
@@ -75119,6 +69253,184 @@ create operator pg_catalog.= (procedure = pg_catalog.box_eq, leftarg = box, righ
 
 comment on operator pg_catalog.=(box, box) is 'equal by area';
 
+create operator pg_catalog.= (procedure = pg_catalog.cideq, leftarg = cid, rightarg = cid, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes);
+
+comment on operator pg_catalog.=(cid, cid) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.line_eq, leftarg = line, rightarg = line, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
+
+comment on operator pg_catalog.=(line, line) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.lseg_eq, leftarg = lseg, rightarg = lseg, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
+
+comment on operator pg_catalog.=(lseg, lseg) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.cash_eq, leftarg = money, rightarg = money, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
+
+comment on operator pg_catalog.=(money, money) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.path_n_eq, leftarg = path, rightarg = path, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
+
+comment on operator pg_catalog.=(path, path) is 'equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.point_ne, leftarg = point, rightarg = point, commutator = pg_catalog.<>, negator = pg_catalog.~=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(point, point) is 'not equal';
+
+create operator pg_catalog.~= (procedure = pg_catalog.point_eq, leftarg = point, rightarg = point, commutator = pg_catalog.~=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
+
+comment on operator pg_catalog.~=(point, point) is 'same as';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.float48ne, leftarg = real, rightarg = double precision, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(real, double precision) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.float4ne, leftarg = real, rightarg = real, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(real, real) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.record_ne, leftarg = record, rightarg = record, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(record, record) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.int28ne, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(smallint, bigint) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.int24ne, leftarg = smallint, rightarg = integer, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(smallint, integer) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.int2ne, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(smallint, smallint) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.textne, leftarg = text, rightarg = text, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(text, text) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.tidne, leftarg = tid, rightarg = tid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(tid, tid) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timetz_ne, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(time with time zone, time with time zone) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp with time zone, date) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp with time zone, timestamp with time zone) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp with time zone, timestamp) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp, date) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp, timestamp with time zone) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(timestamp, timestamp) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.time_ne, leftarg = time, rightarg = time, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(time, time) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.tsquery_ne, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(tsquery, tsquery) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.tsvector_ne, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(tsvector, tsvector) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.uuid_ne, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(uuid, uuid) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.xidneqint4, leftarg = xid, rightarg = integer, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(xid, integer) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.xidneq, leftarg = xid, rightarg = xid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(xid, xid) is 'not equal';
+
+-- Cyclic dependencies found
+
+create operator pg_catalog.<> (procedure = pg_catalog.circle_ne, leftarg = circle, rightarg = circle, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+
+comment on operator pg_catalog.<>(circle, circle) is 'not equal by area';
+
+create operator pg_catalog.= (procedure = pg_catalog.multirange_eq, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
+
+comment on operator pg_catalog.=(anymultirange, anymultirange) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.range_eq, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
+
+comment on operator pg_catalog.=(anyrange, anyrange) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.varbiteq, leftarg = bit varying, rightarg = bit varying, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
+
+comment on operator pg_catalog.=(bit varying, bit varying) is 'equal';
+
+create operator pg_catalog.= (procedure = pg_catalog.biteq, leftarg = bit, rightarg = bit, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
+
+comment on operator pg_catalog.=(bit, bit) is 'equal';
+
 create operator pg_catalog.= (procedure = pg_catalog.byteaeq, leftarg = bytea, rightarg = bytea, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(bytea, bytea) is 'equal';
@@ -75126,10 +69438,6 @@ comment on operator pg_catalog.=(bytea, bytea) is 'equal';
 create operator pg_catalog.= (procedure = pg_catalog.bpchareq, leftarg = char, rightarg = char, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(char, char) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.cideq, leftarg = cid, rightarg = cid, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes);
-
-comment on operator pg_catalog.=(cid, cid) is 'equal';
 
 create operator pg_catalog.= (procedure = pg_catalog.circle_eq, leftarg = circle, rightarg = circle, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
 
@@ -75179,14 +69487,6 @@ create operator pg_catalog.= (procedure = pg_catalog.jsonb_eq, leftarg = jsonb, 
 
 comment on operator pg_catalog.=(jsonb, jsonb) is 'equal';
 
-create operator pg_catalog.= (procedure = pg_catalog.line_eq, leftarg = line, rightarg = line, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
-
-comment on operator pg_catalog.=(line, line) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.lseg_eq, leftarg = lseg, rightarg = lseg, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
-
-comment on operator pg_catalog.=(lseg, lseg) is 'equal';
-
 create operator pg_catalog.= (procedure = pg_catalog.macaddr_eq, leftarg = macaddr, rightarg = macaddr, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(macaddr, macaddr) is 'equal';
@@ -75194,10 +69494,6 @@ comment on operator pg_catalog.=(macaddr, macaddr) is 'equal';
 create operator pg_catalog.= (procedure = pg_catalog.macaddr8_eq, leftarg = macaddr8, rightarg = macaddr8, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(macaddr8, macaddr8) is 'equal';
-
-create operator pg_catalog.= (procedure = pg_catalog.cash_eq, leftarg = money, rightarg = money, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, merges);
-
-comment on operator pg_catalog.=(money, money) is 'equal';
 
 create operator pg_catalog.= (procedure = pg_catalog.nameeq, leftarg = name, rightarg = name, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
@@ -75219,10 +69515,6 @@ create operator pg_catalog.= (procedure = pg_catalog.oidvectoreq, leftarg = oidv
 
 comment on operator pg_catalog.=(oidvector, oidvector) is 'equal';
 
-create operator pg_catalog.= (procedure = pg_catalog.path_n_eq, leftarg = path, rightarg = path, commutator = pg_catalog.=, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
-
-comment on operator pg_catalog.=(path, path) is 'equal';
-
 create operator pg_catalog.= (procedure = pg_catalog.pg_lsn_eq, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel, hashes, merges);
 
 comment on operator pg_catalog.=(pg_lsn, pg_lsn) is 'equal';
@@ -75231,93 +69523,33 @@ create operator pg_catalog.= (procedure = pg_catalog.float48eq, leftarg = real, 
 
 comment on operator pg_catalog.=(real, double precision) is 'equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.float48ne, leftarg = real, rightarg = double precision, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.multirange_ne, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(real, double precision) is 'not equal';
+comment on operator pg_catalog.<>(anymultirange, anymultirange) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.float4ne, leftarg = real, rightarg = real, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.range_ne, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(real, real) is 'not equal';
+comment on operator pg_catalog.<>(anyrange, anyrange) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.record_ne, leftarg = record, rightarg = record, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.jsonb_ne, leftarg = jsonb, rightarg = jsonb, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(record, record) is 'not equal';
+comment on operator pg_catalog.<>(jsonb, jsonb) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.int28ne, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.macaddr8_ne, leftarg = macaddr8, rightarg = macaddr8, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(smallint, bigint) is 'not equal';
+comment on operator pg_catalog.<>(macaddr8, macaddr8) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.int24ne, leftarg = smallint, rightarg = integer, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.namenetext, leftarg = name, rightarg = text, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(smallint, integer) is 'not equal';
+comment on operator pg_catalog.<>(name, text) is 'not equal';
 
-create operator pg_catalog.<> (procedure = pg_catalog.int2ne, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
+create operator pg_catalog.<> (procedure = pg_catalog.pg_lsn_ne, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
-comment on operator pg_catalog.<>(smallint, smallint) is 'not equal';
+comment on operator pg_catalog.<>(pg_lsn, pg_lsn) is 'not equal';
 
 create operator pg_catalog.<> (procedure = pg_catalog.textnename, leftarg = text, rightarg = name, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
 comment on operator pg_catalog.<>(text, name) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.textne, leftarg = text, rightarg = text, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(text, text) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.tidne, leftarg = tid, rightarg = tid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(tid, tid) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timetz_ne, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(time with time zone, time with time zone) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.time_ne, leftarg = time, rightarg = time, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(time, time) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp with time zone, date) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp with time zone, timestamp with time zone) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamptz_ne_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp with time zone, timestamp) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp, date) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp, timestamp with time zone) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.timestamp_ne, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(timestamp, timestamp) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.tsquery_ne, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(tsquery, tsquery) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.tsvector_ne, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(tsvector, tsvector) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.uuid_ne, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(uuid, uuid) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.xidneqint4, leftarg = xid, rightarg = integer, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(xid, integer) is 'not equal';
-
-create operator pg_catalog.<> (procedure = pg_catalog.xidneq, leftarg = xid, rightarg = xid, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(xid, xid) is 'not equal';
 
 create operator pg_catalog.<> (procedure = pg_catalog.xid8ne, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.<>, negator = pg_catalog.=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
 
@@ -75413,16 +69645,6 @@ comment on operator pg_catalog.=(xid8, xid8) is 'equal';
 
 -- Cyclic dependencies found
 
-create operator pg_catalog.<> (procedure = pg_catalog.point_ne, leftarg = point, rightarg = point, commutator = pg_catalog.<>, negator = pg_catalog.~=, join = pg_catalog.neqjoinsel, restrict = pg_catalog.neqsel);
-
-comment on operator pg_catalog.<>(point, point) is 'not equal';
-
-create operator pg_catalog.~= (procedure = pg_catalog.point_eq, leftarg = point, rightarg = point, commutator = pg_catalog.~=, negator = pg_catalog.<>, join = pg_catalog.eqjoinsel, restrict = pg_catalog.eqsel);
-
-comment on operator pg_catalog.~=(point, point) is 'same as';
-
--- Cyclic dependencies found
-
 create operator pg_catalog.<@ (procedure = pg_catalog.box_contained, leftarg = box, rightarg = box, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.contsel);
 
 comment on operator pg_catalog.<@(box, box) is 'is contained by';
@@ -75473,34 +69695,6 @@ create operator pg_catalog.@> (procedure = pg_catalog.arraycontains, leftarg = a
 
 comment on operator pg_catalog.@>(anyarray, anyarray) is 'contains';
 
-create operator pg_catalog.<@ (procedure = pg_catalog.elem_contained_by_multirange, leftarg = anyelement, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
-
-comment on operator pg_catalog.<@(anyelement, anymultirange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.elem_contained_by_range, leftarg = anyelement, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.rangesel);
-
-comment on operator pg_catalog.<@(anyelement, anyrange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.multirange_contained_by_multirange, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
-
-comment on operator pg_catalog.<@(anymultirange, anymultirange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.multirange_contained_by_range, leftarg = anymultirange, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
-
-comment on operator pg_catalog.<@(anymultirange, anyrange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.range_contained_by_multirange, leftarg = anyrange, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
-
-comment on operator pg_catalog.<@(anyrange, anymultirange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.range_contained_by, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.rangesel);
-
-comment on operator pg_catalog.<@(anyrange, anyrange) is 'is contained by';
-
-create operator pg_catalog.<@ (procedure = pg_catalog.jsonb_contained, leftarg = jsonb, rightarg = jsonb, commutator = pg_catalog.@>, join = pg_catalog.matchingjoinsel, restrict = pg_catalog.matchingsel);
-
-comment on operator pg_catalog.<@(jsonb, jsonb) is 'is contained by';
-
 create operator pg_catalog.@> (procedure = pg_catalog.multirange_contains_elem, leftarg = anymultirange, rightarg = anyelement, commutator = pg_catalog.<@, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
 
 comment on operator pg_catalog.@>(anymultirange, anyelement) is 'contains';
@@ -75548,6 +69742,34 @@ comment on operator pg_catalog.@>(jsonb, jsonb) is 'contains';
 create operator pg_catalog.@> (procedure = pg_catalog.path_contain_pt, leftarg = path, rightarg = point, commutator = pg_catalog.<@);
 
 comment on operator pg_catalog.@>(path, point) is 'contains';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.elem_contained_by_multirange, leftarg = anyelement, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
+
+comment on operator pg_catalog.<@(anyelement, anymultirange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.elem_contained_by_range, leftarg = anyelement, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.rangesel);
+
+comment on operator pg_catalog.<@(anyelement, anyrange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.multirange_contained_by_multirange, leftarg = anymultirange, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
+
+comment on operator pg_catalog.<@(anymultirange, anymultirange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.multirange_contained_by_range, leftarg = anymultirange, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
+
+comment on operator pg_catalog.<@(anymultirange, anyrange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.range_contained_by_multirange, leftarg = anyrange, rightarg = anymultirange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.multirangesel);
+
+comment on operator pg_catalog.<@(anyrange, anymultirange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.range_contained_by, leftarg = anyrange, rightarg = anyrange, commutator = pg_catalog.@>, join = pg_catalog.contjoinsel, restrict = pg_catalog.rangesel);
+
+comment on operator pg_catalog.<@(anyrange, anyrange) is 'is contained by';
+
+create operator pg_catalog.<@ (procedure = pg_catalog.jsonb_contained, leftarg = jsonb, rightarg = jsonb, commutator = pg_catalog.@>, join = pg_catalog.matchingjoinsel, restrict = pg_catalog.matchingsel);
+
+comment on operator pg_catalog.<@(jsonb, jsonb) is 'is contained by';
 
 create operator pg_catalog.<@ (procedure = pg_catalog.tsq_mcontained, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.@>, join = pg_catalog.matchingjoinsel, restrict = pg_catalog.matchingsel);
 
@@ -75616,6 +69838,134 @@ alter operator public.<->>>(text, text) owner to runner_dba;
 create operator public.<<<-> (procedure = public.strict_word_similarity_dist_op, leftarg = text, rightarg = text, commutator = public.<->>>);
 
 alter operator public.<<<->(text, text) owner to runner_dba;
+
+-- Cyclic dependencies found
+
+-- Cyclic dependencies found
+
+grant select, usage on sequence public.tb_chat_conversa_id_chat_conversa_seq to runner;
+
+-- Cyclic dependencies found
+
+-- Cyclic dependencies found
+
+-- Cyclic dependencies found
+
+grant select, usage on sequence public.tb_chat_mensagem_id_chat_mensagem_seq to runner;
+
+-- Cyclic dependencies found
+
+-- Cyclic dependencies found
+
+-- Cyclic dependencies found
+
+grant insert, select, update on public.tb_chat_conversa to runner;
+
+-- Cyclic dependencies found
+
+create table public.tb_chat_conversa
+(
+    id_chat_conversa    bigserial
+        primary key,
+    id_usuario_menor    integer                                           not null
+        references public.tb_usuarios
+            on delete cascade,
+    id_usuario_maior    integer                                           not null
+        references public.tb_usuarios
+            on delete cascade,
+    status              varchar(20) default 'active'::character varying   not null
+        constraint tb_chat_conversa_status_check
+            check ((status)::text = ANY
+                   ((ARRAY ['pending'::character varying, 'active'::character varying, 'rejected'::character varying, 'blocked'::character varying, 'restricted'::character varying])::text[])),
+    autorizacao_origem  varchar(20) default 'follower'::character varying not null
+        constraint tb_chat_conversa_autorizacao_origem_check
+            check ((autorizacao_origem)::text = ANY
+                   ((ARRAY ['follower'::character varying, 'request'::character varying])::text[])),
+    solicitada_por      integer
+                                                                          references public.tb_usuarios
+                                                                              on delete set null,
+    solicitada_em       timestamp,
+    respondida_por      integer
+                                                                          references public.tb_usuarios
+                                                                              on delete set null,
+    respondida_em       timestamp,
+    ultima_mensagem_id  bigint
+        constraint fk_chat_ultima_mensagem
+            references public.tb_chat_mensagem
+            on delete set null,
+    ultima_interacao_em timestamp   default now()                         not null,
+    created_at          timestamp   default now()                         not null,
+    updated_at          timestamp   default now()                         not null,
+    constraint uq_chat_conversa_par
+        unique (id_usuario_menor, id_usuario_maior),
+    constraint ck_chat_usuarios_distintos
+        check (id_usuario_menor < id_usuario_maior)
+);
+
+alter table public.tb_chat_conversa
+    owner to runner_dba;
+
+create index idx_chat_conversa_interacao
+    on public.tb_chat_conversa (ultima_interacao_em desc);
+
+create table public.tb_chat_participante
+(
+    id_chat_conversa        bigint                  not null
+        references public.tb_chat_conversa
+            on delete cascade,
+    id_usuario              integer                 not null
+        references public.tb_usuarios
+            on delete cascade,
+    silenciado              boolean   default false not null,
+    silenciado_em           timestamp,
+    arquivado               boolean   default false not null,
+    ultima_mensagem_lida_id bigint,
+    ultima_leitura_em       timestamp,
+    created_at              timestamp default now() not null,
+    primary key (id_chat_conversa, id_usuario)
+);
+
+alter table public.tb_chat_participante
+    owner to runner_dba;
+
+create index idx_chat_participante_usuario
+    on public.tb_chat_participante (id_usuario, arquivado, id_chat_conversa);
+
+grant insert, select, update on public.tb_chat_participante to runner;
+
+create table public.tb_chat_mensagem
+(
+    id_chat_mensagem  bigserial
+        primary key,
+    id_chat_conversa  bigint                                        not null
+        references public.tb_chat_conversa
+            on delete cascade,
+    id_remetente      integer                                       not null
+        references public.tb_usuarios
+            on delete restrict,
+    tipo              varchar(30) default 'text'::character varying not null
+        constraint tb_chat_mensagem_tipo_check
+            check ((tipo)::text = ANY
+                   ((ARRAY ['text'::character varying, 'authorization_request'::character varying, 'authorization_accepted'::character varying, 'authorization_rejected'::character varying, 'system'::character varying])::text[])),
+    conteudo          text,
+    client_message_id uuid,
+    created_at        timestamp   default now()                     not null,
+    editada_em        timestamp,
+    removida_em       timestamp,
+    constraint uq_chat_mensagem_cliente
+        unique (id_remetente, client_message_id),
+    constraint ck_chat_mensagem_conteudo
+        check (((tipo)::text <> 'text'::text) OR
+               ((length(TRIM(BOTH FROM conteudo)) >= 1) AND (length(TRIM(BOTH FROM conteudo)) <= 2000)))
+);
+
+alter table public.tb_chat_mensagem
+    owner to runner_dba;
+
+create index idx_chat_mensagem_conversa
+    on public.tb_chat_mensagem (id_chat_conversa asc, id_chat_mensagem desc);
+
+grant insert, select, update on public.tb_chat_mensagem to runner;
 
 -- Cyclic dependencies found
 
@@ -76539,6 +70889,94 @@ create operator pg_catalog.> (procedure = pg_catalog.oidvectorgt, leftarg = oidv
 
 comment on operator pg_catalog.>(oidvector, oidvector) is 'greater than';
 
+create operator pg_catalog.> (procedure = pg_catalog.pg_lsn_gt, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(pg_lsn, pg_lsn) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.float48gt, leftarg = real, rightarg = double precision, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(real, double precision) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.float4gt, leftarg = real, rightarg = real, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(real, real) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.record_gt, leftarg = record, rightarg = record, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(record, record) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.int28gt, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(smallint, bigint) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.int24gt, leftarg = smallint, rightarg = integer, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(smallint, integer) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.int2gt, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(smallint, smallint) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.textgtname, leftarg = text, rightarg = name, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(text, name) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.text_gt, leftarg = text, rightarg = text, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(text, text) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.tidgt, leftarg = tid, rightarg = tid, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(tid, tid) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timetz_gt, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(time with time zone, time with time zone) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.time_gt, leftarg = time, rightarg = time, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(time, time) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp with time zone, date) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp with time zone, timestamp with time zone) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp with time zone, timestamp) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp, date) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp, timestamp with time zone) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(timestamp, timestamp) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.tsquery_gt, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(tsquery, tsquery) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.tsvector_gt, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(tsvector, tsvector) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.uuid_gt, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(uuid, uuid) is 'greater than';
+
+create operator pg_catalog.> (procedure = pg_catalog.xid8gt, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
+
+comment on operator pg_catalog.>(xid8, xid8) is 'greater than';
+
 create operator pg_catalog.>= (procedure = pg_catalog.charge, leftarg = "char", rightarg = "char", commutator = pg_catalog.<=, negator = pg_catalog.<, join = pg_catalog.scalargejoinsel, restrict = pg_catalog.scalargesel);
 
 comment on operator pg_catalog.>=("char", "char") is 'greater than or equal';
@@ -76666,6 +71104,94 @@ comment on operator pg_catalog.<=(oid, oid) is 'less than or equal';
 create operator pg_catalog.<= (procedure = pg_catalog.oidvectorle, leftarg = oidvector, rightarg = oidvector, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
 
 comment on operator pg_catalog.<=(oidvector, oidvector) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.pg_lsn_le, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(pg_lsn, pg_lsn) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.float48le, leftarg = real, rightarg = double precision, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(real, double precision) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.float4le, leftarg = real, rightarg = real, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(real, real) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.record_le, leftarg = record, rightarg = record, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(record, record) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.int28le, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(smallint, bigint) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.int24le, leftarg = smallint, rightarg = integer, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(smallint, integer) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.int2le, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(smallint, smallint) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.textlename, leftarg = text, rightarg = name, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(text, name) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.text_le, leftarg = text, rightarg = text, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(text, text) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.tidle, leftarg = tid, rightarg = tid, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(tid, tid) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timetz_le, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(time with time zone, time with time zone) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.time_le, leftarg = time, rightarg = time, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(time, time) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp with time zone, date) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp with time zone, timestamp with time zone) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp with time zone, timestamp) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp, date) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp, timestamp with time zone) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(timestamp, timestamp) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.tsquery_le, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(tsquery, tsquery) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.tsvector_le, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(tsvector, tsvector) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.uuid_le, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(uuid, uuid) is 'less than or equal';
+
+create operator pg_catalog.<= (procedure = pg_catalog.xid8le, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
+
+comment on operator pg_catalog.<=(xid8, xid8) is 'less than or equal';
 
 create operator pg_catalog.>= (procedure = pg_catalog.array_ge, leftarg = anyarray, rightarg = anyarray, commutator = pg_catalog.<=, negator = pg_catalog.<, join = pg_catalog.scalargejoinsel, restrict = pg_catalog.scalargesel);
 
@@ -76890,184 +71416,6 @@ comment on operator pg_catalog.>=(uuid, uuid) is 'greater than or equal';
 create operator pg_catalog.>= (procedure = pg_catalog.xid8ge, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.<=, negator = pg_catalog.<, join = pg_catalog.scalargejoinsel, restrict = pg_catalog.scalargesel);
 
 comment on operator pg_catalog.>=(xid8, xid8) is 'greater than or equal';
-
--- Cyclic dependencies found
-
-create operator pg_catalog.<= (procedure = pg_catalog.pg_lsn_le, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(pg_lsn, pg_lsn) is 'less than or equal';
-
-create operator pg_catalog.> (procedure = pg_catalog.pg_lsn_gt, leftarg = pg_lsn, rightarg = pg_lsn, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(pg_lsn, pg_lsn) is 'greater than';
-
-create operator pg_catalog.<= (procedure = pg_catalog.float48le, leftarg = real, rightarg = double precision, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(real, double precision) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.float4le, leftarg = real, rightarg = real, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(real, real) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.record_le, leftarg = record, rightarg = record, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(record, record) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.int28le, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(smallint, bigint) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.int24le, leftarg = smallint, rightarg = integer, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(smallint, integer) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.int2le, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(smallint, smallint) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.textlename, leftarg = text, rightarg = name, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(text, name) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.text_le, leftarg = text, rightarg = text, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(text, text) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.tidle, leftarg = tid, rightarg = tid, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(tid, tid) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timetz_le, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(time with time zone, time with time zone) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.time_le, leftarg = time, rightarg = time, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(time, time) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp with time zone, date) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp with time zone, timestamp with time zone) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamptz_le_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp with time zone, timestamp) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp, date) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp, timestamp with time zone) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.timestamp_le, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(timestamp, timestamp) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.tsquery_le, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(tsquery, tsquery) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.tsvector_le, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(tsvector, tsvector) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.uuid_le, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(uuid, uuid) is 'less than or equal';
-
-create operator pg_catalog.<= (procedure = pg_catalog.xid8le, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.>=, negator = pg_catalog.>, join = pg_catalog.scalarlejoinsel, restrict = pg_catalog.scalarlesel);
-
-comment on operator pg_catalog.<=(xid8, xid8) is 'less than or equal';
-
-create operator pg_catalog.> (procedure = pg_catalog.float48gt, leftarg = real, rightarg = double precision, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(real, double precision) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.float4gt, leftarg = real, rightarg = real, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(real, real) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.record_gt, leftarg = record, rightarg = record, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(record, record) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.int28gt, leftarg = smallint, rightarg = bigint, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(smallint, bigint) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.int24gt, leftarg = smallint, rightarg = integer, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(smallint, integer) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.int2gt, leftarg = smallint, rightarg = smallint, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(smallint, smallint) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.textgtname, leftarg = text, rightarg = name, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(text, name) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.text_gt, leftarg = text, rightarg = text, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(text, text) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.tidgt, leftarg = tid, rightarg = tid, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(tid, tid) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timetz_gt, leftarg = time with time zone, rightarg = time with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(time with time zone, time with time zone) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.time_gt, leftarg = time, rightarg = time, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(time, time) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt_date, leftarg = timestamp with time zone, rightarg = date, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp with time zone, date) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt, leftarg = timestamp with time zone, rightarg = timestamp with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp with time zone, timestamp with time zone) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamptz_gt_timestamp, leftarg = timestamp with time zone, rightarg = timestamp, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp with time zone, timestamp) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt_date, leftarg = timestamp, rightarg = date, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp, date) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt_timestamptz, leftarg = timestamp, rightarg = timestamp with time zone, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp, timestamp with time zone) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.timestamp_gt, leftarg = timestamp, rightarg = timestamp, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(timestamp, timestamp) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.tsquery_gt, leftarg = tsquery, rightarg = tsquery, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(tsquery, tsquery) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.tsvector_gt, leftarg = tsvector, rightarg = tsvector, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(tsvector, tsvector) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.uuid_gt, leftarg = uuid, rightarg = uuid, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(uuid, uuid) is 'greater than';
-
-create operator pg_catalog.> (procedure = pg_catalog.xid8gt, leftarg = xid8, rightarg = xid8, commutator = pg_catalog.<, negator = pg_catalog.<=, join = pg_catalog.scalargtjoinsel, restrict = pg_catalog.scalargtsel);
-
-comment on operator pg_catalog.>(xid8, xid8) is 'greater than';
 
 -- Cyclic dependencies found
 

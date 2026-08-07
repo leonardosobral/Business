@@ -9,6 +9,7 @@
 <cfparam name="VARIABLES.accountsEventSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsRegistrationSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsVoucherSaveErrorMessage" default=""/>
+<cfparam name="VARIABLES.accountsAccessSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsNoticeMessage" default=""/>
 
 <cfset VARIABLES.accountsPage = max(1, int(URL.pagina))/>
@@ -31,6 +32,7 @@
 <cfset VARIABLES.businessAccountRegistrationTableReady = false/>
 <cfset VARIABLES.businessAccountVoucherTableReady = false/>
 <cfset VARIABLES.businessAccountVoucherColumnsReady = false/>
+<cfset VARIABLES.businessAccountAccessTablesReady = false/>
 
 <cfif isDefined("VARIABLES.businessRealIsAdmin")>
     <cfset VARIABLES.businessAccountsRealIsAdmin = VARIABLES.businessRealIsAdmin/>
@@ -78,7 +80,10 @@
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_contas"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>,
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_business_permissoes"/>,
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_permissoes"/>,
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_integracoes_resultados"/>
       )) OR (
         table_schema = 'ads'
         AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
@@ -123,6 +128,9 @@
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_usuarios")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_eventos")/>
 <cfset VARIABLES.businessAccountRegistrationTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_cadastro_solicitacoes")/>
+<cfset VARIABLES.businessAccountAccessTablesReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_business_permissoes")
+    AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_permissoes")
+    AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_integracoes_resultados")/>
 <cfset VARIABLES.businessAccountVoucherTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_ad_vouchers")/>
 <cfset VARIABLES.businessAccountVoucherColumnsReady = VARIABLES.businessAccountVoucherTableReady
     AND ListFindNoCase(VARIABLES.businessAccountColumnNames, "tb_ad_vouchers.id_conta")
@@ -151,6 +159,12 @@
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao recusada com sucesso."/>
     <cfelseif URL.sucesso EQ "voucher">
         <cfset VARIABLES.accountsNoticeMessage = "Voucher salvo com sucesso."/>
+    <cfelseif URL.sucesso EQ "acessos">
+        <cfset VARIABLES.accountsNoticeMessage = "Permissoes da conta salvas com sucesso."/>
+    <cfelseif URL.sucesso EQ "integracao">
+        <cfset VARIABLES.accountsNoticeMessage = "Integracao de resultados salva com sucesso."/>
+    <cfelseif URL.sucesso EQ "integracao_removida">
+        <cfset VARIABLES.accountsNoticeMessage = "Integracao de resultados removida."/>
     </cfif>
 </cfif>
 
@@ -167,6 +181,9 @@
 <cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,data_criacao,nome_conta,usuario_nome,id_ad_voucher,voucher_codigo,voucher_credito,voucher_status,voucher_conta_id")/>
 <cfset qBusinessAccountRegistrationAccountOptions = QueryNew("id_conta,nome_conta,documento,status")/>
 <cfset qBusinessAccountVouchers = QueryNew("id_ad_voucher,codigo,credito,credito_disponivel,status,data_criacao,data_expiracao,data_resgate,papel_resgate,observacao,id_usuario_resgate,usuario_resgate_nome,usuario_resgate_email")/>
+<cfset qBusinessAccountPermissionCatalog = QueryNew("id_permissao,codigo,descricao")/>
+<cfset qBusinessAccountPermissionGrants = QueryNew("id_permissao,codigo,papel")/>
+<cfset qBusinessAccountResultIntegrations = QueryNew("id_conta_integracao_resultado,id_conta,client_id,cod_timer,external_account_id,abrange_contas_externas,ativo,data_criacao,data_atualizacao")/>
 
 <cfset VARIABLES.accountsTotal = 0/>
 <cfset VARIABLES.accountsFilteredTotal = 0/>
@@ -361,13 +378,12 @@
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(qBusinessAccountRegistrationReview.telefone_responsavel), 24)#" maxlength="24" null="#NOT len(trim(qBusinessAccountRegistrationReview.telefone_responsavel))#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#qBusinessAccountRegistrationReview.cidade#" null="#NOT len(trim(qBusinessAccountRegistrationReview.cidade))#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#qBusinessAccountRegistrationReview.estado#" maxlength="2" null="#NOT len(trim(qBusinessAccountRegistrationReview.estado))#"/>,
-                                <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>,
+                                <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
                                 <cfqueryparam cfsqltype="cf_sql_varchar" value="business_cadastro" maxlength="32"/>
                             )
                             ON CONFLICT (email)
                             DO UPDATE SET
                                 data_alteracao = now(),
-                                is_partner = true,
                                 telefone_usuario = COALESCE(NULLIF(tb_usuarios.telefone_usuario, ''), EXCLUDED.telefone_usuario),
                                 cidade = COALESCE(NULLIF(tb_usuarios.cidade, ''), EXCLUDED.cidade),
                                 estado = COALESCE(NULLIF(tb_usuarios.estado, ''), EXCLUDED.estado)
@@ -868,13 +884,12 @@
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#hash(VARIABLES.accountUserInviteEmail, 'SHA-256')#" maxlength="250"/>,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>,
-                        <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>,
+                        <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="business_convite" maxlength="32"/>
                     )
                     ON CONFLICT (email)
                     DO UPDATE SET
                         data_alteracao = now(),
-                        is_partner = true,
                         name = CASE
                             WHEN length(coalesce(tb_usuarios.name, '')) = 0 THEN EXCLUDED.name
                             ELSE tb_usuarios.name
@@ -1183,6 +1198,235 @@
     </cfif>
 </cfif>
 
+<cfif VARIABLES.businessAccountAccessTablesReady
+    AND isDefined("FORM.account_access_action")
+    AND FORM.account_access_action EQ "salvar_permissoes">
+
+    <cfset VARIABLES.accountAccessAccountId = isDefined("FORM.id_conta") ? trim(FORM.id_conta) : ""/>
+    <cfset VARIABLES.accountAccessCsrf = isDefined("FORM.business_account_access_csrf") ? trim(FORM.business_account_access_csrf) : ""/>
+    <cfset VARIABLES.accountAccessErrors = []/>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset arrayAppend(VARIABLES.accountAccessErrors, "Apenas administradores internos podem alterar permissoes da conta.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountAccessAccountId) OR NOT isNumeric(VARIABLES.accountAccessAccountId)>
+        <cfset arrayAppend(VARIABLES.accountAccessErrors, "Conta invalida para as permissoes.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountAccessCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR compare(VARIABLES.accountAccessCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.accountAccessErrors, "A sessao de seguranca expirou. Recarregue a pagina.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountAccessErrors)>
+        <cfquery name="qBusinessAccountAccessTarget">
+            SELECT id_conta
+            FROM public.tb_contas
+            WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountAccessAccountId#"/>
+            LIMIT 1
+        </cfquery>
+        <cfif NOT qBusinessAccountAccessTarget.recordcount>
+            <cfset arrayAppend(VARIABLES.accountAccessErrors, "Conta nao encontrada.")/>
+        </cfif>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountAccessErrors)>
+        <cftry>
+            <cfquery name="qBusinessAccountAccessCatalogSave">
+                SELECT id_permissao, codigo
+                FROM public.tb_business_permissoes
+                WHERE ativo = true
+                ORDER BY codigo
+            </cfquery>
+
+            <!--- Processar implica visualizar para o mesmo papel. --->
+            <cfset VARIABLES.accountAccessViewPermissionId = 0/>
+            <cfset VARIABLES.accountAccessProcessPermissionId = 0/>
+            <cfloop query="qBusinessAccountAccessCatalogSave">
+                <cfif qBusinessAccountAccessCatalogSave.codigo EQ "result_imports.view">
+                    <cfset VARIABLES.accountAccessViewPermissionId = qBusinessAccountAccessCatalogSave.id_permissao/>
+                <cfelseif qBusinessAccountAccessCatalogSave.codigo EQ "result_imports.process">
+                    <cfset VARIABLES.accountAccessProcessPermissionId = qBusinessAccountAccessCatalogSave.id_permissao/>
+                </cfif>
+            </cfloop>
+
+            <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
+                <cfif VARIABLES.accountAccessViewPermissionId GT 0
+                    AND VARIABLES.accountAccessProcessPermissionId GT 0
+                    AND structKeyExists(FORM, "permission_#VARIABLES.accountAccessProcessPermissionId#_#accountAccessRole#")>
+                    <cfset FORM["permission_#VARIABLES.accountAccessViewPermissionId#_#accountAccessRole#"] = "1"/>
+                </cfif>
+            </cfloop>
+
+            <cftransaction>
+                <cfquery>
+                    DELETE FROM public.tb_conta_permissoes
+                    WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountAccessAccountId#"/>
+                </cfquery>
+
+                <cfloop query="qBusinessAccountAccessCatalogSave">
+                    <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
+                        <cfif structKeyExists(FORM, "permission_#qBusinessAccountAccessCatalogSave.id_permissao#_#accountAccessRole#")>
+                            <cfquery>
+                                INSERT INTO public.tb_conta_permissoes
+                                (
+                                    id_conta,
+                                    id_permissao,
+                                    papel,
+                                    ativo,
+                                    usuario_concessao
+                                )
+                                VALUES
+                                (
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountAccessAccountId#"/>,
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountAccessCatalogSave.id_permissao#"/>,
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#accountAccessRole#"/> AS papel_usuario_conta),
+                                    true,
+                                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                                )
+                            </cfquery>
+                        </cfif>
+                    </cfloop>
+                </cfloop>
+            </cftransaction>
+
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountAccessAccountId#&tab=acessos&sucesso=acessos##conta-gerenciamento"/>
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsAccessSaveErrorMessage = "Nao foi possivel salvar as permissoes. " & cfcatch.message/>
+            </cfcatch>
+        </cftry>
+    <cfelse>
+        <cfset VARIABLES.accountsAccessSaveErrorMessage = arrayToList(VARIABLES.accountAccessErrors, " ")/>
+    </cfif>
+</cfif>
+
+<cfif VARIABLES.businessAccountAccessTablesReady
+    AND isDefined("FORM.account_integration_action")
+    AND FORM.account_integration_action EQ "salvar">
+
+    <cfset VARIABLES.accountIntegrationAccountId = isDefined("FORM.id_conta") ? trim(FORM.id_conta) : ""/>
+    <cfset VARIABLES.accountIntegrationClientId = isDefined("FORM.client_id") ? lCase(trim(FORM.client_id)) : ""/>
+    <cfset VARIABLES.accountIntegrationTimerCode = isDefined("FORM.cod_timer") ? lCase(trim(FORM.cod_timer)) : ""/>
+    <cfset VARIABLES.accountIntegrationExternalAccountId = isDefined("FORM.external_account_id") ? trim(FORM.external_account_id) : ""/>
+    <cfset VARIABLES.accountIntegrationAllExternal = isDefined("FORM.abrange_contas_externas") AND FORM.abrange_contas_externas EQ "1"/>
+    <cfset VARIABLES.accountIntegrationCsrf = isDefined("FORM.business_account_access_csrf") ? trim(FORM.business_account_access_csrf) : ""/>
+    <cfset VARIABLES.accountIntegrationErrors = []/>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "Apenas administradores internos podem alterar integracoes da conta.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountIntegrationAccountId) OR NOT isNumeric(VARIABLES.accountIntegrationAccountId)>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "Conta invalida para a integracao.")/>
+    </cfif>
+    <cfif NOT reFind("^[a-z0-9][a-z0-9_-]{0,127}$", VARIABLES.accountIntegrationClientId)>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "Informe um client_id valido.")/>
+    </cfif>
+    <cfif NOT reFind("^[a-z0-9][a-z0-9_-]{0,63}$", VARIABLES.accountIntegrationTimerCode)>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "Informe um cod_timer valido.")/>
+    </cfif>
+    <cfif len(VARIABLES.accountIntegrationExternalAccountId) GT 128>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "O external_account_id aceita ate 128 caracteres.")/>
+    </cfif>
+    <cfif VARIABLES.accountIntegrationAllExternal>
+        <cfset VARIABLES.accountIntegrationExternalAccountId = ""/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountIntegrationCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR compare(VARIABLES.accountIntegrationCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.accountIntegrationErrors, "A sessao de seguranca expirou. Recarregue a pagina.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountIntegrationErrors)>
+        <cftry>
+            <cfquery name="qBusinessAccountIntegrationDuplicate">
+                SELECT integration.id_conta_integracao_resultado,
+                       integration.id_conta,
+                       account.nome_conta
+                FROM public.tb_conta_integracoes_resultados integration
+                INNER JOIN public.tb_contas account ON account.id_conta = integration.id_conta
+                WHERE lower(trim(integration.client_id)) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationClientId#"/>
+                  AND lower(trim(integration.cod_timer)) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationTimerCode#"/>
+                  AND coalesce(trim(integration.external_account_id), '') = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationExternalAccountId#"/>
+                  AND integration.abrange_contas_externas = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.accountIntegrationAllExternal#"/>
+                  AND integration.ativo = true
+                LIMIT 1
+            </cfquery>
+
+            <cfif qBusinessAccountIntegrationDuplicate.recordcount>
+                <cfif qBusinessAccountIntegrationDuplicate.id_conta EQ VARIABLES.accountIntegrationAccountId>
+                    <cfset VARIABLES.accountIntegrationErrors = ["Esta integracao ja esta cadastrada para a conta."]/>
+                <cfelse>
+                    <cfset VARIABLES.accountIntegrationErrors = ["Este escopo ja esta vinculado a conta " & qBusinessAccountIntegrationDuplicate.nome_conta & "."]/>
+                </cfif>
+            <cfelse>
+                <cfquery>
+                    INSERT INTO public.tb_conta_integracoes_resultados
+                    (
+                        id_conta,
+                        client_id,
+                        cod_timer,
+                        external_account_id,
+                        abrange_contas_externas,
+                        ativo,
+                        usuario_cadastro
+                    )
+                    VALUES
+                    (
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountIntegrationAccountId#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationClientId#" maxlength="128"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationTimerCode#" maxlength="64"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountIntegrationExternalAccountId#" maxlength="128" null="#NOT len(VARIABLES.accountIntegrationExternalAccountId)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.accountIntegrationAllExternal#"/>,
+                        true,
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountIntegrationAccountId#&tab=acessos&sucesso=integracao##conta-gerenciamento"/>
+            </cfif>
+
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsAccessSaveErrorMessage = "Nao foi possivel salvar a integracao. " & cfcatch.message/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif arrayLen(VARIABLES.accountIntegrationErrors)>
+        <cfset VARIABLES.accountsAccessSaveErrorMessage = arrayToList(VARIABLES.accountIntegrationErrors, " ")/>
+    </cfif>
+</cfif>
+
+<cfif VARIABLES.businessAccountAccessTablesReady
+    AND isDefined("FORM.account_integration_action")
+    AND FORM.account_integration_action EQ "remover">
+
+    <cfset VARIABLES.accountIntegrationRemoveAccountId = isDefined("FORM.id_conta") ? trim(FORM.id_conta) : ""/>
+    <cfset VARIABLES.accountIntegrationRemoveId = isDefined("FORM.id_conta_integracao_resultado") ? trim(FORM.id_conta_integracao_resultado) : ""/>
+    <cfset VARIABLES.accountIntegrationRemoveCsrf = isDefined("FORM.business_account_access_csrf") ? trim(FORM.business_account_access_csrf) : ""/>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset VARIABLES.accountsAccessSaveErrorMessage = "Apenas administradores internos podem remover integracoes."/>
+    <cfelseif NOT isNumeric(VARIABLES.accountIntegrationRemoveAccountId) OR NOT isNumeric(VARIABLES.accountIntegrationRemoveId)>
+        <cfset VARIABLES.accountsAccessSaveErrorMessage = "Integracao invalida."/>
+    <cfelseif NOT len(VARIABLES.accountIntegrationRemoveCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR compare(VARIABLES.accountIntegrationRemoveCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset VARIABLES.accountsAccessSaveErrorMessage = "A sessao de seguranca expirou. Recarregue a pagina."/>
+    <cfelse>
+        <cftry>
+            <cfquery>
+                DELETE FROM public.tb_conta_integracoes_resultados
+                WHERE id_conta_integracao_resultado = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountIntegrationRemoveId#"/>
+                  AND id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountIntegrationRemoveAccountId#"/>
+            </cfquery>
+            <cflocation addtoken="false" url="./?conta_id=#VARIABLES.accountIntegrationRemoveAccountId#&tab=acessos&sucesso=integracao_removida##conta-gerenciamento"/>
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsAccessSaveErrorMessage = "Nao foi possivel remover a integracao. " & cfcatch.message/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+</cfif>
+
 <cfif len(trim(URL.conta_id)) AND isNumeric(URL.conta_id)>
     <cfset VARIABLES.accountsEditId = trim(URL.conta_id)/>
 <cfelseif isDefined("FORM.account_action")
@@ -1205,6 +1449,11 @@
     <cfset VARIABLES.accountsEditId = trim(FORM.id_conta)/>
 <cfelseif isDefined("FORM.account_voucher_action")
     AND FORM.account_voucher_action EQ "salvar"
+    AND isDefined("FORM.id_conta")
+    AND len(trim(FORM.id_conta))
+    AND isNumeric(FORM.id_conta)>
+    <cfset VARIABLES.accountsEditId = trim(FORM.id_conta)/>
+<cfelseif (isDefined("FORM.account_access_action") OR isDefined("FORM.account_integration_action"))
     AND isDefined("FORM.id_conta")
     AND len(trim(FORM.id_conta))
     AND isNumeric(FORM.id_conta)>
@@ -1415,6 +1664,42 @@
                         OR unaccent(upper(coalesce(usr.email, ''))) LIKE unaccent(upper(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.accountUserSearchTerm#%"/>))
                     ORDER BY usr.name, usr.email
                     LIMIT 50
+                </cfquery>
+            </cfif>
+
+            <cfif VARIABLES.businessAccountsCanAdminAll AND VARIABLES.businessAccountAccessTablesReady>
+                <cfquery name="qBusinessAccountPermissionCatalog">
+                    SELECT id_permissao, codigo, descricao
+                    FROM public.tb_business_permissoes
+                    WHERE ativo = true
+                    ORDER BY codigo
+                </cfquery>
+
+                <cfquery name="qBusinessAccountPermissionGrants">
+                    SELECT grant_account.id_permissao,
+                           perm.codigo,
+                           grant_account.papel::text AS papel
+                    FROM public.tb_conta_permissoes grant_account
+                    INNER JOIN public.tb_business_permissoes perm
+                        ON perm.id_permissao = grant_account.id_permissao
+                    WHERE grant_account.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountEdit.id_conta#"/>
+                      AND grant_account.ativo = true
+                    ORDER BY perm.codigo, grant_account.papel
+                </cfquery>
+
+                <cfquery name="qBusinessAccountResultIntegrations">
+                    SELECT id_conta_integracao_resultado,
+                           id_conta,
+                           client_id,
+                           cod_timer,
+                           external_account_id,
+                           abrange_contas_externas,
+                           ativo,
+                           data_criacao,
+                           data_atualizacao
+                    FROM public.tb_conta_integracoes_resultados
+                    WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountEdit.id_conta#"/>
+                    ORDER BY ativo DESC, client_id, cod_timer, external_account_id NULLS FIRST
                 </cfquery>
             </cfif>
 

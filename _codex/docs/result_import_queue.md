@@ -12,7 +12,12 @@ de resultados.
 
 ## Acesso
 
-- somente usuários administradores;
+- administradores internos podem consultar todas as submissões;
+- usuários de conta precisam da capacidade `result_imports.view` para o seu papel;
+- sem integração ativa em `tb_conta_integracoes_resultados`, a página permanece
+  acessível, mas a fila fica vazia e o processamento não pode ser iniciado;
+- usuários de conta veem somente submissões compatíveis com o `client_id`,
+  `cod_timer` e escopo de `external_account_id` da integração;
 - usa o datasource padrão `runner_dba` do Business;
 - não exibe tokens nem o `payload_hash` da submissão;
 - a listagem não altera o estado por `GET`;
@@ -41,7 +46,8 @@ somente à lista para permitir comparar os estados no mesmo recorte.
 ## Processamento manual RaceZone
 
 Submissões com `cod_timer = racezone` e estado `pendente` ou `falhou` exibem uma
-ação que abre `/racetag/` em uma nova aba. A tela:
+ação que abre `/racetag/` em uma nova aba quando o papel também possui
+`result_imports.process`. A tela:
 
 1. lê `data/events.json` quando disponível;
 2. resolve o `event.json` pelo ID externo ou slug da URL pública;
@@ -53,4 +59,20 @@ ação que abre `/racetag/` em uma nova aba. A tela:
 7. atualiza a submissão para `processando`, `processado` ou `falhou`.
 
 O menu administrativo também expõe o importador para uso manual sem uma
-submissão da fila. O cron/worker automático continua fora desta fase.
+submissão da fila. Esse modo avulso permanece exclusivo de administradores
+internos; usuários externos sempre começam por uma submissão autorizada da fila.
+O cron/worker automático continua fora desta fase.
+
+## Configuração da conta
+
+A conta do provedor não precisa possuir eventos em `tb_conta_eventos`. Um
+administrador configura capacidades e integrações na aba **Acessos** de
+`/administracao/contas/`, após aplicar:
+
+```text
+_codex/sql/2026-08-06_tb_conta_permissoes_integracoes_resultados.sql
+```
+
+Para a credencial RaceZone atual, o cadastro esperado usa `client_id` igual ao
+valor configurado na API, `cod_timer = racezone` e a opção de abranger todas as
+contas externas quando a conta Business representar o próprio provedor.

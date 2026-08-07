@@ -36,7 +36,7 @@
 </cfif>
 
 <cfset VARIABLES.accountManagementTab = lCase(trim(URL.tab))/>
-<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados", VARIABLES.accountManagementTab)>
+<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados,acessos", VARIABLES.accountManagementTab)>
     <cfif VARIABLES.businessAccountsCanAdminAll
         AND qBusinessAccountEdit.recordcount
         AND ((isDefined("URL.editar_conta") AND URL.editar_conta)
@@ -58,6 +58,16 @@
 </cfif>
 <cfif VARIABLES.accountManagementTab EQ "dados" AND NOT VARIABLES.businessAccountsCanAdminAll>
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
+</cfif>
+<cfif VARIABLES.accountManagementTab EQ "acessos" AND NOT VARIABLES.businessAccountsCanAdminAll>
+    <cfset VARIABLES.accountManagementTab = "usuarios"/>
+</cfif>
+
+<cfset VARIABLES.accountPermissionGrantMap = {}/>
+<cfif isDefined("qBusinessAccountPermissionGrants") AND qBusinessAccountPermissionGrants.recordcount>
+    <cfloop query="qBusinessAccountPermissionGrants">
+        <cfset VARIABLES.accountPermissionGrantMap[qBusinessAccountPermissionGrants.id_permissao & ":" & uCase(qBusinessAccountPermissionGrants.papel)] = true/>
+    </cfloop>
 </cfif>
 
 <cfset VARIABLES.accountsClientOverviewReady = NOT VARIABLES.businessAccountsCanAdminAll AND VARIABLES.businessAccountsTablesReady/>
@@ -811,6 +821,12 @@
             </div>
           </cfif>
 
+          <cfif len(trim(VARIABLES.accountsAccessSaveErrorMessage))>
+            <div class="alert alert-danger" role="alert">
+              <cfoutput>#htmlEditFormat(VARIABLES.accountsAccessSaveErrorMessage)#</cfoutput>
+            </div>
+          </cfif>
+
           <cfif VARIABLES.accountsClientOverviewReady>
             <cfif VARIABLES.accountsClientHasAccount>
               <div class="business-panel accounts-client-overview p-3 mb-3">
@@ -1226,6 +1242,13 @@
                           </a>
                         </li>
                       </cfif>
+                      <cfif VARIABLES.businessAccountsCanAdminAll>
+                        <li class="nav-item">
+                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'acessos'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="acessos">
+                            Acessos
+                          </a>
+                        </li>
+                      </cfif>
                     </ul>
                   </cfoutput>
 
@@ -1627,6 +1650,166 @@
                         <div class="text-muted py-3">Nenhum voucher criado para esta conta.</div>
                       </cfif>
                     </cfif>
+                    </div>
+                  </cfif>
+
+                  <cfif VARIABLES.businessAccountsCanAdminAll>
+                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'acessos'>d-none</cfif>" data-account-tab-panel="acessos">
+                      <div class="mb-3">
+                        <h5 class="mb-1">Acessos e integrações</h5>
+                        <div class="text-muted small">
+                          Conceda capacidades por papel e limite os dados ao cliente da API associado à conta.
+                        </div>
+                      </div>
+
+                      <cfif NOT VARIABLES.businessAccountAccessTablesReady>
+                        <div class="alert alert-warning" role="alert">
+                          Aplique o SQL <code>_codex/sql/2026-08-06_tb_conta_permissoes_integracoes_resultados.sql</code> para configurar estes acessos.
+                        </div>
+                      <cfelse>
+                        <div class="accounts-panel p-3 mb-3">
+                          <div class="mb-3">
+                            <h6 class="mb-1">Permissões por papel</h6>
+                            <div class="small text-muted">
+                              A permissão de processamento inclui automaticamente a visualização da fila.
+                              O papel <code>OWNER</code> também herda as capacidades concedidas a <code>ADMIN</code>.
+                            </div>
+                          </div>
+
+                          <cfoutput>
+                            <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos##conta-gerenciamento">
+                              <input type="hidden" name="account_access_action" value="salvar_permissoes"/>
+                              <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                              <div class="table-responsive mb-3">
+                                <table class="table table-sm accounts-table align-middle mb-0">
+                                  <thead>
+                                    <tr>
+                                      <th>Capacidade</th>
+                                      <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
+                                        <th class="text-center">#htmlEditFormat(accountAccessRole)#</th>
+                                      </cfloop>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <cfloop query="qBusinessAccountPermissionCatalog">
+                                      <tr>
+                                        <td class="accounts-cell">
+                                          <code class="d-block">#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)#</code>
+                                          <span class="small text-muted">#htmlEditFormat(qBusinessAccountPermissionCatalog.descricao)#</span>
+                                        </td>
+                                        <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
+                                          <cfset accountAccessGrantKey = qBusinessAccountPermissionCatalog.id_permissao & ":" & accountAccessRole/>
+                                          <td class="text-center">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   name="permission_#qBusinessAccountPermissionCatalog.id_permissao#_#accountAccessRole#"
+                                                   value="1"
+                                                   aria-label="#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)# para #htmlEditFormat(accountAccessRole)#"
+                                                   <cfif structKeyExists(VARIABLES.accountPermissionGrantMap, accountAccessGrantKey)>checked</cfif>/>
+                                          </td>
+                                        </cfloop>
+                                      </tr>
+                                    </cfloop>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <button class="btn btn-warning" type="submit">Salvar permissões</button>
+                            </form>
+                          </cfoutput>
+                        </div>
+
+                        <div class="accounts-panel p-3 mb-3">
+                          <div class="mb-3">
+                            <h6 class="mb-1">Adicionar integração de resultados</h6>
+                            <div class="small text-muted">
+                              O <code>client_id</code> e o <code>cod_timer</code> devem coincidir com a credencial operacional da API.
+                            </div>
+                          </div>
+
+                          <cfoutput>
+                            <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos##conta-gerenciamento">
+                              <input type="hidden" name="account_integration_action" value="salvar"/>
+                              <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                              <div class="row g-3">
+                                <div class="col-12 col-lg-4">
+                                  <label class="form-label">Client ID da API</label>
+                                  <input class="form-control" type="text" name="client_id" maxlength="128" placeholder="Ex.: timer-racezone" pattern="[a-z0-9][a-z0-9_-]*" required/>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                  <label class="form-label">Código do timer</label>
+                                  <input class="form-control" type="text" name="cod_timer" maxlength="64" placeholder="Ex.: racezone" pattern="[a-z0-9][a-z0-9_-]*" required/>
+                                </div>
+                                <div class="col-12 col-lg-5">
+                                  <label class="form-label">Conta externa específica <span class="text-muted">(opcional)</span></label>
+                                  <input class="form-control" type="text" name="external_account_id" maxlength="128"/>
+                                  <div class="form-text">Em branco e sem abrangência corresponde somente a submissões sem conta externa.</div>
+                                </div>
+                                <div class="col-12">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="abrange_contas_externas" id="accountIntegrationAllExternal" value="1"/>
+                                    <label class="form-check-label" for="accountIntegrationAllExternal">
+                                      Abranger todas as contas externas deste cliente da API
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                  <button class="btn btn-outline-warning" type="submit">Adicionar integração</button>
+                                </div>
+                              </div>
+                            </form>
+                          </cfoutput>
+                        </div>
+
+                        <div>
+                          <h6 class="mb-2">Integrações cadastradas</h6>
+                          <cfif qBusinessAccountResultIntegrations.recordcount>
+                            <div class="table-responsive">
+                              <table class="table table-sm accounts-table align-middle mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>Cliente</th>
+                                    <th>Timer</th>
+                                    <th>Escopo externo</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <cfoutput query="qBusinessAccountResultIntegrations">
+                                    <tr>
+                                      <td><code>#htmlEditFormat(client_id)#</code></td>
+                                      <td><code>#htmlEditFormat(cod_timer)#</code></td>
+                                      <td>
+                                        <cfif abrange_contas_externas>
+                                          Todas as contas externas
+                                        <cfelseif len(trim(external_account_id & ""))>
+                                          <code>#htmlEditFormat(external_account_id)#</code>
+                                        <cfelse>
+                                          Somente sem <code>external_account_id</code>
+                                        </cfif>
+                                      </td>
+                                      <td><span class="accounts-status"><cfif ativo>ATIVA<cfelse>INATIVA</cfif></span></td>
+                                      <td class="text-end">
+                                        <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos##conta-gerenciamento" onsubmit="return confirm('Remover esta integração?');">
+                                          <input type="hidden" name="account_integration_action" value="remover"/>
+                                          <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
+                                          <input type="hidden" name="id_conta_integracao_resultado" value="#id_conta_integracao_resultado#"/>
+                                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                                          <button class="btn btn-sm btn-outline-danger" type="submit">Remover</button>
+                                        </form>
+                                      </td>
+                                    </tr>
+                                  </cfoutput>
+                                </tbody>
+                              </table>
+                            </div>
+                          <cfelse>
+                            <div class="text-muted py-3">Nenhuma integração de resultados cadastrada para esta conta.</div>
+                          </cfif>
+                        </div>
+                      </cfif>
                     </div>
                   </cfif>
 

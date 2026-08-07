@@ -96,6 +96,7 @@
         )
     </cfquery>
     <cfinclude template="business_account_context.cfm"/>
+    <cfinclude template="business_permissions.cfm"/>
     <cfif qPerfil.recordcount
         AND isDefined("VARIABLES.businessAccountSelectionRequired")
         AND VARIABLES.businessAccountSelectionRequired

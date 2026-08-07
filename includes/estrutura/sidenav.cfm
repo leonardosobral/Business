@@ -142,6 +142,8 @@
 <cfset VARIABLES.businessCanShowAccountNavigation = false/>
 <cfset VARIABLES.businessCanShowAgendaNavigation = false/>
 <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
+<cfset VARIABLES.businessCanViewResultImports = false/>
+<cfset VARIABLES.businessCanProcessResultImports = false/>
 <cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
 <cfset VARIABLES.businessCanManageBrasilGiganteChallenge = false/>
 <cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
@@ -174,6 +176,9 @@
         OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)>
         <cfset VARIABLES.businessCanShowUserManagementNavigation = true/>
     </cfif>
+
+    <cfset VARIABLES.businessCanViewResultImports = businessHasPermission("result_imports.view")/>
+    <cfset VARIABLES.businessCanProcessResultImports = businessHasPermission("result_imports.process")/>
 
     <cfinclude template="../backend/catarinense_challenge_access.cfm"/>
     <cfinclude template="../backend/brasil_gigante_challenge_access.cfm"/>
@@ -448,9 +453,7 @@
 
         <!--- DESAFIOS --->
 
-        <cfif VARIABLES.businessCanShowAdminNavigation
-            OR VARIABLES.businessCanManageCatarinenseChallenges
-            OR VARIABLES.businessCanManageBrasilGiganteChallenge>
+        <cfif VARIABLES.businessCanShowAdminNavigation>
 
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
@@ -466,20 +469,6 @@
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
                     )
                 )
-                <cfif NOT VARIABLES.businessCanShowAdminNavigation>
-                    AND (
-                        1 = 0
-                        <cfif VARIABLES.businessCanManageCatarinenseChallenges>
-                            OR tag IN (
-                                <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
-                                <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>
-                            )
-                        </cfif>
-                        <cfif VARIABLES.businessCanManageBrasilGiganteChallenge>
-                            OR tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
-                        </cfif>
-                    )
-                </cfif>
                 order by data_inicio desc
             </cfquery>
 
@@ -598,17 +587,31 @@
                 </a>
             </li>
 
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/">
-                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
-                </a>
+            </cfif>
+        </cfif>
+
+
+        <!--- RESULTADOS --->
+
+        <cfif VARIABLES.businessCanViewResultImports OR VARIABLES.businessCanProcessResultImports>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Resultados</span>
             </li>
 
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/">
-                    <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
-                </a>
-            </li>
+            <cfif VARIABLES.businessCanViewResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/">
+                        <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanProcessResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/">
+                        <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
+                    </a>
+                </li>
             </cfif>
         </cfif>
 

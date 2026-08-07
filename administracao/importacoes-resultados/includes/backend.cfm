@@ -22,6 +22,9 @@
 <cfset VARIABLES.resultImportTotal = 0/>
 <cfset VARIABLES.resultImportTotalPages = 1/>
 <cfset VARIABLES.resultImportOffset = 0/>
+<cfset VARIABLES.resultImportUnscopedAccess = isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin/>
+<cfset VARIABLES.resultImportScopeAccountId = isDefined("VARIABLES.businessPermissionAccountId") ? val(VARIABLES.businessPermissionAccountId) : 0/>
+<cfset VARIABLES.resultImportCanProcess = businessHasPermission("result_imports.process")/>
 
 <cfif NOT listFindNoCase("pendente,processando,processado,falhou,cancelado", VARIABLES.resultImportStatus)>
     <cfset VARIABLES.resultImportStatus = ""/>
@@ -65,6 +68,21 @@
             FROM public.tb_resultados_importacoes imp
             LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
             WHERE 1 = 1
+            <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                AND EXISTS (
+                    SELECT 1
+                    FROM public.tb_conta_integracoes_resultados account_integration
+                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                      AND account_integration.ativo = true
+                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                      AND (
+                        account_integration.abrange_contas_externas = true
+                        OR nullif(trim(account_integration.external_account_id), '')
+                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                      )
+                )
+            </cfif>
             <cfif VARIABLES.resultImportPeriodDays GT 0>
                 AND imp.data_recebimento >= now() - (
                     <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
@@ -100,19 +118,49 @@
         </cfquery>
 
         <cfquery name="qResultImportTimers">
-            SELECT DISTINCT cod_timer
-            FROM public.tb_resultados_importacoes
-            WHERE cod_timer IS NOT NULL
-              AND trim(cod_timer) <> ''
-            ORDER BY cod_timer
+            SELECT DISTINCT imp.cod_timer
+            FROM public.tb_resultados_importacoes imp
+            WHERE imp.cod_timer IS NOT NULL
+              AND trim(imp.cod_timer) <> ''
+            <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                AND EXISTS (
+                    SELECT 1
+                    FROM public.tb_conta_integracoes_resultados account_integration
+                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                      AND account_integration.ativo = true
+                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                      AND (
+                        account_integration.abrange_contas_externas = true
+                        OR nullif(trim(account_integration.external_account_id), '')
+                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                      )
+                )
+            </cfif>
+            ORDER BY imp.cod_timer
         </cfquery>
 
         <cfquery name="qResultImportClients">
-            SELECT DISTINCT client_id
-            FROM public.tb_resultados_importacoes
-            WHERE client_id IS NOT NULL
-              AND trim(client_id) <> ''
-            ORDER BY client_id
+            SELECT DISTINCT imp.client_id
+            FROM public.tb_resultados_importacoes imp
+            WHERE imp.client_id IS NOT NULL
+              AND trim(imp.client_id) <> ''
+            <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                AND EXISTS (
+                    SELECT 1
+                    FROM public.tb_conta_integracoes_resultados account_integration
+                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                      AND account_integration.ativo = true
+                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                      AND (
+                        account_integration.abrange_contas_externas = true
+                        OR nullif(trim(account_integration.external_account_id), '')
+                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                      )
+                )
+            </cfif>
+            ORDER BY imp.client_id
         </cfquery>
 
         <cfquery name="qResultImportCount">
@@ -120,6 +168,21 @@
             FROM public.tb_resultados_importacoes imp
             LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
             WHERE 1 = 1
+            <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                AND EXISTS (
+                    SELECT 1
+                    FROM public.tb_conta_integracoes_resultados account_integration
+                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                      AND account_integration.ativo = true
+                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                      AND (
+                        account_integration.abrange_contas_externas = true
+                        OR nullif(trim(account_integration.external_account_id), '')
+                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                      )
+                )
+            </cfif>
             <cfif VARIABLES.resultImportPeriodDays GT 0>
                 AND imp.data_recebimento >= now() - (
                     <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
@@ -193,6 +256,21 @@
             FROM public.tb_resultados_importacoes imp
             LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
             WHERE 1 = 1
+            <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                AND EXISTS (
+                    SELECT 1
+                    FROM public.tb_conta_integracoes_resultados account_integration
+                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                      AND account_integration.ativo = true
+                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                      AND (
+                        account_integration.abrange_contas_externas = true
+                        OR nullif(trim(account_integration.external_account_id), '')
+                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                      )
+                )
+            </cfif>
             <cfif VARIABLES.resultImportPeriodDays GT 0>
                 AND imp.data_recebimento >= now() - (
                     <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
@@ -266,6 +344,21 @@
                     FROM public.tb_resultados_importacoes imp
                     LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
                     WHERE imp.public_id::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportSelectedId#"/>
+                    <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                      AND EXISTS (
+                          SELECT 1
+                          FROM public.tb_conta_integracoes_resultados account_integration
+                          WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                            AND account_integration.ativo = true
+                            AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
+                            AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
+                            AND (
+                              account_integration.abrange_contas_externas = true
+                              OR nullif(trim(account_integration.external_account_id), '')
+                                  IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
+                            )
+                      )
+                    </cfif>
                     LIMIT 1
                 </cfquery>
 

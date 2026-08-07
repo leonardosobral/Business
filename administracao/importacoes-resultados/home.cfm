@@ -140,6 +140,23 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         </div>
       </div>
 
+      <cfif NOT VARIABLES.resultImportUnscopedAccess>
+        <cfif isDefined("qBusinessResultImportIntegrations") AND qBusinessResultImportIntegrations.recordcount>
+          <div class="alert alert-info py-2 small">
+            <i class="fa-solid fa-shield-halved me-1"></i>
+            <cfoutput>
+              Exibindo somente submissões das integrações ativas da conta
+              <strong>#htmlEditFormat(VARIABLES.businessActiveAccountName)#</strong>.
+            </cfoutput>
+          </div>
+        <cfelse>
+          <div class="alert alert-warning py-2 small">
+            <i class="fa-solid fa-plug-circle-xmark me-1"></i>
+            Esta conta ainda não possui uma integração de resultados ativa. A fila permanecerá vazia até a configuração do escopo.
+          </div>
+        </cfif>
+      </cfif>
+
       <cfif len(VARIABLES.resultImportError)>
         <div class="alert alert-warning mb-0">
           <strong>Fila indisponível.</strong>
@@ -455,7 +472,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                       <cfif len(trim(total_resultados & ""))>#LSNumberFormat(total_resultados, "9,999")#<cfelse>-</cfif>
                     </td>
                     <td class="business-row-actions text-end">
-                      <cfif compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", status_processamento)>
+                      <cfif VARIABLES.resultImportCanProcess AND compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", status_processamento)>
                         <a class="btn btn-warning btn-sm"
                            href="/racetag/?submission_id=#encodeForURL(submission_id)#"
                            target="_blank"
