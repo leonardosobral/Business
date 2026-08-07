@@ -706,8 +706,8 @@
     <script>
         (function () {
             var isAdminNavigation = <cfif VARIABLES.businessCanShowAdminNavigation>true<cfelse>false</cfif>;
-            var defaultExpandedSections = isAdminNavigation ? ["portal"] : ["ferramentas", "marketing"];
-            var storageKey = "business:sidenav:section-state:v2:" + (isAdminNavigation ? "admin" : "account");
+            var defaultExpandedSections = isAdminNavigation ? ["administracao", "portal"] : ["ferramentas", "marketing"];
+            var storageKey = "business:sidenav:section-state:v3:" + (isAdminNavigation ? "admin" : "account");
 
             function readSectionStates() {
                 try {
@@ -728,7 +728,7 @@
             }
 
             function sectionKey(label) {
-                return label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+                return label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
             }
 
             function sectionItems(headingItem) {
