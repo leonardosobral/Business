@@ -593,6 +593,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/">link-warning</cfif>" href="/administracao/chat/">
+                    <i class="fa-solid fa-comments fa-fw me-3"></i><span>Uso do Chat</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/">
                     <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
                 </a>
