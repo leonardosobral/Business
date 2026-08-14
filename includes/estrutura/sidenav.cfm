@@ -524,6 +524,12 @@
 
             <cfif VARIABLES.businessCanShowAdminNavigation>
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/pesquisas/">link-warning</cfif>" href="/administracao/pesquisas/">
+                    <i class="fa-solid fa-square-poll-horizontal fa-fw me-3"></i><span>Pesquisas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/permissoes/">link-warning</cfif>" href="/administracao/permissoes/">
                     <i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span>
                 </a>

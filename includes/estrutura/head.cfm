@@ -34,4 +34,8 @@
         <script src="https://accounts.google.com/gsi/client" async defer></script>
     </cfif>
 
+    <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/administracao/pesquisas/">
+        <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260814-1" />
+    </cfif>
+
 </head>

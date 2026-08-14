@@ -543,6 +543,7 @@ function eventContentKpiShortText(value, numeric lengthLimit = 140) {
         FROM qEventContentKpiByMonth
         ORDER BY mes_key
     </cfquery>
+
 <cfelse>
     <cfset qEventContentKpiFieldsSorted = qEventContentKpiFields/>
     <cfset qEventContentKpiByStateSorted = qEventContentKpiByState/>
