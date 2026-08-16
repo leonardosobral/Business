@@ -30,6 +30,9 @@
             "runnerhub_ticketsports" = "MESMO_VALOR_DE_RUNNERHUB_TICKETSPORTS_JOB_TOKEN",
             "runnerhub_foco_eventos" = "TOKEN_DO_ENDPOINT_ORIGINAL_MANTIDO_NO_RUNNERHUB",
             "business_foco_eventos" = "TOKEN_FORTE_EXCLUSIVO_DO_ENDPOINT_FOCO_NO_BUSINESS"
-        }
+        },
+        "specialGroupsSecret" = "SEGREDO_EXCLUSIVO_DOS_GRUPOS_ESPECIAIS",
+        "specialGroupsUrl" = "https://roadrunners.run/api/chat/admin/special-groups.cfm",
+        "specialGroupsTimeoutSeconds" = 180
     };
 </cfscript>

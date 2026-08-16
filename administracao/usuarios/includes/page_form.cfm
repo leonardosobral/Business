@@ -1,7 +1,7 @@
 <cfset VARIABLES.userManagerPageFormIsEdit = isDefined("VARIABLES.userManagerPageRow") AND isStruct(VARIABLES.userManagerPageRow) AND structKeyExists(VARIABLES.userManagerPageRow, "id_pagina")/>
 <cfset VARIABLES.userManagerPageFormId = VARIABLES.userManagerPageFormIsEdit ? val(VARIABLES.userManagerPageRow.id_pagina) : 0/>
 
-<form method="post" action="./">
+<form method="post" action="./" enctype="multipart/form-data">
   <input type="hidden" name="user_manager_action" value="salvar_pagina"/>
   <input type="hidden" name="user_manager_csrf" value="<cfoutput>#VARIABLES.userManagerCsrf#</cfoutput>"/>
   <input type="hidden" name="user_id" value="<cfoutput>#qUserManagerUser.id#</cfoutput>"/>
@@ -17,7 +17,18 @@
     <div class="col-3 col-lg-1"><label class="form-label">UF</label><input class="form-control" name="pagina_uf" maxlength="2" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.uf, ''))#</cfoutput></cfif>"/></div>
     <div class="col-3 col-lg-1"><label class="form-label">ID cidade</label><input class="form-control" type="number" name="id_cidade" value="<cfif VARIABLES.userManagerPageFormIsEdit AND val(VARIABLES.userManagerPageRow.id_cidade) GT 0><cfoutput>#VARIABLES.userManagerPageRow.id_cidade#</cfoutput></cfif>"/></div>
     <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3"><cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.descricao, ''))#</cfoutput></cfif></textarea></div>
-    <div class="col-12"><label class="form-label">Arquivo da imagem</label><input class="form-control" name="path_imagem" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, ''))#</cfoutput></cfif>" placeholder="nome-do-arquivo.jpg"/></div>
+    <div class="col-12 col-lg-7">
+      <label class="form-label">Imagem do perfil</label>
+      <input class="form-control" type="file" name="pagina_imagem" accept="image/jpeg,image/png,image/webp"/>
+      <div class="form-text">JPG, PNG ou WebP, com no máximo 5 MB. A imagem será ajustada pelo Road Runners para até 512 × 512 px.</div>
+    </div>
+    <div class="col-12 col-lg-5">
+      <label class="form-label">Arquivo atual</label>
+      <input class="form-control" name="path_imagem" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, ''))#</cfoutput></cfif>" placeholder="Nenhuma imagem" readonly/>
+      <cfif VARIABLES.userManagerPageFormIsEdit AND len(trim(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, '')))>
+        <div class="mt-2"><img src="https://roadrunners.run/assets/paginas/<cfoutput>#urlEncodedFormat(VARIABLES.userManagerPageRow.path_imagem)#</cfoutput>" alt="Imagem atual" class="rounded-circle object-fit-cover" width="72" height="72"/></div>
+      </cfif>
+    </div>
 
     <div class="col-12 d-flex flex-wrap gap-4 py-2 border-top border-bottom border-secondary-subtle">
       <div class="form-check"><input class="form-check-input" type="checkbox" name="verificado" value="true" id="um-page-verified-<cfoutput>#VARIABLES.userManagerPageFormId#</cfoutput>"<cfif VARIABLES.userManagerPageFormIsEdit AND userManagerBoolean(VARIABLES.userManagerPageRow.verificado)> checked</cfif>/><label class="form-check-label" for="um-page-verified-<cfoutput>#VARIABLES.userManagerPageFormId#</cfoutput>">Verificada</label></div>

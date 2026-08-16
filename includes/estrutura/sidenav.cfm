@@ -591,6 +591,14 @@
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/">link-warning</cfif>" href="/administracao/chat/">
                     <i class="fa-solid fa-comments fa-fw me-3"></i><span>Uso do Chat</span>
                 </a>
+
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/grupos-especiais/">link-warning</cfif>" href="/administracao/chat/grupos-especiais/">
+                    <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Grupos especiais</span>
+                </a>
+
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/vicky/">link-warning</cfif>" href="/administracao/vicky/">
+                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Vicky Pacer</span>
+                </a>
             </li>
 
             </cfif>

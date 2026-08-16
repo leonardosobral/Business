@@ -666,7 +666,28 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                 <cfif !VARIABLES.userManagerAccess.allowed><cfthrow message="#VARIABLES.userManagerAccess.message#"/></cfif>
                 <cfset VARIABLES.userManagerPageName = userManagerFormValue("nome")/>
                 <cfset VARIABLES.userManagerPageTag = userManagerSlugify(userManagerFormValue("tag", VARIABLES.userManagerPageName))/>
+                <cfset VARIABLES.userManagerPageImageTempFile = ""/>
                 <cfif !len(VARIABLES.userManagerPageName)><cfthrow message="Informe o nome da página."/></cfif>
+
+                <cfif structKeyExists(FORM, "pagina_imagem") AND len(trim(FORM.pagina_imagem & ""))>
+                    <cfset VARIABLES.userManagerPageImageTempDirectory = getTempDirectory() & "business-profile-images/"/>
+                    <cfif NOT directoryExists(VARIABLES.userManagerPageImageTempDirectory)>
+                        <cfdirectory action="create" directory="#VARIABLES.userManagerPageImageTempDirectory#"/>
+                    </cfif>
+                    <cffile action="upload"
+                            filefield="pagina_imagem"
+                            destination="#VARIABLES.userManagerPageImageTempDirectory#"
+                            nameconflict="makeunique"
+                            accept="image/jpeg,image/png,image/webp"
+                            allowedextensions=".jpg,.jpeg,.png,.webp"
+                            strict="true"
+                            result="userManagerPageImageUpload"/>
+                    <cfset VARIABLES.userManagerPageImageTempFile = userManagerPageImageUpload.serverDirectory & "/" & userManagerPageImageUpload.serverFile/>
+                    <cfif val(userManagerPageImageUpload.fileSize) GT 5242880>
+                        <cffile action="delete" file="#VARIABLES.userManagerPageImageTempFile#"/>
+                        <cfthrow message="A imagem deve ter no máximo 5 MB."/>
+                    </cfif>
+                </cfif>
 
                 <cfquery name="qUserManagerTagDuplicate">
                     SELECT id_pagina FROM tb_paginas
@@ -780,6 +801,43 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                         </cfquery>
                     </cftransaction>
                     <cfset userManagerAudit("pagina_criada", VARIABLES.userManagerActionUserId, VARIABLES.userManagerActionPageId, {}, { nome = VARIABLES.userManagerPageName, tag = VARIABLES.userManagerPageTag })/>
+                </cfif>
+
+                <cfif len(VARIABLES.userManagerPageImageTempFile) AND fileExists(VARIABLES.userManagerPageImageTempFile)>
+                    <cfset VARIABLES.userManagerPageImageEndpoint = "https://roadrunners.run/api/upload_foto_atleta.cfm"/>
+                    <cfhttp url="#VARIABLES.userManagerPageImageEndpoint#"
+                            method="post"
+                            timeout="30"
+                            throwonerror="false"
+                            result="userManagerPageImageHttpResult">
+                        <cfhttpparam type="formfield" name="id_pagina" value="#VARIABLES.userManagerActionPageId#"/>
+                        <cfhttpparam type="formfield" name="id_usuario" value="#VARIABLES.userManagerActionUserId#"/>
+                        <cfhttpparam type="file" name="croppedImage" file="#VARIABLES.userManagerPageImageTempFile#" mimetype="#userManagerPageImageUpload.contentType#/#userManagerPageImageUpload.contentSubType#"/>
+                    </cfhttp>
+                    <cffile action="delete" file="#VARIABLES.userManagerPageImageTempFile#"/>
+                    <cfset VARIABLES.userManagerPageImageHttpStatus = structKeyExists(userManagerPageImageHttpResult, "statusCode")
+                        ? trim(userManagerPageImageHttpResult.statusCode & "")
+                        : ""/>
+                    <cfset VARIABLES.userManagerPageImageHttpStatusNumber = len(VARIABLES.userManagerPageImageHttpStatus) GTE 3
+                        ? val(left(VARIABLES.userManagerPageImageHttpStatus, 3))
+                        : 0/>
+                    <cfset VARIABLES.userManagerPageImageResponse = structKeyExists(userManagerPageImageHttpResult, "fileContent")
+                        AND isJSON(toString(userManagerPageImageHttpResult.fileContent))
+                        ? deserializeJSON(toString(userManagerPageImageHttpResult.fileContent))
+                        : {
+                            success=false,
+                            message=VARIABLES.userManagerPageImageHttpStatusNumber EQ 404
+                                ? "O endpoint de upload de imagem não foi encontrado no Road Runners (HTTP 404)."
+                                : (VARIABLES.userManagerPageImageHttpStatusNumber GTE 500
+                                    ? "O Road Runners encontrou um erro ao processar a imagem (HTTP #VARIABLES.userManagerPageImageHttpStatusNumber#)."
+                                    : (VARIABLES.userManagerPageImageHttpStatusNumber GT 0
+                                        ? "O Road Runners respondeu HTTP #VARIABLES.userManagerPageImageHttpStatusNumber# sem uma confirmação válida."
+                                        : "Não foi possível obter uma resposta válida do Road Runners."))
+                        }/>
+                    <cfif NOT structKeyExists(VARIABLES.userManagerPageImageResponse, "success") OR NOT VARIABLES.userManagerPageImageResponse.success>
+                        <cfthrow message="#structKeyExists(VARIABLES.userManagerPageImageResponse, 'message') ? VARIABLES.userManagerPageImageResponse.message : 'Não foi possível enviar a imagem ao Road Runners.'#"/>
+                    </cfif>
+                    <cfset userManagerAudit("pagina_imagem_atualizada", VARIABLES.userManagerActionUserId, VARIABLES.userManagerActionPageId, {}, { url = structKeyExists(VARIABLES.userManagerPageImageResponse, "url") ? VARIABLES.userManagerPageImageResponse.url : "" })/>
                 </cfif>
                 <cflocation addtoken="false" url="./?user_id=#VARIABLES.userManagerActionUserId#&aba=paginas&feedback=sucesso&mensagem=#urlEncodedFormat('Página salva com sucesso.')#"/>
             </cfcase>

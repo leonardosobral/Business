@@ -40,9 +40,13 @@
                 <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
             </cfif>
         </cfif>
+        <cfset var openAiApiKey = structKeyExists(environment, "OPENAI_API_KEY") ? trim(environment["OPENAI_API_KEY"]) : (structKeyExists(businessLocalConfig, "openAiApiKey") ? trim(businessLocalConfig.openAiApiKey) : "")/>
         <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : (structKeyExists(businessLocalConfig, "notificationDispatchSecret") ? trim(businessLocalConfig.notificationDispatchSecret) : "")/>
+        <cfset var specialGroupsSecret = structKeyExists(environment, "RR_CHAT_SPECIAL_GROUPS_SECRET") ? trim(environment["RR_CHAT_SPECIAL_GROUPS_SECRET"]) : (structKeyExists(businessLocalConfig, "specialGroupsSecret") ? trim(businessLocalConfig.specialGroupsSecret) : "")/>
         <cfset var pushDispatchUrl = structKeyExists(environment, "RR_PUSH_DISPATCH_URL") ? trim(environment["RR_PUSH_DISPATCH_URL"]) : (structKeyExists(businessLocalConfig, "notificationDispatchUrl") ? trim(businessLocalConfig.notificationDispatchUrl) : "https://roadrunners.run/api/notifications/integrations/dispatch.cfm")/>
         <cfset var notificationDispatchUrl = structKeyExists(environment, "RR_NOTIFICATION_DISPATCH_URL") ? trim(environment["RR_NOTIFICATION_DISPATCH_URL"]) : (structKeyExists(businessLocalConfig, "notificationDispatchUrl") ? trim(businessLocalConfig.notificationDispatchUrl) : "")/>
+        <cfset var specialGroupsUrl = structKeyExists(environment, "RR_CHAT_SPECIAL_GROUPS_URL") ? trim(environment["RR_CHAT_SPECIAL_GROUPS_URL"]) : (structKeyExists(businessLocalConfig, "specialGroupsUrl") ? trim(businessLocalConfig.specialGroupsUrl) : "")/>
+        <cfset var specialGroupsTimeoutSeconds = structKeyExists(environment, "RR_CHAT_SPECIAL_GROUPS_TIMEOUT_SECONDS") ? val(environment["RR_CHAT_SPECIAL_GROUPS_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "specialGroupsTimeoutSeconds") ? val(businessLocalConfig.specialGroupsTimeoutSeconds) : 180)/>
         <cfset var pushDispatchTimeoutSeconds = structKeyExists(environment, "RR_PUSH_DISPATCH_TIMEOUT_SECONDS") ? val(environment["RR_PUSH_DISPATCH_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "notificationDispatchTimeoutSeconds") ? val(businessLocalConfig.notificationDispatchTimeoutSeconds) : 20)/>
         <cfset var pushPublicKey = structKeyExists(environment, "RR_PUSH_PUBLIC_KEY") ? trim(environment["RR_PUSH_PUBLIC_KEY"]) : (structKeyExists(businessLocalConfig, "pushPublicKey") ? trim(businessLocalConfig.pushPublicKey) : "")/>
         <cfset var pushPrivateKey = structKeyExists(environment, "RR_PUSH_PRIVATE_KEY") ? trim(environment["RR_PUSH_PRIVATE_KEY"]) : (structKeyExists(businessLocalConfig, "pushPrivateKey") ? trim(businessLocalConfig.pushPrivateKey) : "")/>
@@ -68,6 +72,8 @@
         <cfif NOT len(notificationDispatchUrl)>
             <cfset notificationDispatchUrl = pushDispatchUrl/>
         </cfif>
+        <cfif NOT len(specialGroupsSecret)><cfset specialGroupsSecret=pushDispatchSecret/></cfif>
+        <cfif NOT len(specialGroupsUrl)><cfset specialGroupsUrl=reReplace(notificationDispatchUrl,"/api/.*$","/api/chat/admin/special-groups.cfm","one")/></cfif>
         <cfif findNoCase("/api/push/send.cfm", notificationDispatchUrl)>
             <cfset notificationDispatchUrl = replaceNoCase(notificationDispatchUrl, "/api/push/send.cfm", "/api/notifications/integrations/dispatch.cfm", "one")/>
         <cfelseif findNoCase("/api/push/send-notifications.cfm", notificationDispatchUrl)>
@@ -78,6 +84,7 @@
 
         <!--- APPLICATION VARIABLES --->
         <cfset APPLICATION.codSite = "RH"/>
+        <cfset APPLICATION.vickyKnowledge = {apiKey=openAiApiKey,configured=len(openAiApiKey) GT 0}/>
         <cfset APPLICATION.nomeSite = "Runner Hub"/>
         <cfset APPLICATION.dominio = "runnerhub.run"/>
         <cfset APPLICATION.baseCanonica = "https://runnerhub.run"/>
@@ -91,6 +98,12 @@
             url = len(notificationDispatchUrl) ? notificationDispatchUrl : "https://roadrunners.run/api/notifications/integrations/dispatch.cfm",
             secret = len(pushDispatchSecret) ? pushDispatchSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
             timeoutSeconds = pushDispatchTimeoutSeconds GT 0 ? pushDispatchTimeoutSeconds : 20
+        }/>
+        <cfset APPLICATION.specialGroups = {
+            url = specialGroupsUrl,
+            secret = len(specialGroupsSecret) ? specialGroupsSecret : hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"),
+            timeoutSeconds = specialGroupsTimeoutSeconds GT 0 ? specialGroupsTimeoutSeconds : 180,
+            configured = len(specialGroupsSecret) GT 0
         }/>
         <cfset APPLICATION.pwaPush = {
             enabled = (len(pushPublicKey) GT 0 AND len(pushPrivateKey) GT 0),
