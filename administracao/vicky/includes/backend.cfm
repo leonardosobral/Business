@@ -1,10 +1,10 @@
 <cfparam name="URL.periodo" default="30"/><cfparam name="URL.execucao" default="0"/><cfparam name="URL.secao" default="configuracao"/>
-<cfset VARIABLES.vickySection=listFindNoCase("configuracao,conhecimento,auditoria",URL.secao&"")?lCase(URL.secao&""):"configuracao"/>
+<cfset VARIABLES.vickySection=listFindNoCase("configuracao,conhecimento,canais,auditoria",URL.secao&"")?lCase(URL.secao&""):"configuracao"/>
 <cfif isNumeric(URL.execucao) AND val(URL.execucao) GT 0><cfset VARIABLES.vickySection="auditoria"/></cfif>
 <cfset VARIABLES.vickyMessage=""/><cfset VARIABLES.vickyMessageType="success"/><cfset VARIABLES.vickyPeriod=listFindNoCase("7,30,90",URL.periodo&"")?val(URL.periodo):30/><cfset VARIABLES.vickyReady=false/>
 <cfset VARIABLES.vickyStartAt=dateAdd("d",-VARIABLES.vickyPeriod,now())/>
 <cfset VARIABLES.vickyErrorStep="verificação da estrutura"/>
-<cfset qVickyConfig=queryNew("")/><cfset qVickySummary=queryNew("")/><cfset qVickyTimeline=queryNew("")/><cfset qVickyTools=queryNew("")/><cfset qVickyRuns=queryNew("")/><cfset qVickyAudit=queryNew("")/><cfset qVickyInteraction=queryNew("")/><cfset qVickyDocuments=queryNew("")/>
+<cfset qVickyConfig=queryNew("")/><cfset qVickySummary=queryNew("")/><cfset qVickyTimeline=queryNew("")/><cfset qVickyTools=queryNew("")/><cfset qVickyRuns=queryNew("")/><cfset qVickyAudit=queryNew("")/><cfset qVickyInteraction=queryNew("")/><cfset qVickyDocuments=queryNew("")/><cfset qVickyManychatConfig=queryNew("")/><cfset qVickyManychatSummary=queryNew("")/><cfset qVickyManychatQueue=queryNew("")/>
 <cftry>
   <cfquery name="qVickySchema" datasource="runner_dba">
     SELECT count(*) AS available_tables
@@ -19,20 +19,29 @@
         'tb_vicky_feedback',
         'tb_vicky_audit_access',
         'tb_vicky_knowledge_config',
-        'tb_vicky_documento'
+        'tb_vicky_documento',
+        'tb_vicky_manychat_config',
+        'tb_vicky_manychat_link',
+        'tb_vicky_manychat_queue'
       )
   </cfquery>
-  <cfif val(qVickySchema.available_tables) LT 9>
+  <cfif val(qVickySchema.available_tables) LT 12>
     <cfthrow
       type="Vicky.SchemaMissing"
       message="Estrutura da Vicky ainda não foi instalada no banco."
-      detail="Foram encontradas #val(qVickySchema.available_tables)# de 9 tabelas. Aplique também RoadRunners/_codex/sql/migrations/2026-08-13_vicky_knowledge.sql no banco usado pelo datasource runner_dba."
+      detail="Foram encontradas #val(qVickySchema.available_tables)# de 12 tabelas. Aplique também as migrations de conhecimento e Manychat no banco usado pelo datasource runner_dba."
     />
   </cfif>
   <cfif CGI.REQUEST_METHOD EQ "POST">
     <cfif NOT structKeyExists(CGI,"HTTP_ORIGIN") OR compareNoCase(reReplaceNoCase(CGI.HTTP_ORIGIN,"^https?://([^/]+).*$","\1"),CGI.HTTP_HOST) EQ 0>
       <cfparam name="FORM.action" default="save_config"/>
-      <cfif FORM.action EQ "upload_document">
+      <cfif FORM.action EQ "save_manychat">
+        <cfset VARIABLES.vickySection="canais"/><cfset VARIABLES.vickyErrorStep="configuração do Manychat"/>
+        <cfset VARIABLES.manychatEnabled=structKeyExists(FORM,"manychat_enabled")/><cfset VARIABLES.manychatLabel=left(trim(FORM.account_label&""),120)/><cfset VARIABLES.manychatTrigger=left(trim(FORM.trigger_name&""),120)/><cfset VARIABLES.manychatAttempts=min(max(val(FORM.max_attempts),1),10)/>
+        <cfif NOT len(VARIABLES.manychatLabel) OR NOT len(VARIABLES.manychatTrigger)><cfthrow type="Vicky.ManychatValidation" message="Nome da conta e trigger são obrigatórios."/></cfif>
+        <cfquery datasource="runner_dba">UPDATE tb_vicky_manychat_config SET enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatEnabled ? 1 : 0#"/> = 1),account_label=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatLabel#"/>,trigger_name=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatTrigger#"/>,max_attempts=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatAttempts#"/>,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE id_config=1</cfquery>
+        <cfset VARIABLES.vickyMessage="Configuração do canal atualizada. Segredos permanecem protegidos no ambiente do Road Runners."/>
+      <cfelseif FORM.action EQ "upload_document">
         <cfset VARIABLES.vickySection="conhecimento"/>
         <cfset VARIABLES.vickyErrorStep="upload do documento"/>
         <cfparam name="FORM.document_title" default=""/><cfparam name="FORM.document_category" default=""/><cfparam name="FORM.document_issuer" default=""/><cfparam name="FORM.document_version" default=""/><cfparam name="FORM.document_effective_date" default=""/>
@@ -83,6 +92,12 @@
   </cfif>
   <cfset VARIABLES.vickyErrorStep="leitura da configuração"/>
   <cfquery name="qVickyConfig" datasource="runner_dba">SELECT * FROM tb_vicky_config WHERE id_config=1</cfquery>
+  <cfif VARIABLES.vickySection EQ "canais">
+    <cfset VARIABLES.vickyErrorStep="leitura do canal Manychat"/>
+    <cfquery name="qVickyManychatConfig" datasource="runner_dba">SELECT * FROM tb_vicky_manychat_config WHERE id_config=1</cfquery>
+    <cfquery name="qVickyManychatSummary" datasource="runner_dba">SELECT count(*) AS total,count(*) FILTER (WHERE status='active') AS active,count(*) FILTER (WHERE status='pending') AS pending FROM tb_vicky_manychat_link</cfquery>
+    <cfquery name="qVickyManychatQueue" datasource="runner_dba">SELECT id_vicky_manychat_queue,channel,subscriber_id,status,attempts,error_code,created_at,completed_at FROM tb_vicky_manychat_queue ORDER BY id_vicky_manychat_queue DESC LIMIT 100</cfquery>
+  </cfif>
   <cfif VARIABLES.vickySection EQ "conhecimento">
     <cfset VARIABLES.vickyErrorStep="listagem da base de conhecimento"/>
     <cfquery name="qVickyDocuments" datasource="runner_dba">SELECT * FROM tb_vicky_documento ORDER BY updated_at DESC,id_vicky_documento DESC</cfquery>
