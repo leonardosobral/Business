@@ -1,10 +1,11 @@
 <cfparam name="URL.periodo" default="30"/><cfparam name="URL.execucao" default="0"/><cfparam name="URL.secao" default="configuracao"/>
-<cfset VARIABLES.vickySection=listFindNoCase("configuracao,conhecimento,canais,auditoria",URL.secao&"")?lCase(URL.secao&""):"configuracao"/>
+<cfset VARIABLES.vickySection=listFindNoCase("configuracao,conhecimento,canais,interacoes,auditoria",URL.secao&"")?lCase(URL.secao&""):"configuracao"/>
 <cfif isNumeric(URL.execucao) AND val(URL.execucao) GT 0><cfset VARIABLES.vickySection="auditoria"/></cfif>
 <cfset VARIABLES.vickyMessage=""/><cfset VARIABLES.vickyMessageType="success"/><cfset VARIABLES.vickyPeriod=listFindNoCase("7,30,90",URL.periodo&"")?val(URL.periodo):30/><cfset VARIABLES.vickyReady=false/>
 <cfset VARIABLES.vickyStartAt=dateAdd("d",-VARIABLES.vickyPeriod,now())/>
 <cfset VARIABLES.vickyErrorStep="verificação da estrutura"/>
 <cfset qVickyConfig=queryNew("")/><cfset qVickySummary=queryNew("")/><cfset qVickyTimeline=queryNew("")/><cfset qVickyTools=queryNew("")/><cfset qVickyRuns=queryNew("")/><cfset qVickyAudit=queryNew("")/><cfset qVickyInteraction=queryNew("")/><cfset qVickyDocuments=queryNew("")/><cfset qVickyManychatConfig=queryNew("")/><cfset qVickyManychatSummary=queryNew("")/><cfset qVickyManychatQueue=queryNew("")/>
+<cfset qVickyProactiveRules=queryNew("")/><cfset qVickyProactiveTemplates=queryNew("")/><cfset qVickyProactiveSummary=queryNew("")/><cfset qVickyProactiveQueue=queryNew("")/><cfset qVickyProactivePreference=queryNew("")/>
 <cftry>
   <cfquery name="qVickySchema" datasource="runner_dba">
     SELECT count(*) AS available_tables
@@ -22,20 +23,36 @@
         'tb_vicky_documento',
         'tb_vicky_manychat_config',
         'tb_vicky_manychat_link',
-        'tb_vicky_manychat_queue'
+        'tb_vicky_manychat_queue',
+        'tb_vicky_notificacao_regra',
+        'tb_vicky_notificacao_template',
+        'tb_vicky_notificacao_preferencia',
+        'tb_vicky_notificacao_fila',
+        'tb_vicky_notificacao_entrega'
       )
   </cfquery>
-  <cfif val(qVickySchema.available_tables) LT 12>
+  <cfif val(qVickySchema.available_tables) LT 17>
     <cfthrow
       type="Vicky.SchemaMissing"
       message="Estrutura da Vicky ainda não foi instalada no banco."
-      detail="Foram encontradas #val(qVickySchema.available_tables)# de 12 tabelas. Aplique também as migrations de conhecimento e Manychat no banco usado pelo datasource runner_dba."
+      detail="Foram encontradas #val(qVickySchema.available_tables)# de 17 tabelas. Aplique também a migration de interações ativas no banco runner_dba."
     />
   </cfif>
   <cfif CGI.REQUEST_METHOD EQ "POST">
     <cfif NOT structKeyExists(CGI,"HTTP_ORIGIN") OR compareNoCase(reReplaceNoCase(CGI.HTTP_ORIGIN,"^https?://([^/]+).*$","\1"),CGI.HTTP_HOST) EQ 0>
       <cfparam name="FORM.action" default="save_config"/>
-      <cfif FORM.action EQ "save_manychat">
+      <cfif FORM.action EQ "save_proactive_rule">
+        <cfset VARIABLES.vickySection="interacoes"/><cfset VARIABLES.vickyErrorStep="configuração da interação ativa"/>
+        <cfset VARIABLES.ruleCode=left(lCase(trim(FORM.rule_code&"")),80)/><cfset VARIABLES.allowedRules="agenda_added,agenda_d7,agenda_d1,result_published"/>
+        <cfif NOT listFindNoCase(VARIABLES.allowedRules,VARIABLES.ruleCode)><cfthrow type="Vicky.InvalidRule" message="Regra inválida."/></cfif>
+        <cfquery datasource="runner_dba">UPDATE tb_vicky_notificacao_regra SET enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'rule_enabled')?1:0#"/> = 1),admin_only=(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'admin_only')?1:0#"/> = 1),days_before=<cfqueryparam cfsqltype="cf_sql_integer" value="#min(max(val(FORM.days_before),0),365)#"/>,web_enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'web_enabled')?1:0#"/> = 1),whatsapp_enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'whatsapp_enabled')?1:0#"/> = 1),max_per_day=<cfqueryparam cfsqltype="cf_sql_integer" value="#min(max(val(FORM.max_per_day),1),20)#"/>,quiet_start=<cfqueryparam cfsqltype="cf_sql_time" value="#FORM.quiet_start#"/>,quiet_end=<cfqueryparam cfsqltype="cf_sql_time" value="#FORM.quiet_end#"/>,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE codigo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.ruleCode#"/></cfquery>
+        <cfquery datasource="runner_dba">UPDATE tb_vicky_notificacao_template t SET content=CASE WHEN channel='web' THEN <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#left(trim(FORM.web_content&''),2000)#"/> ELSE <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#left(trim(FORM.whatsapp_content&''),2000)#"/> END,provider_template_name=CASE WHEN channel='whatsapp' THEN <cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.provider_template_name&''),160)#" null="#!len(trim(FORM.provider_template_name&''))#"/> ELSE provider_template_name END,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() FROM tb_vicky_notificacao_regra r WHERE t.id_vicky_notificacao_regra=r.id_vicky_notificacao_regra AND r.codigo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.ruleCode#"/> AND t.language='pt-BR' AND t.status='active'</cfquery>
+        <cfset VARIABLES.vickyMessage="Regra e mensagens atualizadas."/>
+      <cfelseif FORM.action EQ "save_proactive_preference">
+        <cfset VARIABLES.vickySection="interacoes"/><cfset VARIABLES.vickyErrorStep="preferências do administrador de teste"/><cfset VARIABLES.testWhatsapp=structKeyExists(FORM,"test_whatsapp")/>
+        <cfquery datasource="runner_dba">INSERT INTO tb_vicky_notificacao_preferencia (id_usuario,web_enabled,whatsapp_enabled,agenda_enabled,results_enabled,whatsapp_consented_at,whatsapp_consent_source,revoked_at) VALUES (<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_web')?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.testWhatsapp?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_agenda')?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_results')?1:0#"/> = 1),CASE WHEN <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.testWhatsapp?1:0#"/> = 1 THEN now() ELSE NULL END,'business_admin_test',NULL) ON CONFLICT (id_usuario) DO UPDATE SET web_enabled=EXCLUDED.web_enabled,whatsapp_enabled=EXCLUDED.whatsapp_enabled,agenda_enabled=EXCLUDED.agenda_enabled,results_enabled=EXCLUDED.results_enabled,whatsapp_consented_at=EXCLUDED.whatsapp_consented_at,whatsapp_consent_source=EXCLUDED.whatsapp_consent_source,revoked_at=NULL,updated_at=now()</cfquery>
+        <cfset VARIABLES.vickyMessage="Preferências de teste atualizadas para o seu usuário."/>
+      <cfelseif FORM.action EQ "save_manychat">
         <cfset VARIABLES.vickySection="canais"/><cfset VARIABLES.vickyErrorStep="configuração do Manychat"/>
         <cfset VARIABLES.manychatEnabled=structKeyExists(FORM,"manychat_enabled")/><cfset VARIABLES.manychatLabel=left(trim(FORM.account_label&""),120)/><cfset VARIABLES.manychatTrigger=left(trim(FORM.trigger_name&""),120)/><cfset VARIABLES.manychatAttempts=min(max(val(FORM.max_attempts),1),10)/>
         <cfif NOT len(VARIABLES.manychatLabel) OR NOT len(VARIABLES.manychatTrigger)><cfthrow type="Vicky.ManychatValidation" message="Nome da conta e trigger são obrigatórios."/></cfif>
@@ -101,6 +118,18 @@
   <cfif VARIABLES.vickySection EQ "conhecimento">
     <cfset VARIABLES.vickyErrorStep="listagem da base de conhecimento"/>
     <cfquery name="qVickyDocuments" datasource="runner_dba">SELECT * FROM tb_vicky_documento ORDER BY updated_at DESC,id_vicky_documento DESC</cfquery>
+  </cfif>
+  <cfif VARIABLES.vickySection EQ "interacoes">
+    <cfset VARIABLES.vickyErrorStep="leitura das regras de interação"/>
+    <cfquery name="qVickyProactiveRules" datasource="runner_dba">SELECT r.*,coalesce(s.total,0) AS total,coalesce(s.completed,0) AS completed,coalesce(s.failed,0) AS failed FROM tb_vicky_notificacao_regra r LEFT JOIN (SELECT id_vicky_notificacao_regra,count(*) AS total,count(*) FILTER (WHERE status='completed') AS completed,count(*) FILTER (WHERE status IN ('failed','dead_letter')) AS failed FROM tb_vicky_notificacao_fila WHERE created_at>=now()-interval '30 days' GROUP BY id_vicky_notificacao_regra) s USING (id_vicky_notificacao_regra) WHERE r.codigo IN ('agenda_added','agenda_d7','agenda_d1','result_published') ORDER BY CASE r.codigo WHEN 'agenda_added' THEN 1 WHEN 'agenda_d7' THEN 2 WHEN 'agenda_d1' THEN 3 ELSE 4 END</cfquery>
+    <cfset VARIABLES.vickyErrorStep="leitura das mensagens das regras"/>
+    <cfquery name="qVickyProactiveTemplates" datasource="runner_dba">SELECT t.*,r.codigo FROM tb_vicky_notificacao_template t INNER JOIN tb_vicky_notificacao_regra r ON r.id_vicky_notificacao_regra=t.id_vicky_notificacao_regra WHERE t.status='active' ORDER BY r.codigo,t.channel</cfquery>
+    <cfset VARIABLES.vickyErrorStep="leitura das preferências de interação"/>
+    <cfquery name="qVickyProactivePreference" datasource="runner_dba">SELECT * FROM tb_vicky_notificacao_preferencia WHERE id_usuario=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/></cfquery>
+    <cfset VARIABLES.vickyErrorStep="resumo das interações ativas"/>
+    <cfquery name="qVickyProactiveSummary" datasource="runner_dba">SELECT count(*) AS total,count(*) FILTER (WHERE status='completed') AS completed,count(*) FILTER (WHERE status IN ('failed','dead_letter')) AS failed,count(*) FILTER (WHERE status='queued') AS queued,count(DISTINCT id_usuario) AS users FROM tb_vicky_notificacao_fila WHERE created_at>=now()-interval '30 days'</cfquery>
+    <cfset VARIABLES.vickyErrorStep="leitura da fila de interações"/>
+    <cfquery name="qVickyProactiveQueue" datasource="runner_dba">SELECT f.*,r.nome,u.name AS usuario_nome FROM tb_vicky_notificacao_fila f INNER JOIN tb_vicky_notificacao_regra r ON r.id_vicky_notificacao_regra=f.id_vicky_notificacao_regra INNER JOIN tb_usuarios u ON u.id=f.id_usuario ORDER BY f.id_vicky_notificacao_fila DESC LIMIT 100</cfquery>
   </cfif>
   <cfif listFindNoCase("configuracao,auditoria",VARIABLES.vickySection)>
   <cfset VARIABLES.vickyErrorStep="resumo de métricas"/>
