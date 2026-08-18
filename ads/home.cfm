@@ -391,6 +391,9 @@
       <p class="text-muted mb-0">Destaque seus eventos na busca e nas areas de divulgacao do RoadRunners.run.</p>
     </div>
     <div class="d-flex flex-wrap gap-2">
+      <cfif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
+        <a class="btn btn-outline-info" href="/ads/canonical/"><i class="fas fa-flask me-2"></i>Ads V1 Piloto</a>
+      </cfif>
       <cfif VARIABLES.adsHasCampaigns>
         <a class="btn btn-warning" href="/ads/?nova=1#turbinar-evento"><i class="fas fa-rocket me-2"></i>Turbinar evento</a>
       <cfelse>

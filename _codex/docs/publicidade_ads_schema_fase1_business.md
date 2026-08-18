@@ -174,9 +174,10 @@ PostgreSQL com sucesso; o job está ativo.
 
 ## 10. Riscos e ordem coordenada de deploy
 
-O principal risco atual é deixar o agregado diário sem agendamento ou remover as
-views enquanto elas ainda mascaram consumidores regressivos. A Ads V1 canônica
-continua em `NO-GO` e não faz parte deste deploy.
+O principal risco da Fase 1 é remover as views enquanto elas ainda mascaram
+consumidores regressivos. A fundação e a API administrativa da Ads V1 canônica
+foram posteriormente aplicadas e auditadas; sua entrada no Business ocorre em
+piloto administrativo separado, sem substituir a entrega legada.
 
 Ordem histórica concluída:
 
@@ -203,3 +204,70 @@ Ordem do chaveamento de datasource preparado em 2026-08-17:
 6. executar smoke tests de seleção, render, view, click, ping, conversão,
    voucher, dashboard, refresh e banners;
 7. observar erros de permissão e métricas antes de avançar com a V1 canônica.
+
+## 11. Piloto administrativo canônico — 2026-08-18
+
+### Arquivos do incremento
+
+- `ads/canonical/index.cfm`
+- `ads/canonical/includes/backend.cfm`
+- `ads/canonical/includes/home.cfm`
+- `ads/home.cfm`
+- `_codex/scripts/audit_ads_v1_business_pilot_static.sh`
+- `_codex/docs/publicidade_ads_v1_piloto_canonical_design.md`
+- `_codex/docs/publicidade_ads_v1_piloto_canonical_implementation_plan.md`
+- `RoadRunners/_codex/sql/2026-08-18_ads_v1_business_read_grants.sql`
+
+### Objetos consumidos
+
+As leituras usam objetos canônicos qualificados em `ads`, incluindo campanhas,
+anúncios, criativos, placements, saldo, budget state, ledger, métricas diárias e
+histórico de status. Eventos, contas e usuários continuam qualificados em
+`public`.
+
+As mutações não executam DML canônico direto. O Business usa somente:
+
+- `ads.save_event_campaign`
+- `ads.activate_campaign`
+- `ads.change_campaign_status`
+- `ads.credit_account`
+- `ads.reverse_click_debit`
+
+O datasource é `runnerhub`, conectado como `runner`. A rota verifica em runtime
+a existência das cinco assinaturas e o privilégio `EXECUTE`. Não existe
+dependência de `current_schema()`, das views temporárias em `public` ou do
+datasource `runner_dba`.
+
+### Segurança e operação
+
+- acesso limitado à identidade administrativa real do Business;
+- operação bloqueada no contexto “todas as contas”;
+- conta derivada de `businessActiveAccountId`, nunca do formulário;
+- ações somente por POST com CSRF, parâmetros tipados e Post/Redirect/Get;
+- chaves idempotentes para crédito e estorno;
+- campanhas encerradas por status e débitos corrigidos por lançamento
+  compensatório, sem exclusão física;
+- nenhum dual-write com `ads.tb_ad_eventos` ou vouchers legados;
+- nenhuma mudança na seleção ou entrega atual do RoadRunners.
+
+### Validação e ordem de deploy
+
+O audit `_codex/scripts/audit_ads_v1_business_pilot_static.sh` cobre datasource,
+funções, filtro por conta, CSRF, POST, schema qualificado e ausência de DML
+direto. A validação final também inclui `git diff --check` e revisão manual do
+CFML, pois o repositório não possui linter ou suíte automatizada de CFML.
+
+Ordem recomendada:
+
+1. aplicar `2026-08-18_ads_v1_business_read_grants.sql` e exigir `status = PASS`;
+2. publicar a rota e o link do Business;
+3. abrir o painel sem conta selecionada e confirmar o bloqueio;
+4. selecionar uma conta controlada e executar o smoke test administrativo;
+5. executar novamente a auditoria canônica e conferir reconciliação;
+6. observar logs e confirmar que o Turbinado legado continua operando;
+7. implementar o shadow mode no RoadRunners como incremento separado;
+8. iniciar house ads antes de habilitar entrega CPC canônica;
+9. considerar concorrência pesada, banco dedicado ou AWS somente quando o
+   volume justificar;
+10. remover futuramente as views de compatibilidade apenas após observação dos
+   consumidores legados.
