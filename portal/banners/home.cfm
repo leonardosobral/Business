@@ -495,8 +495,7 @@
                             <cfelse>
                               <a class="btn btn-sm btn-outline-success" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=2">Ativar</a>
                             </cfif>
-                            <a class="btn btn-sm btn-outline-dark" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=4">Arquivar</a>
-                            <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&banner_id=#qBannerManagementList.id_banner#" onclick="return confirm('Tem certeza que deseja excluir este banner?');">Excluir</a>
+                            <a class="btn btn-sm btn-outline-dark" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=4" onclick="return confirm('Tem certeza que deseja arquivar este banner?');">Arquivar</a>
                           </div>
                         </td>
                       </tr>

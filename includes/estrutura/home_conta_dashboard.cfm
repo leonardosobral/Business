@@ -161,7 +161,7 @@
         </cfquery>
         <cfset VARIABLES.businessHomeVoucherColumnsReady = qBusinessHomeVoucherColumnCheck.recordcount GT 0 AND val(qBusinessHomeVoucherColumnCheck.total_columns) GTE 5/>
 
-        <cfquery name="qBusinessHomeMarketingSummary">
+        <cfquery name="qBusinessHomeMarketingSummary" datasource="runnerhub">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
                 FROM public.tb_conta_eventos
@@ -215,7 +215,7 @@
             <cfset VARIABLES.businessHomeAdsDailyLimit = val(qBusinessHomeMarketingSummary.ads_daily_limit)/>
         </cfif>
 
-        <cfquery name="qBusinessHomeAdCampaigns">
+        <cfquery name="qBusinessHomeAdCampaigns" datasource="runnerhub">
             WITH linked_events AS (
                 SELECT DISTINCT id_evento
                 FROM public.tb_conta_eventos

@@ -86,7 +86,7 @@ VARIABLES.adsMetricsLockAcquired = false;
 
 <cftry>
     <cftransaction>
-        <cfquery name="qAdsMetricsRefreshLock">
+        <cfquery name="qAdsMetricsRefreshLock" datasource="runnerhub">
             SELECT pg_try_advisory_xact_lock(940000001::bigint) AS locked
         </cfquery>
 
@@ -94,7 +94,7 @@ VARIABLES.adsMetricsLockAcquired = false;
             AND qAdsMetricsRefreshLock.locked/>
 
         <cfif VARIABLES.adsMetricsLockAcquired>
-            <cfquery name="qAdsMetricsRefresh">
+            <cfquery name="qAdsMetricsRefresh" datasource="runnerhub">
                 SELECT ads.refresh_tb_ad_evento_metricas_dia(
                     current_date - <cfqueryparam
                         cfsqltype="cf_sql_integer"
@@ -103,7 +103,7 @@ VARIABLES.adsMetricsLockAcquired = false;
                 )
             </cfquery>
 
-            <cfquery name="qAdsMetricsRefreshSummary">
+            <cfquery name="qAdsMetricsRefreshSummary" datasource="runnerhub">
                 SELECT current_date - <cfqueryparam
                            cfsqltype="cf_sql_integer"
                            value="#VARIABLES.adsMetricsLookbackDays#"/> AS data_inicio,

@@ -42,7 +42,7 @@ function portalBannerClickResolveOriginSite() {
     <cfabort/>
 </cfif>
 
-<cfquery name="qPortalBannerClick">
+<cfquery name="qPortalBannerClick" datasource="runnerhub">
     SELECT *
     FROM ads.tb_portal_banners
     WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.id_banner)#"/>
@@ -53,7 +53,7 @@ function portalBannerClickResolveOriginSite() {
     <cfabort/>
 </cfif>
 
-<cfquery>
+<cfquery datasource="runnerhub">
     INSERT INTO ads.tb_portal_banners_log
     (
         id_banner,

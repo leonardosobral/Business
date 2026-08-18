@@ -94,7 +94,7 @@
 
 <cfif VARIABLES.businessAdminHomeTablesReady>
     <cftry>
-    <cfquery name="qBusinessAdminHomeStats">
+    <cfquery name="qBusinessAdminHomeStats" datasource="runnerhub">
         SELECT
             (SELECT count(*)::integer FROM tb_contas WHERE status::text = 'ATIVA') AS contas_ativas,
             (SELECT count(*)::integer FROM tb_contas WHERE status::text = 'PENDENTE') AS contas_pendentes,

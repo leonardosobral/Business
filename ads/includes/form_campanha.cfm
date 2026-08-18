@@ -81,7 +81,7 @@
 
             <!--- QUERY UFs --->
 
-            <cfquery name="qAdUFs">
+            <cfquery name="qAdUFs" datasource="runnerhub">
                 SELECT uf, nome_uf,
                     <cfif isDefined("VARIABLES.campanha") AND deserializeJSON(VARIABLES.campanha.locais).nacional>
                         true as selecionado

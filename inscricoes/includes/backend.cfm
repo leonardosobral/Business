@@ -70,7 +70,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
         insert into ads.tb_ad_eventos
         (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
         values
@@ -131,7 +131,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
         UPDATE ads.tb_ad_eventos
         SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
             cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
@@ -158,7 +158,7 @@
         <cflocation addtoken="false" url="/inscricoes/"/>
     </cfif>
 
-    <cfquery>
+    <cfquery datasource="runnerhub">
         UPDATE ads.tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>

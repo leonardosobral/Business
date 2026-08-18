@@ -111,7 +111,7 @@ function portalBannerApiSafeJson(required any payload) {
     })/>
 </cfif>
 
-<cfquery name="qPortalBannerApiCandidates">
+<cfquery name="qPortalBannerApiCandidates" datasource="runnerhub">
     WITH banner_views AS (
         SELECT id_banner, count(*) AS total
         FROM ads.tb_portal_banners_log
@@ -210,7 +210,7 @@ function portalBannerApiSafeJson(required any payload) {
     <cfset VARIABLES.portalBannerClickUrl = VARIABLES.portalBannerClickUrl & "&path=" & urlEncodedFormat(trim(URL.path))/>
 </cfif>
 
-<cfquery>
+<cfquery datasource="runnerhub">
     INSERT INTO ads.tb_portal_banners_log
     (
         id_banner,

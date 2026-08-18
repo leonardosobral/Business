@@ -27,7 +27,7 @@
 <cfparam name="FORM.voucher_codigo" default=""/>
 
 <cftry>
-    <cfquery name="qAdsMetricasDiaTableCheck">
+    <cfquery name="qAdsMetricasDiaTableCheck" datasource="runnerhub">
         SELECT count(*)::integer AS total
         FROM information_schema.tables
         WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
@@ -41,7 +41,7 @@
 </cftry>
 
 <cftry>
-    <cfquery name="qAdsConversionLogTableCheck">
+    <cfquery name="qAdsConversionLogTableCheck" datasource="runnerhub">
         SELECT count(*)::integer AS total
         FROM information_schema.tables
         WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
@@ -55,7 +55,7 @@
 </cftry>
 
 <cftry>
-    <cfquery name="qAdsVoucherColumnCheck">
+    <cfquery name="qAdsVoucherColumnCheck" datasource="runnerhub">
         SELECT table_name,
                column_name
         FROM information_schema.columns
@@ -132,7 +132,7 @@
     <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
         <cftry>
             <cftransaction>
-                <cfquery name="qAdsVoucherActivation">
+                <cfquery name="qAdsVoucherActivation" datasource="runnerhub">
                     SELECT vou.id_ad_voucher,
                            vou.codigo,
                            vou.id_conta,
@@ -158,7 +158,7 @@
                 </cfif>
 
                 <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
-                    <cfquery>
+                    <cfquery datasource="runnerhub">
                         UPDATE ads.tb_ad_vouchers
                         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
                             id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
@@ -188,7 +188,7 @@
 
 <cfif VARIABLES.adsVoucherColumnsReady>
     <cfif VARIABLES.adsRestrictByConta>
-        <cfquery name="qAdAvailableVouchers">
+        <cfquery name="qAdAvailableVouchers" datasource="runnerhub">
             SELECT vou.id_ad_voucher,
                    vou.codigo,
                    cont.nome_conta,
@@ -211,7 +211,7 @@
         </cfquery>
     </cfif>
 
-    <cfquery name="qAdVoucherCredit">
+    <cfquery name="qAdVoucherCredit" datasource="runnerhub">
         WITH voucher_credit AS (
             SELECT coalesce(sum(credito_disponivel), 0) AS credito_total
             FROM ads.tb_ad_vouchers
@@ -243,7 +243,7 @@
         <cfset VARIABLES.adsCreditBalance = val(qAdVoucherCredit.saldo_total)/>
     </cfif>
 
-    <cfquery name="qAdCreditVouchers">
+    <cfquery name="qAdCreditVouchers" datasource="runnerhub">
         SELECT vou.codigo,
                cont.nome_conta,
                coalesce(vou.credito, 0) AS credito,
@@ -267,7 +267,7 @@
 <cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfset qAdsEventosSemCampanha = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfif VARIABLES.adsRestrictByConta AND VARIABLES.adsEventosOperacaoIds NEQ "0">
-    <cfquery name="qAdsEventosPermitidos">
+    <cfquery name="qAdsEventosPermitidos" datasource="runnerhub">
         SELECT id_evento,
                nome_evento,
                tag,
@@ -281,7 +281,7 @@
         ORDER BY data_final DESC NULLS LAST, nome_evento
     </cfquery>
 
-    <cfquery name="qAdsEventosSemCampanha">
+    <cfquery name="qAdsEventosSemCampanha" datasource="runnerhub">
         SELECT evt.id_evento,
                evt.nome_evento,
                evt.tag,
@@ -327,7 +327,7 @@
     <cfset qAdCheckEvento = QueryNew("id_evento")/>
 
     <cfif isDefined("FORM.id_evento") AND len(trim(FORM.id_evento)) AND isNumeric(FORM.id_evento)>
-        <cfquery name="qAdCheckEvento">
+        <cfquery name="qAdCheckEvento" datasource="runnerhub">
             SELECT id_evento
             FROM public.tb_evento_corridas
             WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
@@ -340,7 +340,7 @@
         <cfset VARIABLES.adsEventoReferencia = replaceNoCase(VARIABLES.adsEventoReferencia, "http://roadrunners.run/evento/", "")/>
         <cfset VARIABLES.adsEventoReferencia = listFirst(VARIABLES.adsEventoReferencia, "/?##")/>
 
-        <cfquery name="qAdCheckEvento">
+        <cfquery name="qAdCheckEvento" datasource="runnerhub">
             SELECT id_evento
             FROM public.tb_evento_corridas
             WHERE tag ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsEventoReferencia#"/>
@@ -382,7 +382,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
         insert into ads.tb_ad_eventos
         (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
         values
@@ -451,7 +451,7 @@
         </cfif>
     </cfif>
 
-    <cfquery name="qAdIncluirCampanha">
+    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
         UPDATE ads.tb_ad_eventos
         SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
             cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
@@ -478,7 +478,7 @@
         <cflocation addtoken="false" url="/ads/"/>
     </cfif>
 
-    <cfquery>
+    <cfquery datasource="runnerhub">
         UPDATE ads.tb_ad_eventos
         SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
         WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
@@ -495,7 +495,7 @@
 
 <!--- WIDGETS --->
 
-<cfquery name="qAdValorTotal">
+<cfquery name="qAdValorTotal" datasource="runnerhub">
     SELECT sum(valor_ad) as total
     FROM ads.tb_ad_log log
     INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
@@ -506,7 +506,7 @@
     </cfif>
 </cfquery>
 
-<cfquery name="qAdValorMedio">
+<cfquery name="qAdValorMedio" datasource="runnerhub">
     SELECT avg(valor_ad) as total
     FROM ads.tb_ad_log log
     INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
@@ -517,7 +517,7 @@
     </cfif>
 </cfquery>
 
-<cfquery name="qAdCountViews">
+<cfquery name="qAdCountViews" datasource="runnerhub">
     SELECT count(id_ad_log) as total
     FROM ads.tb_ad_log log
     INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
@@ -528,7 +528,7 @@
     </cfif>
 </cfquery>
 
-<cfquery name="qAdCountClicks">
+<cfquery name="qAdCountClicks" datasource="runnerhub">
     SELECT count(id_ad_log) as total
     FROM ads.tb_ad_log log
     INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
@@ -539,7 +539,7 @@
     </cfif>
 </cfquery>
 
-<cfquery name="qAdCountAds">
+<cfquery name="qAdCountAds" datasource="runnerhub">
     SELECT count(ad.*) as total
     FROM ads.tb_ad_eventos ad
     INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
@@ -550,7 +550,7 @@
 </cfquery>
 
 <cfif VARIABLES.adsMetricasDiaReady>
-    <cfquery name="qAdMetricasDia">
+    <cfquery name="qAdMetricasDia" datasource="runnerhub">
         WITH dias AS (
             SELECT generate_series(
                 current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
@@ -583,7 +583,7 @@
         ORDER BY dias.data_metrica
     </cfquery>
 
-    <cfquery name="qAdMetricasComparativo">
+    <cfquery name="qAdMetricasComparativo" datasource="runnerhub">
         WITH metricas AS (
             SELECT data_metrica,
                    sum(views) AS views,
@@ -617,7 +617,7 @@
         FROM metricas
     </cfquery>
 <cfelse>
-    <cfquery name="qAdMetricasDia">
+    <cfquery name="qAdMetricasDia" datasource="runnerhub">
         WITH dias AS (
             SELECT generate_series(
                 current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
@@ -652,7 +652,7 @@
         ORDER BY dias.data_metrica
     </cfquery>
 
-    <cfquery name="qAdMetricasComparativo">
+    <cfquery name="qAdMetricasComparativo" datasource="runnerhub">
         WITH logs_periodo AS (
             SELECT log.status,
                    log.valor_ad,
@@ -694,7 +694,7 @@
 </cfif>
 
 <cfif VARIABLES.adsConversionLogReady>
-    <cfquery name="qAdConversionSummary">
+    <cfquery name="qAdConversionSummary" datasource="runnerhub">
         SELECT count(*) FILTER (
                    WHERE tipo_conversion IN (
                        <cfqueryparam cfsqltype="cf_sql_varchar" value="INSCRICAO_CLICK"/>,
@@ -713,7 +713,7 @@
 
 <!--- QUERY BASE DE EVENTOS --->
 
-<cfquery name="qEventosAdsBase">
+<cfquery name="qEventosAdsBase" datasource="runnerhub">
     WITH
     ad_views AS (
         SELECT

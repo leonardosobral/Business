@@ -44,7 +44,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
     <cfset VARIABLES.adsConversionType = "INSCRICAO_CLICK"/>
 </cfif>
 
-<cfquery name="qAdsConversionClickTables">
+<cfquery name="qAdsConversionClickTables" datasource="runnerhub">
     SELECT table_name
     FROM information_schema.tables
     WHERE (
@@ -64,7 +64,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
     <cflocation addtoken="false" url="https://roadrunners.run/"/>
 </cfif>
 
-<cfquery name="qAdsConversionClick" maxrows="1">
+<cfquery name="qAdsConversionClick" maxrows="1" datasource="runnerhub">
     SELECT ad.id_ad_evento,
            ad.id_evento,
            evt.nome_evento,
@@ -93,7 +93,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
 
 <cfif NOT qAdsConversionClick.recordcount>
     <cfif isNumeric(URL.id_evento) AND val(URL.id_evento) GT 0>
-        <cfquery name="qAdsConversionFallbackEvent" maxrows="1">
+        <cfquery name="qAdsConversionFallbackEvent" maxrows="1" datasource="runnerhub">
             SELECT tag, url_inscricao, url_hotsite
             FROM public.tb_evento_corridas
             WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.id_evento)#"/>
@@ -125,7 +125,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
 </cfif>
 
 <cfif ListFindNoCase(VARIABLES.adsConversionClickTables, "tb_ad_conversion_log")>
-    <cfquery>
+    <cfquery datasource="runnerhub">
         INSERT INTO ads.tb_ad_conversion_log
         (
             id_ad_evento,

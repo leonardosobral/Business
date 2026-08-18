@@ -1,8 +1,12 @@
 # Publicidade: chaveamento do Business para o schema `ads`
 
-Atualizado em: 2026-07-26
+Atualizado em: 2026-08-17
 
-Status: migration da Fase 1 aplicada em produção em 2026-07-12 e Business chaveado para `ads.*`. Em 2026-07-26 o RoadRunners corrigido foi publicado, o hardening do refresh foi aplicado e auditado e o endpoint protegido foi publicado com suas barreiras externas validadas. O job `9` foi cadastrado, seu teste manual terminou com sucesso e ele foi ativado; ainda faltam documentar a conferência do dashboard e observar a primeira execução agendada.
+Status: migration da Fase 1 aplicada em produção em 2026-07-12 e Business
+chaveado para `ads.*`. O refresh e o job estão ativos. Em 2026-08-17 foi
+preparado o chaveamento explícito de todos os fluxos Ads para o datasource CFML
+`runnerhub`, autenticado no PostgreSQL como `runner`; o script idempotente de
+grants deve ser executado antes desse deploy.
 
 O roadmap único do domínio está em
 [publicidade_ads_plano_mestre.md](../../../RoadRunners/_codex/docs/publicidade_ads_plano_mestre.md). Este documento mantém
@@ -37,6 +41,7 @@ Documentos antigos que citam nomes lógicos sem schema são descritivos e não c
 ### Runtime e legado
 
 - `ads/includes/backend.cfm`
+- `ads/includes/form_campanha.cfm`
 - `api/ads/conversion-click.cfm`
 - `api/ads/refresh-metrics.cfm`
 - `administracao/contas/includes/backend.cfm`
@@ -47,6 +52,7 @@ Documentos antigos que citam nomes lógicos sem schema são descritivos e não c
 - `portal/includes/banner_management_backend.cfm`
 - `api/portal/banners/index.cfm`
 - `api/portal/banners/click.cfm`
+- `portal/banners/home.cfm`
 - `_legado/usuarios/includes/backend.cfm`
 
 ### DDL e incrementais
@@ -70,6 +76,11 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
 - A fotografia `_codex/sql/ddl.sql`, atualizada a partir do banco em 2026-07-26, confirma as 14 tabelas em `ads`, as 14 views em `public`, a FK de voucher e a função de refresh. Ela é snapshot de auditoria, não migration executável.
 - O SQL standalone de banners cria tabelas e índices em `ads`.
 - Nenhuma view de compatibilidade em `public` foi removida ou redefinida.
+- Todas as queries de Ads do Business usam explicitamente o datasource
+  `runnerhub`; blocos `cftransaction` que incluem uma tabela Ads usam o mesmo
+  datasource em todas as queries da transação.
+- A exclusão física de banner foi substituída por arquivamento (`status = 4`),
+  preservando o registro, os logs e os arquivos associados.
 - O endpoint `/api/ads/refresh-metrics.cfm` executa uma janela móvel limitada, exige credencial interna e usa advisory lock transacional.
 - O cadastro do cron cria o job inativo, a cada 60 minutos, para teste manual antes da ativação.
 - A migration do RoadRunners que cria o índice concorrente em `ads.tb_ad_log(data_insercao)` e torna o filtro da função indexável foi aplicada e auditada em 2026-07-26.
@@ -95,10 +106,19 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
 
 ## 7. Datasource e permissões
 
-- O datasource padrão do Business continua sendo `runner_dba`, definido em `Application.cfc`; os consumidores alterados não sobrescrevem o datasource em `<cfquery>`.
-- A migration do RoadRunners cria `ads` com owner `runner_dba`. Portanto, o datasource do Business mantém acesso direto como owner.
-- A migration também concede `USAGE ON SCHEMA ads` e privilégios explícitos históricos ao papel `runner`, necessário aos consumidores do RoadRunners.
-- O snapshot atualizado confirma `runner_dba` como owner das tabelas legadas. Isso é compatível com a Fase 1, mas não será aceito para o ledger da Ads V1.
+- O datasource padrão histórico do Business continua com o nome
+  `runner_dba`, mas nenhum fluxo Ads depende mais dele.
+- As queries Ads usam explicitamente o datasource `runnerhub`, cuja credencial
+  PostgreSQL operacional é `runner`.
+- Antes do deploy, executar como DBA o script idempotente
+  `RoadRunners/_codex/sql/2026-08-17_ads_runner_runtime_grants.sql`.
+- O script concede `USAGE` no schema, privilégios mínimos por tabela,
+  sequences owned pelas tabelas legadas, execução do refresh e, quando a V1 já
+  existir, memberships `ads_reader` e `ads_delivery`.
+- O script não concede `CREATE`, ownership, administração/finanças V1 nem
+  `DELETE`. Banners são arquivados por `UPDATE status = 4`.
+- `runner_dba` e `ads_dba` permanecem DBAs administrativos fora das
+  credenciais PostgreSQL usadas pelo CFML.
 
 ## 8. Validações estáticas
 
@@ -122,6 +142,8 @@ Uma alteração local preexistente em `administracao/contas/home.cfm` foi mantid
   `2026-07-26 02:13:23.860406`;
 - `RoadRunners/_codex/scripts/audit_ads_phase1_static.sh` executado com resultado
   `APROVADA` para os dois repositórios;
+- o scanner de blocos `cfquery` confirmou `runnerhub` em todas as queries Ads e
+  ausência de `runner_dba` no runtime do domínio;
 - chamada sem token ao runner de produção retornou HTTP 401, confirmando que o
   endpoint está ativo e protegido sem disparar jobs.
 - smoke test externo do endpoint publicado: `GET` retornou HTTP 405 com
@@ -156,7 +178,7 @@ O principal risco atual é deixar o agregado diário sem agendamento ou remover 
 views enquanto elas ainda mascaram consumidores regressivos. A Ads V1 canônica
 continua em `NO-GO` e não faz parte deste deploy.
 
-Ordem atual:
+Ordem histórica concluída:
 
 1. ~~deploy da correção do RoadRunners~~ — concluído em 2026-07-26;
 2. ~~migration e auditoria de endurecimento do refresh~~ — concluídas em
@@ -169,3 +191,15 @@ Ordem atual:
 6. ativação concluída; confirmação da primeira execução agendada pendente;
 7. observação de tráfego, jobs, BI, integrações, ACLs e `pg_stat_statements`;
 8. remoção futura das views somente por migration separada.
+
+Ordem do chaveamento de datasource preparado em 2026-08-17:
+
+1. executar em `dev`/ambiente alvo
+   `2026-08-17_ads_runner_runtime_grants.sql` como DBA;
+2. conferir `grants_report.status = PASS`;
+3. publicar os arquivos Ads do RoadRunners;
+4. publicar os arquivos Ads do Business;
+5. reciclar as aplicações/pools CFML se necessário;
+6. executar smoke tests de seleção, render, view, click, ping, conversão,
+   voucher, dashboard, refresh e banners;
+7. observar erros de permissão e métricas antes de avançar com a V1 canônica.

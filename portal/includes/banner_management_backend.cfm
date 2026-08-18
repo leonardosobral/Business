@@ -174,7 +174,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
         <cfif len(VARIABLES.bannerRecordId)>
             <cfif isNumeric(VARIABLES.bannerRecordId)>
-                <cfquery name="qBannerManagementCurrentAssets">
+                <cfquery name="qBannerManagementCurrentAssets" datasource="runnerhub">
                     SELECT arquivo_path,
                            arquivo_original,
                            formato,
@@ -355,7 +355,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             }/>
         <cfelse>
             <cfif len(VARIABLES.bannerRecordId)>
-                <cfquery name="qBannerManagementUpdate">
+                <cfquery name="qBannerManagementUpdate" datasource="runnerhub">
                     UPDATE ads.tb_portal_banners
                     SET nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerNome#"/>,
                         canal = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerCanal#"/>,
@@ -391,7 +391,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
 
                 <cflocation addtoken="false" url="/portal/banners/?sucesso=atualizado"/>
             <cfelse>
-                <cfquery name="qBannerManagementInsert">
+                <cfquery name="qBannerManagementInsert" datasource="runnerhub">
                     INSERT INTO ads.tb_portal_banners
                     (
                         nome,
@@ -472,7 +472,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         AND qPerfil.is_admin>
 
         <cfif URL.acao EQ "status" AND isDefined("URL.status") AND isNumeric(URL.status)>
-            <cfquery>
+            <cfquery datasource="runnerhub">
                 UPDATE ads.tb_portal_banners
                 SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.status)#"/>,
                     atualizado_em = now(),
@@ -483,38 +483,20 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             <cflocation addtoken="false" url="/portal/banners/?sucesso=status"/>
         </cfif>
 
-        <cfif URL.acao EQ "excluir">
-            <cfquery name="qBannerDeleteLookup">
-                SELECT arquivo_path,
-                       <cfif VARIABLES.bannerManagementResponsiveReady>arquivo_mobile_path<cfelse>NULL::varchar AS arquivo_mobile_path</cfif>
-                FROM ads.tb_portal_banners
+        <cfif ListFindNoCase("excluir,arquivar", URL.acao)>
+            <cfquery datasource="runnerhub">
+                UPDATE ads.tb_portal_banners
+                SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="4"/>,
+                    atualizado_em = now(),
+                    atualizado_por = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
                 WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
             </cfquery>
 
-            <cfquery>
-                DELETE FROM ads.tb_portal_banners
-                WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#val(URL.banner_id)#"/>
-            </cfquery>
-
-            <cfif qBannerDeleteLookup.recordcount>
-                <cfloop list="#qBannerDeleteLookup.arquivo_path#,#qBannerDeleteLookup.arquivo_mobile_path#" item="bannerDeleteAssetPath">
-                    <cfif len(trim(bannerDeleteAssetPath))>
-                        <cfset VARIABLES.bannerDeleteDiskPath = expandPath(".." & bannerDeleteAssetPath)/>
-                        <cfif FileExists(VARIABLES.bannerDeleteDiskPath)>
-                            <cftry>
-                                <cffile action="delete" file="#VARIABLES.bannerDeleteDiskPath#"/>
-                            <cfcatch type="any"></cfcatch>
-                            </cftry>
-                        </cfif>
-                    </cfif>
-                </cfloop>
-            </cfif>
-
-            <cflocation addtoken="false" url="/portal/banners/?sucesso=excluido"/>
+            <cflocation addtoken="false" url="/portal/banners/?sucesso=arquivado"/>
         </cfif>
     </cfif>
 
-    <cfquery name="qBannerManagementStats">
+    <cfquery name="qBannerManagementStats" datasource="runnerhub">
         WITH log_views AS (
             SELECT id_banner, count(*) AS total
             FROM ads.tb_portal_banners_log
@@ -537,7 +519,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         LEFT JOIN log_clicks ON log_clicks.id_banner = bnr.id_banner
     </cfquery>
 
-    <cfquery name="qBannerManagementChannels">
+    <cfquery name="qBannerManagementChannels" datasource="runnerhub">
         SELECT DISTINCT canal
         FROM ads.tb_portal_banners
         WHERE canal IS NOT NULL
@@ -545,7 +527,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         ORDER BY canal
     </cfquery>
 
-    <cfquery name="qBannerManagementSlots">
+    <cfquery name="qBannerManagementSlots" datasource="runnerhub">
         SELECT DISTINCT local_layout
         FROM ads.tb_portal_banners
         WHERE local_layout IS NOT NULL
@@ -553,7 +535,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         ORDER BY local_layout
     </cfquery>
 
-    <cfquery name="qBannerManagementList">
+    <cfquery name="qBannerManagementList" datasource="runnerhub">
         WITH banner_views AS (
             SELECT id_banner, count(*) AS total
             FROM ads.tb_portal_banners_log
@@ -589,7 +571,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             bnr.id_banner DESC
     </cfquery>
 
-    <cfquery name="qBannerManagementEdit">
+    <cfquery name="qBannerManagementEdit" datasource="runnerhub">
         SELECT *
         FROM ads.tb_portal_banners
         WHERE id_banner = <cfqueryparam cfsqltype="cf_sql_integer" value="#isNumeric(URL.banner_editar) ? val(URL.banner_editar) : 0#"/>
@@ -609,7 +591,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfset VARIABLES.bannerManagementAlert = { type = "success", message = "Banner atualizado com sucesso." }/>
     <cfelseif URL.sucesso EQ "status">
         <cfset VARIABLES.bannerManagementAlert = { type = "success", message = "Status do banner atualizado." }/>
-    <cfelseif URL.sucesso EQ "excluido">
-        <cfset VARIABLES.bannerManagementAlert = { type = "success", message = "Banner removido com sucesso." }/>
+    <cfelseif ListFindNoCase("excluido,arquivado", URL.sucesso)>
+        <cfset VARIABLES.bannerManagementAlert = { type = "success", message = "Banner arquivado com sucesso." }/>
     </cfif>
 </cfif>

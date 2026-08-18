@@ -235,7 +235,7 @@
     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)>
         <cftry>
             <cftransaction>
-                <cfquery name="qBusinessAccountRegistrationReview">
+                <cfquery name="qBusinessAccountRegistrationReview" datasource="runnerhub">
                     SELECT *
                     FROM tb_conta_cadastro_solicitacoes
                     WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationRequestId#"/>
@@ -249,7 +249,7 @@
                 </cfif>
 
                 <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND VARIABLES.accountRegistrationAction EQ "recusar">
-                    <cfquery>
+                    <cfquery datasource="runnerhub">
                         UPDATE tb_conta_cadastro_solicitacoes
                         SET status = 'RECUSADA'::status_conta_cadastro_solicitacao,
                             id_usuario_revisor = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
@@ -270,7 +270,7 @@
                         AND listFindNoCase(qBusinessAccountRegistrationReview.columnList, "id_ad_voucher")
                         AND len(trim(qBusinessAccountRegistrationReview.id_ad_voucher))>
 
-                        <cfquery name="qBusinessAccountRegistrationVoucher">
+                        <cfquery name="qBusinessAccountRegistrationVoucher" datasource="runnerhub">
                             SELECT id_ad_voucher,
                                    codigo,
                                    id_conta,
@@ -300,7 +300,7 @@
                     </cfif>
 
                     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND len(VARIABLES.accountRegistrationExistingAccountId) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
-                        <cfquery name="qBusinessAccountRegistrationExistingAccount">
+                        <cfquery name="qBusinessAccountRegistrationExistingAccount" datasource="runnerhub">
                             SELECT id_conta
                             FROM tb_contas
                             WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationExistingAccountId#"/>
@@ -313,7 +313,7 @@
                             <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Conta existente nao encontrada.")/>
                         </cfif>
                     <cfelseif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
-                        <cfquery name="qBusinessAccountRegistrationAccountByDocument">
+                        <cfquery name="qBusinessAccountRegistrationAccountByDocument" datasource="runnerhub">
                             SELECT id_conta
                             FROM tb_contas
                             WHERE documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qBusinessAccountRegistrationReview.documento#" maxlength="20"/>
@@ -323,7 +323,7 @@
                         <cfif qBusinessAccountRegistrationAccountByDocument.recordcount>
                             <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationAccountByDocument.id_conta/>
                         <cfelse>
-                            <cfquery name="qBusinessAccountRegistrationCreateAccount">
+                            <cfquery name="qBusinessAccountRegistrationCreateAccount" datasource="runnerhub">
                                 INSERT INTO tb_contas
                                 (
                                     nome_conta,
@@ -352,7 +352,7 @@
                     </cfif>
 
                     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)>
-                        <cfquery name="qBusinessAccountRegistrationOwnerUser">
+                        <cfquery name="qBusinessAccountRegistrationOwnerUser" datasource="runnerhub">
                             INSERT INTO tb_usuarios
                             (
                                 name,
@@ -390,7 +390,7 @@
                             RETURNING id
                         </cfquery>
 
-                        <cfquery>
+                        <cfquery datasource="runnerhub">
                             INSERT INTO tb_conta_usuarios
                             (
                                 id_conta,
@@ -419,7 +419,7 @@
                                 data_atualizacao = now()
                         </cfquery>
 
-                        <cfquery>
+                        <cfquery datasource="runnerhub">
                             UPDATE tb_conta_cadastro_solicitacoes
                             SET status = 'APROVADA'::status_conta_cadastro_solicitacao,
                                 id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/>,
@@ -431,7 +431,7 @@
                         </cfquery>
 
                         <cfif len(VARIABLES.accountRegistrationVoucherId)>
-                            <cfquery>
+                            <cfquery datasource="runnerhub">
                                 UPDATE ads.tb_ad_vouchers
                                 SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
                                     id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationOwnerUser.id#"/>,
@@ -657,7 +657,7 @@
             <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Conta nao encontrada para o voucher.")/>
         </cfif>
 
-        <cfquery name="qBusinessAccountVoucherDuplicate">
+        <cfquery name="qBusinessAccountVoucherDuplicate" datasource="runnerhub">
             SELECT id_ad_voucher
             FROM ads.tb_ad_vouchers
             WHERE lower(codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#"/>)
@@ -671,7 +671,7 @@
 
     <cfif NOT arrayLen(VARIABLES.accountVoucherErrors)>
         <cftry>
-            <cfquery>
+            <cfquery datasource="runnerhub">
                 INSERT INTO ads.tb_ad_vouchers
                 (
                     codigo,
@@ -727,7 +727,7 @@
         <cftry>
             <cfset VARIABLES.accountVoucherNewStatus = URL.account_voucher_action EQ "reativar" ? 1 : 3/>
 
-            <cfquery name="qBusinessAccountVoucherStatusCheck">
+            <cfquery name="qBusinessAccountVoucherStatusCheck" datasource="runnerhub">
                 SELECT id_ad_voucher,
                        status,
                        id_usuario_resgate
@@ -742,7 +742,7 @@
             <cfelseif len(trim(qBusinessAccountVoucherStatusCheck.id_usuario_resgate))>
                 <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Voucher ja resgatado nao pode ser cancelado ou reativado por esta tela."/>
             <cfelse>
-                <cfquery>
+                <cfquery datasource="runnerhub">
                     UPDATE ads.tb_ad_vouchers
                     SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountVoucherNewStatus#"/>,
                         data_atualizacao = now()
@@ -1729,7 +1729,7 @@
             </cfquery>
 
             <cfif VARIABLES.businessAccountVoucherColumnsReady>
-                <cfquery name="qBusinessAccountVouchers">
+                <cfquery name="qBusinessAccountVouchers" datasource="runnerhub">
                     SELECT vou.id_ad_voucher,
                            vou.codigo,
                            coalesce(vou.credito, 0) AS credito,
@@ -1813,7 +1813,7 @@
     <cfset VARIABLES.accountsRegistrationTotal = val(qBusinessAccountRegistrationStats.total_solicitacoes)/>
     <cfset VARIABLES.accountsRegistrationPendingTotal = val(qBusinessAccountRegistrationStats.total_pendentes)/>
 
-    <cfquery name="qBusinessAccountRegistrationRequests">
+    <cfquery name="qBusinessAccountRegistrationRequests" datasource="runnerhub">
         SELECT sol.id_solicitacao,
                sol.nome_empresa,
                sol.tipo_titular::text AS tipo_titular,
