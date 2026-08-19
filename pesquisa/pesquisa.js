@@ -42,13 +42,12 @@
   }
 
   function buildFlow() {
-    var features = featureSteps();
+    flow = research.steps.slice();
     if (research.randomize) {
-      var fixed = features.filter(function (item) { return !item.random; });
-      var random = features.filter(function (item) { return item.random; });
-      features = fixed.concat(shuffle(random));
+      var random = shuffle(flow.filter(function (item) { return item.type === "feature" && item.random; }));
+      var cursor = 0;
+      flow = flow.map(function (item) { return item.type === "feature" && item.random ? random[cursor++] : item; });
     }
-    flow = [stepByType("intro"), stepByType("runner_level"), stepByType("rr_account")].concat(features, [stepByType("package"), stepByType("pricing"), stepByType("must_have"), stepByType("contact"), stepByType("thank_you")]).filter(Boolean);
   }
 
   function apiRequest(url, options, retries) {
@@ -122,6 +121,12 @@
     backButton.hidden = false;
     backButton.disabled = index === 0 || submitting;
     if (current.type === "intro") renderIntro(current);
+    else if (current.type === "info") renderInfo(current);
+    else if (current.type === "choice") renderChoice(current);
+    else if (current.type === "choice_multiple") renderChoiceMultiple(current);
+    else if (current.type === "choice_text") renderChoiceText(current);
+    else if (current.type === "choice_multiple_text") renderChoiceMultipleText(current);
+    else if (current.type === "text") renderText(current);
     else if (current.type === "runner_level") renderLevel(current);
     else if (current.type === "rr_account") renderAccount(current);
     else if (current.type === "feature") renderFeature(current);
@@ -135,7 +140,34 @@
   }
 
   function renderIntro(item) {
-    content.innerHTML = '<span class="research-survey-kicker">Entrevista com atletas</span><h1 class="research-survey-title">' + escapeHtml(item.title || research.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-free-note"><i class="fa-solid fa-circle-check"></i><span><strong>O essencial continua gratuito.</strong> Conta, perfil, calendário, resultados e recursos essenciais continuam gratuitos.</span></div><button type="button" class="btn btn-warning btn-lg mt-4" data-public-next>Começar entrevista<i class="fa-solid fa-arrow-right ms-2"></i></button>';
+    var copy = '<div><span class="research-survey-kicker">Entrevista com atletas</span><h1 class="research-survey-title">' + escapeHtml(item.title || research.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-free-note"><i class="fa-solid fa-circle-check"></i><span><strong>O essencial continua gratuito.</strong> Conta, perfil, calendário, resultados e recursos essenciais continuam gratuitos.</span></div><button type="button" class="btn btn-warning btn-lg mt-4" data-public-next>Começar entrevista<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+    content.innerHTML = publicLayout(copy, item);
+  }
+
+  function renderInfo(item) {
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">' + escapeHtml(item.name) + '</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><button type="button" class="btn btn-warning btn-lg mt-4" data-public-next>Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>', item);
+  }
+
+  function renderChoice(item) {
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionMarkup(item.key, item.options || [], false) + '</div>';
+  }
+
+  function renderChoiceMultiple(item) {
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionMarkup(item.key, item.options || [], false, true, true) + '<div class="research-public-submit-error" data-public-multiple-error></div><button type="button" class="btn btn-warning mt-3" data-public-multiple-next="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderChoiceText(item) {
+    var textKey = item.key + "_text";
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionMarkup(item.key, item.options || [], false, true) + '<textarea class="form-control form-control-lg mt-3" rows="4" maxlength="2000" placeholder="Conte mais sobre sua escolha" data-public-custom-text="' + escapeHtml(textKey) + '">' + escapeHtml(answers[textKey] || "") + '</textarea><div class="invalid-feedback">Escolha uma opção e preencha o texto.</div><button type="button" class="btn btn-warning mt-3" data-public-custom-next="choice_text" data-public-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderChoiceMultipleText(item) {
+    var textKey = item.key + "_text";
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionMarkup(item.key, item.options || [], false, true, true) + '<textarea class="form-control form-control-lg mt-3" rows="4" maxlength="2000" placeholder="Conte mais sobre suas escolhas" data-public-custom-text="' + escapeHtml(textKey) + '">' + escapeHtml(answers[textKey] || "") + '</textarea><div class="invalid-feedback">Escolha pelo menos uma opção e preencha o texto.</div><button type="button" class="btn btn-warning mt-3" data-public-custom-next="choice_multiple_text" data-public-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderText(item) {
+    content.innerHTML = publicLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong><textarea class="form-control form-control-lg mt-3" rows="5" maxlength="2000" placeholder="Digite sua resposta" data-public-custom-text="' + escapeHtml(item.key) + '">' + escapeHtml(answers[item.key] || "") + '</textarea><div class="invalid-feedback">Preencha sua resposta para continuar.</div><button type="button" class="btn btn-warning mt-3" data-public-custom-next="text" data-public-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
   }
 
   function renderLevel(item) {
@@ -151,15 +183,15 @@
   }
 
   function renderFeature(item) {
-    content.innerHTML = '<div class="research-survey-feature-layout"><div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h1 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>' + visualMarkup(item) + '</div><div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionMarkup(item.key, [
+    content.innerHTML = publicLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h1 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionMarkup(item.key, [
       { value: "yes", label: "Sim, usaria" }, { value: "maybe", label: "Talvez usaria" }, { value: "no", label: "Não usaria" }
     ], false) + '</div>';
   }
 
-  function optionMarkup(key, options, profile) {
+  function optionMarkup(key, options, profile, stayOnStep, multiple) {
     var wrapper = profile ? "research-survey-profile-grid" : "research-survey-options";
     var buttonClass = profile ? "research-survey-profile-option" : "research-survey-option";
-    return '<div class="' + wrapper + '">' + options.map(function (option) { return '<button type="button" class="' + buttonClass + (answers[key] === option.value ? ' is-selected' : '') + '" data-public-answer="' + escapeHtml(key) + '" data-public-value="' + escapeHtml(option.value) + '"><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>'; }).join("") + '</div>';
+    return '<div class="' + wrapper + '">' + options.map(function (option) { var selected = multiple ? Array.isArray(answers[key]) && answers[key].includes(option.value) : answers[key] === option.value; return '<button type="button" class="' + buttonClass + (selected ? ' is-selected' : '') + '" data-public-answer="' + escapeHtml(key) + '" data-public-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-public-stay="true"' : '') + (multiple ? ' data-public-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>'; }).join("") + '</div>';
   }
 
   function renderPackage(item) {
@@ -197,6 +229,7 @@
   }
 
   function visualMarkup(item) {
+    if (!item.media || item.media === "none") return "";
     if (item.media === "image" && item.imageUrl) return '<div class="research-survey-visual research-survey-image"><img src="' + escapeHtml(item.imageUrl) + '" alt="' + escapeHtml(item.name) + '"/></div>';
     var inner = '<span class="research-mock-label">Prévia da funcionalidade</span><div class="research-mock-heading">' + escapeHtml(item.name) + '</div>';
     if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
@@ -211,12 +244,44 @@
     return '<div class="research-survey-visual"><div class="research-survey-visual-browser"><span></span><span></span><span></span></div><div class="research-survey-visual-body">' + inner + '</div></div>';
   }
 
+  function publicLayout(copy, item) {
+    return '<div class="research-survey-feature-layout' + (!item.media || item.media === "none" ? ' is-without-visual' : '') + '">' + copy + visualMarkup(item) + '</div>';
+  }
+
   function next() { if (index < flow.length - 1) { index += 1; render(); } }
 
   function bindControls() {
     content.querySelectorAll("[data-public-next]").forEach(function (button) { button.addEventListener("click", next); });
     content.querySelectorAll("[data-public-answer]").forEach(function (button) {
-      button.addEventListener("click", function () { var key = button.getAttribute("data-public-answer"); var value = button.getAttribute("data-public-value"); answers[key] = value; if (key === "mustHave") mustHave = value; render(); window.setTimeout(next, 180); });
+      button.addEventListener("click", function () {
+        var key = button.getAttribute("data-public-answer");
+        var value = button.getAttribute("data-public-value");
+        if (button.getAttribute("data-public-multiple") === "true") {
+          var values = Array.isArray(answers[key]) ? answers[key].slice() : [];
+          var valueIndex = values.indexOf(value);
+          if (valueIndex >= 0) values.splice(valueIndex, 1); else values.push(value);
+          answers[key] = values;
+        } else answers[key] = value;
+        if (key === "mustHave") mustHave = value;
+        var stay = button.getAttribute("data-public-stay") === "true";
+        render();
+        if (!stay) window.setTimeout(next, 180);
+      });
+    });
+    content.querySelectorAll("[data-public-multiple-next]").forEach(function (button) { button.addEventListener("click", function () { var values = answers[button.getAttribute("data-public-multiple-next")]; if (!Array.isArray(values) || !values.length) { var error = content.querySelector("[data-public-multiple-error]"); if (error) error.textContent = "Escolha pelo menos uma opção."; return; } next(); }); });
+    content.querySelectorAll("[data-public-custom-text]").forEach(function (field) { field.addEventListener("input", function () { answers[field.getAttribute("data-public-custom-text")] = field.value; field.classList.remove("is-invalid"); }); });
+    content.querySelectorAll("[data-public-custom-next]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var key = button.getAttribute("data-public-custom-key");
+        var mode = button.getAttribute("data-public-custom-next");
+        var textKey = mode === "choice_text" || mode === "choice_multiple_text" ? key + "_text" : key;
+        var field = content.querySelector('[data-public-custom-text="' + textKey + '"]');
+        answers[textKey] = field.value.trim();
+        var missingChoice = mode === "choice_text" && !answers[key];
+        var missingMultiple = mode === "choice_multiple_text" && (!Array.isArray(answers[key]) || !answers[key].length);
+        if (!answers[textKey] || missingChoice || missingMultiple) { field.classList.add("is-invalid"); field.focus(); return; }
+        next();
+      });
     });
     content.querySelectorAll("[data-public-package]").forEach(function (button) { button.addEventListener("click", function () { var key = button.getAttribute("data-public-package"); selectedPackage[key] = !selectedPackage[key]; if (mustHave === key && !selectedPackage[key]) { mustHave = ""; delete answers.mustHave; } render(); }); });
     content.querySelectorAll("[data-public-billing]").forEach(function (button) { button.addEventListener("click", function () { price.billing = button.getAttribute("data-public-billing"); render(); }); });

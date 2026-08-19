@@ -22,7 +22,7 @@ function publicResearchSerialize(required any payload) {
         ["STEPS", "steps"], ["KEY", "key"], ["TYPE", "type"], ["NAME", "name"],
         ["SUPPORT", "support"], ["QUESTION", "question"], ["AREA", "area"],
         ["ICON", "icon"], ["MEDIA", "media"], ["VISUAL", "visual"],
-        ["IMAGEURL", "imageUrl"], ["PACKAGE", "package"], ["RANDOM", "random"],
+        ["IMAGEURL", "imageUrl"], ["OPTIONS", "options"], ["LABEL", "label"], ["HELP", "help"], ["PACKAGE", "package"], ["RANDOM", "random"],
         ["RESPONSEID", "responseId"]
     ];
     for (var pair in keys) {
@@ -39,7 +39,7 @@ function publicResearchBoolean(any value = false) {
 function publicResearchStepTypeToClient(required string value) {
     var types = {
         boas_vindas = "intro", nivel_corredor = "runner_level", conta_rr = "rr_account",
-        funcionalidade = "feature", pacote = "package", preco = "pricing",
+        informativa = "info", pergunta_escolha = "choice", pergunta_multipla = "choice_multiple", pergunta_escolha_texto = "choice_text", pergunta_multipla_texto = "choice_multiple_text", pergunta_texto = "text", funcionalidade = "feature", pacote = "package", preco = "pricing",
         indispensavel = "must_have", contato = "contact", agradecimento = "thank_you"
     };
     var key = lCase(trim(arguments.value));
@@ -75,6 +75,13 @@ function publicResearchText(required query source, required string columnName, r
     return arguments.source[arguments.columnName][arguments.rowIndex] & "";
 }
 
+function publicResearchOptions(required query source, required numeric rowIndex) {
+    var value = publicResearchText(arguments.source, "opcoes", arguments.rowIndex, "[]");
+    if (!len(trim(value)) || !isJSON(value)) return [];
+    var options = deserializeJSON(value);
+    return isArray(options) ? options : [];
+}
+
 function publicResearchTablesReady() {
     var check = queryExecute("SELECT to_regclass('tb_pesquisas') IS NOT NULL AND to_regclass('tb_pesquisa_etapas') IS NOT NULL AND to_regclass('tb_pesquisa_respostas') IS NOT NULL AND to_regclass('tb_pesquisa_resposta_etapas') IS NOT NULL AND to_regclass('tb_pesquisa_resposta_funcionalidades') IS NOT NULL AS ready");
     return publicResearchBoolean(check.ready[1]);
@@ -91,7 +98,7 @@ function publicResearchSurvey(required string slug) {
 function publicResearchConfiguration(required query survey) {
     var surveyId = arguments.survey.id_pesquisa[1];
     var stepsQuery = queryExecute(
-        "SELECT id_etapa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, tipo_visual, visual_modelo, imagem_url, incluir_pacote, randomizavel, ordem " &
+        "SELECT id_etapa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, tipo_visual, visual_modelo, imagem_url, opcoes::text AS opcoes, incluir_pacote, randomizavel, ordem " &
         "FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND ativo = true ORDER BY ordem, id_etapa",
         { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
     );
@@ -101,6 +108,7 @@ function publicResearchConfiguration(required query survey) {
             id = val(stepsQuery.id_etapa[rowIndex]), key = publicResearchText(stepsQuery, "chave", rowIndex), type = publicResearchStepTypeToClient(publicResearchText(stepsQuery, "tipo", rowIndex)),
             name = publicResearchText(stepsQuery, "nome", rowIndex), title = publicResearchText(stepsQuery, "titulo", rowIndex), support = publicResearchText(stepsQuery, "texto_apoio", rowIndex), question = publicResearchText(stepsQuery, "pergunta", rowIndex),
             area = publicResearchText(stepsQuery, "area", rowIndex), icon = publicResearchText(stepsQuery, "icone", rowIndex), media = publicResearchVisualToClient(publicResearchText(stepsQuery, "tipo_visual", rowIndex, "nenhum")), visual = publicResearchText(stepsQuery, "visual_modelo", rowIndex), imageUrl = publicResearchText(stepsQuery, "imagem_url", rowIndex),
+            options = publicResearchOptions(stepsQuery, rowIndex),
             package = publicResearchBoolean(stepsQuery.incluir_pacote[rowIndex]), random = publicResearchBoolean(stepsQuery.randomizavel[rowIndex])
         });
     }
@@ -160,7 +168,7 @@ function publicResearchSave(required struct payload, required query survey) {
         { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
     );
     var fixedQuery = queryExecute(
-        "SELECT id_etapa, tipo FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND tipo <> 'funcionalidade' AND ativo = true",
+        "SELECT id_etapa, chave, tipo, opcoes::text AS opcoes FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND tipo <> 'funcionalidade' AND ativo = true",
         { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
     );
     var allowedInterests = "yes,maybe,no";
@@ -217,6 +225,51 @@ function publicResearchSave(required struct payload, required query survey) {
             else if (fixedType EQ "preco") fixedAnswer = { periodicidade = billingDatabase, mensalMinimo = priceMin, mensalMaximo = priceMax, anualMinimo = annualMin, anualMaximo = annualMax };
             else if (fixedType EQ "indispensavel") fixedAnswer = { valor = mustHave };
             else if (fixedType EQ "contato") fixedAnswer = { emailInformado = len(email) GT 0 };
+            else if (fixedType EQ "pergunta_escolha" OR fixedType EQ "pergunta_escolha_texto") {
+                var customKey = fixedQuery.chave[fixedRow] & "";
+                var customValue = structKeyExists(answers, customKey) ? trim(answers[customKey] & "") : "";
+                var customOptions = publicResearchOptions(fixedQuery, fixedRow);
+                var customLabel = "";
+                for (var customOption in customOptions) {
+                    if (isStruct(customOption) && structKeyExists(customOption, "value") && compareNoCase(customOption.value & "", customValue) EQ 0) {
+                        customLabel = structKeyExists(customOption, "label") ? customOption.label & "" : customValue;
+                        break;
+                    }
+                }
+                if (!len(customValue) || !len(customLabel)) throw(message = "Responda à pergunta " & fixedQuery.chave[fixedRow] & ".");
+                fixedAnswer = { valor = customValue, rotulo = customLabel };
+                if (fixedType EQ "pergunta_escolha_texto") {
+                    var choiceText = structKeyExists(answers, customKey & "_text") ? left(trim(answers[customKey & "_text"] & ""), 2000) : "";
+                    if (!len(choiceText)) throw(message = "Complete o texto da pergunta " & customKey & ".");
+                    fixedAnswer.texto = choiceText;
+                }
+            }
+            else if (fixedType EQ "pergunta_multipla" OR fixedType EQ "pergunta_multipla_texto") {
+                var multipleKey = fixedQuery.chave[fixedRow] & "";
+                var submittedValues = structKeyExists(answers, multipleKey) && isArray(answers[multipleKey]) ? answers[multipleKey] : [];
+                var multipleOptions = publicResearchOptions(fixedQuery, fixedRow);
+                var acceptedValues = [];
+                var acceptedLabels = [];
+                for (var multipleOption in multipleOptions) {
+                    if (isStruct(multipleOption) && structKeyExists(multipleOption, "value") && publicResearchArrayContains(submittedValues, multipleOption.value & "")) {
+                        arrayAppend(acceptedValues, multipleOption.value & "");
+                        arrayAppend(acceptedLabels, structKeyExists(multipleOption, "label") ? multipleOption.label & "" : multipleOption.value & "");
+                    }
+                }
+                if (!arrayLen(acceptedValues) || arrayLen(acceptedValues) NEQ arrayLen(submittedValues)) throw(message = "Selecione opções válidas na pergunta " & multipleKey & ".");
+                fixedAnswer = { valores = acceptedValues, rotulos = acceptedLabels };
+                if (fixedType EQ "pergunta_multipla_texto") {
+                    var multipleText = structKeyExists(answers, multipleKey & "_text") ? left(trim(answers[multipleKey & "_text"] & ""), 2000) : "";
+                    if (!len(multipleText)) throw(message = "Complete o texto da pergunta " & multipleKey & ".");
+                    fixedAnswer.texto = multipleText;
+                }
+            }
+            else if (fixedType EQ "pergunta_texto") {
+                var textKey = fixedQuery.chave[fixedRow] & "";
+                var textValue = structKeyExists(answers, textKey) ? left(trim(answers[textKey] & ""), 2000) : "";
+                if (!len(textValue)) throw(message = "Responda à pergunta " & textKey & ".");
+                fixedAnswer = { texto = textValue };
+            }
             if (!structIsEmpty(fixedAnswer)) {
                 queryExecute(
                     "INSERT INTO tb_pesquisa_resposta_etapas (id_resposta, id_etapa, resposta) VALUES (:response_id, :step_id, cast(:answer AS jsonb))",

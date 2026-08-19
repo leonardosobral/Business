@@ -555,6 +555,10 @@
   grid-template-columns: .93fr 1.07fr;
 }
 
+.research-survey-feature-layout.is-without-visual {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .research-survey-feature-name {
   align-items: center;
   color: #69665f;

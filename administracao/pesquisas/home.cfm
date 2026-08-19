@@ -53,7 +53,7 @@
                 </div>
                 <div class="research-admin-step-list" data-research-item-list></div>
                 <button class="research-admin-add-block" type="button" data-research-add-block>
-                    <i class="fa-solid fa-plus me-2"></i>Adicionar funcionalidade
+                    <i class="fa-solid fa-plus me-2"></i>Adicionar etapa
                 </button>
             </aside>
 
@@ -65,10 +65,10 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         <button class="btn btn-sm btn-outline-light" type="button" data-research-duplicate>
-                            <i class="fa-regular fa-copy me-2"></i>Duplicar funcionalidade
+                            <i class="fa-regular fa-copy me-2"></i><span data-research-duplicate-label>Duplicar etapa</span>
                         </button>
                         <button class="btn btn-sm btn-outline-danger" type="button" data-research-delete>
-                            <i class="fa-regular fa-trash-can me-2"></i>Excluir funcionalidade
+                            <i class="fa-regular fa-trash-can me-2"></i><span data-research-delete-label>Excluir etapa</span>
                         </button>
                     </div>
                 </div>
@@ -90,6 +90,17 @@
                             <input class="form-control" id="researchStepName" maxlength="100" data-research-field="name"/>
                             <div class="form-text" data-research-name-help>Usado na lista do editor.</div>
                         </div>
+                        <div class="col-12" data-research-format-field>
+                            <label class="form-label" for="researchStepFormat">Conteúdo e resposta da etapa</label>
+                            <select class="form-select" id="researchStepFormat" data-research-step-format>
+                                <option value="info">Apenas título e texto</option>
+                                <option value="choice">Escolha única</option>
+                                <option value="choice_text">Escolha + texto</option>
+                                <option value="text">Somente texto</option>
+                                <option value="feature">Avaliação de funcionalidade</option>
+                            </select>
+                            <div class="form-text">Você pode alterar o formato depois de criar a etapa.</div>
+                        </div>
                         <div class="col-12">
                             <label class="form-label" for="researchStepTitle">Título apresentado ao atleta</label>
                             <input class="form-control" id="researchStepTitle" maxlength="180" data-research-field="title"/>
@@ -103,13 +114,22 @@
                             <label class="form-label" for="researchStepQuestion">Pergunta</label>
                             <input class="form-control" id="researchStepQuestion" maxlength="240" data-research-field="question"/>
                         </div>
+                        <div class="col-12 d-none" data-research-options-field>
+                            <label class="form-label" for="researchStepOptions">Opções de resposta</label>
+                            <textarea class="form-control" id="researchStepOptions" rows="5" placeholder="Uma opção por linha" data-research-options></textarea>
+                            <div class="form-text">Na escolha única, o atleta avança ao clicar; na múltipla, confirma após marcar as opções.</div>
+                            <div class="research-admin-option-row mt-3">
+                                <div><strong>Permitir múltiplas opções</strong><span>O atleta poderá marcar mais de uma resposta antes de continuar.</span></div>
+                                <button type="button" class="research-admin-switch" aria-pressed="false" data-research-choice-multiple><span></span></button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="research-admin-visual-editor mt-4" data-research-feature-field>
+                    <div class="research-admin-visual-editor mt-4" data-research-visual-field>
                         <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
                             <div>
-                                <h3 class="h6 mb-1">Visual da funcionalidade</h3>
-                                <p class="small research-admin-muted mb-0">Use uma ilustração do protótipo ou envie uma imagem pronta.</p>
+                                <h3 class="h6 mb-1">Visual da etapa</h3>
+                                <p class="small research-admin-muted mb-0">Escolha um modelo visual diferente ou envie uma imagem exclusiva.</p>
                             </div>
                             <div class="d-flex flex-wrap gap-2" role="group" aria-label="Tipo de visual">
                                 <button class="btn btn-sm btn-warning" type="button" data-research-media="illustration"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Ilustração</button>
@@ -117,6 +137,19 @@
                                 <input class="visually-hidden" id="researchFeatureImage" type="file" accept="image/jpeg,image/png,image/webp" data-research-image-upload/>
                             </div>
                         </div>
+                        <label class="form-label" for="researchVisualModel">Modelo da ilustração</label>
+                        <select class="form-select mb-3" id="researchVisualModel" data-research-visual-model>
+                            <option value="none">Não exibir ilustração</option>
+                            <option value="generic">Cards de benefícios</option>
+                            <option value="alerts">Alertas e avisos</option>
+                            <option value="performance">Evolução e gráfico</option>
+                            <option value="platforms">Plataformas conectadas</option>
+                            <option value="search">Busca inteligente</option>
+                            <option value="comparison">Comparação de atletas</option>
+                            <option value="people">Comunidade e pessoas</option>
+                            <option value="memories">Memórias e histórico</option>
+                            <option value="benefits">Clube de benefícios</option>
+                        </select>
                         <div class="research-admin-visual-placeholder" data-research-visual-placeholder></div>
                         <div class="small research-admin-muted mt-2" data-research-upload-status></div>
                     </div>
@@ -202,8 +235,8 @@
 
     <div class="research-admin-dialog" data-research-add-dialog hidden>
         <div class="research-admin-dialog-panel">
-            <div class="d-flex justify-content-between align-items-start gap-3 mb-3"><div><h2 class="h5 mb-1">Adicionar funcionalidade</h2><p class="small research-admin-muted mb-0">A nova etapa entrará antes da montagem do pacote.</p></div><button type="button" class="btn-close btn-close-white" aria-label="Fechar" data-research-add-close></button></div>
-            <label class="form-label" for="researchNewFeatureName">Nome curto da funcionalidade</label><input class="form-control mb-3" id="researchNewFeatureName" placeholder="Ex.: Memórias de Corrida" maxlength="100"/>
+            <div class="d-flex justify-content-between align-items-start gap-3 mb-3"><div><h2 class="h5 mb-1">Adicionar etapa</h2><p class="small research-admin-muted mb-0">Primeiro dê um nome. O conteúdo e o formato da resposta serão definidos no editor.</p></div><button type="button" class="btn-close btn-close-white" aria-label="Fechar" data-research-add-close></button></div>
+            <label class="form-label" for="researchNewStepName">Nome da etapa</label><input class="form-control mb-3" id="researchNewStepName" placeholder="Ex.: Objetivos para este ano" maxlength="100"/>
             <div class="d-flex justify-content-end gap-2"><button type="button" class="btn btn-outline-light" data-research-add-close>Cancelar</button><button type="button" class="btn btn-warning" data-research-add-confirm>Adicionar</button></div>
         </div>
     </div>

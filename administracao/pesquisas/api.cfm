@@ -25,7 +25,7 @@ function researchApiSerialize(required any payload) {
         ["STATUS", "status"], ["STEPS", "steps"], ["ID", "id"], ["KEY", "key"],
         ["TYPE", "type"], ["NAME", "name"], ["TITLE", "title"], ["SUPPORT", "support"],
         ["QUESTION", "question"], ["AREA", "area"], ["ICON", "icon"], ["MEDIA", "media"],
-        ["VISUAL", "visual"], ["IMAGEURL", "imageUrl"], ["PACKAGE", "package"], ["RANDOM", "random"],
+        ["VISUAL", "visual"], ["IMAGEURL", "imageUrl"], ["OPTIONS", "options"], ["LABEL", "label"], ["HELP", "help"], ["PACKAGE", "package"], ["RANDOM", "random"],
         ["SUMMARY", "summary"], ["TOTAL", "total"], ["LAST7DAYS", "last7Days"],
         ["ANNUALPERCENT", "annualPercent"], ["AVERAGEMAXPRICE", "averageMaxPrice"],
         ["FEATURES", "features"], ["PROFILES", "profiles"], ["ACCOUNTS", "accounts"],
@@ -53,7 +53,7 @@ function researchApiBoolean(any value = false) {
 function researchApiStepTypeToClient(required string value) {
     var types = {
         boas_vindas = "intro", nivel_corredor = "runner_level", conta_rr = "rr_account",
-        funcionalidade = "feature", pacote = "package", preco = "pricing",
+        informativa = "info", pergunta_escolha = "choice", pergunta_multipla = "choice_multiple", pergunta_escolha_texto = "choice_text", pergunta_multipla_texto = "choice_multiple_text", pergunta_texto = "text", funcionalidade = "feature", pacote = "package", preco = "pricing",
         indispensavel = "must_have", contato = "contact", agradecimento = "thank_you"
     };
     var key = lCase(trim(arguments.value));
@@ -63,7 +63,7 @@ function researchApiStepTypeToClient(required string value) {
 function researchApiStepTypeToDatabase(required string value) {
     var types = {
         intro = "boas_vindas", runner_level = "nivel_corredor", rr_account = "conta_rr",
-        feature = "funcionalidade", package = "pacote", pricing = "preco",
+        info = "informativa", choice = "pergunta_escolha", choice_multiple = "pergunta_multipla", choice_text = "pergunta_escolha_texto", choice_multiple_text = "pergunta_multipla_texto", text = "pergunta_texto", feature = "funcionalidade", package = "pacote", pricing = "preco",
         must_have = "indispensavel", contact = "contato", thank_you = "agradecimento"
     };
     var key = lCase(trim(arguments.value));
@@ -121,6 +121,13 @@ function researchApiText(required query source, required string columnName, requ
     return arguments.source[arguments.columnName][arguments.rowIndex] & "";
 }
 
+function researchApiOptions(required query source, required numeric rowIndex) {
+    var value = researchApiText(arguments.source, "opcoes", arguments.rowIndex, "[]");
+    if (!len(trim(value)) || !isJSON(value)) return [];
+    var options = deserializeJSON(value);
+    return isArray(options) ? options : [];
+}
+
 function researchApiNumber(required query source, required string columnName, required numeric rowIndex, numeric fallback = 0) {
     var raw = researchApiText(arguments.source, arguments.columnName, arguments.rowIndex, "");
     return isNumeric(raw) ? val(raw) : arguments.fallback;
@@ -150,7 +157,7 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
     var surveyId = survey.id_pesquisa[1];
     var stepsQuery = queryExecute(
         "SELECT id_etapa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, " &
-        "tipo_visual, visual_modelo, imagem_url, incluir_pacote, randomizavel, ordem " &
+        "tipo_visual, visual_modelo, imagem_url, opcoes::text AS opcoes, incluir_pacote, randomizavel, ordem " &
         "FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND ativo = true ORDER BY ordem, id_etapa",
         { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
     );
@@ -169,6 +176,7 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
             media = researchApiVisualToClient(researchApiText(stepsQuery, "tipo_visual", rowIndex, "nenhum")),
             visual = researchApiText(stepsQuery, "visual_modelo", rowIndex),
             imageUrl = researchApiText(stepsQuery, "imagem_url", rowIndex),
+            options = researchApiOptions(stepsQuery, rowIndex),
             package = researchApiBoolean(stepsQuery.incluir_pacote[rowIndex]),
             random = researchApiBoolean(stepsQuery.randomizavel[rowIndex])
         });
@@ -358,7 +366,7 @@ function researchApiSave(required struct payload, required numeric actorId) {
     var redirectUrl = trim(config.redirectUrl & "");
     if (len(redirectUrl) && !reFindNoCase("^(https?://|/)", redirectUrl)) throw(message = "Use uma URL http(s) ou um caminho iniciado por / no redirecionamento.");
     var surveyId = structKeyExists(research, "id") && isNumeric(research.id) ? val(research.id) : 0;
-    var allowedTypes = "intro,runner_level,rr_account,feature,package,pricing,must_have,contact,thank_you";
+    var allowedTypes = "intro,info,choice,choice_multiple,choice_text,choice_multiple_text,text,runner_level,rr_account,feature,package,pricing,must_have,contact,thank_you";
     var seenKeys = {};
     var stepKeys = [];
 
@@ -367,7 +375,9 @@ function researchApiSave(required struct payload, required numeric actorId) {
         if (!len(validationKey) || !reFind("^[A-Za-z0-9_-]+$", validationKey) || structKeyExists(seenKeys, validationKey)) throw(message = "Há uma etapa com chave inválida ou duplicada.");
         if (!listFindNoCase(allowedTypes, validationStep.type & "")) throw(message = "Tipo de etapa inválido: " & validationStep.type);
         if (!len(trim(validationStep.name & "")) || !len(trim(validationStep.title & ""))) throw(message = "Todas as etapas precisam de nome e título.");
-        if (compareNoCase(validationStep.media & "", "image") EQ 0 && !reFindNoCase("^/administracao/pesquisas/uploads/[A-Za-z0-9._-]+$", trim(validationStep.imageUrl & ""))) throw(message = "A imagem de uma funcionalidade não pertence à pasta de uploads da entrevista.");
+        if (listFindNoCase("choice,choice_multiple,choice_text,choice_multiple_text", validationStep.type & "") && (!structKeyExists(validationStep, "options") || !isArray(validationStep.options) || arrayLen(validationStep.options) LT 2)) throw(message = "Perguntas com escolha precisam ter pelo menos duas opções.");
+        if (listFindNoCase("choice,choice_multiple,choice_text,choice_multiple_text,text", validationStep.type & "") && !len(trim(validationStep.question & ""))) throw(message = "Perguntas personalizadas precisam ter o enunciado preenchido.");
+        if (compareNoCase(validationStep.media & "", "image") EQ 0 && !reFindNoCase("^/administracao/pesquisas/uploads/[A-Za-z0-9._-]+$", trim(validationStep.imageUrl & ""))) throw(message = "A imagem de uma etapa não pertence à pasta de uploads da entrevista.");
         seenKeys[validationKey] = true;
         arrayAppend(stepKeys, validationKey);
     }
@@ -406,13 +416,13 @@ function researchApiSave(required struct payload, required numeric actorId) {
         for (var currentStep in research.steps) {
             orderIndex++;
             queryExecute(
-                "INSERT INTO tb_pesquisa_etapas (id_pesquisa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, tipo_visual, visual_modelo, imagem_url, incluir_pacote, randomizavel, ordem, ativo) " &
-                "VALUES (:survey_id, :step_key, :step_type, :step_name, :step_title, :support_text, :question, :area, :icon, :media_type, :visual_model, :image_url, :include_package, :randomizable, :step_order, true) " &
-                "ON CONFLICT (id_pesquisa, chave) DO UPDATE SET tipo = excluded.tipo, nome = excluded.nome, titulo = excluded.titulo, texto_apoio = excluded.texto_apoio, pergunta = excluded.pergunta, area = excluded.area, icone = excluded.icone, tipo_visual = excluded.tipo_visual, visual_modelo = excluded.visual_modelo, imagem_url = excluded.imagem_url, incluir_pacote = excluded.incluir_pacote, randomizavel = excluded.randomizavel, ordem = excluded.ordem, ativo = true",
+                "INSERT INTO tb_pesquisa_etapas (id_pesquisa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, tipo_visual, visual_modelo, imagem_url, opcoes, incluir_pacote, randomizavel, ordem, ativo) " &
+                "VALUES (:survey_id, :step_key, :step_type, :step_name, :step_title, :support_text, :question, :area, :icon, :media_type, :visual_model, :image_url, cast(:options AS jsonb), :include_package, :randomizable, :step_order, true) " &
+                "ON CONFLICT (id_pesquisa, chave) DO UPDATE SET tipo = excluded.tipo, nome = excluded.nome, titulo = excluded.titulo, texto_apoio = excluded.texto_apoio, pergunta = excluded.pergunta, area = excluded.area, icone = excluded.icone, tipo_visual = excluded.tipo_visual, visual_modelo = excluded.visual_modelo, imagem_url = excluded.imagem_url, opcoes = excluded.opcoes, incluir_pacote = excluded.incluir_pacote, randomizavel = excluded.randomizavel, ordem = excluded.ordem, ativo = true",
                 {
                     survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" }, step_key = { value = trim(currentStep.key & ""), cfsqltype = "cf_sql_varchar" }, step_type = { value = researchApiStepTypeToDatabase(currentStep.type & ""), cfsqltype = "cf_sql_varchar" }, step_name = { value = trim(currentStep.name & ""), cfsqltype = "cf_sql_varchar" }, step_title = { value = trim(currentStep.title & ""), cfsqltype = "cf_sql_varchar" },
                     support_text = { value = trim(currentStep.support & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.support & "")) }, question = { value = trim(currentStep.question & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.question & "")) }, area = { value = trim(currentStep.area & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.area & "")) }, icon = { value = trim(currentStep.icon & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.icon & "")) },
-                    media_type = { value = researchApiVisualToDatabase(currentStep.media & ""), cfsqltype = "cf_sql_varchar" }, visual_model = { value = trim(currentStep.visual & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.visual & "")) }, image_url = { value = trim(currentStep.imageUrl & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.imageUrl & "")) }, include_package = { value = researchApiBoolean(currentStep.package), cfsqltype = "cf_sql_bit" }, randomizable = { value = researchApiBoolean(currentStep.random), cfsqltype = "cf_sql_bit" }, step_order = { value = orderIndex, cfsqltype = "cf_sql_integer" }
+                    media_type = { value = researchApiVisualToDatabase(currentStep.media & ""), cfsqltype = "cf_sql_varchar" }, visual_model = { value = trim(currentStep.visual & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.visual & "")) }, image_url = { value = trim(currentStep.imageUrl & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.imageUrl & "")) }, options = { value = serializeJSON(structKeyExists(currentStep, "options") && isArray(currentStep.options) ? currentStep.options : []), cfsqltype = "cf_sql_longvarchar" }, include_package = { value = researchApiBoolean(currentStep.package), cfsqltype = "cf_sql_bit" }, randomizable = { value = researchApiBoolean(currentStep.random), cfsqltype = "cf_sql_bit" }, step_order = { value = orderIndex, cfsqltype = "cf_sql_integer" }
                 }
             );
         }

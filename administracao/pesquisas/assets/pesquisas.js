@@ -59,11 +59,11 @@
   var previewFrame = root.querySelector("[data-research-preview-frame]");
 
   function step(key, type, name, title, support, question) {
-    return { key: key, type: type, name: name, title: title, support: support, question: question, area: "", icon: "", media: "none", imageUrl: "", visual: "", package: false, random: false };
+    return { key: key, type: type, name: name, title: title, support: support, question: question, options: [], area: "", icon: "", media: "none", imageUrl: "", visual: "", package: false, random: false };
   }
 
   function feature(key, area, name, title, support, icon, visual) {
-    return { key: key, type: "feature", name: name, title: title, support: support, question: "Você usaria esta funcionalidade?", area: area, icon: icon, media: "illustration", imageUrl: "", visual: visual, package: true, random: true };
+    return { key: key, type: "feature", name: name, title: title, support: support, question: "Você usaria esta funcionalidade?", options: [], area: area, icon: icon, media: "illustration", imageUrl: "", visual: visual, package: true, random: true };
   }
 
   function clone(value) {
@@ -92,6 +92,39 @@
 
   function featureSteps() {
     return research.steps.filter(function (item) { return item.type === "feature"; });
+  }
+
+  function customizableStep(item) {
+    return item && ["feature", "info", "choice", "choice_multiple", "choice_text", "choice_multiple_text", "text"].includes(item.type);
+  }
+
+  function visualStep(item) {
+    return item && ["intro", "feature", "info", "choice", "choice_multiple", "choice_text", "choice_multiple_text", "text"].includes(item.type);
+  }
+
+  function choiceStep(item) {
+    return item && ["choice", "choice_multiple", "choice_text", "choice_multiple_text"].includes(item.type);
+  }
+
+  function multipleChoiceStep(item) {
+    return item && (item.type === "choice_multiple" || item.type === "choice_multiple_text");
+  }
+
+  function stepFormat(type) {
+    if (type === "choice_multiple") return "choice";
+    if (type === "choice_multiple_text") return "choice_text";
+    return type;
+  }
+
+  function optionValue(label, index) {
+    var normalized = String(label || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+    return (normalized || "opcao") + "_" + (index + 1);
+  }
+
+  function parseOptions(value) {
+    return String(value || "").split(/\r?\n/).map(function (label) { return label.trim(); }).filter(Boolean).map(function (label, index) {
+      return { value: optionValue(label, index), label: label, help: "" };
+    });
   }
 
   function findStep(type) {
@@ -142,6 +175,7 @@
         }
         if (payload.research && Array.isArray(payload.research.steps) && payload.research.steps.length) research = payload.research;
         research.steps.forEach(function (item) {
+          if (!Array.isArray(item.options)) item.options = [];
           if (item.key === "price_preference" && item.support === "Compare a opção mensal com o pagamento anual com desconto.") {
             item.support = "Compare a opção mensal com o pagamento anual.";
           }
@@ -279,7 +313,7 @@
   }
 
   function typeLabel(type) {
-    var labels = { intro: "Apresentação", runner_level: "Perfil do atleta", rr_account: "Identificação", package: "Montagem do pacote", pricing: "Preço e pagamento", must_have: "Prioridade", contact: "Finalização", thank_you: "Encerramento" };
+    var labels = { intro: "Apresentação", info: "Tela informativa", choice: "Escolha única", choice_multiple: "Escolha múltipla", choice_text: "Escolha + texto", choice_multiple_text: "Múltipla escolha + texto", text: "Pergunta de texto", runner_level: "Perfil do atleta", rr_account: "Identificação", package: "Montagem do pacote", pricing: "Preço e pagamento", must_have: "Prioridade", contact: "Finalização", thank_you: "Encerramento" };
     return labels[type] || "Etapa";
   }
 
@@ -287,17 +321,30 @@
     var item = activeStep();
     if (!item) return;
     var isFeature = item.type === "feature";
+    var hasOptions = choiceStep(item);
+    var canCustomize = customizableStep(item);
     root.querySelector("[data-research-editor-title]").textContent = "Editar: " + item.name;
-    root.querySelector("[data-research-duplicate]").classList.toggle("d-none", !isFeature);
-    root.querySelector("[data-research-delete]").classList.toggle("d-none", !isFeature);
+    root.querySelector("[data-research-duplicate]").classList.toggle("d-none", !canCustomize);
+    root.querySelector("[data-research-delete]").classList.toggle("d-none", !canCustomize);
+    root.querySelector("[data-research-duplicate-label]").textContent = isFeature ? "Duplicar funcionalidade" : "Duplicar etapa";
+    root.querySelector("[data-research-delete-label]").textContent = isFeature ? "Excluir funcionalidade" : "Excluir etapa";
+    root.querySelector("[data-research-format-field]").classList.toggle("d-none", !canCustomize);
+    root.querySelector("[data-research-step-format]").value = canCustomize ? stepFormat(item.type) : "info";
     root.querySelectorAll("[data-research-feature-field]").forEach(function (field) { field.classList.toggle("d-none", !isFeature); });
+    root.querySelectorAll("[data-research-visual-field]").forEach(function (field) { field.classList.toggle("d-none", !visualStep(item)); });
+    root.querySelector("[data-research-options-field]").classList.toggle("d-none", !hasOptions);
     root.querySelector("[data-research-name-column]").classList.toggle("col-lg-8", isFeature);
     root.querySelector("[data-research-name-column]").classList.toggle("col-lg-12", !isFeature);
     root.querySelector("[data-research-name-label]").textContent = isFeature ? "Nome curto da funcionalidade" : "Nome da etapa no editor";
     root.querySelector("[data-research-support-label]").textContent = isFeature ? "Como isso melhora ou ajuda o atleta" : "Texto de apoio";
     root.querySelector("[data-research-support-help]").textContent = isFeature ? "Este é o único texto explicativo exibido ao lado do visual." : "Texto curto exibido abaixo do título.";
-    root.querySelector("[data-research-question-field]").classList.toggle("d-none", item.type === "intro" || item.type === "thank_you");
+    root.querySelector("[data-research-question-field]").classList.toggle("d-none", item.type === "intro" || item.type === "info" || item.type === "thank_you");
     root.querySelectorAll("[data-research-field]").forEach(function (field) { field.value = item[field.getAttribute("data-research-field")] || ""; });
+    root.querySelector("[data-research-options]").value = (item.options || []).map(function (option) { return option.label || ""; }).join("\n");
+    var multipleButton = root.querySelector("[data-research-choice-multiple]");
+    multipleButton.classList.toggle("is-on", multipleChoiceStep(item));
+    multipleButton.setAttribute("aria-pressed", multipleChoiceStep(item) ? "true" : "false");
+    root.querySelector("[data-research-visual-model]").value = item.media === "none" ? "none" : (item.visual || "generic");
     updateSwitch("package", item.package);
     updateSwitch("random", item.random);
     updateVisualPlaceholder(item);
@@ -312,6 +359,10 @@
 
   function updateVisualPlaceholder(item) {
     var placeholder = root.querySelector("[data-research-visual-placeholder]");
+    if (item.media === "none") {
+      placeholder.innerHTML = '<div class="research-admin-placeholder-content"><i class="fa-regular fa-eye-slash"></i><strong>Sem ilustração</strong><span>A etapa usará toda a largura para o conteúdo.</span></div>';
+      return;
+    }
     if (item.media === "image" && item.imageUrl) {
       placeholder.innerHTML = '<img class="research-admin-upload-preview" src="' + escapeHtml(item.imageUrl) + '" alt="Visual de ' + escapeHtml(item.name) + '"/>';
       return;
@@ -341,6 +392,24 @@
         if (key === "slug") root.querySelector("[data-research-public-link]").href = "/pesquisa/?slug=" + encodeURIComponent(field.value);
       });
     });
+    root.querySelector("[data-research-options]").addEventListener("input", function (event) {
+      var item = activeStep();
+      if (choiceStep(item)) item.options = parseOptions(event.target.value);
+    });
+    root.querySelector("[data-research-step-format]").addEventListener("change", function (event) {
+      updateStepFormat(event.target.value);
+    });
+    root.querySelector("[data-research-choice-multiple]").addEventListener("click", function () {
+      var item = activeStep();
+      if (!choiceStep(item)) return;
+      if (item.type === "choice") item.type = "choice_multiple";
+      else if (item.type === "choice_multiple") item.type = "choice";
+      else if (item.type === "choice_text") item.type = "choice_multiple_text";
+      else item.type = "choice_text";
+      renderStepList();
+      loadEditor();
+      showToast("Seleção múltipla atualizada. Salve para confirmar no banco.");
+    });
     root.querySelectorAll("[data-research-switch]").forEach(function (button) {
       button.addEventListener("click", function () {
         var property = button.getAttribute("data-research-switch");
@@ -351,7 +420,8 @@
         else research.config[property] = next;
       });
     });
-    root.querySelector("[data-research-media]").addEventListener("click", function () { var item = activeStep(); item.media = "illustration"; item.imageUrl = ""; updateVisualPlaceholder(item); });
+    root.querySelector("[data-research-media]").addEventListener("click", function () { var item = activeStep(); item.media = "illustration"; item.visual = item.visual || "generic"; item.imageUrl = ""; root.querySelector("[data-research-visual-model]").value = item.visual; updateVisualPlaceholder(item); });
+    root.querySelector("[data-research-visual-model]").addEventListener("change", function (event) { var item = activeStep(); var hidden = event.target.value === "none"; item.visual = hidden ? "" : event.target.value; item.media = hidden ? "none" : "illustration"; item.imageUrl = ""; updateVisualPlaceholder(item); });
     root.querySelector("[data-research-image-upload]").addEventListener("change", uploadImage);
   }
 
@@ -377,28 +447,61 @@
       .finally(function () { event.target.value = ""; });
   }
 
-  function openAddDialog() { var dialog = root.querySelector("[data-research-add-dialog]"); dialog.hidden = false; window.setTimeout(function () { root.querySelector("#researchNewFeatureName").focus(); }, 0); }
-  function closeAddDialog() { root.querySelector("[data-research-add-dialog]").hidden = true; root.querySelector("#researchNewFeatureName").value = ""; }
+  function openAddDialog() { var dialog = root.querySelector("[data-research-add-dialog]"); dialog.hidden = false; window.setTimeout(function () { root.querySelector("#researchNewStepName").focus(); }, 0); }
+  function closeAddDialog() { root.querySelector("[data-research-add-dialog]").hidden = true; root.querySelector("#researchNewStepName").value = ""; }
 
-  function addFeature() {
-    var input = root.querySelector("#researchNewFeatureName");
+  function updateStepFormat(nextType) {
+    var item = activeStep();
+    if (!customizableStep(item) || !["info", "choice", "choice_text", "text", "feature"].includes(nextType)) return;
+    var previousType = item.type;
+    item.type = nextType;
+    if (nextType === "feature") {
+      item.area = item.area || "Experiência";
+      item.icon = item.icon || "fa-solid fa-star";
+      if (previousType !== "feature") item.question = "Você usaria esta funcionalidade?";
+      item.package = true;
+      item.random = true;
+      var currentIndex = research.steps.indexOf(item);
+      research.steps.splice(currentIndex, 1);
+      var packageIndex = research.steps.findIndex(function (current) { return current.type === "package"; });
+      research.steps.splice(packageIndex < 0 ? research.steps.length : packageIndex, 0, item);
+    } else {
+      if (previousType === "feature") {
+        item.package = false;
+        item.random = false;
+      }
+      if (nextType === "info") item.question = "";
+      else if (!item.question) item.question = nextType === "text" ? "Conte para a gente:" : (nextType === "choice_text" ? "Escolha uma opção e conte mais sobre sua resposta:" : "Escolha uma opção:");
+      if ((nextType === "choice" || nextType === "choice_text") && (!Array.isArray(item.options) || item.options.length < 2)) {
+        item.options = [{ value: "opcao_1", label: "Opção 1", help: "" }, { value: "opcao_2", label: "Opção 2", help: "" }];
+      }
+    }
+    renderStepList();
+    loadEditor();
+    showToast("Formato da etapa atualizado. Salve para confirmar no banco.");
+  }
+
+  function addStep() {
+    var input = root.querySelector("#researchNewStepName");
     var name = input.value.trim();
     if (!name) { input.focus(); return; }
-    var item = feature("feature_" + Date.now(), "Experiência", name, name, "Mostre de forma direta como esta ideia ajudaria quem corre.", "fa-solid fa-star", "generic");
-    var packageIndex = research.steps.findIndex(function (current) { return current.type === "package"; });
-    research.steps.splice(packageIndex < 0 ? research.steps.length : packageIndex, 0, item);
+    var item = step("step_" + Date.now(), "info", name, name, "Adicione aqui uma mensagem curta para orientar o atleta.", "");
+    var selectedIndex = research.steps.findIndex(function (current) { return current.key === selectedKey; });
+    var contactIndex = research.steps.findIndex(function (current) { return current.type === "contact"; });
+    var insertIndex = Math.min(contactIndex < 0 ? research.steps.length : contactIndex, selectedIndex + 1);
+    research.steps.splice(insertIndex, 0, item);
     selectedKey = item.key;
     closeAddDialog();
     renderStepList();
     loadEditor();
-    showToast("Funcionalidade adicionada. Salve para gravar no banco.");
+    showToast("Etapa adicionada. Salve para gravar no banco.");
   }
 
-  function duplicateFeature() {
+  function duplicateStep() {
     var source = activeStep();
-    if (!source || source.type !== "feature") return;
+    if (!customizableStep(source)) return;
     var copy = clone(source);
-    copy.key = "feature_" + Date.now();
+    copy.key = source.type + "_" + Date.now();
     copy.name = source.name + " - cópia";
     var index = research.steps.indexOf(source);
     research.steps.splice(index + 1, 0, copy);
@@ -407,14 +510,14 @@
     loadEditor();
   }
 
-  function deleteFeature() {
+  function deleteStep() {
     var item = activeStep();
-    if (!item || item.type !== "feature") return;
-    if (featureSteps().length <= 1) {
+    if (!customizableStep(item)) return;
+    if (item.type === "feature" && featureSteps().length <= 1) {
       showToast("A entrevista precisa manter pelo menos uma funcionalidade.", true);
       return;
     }
-    if (!window.confirm('Excluir a funcionalidade "' + item.name + '"? Ela sairá da entrevista após salvar no banco.')) return;
+    if (!window.confirm('Excluir "' + item.name + '"? A etapa sairá da entrevista após salvar no banco.')) return;
 
     var currentIndex = research.steps.findIndex(function (stepItem) { return stepItem.key === item.key; });
     research.steps.splice(currentIndex, 1);
@@ -423,7 +526,7 @@
     if (previewMustHave === item.key) previewMustHave = "";
     selectedKey = research.steps[Math.min(currentIndex, research.steps.length - 1)].key;
     renderAll();
-    showToast("Funcionalidade removida. Salve no banco para confirmar.");
+    showToast("Etapa removida. Salve no banco para confirmar.");
   }
 
   function shuffle(items) {
@@ -433,13 +536,12 @@
   }
 
   function buildPreviewFlow() {
-    var features = featureSteps();
+    previewFlow = research.steps.slice();
     if (toBoolean(research.config.globalRandom)) {
-      var fixed = features.filter(function (item) { return !item.random; });
-      var random = features.filter(function (item) { return item.random; });
-      features = fixed.concat(shuffle(random));
+      var randomizedFeatures = shuffle(previewFlow.filter(function (item) { return item.type === "feature" && item.random; }));
+      var cursor = 0;
+      previewFlow = previewFlow.map(function (item) { return item.type === "feature" && item.random ? randomizedFeatures[cursor++] : item; });
     }
-    previewFlow = [findStep("intro"), findStep("runner_level"), findStep("rr_account")].concat(features, [findStep("package"), findStep("pricing"), findStep("must_have"), findStep("contact"), findStep("thank_you")]);
   }
 
   function openPreview() {
@@ -457,6 +559,7 @@
   function closePreview() { previewOverlay.hidden = true; document.body.style.overflow = ""; }
 
   function visualMarkup(item) {
+    if (!item.media || item.media === "none") return "";
     if (item.media === "image" && item.imageUrl) return '<div class="research-survey-visual research-survey-image"><img src="' + escapeHtml(item.imageUrl) + '" alt="' + escapeHtml(item.name) + '"/></div>';
     var inner = '<span class="research-mock-label">Prévia da funcionalidade</span><div class="research-mock-heading">' + escapeHtml(item.name) + '</div>';
     if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
@@ -471,11 +574,16 @@
     return '<div class="research-survey-visual"><div class="research-survey-visual-browser"><span></span><span></span><span></span></div><div class="research-survey-visual-body">' + inner + '</div></div>';
   }
 
-  function optionsMarkup(key, options, profile) {
+  function previewLayout(copy, item) {
+    return '<div class="research-survey-feature-layout' + (!item.media || item.media === "none" ? ' is-without-visual' : '') + '">' + copy + visualMarkup(item) + '</div>';
+  }
+
+  function optionsMarkup(key, options, profile, stayOnStep, multiple) {
     var className = profile ? "research-survey-profile-option" : "research-survey-option";
     var wrapper = profile ? "research-survey-profile-grid" : "research-survey-options";
     return '<div class="' + wrapper + '">' + options.map(function (option) {
-      return '<button type="button" class="' + className + (previewAnswers[key] === option.value ? ' is-selected' : '') + '" data-preview-answer="' + escapeHtml(key) + '" data-preview-value="' + escapeHtml(option.value) + '"><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>';
+      var selected = multiple ? Array.isArray(previewAnswers[key]) && previewAnswers[key].includes(option.value) : previewAnswers[key] === option.value;
+      return '<button type="button" class="' + className + (selected ? ' is-selected' : '') + '" data-preview-answer="' + escapeHtml(key) + '" data-preview-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-preview-stay="true"' : '') + (multiple ? ' data-preview-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>';
     }).join("") + '</div>';
   }
 
@@ -489,6 +597,12 @@
     previewBackButton.disabled = previewIndex === 0;
 
     if (current.type === "intro") renderIntro(current);
+    else if (current.type === "info") renderInfo(current);
+    else if (current.type === "choice") renderChoice(current);
+    else if (current.type === "choice_multiple") renderChoiceMultiple(current);
+    else if (current.type === "choice_text") renderChoiceText(current);
+    else if (current.type === "choice_multiple_text") renderChoiceMultipleText(current);
+    else if (current.type === "text") renderText(current);
     else if (current.type === "runner_level") renderLevel(current);
     else if (current.type === "rr_account") renderAccount(current);
     else if (current.type === "feature") renderFeature(current);
@@ -501,7 +615,34 @@
   }
 
   function renderIntro(item) {
-    previewContent.innerHTML = '<span class="research-survey-kicker">Entrevista com atletas</span><h2 class="research-survey-title">' + escapeHtml(item.title || research.config.publicTitle) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-free-note"><i class="fa-solid fa-circle-check"></i><span><strong>O essencial continua gratuito.</strong> Conta, perfil, calendário, resultados e recursos essenciais continuam gratuitos.</span></div><button type="button" class="btn btn-warning btn-lg mt-4" data-preview-go-next>Começar entrevista<i class="fa-solid fa-arrow-right ms-2"></i></button>';
+    var copy = '<div><span class="research-survey-kicker">Entrevista com atletas</span><h2 class="research-survey-title">' + escapeHtml(item.title || research.config.publicTitle) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-free-note"><i class="fa-solid fa-circle-check"></i><span><strong>O essencial continua gratuito.</strong> Conta, perfil, calendário, resultados e recursos essenciais continuam gratuitos.</span></div><button type="button" class="btn btn-warning btn-lg mt-4" data-preview-go-next>Começar entrevista<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+    previewContent.innerHTML = previewLayout(copy, item);
+  }
+
+  function renderInfo(item) {
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">' + escapeHtml(item.name) + '</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><button type="button" class="btn btn-warning btn-lg mt-4" data-preview-go-next>Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>', item);
+  }
+
+  function renderChoice(item) {
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionsMarkup(item.key, item.options || [], false) + '</div>';
+  }
+
+  function renderChoiceMultiple(item) {
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionsMarkup(item.key, item.options || [], false, true, true) + '<div class="invalid-feedback" data-preview-multiple-feedback>Escolha pelo menos uma opção.</div><button type="button" class="btn btn-warning mt-3" data-preview-multiple-next="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderChoiceText(item) {
+    var textKey = item.key + "_text";
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionsMarkup(item.key, item.options || [], false, true) + '<textarea class="form-control form-control-lg mt-3" rows="4" maxlength="2000" placeholder="Conte mais sobre sua escolha" data-preview-custom-text="' + escapeHtml(textKey) + '">' + escapeHtml(previewAnswers[textKey] || "") + '</textarea><div class="invalid-feedback">Escolha uma opção e preencha o texto.</div><button type="button" class="btn btn-warning mt-3" data-preview-custom-next="choice_text" data-preview-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderChoiceMultipleText(item) {
+    var textKey = item.key + "_text";
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong>' + optionsMarkup(item.key, item.options || [], false, true, true) + '<textarea class="form-control form-control-lg mt-3" rows="4" maxlength="2000" placeholder="Conte mais sobre suas escolhas" data-preview-custom-text="' + escapeHtml(textKey) + '">' + escapeHtml(previewAnswers[textKey] || "") + '</textarea><div class="invalid-feedback">Escolha pelo menos uma opção e preencha o texto.</div><button type="button" class="btn btn-warning mt-3" data-preview-custom-next="choice_multiple_text" data-preview-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
+  }
+
+  function renderText(item) {
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-kicker">Para conhecer você</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question) + '</strong><textarea class="form-control form-control-lg mt-3" rows="5" maxlength="2000" placeholder="Digite sua resposta" data-preview-custom-text="' + escapeHtml(item.key) + '">' + escapeHtml(previewAnswers[item.key] || "") + '</textarea><div class="invalid-feedback">Preencha sua resposta para continuar.</div><button type="button" class="btn btn-warning mt-3" data-preview-custom-next="text" data-preview-custom-key="' + escapeHtml(item.key) + '">Continuar<i class="fa-solid fa-arrow-right ms-2"></i></button></div>';
   }
 
   function renderLevel(item) {
@@ -517,7 +658,7 @@
   }
 
   function renderFeature(item) {
-    previewContent.innerHTML = '<div class="research-survey-feature-layout"><div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h2 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>' + visualMarkup(item) + '</div><div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionsMarkup(item.key, [
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h2 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionsMarkup(item.key, [
       { value: "yes", label: "Sim, usaria" }, { value: "maybe", label: "Talvez usaria" }, { value: "no", label: "Não usaria" }
     ], false) + '</div>';
   }
@@ -556,7 +697,34 @@
 
   function bindPreviewControls() {
     previewContent.querySelectorAll("[data-preview-answer]").forEach(function (button) {
-      button.addEventListener("click", function () { previewAnswers[button.getAttribute("data-preview-answer")] = button.getAttribute("data-preview-value"); renderPreview(); window.setTimeout(goNext, 180); });
+      button.addEventListener("click", function () {
+        var key = button.getAttribute("data-preview-answer");
+        var value = button.getAttribute("data-preview-value");
+        if (button.getAttribute("data-preview-multiple") === "true") {
+          var values = Array.isArray(previewAnswers[key]) ? previewAnswers[key].slice() : [];
+          var valueIndex = values.indexOf(value);
+          if (valueIndex >= 0) values.splice(valueIndex, 1); else values.push(value);
+          previewAnswers[key] = values;
+        } else previewAnswers[key] = value;
+        var stay = button.getAttribute("data-preview-stay") === "true";
+        renderPreview();
+        if (!stay) window.setTimeout(goNext, 180);
+      });
+    });
+    previewContent.querySelectorAll("[data-preview-multiple-next]").forEach(function (button) { button.addEventListener("click", function () { var values = previewAnswers[button.getAttribute("data-preview-multiple-next")]; if (!Array.isArray(values) || !values.length) { showToast("Escolha pelo menos uma opção.", true); return; } goNext(); }); });
+    previewContent.querySelectorAll("[data-preview-custom-text]").forEach(function (field) { field.addEventListener("input", function () { previewAnswers[field.getAttribute("data-preview-custom-text")] = field.value; field.classList.remove("is-invalid"); }); });
+    previewContent.querySelectorAll("[data-preview-custom-next]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var key = button.getAttribute("data-preview-custom-key");
+        var mode = button.getAttribute("data-preview-custom-next");
+        var textKey = mode === "choice_text" || mode === "choice_multiple_text" ? key + "_text" : key;
+        var field = previewContent.querySelector('[data-preview-custom-text="' + textKey + '"]');
+        previewAnswers[textKey] = field.value.trim();
+        var missingChoice = mode === "choice_text" && !previewAnswers[key];
+        var missingMultiple = mode === "choice_multiple_text" && (!Array.isArray(previewAnswers[key]) || !previewAnswers[key].length);
+        if (!previewAnswers[textKey] || missingChoice || missingMultiple) { field.classList.add("is-invalid"); field.focus(); return; }
+        goNext();
+      });
     });
     previewContent.querySelectorAll("[data-preview-package]").forEach(function (button) { button.addEventListener("click", function () { var key = button.getAttribute("data-preview-package"); previewPackage[key] = !previewPackage[key]; if (previewMustHave === key && !previewPackage[key]) previewMustHave = ""; renderPreview(); }); });
     previewContent.querySelectorAll("[data-preview-billing]").forEach(function (button) { button.addEventListener("click", function () { previewPrice.billing = button.getAttribute("data-preview-billing"); renderPreview(); }); });
@@ -616,7 +784,8 @@
       var packageNames = Array.isArray(item.packageNames) ? item.packageNames : [];
       var packageMarkup = packageNames.length ? packageNames.map(function (name) { return '<span class="research-dashboard-package-chip">' + escapeHtml(name) + '</span>'; }).join("") : '<span class="research-admin-muted">Nenhuma funcionalidade informada.</span>';
       var mustHaveMarkup = item.mustHaveName ? '<div class="research-dashboard-must-have"><i class="fa-solid fa-star"></i><span><small>Indispensável</small><strong>' + escapeHtml(item.mustHaveName) + '</strong></span></div>' : "";
-      return '<tr class="research-dashboard-response-row" tabindex="0" aria-expanded="false" aria-controls="' + detailId + '" data-research-response-toggle="' + detailId + '"><td>' + escapeHtml(item.completedAt) + '</td><td><strong>' + escapeHtml(item.email || "Anônimo") + '</strong><i class="fa-solid fa-chevron-down ms-2"></i></td><td>' + escapeHtml(profileLabel(item.level)) + '</td><td>' + escapeHtml(item.billing === "annual" ? "Anual" : "Mensal") + '</td><td><strong>' + escapeHtml(responsePriceLabel(item)) + '</strong></td><td>' + escapeHtml(item.packageCount) + '</td></tr>' +
+      var athleteLabel = item.email || ("Atleta anônimo · " + String(item.responseId || "").replace(/-/g, "").slice(0, 6).toUpperCase());
+      return '<tr class="research-dashboard-response-row" tabindex="0" aria-expanded="false" aria-controls="' + detailId + '" data-research-response-toggle="' + detailId + '"><td>' + escapeHtml(item.completedAt) + '</td><td><strong>' + escapeHtml(athleteLabel) + '</strong><i class="fa-solid fa-chevron-down ms-2"></i></td><td>' + escapeHtml(profileLabel(item.level)) + '</td><td>' + escapeHtml(item.billing === "annual" ? "Anual" : "Mensal") + '</td><td><strong>' + escapeHtml(responsePriceLabel(item)) + '</strong></td><td>' + escapeHtml(item.packageCount) + '</td></tr>' +
         '<tr class="research-dashboard-response-detail" id="' + detailId + '" hidden><td colspan="6"><div class="research-dashboard-response-detail-inner"><div><span class="research-dashboard-detail-label">Funcionalidades escolhidas no pacote</span><div class="research-dashboard-package-list">' + packageMarkup + '</div></div><div class="research-dashboard-response-meta"><span><small>Conta Road Runners</small><strong>' + escapeHtml(accountLabel(item.account)) + '</strong></span>' + mustHaveMarkup + '</div></div></td></tr>';
     }).join("");
     root.querySelector("[data-research-recent-results]").innerHTML = recentMarkup || '<tr><td class="text-center research-admin-muted py-4" colspan="6">Nenhuma resposta encontrada para estes filtros.</td></tr>';
@@ -651,9 +820,9 @@
   root.querySelector("[data-research-public-link]").addEventListener("click", function (event) { if (research.status !== "publicada") event.preventDefault(); });
   root.querySelector("[data-research-add-block]").addEventListener("click", openAddDialog);
   root.querySelectorAll("[data-research-add-close]").forEach(function (button) { button.addEventListener("click", closeAddDialog); });
-  root.querySelector("[data-research-add-confirm]").addEventListener("click", addFeature);
-  root.querySelector("[data-research-duplicate]").addEventListener("click", duplicateFeature);
-  root.querySelector("[data-research-delete]").addEventListener("click", deleteFeature);
+  root.querySelector("[data-research-add-confirm]").addEventListener("click", addStep);
+  root.querySelector("[data-research-duplicate]").addEventListener("click", duplicateStep);
+  root.querySelector("[data-research-delete]").addEventListener("click", deleteStep);
   root.querySelector("[data-research-preview-open]").addEventListener("click", openPreview);
   root.querySelector("[data-research-preview-close]").addEventListener("click", closePreview);
   root.querySelector("[data-research-shuffle]").addEventListener("click", function () { buildPreviewFlow(); previewIndex = Math.min(3, previewFlow.length - 1); renderPreview(); });

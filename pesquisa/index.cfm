@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css"/>
     <link rel="stylesheet" href="/assets/css/mdb.min.css"/>
     <link rel="stylesheet" href="/assets/plugins/css/all.min.css"/>
-    <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260818-4"/>
+    <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260819-1"/>
 </head>
 <body class="research-public-body">
     <main class="research-public-page" id="researchPublicApp" data-research-slug="<cfoutput>#htmlEditFormat(URL.slug)#</cfoutput>" data-research-api="/pesquisa/api.cfm">
@@ -31,6 +31,6 @@
             </div>
         </div>
     </main>
-    <script src="/pesquisa/pesquisa.js?v=20260818-5"></script>
+    <script src="/pesquisa/pesquisa.js?v=20260819-4"></script>
 </body>
 </html>
