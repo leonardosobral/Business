@@ -1,12 +1,11 @@
 # Publicidade: chaveamento do Business para o schema `ads`
 
-Atualizado em: 2026-08-20
+Atualizado em: 2026-08-21
 
 Status: migration da Fase 1 aplicada em produção em 2026-07-12 e Business
-chaveado para `ads.*`. O refresh e o job estão ativos. Em 2026-08-17 foi
-preparado o chaveamento explícito de todos os fluxos Ads para o datasource CFML
-`runnerhub`, autenticado no PostgreSQL como `runner`; o script idempotente de
-grants deve ser executado antes desse deploy.
+chaveado para `ads.*`. O refresh e o job estão ativos. O chaveamento explícito
+de todos os fluxos Ads para o datasource CFML `runnerhub`, autenticado no
+PostgreSQL como `runner`, foi concluído e auditado com os privilégios mínimos.
 
 O roadmap único do domínio está em
 [publicidade_ads_plano_mestre.md](../../../RoadRunners/_codex/docs/publicidade_ads_plano_mestre.md). Este documento mantém
@@ -328,7 +327,115 @@ A migration e os contract tests pertencem ao RoadRunners:
 - `RoadRunners/_codex/sql/2026-08-20_ads_v1_house_banner_contract_tests.sql`.
 
 O gate local `_codex/scripts/test_ads_v1_house_banner_contract.sh`, armazenado
-no RoadRunners por cobrir os dois repositórios, passou. O deploy seguro exige
-migration, contract tests, publicação do Business e somente depois o consumidor
-de banner no RoadRunners. Até essa sequência ser concluída, o site continua no
-banner legado.
+no RoadRunners por cobrir os dois repositórios, passou. A sequência posterior
+foi concluída em produção: migration, contract tests, publicação do Business,
+consumidor no RoadRunners e smoke com quatro banners canônicos ativos.
+
+## 14. Fechamento dos consumidores legados — 2026-08-21
+
+O lote final foi publicado no RoadRunners e tornou todos os spots ativos
+exclusivamente V1. Não há migration de banco neste lote e nenhuma view de
+compatibilidade em `public` é removida.
+
+### Estado operacional confirmado
+
+- o Job 9 voltou a responder: execução manual de 2026-08-21 10:31 com
+  `success`, HTTP 200 e mensagem `Metricas de publicidade atualizadas`;
+- uma nova execução manual posterior à publicação, em 2026-08-21 11:13:23,
+  retornou `success`, HTTP 200 em 925 ms e atualizou o agregado até 2026-08-21
+  com 4.976 views, 5 clicks e custo de R$ 5,00;
+- `/portal/banners/` foi aberto com o perfil administrador em “todas as contas”
+  e exibiu quatro banners canônicos ativos e suas métricas; após a publicação,
+  o painel já registrava 21 impressões e um click;
+- o resultado anterior “Acesso restrito” pertence ao contexto sem privilégio
+  administrativo e é o comportamento esperado para contas comuns.
+- o smoke autenticado aprovou CPC canônico na home, busca, estado e sidebar;
+  o segundo placement da home ficou vazio por exclusão da campanha já entregue,
+  sem recorrer ao legado;
+- o banner HOUSE foi aprovado no layout desktop e no breakpoint móvel, que
+  selecionou a imagem mobile própria;
+- as páginas inspecionadas não continham marcadores nem URLs legadas e as cinco
+  rotas aposentadas retornaram HTTP 410 com JSON.
+
+### Arquivos alterados no lote final
+
+RoadRunners:
+
+- `config/settings.cfm` e `config/ads.local.example.cfm`;
+- `includes/eventos_ads.cfm`;
+- `includes/ads_v1/banner_delivery.cfm`;
+- `includes/estrutura/home_sidebar_promos.cfm`;
+- `includes/estrutura/home_sidebar_mobile_banner.cfm`;
+- `includes/estrutura/feed_lateral.cfm`;
+- `includes/estrutura/seo-web-tools-body-end.cfm`;
+- `api/ads/click/click.cfm` e `api/ads/click/click_backup.cfm`;
+- `api/ads/ping/ping.cfm` e `api/ads/ping/ping_backup.cfm`;
+- `api/ads/view/view.cfm`;
+- auditorias e contratos estáticos Ads em `_codex/scripts/`.
+
+Business:
+
+- este documento operacional. Não foi necessária alteração adicional de
+  runtime para o fechamento dos spots.
+
+O arquivo local ignorado `config/ads.local.cfm` também foi limpo na cópia de
+trabalho. O servidor pode conservar temporariamente a chave antiga, pois
+`config/settings.cfm` deixa de lê-la ou expô-la em `APPLICATION.adsV1`; removê-la
+no deploy mantém a configuração coerente e facilita a operação.
+
+### Objetos e caminhos chaveados
+
+- os cinco placements nativos usam somente `AdsV1CpcDeliveryService` ou
+  `AdsV1HouseDeliveryService`, conforme as allowlists locais;
+- o banner `rr-sidebar-banner-300x250` usa somente
+  `AdsV1BannerDeliveryService`;
+- seleção, `SERVED`, viewable e click permanecem nas funções e endpoints
+  canônicos V1;
+- os consumidores não consultam mais `ads.tb_ad_eventos`, não gravam
+  `ads.tb_ad_log` e não instanciam o `Tracker` legado;
+- os endpoints legados de click, ping e view, incluindo backups, respondem
+  `410 Gone` e não executam DML;
+- o contador global antigo de impressões foi retirado; a visibilidade é medida
+  apenas por `includes/ads_v1/viewability.cfm`.
+
+As correções de `information_schema` e dos incrementais descritas nas seções 5
+e 6 permanecem válidas e não precisaram ser reabertas. A auditoria da Fase 1
+continua confirmando `table_schema = 'ads'`, ausência de `current_schema()` para
+publicidade e ausência de DDL que recrie as tabelas em `public`.
+
+### Validações realizadas
+
+- contratos nativo, banner e HOUSE atualizados para o modelo por placement e
+  sem fallback legado;
+- auditoria all-spots ampliada para cobrir o contador global e os endpoints de
+  backup;
+- `audit_ads_phase1_static.sh`: `APROVADA` para RoadRunners e Business;
+- `audit_ads_v1_static.sh`: `APROVADA`;
+- `audit_ads_v1_all_spots_static.sh`: `PASSED`;
+- auditorias CFML CPC, HOUSE e shadow: aprovadas;
+- busca de runtime sem ocorrências de `legacyFallbackPlacements`, chamadas aos
+  endpoints antigos, `Tracker`, `ads.tb_ad_eventos` ou `ads.tb_ad_log`, exceto
+  no arquivo aposentado e não referenciado `includes/estrutura/profile_mini.cfm`;
+- `git diff --check` sem erros.
+
+### Pendências, riscos e ordem de publicação
+
+Não há pendência de implementação. A observação contínua do Job 9, dos logs
+`ads_v1_native`, CPC/HOUSE, saldo, orçamento e reconciliação passa a ser
+operação normal.
+
+O principal risco funcional é deliberado: se a V1 estiver indisponível ou não
+encontrar candidato, o slot fica vazio; ele não volta a servir ou cobrar pelo
+modelo legado. Páginas antigas em cache podem tentar uma URL legada e receber
+410 durante a curta janela de expiração. O rollback é republicar o commit
+anterior, não reativar DML nos endpoints aposentados manualmente.
+
+Ordem coordenada vigente:
+
+1. migration do banco — concluída;
+2. RoadRunners — lote final publicado e smoke aprovado;
+3. Business — já publicado; este lote acrescenta somente documentação;
+4. observação — smoke e refresh posterior à publicação aprovados; próximas
+   execuções agendadas fazem parte da operação normal;
+5. remoção futura das views `public.*` — somente por migration separada após a
+   janela de observação.
