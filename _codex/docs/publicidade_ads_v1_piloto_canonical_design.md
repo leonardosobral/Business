@@ -1,7 +1,10 @@
 # Ads V1 — desenho do piloto canônico no Business
 
-Data: 2026-08-18  
-Status: aprovado e em implementação
+Data: 2026-08-18
+
+Atualizado em: 2026-08-20
+
+Status: painel operacional; expansão multi-placement preparada localmente
 
 ## 1. Contexto e decisão
 
@@ -9,7 +12,7 @@ A Fase 1 já moveu os objetos legados de publicidade para o schema `ads` no Post
 
 A fundação canônica Ads V1 e sua API administrativa SQL também já estão aplicadas no banco de produção `runnerhub`. Os contratos SQL e a auditoria compacta passaram. A operação continuará no schema `ads` do banco principal; banco dedicado, FDW e AWS não fazem parte deste ciclo e só voltam a ser considerados se o volume justificar.
 
-O próximo incremento será um painel administrativo canônico no Business, separado do Turbinado legado. Ele permitirá validar o ciclo comercial e operacional da Ads V1 sem alterar a entrega atual de anúncios no RoadRunners e sem manter duas fontes de verdade por dual-write.
+O painel administrativo canônico já está publicado no Business, separado do Turbinado legado. A expansão de 2026-08-20 permite administrar os cinco placements nativos de evento cadastrados pela fundação all-spots, sem manter duas fontes de verdade por dual-write.
 
 ## 2. Objetivos
 
@@ -77,6 +80,7 @@ Antes de oferecer ações, o painel verifica no PostgreSQL a existência e o dir
 - `ads.change_campaign_status`
 - `ads.credit_account`
 - `ads.reverse_click_debit`
+- `ads.replace_campaign_placements`
 
 A verificação usa assinaturas resolvidas pelo PostgreSQL e `has_function_privilege(current_user, ..., 'EXECUTE')`; ela não depende de `search_path` nem de objetos em `public`.
 
@@ -117,10 +121,11 @@ Campos do primeiro corte:
 - dispositivo (`ALL`, `DESKTOP` ou `MOBILE`);
 - país em código ISO de duas letras, inicialmente `BR`;
 - região opcional.
+- um ou mais spots nativos de evento permitidos pelo catálogo canônico.
 
-O placement será fixo em `rr-home-upcoming-native`. O destino será derivado no servidor a partir do evento e da URL oficial do RoadRunners; não será aceito um destino arbitrário enviado pelo navegador.
+Os placements permitidos para campanhas EVENT são `rr-home-upcoming-native`, `rr-home-upcoming-native-secondary`, `rr-search-events-native`, `rr-state-events-native` e `rr-sidebar-event-native`. O placement de banner não é oferecido nesse formulário. O destino será derivado no servidor a partir do evento e da URL oficial do RoadRunners; não será aceito um destino arbitrário enviado pelo navegador.
 
-A persistência usa somente `ads.save_event_campaign`. Edição será permitida apenas nos estados aceitos pelo contrato, inicialmente `DRAFT` e `PAUSED`.
+A persistência chama `ads.save_event_campaign` e `ads.replace_campaign_placements` dentro da mesma transação. Edição será permitida apenas nos estados aceitos pelo contrato, inicialmente `DRAFT` e `PAUSED`.
 
 ### 8.3 Crédito manual
 
@@ -195,7 +200,7 @@ O script de auditoria deverá confirmar:
 
 - ausência de `runner_dba` nos arquivos do piloto;
 - uso do datasource `runnerhub`;
-- chamadas às cinco funções com schema `ads`;
+- chamadas às seis funções com schema `ads`;
 - ausência de DML direto nas tabelas canônicas;
 - ausência de mutações acionadas por `URL`/`GET`;
 - presença de validação CSRF nas ações POST;
@@ -210,15 +215,15 @@ Em produção, usando uma conta controlada e sem cliente pagante:
 
 1. Confirmar que administrador global sem conta selecionada recebe orientação e não consegue mutar dados.
 2. Selecionar uma conta e conferir saldo, campanhas e histórico.
-3. Criar uma campanha em `DRAFT` para um evento da conta.
-4. Editar a campanha em `DRAFT`.
+3. Criar uma campanha em `DRAFT` para um evento da conta e selecionar mais de um spot.
+4. Editar a campanha em `DRAFT`, retirar e adicionar spots e confirmar a lista atual.
 5. Creditar um valor mínimo controlado e repetir a mesma submissão para validar idempotência.
 6. Ativar a campanha, pausar e finalizar conforme as transições permitidas.
 7. Se houver débito CPC de teste, estorná-lo e confirmar que o segundo envio não duplica o estorno.
 8. Conferir no banco e no audit canônico que conta, saldo, ledger, campanha e histórico permanecem reconciliados.
 9. Confirmar que `/ads/` e a publicidade legada do site continuam operando.
 
-O piloto administrativo não implica que a campanha canônica será entregue no site; isso só ocorrerá na etapa posterior do RoadRunners.
+A associação no Business torna a campanha elegível, mas a entrega em cada spot continua condicionada à allowlist local e ao kill switch do RoadRunners.
 
 ## 13. Deploy e rollback
 
@@ -250,9 +255,9 @@ Rollback do painel:
 - finalizar campanhas de teste pela função de status, se necessário;
 - não reverter a foundation nem a API SQL, pois elas permanecem aditivas e não interferem no legado.
 
-## 14. Etapa seguinte: RoadRunners shadow mode
+## 14. Evolução da entrega no RoadRunners
 
-O shadow mode será um incremento independente. Ele deverá ler campanhas canônicas elegíveis e comparar a seleção canônica com a escolha legada, sem exibir a canônica ao usuário e sem cobrar CPC. House ads serão o primeiro tráfego exibido quando a observação do shadow mode estiver estável.
+Shadow, HOUSE e o primeiro consumidor CPC já foram exercitados. A etapa corrente migra cada spot nativo separadamente e mantém allowlist, kill switch, fallback explícito e reconciliação por placement. O banner permanece uma entrega HOUSE separada.
 
 Concorrência pesada, banco dedicado e infraestrutura AWS permanecem gates futuros de escala, não requisitos para iniciar o piloto com o volume atual.
 
@@ -275,7 +280,7 @@ Descartado porque o painel administrativo oferece um caminho mais controlado par
 Este incremento estará concluído quando:
 
 - o painel canônico estiver acessível somente a administradores e sempre limitado a uma conta efetiva;
-- as cinco operações SQL aprovadas forem consumidas sem DML canônico direto;
+- as seis operações SQL aprovadas forem consumidas sem DML canônico direto;
 - criação, edição, crédito, ativação, status e estorno passarem nos testes aplicáveis;
 - idempotência, CSRF e Post/Redirect/Get estiverem validados;
 - o audit estático passar;

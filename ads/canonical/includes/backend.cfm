@@ -29,6 +29,15 @@ function adsV1MoneyValue(required any value) {
     if (!isNumeric(normalized)) return -1;
     return val(normalized);
 }
+
+function adsV1FormList(required any value) {
+    if (isArray(arguments.value)) {
+        return duplicate(arguments.value);
+    }
+    return len(trim(arguments.value & ""))
+        ? listToArray(arguments.value & "")
+        : [];
+}
 </cfscript>
 
 <cfset VARIABLES.adsV1ApiReady = false/>
@@ -44,11 +53,19 @@ function adsV1MoneyValue(required any value) {
 <cfset VARIABLES.adsV1SelectedCampaignId = ""/>
 <cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
+<cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
+    "rr-home-upcoming-native",
+    "rr-home-upcoming-native-secondary",
+    "rr-search-events-native",
+    "rr-state-events-native",
+    "rr-sidebar-event-native"
+]/>
 
 <cfset qAdsV1Account = QueryNew("id_conta,nome_conta,status,available_balance,currency")/>
 <cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
-<cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_key,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost")/>
-<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id")/>
+<cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
+<cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost")/>
+<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys")/>
 <cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name")/>
 <cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name")/>
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
@@ -97,7 +114,8 @@ function adsV1MoneyValue(required any value) {
                 ('ads.activate_campaign(uuid,integer,text)'),
                 ('ads.change_campaign_status(uuid,text,integer,text)'),
                 ('ads.credit_account(bigint,numeric,text,text,integer,jsonb)'),
-                ('ads.reverse_click_debit(uuid,text,integer,text)')
+                ('ads.reverse_click_debit(uuid,text,integer,text)'),
+                ('ads.replace_campaign_placements(uuid,text[],integer,text)')
         ),
         resolved_functions AS (
             SELECT signature,
@@ -151,8 +169,8 @@ function adsV1MoneyValue(required any value) {
 
     <cfif qAdsV1Readiness.recordcount>
         <cfset VARIABLES.adsV1ReadinessFlag = qAdsV1Readiness.ready & ""/>
-        <cfset VARIABLES.adsV1ApiReady = val(qAdsV1Readiness.expected_count) EQ 5
-            AND val(qAdsV1Readiness.resolved_count) EQ 5
+        <cfset VARIABLES.adsV1ApiReady = val(qAdsV1Readiness.expected_count) EQ 6
+            AND val(qAdsV1Readiness.resolved_count) EQ 6
             AND val(qAdsV1Readiness.expected_table_count) EQ 10
             AND val(qAdsV1Readiness.resolved_table_count) EQ 10
             AND listFindNoCase("1,true,t,yes,on", trim(VARIABLES.adsV1ReadinessFlag)) GT 0/>
@@ -212,6 +230,31 @@ function adsV1MoneyValue(required any value) {
                          evt.nome_evento
             </cfquery>
 
+            <cfquery name="qAdsV1Placements" datasource="runnerhub">
+                SELECT placement.placement_key,
+                       placement.surface
+                FROM ads.placements placement
+                WHERE placement.status = 'ACTIVE'
+                  AND placement.format_key = 'NATIVE_EVENT'
+                  AND placement.placement_key IN (
+                      'rr-home-upcoming-native',
+                      'rr-home-upcoming-native-secondary',
+                      'rr-search-events-native',
+                      'rr-state-events-native',
+                      'rr-sidebar-event-native'
+                  )
+                ORDER BY array_position(
+                    ARRAY[
+                        'rr-home-upcoming-native',
+                        'rr-home-upcoming-native-secondary',
+                        'rr-search-events-native',
+                        'rr-state-events-native',
+                        'rr-sidebar-event-native'
+                    ]::text[],
+                    placement.placement_key
+                )
+            </cfquery>
+
             <cfquery name="qAdsV1Campaigns" datasource="runnerhub">
                 SELECT c.campaign_id,
                        c.account_id,
@@ -237,7 +280,7 @@ function adsV1MoneyValue(required any value) {
                        evt.data_inicial AS event_date,
                        evt.cidade AS event_city,
                        evt.estado AS event_state,
-                       placement.placement_key,
+                       placement.placement_keys,
                        coalesce(budget.spent_total, 0)::numeric(14, 2) AS spent_total,
                        coalesce(budget.spent_today, 0)::numeric(14, 2) AS spent_today,
                        budget.spent_date,
@@ -274,15 +317,16 @@ function adsV1MoneyValue(required any value) {
                 LEFT JOIN public.tb_evento_corridas evt
                   ON evt.id_evento = advertisement.core_event_id
                 LEFT JOIN LATERAL (
-                    SELECT pl.placement_key
+                    SELECT string_agg(
+                               DISTINCT pl.placement_key,
+                               ',' ORDER BY pl.placement_key
+                           ) AS placement_keys
                     FROM ads.campaign_placements link
                     INNER JOIN ads.placements pl
                       ON pl.placement_id = link.placement_id
                     WHERE link.campaign_id = c.campaign_id
                       AND link.account_id = c.account_id
                       AND link.status = 'ACTIVE'
-                    ORDER BY link.priority DESC, link.created_at
-                    LIMIT 1
                 ) placement ON true
                 LEFT JOIN ads.campaign_budget_state budget
                   ON budget.campaign_id = c.campaign_id
@@ -404,7 +448,8 @@ function adsV1MoneyValue(required any value) {
                            c.target_region_code,
                            c.starts_at,
                            c.ends_at,
-                           advertisement.core_event_id
+                           advertisement.core_event_id,
+                           placement.placement_keys
                     FROM ads.campaigns c
                     LEFT JOIN LATERAL (
                         SELECT ad.core_event_id
@@ -415,6 +460,18 @@ function adsV1MoneyValue(required any value) {
                         ORDER BY ad.created_at, ad.advertisement_id
                         LIMIT 1
                     ) advertisement ON true
+                    LEFT JOIN LATERAL (
+                        SELECT string_agg(
+                                   DISTINCT pl.placement_key,
+                                   ',' ORDER BY pl.placement_key
+                               ) AS placement_keys
+                        FROM ads.campaign_placements link
+                        INNER JOIN ads.placements pl
+                          ON pl.placement_id = link.placement_id
+                        WHERE link.campaign_id = c.campaign_id
+                          AND link.account_id = c.account_id
+                          AND link.status = 'ACTIVE'
+                    ) placement ON true
                     WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
                       AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND c.billing_model = 'CPC'
@@ -460,6 +517,25 @@ function adsV1MoneyValue(required any value) {
                 <cfset VARIABLES.adsV1FormDevice = structKeyExists(FORM, "target_device_class") ? uCase(trim(FORM.target_device_class & "")) : "ALL"/>
                 <cfset VARIABLES.adsV1FormCountry = structKeyExists(FORM, "target_country_code") ? uCase(trim(FORM.target_country_code & "")) : "BR"/>
                 <cfset VARIABLES.adsV1FormRegion = structKeyExists(FORM, "target_region_code") ? uCase(trim(FORM.target_region_code & "")) : ""/>
+                <cfset VARIABLES.adsV1FormPlacementInput = structKeyExists(FORM, "placement_keys") ? FORM.placement_keys : ""/>
+                <cfset VARIABLES.adsV1FormPlacementCandidates = adsV1FormList(VARIABLES.adsV1FormPlacementInput)/>
+                <cfset VARIABLES.adsV1FormPlacementKeys = []/>
+
+                <cfloop array="#VARIABLES.adsV1FormPlacementCandidates#" index="VARIABLES.adsV1FormPlacementCandidate">
+                    <cfset VARIABLES.adsV1FormPlacementKey = lCase(trim(VARIABLES.adsV1FormPlacementCandidate & ""))/>
+                    <cfif listFindNoCase(arrayToList(VARIABLES.adsV1AllowedEventPlacementKeys), VARIABLES.adsV1FormPlacementKey)
+                        AND NOT arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)>
+                        <cfset arrayAppend(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)/>
+                    </cfif>
+                </cfloop>
+
+                <cfif NOT arrayLen(VARIABLES.adsV1FormPlacementKeys)>
+                    <cfthrow type="AdsV1.Validation" message="Selecione ao menos um spot de publicidade valido."/>
+                </cfif>
+                <cfif arrayLen(VARIABLES.adsV1FormPlacementKeys) NEQ arrayLen(VARIABLES.adsV1FormPlacementCandidates)>
+                    <cfthrow type="AdsV1.Validation" message="A lista de spots de publicidade e invalida ou contem duplicidades."/>
+                </cfif>
+                <cfset VARIABLES.adsV1FormPlacementArrayLiteral = "{" & arrayToList(VARIABLES.adsV1FormPlacementKeys) & "}"/>
 
                 <cfif len(VARIABLES.adsV1FormCampaignId) AND NOT adsV1IsUuid(VARIABLES.adsV1FormCampaignId)>
                     <cfthrow type="AdsV1.Validation" message="Campanha invalida."/>
@@ -535,26 +611,38 @@ function adsV1MoneyValue(required any value) {
                 <cfset VARIABLES.adsV1DestinationUrl = reReplace(VARIABLES.roadRunnersBaseUrl, "/+$", "", "all")
                     & "/evento/" & trim(qAdsV1EventTarget.tag) & "/"/>
 
-                <cfquery name="qAdsV1CampaignSave" datasource="runnerhub">
-                    SELECT *
-                    FROM ads.save_event_campaign(
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#" null="#NOT len(VARIABLES.adsV1FormCampaignId)#"/> AS uuid),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1EventTarget.id_evento#"/> AS integer),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="rr-home-upcoming-native"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormName#"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1DestinationUrl#"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormCpc#" scale="2"/> AS numeric),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetTotal#" scale="2"/> AS numeric),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetDaily#" scale="2" null="#NOT len(VARIABLES.adsV1FormBudgetDailyRaw)#"/> AS numeric),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormStarts#"/> AS timestamp with time zone),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormEnds#"/> AS timestamp with time zone),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormDevice#"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCountry#"/> AS character(2)),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormRegion#" null="#NOT len(VARIABLES.adsV1FormRegion)#"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
-                    )
-                </cfquery>
+                <cftransaction>
+                    <cfquery name="qAdsV1CampaignSave" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.save_event_campaign(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#" null="#NOT len(VARIABLES.adsV1FormCampaignId)#"/> AS uuid),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1EventTarget.id_evento#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormPlacementKeys[1]#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormName#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1DestinationUrl#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormCpc#" scale="2"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetTotal#" scale="2"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetDaily#" scale="2" null="#NOT len(VARIABLES.adsV1FormBudgetDailyRaw)#"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormStarts#"/> AS timestamp with time zone),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormEnds#"/> AS timestamp with time zone),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormDevice#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCountry#"/> AS character(2)),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormRegion#" null="#NOT len(VARIABLES.adsV1FormRegion)#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                        )
+                    </cfquery>
+
+                    <cfquery name="qAdsV1CampaignPlacementSave" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.replace_campaign_placements(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#qAdsV1CampaignSave.campaign_id#"/> AS uuid),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormPlacementArrayLiteral#"/> AS text[]),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="Spots salvos pelo Business"/> AS text)
+                        )
+                    </cfquery>
+                </cftransaction>
 
                 <cflocation addtoken="false" url="./?success=campaign-saved&campaign=#qAdsV1CampaignSave.campaign_id#"/>
             </cfcase>

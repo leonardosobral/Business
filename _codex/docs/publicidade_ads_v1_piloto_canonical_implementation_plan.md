@@ -4,7 +4,7 @@
 
 **Goal:** Entregar no Business um painel administrativo isolado para operar e observar campanhas canônicas Ads V1 sem modificar o Turbinado legado.
 
-**Architecture:** A nova rota `/ads/canonical/` reutiliza autenticação, layout e seletor de conta do Business, mas mantém backend e interface próprios. Leituras usam tabelas qualificadas do schema `ads`; mutações usam somente as cinco funções SQL aprovadas, com conta efetiva, CSRF, parâmetros tipados e Post/Redirect/Get.
+**Architecture:** A rota `/ads/canonical/` reutiliza autenticação, layout e seletor de conta do Business, mas mantém backend e interface próprios. Leituras usam tabelas qualificadas do schema `ads`; mutações usam somente as seis funções SQL aprovadas, com conta efetiva, CSRF, parâmetros tipados e Post/Redirect/Get.
 
 **Tech Stack:** Adobe ColdFusion/CFML, PostgreSQL, datasource `runnerhub`, Bootstrap/MDB existente, Bash/Ripgrep para auditoria estática.
 
@@ -19,7 +19,7 @@
 - Toda mutação usa POST, token CSRF, parâmetros SQL tipados e Post/Redirect/Get após sucesso.
 - A identidade administrativa é `VARIABLES.businessRealIsAdmin`; `businessEffectiveIsAdmin` não serve como guard durante simulação de conta.
 - A operação exige um único `VARIABLES.businessActiveAccountId` válido.
-- O placement é fixo em `rr-home-upcoming-native` e o destino é derivado no servidor como `https://roadrunners.run/evento/<tag>/`.
+- Campanhas EVENT podem selecionar um ou mais dos cinco placements nativos permitidos; banner não é aceito nesse formulário. O destino é derivado no servidor como `https://roadrunners.run/evento/<tag>/`.
 - Campanhas e lançamentos nunca são apagados; usam status ou estorno compensatório.
 - Não criar commit, branch, tag ou push sem solicitação explícita do usuário.
 
@@ -46,7 +46,7 @@ test -f ads/canonical/includes/backend.cfm
 test -f ads/canonical/includes/home.cfm
 ! rg -n 'datasource="runner_dba"' ads/canonical
 rg -n 'datasource="runnerhub"' ads/canonical/includes/backend.cfm
-rg -n 'ads\.(save_event_campaign|activate_campaign|change_campaign_status|credit_account|reverse_click_debit)' ads/canonical/includes/backend.cfm
+rg -n 'ads\.(save_event_campaign|replace_campaign_placements|activate_campaign|change_campaign_status|credit_account|reverse_click_debit)' ads/canonical/includes/backend.cfm
 ! rg -n '(INSERT[[:space:]]+INTO|UPDATE|DELETE[[:space:]]+FROM)[[:space:]]+ads\.(campaigns|advertisements|creatives|campaign_placements|account_balances|credit_ledger|campaign_budget_state|campaign_status_history|daily_metrics)' ads/canonical --glob '*.cfm'
 ```
 
@@ -187,7 +187,7 @@ O operador vem de `qPerfil.id`. UUIDs devem passar por regex antes de qualquer c
 
 - [ ] **Step 4: Implementar salvar campanha**
 
-Validar evento pertencente à conta, nome, CPC positivo com duas casas, orçamento total positivo, orçamento diário opcional e não maior que o total, janela de datas, device e região. Derivar destino de `qAdsV1EventTarget.tag` e chamar `ads.save_event_campaign` com placement fixo. `campaign_id` vazio cria `DRAFT`; preenchido só edita campanha `DRAFT` ou `PAUSED` da conta.
+Validar evento pertencente à conta, nome, CPC positivo com duas casas, orçamento total positivo, orçamento diário opcional e não maior que o total, janela de datas, device, região e ao menos um placement da allowlist EVENT. Derivar destino de `qAdsV1EventTarget.tag` e chamar `ads.save_event_campaign` e `ads.replace_campaign_placements` na mesma transação. `campaign_id` vazio cria `DRAFT`; preenchido só edita campanha `DRAFT` ou `PAUSED` da conta.
 
 - [ ] **Step 5: Implementar crédito idempotente**
 

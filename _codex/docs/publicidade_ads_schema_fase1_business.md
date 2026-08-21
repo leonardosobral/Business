@@ -1,6 +1,6 @@
 # Publicidade: chaveamento do Business para o schema `ads`
 
-Atualizado em: 2026-08-17
+Atualizado em: 2026-08-20
 
 Status: migration da Fase 1 aplicada em produção em 2026-07-12 e Business
 chaveado para `ads.*`. O refresh e o job estão ativos. Em 2026-08-17 foi
@@ -232,9 +232,10 @@ As mutações não executam DML canônico direto. O Business usa somente:
 - `ads.change_campaign_status`
 - `ads.credit_account`
 - `ads.reverse_click_debit`
+- `ads.replace_campaign_placements`
 
 O datasource é `runnerhub`, conectado como `runner`. A rota verifica em runtime
-a existência das cinco assinaturas e o privilégio `EXECUTE`. Não existe
+a existência das seis assinaturas e o privilégio `EXECUTE`. Não existe
 dependência de `current_schema()`, das views temporárias em `public` ou do
 datasource `runner_dba`.
 
@@ -271,3 +272,63 @@ Ordem recomendada:
    volume justificar;
 10. remover futuramente as views de compatibilidade apenas após observação dos
    consumidores legados.
+
+## 12. Administração multi-placement — 2026-08-20
+
+Após a aplicação em produção de
+`RoadRunners/_codex/sql/2026-08-20_ads_v1_all_spots_foundation.sql` e a aprovação
+de seus contract tests, o painel canônico foi preparado para administrar os
+cinco placements nativos EVENT. O formulário não oferece o placement de banner.
+
+Arquivos desta etapa:
+
+- `ads/canonical/includes/backend.cfm`;
+- `ads/canonical/includes/home.cfm`;
+- `_codex/scripts/test_ads_v1_multi_placement_business.sh`.
+
+O backend lê o catálogo `NATIVE_EVENT`, valida a lista recebida contra uma
+allowlist explícita e executa `ads.save_event_campaign` e
+`ads.replace_campaign_placements` na mesma transação. A listagem e a edição
+mostram todos os placements ativos da campanha. Permanecem preservados o
+datasource `runnerhub`, a conta efetiva, o operador autenticado, CSRF,
+Post/Redirect/Get e a ausência de DML direto nas tabelas canônicas.
+
+Validações locais aprovadas:
+
+- `_codex/scripts/test_ads_v1_multi_placement_business.sh`;
+- `_codex/scripts/audit_ads_v1_business_pilot_static.sh`;
+- `bash -n` nos dois scripts;
+- `git diff --check`;
+- balanceamento estático das tags CFML alteradas.
+
+A etapa somente será considerada publicada após smoke manual com a role
+`runner`: criar e editar uma campanha com múltiplos spots, pausar, reativar e
+confirmar a leitura da lista persistida.
+
+## 13. Gerenciador canônico de banner HOUSE — 2026-08-20
+
+O gerenciador em `/portal/banners/` foi preparado localmente para deixar de
+mutar as tabelas legadas. A nova versão:
+
+- lê campanhas `HOUSE`/`BANNER` e métricas canônicas no schema `ads`;
+- chama `ads.save_house_banner_campaign`, `ads.activate_campaign` e
+  `ads.change_campaign_status` pelo datasource `runnerhub`;
+- usa owner explícito da plataforma (`account_id = 1`) e o placement
+  `rr-sidebar-banner-300x250`;
+- preserva imagens desktop/mobile, dimensões, alt text, destino, período, peso
+  e prioridade;
+- executa alterações somente por POST com CSRF;
+- encerra por status, sem exclusão física;
+- mantém `ads.tb_portal_banners` e `ads.tb_portal_banners_log` somente para
+  leitura de rollback/histórico, sem DML.
+
+A migration e os contract tests pertencem ao RoadRunners:
+
+- `RoadRunners/_codex/sql/2026-08-20_ads_v1_house_banner.sql`;
+- `RoadRunners/_codex/sql/2026-08-20_ads_v1_house_banner_contract_tests.sql`.
+
+O gate local `_codex/scripts/test_ads_v1_house_banner_contract.sh`, armazenado
+no RoadRunners por cobrir os dois repositórios, passou. O deploy seguro exige
+migration, contract tests, publicação do Business e somente depois o consumidor
+de banner no RoadRunners. Até essa sequência ser concluída, o site continua no
+banner legado.

@@ -59,8 +59,8 @@
 
           <div class="d-flex flex-column flex-xl-row justify-content-between gap-3">
             <div>
-              <h3 class="mb-1">Portal - Banners</h3>
-              <p class="text-muted mb-0">Gerencie banners consumidos por Road Runners e outros sites da plataforma via API, com rastreamento de impressoes e cliques.</p>
+              <h3 class="mb-1">Portal - Banners HOUSE</h3>
+              <p class="text-muted mb-0">Gerencie banners canonicos sem cobranca, com owner da plataforma, delivery e metricas Ads V1.</p>
             </div>
             <div class="text-xl-end">
               <cfif VARIABLES.bannerManagementTablesReady>
@@ -77,15 +77,12 @@
             </div>
           <cfelseif NOT VARIABLES.bannerManagementTablesReady>
             <div class="alert alert-warning mb-0">
-              As tabelas do gerenciador de banners ainda nao existem. Rode o script em
-              <a href="/portal/banners/portal_banner_schema.sql" target="_blank" rel="noopener">/portal/banners/portal_banner_schema.sql</a>
-              e recarregue esta pagina.
+              A API canonica de banners ainda nao esta disponivel no datasource <code>runnerhub</code>.
+              Aplique a migration HOUSE de banner e recarregue esta pagina.
             </div>
           <cfelseif NOT VARIABLES.bannerManagementResponsiveReady>
             <div class="alert alert-warning mb-0">
-              A estrutura responsiva dos banners ainda nao existe. Rode novamente
-              <a href="/portal/banners/portal_banner_schema.sql" target="_blank" rel="noopener">/portal/banners/portal_banner_schema.sql</a>
-              para adicionar os arquivos desktop e mobile.
+              A estrutura responsiva canonica dos banners ainda nao esta pronta.
             </div>
           <cfelse>
             <cfif len(trim(VARIABLES.bannerManagementAlert.type)) AND len(trim(VARIABLES.bannerManagementAlert.message))>
@@ -138,8 +135,8 @@
             <cfif VARIABLES.bannerShowForm>
               <cfset VARIABLES.bannerFormRow = qBannerManagementEdit.recordcount ? qBannerManagementEdit.currentRow : 0/>
               <cfset VARIABLES.bannerFormRecordId = qBannerManagementEdit.recordcount ? qBannerManagementEdit.id_banner[1] : (isDefined("FORM.banner_id") ? trim(FORM.banner_id & "") : "")/>
-              <cfset VARIABLES.bannerFormCanal = qBannerManagementEdit.recordcount ? qBannerManagementEdit.canal[1] : (isDefined("FORM.banner_canal") ? FORM.banner_canal : "")/>
-              <cfset VARIABLES.bannerFormLocalLayout = qBannerManagementEdit.recordcount ? qBannerManagementEdit.local_layout[1] : (isDefined("FORM.banner_local_layout") ? FORM.banner_local_layout : "")/>
+              <cfset VARIABLES.bannerFormCanal = qBannerManagementEdit.recordcount ? qBannerManagementEdit.canal[1] : "roadrunners"/>
+              <cfset VARIABLES.bannerFormLocalLayout = qBannerManagementEdit.recordcount ? qBannerManagementEdit.local_layout[1] : VARIABLES.bannerPlacementKey/>
               <cfset VARIABLES.bannerFormDesktopPath = isDefined("FORM.banner_arquivo_desktop_atual") ? trim(FORM.banner_arquivo_desktop_atual & "") : ""/>
               <cfset VARIABLES.bannerFormDesktopOriginal = isDefined("FORM.banner_arquivo_desktop_original_atual") ? trim(FORM.banner_arquivo_desktop_original_atual & "") : ""/>
               <cfset VARIABLES.bannerFormDesktopFormat = isDefined("FORM.banner_formato_desktop_atual") ? trim(FORM.banner_formato_desktop_atual & "") : ""/>
@@ -171,7 +168,7 @@
                   <div class="d-flex justify-content-between align-items-start gap-3">
                     <div>
                       <h5 class="mb-1"><cfif len(VARIABLES.bannerFormRecordId)>Editar banner<cfelse>Novo banner</cfif></h5>
-                      <p class="text-muted mb-0">Cadastre a peca, defina o slot de exibicao e deixe a API entregar a melhor opcao disponivel para cada consumo.</p>
+                      <p class="text-muted mb-0">A peca sera salva como HOUSE no placement canonico da sidebar. Salvar nao ativa automaticamente um novo banner.</p>
                     </div>
                     <a class="btn btn-sm btn-outline-light" href="./">Fechar</a>
                   </div>
@@ -180,6 +177,7 @@
 
                   <form action="./" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="acao" value="salvar_banner"/>
+                    <input type="hidden" name="banner_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerManagementCsrf)#</cfoutput>"/>
                     <input type="hidden" name="banner_id" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormRecordId)#</cfoutput>"/>
                     <input type="hidden" name="banner_arquivo_desktop_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormDesktopPath)#</cfoutput>"/>
                     <input type="hidden" name="banner_arquivo_desktop_original_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormDesktopOriginal)#</cfoutput>"/>
@@ -195,11 +193,11 @@
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Canal</label>
-                        <input type="text" class="form-control" name="banner_canal" placeholder="roadrunners" required value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormCanal)#</cfoutput>"/>
+                        <input type="text" class="form-control" name="banner_canal" readonly value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormCanal)#</cfoutput>"/>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Local no layout</label>
-                        <input type="text" class="form-control" name="banner_local_layout" placeholder="home-side-banner" required value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormLocalLayout)#</cfoutput>"/>
+                        <input type="text" class="form-control" name="banner_local_layout" readonly value="<cfoutput>#htmlEditFormat(VARIABLES.bannerFormLocalLayout)#</cfoutput>"/>
                       </div>
 
                       <div class="col-12">
@@ -264,7 +262,7 @@
 
                       <div class="col-md-4">
                         <label class="form-label">Alt text</label>
-                        <input type="text" class="form-control" name="banner_alt_text" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.alt_text)#</cfoutput><cfelseif isDefined('FORM.banner_alt_text')><cfoutput>#htmlEditFormat(FORM.banner_alt_text)#</cfoutput></cfif>"/>
+                        <input type="text" class="form-control" name="banner_alt_text" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.alt_text)#</cfoutput><cfelseif isDefined('FORM.banner_alt_text')><cfoutput>#htmlEditFormat(FORM.banner_alt_text)#</cfoutput></cfif>"/>
                       </div>
                       <div class="col-md-2">
                         <label class="form-label">Peso de exibicao</label>
@@ -274,41 +272,13 @@
                         <label class="form-label">Prioridade</label>
                         <input type="number" min="1" class="form-control" name="banner_prioridade" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.prioridade#</cfoutput><cfelseif isDefined('FORM.banner_prioridade')><cfoutput>#FORM.banner_prioridade#</cfoutput><cfelse>1</cfif>"/>
                       </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Status</label>
-                        <cfset VARIABLES.bannerCurrentStatus = qBannerManagementEdit.recordcount ? qBannerManagementEdit.status[1] : (isDefined("FORM.banner_status") ? FORM.banner_status : 2)/>
-                        <select class="form-select" name="banner_status">
-                          <option value="1"<cfif val(VARIABLES.bannerCurrentStatus) EQ 1> selected</cfif>>Rascunho</option>
-                          <option value="2"<cfif val(VARIABLES.bannerCurrentStatus) EQ 2> selected</cfif>>Ativo</option>
-                          <option value="3"<cfif val(VARIABLES.bannerCurrentStatus) EQ 3> selected</cfif>>Pausado</option>
-                          <option value="4"<cfif val(VARIABLES.bannerCurrentStatus) EQ 4> selected</cfif>>Arquivado</option>
-                        </select>
-                      </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Limite diario</label>
-                        <input type="number" min="1" class="form-control" name="banner_limite_diario" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.limite_diario#</cfoutput><cfelseif isDefined('FORM.banner_limite_diario')><cfoutput>#FORM.banner_limite_diario#</cfoutput></cfif>"/>
-                      </div>
-
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <label class="form-label">Inicio de exibicao</label>
-                        <input type="datetime-local" class="form-control" name="banner_inicio_exibicao" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.inicio_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.inicio_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_inicio_exibicao')><cfoutput>#FORM.banner_inicio_exibicao#</cfoutput></cfif>"/>
+                        <input type="datetime-local" class="form-control" name="banner_inicio_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.inicio_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.inicio_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_inicio_exibicao')><cfoutput>#FORM.banner_inicio_exibicao#</cfoutput></cfif>"/>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <label class="form-label">Fim de exibicao</label>
-                        <input type="datetime-local" class="form-control" name="banner_fim_exibicao" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.fim_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.fim_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_fim_exibicao')><cfoutput>#FORM.banner_fim_exibicao#</cfoutput></cfif>"/>
-                      </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Limite de impressoes</label>
-                        <input type="number" min="1" class="form-control" name="banner_limite_impressoes" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.limite_impressoes#</cfoutput><cfelseif isDefined('FORM.banner_limite_impressoes')><cfoutput>#FORM.banner_limite_impressoes#</cfoutput></cfif>"/>
-                      </div>
-                      <div class="col-md-2">
-                        <label class="form-label">Limite de cliques</label>
-                        <input type="number" min="1" class="form-control" name="banner_limite_cliques" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.limite_cliques#</cfoutput><cfelseif isDefined('FORM.banner_limite_cliques')><cfoutput>#FORM.banner_limite_cliques#</cfoutput></cfif>"/>
-                      </div>
-
-                      <div class="col-12">
-                        <label class="form-label">Observacoes</label>
-                        <textarea class="form-control" rows="3" name="banner_observacoes"><cfif qBannerManagementEdit.recordcount><cfoutput>#htmlEditFormat(qBannerManagementEdit.observacoes)#</cfoutput><cfelseif isDefined("FORM.banner_observacoes")><cfoutput>#htmlEditFormat(FORM.banner_observacoes)#</cfoutput></cfif></textarea>
+                        <input type="datetime-local" class="form-control" name="banner_fim_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.fim_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.fim_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_fim_exibicao')><cfoutput>#FORM.banner_fim_exibicao#</cfoutput></cfif>"/>
                       </div>
 
                       <cfif qBannerManagementEdit.recordcount>
@@ -348,25 +318,18 @@
               <div class="card-body">
                 <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
                   <div>
-                    <h5 class="mb-1">Consumo via API</h5>
-                    <p class="text-muted mb-0">A API entrega um banner elegivel por canal e posicao, ja com URL de clique rastreavel e metadados para renderizacao.</p>
+                    <h5 class="mb-1">Entrega canônica</h5>
+                    <p class="text-muted mb-0">O RoadRunners seleciona o banner por delivery Ads V1, registra SERVED, VIEWABLE e CLICK e mantém custo zero para HOUSE.</p>
                   </div>
                   <div class="small text-muted text-lg-end">
-                    Endpoint base
-                    <div><code><cfoutput>#VARIABLES.bannerPublicBaseUrl#/api/portal/banners/</cfoutput></code></div>
+                    Placement
+                    <div><code><cfoutput>#htmlEditFormat(VARIABLES.bannerPlacementKey)#</cfoutput></code></div>
                   </div>
                 </div>
-                <hr/>
-                <div class="row g-3">
-                  <div class="col-lg-6">
-                    <div class="small text-muted mb-1">Exemplo de consulta JSON</div>
-                    <div class="bg-black bg-opacity-25 rounded p-3 portal-banner-code"><code><cfoutput>#VARIABLES.bannerPublicBaseUrl#/api/portal/banners/?canal=roadrunners&local=home-side-banner&tamanho=sidebar-300x250&site_url=https://beta.roadrunners.run</cfoutput></code></div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="small text-muted mb-1">Campos principais retornados</div>
-                    <div class="bg-black bg-opacity-25 rounded p-3 portal-banner-code"><code>banner.images.desktop.imageUrl, banner.images.mobile.imageUrl, banner.clickUrl, banner.target, banner.alt, banner.linkType</code></div>
-                  </div>
-                </div>
+                <cfif qBannerManagementLegacyRollback.recordcount>
+                  <hr/>
+                  <div class="small text-muted">Legado preservado somente para rollback: <cfoutput>#qBannerManagementLegacyRollback.legacy_banners# banners, #qBannerManagementLegacyRollback.legacy_views# views e #qBannerManagementLegacyRollback.legacy_clicks# clicks historicos.</cfoutput></div>
+                </cfif>
               </div>
             </div>
 
@@ -374,34 +337,16 @@
               <div class="card-body">
                 <form action="./" method="get" class="row g-3 align-items-end">
                   <div class="col-md-4">
-                    <label class="form-label">Canal</label>
-                    <select class="form-select" name="filtro_canal">
-                      <option value="">Todos</option>
-                      <cfoutput query="qBannerManagementChannels">
-                        <option value="#htmlEditFormat(qBannerManagementChannels.canal)#"<cfif URL.filtro_canal EQ qBannerManagementChannels.canal> selected</cfif>>#htmlEditFormat(qBannerManagementChannels.canal)#</option>
-                      </cfoutput>
-                    </select>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Local do layout</label>
-                    <select class="form-select" name="filtro_local">
-                      <option value="">Todos</option>
-                      <cfoutput query="qBannerManagementSlots">
-                        <option value="#htmlEditFormat(qBannerManagementSlots.local_layout)#"<cfif URL.filtro_local EQ qBannerManagementSlots.local_layout> selected</cfif>>#htmlEditFormat(qBannerManagementSlots.local_layout)#</option>
-                      </cfoutput>
-                    </select>
-                  </div>
-                  <div class="col-md-2">
                     <label class="form-label">Status</label>
                     <select class="form-select" name="filtro_status">
                       <option value="">Todos</option>
-                      <option value="1"<cfif URL.filtro_status EQ "1"> selected</cfif>>Rascunho</option>
-                      <option value="2"<cfif URL.filtro_status EQ "2"> selected</cfif>>Ativo</option>
-                      <option value="3"<cfif URL.filtro_status EQ "3"> selected</cfif>>Pausado</option>
-                      <option value="4"<cfif URL.filtro_status EQ "4"> selected</cfif>>Arquivado</option>
+                      <option value="DRAFT"<cfif URL.filtro_status EQ "DRAFT"> selected</cfif>>Rascunho</option>
+                      <option value="ACTIVE"<cfif URL.filtro_status EQ "ACTIVE"> selected</cfif>>Ativo</option>
+                      <option value="PAUSED"<cfif URL.filtro_status EQ "PAUSED"> selected</cfif>>Pausado</option>
+                      <option value="ENDED"<cfif URL.filtro_status EQ "ENDED"> selected</cfif>>Encerrado</option>
                     </select>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <button type="submit" class="btn btn-outline-light w-100">Filtrar</button>
                   </div>
                 </form>
@@ -480,7 +425,7 @@
                         </td>
                         <td><span class="badge badge-secondary">#bannerManagementTargetLabel(qBannerManagementList.abrir_nova_aba)#</span></td>
                         <td>
-                          <span class="badge <cfif qBannerManagementList.status EQ 2>badge-success<cfelseif qBannerManagementList.status EQ 3>badge-warning text-dark<cfelseif qBannerManagementList.status EQ 4>badge-dark<cfelse>badge-secondary</cfif>">
+                          <span class="badge <cfif qBannerManagementList.status EQ 'ACTIVE'>badge-success<cfelseif qBannerManagementList.status EQ 'PAUSED'>badge-warning text-dark<cfelseif qBannerManagementList.status EQ 'ENDED'>badge-dark<cfelse>badge-secondary</cfif>">
                             #bannerManagementStatusLabel(qBannerManagementList.status)#
                           </span>
                         </td>
@@ -489,13 +434,37 @@
                         <td class="text-end">#LSNumberFormat(VARIABLES.bannerRowCtr, "9.99")#%</td>
                         <td>
                           <div class="d-flex flex-wrap gap-2">
-                            <a class="btn btn-sm btn-outline-primary" href="./?banner_editar=#qBannerManagementList.id_banner#">Editar</a>
-                            <cfif qBannerManagementList.status EQ 2>
-                              <a class="btn btn-sm btn-outline-warning" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=3">Pausar</a>
-                            <cfelse>
-                              <a class="btn btn-sm btn-outline-success" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=2">Ativar</a>
+                            <cfif listFind("DRAFT,PAUSED", qBannerManagementList.status)>
+                              <a class="btn btn-sm btn-outline-primary" href="./?banner_editar=#qBannerManagementList.id_banner#">Editar</a>
+                              <form method="post" action="./">
+                                <input type="hidden" name="acao" value="alterar_status"/>
+                                <input type="hidden" name="banner_csrf" value="#htmlEditFormat(VARIABLES.bannerManagementCsrf)#"/>
+                                <input type="hidden" name="banner_id" value="#htmlEditFormat(qBannerManagementList.id_banner)#"/>
+                                <input type="hidden" name="target_status" value="ACTIVE"/>
+                                <input type="hidden" name="reason" value="Ativacao manual do banner HOUSE pelo Business"/>
+                                <button class="btn btn-sm btn-outline-success" type="submit">Ativar</button>
+                              </form>
                             </cfif>
-                            <a class="btn btn-sm btn-outline-dark" href="./?acao=status&banner_id=#qBannerManagementList.id_banner#&status=4" onclick="return confirm('Tem certeza que deseja arquivar este banner?');">Arquivar</a>
+                            <cfif qBannerManagementList.status EQ "ACTIVE">
+                              <form method="post" action="./">
+                                <input type="hidden" name="acao" value="alterar_status"/>
+                                <input type="hidden" name="banner_csrf" value="#htmlEditFormat(VARIABLES.bannerManagementCsrf)#"/>
+                                <input type="hidden" name="banner_id" value="#htmlEditFormat(qBannerManagementList.id_banner)#"/>
+                                <input type="hidden" name="target_status" value="PAUSED"/>
+                                <input type="hidden" name="reason" value="Pausa manual do banner HOUSE pelo Business"/>
+                                <button class="btn btn-sm btn-outline-warning" type="submit">Pausar</button>
+                              </form>
+                            </cfif>
+                            <cfif listFind("DRAFT,ACTIVE,PAUSED", qBannerManagementList.status)>
+                              <form method="post" action="./" onsubmit="return confirm('Tem certeza que deseja encerrar este banner?');">
+                                <input type="hidden" name="acao" value="alterar_status"/>
+                                <input type="hidden" name="banner_csrf" value="#htmlEditFormat(VARIABLES.bannerManagementCsrf)#"/>
+                                <input type="hidden" name="banner_id" value="#htmlEditFormat(qBannerManagementList.id_banner)#"/>
+                                <input type="hidden" name="target_status" value="ENDED"/>
+                                <input type="hidden" name="reason" value="Encerramento manual do banner HOUSE pelo Business"/>
+                                <button class="btn btn-sm btn-outline-dark" type="submit">Encerrar</button>
+                              </form>
+                            </cfif>
                           </div>
                         </td>
                       </tr>

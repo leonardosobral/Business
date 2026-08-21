@@ -9,6 +9,7 @@
 <cfset VARIABLES.adsV1FormDevice = "ALL"/>
 <cfset VARIABLES.adsV1FormCountry = "BR"/>
 <cfset VARIABLES.adsV1FormRegion = ""/>
+<cfset VARIABLES.adsV1FormPlacementKeys = ["rr-home-upcoming-native"] />
 <cfset VARIABLES.adsV1CampaignEditable = true/>
 
 <cfif FORM.ads_v1_action EQ "save_campaign" AND len(VARIABLES.adsV1Error)>
@@ -23,6 +24,7 @@
     <cfset VARIABLES.adsV1FormDevice = structKeyExists(FORM, "target_device_class") ? uCase(trim(FORM.target_device_class & "")) : "ALL"/>
     <cfset VARIABLES.adsV1FormCountry = structKeyExists(FORM, "target_country_code") ? uCase(trim(FORM.target_country_code & "")) : "BR"/>
     <cfset VARIABLES.adsV1FormRegion = structKeyExists(FORM, "target_region_code") ? uCase(trim(FORM.target_region_code & "")) : ""/>
+    <cfset VARIABLES.adsV1FormPlacementKeys = structKeyExists(FORM, "placement_keys") ? adsV1FormList(FORM.placement_keys) : []/>
 <cfelseif qAdsV1SelectedCampaign.recordcount>
     <cfset VARIABLES.adsV1FormCampaignId = qAdsV1SelectedCampaign.campaign_id & ""/>
     <cfset VARIABLES.adsV1FormEventId = val(qAdsV1SelectedCampaign.core_event_id)/>
@@ -35,6 +37,7 @@
     <cfset VARIABLES.adsV1FormDevice = qAdsV1SelectedCampaign.target_device_class & ""/>
     <cfset VARIABLES.adsV1FormCountry = trim(qAdsV1SelectedCampaign.target_country_code & "")/>
     <cfset VARIABLES.adsV1FormRegion = trim(qAdsV1SelectedCampaign.target_region_code & "")/>
+    <cfset VARIABLES.adsV1FormPlacementKeys = len(trim(qAdsV1SelectedCampaign.placement_keys & "")) ? listToArray(qAdsV1SelectedCampaign.placement_keys & "") : []/>
     <cfset VARIABLES.adsV1CampaignEditable = listFind("DRAFT,PAUSED", qAdsV1SelectedCampaign.status) GT 0/>
 </cfif>
 
@@ -132,7 +135,7 @@
         <div>
           <div class="ads-v1-eyebrow">Operacao</div>
           <h2 class="h5 mb-1">Campanhas canonicas</h2>
-          <p class="text-muted mb-0">Estas campanhas ainda nao participam da entrega atual do RoadRunners.</p>
+          <p class="text-muted mb-0">Campanhas ativas participam somente dos spots habilitados na configuracao do RoadRunners.</p>
         </div>
         <a class="btn btn-outline-info align-self-lg-start" href="./#campaign-form">Criar rascunho</a>
       </div>
@@ -147,6 +150,7 @@
                   <td>
                     <strong>#htmlEditFormat(name)#</strong>
                     <div class="small text-muted">#htmlEditFormat(nome_evento)#</div>
+                    <div class="small text-muted">Spots: #htmlEditFormat(replace(placement_keys & "", ",", ", ", "all"))#</div>
                     <div class="ads-v1-code text-muted">#htmlEditFormat(campaign_id)#</div>
                   </td>
                   <td><span class="badge <cfif status EQ 'ACTIVE'>badge-success<cfelseif status EQ 'PAUSED'>badge-warning<cfelseif status EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#htmlEditFormat(status)#</span></td>
@@ -208,7 +212,7 @@
         <div>
           <div class="ads-v1-eyebrow">Configuracao CPC</div>
           <h2 class="h5 mb-1"><cfif len(VARIABLES.adsV1FormCampaignId)>Editar campanha<cfelse>Nova campanha</cfif></h2>
-          <p class="text-muted mb-0">Placement fixo: <code>rr-home-upcoming-native</code>.</p>
+          <p class="text-muted mb-0">Escolha em quais spots nativos do RoadRunners a campanha pode aparecer.</p>
         </div>
         <cfif len(VARIABLES.adsV1FormCampaignId)><a class="btn btn-sm btn-outline-light" href="./#campaign-form">Cancelar edicao</a></cfif>
       </div>
@@ -217,6 +221,8 @@
         <div class="alert alert-warning mb-0">Somente campanhas DRAFT ou PAUSED podem ser editadas.</div>
       <cfelseif NOT qAdsV1Events.recordcount>
         <div class="alert alert-warning mb-0">A conta selecionada nao possui eventos ativos vinculados.</div>
+      <cfelseif NOT qAdsV1Placements.recordcount>
+        <div class="alert alert-warning mb-0">Nenhum spot nativo Ads V1 esta disponivel para configuracao.</div>
       <cfelse>
         <form method="post" action="./#campaign-form" class="row g-3">
           <input type="hidden" name="ads_v1_action" value="save_campaign"/>
@@ -264,6 +270,25 @@
           <div class="col-md-4">
             <label class="form-label" for="ads-v1-region">Regiao</label>
             <input class="form-control" id="ads-v1-region" name="target_region_code" maxlength="40" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormRegion)#</cfoutput>" placeholder="Opcional, ex.: SC"/>
+          </div>
+          <div class="col-12">
+            <fieldset>
+              <legend class="form-label mb-2">Spots de exibicao</legend>
+              <p class="small text-muted mb-2">Selecione ao menos um. A mesma campanha pode atender varios pontos sem duplicar saldo ou orcamento.</p>
+              <div class="row g-2">
+                <cfoutput query="qAdsV1Placements">
+                  <div class="col-md-6 col-xl-4">
+                    <div class="form-check border rounded p-3 h-100">
+                      <input class="form-check-input ms-0 me-2" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_keys" value="#htmlEditFormat(placement_key)#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
+                      <label class="form-check-label" for="ads-v1-placement-#currentRow#">
+                        <strong>#htmlEditFormat(surface)#</strong>
+                        <span class="d-block small text-muted">#htmlEditFormat(placement_key)#</span>
+                      </label>
+                    </div>
+                  </div>
+                </cfoutput>
+              </div>
+            </fieldset>
           </div>
           <div class="col-12 d-flex justify-content-end"><button class="btn btn-info" type="submit">Salvar campanha</button></div>
         </form>
