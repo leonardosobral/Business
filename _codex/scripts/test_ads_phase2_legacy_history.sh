@@ -49,8 +49,12 @@ history_file="ads/includes/legacy_history.cfm"
 
 require_pattern \
     "ads/home.cfm" \
-    '<cfinclude[[:space:]]+template="includes/legacy_history\.cfm"' \
+    '<cfinclude[[:space:]]+template="includes/workspace_history\.cfm"' \
     "painel principal incorpora o historico anterior"
+require_pattern \
+    "ads/includes/workspace_history.cfm" \
+    '<cfinclude[[:space:]]+template="legacy_history\.cfm"' \
+    "area de historico incorpora o sistema anterior"
 reject_pattern \
     "ads/home.cfm" \
     "href[[:space:]]*=[[:space:]]*['\"]/ads/legacy/" \

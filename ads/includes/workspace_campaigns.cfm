@@ -1,0 +1,87 @@
+<cfif VARIABLES.adsV1WorkspaceView EQ "campaigns">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3">
+    <div class="ads-status-tabs" aria-label="Filtrar campanhas">
+      <a class="<cfif VARIABLES.adsV1CampaignFilter EQ 'ongoing'>active</cfif>" href="./?view=campaigns&amp;status=ongoing">Em andamento <span class="badge badge-secondary"><cfoutput>#VARIABLES.adsV1OngoingCount#</cfoutput></span></a>
+      <a class="<cfif VARIABLES.adsV1CampaignFilter EQ 'draft'>active</cfif>" href="./?view=campaigns&amp;status=draft">Rascunhos <span class="badge badge-secondary"><cfoutput>#VARIABLES.adsV1DraftCount#</cfoutput></span></a>
+      <a class="<cfif VARIABLES.adsV1CampaignFilter EQ 'ended'>active</cfif>" href="./?view=campaigns&amp;status=ended">Finalizadas <span class="badge badge-secondary"><cfoutput>#VARIABLES.adsV1EndedCount#</cfoutput></span></a>
+    </div>
+    <cfif VARIABLES.adsAccessCanManageCampaign><a class="btn btn-outline-info" href="./?view=campaigns&amp;mode=new#campaign-form">Nova campanha</a></cfif>
+  </div>
+</cfif>
+
+<div class="row g-4 mb-4">
+  <div class="<cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>col-xl-9<cfelse>col-12</cfif>">
+    <section class="card shadow-0 h-100">
+      <div class="card-body p-3 p-lg-4">
+        <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+          <div><div class="ads-v1-eyebrow">Campanhas</div><h2 class="h5 mb-0"><cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>Campanhas em andamento<cfelseif VARIABLES.adsV1CampaignFilter EQ 'draft'>Rascunhos<cfelseif VARIABLES.adsV1CampaignFilter EQ 'ended'>Campanhas finalizadas<cfelse>Campanhas em andamento</cfif></h2></div>
+          <cfif VARIABLES.adsV1WorkspaceView EQ "overview"><a href="./?view=campaigns" class="btn btn-sm btn-outline-info">Ver todas</a></cfif>
+        </div>
+
+        <cfif qAdsV1Campaigns.recordcount>
+          <div class="table-responsive">
+            <table class="table table-hover ads-campaign-table <cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>ads-campaign-table--management</cfif> mb-0">
+              <thead><tr><th>Campanha</th><th>Status</th><th>Orçamento</th><th>Visualizações</th><th>Cliques</th><cfif VARIABLES.adsV1WorkspaceView EQ "campaigns"><th class="text-end">Ações</th></cfif></tr></thead>
+              <tbody>
+                <cfset VARIABLES.adsV1CampaignRowsShown = 0/>
+                <cfloop query="qAdsV1Campaigns">
+                  <cfset VARIABLES.adsV1RowStatus = uCase(qAdsV1Campaigns.status & "")/>
+                  <cfset VARIABLES.adsV1ShowCampaignRow = VARIABLES.adsV1WorkspaceView EQ "overview"
+                    ? listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus) GT 0
+                    : (VARIABLES.adsV1CampaignFilter EQ "ongoing"
+                      ? listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus) GT 0
+                      : (VARIABLES.adsV1CampaignFilter EQ "draft" ? VARIABLES.adsV1RowStatus EQ "DRAFT" : VARIABLES.adsV1RowStatus EQ "ENDED"))/>
+                  <cfif VARIABLES.adsV1ShowCampaignRow>
+                    <cfset VARIABLES.adsV1CampaignRowsShown++/>
+                    <cfset VARIABLES.adsV1BudgetProgress = val(qAdsV1Campaigns.budget_total) GT 0 ? min(100, max(0, (val(qAdsV1Campaigns.spent_total) / val(qAdsV1Campaigns.budget_total)) * 100)) : 0/>
+                    <cfoutput>
+                      <tr>
+                        <td><div class="d-flex align-items-start gap-2"><div class="ads-campaign-mark"><i class="fas fa-bullhorn" aria-hidden="true"></i></div><div><strong>#htmlEditFormat(qAdsV1Campaigns.name)#</strong><div class="small text-muted">#htmlEditFormat(qAdsV1Campaigns.nome_evento)#</div><div class="small text-muted"><cfif VARIABLES.adsV1WorkspaceView EQ "overview">#htmlEditFormat(adsV1PlacementCountSummary(qAdsV1Campaigns.placement_keys))#<cfelse>#htmlEditFormat(adsV1PlacementSummary(qAdsV1Campaigns.placement_keys))#</cfif></div></div></div></td>
+                        <td><span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span><cfif VARIABLES.adsV1RowStatus EQ "ACTIVE" AND VARIABLES.adsV1Summary.balance LT qAdsV1Campaigns.cpc_bid><div class="small text-warning mt-1">Saldo insuficiente</div></cfif></td>
+                        <td><div>#lsCurrencyFormat(qAdsV1Campaigns.spent_total)# de #lsCurrencyFormat(qAdsV1Campaigns.budget_total)#</div><div class="ads-budget-progress mt-2"><span style="width:#numberFormat(VARIABLES.adsV1BudgetProgress, '0')#%"></span></div></td>
+                        <td>#lsNumberFormat(qAdsV1Campaigns.viewable_impression_count, "9,999,999")#</td>
+                        <td>#lsNumberFormat(qAdsV1Campaigns.valid_click_count, "9,999,999")#</td>
+                        <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns"><td class="text-end">
+                          <cfif VARIABLES.adsAccessCanManageCampaign>
+                            <details class="ads-row-actions text-start"><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
+                              <cfif listFind("DRAFT,PAUSED", VARIABLES.adsV1RowStatus)>
+                                <a class="btn btn-sm btn-outline-light" href="./?view=campaigns&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)###campaign-form">Editar</a>
+                                <form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="activate_campaign"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="reason" value="Ativacao manual pelo Business"/><button class="btn btn-sm btn-success w-100" type="submit">Ativar<cfif VARIABLES.adsV1RowStatus EQ 'PAUSED'> novamente</cfif></button></form>
+                              </cfif>
+                              <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
+                              <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
+                            </div></details>
+                          <cfelse><span class="text-muted small">Somente leitura</span></cfif>
+                        </td></cfif>
+                      </tr>
+                    </cfoutput>
+                    <cfif VARIABLES.adsV1WorkspaceView EQ "overview" AND VARIABLES.adsV1CampaignRowsShown GTE 3><cfbreak/></cfif>
+                  </cfif>
+                </cfloop>
+                <cfif NOT VARIABLES.adsV1CampaignRowsShown><tr><td colspan="<cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>6<cfelse>5</cfif>" class="text-center text-muted py-4">Nenhuma campanha nesta categoria.</td></tr></cfif>
+              </tbody>
+            </table>
+          </div>
+        <cfelse><div class="alert alert-info mb-0">Esta conta ainda nao possui campanhas.</div></cfif>
+      </div>
+    </section>
+  </div>
+
+  <cfif VARIABLES.adsV1WorkspaceView EQ "overview">
+    <div class="col-xl-3"><section class="card shadow-0 h-100"><div class="card-body p-3 p-lg-4"><div class="ads-v1-eyebrow">Ações</div><h2 class="h5 mb-1">Próximos passos</h2>
+      <cfif VARIABLES.adsAccessCanManageCampaign><cfif VARIABLES.adsV1DraftCount GT 0><a class="ads-next-step" href="./?view=campaigns&amp;status=draft"><span class="ads-next-step-icon"><i class="fas fa-edit" aria-hidden="true"></i></span><span><strong class="d-block text-body">Concluir campanha em rascunho</strong><small class="text-muted"><cfoutput>#VARIABLES.adsV1DraftCount# aguardando configuração.</cfoutput></small></span></a><cfelse><a class="ads-next-step" href="./?view=campaigns&amp;mode=new#campaign-form"><span class="ads-next-step-icon"><i class="fas fa-plus" aria-hidden="true"></i></span><span><strong class="d-block text-body">Criar uma campanha</strong><small class="text-muted">Escolha o evento, os locais e o orçamento.</small></span></a></cfif><cfelse><a class="ads-next-step" href="./?view=campaigns"><span class="ads-next-step-icon"><i class="fas fa-eye" aria-hidden="true"></i></span><span><strong class="d-block text-body">Acompanhar campanhas</strong><small class="text-muted">Consulte investimento, visualizações e cliques.</small></span></a></cfif>
+      <cfif structKeyExists(VARIABLES.adsV1LatestPaidPayment, "amountCents")><a class="ads-next-step" href="./?view=payments"><span class="ads-next-step-icon text-success"><i class="fas fa-check-circle" aria-hidden="true"></i></span><span><strong class="d-block text-body">Saldo confirmado</strong><small class="text-muted"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1LatestPaidPayment.amountCents / 100)# via #uCase(VARIABLES.adsV1LatestPaidPayment.method)#.</cfoutput></small></span></a></cfif>
+      <a class="ads-next-step" href="./?view=campaigns"><span class="ads-next-step-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span><strong class="d-block text-body">Acompanhar desempenho</strong><small class="text-muted">Compare investimento, visualizações e cliques.</small></span></a>
+    </div></section></div>
+  </cfif>
+</div>
+
+<cfif VARIABLES.adsV1WorkspaceView EQ "overview">
+  <section class="card shadow-0 mb-4"><div class="card-body p-3 p-lg-4"><div class="d-flex justify-content-between align-items-center mb-2"><div><div class="ads-v1-eyebrow">Conta</div><h2 class="h5 mb-0">Atividade recente</h2></div><a href="./?view=history" class="btn btn-sm btn-outline-info">Ver histórico completo</a></div>
+    <cfset VARIABLES.adsV1ActivityCount = 0/>
+    <cfif structKeyExists(VARIABLES.adsV1LatestPaidPayment, "amountCents")><cfset VARIABLES.adsV1ActivityCount++/><div class="ads-activity-row"><div><strong>Saldo adicionado por <cfoutput>#uCase(VARIABLES.adsV1LatestPaidPayment.method)#</cfoutput></strong><div class="small text-muted"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1LatestPaidPayment.amountCents / 100)# confirmados</cfoutput></div></div><div class="small text-muted"><cfif isDate(VARIABLES.adsV1LatestPaidPayment.paidAt)><cfoutput>#lsDateFormat(VARIABLES.adsV1LatestPaidPayment.paidAt, "dd/mm/yyyy")# #lsTimeFormat(VARIABLES.adsV1LatestPaidPayment.paidAt, "HH:nn")#</cfoutput></cfif></div></div></cfif>
+    <cfset VARIABLES.adsV1StatusRowsToShow = max(0, 4 - VARIABLES.adsV1ActivityCount)/>
+    <cfif VARIABLES.adsV1StatusRowsToShow GT 0><cfloop query="qAdsV1StatusHistory" endrow="#VARIABLES.adsV1StatusRowsToShow#"><div class="ads-activity-row"><div><strong><cfoutput>Campanha "#htmlEditFormat(qAdsV1StatusHistory.campaign_name)#" #lCase(adsV1CampaignStatusLabel(qAdsV1StatusHistory.to_status))#</cfoutput></strong><div class="small text-muted"><cfoutput>#htmlEditFormat(qAdsV1StatusHistory.reason)#</cfoutput></div></div><div class="small text-muted"><cfif isDate(qAdsV1StatusHistory.changed_at)><cfoutput>#lsDateFormat(qAdsV1StatusHistory.changed_at, "dd/mm/yyyy")# #lsTimeFormat(qAdsV1StatusHistory.changed_at, "HH:nn")#</cfoutput></cfif></div></div></cfloop></cfif>
+    <cfif NOT VARIABLES.adsV1ActivityCount AND NOT qAdsV1StatusHistory.recordcount><div class="text-muted py-4 text-center">Nenhuma atividade recente.</div></cfif>
+  </div></section>
+</cfif>

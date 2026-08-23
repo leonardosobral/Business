@@ -181,15 +181,15 @@ require_pattern \
 
 require_pattern \
     "ads/home.cfm" \
-    '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanManageCampaign.*?>.*?href="\./#campaign-form"[^>]*>Nova campanha.*?</cfif>' \
+    '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanManageCampaign.*?>.*?href="\./\?view=campaigns[^"#]*?(?:&amp;mode=new)?#campaign-form"[^>]*>[^<]*(Nova campanha|Criar campanha).*?</cfif>' \
     "CTA de campanha acompanha canManageCampaign"
 require_pattern \
     "ads/home.cfm" \
-    '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanManageCampaign>.*?<section[^>]+id="campaign-form".*?ads_v1_action"[[:space:]]+value="save_campaign".*?</section>.*?</cfif>' \
+    '(?s)adsV1ShowCampaignForm[[:space:]]*=[[:space:]]*VARIABLES\.adsAccessCanManageCampaign.*?<cfif[[:space:]]+VARIABLES\.adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"campaigns"[[:space:]]+AND[[:space:]]+VARIABLES\.adsV1ShowCampaignForm><cfinclude[[:space:]]+template="includes/workspace_campaign_form\.cfm"' \
     "formulario de campanha acompanha canManageCampaign"
 require_pattern \
     "ads/home.cfm" \
-    '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanAdminFinance>.*?value="credit_account".*?value="reverse_click_debit".*?</cfif>' \
+    '(?s)<cfif[[:space:]]+VARIABLES\.adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"admin"[[:space:]]+AND[[:space:]]+VARIABLES\.adsAccessCanAdminFinance><cfinclude[[:space:]]+template="includes/workspace_admin\.cfm"' \
     "controles financeiros acompanham canAdminFinance"
 
 if (( failures > 0 )); then

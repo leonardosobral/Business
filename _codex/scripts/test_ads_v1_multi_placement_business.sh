@@ -7,6 +7,7 @@ cd "$repo_root" || exit 1
 
 backend="ads/includes/backend.cfm"
 home="ads/home.cfm"
+campaign_form="ads/includes/workspace_campaign_form.cfm"
 failures=0
 
 require_pattern() {
@@ -83,17 +84,17 @@ require_pattern \
 require_pattern \
   "formulario oferece checkboxes de placement" \
   'name="placement_keys"' \
-  "$home"
+  "$campaign_form"
 
 require_pattern \
-  "listagem mostra placements atuais" \
-  'placement_keys' \
-  "$home"
+  "interface traduz placements atuais para o anunciante" \
+  'adsV1Placement(Label|Summary).*placement_keys' \
+  "$home" "$campaign_form"
 
 reject_pattern \
   "interface nao anuncia placement fixo" \
   'Placement fixo' \
-  "$home"
+  "$home" "$campaign_form"
 
 require_pattern \
   "mutacoes permanecem no datasource runnerhub" \

@@ -167,7 +167,7 @@ require_pattern \
     "painel principal tem titulo Publicidade"
 require_pattern \
     "ads/home.cfm" \
-    'href="(?:\./|/ads/)?#campaign-form"[^>]*>[^<]*(Nova campanha|Criar campanha)' \
+    'href="\./\?view=campaigns(?:&amp;mode=new)?#campaign-form"[^>]*>[^<]*(Nova campanha|Criar campanha)' \
     "painel principal oferece CTA de nova campanha"
 
 require_pattern \

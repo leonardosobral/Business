@@ -64,10 +64,10 @@ require_pattern 'FORM\.ads_v1_csrf' \
   "ads/includes/backend.cfm" \
   "backend valida CSRF"
 require_pattern 'method[[:space:]]*=[[:space:]]*"post"' \
-  "ads/home.cfm" \
+  "ads/includes" \
   "interface possui formularios POST"
 require_pattern 'name[[:space:]]*=[[:space:]]*"ads_v1_csrf"' \
-  "ads/home.cfm" \
+  "ads/includes" \
   "formularios enviam CSRF"
 require_pattern 'htmlEditFormat' \
   "ads/home.cfm" \

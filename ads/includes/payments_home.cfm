@@ -3,9 +3,9 @@
     <div class="card-body p-3 p-lg-4">
       <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
         <div>
-          <div class="ads-v1-eyebrow">Credito de publicidade</div>
+          <div class="ads-v1-eyebrow">Crédito de publicidade</div>
           <h2 class="h5 mb-1">Adicionar saldo</h2>
-          <p class="text-muted mb-0">R$ X pagos = R$ X em credito. As taxas ficam por nossa conta, sem desconto no saldo.</p>
+          <p class="text-muted mb-0">R$ X pagos = R$ X em crédito. As taxas ficam por nossa conta, sem desconto no saldo.</p>
         </div>
         <span class="badge badge-info align-self-lg-start">Checkout Pagar.me</span>
       </div>
@@ -15,13 +15,13 @@
           <div class="row g-3 align-items-end">
             <div class="col-lg-5">
               <h3 class="h6 mb-1">Tem um voucher?</h3>
-              <p class="small text-muted mb-0">Resgate o codigo para adicionar o credito diretamente ao saldo desta conta.</p>
+              <p class="small text-muted mb-0">Resgate o código para adicionar o crédito diretamente ao saldo desta conta.</p>
             </div>
             <div class="col-lg-7">
-              <form method="post" action="./#payment-credit" id="ads-voucher-form">
+              <form method="post" action="./?view=payments#payment-credit" id="ads-voucher-form">
                 <input type="hidden" name="ads_v1_action" value="redeem_voucher"/>
                 <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
-                <label class="visually-hidden" for="ads-voucher-code">Codigo do voucher</label>
+                <label class="visually-hidden" for="ads-voucher-code">Código do voucher</label>
                 <div class="input-group">
                   <input class="form-control text-uppercase" id="ads-voucher-code" name="voucher_code" type="text" minlength="3" maxlength="160" autocomplete="off" placeholder="RUNPRO-..." required/>
                   <button class="btn btn-outline-info" type="submit">Resgatar voucher</button>
@@ -37,7 +37,7 @@
       </cfif>
 
       <cfif NOT VARIABLES.adsPaymentApiReady>
-        <div class="alert alert-warning mb-0">A compra de credito esta em preparacao. Campanhas e saldo atual continuam disponiveis.</div>
+        <div class="alert alert-warning mb-0">A compra de crédito está em preparação. Campanhas e saldo atual continuam disponíveis.</div>
       <cfelse>
         <cfif structKeyExists(VARIABLES.adsPaymentCurrent, "paymentIntentId")>
           <cfset VARIABLES.adsPaymentBoxId = listFind("CREATED,CHECKOUT_READY,PENDING", VARIABLES.adsPaymentCurrent.status)
@@ -49,9 +49,9 @@
                 <div class="h5 mb-1"><cfoutput>#lsCurrencyFormat(VARIABLES.adsPaymentCurrent.amountCents / 100)#</cfoutput></div>
                 <div>
                   <cfif VARIABLES.adsPaymentCurrent.status EQ "PAID">
-                    <span class="badge badge-success"><cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCurrent.status)#</cfoutput></span>
+                    <span class="badge badge-success"><cfoutput>#htmlEditFormat(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
                   <cfelseif listFind("FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW", VARIABLES.adsPaymentCurrent.status)>
-                    <span class="badge badge-warning"><cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCurrent.status)#</cfoutput></span>
+                    <span class="badge badge-warning"><cfoutput>#htmlEditFormat(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
                   <cfelse>
                     <span class="badge badge-info">Aguardando / Confirmando</span>
                   </cfif>
@@ -64,7 +64,7 @@
                 <cfif len(VARIABLES.adsPaymentValidatedCheckoutUrl) AND listFind("CREATED,CHECKOUT_READY,PENDING", VARIABLES.adsPaymentCurrent.status)>
                   <a class="btn btn-info" target="_blank" rel="noopener noreferrer" href="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentValidatedCheckoutUrl)#</cfoutput>">Ir para o pagamento</a>
                 </cfif>
-                <a class="btn btn-outline-light" href="<cfoutput>./?payment=#urlEncodedFormat(VARIABLES.adsPaymentCurrent.paymentIntentId)###payment-credit</cfoutput>">Atualizar status</a>
+                <a class="btn btn-outline-light" href="<cfoutput>./?view=payments&amp;payment=#urlEncodedFormat(VARIABLES.adsPaymentCurrent.paymentIntentId)###payment-credit</cfoutput>">Atualizar status</a>
               </div>
             </div>
           </div>
@@ -73,13 +73,13 @@
         <cfif NOT VARIABLES.adsPaymentProviderStatus.ready OR NOT VARIABLES.adsPaymentProviderStatus.enabled>
           <div class="alert alert-info mb-0">Novas compras estao temporariamente indisponiveis. Checkouts existentes e o historico permanecem acessiveis.</div>
         <cfelseif VARIABLES.adsAccessCanPurchaseCredit>
-          <form method="post" action="./#payment-credit" id="ads-payment-form" class="js-payment-checkout-form" data-submitting="false">
+          <form method="post" action="./?view=payments#payment-credit" id="ads-payment-form" class="js-payment-checkout-form" data-submitting="false">
             <input type="hidden" name="ads_v1_action" value="create_payment_checkout"/>
             <input type="hidden" name="ads_payment_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCsrf)#</cfoutput>"/>
             <input type="hidden" name="ads_payment_idempotency_key" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentIdempotencyKey)#</cfoutput>"/>
             <div class="row g-3 align-items-end">
               <div class="col-lg-6">
-                <label class="form-label" for="ads-payment-amount">Valor do credito</label>
+                <label class="form-label" for="ads-payment-amount">Valor do crédito</label>
                 <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-payment-amount" name="ads_payment_amount" type="number" min="50" max="21474836.47" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentAmountRaw)#</cfoutput>"/></div>
               </div>
               <div class="col-lg-6">
@@ -90,7 +90,7 @@
                 </div>
               </div>
               <div class="col-lg-8">
-                <p class="small text-muted mb-0">Pague por PIX ou cartao de credito em 1x no ambiente seguro do Pagar.me. O Business nao recebe os dados do seu cartao.</p>
+                <p class="small text-muted mb-0">Pague por PIX ou cartão de crédito em 1x no ambiente seguro do Pagar.me. O Business não recebe os dados do seu cartão.</p>
               </div>
               <div class="col-lg-4 d-grid">
                 <button class="btn btn-info" type="submit" data-payment-submit>Continuar para pagamento</button>
@@ -108,18 +108,18 @@
     <section class="card shadow-0 mb-4">
       <div class="card-body p-3 p-lg-4">
         <div class="ads-v1-eyebrow">Pagamentos</div>
-        <h2 class="h5">Historico de pagamentos</h2>
+        <h2 class="h5">Histórico de pagamentos</h2>
         <div class="table-responsive">
           <table class="table table-sm align-middle mb-0">
-            <thead><tr><th>Data</th><th>Referencia</th><th>Metodo</th><th>Status</th><th class="text-end">Valor</th><th>Credito</th></tr></thead>
+            <thead><tr><th>Data</th><th>Referência</th><th>Método</th><th>Status</th><th class="text-end">Valor</th><th>Crédito</th></tr></thead>
             <tbody>
               <cfif qAdsPayments.recordcount>
                 <cfoutput query="qAdsPayments">
                   <tr>
                     <td><cfif isDate(created_at)>#lsDateFormat(created_at, "dd/mm/yyyy")# #lsTimeFormat(created_at, "HH:nn")#<cfelse>-</cfif></td>
-                    <td><a href="./?payment=#urlEncodedFormat(payment_intent_id)###payment-credit">#htmlEditFormat(support_reference)#</a></td>
+                    <td><a href="./?view=payments&amp;payment=#urlEncodedFormat(payment_intent_id)###payment-credit">#htmlEditFormat(support_reference)#</a></td>
                     <td><cfif payment_method EQ "pix">PIX<cfelseif payment_method EQ "credit_card">Cartao 1x<cfelse>-</cfif></td>
-                    <td><span class="badge <cfif status EQ 'PAID'>badge-success<cfelseif listFind('FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW', status)>badge-warning<cfelse>badge-info</cfif>">#htmlEditFormat(status)#</span></td>
+                    <td><span class="badge <cfif status EQ 'PAID'>badge-success<cfelseif listFind('FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW', status)>badge-warning<cfelse>badge-info</cfif>">#htmlEditFormat(adsV1PaymentStatusLabel(status))#</span></td>
                     <td class="text-end">#lsCurrencyFormat(amount_cents / 100)#</td>
                     <td><cfif len(trim(ledger_entry_id & ""))><span class="text-success">Creditado</span><cfelse><span class="text-muted">Aguardando</span></cfif></td>
                   </tr>

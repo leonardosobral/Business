@@ -121,7 +121,7 @@
         <cfif NOT VARIABLES.adsPaymentCheckoutResult.success>
             <cfthrow type="AdsPayment.Validation" message="#VARIABLES.adsPaymentCheckoutResult.message#"/>
         </cfif>
-        <cflocation addtoken="false" url="./?payment=#urlEncodedFormat(VARIABLES.adsPaymentCheckoutResult.paymentIntentId)###payment-credit"/>
+        <cflocation addtoken="false" url="./?view=payments&amp;payment=#urlEncodedFormat(VARIABLES.adsPaymentCheckoutResult.paymentIntentId)###payment-credit"/>
 
         <cfcatch type="any">
             <cflog file="business_ads_payments" type="error" text="stage=create_checkout account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# type=#cfcatch.type# message=#left(cfcatch.message & '', 500)#"/>

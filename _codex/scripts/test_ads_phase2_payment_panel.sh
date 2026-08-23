@@ -35,6 +35,7 @@ backend="ads/includes/payments_backend.cfm"
 home="ads/includes/payments_home.cfm"
 root_backend="ads/includes/backend.cfm"
 root_home="ads/home.cfm"
+admin_home="ads/includes/workspace_admin.cfm"
 
 require_file "$backend" "backend de pagamentos existe"
 require_file "$home" "home de pagamentos existe"
@@ -68,12 +69,14 @@ require_pattern "$home" 'Aguardando|Confirmando' "estado pendente possui rotulo 
 require_pattern "$home" '/api/ads/payments/status\.cfm' "painel prepara polling autenticado"
 require_pattern "$home" '(setTimeout|backoff)' "polling usa espera progressiva"
 require_pattern "$home" '(disabled[[:space:]]*=[[:space:]]*true|data-submitting)' "submit possui protecao de duplo clique"
-require_pattern "$home" 'Historico de pagamentos' "painel lista historico de pagamentos"
-require_pattern "$home" 'Referencia' "historico mostra referencia curta"
-require_pattern "$root_home" 'Administracao financeira' "financeiro interno e rotulado como administracao"
+require_pattern "$home" '(?s)<form[^>]+method="post"[^>]+action="\./\?view=payments#payment-credit"[^>]+id="ads-voucher-form"' "resgate de voucher preserva a area de pagamentos"
+require_pattern "$home" '(?s)<form[^>]+method="post"[^>]+action="\./\?view=payments#payment-credit"[^>]+id="ads-payment-form"' "checkout preserva a area de pagamentos"
+require_pattern "$home" 'Hist[oó]rico de pagamentos' "painel lista historico de pagamentos"
+require_pattern "$home" 'Refer[eê]ncia' "historico mostra referencia curta"
+require_pattern "$admin_home" 'Administra[cç][aã]o financeira' "financeiro interno e rotulado como administracao"
 reject_pattern "$home" '(card_number|numero do cartao|CVV|CVC|validade do cartao)' "painel nao captura dados de cartao"
 reject_pattern "$home" '(provider_order_id|provider_charge_id|provider_payment_link_id|provider_payload)' "painel nao exibe identificadores ou payload do provedor"
-require_pattern "$root_home" '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanAdminFinance>.*?Administracao financeira.*?</cfif>' "administracao financeira permanece restrita ao admin interno"
+require_pattern "$root_home" '(?s)<cfif[[:space:]]+VARIABLES\.adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"admin"[[:space:]]+AND[[:space:]]+VARIABLES\.adsAccessCanAdminFinance>.*?workspace_admin\.cfm.*?</cfif>' "administracao financeira permanece restrita ao admin interno"
 
 if (( failures > 0 )); then
     printf '\nADS PHASE 2 PAYMENT PANEL: FAIL (%d gates)\n' "$failures" >&2

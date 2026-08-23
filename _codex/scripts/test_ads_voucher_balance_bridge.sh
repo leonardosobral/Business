@@ -45,6 +45,7 @@ backend="ads/includes/backend.cfm"
 payments_home="ads/includes/payments_home.cfm"
 accounts_backend="administracao/contas/includes/backend.cfm"
 home="ads/home.cfm"
+campaigns_home="ads/includes/workspace_campaigns.cfm"
 
 require_pattern \
     "$backend" \
@@ -92,8 +93,8 @@ require_pattern \
     '(?s)adsV1Summary\.active[[:space:]]+GT[[:space:]]+0.*?adsV1Summary\.balance[[:space:]]+LTE[[:space:]]+0.*?sem saldo.*?#payment-credit' \
     "painel explica quando campanha ativa nao veicula por falta de saldo"
 require_pattern \
-    "$home" \
-    '(?s)status[[:space:]]+EQ[[:space:]]+["'\'']ACTIVE["'\''].*?adsV1Summary\.balance[[:space:]]+LT[[:space:]]+cpc_bid.*?Sem saldo' \
+    "$campaigns_home" \
+    '(?s)adsV1RowStatus[[:space:]]+EQ[[:space:]]+"ACTIVE"[[:space:]]+AND[[:space:]]+VARIABLES\.adsV1Summary\.balance[[:space:]]+LT[[:space:]]+qAdsV1Campaigns\.cpc_bid.*?Saldo insuficiente' \
     "linha da campanha ativa identifica saldo abaixo do CPC"
 
 require_pattern \

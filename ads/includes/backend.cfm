@@ -664,7 +664,7 @@ function adsV1FormList(required any value) {
                     </cfquery>
                 </cftransaction>
 
-                <cflocation addtoken="false" url="./?success=campaign-saved&campaign=#qAdsV1CampaignSave.campaign_id#"/>
+                <cflocation addtoken="false" url="./?view=campaigns&amp;success=campaign-saved"/>
             </cfcase>
 
             <cfcase value="credit_account">
@@ -707,7 +707,7 @@ function adsV1FormList(required any value) {
                     )
                 </cfquery>
 
-                <cflocation addtoken="false" url="./?success=credited"/>
+                <cflocation addtoken="false" url="./?view=admin&amp;success=credited"/>
             </cfcase>
 
             <cfcase value="redeem_voucher">
@@ -735,7 +735,7 @@ function adsV1FormList(required any value) {
                     </cfcatch>
                 </cftry>
 
-                <cflocation addtoken="false" url="./?success=voucher-redeemed##payment-credit"/>
+                <cflocation addtoken="false" url="./?view=payments&amp;success=voucher-redeemed##payment-credit"/>
             </cfcase>
 
             <cfcase value="activate_campaign">
@@ -768,7 +768,7 @@ function adsV1FormList(required any value) {
                     )
                 </cfquery>
 
-                <cflocation addtoken="false" url="./?success=activated"/>
+                <cflocation addtoken="false" url="./?view=campaigns&amp;success=activated"/>
             </cfcase>
 
             <cfcase value="change_campaign_status">
@@ -808,9 +808,9 @@ function adsV1FormList(required any value) {
                 </cfquery>
 
                 <cfif VARIABLES.adsV1TargetStatus EQ "PAUSED">
-                    <cflocation addtoken="false" url="./?success=paused"/>
+                    <cflocation addtoken="false" url="./?view=campaigns&amp;success=paused"/>
                 <cfelse>
-                    <cflocation addtoken="false" url="./?success=ended"/>
+                    <cflocation addtoken="false" url="./?view=campaigns&amp;success=ended"/>
                 </cfif>
             </cfcase>
 
@@ -864,7 +864,7 @@ function adsV1FormList(required any value) {
                     )
                 </cfquery>
 
-                <cflocation addtoken="false" url="./?success=reversed"/>
+                <cflocation addtoken="false" url="./?view=admin&amp;success=reversed"/>
             </cfcase>
 
             <cfdefaultcase>
