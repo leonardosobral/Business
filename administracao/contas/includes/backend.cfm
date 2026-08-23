@@ -431,15 +431,13 @@
                         </cfquery>
 
                         <cfif len(VARIABLES.accountRegistrationVoucherId)>
-                            <cfquery datasource="runnerhub">
-                                UPDATE ads.tb_ad_vouchers
-                                SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
-                                    id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationOwnerUser.id#"/>,
-                                    data_resgate = now(),
-                                    credito_disponivel = COALESCE(credito_disponivel, credito, 0),
-                                    data_atualizacao = now()
-                                WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountRegistrationVoucherId#"/>
-                                  AND status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+                            <cfquery name="qBusinessAccountRegistrationVoucherRedeem" datasource="runnerhub">
+                                SELECT *
+                                FROM ads.redeem_voucher(
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/> AS bigint),
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountRegistrationVoucherCode#" maxlength="160"/> AS text),
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessAccountRegistrationOwnerUser.id#"/> AS integer)
+                                )
                             </cfquery>
                         </cfif>
 
@@ -671,32 +669,16 @@
 
     <cfif NOT arrayLen(VARIABLES.accountVoucherErrors)>
         <cftry>
-            <cfquery datasource="runnerhub">
-                INSERT INTO ads.tb_ad_vouchers
-                (
-                    codigo,
-                    id_conta,
-                    credito,
-                    credito_disponivel,
-                    status,
-                    data_criacao,
-                    data_expiracao,
-                    papel_resgate,
-                    observacao,
-                    data_atualizacao
-                )
-                VALUES
-                (
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#" maxlength="80"/>,
-                    <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountVoucherAccountId#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.accountVoucherCredit#" scale="2"/>,
-                    <cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.accountVoucherCredit#" scale="2"/>,
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>,
-                    now(),
-                    <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.accountVoucherExpiration#" null="#NOT len(VARIABLES.accountVoucherExpiration)#"/>,
-                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherPapel#"/> AS papel_usuario_conta),
-                    <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.accountVoucherObservation#" null="#NOT len(VARIABLES.accountVoucherObservation)#"/>,
-                    now()
+            <cfquery name="qBusinessAccountVoucherCreate" datasource="runnerhub">
+                SELECT *
+                FROM ads.create_voucher(
+                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountVoucherAccountId#"/> AS bigint),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherCode#" maxlength="80"/> AS text),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.accountVoucherCredit#" scale="2"/> AS numeric),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.accountVoucherExpiration#" null="#NOT len(VARIABLES.accountVoucherExpiration)#"/> AS date),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountVoucherPapel#"/> AS text),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.accountVoucherObservation#" null="#NOT len(VARIABLES.accountVoucherObservation)#"/> AS text),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
                 )
             </cfquery>
 
@@ -742,13 +724,14 @@
             <cfelseif len(trim(qBusinessAccountVoucherStatusCheck.id_usuario_resgate))>
                 <cfset VARIABLES.accountsVoucherSaveErrorMessage = "Voucher ja resgatado nao pode ser cancelado ou reativado por esta tela."/>
             <cfelse>
-                <cfquery datasource="runnerhub">
-                    UPDATE ads.tb_ad_vouchers
-                    SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountVoucherNewStatus#"/>,
-                        data_atualizacao = now()
-                    WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/>
-                      AND id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.conta_id#"/>
-                      AND id_usuario_resgate IS NULL
+                <cfquery name="qBusinessAccountVoucherStatusResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.change_voucher_status(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_ad_voucher#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.conta_id#"/> AS bigint),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.accountVoucherNewStatus#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
+                    )
                 </cfquery>
 
                 <cflocation addtoken="false" url="./?conta_id=#URL.conta_id#&tab=vouchers&sucesso=voucher##conta-gerenciamento"/>

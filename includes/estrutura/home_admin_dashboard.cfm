@@ -3,6 +3,8 @@
 <cfset qBusinessAdminHomeEventRequests = QueryNew("id_solicitacao,nome_conta,nome_evento,data_criacao")/>
 <cfset qBusinessAdminHomeLegacyPartners = QueryNew("id,name,email,perfil,nome_comercial")/>
 <cfset qBusinessAdminHomeContentGaps = QueryNew("id_evento,nome_evento,cidade,estado,tag,data_inicial,missing_count,faltando")/>
+<cfset qBusinessAdminHomeAdsPayments = QueryNew("pending_old,review,open_holds,paid_without_ledger,ledger_without_intent")/>
+<cfset qBusinessAdminHomeAdsReconcileJob = QueryNew("last_run_at,last_duration_ms,last_status")/>
 <cfset VARIABLES.businessAdminHomeReady = true/>
 <cfset VARIABLES.businessAdminHomeError = ""/>
 <cfset VARIABLES.businessAdminHomeTablesReady = false/>
@@ -30,6 +32,15 @@
 <cfset VARIABLES.businessAdminHomeNotifications7d = 0/>
 <cfset VARIABLES.businessAdminHomeNotificationsRead7d = 0/>
 <cfset VARIABLES.businessAdminHomeNotificationReadRate7d = 0/>
+<cfset VARIABLES.businessAdminHomeAdsPaymentsLoaded = false/>
+<cfset VARIABLES.businessAdminHomeAdsPendingOld = 0/>
+<cfset VARIABLES.businessAdminHomeAdsReview = 0/>
+<cfset VARIABLES.businessAdminHomeAdsOpenHolds = 0/>
+<cfset VARIABLES.businessAdminHomeAdsPaidWithoutLedger = 0/>
+<cfset VARIABLES.businessAdminHomeAdsLedgerWithoutIntent = 0/>
+<cfset VARIABLES.businessAdminHomeAdsReconcileLastDuration = 0/>
+<cfset VARIABLES.businessAdminHomeAdsReconcileLastRunAt = ""/>
+<cfset VARIABLES.businessAdminHomeAdsReconcileLastStatus = ""/>
 
 <cftry>
     <cfquery name="qBusinessAdminHomeTableCheck">
@@ -412,6 +423,91 @@
     </cfif>
 </cfif>
 
+<cftry>
+    <cfquery name="qBusinessAdminHomeAdsPayments" datasource="runnerhub">
+        WITH payment_health AS (
+            SELECT
+                count(*) FILTER (
+                    WHERE intent.status IN ('CREATED', 'CHECKOUT_READY', 'PENDING')
+                      AND intent.updated_at < clock_timestamp() - interval '30 minutes'
+                )::integer AS pending_old,
+                count(*) FILTER (WHERE intent.status = 'REVIEW')::integer AS review,
+                count(*) FILTER (
+                    WHERE intent.status = 'PAID'
+                      AND (
+                          intent.ledger_entry_id IS NULL
+                          OR NOT EXISTS (
+                              SELECT 1
+                              FROM ads.credit_ledger ledger
+                              WHERE ledger.ledger_entry_id = intent.ledger_entry_id
+                                AND ledger.payment_intent_id = intent.payment_intent_id
+                                AND ledger.source_type = 'PAYMENT'
+                                AND ledger.entry_type = 'CREDIT'
+                          )
+                      )
+                )::integer AS paid_without_ledger
+            FROM ads.payment_intents intent
+        ),
+        ledger_health AS (
+            SELECT count(*)::integer AS ledger_without_intent
+            FROM ads.credit_ledger ledger
+            WHERE ledger.source_type = 'PAYMENT'
+              AND (
+                  ledger.payment_intent_id IS NULL
+                  OR NOT EXISTS (
+                      SELECT 1
+                      FROM ads.payment_intents intent
+                      WHERE intent.payment_intent_id = ledger.payment_intent_id
+                        AND intent.ledger_entry_id = ledger.ledger_entry_id
+                        AND intent.status = 'PAID'
+                  )
+              )
+        ),
+        hold_health AS (
+            SELECT count(*) FILTER (WHERE hold.status = 'OPEN')::integer AS open_holds
+            FROM ads.account_financial_holds hold
+        )
+        SELECT payment_health.pending_old,
+               payment_health.review,
+               hold_health.open_holds,
+               payment_health.paid_without_ledger,
+               ledger_health.ledger_without_intent
+        FROM payment_health
+        CROSS JOIN ledger_health
+        CROSS JOIN hold_health
+    </cfquery>
+    <cfif qBusinessAdminHomeAdsPayments.recordcount>
+        <cfset VARIABLES.businessAdminHomeAdsPendingOld = val(qBusinessAdminHomeAdsPayments.pending_old)/>
+        <cfset VARIABLES.businessAdminHomeAdsReview = val(qBusinessAdminHomeAdsPayments.review)/>
+        <cfset VARIABLES.businessAdminHomeAdsOpenHolds = val(qBusinessAdminHomeAdsPayments.open_holds)/>
+        <cfset VARIABLES.businessAdminHomeAdsPaidWithoutLedger = val(qBusinessAdminHomeAdsPayments.paid_without_ledger)/>
+        <cfset VARIABLES.businessAdminHomeAdsLedgerWithoutIntent = val(qBusinessAdminHomeAdsPayments.ledger_without_intent)/>
+        <cfset VARIABLES.businessAdminHomeAdsPaymentsLoaded = true/>
+    </cfif>
+    <cfcatch type="any">
+        <cfset VARIABLES.businessAdminHomeAdsPaymentsLoaded = false/>
+    </cfcatch>
+</cftry>
+
+<cftry>
+    <cfquery name="qBusinessAdminHomeAdsReconcileJob">
+        SELECT job.last_run_at,
+               coalesce(job.last_duration_ms, 0)::integer AS last_duration_ms,
+               coalesce(job.last_status, '') AS last_status
+        FROM public.tb_cron_jobs job
+        WHERE job.endpoint_url =
+              'https://business.roadrunners.run/api/ads/payments/reconcile.cfm'
+        ORDER BY job.id_cron_job
+        LIMIT 1
+    </cfquery>
+    <cfif qBusinessAdminHomeAdsReconcileJob.recordcount>
+        <cfset VARIABLES.businessAdminHomeAdsReconcileLastDuration = val(qBusinessAdminHomeAdsReconcileJob.last_duration_ms)/>
+        <cfset VARIABLES.businessAdminHomeAdsReconcileLastRunAt = isNull(qBusinessAdminHomeAdsReconcileJob.last_run_at) ? "" : qBusinessAdminHomeAdsReconcileJob.last_run_at/>
+        <cfset VARIABLES.businessAdminHomeAdsReconcileLastStatus = qBusinessAdminHomeAdsReconcileJob.last_status & ""/>
+    </cfif>
+    <cfcatch type="any"></cfcatch>
+</cftry>
+
 <cfset VARIABLES.businessAdminHomeDecisionTotal = VARIABLES.businessAdminHomeFocoPendingTotal + VARIABLES.businessAdminHomeAgregaPendingTotal/>
 <cfif qBusinessAdminHomeStats.recordcount>
     <cfset VARIABLES.businessAdminHomeDecisionTotal = VARIABLES.businessAdminHomeDecisionTotal + val(qBusinessAdminHomeStats.solicitacoes_cadastro) + val(qBusinessAdminHomeStats.solicitacoes_eventos)/>
@@ -493,7 +589,7 @@
                 <div class="business-page-actions">
                     <a class="btn btn-sm btn-warning" href="/administracao/contas/">Contas</a>
                     <a class="btn btn-sm btn-outline-warning" href="/eventos/">Eventos</a>
-                    <a class="btn btn-sm btn-outline-warning" href="/ads/">Ads</a>
+                    <a class="btn btn-sm btn-outline-warning" href="/ads/">Publicidade</a>
                     <a class="btn btn-sm btn-outline-warning" href="/portal/conteudo/">Conteudo</a>
                     <a class="btn btn-sm btn-outline-warning" href="/notificacoes/">Notificacoes</a>
                 </div>
@@ -540,7 +636,7 @@
                         <div class="admin-home-panel admin-home-metric">
                             <div class="admin-home-label">Campanhas</div>
                             <div class="fs-3 fw-bold"><cfoutput>#LSNumberFormat(qBusinessAdminHomeStats.campanhas_ativas, "9,999")#</cfoutput></div>
-                            <div class="small text-muted">ads ativos</div>
+                            <div class="small text-muted">ativas agora</div>
                         </div>
                     </div>
                 </div>
@@ -558,6 +654,72 @@
 
 <cfinclude template="uptime_status.cfm"/>
 <cfinclude template="cron_jobs_status.cfm"/>
+
+<cfif VARIABLES.businessAdminHomeAdsPaymentsLoaded>
+    <section class="col-12 business-admin-home business-page">
+        <div class="card business-page-card">
+            <div class="card-body business-page-body">
+                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3 mb-3">
+                    <div>
+                        <div class="admin-home-label mb-1">Publicidade</div>
+                        <h5 class="mb-1">Saude dos pagamentos</h5>
+                        <div class="text-muted small">Pendencias, revisoes e reconciliacao financeira canonica.</div>
+                    </div>
+                    <div class="business-page-actions">
+                        <a class="btn btn-sm btn-outline-warning" href="/ads/">Abrir Publicidade</a>
+                        <a class="btn btn-sm btn-outline-light" href="/administracao/cron-jobs/">Abrir jobs</a>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-xl">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Pendentes antigas</div>
+                            <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.businessAdminHomeAdsPendingOld, "9,999")#</cfoutput></div>
+                            <div class="small text-muted">sem atualizacao ha 30 min</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Em REVIEW</div>
+                            <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.businessAdminHomeAdsReview, "9,999")#</cfoutput></div>
+                            <div class="small text-muted">exigem decisao humana</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Holds abertos</div>
+                            <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.businessAdminHomeAdsOpenHolds, "9,999")#</cfoutput></div>
+                            <div class="small text-muted">contas bloqueadas</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Pago sem ledger</div>
+                            <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.businessAdminHomeAdsPaidWithoutLedger, "9,999")#</cfoutput></div>
+                            <div class="small text-muted">esperado: zero</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Ledger sem intent</div>
+                            <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.businessAdminHomeAdsLedgerWithoutIntent, "9,999")#</cfoutput></div>
+                            <div class="small text-muted">esperado: zero</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-3">
+                        <div class="admin-home-panel">
+                            <div class="admin-home-label">Ultima reconciliacao</div>
+                            <div class="fw-bold"><cfoutput>#len(VARIABLES.businessAdminHomeAdsReconcileLastStatus) ? htmlEditFormat(VARIABLES.businessAdminHomeAdsReconcileLastStatus) : "Sem execucao"#</cfoutput></div>
+                            <div class="small text-muted">
+                                <cfoutput>#len(VARIABLES.businessAdminHomeAdsReconcileLastRunAt & "") ? dateTimeFormat(VARIABLES.businessAdminHomeAdsReconcileLastRunAt, "dd/mm HH:nn") : "-"# · #LSNumberFormat(VARIABLES.businessAdminHomeAdsReconcileLastDuration, "9,999")# ms</cfoutput>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</cfif>
 
 <cfif VARIABLES.businessAdminHomeReady>
     <section class="col-xl-5 business-admin-home business-page">

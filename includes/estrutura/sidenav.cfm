@@ -442,7 +442,7 @@
 
         <li class="sidenav-item">
             <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/">
-                <i class="fa-solid fa-rocket fa-fw me-3"></i><span>Turbinados</span></a>
+                <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span></a>
         </li>
 
         <li class="sidenav-item">

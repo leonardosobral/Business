@@ -7,7 +7,6 @@
 <cfset VARIABLES.devMode = false/>
 <cfset VARIABLES.codPagina = ""/>
 <cfset VARIABLES.loginAutoPrompt = "true"/>
-<cfset VARIABLES.chave_pagarme = tobase64('sk_2501474de4d64171be553a65cec7372b:')/>
 <cfset VARIABLES.cidade = ""/>
 <cfset VARIABLES.estado = ""/>
 <cfset VARIABLES.uf = ""/>

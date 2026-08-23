@@ -1,832 +1,889 @@
-<!--- INCLUIR CAMPANHA --->
+<cfparam name="URL.success" default=""/>
+<cfparam name="URL.campaign" default=""/>
+<cfparam name="FORM.ads_v1_action" default=""/>
+<cfparam name="FORM.ads_v1_csrf" default=""/>
+<cfparam name="FORM.voucher_code" default=""/>
 
-<cfset VARIABLES.adsRestrictByConta = true/>
-<cfset VARIABLES.adsEventosContaIds = "0"/>
-<cfset VARIABLES.adsEventosOperacaoIds = "0"/>
-<cfset VARIABLES.adsEffectiveIsAdmin = false/>
-<cfset VARIABLES.adsCanOperate = false/>
-<cfset VARIABLES.adsVoucherColumnsReady = false/>
-<cfset VARIABLES.adsVoucherActionMessage = ""/>
-<cfset VARIABLES.adsVoucherActionError = ""/>
-<cfset VARIABLES.adsCreditBalance = 0/>
-<cfset VARIABLES.adsCreditTotal = 0/>
-<cfset VARIABLES.adsCreditSpent = 0/>
-<cfset VARIABLES.adsMetricasDiaReady = false/>
-<cfset VARIABLES.adsConversionLogReady = false/>
-<cfparam name="URL.ads_periodo" default="30"/>
-<cfif NOT ListFind("7,30", URL.ads_periodo)>
-    <cfset URL.ads_periodo = "30"/>
+<cfinclude template="access.cfm"/>
+
+<cfscript>
+function adsV1IsUuid(required any value) {
+    return reFindNoCase(
+        "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+        trim(arguments.value & "")
+    ) EQ 1;
+}
+
+function adsV1NewIdempotencyToken() {
+    return lCase(replace(createUUID(), "-", "", "all"));
+}
+
+function adsV1IsIdempotencyToken(required any value) {
+    return reFindNoCase("^[0-9a-f]{32}$", trim(arguments.value & "")) EQ 1;
+}
+
+function adsV1MoneyValue(required any value) {
+    var normalized = trim(arguments.value & "");
+    normalized = reReplace(normalized, "[[:space:]]", "", "all");
+    if (find(",", normalized)) {
+        normalized = replace(normalized, ".", "", "all");
+        normalized = replace(normalized, ",", ".", "all");
+    }
+    if (!isNumeric(normalized)) return -1;
+    return val(normalized);
+}
+
+function adsV1FormList(required any value) {
+    if (isArray(arguments.value)) {
+        return duplicate(arguments.value);
+    }
+    return len(trim(arguments.value & ""))
+        ? listToArray(arguments.value & "")
+        : [];
+}
+</cfscript>
+
+<cfset VARIABLES.adsV1ApiReady = false/>
+<cfset VARIABLES.adsV1DataReady = false/>
+<cfset VARIABLES.adsV1HasAccount = false/>
+<cfset VARIABLES.adsV1CanMutate = false/>
+<cfset VARIABLES.adsV1AccountId = 0/>
+<cfset VARIABLES.adsV1ActorId = 0/>
+<cfset VARIABLES.adsV1Csrf = ""/>
+<cfset VARIABLES.adsV1Error = ""/>
+<cfset VARIABLES.adsV1Notice = ""/>
+<cfset VARIABLES.adsV1ReadinessError = ""/>
+<cfset VARIABLES.adsV1SelectedCampaignId = ""/>
+<cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
+<cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
+<cfset VARIABLES.adsV1CampaignActions = "save_campaign,activate_campaign,change_campaign_status"/>
+<cfset VARIABLES.adsV1FinanceActions = "credit_account,reverse_click_debit"/>
+<cfset VARIABLES.adsV1VoucherActions = "redeem_voucher"/>
+<cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
+    "rr-home-upcoming-native",
+    "rr-home-upcoming-native-secondary",
+    "rr-search-events-native",
+    "rr-state-events-native",
+    "rr-sidebar-event-native"
+]/>
+
+<cfset qAdsV1Account = QueryNew("id_conta,nome_conta,status,available_balance,currency")/>
+<cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
+<cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
+<cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost")/>
+<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys")/>
+<cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name")/>
+<cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name")/>
+<cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
+<cfset VARIABLES.adsV1Summary = {
+    balance = 0,
+    campaigns = 0,
+    active = 0,
+    paused = 0,
+    spent = 0,
+    views = 0,
+    clicks = 0,
+    cost = 0
+}/>
+
+<cfset VARIABLES.adsV1ActorId = VARIABLES.adsAccessActorId/>
+<cfset VARIABLES.adsV1AccountId = VARIABLES.adsAccessAccountId/>
+<cfset VARIABLES.adsV1HasAccount = VARIABLES.adsAccessHasAccount/>
+
+<cfif NOT structKeyExists(SESSION, "adsV1CanonicalCsrf")
+    OR NOT len(trim(SESSION.adsV1CanonicalCsrf & ""))>
+    <cfset SESSION.adsV1CanonicalCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
 </cfif>
-<cfset VARIABLES.adsPeriodoDias = val(URL.ads_periodo)/>
-<cfset qAdVoucherCredit = QueryNew("credito_total,consumo_total,saldo_total")/>
-<cfset qAdCreditVouchers = QueryNew("codigo,nome_conta,credito,credito_disponivel,data_resgate,data_expiracao,status")/>
-<cfset qAdAvailableVouchers = QueryNew("id_ad_voucher,codigo,nome_conta,credito,credito_disponivel,data_expiracao,papel_resgate,observacao")/>
-<cfset qAdMetricasDia = QueryNew("data_metrica,views,clicks,custo,ctr")/>
-<cfset qAdMetricasComparativo = QueryNew("views_atual,views_anterior,clicks_atual,clicks_anterior,custo_atual,custo_anterior")/>
-<cfset qAdConversionSummary = QueryNew("conversoes_periodo,valor_periodo")/>
-<cfparam name="FORM.voucher_codigo" default=""/>
+<cfset VARIABLES.adsV1Csrf = SESSION.adsV1CanonicalCsrf/>
+
+<cfswitch expression="#trim(URL.success & '')#">
+    <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Campanha salva como rascunho."/></cfcase>
+    <cfcase value="credited"><cfset VARIABLES.adsV1Notice = "Credito de publicidade registrado."/></cfcase>
+    <cfcase value="voucher-redeemed"><cfset VARIABLES.adsV1Notice = "Voucher resgatado e saldo de publicidade atualizado."/></cfcase>
+    <cfcase value="activated"><cfset VARIABLES.adsV1Notice = "Campanha ativada."/></cfcase>
+    <cfcase value="paused"><cfset VARIABLES.adsV1Notice = "Campanha pausada."/></cfcase>
+    <cfcase value="ended"><cfset VARIABLES.adsV1Notice = "Campanha encerrada."/></cfcase>
+    <cfcase value="reversed"><cfset VARIABLES.adsV1Notice = "Debito CPC estornado."/></cfcase>
+</cfswitch>
 
 <cftry>
-    <cfquery name="qAdsMetricasDiaTableCheck" datasource="runnerhub">
-        SELECT count(*)::integer AS total
-        FROM information_schema.tables
-        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
-          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_evento_metricas_dia"/>
+    <cfquery name="qAdsV1Readiness" datasource="runnerhub">
+        WITH expected_functions(signature) AS (
+            VALUES
+                ('ads.save_event_campaign(uuid,bigint,integer,text,text,text,numeric,numeric,numeric,timestamp with time zone,timestamp with time zone,text,character,text,integer)'),
+                ('ads.activate_campaign(uuid,integer,text)'),
+                ('ads.change_campaign_status(uuid,text,integer,text)'),
+                ('ads.change_voucher_status(integer,bigint,integer,integer)'),
+                ('ads.credit_account(bigint,numeric,text,text,integer,jsonb)'),
+                ('ads.create_voucher(bigint,text,numeric,date,text,text,integer)'),
+                ('ads.redeem_voucher(bigint,text,integer)'),
+                ('ads.reverse_click_debit(uuid,text,integer,text)'),
+                ('ads.replace_campaign_placements(uuid,text[],integer,text)')
+        ),
+        resolved_functions AS (
+            SELECT signature,
+                   to_regprocedure(signature) AS procedure_oid
+            FROM expected_functions
+        ),
+        function_check AS (
+            SELECT count(*)::integer AS expected_count,
+                   count(procedure_oid)::integer AS resolved_count,
+                   bool_and(
+                       procedure_oid IS NOT NULL
+                       AND has_function_privilege(current_user, procedure_oid, 'EXECUTE')
+                   ) AS ready
+            FROM resolved_functions
+        ),
+        expected_tables(relation_name) AS (
+            VALUES
+                ('ads.placements'),
+                ('ads.campaigns'),
+                ('ads.advertisements'),
+                ('ads.creatives'),
+                ('ads.campaign_placements'),
+                ('ads.account_balances'),
+                ('ads.campaign_budget_state'),
+                ('ads.credit_ledger'),
+                ('ads.daily_metrics'),
+                ('ads.campaign_status_history')
+        ),
+        resolved_tables AS (
+            SELECT relation_name,
+                   to_regclass(relation_name) AS relation_oid
+            FROM expected_tables
+        ),
+        table_check AS (
+            SELECT count(*)::integer AS expected_table_count,
+                   count(relation_oid)::integer AS resolved_table_count,
+                   bool_and(
+                       relation_oid IS NOT NULL
+                       AND has_table_privilege(current_user, relation_oid, 'SELECT')
+                   ) AS ready
+            FROM resolved_tables
+        )
+        SELECT function_check.expected_count,
+               function_check.resolved_count,
+               table_check.expected_table_count,
+               table_check.resolved_table_count,
+               function_check.ready AND table_check.ready AS ready
+        FROM function_check
+        CROSS JOIN table_check
     </cfquery>
-    <cfset VARIABLES.adsMetricasDiaReady = qAdsMetricasDiaTableCheck.recordcount AND val(qAdsMetricasDiaTableCheck.total) GT 0/>
+
+    <cfif qAdsV1Readiness.recordcount>
+        <cfset VARIABLES.adsV1ReadinessFlag = qAdsV1Readiness.ready & ""/>
+        <cfset VARIABLES.adsV1ApiReady = val(qAdsV1Readiness.expected_count) EQ 9
+            AND val(qAdsV1Readiness.resolved_count) EQ 9
+            AND val(qAdsV1Readiness.expected_table_count) EQ 10
+            AND val(qAdsV1Readiness.resolved_table_count) EQ 10
+            AND listFindNoCase("1,true,t,yes,on", trim(VARIABLES.adsV1ReadinessFlag)) GT 0/>
+    </cfif>
 
     <cfcatch type="any">
-        <cfset VARIABLES.adsMetricasDiaReady = false/>
+        <cfset VARIABLES.adsV1ApiReady = false/>
+        <cfset VARIABLES.adsV1ReadinessError = "API SQL de publicidade indisponivel."/>
+        <cflog file="business_ads_v1" type="error" text="readiness account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# message=#cfcatch.message#"/>
     </cfcatch>
 </cftry>
 
-<cftry>
-    <cfquery name="qAdsConversionLogTableCheck" datasource="runnerhub">
-        SELECT count(*)::integer AS total
-        FROM information_schema.tables
-        WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="ads"/>
-          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_conversion_log"/>
-    </cfquery>
-    <cfset VARIABLES.adsConversionLogReady = qAdsConversionLogTableCheck.recordcount AND val(qAdsConversionLogTableCheck.total) GT 0/>
+<cfset VARIABLES.adsV1CanMutate = VARIABLES.adsV1HasAccount
+    AND VARIABLES.adsV1ApiReady
+    AND VARIABLES.adsV1ActorId GT 0/>
 
-    <cfcatch type="any">
-        <cfset VARIABLES.adsConversionLogReady = false/>
-    </cfcatch>
-</cftry>
+<cfif VARIABLES.adsAccessCanView AND VARIABLES.adsV1HasAccount AND VARIABLES.adsV1ApiReady>
+    <cftry>
+        <cfquery name="qAdsV1Account" datasource="runnerhub">
+            SELECT cont.id_conta,
+                   cont.nome_conta,
+                   cont.status::text AS status,
+                   coalesce(balance.available_balance, 0)::numeric(14, 2) AS available_balance,
+                   coalesce(balance.currency, 'BRL')::character(3) AS currency
+            FROM public.tb_contas cont
+            LEFT JOIN ads.account_balances balance
+              ON balance.account_id = cont.id_conta
+            WHERE cont.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+              AND cont.status::text = 'ATIVA'
+            LIMIT 1
+        </cfquery>
 
-<cftry>
-    <cfquery name="qAdsVoucherColumnCheck" datasource="runnerhub">
-        SELECT table_name,
-               column_name
-        FROM information_schema.columns
-        WHERE table_schema = 'ads'
-          AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
-          AND column_name IN (
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="credito_disponivel"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="id_usuario_resgate"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="papel_resgate"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="observacao"/>
-          )
-    </cfquery>
+        <cfif NOT qAdsV1Account.recordcount>
+            <cfset VARIABLES.adsV1HasAccount = false/>
+            <cfset VARIABLES.adsV1CanMutate = false/>
+            <cfset VARIABLES.adsV1Error = "A conta selecionada nao esta ativa."/>
+        <cfelse>
+            <cfset VARIABLES.adsV1Summary.balance = val(qAdsV1Account.available_balance)/>
 
-    <cfset VARIABLES.adsVoucherColumnNames = ValueList(qAdsVoucherColumnCheck.column_name)/>
-    <cfset VARIABLES.adsVoucherColumnsReady = ListFindNoCase(VARIABLES.adsVoucherColumnNames, "id_conta")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "credito_disponivel")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "data_resgate")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "id_usuario_resgate")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "papel_resgate")
-        AND ListFindNoCase(VARIABLES.adsVoucherColumnNames, "observacao")/>
+            <cfquery name="qAdsV1Events" datasource="runnerhub">
+                SELECT evt.id_evento,
+                       evt.nome_evento,
+                       evt.tag,
+                       evt.data_inicial,
+                       evt.data_final,
+                       evt.cidade,
+                       evt.estado
+                FROM public.tb_conta_eventos ce
+                INNER JOIN public.tb_evento_corridas evt
+                  ON evt.id_evento = ce.id_evento
+                WHERE ce.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                  AND ce.status::text = 'ATIVO'
+                  AND evt.ativo = true
+                ORDER BY evt.data_inicial DESC NULLS LAST,
+                         evt.nome_evento
+            </cfquery>
 
-    <cfcatch type="any">
-        <cfset VARIABLES.adsVoucherColumnsReady = false/>
-    </cfcatch>
-</cftry>
+            <cfquery name="qAdsV1Placements" datasource="runnerhub">
+                SELECT placement.placement_key,
+                       placement.surface
+                FROM ads.placements placement
+                WHERE placement.status = 'ACTIVE'
+                  AND placement.format_key = 'NATIVE_EVENT'
+                  AND placement.placement_key IN (
+                      'rr-home-upcoming-native',
+                      'rr-home-upcoming-native-secondary',
+                      'rr-search-events-native',
+                      'rr-state-events-native',
+                      'rr-sidebar-event-native'
+                  )
+                ORDER BY array_position(
+                    ARRAY[
+                        'rr-home-upcoming-native',
+                        'rr-home-upcoming-native-secondary',
+                        'rr-search-events-native',
+                        'rr-state-events-native',
+                        'rr-sidebar-event-native'
+                    ]::text[],
+                    placement.placement_key
+                )
+            </cfquery>
 
-<cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
-    <cfset VARIABLES.adsEffectiveIsAdmin = VARIABLES.businessEffectiveIsAdmin/>
-<cfelseif isDefined("qPerfil") AND qPerfil.recordcount AND isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
-    <cfset VARIABLES.adsEffectiveIsAdmin = true/>
-</cfif>
-
-<cfif VARIABLES.adsEffectiveIsAdmin>
-    <cfset VARIABLES.adsRestrictByConta = false/>
-    <cfset VARIABLES.adsCanOperate = true/>
-</cfif>
-
-<cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
-    <cfset VARIABLES.adsEventosContaIds = ValueList(qEventosConta.id_evento)/>
-</cfif>
-
-<cfif isDefined("qEventosContaOperacao") AND qEventosContaOperacao.recordcount>
-    <cfset VARIABLES.adsEventosOperacaoIds = ValueList(qEventosContaOperacao.id_evento)/>
-    <cfset VARIABLES.adsCanOperate = true/>
-</cfif>
-
-<cfif isDefined("URL.voucher") AND URL.voucher EQ "ativado">
-    <cfset VARIABLES.adsVoucherActionMessage = "Voucher ativado com sucesso. O credito ja esta disponivel para os turbinados desta conta."/>
-</cfif>
-
-<cfif isDefined("FORM.acao") AND FORM.acao EQ "ativar_voucher_ads">
-    <cfset VARIABLES.adsVoucherCode = uCase(trim(FORM.voucher_codigo))/>
-    <cfset VARIABLES.adsVoucherCode = REReplace(VARIABLES.adsVoucherCode, "[^A-Z0-9-]", "", "all")/>
-    <cfset VARIABLES.adsVoucherErrors = []/>
-
-    <cfif NOT len(VARIABLES.adsVoucherCode)>
-        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Informe o codigo do voucher.")/>
-    </cfif>
-
-    <cfif NOT VARIABLES.adsVoucherColumnsReady>
-        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "A estrutura de vouchers ainda nao foi aplicada.")/>
-    </cfif>
-
-    <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT len(trim(qPerfil.id))>
-        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Nao foi possivel identificar o usuario logado.")/>
-    </cfif>
-
-    <cfif NOT VARIABLES.adsRestrictByConta>
-        <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Selecione uma conta no topo antes de ativar um voucher.")/>
-    </cfif>
-
-    <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
-        <cftry>
-            <cftransaction>
-                <cfquery name="qAdsVoucherActivation" datasource="runnerhub">
-                    SELECT vou.id_ad_voucher,
-                           vou.codigo,
-                           vou.id_conta,
-                           vou.status,
-                           vou.credito,
-                           vou.data_expiracao,
-                           vou.papel_resgate::text AS papel_resgate,
-                           cont.nome_conta
-                    FROM ads.tb_ad_vouchers vou
-                    INNER JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
-                    WHERE lower(vou.codigo) = lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsVoucherCode#"/>)
-                      AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+            <cfquery name="qAdsV1Campaigns" datasource="runnerhub">
+                SELECT c.campaign_id,
+                       c.account_id,
+                       c.name,
+                       c.status,
+                       c.currency,
+                       c.cpc_bid,
+                       c.budget_total,
+                       c.budget_daily,
+                       c.target_device_class,
+                       c.target_country_code,
+                       c.target_region_code,
+                       c.starts_at,
+                       c.ends_at,
+                       c.created_at,
+                       c.updated_at,
+                       advertisement.advertisement_id,
+                       creative.creative_id,
+                       advertisement.core_event_id,
+                       advertisement.destination_url,
+                       evt.nome_evento,
+                       evt.tag AS event_tag,
+                       evt.data_inicial AS event_date,
+                       evt.cidade AS event_city,
+                       evt.estado AS event_state,
+                       placement.placement_keys,
+                       coalesce(budget.spent_total, 0)::numeric(14, 2) AS spent_total,
+                       coalesce(budget.spent_today, 0)::numeric(14, 2) AS spent_today,
+                       budget.spent_date,
+                       coalesce(metrics.served_count, 0)::bigint AS served_count,
+                       coalesce(metrics.viewable_impression_count, 0)::bigint AS viewable_impression_count,
+                       coalesce(metrics.valid_click_count, 0)::bigint AS valid_click_count,
+                       coalesce(metrics.billable_click_count, 0)::bigint AS billable_click_count,
+                       coalesce(metrics.conversion_count, 0)::bigint AS conversion_count,
+                       coalesce(metrics.reversal_count, 0)::bigint AS reversal_count,
+                       coalesce(metrics.reversal_amount, 0)::numeric(14, 2) AS reversal_amount,
+                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost
+                FROM ads.campaigns c
+                LEFT JOIN LATERAL (
+                    SELECT ad.advertisement_id,
+                           ad.core_event_id,
+                           ad.destination_url
+                    FROM ads.advertisements ad
+                    WHERE ad.campaign_id = c.campaign_id
+                      AND ad.account_id = c.account_id
+                      AND ad.billing_model = c.billing_model
+                      AND ad.ad_type = 'EVENT'
+                    ORDER BY ad.created_at, ad.advertisement_id
                     LIMIT 1
-                    FOR UPDATE
+                ) advertisement ON true
+                LEFT JOIN LATERAL (
+                    SELECT cr.creative_id
+                    FROM ads.creatives cr
+                    WHERE cr.advertisement_id = advertisement.advertisement_id
+                      AND cr.campaign_id = c.campaign_id
+                      AND cr.account_id = c.account_id
+                    ORDER BY cr.created_at, cr.creative_id
+                    LIMIT 1
+                ) creative ON true
+                LEFT JOIN public.tb_evento_corridas evt
+                  ON evt.id_evento = advertisement.core_event_id
+                LEFT JOIN LATERAL (
+                    SELECT string_agg(
+                               DISTINCT pl.placement_key,
+                               ',' ORDER BY pl.placement_key
+                           ) AS placement_keys
+                    FROM ads.campaign_placements link
+                    INNER JOIN ads.placements pl
+                      ON pl.placement_id = link.placement_id
+                    WHERE link.campaign_id = c.campaign_id
+                      AND link.account_id = c.account_id
+                      AND link.status = 'ACTIVE'
+                ) placement ON true
+                LEFT JOIN ads.campaign_budget_state budget
+                  ON budget.campaign_id = c.campaign_id
+                 AND budget.account_id = c.account_id
+                 AND budget.currency = c.currency
+                LEFT JOIN LATERAL (
+                    SELECT sum(metric.served_count) AS served_count,
+                           sum(metric.viewable_impression_count) AS viewable_impression_count,
+                           sum(metric.valid_click_count) AS valid_click_count,
+                           sum(metric.billable_click_count) AS billable_click_count,
+                           sum(metric.conversion_count) AS conversion_count,
+                           sum(metric.reversal_count) AS reversal_count,
+                           sum(metric.reversal_amount) AS reversal_amount,
+                           sum(metric.cost) AS cost
+                    FROM ads.daily_metrics metric
+                    WHERE metric.campaign_id = c.campaign_id
+                      AND metric.account_id = c.account_id
+                ) metrics ON true
+                WHERE c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                  AND c.billing_model = 'CPC'
+                ORDER BY c.updated_at DESC, c.created_at DESC
+            </cfquery>
+
+            <cfif VARIABLES.adsAccessCanAdminFinance>
+                <cfquery name="qAdsV1Ledger" datasource="runnerhub">
+                    SELECT ledger.ledger_entry_id,
+                           ledger.account_id,
+                           ledger.campaign_id,
+                           ledger.entry_type,
+                           ledger.source_type,
+                           ledger.amount,
+                           ledger.currency,
+                           ledger.balance_after,
+                           ledger.idempotency_key,
+                           ledger.reference_entry_id,
+                           ledger.occurred_at,
+                           ledger.created_by,
+                           ledger.metadata,
+                           campaign.name AS campaign_name
+                    FROM ads.credit_ledger ledger
+                    LEFT JOIN ads.campaigns campaign
+                      ON campaign.campaign_id = ledger.campaign_id
+                     AND campaign.account_id = ledger.account_id
+                    WHERE ledger.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                    ORDER BY ledger.occurred_at DESC, ledger.ledger_entry_id DESC
+                    LIMIT 50
                 </cfquery>
 
-                <cfif NOT qAdsVoucherActivation.recordcount>
-                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Voucher nao encontrado para esta conta.")/>
-                <cfelseif qAdsVoucherActivation.status NEQ 1>
-                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Este voucher nao esta disponivel para ativacao.")/>
-                <cfelseif len(trim(qAdsVoucherActivation.data_expiracao)) AND isDate(qAdsVoucherActivation.data_expiracao) AND dateCompare(qAdsVoucherActivation.data_expiracao, now(), "d") LT 0>
-                    <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Este voucher esta expirado.")/>
+                <cfquery name="qAdsV1ReversibleDebits" datasource="runnerhub">
+                    SELECT ledger.ledger_entry_id,
+                           ledger.campaign_id,
+                           ledger.amount,
+                           ledger.currency,
+                           ledger.balance_after,
+                           ledger.occurred_at,
+                           campaign.name AS campaign_name
+                    FROM ads.credit_ledger ledger
+                    LEFT JOIN ads.campaigns campaign
+                      ON campaign.campaign_id = ledger.campaign_id
+                     AND campaign.account_id = ledger.account_id
+                    WHERE ledger.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND ledger.entry_type = 'DEBIT'
+                      AND ledger.source_type = 'CLICK'
+                      AND NOT EXISTS (
+                          SELECT 1
+                          FROM ads.credit_ledger reversal
+                          WHERE reversal.reference_entry_id = ledger.ledger_entry_id
+                            AND reversal.account_id = ledger.account_id
+                            AND reversal.entry_type = 'REVERSAL'
+                      )
+                    ORDER BY ledger.occurred_at DESC, ledger.ledger_entry_id DESC
+                    LIMIT 20
+                </cfquery>
+            </cfif>
+
+            <cfquery name="qAdsV1StatusHistory" datasource="runnerhub">
+                SELECT history.campaign_status_history_id,
+                       history.campaign_id,
+                       history.account_id,
+                       history.from_status,
+                       history.to_status,
+                       history.reason,
+                       history.changed_by,
+                       history.changed_at,
+                       campaign.name AS campaign_name,
+                       usr.name AS changed_by_name
+                FROM ads.campaign_status_history history
+                INNER JOIN ads.campaigns campaign
+                  ON campaign.campaign_id = history.campaign_id
+                 AND campaign.account_id = history.account_id
+                LEFT JOIN public.tb_usuarios usr
+                  ON usr.id = history.changed_by
+                WHERE history.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                ORDER BY history.changed_at DESC,
+                         history.campaign_status_history_id DESC
+                LIMIT 50
+            </cfquery>
+
+            <cfloop query="qAdsV1Campaigns">
+                <cfset VARIABLES.adsV1Summary.campaigns = VARIABLES.adsV1Summary.campaigns + 1/>
+                <cfif qAdsV1Campaigns.status EQ "ACTIVE"><cfset VARIABLES.adsV1Summary.active = VARIABLES.adsV1Summary.active + 1/></cfif>
+                <cfif qAdsV1Campaigns.status EQ "PAUSED"><cfset VARIABLES.adsV1Summary.paused = VARIABLES.adsV1Summary.paused + 1/></cfif>
+                <cfset VARIABLES.adsV1Summary.spent = VARIABLES.adsV1Summary.spent + val(qAdsV1Campaigns.spent_total)/>
+                <cfset VARIABLES.adsV1Summary.views = VARIABLES.adsV1Summary.views + val(qAdsV1Campaigns.viewable_impression_count)/>
+                <cfset VARIABLES.adsV1Summary.clicks = VARIABLES.adsV1Summary.clicks + val(qAdsV1Campaigns.valid_click_count)/>
+                <cfset VARIABLES.adsV1Summary.cost = VARIABLES.adsV1Summary.cost + val(qAdsV1Campaigns.cost)/>
+            </cfloop>
+
+            <cfif adsV1IsUuid(URL.campaign)>
+                <cfset VARIABLES.adsV1SelectedCampaignId = lCase(trim(URL.campaign))/>
+                <cfquery name="qAdsV1SelectedCampaign" datasource="runnerhub">
+                    SELECT c.campaign_id,
+                           c.account_id,
+                           c.name,
+                           c.status,
+                           c.cpc_bid,
+                           c.budget_total,
+                           c.budget_daily,
+                           c.target_device_class,
+                           c.target_country_code,
+                           c.target_region_code,
+                           c.starts_at,
+                           c.ends_at,
+                           advertisement.core_event_id,
+                           placement.placement_keys
+                    FROM ads.campaigns c
+                    LEFT JOIN LATERAL (
+                        SELECT ad.core_event_id
+                        FROM ads.advertisements ad
+                        WHERE ad.campaign_id = c.campaign_id
+                          AND ad.account_id = c.account_id
+                          AND ad.ad_type = 'EVENT'
+                        ORDER BY ad.created_at, ad.advertisement_id
+                        LIMIT 1
+                    ) advertisement ON true
+                    LEFT JOIN LATERAL (
+                        SELECT string_agg(
+                                   DISTINCT pl.placement_key,
+                                   ',' ORDER BY pl.placement_key
+                               ) AS placement_keys
+                        FROM ads.campaign_placements link
+                        INNER JOIN ads.placements pl
+                          ON pl.placement_id = link.placement_id
+                        WHERE link.campaign_id = c.campaign_id
+                          AND link.account_id = c.account_id
+                          AND link.status = 'ACTIVE'
+                    ) placement ON true
+                    WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
+                      AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND c.billing_model = 'CPC'
+                    LIMIT 1
+                </cfquery>
+            </cfif>
+            <cfset VARIABLES.adsV1DataReady = true/>
+        </cfif>
+
+        <cfcatch type="any">
+            <cfset VARIABLES.adsV1DataReady = false/>
+            <cfset VARIABLES.adsV1CanMutate = false/>
+            <cfset VARIABLES.adsV1Error = "Nao foi possivel carregar os dados de publicidade desta conta."/>
+            <cflog file="business_ads_v1" type="error" text="read account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# message=#cfcatch.message#"/>
+        </cfcatch>
+    </cftry>
+</cfif>
+
+<cfinclude template="payments_backend.cfm"/>
+
+<cfif len(trim(FORM.ads_v1_action & "")) AND NOT VARIABLES.adsPaymentActionHandled>
+    <cfset VARIABLES.adsV1Action = lCase(trim(FORM.ads_v1_action & ""))/>
+
+    <cftry>
+        <cfif NOT VARIABLES.adsV1CanMutate>
+            <cfthrow type="AdsV1.Validation" message="A operacao de publicidade nao esta disponivel para esta conta."/>
+        </cfif>
+        <cfif listFindNoCase(VARIABLES.adsV1CampaignActions, VARIABLES.adsV1Action)
+            AND NOT VARIABLES.adsAccessCanManageCampaign>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Seu papel nesta conta nao permite administrar campanhas."/>
+        </cfif>
+        <cfif listFindNoCase(VARIABLES.adsV1FinanceActions, VARIABLES.adsV1Action)
+            AND NOT VARIABLES.adsAccessCanAdminFinance>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Esta operacao financeira exige um administrador interno real e uma conta selecionada."/>
+        </cfif>
+        <cfif listFindNoCase(VARIABLES.adsV1VoucherActions, VARIABLES.adsV1Action)
+            AND NOT VARIABLES.adsAccessCanPurchaseCredit>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Somente OWNER ou ADMIN da conta pode resgatar vouchers."/>
+        </cfif>
+        <cfif compare(trim(FORM.ads_v1_csrf & ""), VARIABLES.adsV1Csrf) NEQ 0>
+            <cfthrow type="AdsV1.Validation" message="A sessao do formulario expirou. Recarregue a pagina."/>
+        </cfif>
+
+        <cfswitch expression="#VARIABLES.adsV1Action#">
+            <cfcase value="save_campaign">
+                <cfset VARIABLES.adsV1FormCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfset VARIABLES.adsV1FormEventId = structKeyExists(FORM, "core_event_id") AND isNumeric(FORM.core_event_id) ? val(FORM.core_event_id) : 0/>
+                <cfset VARIABLES.adsV1FormName = structKeyExists(FORM, "name") ? trim(FORM.name & "") : ""/>
+                <cfset VARIABLES.adsV1FormCpcRaw = structKeyExists(FORM, "cpc_bid") ? trim(FORM.cpc_bid & "") : ""/>
+                <cfset VARIABLES.adsV1FormBudgetTotalRaw = structKeyExists(FORM, "budget_total") ? trim(FORM.budget_total & "") : ""/>
+                <cfset VARIABLES.adsV1FormBudgetDailyRaw = structKeyExists(FORM, "budget_daily") ? trim(FORM.budget_daily & "") : ""/>
+                <cfset VARIABLES.adsV1FormCpc = adsV1MoneyValue(VARIABLES.adsV1FormCpcRaw)/>
+                <cfset VARIABLES.adsV1FormBudgetTotal = adsV1MoneyValue(VARIABLES.adsV1FormBudgetTotalRaw)/>
+                <cfset VARIABLES.adsV1FormBudgetDaily = len(VARIABLES.adsV1FormBudgetDailyRaw) ? adsV1MoneyValue(VARIABLES.adsV1FormBudgetDailyRaw) : 0/>
+                <cfset VARIABLES.adsV1FormStartsRaw = structKeyExists(FORM, "starts_at") ? replace(trim(FORM.starts_at & ""), "T", " ", "all") : ""/>
+                <cfset VARIABLES.adsV1FormEndsRaw = structKeyExists(FORM, "ends_at") ? replace(trim(FORM.ends_at & ""), "T", " ", "all") : ""/>
+                <cfset VARIABLES.adsV1FormDevice = structKeyExists(FORM, "target_device_class") ? uCase(trim(FORM.target_device_class & "")) : "ALL"/>
+                <cfset VARIABLES.adsV1FormCountry = structKeyExists(FORM, "target_country_code") ? uCase(trim(FORM.target_country_code & "")) : "BR"/>
+                <cfset VARIABLES.adsV1FormRegion = structKeyExists(FORM, "target_region_code") ? uCase(trim(FORM.target_region_code & "")) : ""/>
+                <cfset VARIABLES.adsV1FormPlacementInput = structKeyExists(FORM, "placement_keys") ? FORM.placement_keys : ""/>
+                <cfset VARIABLES.adsV1FormPlacementCandidates = adsV1FormList(VARIABLES.adsV1FormPlacementInput)/>
+                <cfset VARIABLES.adsV1FormPlacementKeys = []/>
+
+                <cfloop array="#VARIABLES.adsV1FormPlacementCandidates#" index="VARIABLES.adsV1FormPlacementCandidate">
+                    <cfset VARIABLES.adsV1FormPlacementKey = lCase(trim(VARIABLES.adsV1FormPlacementCandidate & ""))/>
+                    <cfif listFindNoCase(arrayToList(VARIABLES.adsV1AllowedEventPlacementKeys), VARIABLES.adsV1FormPlacementKey)
+                        AND NOT arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)>
+                        <cfset arrayAppend(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)/>
+                    </cfif>
+                </cfloop>
+
+                <cfif NOT arrayLen(VARIABLES.adsV1FormPlacementKeys)>
+                    <cfthrow type="AdsV1.Validation" message="Selecione ao menos um spot de publicidade valido."/>
+                </cfif>
+                <cfif arrayLen(VARIABLES.adsV1FormPlacementKeys) NEQ arrayLen(VARIABLES.adsV1FormPlacementCandidates)>
+                    <cfthrow type="AdsV1.Validation" message="A lista de spots de publicidade e invalida ou contem duplicidades."/>
+                </cfif>
+                <cfset VARIABLES.adsV1FormPlacementArrayLiteral = "{" & arrayToList(VARIABLES.adsV1FormPlacementKeys) & "}"/>
+
+                <cfif len(VARIABLES.adsV1FormCampaignId) AND NOT adsV1IsUuid(VARIABLES.adsV1FormCampaignId)>
+                    <cfthrow type="AdsV1.Validation" message="Campanha invalida."/>
+                </cfif>
+                <cfif VARIABLES.adsV1FormEventId LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Selecione um evento da conta."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1FormName) LT 3 OR len(VARIABLES.adsV1FormName) GT 160>
+                    <cfthrow type="AdsV1.Validation" message="Informe um nome de campanha entre 3 e 160 caracteres."/>
+                </cfif>
+                <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormCpcRaw) OR VARIABLES.adsV1FormCpc LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Informe um CPC positivo com no maximo duas casas decimais."/>
+                </cfif>
+                <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormBudgetTotalRaw) OR VARIABLES.adsV1FormBudgetTotal LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Informe um orcamento total positivo com no maximo duas casas decimais."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1FormBudgetDailyRaw)
+                    AND (NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormBudgetDailyRaw)
+                        OR VARIABLES.adsV1FormBudgetDaily LTE 0
+                        OR VARIABLES.adsV1FormBudgetDaily GT VARIABLES.adsV1FormBudgetTotal)>
+                    <cfthrow type="AdsV1.Validation" message="O orcamento diario deve ser positivo e nao superar o total."/>
+                </cfif>
+                <cfif NOT isDate(VARIABLES.adsV1FormStartsRaw) OR NOT isDate(VARIABLES.adsV1FormEndsRaw)>
+                    <cfthrow type="AdsV1.Validation" message="Informe o inicio e o fim da campanha."/>
+                </cfif>
+                <cfset VARIABLES.adsV1FormStarts = parseDateTime(VARIABLES.adsV1FormStartsRaw)/>
+                <cfset VARIABLES.adsV1FormEnds = parseDateTime(VARIABLES.adsV1FormEndsRaw)/>
+                <cfif dateCompare(VARIABLES.adsV1FormEnds, VARIABLES.adsV1FormStarts, "s") LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="O fim da campanha deve ser posterior ao inicio."/>
+                </cfif>
+                <cfif NOT listFindNoCase("ALL,DESKTOP,MOBILE", VARIABLES.adsV1FormDevice)>
+                    <cfthrow type="AdsV1.Validation" message="Dispositivo alvo invalido."/>
+                </cfif>
+                <cfif NOT reFind("^[A-Z]{2}$", VARIABLES.adsV1FormCountry)>
+                    <cfthrow type="AdsV1.Validation" message="Pais alvo invalido."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1FormRegion) AND (len(VARIABLES.adsV1FormRegion) GT 40 OR NOT reFind("^[A-Z0-9._ -]+$", VARIABLES.adsV1FormRegion))>
+                    <cfthrow type="AdsV1.Validation" message="Regiao alvo invalida."/>
                 </cfif>
 
-                <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
-                    <cfquery datasource="runnerhub">
-                        UPDATE ads.tb_ad_vouchers
-                        SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>,
-                            id_usuario_resgate = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
-                            data_resgate = now(),
-                            credito_disponivel = COALESCE(credito_disponivel, credito, 0),
-                            data_atualizacao = now()
-                        WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsVoucherActivation.id_ad_voucher#"/>
-                          AND status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+                <cfquery name="qAdsV1EventTarget" datasource="runnerhub">
+                    SELECT evt.id_evento,
+                           evt.tag
+                    FROM public.tb_conta_eventos ce
+                    INNER JOIN public.tb_evento_corridas evt
+                      ON evt.id_evento = ce.id_evento
+                    WHERE ce.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND ce.status::text = 'ATIVO'
+                      AND evt.ativo = true
+                      AND evt.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1FormEventId#"/>
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qAdsV1EventTarget.recordcount OR NOT reFindNoCase("^[a-z0-9._~-]+$", trim(qAdsV1EventTarget.tag & ""))>
+                    <cfthrow type="AdsV1.Validation" message="O evento nao esta ativo ou nao pertence a conta selecionada."/>
+                </cfif>
+
+                <cfif len(VARIABLES.adsV1FormCampaignId)>
+                    <cfquery name="qAdsV1CampaignSaveTarget" datasource="runnerhub">
+                        SELECT c.campaign_id,
+                               c.status
+                        FROM ads.campaigns c
+                        WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#"/> AS uuid)
+                          AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                          AND c.billing_model = 'CPC'
+                          AND c.status IN ('DRAFT', 'PAUSED')
+                        LIMIT 1
                     </cfquery>
+                    <cfif NOT qAdsV1CampaignSaveTarget.recordcount>
+                        <cfthrow type="AdsV1.Validation" message="Somente campanhas DRAFT ou PAUSED desta conta podem ser editadas."/>
+                    </cfif>
                 </cfif>
-            </cftransaction>
 
-            <cfif NOT arrayLen(VARIABLES.adsVoucherErrors)>
-                <cflocation addtoken="false" url="/ads/?voucher=ativado##credito-ads"/>
+                <cfset VARIABLES.adsV1DestinationUrl = reReplace(VARIABLES.roadRunnersBaseUrl, "/+$", "", "all")
+                    & "/evento/" & trim(qAdsV1EventTarget.tag) & "/"/>
+
+                <cftransaction>
+                    <cfquery name="qAdsV1CampaignSave" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.save_event_campaign(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#" null="#NOT len(VARIABLES.adsV1FormCampaignId)#"/> AS uuid),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1EventTarget.id_evento#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormPlacementKeys[1]#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormName#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1DestinationUrl#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormCpc#" scale="2"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetTotal#" scale="2"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1FormBudgetDaily#" scale="2" null="#NOT len(VARIABLES.adsV1FormBudgetDailyRaw)#"/> AS numeric),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormStarts#"/> AS timestamp with time zone),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.adsV1FormEnds#"/> AS timestamp with time zone),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormDevice#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCountry#"/> AS character(2)),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormRegion#" null="#NOT len(VARIABLES.adsV1FormRegion)#"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                        )
+                    </cfquery>
+
+                    <cfquery name="qAdsV1CampaignPlacementSave" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.replace_campaign_placements(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#qAdsV1CampaignSave.campaign_id#"/> AS uuid),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormPlacementArrayLiteral#"/> AS text[]),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="Spots salvos pelo Business"/> AS text)
+                        )
+                    </cfquery>
+                </cftransaction>
+
+                <cflocation addtoken="false" url="./?success=campaign-saved&campaign=#qAdsV1CampaignSave.campaign_id#"/>
+            </cfcase>
+
+            <cfcase value="credit_account">
+                <cfset VARIABLES.adsV1CreditAmountRaw = structKeyExists(FORM, "amount") ? trim(FORM.amount & "") : ""/>
+                <cfset VARIABLES.adsV1CreditAmount = adsV1MoneyValue(VARIABLES.adsV1CreditAmountRaw)/>
+                <cfset VARIABLES.adsV1CreditReason = structKeyExists(FORM, "reason") ? trim(FORM.reason & "") : ""/>
+                <cfset VARIABLES.adsV1CreditIdempotencyKey = structKeyExists(FORM, "idempotency_key") ? lCase(trim(FORM.idempotency_key & "")) : ""/>
+                <cfset VARIABLES.adsV1CreditPrefix = "business:manual-credit:" & VARIABLES.adsV1AccountId & ":"/>
+                <cfset VARIABLES.adsV1CreditKeySuffix = left(VARIABLES.adsV1CreditIdempotencyKey, len(VARIABLES.adsV1CreditPrefix)) EQ VARIABLES.adsV1CreditPrefix
+                    ? mid(VARIABLES.adsV1CreditIdempotencyKey, len(VARIABLES.adsV1CreditPrefix) + 1, 32) : ""/>
+
+                <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1CreditAmountRaw) OR VARIABLES.adsV1CreditAmount LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Informe um credito positivo com no maximo duas casas decimais."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1CreditReason) LT 5 OR len(VARIABLES.adsV1CreditReason) GT 500>
+                    <cfthrow type="AdsV1.Validation" message="Informe uma justificativa entre 5 e 500 caracteres."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1CreditIdempotencyKey) NEQ len(VARIABLES.adsV1CreditPrefix) + 32
+                    OR left(VARIABLES.adsV1CreditIdempotencyKey, len(VARIABLES.adsV1CreditPrefix)) NEQ VARIABLES.adsV1CreditPrefix
+                    OR NOT adsV1IsIdempotencyToken(VARIABLES.adsV1CreditKeySuffix)>
+                    <cfthrow type="AdsV1.Validation" message="A chave do formulario de credito e invalida. Recarregue a pagina."/>
+                </cfif>
+
+                <cfset VARIABLES.adsV1CreditMetadata = serializeJSON({
+                    module = "business_ads_v1",
+                    reason = VARIABLES.adsV1CreditReason,
+                    request_id = VARIABLES.adsV1CreditIdempotencyKey,
+                    operator_id = VARIABLES.adsV1ActorId
+                })/>
+
+                <cfquery name="qAdsV1CreditResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.credit_account(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1CreditAmount#" scale="2"/> AS numeric),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1CreditIdempotencyKey#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="MANUAL"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.adsV1CreditMetadata#"/> AS jsonb)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?success=credited"/>
+            </cfcase>
+
+            <cfcase value="redeem_voucher">
+                <cfset VARIABLES.adsV1VoucherCode = uCase(trim(FORM.voucher_code & ""))/>
+
+                <cfif len(VARIABLES.adsV1VoucherCode) LT 3
+                    OR len(VARIABLES.adsV1VoucherCode) GT 160
+                    OR NOT reFind("^[A-Z0-9-]+$", VARIABLES.adsV1VoucherCode)>
+                    <cfthrow type="AdsV1.Validation" message="Informe um codigo de voucher valido."/>
+                </cfif>
+
+                <cftry>
+                    <cfquery name="qAdsV1VoucherResult" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.redeem_voucher(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1VoucherCode#" maxlength="160"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                        )
+                    </cfquery>
+
+                    <cfcatch type="database">
+                        <cflog file="business_ads_v1" type="warning" text="voucher_redeem account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)#"/>
+                        <cfthrow type="AdsV1.Validation" message="O voucher nao foi encontrado, expirou ou nao esta disponivel para esta conta."/>
+                    </cfcatch>
+                </cftry>
+
+                <cflocation addtoken="false" url="./?success=voucher-redeemed##payment-credit"/>
+            </cfcase>
+
+            <cfcase value="activate_campaign">
+                <cfset VARIABLES.adsV1StatusCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfset VARIABLES.adsV1StatusReason = structKeyExists(FORM, "reason") ? trim(FORM.reason & "") : "Ativacao manual pelo Business"/>
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1StatusCampaignId)>
+                    <cfthrow type="AdsV1.Validation" message="Campanha invalida."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ActivateTarget" datasource="runnerhub">
+                    SELECT c.campaign_id,
+                           c.status
+                    FROM ads.campaigns c
+                    WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid)
+                      AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND c.billing_model = 'CPC'
+                      AND c.status IN ('DRAFT', 'PAUSED')
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qAdsV1ActivateTarget.recordcount>
+                    <cfthrow type="AdsV1.Validation" message="A campanha nao pode ser ativada neste estado."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ActivateResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.activate_campaign(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(VARIABLES.adsV1StatusReason, 500)#"/> AS text)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?success=activated"/>
+            </cfcase>
+
+            <cfcase value="change_campaign_status">
+                <cfset VARIABLES.adsV1StatusCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfset VARIABLES.adsV1TargetStatus = structKeyExists(FORM, "target_status") ? uCase(trim(FORM.target_status & "")) : ""/>
+                <cfset VARIABLES.adsV1StatusReason = structKeyExists(FORM, "reason") ? trim(FORM.reason & "") : ""/>
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1StatusCampaignId) OR NOT listFind("PAUSED,ENDED", VARIABLES.adsV1TargetStatus)>
+                    <cfthrow type="AdsV1.Validation" message="Campanha ou status invalido."/>
+                </cfif>
+                <cfif VARIABLES.adsV1TargetStatus EQ "ENDED" AND len(VARIABLES.adsV1StatusReason) LT 5>
+                    <cfthrow type="AdsV1.Validation" message="Informe o motivo do encerramento."/>
+                </cfif>
+
+                <cfquery name="qAdsV1StatusTarget" datasource="runnerhub">
+                    SELECT c.campaign_id,
+                           c.status
+                    FROM ads.campaigns c
+                    WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid)
+                      AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND c.billing_model = 'CPC'
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qAdsV1StatusTarget.recordcount
+                    OR (VARIABLES.adsV1TargetStatus EQ "PAUSED" AND qAdsV1StatusTarget.status NEQ "ACTIVE")
+                    OR (VARIABLES.adsV1TargetStatus EQ "ENDED" AND NOT listFind("DRAFT,ACTIVE,PAUSED", qAdsV1StatusTarget.status))>
+                    <cfthrow type="AdsV1.Validation" message="A transicao de status nao e permitida."/>
+                </cfif>
+
+                <cfquery name="qAdsV1StatusResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.change_campaign_status(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1TargetStatus#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(VARIABLES.adsV1StatusReason, 500)#" null="#NOT len(VARIABLES.adsV1StatusReason)#"/> AS text)
+                    )
+                </cfquery>
+
+                <cfif VARIABLES.adsV1TargetStatus EQ "PAUSED">
+                    <cflocation addtoken="false" url="./?success=paused"/>
+                <cfelse>
+                    <cflocation addtoken="false" url="./?success=ended"/>
+                </cfif>
+            </cfcase>
+
+            <cfcase value="reverse_click_debit">
+                <cfset VARIABLES.adsV1ReversalLedgerId = structKeyExists(FORM, "ledger_entry_id") ? lCase(trim(FORM.ledger_entry_id & "")) : ""/>
+                <cfset VARIABLES.adsV1ReversalReason = structKeyExists(FORM, "reason") ? trim(FORM.reason & "") : ""/>
+                <cfset VARIABLES.adsV1ReversalIdempotencyKey = structKeyExists(FORM, "idempotency_key") ? lCase(trim(FORM.idempotency_key & "")) : ""/>
+                <cfset VARIABLES.adsV1ReversalPrefix = "business:click-reversal:" & VARIABLES.adsV1ReversalLedgerId & ":"/>
+                <cfset VARIABLES.adsV1ReversalKeySuffix = left(VARIABLES.adsV1ReversalIdempotencyKey, len(VARIABLES.adsV1ReversalPrefix)) EQ VARIABLES.adsV1ReversalPrefix
+                    ? mid(VARIABLES.adsV1ReversalIdempotencyKey, len(VARIABLES.adsV1ReversalPrefix) + 1, 32) : ""/>
+
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1ReversalLedgerId)>
+                    <cfthrow type="AdsV1.Validation" message="Lancamento invalido."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1ReversalReason) LT 5 OR len(VARIABLES.adsV1ReversalReason) GT 500>
+                    <cfthrow type="AdsV1.Validation" message="Informe um motivo de estorno entre 5 e 500 caracteres."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1ReversalIdempotencyKey) NEQ len(VARIABLES.adsV1ReversalPrefix) + 32
+                    OR left(VARIABLES.adsV1ReversalIdempotencyKey, len(VARIABLES.adsV1ReversalPrefix)) NEQ VARIABLES.adsV1ReversalPrefix
+                    OR NOT adsV1IsIdempotencyToken(VARIABLES.adsV1ReversalKeySuffix)>
+                    <cfthrow type="AdsV1.Validation" message="A chave do formulario de estorno e invalida. Recarregue a pagina."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ReversalTarget" datasource="runnerhub">
+                    SELECT ledger.ledger_entry_id
+                    FROM ads.credit_ledger ledger
+                    WHERE ledger.ledger_entry_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReversalLedgerId#"/> AS uuid)
+                      AND ledger.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND ledger.entry_type = 'DEBIT'
+                      AND ledger.source_type = 'CLICK'
+                      AND NOT EXISTS (
+                          SELECT 1
+                          FROM ads.credit_ledger reversal
+                          WHERE reversal.reference_entry_id = ledger.ledger_entry_id
+                            AND reversal.account_id = ledger.account_id
+                            AND reversal.entry_type = 'REVERSAL'
+                      )
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qAdsV1ReversalTarget.recordcount>
+                    <cfthrow type="AdsV1.Validation" message="O debito nao existe, pertence a outra conta ou ja foi estornado."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ReversalResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.reverse_click_debit(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReversalLedgerId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReversalIdempotencyKey#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReversalReason#"/> AS text)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?success=reversed"/>
+            </cfcase>
+
+            <cfdefaultcase>
+                <cfthrow type="AdsV1.Validation" message="Acao de publicidade invalida."/>
+            </cfdefaultcase>
+        </cfswitch>
+
+        <cfcatch type="any">
+            <cflog file="business_ads_v1" type="error" text="action=#VARIABLES.adsV1Action# account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# type=#cfcatch.type# message=#left(cfcatch.message & '', 1000)#"/>
+            <cfif cfcatch.type EQ "AdsV1.Validation" OR cfcatch.type EQ "AdsV1.Forbidden">
+                <cfset VARIABLES.adsV1Error = cfcatch.message/>
+            <cfelse>
+                <cfset VARIABLES.adsV1Error = "Nao foi possivel concluir a operacao de publicidade. Tente novamente e consulte o log se o erro continuar."/>
             </cfif>
-
-            <cfcatch type="any">
-                <cfset arrayAppend(VARIABLES.adsVoucherErrors, "Nao foi possivel ativar o voucher. " & cfcatch.message)/>
-            </cfcatch>
-        </cftry>
-    </cfif>
-
-    <cfif arrayLen(VARIABLES.adsVoucherErrors)>
-        <cfset VARIABLES.adsVoucherActionError = arrayToList(VARIABLES.adsVoucherErrors, " ")/>
-    </cfif>
+        </cfcatch>
+    </cftry>
 </cfif>
 
-<cfif VARIABLES.adsVoucherColumnsReady>
-    <cfif VARIABLES.adsRestrictByConta>
-        <cfquery name="qAdAvailableVouchers" datasource="runnerhub">
-            SELECT vou.id_ad_voucher,
-                   vou.codigo,
-                   cont.nome_conta,
-                   coalesce(vou.credito, 0) AS credito,
-                   coalesce(vou.credito_disponivel, vou.credito, 0) AS credito_disponivel,
-                   vou.data_expiracao,
-                   vou.papel_resgate::text AS papel_resgate,
-                   vou.observacao
-            FROM ads.tb_ad_vouchers vou
-            LEFT JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
-            WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
-              AND vou.id_usuario_resgate IS NULL
-              AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-              AND (
-                  vou.data_expiracao IS NULL
-                  OR vou.data_expiracao >= current_date
-              )
-            ORDER BY vou.data_expiracao ASC NULLS LAST, vou.data_criacao DESC, vou.id_ad_voucher DESC
-            LIMIT 5
-        </cfquery>
-    </cfif>
-
-    <cfquery name="qAdVoucherCredit" datasource="runnerhub">
-        WITH voucher_credit AS (
-            SELECT coalesce(sum(credito_disponivel), 0) AS credito_total
-            FROM ads.tb_ad_vouchers
-            WHERE status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
-              AND data_resgate IS NOT NULL
-            <cfif VARIABLES.adsRestrictByConta>
-              AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-            </cfif>
-        ),
-        ad_spend AS (
-            SELECT coalesce(sum(log.valor_ad), 0) AS consumo_total
-            FROM ads.tb_ad_log log
-            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-            WHERE log.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
-            <cfif VARIABLES.adsRestrictByConta>
-              AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-            </cfif>
-        )
-        SELECT voucher_credit.credito_total,
-               ad_spend.consumo_total,
-               greatest(voucher_credit.credito_total - ad_spend.consumo_total, 0) AS saldo_total
-        FROM voucher_credit, ad_spend
-    </cfquery>
-
-    <cfif qAdVoucherCredit.recordcount>
-        <cfset VARIABLES.adsCreditTotal = val(qAdVoucherCredit.credito_total)/>
-        <cfset VARIABLES.adsCreditSpent = val(qAdVoucherCredit.consumo_total)/>
-        <cfset VARIABLES.adsCreditBalance = val(qAdVoucherCredit.saldo_total)/>
-    </cfif>
-
-    <cfquery name="qAdCreditVouchers" datasource="runnerhub">
-        SELECT vou.codigo,
-               cont.nome_conta,
-               coalesce(vou.credito, 0) AS credito,
-               coalesce(vou.credito_disponivel, vou.credito, 0) AS credito_disponivel,
-               vou.data_resgate,
-               vou.data_expiracao,
-               vou.status
-        FROM ads.tb_ad_vouchers vou
-        LEFT JOIN public.tb_contas cont ON cont.id_conta = vou.id_conta
-        WHERE vou.status = <cfqueryparam cfsqltype="cf_sql_integer" value="2"/>
-          AND vou.data_resgate IS NOT NULL
-        <cfif VARIABLES.adsRestrictByConta>
-          AND vou.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-        </cfif>
-        ORDER BY vou.data_resgate DESC, vou.id_ad_voucher DESC
-        LIMIT 20
-    </cfquery>
-
+<cfif NOT len(VARIABLES.adsV1CreditIdempotencyKey)>
+    <cfset VARIABLES.adsV1CreditIdempotencyKey = "business:manual-credit:"
+        & VARIABLES.adsV1AccountId & ":" & adsV1NewIdempotencyToken()/>
 </cfif>
-
-<cfset qAdsEventosPermitidos = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
-<cfset qAdsEventosSemCampanha = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
-<cfif VARIABLES.adsRestrictByConta AND VARIABLES.adsEventosOperacaoIds NEQ "0">
-    <cfquery name="qAdsEventosPermitidos" datasource="runnerhub">
-        SELECT id_evento,
-               nome_evento,
-               tag,
-               data_inicial,
-               data_final,
-               cidade,
-               estado
-        FROM public.tb_evento_corridas
-        WHERE ativo = true
-          AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
-        ORDER BY data_final DESC NULLS LAST, nome_evento
-    </cfquery>
-
-    <cfquery name="qAdsEventosSemCampanha" datasource="runnerhub">
-        SELECT evt.id_evento,
-               evt.nome_evento,
-               evt.tag,
-               evt.data_inicial,
-               evt.data_final,
-               evt.cidade,
-               evt.estado
-        FROM public.tb_evento_corridas evt
-        WHERE evt.ativo = true
-          AND evt.data_final >= current_date
-          AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
-          AND NOT EXISTS (
-              SELECT 1
-              FROM ads.tb_ad_eventos ad
-              WHERE ad.id_evento = evt.id_evento
-                AND ad.status < <cfqueryparam cfsqltype="cf_sql_integer" value="3"/>
-          )
-        ORDER BY evt.data_inicial ASC NULLS LAST, evt.nome_evento
-        LIMIT 3
-    </cfquery>
-</cfif>
-
-<cfif isDefined("form.acao") AND form.acao EQ "incluir_campanha">
-
-    <cfif NOT VARIABLES.adsCanOperate>
-        <cflocation addtoken="false" url="/ads/"/>
-    </cfif>
-
-    <cfif VARIABLES.adsRestrictByConta
-        AND VARIABLES.adsVoucherColumnsReady
-        AND VARIABLES.adsCreditBalance LTE 0>
-        <cflocation addtoken="false" url="/ads/?erro=sem_credito"/>
-    </cfif>
-
-    <cfif VARIABLES.adsRestrictByConta
-        AND VARIABLES.adsVoucherColumnsReady
-        AND isDefined("FORM.limite_ad")
-        AND len(trim(FORM.limite_ad))
-        AND val(REReplace(FORM.limite_ad, ",", ".", "all")) GT VARIABLES.adsCreditBalance>
-        <cflocation addtoken="false" url="/ads/?erro=credito_insuficiente"/>
-    </cfif>
-
-    <cfset qAdCheckEvento = QueryNew("id_evento")/>
-
-    <cfif isDefined("FORM.id_evento") AND len(trim(FORM.id_evento)) AND isNumeric(FORM.id_evento)>
-        <cfquery name="qAdCheckEvento" datasource="runnerhub">
-            SELECT id_evento
-            FROM public.tb_evento_corridas
-            WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-              AND ativo = true
-            LIMIT 1
-        </cfquery>
-    <cfelseif isDefined("FORM.evento") AND len(trim(FORM.evento))>
-        <cfset VARIABLES.adsEventoReferencia = trim(FORM.evento)/>
-        <cfset VARIABLES.adsEventoReferencia = replaceNoCase(VARIABLES.adsEventoReferencia, "https://roadrunners.run/evento/", "")/>
-        <cfset VARIABLES.adsEventoReferencia = replaceNoCase(VARIABLES.adsEventoReferencia, "http://roadrunners.run/evento/", "")/>
-        <cfset VARIABLES.adsEventoReferencia = listFirst(VARIABLES.adsEventoReferencia, "/?##")/>
-
-        <cfquery name="qAdCheckEvento" datasource="runnerhub">
-            SELECT id_evento
-            FROM public.tb_evento_corridas
-            WHERE tag ILIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsEventoReferencia#"/>
-              AND ativo = true
-            LIMIT 1
-        </cfquery>
-    </cfif>
-
-    <cfif NOT qAdCheckEvento.recordcount OR (VARIABLES.adsRestrictByConta AND NOT listFind(VARIABLES.adsEventosOperacaoIds, qAdCheckEvento.id_evento))>
-        <cflocation addtoken="false" url="/ads/"/>
-    </cfif>
-
-    <cfset VARIABLES.locais = {}/>
-    <cfif isDefined("FORM.locais") and len(trim(FORM.locais))>
-        <cfset arrEstados = listToArray(FORM.locais)/>
-        <cfif arraylen(arrEstados) EQ 27>
-            <cfset VARIABLES.locais["nacional"] = true/>
-        <cfelse>
-            <cfset VARIABLES.locais["nacional"] = false/>
-        </cfif>
-        <cfset VARIABLES.locais["estados"] = arrEstados/>
-    </cfif>
-
-    <cfset VARIABLES.escopo = ""/>
-    <cfif isDefined("FORM.escopo") and len(trim(FORM.escopo))>
-        <cfset VARIABLES.escopo = FORM.escopo/>
-    </cfif>
-
-    <cfset VARIABLES.inicio_ad = ""/>
-    <cfset VARIABLES.final_ad = ""/>
-
-    <cfif isDefined("FORM.datas") and len(trim(FORM.datas))>
-        <cfset FORM.datas = listtoarray(FORM.datas, ' - ')/>
-        <cfif arraylen(FORM.datas) GT 0>
-            <cfset VARIABLES.inicio_ad = FORM.datas[1]/>
-        </cfif>
-        <cfif arraylen(FORM.datas) GT 1>
-            <cfset VARIABLES.final_ad = FORM.datas[2]/>
-        </cfif>
-    </cfif>
-
-    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
-        insert into ads.tb_ad_eventos
-        (id_evento, escopo, cpc_max, limite_diario, limite_ad, inicio_ad, final_ad, locais)
-        values
-        (
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#qAdCheckEvento.id_evento#"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
-            <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
-            <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_diario#"/>,
-            <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_ad#"/>,
-            <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.inicio_ad#" null="#len(trim(VARIABLES.inicio_ad)) EQ 0#"/>,
-            <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.final_ad#" null="#len(trim(VARIABLES.final_ad)) EQ 0#"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.locais)#"/>::jsonb
-        )
-    </cfquery>
-
-    <cflocation addtoken="false" url="/ads/"/>
-
-</cfif>
-
-<!--- EDITAR CAMPANHA --->
-
-<cfif isDefined("form.acao") AND form.acao EQ "editar_campanha">
-
-    <cfif NOT VARIABLES.adsCanOperate>
-        <cflocation addtoken="false" url="/ads/"/>
-    </cfif>
-
-    <cfif VARIABLES.adsRestrictByConta
-        AND VARIABLES.adsVoucherColumnsReady
-        AND isDefined("FORM.limite_ad")
-        AND len(trim(FORM.limite_ad))
-        AND val(REReplace(FORM.limite_ad, ",", ".", "all")) GT VARIABLES.adsCreditBalance>
-        <cflocation addtoken="false" url="/ads/?erro=credito_insuficiente"/>
-    </cfif>
-
-    <cfif NOT isDefined("FORM.id_ad_evento") OR NOT isNumeric(FORM.id_ad_evento)>
-        <cflocation addtoken="false" url="/ads/"/>
-    </cfif>
-
-    <cfset VARIABLES.locais = {}/>
-    <cfif isDefined("FORM.locais") and len(trim(FORM.locais))>
-        <cfset arrEstados = listToArray(FORM.locais)/>
-        <cfif arraylen(arrEstados) EQ 27>
-            <cfset VARIABLES.locais["nacional"] = true/>
-        <cfelse>
-            <cfset VARIABLES.locais["nacional"] = false/>
-        </cfif>
-        <cfset VARIABLES.locais["estados"] = arrEstados/>
-    </cfif>
-
-    <cfset VARIABLES.escopo = ""/>
-    <cfif isDefined("FORM.escopo") and len(trim(FORM.escopo))>
-        <cfset VARIABLES.escopo = FORM.escopo/>
-    </cfif>
-
-    <cfset VARIABLES.inicio_ad = ""/>
-    <cfset VARIABLES.final_ad = ""/>
-
-    <cfif isDefined("FORM.datas") and len(trim(FORM.datas))>
-        <cfset FORM.datas = listtoarray(FORM.datas, ' - ')/>
-        <cfif arraylen(FORM.datas) GT 0>
-            <cfset VARIABLES.inicio_ad = FORM.datas[1]/>
-        </cfif>
-        <cfif arraylen(FORM.datas) GT 1>
-            <cfset VARIABLES.final_ad = FORM.datas[2]/>
-        </cfif>
-    </cfif>
-
-    <cfquery name="qAdIncluirCampanha" datasource="runnerhub">
-        UPDATE ads.tb_ad_eventos
-        SET escopo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.escopo#"/>,
-            cpc_max = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.cpc_max#"/>,
-            limite_diario = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_diario#"/>,
-            limite_ad = <cfqueryparam cfsqltype="cf_sql_decimal" value="#FORM.limite_ad#"/>,
-            inicio_ad = <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.inicio_ad#" null="#len(trim(VARIABLES.inicio_ad)) EQ 0#"/>,
-            final_ad = <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.final_ad#" null="#len(trim(VARIABLES.final_ad)) EQ 0#"/>,
-            locais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.locais)#"/>::jsonb
-        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_ad_evento#"/>
-        <cfif VARIABLES.adsRestrictByConta>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
-        </cfif>
-    </cfquery>
-
-    <cflocation addtoken="false" url="/ads/"/>
-
-</cfif>
-
-<!--- ALTERAR STATUS DA CAMPANHA --->
-
-<cfif isDefined("URL.acao") AND URL.acao EQ "status_campanha" AND isDefined("URL.campanha") AND isNumeric(URL.campanha) AND isDefined("URL.status") AND isNumeric(URL.status)>
-
-    <cfif NOT VARIABLES.adsCanOperate>
-        <cflocation addtoken="false" url="/ads/"/>
-    </cfif>
-
-    <cfquery datasource="runnerhub">
-        UPDATE ads.tb_ad_eventos
-        SET status = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.status#"/>
-        WHERE id_ad_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.campanha#"/>
-        <cfif VARIABLES.adsRestrictByConta>
-            AND id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosOperacaoIds#" list="true"/>)
-        </cfif>
-    </cfquery>
-
-    <cflocation addtoken="false" url="/ads/"/>
-
-</cfif>
-
-
-
-<!--- WIDGETS --->
-
-<cfquery name="qAdValorTotal" datasource="runnerhub">
-    SELECT sum(valor_ad) as total
-    FROM ads.tb_ad_log log
-    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfquery name="qAdValorMedio" datasource="runnerhub">
-    SELECT avg(valor_ad) as total
-    FROM ads.tb_ad_log log
-    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfquery name="qAdCountViews" datasource="runnerhub">
-    SELECT count(id_ad_log) as total
-    FROM ads.tb_ad_log log
-    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    WHERE log.status <= 2
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfquery name="qAdCountClicks" datasource="runnerhub">
-    SELECT count(id_ad_log) as total
-    FROM ads.tb_ad_log log
-    INNER JOIN ads.tb_ad_eventos ad on log.id_ad = ad.id_ad_evento
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    WHERE log.status = 2
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfquery name="qAdCountAds" datasource="runnerhub">
-    SELECT count(ad.*) as total
-    FROM ads.tb_ad_eventos ad
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfif VARIABLES.adsMetricasDiaReady>
-    <cfquery name="qAdMetricasDia" datasource="runnerhub">
-        WITH dias AS (
-            SELECT generate_series(
-                current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
-                current_date,
-                interval '1 day'
-            )::date AS data_metrica
-        ),
-        metricas AS (
-            SELECT data_metrica,
-                   sum(views) AS views,
-                   sum(clicks) AS clicks,
-                   coalesce(sum(custo), 0) AS custo
-            FROM ads.tb_ad_evento_metricas_dia
-            WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-            <cfif VARIABLES.adsRestrictByConta>
-                AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-            </cfif>
-            GROUP BY data_metrica
-        )
-        SELECT dias.data_metrica,
-               coalesce(metricas.views, 0) AS views,
-               coalesce(metricas.clicks, 0) AS clicks,
-               coalesce(metricas.custo, 0) AS custo,
-               CASE WHEN coalesce(metricas.views, 0) > 0
-                    THEN coalesce(metricas.clicks, 0)::numeric * 100 / metricas.views
-                    ELSE 0
-               END AS ctr
-        FROM dias
-        LEFT JOIN metricas ON metricas.data_metrica = dias.data_metrica
-        ORDER BY dias.data_metrica
-    </cfquery>
-
-    <cfquery name="qAdMetricasComparativo" datasource="runnerhub">
-        WITH metricas AS (
-            SELECT data_metrica,
-                   sum(views) AS views,
-                   sum(clicks) AS clicks,
-                   coalesce(sum(custo), 0) AS custo
-            FROM ads.tb_ad_evento_metricas_dia
-            WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
-            <cfif VARIABLES.adsRestrictByConta>
-                AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-            </cfif>
-            GROUP BY data_metrica
-        )
-        SELECT coalesce(sum(views) FILTER (
-                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS views_atual,
-               coalesce(sum(views) FILTER (
-                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS views_anterior,
-               coalesce(sum(clicks) FILTER (
-                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS clicks_atual,
-               coalesce(sum(clicks) FILTER (
-                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS clicks_anterior,
-               coalesce(sum(custo) FILTER (
-                   WHERE data_metrica >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS custo_atual,
-               coalesce(sum(custo) FILTER (
-                   WHERE data_metrica < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ), 0) AS custo_anterior
-        FROM metricas
-    </cfquery>
-<cfelse>
-    <cfquery name="qAdMetricasDia" datasource="runnerhub">
-        WITH dias AS (
-            SELECT generate_series(
-                current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day'),
-                current_date,
-                interval '1 day'
-            )::date AS data_metrica
-        ),
-        metricas AS (
-            SELECT log.data_insercao::date AS data_metrica,
-                   count(*) FILTER (WHERE log.status <= 2) AS views,
-                   count(*) FILTER (WHERE log.status = 2) AS clicks,
-                   coalesce(sum(CASE WHEN log.status = 2 THEN log.valor_ad ELSE 0 END), 0) AS custo
-            FROM ads.tb_ad_log log
-            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-            WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-            <cfif VARIABLES.adsRestrictByConta>
-                AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-            </cfif>
-            GROUP BY log.data_insercao::date
-        )
-        SELECT dias.data_metrica,
-               coalesce(metricas.views, 0) AS views,
-               coalesce(metricas.clicks, 0) AS clicks,
-               coalesce(metricas.custo, 0) AS custo,
-               CASE WHEN coalesce(metricas.views, 0) > 0
-                    THEN coalesce(metricas.clicks, 0)::numeric * 100 / metricas.views
-                    ELSE 0
-               END AS ctr
-        FROM dias
-        LEFT JOIN metricas ON metricas.data_metrica = dias.data_metrica
-        ORDER BY dias.data_metrica
-    </cfquery>
-
-    <cfquery name="qAdMetricasComparativo" datasource="runnerhub">
-        WITH logs_periodo AS (
-            SELECT log.status,
-                   log.valor_ad,
-                   log.data_insercao
-            FROM ads.tb_ad_log log
-            INNER JOIN ads.tb_ad_eventos ad ON log.id_ad = ad.id_ad_evento
-            INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-            WHERE log.data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsPeriodoDias * 2) - 1#"/> * interval '1 day')
-            <cfif VARIABLES.adsRestrictByConta>
-                AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-            </cfif>
-        )
-        SELECT count(*) FILTER (
-                   WHERE status <= 2
-                     AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ) AS views_atual,
-               count(*) FILTER (
-                   WHERE status <= 2
-                     AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ) AS views_anterior,
-               count(*) FILTER (
-                   WHERE status = 2
-                     AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ) AS clicks_atual,
-               count(*) FILTER (
-                   WHERE status = 2
-                     AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-               ) AS clicks_anterior,
-               coalesce(sum(CASE
-                   WHEN status = 2
-                    AND data_insercao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-                   THEN valor_ad ELSE 0 END), 0) AS custo_atual,
-               coalesce(sum(CASE
-                   WHEN status = 2
-                    AND data_insercao < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-                   THEN valor_ad ELSE 0 END), 0) AS custo_anterior
-        FROM logs_periodo
-    </cfquery>
-</cfif>
-
-<cfif VARIABLES.adsConversionLogReady>
-    <cfquery name="qAdConversionSummary" datasource="runnerhub">
-        SELECT count(*) FILTER (
-                   WHERE tipo_conversion IN (
-                       <cfqueryparam cfsqltype="cf_sql_varchar" value="INSCRICAO_CLICK"/>,
-                       <cfqueryparam cfsqltype="cf_sql_varchar" value="INSCRICAO_CONFIRMADA"/>
-                   )
-               ) AS conversoes_periodo,
-               coalesce(sum(valor), 0) AS valor_periodo
-        FROM ads.tb_ad_conversion_log
-        WHERE data_criacao >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsPeriodoDias - 1#"/> * interval '1 day')
-        <cfif VARIABLES.adsRestrictByConta>
-            AND id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
-        </cfif>
-    </cfquery>
-</cfif>
-
-
-<!--- QUERY BASE DE EVENTOS --->
-
-<cfquery name="qEventosAdsBase" datasource="runnerhub">
-    WITH
-    ad_views AS (
-        SELECT
-            id_ad as id_evento,
-            count(*) as views
-        FROM ads.tb_ad_log
-        WHERE tb_ad_log.status <= 2
-        GROUP BY id_ad
-    ),
-    ad_views_usuarios AS (
-        SELECT
-            id_ad as id_evento,
-            count(*) as views
-        FROM ads.tb_ad_log
-        WHERE tb_ad_log.status <= 2
-        AND id_usuario is not null
-        GROUP BY id_ad
-    ),
-    ad_clicks AS (
-        select
-        id_ad as id_evento,
-        count(*) as clicks,
-        avg(valor_ad) as cpc_medio,
-        sum(valor_ad) as custo_total
-        FROM ads.tb_ad_log
-        WHERE status = 2
-        group by id_ad
-    ),
-    ad_clicks_usuarios AS (
-        select
-        id_ad as id_evento,
-        count(*) as clicks,
-        avg(valor_ad) as cpc_medio,
-        sum(valor_ad) as custo_total
-        FROM ads.tb_ad_log
-        WHERE status = 2
-        AND id_usuario is not null
-        group by id_ad
-    )
-    <cfif VARIABLES.adsConversionLogReady>
-    ,
-    ad_conversions AS (
-        SELECT
-            id_ad_evento,
-            count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CLICK') AS conversoes,
-            count(*) FILTER (WHERE tipo_conversion = 'INSCRICAO_CONFIRMADA') AS inscricoes_confirmadas
-        FROM ads.tb_ad_conversion_log
-        GROUP BY id_ad_evento
-    )
-    </cfif>
-    SELECT evt.*,
-           ad.id_ad_evento,
-           ad.status,
-           ad.cpc_max,
-           ad.qualidade,
-           ad.limite_diario,
-           ad.limite_ad,
-           ad.escopo,
-           ad.locais,
-           ad.inicio_ad,
-           ad.final_ad,
-           ad_views.views,
-           ad_views_usuarios.views as views_usuarios,
-           ad_clicks.clicks,
-           ad_clicks.cpc_medio,
-           ad_clicks.custo_total,
-           ad_clicks_usuarios.clicks as clicks_usuarios,
-           ad_clicks_usuarios.cpc_medio as cpc_medio_usuarios,
-           ad_clicks_usuarios.custo_total as custo_total_usuarios,
-           <cfif VARIABLES.adsConversionLogReady>
-           coalesce(ad_conversions.conversoes, 0) AS conversoes,
-           coalesce(ad_conversions.inscricoes_confirmadas, 0) AS inscricoes_confirmadas,
-           <cfelse>
-           0 AS conversoes,
-           0 AS inscricoes_confirmadas,
-           </cfif>
-           (ad.qualidade * ad.cpc_max) as ad_rank
-    FROM ads.tb_ad_eventos ad
-    INNER JOIN public.tb_evento_corridas evt ON ad.id_evento = evt.id_evento
-    LEFT JOIN ad_views on ad_views.id_evento = ad.id_ad_evento
-    LEFT JOIN ad_views_usuarios on ad_views_usuarios.id_evento = ad.id_ad_evento
-    LEFT JOIN ad_clicks on ad_clicks.id_evento = ad.id_ad_evento
-    LEFT JOIN ad_clicks_usuarios on ad_clicks_usuarios.id_evento = ad.id_ad_evento
-    <cfif VARIABLES.adsConversionLogReady>
-    LEFT JOIN ad_conversions on ad_conversions.id_ad_evento = ad.id_ad_evento
-    </cfif>
-    WHERE ad.status >= <cfqueryparam cfsqltype="cf_sql_integer" value="0"/>
-    <cfif VARIABLES.adsRestrictByConta>
-        AND evt.id_evento IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsEventosContaIds#" list="true"/>)
-    </cfif>
-</cfquery>
-
-<cfquery name="qEventosAds" dbtype="query">
-    select * from qEventosAdsBase
-    where status < 3
-    order by clicks desc, views desc
-</cfquery>
-
-<cfquery name="qEventosAdsPausados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 3
-    order by clicks desc, views desc
-</cfquery>
-
-<cfquery name="qEventosAdsFinalizados" dbtype="query">
-    select * from qEventosAdsBase
-    where status = 4
-    order by clicks desc, views desc
-</cfquery>
-
-<cfquery name="qAdsTopCampaigns" dbtype="query" maxrows="5">
-    select *
-    from qEventosAdsBase
-    where views > 0 or clicks > 0
-    order by clicks desc, views desc
-</cfquery>

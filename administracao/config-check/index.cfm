@@ -427,7 +427,7 @@ for (secretRef in configCheckExpectedSecrets) {
 }
 </cfscript>
 
-<cfset qConfigCheckCronJobs = queryNew("id_cron_job,nome,projeto,ambiente,auth_mode,secret_ref,ativo,last_status,last_http_status,last_error,next_run_at")/>
+<cfset qConfigCheckCronJobs = queryNew("id_cron_job,nome,projeto,ambiente,endpoint_url,auth_mode,secret_ref,ativo,last_status,last_http_status,last_error,next_run_at")/>
 <cfset VARIABLES.configCheckCronJobsError = ""/>
 <cftry>
   <cfquery name="qConfigCheckCronJobs">
@@ -435,6 +435,7 @@ for (secretRef in configCheckExpectedSecrets) {
            nome,
            projeto,
            ambiente,
+           endpoint_url,
            auth_mode,
            coalesce(secret_ref, '') AS secret_ref,
            ativo,
@@ -449,6 +450,86 @@ for (secretRef in configCheckExpectedSecrets) {
   </cfquery>
   <cfcatch type="any">
     <cfset VARIABLES.configCheckCronJobsError = cfcatch.message/>
+  </cfcatch>
+</cftry>
+
+<cfset VARIABLES.configCheckAdsPaymentStatus = {
+  configured = false,
+  enabled = false,
+  ready = false,
+  mode = "indisponivel",
+  errorCode = "component_unavailable",
+  endpointAllowed = false,
+  webhookRegistered = false,
+  checkoutEnabled = false
+}/>
+<cfset VARIABLES.configCheckAdsPaymentError = ""/>
+<cfset qConfigCheckAdsPaymentDatabase = queryNew("database_role,functions_available,runner_execute,runner_direct_dml")/>
+<cfset VARIABLES.configCheckAdsPaymentJobRegistered = false/>
+<cfset VARIABLES.configCheckAdsPaymentJobActive = false/>
+<cfset VARIABLES.configCheckAdsPaymentJobStatus = ""/>
+
+<cfloop query="qConfigCheckCronJobs">
+  <cfif qConfigCheckCronJobs.endpoint_url EQ
+      "https://business.roadrunners.run/api/ads/payments/reconcile.cfm">
+    <cfset VARIABLES.configCheckAdsPaymentJobRegistered = true/>
+    <cfset VARIABLES.configCheckAdsPaymentJobActive = qConfigCheckCronJobs.ativo/>
+    <cfset VARIABLES.configCheckAdsPaymentJobStatus = qConfigCheckCronJobs.last_status & ""/>
+  </cfif>
+</cfloop>
+
+<cftry>
+  <cfset VARIABLES.configCheckAdsPaymentClient = createObject(
+    "component",
+    "ads.components.PagarMeClient"
+  ).init()/>
+  <cfset VARIABLES.configCheckAdsPaymentStatus = VARIABLES.configCheckAdsPaymentClient.getStatus()/>
+
+  <cfquery name="qConfigCheckAdsPaymentDatabase" datasource="runnerhub">
+    WITH required_functions(signature) AS (
+      VALUES
+        ('ads.create_payment_intent(bigint,integer,bigint,character,text,timestamp with time zone)'),
+        ('ads.attach_payment_checkout(uuid,text,text,text)'),
+        ('ads.record_payment_event(text,text,text,text,text,uuid,text,timestamp with time zone)'),
+        ('ads.complete_payment_event(uuid,text,text)'),
+        ('ads.list_payment_intents_for_reconciliation(integer,timestamp with time zone)'),
+        ('ads.transition_payment_intent(uuid,text,text,text,text,text)'),
+        ('ads.confirm_payment_credit(uuid,text,text,text,bigint,character,text)'),
+        ('ads.reverse_payment_credit(uuid,text,text,integer,text)')
+    ),
+    function_state AS (
+      SELECT bool_and(to_regprocedure(required.signature) IS NOT NULL) AS functions_available,
+             bool_and(coalesce(has_function_privilege(
+               current_user,
+               to_regprocedure(required.signature),
+               'EXECUTE'
+             ), false)) AS runner_execute
+      FROM required_functions required
+    ),
+    dml_state AS (
+      SELECT bool_or(
+        coalesce(has_table_privilege(current_user, to_regclass(table_name), 'INSERT'), false)
+        OR coalesce(has_table_privilege(current_user, to_regclass(table_name), 'UPDATE'), false)
+        OR coalesce(has_table_privilege(current_user, to_regclass(table_name), 'DELETE'), false)
+      ) AS runner_direct_dml
+      FROM (VALUES
+        ('ads.payment_intents'),
+        ('ads.payment_events'),
+        ('ads.account_balances'),
+        ('ads.credit_ledger'),
+        ('ads.account_financial_holds')
+      ) sensitive(table_name)
+    )
+    SELECT current_user AS database_role,
+           function_state.functions_available,
+           function_state.runner_execute,
+           dml_state.runner_direct_dml
+    FROM function_state
+    CROSS JOIN dml_state
+  </cfquery>
+
+  <cfcatch type="any">
+    <cfset VARIABLES.configCheckAdsPaymentError = cfcatch.message/>
   </cfcatch>
 </cftry>
 
@@ -509,6 +590,83 @@ for (secretRef in configCheckExpectedSecrets) {
                 <div class="small text-muted text-break">Secrets: <cfoutput>#htmlEditFormat(configCheckApplicationCronSecrets)#</cfoutput></div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="card shadow-0 mb-4">
+          <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+              <div>
+                <h2 class="h5 mb-1">Pagamentos de publicidade</h2>
+                <p class="text-muted small mb-0">Diagnostico sanitizado do Pagar.me, rotas, job e contrato PostgreSQL. Nenhuma chave e exibida.</p>
+              </div>
+              <a class="btn btn-sm btn-outline-warning" href="/ads/">Abrir Publicidade</a>
+            </div>
+            <div class="row g-3">
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Configuracao presente</div>
+                  <div class="fw-bold"><cfoutput>#VARIABLES.configCheckAdsPaymentStatus.configured ? "Sim" : "Nao"#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Modo Pagar.me</div>
+                  <div class="fw-bold"><cfoutput>#htmlEditFormat(VARIABLES.configCheckAdsPaymentStatus.mode)#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Endpoint permitido</div>
+                  <div class="fw-bold"><cfoutput>#VARIABLES.configCheckAdsPaymentStatus.endpointAllowed ? "Sim" : "Nao"#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Checkout habilitado</div>
+                  <div class="fw-bold"><cfoutput>#VARIABLES.configCheckAdsPaymentStatus.checkoutEnabled ? "Sim" : "Nao"#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Webhook registrado</div>
+                  <div class="fw-bold"><cfoutput>#VARIABLES.configCheckAdsPaymentStatus.webhookRegistered ? "Confirmado" : "Pendente"#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Job de reconciliacao</div>
+                  <div class="fw-bold">
+                    <cfoutput>#VARIABLES.configCheckAdsPaymentJobRegistered ? (VARIABLES.configCheckAdsPaymentJobActive ? "Ativo" : "Inativo") : "Ausente"#</cfoutput>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Funcoes SQL / EXECUTE</div>
+                  <div class="fw-bold">
+                    <cfif qConfigCheckAdsPaymentDatabase.recordcount>
+                      <cfoutput>#qConfigCheckAdsPaymentDatabase.functions_available AND qConfigCheckAdsPaymentDatabase.runner_execute ? "OK" : "Pendente"#</cfoutput>
+                    <cfelse>Pendente</cfif>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <div class="border rounded p-3 h-100">
+                  <div class="small text-muted">Role runner / DML direto</div>
+                  <div class="fw-bold">
+                    <cfif qConfigCheckAdsPaymentDatabase.recordcount>
+                      <cfoutput>#htmlEditFormat(qConfigCheckAdsPaymentDatabase.database_role)# · #qConfigCheckAdsPaymentDatabase.runner_direct_dml ? "Bloquear" : "Nenhum"#</cfoutput>
+                    <cfelse>Pendente</cfif>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <cfif len(VARIABLES.configCheckAdsPaymentError)>
+              <div class="alert alert-warning small mt-3 mb-0">Contrato de pagamentos ainda indisponivel neste ambiente.</div>
+            <cfelseif len(VARIABLES.configCheckAdsPaymentStatus.errorCode)>
+              <div class="small text-muted mt-3">Estado local: <cfoutput>#htmlEditFormat(VARIABLES.configCheckAdsPaymentStatus.errorCode)#</cfoutput>.</div>
+            </cfif>
           </div>
         </div>
 

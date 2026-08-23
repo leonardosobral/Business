@@ -393,7 +393,7 @@
             <div class="dashboard-actions">
                 <a class="btn btn-outline-light btn-sm" href="/eventos/"><i class="fa-solid fa-person-running me-2"></i>Eventos</a>
                 <cfif VARIABLES.businessHomeHasActiveEvents>
-                    <a class="btn btn-outline-light btn-sm" href="/ads/"><i class="fa-solid fa-rocket me-2"></i>Ads</a>
+                    <a class="btn btn-outline-light btn-sm" href="/ads/"><i class="fa-solid fa-rectangle-ad me-2"></i>Publicidade</a>
                     <a class="btn btn-outline-light btn-sm" href="/inscricoes/"><i class="fa-solid fa-ticket me-2"></i>Inscrições</a>
                 </cfif>
             </div>
@@ -442,7 +442,7 @@
                         </div>
                         <div class="dashboard-next-item">
                             <div class="fw-bold mb-1">Depois: divulgação</div>
-                            <div class="small">Use turbinados e cupons quando houver evento.</div>
+                            <div class="small">Crie campanhas e cupons quando houver evento.</div>
                         </div>
                         <div class="dashboard-next-item">
                             <div class="fw-bold mb-1">Depois: vendas</div>
@@ -485,9 +485,9 @@
                                 <span class="business-step-status"><cfif VARIABLES.businessHomeMarketingStarted>Ativo<cfelse>Disponível</cfif></span>
                             </div>
                             <h5 class="mb-2">Divulgar e vender</h5>
-                            <p class="text-muted mb-0"><cfif VARIABLES.businessHomeMarketingStarted>Já existe crédito, voucher ou campanha conectado à conta.<cfelse>Use Turbinados, Cupons e Inscrições para acompanhar a operação.</cfif></p>
+                            <p class="text-muted mb-0"><cfif VARIABLES.businessHomeMarketingStarted>Já existe crédito, voucher ou campanha conectado à conta.<cfelse>Use Publicidade, Cupons e Inscrições para acompanhar a operação.</cfif></p>
                             <div class="business-step-action d-grid gap-2">
-                                <a class="btn btn-sm btn-warning" href="/ads/">Abrir marketing</a>
+                                <a class="btn btn-sm btn-warning" href="/ads/">Publicidade</a>
                                 <a class="btn btn-sm btn-outline-warning" href="/inscricoes/">Ver inscrições</a>
                             </div>
                         </div>
@@ -519,7 +519,7 @@
                 <div class="col-6 col-xl">
                     <div class="card dashboard-kpi">
                         <div class="card-body p-3">
-                            <div class="text-muted small">Saldo Ads</div>
+                            <div class="text-muted small">Saldo de publicidade</div>
                             <div class="dashboard-kpi-value mt-2"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeSaldoAds)#</cfoutput></div>
                             <div class="small text-muted mt-2"><cfoutput>#numberFormat(VARIABLES.businessHomeVouchersResgatados, "9,999")# vouchers</cfoutput></div>
                         </div>
@@ -584,7 +584,7 @@
                                         </div>
                                         <div class="dashboard-actions mt-2">
                                             <a class="btn btn-sm btn-dark" href="/eventos/?id_evento=#qBusinessHomeUpcomingEvents.id_evento#">Editar</a>
-                                            <a class="btn btn-sm btn-dark" href="/ads/">Turbinar evento</a>
+                                            <a class="btn btn-sm btn-dark" href="/ads/">Nova campanha</a>
                                         </div>
                                     </div>
                                 </cfoutput>

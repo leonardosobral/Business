@@ -5,8 +5,8 @@ set -u
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$repo_root" || exit 1
 
-backend="ads/canonical/includes/backend.cfm"
-home="ads/canonical/includes/home.cfm"
+backend="ads/includes/backend.cfm"
+home="ads/home.cfm"
 failures=0
 
 require_pattern() {

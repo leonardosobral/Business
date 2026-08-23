@@ -15,6 +15,8 @@
 
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 
+<cfinclude template="includes/backend.cfm"/>
+
 <!--- HEAD --->
 
 <cfinclude template="../includes/estrutura/head.cfm"/>
@@ -32,7 +34,7 @@
 
     <main id="" class="" style="margin-top: -55px;">
 
-      <div class="container px-4">
+      <div class="container-fluid px-4">
 
         <cfinclude template="home.cfm">
 
@@ -47,4 +49,3 @@
 </body>
 
 </html>
-
