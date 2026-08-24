@@ -1,10 +1,13 @@
 <cfparam name="URL.periodo" default="30"/><cfparam name="URL.execucao" default="0"/><cfparam name="URL.secao" default="configuracao"/>
 <cfset VARIABLES.vickySection=listFindNoCase("configuracao,conhecimento,canais,interacoes,auditoria",URL.secao&"")?lCase(URL.secao&""):"configuracao"/>
 <cfif isNumeric(URL.execucao) AND val(URL.execucao) GT 0><cfset VARIABLES.vickySection="auditoria"/></cfif>
-<cfset VARIABLES.vickyMessage=""/><cfset VARIABLES.vickyMessageType="success"/><cfset VARIABLES.vickyPeriod=listFindNoCase("7,30,90",URL.periodo&"")?val(URL.periodo):30/><cfset VARIABLES.vickyReady=false/>
+<cfset VARIABLES.vickyMessage=""/><cfset VARIABLES.vickyMessageType="success"/><cfset VARIABLES.vickyPeriod=listFindNoCase("7,30,90",URL.periodo&"")?val(URL.periodo):30/><cfset VARIABLES.vickyReady=false/><cfset VARIABLES.vickyBatchResults=[]/>
 <cfset VARIABLES.vickyStartAt=dateAdd("d",-VARIABLES.vickyPeriod,now())/>
+<cfif NOT structKeyExists(SESSION,"vickyAdminCsrfToken") OR NOT len(trim(SESSION.vickyAdminCsrfToken&""))><cfset SESSION.vickyAdminCsrfToken=lCase(hash(createUUID()&":"&createUUID()&":"&getTickCount(),"SHA-256"))/></cfif>
+<cfset VARIABLES.vickyAdminCsrfToken=SESSION.vickyAdminCsrfToken/>
 <cfset VARIABLES.vickyErrorStep="verificação da estrutura"/>
-<cfset qVickyConfig=queryNew("")/><cfset qVickySummary=queryNew("")/><cfset qVickyTimeline=queryNew("")/><cfset qVickyTools=queryNew("")/><cfset qVickyRuns=queryNew("")/><cfset qVickyAudit=queryNew("")/><cfset qVickyInteraction=queryNew("")/><cfset qVickyDocuments=queryNew("")/><cfset qVickyManychatConfig=queryNew("")/><cfset qVickyManychatSummary=queryNew("")/><cfset qVickyManychatQueue=queryNew("")/>
+<cfset qVickyConfig=queryNew("")/><cfset qVickySummary=queryNew("")/><cfset qVickyTimeline=queryNew("")/><cfset qVickyTools=queryNew("")/><cfset qVickyRuns=queryNew("")/><cfset qVickyAudit=queryNew("")/><cfset qVickyInteraction=queryNew("")/><cfset qVickyDocuments=queryNew("")/><cfset qVickyDocumentSummary=queryNew("")/><cfset qVickyManychatConfig=queryNew("")/><cfset qVickyManychatSummary=queryNew("")/><cfset qVickyManychatQueue=queryNew("")/>
+<cfset qVickyMetaConfig=queryNew("")/><cfset qVickyMetaSummary=queryNew("")/><cfset qVickyMetaQueue=queryNew("")/><cfset qVickyMetaAudit=queryNew("")/><cfset VARIABLES.vickyMetaSchemaReady=false/>
 <cfset qVickyProactiveRules=queryNew("")/><cfset qVickyProactiveTemplates=queryNew("")/><cfset qVickyProactiveSummary=queryNew("")/><cfset qVickyProactiveQueue=queryNew("")/><cfset qVickyProactivePreference=queryNew("")/>
 <cftry>
   <cfquery name="qVickySchema" datasource="runner_dba">
@@ -52,43 +55,35 @@
         <cfset VARIABLES.vickySection="interacoes"/><cfset VARIABLES.vickyErrorStep="preferências do administrador de teste"/><cfset VARIABLES.testWhatsapp=structKeyExists(FORM,"test_whatsapp")/>
         <cfquery datasource="runner_dba">INSERT INTO tb_vicky_notificacao_preferencia (id_usuario,web_enabled,whatsapp_enabled,agenda_enabled,results_enabled,whatsapp_consented_at,whatsapp_consent_source,revoked_at) VALUES (<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_web')?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.testWhatsapp?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_agenda')?1:0#"/> = 1),(<cfqueryparam cfsqltype="cf_sql_integer" value="#structKeyExists(FORM,'test_results')?1:0#"/> = 1),CASE WHEN <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.testWhatsapp?1:0#"/> = 1 THEN now() ELSE NULL END,'business_admin_test',NULL) ON CONFLICT (id_usuario) DO UPDATE SET web_enabled=EXCLUDED.web_enabled,whatsapp_enabled=EXCLUDED.whatsapp_enabled,agenda_enabled=EXCLUDED.agenda_enabled,results_enabled=EXCLUDED.results_enabled,whatsapp_consented_at=EXCLUDED.whatsapp_consented_at,whatsapp_consent_source=EXCLUDED.whatsapp_consent_source,revoked_at=NULL,updated_at=now()</cfquery>
         <cfset VARIABLES.vickyMessage="Preferências de teste atualizadas para o seu usuário."/>
+      <cfelseif FORM.action EQ "save_meta_whatsapp">
+        <cfset VARIABLES.vickySection="canais"/><cfset VARIABLES.vickyErrorStep="configuração do WhatsApp Cloud API"/>
+        <cfif NOT structKeyExists(FORM,"csrf_token") OR compare(FORM.csrf_token&"",VARIABLES.vickyAdminCsrfToken) NEQ 0><cfthrow type="Vicky.InvalidCsrf" message="A sessão de segurança expirou. Recarregue a página e tente novamente."/></cfif>
+        <cfset VARIABLES.metaMode=listFindNoCase("disabled,pilot,public",FORM.channel_mode&"")?lCase(FORM.channel_mode&""):"pilot"/>
+        <cfset VARIABLES.metaEnabled=VARIABLES.metaMode NEQ "disabled"/><cfset VARIABLES.metaPilotOnly=VARIABLES.metaMode NEQ "public"/>
+        <cfset VARIABLES.metaLabel=left(trim(FORM.account_label&""),120)/><cfset VARIABLES.metaAttempts=min(max(val(FORM.max_attempts),1),10)/>
+        <cfset VARIABLES.metaHourlyLimit=min(max(val(FORM.max_messages_per_hour),1),300)/><cfset VARIABLES.metaRetention=min(max(val(FORM.retention_days),1),730)/>
+        <cfif NOT len(VARIABLES.metaLabel)><cfthrow type="Vicky.MetaValidation" message="O nome do canal é obrigatório."/></cfif>
+        <cfif VARIABLES.metaMode EQ "public" AND NOT structKeyExists(FORM,"public_confirmed")><cfthrow type="Vicky.MetaValidation" message="Confirme que o piloto foi validado antes de liberar o canal ao público."/></cfif>
+        <cfquery name="qVickyMetaAgentGate" datasource="runner_dba">SELECT enabled,beta_only,authenticated_only FROM tb_vicky_config WHERE id_config=1</cfquery>
+        <cfif VARIABLES.metaMode EQ "public" AND (NOT qVickyMetaAgentGate.recordCount OR NOT qVickyMetaAgentGate.enabled OR qVickyMetaAgentGate.beta_only OR NOT qVickyMetaAgentGate.authenticated_only)><cfthrow type="Vicky.MetaValidation" message="Para liberar o WhatsApp ao público, habilite a Vicky em produção e mantenha o acesso restrito a usuários autenticados."/></cfif>
+        <cftransaction>
+          <cfquery name="qVickyMetaPrevious" datasource="runner_dba">SELECT enabled,pilot_only,account_label,max_attempts,max_messages_per_hour,retention_days FROM tb_vicky_channel_config WHERE provider='meta_cloud' AND channel='whatsapp' LIMIT 1 FOR UPDATE</cfquery>
+          <cfif NOT qVickyMetaPrevious.recordCount><cfthrow type="Vicky.MetaMissing" message="A configuração do WhatsApp Cloud API não foi instalada."/></cfif>
+          <cfset VARIABLES.metaPreviousMode=NOT qVickyMetaPrevious.enabled?"disabled":(qVickyMetaPrevious.pilot_only?"pilot":"public")/>
+          <cfset VARIABLES.metaPreviousConfig={enabled=qVickyMetaPrevious.enabled?true:false,pilotOnly=qVickyMetaPrevious.pilot_only?true:false,accountLabel=qVickyMetaPrevious.account_label&"",maxAttempts=val(qVickyMetaPrevious.max_attempts),maxMessagesPerHour=val(qVickyMetaPrevious.max_messages_per_hour),retentionDays=val(qVickyMetaPrevious.retention_days)}/>
+          <cfset VARIABLES.metaNewConfig={enabled=VARIABLES.metaEnabled,pilotOnly=VARIABLES.metaPilotOnly,accountLabel=VARIABLES.metaLabel,maxAttempts=VARIABLES.metaAttempts,maxMessagesPerHour=VARIABLES.metaHourlyLimit,retentionDays=VARIABLES.metaRetention}/>
+          <cfquery datasource="runner_dba">UPDATE tb_vicky_channel_config SET enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.metaEnabled?1:0#"/> = 1),pilot_only=(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.metaPilotOnly?1:0#"/> = 1),account_label=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.metaLabel#"/>,max_attempts=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.metaAttempts#"/>,max_messages_per_hour=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.metaHourlyLimit#"/>,retention_days=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.metaRetention#"/>,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE provider='meta_cloud' AND channel='whatsapp'</cfquery>
+          <cfquery datasource="runner_dba">INSERT INTO tb_vicky_channel_config_audit (provider,channel,previous_mode,new_mode,previous_config,new_config,id_operador) VALUES ('meta_cloud','whatsapp',<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.metaPreviousMode#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.metaMode#"/>,CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#serializeJSON(VARIABLES.metaPreviousConfig)#"/> AS jsonb),CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#serializeJSON(VARIABLES.metaNewConfig)#"/> AS jsonb),<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)</cfquery>
+        </cftransaction>
+        <cfset VARIABLES.vickyMessage="Canal direto da Meta atualizado para o modo "&(VARIABLES.metaMode EQ "public"?"Público":(VARIABLES.metaMode EQ "pilot"?"Piloto":"Desativado"))&". A alteração foi registrada na auditoria."/>
       <cfelseif FORM.action EQ "save_manychat">
         <cfset VARIABLES.vickySection="canais"/><cfset VARIABLES.vickyErrorStep="configuração do Manychat"/>
         <cfset VARIABLES.manychatEnabled=structKeyExists(FORM,"manychat_enabled")/><cfset VARIABLES.manychatLabel=left(trim(FORM.account_label&""),120)/><cfset VARIABLES.manychatTrigger=left(trim(FORM.trigger_name&""),120)/><cfset VARIABLES.manychatAttempts=min(max(val(FORM.max_attempts),1),10)/>
         <cfif NOT len(VARIABLES.manychatLabel) OR NOT len(VARIABLES.manychatTrigger)><cfthrow type="Vicky.ManychatValidation" message="Nome da conta e trigger são obrigatórios."/></cfif>
         <cfquery datasource="runner_dba">UPDATE tb_vicky_manychat_config SET enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatEnabled ? 1 : 0#"/> = 1),account_label=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatLabel#"/>,trigger_name=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatTrigger#"/>,max_attempts=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatAttempts#"/>,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE id_config=1</cfquery>
         <cfset VARIABLES.vickyMessage="Configuração do canal atualizada. Segredos permanecem protegidos no ambiente do Road Runners."/>
-      <cfelseif FORM.action EQ "upload_document">
-        <cfset VARIABLES.vickySection="conhecimento"/>
-        <cfset VARIABLES.vickyErrorStep="upload do documento"/>
-        <cfparam name="FORM.document_title" default=""/><cfparam name="FORM.document_category" default=""/><cfparam name="FORM.document_issuer" default=""/><cfparam name="FORM.document_version" default=""/><cfparam name="FORM.document_effective_date" default=""/>
-        <cfif NOT structKeyExists(APPLICATION,"vickyKnowledge") OR NOT APPLICATION.vickyKnowledge.configured><cfthrow type="Vicky.KnowledgeNotConfigured" message="OPENAI_API_KEY não configurada no Business."/></cfif>
-        <cffile action="upload" filefield="document_file" destination="#getTempDirectory()#" nameconflict="makeunique" accept="application/pdf,.pdf" strict="false" result="vickyUpload"/>
-        <cfset VARIABLES.vickyTempFile=vickyUpload.serverDirectory&"/"&vickyUpload.serverFile/>
-        <cftry>
-          <cfset VARIABLES.vickyPdfBinary=fileReadBinary(VARIABLES.vickyTempFile)/>
-          <cfif lCase(vickyUpload.serverFileExt) NEQ "pdf" OR vickyUpload.fileSize GT 20971520 OR uCase(left(binaryEncode(VARIABLES.vickyPdfBinary,"hex"),8)) NEQ "25504446"><cfthrow type="Vicky.InvalidDocument" message="Envie um PDF válido de até 20 MB."/></cfif>
-          <cfset VARIABLES.documentTitle=left(trim(FORM.document_title&""),240)/><cfset VARIABLES.documentCategory=left(trim(FORM.document_category&""),80)/>
-          <cfif NOT len(VARIABLES.documentTitle) OR NOT len(VARIABLES.documentCategory)><cfthrow type="Vicky.InvalidDocument" message="Título e categoria são obrigatórios."/></cfif>
-          <cfquery name="qVickyKnowledgeConfig" datasource="runner_dba">SELECT openai_vector_store_id FROM tb_vicky_knowledge_config WHERE id_config=1</cfquery>
-          <cfset VARIABLES.vectorStoreId=qVickyKnowledgeConfig.recordCount?trim(qVickyKnowledgeConfig.openai_vector_store_id&""):""/>
-          <cfif NOT len(VARIABLES.vectorStoreId)>
-            <cfset VARIABLES.vectorStorePayload=structNew("ordered")/><cfset VARIABLES.vectorStorePayload["name"]="Vicky Pacer - Documentos Oficiais"/>
-            <cfhttp method="post" url="https://api.openai.com/v1/vector_stores" result="vickyVectorResponse" timeout="30"><cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/><cfhttpparam type="header" name="OpenAI-Beta" value="assistants=v2"/><cfhttpparam type="header" name="Content-Type" value="application/json"/><cfhttpparam type="body" value="#serializeJSON(VARIABLES.vectorStorePayload)#"/></cfhttp>
-            <cfif val(left(vickyVectorResponse.statusCode&"",3)) LT 200 OR val(left(vickyVectorResponse.statusCode&"",3)) GTE 300><cfset VARIABLES.openAiStatus=val(left(vickyVectorResponse.statusCode&"",3))/><cfset VARIABLES.openAiCode="unknown"/><cftry><cfset VARIABLES.openAiPayload=deserializeJSON(vickyVectorResponse.fileContent)/><cfif structKeyExists(VARIABLES.openAiPayload,"error") AND isStruct(VARIABLES.openAiPayload.error) AND structKeyExists(VARIABLES.openAiPayload.error,"code") AND NOT isNull(VARIABLES.openAiPayload.error.code)><cfset VARIABLES.openAiCode=reReplace(lCase(VARIABLES.openAiPayload.error.code&""),"[^a-z0-9_-]+","_","all")/></cfif><cfcatch></cfcatch></cftry><cfthrow type="Vicky.OpenAI" message="Não foi possível criar o índice documental (HTTP #VARIABLES.openAiStatus#, código #left(VARIABLES.openAiCode,40)#)."/></cfif>
-            <cfset VARIABLES.vectorStoreId=deserializeJSON(vickyVectorResponse.fileContent).id&""/>
-            <cfquery datasource="runner_dba">UPDATE tb_vicky_knowledge_config SET openai_vector_store_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.vectorStoreId#"/>,updated_at=now() WHERE id_config=1</cfquery>
-          </cfif>
-          <cfhttp method="post" url="https://api.openai.com/v1/files" result="vickyFileResponse" timeout="60" multipart="yes"><cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/><cfhttpparam type="header" name="OpenAI-Beta" value="assistants=v2"/><cfhttpparam type="formfield" name="purpose" value="assistants"/><cfhttpparam type="file" name="file" file="#VARIABLES.vickyTempFile#" mimetype="application/pdf"/></cfhttp>
-          <cfif val(left(vickyFileResponse.statusCode&"",3)) LT 200 OR val(left(vickyFileResponse.statusCode&"",3)) GTE 300><cfthrow type="Vicky.OpenAI" message="A OpenAI não aceitou o PDF."/></cfif>
-          <cfset VARIABLES.openAiFileId=deserializeJSON(vickyFileResponse.fileContent).id&""/>
-          <cfset VARIABLES.attachPayload=structNew("ordered")/><cfset VARIABLES.attachPayload["file_id"]=VARIABLES.openAiFileId/>
-          <cfhttp method="post" url="https://api.openai.com/v1/vector_stores/#urlEncodedFormat(VARIABLES.vectorStoreId)#/files" result="vickyAttachResponse" timeout="30"><cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/><cfhttpparam type="header" name="OpenAI-Beta" value="assistants=v2"/><cfhttpparam type="header" name="Content-Type" value="application/json"/><cfhttpparam type="body" value="#serializeJSON(VARIABLES.attachPayload)#"/></cfhttp>
-          <cfif val(left(vickyAttachResponse.statusCode&"",3)) LT 200 OR val(left(vickyAttachResponse.statusCode&"",3)) GTE 300><cfthrow type="Vicky.OpenAI" message="O PDF foi enviado, mas não pôde ser anexado ao índice."/></cfif>
-          <cfquery datasource="runner_dba">INSERT INTO tb_vicky_documento (titulo,categoria,entidade,versao,vigencia,nome_arquivo,tamanho_bytes,sha256,openai_file_id,status,id_operador) VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentTitle#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentCategory#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_issuer&''),160)#" null="#!len(trim(FORM.document_issuer&''))#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_version&''),80)#" null="#!len(trim(FORM.document_version&''))#"/>,<cfqueryparam cfsqltype="cf_sql_date" value="#FORM.document_effective_date#" null="#!isDate(FORM.document_effective_date)#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(vickyUpload.clientFile,255)#"/>,<cfqueryparam cfsqltype="cf_sql_bigint" value="#vickyUpload.fileSize#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#hash(VARIABLES.vickyPdfBinary,'SHA-256')#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.openAiFileId#"/>,'processing',<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)</cfquery>
-          <cfset VARIABLES.vickyMessage="PDF enviado. Use “Verificar processamento” antes de ativá-lo para a Vicky."/>
-          <cffinally><cfif fileExists(VARIABLES.vickyTempFile)><cffile action="delete" file="#VARIABLES.vickyTempFile#"/></cfif></cffinally>
-        </cftry>
+      <cfelseif listFindNoCase("upload_documents_batch,refresh_documents_batch",FORM.action&"")>
+        <cfinclude template="knowledge_batch.cfm"/>
       <cfelseif FORM.action EQ "document_status">
         <cfset VARIABLES.vickySection="conhecimento"/>
         <cfset VARIABLES.vickyErrorStep="atualização do documento"/><cfset VARIABLES.documentId=val(FORM.document_id)/><cfset VARIABLES.documentStatus=listFindNoCase("active,inactive",FORM.document_status&"")?lCase(FORM.document_status):"inactive"/>
@@ -110,7 +105,17 @@
   <cfset VARIABLES.vickyErrorStep="leitura da configuração"/>
   <cfquery name="qVickyConfig" datasource="runner_dba">SELECT * FROM tb_vicky_config WHERE id_config=1</cfquery>
   <cfif VARIABLES.vickySection EQ "canais">
-    <cfset VARIABLES.vickyErrorStep="leitura do canal Manychat"/>
+    <cfset VARIABLES.vickyErrorStep="verificação do canal Meta"/>
+    <cfquery name="qVickyMetaSchema" datasource="runner_dba">SELECT (SELECT count(*) FROM information_schema.tables WHERE table_schema='public' AND table_name IN ('tb_vicky_channel_config','tb_vicky_channel_link','tb_vicky_channel_queue','tb_vicky_channel_message','tb_vicky_channel_config_audit','tb_vicky_channel_maintenance')) AS tables_ready,(SELECT count(*) FROM information_schema.columns WHERE table_schema='public' AND table_name='tb_vicky_channel_config' AND column_name IN ('max_messages_per_hour','retention_days')) AS columns_ready</cfquery>
+    <cfset VARIABLES.vickyMetaSchemaReady=val(qVickyMetaSchema.tables_ready) EQ 6 AND val(qVickyMetaSchema.columns_ready) EQ 2/>
+    <cfif VARIABLES.vickyMetaSchemaReady>
+      <cfset VARIABLES.vickyErrorStep="leitura do canal Meta"/>
+      <cfquery name="qVickyMetaConfig" datasource="runner_dba">SELECT *,CASE WHEN NOT enabled THEN 'disabled' WHEN pilot_only THEN 'pilot' ELSE 'public' END AS channel_mode FROM tb_vicky_channel_config WHERE provider='meta_cloud' AND channel='whatsapp' LIMIT 1</cfquery>
+      <cfquery name="qVickyMetaSummary" datasource="runner_dba">SELECT count(*) AS total,count(*) FILTER (WHERE status='active') AS active,count(*) FILTER (WHERE status='pending') AS pending,count(*) FILTER (WHERE status='revoked') AS revoked FROM tb_vicky_channel_link WHERE provider='meta_cloud' AND channel='whatsapp'</cfquery>
+      <cfquery name="qVickyMetaQueue" datasource="runner_dba">SELECT id_vicky_channel_queue,RIGHT(external_contact_id,6) AS contact_suffix,status,attempts,error_code,created_at,completed_at FROM tb_vicky_channel_queue WHERE provider='meta_cloud' AND channel='whatsapp' ORDER BY id_vicky_channel_queue DESC LIMIT 100</cfquery>
+      <cfquery name="qVickyMetaAudit" datasource="runner_dba">SELECT a.*,u.name AS operator_name FROM tb_vicky_channel_config_audit a LEFT JOIN tb_usuarios u ON u.id=a.id_operador WHERE a.provider='meta_cloud' AND a.channel='whatsapp' ORDER BY a.id_vicky_channel_config_audit DESC LIMIT 20</cfquery>
+    </cfif>
+    <cfset VARIABLES.vickyErrorStep="leitura do canal legado Manychat"/>
     <cfquery name="qVickyManychatConfig" datasource="runner_dba">SELECT * FROM tb_vicky_manychat_config WHERE id_config=1</cfquery>
     <cfquery name="qVickyManychatSummary" datasource="runner_dba">SELECT count(*) AS total,count(*) FILTER (WHERE status='active') AS active,count(*) FILTER (WHERE status='pending') AS pending FROM tb_vicky_manychat_link</cfquery>
     <cfquery name="qVickyManychatQueue" datasource="runner_dba">SELECT id_vicky_manychat_queue,channel,subscriber_id,status,attempts,error_code,created_at,completed_at FROM tb_vicky_manychat_queue ORDER BY id_vicky_manychat_queue DESC LIMIT 100</cfquery>
@@ -118,6 +123,7 @@
   <cfif VARIABLES.vickySection EQ "conhecimento">
     <cfset VARIABLES.vickyErrorStep="listagem da base de conhecimento"/>
     <cfquery name="qVickyDocuments" datasource="runner_dba">SELECT * FROM tb_vicky_documento ORDER BY updated_at DESC,id_vicky_documento DESC</cfquery>
+    <cfquery name="qVickyDocumentSummary" datasource="runner_dba">SELECT count(*) AS total,count(*) FILTER (WHERE status='active') AS active,count(*) FILTER (WHERE status='processing') AS processing,count(*) FILTER (WHERE status='failed') AS failed FROM tb_vicky_documento</cfquery>
   </cfif>
   <cfif VARIABLES.vickySection EQ "interacoes">
     <cfset VARIABLES.vickyErrorStep="leitura das regras de interação"/>

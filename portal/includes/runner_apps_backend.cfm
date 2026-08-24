@@ -83,6 +83,7 @@ function runnerAppsAssetUrl(required string imagePath) {
             <cfset VARIABLES.runnerAppsGroupName = isDefined("FORM.grupo_nome") ? trim(FORM.grupo_nome) : ""/>
             <cfset VARIABLES.runnerAppsGroupDescription = isDefined("FORM.grupo_descricao") ? trim(FORM.grupo_descricao) : ""/>
             <cfset VARIABLES.runnerAppsGroupOrder = isDefined("FORM.grupo_ordem") AND isNumeric(FORM.grupo_ordem) ? val(FORM.grupo_ordem) : 1/>
+            <cfset VARIABLES.runnerAppsGroupItemsPerRow = isDefined("FORM.grupo_itens_por_linha") AND listFind("3,4,5", trim(FORM.grupo_itens_por_linha & "")) ? val(FORM.grupo_itens_por_linha) : 3/>
             <cfset VARIABLES.runnerAppsGroupActive = isDefined("FORM.grupo_ativo") AND runnerAppsNormalizeBoolean(FORM.grupo_ativo)/>
 
             <cfif NOT len(VARIABLES.runnerAppsGroupName)>
@@ -93,6 +94,7 @@ function runnerAppsAssetUrl(required string imagePath) {
                     SET nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.runnerAppsGroupName#"/>,
                         descricao = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.runnerAppsGroupDescription#" null="#NOT len(VARIABLES.runnerAppsGroupDescription)#"/>,
                         ordem = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.runnerAppsGroupOrder#"/>,
+                        itens_por_linha = <cfqueryparam cfsqltype="cf_sql_smallint" value="#VARIABLES.runnerAppsGroupItemsPerRow#"/>,
                         ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.runnerAppsGroupActive#"/>,
                         atualizado_em = now()
                     WHERE id_group = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.runnerAppsGroupId#"/>
@@ -100,11 +102,12 @@ function runnerAppsAssetUrl(required string imagePath) {
                 <cflocation addtoken="false" url="./?sucesso=grupo"/>
             <cfelse>
                 <cfquery>
-                    INSERT INTO tb_portal_runner_app_groups (nome, descricao, ordem, ativo)
+                    INSERT INTO tb_portal_runner_app_groups (nome, descricao, ordem, itens_por_linha, ativo)
                     VALUES (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.runnerAppsGroupName#"/>,
                         <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.runnerAppsGroupDescription#" null="#NOT len(VARIABLES.runnerAppsGroupDescription)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.runnerAppsGroupOrder#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_smallint" value="#VARIABLES.runnerAppsGroupItemsPerRow#"/>,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.runnerAppsGroupActive#"/>
                     )
                 </cfquery>
@@ -306,8 +309,8 @@ function runnerAppsAssetUrl(required string imagePath) {
         WHERE id_app = <cfqueryparam cfsqltype="cf_sql_integer" value="#isNumeric(URL.app_editar) ? val(URL.app_editar) : 0#"/>
     </cfquery>
 <cfelse>
-    <cfset qRunnerAppGroups = queryNew("id_group,nome,descricao,ordem,ativo,total_apps,active_apps")/>
+    <cfset qRunnerAppGroups = queryNew("id_group,nome,descricao,ordem,itens_por_linha,ativo,total_apps,active_apps")/>
     <cfset qRunnerApps = queryNew("id_app,id_group,nome,url,imagem_url,imagem_original,alt_text,abrir_nova_aba,rel,ordem,ativo,grupo_nome,grupo_ordem")/>
-    <cfset qRunnerAppGroupEdit = queryNew("id_group,nome,descricao,ordem,ativo")/>
+    <cfset qRunnerAppGroupEdit = queryNew("id_group,nome,descricao,ordem,itens_por_linha,ativo")/>
     <cfset qRunnerAppEdit = queryNew("id_app,id_group,nome,url,imagem_url,imagem_original,alt_text,abrir_nova_aba,rel,ordem,ativo")/>
 </cfif>

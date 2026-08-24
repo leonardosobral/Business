@@ -117,6 +117,7 @@
               <cfset VARIABLES.runnerAppsGroupFormName = qRunnerAppGroupEdit.recordcount ? qRunnerAppGroupEdit.nome[1] : (isDefined("FORM.grupo_nome") ? FORM.grupo_nome : "")/>
               <cfset VARIABLES.runnerAppsGroupFormDescription = qRunnerAppGroupEdit.recordcount ? qRunnerAppGroupEdit.descricao[1] : (isDefined("FORM.grupo_descricao") ? FORM.grupo_descricao : "")/>
               <cfset VARIABLES.runnerAppsGroupFormOrder = qRunnerAppGroupEdit.recordcount ? qRunnerAppGroupEdit.ordem[1] : (isDefined("FORM.grupo_ordem") ? FORM.grupo_ordem : qRunnerAppGroups.recordcount + 1)/>
+              <cfset VARIABLES.runnerAppsGroupFormItemsPerRow = qRunnerAppGroupEdit.recordcount ? qRunnerAppGroupEdit.itens_por_linha[1] : (isDefined("FORM.grupo_itens_por_linha") ? FORM.grupo_itens_por_linha : 3)/>
               <cfset VARIABLES.runnerAppsGroupFormActive = qRunnerAppGroupEdit.recordcount ? runnerAppsNormalizeBoolean(qRunnerAppGroupEdit.ativo[1]) : (NOT isDefined("FORM.acao") OR isDefined("FORM.grupo_ativo"))/>
 
               <div class="card shadow-0 border border-white border-opacity-10 mb-4">
@@ -132,7 +133,7 @@
                     <input type="hidden" name="acao" value="salvar_grupo"/>
                     <input type="hidden" name="id_group" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormId)#</cfoutput>"/>
                     <div class="row g-3 align-items-end">
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label class="form-label">Nome da linha</label>
                         <input class="form-control" type="text" name="grupo_nome" required value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormName)#</cfoutput>"/>
                       </div>
@@ -143,6 +144,14 @@
                       <div class="col-md-1">
                         <label class="form-label">Ordem</label>
                         <input class="form-control" type="number" min="1" name="grupo_ordem" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormOrder)#</cfoutput>"/>
+                      </div>
+                      <div class="col-md-1">
+                        <label class="form-label">Ícones</label>
+                        <select class="form-select" name="grupo_itens_por_linha" aria-label="Ícones por linha">
+                          <cfloop list="3,4,5" index="VARIABLES.runnerAppsItemsPerRowOption">
+                            <option value="<cfoutput>#VARIABLES.runnerAppsItemsPerRowOption#</cfoutput>"<cfif val(VARIABLES.runnerAppsGroupFormItemsPerRow) EQ val(VARIABLES.runnerAppsItemsPerRowOption)> selected</cfif>><cfoutput>#VARIABLES.runnerAppsItemsPerRowOption#</cfoutput></option>
+                          </cfloop>
+                        </select>
                       </div>
                       <div class="col-md-1">
                         <div class="form-check">
@@ -263,7 +272,7 @@
                       <div>
                         <cfoutput>
                           <h5 class="mb-1">#htmlEditFormat(qRunnerAppGroups.nome)#</h5>
-                          <div class="small text-muted">Ordem #qRunnerAppGroups.ordem# · #qRunnerAppGroups.total_apps# app(s) · #qRunnerAppGroups.active_apps# ativo(s)</div>
+                          <div class="small text-muted">Ordem #qRunnerAppGroups.ordem# · #qRunnerAppGroups.itens_por_linha# ícones por linha · #qRunnerAppGroups.total_apps# app(s) · #qRunnerAppGroups.active_apps# ativo(s)</div>
                         </cfoutput>
                       </div>
                       <div class="d-flex flex-wrap gap-2">

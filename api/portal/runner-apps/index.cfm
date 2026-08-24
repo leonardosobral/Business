@@ -57,8 +57,19 @@ function runnerAppsApiWrite(required any payload) {
 </cfif>
 
 <cfparam name="URL.incluir_ocultos" default="0"/>
+<cfparam name="URL.linha" default=""/>
 
 <cfset VARIABLES.runnerAppsIncludeHidden = runnerAppsApiNormalizeBoolean(URL.incluir_ocultos)/>
+<cfset VARIABLES.runnerAppsLine = lCase(trim(URL.linha & ""))/>
+
+<cfif len(VARIABLES.runnerAppsLine) AND NOT listFindNoCase("principal", VARIABLES.runnerAppsLine)>
+    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfset runnerAppsApiWrite({
+        success = false,
+        status = "invalid_parameter",
+        message = "O parametro linha aceita somente o valor principal."
+    })/>
+</cfif>
 
 <cfquery name="qRunnerAppsApiTables">
     SELECT table_name
@@ -82,6 +93,7 @@ function runnerAppsApiWrite(required any payload) {
            grp.nome AS grupo_nome,
            grp.descricao AS grupo_descricao,
            grp.ordem AS grupo_ordem,
+           grp.itens_por_linha AS grupo_itens_por_linha,
            grp.ativo AS grupo_ativo,
            app.id_app,
            app.nome,
@@ -98,6 +110,9 @@ function runnerAppsApiWrite(required any payload) {
             AND app.ativo = true
         </cfif>
     WHERE 1 = 1
+      <cfif VARIABLES.runnerAppsLine EQ "principal">
+        AND grp.id_group = <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>
+      </cfif>
       <cfif NOT VARIABLES.runnerAppsIncludeHidden>
         AND grp.ativo = true
       </cfif>
@@ -121,6 +136,7 @@ for (rowIndex = 1; rowIndex <= qRunnerAppsApiRows.recordcount; rowIndex++) {
             name = qRunnerAppsApiRows.grupo_nome[rowIndex],
             description = qRunnerAppsApiRows.grupo_descricao[rowIndex],
             order = qRunnerAppsApiRows.grupo_ordem[rowIndex],
+            itemsPerRow = qRunnerAppsApiRows.grupo_itens_por_linha[rowIndex],
             active = runnerAppsApiNormalizeBoolean(qRunnerAppsApiRows.grupo_ativo[rowIndex]),
             items = []
         });

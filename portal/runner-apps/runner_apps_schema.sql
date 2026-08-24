@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS tb_portal_runner_app_groups (
     nome VARCHAR(120) NOT NULL,
     descricao TEXT,
     ordem INTEGER NOT NULL DEFAULT 1,
+    itens_por_linha SMALLINT NOT NULL DEFAULT 3 CHECK (itens_por_linha IN (3, 4, 5)),
     ativo BOOLEAN NOT NULL DEFAULT TRUE,
     criado_em TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     atualizado_em TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now()
@@ -32,8 +33,8 @@ CREATE INDEX IF NOT EXISTS tb_portal_runner_apps_group_ordem_idx
 
 INSERT INTO tb_portal_runner_app_groups (id_group, nome, descricao, ordem, ativo)
 VALUES
-    (1, 'Linha principal', 'Primeira linha do menu Runner Apps.', 1, TRUE),
-    (2, 'Linha secundaria', 'Segunda linha do menu Runner Apps.', 2, TRUE)
+    (1, 'Apps Principais', 'Primeiro nivel do menu Runner Apps.', 1, TRUE),
+    (2, 'Apps Secundários', 'Segundo nivel do menu Runner Apps.', 2, TRUE)
 ON CONFLICT (id_group) DO NOTHING;
 
 SELECT setval(

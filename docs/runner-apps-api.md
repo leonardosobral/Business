@@ -38,12 +38,21 @@ O endpoint e publico, somente leitura, e retorna apenas grupos e itens ativos po
 | Parametro | Obrigatorio | Padrao | Descricao |
 | --- | --- | --- | --- |
 | `incluir_ocultos` | Nao | `0` | Quando `1`, retorna tambem grupos e itens ocultos. Deve ser usado apenas para diagnostico/admin. |
+| `linha` | Nao | todas | Quando `principal`, retorna somente o grupo `Apps Principais` e seus aplicativos. |
 
 Exemplo:
 
 ```text
 https://business.roadrunners.run/api/portal/runner-apps/?incluir_ocultos=1
 ```
+
+Para exibir somente os Apps Principais:
+
+```text
+https://business.roadrunners.run/api/portal/runner-apps/?linha=principal
+```
+
+O filtro preserva o contrato da resposta: `groups` contém apenas `Apps Principais` e `items` contém somente os aplicativos desse grupo. Outros valores para `linha` retornam HTTP `400` com `status = "invalid_parameter"`.
 
 ## Resposta
 
@@ -56,15 +65,16 @@ Formato principal:
   "groups": [
     {
       "id": 1,
-      "name": "Linha principal",
+      "name": "Apps Principais",
       "description": "Primeira linha do menu Runner Apps.",
       "order": 1,
+      "itemsPerRow": 3,
       "active": true,
       "items": [
         {
           "id": 1,
           "groupId": 1,
-          "groupName": "Linha principal",
+          "groupName": "Apps Principais",
           "name": "Road Runners",
           "href": "/",
           "target": "",
@@ -92,7 +102,8 @@ Campos importantes:
 
 - `groups`: estrutura recomendada para renderizar o menu por linhas/categorias.
 - `groups[].items`: apps daquela linha, ja ordenados.
-- `items`: lista plana dos mesmos apps, mantida para compatibilidade.
+- `groups[].itemsPerRow`: quantidade configurada de icones por linha (`3`, `4` ou `5`). Consumidores antigos devem assumir `3` quando o campo nao existir.
+- `items`: lista plana dos mesmos apps, ordenada primeiro pelo grupo e depois pelo app. O Road Runners usa esta lista para renderizar todos os apps em um unico grid, sem separacao visual entre `Apps Principais` e `Apps Secundários`.
 - `target`: `"_blank"` quando o app deve abrir em nova aba; vazio quando deve abrir na mesma janela.
 - `rel`: complemento opcional para links externos, como `noopener`.
 - `imgSrc`: URL absoluta ou caminho convertido para URL absoluta pelo Business.
@@ -105,8 +116,9 @@ O consumidor deve:
 1. chamar a API server-side, quando possivel;
 2. manter cache curto, como 5 minutos;
 3. preservar fallback local estatico;
-4. renderizar por `groups`, nao por divisao fixa de quantidade;
-5. usar `items` apenas como compatibilidade.
+4. usar `groups` quando precisar preservar categorias na interface;
+5. usar `items` quando precisar de um grid visual unico, pois a lista ja preserva a ordem dos grupos e dos apps;
+6. no grid unico, usar `itemsPerRow` do primeiro grupo ativo e assumir `3` como fallback.
 
 No `Road Runners`, o fallback estatico continua existindo no proprio `menu_apps_data.cfm`.
 
@@ -164,8 +176,9 @@ O projeto `Road Runners` ja foi adaptado para:
 - consumir a API do `Business`
 - manter cache de 5 minutos
 - preservar fallback estatico
-- renderizar por grupos em `menu_apps.cfm`
-- renderizar por grupos tambem em `header_slim.cfm`
+- manter os dois grupos para gestao e ordenacao
+- renderizar a lista plana em um unico grid em `menu_apps.cfm` e `header_slim.cfm`
+- usar a quantidade de colunas configurada no primeiro grupo ativo para o grid unico
 
 Arquivos envolvidos:
 
@@ -179,4 +192,5 @@ Arquivos envolvidos:
 - Nao use `incluir_ocultos=1` em producao publica.
 - Em sites multilíngues, o consumidor pode sobrescrever o item de home localmente quando `href = "/"`.
 - A ordenacao vem pronta da API: `groups[].order` e `items[].order`.
+- A quantidade de icones e configurada individualmente em cada grupo e vem em `groups[].itemsPerRow`.
 - O Business nao registra metricas de impressao/clique para Runner Apps; esta API e apenas catalogo.
