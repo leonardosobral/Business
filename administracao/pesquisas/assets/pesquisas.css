@@ -840,6 +840,147 @@
   font-style: normal;
 }
 
+.research-mock-results-flow {
+  align-items: stretch;
+  display: grid;
+  gap: .45rem;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  margin-bottom: .65rem;
+}
+
+.research-mock-results-source {
+  align-items: center;
+  background: #eef8ef;
+  border: 1px solid #cce5cf;
+  border-radius: 8px;
+  display: flex;
+  gap: .5rem;
+  min-width: 0;
+  padding: .6rem;
+}
+
+.research-mock-results-source > i {
+  color: #2c8652;
+  font-size: 1rem;
+}
+
+.research-mock-results-source span,
+.research-mock-results-source strong,
+.research-mock-results-source small {
+  display: block;
+  min-width: 0;
+}
+
+.research-mock-results-source strong {
+  color: #393730;
+  font-size: .63rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.research-mock-results-source small {
+  color: #77736b;
+  font-size: .55rem;
+  margin-top: .12rem;
+}
+
+.research-mock-results-source.is-official {
+  background: #fff7e4;
+  border-color: #f3d38d;
+}
+
+.research-mock-results-source.is-official > i {
+  color: #d58b00;
+}
+
+.research-mock-results-arrow {
+  align-self: center;
+  color: #aba69d;
+  font-size: .72rem;
+}
+
+.research-mock-history {
+  background: #fff;
+  border: 1px solid #e2ded6;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.research-mock-history-heading,
+.research-mock-history-row {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
+  padding: .55rem .65rem;
+}
+
+.research-mock-history-heading {
+  background: #f7f4ee;
+  justify-content: space-between;
+}
+
+.research-mock-history-heading span {
+  align-items: center;
+  display: flex;
+  gap: .35rem;
+}
+
+.research-mock-history-heading i {
+  color: #d58b00;
+}
+
+.research-mock-history-heading strong {
+  color: #393730;
+  font-size: .65rem;
+}
+
+.research-mock-history-heading em {
+  background: #fff0c8;
+  border-radius: 999px;
+  color: #a06900;
+  font-size: .52rem;
+  font-style: normal;
+  font-weight: 800;
+  padding: .2rem .4rem;
+}
+
+.research-mock-history-row + .research-mock-history-row {
+  border-top: 1px solid #eeeae3;
+}
+
+.research-mock-history-row > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.research-mock-history-row strong,
+.research-mock-history-row small {
+  display: block;
+}
+
+.research-mock-history-row strong {
+  color: #393730;
+  font-size: .59rem;
+}
+
+.research-mock-history-row small {
+  color: #827e75;
+  font-size: .53rem;
+  margin-top: .08rem;
+}
+
+.research-mock-history-row > i {
+  color: #2c8652;
+  font-size: .68rem;
+}
+
+.research-mock-history-year {
+  color: #9a6400;
+  font-size: .57rem;
+  font-weight: 800;
+}
+
 .research-survey-question {
   border-top: 1px solid #ddd9d1;
   margin-top: 1.5rem;
@@ -874,6 +1015,74 @@
   font-weight: 800;
 }
 
+.research-survey-rating {
+  display: grid;
+  gap: .6rem;
+  grid-template-columns: repeat(5, minmax(72px, 1fr));
+  margin-top: 1rem;
+}
+
+.research-survey-rating-option {
+  align-items: center;
+  background: linear-gradient(180deg, #f8ba36, #eba00d);
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0 8px 18px rgba(166, 104, 0, .18);
+  color: #292821;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  justify-content: center;
+  min-height: 86px;
+  padding: .65rem .35rem;
+  transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.research-survey-rating-option strong {
+  align-items: center;
+  background: transparent;
+  border-radius: 0;
+  display: inline-flex;
+  font-size: 1.05rem;
+  height: 34px;
+  justify-content: center;
+  margin: 0;
+  width: 34px;
+}
+
+.research-survey-rating-option span {
+  color: #292821;
+  font-size: .66rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.research-survey-rating-option:hover,
+.research-survey-rating-option:focus-visible {
+  background: linear-gradient(180deg, #ffc94f, #f0a511);
+  box-shadow: 0 11px 24px rgba(166, 104, 0, .25);
+  transform: translateY(-2px);
+}
+
+.research-survey-rating-option.is-selected {
+  background: linear-gradient(180deg, #ffc23d, #ed9f08);
+  border: 0;
+  box-shadow: 0 0 0 3px #292821, 0 12px 28px rgba(166, 104, 0, .3);
+  color: #27251f;
+  padding: .65rem .35rem;
+  transform: translateY(-2px);
+}
+
+.research-survey-rating-option.is-selected strong {
+  background: transparent;
+}
+
+.research-survey-rating-option.is-selected span {
+  color: #393832;
+  font-weight: 800;
+}
+
 .research-survey-profile-grid {
   display: grid;
   gap: .65rem;
@@ -888,6 +1097,7 @@
   color: #34332e;
   min-height: 78px;
   padding: .8rem;
+  position: relative;
   text-align: left;
 }
 
@@ -905,6 +1115,30 @@
 .research-survey-profile-option.is-selected {
   border: 2px solid var(--research-yellow);
   padding: calc(.8rem - 1px);
+}
+
+.research-survey-option-score {
+  background: #fff3d5;
+  border-radius: 999px;
+  color: #9a6400;
+  display: inline-flex;
+  font-size: .62rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1;
+  padding: .3rem .48rem;
+  position: absolute;
+  right: .7rem;
+  top: .65rem;
+}
+
+.research-survey-profile-option:has(.research-survey-option-score) > strong {
+  padding-right: 4.5rem;
+}
+
+.research-survey-profile-option.is-selected .research-survey-option-score {
+  background: var(--research-yellow);
+  color: #292821;
 }
 
 .research-survey-bundle-grid {
@@ -1279,6 +1513,15 @@
     font-size: 1.85rem;
   }
 
+  .research-survey-rating {
+    gap: .5rem;
+    grid-template-columns: repeat(3, minmax(78px, 1fr));
+  }
+
+  .research-survey-rating-option {
+    min-height: 78px;
+  }
+
   .research-survey-profile-grid,
   .research-survey-bundle-grid,
   .research-survey-plan-items,
@@ -1304,6 +1547,10 @@
 
 .research-survey-frame.is-mobile .research-survey-feature-title {
   font-size: 1.85rem;
+}
+
+.research-survey-frame.is-mobile .research-survey-rating {
+  grid-template-columns: repeat(3, minmax(72px, 1fr));
 }
 
 .research-survey-frame.is-mobile .research-survey-title {
@@ -1623,6 +1870,63 @@
   color: #fff;
   font-size: .7rem;
   padding: .35rem .6rem;
+}
+
+.research-dashboard-package-chip strong {
+  color: var(--research-yellow);
+  margin-right: .15rem;
+}
+
+/* Mantém a escala clara mesmo quando o painel administrativo usa color-scheme dark. */
+.research-survey-frame .research-survey-rating {
+  display: grid !important;
+  gap: .6rem !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  align-items: center !important;
+  background: linear-gradient(180deg, #f8ba36, #eba00d) !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  box-shadow: 0 8px 18px rgba(166, 104, 0, .18) !important;
+  color: #292821 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .45rem !important;
+  justify-content: center !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option > strong {
+  background: transparent !important;
+  color: #292821 !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option > span {
+  color: #292821 !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option:hover,
+.research-survey-frame .research-survey-rating > .research-survey-rating-option:focus-visible {
+  background: linear-gradient(180deg, #ffc94f, #f0a511) !important;
+  border: 0 !important;
+  box-shadow: 0 11px 24px rgba(166, 104, 0, .25) !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option.is-selected {
+  background: linear-gradient(180deg, #ffc23d, #ed9f08) !important;
+  border: 0 !important;
+  box-shadow: 0 0 0 3px #292821, 0 12px 28px rgba(166, 104, 0, .3) !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option.is-selected > strong {
+  background: transparent !important;
+  color: #292821 !important;
+}
+
+.research-survey-frame .research-survey-rating > .research-survey-rating-option.is-selected > span {
+  color: #393832 !important;
 }
 
 .research-dashboard-response-meta {

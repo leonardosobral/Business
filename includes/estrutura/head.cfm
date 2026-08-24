@@ -41,7 +41,7 @@
     </cfif>
 
     <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/administracao/pesquisas/">
-        <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260819-1" />
+        <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260824-8" />
     </cfif>
 
 </head>

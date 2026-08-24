@@ -17,7 +17,7 @@ function publicResearchSerialize(required any payload) {
         ["SUCCESS", "success"], ["MESSAGE", "message"], ["CODE", "code"],
         ["RESEARCH", "research"], ["ID", "id"], ["TITLE", "title"], ["SLUG", "slug"],
         ["RANDOMIZE", "randomize"], ["REQUIREACCOUNT", "requireAccount"],
-        ["AUTHENTICATED", "authenticated"], ["EMAILMODE", "emailMode"],
+        ["AUTHENTICATED", "authenticated"], ["USEREMAIL", "userEmail"], ["EMAILMODE", "emailMode"],
         ["ANNUALDISCOUNT", "annualDiscount"], ["REDIRECTURL", "redirectUrl"],
         ["STEPS", "steps"], ["KEY", "key"], ["TYPE", "type"], ["NAME", "name"],
         ["SUPPORT", "support"], ["QUESTION", "question"], ["AREA", "area"],
@@ -83,7 +83,14 @@ function publicResearchOptions(required query source, required numeric rowIndex)
 }
 
 function publicResearchTablesReady() {
-    var check = queryExecute("SELECT to_regclass('tb_pesquisas') IS NOT NULL AND to_regclass('tb_pesquisa_etapas') IS NOT NULL AND to_regclass('tb_pesquisa_respostas') IS NOT NULL AND to_regclass('tb_pesquisa_resposta_etapas') IS NOT NULL AND to_regclass('tb_pesquisa_resposta_funcionalidades') IS NOT NULL AS ready");
+    var check = queryExecute(
+        "SELECT to_regclass('tb_pesquisas') IS NOT NULL " &
+        "AND to_regclass('tb_pesquisa_etapas') IS NOT NULL " &
+        "AND to_regclass('tb_pesquisa_respostas') IS NOT NULL " &
+        "AND to_regclass('tb_pesquisa_resposta_etapas') IS NOT NULL " &
+        "AND to_regclass('tb_pesquisa_resposta_funcionalidades') IS NOT NULL " &
+        "AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = current_schema() AND table_name = 'tb_pesquisa_resposta_funcionalidades' AND column_name = 'nota') AS ready"
+    );
     return publicResearchBoolean(check.ready[1]);
 }
 
@@ -95,8 +102,24 @@ function publicResearchSurvey(required string slug) {
     );
 }
 
+function publicResearchAuthenticatedUser() {
+    var result = { authenticated = false, userId = 0, email = "" };
+    if (!structKeyExists(COOKIE, "id") || !isNumeric(COOKIE.id) || val(COOKIE.id) LTE 0) return result;
+    var userQuery = queryExecute(
+        "SELECT id, email FROM tb_usuarios WHERE id = :user_id LIMIT 1",
+        { user_id = { value = val(COOKIE.id), cfsqltype = "cf_sql_bigint" } }
+    );
+    if (!userQuery.recordCount) return result;
+    result.authenticated = true;
+    result.userId = val(userQuery.id[1]);
+    result.email = publicResearchText(userQuery, "email", 1);
+    return result;
+}
+
 function publicResearchConfiguration(required query survey) {
     var surveyId = arguments.survey.id_pesquisa[1];
+    var currentUser = publicResearchAuthenticatedUser();
+    var requireAccount = publicResearchBoolean(arguments.survey.exigir_conta_rr[1]);
     var stepsQuery = queryExecute(
         "SELECT id_etapa, chave, tipo, nome, titulo, texto_apoio, pergunta, area, icone, tipo_visual, visual_modelo, imagem_url, opcoes::text AS opcoes, incluir_pacote, randomizavel, ordem " &
         "FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND ativo = true ORDER BY ordem, id_etapa",
@@ -117,8 +140,9 @@ function publicResearchConfiguration(required query survey) {
         title = publicResearchText(arguments.survey, "titulo_publico", 1),
         slug = publicResearchText(arguments.survey, "slug", 1),
         randomize = publicResearchBoolean(arguments.survey.randomizar_funcionalidades[1]),
-        requireAccount = publicResearchBoolean(arguments.survey.exigir_conta_rr[1]),
-        authenticated = false,
+        requireAccount = requireAccount,
+        authenticated = currentUser.authenticated,
+        userEmail = requireAccount && currentUser.authenticated ? currentUser.email : "",
         emailMode = publicResearchEmailToClient(publicResearchText(arguments.survey, "modo_email", 1, "opcional")),
         annualDiscount = val(arguments.survey.desconto_anual[1]),
         redirectUrl = publicResearchText(arguments.survey, "url_redirecionamento", 1),
@@ -155,12 +179,15 @@ function publicResearchSave(required struct payload, required query survey) {
     var discount = min(50, max(0, val(arguments.survey.desconto_anual[1])));
     var annualMin = round(priceMin * 12 * (1 - discount / 100));
     var annualMax = round(priceMax * 12 * (1 - discount / 100));
-    var selectedPackage = structKeyExists(arguments.payload, "package") && isArray(arguments.payload.package) ? arguments.payload.package : [];
+    var currentUser = publicResearchAuthenticatedUser();
+    var requireAccount = publicResearchBoolean(arguments.survey.exigir_conta_rr[1]);
+    if (requireAccount && !currentUser.authenticated) {
+        throw(type = "Research.LoginRequired", message = "Entre com sua conta Road Runners para concluir esta entrevista.");
+    }
+    var selectedPackage = [];
     var mustHave = structKeyExists(arguments.payload, "mustHave") ? trim(arguments.payload.mustHave & "") : "";
     var sessionToken = structKeyExists(arguments.payload, "sessionToken") ? left(trim(arguments.payload.sessionToken & ""), 100) : "";
     if (!len(sessionToken)) throw(message = "A sessão da entrevista expirou. Recarregue a página.");
-    if (!arrayLen(selectedPackage)) throw(message = "Escolha pelo menos uma funcionalidade para o pacote.");
-    if (!len(mustHave) || !publicResearchArrayContains(selectedPackage, mustHave)) throw(message = "Escolha a funcionalidade indispensável dentro do seu pacote.");
 
     var surveyId = arguments.survey.id_pesquisa[1];
     var featureQuery = queryExecute(
@@ -171,9 +198,21 @@ function publicResearchSave(required struct payload, required query survey) {
         "SELECT id_etapa, chave, tipo, opcoes::text AS opcoes FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND tipo <> 'funcionalidade' AND ativo = true",
         { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
     );
-    var allowedInterests = "yes,maybe,no";
-    // O vínculo com tb_usuarios só será preenchido após validar o token do login Road Runners.
-    var userId = 0;
+    var featureScores = {};
+    for (var scoreRow = 1; scoreRow <= featureQuery.recordCount; scoreRow++) {
+        var scoreKey = featureQuery.chave[scoreRow] & "";
+        if (!structKeyExists(answers, scoreKey) || !isNumeric(answers[scoreKey])) throw(message = "Dê uma nota de 1 a 5 para todas as funcionalidades.");
+        var score = val(answers[scoreKey]);
+        if (score NEQ int(score) || score LT 1 || score GT 5) throw(message = "As notas das funcionalidades devem estar entre 1 e 5.");
+        featureScores[scoreKey] = score;
+        if (score GT 0) arrayAppend(selectedPackage, scoreKey);
+    }
+    if (!len(mustHave)) throw(message = "Escolha a funcionalidade indispensável para você.");
+    var essentialCandidates = [];
+    for (var essentialKey in featureScores) if (featureScores[essentialKey] GTE 3) arrayAppend(essentialCandidates, essentialKey);
+    if (arrayLen(essentialCandidates) && !publicResearchArrayContains(essentialCandidates, mustHave)) throw(message = "Escolha como indispensável uma funcionalidade que recebeu nota 3 ou mais.");
+    if (!arrayLen(essentialCandidates) && compareNoCase(mustHave, "none") NEQ 0) throw(message = "Nenhuma funcionalidade com nota 3 ou mais pode ser marcada como indispensável.");
+    var userId = requireAccount && currentUser.authenticated ? currentUser.userId : 0;
     var ipAddress = structKeyExists(CGI, "remote_addr") ? CGI.remote_addr & "" : "";
     var ipHash = hash(ipAddress & "|RoadRunnersResearch|" & surveyId, "SHA-256");
     var userAgent = structKeyExists(CGI, "http_user_agent") ? left(CGI.http_user_agent & "", 500) : "";
@@ -194,6 +233,14 @@ function publicResearchSave(required struct payload, required query survey) {
         if (duplicateEmail.recordCount) throw(type = "Research.DuplicateEmail", message = "Este e-mail já foi utilizado para responder esta entrevista.");
     }
 
+    if (userId GT 0) {
+        var duplicateUser = queryExecute(
+            "SELECT 1 FROM tb_pesquisa_respostas WHERE id_pesquisa = :survey_id AND status = 'concluida' AND id_usuario = :user_id LIMIT 1",
+            { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" }, user_id = { value = userId, cfsqltype = "cf_sql_bigint" } }
+        );
+        if (duplicateUser.recordCount) throw(type = "Research.DuplicateUser", message = "Esta conta Road Runners já respondeu esta entrevista.");
+    }
+
     transaction {
         var responseQuery = queryExecute(
             "INSERT INTO tb_pesquisa_respostas (id_pesquisa, token_sessao, id_usuario, email, nivel_corredor, conta_rr, periodicidade, valor_mensal_min, valor_mensal_max, valor_anual_min, valor_anual_max, status, concluido_em, endereco_ip_hash, agente_usuario, metadados) " &
@@ -208,11 +255,10 @@ function publicResearchSave(required struct payload, required query survey) {
 
         for (var featureRow = 1; featureRow <= featureQuery.recordCount; featureRow++) {
             var featureKey = featureQuery.chave[featureRow] & "";
-            var interest = structKeyExists(answers, featureKey) && listFindNoCase(allowedInterests, answers[featureKey] & "") ? lCase(answers[featureKey] & "") : "no";
-            var interestDatabase = publicResearchAnswerToDatabase("interest", interest);
+            var featureScore = featureScores[featureKey];
             queryExecute(
-                "INSERT INTO tb_pesquisa_resposta_funcionalidades (id_resposta, id_etapa, interesse, selecionada_pacote, indispensavel) VALUES (:response_id, :step_id, :interest, :selected, :must_have)",
-                { response_id = { value = responseId, cfsqltype = "cf_sql_bigint" }, step_id = { value = featureQuery.id_etapa[featureRow], cfsqltype = "cf_sql_bigint" }, interest = { value = interestDatabase, cfsqltype = "cf_sql_varchar" }, selected = { value = publicResearchArrayContains(selectedPackage, featureKey), cfsqltype = "cf_sql_bit" }, must_have = { value = compareNoCase(mustHave, featureKey) EQ 0, cfsqltype = "cf_sql_bit" } }
+                "INSERT INTO tb_pesquisa_resposta_funcionalidades (id_resposta, id_etapa, nota, selecionada_pacote, indispensavel) VALUES (:response_id, :step_id, :score, :selected, :must_have)",
+                { response_id = { value = responseId, cfsqltype = "cf_sql_bigint" }, step_id = { value = featureQuery.id_etapa[featureRow], cfsqltype = "cf_sql_bigint" }, score = { value = featureScore, cfsqltype = "cf_sql_smallint" }, selected = { value = featureScore GT 0, cfsqltype = "cf_sql_bit" }, must_have = { value = featureScore GTE 3 AND compareNoCase(mustHave, featureKey) EQ 0, cfsqltype = "cf_sql_bit" } }
             );
         }
 
@@ -286,7 +332,7 @@ function publicResearchSave(required struct payload, required query survey) {
 <cfparam name="URL.slug" default="assinatura-atletas-2026"/>
 
 <cftry>
-    <cfif NOT publicResearchTablesReady()><cfset publicResearchWrite({ success = false, message = "A entrevista ainda não está disponível." }, 503)/></cfif>
+    <cfif NOT publicResearchTablesReady()><cfset publicResearchWrite({ success = false, message = "A atualização das notas da entrevista ainda não foi aplicada." }, 503)/></cfif>
     <cfset VARIABLES.publicAction = lCase(trim(URL.action & ""))/>
     <cfset VARIABLES.publicSlug = lCase(trim(URL.slug & ""))/>
     <cfset qPublicSurvey = publicResearchSurvey(VARIABLES.publicSlug)/>
@@ -307,9 +353,6 @@ function publicResearchSave(required struct payload, required query survey) {
         <cfif compareNoCase(VARIABLES.publicRequestedWith, "XMLHttpRequest") NEQ 0 OR NOT findNoCase("application/json", VARIABLES.publicContentType)>
             <cfset publicResearchWrite({ success = false, message = "Requisição inválida." }, 403)/>
         </cfif>
-        <cfif publicResearchBoolean(qPublicSurvey.exigir_conta_rr[1])>
-            <cfset publicResearchWrite({ success = false, code = "account_integration_pending", message = "Esta entrevista exige uma conta Road Runners, mas a integração segura do Google Login ainda não foi habilitada." }, 503)/>
-        </cfif>
         <cfset VARIABLES.requestData = getHttpRequestData()/>
         <cfset VARIABLES.requestBody = toString(VARIABLES.requestData.content)/>
         <cfif NOT isJSON(VARIABLES.requestBody)><cfset publicResearchWrite({ success = false, message = "Conteúdo inválido." }, 400)/></cfif>
@@ -323,6 +366,10 @@ function publicResearchSave(required struct payload, required query survey) {
         <cfset VARIABLES.publicErrorDetail = structKeyExists(cfcatch, "detail") ? cfcatch.detail & "" : ""/>
         <cfif compareNoCase(cfcatch.type & "", "Research.DuplicateEmail") EQ 0 OR findNoCase("uq_pesquisa_respostas_email_concluida", cfcatch.message & " " & VARIABLES.publicErrorDetail)>
             <cfset publicResearchWrite({ success = false, code = "duplicate_email", message = "Este e-mail já foi utilizado para responder esta entrevista." }, 409)/>
+        <cfelseif compareNoCase(cfcatch.type & "", "Research.DuplicateUser") EQ 0>
+            <cfset publicResearchWrite({ success = false, code = "duplicate_user", message = "Esta conta Road Runners já respondeu esta entrevista." }, 409)/>
+        <cfelseif compareNoCase(cfcatch.type & "", "Research.LoginRequired") EQ 0>
+            <cfset publicResearchWrite({ success = false, code = "login_required", message = cfcatch.message }, 401)/>
         </cfif>
         <cfset publicResearchWrite({ success = false, message = cfcatch.message }, 500)/>
     </cfcatch>

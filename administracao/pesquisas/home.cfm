@@ -148,6 +148,7 @@
                             <option value="comparison">Comparação de atletas</option>
                             <option value="people">Comunidade e pessoas</option>
                             <option value="memories">Memórias e histórico</option>
+                            <option value="results">Planilha e resultados oficiais</option>
                             <option value="benefits">Clube de benefícios</option>
                         </select>
                         <div class="research-admin-visual-placeholder" data-research-visual-placeholder></div>
@@ -156,10 +157,6 @@
 
                     <div data-research-feature-field>
                         <div class="research-admin-option-row mt-4">
-                            <div><strong>Disponível para o pacote</strong><span>O atleta poderá incluir esta funcionalidade na assinatura ideal.</span></div>
-                            <button type="button" class="research-admin-switch is-on" aria-pressed="true" data-research-switch="package"><span></span></button>
-                        </div>
-                        <div class="research-admin-option-row">
                             <div><strong>Pode ter a posição alternada</strong><span>Participa da randomização para reduzir viés de ordem.</span></div>
                             <button type="button" class="research-admin-switch is-on" aria-pressed="true" data-research-switch="random"><span></span></button>
                         </div>
@@ -191,11 +188,11 @@
                 </div>
 
                 <div class="research-admin-option-row mt-4">
-                    <div><strong>Randomizar funcionalidades</strong><span>As etapas de perfil, pacote e conclusão continuam em suas posições.</span></div>
+                    <div><strong>Randomizar funcionalidades</strong><span>As etapas de perfil, prioridade e conclusão continuam em suas posições.</span></div>
                     <button type="button" class="research-admin-switch is-on" aria-pressed="true" data-research-switch="globalRandom"><span></span></button>
                 </div>
                 <div class="research-admin-option-row">
-                    <div><strong>Exigir conta Road Runners</strong><span>Deixe desativado enquanto a equipe define o login. Ao ativar, a publicação informará que a integração segura ainda precisa ser concluída.</span></div>
+                    <div><strong>Exigir conta Road Runners</strong><span>Ao ativar, o atleta entra com o Google e retorna automaticamente para continuar a entrevista.</span></div>
                     <button type="button" class="research-admin-switch" aria-pressed="false" data-research-switch="requireAccount"><span></span></button>
                 </div>
             </div>
@@ -213,12 +210,12 @@
             </div>
             <div class="research-dashboard-kpis" data-research-dashboard-kpis></div>
             <div class="research-dashboard-grid mt-3">
-                <section class="research-admin-panel p-3 p-lg-4"><div class="mb-3"><h2 class="h6 mb-1">Interesse por funcionalidade</h2><span class="research-admin-muted small">Uso declarado, presença no pacote e item indispensável.</span></div><div data-research-feature-results></div></section>
+                <section class="research-admin-panel p-3 p-lg-4"><div class="mb-3"><h2 class="h6 mb-1">Avaliação por funcionalidade</h2><span class="research-admin-muted small">Nota média, avaliações mais altas e item indispensável.</span></div><div data-research-feature-results></div></section>
                 <section class="research-admin-panel p-3 p-lg-4"><h2 class="h6 mb-1">Perfil e preferência</h2><span class="research-admin-muted small">Quem respondeu e como prefere pagar.</span><div class="mt-3" data-research-profile-results></div></section>
             </div>
             <section class="research-admin-panel mt-3 p-3 p-lg-4">
-                <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3"><div><h2 class="h6 mb-1">Entrevistas recentes</h2><span class="research-admin-muted small">Clique em uma resposta para ver as funcionalidades escolhidas.</span></div><button class="btn btn-sm btn-outline-light" type="button" data-research-dashboard-refresh><i class="fa-solid fa-rotate me-2"></i>Atualizar</button></div>
-                <div class="table-responsive"><table class="table table-dark table-hover align-middle mb-0"><thead><tr><th>Data</th><th>Atleta</th><th>Nível</th><th>Pagamento</th><th>Valor informado</th><th>Pacote</th></tr></thead><tbody data-research-recent-results></tbody></table></div>
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3"><div><h2 class="h6 mb-1">Entrevistas recentes</h2><span class="research-admin-muted small">Clique em uma resposta para ver as notas de cada funcionalidade.</span></div><button class="btn btn-sm btn-outline-light" type="button" data-research-dashboard-refresh><i class="fa-solid fa-rotate me-2"></i>Atualizar</button></div>
+                <div class="table-responsive"><table class="table table-dark table-hover align-middle mb-0"><thead><tr><th>Data</th><th>Atleta</th><th>Nível</th><th>Pagamento</th><th>Valor informado</th><th>Notas acima de 0</th></tr></thead><tbody data-research-recent-results></tbody></table></div>
             </section>
         </div>
     </div>

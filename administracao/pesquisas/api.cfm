@@ -31,12 +31,13 @@ function researchApiSerialize(required any payload) {
         ["FEATURES", "features"], ["PROFILES", "profiles"], ["ACCOUNTS", "accounts"],
         ["BILLING", "billing"], ["RECENT", "recent"], ["VALUE", "value"],
         ["COUNT", "count"], ["PERCENT", "percent"], ["INTERESTPERCENT", "interestPercent"],
-        ["PACKAGEPERCENT", "packagePercent"], ["MUSTHAVECOUNT", "mustHaveCount"],
+        ["PACKAGEPERCENT", "packagePercent"], ["AVERAGESCORE", "averageScore"], ["HIGHSCOREPERCENT", "highScorePercent"],
+        ["SCORE", "score"], ["MUSTHAVECOUNT", "mustHaveCount"],
         ["COMPLETEDAT", "completedAt"], ["EMAIL", "email"], ["LEVEL", "level"],
         ["ACCOUNT", "account"], ["RESPONSEID", "responseId"],
         ["PRICEMIN", "priceMin"], ["PRICEMAX", "priceMax"],
         ["ANNUALPRICEMIN", "annualPriceMin"], ["ANNUALPRICEMAX", "annualPriceMax"],
-        ["PACKAGECOUNT", "packageCount"], ["PACKAGENAMES", "packageNames"], ["MUSTHAVENAME", "mustHaveName"],
+        ["PACKAGECOUNT", "packageCount"], ["PACKAGENAMES", "packageNames"], ["FEATURERATINGS", "featureRatings"], ["MUSTHAVENAME", "mustHaveName"],
         ["URL", "url"], ["CODE", "code"]
     ];
     for (var pair in keys) {
@@ -133,6 +134,17 @@ function researchApiNumber(required query source, required string columnName, re
     return isNumeric(raw) ? val(raw) : arguments.fallback;
 }
 
+function researchApiRatingSchemaReady() {
+    var check = queryExecute(
+        "SELECT EXISTS (" &
+        "SELECT 1 FROM information_schema.columns " &
+        "WHERE table_schema = current_schema() " &
+        "AND table_name = 'tb_pesquisa_resposta_funcionalidades' " &
+        "AND column_name = 'nota') AS ready"
+    );
+    return researchApiBoolean(check.ready[1]);
+}
+
 function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "") {
     var result = {
         schemaReady = true,
@@ -223,8 +235,8 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
 
     var featuresQuery = queryExecute(
         "SELECT step.chave, step.nome, step.ordem, " &
-        "coalesce(round(100.0 * count(*) FILTER (WHERE answer.interesse = 'sim') / nullif(count(answer.id_resposta_funcionalidade), 0)), 0) AS interest_percent, " &
-        "coalesce(round(100.0 * count(*) FILTER (WHERE answer.selecionada_pacote) / nullif(count(answer.id_resposta_funcionalidade), 0)), 0) AS package_percent, " &
+        "coalesce(round(avg(coalesce(answer.nota, CASE answer.interesse WHEN 'sim' THEN 5 WHEN 'talvez' THEN 3 WHEN 'nao' THEN 0 END)), 1), 0) AS average_score, " &
+        "coalesce(round(100.0 * count(*) FILTER (WHERE coalesce(answer.nota, CASE answer.interesse WHEN 'sim' THEN 5 WHEN 'talvez' THEN 3 WHEN 'nao' THEN 0 END) >= 4) / nullif(count(answer.id_resposta_funcionalidade), 0)), 0) AS high_score_percent, " &
         "count(*) FILTER (WHERE answer.indispensavel) AS must_have_count " &
         "FROM tb_pesquisa_etapas step " &
         "LEFT JOIN tb_pesquisa_resposta_funcionalidades answer ON answer.id_etapa = step.id_etapa " &
@@ -238,8 +250,8 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
         arrayAppend(featureResults, {
             key = researchApiText(featuresQuery, "chave", featureRow),
             name = researchApiText(featuresQuery, "nome", featureRow),
-            interestPercent = researchApiNumber(featuresQuery, "interest_percent", featureRow),
-            packagePercent = researchApiNumber(featuresQuery, "package_percent", featureRow),
+            averageScore = researchApiNumber(featuresQuery, "average_score", featureRow),
+            highScorePercent = researchApiNumber(featuresQuery, "high_score_percent", featureRow),
             mustHaveCount = researchApiNumber(featuresQuery, "must_have_count", featureRow)
         });
     }
@@ -266,12 +278,14 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
         dashboardParams
     );
     var recentQuery = queryExecute(
-        "SELECT response.codigo_publico, response.concluido_em, response.email, response.nivel_corredor, response.conta_rr, response.periodicidade, " &
+        "SELECT response.codigo_publico, response.concluido_em, max(coalesce(response.email, account_user.email)) AS email, response.nivel_corredor, response.conta_rr, response.periodicidade, " &
         "response.valor_mensal_min, response.valor_mensal_max, response.valor_anual_min, response.valor_anual_max, " &
-        "count(feature.id_resposta_funcionalidade) FILTER (WHERE feature.selecionada_pacote) AS package_count, " &
-        "string_agg(step.nome, chr(30) ORDER BY step.ordem) FILTER (WHERE feature.selecionada_pacote) AS package_names, " &
+        "count(feature.id_resposta_funcionalidade) FILTER (WHERE coalesce(feature.nota, CASE feature.interesse WHEN 'sim' THEN 5 WHEN 'talvez' THEN 3 WHEN 'nao' THEN 0 END) > 0) AS package_count, " &
+        "string_agg(step.nome, chr(30) ORDER BY step.ordem) FILTER (WHERE coalesce(feature.nota, CASE feature.interesse WHEN 'sim' THEN 5 WHEN 'talvez' THEN 3 WHEN 'nao' THEN 0 END) > 0) AS package_names, " &
+        "string_agg(step.nome || chr(31) || coalesce(feature.nota, CASE feature.interesse WHEN 'sim' THEN 5 WHEN 'talvez' THEN 3 WHEN 'nao' THEN 0 END)::text, chr(30) ORDER BY step.ordem) FILTER (WHERE feature.id_resposta_funcionalidade IS NOT NULL) AS rating_names, " &
         "max(step.nome) FILTER (WHERE feature.indispensavel) AS must_have_name " &
         "FROM tb_pesquisa_respostas response " &
+        "LEFT JOIN tb_usuarios account_user ON account_user.id = response.id_usuario " &
         "LEFT JOIN tb_pesquisa_resposta_funcionalidades feature ON feature.id_resposta = response.id_resposta " &
         "LEFT JOIN tb_pesquisa_etapas step ON step.id_etapa = feature.id_etapa " &
         "WHERE response.id_pesquisa = :survey_id AND response.status = 'concluida'" & responseFilter & " " &
@@ -295,6 +309,14 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
     for (var recentRow = 1; recentRow <= recentQuery.recordCount; recentRow++) {
         var completedValue = isNull(recentQuery.concluido_em[recentRow]) ? "" : dateTimeFormat(recentQuery.concluido_em[recentRow], "dd/mm/yyyy HH:nn");
         var packageNamesValue = researchApiText(recentQuery, "package_names", recentRow);
+        var ratingNamesValue = researchApiText(recentQuery, "rating_names", recentRow);
+        var featureRatings = [];
+        if (len(ratingNamesValue)) {
+            for (var ratingEntry in listToArray(ratingNamesValue, chr(30))) {
+                var ratingParts = listToArray(ratingEntry, chr(31), true);
+                if (arrayLen(ratingParts) GTE 2) arrayAppend(featureRatings, { name = ratingParts[1], score = val(ratingParts[2]) });
+            }
+        }
         arrayAppend(recentResults, {
             responseId = researchApiText(recentQuery, "codigo_publico", recentRow),
             completedAt = completedValue,
@@ -308,6 +330,7 @@ function researchApiLoad(string dashboardLevel = "", string dashboardAccount = "
             annualPriceMax = researchApiNumber(recentQuery, "valor_anual_max", recentRow),
             packageCount = researchApiNumber(recentQuery, "package_count", recentRow),
             packageNames = len(packageNamesValue) ? listToArray(packageNamesValue, chr(30)) : [],
+            featureRatings = featureRatings,
             mustHaveName = researchApiText(recentQuery, "must_have_name", recentRow)
         });
     }
@@ -422,7 +445,7 @@ function researchApiSave(required struct payload, required numeric actorId) {
                 {
                     survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" }, step_key = { value = trim(currentStep.key & ""), cfsqltype = "cf_sql_varchar" }, step_type = { value = researchApiStepTypeToDatabase(currentStep.type & ""), cfsqltype = "cf_sql_varchar" }, step_name = { value = trim(currentStep.name & ""), cfsqltype = "cf_sql_varchar" }, step_title = { value = trim(currentStep.title & ""), cfsqltype = "cf_sql_varchar" },
                     support_text = { value = trim(currentStep.support & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.support & "")) }, question = { value = trim(currentStep.question & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.question & "")) }, area = { value = trim(currentStep.area & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.area & "")) }, icon = { value = trim(currentStep.icon & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.icon & "")) },
-                    media_type = { value = researchApiVisualToDatabase(currentStep.media & ""), cfsqltype = "cf_sql_varchar" }, visual_model = { value = trim(currentStep.visual & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.visual & "")) }, image_url = { value = trim(currentStep.imageUrl & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.imageUrl & "")) }, options = { value = serializeJSON(structKeyExists(currentStep, "options") && isArray(currentStep.options) ? currentStep.options : []), cfsqltype = "cf_sql_longvarchar" }, include_package = { value = researchApiBoolean(currentStep.package), cfsqltype = "cf_sql_bit" }, randomizable = { value = researchApiBoolean(currentStep.random), cfsqltype = "cf_sql_bit" }, step_order = { value = orderIndex, cfsqltype = "cf_sql_integer" }
+                    media_type = { value = researchApiVisualToDatabase(currentStep.media & ""), cfsqltype = "cf_sql_varchar" }, visual_model = { value = trim(currentStep.visual & ""), cfsqltype = "cf_sql_varchar", null = !len(trim(currentStep.visual & "")) }, image_url = { value = trim(currentStep.imageUrl & ""), cfsqltype = "cf_sql_longvarchar", null = !len(trim(currentStep.imageUrl & "")) }, options = { value = serializeJSON(structKeyExists(currentStep, "options") && isArray(currentStep.options) ? currentStep.options : []), cfsqltype = "cf_sql_longvarchar" }, include_package = { value = compareNoCase(currentStep.type & "", "feature") EQ 0, cfsqltype = "cf_sql_bit" }, randomizable = { value = researchApiBoolean(currentStep.random), cfsqltype = "cf_sql_bit" }, step_order = { value = orderIndex, cfsqltype = "cf_sql_integer" }
                 }
             );
         }
@@ -458,12 +481,12 @@ function researchApiChangeStatus(required struct payload, required numeric actor
 
             if (nextStatus EQ "publicada") {
                 var requiredSteps = queryExecute(
-                    "SELECT count(DISTINCT tipo) FILTER (WHERE tipo IN ('boas_vindas', 'nivel_corredor', 'conta_rr', 'pacote', 'preco', 'indispensavel', 'contato', 'agradecimento')) AS fixed_count, " &
+                    "SELECT count(DISTINCT tipo) FILTER (WHERE tipo IN ('boas_vindas', 'nivel_corredor', 'conta_rr', 'preco', 'indispensavel', 'contato', 'agradecimento')) AS fixed_count, " &
                     "count(*) FILTER (WHERE tipo = 'funcionalidade') AS feature_count " &
                     "FROM tb_pesquisa_etapas WHERE id_pesquisa = :survey_id AND ativo = true",
                     { survey_id = { value = surveyId, cfsqltype = "cf_sql_bigint" } }
                 );
-                if (val(requiredSteps.fixed_count[1]) LT 8 || val(requiredSteps.feature_count[1]) LT 1) {
+                if (val(requiredSteps.fixed_count[1]) LT 7 || val(requiredSteps.feature_count[1]) LT 1) {
                     throw(message = "A entrevista precisa ter todas as etapas obrigatórias e ao menos uma funcionalidade antes da publicação.");
                 }
             }
@@ -492,6 +515,9 @@ function researchApiChangeStatus(required struct payload, required numeric actor
     <cfset VARIABLES.researchRequestedWith = structKeyExists(CGI, "http_x_requested_with") ? CGI.http_x_requested_with & "" : ""/>
     <cfif CGI.request_method EQ "POST" AND compareNoCase(VARIABLES.researchRequestedWith, "XMLHttpRequest") NEQ 0>
         <cfset researchApiWrite({ success = false, schemaReady = true, message = "Requisição administrativa inválida." }, 403)/>
+    </cfif>
+    <cfif NOT researchApiRatingSchemaReady()>
+        <cfset researchApiWrite({ success = false, schemaReady = false, message = "Execute administracao/pesquisas/pesquisas_notas_funcionalidades.sql no banco usado pela aplicação." }, 503)/>
     </cfif>
     <cfif VARIABLES.researchAction EQ "upload">
         <cfif CGI.request_method NEQ "POST" OR NOT structKeyExists(FORM, "feature_image") OR NOT len(trim(FORM.feature_image & ""))>

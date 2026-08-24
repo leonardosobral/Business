@@ -12,8 +12,6 @@
   var flow = [];
   var index = 0;
   var answers = {};
-  var selectedPackage = {};
-  var packageInitialized = false;
   var price = { value: 20, billing: "monthly" };
   var mustHave = "";
   var submitting = false;
@@ -42,7 +40,19 @@
   }
 
   function buildFlow() {
-    flow = research.steps.slice();
+    var hasPriority = false;
+    flow = [];
+    research.steps.forEach(function (item) {
+      if (item.type === "package") {
+        if (hasPriority) return;
+        item = Object.assign({}, item, { type: "must_have", title: "Qual não pode ficar de fora?", support: "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.", question: "Qual é indispensável para você?" });
+        hasPriority = true;
+      } else if (item.type === "must_have") {
+        if (hasPriority) return;
+        hasPriority = true;
+      }
+      flow.push(item);
+    });
     if (research.randomize) {
       var random = shuffle(flow.filter(function (item) { return item.type === "feature" && item.random; }));
       var cursor = 0;
@@ -91,6 +101,7 @@
         research = payload.research;
         document.title = research.title + " · Road Runners";
         if (research.requireAccount && !research.authenticated) { renderAccountRequired(); return; }
+        if (research.requireAccount && research.authenticated && research.userEmail && research.emailMode !== "disabled") answers.email = research.userEmail;
         buildFlow();
         render();
       })
@@ -98,9 +109,10 @@
   }
 
   function renderAccountRequired() {
+    var returnPath = window.location.pathname + window.location.search;
     updateProgress(0, 1);
     backButton.hidden = true;
-    content.innerHTML = '<span class="research-survey-kicker">Conta necessária</span><h1 class="research-survey-title">Entre com sua conta Road Runners para responder.</h1><p class="research-survey-lead">A equipe ainda está finalizando a integração segura do login para esta entrevista. Enquanto isso, o administrador pode desativar a exigência de conta.</p><a class="btn btn-warning btn-lg mt-4" href="https://roadrunners.run/">Ir para o Road Runners<i class="fa-solid fa-arrow-up-right-from-square ms-2"></i></a>';
+    content.innerHTML = '<span class="research-survey-kicker">Conta necessária</span><h1 class="research-survey-title">Entre com sua conta Road Runners para responder.</h1><p class="research-survey-lead">Depois do login, você voltará automaticamente para esta entrevista.</p><a class="btn btn-warning btn-lg mt-4" href="/?login=1&amp;redirect=' + encodeURIComponent(returnPath) + '">Entrar com Google<i class="fa-brands fa-google ms-2"></i></a>';
   }
 
   function renderError(message) {
@@ -130,7 +142,7 @@
     else if (current.type === "runner_level") renderLevel(current);
     else if (current.type === "rr_account") renderAccount(current);
     else if (current.type === "feature") renderFeature(current);
-    else if (current.type === "package") renderPackage(current);
+    else if (current.type === "package") renderMustHave(current);
     else if (current.type === "pricing") renderPricing(current);
     else if (current.type === "must_have") renderMustHave(current);
     else if (current.type === "contact") renderContact(current);
@@ -183,27 +195,22 @@
   }
 
   function renderFeature(item) {
-    content.innerHTML = publicLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h1 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionMarkup(item.key, [
-      { value: "yes", label: "Sim, usaria" }, { value: "maybe", label: "Talvez usaria" }, { value: "no", label: "Não usaria" }
-    ], false) + '</div>';
+    content.innerHTML = publicLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h1 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Quanto esta funcionalidade seria útil para você?") + '</strong>' + ratingMarkup(item.key) + '</div>';
+  }
+
+  function ratingMarkup(key) {
+    var selected = answers[key];
+    var labels = ["Nada útil", "Pouco útil", "Útil", "Muito útil", "Essencial"];
+    return '<div class="research-survey-rating" role="group" aria-label="Nota de um a cinco">' + labels.map(function (label, index) {
+      var score = index + 1;
+      return '<button type="button" class="research-survey-rating-option' + (String(selected) === String(score) ? ' is-selected' : '') + '" data-public-answer="' + escapeHtml(key) + '" data-public-value="' + score + '"><strong>' + score + '</strong><span>' + escapeHtml(label) + '</span></button>';
+    }).join("") + '</div>';
   }
 
   function optionMarkup(key, options, profile, stayOnStep, multiple) {
     var wrapper = profile ? "research-survey-profile-grid" : "research-survey-options";
     var buttonClass = profile ? "research-survey-profile-option" : "research-survey-option";
-    return '<div class="' + wrapper + '">' + options.map(function (option) { var selected = multiple ? Array.isArray(answers[key]) && answers[key].includes(option.value) : answers[key] === option.value; return '<button type="button" class="' + buttonClass + (selected ? ' is-selected' : '') + '" data-public-answer="' + escapeHtml(key) + '" data-public-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-public-stay="true"' : '') + (multiple ? ' data-public-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>'; }).join("") + '</div>';
-  }
-
-  function renderPackage(item) {
-    var items = featureSteps().filter(function (featureItem) { return featureItem.package; });
-    if (!packageInitialized) {
-      items.forEach(function (featureItem) { selectedPackage[featureItem.key] = answers[featureItem.key] === "yes" || answers[featureItem.key] === "maybe"; });
-      packageInitialized = true;
-    }
-    var count = items.filter(function (featureItem) { return selectedPackage[featureItem.key]; }).length;
-    content.innerHTML = '<span class="research-survey-kicker">Sua assinatura ideal</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-bundle-grid">' + items.map(function (featureItem) {
-      return '<button type="button" class="research-survey-bundle-option' + (selectedPackage[featureItem.key] ? ' is-selected' : '') + '" data-public-package="' + escapeHtml(featureItem.key) + '"><i class="fa-solid ' + (selectedPackage[featureItem.key] ? 'fa-square-check' : 'fa-square') + '"></i><span><strong>' + escapeHtml(featureItem.name) + '</strong><small>' + (answers[featureItem.key] === "yes" ? "Você disse que usaria" : "Disponível para escolher") + '</small></span></button>';
-    }).join("") + '</div><button type="button" class="btn btn-warning mt-4" data-public-next' + (count ? "" : " disabled") + '>Continuar com ' + count + ' ' + (count === 1 ? "funcionalidade" : "funcionalidades") + '<i class="fa-solid fa-arrow-right ms-2"></i></button>';
+    return '<div class="' + wrapper + '">' + options.map(function (option) { var selected = multiple ? Array.isArray(answers[key]) && answers[key].includes(option.value) : answers[key] === option.value; return '<button type="button" class="' + buttonClass + (selected ? ' is-selected' : '') + '" data-public-answer="' + escapeHtml(key) + '" data-public-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-public-stay="true"' : '') + (multiple ? ' data-public-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.score != null ? '<em class="research-survey-option-score">Nota ' + escapeHtml(option.score) + '/5</em>' : '') + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>'; }).join("") + '</div>';
   }
 
   function renderPricing(item) {
@@ -214,8 +221,16 @@
   }
 
   function renderMustHave(item) {
-    var selected = featureSteps().filter(function (featureItem) { return selectedPackage[featureItem.key]; });
-    content.innerHTML = '<span class="research-survey-kicker">Prioridade do pacote</span><h1 class="research-survey-title">' + escapeHtml(item.title) + '</h1><p class="research-survey-lead">' + escapeHtml(item.support) + '</p>' + optionMarkup("mustHave", selected.map(function (featureItem) { return { value: featureItem.key, label: featureItem.name, help: featureItem.title }; }), true);
+    var selected = featureSteps().filter(function (featureItem) { return Number(answers[featureItem.key]) >= 3; });
+    if (!selected.length) {
+      mustHave = "none";
+      window.setTimeout(next, 0);
+      return;
+    }
+    var options = selected.map(function (featureItem) { return { value: featureItem.key, label: featureItem.name, help: featureItem.support || featureItem.title, score: Number(answers[featureItem.key]) }; });
+    var support = String(item.support || "");
+    if (!support || support.indexOf("nota acima de zero") >= 0) support = "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.";
+    content.innerHTML = '<span class="research-survey-kicker">Prioridade da assinatura</span><h1 class="research-survey-title">' + escapeHtml(item.title || "Qual não pode ficar de fora?") + '</h1><p class="research-survey-lead">' + escapeHtml(support) + '</p>' + optionMarkup("mustHave", options, true);
   }
 
   function renderContact(item) {
@@ -232,7 +247,9 @@
     if (!item.media || item.media === "none") return "";
     if (item.media === "image" && item.imageUrl) return '<div class="research-survey-visual research-survey-image"><img src="' + escapeHtml(item.imageUrl) + '" alt="' + escapeHtml(item.name) + '"/></div>';
     var inner = '<span class="research-mock-label">Prévia da funcionalidade</span><div class="research-mock-heading">' + escapeHtml(item.name) + '</div>';
-    if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
+    var isPastResults = item.visual === "results" || String(item.name || "").toLowerCase().indexOf("subir resultado") >= 0;
+    if (isPastResults) inner += '<div class="research-mock-results-flow"><div class="research-mock-results-source"><i class="fa-solid fa-file-excel"></i><span><strong>resultados_anteriores.xlsx</strong><small>Planilha importada</small></span></div><i class="fa-solid fa-arrow-right research-mock-results-arrow"></i><div class="research-mock-results-source is-official"><i class="fa-solid fa-file-circle-check"></i><span><strong>Resultado oficial</strong><small>Dados conferidos</small></span></div></div><div class="research-mock-history"><div class="research-mock-history-heading"><span><i class="fa-solid fa-clock-rotate-left"></i><strong>Seu histórico completo</strong></span><em>8 provas</em></div><div class="research-mock-history-row"><span class="research-mock-history-year">2024</span><span><strong>Meia Maratona de Floripa</strong><small>21 km · 01:42:18</small></span><i class="fa-solid fa-circle-check"></i></div><div class="research-mock-history-row"><span class="research-mock-history-year">2023</span><span><strong>Corrida da Ponte</strong><small>10 km · 00:47:32</small></span><i class="fa-solid fa-circle-check"></i></div></div>';
+    else if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
     else if (item.visual === "performance") inner += '<div class="research-mock-grid"><div class="research-mock-card"><strong>4:52/km</strong><span>pace médio</span></div><div class="research-mock-card"><strong>+4,8%</strong><span>evolução</span></div><div class="research-mock-card"><strong>68%</strong><span>percentil</span></div></div><div class="research-mock-chart"><span style="height:35%"></span><span style="height:48%"></span><span style="height:62%"></span><span style="height:91%"></span></div>';
     else if (item.visual === "platforms") inner += '<div class="research-mock-platforms"><div class="research-mock-platform"><i class="fa-brands fa-strava"></i><span>Strava<br><small>Conectado</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-clock"></i><span>Garmin<br><small>486 atividades</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-stopwatch"></i><span>Coros<br><small>Disponível</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-heart-pulse"></i><span>Polar<br><small>Disponível</small></span></div></div>';
     else if (item.visual === "search") inner += '<div class="research-mock-search"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Meias maratonas planas em SC</span></div><div class="research-mock-alert"><i class="fa-solid fa-location-dot"></i><div><strong>3 provas combinam com sua busca</strong><span>Resultados explicados em uma conversa.</span></div></div>';
@@ -283,7 +300,6 @@
         next();
       });
     });
-    content.querySelectorAll("[data-public-package]").forEach(function (button) { button.addEventListener("click", function () { var key = button.getAttribute("data-public-package"); selectedPackage[key] = !selectedPackage[key]; if (mustHave === key && !selectedPackage[key]) { mustHave = ""; delete answers.mustHave; } render(); }); });
     content.querySelectorAll("[data-public-billing]").forEach(function (button) { button.addEventListener("click", function () { price.billing = button.getAttribute("data-public-billing"); render(); }); });
     var priceInput = content.querySelector('[data-public-price="value"]');
     if (priceInput) {
@@ -291,6 +307,12 @@
     }
     var conclude = content.querySelector("[data-public-conclude]");
     if (conclude) conclude.addEventListener("click", submitResearch);
+    var publicEmail = content.querySelector("[data-public-email]");
+    if (publicEmail) publicEmail.addEventListener("input", function () {
+      publicEmail.classList.remove("is-invalid");
+      var submitError = content.querySelector("[data-public-submit-error]");
+      if (submitError) submitError.textContent = "";
+    });
   }
 
   function submitResearch() {
@@ -298,12 +320,14 @@
     var emailInput = content.querySelector("[data-public-email]");
     var email = emailInput ? emailInput.value.trim() : "";
     if (emailInput && ((research.emailMode === "required" && !emailInput.checkValidity()) || (email && !emailInput.checkValidity()))) { emailInput.classList.add("is-invalid"); emailInput.focus(); return; }
+    var currentError = content.querySelector("[data-public-submit-error]");
+    if (currentError) currentError.textContent = "";
     submitting = true;
     backButton.disabled = true;
     var button = content.querySelector("[data-public-conclude]");
     button.disabled = true;
     button.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Enviando resposta';
-    var packageKeys = Object.keys(selectedPackage).filter(function (key) { return selectedPackage[key]; });
+    var packageKeys = featureSteps().filter(function (item) { return Number(answers[item.key]) > 0; }).map(function (item) { return item.key; });
     apiRequest(apiUrl + "?action=complete&slug=" + encodeURIComponent(slug), {
       method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
       body: JSON.stringify({ sessionToken: sessionToken, answers: answers, package: packageKeys, price: { min: price.value, max: price.value, billing: price.billing }, mustHave: mustHave, email: email })
@@ -327,6 +351,12 @@
       .finally(function () { submitting = false; });
   }
 
-  backButton.addEventListener("click", function () { if (index > 0 && !submitting) { index -= 1; render(); } });
+  backButton.addEventListener("click", function () {
+    if (index <= 0 || submitting) return;
+    index -= 1;
+    var previous = flow[index];
+    if ((previous.type === "must_have" || previous.type === "package") && !featureSteps().some(function (item) { return Number(answers[item.key]) >= 3; }) && index > 0) index -= 1;
+    render();
+  });
   loadResearch();
 })();

@@ -21,7 +21,7 @@
       redirectUrl: ""
     },
     steps: [
-      step("welcome", "intro", "Boas-vindas", "O próximo Road Runners será construído com quem corre", "Conheça novas funcionalidades, diga quais usaria e monte uma assinatura que faria sentido para você.", ""),
+      step("welcome", "intro", "Boas-vindas", "O próximo Road Runners será construído com quem corre", "Conheça novas funcionalidades, avalie a utilidade de cada uma e indique a que não pode faltar.", ""),
       step("runner_level", "runner_level", "Nível do corredor", "Como a corrida faz parte da sua vida hoje?", "Seu nível ajuda a entender como as prioridades mudam conforme a experiência.", "Qual opção mais combina com você?"),
       step("rr_account", "rr_account", "Conta Road Runners", "Você já usa o Road Runners?", "Esta resposta ajuda a separar a percepção de quem já conhece a plataforma.", "Hoje, qual é sua relação com o Road Runners?"),
       feature("radar_provas", "Descoberta", "Radar de Provas", "Receba o aviso certo na hora certa.", "Evita acompanhar vários sites para descobrir inscrições, fotos, resultados e mudanças de preço.", "fa-solid fa-bell", "alerts"),
@@ -32,9 +32,8 @@
       feature("conexoes_corrida", "Comunidade", "Conexões de Corrida", "Encontre quem compartilha sua jornada.", "Facilita reencontros e novas conexões com interesses esportivos parecidos.", "fa-solid fa-people-group", "people"),
       feature("memorias_corrida", "Experiência", "Memórias de Corrida", "Reviva suas provas em um só lugar.", "Organiza fotos, resultados e momentos marcantes para preservar a história de cada prova.", "fa-solid fa-images", "memories"),
       feature("clube_beneficios", "Experiência", "Clube de Benefícios", "Vantagens que acompanham sua rotina.", "Reúne benefícios relevantes para treinos, provas, equipamentos e recuperação.", "fa-solid fa-gift", "benefits"),
-      step("ideal_package", "package", "Sua assinatura ideal", "Monte o pacote que você realmente assinaria.", "Escolha somente as funcionalidades que entregariam valor para você.", "Quais funcionalidades entrariam no seu pacote?"),
+      step("ideal_package", "must_have", "Funcionalidade indispensável", "Qual não pode ficar de fora?", "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.", "Qual é indispensável para você?"),
       step("price_preference", "pricing", "Valor e periodicidade", "Quanto faria sentido investir?", "Compare a opção mensal com o pagamento anual.", "Como você preferiria pagar?"),
-      step("must_have", "must_have", "Funcionalidade indispensável", "Qual não pode ficar de fora?", "Escolha a funcionalidade sem a qual você não assinaria o pacote.", "Qual é indispensável para você?"),
       step("contact", "contact", "Contato", "Só falta um passo.", "Seu e-mail será usado apenas para contato sobre esta pesquisa e novidades relacionadas.", "Qual é o seu melhor e-mail?"),
       step("thank_you", "thank_you", "Agradecimento", "Obrigado por correr esse percurso com a gente.", "Sua resposta foi registrada e vai ajudar a construir uma assinatura mais útil para atletas.", "")
     ]
@@ -48,7 +47,6 @@
   var previewFlow = [];
   var previewIndex = 0;
   var previewAnswers = {};
-  var previewPackage = {};
   var previewPrice = { value: 20, billing: "monthly" };
   var previewMustHave = "";
 
@@ -63,7 +61,7 @@
   }
 
   function feature(key, area, name, title, support, icon, visual) {
-    return { key: key, type: "feature", name: name, title: title, support: support, question: "Você usaria esta funcionalidade?", options: [], area: area, icon: icon, media: "illustration", imageUrl: "", visual: visual, package: true, random: true };
+    return { key: key, type: "feature", name: name, title: title, support: support, question: "Quanto esta funcionalidade seria útil para você?", options: [], area: area, icon: icon, media: "illustration", imageUrl: "", visual: visual, package: true, random: true };
   }
 
   function clone(value) {
@@ -80,6 +78,11 @@
 
   function money(value) {
     return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(Number(value) || 0);
+  }
+
+  function publicResearchUrl(slug) {
+    var value = String(slug || "").trim();
+    return value ? "/pesquisa/" + encodeURIComponent(value) + "/" : "/pesquisa/";
   }
 
   function emptyDashboard() {
@@ -131,6 +134,35 @@
     return research.steps.find(function (item) { return item.type === type; }) || step(type, type, type, "", "", "");
   }
 
+  function normalizeResearchSteps() {
+    var priorityIndex = -1;
+    research.steps.forEach(function (item, itemIndex) {
+      if (item.type === "package" && priorityIndex < 0) {
+        item.type = "must_have";
+        item.name = "Funcionalidade indispensável";
+        item.title = "Qual não pode ficar de fora?";
+        item.support = "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.";
+        item.question = "Qual é indispensável para você?";
+        priorityIndex = itemIndex;
+      } else if (item.type === "must_have" && priorityIndex < 0) {
+        priorityIndex = itemIndex;
+      }
+      if (item.type === "must_have" && String(item.support || "").indexOf("nota acima de zero") >= 0) {
+        item.support = "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.";
+      }
+      if (item.type === "feature" && (!item.question || item.question === "Você usaria esta funcionalidade?")) {
+        item.question = "Quanto esta funcionalidade seria útil para você?";
+      }
+      if (item.type === "feature" && String(item.name || "").toLowerCase().indexOf("subir resultado") >= 0 && item.media !== "image") {
+        item.media = "illustration";
+        item.visual = "results";
+      }
+    });
+    if (priorityIndex >= 0) {
+      research.steps = research.steps.filter(function (item, itemIndex) { return item.type !== "must_have" || itemIndex === priorityIndex; });
+    }
+  }
+
   function showToast(message, isError) {
     toast.textContent = message;
     toast.classList.toggle("is-error", Boolean(isError));
@@ -180,6 +212,7 @@
             item.support = "Compare a opção mensal com o pagamento anual.";
           }
         });
+        normalizeResearchSteps();
         dashboard = payload.dashboard && payload.dashboard.summary ? payload.dashboard : emptyDashboard();
         selectedKey = research.steps.some(function (item) { return item.key === selectedKey; }) ? selectedKey : research.steps[0].key;
         showSchemaState("Última configuração carregada com sucesso.", true);
@@ -296,7 +329,7 @@
     syncConfigEditor();
     renderDashboard();
     var publicLink = root.querySelector("[data-research-public-link]");
-    publicLink.href = "/pesquisa/?slug=" + encodeURIComponent(research.config.slug || "assinatura-atletas-2026");
+    publicLink.href = publicResearchUrl(research.config.slug || "assinatura-atletas-2026");
     renderPublicationState();
   }
 
@@ -313,7 +346,7 @@
   }
 
   function typeLabel(type) {
-    var labels = { intro: "Apresentação", info: "Tela informativa", choice: "Escolha única", choice_multiple: "Escolha múltipla", choice_text: "Escolha + texto", choice_multiple_text: "Múltipla escolha + texto", text: "Pergunta de texto", runner_level: "Perfil do atleta", rr_account: "Identificação", package: "Montagem do pacote", pricing: "Preço e pagamento", must_have: "Prioridade", contact: "Finalização", thank_you: "Encerramento" };
+    var labels = { intro: "Apresentação", info: "Tela informativa", choice: "Escolha única", choice_multiple: "Escolha múltipla", choice_text: "Escolha + texto", choice_multiple_text: "Múltipla escolha + texto", text: "Pergunta de texto", runner_level: "Perfil do atleta", rr_account: "Identificação", package: "Prioridade", pricing: "Preço e pagamento", must_have: "Prioridade", contact: "Finalização", thank_you: "Encerramento" };
     return labels[type] || "Etapa";
   }
 
@@ -345,7 +378,6 @@
     multipleButton.classList.toggle("is-on", multipleChoiceStep(item));
     multipleButton.setAttribute("aria-pressed", multipleChoiceStep(item) ? "true" : "false");
     root.querySelector("[data-research-visual-model]").value = item.media === "none" ? "none" : (item.visual || "generic");
-    updateSwitch("package", item.package);
     updateSwitch("random", item.random);
     updateVisualPlaceholder(item);
   }
@@ -389,7 +421,7 @@
         var key = field.getAttribute("data-research-config");
         research.config[key] = key === "annualDiscount" ? Math.max(0, Math.min(50, Number(field.value) || 0)) : field.value;
         if (key === "publicTitle") findStep("intro").title = field.value;
-        if (key === "slug") root.querySelector("[data-research-public-link]").href = "/pesquisa/?slug=" + encodeURIComponent(field.value);
+        if (key === "slug") root.querySelector("[data-research-public-link]").href = publicResearchUrl(field.value);
       });
     });
     root.querySelector("[data-research-options]").addEventListener("input", function (event) {
@@ -416,7 +448,7 @@
         var next = !button.classList.contains("is-on");
         button.classList.toggle("is-on", next);
         button.setAttribute("aria-pressed", next ? "true" : "false");
-        if (property === "package" || property === "random") activeStep()[property] = next;
+        if (property === "random") activeStep()[property] = next;
         else research.config[property] = next;
       });
     });
@@ -458,13 +490,13 @@
     if (nextType === "feature") {
       item.area = item.area || "Experiência";
       item.icon = item.icon || "fa-solid fa-star";
-      if (previousType !== "feature") item.question = "Você usaria esta funcionalidade?";
+      if (previousType !== "feature") item.question = "Quanto esta funcionalidade seria útil para você?";
       item.package = true;
       item.random = true;
       var currentIndex = research.steps.indexOf(item);
       research.steps.splice(currentIndex, 1);
-      var packageIndex = research.steps.findIndex(function (current) { return current.type === "package"; });
-      research.steps.splice(packageIndex < 0 ? research.steps.length : packageIndex, 0, item);
+      var priorityIndex = research.steps.findIndex(function (current) { return current.type === "must_have" || current.type === "package"; });
+      research.steps.splice(priorityIndex < 0 ? research.steps.length : priorityIndex, 0, item);
     } else {
       if (previousType === "feature") {
         item.package = false;
@@ -517,16 +549,21 @@
       showToast("A entrevista precisa manter pelo menos uma funcionalidade.", true);
       return;
     }
-    if (!window.confirm('Excluir "' + item.name + '"? A etapa sairá da entrevista após salvar no banco.')) return;
+    if (!window.confirm('Excluir "' + item.name + '"? A etapa será removida imediatamente da entrevista.')) return;
 
     var currentIndex = research.steps.findIndex(function (stepItem) { return stepItem.key === item.key; });
     research.steps.splice(currentIndex, 1);
     delete previewAnswers[item.key];
-    delete previewPackage[item.key];
     if (previewMustHave === item.key) previewMustHave = "";
     selectedKey = research.steps[Math.min(currentIndex, research.steps.length - 1)].key;
     renderAll();
-    showToast("Etapa removida. Salve no banco para confirmar.");
+    if (!schemaReady) {
+      showToast("Etapa removida somente do preview, pois o banco não está disponível.", true);
+      return;
+    }
+    saveToServer({ silent: true }).then(function (saved) {
+      if (saved) showToast("Etapa removida do banco e da entrevista publicada.");
+    });
   }
 
   function shuffle(items) {
@@ -548,7 +585,6 @@
     buildPreviewFlow();
     previewIndex = 0;
     previewAnswers = {};
-    previewPackage = {};
     previewPrice = { value: 20, billing: "monthly" };
     previewMustHave = "";
     previewOverlay.hidden = false;
@@ -562,7 +598,9 @@
     if (!item.media || item.media === "none") return "";
     if (item.media === "image" && item.imageUrl) return '<div class="research-survey-visual research-survey-image"><img src="' + escapeHtml(item.imageUrl) + '" alt="' + escapeHtml(item.name) + '"/></div>';
     var inner = '<span class="research-mock-label">Prévia da funcionalidade</span><div class="research-mock-heading">' + escapeHtml(item.name) + '</div>';
-    if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
+    var isPastResults = item.visual === "results" || String(item.name || "").toLowerCase().indexOf("subir resultado") >= 0;
+    if (isPastResults) inner += '<div class="research-mock-results-flow"><div class="research-mock-results-source"><i class="fa-solid fa-file-excel"></i><span><strong>resultados_anteriores.xlsx</strong><small>Planilha importada</small></span></div><i class="fa-solid fa-arrow-right research-mock-results-arrow"></i><div class="research-mock-results-source is-official"><i class="fa-solid fa-file-circle-check"></i><span><strong>Resultado oficial</strong><small>Dados conferidos</small></span></div></div><div class="research-mock-history"><div class="research-mock-history-heading"><span><i class="fa-solid fa-clock-rotate-left"></i><strong>Seu histórico completo</strong></span><em>8 provas</em></div><div class="research-mock-history-row"><span class="research-mock-history-year">2024</span><span><strong>Meia Maratona de Floripa</strong><small>21 km · 01:42:18</small></span><i class="fa-solid fa-circle-check"></i></div><div class="research-mock-history-row"><span class="research-mock-history-year">2023</span><span><strong>Corrida da Ponte</strong><small>10 km · 00:47:32</small></span><i class="fa-solid fa-circle-check"></i></div></div>';
+    else if (item.visual === "alerts") inner += '<div class="research-mock-alert"><i class="fa-solid fa-bell"></i><div><strong>Inscrições abertas para 21 km</strong><span>Um aviso no momento certo.</span></div></div><div class="research-mock-alert"><i class="fa-solid fa-camera"></i><div><strong>Suas fotos foram publicadas</strong><span>Sem procurar em vários sites.</span></div></div>';
     else if (item.visual === "performance") inner += '<div class="research-mock-grid"><div class="research-mock-card"><strong>4:52/km</strong><span>pace médio</span></div><div class="research-mock-card"><strong>+4,8%</strong><span>evolução</span></div><div class="research-mock-card"><strong>68%</strong><span>percentil</span></div></div><div class="research-mock-chart"><span style="height:35%"></span><span style="height:48%"></span><span style="height:62%"></span><span style="height:91%"></span></div>';
     else if (item.visual === "platforms") inner += '<div class="research-mock-platforms"><div class="research-mock-platform"><i class="fa-brands fa-strava"></i><span>Strava<br><small>Conectado</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-clock"></i><span>Garmin<br><small>486 atividades</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-stopwatch"></i><span>Coros<br><small>Disponível</small></span></div><div class="research-mock-platform"><i class="fa-solid fa-heart-pulse"></i><span>Polar<br><small>Disponível</small></span></div></div>';
     else if (item.visual === "search") inner += '<div class="research-mock-search"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Meias maratonas planas em SC</span></div><div class="research-mock-alert"><i class="fa-solid fa-location-dot"></i><div><strong>3 provas combinam com sua busca</strong><span>Resultados explicados em uma conversa.</span></div></div>';
@@ -583,7 +621,15 @@
     var wrapper = profile ? "research-survey-profile-grid" : "research-survey-options";
     return '<div class="' + wrapper + '">' + options.map(function (option) {
       var selected = multiple ? Array.isArray(previewAnswers[key]) && previewAnswers[key].includes(option.value) : previewAnswers[key] === option.value;
-      return '<button type="button" class="' + className + (selected ? ' is-selected' : '') + '" data-preview-answer="' + escapeHtml(key) + '" data-preview-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-preview-stay="true"' : '') + (multiple ? ' data-preview-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>';
+      return '<button type="button" class="' + className + (selected ? ' is-selected' : '') + '" data-preview-answer="' + escapeHtml(key) + '" data-preview-value="' + escapeHtml(option.value) + '"' + (stayOnStep ? ' data-preview-stay="true"' : '') + (multiple ? ' data-preview-multiple="true"' : '') + '><strong>' + escapeHtml(option.label) + '</strong>' + (option.score != null ? '<em class="research-survey-option-score">Nota ' + escapeHtml(option.score) + '/5</em>' : '') + (option.help ? '<span>' + escapeHtml(option.help) + '</span>' : '') + '</button>';
+    }).join("") + '</div>';
+  }
+
+  function previewRatingMarkup(key) {
+    var labels = ["Nada útil", "Pouco útil", "Útil", "Muito útil", "Essencial"];
+    return '<div class="research-survey-rating" role="group" aria-label="Nota de um a cinco">' + labels.map(function (label, index) {
+      var score = index + 1;
+      return '<button type="button" class="research-survey-rating-option' + (String(previewAnswers[key]) === String(score) ? ' is-selected' : '') + '" data-preview-answer="' + escapeHtml(key) + '" data-preview-value="' + score + '"><strong>' + score + '</strong><span>' + escapeHtml(label) + '</span></button>';
     }).join("") + '</div>';
   }
 
@@ -606,7 +652,7 @@
     else if (current.type === "runner_level") renderLevel(current);
     else if (current.type === "rr_account") renderAccount(current);
     else if (current.type === "feature") renderFeature(current);
-    else if (current.type === "package") renderPackage(current);
+    else if (current.type === "package") renderMustHave(current);
     else if (current.type === "pricing") renderPricing(current);
     else if (current.type === "must_have") renderMustHave(current);
     else if (current.type === "contact") renderContact(current);
@@ -658,18 +704,7 @@
   }
 
   function renderFeature(item) {
-    previewContent.innerHTML = previewLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h2 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Você usaria esta funcionalidade?") + '</strong>' + optionsMarkup(item.key, [
-      { value: "yes", label: "Sim, usaria" }, { value: "maybe", label: "Talvez usaria" }, { value: "no", label: "Não usaria" }
-    ], false) + '</div>';
-  }
-
-  function renderPackage(item) {
-    var items = featureSteps().filter(function (featureItem) { return featureItem.package; });
-    if (!Object.keys(previewPackage).length) items.forEach(function (featureItem) { previewPackage[featureItem.key] = previewAnswers[featureItem.key] === "yes" || previewAnswers[featureItem.key] === "maybe"; });
-    var selected = items.filter(function (featureItem) { return previewPackage[featureItem.key]; });
-    previewContent.innerHTML = '<span class="research-survey-kicker">Sua assinatura ideal</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p><div class="research-survey-bundle-grid">' + items.map(function (featureItem) {
-      return '<button type="button" class="research-survey-bundle-option' + (previewPackage[featureItem.key] ? ' is-selected' : '') + '" data-preview-package="' + escapeHtml(featureItem.key) + '"><i class="fa-solid ' + (previewPackage[featureItem.key] ? 'fa-square-check' : 'fa-square') + '"></i><span><strong>' + escapeHtml(featureItem.name) + '</strong><small>' + (previewAnswers[featureItem.key] === "yes" ? "Você disse que usaria" : "Disponível para escolher") + '</small></span></button>';
-    }).join("") + '</div><button type="button" class="btn btn-warning mt-4" data-preview-go-next' + (selected.length ? "" : " disabled") + '>Continuar com ' + selected.length + ' ' + (selected.length === 1 ? "funcionalidade" : "funcionalidades") + '<i class="fa-solid fa-arrow-right ms-2"></i></button>';
+    previewContent.innerHTML = previewLayout('<div><span class="research-survey-feature-name"><span class="research-survey-feature-icon"><i class="' + escapeHtml(item.icon) + '"></i></span>' + escapeHtml(item.name) + '</span><h2 class="research-survey-feature-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-feature-copy">' + escapeHtml(item.support) + '</p></div>', item) + '<div class="research-survey-question"><strong>' + escapeHtml(item.question || "Quanto esta funcionalidade seria útil para você?") + '</strong>' + previewRatingMarkup(item.key) + '</div>';
   }
 
   function renderPricing(item) {
@@ -680,8 +715,16 @@
   }
 
   function renderMustHave(item) {
-    var selected = featureSteps().filter(function (featureItem) { return previewPackage[featureItem.key]; });
-    previewContent.innerHTML = '<span class="research-survey-kicker">Prioridade do pacote</span><h2 class="research-survey-title">' + escapeHtml(item.title) + '</h2><p class="research-survey-lead">' + escapeHtml(item.support) + '</p>' + optionsMarkup("mustHave", selected.map(function (featureItem) { return { value: featureItem.key, label: featureItem.name, help: featureItem.title }; }), true);
+    var selected = featureSteps().filter(function (featureItem) { return Number(previewAnswers[featureItem.key]) >= 3; });
+    if (!selected.length) {
+      previewMustHave = "none";
+      window.setTimeout(goNext, 0);
+      return;
+    }
+    var options = selected.map(function (featureItem) { return { value: featureItem.key, label: featureItem.name, help: featureItem.support || featureItem.title, score: Number(previewAnswers[featureItem.key]) }; });
+    var support = String(item.support || "");
+    if (!support || support.indexOf("nota acima de zero") >= 0) support = "Entre as funcionalidades às quais você deu nota 3 ou mais, escolha aquela sem a qual você não assinaria.";
+    previewContent.innerHTML = '<span class="research-survey-kicker">Prioridade da assinatura</span><h2 class="research-survey-title">' + escapeHtml(item.title || "Qual não pode ficar de fora?") + '</h2><p class="research-survey-lead">' + escapeHtml(support) + '</p>' + optionsMarkup("mustHave", options, true);
   }
 
   function renderContact(item) {
@@ -706,6 +749,7 @@
           if (valueIndex >= 0) values.splice(valueIndex, 1); else values.push(value);
           previewAnswers[key] = values;
         } else previewAnswers[key] = value;
+        if (key === "mustHave") previewMustHave = value;
         var stay = button.getAttribute("data-preview-stay") === "true";
         renderPreview();
         if (!stay) window.setTimeout(goNext, 180);
@@ -726,7 +770,6 @@
         goNext();
       });
     });
-    previewContent.querySelectorAll("[data-preview-package]").forEach(function (button) { button.addEventListener("click", function () { var key = button.getAttribute("data-preview-package"); previewPackage[key] = !previewPackage[key]; if (previewMustHave === key && !previewPackage[key]) previewMustHave = ""; renderPreview(); }); });
     previewContent.querySelectorAll("[data-preview-billing]").forEach(function (button) { button.addEventListener("click", function () { previewPrice.billing = button.getAttribute("data-preview-billing"); renderPreview(); }); });
     previewContent.querySelectorAll("[data-preview-go-next]").forEach(function (button) { button.addEventListener("click", goNext); });
     var mustHave = previewContent.querySelector('[data-preview-answer="mustHave"]');
@@ -774,7 +817,10 @@
     root.querySelector("[data-research-dashboard-kpis]").innerHTML = [
       ["Entrevistas concluídas", total, "fa-circle-check"], ["Últimos 7 dias", dashboard.summary.last7Days || 0, "fa-calendar-week"], ["Preferem anual", (dashboard.summary.annualPercent || 0) + "%", "fa-percent"], ["Máximo médio", money(dashboard.summary.averageMaxPrice || 0), "fa-wallet"]
     ].map(function (item) { return '<article class="research-dashboard-kpi"><span><i class="fa-solid ' + item[2] + '"></i></span><div><small>' + item[0] + '</small><strong>' + item[1] + '</strong></div></article>'; }).join("");
-    root.querySelector("[data-research-feature-results]").innerHTML = (dashboard.features || []).map(function (item) { var interest = Number(item.interestPercent) || 0; return '<div class="research-dashboard-feature"><div class="d-flex justify-content-between gap-3"><strong>' + escapeHtml(item.name) + '</strong><span>' + interest + '% usariam</span></div><div class="research-dashboard-bar"><span style="width:' + Math.min(100, interest) + '%"></span></div><small>' + (item.packagePercent || 0) + '% no pacote · ' + (item.mustHaveCount || 0) + ' marcaram como indispensável</small></div>'; }).join("");
+    root.querySelector("[data-research-feature-results]").innerHTML = (dashboard.features || []).map(function (item) {
+      var average = Number(item.averageScore) || 0;
+      return '<div class="research-dashboard-feature"><div class="d-flex justify-content-between gap-3"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(average.toFixed(1).replace(".", ",")) + ' / 5</span></div><div class="research-dashboard-bar"><span style="width:' + Math.min(100, average * 20) + '%"></span></div><small>' + (item.highScorePercent || 0) + '% deram nota 4 ou 5 · ' + (item.mustHaveCount || 0) + ' marcaram como indispensável</small></div>';
+    }).join("");
     var profileRows = (dashboard.profiles || []).map(function (item) { return metricRow(profileLabel(item.value), item.count, item.percent); }).join("");
     var accountRows = (dashboard.accounts || []).map(function (item) { return metricRow(accountLabel(item.value), item.count, item.percent); }).join("");
     var billingRows = (dashboard.billing || []).map(function (item) { return metricRow(item.value === "annual" ? "Anual" : "Mensal", item.count, item.percent); }).join("");
@@ -782,11 +828,12 @@
     var recentMarkup = (dashboard.recent || []).map(function (item, itemIndex) {
       var detailId = "research-response-" + itemIndex;
       var packageNames = Array.isArray(item.packageNames) ? item.packageNames : [];
-      var packageMarkup = packageNames.length ? packageNames.map(function (name) { return '<span class="research-dashboard-package-chip">' + escapeHtml(name) + '</span>'; }).join("") : '<span class="research-admin-muted">Nenhuma funcionalidade informada.</span>';
+      var featureRatings = Array.isArray(item.featureRatings) ? item.featureRatings : [];
+      var packageMarkup = featureRatings.length ? featureRatings.map(function (rating) { return '<span class="research-dashboard-package-chip"><strong>' + escapeHtml(rating.score) + '/5</strong> ' + escapeHtml(rating.name) + '</span>'; }).join("") : (packageNames.length ? packageNames.map(function (name) { return '<span class="research-dashboard-package-chip">' + escapeHtml(name) + '</span>'; }).join("") : '<span class="research-admin-muted">Nenhuma avaliação informada.</span>');
       var mustHaveMarkup = item.mustHaveName ? '<div class="research-dashboard-must-have"><i class="fa-solid fa-star"></i><span><small>Indispensável</small><strong>' + escapeHtml(item.mustHaveName) + '</strong></span></div>' : "";
       var athleteLabel = item.email || ("Atleta anônimo · " + String(item.responseId || "").replace(/-/g, "").slice(0, 6).toUpperCase());
       return '<tr class="research-dashboard-response-row" tabindex="0" aria-expanded="false" aria-controls="' + detailId + '" data-research-response-toggle="' + detailId + '"><td>' + escapeHtml(item.completedAt) + '</td><td><strong>' + escapeHtml(athleteLabel) + '</strong><i class="fa-solid fa-chevron-down ms-2"></i></td><td>' + escapeHtml(profileLabel(item.level)) + '</td><td>' + escapeHtml(item.billing === "annual" ? "Anual" : "Mensal") + '</td><td><strong>' + escapeHtml(responsePriceLabel(item)) + '</strong></td><td>' + escapeHtml(item.packageCount) + '</td></tr>' +
-        '<tr class="research-dashboard-response-detail" id="' + detailId + '" hidden><td colspan="6"><div class="research-dashboard-response-detail-inner"><div><span class="research-dashboard-detail-label">Funcionalidades escolhidas no pacote</span><div class="research-dashboard-package-list">' + packageMarkup + '</div></div><div class="research-dashboard-response-meta"><span><small>Conta Road Runners</small><strong>' + escapeHtml(accountLabel(item.account)) + '</strong></span>' + mustHaveMarkup + '</div></div></td></tr>';
+        '<tr class="research-dashboard-response-detail" id="' + detailId + '" hidden><td colspan="6"><div class="research-dashboard-response-detail-inner"><div><span class="research-dashboard-detail-label">Notas por funcionalidade</span><div class="research-dashboard-package-list">' + packageMarkup + '</div></div><div class="research-dashboard-response-meta"><span><small>Conta Road Runners</small><strong>' + escapeHtml(accountLabel(item.account)) + '</strong></span>' + mustHaveMarkup + '</div></div></td></tr>';
     }).join("");
     root.querySelector("[data-research-recent-results]").innerHTML = recentMarkup || '<tr><td class="text-center research-admin-muted py-4" colspan="6">Nenhuma resposta encontrada para estes filtros.</td></tr>';
     root.querySelectorAll("[data-research-response-toggle]").forEach(function (row) {
@@ -830,7 +877,13 @@
   root.querySelectorAll("[data-research-dashboard-filter]").forEach(function (field) { field.addEventListener("change", function () { dashboardFilters[field.getAttribute("data-research-dashboard-filter")] = field.value; loadFromServer({ dashboardOnly: true }); }); });
   root.querySelector("[data-research-dashboard-clear]").addEventListener("click", function () { dashboardFilters = { level: "", account: "" }; loadFromServer({ dashboardOnly: true }); });
   root.querySelectorAll("[data-research-device]").forEach(function (button) { button.addEventListener("click", function () { var mobile = button.getAttribute("data-research-device") === "mobile"; previewFrame.classList.toggle("is-mobile", mobile); root.querySelectorAll("[data-research-device]").forEach(function (deviceButton) { var active = deviceButton === button; deviceButton.classList.toggle("btn-warning", active); deviceButton.classList.toggle("btn-outline-light", !active); }); }); });
-  root.querySelector("[data-research-preview-back]").addEventListener("click", function () { if (previewIndex > 0) { previewIndex -= 1; renderPreview(); } });
+  root.querySelector("[data-research-preview-back]").addEventListener("click", function () {
+    if (previewIndex <= 0) return;
+    previewIndex -= 1;
+    var previous = previewFlow[previewIndex];
+    if ((previous.type === "must_have" || previous.type === "package") && !featureSteps().some(function (item) { return Number(previewAnswers[item.key]) >= 3; }) && previewIndex > 0) previewIndex -= 1;
+    renderPreview();
+  });
 
   bindEditor();
   renderAll();

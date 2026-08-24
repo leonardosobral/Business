@@ -1,0 +1,12 @@
+DirectoryIndex index.cfm
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+
+    RewriteRule ^([a-z0-9]+(?:-[a-z0-9]+)*)/?$ index.cfm?slug=$1 [NC,L,QSA]
+</IfModule>

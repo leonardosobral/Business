@@ -587,6 +587,15 @@
         <span>Fale com a gente</span>
     </a>
 
+    <cfset VARIABLES.loginResearchRedirect = isDefined("URL.redirect")
+        AND left(trim(URL.redirect & ""), 10) EQ "/pesquisa/"
+        AND left(trim(URL.redirect & ""), 2) NEQ "//"
+        AND NOT find("\", URL.redirect & "")
+        AND NOT find(chr(10), URL.redirect & "")
+        AND NOT find(chr(13), URL.redirect & "")/>
+    <cfif VARIABLES.loginResearchRedirect>
+        <cfset SESSION.researchLoginRedirect = trim(URL.redirect & "")/>
+    </cfif>
     <div class="login-modal" aria-hidden="true" data-login-modal>
         <div class="login-backdrop" data-login-close></div>
         <div class="login-dialog" role="dialog" aria-modal="true" aria-labelledby="login-title">
@@ -594,9 +603,15 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
             <img class="login-logo" src="/lib/images/runpro.svg" alt="Run Pro"/>
-            <span class="login-kicker">Acesso Business</span>
-            <h2 id="login-title">Bem-vindo de volta.</h2>
-            <p>Entre com o mesmo e-mail Google usado no cadastro aprovado da sua empresa.</p>
+            <cfif VARIABLES.loginResearchRedirect>
+                <span class="login-kicker">Conta Road Runners</span>
+                <h2 id="login-title">Entre para continuar a entrevista.</h2>
+                <p>Use sua conta Google. Depois do login, você voltará automaticamente para a pesquisa.</p>
+            <cfelse>
+                <span class="login-kicker">Acesso Business</span>
+                <h2 id="login-title">Bem-vindo de volta.</h2>
+                <p>Entre com o mesmo e-mail Google usado no cadastro aprovado da sua empresa.</p>
+            </cfif>
 
             <div class="google-login-wrap">
                 <div id="g_id_onload"
@@ -616,10 +631,12 @@
                 </div>
             </div>
 
-            <div class="login-divider"><span>ou</span></div>
-            <p class="login-new">Sua empresa ainda não está no Run Pro?</p>
-            <a class="button button-primary" href="/cadastro/">Solicitar acesso gratuito</a>
-            <small>O cadastro passa por uma análise rápida da equipe RunnerHub.</small>
+            <cfif NOT VARIABLES.loginResearchRedirect>
+                <div class="login-divider"><span>ou</span></div>
+                <p class="login-new">Sua empresa ainda não está no Run Pro?</p>
+                <a class="button button-primary" href="/cadastro/">Solicitar acesso gratuito</a>
+                <small>O cadastro passa por uma análise rápida da equipe RunnerHub.</small>
+            </cfif>
         </div>
     </div>
 
@@ -727,7 +744,12 @@
             }
 
             document.cookie = "rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure";
-            window.location.href = "https://business.roadrunners.run/?action=googlesignin&credential=" + encodeURIComponent(response.credential);
+            var callbackUrl = "/?action=googlesignin&credential=" + encodeURIComponent(response.credential);
+            var requestedRedirect = new URLSearchParams(window.location.search).get("redirect") || "";
+            if (requestedRedirect.indexOf("/pesquisa/") === 0 && requestedRedirect.indexOf("//") !== 0 && requestedRedirect.indexOf("\\") < 0) {
+                callbackUrl += "&redirect=" + encodeURIComponent(requestedRedirect);
+            }
+            window.location.href = callbackUrl;
         }
 
         function signOut(event) {

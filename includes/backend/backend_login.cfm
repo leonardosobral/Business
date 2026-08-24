@@ -489,20 +489,28 @@
     </cfif>
 
     <cfset VARIABLES.googleSignInRedirect = "/"/>
-    <cfif VARIABLES.googleSignInHasBusinessAccess>
-        <cfif isDefined("URL.redirect")
-            AND len(trim(URL.redirect))
-            AND left(trim(URL.redirect), 1) EQ "/"
-            AND left(trim(URL.redirect), 2) NEQ "//"
-            AND NOT find("\", trim(URL.redirect))
-            AND NOT findNoCase("logout=1", URL.redirect)>
-            <cfset VARIABLES.googleSignInRedirect = trim(URL.redirect)/>
+    <cfset VARIABLES.googleSignInRequestedRedirect = isDefined("URL.redirect") AND len(trim(URL.redirect & ""))
+        ? trim(URL.redirect & "")
+        : (structKeyExists(SESSION, "researchLoginRedirect") ? trim(SESSION.researchLoginRedirect & "") : "")/>
+    <cfset VARIABLES.googleSignInValidRedirect = len(VARIABLES.googleSignInRequestedRedirect)
+        AND left(VARIABLES.googleSignInRequestedRedirect, 1) EQ "/"
+        AND left(VARIABLES.googleSignInRequestedRedirect, 2) NEQ "//"
+        AND NOT find("\", VARIABLES.googleSignInRequestedRedirect)
+        AND NOT find(chr(10), VARIABLES.googleSignInRequestedRedirect)
+        AND NOT find(chr(13), VARIABLES.googleSignInRequestedRedirect)
+        AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
+    <cfif VARIABLES.googleSignInValidRedirect AND left(VARIABLES.googleSignInRequestedRedirect, 10) EQ "/pesquisa/">
+        <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
+    <cfelseif VARIABLES.googleSignInHasBusinessAccess>
+        <cfif VARIABLES.googleSignInValidRedirect>
+            <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
         </cfif>
     <cfelseif VARIABLES.googleSignInHasPendingRegistration>
         <cfset VARIABLES.googleSignInRedirect = "/"/>
     <cfelse>
         <cfset VARIABLES.googleSignInRedirect = "/cadastro/"/>
     </cfif>
+    <cfset structDelete(SESSION, "researchLoginRedirect", false)/>
 
     <cfquery>
         INSERT INTO tb_log

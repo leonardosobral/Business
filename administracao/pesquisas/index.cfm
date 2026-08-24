@@ -20,6 +20,6 @@
     </main>
 
     <cfinclude template="../../includes/estrutura/footer.cfm"/>
-    <script src="/administracao/pesquisas/assets/pesquisas.js?v=20260819-5"></script>
+    <script src="/administracao/pesquisas/assets/pesquisas.js?v=20260824-9"></script>
 </body>
 </html>
