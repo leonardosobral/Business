@@ -55,7 +55,7 @@
 
 **Interfaces:**
 - Consumes: ads.tb_ad_vouchers, ads.redeem_voucher(bigint,text,integer), ads.activate_campaign(uuid,integer,text), ads.campaigns, ads.advertisements, public.tb_contas e public.tb_conta_eventos.
-- Produces: ads.reserve_voucher(bigint,bigint,text,integer), ads.apply_voucher_reservation(bigint,integer), ads.release_voucher_reservation(bigint,integer,text), ads.submit_campaign_review(uuid,bigint,integer,integer), ads.refresh_campaign_review_prerequisites(bigint,integer), ads.cancel_open_campaign_reviews(bigint,integer,text) e ads.review_campaign(uuid,text,integer,text,text).
+- Produces: ads.reserve_voucher(bigint,bigint,text,integer), ads.apply_voucher_reservation(bigint,integer), ads.release_voucher_reservation(bigint,integer,text), ads.save_pending_event_campaign(uuid,bigint,bigint,integer,text,text,text,numeric,numeric,numeric,timestamptz,timestamptz,text,character,text,integer), ads.submit_campaign_review(uuid,bigint,integer,integer), ads.refresh_campaign_review_prerequisites(bigint,integer,integer), ads.cancel_open_campaign_reviews(bigint,integer,text) e ads.review_campaign(uuid,text,integer,text,text).
 
 - [ ] **Step 1: Escrever o teste estático que falha sem a migration**
 
@@ -74,8 +74,9 @@ require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.reserve_voucher\(bigi
 require_pattern "$schema" 'FOR UPDATE' "funções bloqueiam concorrência"
 require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.apply_voucher_reservation\(bigint,integer\)' "aplicação idempotente existe"
 require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.release_voucher_reservation\(bigint,integer,text\)' "liberação auditável existe"
+require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.save_pending_event_campaign' "conta pendente salva sem afrouxar API ativa"
 require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.submit_campaign_review\(uuid,bigint,integer,integer\)' "envio existe"
-require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.refresh_campaign_review_prerequisites\(bigint,integer\)' "reavaliação existe"
+require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.refresh_campaign_review_prerequisites\(bigint,integer,integer\)' "reavaliação auditável existe"
 require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.cancel_open_campaign_reviews\(bigint,integer,text\)' "cancelamento em lote existe"
 require_pattern "$schema" 'CREATE OR REPLACE FUNCTION ads\.review_campaign\(uuid,text,integer,text,text\)' "decisão administrativa existe"
 reject_pattern "$schema" 'UPDATE[[:space:]]+ads\.campaign_review_history' "histórico não é alterado"
@@ -155,9 +156,11 @@ apply_voucher_reservation deve bloquear a reserva RESERVED da solicitação, gar
 
 release_voucher_reservation deve mudar RESERVED para RELEASED/EXPIRED com motivo e liberar o voucher sem apagar histórico.
 
+save_pending_event_campaign deve repetir as validações e a persistência de ads.save_event_campaign, mas exigir adicionalmente a solicitação de cadastro PENDENTE da conta e do ator, vínculo OWNER e solicitação PENDENTE do evento pelo mesmo ator. Ela cria/edita somente campanha DRAFT. A função canônica ads.save_event_campaign permanece inalterada e continua exigindo conta ATIVA.
+
 submit_campaign_review deve bloquear campanha/anúncio, validar account_id/core_event_id/ator e manter campanha DRAFT. Deve escolher PENDING_REVIEW somente com conta e evento ATIVOS; nos demais casos, WAITING_PREREQUISITES.
 
-refresh_campaign_review_prerequisites deve avançar ou devolver todas as revisões abertas no escopo informado e registrar histórico.
+refresh_campaign_review_prerequisites deve avançar ou devolver todas as revisões abertas no escopo informado e registrar no histórico o usuário que aprovou/recusou a conta ou o evento.
 
 review_campaign deve aceitar apenas APPROVE, REQUEST_CHANGES ou CANCEL. APPROVE revalida conta, evento, período, orçamento, CPC, placement e saldo >= CPC antes de chamar ads.activate_campaign uma vez. REQUEST_CHANGES exige motivo e mantém DRAFT.
 
@@ -364,7 +367,7 @@ git commit -m "feat: reserve vouchers for pending accounts"
 - Modify: _codex/scripts/test_ads_phase2_business_access.sh
 
 **Interfaces:**
-- Consumes: ads.save_event_campaign, ads.replace_campaign_placements e ads.submit_campaign_review.
+- Consumes: ads.save_event_campaign, ads.save_pending_event_campaign, ads.replace_campaign_placements e ads.submit_campaign_review.
 - Produces: action submit_campaign_review, review_status/review_reason e eventos pendentes autorizados.
 
 - [ ] **Step 1: Escrever gates da campanha**
@@ -412,7 +415,7 @@ WHERE ce.id_conta = :account_id
 
 - [ ] **Step 4: Separar salvar de enviar**
 
-save_campaign mantém DRAFT. Adicionar:
+save_campaign usa ads.save_pending_event_campaign quando adsAccessIsPendingNewAccount for verdadeiro e ads.save_event_campaign para conta ativa; ambos mantêm DRAFT. Adicionar:
 
 ~~~cfml
 <cfcase value="submit_campaign_review">
@@ -492,7 +495,7 @@ Na aprovação de conta nova:
 
 ~~~cfml
 SELECT * FROM ads.apply_voucher_reservation(:registration_id, :actor_id);
-SELECT ads.refresh_campaign_review_prerequisites(:target_account_id, NULL::integer);
+SELECT ads.refresh_campaign_review_prerequisites(:target_account_id, NULL::integer, :actor_id);
 ~~~
 
 Na recusa:
@@ -509,7 +512,7 @@ Pedido de acesso a conta existente não dispara aplicação.
 Após atualizar tb_conta_eventos e a solicitação:
 
 ~~~cfml
-SELECT ads.refresh_campaign_review_prerequisites(:account_id, :event_id);
+SELECT ads.refresh_campaign_review_prerequisites(:account_id, :event_id, :actor_id);
 ~~~
 
 Evento aprovado avança para PENDING_REVIEW somente se conta ativa. Evento negado/inativo muda revisão aberta para CHANGES_REQUESTED e usa observação do revisor ou Evento não aprovado; escolha outro evento.
