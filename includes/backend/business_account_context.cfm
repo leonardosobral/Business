@@ -12,6 +12,10 @@
 <cfset VARIABLES.businessEffectiveAccountOperatorIds = "0"/>
 <cfset VARIABLES.businessEffectiveAccountViewerIds = "0"/>
 <cfset VARIABLES.businessCurrentAccountRole = ""/>
+<cfset VARIABLES.businessPendingAccountId = ""/>
+<cfset VARIABLES.businessPendingAccountName = ""/>
+<cfset VARIABLES.businessPendingAccountRole = ""/>
+<cfset VARIABLES.businessPendingRegistrationId = ""/>
 <cfset VARIABLES.businessEffectiveUserIds = isDefined("COOKIE.id") ? trim(COOKIE.id) : "0"/>
 <cfset VARIABLES.businessEffectivePaginaIds = "0"/>
 <cfset VARIABLES.businessAccountContextTablesReady = false/>
@@ -22,6 +26,7 @@
 <cfset qBusinessAccountContextMemberships = QueryNew("id_conta,papel,status")/>
 <cfset qBusinessAccountContextUsers = QueryNew("id_usuario,name,email,papel,status")/>
 <cfset qBusinessAccountContextPages = QueryNew("id_pagina")/>
+<cfset qBusinessPendingAccount = QueryNew("id_conta,nome_conta,papel,id_solicitacao")/>
 
 <cfif isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("qPerfil.is_admin")>
@@ -46,16 +51,59 @@
               AND table_name IN (
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_contas"/>,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>
               )
         </cfquery>
 
         <cfset VARIABLES.businessAccountContextTableNames = ValueList(qBusinessAccountContextTableCheck.table_name)/>
         <cfset VARIABLES.businessAccountContextTablesReady = ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_contas")
             AND ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_conta_usuarios")
-            AND ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_conta_eventos")/>
+            AND ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_conta_eventos")
+            AND ListFindNoCase(VARIABLES.businessAccountContextTableNames, "tb_conta_cadastro_solicitacoes")/>
 
         <cfif VARIABLES.businessAccountContextTablesReady>
+            <cfquery name="qBusinessPendingAccount">
+                SELECT cont.id_conta,
+                       cont.nome_conta,
+                       cu.papel::text AS papel,
+                       sol.id_solicitacao
+                FROM tb_conta_usuarios cu
+                INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                LEFT JOIN LATERAL (
+                    SELECT cad.id_solicitacao
+                    FROM tb_conta_cadastro_solicitacoes cad
+                    WHERE cad.id_conta = cont.id_conta
+                      AND cad.id_usuario = cu.id_usuario
+                      AND cad.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+                    ORDER BY cad.data_criacao DESC
+                    LIMIT 1
+                ) sol ON true
+                WHERE cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                  AND cu.status = 'ATIVO'::status_usuario_conta
+                  AND cu.papel = 'OWNER'::papel_usuario_conta
+                  AND cont.status = 'PENDENTE'::status_conta
+                  AND NOT EXISTS (
+                      SELECT 1
+                      FROM tb_conta_usuarios active_cu
+                      INNER JOIN tb_contas active_cont ON active_cont.id_conta = active_cu.id_conta
+                      WHERE active_cu.id_usuario = cu.id_usuario
+                        AND active_cu.status = 'ATIVO'::status_usuario_conta
+                        AND active_cont.status = 'ATIVA'::status_conta
+                  )
+                ORDER BY cont.data_criacao DESC
+                LIMIT 1
+            </cfquery>
+
+            <cfif qBusinessPendingAccount.recordcount>
+                <cfset VARIABLES.businessPendingAccountId = qBusinessPendingAccount.id_conta/>
+                <cfset VARIABLES.businessPendingAccountName = qBusinessPendingAccount.nome_conta/>
+                <cfset VARIABLES.businessPendingAccountRole = qBusinessPendingAccount.papel/>
+                <cfif len(trim(qBusinessPendingAccount.id_solicitacao & ""))>
+                    <cfset VARIABLES.businessPendingRegistrationId = qBusinessPendingAccount.id_solicitacao/>
+                </cfif>
+            </cfif>
+
             <cfif NOT StructKeyExists(SESSION, "businessAccountContextCsrf")
                 OR NOT len(trim(SESSION.businessAccountContextCsrf & ""))>
                 <cfset SESSION.businessAccountContextCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
@@ -323,6 +371,10 @@
             <cfset VARIABLES.businessEffectiveAccountOperatorIds = "0"/>
             <cfset VARIABLES.businessEffectiveAccountViewerIds = "0"/>
             <cfset VARIABLES.businessCurrentAccountRole = ""/>
+            <cfset VARIABLES.businessPendingAccountId = ""/>
+            <cfset VARIABLES.businessPendingAccountName = ""/>
+            <cfset VARIABLES.businessPendingAccountRole = ""/>
+            <cfset VARIABLES.businessPendingRegistrationId = ""/>
         </cfcatch>
     </cftry>
 </cfif>

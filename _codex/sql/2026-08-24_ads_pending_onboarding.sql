@@ -1471,7 +1471,7 @@ FROM PUBLIC, runner, runner_dba, ads_reader, ads_delivery, ads_admin,
 
 GRANT SELECT ON ads.voucher_reservations TO ads_business, ads_admin;
 GRANT SELECT ON ads.campaign_review_requests TO ads_business, ads_admin;
-GRANT SELECT, INSERT ON ads.campaign_review_history TO ads_business, ads_admin;
+GRANT SELECT ON ads.campaign_review_history TO ads_business, ads_admin;
 
 REVOKE ALL ON SEQUENCE
     ads.voucher_reservations_voucher_reservation_id_seq,

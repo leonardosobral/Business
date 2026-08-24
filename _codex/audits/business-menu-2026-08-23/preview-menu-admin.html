@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prévia — menu administrativo</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css">
+    <link rel="stylesheet" href="/assets/css/mdb.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        body { background: #f3f4f6; min-height: 100vh; }
+        .business-sidenav { background: #17191d; bottom: 0; color: #fff; overflow-y: auto; position: fixed; top: 0; width: 216px !important; }
+        .business-sidenav .sidenav-menu { list-style: none; margin: 0; padding: 0 .35rem 1rem !important; }
+        .business-sidenav-logo { align-items: center; display: flex; flex-direction: column; gap: .18rem; padding: .72rem .72rem .5rem; }
+        .business-sidenav-logo img { display: block; height: auto; width: 100%; }
+        .business-sidenav-signature { color: rgba(255,255,255,.68); font-size: .8rem; letter-spacing: .12em; line-height: 1; text-align: center; }
+        .business-sidenav-signature-business { color: #fab120; }
+        .business-sidenav .sidenav-link { align-items: center; color: rgba(255,255,255,.78); display: flex; font-size: .82rem !important; height: 32px !important; line-height: 1.15; min-height: 32px !important; padding: 0 .6rem !important; text-decoration: none; }
+        .business-sidenav .sidenav-link:hover { background: rgba(255,255,255,.06); border-radius: .3rem; color: #fff; }
+        .business-sidenav .link-warning { color: #fab120 !important; }
+        .business-sidenav-section-toggle { appearance: none; background: transparent; border: 0; color: rgba(255,255,255,.52); display: flex; align-items: center; justify-content: space-between; gap: .5rem; width: 100%; min-height: 27px; padding: .28rem .55rem .14rem; font-size: .66rem; font-weight: 700; text-align: left; text-transform: uppercase; }
+        .business-sidenav-section-toggle:hover, .business-sidenav-section-toggle:focus { color: rgba(255,255,255,.82); }
+        .business-sidenav-section-icon { color: rgba(255,255,255,.45); font-size: .62rem; transition: transform .16s ease; }
+        .business-sidenav-section-toggle[aria-expanded="false"] .business-sidenav-section-icon { transform: rotate(-90deg); }
+        .business-sidenav-section-collapsed, .business-sidenav-search-hidden { display: none !important; }
+        .business-sidenav-search-item { padding: .45rem .25rem .2rem; }
+        .business-sidenav-search { align-items: center; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: .42rem; color: rgba(255,255,255,.58); display: flex; gap: .42rem; min-height: 34px; padding: 0 .48rem; }
+        .business-sidenav-search:focus-within { border-color: rgba(250,177,32,.72); box-shadow: 0 0 0 2px rgba(250,177,32,.12); }
+        .business-sidenav-search input { background: transparent; border: 0; color: #fff; font-size: .78rem; min-width: 0; outline: 0; padding: .38rem 0; width: 100%; }
+        .business-sidenav-search input::placeholder { color: rgba(255,255,255,.5); }
+        .business-sidenav-search kbd { background: rgba(0,0,0,.24); color: rgba(255,255,255,.62); font-size: .58rem; font-weight: 600; padding: .13rem .28rem; }
+        .business-sidenav-fixed-item .sidenav-link { font-weight: 600; }
+        .business-sidenav-subgroup-label { color: rgba(255,255,255,.38); font-size: .61rem; font-weight: 700; letter-spacing: .055em; padding: .5rem .65rem .12rem 1.75rem; text-transform: uppercase; }
+        .business-sidenav-search-empty { color: rgba(255,255,255,.48); font-size: .73rem; padding: .6rem .65rem .35rem; text-align: center; }
+        .preview-main { margin-left: 216px; padding: 2rem; }
+        .preview-card { background: #fff; border-radius: .75rem; box-shadow: 0 5px 24px rgba(0,0,0,.06); max-width: 760px; padding: 1.5rem; }
+        .sidenav-item.pt-3 { padding-top: .38rem !important; }
+        .badge { margin-left: auto; }
+    </style>
+</head>
+<body>
+<nav id="main-sidenav" class="sidenav business-sidenav shadow-1">
+    <a class="business-sidenav-logo" href="#">
+        <img src="/assets/runnerhub_logo_negativo.png" alt="RunnerHub">
+        <span class="business-sidenav-signature"><span>Road</span> <span>Runners</span> <span class="business-sidenav-signature-business">Business</span></span>
+    </a>
+    <hr class="hr my-1">
+    <ul class="sidenav-menu">
+        <li class="sidenav-item business-sidenav-search-item">
+            <div class="business-sidenav-search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input id="business-sidenav-search-input" type="search" autocomplete="off" placeholder="Buscar no menu" aria-label="Buscar no menu administrativo">
+                <kbd aria-hidden="true">⌘K</kbd>
+            </div>
+        </li>
+        <li id="business-sidenav-search-empty" class="sidenav-item business-sidenav-search-empty business-sidenav-search-hidden">Nenhuma entrada encontrada</li>
+        <li class="sidenav-item business-sidenav-fixed-item"><a class="sidenav-link link-warning" href="#"><i class="fa-solid fa-house fa-fw me-3"></i><span>Início</span></a></li>
+        <li class="sidenav-item business-sidenav-fixed-item"><a class="sidenav-link" href="#" data-menu-aliases="fila decisões aprovações revisão tarefas agora"><i class="fa-solid fa-inbox fa-fw me-3"></i><span>Pendências</span><span class="badge rounded-pill bg-warning text-dark">12</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Eventos e resultados</span></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Gestão do evento</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="provas corridas calendário"><i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="rotas mapas trajetos"><i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="inscritos pagamentos participantes"><i class="fa-solid fa-ticket fa-fw me-3"></i><span>Inscrições</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-calendar-days fa-fw me-3"></i><span>Agendas</span></a></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Resultados e integrações</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="fotos fotógrafos vínculo conferência"><i class="fa-solid fa-camera-retro fa-fw me-3"></i><span>Revisão Foco Radical</span><span class="badge rounded-pill bg-warning text-dark">3</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Agregadores</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-code-branch fa-fw me-3"></i><span>Revisão de agregadores</span></a></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Desafios e treinos</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de treinos</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Conteúdo e portal</span></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Vídeos</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-brands fa-youtube fa-fw me-3"></i><span>Canais de vídeo</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-photo-film fa-fw me-3"></i><span>Vídeos</span></a></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Editorial</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="curadoria matérias notícias artigos"><i class="fa-solid fa-file-lines fa-fw me-3"></i><span>Conteúdos</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Marketing e audiência</span></li>
+        <li class="sidenav-item business-sidenav-subgroup-label"><span>Campanhas</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-envelope fa-fw me-3"></i><span>Email marketing</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Contas e parceiros</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Usuários</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Plataforma</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#" data-menu-aliases="automações tarefas agendadas rotinas"><i class="fa-solid fa-clock-rotate-left fa-fw me-3"></i><span>Cron Jobs</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-heart-pulse fa-fw me-3"></i><span>Status dos sites</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span></a></li>
+
+        <li class="sidenav-item pt-3"><span class="sidenav-subheading">Ajuda</span></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-circle-question fa-fw me-3"></i><span>FAQ</span></a></li>
+        <li class="sidenav-item"><a class="sidenav-link" href="#"><i class="fa-solid fa-life-ring fa-fw me-3"></i><span>Suporte</span></a></li>
+    </ul>
+</nav>
+<main class="preview-main">
+    <div class="preview-card">
+        <div class="text-uppercase text-muted small fw-bold">Road Runners Business</div>
+        <h1 class="h3 mt-2">Prévia do menu administrativo</h1>
+        <p class="text-muted mb-0">Use a busca ou abra as áreas na lateral para validar o comportamento.</p>
+    </div>
+</main>
+<script src="/assets/js/business-sidenav.js"></script>
+<script>
+    window.BusinessSidenav.init({
+        isAdmin: true,
+        isPending: false,
+        defaultExpandedSections: ["eventos-e-resultados"],
+        storageKey: "business:sidenav:preview:v1"
+    });
+</script>
+</body>
+</html>

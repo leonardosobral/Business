@@ -10,6 +10,16 @@
 
 **Spec:** docs/superpowers/specs/2026-08-23-pending-business-ads-voucher-flow-design.md
 
+## Estado de execução em 24/08/2026
+
+Tasks 1–7 implementadas localmente. A suíte estática integrada e os testes Node
+passaram. Uma cópia isolada também passou no `cfcompile` do servidor: 74 de 74
+arquivos, sem publicação no webroot. A Task 8 permanece em andamento porque a
+migration ainda não foi validada/aplicada no PostgreSQL de produção, os arquivos
+ainda não foram publicados e a jornada real controlada ainda não foi executada.
+
+Registro operacional: `_codex/docs/publicidade_ads_phase2_business.md`.
+
 ## Global Constraints
 
 - Preparar não significa efetivar: reserva não cria saldo e campanha preparada permanece DRAFT.

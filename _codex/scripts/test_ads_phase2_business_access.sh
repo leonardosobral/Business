@@ -160,7 +160,7 @@ require_pattern \
     "backend inclui acesso antes do dispatch"
 require_pattern \
     "ads/includes/backend.cfm" \
-    'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,activate_campaign,change_campaign_status"' \
+    'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,submit_campaign_review,change_campaign_status"' \
     "acoes de campanha usam grupo explicito"
 require_pattern \
     "ads/includes/backend.cfm" \
@@ -188,9 +188,13 @@ require_pattern \
     '(?s)adsV1ShowCampaignForm[[:space:]]*=[[:space:]]*VARIABLES\.adsAccessCanManageCampaign.*?<cfif[[:space:]]+VARIABLES\.adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"campaigns"[[:space:]]+AND[[:space:]]+VARIABLES\.adsV1ShowCampaignForm><cfinclude[[:space:]]+template="includes/workspace_campaign_form\.cfm"' \
     "formulario de campanha acompanha canManageCampaign"
 require_pattern \
-    "ads/home.cfm" \
-    '(?s)<cfif[[:space:]]+VARIABLES\.adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"admin"[[:space:]]+AND[[:space:]]+VARIABLES\.adsAccessCanAdminFinance><cfinclude[[:space:]]+template="includes/workspace_admin\.cfm"' \
+    "ads/includes/workspace_admin.cfm" \
+    '(?s)<cfif[[:space:]]+VARIABLES\.adsAccessCanAdminFinance>.*?Administração financeira.*?credit_account' \
     "controles financeiros acompanham canAdminFinance"
+require_pattern \
+    "ads/home.cfm" \
+    '(?s)adsV1WorkspaceView[[:space:]]+EQ[[:space:]]+"admin".*?adsAccessCanAdminFinance[[:space:]]+OR[[:space:]]+VARIABLES\.adsAccessCanReviewCampaign.*?workspace_admin\.cfm' \
+    "workspace administrativo aceita finanças ou revisão"
 
 if (( failures > 0 )); then
     printf '\nADS PHASE 2 BUSINESS ACCESS: FAIL (%d gates)\n' "$failures" >&2

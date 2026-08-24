@@ -3,7 +3,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3"><div><div class="ads-v1-eyebrow">Campanha</div><h2 class="h5 mb-1"><cfif len(VARIABLES.adsV1FormCampaignId)>Editar campanha<cfelse>Nova campanha</cfif></h2><p class="text-muted mb-0">Defina o evento, o investimento e onde a campanha aparecerá.</p></div><a class="btn btn-sm btn-outline-light" href="./?view=campaigns">Fechar formulário</a></div>
 
     <cfif NOT VARIABLES.adsV1CampaignEditable><div class="alert alert-warning mb-0">Somente rascunhos ou campanhas pausadas podem ser editados.</div>
-    <cfelseif NOT qAdsV1Events.recordcount><div class="alert alert-warning mb-0">Esta conta nao possui eventos ativos vinculados.</div>
+    <cfelseif NOT qAdsV1Events.recordcount><div class="alert alert-warning mb-0">Esta conta não possui eventos ativos ou pendentes autorizados para preparar a campanha.</div>
     <cfelseif NOT qAdsV1Placements.recordcount><div class="alert alert-warning mb-0">Nenhum local de exibição está disponível.</div>
     <cfelse>
       <form method="post" action="./?view=campaigns#campaign-form" class="row g-3">
@@ -19,7 +19,10 @@
         <div class="col-md-4"><label class="form-label" for="ads-v1-country">País</label><input class="form-control" id="ads-v1-country" name="target_country_code" maxlength="2" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCountry)#</cfoutput>"/></div>
         <div class="col-md-4"><label class="form-label" for="ads-v1-region">Região</label><input class="form-control" id="ads-v1-region" name="target_region_code" maxlength="40" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormRegion)#</cfoutput>" placeholder="Opcional, ex.: SC"/></div>
         <div class="col-12"><fieldset><legend class="form-label mb-2">Locais de exibição</legend><p class="small text-muted mb-2">Escolha onde o anúncio poderá aparecer no RoadRunners.</p><div class="row g-2"><cfoutput query="qAdsV1Placements"><div class="col-md-6 col-xl-4"><div class="form-check border rounded p-3 h-100"><input class="form-check-input ms-0 me-2" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_keys" value="#htmlEditFormat(placement_key)#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/><label class="form-check-label" for="ads-v1-placement-#currentRow#"><strong>#htmlEditFormat(adsV1PlacementLabel(placement_key))#</strong><span class="d-block small text-muted">#htmlEditFormat(adsV1PlacementDescription(placement_key))#</span></label></div></div></cfoutput></div></fieldset></div>
-        <div class="col-12 d-flex justify-content-end"><button class="btn btn-info" type="submit">Salvar campanha</button></div>
+        <div class="col-12 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-2">
+          <p class="small text-muted mb-0">Depois de salvar o rascunho, você poderá enviá-lo para análise. Ele não entra no ar automaticamente.</p>
+          <button class="btn btn-info" type="submit">Salvar rascunho</button>
+        </div>
       </form>
     </cfif>
   </div>

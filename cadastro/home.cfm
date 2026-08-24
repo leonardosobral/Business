@@ -241,11 +241,8 @@
     document.cookie = "rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure";
 
     var baseUrl = window.location.origin;
-    var cadastroUrl = encodeURIComponent(baseUrl + "/cadastro/");
     window.location.href = baseUrl
-      + "/?action=googlesignin&redirect="
-      + cadastroUrl
-      + "&credential="
+      + "/?action=googlesignin&credential="
       + encodeURIComponent(response.credential);
   }
 </script>

@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="/assets/css/cores_admin.css?202512062" />
     <link rel="stylesheet" href="/assets/css/business-ui.css?2026062905" />
 
+    <cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;display=swap" rel="stylesheet" />
+    </cfif>
+
     <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/cadastro/">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />

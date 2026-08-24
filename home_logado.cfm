@@ -27,6 +27,12 @@
     </cfif>
 
     <cfif NOT VARIABLES.businessHomeIsAdmin
+        AND isDefined("VARIABLES.businessPendingWorkspace")
+        AND VARIABLES.businessPendingWorkspace>
+        <div class="col-12">
+            <cfinclude template="includes/estrutura/home_pending_account.cfm"/>
+        </div>
+    <cfelseif NOT VARIABLES.businessHomeIsAdmin
         AND isDefined("VARIABLES.businessEffectiveAccountIds")
         AND len(trim(VARIABLES.businessEffectiveAccountIds))
         AND VARIABLES.businessEffectiveAccountIds NEQ "0">

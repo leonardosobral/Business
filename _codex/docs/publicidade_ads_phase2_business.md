@@ -153,3 +153,83 @@ O voucher de R$ 50.000 deve ser resgatado somente depois de migration, contract
 tests e audit `PASS`. O resultado esperado é um único lançamento
 `VOUCHER/CREDIT`, aumento exato de R$ 50.000 no saldo e a campanha voltando a
 ser elegível sem alterar seu status manualmente.
+
+## Onboarding progressivo de publicidade — 24/08/2026
+
+O fluxo local foi ampliado para que o OWNER de uma conta nova continue
+trabalhando enquanto conta e evento são analisados. Preparar não significa
+efetivar:
+
+- a conta provisória pode solicitar o evento, reservar voucher e salvar a
+  campanha como rascunho;
+- a reserva não cria saldo e é aplicada somente quando a conta nova é aprovada;
+- a campanha enviada permanece `DRAFT` enquanto aguarda conta, evento ou
+  revisão;
+- pedidos de acesso a uma conta já existente continuam sem workspace de
+  publicidade até aprovação do OWNER da conta ou de um administrador geral;
+- somente administrador real da RunnerHub decide a revisão da publicidade;
+- o cliente não possui action nem botão para ativar campanha;
+- a aprovação RunnerHub usa `ads.review_campaign`, que revalida conta, evento,
+  placement, saldo, período e campanha antes de chamar a ativação canônica.
+
+### Matriz operacional
+
+| Conta | Evento | Revisão | Campanha | Resultado |
+|---|---|---|---|---|
+| Pendente | Pendente | `WAITING_PREREQUISITES` | `DRAFT` | Preparável, fora do ar |
+| Ativa | Pendente | `WAITING_PREREQUISITES` | `DRAFT` | Aguarda o evento |
+| Pendente | Ativo | `WAITING_PREREQUISITES` | `DRAFT` | Aguarda a conta |
+| Ativa | Ativo | `PENDING_REVIEW` | `DRAFT` | Aguarda a RunnerHub |
+| Ativa | Ativo | `CHANGES_REQUESTED` | `DRAFT` | Usuário corrige e reenvia |
+| Ativa | Ativo | `APPROVED` | `ACTIVE` | Elegível ao delivery conforme saldo e período |
+
+Uma solicitação de acesso a conta existente só entra nos fluxos normais depois
+que o vínculo do usuário for aprovado.
+
+### Persistência e transições
+
+A migration local `_codex/sql/2026-08-24_ads_pending_onboarding.sql` cria:
+
+- reservas de voucher com estados `RESERVED`, `APPLIED`, `RELEASED` e
+  `EXPIRED`;
+- solicitações de revisão com estados `WAITING_PREREQUISITES`,
+  `PENDING_REVIEW`, `CHANGES_REQUESTED`, `APPROVED` e `CANCELED`;
+- histórico de revisão somente leitura para os papéis da aplicação; o append é
+  feito exclusivamente pelas funções controladas;
+- funções transacionais para reserva, aplicação/liberação, salvamento pendente,
+  envio, reavaliação, cancelamento e decisão administrativa.
+
+A aprovação da conta usa sempre a conta provisória gravada na solicitação. O
+voucher não escolhe nem substitui a conta de destino.
+
+### Estado de validação e rollout
+
+Em 24/08/2026, a migration foi aplicada pelo responsável e o fluxo foi publicado
+no webroot de produção. A compilação final passou em todos os diretórios
+afetados (`ads`: 20, contas: 3, eventos: 18, estrutura: 13 e backend
+compartilhado: 22). A validação autenticada com a conta provisória `Projeto
+Cauã` confirmou:
+
+- reserva de voucher disponível sem criar saldo;
+- evento pendente `LIVE! RUN XP Salvador 2026` disponível no formulário;
+- criação restrita a `Salvar rascunho`, sem ativação pelo cliente;
+- mensagem explícita de que conta, evento e RunnerHub precisam aprovar antes da
+  veiculação;
+- ausência de novos erros do módulo nos logs do ColdFusion após as leituras.
+
+O script `assets/js/business-sidenav.js` também foi publicado e a referência foi
+versionada para invalidar o 404 que havia ficado em cache. O backup dos 12
+arquivos anteriores ao rollout está em
+`/var/backups/business-pending-ads-before-deploy-20260824-100909.tar.gz`.
+
+Ordem obrigatória de rollout:
+
+Os passos 1 a 4 foram concluídos. Restam como validação operacional controlada:
+
+1. reservar um voucher real de teste e confirmar sua aplicação somente após a
+   aprovação da conta;
+2. salvar e enviar uma campanha de teste ligada ao evento pendente;
+3. aprovar conta e evento e confirmar a entrada na fila RunnerHub;
+4. decidir a campanha como administrador e confirmar que não houve ativação
+   antes dessa decisão;
+5. repetir o caminho de pedido de acesso a uma conta existente.

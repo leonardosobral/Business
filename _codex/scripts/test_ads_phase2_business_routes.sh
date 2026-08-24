@@ -93,7 +93,7 @@ require_pattern \
 for function_name in \
     save_event_campaign \
     replace_campaign_placements \
-    activate_campaign \
+    submit_campaign_review \
     change_campaign_status \
     credit_account \
     reverse_click_debit
@@ -103,6 +103,10 @@ do
         "FROM[[:space:]]+ads\\.${function_name}[[:space:]]*\\(" \
         "backend principal preserva ads.${function_name}"
 done
+reject_pattern \
+    "ads/includes/backend.cfm" \
+    'FROM[[:space:]]+ads\.activate_campaign[[:space:]]*\(' \
+    "backend principal nao permite ativacao direta pelo cliente"
 require_pattern \
     "ads/includes/backend.cfm" \
     'datasource[[:space:]]*=[[:space:]]*"runnerhub"' \
@@ -117,8 +121,8 @@ require_pattern \
     "backend principal rejeita CSRF invalido"
 require_pattern \
     "ads/includes/backend.cfm" \
-    '(?s)<cfif[[:space:]]+NOT[[:space:]]+VARIABLES\.adsV1CanMutate>.*?<cfthrow' \
-    "backend principal aplica o gate de mutacao"
+    '(?s)<cfif[[:space:]]+NOT[[:space:]]+VARIABLES\.adsV1CanMutate.*?adsV1ReviewActions.*?adsV1CanReviewMutate.*?<cfthrow' \
+    "backend principal aplica o gate de mutacao com excecao administrativa explicita"
 require_pattern \
     "ads/includes/backend.cfm" \
     'c\.account_id[[:space:]]*=[[:space:]]*<cfqueryparam[^>]+adsV1AccountId' \

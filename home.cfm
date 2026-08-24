@@ -727,8 +727,7 @@
             }
 
             document.cookie = "rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure";
-            var urlRedirect = encodeURIComponent("https://business.roadrunners.run/");
-            window.location.href = "https://business.roadrunners.run/?action=googlesignin&redirect=" + urlRedirect + "&credential=" + encodeURIComponent(response.credential);
+            window.location.href = "https://business.roadrunners.run/?action=googlesignin&credential=" + encodeURIComponent(response.credential);
         }
 
         function signOut(event) {

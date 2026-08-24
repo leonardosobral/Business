@@ -1,3 +1,8 @@
+<cfset VARIABLES.eventosOnboardingStep2Locked =
+  NOT len(trim(VARIABLES.eventoSolicitacaoReferencia))
+  AND VARIABLES.eventoMinhasSolicitacoesPendentes EQ 0/>
+<cfset VARIABLES.eventosOnboardingStep3Locked = VARIABLES.eventoMinhasSolicitacoesPendentes EQ 0/>
+
 <style>
   .events-onboarding-card {
     border: 1px solid rgba(244, 177, 32, .24);
@@ -26,6 +31,22 @@
     flex-direction: column;
     min-height: 190px;
     padding: 1rem;
+    transition: background-color .16s ease, border-color .16s ease, opacity .16s ease;
+  }
+
+  .events-onboarding-step.is-locked {
+    background: rgba(255,255,255,.018);
+    border-color: rgba(255,255,255,.055);
+    opacity: .42;
+  }
+
+  .events-onboarding-step.is-locked .events-onboarding-number {
+    background: rgba(255,255,255,.12);
+    color: rgba(255,255,255,.65);
+  }
+
+  .events-onboarding-step.is-locked .events-onboarding-action {
+    pointer-events: none;
   }
 
   .events-onboarding-number {
@@ -88,7 +109,7 @@
         </form>
       </div>
 
-      <div class="events-onboarding-step">
+      <div class="events-onboarding-step<cfif VARIABLES.eventosOnboardingStep2Locked> is-locked</cfif>"<cfif VARIABLES.eventosOnboardingStep2Locked> aria-disabled="true"</cfif>>
         <span class="events-onboarding-number">2</span>
         <h5 class="mb-2">Solicite o vínculo</h5>
         <p class="text-muted mb-0">Ao encontrar a prova, clique em Solicitar. O evento fica pendente até a validação da equipe RunnerHub.</p>
@@ -101,7 +122,7 @@
         </div>
       </div>
 
-      <div class="events-onboarding-step">
+      <div class="events-onboarding-step<cfif VARIABLES.eventosOnboardingStep3Locked> is-locked</cfif>"<cfif VARIABLES.eventosOnboardingStep3Locked> aria-disabled="true"</cfif>>
         <span class="events-onboarding-number">3</span>
         <h5 class="mb-2">Comece a operar</h5>
         <p class="text-muted mb-0">Quando o vínculo for aprovado, a prova entra na sua lista e libera as ações da conta.</p>

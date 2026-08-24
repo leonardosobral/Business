@@ -17,6 +17,7 @@
 <cfset VARIABLES.eventoSolicitacaoSearchTerm = ""/>
 <cfset VARIABLES.eventoSolicitacaoEffectiveAccountIds = "0"/>
 <cfset VARIABLES.eventoSolicitacaoUsingSimulatedAccount = false/>
+<cfset VARIABLES.eventoSolicitacaoUsingPendingAccount = false/>
 <cfset VARIABLES.eventoMinhasSolicitacoesPendentes = 0/>
 <cfset VARIABLES.eventoMinhasSolicitacoesHistorico = 0/>
 
@@ -35,6 +36,15 @@
     AND len(trim(VARIABLES.businessEffectiveAccountIds))
     AND VARIABLES.businessEffectiveAccountIds NEQ "0">
     <cfset VARIABLES.eventoSolicitacaoEffectiveAccountIds = VARIABLES.businessEffectiveAccountIds/>
+</cfif>
+
+<cfif VARIABLES.eventoSolicitacaoEffectiveAccountIds EQ "0"
+    AND isDefined("VARIABLES.businessPendingAccountId")
+    AND len(trim(VARIABLES.businessPendingAccountId))
+    AND isNumeric(VARIABLES.businessPendingAccountId)
+    AND val(VARIABLES.businessPendingAccountId) GT 0>
+    <cfset VARIABLES.eventoSolicitacaoEffectiveAccountIds = trim(VARIABLES.businessPendingAccountId)/>
+    <cfset VARIABLES.eventoSolicitacaoUsingPendingAccount = true/>
 </cfif>
 
 <cfif isDefined("VARIABLES.businessAccountSimulationActive") AND VARIABLES.businessAccountSimulationActive>
@@ -125,11 +135,11 @@
             AND len(trim(VARIABLES.eventoSolicitacaoErrorMessage)) EQ 0>
 
             <cfif NOT VARIABLES.eventoSolicitacaoCanRequest>
-                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Seu usuario nao possui uma conta ativa para solicitar vinculos de eventos."/>
+                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Seu usuário não possui uma conta disponível para solicitar vínculos de eventos."/>
             <cfelseif NOT len(trim(VARIABLES.eventoSolicitacaoSelectedAccountId))>
-                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Selecione uma conta para solicitar o vinculo."/>
+                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Selecione uma conta para solicitar o vínculo."/>
             <cfelseif NOT isDefined("FORM.id_evento") OR NOT isNumeric(FORM.id_evento)>
-                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Evento invalido para solicitacao."/>
+                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Evento inválido para solicitação."/>
             <cfelse>
                 <cfquery name="qEventoSolicitacaoEvento">
                     SELECT id_evento,
@@ -146,13 +156,16 @@
                     FROM tb_conta_eventos
                     WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoSelectedAccountId#"/>
                       AND id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
+                      <cfif VARIABLES.eventoSolicitacaoUsingPendingAccount>
+                        AND usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                      </cfif>
                     LIMIT 1
                 </cfquery>
 
                 <cfif NOT qEventoSolicitacaoEvento.recordcount>
-                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Evento nao encontrado ou inativo."/>
+                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Evento não encontrado ou inativo."/>
                 <cfelseif qEventoSolicitacaoVinculoAtual.recordcount AND qEventoSolicitacaoVinculoAtual.status EQ "ATIVO">
-                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Este evento ja esta vinculado a conta selecionada."/>
+                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Este evento já está vinculado à conta selecionada."/>
                 <cfelse>
                     <cfquery>
                         INSERT INTO tb_conta_eventos
@@ -184,6 +197,9 @@
                         WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoSelectedAccountId#"/>
                           AND id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
                           AND status = <cfqueryparam cfsqltype="cf_sql_varchar" value="PENDENTE"/>
+                          <cfif VARIABLES.eventoSolicitacaoUsingPendingAccount>
+                            AND id_usuario_solicitante = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                          </cfif>
                         ORDER BY data_criacao DESC
                         LIMIT 1
                     </cfquery>
@@ -244,9 +260,9 @@
             AND len(trim(VARIABLES.eventoSolicitacaoErrorMessage)) EQ 0>
 
             <cfif NOT VARIABLES.eventoSolicitacaoCanReview>
-                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Apenas administradores podem revisar solicitacoes de vinculo."/>
+                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Apenas administradores podem revisar solicitações de vínculo."/>
             <cfelseif NOT isDefined("FORM.id_solicitacao") OR NOT isNumeric(FORM.id_solicitacao)>
-                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Solicitacao invalida."/>
+                <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Solicitação inválida."/>
             <cfelse>
                 <cfquery name="qEventoSolicitacaoRevisao">
                     SELECT id_solicitacao,
@@ -259,9 +275,9 @@
                 </cfquery>
 
                 <cfif NOT qEventoSolicitacaoRevisao.recordcount>
-                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Solicitacao nao encontrada."/>
+                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Solicitação não encontrada."/>
                 <cfelseif qEventoSolicitacaoRevisao.status NEQ "PENDENTE">
-                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Esta solicitacao ja foi revisada."/>
+                    <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Esta solicitação já foi revisada."/>
                 <cfelseif FORM.evento_solicitacao_action EQ "aprovar">
                     <cfquery>
                         INSERT INTO tb_conta_eventos
@@ -292,6 +308,14 @@
                             observacao_revisor = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#FORM.observacao_revisor#" null="#NOT len(trim(FORM.observacao_revisor))#"/>,
                             data_revisao = now()
                         WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qEventoSolicitacaoRevisao.id_solicitacao#"/>
+                    </cfquery>
+
+                    <cfquery name="qEventoSolicitacaoCampaignRefreshApproved" datasource="runnerhub">
+                        SELECT ads.refresh_campaign_review_prerequisites(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qEventoSolicitacaoRevisao.id_conta#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qEventoSolicitacaoRevisao.id_evento#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
+                        ) AS changed_count
                     </cfquery>
 
                     <cflocation addtoken="false" url="/eventos/?solicitacao=aprovada"/>
@@ -327,19 +351,27 @@
                         WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qEventoSolicitacaoRevisao.id_solicitacao#"/>
                     </cfquery>
 
+                    <cfquery name="qEventoSolicitacaoCampaignRefreshDenied" datasource="runnerhub">
+                        SELECT ads.refresh_campaign_review_prerequisites(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qEventoSolicitacaoRevisao.id_conta#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qEventoSolicitacaoRevisao.id_evento#"/> AS integer),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
+                        ) AS changed_count
+                    </cfquery>
+
                     <cflocation addtoken="false" url="/eventos/?solicitacao=negada"/>
                 </cfif>
             </cfif>
         </cfif>
 
         <cfif URL.solicitacao EQ "pedido">
-            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitacao enviada. O vinculo ficara pendente ate a aprovacao."/>
+            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitação enviada. O vínculo ficará pendente até a aprovação."/>
         <cfelseif URL.solicitacao EQ "aprovada">
-            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitacao aprovada e evento liberado para a conta."/>
+            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitação aprovada e evento liberado para a conta."/>
         <cfelseif URL.solicitacao EQ "negada">
-            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitacao negada."/>
+            <cfset VARIABLES.eventoSolicitacaoNoticeMessage = "Solicitação negada."/>
         <cfelseif URL.solicitacao EQ "evento_admin">
-            <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Para incluir um evento na conta, use a busca e envie uma solicitacao para aprovacao."/>
+            <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Para incluir um evento na conta, use a busca e envie uma solicitação para aprovação."/>
         </cfif>
 
         <cfif VARIABLES.eventoSolicitacaoCanRequest
@@ -360,11 +392,17 @@
                 LEFT JOIN tb_conta_eventos ce
                     ON ce.id_evento = evt.id_evento
                    AND ce.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoSelectedAccountId#"/>
+                   <cfif VARIABLES.eventoSolicitacaoUsingPendingAccount>
+                    AND ce.usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                   </cfif>
                 LEFT JOIN LATERAL (
                     SELECT req.status
                     FROM tb_conta_evento_solicitacoes req
                     WHERE req.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoSelectedAccountId#"/>
                       AND req.id_evento = evt.id_evento
+                      <cfif VARIABLES.eventoSolicitacaoUsingPendingAccount>
+                        AND req.id_usuario_solicitante = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                      </cfif>
                     ORDER BY req.data_criacao DESC
                     LIMIT 1
                 ) sol ON true
@@ -415,6 +453,9 @@
                 INNER JOIN tb_contas cont ON cont.id_conta = sol.id_conta
                 INNER JOIN tb_evento_corridas evt ON evt.id_evento = sol.id_evento
                 WHERE sol.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.eventoSolicitacaoEffectiveAccountIds#" list="true"/>)
+                  <cfif VARIABLES.eventoSolicitacaoUsingPendingAccount>
+                    AND sol.id_usuario_solicitante = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                  </cfif>
                 ORDER BY CASE WHEN sol.status::text = 'PENDENTE' THEN 0 ELSE 1 END,
                          sol.data_criacao DESC
                 LIMIT 20
@@ -462,6 +503,6 @@
 
     <cfcatch type="any">
         <cfset VARIABLES.eventoSolicitacaoTablesReady = false/>
-        <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Nao foi possivel carregar as solicitacoes de eventos. Verifique a DDL de tb_conta_evento_solicitacoes."/>
+        <cfset VARIABLES.eventoSolicitacaoErrorMessage = "Não foi possível carregar as solicitações de eventos. Verifique a DDL de tb_conta_evento_solicitacoes."/>
     </cfcatch>
 </cftry>

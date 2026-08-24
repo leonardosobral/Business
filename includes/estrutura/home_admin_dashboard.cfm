@@ -722,7 +722,7 @@
 </cfif>
 
 <cfif VARIABLES.businessAdminHomeReady>
-    <section class="col-xl-5 business-admin-home business-page">
+    <section id="business-admin-pending" class="col-xl-5 business-admin-home business-page">
         <div class="card h-100 business-page-card">
             <div class="card-body business-page-body">
                 <div class="d-flex justify-content-between align-items-start gap-3 mb-3">

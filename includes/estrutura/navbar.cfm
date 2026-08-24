@@ -130,13 +130,15 @@
         <cfset VARIABLES.businessNavbarAccountName = "Road Runners Business"/>
         <cfif isDefined("VARIABLES.businessActiveAccountName") AND len(trim(VARIABLES.businessActiveAccountName))>
             <cfset VARIABLES.businessNavbarAccountName = VARIABLES.businessActiveAccountName/>
+        <cfelseif isDefined("VARIABLES.businessPendingAccountName") AND len(trim(VARIABLES.businessPendingAccountName))>
+            <cfset VARIABLES.businessNavbarAccountName = VARIABLES.businessPendingAccountName/>
         <cfelseif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
             <cfset VARIABLES.businessNavbarAccountName = "Todas as contas"/>
         </cfif>
         <div class="business-navbar-account-context my-auto">
             <span class="business-navbar-account-icon"><i class="fa-solid fa-building"></i></span>
             <span class="business-navbar-account-copy">
-                <span class="business-navbar-account-label">Conta ativa</span>
+                <span class="business-navbar-account-label"><cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>Conta em análise<cfelse>Conta ativa</cfif></span>
                 <cfoutput><span class="business-navbar-account-name" title="#htmlEditFormat(VARIABLES.businessNavbarAccountName)#">#htmlEditFormat(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
             </span>
             <cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>

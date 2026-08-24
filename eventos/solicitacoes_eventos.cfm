@@ -88,7 +88,7 @@
 
 <cfif VARIABLES.eventoSolicitacaoCanReview AND NOT VARIABLES.eventoSolicitacaoTablesReady>
   <div class="alert alert-warning mb-3" role="alert">
-    A tabela <code>tb_conta_evento_solicitacoes</code> ainda nao foi encontrada pelo sistema.
+    A tabela <code>tb_conta_evento_solicitacoes</code> ainda não foi encontrada pelo sistema.
   </div>
 </cfif>
 
@@ -104,7 +104,7 @@
         </span>
         <span class="d-inline-flex align-items-center gap-2">
           <cfif VARIABLES.eventoMinhasSolicitacoesHistorico GT 0>
-            <span class="badge badge-secondary"><cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# no historico</cfoutput></span>
+            <span class="badge badge-secondary"><cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# no histórico</cfoutput></span>
           </cfif>
           <i class="fa-solid fa-chevron-down"></i>
         </span>
@@ -118,7 +118,7 @@
         <div class="col-12 <cfif VARIABLES.eventoSolicitacaoCanReview>col-xl-7<cfelse>col-xl-12</cfif>">
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
             <div>
-              <h5 class="mb-1">Solicitar vinculo de evento</h5>
+              <h5 class="mb-1">Solicitar vínculo de evento</h5>
               <p class="event-request-meta mb-0">Busque pelo link do RoadRunners, tag, ID ou nome da prova.</p>
             </div>
           </div>
@@ -164,13 +164,13 @@
                     <th>Evento</th>
                     <th>Data</th>
                     <th>Status</th>
-                    <th class="text-end">Acao</th>
+                    <th class="text-end">Ação</th>
                   </tr>
                 </thead>
                 <tbody>
                   <cfoutput query="qEventoSolicitacaoBusca">
                     <cfset VARIABLES.eventoSolicitacaoResultBlocked = false/>
-                    <cfset VARIABLES.eventoSolicitacaoResultStatus = "Disponivel"/>
+                    <cfset VARIABLES.eventoSolicitacaoResultStatus = "Disponível"/>
                     <cfif len(trim(qEventoSolicitacaoBusca.status_vinculo))>
                       <cfset VARIABLES.eventoSolicitacaoResultStatus = qEventoSolicitacaoBusca.status_vinculo/>
                     <cfelseif len(trim(qEventoSolicitacaoBusca.status_solicitacao))>
@@ -181,7 +181,7 @@
                       <cfset VARIABLES.eventoSolicitacaoResultBadge = "success"/>
                     <cfelseif VARIABLES.eventoSolicitacaoResultStatus EQ "PENDENTE">
                       <cfset VARIABLES.eventoSolicitacaoResultBadge = "warning"/>
-                    <cfelseif VARIABLES.eventoSolicitacaoResultStatus NEQ "Disponivel">
+                    <cfelseif VARIABLES.eventoSolicitacaoResultStatus NEQ "Disponível">
                       <cfset VARIABLES.eventoSolicitacaoResultBadge = "danger"/>
                     </cfif>
                     <cfif qEventoSolicitacaoBusca.status_vinculo EQ "ATIVO" OR qEventoSolicitacaoBusca.status_solicitacao EQ "PENDENTE">
@@ -195,7 +195,7 @@
                       <td>
                         <cfif isDate(qEventoSolicitacaoBusca.data_inicial)>#dateFormat(qEventoSolicitacaoBusca.data_inicial, "dd/mm/yyyy")#</cfif>
                         <cfif isDate(qEventoSolicitacaoBusca.data_final) AND qEventoSolicitacaoBusca.data_final NEQ qEventoSolicitacaoBusca.data_inicial>
-                          <span class="event-request-meta">ate #dateFormat(qEventoSolicitacaoBusca.data_final, "dd/mm/yyyy")#</span>
+                          <span class="event-request-meta">até #dateFormat(qEventoSolicitacaoBusca.data_final, "dd/mm/yyyy")#</span>
                         </cfif>
                       </td>
                       <td><span class="badge badge-#VARIABLES.eventoSolicitacaoResultBadge#">#htmlEditFormat(VARIABLES.eventoSolicitacaoResultStatus)#</span></td>
@@ -216,7 +216,7 @@
           </cfif>
 
           <cfif qEventoMinhasSolicitacoes.recordcount>
-            <h6 class="mt-4 mb-2">Minhas solicitacoes</h6>
+            <h6 class="mt-4 mb-2">Minhas solicitações</h6>
             <cfif VARIABLES.eventoMinhasSolicitacoesPendentes GT 0>
               <div class="table-responsive event-request-scroll mb-3">
                 <table class="table table-sm table-dark table-striped mb-0">
@@ -250,7 +250,7 @@
             <cfif VARIABLES.eventoMinhasSolicitacoesHistorico GT 0>
               <details class="event-request-history">
                 <summary>
-                  <cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# solicitacoes revisadas no historico</cfoutput>
+                  <cfoutput>#VARIABLES.eventoMinhasSolicitacoesHistorico# solicitações revisadas no histórico</cfoutput>
                 </summary>
                 <div class="table-responsive event-request-scroll">
                   <table class="table table-sm table-dark table-striped mb-0">
@@ -289,15 +289,15 @@
         <div class="col-12 <cfif VARIABLES.eventoSolicitacaoCanRequest>col-xl-5<cfelse>col-xl-12</cfif>">
           <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
             <div>
-              <h5 class="mb-1">Solicitacoes pendentes</h5>
-              <p class="event-request-meta mb-0">Aprovacao libera o evento para a conta.</p>
+              <h5 class="mb-1">Solicitações pendentes</h5>
+              <p class="event-request-meta mb-0">Aprovação libera o evento para a conta.</p>
             </div>
             <span class="badge badge-warning"><cfoutput>#qEventoSolicitacoesPendentes.recordcount#</cfoutput></span>
           </div>
 
           <cfif NOT qEventoSolicitacoesPendentes.recordcount>
             <div class="alert alert-secondary mb-0" role="alert">
-              Nenhuma solicitacao pendente.
+              Nenhuma solicitação pendente.
             </div>
           <cfelse>
             <div class="d-flex flex-column gap-3">
@@ -318,7 +318,7 @@
                   <form method="post" action="/eventos/">
                     <input type="hidden" name="id_solicitacao" value="#qEventoSolicitacoesPendentes.id_solicitacao#"/>
                     <div class="mb-2">
-                      <input class="form-control form-control-sm" type="text" name="observacao_revisor" placeholder="Observacao opcional"/>
+                      <input class="form-control form-control-sm" type="text" name="observacao_revisor" placeholder="Observação opcional"/>
                     </div>
                     <div class="d-flex gap-2 justify-content-end">
                       <button class="btn btn-sm btn-outline-danger" type="submit" name="evento_solicitacao_action" value="negar">Negar</button>

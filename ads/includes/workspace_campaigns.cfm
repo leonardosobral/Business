@@ -26,6 +26,7 @@
                 <cfset VARIABLES.adsV1CampaignRowsShown = 0/>
                 <cfloop query="qAdsV1Campaigns">
                   <cfset VARIABLES.adsV1RowStatus = uCase(qAdsV1Campaigns.status & "")/>
+                  <cfset VARIABLES.adsV1RowReviewStatus = uCase(trim(qAdsV1Campaigns.review_status & ""))/>
                   <cfset VARIABLES.adsV1ShowCampaignRow = VARIABLES.adsV1WorkspaceView EQ "overview"
                     ? listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus) GT 0
                     : (VARIABLES.adsV1CampaignFilter EQ "ongoing"
@@ -37,16 +38,42 @@
                     <cfoutput>
                       <tr>
                         <td><div class="d-flex align-items-start gap-2"><div class="ads-campaign-mark"><i class="fas fa-bullhorn" aria-hidden="true"></i></div><div><strong>#htmlEditFormat(qAdsV1Campaigns.name)#</strong><div class="small text-muted">#htmlEditFormat(qAdsV1Campaigns.nome_evento)#</div><div class="small text-muted"><cfif VARIABLES.adsV1WorkspaceView EQ "overview">#htmlEditFormat(adsV1PlacementCountSummary(qAdsV1Campaigns.placement_keys))#<cfelse>#htmlEditFormat(adsV1PlacementSummary(qAdsV1Campaigns.placement_keys))#</cfif></div></div></div></td>
-                        <td><span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span><cfif VARIABLES.adsV1RowStatus EQ "ACTIVE" AND VARIABLES.adsV1Summary.balance LT qAdsV1Campaigns.cpc_bid><div class="small text-warning mt-1">Saldo insuficiente</div></cfif></td>
+                        <td>
+                          <span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span>
+                          <cfif VARIABLES.adsV1RowReviewStatus EQ "WAITING_PREREQUISITES">
+                            <div class="mt-2"><span class="badge badge-warning">Aguardando pré-requisitos</span></div>
+                            <div class="small text-muted mt-1">A campanha está preparada e será enviada à RunnerHub quando a conta e o evento forem aprovados.</div>
+                          <cfelseif VARIABLES.adsV1RowReviewStatus EQ "PENDING_REVIEW">
+                            <div class="mt-2"><span class="badge badge-info">Em análise pela RunnerHub</span></div>
+                            <div class="small text-muted mt-1">Nenhum anúncio entra no ar antes da aprovação.</div>
+                          <cfelseif VARIABLES.adsV1RowReviewStatus EQ "CHANGES_REQUESTED">
+                            <div class="mt-2"><span class="badge badge-danger">Ajustes solicitados</span></div>
+                            <cfif len(trim(qAdsV1Campaigns.review_reason & ""))><div class="small text-danger mt-1">#htmlEditFormat(qAdsV1Campaigns.review_reason)#</div></cfif>
+                          <cfelseif VARIABLES.adsV1RowReviewStatus EQ "APPROVED">
+                            <div class="mt-2"><span class="badge badge-success">Aprovada pela RunnerHub</span></div>
+                          <cfelseif VARIABLES.adsV1RowReviewStatus EQ "CANCELED">
+                            <div class="mt-2"><span class="badge badge-secondary">Análise cancelada</span></div>
+                          </cfif>
+                          <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE" AND VARIABLES.adsV1Summary.balance LT qAdsV1Campaigns.cpc_bid><div class="small text-warning mt-1">Saldo insuficiente</div></cfif>
+                        </td>
                         <td><div>#lsCurrencyFormat(qAdsV1Campaigns.spent_total)# de #lsCurrencyFormat(qAdsV1Campaigns.budget_total)#</div><div class="ads-budget-progress mt-2"><span style="width:#numberFormat(VARIABLES.adsV1BudgetProgress, '0')#%"></span></div></td>
                         <td>#lsNumberFormat(qAdsV1Campaigns.viewable_impression_count, "9,999,999")#</td>
                         <td>#lsNumberFormat(qAdsV1Campaigns.valid_click_count, "9,999,999")#</td>
                         <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns"><td class="text-end">
                           <cfif VARIABLES.adsAccessCanManageCampaign>
                             <details class="ads-row-actions text-start"><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
-                              <cfif listFind("DRAFT,PAUSED", VARIABLES.adsV1RowStatus)>
+                              <cfif listFind("DRAFT,PAUSED", VARIABLES.adsV1RowStatus)
+                                AND NOT listFind("PENDING_REVIEW,APPROVED", VARIABLES.adsV1RowReviewStatus)>
                                 <a class="btn btn-sm btn-outline-light" href="./?view=campaigns&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)###campaign-form">Editar</a>
-                                <form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="activate_campaign"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="reason" value="Ativacao manual pelo Business"/><button class="btn btn-sm btn-success w-100" type="submit">Ativar<cfif VARIABLES.adsV1RowStatus EQ 'PAUSED'> novamente</cfif></button></form>
+                              </cfif>
+                              <cfif VARIABLES.adsV1RowStatus EQ "DRAFT"
+                                AND (NOT len(VARIABLES.adsV1RowReviewStatus) OR listFind("CHANGES_REQUESTED,CANCELED", VARIABLES.adsV1RowReviewStatus))>
+                                <form method="post" action="./?view=campaigns">
+                                  <input type="hidden" name="ads_v1_action" value="submit_campaign_review"/>
+                                  <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
+                                  <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
+                                  <button class="btn btn-sm btn-info w-100" type="submit"><cfif VARIABLES.adsV1RowReviewStatus EQ "CHANGES_REQUESTED">Reenviar<cfelse>Enviar</cfif> para análise</button>
+                                </form>
                               </cfif>
                               <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
                               <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
@@ -62,7 +89,7 @@
               </tbody>
             </table>
           </div>
-        <cfelse><div class="alert alert-info mb-0">Esta conta ainda nao possui campanhas.</div></cfif>
+        <cfelse><div class="alert alert-info mb-0">Esta conta ainda não possui campanhas.</div></cfif>
       </div>
     </section>
   </div>

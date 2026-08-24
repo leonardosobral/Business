@@ -225,20 +225,66 @@
   }
 
   .accounts-page .accounts-registration-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,.025);
+    margin-bottom: 1rem;
+    overflow: hidden;
   }
 
   .accounts-page .accounts-registration-row:last-child {
-    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .accounts-page .accounts-registration-header {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+  }
+
+  .accounts-page .accounts-registration-summary {
+    color: var(--mdb-secondary-color);
+    margin: .35rem 0 0;
+  }
+
+  .accounts-page .accounts-registration-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 390px);
+  }
+
+  .accounts-page .accounts-registration-details {
+    max-width: none;
+    min-width: 0;
+    padding: 1.25rem;
   }
 
   .accounts-page .accounts-registration-actions {
+    background: rgba(0,0,0,.08);
+    border-left: 1px solid rgba(255,255,255,.09);
+    padding: 1.25rem;
+  }
+
+  .accounts-page .accounts-request-decision {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .accounts-page .accounts-request-decision-copy {
+    color: var(--mdb-secondary-color);
+    font-size: .82rem;
+    margin: -.35rem 0 1rem;
+  }
+
+  .accounts-page .accounts-request-decision-actions {
     display: grid;
-    gap: .75rem;
+    gap: .6rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    margin-top: auto;
+    padding-top: .25rem;
   }
 
   .accounts-page .accounts-request-grid {
@@ -268,11 +314,6 @@
     letter-spacing: 0;
     margin-bottom: .75rem;
     text-transform: uppercase;
-  }
-
-  .accounts-page .accounts-danger-panel {
-    border-color: rgba(255, 56, 96, .45);
-    background: rgba(255, 56, 96, .035);
   }
 
   .accounts-page .accounts-empty-state {
@@ -682,8 +723,17 @@
   @media (max-width: 991.98px) {
     .accounts-page .accounts-user-row,
     .accounts-page .accounts-event-row,
-    .accounts-page .accounts-registration-row {
+    .accounts-page .accounts-registration-body {
       grid-template-columns: 1fr;
+    }
+
+    .accounts-page .accounts-registration-header {
+      flex-direction: column;
+    }
+
+    .accounts-page .accounts-registration-actions {
+      border-left: 0;
+      border-top: 1px solid rgba(255,255,255,.09);
     }
 
     .accounts-page .accounts-request-grid {
@@ -887,11 +937,11 @@
             </cfif>
           </cfif>
 
-          <cfif VARIABLES.businessAccountsCanAdminAll>
+          <cfif VARIABLES.businessAccountsCanReviewExistingRequests>
             <div class="accounts-panel p-3 mb-4 <cfif VARIABLES.accountsRegistrationPendingTotal EQ 0>accounts-requests-compact</cfif>">
               <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
                 <div>
-                  <h5 class="mb-1">Solicitações de acesso</h5>
+                  <h5 class="mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Solicitações de acesso<cfelse>Pedidos de acesso à sua conta</cfif></h5>
                   <div class="text-muted small">
                     <cfoutput>#LSNumberFormat(VARIABLES.accountsRegistrationPendingTotal)# pendentes de #LSNumberFormat(VARIABLES.accountsRegistrationTotal)# solicitações</cfoutput>
                   </div>
@@ -903,17 +953,34 @@
                 <div class="text-muted py-3">A fila será exibida depois que a estrutura de solicitações for aplicada.</div>
               <cfelseif qBusinessAccountRegistrationRequests.recordcount>
                 <cfoutput query="qBusinessAccountRegistrationRequests">
-                  <div class="accounts-registration-row">
-                    <div class="accounts-cell">
-                      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                        <span class="accounts-status">## #qBusinessAccountRegistrationRequests.id_solicitacao#</span>
-                        <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_prestador)#</span>
-                        <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_titular)#</span>
-                        <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
-                          <span class="accounts-status">Voucher #htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#</span>
-                        </cfif>
+                  <article class="accounts-registration-row">
+                    <header class="accounts-registration-header">
+                      <div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                          <span class="accounts-status">Solicitação ## #qBusinessAccountRegistrationRequests.id_solicitacao#</span>
+                          <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_prestador)#</span>
+                          <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_titular)#</span>
+                          <cfif qBusinessAccountRegistrationRequests.status_conta EQ "ATIVA">
+                            <span class="accounts-status">Pedido de acesso à conta existente</span>
+                          </cfif>
+                          <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
+                            <span class="accounts-status">Voucher #htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#</span>
+                          </cfif>
+                        </div>
+                        <p class="accounts-registration-summary">
+                          <strong class="text-body">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_responsavel)#</strong>
+                          solicitou acesso à conta
+                          <strong class="text-body">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_empresa)#</strong>.
+                        </p>
                       </div>
-                      <div class="fw-bold fs-6">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_empresa)#</div>
+                      <span class="accounts-status text-warning flex-shrink-0">Aguardando decisão</span>
+                    </header>
+
+                    <div class="accounts-registration-body">
+                      <section class="accounts-registration-details accounts-cell" aria-label="Dados da solicitação">
+                      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <div class="accounts-action-title mb-0">Dados da solicitação</div>
+                      </div>
                       <div class="accounts-request-grid small">
                         <div>
                           <span class="accounts-request-label">Documento</span>
@@ -963,40 +1030,42 @@
                         </div>
                       </cfif>
                       <div class="small text-muted mt-2">Criada em #dateTimeFormat(qBusinessAccountRegistrationRequests.data_criacao, "dd/mm/yyyy HH:nn")#</div>
+                      </section>
+
+                      <div class="accounts-registration-actions">
+                        <form method="post" action="./" class="accounts-request-decision">
+                          <div class="accounts-action-title">Decisão da solicitação</div>
+                          <p class="accounts-request-decision-copy">Revise os dados e defina o acesso que este usuário receberá.</p>
+                          <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
+
+                          <cfif qBusinessAccountRegistrationRequests.status_conta EQ "ATIVA">
+                            <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel após a aprovação</label>
+                            <select class="form-select form-select-sm mb-3" id="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="papel_solicitacao">
+                              <option value="OPERADOR" selected>Operador</option>
+                              <option value="ADMIN">Administrador da conta</option>
+                              <option value="VISUALIZADOR">Visualizador</option>
+                            </select>
+                          <cfelseif VARIABLES.businessAccountsCanAdminAll>
+                            <label class="form-label small" for="conta-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Associar a uma conta existente</label>
+                            <select class="form-select form-select-sm mb-3" id="conta-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="id_conta_existente">
+                              <option value="">Criar nova conta</option>
+                              <cfloop query="qBusinessAccountRegistrationAccountOptions">
+                                <option value="#qBusinessAccountRegistrationAccountOptions.id_conta#">## #qBusinessAccountRegistrationAccountOptions.id_conta# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.nome_conta)# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.documento)# (#htmlEditFormat(qBusinessAccountRegistrationAccountOptions.status)#)</option>
+                              </cfloop>
+                            </select>
+                          </cfif>
+
+                          <label class="form-label small" for="nota-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Nota da decisão <span class="text-muted">(opcional)</span></label>
+                          <textarea class="form-control form-control-sm mb-3" id="nota-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="observacao_revisor" rows="3"></textarea>
+
+                          <div class="accounts-request-decision-actions">
+                            <button class="btn btn-sm btn-warning" type="submit" name="account_registration_action" value="aprovar">Aprovar acesso</button>
+                            <button class="btn btn-sm btn-outline-danger" type="submit" name="account_registration_action" value="recusar" onclick="return confirm('Recusar esta solicitação?');">Recusar</button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-
-                    <div class="accounts-registration-actions">
-                      <form method="post" action="./" class="accounts-panel p-3">
-                        <div class="accounts-action-title">Aprovação</div>
-                        <input type="hidden" name="account_registration_action" value="aprovar"/>
-                        <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
-
-                        <label class="form-label small">Associar a uma conta existente</label>
-                        <select class="form-select form-select-sm mb-2" name="id_conta_existente">
-                          <option value="">Criar nova conta</option>
-                          <cfloop query="qBusinessAccountRegistrationAccountOptions">
-                            <option value="#qBusinessAccountRegistrationAccountOptions.id_conta#">## #qBusinessAccountRegistrationAccountOptions.id_conta# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.nome_conta)# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.documento)# (#htmlEditFormat(qBusinessAccountRegistrationAccountOptions.status)#)</option>
-                          </cfloop>
-                        </select>
-
-                        <label class="form-label small">Nota da aprovação</label>
-                        <textarea class="form-control form-control-sm mb-2" name="observacao_revisor" rows="2"></textarea>
-
-                        <button class="btn btn-sm btn-warning w-100" type="submit">Aprovar</button>
-                      </form>
-
-                      <form method="post" action="./" class="accounts-panel accounts-danger-panel p-3" onsubmit="return confirm('Recusar esta solicitação?');">
-                        <div class="accounts-action-title">Recusa</div>
-                        <input type="hidden" name="account_registration_action" value="recusar"/>
-                        <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
-
-                        <label class="form-label small">Motivo da recusa</label>
-                        <textarea class="form-control form-control-sm mb-2" name="observacao_revisor" rows="2"></textarea>
-
-                        <button class="btn btn-sm btn-outline-danger w-100" type="submit">Recusar</button>
-                      </form>
-                    </div>
-                  </div>
+                  </article>
                 </cfoutput>
               <cfelse>
                 <div class="text-muted py-3 accounts-requests-empty">Nenhuma solicitação pendente.</div>

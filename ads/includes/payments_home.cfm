@@ -1,4 +1,32 @@
 <cfif VARIABLES.adsAccessCanViewPayments>
+  <cfif VARIABLES.adsAccessIsPendingNewAccount>
+    <section class="card shadow-0 mb-4" id="payment-credit">
+      <div class="card-body p-3 p-lg-4">
+        <div class="ads-v1-eyebrow">Crédito de publicidade</div>
+        <h2 class="h5 mb-1">Reservar voucher</h2>
+        <p class="text-muted">O crédito será aplicado automaticamente quando a conta for aprovada. Até lá, nenhum saldo será criado ou consumido.</p>
+
+        <cfif qAdsV1VoucherReservation.recordcount>
+          <div class="border border-success rounded p-3" id="ads-voucher-form">
+            <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+              <div><span class="badge badge-success mb-2">Voucher reservado</span><div class="h5 mb-1"><cfoutput>#lsCurrencyFormat(qAdsV1VoucherReservation.credito)#</cfoutput></div><div class="small text-muted">Código <cfoutput>#htmlEditFormat(left(qAdsV1VoucherReservation.codigo, 4))#••••#htmlEditFormat(right(qAdsV1VoucherReservation.codigo, 4))#</cfoutput></div></div>
+              <div class="small text-muted align-self-md-center"><cfif isDate(qAdsV1VoucherReservation.expires_at)>Válido até <cfoutput>#lsDateFormat(qAdsV1VoucherReservation.expires_at, "dd/mm/yyyy")#</cfoutput><cfelse>Sem data de expiração</cfif></div>
+            </div>
+          </div>
+        <cfelseif VARIABLES.adsAccessCanReserveVoucher>
+          <form method="post" action="./?view=payments#ads-voucher-form" id="ads-voucher-form" class="border rounded p-3">
+            <input type="hidden" name="ads_v1_action" value="reserve_voucher"/>
+            <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
+            <label class="form-label" for="ads-voucher-code">Código do voucher</label>
+            <div class="input-group">
+              <input class="form-control text-uppercase" id="ads-voucher-code" name="voucher_code" type="text" minlength="3" maxlength="160" autocomplete="off" placeholder="RUNPRO-..." required/>
+              <button class="btn btn-warning" type="submit">Reservar voucher</button>
+            </div>
+          </form>
+        </cfif>
+      </div>
+    </section>
+  <cfelse>
   <section class="card shadow-0 mb-4" id="payment-credit">
     <div class="card-body p-3 p-lg-4">
       <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
@@ -184,4 +212,5 @@
     window.setTimeout(pollPaymentStatus, delay);
   }());
   </script>
+  </cfif>
 </cfif>

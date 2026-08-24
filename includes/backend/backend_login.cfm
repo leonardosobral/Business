@@ -13,8 +13,11 @@
 <cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
 <cfset VARIABLES.businessSkipCookieLogin = false/>
 <cfset VARIABLES.businessAccountPendingAccess = false/>
+<cfset VARIABLES.businessPendingWorkspace = false/>
+<cfset VARIABLES.businessPendingRequestAccountId = ""/>
+<cfset VARIABLES.businessPendingExistingAccountRequest = false/>
 <cfset VARIABLES.businessUserManagementStatusReady = false/>
-<cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,nome_empresa,tipo_prestador,status,data_criacao,nome_responsavel,email_responsavel")/>
+<cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel")/>
 
 <cftry>
     <cfquery name="qBusinessUserManagementSchema">
@@ -94,19 +97,27 @@
         AND (
             usr.is_admin = true
             OR usr.is_dev = true
-            OR usr.is_partner = true
             OR EXISTS (
                 SELECT 1
                 FROM tb_conta_usuarios cu
                 INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
                 WHERE cu.id_usuario = usr.id
                   AND cu.status = 'ATIVO'::status_usuario_conta
-                  AND cont.status = 'ATIVA'::status_conta
+                  AND cont.status IN ('ATIVA'::status_conta, 'PENDENTE'::status_conta)
+            )
+            OR EXISTS (
+                SELECT 1
+                FROM tb_conta_cadastro_solicitacoes sol
+                WHERE lower(sol.email_responsavel) = lower(usr.email)
+                  AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
             )
         )
     </cfquery>
     <cfinclude template="business_account_context.cfm"/>
     <cfinclude template="business_permissions.cfm"/>
+    <cfif isDefined("VARIABLES.businessPendingAccountId") AND len(trim(VARIABLES.businessPendingAccountId))>
+        <cfset VARIABLES.businessPendingWorkspace = true/>
+    </cfif>
     <cfif qPerfil.recordcount
         AND isDefined("VARIABLES.businessAccountSelectionRequired")
         AND VARIABLES.businessAccountSelectionRequired
@@ -116,17 +127,21 @@
     <cftry>
         <cfquery name="qBusinessPendingRegistration">
             SELECT sol.id_solicitacao,
-                   sol.nome_empresa,
+                   sol.id_conta,
+                   coalesce(cont.nome_conta, sol.nome_empresa) AS nome_empresa,
                    sol.tipo_prestador,
                    sol.status::text AS status,
+                   cont.status::text AS status_conta,
                    sol.data_criacao,
                    sol.nome_responsavel,
                    sol.email_responsavel
             FROM tb_usuarios usr
             INNER JOIN tb_conta_cadastro_solicitacoes sol
                 ON lower(sol.email_responsavel) = lower(usr.email)
+            LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
             WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
               AND coalesce(usr.is_admin, false) = false
+              AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
               AND NOT EXISTS (
                 SELECT 1
                 FROM tb_conta_usuarios cu
@@ -140,16 +155,34 @@
         </cfquery>
 
         <cfif qBusinessPendingRegistration.recordcount>
-            <cfset VARIABLES.businessAccountPendingAccess = true/>
+            <cfset VARIABLES.businessPendingWorkspace = true/>
+            <cfset VARIABLES.businessPendingRegistrationId = qBusinessPendingRegistration.id_solicitacao/>
+            <cfif NOT isDefined("VARIABLES.businessPendingAccountName") OR NOT len(trim(VARIABLES.businessPendingAccountName))>
+                <cfset VARIABLES.businessPendingAccountName = qBusinessPendingRegistration.nome_empresa/>
+            </cfif>
+            <cfif len(trim(qBusinessPendingRegistration.id_conta & ""))>
+                <cfset VARIABLES.businessPendingRequestAccountId = qBusinessPendingRegistration.id_conta/>
+            </cfif>
+            <cfset VARIABLES.businessPendingExistingAccountRequest = qBusinessPendingRegistration.status_conta EQ "ATIVA"/>
         </cfif>
 
         <cfcatch type="any">
             <cfset VARIABLES.businessAccountPendingAccess = false/>
-            <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,nome_empresa,tipo_prestador,status,data_criacao,nome_responsavel,email_responsavel")/>
+            <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel")/>
         </cfcatch>
     </cftry>
 
     <cfif VARIABLES.businessAccountPendingAccess AND isDefined("VARIABLES.template")>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+
+    <cfset VARIABLES.businessPendingAllowedTemplates = VARIABLES.businessPendingExistingAccountRequest
+        ? "/,/faq/,/suporte/"
+        : "/,/eventos/,/ads/,/faq/,/suporte/"/>
+    <cfif qPerfil.recordcount
+        AND VARIABLES.businessPendingWorkspace
+        AND isDefined("VARIABLES.template")
+        AND NOT listFindNoCase(VARIABLES.businessPendingAllowedTemplates, VARIABLES.template)>
         <cflocation addtoken="false" url="/"/>
     </cfif>
 
@@ -398,6 +431,30 @@
         where email = <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>
     </cfquery>
 
+    <cfquery name="qBusinessGoogleSignInState">
+        SELECT (
+                   coalesce(usr.is_admin, false)
+                   OR coalesce(usr.is_dev, false)
+                   OR EXISTS (
+                       SELECT 1
+                       FROM tb_conta_usuarios cu
+                       INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                       WHERE cu.id_usuario = usr.id
+                         AND cu.status = 'ATIVO'::status_usuario_conta
+                         AND cont.status = 'ATIVA'::status_conta
+                   )
+               ) AS has_business_access,
+               EXISTS (
+                   SELECT 1
+                   FROM tb_conta_cadastro_solicitacoes sol
+                   WHERE lower(sol.email_responsavel) = lower(usr.email)
+                     AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+               ) AS has_pending_registration
+        FROM tb_usuarios usr
+        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
+        LIMIT 1
+    </cfquery>
+
     <cfset SESSION.cadastroGoogleIdentity = {
         sub = user_data.sub & "",
         email = lCase(trim(qPerfil.email & "")),
@@ -415,12 +472,36 @@
     <cfcookie name="email" secure="yes" encodevalue="yes" value="#qPerfil.email#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
     <cfcookie name="imagem_usuario" secure="yes" encodevalue="yes" value="#qPerfil.imagem_usuario#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
     <cfheader name="Set-Cookie" value="rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; Secure; SameSite=Lax"/>
-    <cfset VARIABLES.googleSignInRedirect = "/"/>
-    <cfif isDefined("URL.redirect") AND len(trim(URL.redirect))>
-        <cfset VARIABLES.googleSignInRedirect = URL.redirect/>
+    <cfset VARIABLES.googleSignInHasBusinessAccess = false/>
+    <cfset VARIABLES.googleSignInHasPendingRegistration = false/>
+    <cfif qBusinessGoogleSignInState.recordcount>
+        <cfif IsBoolean(qBusinessGoogleSignInState.has_business_access)>
+            <cfset VARIABLES.googleSignInHasBusinessAccess = qBusinessGoogleSignInState.has_business_access/>
+        <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(qBusinessGoogleSignInState.has_business_access & ""))>
+            <cfset VARIABLES.googleSignInHasBusinessAccess = true/>
+        </cfif>
+
+        <cfif IsBoolean(qBusinessGoogleSignInState.has_pending_registration)>
+            <cfset VARIABLES.googleSignInHasPendingRegistration = qBusinessGoogleSignInState.has_pending_registration/>
+        <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(qBusinessGoogleSignInState.has_pending_registration & ""))>
+            <cfset VARIABLES.googleSignInHasPendingRegistration = true/>
+        </cfif>
     </cfif>
-    <cfif findNoCase("logout=1", VARIABLES.googleSignInRedirect)>
+
+    <cfset VARIABLES.googleSignInRedirect = "/"/>
+    <cfif VARIABLES.googleSignInHasBusinessAccess>
+        <cfif isDefined("URL.redirect")
+            AND len(trim(URL.redirect))
+            AND left(trim(URL.redirect), 1) EQ "/"
+            AND left(trim(URL.redirect), 2) NEQ "//"
+            AND NOT find("\", trim(URL.redirect))
+            AND NOT findNoCase("logout=1", URL.redirect)>
+            <cfset VARIABLES.googleSignInRedirect = trim(URL.redirect)/>
+        </cfif>
+    <cfelseif VARIABLES.googleSignInHasPendingRegistration>
         <cfset VARIABLES.googleSignInRedirect = "/"/>
+    <cfelse>
+        <cfset VARIABLES.googleSignInRedirect = "/cadastro/"/>
     </cfif>
 
     <cfquery>

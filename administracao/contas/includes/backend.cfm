@@ -29,6 +29,7 @@
 <cfset VARIABLES.businessAccountsCanAdminAll = false/>
 <cfset VARIABLES.businessAccountsCanManageUsers = false/>
 <cfset VARIABLES.businessAccountsCanManageEvents = false/>
+<cfset VARIABLES.businessAccountsCanReviewExistingRequests = false/>
 <cfset VARIABLES.businessAccountRegistrationTableReady = false/>
 <cfset VARIABLES.businessAccountVoucherTableReady = false/>
 <cfset VARIABLES.businessAccountVoucherColumnsReady = false/>
@@ -70,6 +71,13 @@
     </cfif>
     <cfset VARIABLES.accountUserAssignablePapelList = "ADMIN,OPERADOR,VISUALIZADOR"/>
 </cfif>
+
+<cfset VARIABLES.businessAccountsCanReviewExistingRequests = VARIABLES.businessAccountsCanAdminAll
+    OR (
+        VARIABLES.businessAccountsScopedAccountIds NEQ "0"
+        AND isDefined("VARIABLES.businessCurrentAccountRole")
+        AND VARIABLES.businessCurrentAccountRole EQ "OWNER"
+    )/>
 
 <cfquery name="qBusinessAccountTableCheck">
     SELECT table_name
@@ -178,7 +186,7 @@
 <cfset qBusinessAccountUserSearch = QueryNew("id,name,email,is_admin,is_partner,papel,status")/>
 <cfset qBusinessAccountEvents = QueryNew("id_conta_evento,id_conta,id_evento,status,data_criacao,data_atualizacao,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfset qBusinessAccountEventSearch = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,status")/>
-<cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,data_criacao,nome_conta,usuario_nome,id_ad_voucher,voucher_codigo,voucher_credito,voucher_status,voucher_conta_id")/>
+<cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,status_conta,data_criacao,nome_conta,usuario_nome,id_ad_voucher,voucher_codigo,voucher_credito,voucher_status,voucher_conta_id")/>
 <cfset qBusinessAccountRegistrationAccountOptions = QueryNew("id_conta,nome_conta,documento,status")/>
 <cfset qBusinessAccountVouchers = QueryNew("id_ad_voucher,codigo,credito,credito_disponivel,status,data_criacao,data_expiracao,data_resgate,papel_resgate,observacao,id_usuario_resgate,usuario_resgate_nome,usuario_resgate_email")/>
 <cfset qBusinessAccountPermissionCatalog = QueryNew("id_permissao,codigo,descricao")/>
@@ -213,12 +221,9 @@
     <cfset VARIABLES.accountRegistrationRequestId = isDefined("FORM.id_solicitacao") ? trim(FORM.id_solicitacao) : ""/>
     <cfset VARIABLES.accountRegistrationExistingAccountId = isDefined("FORM.id_conta_existente") ? trim(FORM.id_conta_existente) : ""/>
     <cfset VARIABLES.accountRegistrationReviewNote = isDefined("FORM.observacao_revisor") ? trim(FORM.observacao_revisor) : ""/>
+    <cfset VARIABLES.accountRegistrationRequestedRole = isDefined("FORM.papel_solicitacao") ? uCase(trim(FORM.papel_solicitacao)) : "OPERADOR"/>
     <cfset VARIABLES.accountRegistrationErrors = []/>
     <cfset VARIABLES.accountRegistrationRedirectUrl = ""/>
-
-    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
-        <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Apenas administradores internos podem revisar solicitacoes de cadastro.")/>
-    </cfif>
 
     <cfif NOT listFindNoCase("aprovar,recusar", VARIABLES.accountRegistrationAction)>
         <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Acao de solicitacao invalida.")/>
@@ -236,9 +241,11 @@
         <cftry>
             <cftransaction>
                 <cfquery name="qBusinessAccountRegistrationReview" datasource="runnerhub">
-                    SELECT *
-                    FROM tb_conta_cadastro_solicitacoes
-                    WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationRequestId#"/>
+                    SELECT sol.*,
+                           cont.status::text AS status_conta
+                    FROM tb_conta_cadastro_solicitacoes sol
+                    LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
+                    WHERE sol.id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationRequestId#"/>
                     LIMIT 1
                 </cfquery>
 
@@ -246,6 +253,41 @@
                     <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Solicitacao nao encontrada.")/>
                 <cfelseif qBusinessAccountRegistrationReview.status NEQ "PENDENTE">
                     <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Esta solicitacao ja foi revisada.")/>
+                </cfif>
+
+                <cfset VARIABLES.accountRegistrationIsExistingAccessRequest = NOT arrayLen(VARIABLES.accountRegistrationErrors)
+                    AND len(trim(qBusinessAccountRegistrationReview.id_conta & ""))
+                    AND qBusinessAccountRegistrationReview.status_conta EQ "ATIVA"/>
+                <cfset VARIABLES.accountRegistrationIsProvisionalAccount = NOT arrayLen(VARIABLES.accountRegistrationErrors)
+                    AND NOT VARIABLES.accountRegistrationIsExistingAccessRequest
+                    AND len(trim(qBusinessAccountRegistrationReview.id_conta & ""))
+                    AND qBusinessAccountRegistrationReview.status_conta EQ "PENDENTE"/>
+                <cfset VARIABLES.accountRegistrationReviewerIsAccountOwner = false/>
+
+                <cfif VARIABLES.accountRegistrationIsExistingAccessRequest AND NOT VARIABLES.businessAccountsCanAdminAll>
+                    <cfquery name="qBusinessAccountRegistrationOwnerAuthorization" datasource="runnerhub">
+                        SELECT cu.id_conta_usuario
+                        FROM tb_conta_usuarios cu
+                        WHERE cu.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_conta#"/>
+                          AND cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                          AND cu.status = 'ATIVO'::status_usuario_conta
+                          AND cu.papel = 'OWNER'::papel_usuario_conta
+                        LIMIT 1
+                    </cfquery>
+                    <cfset VARIABLES.accountRegistrationReviewerIsAccountOwner = qBusinessAccountRegistrationOwnerAuthorization.recordcount GT 0/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)
+                    AND NOT VARIABLES.businessAccountsCanAdminAll
+                    AND NOT VARIABLES.accountRegistrationReviewerIsAccountOwner>
+                    <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Apenas um OWNER da conta ou um administrador RunnerHub pode revisar esta solicitação.")/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)
+                    AND VARIABLES.accountRegistrationAction EQ "aprovar"
+                    AND VARIABLES.accountRegistrationIsExistingAccessRequest
+                    AND NOT listFindNoCase("ADMIN,OPERADOR,VISUALIZADOR", VARIABLES.accountRegistrationRequestedRole)>
+                    <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Selecione um papel válido para o novo usuário.")/>
                 </cfif>
 
                 <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND VARIABLES.accountRegistrationAction EQ "recusar">
@@ -258,45 +300,61 @@
                         WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/>
                     </cfquery>
 
+                    <cfif len(trim(qBusinessAccountRegistrationReview.id_conta & ""))>
+                        <cfquery datasource="runnerhub">
+                            UPDATE tb_conta_usuarios
+                            SET status = 'INATIVO'::status_usuario_conta,
+                                data_atualizacao = now()
+                            WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_conta#"/>
+                              AND id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_usuario#" null="#NOT len(trim(qBusinessAccountRegistrationReview.id_usuario & ''))#"/>
+                              AND EXISTS (
+                                  SELECT 1
+                                  FROM tb_contas cont
+                                  WHERE cont.id_conta = tb_conta_usuarios.id_conta
+                                    AND cont.status = 'PENDENTE'::status_conta
+                              )
+                        </cfquery>
+
+                        <cfquery datasource="runnerhub">
+                            UPDATE tb_contas
+                            SET status = 'CANCELADA'::status_conta,
+                                data_atualizacao = now()
+                            WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_conta#"/>
+                              AND status = 'PENDENTE'::status_conta
+                        </cfquery>
+                    </cfif>
+
+                    <cfif VARIABLES.accountRegistrationIsProvisionalAccount>
+                        <cfquery name="qBusinessAccountRegistrationVoucherRelease" datasource="runnerhub">
+                            SELECT *
+                            FROM ads.release_voucher_reservation(
+                                CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/> AS bigint),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="Conta recusada"/> AS text)
+                            )
+                        </cfquery>
+
+                        <cfquery name="qBusinessAccountRegistrationCampaignCancel" datasource="runnerhub">
+                            SELECT ads.cancel_open_campaign_reviews(
+                                CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_conta#"/> AS bigint),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="Conta recusada"/> AS text)
+                            ) AS changed_count
+                        </cfquery>
+                    </cfif>
+
                     <cfset VARIABLES.accountRegistrationRedirectUrl = "./?sucesso=solicitacao_recusada"/>
                 </cfif>
 
                 <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND VARIABLES.accountRegistrationAction EQ "aprovar">
                     <cfset VARIABLES.accountRegistrationTargetAccountId = ""/>
-                    <cfset VARIABLES.accountRegistrationVoucherId = ""/>
-                    <cfset VARIABLES.accountRegistrationVoucherCode = ""/>
+                    <cfset VARIABLES.accountRegistrationMembershipRole = "OWNER"/>
 
-                    <cfif VARIABLES.businessAccountVoucherColumnsReady
-                        AND listFindNoCase(qBusinessAccountRegistrationReview.columnList, "id_ad_voucher")
-                        AND len(trim(qBusinessAccountRegistrationReview.id_ad_voucher))>
-
-                        <cfquery name="qBusinessAccountRegistrationVoucher" datasource="runnerhub">
-                            SELECT id_ad_voucher,
-                                   codigo,
-                                   id_conta,
-                                   status,
-                                   credito,
-                                   credito_disponivel,
-                                   data_expiracao,
-                                   papel_resgate::text AS papel_resgate
-                            FROM ads.tb_ad_vouchers
-                            WHERE id_ad_voucher = <cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessAccountRegistrationReview.id_ad_voucher#"/>
-                            LIMIT 1
-                        </cfquery>
-
-                        <cfif NOT qBusinessAccountRegistrationVoucher.recordcount>
-                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao nao foi encontrado.")/>
-                        <cfelseif qBusinessAccountRegistrationVoucher.status NEQ 1>
-                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao nao esta disponivel para resgate.")/>
-                        <cfelseif len(trim(qBusinessAccountRegistrationVoucher.data_expiracao)) AND isDate(qBusinessAccountRegistrationVoucher.data_expiracao) AND dateCompare(qBusinessAccountRegistrationVoucher.data_expiracao, now(), "d") LT 0>
-                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado na solicitacao esta expirado.")/>
-                        <cfelseif NOT len(trim(qBusinessAccountRegistrationVoucher.id_conta))>
-                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Voucher informado nao esta vinculado a uma conta.")/>
-                        <cfelse>
-                            <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationVoucher.id_conta/>
-                            <cfset VARIABLES.accountRegistrationVoucherId = qBusinessAccountRegistrationVoucher.id_ad_voucher/>
-                            <cfset VARIABLES.accountRegistrationVoucherCode = qBusinessAccountRegistrationVoucher.codigo/>
-                        </cfif>
+                    <cfif VARIABLES.accountRegistrationIsExistingAccessRequest>
+                        <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationReview.id_conta/>
+                        <cfset VARIABLES.accountRegistrationMembershipRole = VARIABLES.accountRegistrationRequestedRole/>
+                    <cfelseif VARIABLES.accountRegistrationIsProvisionalAccount>
+                        <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationReview.id_conta/>
                     </cfif>
 
                     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND len(VARIABLES.accountRegistrationExistingAccountId) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
@@ -352,6 +410,15 @@
                     </cfif>
 
                     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)>
+                        <cfif NOT VARIABLES.accountRegistrationIsExistingAccessRequest>
+                            <cfquery datasource="runnerhub">
+                                UPDATE tb_contas
+                                SET status = 'ATIVA'::status_conta,
+                                    data_atualizacao = now()
+                                WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/>
+                            </cfquery>
+                        </cfif>
+
                         <cfquery name="qBusinessAccountRegistrationOwnerUser" datasource="runnerhub">
                             INSERT INTO tb_usuarios
                             (
@@ -405,7 +472,7 @@
                             (
                                 <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/>,
                                 <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationOwnerUser.id#"/>,
-                                'OWNER'::papel_usuario_conta,
+                                CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountRegistrationMembershipRole#"/> AS papel_usuario_conta),
                                 'ATIVO'::status_usuario_conta,
                                 <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
                                 now(),
@@ -413,7 +480,7 @@
                             )
                             ON CONFLICT (id_conta, id_usuario)
                             DO UPDATE SET
-                                papel = 'OWNER'::papel_usuario_conta,
+                                papel = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountRegistrationMembershipRole#"/> AS papel_usuario_conta),
                                 status = 'ATIVO'::status_usuario_conta,
                                 data_aceite = COALESCE(tb_conta_usuarios.data_aceite, now()),
                                 data_atualizacao = now()
@@ -430,14 +497,21 @@
                             WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/>
                         </cfquery>
 
-                        <cfif len(VARIABLES.accountRegistrationVoucherId)>
-                            <cfquery name="qBusinessAccountRegistrationVoucherRedeem" datasource="runnerhub">
+                        <cfif NOT VARIABLES.accountRegistrationIsExistingAccessRequest>
+                            <cfquery name="qBusinessAccountRegistrationVoucherApply" datasource="runnerhub">
                                 SELECT *
-                                FROM ads.redeem_voucher(
-                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/> AS bigint),
-                                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountRegistrationVoucherCode#" maxlength="160"/> AS text),
-                                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessAccountRegistrationOwnerUser.id#"/> AS integer)
+                                FROM ads.apply_voucher_reservation(
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/> AS bigint),
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
                                 )
+                            </cfquery>
+
+                            <cfquery name="qBusinessAccountRegistrationCampaignRefresh" datasource="runnerhub">
+                                SELECT ads.refresh_campaign_review_prerequisites(
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationTargetAccountId#"/> AS bigint),
+                                    NULL::integer,
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
+                                ) AS changed_count
                             </cfquery>
                         </cfif>
 
@@ -1774,23 +1848,30 @@
 
 <cfif VARIABLES.businessAccountsTablesReady
     AND VARIABLES.businessAccountRegistrationTableReady
-    AND VARIABLES.businessAccountsCanAdminAll>
-    <cfquery name="qBusinessAccountRegistrationAccountOptions">
-        SELECT id_conta,
-               nome_conta,
-               documento,
-               status::text AS status
-        FROM tb_contas
-        ORDER BY
-            CASE WHEN status = 'ATIVA'::status_conta THEN 0 ELSE 1 END,
-            nome_conta
-        LIMIT 250
-    </cfquery>
+    AND VARIABLES.businessAccountsCanReviewExistingRequests>
+    <cfif VARIABLES.businessAccountsCanAdminAll>
+        <cfquery name="qBusinessAccountRegistrationAccountOptions">
+            SELECT id_conta,
+                   nome_conta,
+                   documento,
+                   status::text AS status
+            FROM tb_contas
+            ORDER BY
+                CASE WHEN status = 'ATIVA'::status_conta THEN 0 ELSE 1 END,
+                nome_conta
+            LIMIT 250
+        </cfquery>
+    </cfif>
 
     <cfquery name="qBusinessAccountRegistrationStats">
         SELECT count(*) AS total_solicitacoes,
-               count(*) FILTER (WHERE status = 'PENDENTE'::status_conta_cadastro_solicitacao) AS total_pendentes
-        FROM tb_conta_cadastro_solicitacoes
+               count(*) FILTER (WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao) AS total_pendentes
+        FROM tb_conta_cadastro_solicitacoes sol
+        <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+            INNER JOIN tb_contas cont ON cont.id_conta = sol.id_conta
+            WHERE sol.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessAccountsScopedAccountIds#" list="true"/>)
+              AND cont.status = 'ATIVA'::status_conta
+        </cfif>
     </cfquery>
 
     <cfset VARIABLES.accountsRegistrationTotal = val(qBusinessAccountRegistrationStats.total_solicitacoes)/>
@@ -1812,6 +1893,7 @@
                sol.id_usuario,
                sol.id_conta,
                sol.status::text AS status,
+               cont.status::text AS status_conta,
                sol.data_criacao,
                cont.nome_conta,
                usr.name AS usuario_nome,
@@ -1835,6 +1917,10 @@
             LEFT JOIN ads.tb_ad_vouchers vou ON vou.id_ad_voucher = sol.id_ad_voucher
         </cfif>
         WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+        <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+          AND sol.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessAccountsScopedAccountIds#" list="true"/>)
+          AND cont.status = 'ATIVA'::status_conta
+        </cfif>
         ORDER BY sol.data_criacao ASC
         LIMIT 25
     </cfquery>

@@ -57,11 +57,11 @@ require_pattern \
     "readiness exige as nove funcoes do Business"
 require_pattern \
     "$backend" \
-    'adsV1VoucherActions[[:space:]]*=[[:space:]]*"redeem_voucher"' \
-    "resgate possui classe de autorizacao separada"
+    'adsV1VoucherActions[[:space:]]*=[[:space:]]*"redeem_voucher,reserve_voucher"' \
+    "resgate e reserva possuem classe de autorizacao separada"
 require_pattern \
     "$backend" \
-    '(?s)listFindNoCase\(VARIABLES\.adsV1VoucherActions,[[:space:]]*VARIABLES\.adsV1Action\).*?NOT[[:space:]]+VARIABLES\.adsAccessCanPurchaseCredit.*?<cfheader[[:space:]]+statuscode="403"' \
+    '(?s)adsV1Action[[:space:]]+EQ[[:space:]]+"redeem_voucher".*?NOT[[:space:]]+VARIABLES\.adsAccessCanPurchaseCredit.*?<cfheader[[:space:]]+statuscode="403"' \
     "somente OWNER, ADMIN da conta ou admin real resgata voucher"
 require_pattern \
     "$backend" \
@@ -99,8 +99,12 @@ require_pattern \
 
 require_pattern \
     "$accounts_backend" \
-    '(?s)<cfif[[:space:]]+len\(VARIABLES\.accountRegistrationVoucherId\)>.*?FROM[[:space:]]+ads\.redeem_voucher[[:space:]]*\(' \
-    "aprovacao de cadastro reutiliza o resgate atomico"
+    '(?s)<cfif[[:space:]]+NOT[[:space:]]+VARIABLES\.accountRegistrationIsExistingAccessRequest>.*?FROM[[:space:]]+ads\.apply_voucher_reservation[[:space:]]*\(' \
+    "aprovacao de cadastro aplica a reserva pela funcao atomica"
+reject_pattern \
+    "$accounts_backend" \
+    'accountRegistrationTargetAccountId[[:space:]]*=[[:space:]]*qBusinessAccountRegistrationVoucher\.id_conta' \
+    "voucher reservado nao escolhe a conta de destino"
 require_pattern \
     "$accounts_backend" \
     'FROM[[:space:]]+ads\.create_voucher[[:space:]]*\(' \

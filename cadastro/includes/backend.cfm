@@ -20,9 +20,13 @@
 <cfparam name="FORM.mensagem" default=""/>
 <cfparam name="FORM.acao" default=""/>
 <cfparam name="FORM.cadastro_csrf" default=""/>
+<cfparam name="FORM.confirmar_conta_existente" default="0"/>
 <cfset VARIABLES.cadastroTipoTitularList = "PF,PJ"/>
 <cfset VARIABLES.cadastroTipoPrestadorList = "Organizador,Cronometragem,Assessoria,Marca/Patrocinador,Midia/Criador,Fornecedor,Agencia,Outro"/>
 <cfset VARIABLES.cadastroSolicitacaoId = isDefined("URL.id") AND isNumeric(URL.id) ? int(URL.id) : 0/>
+<cfset VARIABLES.cadastroExistingAccountConfirmationRequired = false/>
+<cfset VARIABLES.cadastroExistingAccountConfirmed = FORM.confirmar_conta_existente EQ "1"/>
+<cfset VARIABLES.cadastroExistingAccountName = ""/>
 
 <cfif FORM.acao EQ "trocar_conta_google">
     <cfif len(trim(FORM.cadastro_csrf)) AND compare(FORM.cadastro_csrf, SESSION.cadastroGoogleCsrf) EQ 0>
@@ -67,6 +71,23 @@
 </cftry>
 
 <cfif isDefined("URL.solicitacao") AND URL.solicitacao EQ "recebida">
+    <cfif VARIABLES.cadastroGoogleAuthenticated
+        AND VARIABLES.cadastroSolicitacaoTablesReady
+        AND VARIABLES.cadastroSolicitacaoId GT 0>
+        <cfquery name="qCadastroSolicitacaoRecebidaResponsavel">
+            SELECT id_solicitacao
+            FROM tb_conta_cadastro_solicitacoes
+            WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cadastroSolicitacaoId#"/>
+              AND lower(email_responsavel) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(SESSION.cadastroGoogleIdentity.email))#" maxlength="255"/>
+              AND status = 'PENDENTE'::status_conta_cadastro_solicitacao
+            LIMIT 1
+        </cfquery>
+
+        <cfif qCadastroSolicitacaoRecebidaResponsavel.recordcount>
+            <cflocation addtoken="false" url="/"/>
+        </cfif>
+    </cfif>
+
     <cfset VARIABLES.cadastroSucesso = "Recebemos sua solicitacao de acesso. Nossa equipe vai revisar os dados e liberar a conta quando tudo estiver confirmado."/>
     <cfif VARIABLES.cadastroSolicitacaoId GT 0>
         <cfset VARIABLES.cadastroSucesso = VARIABLES.cadastroSucesso & " Protocolo: " & VARIABLES.cadastroSolicitacaoId & "."/>
@@ -125,74 +146,174 @@
 
     <cfif NOT arrayLen(VARIABLES.cadastroErrors)>
         <cfquery name="qCadastroSolicitacaoExistente">
-            SELECT id_solicitacao
-            FROM tb_conta_cadastro_solicitacoes
-            WHERE status = 'PENDENTE'::status_conta_cadastro_solicitacao
+            SELECT sol.id_solicitacao,
+                   sol.id_conta,
+                   sol.id_usuario,
+                   cont.status::text AS status_conta,
+                   CASE WHEN cu.id_conta IS NOT NULL THEN true ELSE false END AS possui_workspace_provisorio
+            FROM tb_conta_cadastro_solicitacoes sol
+            LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
+            LEFT JOIN tb_usuarios usr
+                ON lower(usr.email) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>
+            LEFT JOIN tb_conta_usuarios cu
+                ON cu.id_conta = sol.id_conta
+               AND cu.id_usuario = usr.id
+               AND cu.papel = 'OWNER'::papel_usuario_conta
+               AND cu.status = 'ATIVO'::status_usuario_conta
+            WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
               AND (
-                documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>
-                OR lower(email_responsavel) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>
+                sol.documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>
+                OR lower(sol.email_responsavel) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>
               )
-            ORDER BY data_criacao DESC
+            ORDER BY sol.data_criacao DESC
             LIMIT 1
         </cfquery>
 
         <cfif qCadastroSolicitacaoExistente.recordcount>
             <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
-            <cflocation addtoken="false" url="/cadastro/?solicitacao=recebida&id=#qCadastroSolicitacaoExistente.id_solicitacao#"/>
+            <cflocation addtoken="false" url="/"/>
         </cfif>
     </cfif>
 
     <cfif NOT arrayLen(VARIABLES.cadastroErrors)>
+        <cfquery name="qCadastroContaDocumentoExistente">
+            SELECT id_conta,
+                   nome_conta
+            FROM tb_contas
+            WHERE documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>
+            LIMIT 1
+        </cfquery>
+
+        <cfif qCadastroContaDocumentoExistente.recordcount>
+            <cfset VARIABLES.cadastroExistingAccountName = qCadastroContaDocumentoExistente.nome_conta/>
+            <cfset FORM.nome_empresa = qCadastroContaDocumentoExistente.nome_conta/>
+            <cfif NOT VARIABLES.cadastroExistingAccountConfirmed>
+                <cfset VARIABLES.cadastroExistingAccountConfirmationRequired = true/>
+            </cfif>
+        </cfif>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.cadastroErrors) AND NOT VARIABLES.cadastroExistingAccountConfirmationRequired>
         <cftry>
-            <cfquery name="qCadastroSolicitacaoSalvar">
-                INSERT INTO tb_conta_cadastro_solicitacoes
-                (
-                    nome_empresa,
-                    tipo_titular,
-                    documento,
-                    nome_responsavel,
-                    email_responsavel,
-                    telefone_responsavel,
-                    site,
-                    cidade,
-                    estado,
-                    tipo_prestador,
-                    mensagem,
-                    id_usuario,
-                    status
-                )
-                VALUES
-                (
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroNomeEmpresa#" maxlength="160"/>,
-                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTipoTitular#"/> AS tipo_titular_conta),
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroNomeResponsavel#" maxlength="200"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTelefoneResponsavel#" maxlength="30" null="#NOT len(VARIABLES.cadastroTelefoneResponsavel)#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroSite#" maxlength="256" null="#NOT len(VARIABLES.cadastroSite)#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroCidade#" maxlength="128" null="#NOT len(VARIABLES.cadastroCidade)#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEstado#" maxlength="2" null="#NOT len(VARIABLES.cadastroEstado)#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTipoPrestador#" maxlength="80"/>,
-                    <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cadastroMensagem#" null="#NOT len(VARIABLES.cadastroMensagem)#"/>,
+            <cftransaction>
+                <cfquery name="qCadastroResponsavel">
+                    SELECT id
+                    FROM tb_usuarios
+                    WHERE lower(email) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>
+                    LIMIT 1
+                </cfquery>
+
+                <cfif NOT qCadastroResponsavel.recordcount>
+                    <cfthrow message="O usuario autenticado nao foi encontrado. Entre novamente com o Google."/>
+                </cfif>
+
+                <cfset VARIABLES.cadastroSolicitacaoNomeEmpresa = VARIABLES.cadastroNomeEmpresa/>
+                <cfif qCadastroContaDocumentoExistente.recordcount>
+                    <cfset VARIABLES.cadastroContaId = qCadastroContaDocumentoExistente.id_conta/>
+                    <cfset VARIABLES.cadastroSolicitacaoNomeEmpresa = qCadastroContaDocumentoExistente.nome_conta/>
+                <cfelse>
+                    <cfquery name="qCadastroContaCriar">
+                        INSERT INTO tb_contas
+                        (
+                            nome_conta,
+                            tipo_titular,
+                            documento,
+                            nome_titular,
+                            email_principal,
+                            telefone_principal,
+                            status
+                        )
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroNomeEmpresa#" maxlength="160"/>,
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTipoTitular#"/> AS tipo_titular_conta),
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroNomeResponsavel#" maxlength="200"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTelefoneResponsavel#" maxlength="30" null="#NOT len(VARIABLES.cadastroTelefoneResponsavel)#"/>,
+                            'PENDENTE'::status_conta
+                        )
+                        RETURNING id_conta
+                    </cfquery>
+
+                    <cfset VARIABLES.cadastroContaId = qCadastroContaCriar.id_conta/>
+                    <cfquery>
+                        INSERT INTO tb_conta_usuarios
+                        (
+                            id_conta,
+                            id_usuario,
+                            papel,
+                            status,
+                            usuario_convite,
+                            data_convite,
+                            data_aceite
+                        )
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cadastroContaId#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qCadastroResponsavel.id#"/>,
+                            'OWNER'::papel_usuario_conta,
+                            'ATIVO'::status_usuario_conta,
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qCadastroResponsavel.id#"/>,
+                            now(),
+                            now()
+                        )
+                        ON CONFLICT (id_conta, id_usuario)
+                        DO UPDATE SET
+                            papel = 'OWNER'::papel_usuario_conta,
+                            status = 'ATIVO'::status_usuario_conta,
+                            data_aceite = COALESCE(tb_conta_usuarios.data_aceite, now()),
+                            data_atualizacao = now()
+                    </cfquery>
+                </cfif>
+
+                <cfquery name="qCadastroSolicitacaoSalvar">
+                    INSERT INTO tb_conta_cadastro_solicitacoes
                     (
-                        SELECT id
-                        FROM tb_usuarios
-                        WHERE lower(email) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>
-                        LIMIT 1
-                    ),
-                    'PENDENTE'::status_conta_cadastro_solicitacao
-                )
-                RETURNING id_solicitacao
-            </cfquery>
+                        nome_empresa,
+                        tipo_titular,
+                        documento,
+                        nome_responsavel,
+                        email_responsavel,
+                        telefone_responsavel,
+                        site,
+                        cidade,
+                        estado,
+                        tipo_prestador,
+                        mensagem,
+                        id_usuario,
+                        id_conta,
+                        status
+                    )
+                    VALUES
+                    (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroSolicitacaoNomeEmpresa#" maxlength="160"/>,
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTipoTitular#"/> AS tipo_titular_conta),
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroDocumento#" maxlength="20"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroNomeResponsavel#" maxlength="200"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEmailResponsavel#" maxlength="255"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTelefoneResponsavel#" maxlength="30" null="#NOT len(VARIABLES.cadastroTelefoneResponsavel)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroSite#" maxlength="256" null="#NOT len(VARIABLES.cadastroSite)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroCidade#" maxlength="128" null="#NOT len(VARIABLES.cadastroCidade)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroEstado#" maxlength="2" null="#NOT len(VARIABLES.cadastroEstado)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.cadastroTipoPrestador#" maxlength="80"/>,
+                        <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cadastroMensagem#" null="#NOT len(VARIABLES.cadastroMensagem)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#qCadastroResponsavel.id#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cadastroContaId#"/>,
+                        'PENDENTE'::status_conta_cadastro_solicitacao
+                    )
+                    RETURNING id_solicitacao
+                </cfquery>
+            </cftransaction>
 
             <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
-            <cflocation addtoken="false" url="/cadastro/?solicitacao=recebida&id=#qCadastroSolicitacaoSalvar.id_solicitacao#"/>
+            <cflocation addtoken="false" url="/"/>
 
             <cfcatch type="any">
                 <cfset VARIABLES.cadastroErro = "Nao foi possivel registrar a solicitacao. " & cfcatch.message/>
             </cfcatch>
         </cftry>
-    <cfelse>
+    <cfelseif arrayLen(VARIABLES.cadastroErrors)>
         <cfset VARIABLES.cadastroErro = arrayToList(VARIABLES.cadastroErrors, " ")/>
     </cfif>
 </cfif>

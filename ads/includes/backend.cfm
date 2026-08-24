@@ -56,9 +56,12 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1SelectedCampaignId = ""/>
 <cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
-<cfset VARIABLES.adsV1CampaignActions = "save_campaign,activate_campaign,change_campaign_status"/>
+<cfset VARIABLES.adsV1CampaignActions = "save_campaign,submit_campaign_review,change_campaign_status"/>
 <cfset VARIABLES.adsV1FinanceActions = "credit_account,reverse_click_debit"/>
-<cfset VARIABLES.adsV1VoucherActions = "redeem_voucher"/>
+<cfset VARIABLES.adsV1VoucherActions = "redeem_voucher,reserve_voucher"/>
+<cfset VARIABLES.adsV1ReviewActions = "approve_campaign_review,request_campaign_changes,cancel_campaign_review"/>
+<cfset VARIABLES.adsV1ReviewApiReady = false/>
+<cfset VARIABLES.adsV1CanReviewMutate = false/>
 <cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
     "rr-home-upcoming-native",
     "rr-home-upcoming-native-secondary",
@@ -68,13 +71,15 @@ function adsV1FormList(required any value) {
 ]/>
 
 <cfset qAdsV1Account = QueryNew("id_conta,nome_conta,status,available_balance,currency")/>
-<cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
+<cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,event_link_status")/>
 <cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
-<cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost")/>
-<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys")/>
+<cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at,event_link_status,account_status")/>
+<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys,campaign_review_request_id,review_status,review_reason")/>
 <cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name")/>
 <cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name")/>
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
+<cfset qAdsV1VoucherReservation = QueryNew("voucher_reservation_id,id_ad_voucher,id_conta,id_solicitacao_cadastro,status,expires_at,transition_reason,codigo,credito")/>
+<cfset qAdsV1CampaignReviewQueue = QueryNew("campaign_review_request_id,campaign_id,account_id,core_event_id,review_status,review_reason,submitted_at,updated_at,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,account_status,event_name,event_tag,event_city,event_state,event_link_status,available_balance,placement_keys")/>
 <cfset VARIABLES.adsV1Summary = {
     balance = 0,
     campaigns = 0,
@@ -96,10 +101,52 @@ function adsV1FormList(required any value) {
 </cfif>
 <cfset VARIABLES.adsV1Csrf = SESSION.adsV1CanonicalCsrf/>
 
+<cfset VARIABLES.adsV1PendingAuthorized = false/>
+<cfset qAdsV1PendingAuthorization = QueryNew("id_solicitacao,id_conta,id_usuario")/>
+<cfif VARIABLES.adsAccessIsPendingNewAccount>
+    <cfquery name="qAdsV1PendingAuthorization" datasource="runnerhub">
+        SELECT registration.id_solicitacao,
+               registration.id_conta,
+               registration.id_usuario
+        FROM public.tb_conta_cadastro_solicitacoes registration
+        INNER JOIN public.tb_contas account
+          ON account.id_conta = registration.id_conta
+         AND account.status = 'PENDENTE'::status_conta
+        INNER JOIN public.tb_conta_usuarios membership
+          ON membership.id_conta = registration.id_conta
+         AND membership.id_usuario = registration.id_usuario
+         AND membership.papel = 'OWNER'::papel_usuario_conta
+         AND membership.status = 'ATIVO'::status_usuario_conta
+        WHERE registration.id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsAccessRegistrationId#"/>
+          AND registration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+          AND registration.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ActorId#"/>
+          AND registration.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+        LIMIT 1
+    </cfquery>
+    <cfset VARIABLES.adsV1PendingAuthorized = qAdsV1PendingAuthorization.recordcount EQ 1/>
+
+    <cfif NOT VARIABLES.adsV1PendingAuthorized>
+        <cfset VARIABLES.adsAccessCanView = false/>
+        <cfset VARIABLES.adsAccessCanManageCampaign = false/>
+        <cfset VARIABLES.adsAccessCanViewPayments = false/>
+        <cfset VARIABLES.adsAccessCanReserveVoucher = false/>
+        <cfset VARIABLES.adsAccessCanPrepareCampaign = false/>
+        <cfif len(trim(FORM.ads_v1_action & ""))>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="Ads.PendingAccess.Forbidden" message="O workspace provisório não pertence ao usuário autenticado."/>
+        </cfif>
+    </cfif>
+</cfif>
+
 <cfswitch expression="#trim(URL.success & '')#">
     <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Campanha salva como rascunho."/></cfcase>
+    <cfcase value="campaign-submitted"><cfset VARIABLES.adsV1Notice = "Campanha enviada. Ela ficará fora do ar até concluir as aprovações e a análise da RunnerHub."/></cfcase>
+    <cfcase value="campaign-approved"><cfset VARIABLES.adsV1Notice = "Campanha aprovada e liberada para veiculação."/></cfcase>
+    <cfcase value="campaign-changes-requested"><cfset VARIABLES.adsV1Notice = "Ajustes solicitados ao anunciante."/></cfcase>
+    <cfcase value="campaign-review-canceled"><cfset VARIABLES.adsV1Notice = "Análise da campanha cancelada."/></cfcase>
     <cfcase value="credited"><cfset VARIABLES.adsV1Notice = "Credito de publicidade registrado."/></cfcase>
     <cfcase value="voucher-redeemed"><cfset VARIABLES.adsV1Notice = "Voucher resgatado e saldo de publicidade atualizado."/></cfcase>
+    <cfcase value="voucher-reserved"><cfset VARIABLES.adsV1Notice = "Voucher reservado. O crédito será aplicado após a aprovação da conta."/></cfcase>
     <cfcase value="activated"><cfset VARIABLES.adsV1Notice = "Campanha ativada."/></cfcase>
     <cfcase value="paused"><cfset VARIABLES.adsV1Notice = "Campanha pausada."/></cfcase>
     <cfcase value="ended"><cfset VARIABLES.adsV1Notice = "Campanha encerrada."/></cfcase>
@@ -186,8 +233,158 @@ function adsV1FormList(required any value) {
     </cfcatch>
 </cftry>
 
+<cfset VARIABLES.adsV1PendingApiReady = NOT VARIABLES.adsAccessIsPendingNewAccount/>
+<cfif VARIABLES.adsAccessIsPendingNewAccount AND VARIABLES.adsV1ApiReady>
+    <cftry>
+        <cfquery name="qAdsV1PendingReadiness" datasource="runnerhub">
+            WITH expected_functions(signature) AS (
+                VALUES
+                    ('ads.reserve_voucher(bigint,bigint,text,integer)'),
+                    ('ads.save_pending_event_campaign(uuid,bigint,bigint,integer,text,text,text,numeric,numeric,numeric,timestamp with time zone,timestamp with time zone,text,character,text,integer)'),
+                    ('ads.submit_campaign_review(uuid,bigint,integer,integer)')
+            ),
+            function_check AS (
+                SELECT count(*)::integer AS expected_count,
+                       count(to_regprocedure(signature))::integer AS resolved_count,
+                       bool_and(
+                           to_regprocedure(signature) IS NOT NULL
+                           AND has_function_privilege(current_user, to_regprocedure(signature), 'EXECUTE')
+                       ) AS ready
+                FROM expected_functions
+            ),
+            expected_tables(relation_name) AS (
+                VALUES
+                    ('ads.voucher_reservations'),
+                    ('ads.campaign_review_requests'),
+                    ('ads.campaign_review_history')
+            ),
+            table_check AS (
+                SELECT count(*)::integer AS expected_count,
+                       count(to_regclass(relation_name))::integer AS resolved_count,
+                       bool_and(
+                           to_regclass(relation_name) IS NOT NULL
+                           AND has_table_privilege(current_user, to_regclass(relation_name), 'SELECT')
+                       ) AS ready
+                FROM expected_tables
+            )
+            SELECT function_check.expected_count AS expected_functions,
+                   function_check.resolved_count AS resolved_functions,
+                   table_check.expected_count AS expected_tables,
+                   table_check.resolved_count AS resolved_tables,
+                   function_check.ready AND table_check.ready AS ready
+            FROM function_check
+            CROSS JOIN table_check
+        </cfquery>
+        <cfset VARIABLES.adsV1PendingApiReady = qAdsV1PendingReadiness.recordcount
+            AND val(qAdsV1PendingReadiness.expected_functions) EQ 3
+            AND val(qAdsV1PendingReadiness.resolved_functions) EQ 3
+            AND val(qAdsV1PendingReadiness.expected_tables) EQ 3
+            AND val(qAdsV1PendingReadiness.resolved_tables) EQ 3
+            AND listFindNoCase("1,true,t,yes,on", trim(qAdsV1PendingReadiness.ready & "")) GT 0/>
+        <cfcatch type="any">
+            <cfset VARIABLES.adsV1PendingApiReady = false/>
+        </cfcatch>
+    </cftry>
+    <cfset VARIABLES.adsV1ApiReady = VARIABLES.adsV1ApiReady AND VARIABLES.adsV1PendingApiReady/>
+</cfif>
+
+<cfif VARIABLES.adsAccessCanReviewCampaign AND VARIABLES.adsV1ApiReady>
+    <cftry>
+        <cfquery name="qAdsV1ReviewReadiness" datasource="runnerhub">
+            SELECT to_regprocedure('ads.review_campaign(uuid,text,integer,text,text)') IS NOT NULL
+                       AND has_function_privilege(
+                           current_user,
+                           to_regprocedure('ads.review_campaign(uuid,text,integer,text,text)'),
+                           'EXECUTE'
+                       )
+                       AND to_regclass('ads.campaign_review_requests') IS NOT NULL
+                       AND has_table_privilege(
+                           current_user,
+                           to_regclass('ads.campaign_review_requests'),
+                           'SELECT'
+                       ) AS ready
+        </cfquery>
+        <cfset VARIABLES.adsV1ReviewApiReady = qAdsV1ReviewReadiness.recordcount
+            AND listFindNoCase("1,true,t,yes,on", trim(qAdsV1ReviewReadiness.ready & "")) GT 0/>
+
+        <cfif VARIABLES.adsV1ReviewApiReady>
+            <cfquery name="qAdsV1CampaignReviewQueue" datasource="runnerhub">
+                SELECT review.campaign_review_request_id,
+                       review.campaign_id,
+                       review.account_id,
+                       review.core_event_id,
+                       review.status AS review_status,
+                       review.review_reason,
+                       review.submitted_at,
+                       review.updated_at,
+                       campaign.name AS campaign_name,
+                       campaign.status AS campaign_status,
+                       campaign.cpc_bid,
+                       campaign.budget_total,
+                       campaign.budget_daily,
+                       campaign.starts_at,
+                       campaign.ends_at,
+                       campaign.target_device_class,
+                       campaign.target_country_code,
+                       campaign.target_region_code,
+                       account.nome_conta AS account_name,
+                       account.status::text AS account_status,
+                       event.nome_evento AS event_name,
+                       event.tag AS event_tag,
+                       event.cidade AS event_city,
+                       event.estado AS event_state,
+                       event_link.status::text AS event_link_status,
+                       coalesce(balance.available_balance, 0)::numeric(14, 2) AS available_balance,
+                       placement.placement_keys
+                FROM ads.campaign_review_requests review
+                INNER JOIN ads.campaigns campaign
+                  ON campaign.campaign_id = review.campaign_id
+                 AND campaign.account_id = review.account_id
+                INNER JOIN public.tb_contas account
+                  ON account.id_conta = review.account_id
+                INNER JOIN public.tb_evento_corridas event
+                  ON event.id_evento = review.core_event_id
+                LEFT JOIN public.tb_conta_eventos event_link
+                  ON event_link.id_conta = review.account_id
+                 AND event_link.id_evento = review.core_event_id
+                LEFT JOIN ads.account_balances balance
+                  ON balance.account_id = review.account_id
+                 AND balance.currency = campaign.currency
+                LEFT JOIN LATERAL (
+                    SELECT string_agg(
+                               DISTINCT selected.placement_key,
+                               ',' ORDER BY selected.placement_key
+                           ) AS placement_keys
+                    FROM ads.campaign_placements link
+                    INNER JOIN ads.placements selected
+                      ON selected.placement_id = link.placement_id
+                    WHERE link.campaign_id = campaign.campaign_id
+                      AND link.account_id = campaign.account_id
+                      AND link.status = 'ACTIVE'
+                ) placement ON true
+                WHERE review.status IN ('WAITING_PREREQUISITES', 'PENDING_REVIEW')
+                ORDER BY CASE review.status
+                             WHEN 'PENDING_REVIEW' THEN 0
+                             ELSE 1
+                         END,
+                         review.submitted_at,
+                         review.campaign_review_request_id
+                LIMIT 100
+            </cfquery>
+        </cfif>
+
+        <cfcatch type="any">
+            <cfset VARIABLES.adsV1ReviewApiReady = false/>
+            <cflog file="business_ads_v1" type="error" text="review_queue actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)#"/>
+        </cfcatch>
+    </cftry>
+</cfif>
+
 <cfset VARIABLES.adsV1CanMutate = VARIABLES.adsV1HasAccount
     AND VARIABLES.adsV1ApiReady
+    AND VARIABLES.adsV1ActorId GT 0/>
+<cfset VARIABLES.adsV1CanReviewMutate = VARIABLES.adsAccessCanReviewCampaign
+    AND VARIABLES.adsV1ReviewApiReady
     AND VARIABLES.adsV1ActorId GT 0/>
 
 <cfif VARIABLES.adsAccessCanView AND VARIABLES.adsV1HasAccount AND VARIABLES.adsV1ApiReady>
@@ -202,16 +399,41 @@ function adsV1FormList(required any value) {
             LEFT JOIN ads.account_balances balance
               ON balance.account_id = cont.id_conta
             WHERE cont.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
-              AND cont.status::text = 'ATIVA'
+              <cfif VARIABLES.adsAccessIsPendingNewAccount>
+                AND cont.status::text = 'PENDENTE'
+              <cfelse>
+                AND cont.status::text = 'ATIVA'
+              </cfif>
             LIMIT 1
         </cfquery>
 
         <cfif NOT qAdsV1Account.recordcount>
             <cfset VARIABLES.adsV1HasAccount = false/>
             <cfset VARIABLES.adsV1CanMutate = false/>
-            <cfset VARIABLES.adsV1Error = "A conta selecionada nao esta ativa."/>
+            <cfset VARIABLES.adsV1Error = "A conta selecionada não está disponível para publicidade."/>
         <cfelse>
             <cfset VARIABLES.adsV1Summary.balance = val(qAdsV1Account.available_balance)/>
+
+            <cfif VARIABLES.adsAccessIsPendingNewAccount>
+                <cfquery name="qAdsV1VoucherReservation" datasource="runnerhub">
+                    SELECT reservation.voucher_reservation_id,
+                           reservation.id_ad_voucher,
+                           reservation.id_conta,
+                           reservation.id_solicitacao_cadastro,
+                           reservation.status,
+                           reservation.expires_at,
+                           reservation.transition_reason,
+                           voucher.codigo,
+                           coalesce(voucher.credito_disponivel, voucher.credito, 0)::numeric(14, 2) AS credito
+                    FROM ads.voucher_reservations reservation
+                    INNER JOIN ads.tb_ad_vouchers voucher
+                      ON voucher.id_ad_voucher = reservation.id_ad_voucher
+                    WHERE reservation.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND reservation.id_solicitacao_cadastro = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsAccessRegistrationId#"/>
+                    ORDER BY reservation.voucher_reservation_id DESC
+                    LIMIT 1
+                </cfquery>
+            </cfif>
 
             <cfquery name="qAdsV1Events" datasource="runnerhub">
                 SELECT evt.id_evento,
@@ -220,12 +442,29 @@ function adsV1FormList(required any value) {
                        evt.data_inicial,
                        evt.data_final,
                        evt.cidade,
-                       evt.estado
+                       evt.estado,
+                       ce.status::text AS event_link_status
                 FROM public.tb_conta_eventos ce
                 INNER JOIN public.tb_evento_corridas evt
                   ON evt.id_evento = ce.id_evento
                 WHERE ce.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
-                  AND ce.status::text = 'ATIVO'
+                  AND ce.status::text IN ('ATIVO', 'PENDENTE')
+                  AND (
+                    ce.status::text = 'ATIVO'
+                    <cfif VARIABLES.adsAccessIsPendingNewAccount>
+                      OR (
+                        ce.status::text = 'PENDENTE'
+                        AND EXISTS (
+                            SELECT 1
+                            FROM public.tb_conta_evento_solicitacoes req
+                            WHERE req.id_conta = ce.id_conta
+                              AND req.id_evento = ce.id_evento
+                              AND req.id_usuario_solicitante = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ActorId#"/>
+                              AND req.status = 'PENDENTE'
+                        )
+                      )
+                    </cfif>
+                  )
                   AND evt.ativo = true
                 ORDER BY evt.data_inicial DESC NULLS LAST,
                          evt.nome_evento
@@ -292,8 +531,17 @@ function adsV1FormList(required any value) {
                        coalesce(metrics.conversion_count, 0)::bigint AS conversion_count,
                        coalesce(metrics.reversal_count, 0)::bigint AS reversal_count,
                        coalesce(metrics.reversal_amount, 0)::numeric(14, 2) AS reversal_amount,
-                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost
+                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost,
+                       review.campaign_review_request_id,
+                       review.status AS review_status,
+                       review.review_reason,
+                       review.submitted_at,
+                       review.reviewed_at,
+                       event_link.status::text AS event_link_status,
+                       account.status::text AS account_status
                 FROM ads.campaigns c
+                INNER JOIN public.tb_contas account
+                  ON account.id_conta = c.account_id
                 LEFT JOIN LATERAL (
                     SELECT ad.advertisement_id,
                            ad.core_event_id,
@@ -317,6 +565,21 @@ function adsV1FormList(required any value) {
                 ) creative ON true
                 LEFT JOIN public.tb_evento_corridas evt
                   ON evt.id_evento = advertisement.core_event_id
+                LEFT JOIN public.tb_conta_eventos event_link
+                  ON event_link.id_conta = c.account_id
+                 AND event_link.id_evento = advertisement.core_event_id
+                LEFT JOIN LATERAL (
+                    SELECT request.campaign_review_request_id,
+                           request.status,
+                           request.review_reason,
+                           request.submitted_at,
+                           request.reviewed_at
+                    FROM ads.campaign_review_requests request
+                    WHERE request.campaign_id = c.campaign_id
+                      AND request.account_id = c.account_id
+                    ORDER BY request.campaign_review_request_id DESC
+                    LIMIT 1
+                ) review ON true
                 LEFT JOIN LATERAL (
                     SELECT string_agg(
                                DISTINCT pl.placement_key,
@@ -452,7 +715,10 @@ function adsV1FormList(required any value) {
                            c.starts_at,
                            c.ends_at,
                            advertisement.core_event_id,
-                           placement.placement_keys
+                           placement.placement_keys,
+                           review.campaign_review_request_id,
+                           review.status AS review_status,
+                           review.review_reason
                     FROM ads.campaigns c
                     LEFT JOIN LATERAL (
                         SELECT ad.core_event_id
@@ -475,6 +741,16 @@ function adsV1FormList(required any value) {
                           AND link.account_id = c.account_id
                           AND link.status = 'ACTIVE'
                     ) placement ON true
+                    LEFT JOIN LATERAL (
+                        SELECT request.campaign_review_request_id,
+                               request.status,
+                               request.review_reason
+                        FROM ads.campaign_review_requests request
+                        WHERE request.campaign_id = c.campaign_id
+                          AND request.account_id = c.account_id
+                        ORDER BY request.campaign_review_request_id DESC
+                        LIMIT 1
+                    ) review ON true
                     WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
                       AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND c.billing_model = 'CPC'
@@ -499,7 +775,11 @@ function adsV1FormList(required any value) {
     <cfset VARIABLES.adsV1Action = lCase(trim(FORM.ads_v1_action & ""))/>
 
     <cftry>
-        <cfif NOT VARIABLES.adsV1CanMutate>
+        <cfif NOT VARIABLES.adsV1CanMutate
+            AND NOT (
+                listFindNoCase(VARIABLES.adsV1ReviewActions, VARIABLES.adsV1Action)
+                AND VARIABLES.adsV1CanReviewMutate
+            )>
             <cfthrow type="AdsV1.Validation" message="A operacao de publicidade nao esta disponivel para esta conta."/>
         </cfif>
         <cfif listFindNoCase(VARIABLES.adsV1CampaignActions, VARIABLES.adsV1Action)
@@ -512,16 +792,88 @@ function adsV1FormList(required any value) {
             <cfheader statuscode="403" statustext="Forbidden"/>
             <cfthrow type="AdsV1.Forbidden" message="Esta operacao financeira exige um administrador interno real e uma conta selecionada."/>
         </cfif>
-        <cfif listFindNoCase(VARIABLES.adsV1VoucherActions, VARIABLES.adsV1Action)
+        <cfif listFindNoCase(VARIABLES.adsV1ReviewActions, VARIABLES.adsV1Action)
+            AND NOT VARIABLES.adsAccessCanReviewCampaign>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Somente um administrador RunnerHub pode revisar campanhas."/>
+        </cfif>
+        <cfif VARIABLES.adsV1Action EQ "redeem_voucher"
             AND NOT VARIABLES.adsAccessCanPurchaseCredit>
             <cfheader statuscode="403" statustext="Forbidden"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente OWNER ou ADMIN da conta pode resgatar vouchers."/>
+        </cfif>
+        <cfif VARIABLES.adsV1Action EQ "reserve_voucher"
+            AND NOT VARIABLES.adsAccessCanReserveVoucher>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Somente o OWNER da conta provisória pode reservar vouchers."/>
         </cfif>
         <cfif compare(trim(FORM.ads_v1_csrf & ""), VARIABLES.adsV1Csrf) NEQ 0>
             <cfthrow type="AdsV1.Validation" message="A sessao do formulario expirou. Recarregue a pagina."/>
         </cfif>
 
         <cfswitch expression="#VARIABLES.adsV1Action#">
+            <cfcase value="approve_campaign_review,request_campaign_changes,cancel_campaign_review">
+                <cfset VARIABLES.adsV1ReviewCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfset VARIABLES.adsV1ReviewRequestId = structKeyExists(FORM, "campaign_review_request_id") AND isNumeric(FORM.campaign_review_request_id) ? val(FORM.campaign_review_request_id) : 0/>
+                <cfset VARIABLES.adsV1ReviewReason = structKeyExists(FORM, "review_reason") ? trim(FORM.review_reason & "") : ""/>
+                <cfset VARIABLES.adsV1ReviewDecision = VARIABLES.adsV1Action EQ "approve_campaign_review"
+                    ? "APPROVE"
+                    : (VARIABLES.adsV1Action EQ "request_campaign_changes" ? "REQUEST_CHANGES" : "CANCEL")/>
+
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1ReviewCampaignId) OR VARIABLES.adsV1ReviewRequestId LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Solicitação de análise inválida."/>
+                </cfif>
+                <cfif listFind("REQUEST_CHANGES,CANCEL", VARIABLES.adsV1ReviewDecision)
+                    AND (len(VARIABLES.adsV1ReviewReason) LT 5 OR len(VARIABLES.adsV1ReviewReason) GT 1000)>
+                    <cfthrow type="AdsV1.Validation" message="Informe um motivo entre 5 e 1000 caracteres."/>
+                </cfif>
+                <cfif VARIABLES.adsV1ReviewDecision EQ "APPROVE" AND len(VARIABLES.adsV1ReviewReason) GT 1000>
+                    <cfthrow type="AdsV1.Validation" message="A nota da aprovação deve ter no máximo 1000 caracteres."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ReviewDecisionTarget" datasource="runnerhub">
+                    SELECT review.campaign_review_request_id,
+                           review.campaign_id,
+                           review.status
+                    FROM ads.campaign_review_requests review
+                    WHERE review.campaign_review_request_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ReviewRequestId#"/>
+                      AND review.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewCampaignId#"/> AS uuid)
+                      AND review.status IN ('WAITING_PREREQUISITES', 'PENDING_REVIEW', 'CHANGES_REQUESTED')
+                    LIMIT 1
+                </cfquery>
+
+                <cfif NOT qAdsV1ReviewDecisionTarget.recordcount>
+                    <cfthrow type="AdsV1.Validation" message="Esta solicitação de análise não está mais disponível."/>
+                </cfif>
+                <cfif VARIABLES.adsV1ReviewDecision EQ "APPROVE"
+                    AND qAdsV1ReviewDecisionTarget.status NEQ "PENDING_REVIEW">
+                    <cfthrow type="AdsV1.Validation" message="A campanha ainda não concluiu os pré-requisitos para aprovação."/>
+                </cfif>
+
+                <cfset VARIABLES.adsV1ReviewApprovalKey = VARIABLES.adsV1ReviewDecision EQ "APPROVE"
+                    ? "business:campaign-review:" & VARIABLES.adsV1ReviewRequestId
+                    : ""/>
+
+                <cfquery name="qAdsV1ReviewDecisionResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.review_campaign(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewCampaignId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewDecision#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.adsV1ReviewReason#" null="#NOT len(VARIABLES.adsV1ReviewReason)#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewApprovalKey#" null="#NOT len(VARIABLES.adsV1ReviewApprovalKey)#"/> AS text)
+                    )
+                </cfquery>
+
+                <cfif VARIABLES.adsV1ReviewDecision EQ "APPROVE">
+                    <cflocation addtoken="false" url="./?view=admin&amp;success=campaign-approved"/>
+                <cfelseif VARIABLES.adsV1ReviewDecision EQ "REQUEST_CHANGES">
+                    <cflocation addtoken="false" url="./?view=admin&amp;success=campaign-changes-requested"/>
+                <cfelse>
+                    <cflocation addtoken="false" url="./?view=admin&amp;success=campaign-review-canceled"/>
+                </cfif>
+            </cfcase>
+
             <cfcase value="save_campaign">
                 <cfset VARIABLES.adsV1FormCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
                 <cfset VARIABLES.adsV1FormEventId = structKeyExists(FORM, "core_event_id") AND isNumeric(FORM.core_event_id) ? val(FORM.core_event_id) : 0/>
@@ -603,7 +955,23 @@ function adsV1FormList(required any value) {
                     INNER JOIN public.tb_evento_corridas evt
                       ON evt.id_evento = ce.id_evento
                     WHERE ce.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
-                      AND ce.status::text = 'ATIVO'
+                      AND ce.status::text IN ('ATIVO', 'PENDENTE')
+                      AND (
+                        ce.status::text = 'ATIVO'
+                        <cfif VARIABLES.adsAccessIsPendingNewAccount>
+                          OR (
+                            ce.status::text = 'PENDENTE'
+                            AND EXISTS (
+                                SELECT 1
+                                FROM public.tb_conta_evento_solicitacoes req
+                                WHERE req.id_conta = ce.id_conta
+                                  AND req.id_evento = ce.id_evento
+                                  AND req.id_usuario_solicitante = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ActorId#"/>
+                                  AND req.status = 'PENDENTE'
+                            )
+                          )
+                        </cfif>
+                      )
                       AND evt.ativo = true
                       AND evt.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1FormEventId#"/>
                     LIMIT 1
@@ -615,16 +983,26 @@ function adsV1FormList(required any value) {
                 <cfif len(VARIABLES.adsV1FormCampaignId)>
                     <cfquery name="qAdsV1CampaignSaveTarget" datasource="runnerhub">
                         SELECT c.campaign_id,
-                               c.status
+                               c.status,
+                               review.status AS review_status
                         FROM ads.campaigns c
+                        LEFT JOIN LATERAL (
+                            SELECT request.status
+                            FROM ads.campaign_review_requests request
+                            WHERE request.campaign_id = c.campaign_id
+                              AND request.account_id = c.account_id
+                            ORDER BY request.campaign_review_request_id DESC
+                            LIMIT 1
+                        ) review ON true
                         WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#"/> AS uuid)
                           AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                           AND c.billing_model = 'CPC'
                           AND c.status IN ('DRAFT', 'PAUSED')
                         LIMIT 1
                     </cfquery>
-                    <cfif NOT qAdsV1CampaignSaveTarget.recordcount>
-                        <cfthrow type="AdsV1.Validation" message="Somente campanhas DRAFT ou PAUSED desta conta podem ser editadas."/>
+                    <cfif NOT qAdsV1CampaignSaveTarget.recordcount
+                        OR listFind("PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1CampaignSaveTarget.review_status & "")))>
+                        <cfthrow type="AdsV1.Validation" message="Somente campanhas em rascunho ou pausadas e fora de análise podem ser editadas."/>
                     </cfif>
                 </cfif>
 
@@ -634,9 +1012,16 @@ function adsV1FormList(required any value) {
                 <cftransaction>
                     <cfquery name="qAdsV1CampaignSave" datasource="runnerhub">
                         SELECT *
+                        <cfif VARIABLES.adsAccessIsPendingNewAccount>
+                        FROM ads.save_pending_event_campaign(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#" null="#NOT len(VARIABLES.adsV1FormCampaignId)#"/> AS uuid),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsAccessRegistrationId#"/> AS bigint),
+                        <cfelse>
                         FROM ads.save_event_campaign(
                             CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormCampaignId#" null="#NOT len(VARIABLES.adsV1FormCampaignId)#"/> AS uuid),
                             CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                        </cfif>
                             CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1EventTarget.id_evento#"/> AS integer),
                             CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormPlacementKeys[1]#"/> AS text),
                             CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1FormName#"/> AS text),
@@ -665,6 +1050,44 @@ function adsV1FormList(required any value) {
                 </cftransaction>
 
                 <cflocation addtoken="false" url="./?view=campaigns&amp;success=campaign-saved"/>
+            </cfcase>
+
+            <cfcase value="submit_campaign_review">
+                <cfset VARIABLES.adsV1ReviewCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1ReviewCampaignId)>
+                    <cfthrow type="AdsV1.Validation" message="Campanha inválida."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ReviewTarget" datasource="runnerhub">
+                    SELECT campaign.campaign_id,
+                           advertisement.core_event_id
+                    FROM ads.campaigns campaign
+                    INNER JOIN ads.advertisements advertisement
+                      ON advertisement.campaign_id = campaign.campaign_id
+                     AND advertisement.account_id = campaign.account_id
+                     AND advertisement.ad_type = 'EVENT'
+                    WHERE campaign.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewCampaignId#"/> AS uuid)
+                      AND campaign.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND campaign.billing_model = 'CPC'
+                      AND campaign.status = 'DRAFT'
+                    LIMIT 1
+                </cfquery>
+
+                <cfif NOT qAdsV1ReviewTarget.recordcount>
+                    <cfthrow type="AdsV1.Validation" message="Somente um rascunho desta conta pode ser enviado para análise."/>
+                </cfif>
+
+                <cfquery name="qAdsV1ReviewSubmit" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.submit_campaign_review(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewCampaignId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1ReviewTarget.core_event_id#"/> AS integer)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?view=campaigns&amp;success=campaign-submitted"/>
             </cfcase>
 
             <cfcase value="credit_account">
@@ -738,37 +1161,33 @@ function adsV1FormList(required any value) {
                 <cflocation addtoken="false" url="./?view=payments&amp;success=voucher-redeemed##payment-credit"/>
             </cfcase>
 
-            <cfcase value="activate_campaign">
-                <cfset VARIABLES.adsV1StatusCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
-                <cfset VARIABLES.adsV1StatusReason = structKeyExists(FORM, "reason") ? trim(FORM.reason & "") : "Ativacao manual pelo Business"/>
-                <cfif NOT adsV1IsUuid(VARIABLES.adsV1StatusCampaignId)>
-                    <cfthrow type="AdsV1.Validation" message="Campanha invalida."/>
+            <cfcase value="reserve_voucher">
+                <cfset VARIABLES.adsV1VoucherCode = uCase(trim(FORM.voucher_code & ""))/>
+
+                <cfif len(VARIABLES.adsV1VoucherCode) LT 3
+                    OR len(VARIABLES.adsV1VoucherCode) GT 160
+                    OR NOT reFind("^[A-Z0-9-]+$", VARIABLES.adsV1VoucherCode)>
+                    <cfthrow type="AdsV1.Validation" message="Informe um código de voucher válido."/>
                 </cfif>
 
-                <cfquery name="qAdsV1ActivateTarget" datasource="runnerhub">
-                    SELECT c.campaign_id,
-                           c.status
-                    FROM ads.campaigns c
-                    WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid)
-                      AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
-                      AND c.billing_model = 'CPC'
-                      AND c.status IN ('DRAFT', 'PAUSED')
-                    LIMIT 1
-                </cfquery>
-                <cfif NOT qAdsV1ActivateTarget.recordcount>
-                    <cfthrow type="AdsV1.Validation" message="A campanha nao pode ser ativada neste estado."/>
-                </cfif>
+                <cftry>
+                    <cfquery name="qAdsV1VoucherReservationResult" datasource="runnerhub">
+                        SELECT *
+                        FROM ads.reserve_voucher(
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsAccessRegistrationId#"/> AS bigint),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1VoucherCode#" maxlength="160"/> AS text),
+                            CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                        )
+                    </cfquery>
 
-                <cfquery name="qAdsV1ActivateResult" datasource="runnerhub">
-                    SELECT *
-                    FROM ads.activate_campaign(
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(VARIABLES.adsV1StatusReason, 500)#"/> AS text)
-                    )
-                </cfquery>
+                    <cfcatch type="database">
+                        <cflog file="business_ads_v1" type="warning" text="voucher_reserve account=#VARIABLES.adsV1AccountId# registration=#VARIABLES.adsAccessRegistrationId# actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)#"/>
+                        <cfthrow type="AdsV1.Validation" message="O voucher não foi encontrado, expirou ou já está reservado."/>
+                    </cfcatch>
+                </cftry>
 
-                <cflocation addtoken="false" url="./?view=campaigns&amp;success=activated"/>
+                <cflocation addtoken="false" url="./?view=payments&amp;success=voucher-reserved##ads-voucher-form"/>
             </cfcase>
 
             <cfcase value="change_campaign_status">

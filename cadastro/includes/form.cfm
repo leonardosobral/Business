@@ -3,6 +3,18 @@
     <input type="hidden" name="acao" value="solicitar_acesso"/>
     <input type="hidden" name="cadastro_csrf" value="<cfoutput>#htmlEditFormat(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
 
+    <cfif VARIABLES.cadastroExistingAccountConfirmationRequired>
+        <input type="hidden" name="confirmar_conta_existente" value="1"/>
+        <div class="alert alert-warning cadastro-alert mb-3" role="status">
+            <i class="fa-solid fa-building-circle-check" aria-hidden="true"></i>
+            <span>
+                Encontramos uma conta com este CPF/CNPJ:
+                <strong><cfoutput>#htmlEditFormat(VARIABLES.cadastroExistingAccountName)#</cfoutput></strong>.
+                Ao continuar, você solicitará acesso a essa conta e aguardará a aprovação de um OWNER ou da equipe RunnerHub.
+            </span>
+        </div>
+    </cfif>
+
     <div class="cadastro-form-section-heading">
         <span>Empresa</span>
         <small>Campos obrigatórios *</small>
@@ -120,7 +132,7 @@
     </div>
 
     <button data-mdb-ripple-init type="submit" class="btn btn-block cadastro-submit-button" <cfif NOT VARIABLES.cadastroSolicitacaoTablesReady>disabled</cfif>>
-        Enviar solicitação
+        <cfif VARIABLES.cadastroExistingAccountConfirmationRequired>Solicitar acesso a esta conta<cfelse>Enviar solicitação</cfif>
         <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     </button>
 
