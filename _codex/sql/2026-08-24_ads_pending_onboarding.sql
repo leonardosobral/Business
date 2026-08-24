@@ -1462,6 +1462,15 @@ ALTER FUNCTION ads.cancel_open_campaign_reviews(bigint, integer, text)
 ALTER FUNCTION ads.review_campaign(uuid, text, integer, text, text)
     OWNER TO ads_owner;
 
+-- Dependencias public usadas pelas APIs SECURITY DEFINER deste fluxo.
+GRANT SELECT ON TABLE public.tb_contas TO ads_owner;
+GRANT SELECT ON TABLE public.tb_conta_usuarios TO ads_owner;
+GRANT SELECT ON TABLE public.tb_conta_eventos TO ads_owner;
+GRANT SELECT ON TABLE public.tb_conta_evento_solicitacoes TO ads_owner;
+GRANT SELECT ON TABLE public.tb_evento_corridas TO ads_owner;
+GRANT SELECT ON TABLE public.tb_usuarios TO ads_owner;
+GRANT SELECT, UPDATE ON TABLE public.tb_conta_cadastro_solicitacoes TO ads_owner;
+
 REVOKE ALL ON TABLE
     ads.voucher_reservations,
     ads.campaign_review_requests,

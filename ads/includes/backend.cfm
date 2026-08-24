@@ -3,6 +3,12 @@
 <cfparam name="FORM.ads_v1_action" default=""/>
 <cfparam name="FORM.ads_v1_csrf" default=""/>
 <cfparam name="FORM.voucher_code" default=""/>
+<cfparam name="FORM.voucher_scope" default="PROMOTIONAL"/>
+<cfparam name="FORM.voucher_account_id" default=""/>
+<cfparam name="FORM.voucher_amount" default="100.00"/>
+<cfparam name="FORM.voucher_expires_on" default=""/>
+<cfparam name="FORM.voucher_redemption_role" default="OWNER"/>
+<cfparam name="FORM.voucher_note" default=""/>
 
 <cfinclude template="access.cfm"/>
 
@@ -59,9 +65,12 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1CampaignActions = "save_campaign,submit_campaign_review,change_campaign_status"/>
 <cfset VARIABLES.adsV1FinanceActions = "credit_account,reverse_click_debit"/>
 <cfset VARIABLES.adsV1VoucherActions = "redeem_voucher,reserve_voucher"/>
+<cfset VARIABLES.adsV1VoucherAdminActions = "create_admin_voucher"/>
 <cfset VARIABLES.adsV1ReviewActions = "approve_campaign_review,request_campaign_changes,cancel_campaign_review"/>
 <cfset VARIABLES.adsV1ReviewApiReady = false/>
 <cfset VARIABLES.adsV1CanReviewMutate = false/>
+<cfset VARIABLES.adsV1AdminVoucherApiReady = false/>
+<cfset VARIABLES.adsV1CanAdminVoucherMutate = false/>
 <cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
     "rr-home-upcoming-native",
     "rr-home-upcoming-native-secondary",
@@ -80,6 +89,8 @@ function adsV1FormList(required any value) {
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
 <cfset qAdsV1VoucherReservation = QueryNew("voucher_reservation_id,id_ad_voucher,id_conta,id_solicitacao_cadastro,status,expires_at,transition_reason,codigo,credito")/>
 <cfset qAdsV1CampaignReviewQueue = QueryNew("campaign_review_request_id,campaign_id,account_id,core_event_id,review_status,review_reason,submitted_at,updated_at,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,account_status,event_name,event_tag,event_city,event_state,event_link_status,available_balance,placement_keys")/>
+<cfset qAdsV1AdminVoucherAccounts = QueryNew("id_conta,nome_conta,status")/>
+<cfset qAdsV1AdminVouchers = QueryNew("id_ad_voucher,codigo,voucher_scope,id_conta,account_name,credito,credito_disponivel,status,data_criacao,data_expiracao,id_usuario_resgate,redeemed_by_name,redeemed_by_email,data_resgate,observacao,reservation_status,reserved_account_name")/>
 <cfset VARIABLES.adsV1Summary = {
     balance = 0,
     campaigns = 0,
@@ -147,6 +158,7 @@ function adsV1FormList(required any value) {
     <cfcase value="credited"><cfset VARIABLES.adsV1Notice = "Credito de publicidade registrado."/></cfcase>
     <cfcase value="voucher-redeemed"><cfset VARIABLES.adsV1Notice = "Voucher resgatado e saldo de publicidade atualizado."/></cfcase>
     <cfcase value="voucher-reserved"><cfset VARIABLES.adsV1Notice = "Voucher reservado. O crédito será aplicado após a aprovação da conta."/></cfcase>
+    <cfcase value="voucher-created"><cfset VARIABLES.adsV1Notice = "Voucher criado com sucesso."/></cfcase>
     <cfcase value="activated"><cfset VARIABLES.adsV1Notice = "Campanha ativada."/></cfcase>
     <cfcase value="paused"><cfset VARIABLES.adsV1Notice = "Campanha pausada."/></cfcase>
     <cfcase value="ended"><cfset VARIABLES.adsV1Notice = "Campanha encerrada."/></cfcase>
@@ -380,11 +392,94 @@ function adsV1FormList(required any value) {
     </cftry>
 </cfif>
 
+<cfif VARIABLES.adsAccessCanAdminVouchers AND VARIABLES.adsV1ApiReady>
+    <cftry>
+        <cfquery name="qAdsV1AdminVoucherReadiness" datasource="runnerhub">
+            SELECT to_regprocedure(
+                       'ads.create_voucher(text,bigint,text,numeric,date,text,text,integer)'
+                   ) IS NOT NULL
+                   AND has_function_privilege(
+                       current_user,
+                       to_regprocedure(
+                           'ads.create_voucher(text,bigint,text,numeric,date,text,text,integer)'
+                       ),
+                       'EXECUTE'
+                   )
+                   AND EXISTS (
+                       SELECT 1
+                       FROM information_schema.columns
+                       WHERE table_schema = 'ads'
+                         AND table_name = 'tb_ad_vouchers'
+                         AND column_name = 'voucher_scope'
+                   ) AS ready
+        </cfquery>
+        <cfset VARIABLES.adsV1AdminVoucherApiReady = qAdsV1AdminVoucherReadiness.recordcount
+            AND listFindNoCase("1,true,t,yes,on", trim(qAdsV1AdminVoucherReadiness.ready & "")) GT 0/>
+
+        <cfif VARIABLES.adsV1AdminVoucherApiReady>
+            <cfquery name="qAdsV1AdminVoucherAccounts" datasource="runnerhub">
+                SELECT account.id_conta,
+                       account.nome_conta,
+                       account.status::text AS status
+                FROM public.tb_contas account
+                WHERE account.status::text IN ('ATIVA', 'PENDENTE')
+                ORDER BY account.nome_conta, account.id_conta
+            </cfquery>
+
+            <cfquery name="qAdsV1AdminVouchers" datasource="runnerhub">
+                SELECT voucher.id_ad_voucher,
+                       voucher.codigo,
+                       voucher.voucher_scope,
+                       voucher.id_conta,
+                       account.nome_conta AS account_name,
+                       voucher.credito,
+                       voucher.credito_disponivel,
+                       voucher.status,
+                       voucher.data_criacao,
+                       voucher.data_expiracao,
+                       voucher.id_usuario_resgate,
+                       redeemed_by.name AS redeemed_by_name,
+                       redeemed_by.email AS redeemed_by_email,
+                       voucher.data_resgate,
+                       voucher.observacao,
+                       reservation.status AS reservation_status,
+                       reserved_account.nome_conta AS reserved_account_name
+                FROM ads.tb_ad_vouchers voucher
+                LEFT JOIN public.tb_contas account
+                  ON account.id_conta = voucher.id_conta
+                LEFT JOIN public.tb_usuarios redeemed_by
+                  ON redeemed_by.id = voucher.id_usuario_resgate
+                LEFT JOIN LATERAL (
+                    SELECT stored.id_conta,
+                           stored.status
+                    FROM ads.voucher_reservations stored
+                    WHERE stored.id_ad_voucher = voucher.id_ad_voucher
+                    ORDER BY stored.voucher_reservation_id DESC
+                    LIMIT 1
+                ) reservation ON true
+                LEFT JOIN public.tb_contas reserved_account
+                  ON reserved_account.id_conta = reservation.id_conta
+                ORDER BY voucher.data_criacao DESC,
+                         voucher.id_ad_voucher DESC
+                LIMIT 200
+            </cfquery>
+        </cfif>
+
+        <cfcatch type="any">
+            <cfset VARIABLES.adsV1AdminVoucherApiReady = false/>
+            <cflog file="business_ads_v1" type="error" text="voucher_admin_read actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)#"/>
+        </cfcatch>
+    </cftry>
+</cfif>
+
 <cfset VARIABLES.adsV1CanMutate = VARIABLES.adsV1HasAccount
     AND VARIABLES.adsV1ApiReady
     AND VARIABLES.adsV1ActorId GT 0/>
 <cfset VARIABLES.adsV1CanReviewMutate = VARIABLES.adsAccessCanReviewCampaign
     AND VARIABLES.adsV1ReviewApiReady
+    AND VARIABLES.adsV1ActorId GT 0/>
+<cfset VARIABLES.adsV1CanAdminVoucherMutate = VARIABLES.adsAccessCanAdminVouchers
+    AND VARIABLES.adsV1AdminVoucherApiReady
     AND VARIABLES.adsV1ActorId GT 0/>
 
 <cfif VARIABLES.adsAccessCanView AND VARIABLES.adsV1HasAccount AND VARIABLES.adsV1ApiReady>
@@ -779,6 +874,10 @@ function adsV1FormList(required any value) {
             AND NOT (
                 listFindNoCase(VARIABLES.adsV1ReviewActions, VARIABLES.adsV1Action)
                 AND VARIABLES.adsV1CanReviewMutate
+            )
+            AND NOT (
+                listFindNoCase(VARIABLES.adsV1VoucherAdminActions, VARIABLES.adsV1Action)
+                AND VARIABLES.adsV1CanAdminVoucherMutate
             )>
             <cfthrow type="AdsV1.Validation" message="A operacao de publicidade nao esta disponivel para esta conta."/>
         </cfif>
@@ -797,6 +896,11 @@ function adsV1FormList(required any value) {
             <cfheader statuscode="403" statustext="Forbidden"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente um administrador RunnerHub pode revisar campanhas."/>
         </cfif>
+        <cfif listFindNoCase(VARIABLES.adsV1VoucherAdminActions, VARIABLES.adsV1Action)
+            AND NOT VARIABLES.adsAccessCanAdminVouchers>
+            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfthrow type="AdsV1.Forbidden" message="Somente um administrador RunnerHub pode criar vouchers."/>
+        </cfif>
         <cfif VARIABLES.adsV1Action EQ "redeem_voucher"
             AND NOT VARIABLES.adsAccessCanPurchaseCredit>
             <cfheader statuscode="403" statustext="Forbidden"/>
@@ -812,6 +916,64 @@ function adsV1FormList(required any value) {
         </cfif>
 
         <cfswitch expression="#VARIABLES.adsV1Action#">
+            <cfcase value="create_admin_voucher">
+                <cfset VARIABLES.adsV1AdminVoucherScope = uCase(trim(FORM.voucher_scope & ""))/>
+                <cfset VARIABLES.adsV1AdminVoucherAccountId = isNumeric(FORM.voucher_account_id) ? val(FORM.voucher_account_id) : 0/>
+                <cfset VARIABLES.adsV1AdminVoucherCode = uCase(trim(FORM.voucher_code & ""))/>
+                <cfset VARIABLES.adsV1AdminVoucherAmount = adsV1MoneyValue(FORM.voucher_amount)/>
+                <cfset VARIABLES.adsV1AdminVoucherExpiresOn = trim(FORM.voucher_expires_on & "")/>
+                <cfset VARIABLES.adsV1AdminVoucherRole = uCase(trim(FORM.voucher_redemption_role & ""))/>
+                <cfset VARIABLES.adsV1AdminVoucherNote = trim(FORM.voucher_note & "")/>
+
+                <cfif NOT listFind("PROMOTIONAL,ACCOUNT", VARIABLES.adsV1AdminVoucherScope)>
+                    <cfthrow type="AdsV1.Validation" message="Escolha se o voucher é promocional ou restrito a uma conta."/>
+                </cfif>
+                <cfif VARIABLES.adsV1AdminVoucherScope EQ "ACCOUNT"
+                    AND VARIABLES.adsV1AdminVoucherAccountId LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Escolha a conta do voucher restrito."/>
+                </cfif>
+                <cfif VARIABLES.adsV1AdminVoucherScope EQ "PROMOTIONAL">
+                    <cfset VARIABLES.adsV1AdminVoucherAccountId = 0/>
+                </cfif>
+                <cfif NOT len(VARIABLES.adsV1AdminVoucherCode)>
+                    <cfset VARIABLES.adsV1AdminVoucherCode = "RUNPRO-" & left(uCase(hash(createUUID(), "SHA-256")), 10)/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1AdminVoucherCode) LT 3
+                    OR len(VARIABLES.adsV1AdminVoucherCode) GT 80
+                    OR NOT reFind("^[A-Z0-9-]+$", VARIABLES.adsV1AdminVoucherCode)>
+                    <cfthrow type="AdsV1.Validation" message="Informe um código com letras, números e hífen."/>
+                </cfif>
+                <cfif VARIABLES.adsV1AdminVoucherAmount LTE 0>
+                    <cfthrow type="AdsV1.Validation" message="Informe um crédito maior que zero."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1AdminVoucherExpiresOn)
+                    AND NOT isDate(VARIABLES.adsV1AdminVoucherExpiresOn)>
+                    <cfthrow type="AdsV1.Validation" message="Informe uma validade correta."/>
+                </cfif>
+                <cfif NOT listFind("OWNER,ADMIN,OPERADOR,VISUALIZADOR", VARIABLES.adsV1AdminVoucherRole)>
+                    <cfthrow type="AdsV1.Validation" message="Escolha um papel válido para o resgate."/>
+                </cfif>
+                <cfif len(VARIABLES.adsV1AdminVoucherNote) GT 500>
+                    <cfthrow type="AdsV1.Validation" message="A observação deve ter no máximo 500 caracteres."/>
+                </cfif>
+
+                <cfquery name="qAdsV1AdminVoucherCreate" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.create_voucher(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1AdminVoucherScope#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AdminVoucherAccountId#" null="#VARIABLES.adsV1AdminVoucherScope EQ 'PROMOTIONAL'#"/> AS bigint),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1AdminVoucherCode#" maxlength="80"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#VARIABLES.adsV1AdminVoucherAmount#" scale="2"/> AS numeric),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.adsV1AdminVoucherExpiresOn#" null="#NOT len(VARIABLES.adsV1AdminVoucherExpiresOn)#"/> AS date),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1AdminVoucherRole#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.adsV1AdminVoucherNote#" null="#NOT len(VARIABLES.adsV1AdminVoucherNote)#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?view=vouchers&amp;success=voucher-created##admin-vouchers"/>
+            </cfcase>
+
             <cfcase value="approve_campaign_review,request_campaign_changes,cancel_campaign_review">
                 <cfset VARIABLES.adsV1ReviewCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
                 <cfset VARIABLES.adsV1ReviewRequestId = structKeyExists(FORM, "campaign_review_request_id") AND isNumeric(FORM.campaign_review_request_id) ? val(FORM.campaign_review_request_id) : 0/>
@@ -1049,7 +1211,7 @@ function adsV1FormList(required any value) {
                     </cfquery>
                 </cftransaction>
 
-                <cflocation addtoken="false" url="./?view=campaigns&amp;success=campaign-saved"/>
+                <cflocation addtoken="false" url="./?view=campaigns&amp;status=draft&amp;success=campaign-saved"/>
             </cfcase>
 
             <cfcase value="submit_campaign_review">
@@ -1182,7 +1344,7 @@ function adsV1FormList(required any value) {
                     </cfquery>
 
                     <cfcatch type="database">
-                        <cflog file="business_ads_v1" type="warning" text="voucher_reserve account=#VARIABLES.adsV1AccountId# registration=#VARIABLES.adsAccessRegistrationId# actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)#"/>
+                        <cflog file="business_ads_v1" type="warning" text="voucher_reserve account=#VARIABLES.adsV1AccountId# registration=#VARIABLES.adsAccessRegistrationId# actor=#VARIABLES.adsV1ActorId# message=#left(cfcatch.message & '', 1000)# detail=#left(cfcatch.detail & '', 2000)#"/>
                         <cfthrow type="AdsV1.Validation" message="O voucher não foi encontrado, expirou ou já está reservado."/>
                     </cfcatch>
                 </cftry>
@@ -1292,7 +1454,7 @@ function adsV1FormList(required any value) {
         </cfswitch>
 
         <cfcatch type="any">
-            <cflog file="business_ads_v1" type="error" text="action=#VARIABLES.adsV1Action# account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# type=#cfcatch.type# message=#left(cfcatch.message & '', 1000)#"/>
+            <cflog file="business_ads_v1" type="error" text="action=#VARIABLES.adsV1Action# account=#VARIABLES.adsV1AccountId# actor=#VARIABLES.adsV1ActorId# type=#cfcatch.type# message=#left(cfcatch.message & '', 1000)# detail=#left(cfcatch.detail & '', 3000)#"/>
             <cfif cfcatch.type EQ "AdsV1.Validation" OR cfcatch.type EQ "AdsV1.Forbidden">
                 <cfset VARIABLES.adsV1Error = cfcatch.message/>
             <cfelse>

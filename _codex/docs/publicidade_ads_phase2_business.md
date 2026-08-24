@@ -233,3 +233,28 @@ Os passos 1 a 4 foram concluídos. Restam como validação operacional controlad
 4. decidir a campanha como administrador e confirmar que não houve ativação
    antes dessa decisão;
 5. repetir o caminho de pedido de acesso a uma conta existente.
+
+## Vouchers globais e restritos — 24/08/2026
+
+O produto passa a distinguir dois tipos de voucher:
+
+- `PROMOTIONAL`: criado globalmente, sem conta; fica vinculado de forma
+  atômica à primeira conta que o reservar ou resgatar;
+- `ACCOUNT`: criado para uma conta específica e rejeitado em qualquer outra.
+
+Registros existentes com conta são preservados como `ACCOUNT`. Registros
+legados sem conta são classificados como `PROMOTIONAL`. A liberação de uma
+reserva promocional devolve o voucher ao estado sem conta; aplicação ou resgate
+mantém o vínculo definitivo e o ledger canônico continua idempotente.
+
+A administração ganhou a rota global `/ads/?view=vouchers`, separada da fila de
+revisão de anúncios. O formulário sugere R$ 100, permite gerar o código
+automaticamente e só solicita uma conta quando o tipo escolhido é `ACCOUNT`.
+
+Em 24/08/2026, `_codex/sql/2026-08-24_ads_global_vouchers.sql` foi aplicada e os
+arquivos foram publicados. A compilação de produção passou em `ads` (21) e
+contas (3). A validação autenticada em `/ads/?view=vouchers` confirmou a API
+disponível, o formulário promocional com R$ 100, a navegação separada da revisão
+de anúncios e a classificação dos oito vouchers anteriores como `ACCOUNT`.
+Nenhum voucher novo foi criado durante a validação. Backup anterior ao rollout:
+`/var/backups/business-global-vouchers-before-deploy-20260824-111500.tar.gz`.

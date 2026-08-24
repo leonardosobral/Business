@@ -24,6 +24,7 @@
 <cfset VARIABLES.adsAccessCanReserveVoucher = false/>
 <cfset VARIABLES.adsAccessCanPrepareCampaign = false/>
 <cfset VARIABLES.adsAccessCanReviewCampaign = false/>
+<cfset VARIABLES.adsAccessCanAdminVouchers = false/>
 
 <cfif isDefined("VARIABLES.businessActiveAccountId")
     AND isNumeric(VARIABLES.businessActiveAccountId)
@@ -113,4 +114,6 @@
 <cfset VARIABLES.adsAccessCanPrepareCampaign = VARIABLES.adsAccessIsPendingNewAccount
     AND VARIABLES.adsAccessHasActor/>
 <cfset VARIABLES.adsAccessCanReviewCampaign = VARIABLES.adsAccessHasActor
+    AND VARIABLES.adsAccessRealIsAdmin/>
+<cfset VARIABLES.adsAccessCanAdminVouchers = VARIABLES.adsAccessHasActor
     AND VARIABLES.adsAccessRealIsAdmin/>

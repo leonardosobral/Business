@@ -1607,7 +1607,7 @@
                     <div class="mb-3">
                       <h5 class="mb-1">Vouchers de ads</h5>
                       <div class="text-muted small">
-                        Códigos de crédito vinculados a esta conta. Quem resgatar o código será associado à conta.
+                        Voucher restrito a esta conta. O código não poderá ser reservado ou resgatado por outra conta.
                       </div>
                     </div>
 

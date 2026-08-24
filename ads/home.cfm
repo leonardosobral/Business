@@ -1,6 +1,6 @@
 <cfparam name="URL.view" default="overview"/>
 <cfparam name="URL.mode" default=""/>
-<cfparam name="URL.status" default="ongoing"/>
+<cfparam name="URL.status" default=""/>
 <cfparam name="URL.history" default="campaigns"/>
 
 <cfscript>
@@ -83,7 +83,7 @@ function adsV1PaymentStatusLabel(required any status) {
 }
 
 VARIABLES.adsV1WorkspaceView = lCase(trim(URL.view & ""));
-if (!listFindNoCase("overview,campaigns,payments,history,admin", VARIABLES.adsV1WorkspaceView)) {
+if (!listFindNoCase("overview,campaigns,payments,history,admin,vouchers", VARIABLES.adsV1WorkspaceView)) {
     VARIABLES.adsV1WorkspaceView = "overview";
 }
 if (adsV1IsUuid(URL.payment)) VARIABLES.adsV1WorkspaceView = "payments";
@@ -91,12 +91,14 @@ if (adsV1IsUuid(URL.campaign) OR lCase(trim(URL.mode & "")) EQ "new") VARIABLES.
 if (listFindNoCase(VARIABLES.adsV1CampaignActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "campaigns";
 if (listFindNoCase(VARIABLES.adsV1FinanceActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
 if (listFindNoCase(VARIABLES.adsV1ReviewActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
+if (listFindNoCase(VARIABLES.adsV1VoucherAdminActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "vouchers";
 if (VARIABLES.adsV1WorkspaceView EQ "payments" AND !VARIABLES.adsAccessCanViewPayments) VARIABLES.adsV1WorkspaceView = "overview";
+if (VARIABLES.adsV1WorkspaceView EQ "vouchers" AND !VARIABLES.adsAccessCanAdminVouchers) VARIABLES.adsV1WorkspaceView = "overview";
 if (VARIABLES.adsV1WorkspaceView EQ "admin" AND !VARIABLES.adsAccessCanAdminFinance AND !VARIABLES.adsAccessCanReviewCampaign) VARIABLES.adsV1WorkspaceView = "overview";
-if (!VARIABLES.adsV1HasAccount AND VARIABLES.adsAccessCanReviewCampaign AND VARIABLES.adsV1WorkspaceView EQ "overview") VARIABLES.adsV1WorkspaceView = "admin";
+if (!VARIABLES.adsV1HasAccount AND (VARIABLES.adsAccessCanReviewCampaign OR VARIABLES.adsAccessCanAdminVouchers) AND VARIABLES.adsV1WorkspaceView EQ "overview") VARIABLES.adsV1WorkspaceView = "admin";
 
 VARIABLES.adsV1CampaignFilter = lCase(trim(URL.status & ""));
-if (!listFindNoCase("ongoing,draft,ended", VARIABLES.adsV1CampaignFilter)) VARIABLES.adsV1CampaignFilter = "ongoing";
+if (!listFindNoCase("ongoing,draft,ended", VARIABLES.adsV1CampaignFilter)) VARIABLES.adsV1CampaignFilter = "";
 VARIABLES.adsV1HistoryTab = lCase(trim(URL.history & ""));
 if (!listFindNoCase("campaigns,legacy", VARIABLES.adsV1HistoryTab)) VARIABLES.adsV1HistoryTab = "campaigns";
 VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
@@ -156,6 +158,10 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
     <cfif qAdsV1Campaigns.status EQ "ENDED"><cfset VARIABLES.adsV1EndedCount++/></cfif>
     <cfif listFind("ACTIVE,PAUSED", qAdsV1Campaigns.status)><cfset VARIABLES.adsV1OngoingCount++/></cfif>
 </cfloop>
+<cfif NOT len(VARIABLES.adsV1CampaignFilter)>
+    <cfset VARIABLES.adsV1CampaignFilter = VARIABLES.adsV1OngoingCount EQ 0
+        AND VARIABLES.adsV1DraftCount GT 0 ? "draft" : "ongoing"/>
+</cfif>
 
 <cfset VARIABLES.adsV1LatestPaidPayment = {}/>
 <cfif isDefined("qAdsPayments") AND qAdsPayments.recordcount>
@@ -197,11 +203,14 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
 <cfif len(VARIABLES.adsV1Error)><div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.adsV1Error)#</cfoutput></div></cfif>
 <cfif VARIABLES.adsAccessIsPendingNewAccount><div class="alert alert-info"><strong>Você pode preparar tudo agora.</strong> O voucher só vira saldo após a aprovação da conta, e a campanha só poderá entrar no ar após a aprovação da conta, do evento e da equipe RunnerHub.</div></cfif>
 
-<cfif VARIABLES.adsV1WorkspaceView EQ "admin"
-  AND VARIABLES.adsAccessCanReviewCampaign
+<cfif listFindNoCase("admin,vouchers", VARIABLES.adsV1WorkspaceView)
+  AND (
+    (VARIABLES.adsV1WorkspaceView EQ "admin" AND VARIABLES.adsAccessCanReviewCampaign)
+    OR (VARIABLES.adsV1WorkspaceView EQ "vouchers" AND VARIABLES.adsAccessCanAdminVouchers)
+  )
   AND NOT VARIABLES.adsV1HasAccount>
-  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><a class="active" href="./?view=admin">Revisão de anúncios</a></nav>
-  <cfinclude template="includes/workspace_admin.cfm"/>
+  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><cfif VARIABLES.adsAccessCanAdminVouchers><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'vouchers'>active</cfif>" href="./?view=vouchers">Vouchers</a></cfif><cfif VARIABLES.adsAccessCanReviewCampaign><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'admin'>active</cfif>" href="./?view=admin">Revisão de anúncios</a></cfif></nav>
+  <cfif VARIABLES.adsV1WorkspaceView EQ "vouchers"><cfinclude template="includes/workspace_admin_vouchers.cfm"/><cfelse><cfinclude template="includes/workspace_admin.cfm"/></cfif>
 <cfelseif NOT VARIABLES.adsV1HasAccount>
   <section class="card shadow-0 mb-4"><div class="card-body p-4"><div class="ads-v1-eyebrow mb-2">Conta obrigatoria</div><h2 class="h5">Selecione uma conta no topo</h2><p class="text-muted mb-0">Escolha a conta que deseja anunciar para acessar campanhas, saldo e desempenho.</p></div></section>
 <cfelseif NOT VARIABLES.adsAccessCanView>
@@ -213,13 +222,14 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
 <cfelse>
   <section class="ads-health-strip mb-4"><div class="row g-0 row-cols-1 row-cols-lg-4"><div class="col ads-health-item"><div class="text-muted small mb-2">Saldo disponível</div><div class="ads-v1-summary-value"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1Summary.balance)#</cfoutput></div><cfif VARIABLES.adsAccessCanPurchaseCredit><a class="btn btn-sm btn-outline-info mt-3" href="./?view=payments#payment-credit">Adicionar saldo</a></cfif></div><div class="col ads-health-item"><div class="text-muted small mb-2">Gasto total</div><div class="ads-v1-summary-value"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1Summary.spent)#</cfoutput></div><div class="small text-muted mt-2">Investimento em campanhas</div></div><div class="col ads-health-item"><div class="text-muted small mb-2">Campanhas ativas</div><div class="ads-v1-summary-value"><cfoutput>#VARIABLES.adsV1Summary.active#</cfoutput></div><div class="small text-muted mt-2"><cfoutput>#VARIABLES.adsV1Summary.paused# pausadas</cfoutput></div></div><div class="col ads-health-item"><div class="text-muted small mb-2">Desempenho</div><div class="ads-v1-summary-value"><cfoutput>#lsNumberFormat(VARIABLES.adsV1Summary.clicks, "9,999,999")# cliques</cfoutput></div><div class="small text-muted mt-2"><cfoutput>#lsNumberFormat(VARIABLES.adsV1Summary.views, "9,999,999")# visualizações</cfoutput></div></div></div></section>
 
-  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>active</cfif>" href="./?view=overview">Visão geral</a><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>active</cfif>" href="./?view=campaigns">Campanhas</a><cfif VARIABLES.adsAccessCanViewPayments><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'payments'>active</cfif>" href="./?view=payments">Saldo e pagamentos</a></cfif><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'history'>active</cfif>" href="./?view=history">Histórico</a><cfif VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'admin'>active</cfif>" href="./?view=admin"><cfif VARIABLES.adsAccessCanReviewCampaign>Revisão de anúncios<cfelse>Administração</cfif></a></cfif></nav>
+  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>active</cfif>" href="./?view=overview">Visão geral</a><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>active</cfif>" href="./?view=campaigns">Campanhas</a><cfif VARIABLES.adsAccessCanViewPayments><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'payments'>active</cfif>" href="./?view=payments">Saldo e pagamentos</a></cfif><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'history'>active</cfif>" href="./?view=history">Histórico</a><cfif VARIABLES.adsAccessCanAdminVouchers><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'vouchers'>active</cfif>" href="./?view=vouchers">Vouchers</a></cfif><cfif VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'admin'>active</cfif>" href="./?view=admin"><cfif VARIABLES.adsAccessCanReviewCampaign>Revisão de anúncios<cfelse>Administração</cfif></a></cfif></nav>
 
   <cfif VARIABLES.adsV1Summary.active GT 0 AND VARIABLES.adsV1Summary.balance LTE 0><div class="alert alert-warning d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2"><div><strong>Campanha ativa sem saldo.</strong> Adicione crédito para retomar a exibição.</div><cfif VARIABLES.adsAccessCanPurchaseCredit><a class="btn btn-sm btn-outline-warning" href="./?view=payments#payment-credit">Adicionar saldo</a></cfif></div></cfif>
 
   <cfif listFindNoCase("overview,campaigns", VARIABLES.adsV1WorkspaceView)><cfinclude template="includes/workspace_campaigns.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns" AND VARIABLES.adsV1ShowCampaignForm><cfinclude template="includes/workspace_campaign_form.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "payments"><cfinclude template="includes/payments_home.cfm"/></cfif>
+  <cfif VARIABLES.adsV1WorkspaceView EQ "vouchers" AND VARIABLES.adsAccessCanAdminVouchers><cfinclude template="includes/workspace_admin_vouchers.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "admin" AND (VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign)><cfinclude template="includes/workspace_admin.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "history"><cfinclude template="includes/workspace_history.cfm"/></cfif>
 </cfif>
