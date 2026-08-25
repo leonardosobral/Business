@@ -270,7 +270,6 @@
   .accounts-page .accounts-request-decision {
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
   .accounts-page .accounts-request-decision-copy {
@@ -285,6 +284,28 @@
     grid-template-columns: minmax(0, 1fr) auto;
     margin-top: auto;
     padding-top: .25rem;
+  }
+
+  .accounts-page .accounts-test-reset {
+    border-top: 1px solid rgba(255, 82, 105, .32);
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .accounts-page .accounts-test-reset > summary {
+    color: var(--mdb-danger);
+    cursor: pointer;
+    font-size: .82rem;
+    font-weight: 700;
+    list-style-position: inside;
+  }
+
+  .accounts-page .accounts-test-reset-form {
+    background: rgba(255, 82, 105, .06);
+    border: 1px solid rgba(255, 82, 105, .28);
+    border-radius: 8px;
+    margin-top: .85rem;
+    padding: 1rem;
   }
 
   .accounts-page .accounts-request-grid {
@@ -1063,6 +1084,33 @@
                             <button class="btn btn-sm btn-outline-danger" type="submit" name="account_registration_action" value="recusar" onclick="return confirm('Recusar esta solicitação?');">Recusar</button>
                           </div>
                         </form>
+
+                        <cfif VARIABLES.businessAccountsCanAdminAll AND qBusinessAccountRegistrationRequests.status_conta EQ "PENDENTE">
+                          <details class="accounts-test-reset">
+                            <summary>Eliminar solicitação e dados de teste</summary>
+                            <form method="post" action="./" class="accounts-test-reset-form">
+                              <input type="hidden" name="account_pending_reset_action" value="reset"/>
+                              <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+
+                              <p class="small text-muted mb-3">
+                                Remove esta solicitação, a conta provisória, vínculos de evento, reserva de voucher e rascunhos de publicidade. O usuário RoadRunners é preservado e poderá começar novamente.
+                              </p>
+
+                              <label class="form-label small" for="reset-email-#qBusinessAccountRegistrationRequests.id_solicitacao#">
+                                Digite <strong>#htmlEditFormat(qBusinessAccountRegistrationRequests.email_responsavel)#</strong> para confirmar
+                              </label>
+                              <input class="form-control form-control-sm mb-3" type="email" id="reset-email-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="account_pending_reset_email" autocomplete="off" required/>
+
+                              <label class="form-label small" for="reset-reason-#qBusinessAccountRegistrationRequests.id_solicitacao#">Motivo da eliminação</label>
+                              <textarea class="form-control form-control-sm mb-3" id="reset-reason-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="account_pending_reset_reason" rows="3" minlength="5" required></textarea>
+
+                              <button class="btn btn-sm btn-outline-danger w-100" type="submit" onclick="return confirm('Eliminar definitivamente os dados Business desta solicitação de teste?');">
+                                Eliminar dados de teste
+                              </button>
+                            </form>
+                          </details>
+                        </cfif>
                       </div>
                     </div>
                   </article>

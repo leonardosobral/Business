@@ -255,7 +255,7 @@
             <p><cfif VARIABLES.businessPendingIsExistingAccountRequest>Assim que seu acesso for aprovado, você poderá operar os eventos autorizados para o seu papel.<cfelse>Encontre a prova no RoadRunners e peça o vínculo. Isso pode ser feito enquanto a conta está em análise.</cfif></p>
             <div class="pending-workspace-step-action">
                 <cfif len(VARIABLES.businessPendingWorkspaceTargetAccountId) AND NOT VARIABLES.businessPendingIsExistingAccountRequest>
-                    <a class="btn btn-warning" href="/eventos/#primeiro-evento">
+                    <a class="btn <cfif VARIABLES.businessPendingEventRequests GT 0>btn-outline-success<cfelse>btn-warning</cfif>" href="/eventos/#primeiro-evento">
                         <cfif VARIABLES.businessPendingEventRequests GT 0>Ver solicitação<cfelse>Vincular evento</cfif>
                         <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
                     </a>

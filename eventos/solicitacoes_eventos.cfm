@@ -75,8 +75,11 @@
 </style>
 
 <cfif len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))>
-  <div class="alert alert-success mb-3" role="alert">
-    <cfoutput>#htmlEditFormat(VARIABLES.eventoSolicitacaoNoticeMessage)#</cfoutput>
+  <div class="alert alert-success mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2" role="alert">
+    <span><cfoutput>#htmlEditFormat(VARIABLES.eventoSolicitacaoNoticeMessage)#</cfoutput></span>
+    <cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>
+      <a class="btn btn-sm btn-outline-success flex-shrink-0" href="/">Voltar aos primeiros passos</a>
+    </cfif>
   </div>
 </cfif>
 

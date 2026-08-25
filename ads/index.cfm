@@ -36,6 +36,8 @@
 
       <div class="container-fluid px-4">
 
+        <cfinclude template="../includes/estrutura/pending_workspace_return.cfm">
+
         <cfinclude template="home.cfm">
 
       </div>

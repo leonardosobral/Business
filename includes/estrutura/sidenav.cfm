@@ -385,7 +385,7 @@
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/">link-warning</cfif>" href="/">
-                    <i class="fa-solid fa-house fa-fw me-3"></i><span>Visão geral</span>
+                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Primeiros passos</span>
                 </a>
             </li>
 

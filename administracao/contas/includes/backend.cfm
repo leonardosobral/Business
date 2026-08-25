@@ -165,6 +165,12 @@
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao aprovada e conta vinculada com sucesso."/>
     <cfelseif URL.sucesso EQ "solicitacao_recusada">
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao recusada com sucesso."/>
+    <cfelseif URL.sucesso EQ "solicitacao_eliminada">
+        <cfset VARIABLES.accountsResetDeletedTotal = isDefined("URL.removidos") AND isNumeric(URL.removidos) ? max(0, int(URL.removidos)) : 0/>
+        <cfset VARIABLES.accountsNoticeMessage = "Solicitação e dados de teste eliminados com sucesso."/>
+        <cfif VARIABLES.accountsResetDeletedTotal GT 0>
+            <cfset VARIABLES.accountsNoticeMessage &= " " & VARIABLES.accountsResetDeletedTotal & " registros relacionados foram removidos; o usuário global foi preservado."/>
+        </cfif>
     <cfelseif URL.sucesso EQ "voucher">
         <cfset VARIABLES.accountsNoticeMessage = "Voucher salvo com sucesso."/>
     <cfelseif URL.sucesso EQ "acessos">
@@ -212,6 +218,78 @@
 <cfelseif NOT VARIABLES.businessAccountsCanAccess>
     <cflocation addtoken="false" url="/"/>
 </cfif>
+
+<!--- BEGIN BUSINESS PENDING RESET: toda a limpeza vive na funcao transacional do banco. --->
+<cfif VARIABLES.businessAccountsTablesReady
+    AND VARIABLES.businessAccountRegistrationTableReady
+    AND isDefined("FORM.account_pending_reset_action")
+    AND FORM.account_pending_reset_action EQ "reset">
+
+    <cfset VARIABLES.accountPendingResetRequestId = isDefined("FORM.id_solicitacao") ? trim(FORM.id_solicitacao) : ""/>
+    <cfset VARIABLES.accountPendingResetEmail = isDefined("FORM.account_pending_reset_email") ? trim(FORM.account_pending_reset_email) : ""/>
+    <cfset VARIABLES.accountPendingResetReason = isDefined("FORM.account_pending_reset_reason") ? trim(FORM.account_pending_reset_reason) : ""/>
+    <cfset VARIABLES.accountPendingResetCsrf = isDefined("FORM.business_account_access_csrf") ? trim(FORM.business_account_access_csrf) : ""/>
+    <cfset VARIABLES.accountPendingResetErrors = []/>
+
+    <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+        <cfset arrayAppend(VARIABLES.accountPendingResetErrors, "Apenas administradores RunnerHub podem eliminar dados de teste.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountPendingResetRequestId) OR NOT isNumeric(VARIABLES.accountPendingResetRequestId) OR val(VARIABLES.accountPendingResetRequestId) LTE 0>
+        <cfset arrayAppend(VARIABLES.accountPendingResetErrors, "Solicitação inválida.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountPendingResetEmail)>
+        <cfset arrayAppend(VARIABLES.accountPendingResetErrors, "Digite o e-mail do solicitante para confirmar.")/>
+    </cfif>
+    <cfif len(VARIABLES.accountPendingResetReason) LT 5>
+        <cfset arrayAppend(VARIABLES.accountPendingResetErrors, "Informe um motivo com pelo menos 5 caracteres.")/>
+    </cfif>
+    <cfif NOT len(VARIABLES.accountPendingResetCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR compare(VARIABLES.accountPendingResetCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.accountPendingResetErrors, "A sessão de segurança expirou. Recarregue a página.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.accountPendingResetErrors)>
+        <cftry>
+            <cfquery name="qBusinessAccountPendingReset" datasource="runnerhub">
+                SELECT reset_result.reset_audit_id,
+                       reset_result.account_id,
+                       reset_result.subject_user_id,
+                       reset_result.deleted_counts::text AS deleted_counts
+                FROM public.reset_business_pending_registration(
+                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountPendingResetRequestId#"/> AS bigint),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountPendingResetEmail#" maxlength="255"/> AS text),
+                    CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.accountPendingResetReason#"/> AS text)
+                ) reset_result
+            </cfquery>
+
+            <cfset VARIABLES.accountPendingResetDeletedTotal = 0/>
+            <cfif qBusinessAccountPendingReset.recordcount AND len(trim(qBusinessAccountPendingReset.deleted_counts & ""))>
+                <cftry>
+                    <cfset VARIABLES.accountPendingResetCounts = deserializeJSON(qBusinessAccountPendingReset.deleted_counts & "")/>
+                    <cfloop collection="#VARIABLES.accountPendingResetCounts#" item="VARIABLES.accountPendingResetCountKey">
+                        <cfif isNumeric(VARIABLES.accountPendingResetCounts[VARIABLES.accountPendingResetCountKey])>
+                            <cfset VARIABLES.accountPendingResetDeletedTotal += val(VARIABLES.accountPendingResetCounts[VARIABLES.accountPendingResetCountKey])/>
+                        </cfif>
+                    </cfloop>
+                    <cfcatch type="any">
+                        <cfset VARIABLES.accountPendingResetDeletedTotal = 0/>
+                    </cfcatch>
+                </cftry>
+            </cfif>
+
+            <cflocation addtoken="false" url="./?sucesso=solicitacao_eliminada&removidos=#VARIABLES.accountPendingResetDeletedTotal#"/>
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsRegistrationSaveErrorMessage = "Não foi possível eliminar os dados de teste. " & cfcatch.message/>
+                <cflog file="business_accounts" type="error" text="pending_reset actor=#qPerfil.id# request=#VARIABLES.accountPendingResetRequestId# message=#left(cfcatch.message & '', 1000)# detail=#left(cfcatch.detail & '', 2000)#"/>
+            </cfcatch>
+        </cftry>
+    <cfelse>
+        <cfset VARIABLES.accountsRegistrationSaveErrorMessage = arrayToList(VARIABLES.accountPendingResetErrors, " ")/>
+    </cfif>
+</cfif>
+<!--- END BUSINESS PENDING RESET --->
 
 <cfif VARIABLES.businessAccountsTablesReady
     AND VARIABLES.businessAccountRegistrationTableReady

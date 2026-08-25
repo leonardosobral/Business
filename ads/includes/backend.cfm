@@ -80,7 +80,7 @@ function adsV1FormList(required any value) {
 ]/>
 
 <cfset qAdsV1Account = QueryNew("id_conta,nome_conta,status,available_balance,currency")/>
-<cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,event_link_status")/>
+<cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,url_imagem,url_imagem_listagem,imagem,event_link_status")/>
 <cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
 <cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at,event_link_status,account_status")/>
 <cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys,campaign_review_request_id,review_status,review_reason")/>
@@ -538,6 +538,9 @@ function adsV1FormList(required any value) {
                        evt.data_final,
                        evt.cidade,
                        evt.estado,
+                       evt.url_imagem,
+                       evt.url_imagem_listagem,
+                       evt.imagem,
                        ce.status::text AS event_link_status
                 FROM public.tb_conta_eventos ce
                 INNER JOIN public.tb_evento_corridas evt
