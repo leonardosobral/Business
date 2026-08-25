@@ -31,6 +31,6 @@
             </div>
         </div>
     </main>
-    <script src="/pesquisa/pesquisa.js?v=20260824-10"></script>
+    <script src="/pesquisa/pesquisa.js?v=20260825-1"></script>
 </body>
 </html>
