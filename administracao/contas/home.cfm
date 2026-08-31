@@ -1074,6 +1074,13 @@
                                 <option value="#qBusinessAccountRegistrationAccountOptions.id_conta#">## #qBusinessAccountRegistrationAccountOptions.id_conta# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.nome_conta)# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.documento)# (#htmlEditFormat(qBusinessAccountRegistrationAccountOptions.status)#)</option>
                               </cfloop>
                             </select>
+
+                            <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel se associar à conta existente</label>
+                            <select class="form-select form-select-sm mb-3" id="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="papel_solicitacao">
+                              <option value="OPERADOR" selected>Operador</option>
+                              <option value="ADMIN">Administrador da conta</option>
+                              <option value="VISUALIZADOR">Visualizador</option>
+                            </select>
                           </cfif>
 
                           <label class="form-label small" for="nota-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Nota da decisão <span class="text-muted">(opcional)</span></label>

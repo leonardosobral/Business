@@ -30,6 +30,7 @@ reject_pattern() {
 }
 
 migration="_codex/sql/2026-08-24_business_pending_registration_reset.sql"
+ended_campaign_patch="_codex/sql/2026-08-25_business_pending_registration_reset_ended_campaigns.sql"
 backend="administracao/contas/includes/backend.cfm"
 home="administracao/contas/home.cfm"
 
@@ -47,6 +48,12 @@ require_pattern "$migration" 'length\(btrim\(p_reason\)\)[[:space:]]*<[[:space:]
 require_pattern "$migration" 'payment_intents|credit_ledger|account_financial_holds' "limpeza bloqueia movimentacao financeira"
 require_pattern "$migration" 'deliveries|events' "limpeza bloqueia entrega de publicidade"
 require_pattern "$migration" 'credit_balance|available_balance|reserved_balance' "limpeza verifica saldo antes de excluir"
+require_pattern "$migration" 'campaign\.status[[:space:]]+NOT[[:space:]]+IN[[:space:]]*\([[:space:]]*\x27DRAFT\x27[[:space:]]*,[[:space:]]*\x27ENDED\x27[[:space:]]*\)' "limpeza permite campanha finalizada sem entrega nem gasto"
+reject_pattern "$migration" 'campaign\.status[[:space:]]*<>[[:space:]]*\x27DRAFT\x27' "limpeza nao bloqueia toda campanha finalizada"
+require_pattern "$ended_campaign_patch" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.purge_pending_account_data' "hotfix atualiza instalacoes que ja aplicaram o reset"
+require_pattern "$ended_campaign_patch" 'campaign\.status[[:space:]]+NOT[[:space:]]+IN[[:space:]]*\([[:space:]]*\x27DRAFT\x27[[:space:]]*,[[:space:]]*\x27ENDED\x27[[:space:]]*\)' "hotfix aceita apenas rascunho ou finalizada sem entrega"
+require_pattern "$ended_campaign_patch" 'deliveries|daily_metrics' "hotfix preserva bloqueio por entrega e metricas"
+require_pattern "$ended_campaign_patch" 'payment_intents|credit_ledger|account_financial_holds' "hotfix preserva bloqueio financeiro"
 require_pattern "$migration" 'DELETE[[:space:]]+FROM[[:space:]]+ads\.campaign_review_history' "limpeza remove historico de revisao do rascunho"
 require_pattern "$migration" 'DELETE[[:space:]]+FROM[[:space:]]+ads\.campaigns' "limpeza remove campanhas de teste"
 require_pattern "$migration" '(?s)voucher\.voucher_scope[[:space:]]*=[[:space:]]*\x27ACCOUNT\x27.*?voucher\.status[[:space:]]*<>[[:space:]]*1' "voucher de conta usado bloqueia reset automatico"

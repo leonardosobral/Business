@@ -119,9 +119,9 @@ BEGIN
         SELECT 1
           FROM ads.campaigns campaign
          WHERE campaign.account_id = p_account_id
-           AND campaign.status <> 'DRAFT'
+           AND campaign.status NOT IN ('DRAFT', 'ENDED')
     ) THEN
-        RAISE EXCEPTION 'A conta possui campanha fora de rascunho e exige revisão manual';
+        RAISE EXCEPTION 'A conta possui campanha ativa ou pausada e exige revisão manual';
     END IF;
 
     IF EXISTS (

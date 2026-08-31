@@ -1053,6 +1053,7 @@ SET search_path = pg_catalog
 AS $function$
 DECLARE
     review ads.campaign_review_requests%ROWTYPE;
+    actor_is_admin boolean;
     account_status text;
     event_status text;
     target_status text;
@@ -1062,6 +1063,15 @@ BEGIN
     IF p_account_id IS NULL OR p_account_id <= 0
        OR p_actor_id IS NULL OR p_actor_id <= 0 THEN
         RAISE EXCEPTION 'Conta e ator sao obrigatorios para reavaliar campanhas';
+    END IF;
+
+    SELECT actor.is_admin
+      INTO actor_is_admin
+      FROM public.tb_usuarios actor
+     WHERE actor.id = p_actor_id;
+
+    IF NOT FOUND OR actor_is_admin IS NOT TRUE THEN
+        RAISE EXCEPTION 'Somente administrador RunnerHub pode reavaliar campanhas';
     END IF;
 
     SELECT account.status::text
@@ -1522,6 +1532,10 @@ GRANT EXECUTE ON FUNCTION
         character, text, integer
     ),
     ads.submit_campaign_review(uuid, bigint, integer, integer)
+TO ads_business;
+
+GRANT EXECUTE ON FUNCTION
+    ads.refresh_campaign_review_prerequisites(bigint, integer, integer)
 TO ads_business;
 
 GRANT EXECUTE ON FUNCTION

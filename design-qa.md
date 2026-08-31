@@ -1,49 +1,46 @@
-# Ads advertiser workspace — design QA
+# Design QA — criação de campanha de evento
 
-- Source visual truth: `/Users/leonardosobral/.codex/generated_images/019f56ee-6381-7890-9447-62ba9d45c07d/exec-a11f557f-456b-4a4d-a5e6-4351e473511b.png`
-- Source pixels: `1487 x 1058`
-- Implementation screenshot: browser capture of `https://business.roadrunners.run/ads/` after the first publication (`1318` CSS px viewport; full-page browser artifact captured on 2026-08-23)
-- Implementation URL: `https://business.roadrunners.run/ads/`
-- Intended desktop viewport: reference `1487 x 1058`; implementation inspected at `1318` CSS px, density `1`
-- State: authenticated advertiser overview with campaigns, balance, next steps and recent activity
+## Resultado
 
-## Full-view comparison evidence
+**Aprovado.** O fluxo publicado mantém a direção visual escolhida e deixa a criação da primeira campanha concentrada em quatro passos objetivos.
 
-The reference and the first published implementation were opened together in one comparison input. The overall hierarchy matches the selected direction: compact account health strip, campaign-first body, next steps and recent activity. The first implementation had a horizontally overflowing overview table (`850px` table inside a `725px` container), duplicated `##` anchors and unaccented advertiser copy.
+## Fontes comparadas
 
-## Focused region comparison evidence
+- Referência aprovada: `/Users/leonardosobral/.codex/generated_images/01a0301d-89b6-7b33-9881-3c78051713b7/exec-bb5fd31e-8ecc-4ebe-9e5c-ea87d6bec219.png` — 1487 × 1058 px.
+- Implementação, investimento: `_codex/audits/2026-08-25-campaign-wizard/implementation-step2.png` — 1609 × 1946 px.
+- Implementação, prévia: `_codex/audits/2026-08-25-campaign-wizard/implementation-step4.png` — 1609 × 1946 px.
+- Comparação conjunta: `.superpowers/brainstorm/15351-1787667935/content/qa-campaign-wizard.html`.
 
-The header/health strip, campaign table, next-steps panel, navigation tabs and recent-activity region were readable in the combined comparison. Campaign management, campaign form, payments, current/legacy history and internal administration were also inspected through their published routes.
+## Estado verificado
 
-## Findings
+- Conta em análise, com evento vinculado selecionado.
+- Evento: LIVE! RUN XP Brasília 2026.
+- CPC selecionado: R$ 0,94.
+- Orçamento: R$ 100,00.
+- Estimativa apresentada: 80–106 cliques.
+- Data final sugerida: 10/12/2026, três dias antes do evento.
+- Uma posição de exibição selecionada por padrão.
 
-- P1 — corrected files still need a second publication and capture.
-  - Location: `/ads/`, desktop authenticated advertiser state.
-  - Evidence: the first published capture exposed issues; fixes now exist only in the local workspace.
-  - Impact: the corrected table fit, anchors, accents and payment labels cannot be accepted until rendered.
-  - Fix: publish the second correction set, recapture the overview and payments routes, and repeat the combined comparison.
+## Comparação visual
 
-## Required fidelity surfaces
+- A hierarquia da referência foi preservada: explicação do leilão e controles à esquerda, impacto estimado e prévia à direita.
+- Cores, contraste, bordas, tipografia e densidade seguem o sistema visual atual do Business.
+- A prévia usa imagem e dados reais do evento vinculado; não há upload de criativo genérico.
+- CPC, orçamento e estimativa permanecem visíveis no mesmo passo, conforme solicitado.
+- As diferenças de largura e espaçamento são intencionais para acomodar a navegação lateral e o contêiner reais do produto.
 
-- Fonts and typography: first render uses the existing Business typography consistently; accents were missing and have been corrected locally.
-- Spacing and layout rhythm: main hierarchy is aligned with the reference; the overview table overflow was measured and corrected locally by removing management actions from the summary and lowering its minimum width.
-- Colors and visual tokens: existing Business dark tokens and cyan action color are consistent with the selected direction.
-- Image quality and asset fidelity: no new raster assets are used; existing Font Awesome icons rendered correctly.
-- Copy and content: raw placement keys and UUIDs are absent; payment statuses now have friendly Portuguese labels locally.
+## Ajuste identificado durante o QA
 
-## Primary interactions pending browser verification
+Na primeira comparação, métricas e listas antigas ainda apareciam acima do formulário quando a conta possuía uma campanha finalizada. O modo de criação foi corrigido para manter apenas o contexto necessário e o assistente de campanha, inclusive nesse caso.
 
-- Passed: routes for overview, campaigns, campaign form, balance/payments, current history, legacy history and administration.
-- Passed: campaign form remains closed by default and opens through `mode=new`.
-- Passed: campaign management menu opens and exposes the expected non-destructive controls without submitting them.
-- Passed: paid payment and R$ 50,00 credit appear correctly for Grupo STC.
-- Passed: no document-level overflow at `1318px`; the first overview table overflow was isolated to its responsive container and corrected locally.
-- Pending: second published capture and a narrow mobile viewport capture.
+## Interações verificadas
 
-## Comparison history
+- Seleção do evento e preenchimento automático do nome interno.
+- Avanço e retorno entre os quatro passos.
+- Troca do CPC entre R$ 0,56, R$ 0,94 e R$ 1,32.
+- Recálculo da faixa estimada de cliques para cada CPC.
+- Sugestão da data final baseada na data do evento.
+- Renderização da prévia nativa com o evento escolhido.
+- Console do navegador sem erros.
 
-1. First published comparison: found duplicated `##` anchors, missing Portuguese accents and an `850px` overview table inside a `725px` container.
-2. Local fixes: single anchors for static links/forms; accented advertiser copy; friendly payment statuses; overview table reduced to five columns and `720px`, with detailed management retained on the campaigns tab.
-3. Post-fix visual evidence: pending second publication.
-
-final result: blocked
+O formulário não foi enviado durante o QA, evitando criar uma campanha de teste na conta.

@@ -340,6 +340,7 @@
                     AND NOT VARIABLES.accountRegistrationIsExistingAccessRequest
                     AND len(trim(qBusinessAccountRegistrationReview.id_conta & ""))
                     AND qBusinessAccountRegistrationReview.status_conta EQ "PENDENTE"/>
+                <cfset VARIABLES.accountRegistrationUsesExistingAccount = VARIABLES.accountRegistrationIsExistingAccessRequest/>
                 <cfset VARIABLES.accountRegistrationReviewerIsAccountOwner = false/>
 
                 <cfif VARIABLES.accountRegistrationIsExistingAccessRequest AND NOT VARIABLES.businessAccountsCanAdminAll>
@@ -363,7 +364,7 @@
 
                 <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)
                     AND VARIABLES.accountRegistrationAction EQ "aprovar"
-                    AND VARIABLES.accountRegistrationIsExistingAccessRequest
+                    AND (VARIABLES.accountRegistrationIsExistingAccessRequest OR len(VARIABLES.accountRegistrationExistingAccountId))
                     AND NOT listFindNoCase("ADMIN,OPERADOR,VISUALIZADOR", VARIABLES.accountRegistrationRequestedRole)>
                     <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Selecione um papel válido para o novo usuário.")/>
                 </cfif>
@@ -431,33 +432,52 @@
                     <cfif VARIABLES.accountRegistrationIsExistingAccessRequest>
                         <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationReview.id_conta/>
                         <cfset VARIABLES.accountRegistrationMembershipRole = VARIABLES.accountRegistrationRequestedRole/>
-                    <cfelseif VARIABLES.accountRegistrationIsProvisionalAccount>
-                        <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationReview.id_conta/>
-                    </cfif>
-
-                    <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND len(VARIABLES.accountRegistrationExistingAccountId) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
+                    <cfelseif len(VARIABLES.accountRegistrationExistingAccountId)>
                         <cfquery name="qBusinessAccountRegistrationExistingAccount" datasource="runnerhub">
-                            SELECT id_conta
+                            SELECT id_conta,
+                                   status::text AS status
                             FROM tb_contas
                             WHERE id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationExistingAccountId#"/>
                             LIMIT 1
                         </cfquery>
 
-                        <cfif qBusinessAccountRegistrationExistingAccount.recordcount>
-                            <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationExistingAccount.id_conta/>
+                        <cfif NOT qBusinessAccountRegistrationExistingAccount.recordcount>
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Conta existente não encontrada.")/>
+                        <cfelseif qBusinessAccountRegistrationExistingAccount.status NEQ "ATIVA">
+                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "A conta escolhida precisa estar ativa.")/>
+                        <cfelseif VARIABLES.accountRegistrationIsProvisionalAccount>
+                            <cfquery name="qBusinessAccountRegistrationReassignment" datasource="runnerhub">
+                                SELECT *
+                                FROM public.reassign_business_pending_registration(
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessAccountRegistrationReview.id_solicitacao#"/> AS bigint),
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.accountRegistrationExistingAccountId#"/> AS bigint),
+                                    CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/> AS integer)
+                                )
+                            </cfquery>
+
+                            <cfset VARIABLES.accountRegistrationTargetAccountId = VARIABLES.accountRegistrationExistingAccountId/>
+                            <cfset VARIABLES.accountRegistrationUsesExistingAccount = true/>
+                            <cfset VARIABLES.accountRegistrationMembershipRole = VARIABLES.accountRegistrationRequestedRole/>
                         <cfelse>
-                            <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Conta existente nao encontrada.")/>
+                            <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationExistingAccount.id_conta/>
+                            <cfset VARIABLES.accountRegistrationUsesExistingAccount = true/>
+                            <cfset VARIABLES.accountRegistrationMembershipRole = VARIABLES.accountRegistrationRequestedRole/>
                         </cfif>
+                    <cfelseif VARIABLES.accountRegistrationIsProvisionalAccount>
+                        <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationReview.id_conta/>
                     <cfelseif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND NOT len(VARIABLES.accountRegistrationTargetAccountId)>
                         <cfquery name="qBusinessAccountRegistrationAccountByDocument" datasource="runnerhub">
-                            SELECT id_conta
+                            SELECT id_conta,
+                                   status::text AS status
                             FROM tb_contas
                             WHERE documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qBusinessAccountRegistrationReview.documento#" maxlength="20"/>
                             LIMIT 1
                         </cfquery>
 
-                        <cfif qBusinessAccountRegistrationAccountByDocument.recordcount>
+                        <cfif qBusinessAccountRegistrationAccountByDocument.recordcount AND qBusinessAccountRegistrationAccountByDocument.status EQ "ATIVA">
                             <cfset VARIABLES.accountRegistrationTargetAccountId = qBusinessAccountRegistrationAccountByDocument.id_conta/>
+                            <cfset VARIABLES.accountRegistrationUsesExistingAccount = true/>
+                            <cfset VARIABLES.accountRegistrationMembershipRole = VARIABLES.accountRegistrationRequestedRole/>
                         <cfelse>
                             <cfquery name="qBusinessAccountRegistrationCreateAccount" datasource="runnerhub">
                                 INSERT INTO tb_contas
@@ -488,7 +508,7 @@
                     </cfif>
 
                     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)>
-                        <cfif NOT VARIABLES.accountRegistrationIsExistingAccessRequest>
+                        <cfif NOT VARIABLES.accountRegistrationUsesExistingAccount>
                             <cfquery datasource="runnerhub">
                                 UPDATE tb_contas
                                 SET status = 'ATIVA'::status_conta,
@@ -604,6 +624,7 @@
 
             <cfcatch type="any">
                 <cfset VARIABLES.accountsRegistrationSaveErrorMessage = "Nao foi possivel revisar a solicitacao. " & cfcatch.message/>
+                <cflog file="business_accounts" type="error" text="registration_review actor=#qPerfil.id# request=#VARIABLES.accountRegistrationRequestId# action=#VARIABLES.accountRegistrationAction# message=#left(cfcatch.message & '', 1000)# detail=#left(cfcatch.detail & '', 3000)#"/>
             </cfcatch>
         </cftry>
     </cfif>
@@ -1934,9 +1955,8 @@
                    documento,
                    status::text AS status
             FROM tb_contas
-            ORDER BY
-                CASE WHEN status = 'ATIVA'::status_conta THEN 0 ELSE 1 END,
-                nome_conta
+            WHERE status = 'ATIVA'::status_conta
+            ORDER BY nome_conta
             LIMIT 250
         </cfquery>
     </cfif>

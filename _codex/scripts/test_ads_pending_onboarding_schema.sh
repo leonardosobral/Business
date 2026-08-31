@@ -42,6 +42,7 @@ reject_pattern() {
 }
 
 schema="_codex/sql/2026-08-24_ads_pending_onboarding.sql"
+refresh_permission_patch="_codex/sql/2026-08-25_ads_refresh_campaign_review_permission.sql"
 
 require_pattern "$schema" 'CREATE[[:space:]]+TABLE[[:space:]]+IF[[:space:]]+NOT[[:space:]]+EXISTS[[:space:]]+ads\.voucher_reservations' "reservas possuem tabela propria"
 require_pattern "$schema" 'CHECK[[:space:]]*\([^)]*RESERVED[^)]*APPLIED[^)]*RELEASED[^)]*EXPIRED' "status de reserva e fechado"
@@ -56,6 +57,11 @@ require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FU
 require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.save_pending_event_campaign\(' "salvamento pendente possui API restrita"
 require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.submit_campaign_review\([^)]*p_campaign_id[[:space:]]+uuid[^)]*p_account_id[[:space:]]+bigint[^)]*p_actor_id[[:space:]]+integer[^)]*p_core_event_id[[:space:]]+integer' "envio de revisao existe"
 require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.refresh_campaign_review_prerequisites\([^)]*p_account_id[[:space:]]+bigint[^)]*p_core_event_id[[:space:]]+integer[^)]*p_actor_id[[:space:]]+integer' "reavaliacao auditavel de pre-requisitos existe"
+require_pattern "$schema" '(?s)FUNCTION[[:space:]]+ads\.refresh_campaign_review_prerequisites.*?FROM[[:space:]]+public\.tb_usuarios.*?is_admin.*?IS[[:space:]]+NOT[[:space:]]+TRUE' "reavaliacao exige administrador RunnerHub real"
+require_pattern "$schema" '(?s)GRANT[[:space:]]+EXECUTE[[:space:]]+ON[[:space:]]+FUNCTION.*?ads\.refresh_campaign_review_prerequisites\(bigint,[[:space:]]*integer,[[:space:]]*integer\).*?TO[[:space:]]+ads_business' "papel da aplicacao pode executar reavaliacao protegida"
+require_pattern "$refresh_permission_patch" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.refresh_campaign_review_prerequisites' "hotfix atualiza instalacoes existentes"
+require_pattern "$refresh_permission_patch" '(?s)FROM[[:space:]]+public\.tb_usuarios.*?is_admin.*?IS[[:space:]]+NOT[[:space:]]+TRUE' "hotfix valida administrador antes da escrita"
+require_pattern "$refresh_permission_patch" '(?s)GRANT[[:space:]]+EXECUTE[[:space:]]+ON[[:space:]]+FUNCTION.*?TO[[:space:]]+ads_business' "hotfix libera a integracao da aplicacao"
 require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.cancel_open_campaign_reviews\([^)]*p_account_id[[:space:]]+bigint[^)]*p_actor_id[[:space:]]+integer[^)]*p_reason[[:space:]]+text' "cancelamento em lote existe"
 require_pattern "$schema" 'CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.review_campaign\([^)]*p_campaign_id[[:space:]]+uuid[^)]*p_action[[:space:]]+text[^)]*p_actor_id[[:space:]]+integer[^)]*p_reason[[:space:]]+text[^)]*p_idempotency_key[[:space:]]+text' "decisao administrativa existe"
 require_pattern "$schema" 'FOR[[:space:]]+UPDATE' "funcoes bloqueiam linhas concorrentes"

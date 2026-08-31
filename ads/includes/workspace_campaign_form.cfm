@@ -95,7 +95,7 @@
       </nav>
     </header>
 
-    <cfif VARIABLES.adsV1IsFirstCampaign AND VARIABLES.adsAccessIsPendingNewAccount>
+    <cfif VARIABLES.adsV1IsCampaignCreationFocus AND VARIABLES.adsAccessIsPendingNewAccount>
       <div class="alert alert-info rounded-0 border-start-0 border-end-0 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-0">
         <span><strong>Prepare agora.</strong> A campanha ficará em rascunho ou espera e não entrará no ar antes das aprovações.</span>
         <cfif qAdsV1VoucherReservation.recordcount AND uCase(trim(qAdsV1VoucherReservation.status & "")) EQ "RESERVED"><span class="badge badge-warning flex-shrink-0">Voucher reservado: <cfoutput>#lsCurrencyFormat(qAdsV1VoucherReservation.credito)#</cfoutput></span></cfif>

@@ -173,6 +173,9 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
     AND VARIABLES.adsV1ShowCampaignForm
     AND qAdsV1Campaigns.recordcount EQ 0
     AND NOT len(VARIABLES.adsV1FormCampaignId)/>
+<cfset VARIABLES.adsV1IsCampaignCreationFocus = VARIABLES.adsV1WorkspaceView EQ "campaigns"
+    AND VARIABLES.adsV1ShowCampaignForm
+    AND NOT len(VARIABLES.adsV1FormCampaignId)/>
 
 <cfset VARIABLES.adsV1LatestPaidPayment = {}/>
 <cfif isDefined("qAdsPayments") AND qAdsPayments.recordcount>
@@ -208,7 +211,7 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   @media (max-width: 991.98px) { .ads-health-item + .ads-health-item { border-left: 0; border-top: 1px solid rgba(255,255,255,.09); } }
 </style>
 
-<cfif NOT VARIABLES.adsV1IsFirstCampaign>
+<cfif NOT VARIABLES.adsV1IsCampaignCreationFocus>
   <section class="mb-4"><div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3"><div><div class="ads-v1-eyebrow">Marketing</div><h1 class="h3 mb-0">Publicidade</h1><p class="text-muted mb-0 mt-2">Acompanhe suas campanhas e avance com as próximas ações.</p></div><cfif VARIABLES.adsAccessCanManageCampaign AND VARIABLES.adsV1HasAccount AND VARIABLES.adsV1ApiReady><a class="btn btn-info" href="./?view=campaigns&amp;mode=new#campaign-form">Criar campanha</a></cfif></div></section>
 </cfif>
 
@@ -221,7 +224,7 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   </div>
 </cfif>
 <cfif len(VARIABLES.adsV1Error)><div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.adsV1Error)#</cfoutput></div></cfif>
-<cfif VARIABLES.adsAccessIsPendingNewAccount AND NOT VARIABLES.adsV1IsFirstCampaign><div class="alert alert-info"><strong>Você pode preparar tudo agora.</strong> O voucher só vira saldo após a aprovação da conta, e a campanha só poderá entrar no ar após a aprovação da conta, do evento e da equipe RunnerHub.</div></cfif>
+<cfif VARIABLES.adsAccessIsPendingNewAccount AND NOT VARIABLES.adsV1IsCampaignCreationFocus><div class="alert alert-info"><strong>Você pode preparar tudo agora.</strong> O voucher só vira saldo após a aprovação da conta, e a campanha só poderá entrar no ar após a aprovação da conta, do evento e da equipe RunnerHub.</div></cfif>
 
 <cfif listFindNoCase("admin,vouchers", VARIABLES.adsV1WorkspaceView)
   AND (
@@ -240,7 +243,7 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
 <cfelseif NOT VARIABLES.adsV1DataReady>
   <section class="card shadow-0 mb-4"><div class="card-body p-4"><div class="ads-v1-eyebrow mb-2">Leitura indisponível</div><h2 class="h5">Não foi possível carregar a conta</h2><p class="text-muted mb-0">Recarregue a página. Nenhuma alteração foi realizada.</p></div></section>
 <cfelse>
-  <cfif NOT VARIABLES.adsV1IsFirstCampaign>
+  <cfif NOT VARIABLES.adsV1IsCampaignCreationFocus>
   <section class="ads-health-strip mb-4">
     <div class="row g-0 row-cols-1 row-cols-lg-4">
       <div class="col ads-health-item">
@@ -270,7 +273,7 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   <cfif VARIABLES.adsV1Summary.active GT 0 AND VARIABLES.adsV1Summary.balance LTE 0><div class="alert alert-warning d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2"><div><strong>Campanha ativa sem saldo.</strong> Adicione crédito para retomar a exibição.</div><cfif VARIABLES.adsAccessCanPurchaseCredit><a class="btn btn-sm btn-outline-warning" href="./?view=payments#payment-credit">Adicionar saldo</a></cfif></div></cfif>
   </cfif>
 
-  <cfif listFindNoCase("overview,campaigns", VARIABLES.adsV1WorkspaceView) AND NOT VARIABLES.adsV1IsFirstCampaign><cfinclude template="includes/workspace_campaigns.cfm"/></cfif>
+  <cfif listFindNoCase("overview,campaigns", VARIABLES.adsV1WorkspaceView) AND NOT VARIABLES.adsV1IsCampaignCreationFocus><cfinclude template="includes/workspace_campaigns.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns" AND VARIABLES.adsV1ShowCampaignForm><cfinclude template="includes/workspace_campaign_form.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "payments"><cfinclude template="includes/payments_home.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "vouchers" AND VARIABLES.adsAccessCanAdminVouchers><cfinclude template="includes/workspace_admin_vouchers.cfm"/></cfif>
