@@ -33,3 +33,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+_codex/analyses/mif_2026_channels/data/raw/
+_codex/analyses/mif_2026_channels/channel_mapping.draft.csv
+_codex/analyses/mif_2026_channels/product_mapping.draft.csv
