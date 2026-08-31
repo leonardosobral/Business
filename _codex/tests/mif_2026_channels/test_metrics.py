@@ -211,6 +211,7 @@ class MetricTests(unittest.TestCase):
         rows["addon_products"] = rows["numero_inscricao"].map(add_ons).map(
             lambda value: value if isinstance(value, list) else []
         )
+        rows["addon_product_mapping_status"] = "mapeado"
 
         overlaps = build_dimension_overlaps(rows)
 
@@ -346,11 +347,175 @@ class MetricTests(unittest.TestCase):
             ["Camiseta", "Boné"] if position == 0 else []
             for position in range(len(registrations))
         ]
+        registrations["addon_product_mapping_status"] = "mapeado"
 
         overlaps = build_dimension_overlaps(registrations)
 
         self.assertEqual(overlaps["product_overlap"][0]["coverage_a"], 100.0)
         self.assertEqual(overlaps["product_overlap"][0]["coverage_b"], 100.0)
+
+    def test_unmapped_products_are_not_treated_as_no_addon_in_overlap(self):
+        """Missing mapping evidence must not become a covered 'Sem adicional' segment."""
+        registrations, _, _ = channel_metric_frames(
+            counts={"Canal A": 10, "Canal B": 10}
+        )
+        registrations["addon_products"] = [[] for _ in range(len(registrations))]
+        registrations["addon_product_mapping_status"] = registrations[
+            "channel_name"
+        ].map({"Canal A": "não mapeado", "Canal B": "mapeado"})
+
+        overlaps = build_dimension_overlaps(registrations)
+
+        self.assertEqual(overlaps["product_overlap"], [])
+
+    def test_zero_product_mapping_coverage_blocks_overlap_and_product_signals(self):
+        """Global 0% mapping coverage must fail closed for product comparisons."""
+        facts = channel_metric_facts()
+        reconciliation = {
+            **facts.reconciliation,
+            "product_mapping_coverage_pct": 0.0,
+        }
+
+        result = build_analysis(replace(facts, reconciliation=reconciliation))
+
+        self.assertEqual(result.datasets["product_overlap"], [])
+        for dossier in result.full_dossiers:
+            for row in dossier["product_mix"]:
+                self.assertEqual(
+                    row["coverage"]["product_mapping_coverage_pct"], 0.0
+                )
+                self.assertIsNone(row["take_rate_delta_pp"])
+            self.assertFalse(
+                any(
+                    signal["dimension"] in {"product", "produto adicional"}
+                    for signal in dossier["distinctive_signals"]
+                )
+            )
+
+    def test_partial_registration_product_coverage_blocks_channel_product_signals(self):
+        """Per-registration mapping gaps must override a nominal global 100% value."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        registrations["product_mapping_covered"] = True
+        channel_indices = registrations.index[
+            registrations["channel_name"] == "Canal A"
+        ]
+        registrations.loc[channel_indices[0], "product_mapping_covered"] = False
+        registration = registrations.loc[channel_indices[1]]
+        products = pd.concat(
+            [
+                facts.products,
+                pd.DataFrame(
+                    [
+                        {
+                            "cod_evento": 72611,
+                            "numero_inscricao": registration["numero_inscricao"],
+                            "numero_pedido": registration["numero_pedido"],
+                            "product_position": 20,
+                            "canonical_name": "Adicional Cobertura Parcial",
+                            "classification": "adicional",
+                            "product_quantity": 1,
+                            "product_revenue": Decimal("10.00"),
+                        }
+                    ]
+                ),
+            ],
+            ignore_index=True,
+        )
+
+        result = build_analysis(
+            replace(facts, registrations=registrations, products=products)
+        )
+        dossier = next(
+            row for row in result.full_dossiers if row["channel_name"] == "Canal A"
+        )
+
+        self.assertEqual(result.datasets["product_overlap"], [])
+        self.assertFalse(
+            any(
+                signal["dimension"] in {"product", "produto adicional"}
+                for signal in dossier["distinctive_signals"]
+            )
+        )
+
+    def test_unique_signal_event_count_includes_compact_channels(self):
+        """Event comparison must count a segment in the full event, not only eligible channels."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        products = facts.products.copy()
+        full_index = registrations.index[registrations["channel_name"] == "Canal A"][0]
+        compact_index = registrations.index[registrations["channel_name"] == "Canal C"][0]
+        registrations.loc[[full_index, compact_index], "modality"] = "Modalidade Única"
+        product_rows = []
+        for position, row_index in enumerate((full_index, compact_index), start=10):
+            registration = registrations.loc[row_index]
+            product_rows.append(
+                {
+                    "cod_evento": 72611,
+                    "numero_inscricao": registration["numero_inscricao"],
+                    "numero_pedido": registration["numero_pedido"],
+                    "product_position": position,
+                    "canonical_name": "Adicional Único",
+                    "classification": "adicional",
+                    "product_quantity": 1,
+                    "product_revenue": Decimal("10.00"),
+                }
+            )
+        products = pd.concat([products, pd.DataFrame(product_rows)], ignore_index=True)
+
+        result = build_analysis(
+            replace(facts, registrations=registrations, products=products)
+        )
+        dossier = next(
+            row for row in result.full_dossiers if row["channel_name"] == "Canal A"
+        )
+        unique_modality = next(
+            signal
+            for signal in dossier["distinctive_signals"]
+            if signal["dimension"] == "modality"
+            and signal["segment"] == "Modalidade Única"
+            and signal["comparison"] == "único canal elegível"
+        )
+        unique_product = next(
+            signal
+            for signal in dossier["distinctive_signals"]
+            if signal["dimension"] == "product"
+            and signal["segment"] == "Adicional Único"
+        )
+        self.assertEqual(unique_modality["event_count"], 2)
+        self.assertEqual(unique_product["event_count"], 2)
+
+    def test_touched_orders_carry_local_non_additive_metadata(self):
+        """Detached channel records must still warn that touched orders overlap."""
+        result = build_analysis(channel_metric_facts())
+
+        self.assertEqual(
+            result.long_tail[0]["touched_paid_orders_note"],
+            "não aditivo entre canais",
+        )
+        for row in result.datasets["channel_index"]:
+            self.assertEqual(
+                row["touched_paid_orders_note"], "não aditivo entre canais"
+            )
+
+    def test_compact_principals_ignore_invalid_and_missing_buckets(self):
+        """Coverage buckets cannot become the advertised principal modality or state."""
+        registrations, orders, products = channel_metric_frames(
+            counts={"Canal A": 9}
+        )
+        registrations.loc[
+            registrations.index[:8], ["modality", "state"]
+        ] = None
+        registrations.loc[
+            registrations.index[:8], ["modality_status", "state_status"]
+        ] = "invalido"
+        expected_modality = registrations.loc[registrations.index[8], "modality"]
+        expected_state = registrations.loc[registrations.index[8], "state"]
+
+        _, compact = build_channel_dossiers(registrations, orders, products)
+
+        self.assertEqual(compact[0]["principal_modality"]["modality"], expected_modality)
+        self.assertEqual(compact[0]["principal_state"]["state"], expected_state)
 
     def test_invalid_profile_values_are_visible_in_coverage_and_quality(self):
         """Merging invalid values with missing values would conceal source defects."""

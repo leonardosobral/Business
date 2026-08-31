@@ -24,6 +24,7 @@ from .normalize import normalize_key
 MONEY_QUANTUM = Decimal("0.01")
 SAMPLE_WARNING = "Base abaixo de 10 inscrições pagas; leitura indicativa"
 NOT_MEASURED = "não mensurado"
+TOUCHED_ORDERS_NOTE = "não aditivo entre canais"
 
 DATASET_IDS = (
     "event_overview",
@@ -617,6 +618,14 @@ def _compact_dossier(
 ) -> dict[str, object]:
     _, _, states, _ = _geography_details(frame)
     modalities = _renamed_distribution(frame, "modality", "modality")
+    valid_states = [
+        row for row in states if row["state"] not in {"Inválido", "Não informado"}
+    ]
+    valid_modalities = [
+        row
+        for row in modalities
+        if row["modality"] not in {"Inválido", "Não informado"}
+    ]
     warnings = []
     for field in ("state", "age", "pace_seconds", "club"):
         coverage = _coverage(frame, field)
@@ -627,11 +636,12 @@ def _compact_dossier(
         "channel_name": channel_name,
         "channel_type": channel_type,
         "touched_paid_orders": int(frame["numero_pedido"].nunique()),
+        "touched_paid_orders_note": TOUCHED_ORDERS_NOTE,
         "paid_registrations": len(frame),
         "gross_value": _channel_money(frame, "allocated_gross_value") or "0.00",
         "registration_ticket": _money(weighted_ticket(frame, "allocated_gross_value")) or "0.00",
-        "principal_modality": modalities[0] if modalities else None,
-        "principal_state": states[0] if states else None,
+        "principal_modality": valid_modalities[0] if valid_modalities else None,
+        "principal_state": valid_states[0] if valid_states else None,
         "coupon_codes": sorted(
             {str(row["coupon_code"]) for row in aliases if row["coupon_code"] is not None},
             key=str.casefold,
@@ -751,7 +761,6 @@ def build_channel_dossiers(
                     "coverage": {
                         "channel_denominator": len(frame),
                         "event_denominator": event_total,
-                        "reviewed_product_mapping": True,
                     },
                 }
             )
@@ -871,13 +880,22 @@ def _distribution_for_overlap(
         valid = [str(value) for value in values if value not in {"Não informado", "Inválido"}]
     elif dimension == "product":
         valid = []
-        for products in frame.get("addon_products", pd.Series([[]] * len(frame), index=frame.index)):
+        statuses = frame.get(
+            "addon_product_mapping_status",
+            pd.Series(["não mapeado"] * len(frame), index=frame.index),
+        )
+        mapped = statuses == "mapeado"
+        for products in frame.loc[mapped].get(
+            "addon_products", pd.Series([[]] * int(mapped.sum()), index=frame.index[mapped])
+        ):
             entries = products if isinstance(products, list) else []
             valid.extend(str(product) for product in entries or ["Sem adicional"])
     else:  # pragma: no cover - internal callers enumerate dimensions
         raise ValueError(f"unsupported overlap dimension: {dimension}")
-    coverage = 100.0 if dimension == "product" and total else (
-        round(len(valid) / total * 100, 2) if total else 0.0
+    coverage = (
+        round(int(mapped.sum()) / total * 100, 2)
+        if dimension == "product" and total
+        else (round(len(valid) / total * 100, 2) if total else 0.0)
     )
     return dict(Counter(valid)), coverage
 
@@ -926,6 +944,10 @@ def build_dimension_overlaps(
             left, coverage_a = _distribution_for_overlap(left_frame, dimension)
             right, coverage_b = _distribution_for_overlap(right_frame, dimension)
             if len(left) < 1 or len(right) < 1:
+                continue
+            if dimension == "product" and (
+                coverage_a < 100.0 or coverage_b < 100.0
+            ):
                 continue
             if dimension != "product" and (
                 sum(left.values()) < SMALL_CELL_MIN_REGISTRATIONS
@@ -1182,6 +1204,7 @@ def _channel_datasets(
                 "channel_name": str(channel_name),
                 "channel_type": str(frame["channel_type"].iloc[0]),
                 "touched_paid_orders": int(frame["numero_pedido"].nunique()),
+                "touched_paid_orders_note": TOUCHED_ORDERS_NOTE,
                 "paid_registrations": len(frame),
                 "gross_value": dossier["gross_value"],
                 "registration_ticket": dossier["registration_ticket"],
@@ -1280,10 +1303,20 @@ def _decorate_distinctive_signals(
     dossiers: list[dict[str, Any]],
     paid_registrations: pd.DataFrame,
     products: pd.DataFrame,
+    product_mapping_coverage_pct: float,
 ) -> None:
     qualifying = {dossier["channel_name"] for dossier in dossiers}
     unique_owners: dict[tuple[str, str], set[str]] = {}
+    event_segment_counts: dict[tuple[str, str], int] = {}
     for dimension, field in (("country", "country"), ("state", "state"), ("modality", "modality")):
+        event_counts = Counter(
+            str(value)
+            for value in _dimension_series(paid_registrations, field)
+            if value not in {"Não informado", "Inválido"}
+        )
+        event_segment_counts.update(
+            {(dimension, segment): count for segment, count in event_counts.items()}
+        )
         for channel, frame in paid_registrations.loc[
             paid_registrations["channel_name"].isin(qualifying)
         ].groupby("channel_name"):
@@ -1294,13 +1327,19 @@ def _decorate_distinctive_signals(
             }
             for value in values:
                 unique_owners.setdefault((dimension, value), set()).add(str(channel))
-    if not products.empty:
+    product_mapping_complete = product_mapping_coverage_pct == 100.0
+    event_product_counts: dict[str, int] = {}
+    if product_mapping_complete and not products.empty:
         add_ons = products.loc[products["classification"] == "adicional"].merge(
             paid_registrations[["numero_inscricao", "channel_name"]],
             on="numero_inscricao",
             how="inner",
             validate="many_to_one",
         )
+        event_product_counts = {
+            str(product): int(group["numero_inscricao"].nunique())
+            for product, group in add_ons.groupby("canonical_name")
+        }
         for (product, channel), _ in add_ons.loc[
             add_ons["channel_name"].isin(qualifying)
         ].groupby(["canonical_name", "channel_name"]):
@@ -1340,22 +1379,26 @@ def _decorate_distinctive_signals(
                 )
                 if signal is not None:
                     signals.append(signal)
-        for row in dossier["product_mix"]:
-            signal = _signal_from_delta(
-                dossier["paid_registrations"],
-                "produto adicional",
-                {
-                    "segment": row["product_name"],
-                    "channel_count": row["registrations_with_product"],
-                    "channel_denominator": row["take_rate_denominator"],
-                    "event_count": row["event_registrations_with_product"],
-                    "event_denominator": row["event_take_rate_denominator"],
-                    "delta_pp": row["take_rate_delta_pp"],
-                    "coverage": row["coverage"],
-                },
-            )
-            if signal is not None:
-                signals.append(signal)
+        if product_mapping_complete:
+            for row in dossier["product_mix"]:
+                signal = _signal_from_delta(
+                    dossier["paid_registrations"],
+                    "produto adicional",
+                    {
+                        "segment": row["product_name"],
+                        "channel_count": row["registrations_with_product"],
+                        "channel_denominator": row["take_rate_denominator"],
+                        "event_count": row["event_registrations_with_product"],
+                        "event_denominator": row["event_take_rate_denominator"],
+                        "delta_pp": row["take_rate_delta_pp"],
+                        "coverage": {
+                            **row["coverage"],
+                            "product_mapping_coverage_pct": product_mapping_coverage_pct,
+                        },
+                    },
+                )
+                if signal is not None:
+                    signals.append(signal)
         channel_frame = paid_registrations.loc[
             paid_registrations["channel_name"] == dossier["channel_name"]
         ]
@@ -1369,11 +1412,19 @@ def _decorate_distinctive_signals(
                     & products["numero_inscricao"].isin(channel_frame["numero_inscricao"])
                 ]
                 count = int(matching["numero_inscricao"].nunique())
-                coverage = {"reviewed_product_mapping": True, "denominator": len(channel_frame)}
+                event_count = event_product_counts.get(segment, 0)
+                coverage = {
+                    "product_mapping_coverage_pct": product_mapping_coverage_pct,
+                    "denominator": len(channel_frame),
+                }
             else:
                 field = dimension
                 count = int((_dimension_series(channel_frame, field).astype(str) == segment).sum())
-                coverage = _coverage(channel_frame, field)
+                event_count = event_segment_counts.get((dimension, segment), 0)
+                coverage = {
+                    "channel": _coverage(channel_frame, field),
+                    "event": _coverage(paid_registrations, field),
+                }
             prefix = "indício em base pequena — " if dossier["paid_registrations"] < 30 else ""
             signals.append(
                 {
@@ -1382,10 +1433,13 @@ def _decorate_distinctive_signals(
                     "segment": segment,
                     "count": count,
                     "denominator": dossier["paid_registrations"],
-                    "event_count": count,
+                    "event_count": event_count,
                     "event_denominator": len(paid_registrations),
                     "delta_pp": percentage_point_delta(
-                        count, dossier["paid_registrations"], count, len(paid_registrations)
+                        count,
+                        dossier["paid_registrations"],
+                        event_count,
+                        len(paid_registrations),
                     ),
                     "coverage": coverage,
                     "comparison": "único canal elegível",
@@ -1463,6 +1517,13 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
     full, compact = build_channel_dossiers(paid_registrations, paid_orders, paid_products)
 
     overlap_rows = paid_registrations.copy()
+    raw_product_mapping_coverage = facts.reconciliation.get(
+        "product_mapping_coverage_pct", 0.0
+    )
+    try:
+        product_mapping_coverage_pct = float(raw_product_mapping_coverage)
+    except (TypeError, ValueError):
+        product_mapping_coverage_pct = 0.0
     if not paid_products.empty:
         add_ons = (
             paid_products.loc[paid_products["classification"] == "adicional"]
@@ -1476,9 +1537,42 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
         overlap_rows["addon_products"] = overlap_rows["addon_products"].map(
             lambda value: value if isinstance(value, list) else []
         )
+    if "product_mapping_covered" in overlap_rows:
+        overlap_rows["addon_product_mapping_status"] = overlap_rows[
+            "product_mapping_covered"
+        ].map(lambda covered: "mapeado" if bool(covered) else "não mapeado")
+    else:
+        overlap_rows["addon_product_mapping_status"] = (
+            "mapeado" if product_mapping_coverage_pct == 100.0 else "não mapeado"
+        )
+    registration_product_mapping_coverage_pct = (
+        round(
+            (overlap_rows["addon_product_mapping_status"] == "mapeado").sum()
+            / len(overlap_rows)
+            * 100,
+            2,
+        )
+        if len(overlap_rows)
+        else 0.0
+    )
+    effective_product_mapping_coverage_pct = min(
+        product_mapping_coverage_pct, registration_product_mapping_coverage_pct
+    )
+    for dossier in full:
+        for row in dossier["product_mix"]:
+            row["coverage"][
+                "product_mapping_coverage_pct"
+            ] = effective_product_mapping_coverage_pct
+            if effective_product_mapping_coverage_pct < 100.0:
+                row["take_rate_delta_pp"] = None
     overlaps = build_dimension_overlaps(overlap_rows)
     _decorate_similarity(full, overlaps)
-    _decorate_distinctive_signals(full, paid_registrations, paid_products)
+    _decorate_distinctive_signals(
+        full,
+        paid_registrations,
+        paid_products,
+        effective_product_mapping_coverage_pct,
+    )
     channel_datasets = _channel_datasets(paid_registrations, full, compact)
 
     datasets: dict[str, list[dict[str, Any]]] = {
