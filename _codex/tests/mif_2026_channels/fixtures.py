@@ -5,7 +5,7 @@ from decimal import Decimal
 
 import pandas as pd
 
-from _codex.analyses.mif_2026_channels.models import SourceBundle
+from _codex.analyses.mif_2026_channels.models import FactBundle, SourceBundle
 
 
 def orders_rows() -> list[dict[str, object]]:
@@ -226,4 +226,156 @@ def mapping_product_fact() -> pd.DataFrame:
                 "explicit_total_value": Decimal("12.50"),
             },
         ]
+    )
+
+
+def channel_metric_frames(
+    counts: dict[str, int] | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Return mapped, anonymous facts with deterministic channel distributions."""
+    counts = counts or {"Canal A": 12, "Canal B": 10, "Canal C": 4}
+    registrations: list[dict[str, object]] = []
+    orders: list[dict[str, object]] = []
+    products: list[dict[str, object]] = []
+    states = [("SC", "Florianópolis"), ("PR", "Curitiba"), ("SP", "São Paulo")]
+    modalities = ["42K", "21K", "10K"]
+    lots = ["Lote 1", "Lote 2"]
+    genders = ["Feminino", "Masculino", "Não informado"]
+
+    registration_id = 10_000
+    order_id = 20_000
+    for channel_position, (channel_name, count) in enumerate(counts.items()):
+        for position in range(count):
+            registration_id += 1
+            order_id += 1
+            state, city = states[(position + channel_position) % len(states)]
+            gross = Decimal("100.00") + Decimal(str(channel_position * 10))
+            registration = {
+                "cod_evento": 72611,
+                "numero_inscricao": registration_id,
+                "numero_pedido": order_id,
+                "is_paid": True,
+                "channel_name": channel_name,
+                "channel_type": "parceiro",
+                "coupon_title": channel_name,
+                "coupon_code": f"{channel_name.upper().replace(' ', '-')}-{position % 2 + 1}",
+                "alias_reason": "identidade sintética revisada",
+                "modality": modalities[(position + channel_position) % len(modalities)],
+                "lot": lots[position % len(lots)],
+                "sale_date": pd.Timestamp("2026-06-01") + pd.Timedelta(days=position % 15),
+                "registration_date": pd.Timestamp("2026-06-01") + pd.Timedelta(days=position % 15),
+                "country": "Brasil",
+                "state": state,
+                "city": city,
+                "age": 20 + (position % 50),
+                "gender": genders[position % len(genders)],
+                "pace_seconds": 270 + (position % 10) * 30,
+                "club": "Clube Alfa" if position % 2 == 0 else None,
+                "questionnaire_present": position % 3 != 0,
+                "auxiliary_json_keys": ["modalidade", "lote", "ritmo"],
+                "allocated_gross_value": gross,
+                "allocated_discount_value": Decimal("5.00"),
+                "allocated_fee_value": Decimal("2.00"),
+                "allocated_net_transfer_value": gross - Decimal("7.00"),
+                "allocated_cashback_value": Decimal("1.00"),
+            }
+            for field in (
+                "modality",
+                "lot",
+                "sale_date",
+                "registration_date",
+                "country",
+                "state",
+                "city",
+                "age",
+                "gender",
+                "pace_seconds",
+                "club",
+                "questionnaire_present",
+                "raw_products",
+            ):
+                value = registration.get(field)
+                registration[f"{field}_status"] = (
+                    "nao_informado" if value is None else "valido"
+                )
+            registrations.append(registration)
+            orders.append(
+                {
+                    "cod_evento": 72611,
+                    "numero_pedido": order_id,
+                    "is_paid": True,
+                    "order_date": registration["sale_date"],
+                    "payment_date": registration["sale_date"],
+                    "gross_order_value": gross,
+                    "discount_value": Decimal("5.00"),
+                    "fee_value": Decimal("2.00"),
+                    "net_transfer_value": gross - Decimal("7.00"),
+                    "cashback_value": Decimal("1.00"),
+                    "payment_method": "pix" if position % 2 == 0 else "cartao",
+                    "device_type": "mobile" if position % 3 else "desktop",
+                    "declared_registration_count": 1,
+                    "parsed_registration_count": 1,
+                }
+            )
+            if position % 3 == 0:
+                products.append(
+                    {
+                        "cod_evento": 72611,
+                        "numero_inscricao": registration_id,
+                        "numero_pedido": order_id,
+                        "product_position": 0,
+                        "canonical_name": "Camiseta Extra",
+                        "classification": "adicional",
+                        "product_quantity": 1,
+                        "product_revenue": Decimal("65.00"),
+                    }
+                )
+            if position % 5 == 0:
+                products.append(
+                    {
+                        "cod_evento": 72611,
+                        "numero_inscricao": registration_id,
+                        "numero_pedido": order_id,
+                        "product_position": 2,
+                        "canonical_name": "Item não revisado comercialmente",
+                        "classification": "desconhecido",
+                        "product_quantity": 1,
+                        "product_revenue": Decimal("12.50"),
+                    }
+                )
+            products.append(
+                {
+                    "cod_evento": 72611,
+                    "numero_inscricao": registration_id,
+                    "numero_pedido": order_id,
+                    "product_position": 1,
+                    "canonical_name": "Kit MIF 2026",
+                    "classification": "kit_incluso",
+                    "product_quantity": 1,
+                    "product_revenue": None,
+                }
+            )
+
+    return (
+        pd.DataFrame(registrations),
+        pd.DataFrame(orders),
+        pd.DataFrame(products),
+    )
+
+
+def channel_metric_facts() -> FactBundle:
+    """Return a mapped FactBundle used by aggregate and reconciliation tests."""
+    registrations, orders, products = channel_metric_frames()
+    return FactBundle(
+        orders=orders,
+        registrations=registrations,
+        products=products,
+        reconciliation={
+            "paid_order_count": len(orders),
+            "paid_registration_count": len(registrations),
+            "channel_mapping_coverage_pct": 100.0,
+            "product_mapping_coverage_pct": 100.0,
+            "order_field_coverage": {},
+            "registration_field_coverage": {},
+        },
     )
