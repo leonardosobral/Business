@@ -15,6 +15,7 @@ from .config import EVENT_DATE
 
 
 BRAZIL_ALIASES = frozenset({"BR", "BRASIL", "BRAZIL"})
+REVIEWED_COUNTRIES = frozenset({"ARGENTINA"})
 VALID_UFS = frozenset(
     "AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO".split()
 )
@@ -128,6 +129,8 @@ def normalize_status(value: object) -> str:
 def normalize_modality(value: object) -> str:
     """Map only explicit race-distance and category patterns to canonical modalities."""
     key = normalize_key(value)
+    if not key:
+        return "Não informado"
     if re.search(r"\bDESAFIO\b", key):
         return "DESAFIO"
     if re.search(r"\bKIDS?\b", key):
@@ -157,7 +160,9 @@ def normalize_country(value: object) -> str | None:
     key = normalize_key(value)
     if not key:
         return None
-    return "BRASIL" if key in BRAZIL_ALIASES else key
+    if key in BRAZIL_ALIASES:
+        return "BRASIL"
+    return key if key in REVIEWED_COUNTRIES else f"OUTRO: {key}"
 
 
 def normalize_state(value: object, country: object = None) -> str | None:

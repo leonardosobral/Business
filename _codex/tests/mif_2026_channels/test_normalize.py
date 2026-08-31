@@ -76,6 +76,12 @@ class NormalizeTests(unittest.TestCase):
         self.assertEqual(normalize_lot("Lote 100"), "OUTRO: LOTE 100")
         self.assertEqual(normalize_lot(""), "Não informado")
 
+    def test_missing_modality_uses_the_absence_marker(self):
+        """Absent modality values must not become unexpected commercial categories."""
+        self.assertEqual(normalize_modality(None), "Não informado")
+        self.assertEqual(normalize_modality(""), "Não informado")
+        self.assertEqual(normalize_modality(" \t "), "Não informado")
+
     def test_modality_maps_each_explicit_non_distance_category(self):
         """The three remaining reviewed modality categories must not fall into outra."""
         self.assertEqual(normalize_modality("5 km"), "5K")
@@ -97,6 +103,10 @@ class NormalizeTests(unittest.TestCase):
         self.assertIsNone(normalize_state("SC", "Argentina"))
         self.assertIsNone(normalize_state("Santa Catarina", "Brasil"))
         self.assertEqual(normalize_city("  São José/SC "), "SAO JOSE SC")
+
+    def test_country_marks_unreviewed_values_as_other(self):
+        """An unreviewed country label must not be treated as a valid country segment."""
+        self.assertEqual(normalize_country("XPTO"), "OUTRO: XPTO")
 
     def test_gender_uses_explicit_aliases_and_marks_invalid_values(self):
         """Unrecognized gender labels must not be silently assigned to a category."""
