@@ -897,6 +897,12 @@ def _distribution_for_overlap(
         if dimension == "product" and total
         else (round(len(valid) / total * 100, 2) if total else 0.0)
     )
+    if dimension == "product" and "addon_product_effective_coverage_pct" in frame:
+        declared = pd.to_numeric(
+            frame["addon_product_effective_coverage_pct"], errors="coerce"
+        ).dropna()
+        if not declared.empty:
+            coverage = min(coverage, float(declared.min()))
     return dict(Counter(valid)), coverage
 
 
@@ -1558,6 +1564,9 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
     effective_product_mapping_coverage_pct = min(
         product_mapping_coverage_pct, registration_product_mapping_coverage_pct
     )
+    overlap_rows[
+        "addon_product_effective_coverage_pct"
+    ] = effective_product_mapping_coverage_pct
     for dossier in full:
         for row in dossier["product_mix"]:
             row["coverage"][

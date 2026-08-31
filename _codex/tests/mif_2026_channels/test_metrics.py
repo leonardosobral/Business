@@ -438,6 +438,31 @@ class MetricTests(unittest.TestCase):
             )
         )
 
+    def test_global_product_coverage_overrides_complete_registration_markers(self):
+        """Nominally covered rows cannot override incomplete global reconciliation."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        registrations["product_mapping_covered"] = True
+        reconciliation = {
+            **facts.reconciliation,
+            "product_mapping_coverage_pct": 50.0,
+        }
+
+        result = build_analysis(
+            replace(
+                facts,
+                registrations=registrations,
+                reconciliation=reconciliation,
+            )
+        )
+
+        self.assertEqual(result.datasets["product_overlap"], [])
+        for dossier in result.full_dossiers:
+            for row in dossier["product_mix"]:
+                self.assertEqual(
+                    row["coverage"]["product_mapping_coverage_pct"], 50.0
+                )
+
     def test_unique_signal_event_count_includes_compact_channels(self):
         """Event comparison must count a segment in the full event, not only eligible channels."""
         facts = channel_metric_facts()
