@@ -1,0 +1,4 @@
+product_id_key,product_name_key,product_id_example,product_name_example,observed_items,canonical_name,classification,classification_reason,reviewed
+CAM INCLUSA,CAMISETA INCLUSA,CAM-INCLUSA,Camiseta inclusa,1,Camiseta inclusa,kit_incluso,item explicitamente incluído no kit,true
+CAM EXTRA,CAMISETA EXTRA,CAM-EXTRA,Camiseta extra,1,Camiseta extra,adicional,item adicional explicitamente revisado,true
+,ITEM SEM CLASSIFICACAO COMERCIAL,,Item sem classificação comercial,1,Item sem classificação comercial,desconhecido,sem evidência para classificação comercial,true

@@ -1,0 +1,7 @@
+coupon_title_key,coupon_code_key,coupon_title_example,coupon_code_example,paid_registrations,channel_name,channel_type,alias_reason,reviewed
+CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,1,Corre Criciúma,assessoria,"mesmo parceiro, código principal",true
+CORRECRICIUMA,CORRECRICIUMA 100,CORRECRICIUMA,CORRECRICIUMA_100,1,Corre Criciúma,assessoria,"mesmo parceiro, ação limitada",true
+SPORTS WEEK,SPORTS WEEK,Sports Week,SPORTS-WEEK,1,Sports Week,evento_acao,ação de evento revisada,true
+PCD,PCD,PCD,PCD,1,PCD,politica,política de elegibilidade revisada,true
+BENEFICIO,BENEFICIO,Benefício,BENEFICIO,1,Benefício,beneficio,benefício revisado,true
+,,,,1,Orgânico / sem cupom,organico,sem cupom,true

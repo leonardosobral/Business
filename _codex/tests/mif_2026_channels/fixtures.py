@@ -1,6 +1,7 @@
 """Synthetic TicketSports exports used by the MIF analysis tests."""
 
 import json
+from decimal import Decimal
 
 import pandas as pd
 
@@ -146,4 +147,83 @@ def source_bundle() -> SourceBundle:
         participants=pd.DataFrame(participant_rows()),
         snapshots=(),
         source_hashes={"orders": "synthetic-orders", "participants": "synthetic-participants"},
+    )
+
+
+def mapping_registration_fact() -> pd.DataFrame:
+    """Return reviewed synthetic coupon identities, including organic sales."""
+    return pd.DataFrame(
+        [
+            {
+                "numero_inscricao": 3001,
+                "coupon_title": "CORRECRICIUMA",
+                "coupon_code": "CORRECRICIUMA",
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3002,
+                "coupon_title": "CORRECRICIUMA",
+                "coupon_code": "CORRECRICIUMA_100",
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3003,
+                "coupon_title": "Sports Week",
+                "coupon_code": "SPORTS-WEEK",
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3004,
+                "coupon_title": "PCD",
+                "coupon_code": "PCD",
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3005,
+                "coupon_title": "Benefício",
+                "coupon_code": "BENEFICIO",
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3006,
+                "coupon_title": None,
+                "coupon_code": None,
+                "is_paid": True,
+            },
+            {
+                "numero_inscricao": 3007,
+                "coupon_title": "Sports Week",
+                "coupon_code": "SPORTS-WEEK",
+                "is_paid": False,
+            },
+        ]
+    )
+
+
+def mapping_product_fact() -> pd.DataFrame:
+    """Return included, add-on, and unknown synthetic product identities."""
+    return pd.DataFrame(
+        [
+            {
+                "product_id": "CAM-INCLUSA",
+                "product_name": "Camiseta inclusa",
+                "product_quantity": 1,
+                "explicit_unit_value": None,
+                "explicit_total_value": None,
+            },
+            {
+                "product_id": "CAM-EXTRA",
+                "product_name": "Camiseta extra",
+                "product_quantity": 2,
+                "explicit_unit_value": Decimal("65.00"),
+                "explicit_total_value": None,
+            },
+            {
+                "product_id": None,
+                "product_name": "Item sem classificação comercial",
+                "product_quantity": 1,
+                "explicit_unit_value": None,
+                "explicit_total_value": Decimal("12.50"),
+            },
+        ]
     )
