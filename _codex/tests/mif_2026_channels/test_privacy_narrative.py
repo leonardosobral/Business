@@ -198,6 +198,51 @@ class PrivacyNarrativeTests(unittest.TestCase):
         ):
             self.assertIn(expected, text)
 
+    def test_channel_text_marks_incomplete_comparative_evidence_unavailable(self):
+        """Missing bases or coverage must not be rendered as measured zero evidence."""
+        dossier = deepcopy(analysis_result().full_dossiers[0])
+        dossier.pop("share_of_event_registrations")
+        dossier["modality_mix"] = [
+            {"modality": "42K", "paid_registrations": 7}
+        ]
+        dossier["product_mix"] = [
+            {"classification": "adicional", "product_name": "Camiseta"}
+        ]
+        dossier["profile_coverage"] = {"age": {"valid": 7}}
+
+        text = describe_channel(dossier, {})
+
+        for expected in (
+            "Participação no evento: não disponível.",
+            "Mix de modalidade: não disponível.",
+            "Adoção de adicional: não disponível.",
+            "Cobertura de perfil: idade não disponível.",
+        ):
+            self.assertIn(expected, text)
+        for fabricated in (
+            "0.00% da base de 0",
+            "42K liderou com 7/12 (0.00%)",
+            "Camiseta em 0/12 inscrições (0.00%)",
+            "idade 0.00% (7/0 válidos)",
+        ):
+            self.assertNotIn(fabricated, text)
+
+    def test_event_text_marks_missing_grains_and_ticket_bases_unavailable(self):
+        """An absent overview must not become a synthetic zero-volume event."""
+        result = replace(analysis_result(), overview={})
+
+        text = describe_event(result)
+
+        for expected in (
+            "pedidos pagos únicos: não disponível",
+            "inscrições pagas: não disponível",
+            "ticket médio ponderado de pedido: não disponível",
+            "ticket médio ponderado de inscrição: não disponível",
+        ):
+            self.assertIn(expected, text)
+        self.assertNotIn("base de 0", text)
+        self.assertNotIn("R$ 0.00", text)
+
     def test_mechanism_channels_are_not_presumed_commercial_partners(self):
         """Treating policy or benefit coupons as partners would invent a commercial tie."""
         base = analysis_result().full_dossiers[0]
@@ -220,6 +265,23 @@ class PrivacyNarrativeTests(unittest.TestCase):
             "channel_type": "parceiro",
         }
         self.assertNotIn(MECHANISM_POLICY, describe_channel(reviewed_partner, overview))
+
+    def test_mechanism_channels_fail_closed_without_commercial_classification(self):
+        """Missing or unknown type must not silently imply a reviewed commercial tie."""
+        base = analysis_result().full_dossiers[0]
+        overview = analysis_result().overview
+
+        for channel_name in ("PCD", "Benefício"):
+            for channel_type in (None, "desconhecido"):
+                dossier = {
+                    **deepcopy(base),
+                    "channel_name": channel_name,
+                    "channel_type": channel_type,
+                }
+                self.assertIn(
+                    MECHANISM_POLICY,
+                    describe_channel(dossier, overview),
+                )
 
     def test_sports_week_receives_the_complete_channel_evidence_treatment(self):
         """A special-case short summary would give Sports Week inferior treatment."""
