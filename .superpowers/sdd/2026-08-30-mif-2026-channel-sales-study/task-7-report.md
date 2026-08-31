@@ -1,0 +1,51 @@
+# Task 7 — pipeline, CLI, notebook e Data App canônico
+
+## Status
+
+Implementação concluída na branch `main` com fixture sintética de desenvolvimento. O snapshot canônico é `_codex/analyses/mif_2026_channels/report_app/src/data.json`; não existe `artifact.json` nem segundo renderer. O status do snapshot permanece `fixture`, e nenhuma leitura é apresentada como resultado final de 2026.
+
+## Arquivos da Task 7
+
+- Produção: `artifact.py`, `pipeline.py` e `run.py` no pacote MIF.
+- Testes/fixtures: `test_artifact_pipeline.py` e extensões reproduzíveis em `fixtures.py`.
+- Data App: starter canônico completo em `report_app/`, com autoria restrita a `src/content/report/`, `src/theme.css` e `src/data.json`; recibos `aggregates.json`, `reconciliation.json` e `source_notes.json` ficam na raiz do app.
+- Outputs: `report_app/dist/index.html` (preview local) e `report_app/dist/shareable.html` (cópia sanitizada).
+- Notebook: `notebooks/mif_2026_channel_study.ipynb`, executado com 13 células, 6 células de código e zero erros.
+
+## Evidência TDD RED/GREEN
+
+1. Snapshot/anonimidade/raw facts: RED por `ModuleNotFoundError` de `artifact.py`; GREEN com 2 testes passando para UUID estável, `surface=report`, `status=fixture`, 31 queries, fontes agregadas e ausência de identifiers/facts.
+2. Pipeline/escrita atômica: RED por ausência de `pipeline.py`; GREEN com escrita por arquivo irmão `.tmp` + replace, inode substituído, quatro outputs anônimos e nenhum `artifact.json`/facts.
+3. CLI: RED com os 3 testes falhando porque `run.py` não existia; GREEN para `draft-mappings`, `analyze` e `verify`, inclusive verify sem raw exports e rejeição de facts/identificadores injetados.
+4. Shareable: RED por ausência de `sanitize_shareable_html`; GREEN removendo meta local, UUID de task e deep link de task, preservando `index.html` e o conteúdo do app.
+
+## Pipeline, snapshot e fontes
+
+- Sequência implementada: load sources → facts → mappings revisados → métricas → small-cell/privacy → narrativa → anonimidade → snapshot/recibos.
+- O snapshot usa o UUID estável `4551d11e-c315-4402-be71-218fa11e3148`, 31 IDs da Task 5, componentes/query IDs estáveis e definições de métrica escopadas por componente.
+- SQL visível é somente agregado (`COUNT(*) ... GROUP BY cod_evento`); tabelas, evento `72611`, regra de pago, freshness, hashes e contagens de fonte permanecem honestos nos metadados/recibos.
+- A leitura cobre visão geral, tempo/lote/modalidade, geografia, perfil/cobertura, produtos, índice, dossiês alfabéticos, long tail, seis overlaps, perguntas, metodologia, limitações, reconciliação e fontes. Não há score mestre, ordenação comercial ou keep/cut.
+
+## Notebook
+
+- O notebook chama `run_analysis` e a fixture de testes; não copia cálculos de produção.
+- Checks executados: status/surface/31 queries, qualidade, cobertura de mapeamento, reconciliação aditiva, headlines sentinela e fronteira sem PII/raw facts.
+- O runtime Python fornecido não contém `nbformat`, `nbclient` ou Jupyter. Sem instalar dependências, foi usado executor sequencial de stdlib que registrou `execution_count` e outputs; a estrutura nbformat 4.5 e a ausência de outputs de erro foram validadas em seguida.
+
+## Build, sanitização e fronteira protegida
+
+- Build oficial, sem npm install e sem `--source`: prebuilt runtime aprovado, 4 módulos, 0 assets externos; HTML SHA-256 final `14b2bcaa879e242296a9acdbae10269c6087beb8622924c6b6012cd39ad866d1`.
+- `dist/index.html` permanece autocontido e conserva somente a meta local esperada para o preview. `dist/shareable.html` remove essa meta, o UUID da task e links direcionados à task.
+- Os 140 arquivos listados em `protected-runtime.json` foram recalculados: zero divergências. `src/theme.css` é byte a byte idêntico ao `codex-classic/theme.css` instalado.
+
+## Gates e self-review
+
+- Focados: 8/8; suíte MIF cumulativa: 93/93 (baseline 85); CLI verify final: passou.
+- Notebook: reexecução top-to-bottom e validação estrutural passaram; build final passou; scan de shareable, PII, raw facts e metadados de task passou; `git diff --check` passou.
+- Self-review confirmou status fixture, 31 queries, quatro outputs apenas, IDs/fonte de cada componente, seis overlaps separados, cobertura geográfica condicional ≥70%, narrativa via `RichNarrative`, ausência de publicação e preservação das mudanças concorrentes.
+
+## Limitações
+
+- A fixture é intencionalmente sintética e pequena; a Task 8 precisa substituir dados, mapeamentos e qualquer leitura quantitativa.
+- Não houve broad browser QA, screenshots, DOM inspection ou sweep responsivo, conforme o suplemento. O preview foi aberto uma única vez; build/runtime e fronteira autoral foram validados pelo helper oficial.
+- Patrocínio, espaço de expo, permutas e valoração de cortesias continuam não mensurados.

@@ -1,0 +1,58 @@
+{
+  "chart_rationales": {
+    "channel_distribution": "horizontal bar: exact volume and event share without a desirability score",
+    "country_distribution": "horizontal bar: ranked observed country reach",
+    "dimension_overlaps": "table: exact pairwise evidence without visual rank implication",
+    "lot_performance": "stacked bar: volume and ticket by ordered lot",
+    "modality_mix": "stacked bar: comparable composition across channels",
+    "product_summary": "horizontal bar: add-on take rate by canonical product",
+    "state_distribution": "horizontal bar: ranked categorical concentration",
+    "weekly_sales": "line: chronological change and closing-period acceleration"
+  },
+  "commercial_grains": {
+    "channel_money": "valores de pedido alocados às inscrições",
+    "event_orders": "pedidos pagos únicos",
+    "event_registrations": "inscrições pagas",
+    "touched_paid_orders": "não aditivo entre canais"
+  },
+  "external_considerations": {
+    "barter": "não mensurado",
+    "courtesy_valuation": "não mensurado",
+    "expo_space": "não mensurado",
+    "sponsorship": "não mensurado"
+  },
+  "fixture_status": "Fixture sintética de desenvolvimento; a Task 8 substituirá os dados e mapeamentos.",
+  "geographic_scope": "classificação descritiva, não estratégica",
+  "narrative": {
+    "channels": {
+      "Canal A": "Canal A registrou 12 inscrições pagas em 12 pedidos tocados, não aditivos entre canais. Participação no evento: 46.15% da base de 26 inscrições. O ticket médio ponderado por inscrição foi R$ 100.00, na base de 12 inscrições. Mix de modalidade: 21K liderou com 4/12 (33.33%). A abrangência observada foi internacional/fora do Brasil, com 3 UFs e 3 cidades; a concentração foi HHI 0.3333 por cidade e 33.33% na principal cidade. No recorte de lote, 1 reuniu 6/12 inscrições. O pico semanal observado começou em 2026-06-01 com 7 inscrições. Adoção de adicional: Camiseta Extra em 4/12 inscrições (33.33%), com cobertura de mapeamento de 100.00%. Cobertura de perfil: idade 100.00% (12/12 válidos); gênero 66.67% (8/12 válidos); ritmo 100.00% (12/12 válidos); clube/assessoria 50.00% (6/12 válidos). Aliases de origem: Canal A / CANAL-A-1 (6 inscrições); Canal A / CANAL-A-2 (6 inscrições). Limitações de leitura: Pedidos tocados não são aditivos entre canais; Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada; Cobertura válida abaixo de 70% para clube/assessoria.",
+      "Canal B": "Canal B registrou 10 inscrições pagas em 10 pedidos tocados, não aditivos entre canais. Participação no evento: 38.46% da base de 26 inscrições. O ticket médio ponderado por inscrição foi R$ 110.00, na base de 10 inscrições. Mix de modalidade: 21K liderou com 4/10 (40.00%). A abrangência observada foi internacional/fora do Brasil, com 3 UFs e 3 cidades; a concentração foi HHI 0.3400 por cidade e 40.00% na principal cidade. No recorte de lote, 1 reuniu 5/10 inscrições. O pico semanal observado começou em 2026-06-01 com 7 inscrições. Adoção de adicional: Camiseta Extra em 4/10 inscrições (40.00%), com cobertura de mapeamento de 100.00%. Cobertura de perfil: idade 100.00% (10/10 válidos); gênero 70.00% (7/10 válidos); ritmo 100.00% (10/10 válidos); clube/assessoria 50.00% (5/10 válidos). Aliases de origem: Canal B / CANAL-B-1 (5 inscrições); Canal B / CANAL-B-2 (5 inscrições). Limitações de leitura: Pedidos tocados não são aditivos entre canais; Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada; Cobertura válida abaixo de 70% para clube/assessoria."
+    },
+    "decision_questions": [
+      "Quais canais cobrem estados ou modalidades pouco atendidos pelos demais?",
+      "Quais pares apresentam público semelhante em geography, modality, lot, temporal, profile, product e merecem revisão contratual conjunta?",
+      "Onde a concentração regional é intencional e onde ela limita alcance?",
+      "Quais canais têm mix de modalidade ou adicional realmente distinto, com cobertura suficiente para sustentar a leitura?"
+    ],
+    "event": "Grãos: o evento contém 26 pedidos pagos únicos e 26 inscrições pagas; pedidos tocados não são aditivos entre canais, pois um pedido pode conter inscrições atribuídas a canais diferentes. O ticket médio ponderado de pedido foi R$ 106.92 na base de 26 pedidos. O ticket médio ponderado de inscrição foi R$ 106.92 na base de 26 inscrições. Coberturas de fonte: canais 100.00%; produtos 100.00%; os percentuais de perfil são apresentados com seus denominadores nos dossiês. As comparações permanecem separadas por dimensão e só são interpretáveis com bases e coberturas explícitas. Limitações de leitura: sponsorship não mensurado; expo_space não mensurado; barter não mensurado; courtesy_valuation não mensurado."
+  },
+  "similarity": "seis dimensões independentes; nenhum score mestre",
+  "sources": [
+    {
+      "event_code": 72611,
+      "extracted_at": "2026-08-30T22:00:00-03:00",
+      "file_name": "study-orders.csv",
+      "row_count": 26,
+      "sha256": "5f3e8ca514ba0bf717a50a0014b95402a66bec7449ae70173871a3b59afec3bb",
+      "source_id": "orders"
+    },
+    {
+      "event_code": 72611,
+      "extracted_at": "2026-08-30T22:00:00-03:00",
+      "file_name": "study-participants.csv",
+      "row_count": 26,
+      "sha256": "18b0990421ee333301b914cdcd3e3c35bf0148ecdc583011edb3c3af41734812",
+      "source_id": "participants"
+    }
+  ]
+}

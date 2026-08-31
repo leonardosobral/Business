@@ -1,0 +1,4112 @@
+{
+  "datasets": {
+    "age_bands": [
+      {
+        "age_band": "18–24",
+        "denominator": 26,
+        "paid_registrations": 14,
+        "share_pct": 53.85
+      },
+      {
+        "age_band": "25–34",
+        "denominator": 26,
+        "paid_registrations": 12,
+        "share_pct": 46.15
+      }
+    ],
+    "auxiliary_field_coverage": [
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "payment_method",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "device",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "order_quantity",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 0,
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "questionnaire_completion",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0,
+        "valid_coverage_pct": 0.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:cidade",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:codigoCupom",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:dataInscricao",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:dataVenda",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:estado",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:lote",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:modalidade",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:nascimento",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:pais",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:produtos",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:ritmo",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:sexo",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:tituloCupom",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:valorDesconto",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:valorRepasse",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:valorTaxa",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 26,
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "json_key:valorUnitario",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26,
+        "valid_coverage_pct": 100.0
+      }
+    ],
+    "channel_aliases": [
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal A",
+        "coupon_code": "CANAL-A-1",
+        "coupon_title": "Canal A",
+        "paid_registrations": 6
+      },
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal A",
+        "coupon_code": "CANAL-A-2",
+        "coupon_title": "Canal A",
+        "paid_registrations": 6
+      },
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal B",
+        "coupon_code": "CANAL-B-1",
+        "coupon_title": "Canal B",
+        "paid_registrations": 5
+      },
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal B",
+        "coupon_code": "CANAL-B-2",
+        "coupon_title": "Canal B",
+        "paid_registrations": 5
+      },
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal C",
+        "coupon_code": "CANAL-C-1",
+        "coupon_title": "Canal C",
+        "paid_registrations": 2
+      },
+      {
+        "alias_reason": "identidade sintética revisada",
+        "channel_name": "Canal C",
+        "coupon_code": "CANAL-C-2",
+        "coupon_title": "Canal C",
+        "paid_registrations": 2
+      }
+    ],
+    "channel_index": [
+      {
+        "channel_name": "Canal A",
+        "channel_type": "parceiro",
+        "dossier_type": "full",
+        "gross_value": "1200.00",
+        "paid_registrations": 12,
+        "registration_ticket": "100.00",
+        "touched_paid_orders": 12,
+        "touched_paid_orders_note": "não aditivo entre canais"
+      },
+      {
+        "channel_name": "Canal B",
+        "channel_type": "parceiro",
+        "dossier_type": "full",
+        "gross_value": "1100.00",
+        "paid_registrations": 10,
+        "registration_ticket": "110.00",
+        "touched_paid_orders": 10,
+        "touched_paid_orders_note": "não aditivo entre canais"
+      },
+      {
+        "channel_name": "Canal C",
+        "channel_type": "parceiro",
+        "dossier_type": "compact",
+        "gross_value": "480.00",
+        "paid_registrations": 4,
+        "registration_ticket": "120.00",
+        "touched_paid_orders": 4,
+        "touched_paid_orders_note": "não aditivo entre canais"
+      }
+    ],
+    "channel_lot_mix": [
+      {
+        "channel_name": "Canal A",
+        "denominator": 12,
+        "lot": "1",
+        "paid_registrations": 6,
+        "share_pct": 50.0
+      },
+      {
+        "channel_name": "Canal A",
+        "denominator": 12,
+        "lot": "2",
+        "paid_registrations": 6,
+        "share_pct": 50.0
+      },
+      {
+        "channel_name": "Canal B",
+        "denominator": 10,
+        "lot": "1",
+        "paid_registrations": 5,
+        "share_pct": 50.0
+      },
+      {
+        "channel_name": "Canal B",
+        "denominator": 10,
+        "lot": "2",
+        "paid_registrations": 5,
+        "share_pct": 50.0
+      }
+    ],
+    "channel_modality_mix": [
+      {
+        "channel_name": "Canal A",
+        "denominator": 12,
+        "modality": "21K",
+        "paid_registrations": 4,
+        "share_pct": 33.33
+      },
+      {
+        "channel_name": "Canal A",
+        "denominator": 12,
+        "modality": "42K",
+        "paid_registrations": 4,
+        "share_pct": 33.33
+      },
+      {
+        "channel_name": "Canal A",
+        "denominator": 12,
+        "modality": "OUTRA: 10K",
+        "paid_registrations": 4,
+        "share_pct": 33.33
+      },
+      {
+        "channel_name": "Canal B",
+        "denominator": 10,
+        "modality": "21K",
+        "paid_registrations": 4,
+        "share_pct": 40.0
+      },
+      {
+        "channel_name": "Canal B",
+        "denominator": 10,
+        "modality": "42K",
+        "paid_registrations": 3,
+        "share_pct": 30.0
+      },
+      {
+        "channel_name": "Canal B",
+        "denominator": 10,
+        "modality": "OUTRA: 10K",
+        "paid_registrations": 3,
+        "share_pct": 30.0
+      }
+    ],
+    "channel_product_mix": [
+      {
+        "channel_name": "Canal A",
+        "classification": "adicional",
+        "coverage": {
+          "channel_denominator": 12,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 10,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": "260.00",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Camiseta Extra",
+        "product_quantity": 4,
+        "registrations_with_product": 4,
+        "take_rate_delta_pp": -5.13,
+        "take_rate_denominator": 12,
+        "take_rate_pct": 33.33
+      },
+      {
+        "channel_name": "Canal A",
+        "classification": "desconhecido",
+        "coverage": {
+          "channel_denominator": 12,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 6,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": "37.50",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Item não revisado comercialmente",
+        "product_quantity": 3,
+        "registrations_with_product": 3,
+        "take_rate_delta_pp": 1.92,
+        "take_rate_denominator": 12,
+        "take_rate_pct": 25.0
+      },
+      {
+        "channel_name": "Canal A",
+        "classification": "kit_incluso",
+        "coverage": {
+          "channel_denominator": 12,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 26,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": null,
+        "explicit_revenue_coverage_pct": 0.0,
+        "product_name": "Kit MIF 2026",
+        "product_quantity": 12,
+        "registrations_with_product": 12,
+        "take_rate_delta_pp": 0.0,
+        "take_rate_denominator": 12,
+        "take_rate_pct": 100.0
+      },
+      {
+        "channel_name": "Canal B",
+        "classification": "adicional",
+        "coverage": {
+          "channel_denominator": 10,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 10,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": "260.00",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Camiseta Extra",
+        "product_quantity": 4,
+        "registrations_with_product": 4,
+        "take_rate_delta_pp": 1.54,
+        "take_rate_denominator": 10,
+        "take_rate_pct": 40.0
+      },
+      {
+        "channel_name": "Canal B",
+        "classification": "desconhecido",
+        "coverage": {
+          "channel_denominator": 10,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 6,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": "25.00",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Item não revisado comercialmente",
+        "product_quantity": 2,
+        "registrations_with_product": 2,
+        "take_rate_delta_pp": -3.08,
+        "take_rate_denominator": 10,
+        "take_rate_pct": 20.0
+      },
+      {
+        "channel_name": "Canal B",
+        "classification": "kit_incluso",
+        "coverage": {
+          "channel_denominator": 10,
+          "event_denominator": 26,
+          "product_mapping_coverage_pct": 100.0
+        },
+        "event_registrations_with_product": 26,
+        "event_take_rate_denominator": 26,
+        "explicit_revenue": null,
+        "explicit_revenue_coverage_pct": 0.0,
+        "product_name": "Kit MIF 2026",
+        "product_quantity": 10,
+        "registrations_with_product": 10,
+        "take_rate_delta_pp": 0.0,
+        "take_rate_denominator": 10,
+        "take_rate_pct": 100.0
+      }
+    ],
+    "channel_profile_coverage": [
+      {
+        "answered": 12,
+        "channel_name": "Canal A",
+        "coverage_pct": 100.0,
+        "denominator": 12,
+        "invalid": 0,
+        "missing": 0,
+        "profile_dimension": "age",
+        "valid": 12,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 12,
+        "channel_name": "Canal A",
+        "coverage_pct": 100.0,
+        "denominator": 12,
+        "invalid": 4,
+        "missing": 0,
+        "profile_dimension": "gender",
+        "valid": 8,
+        "valid_coverage_pct": 66.67
+      },
+      {
+        "answered": 12,
+        "channel_name": "Canal A",
+        "coverage_pct": 100.0,
+        "denominator": 12,
+        "invalid": 0,
+        "missing": 0,
+        "profile_dimension": "pace",
+        "valid": 12,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 6,
+        "channel_name": "Canal A",
+        "coverage_pct": 50.0,
+        "denominator": 12,
+        "invalid": 0,
+        "missing": 6,
+        "profile_dimension": "club",
+        "valid": 6,
+        "valid_coverage_pct": 50.0
+      },
+      {
+        "answered": 10,
+        "channel_name": "Canal B",
+        "coverage_pct": 100.0,
+        "denominator": 10,
+        "invalid": 0,
+        "missing": 0,
+        "profile_dimension": "age",
+        "valid": 10,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 10,
+        "channel_name": "Canal B",
+        "coverage_pct": 100.0,
+        "denominator": 10,
+        "invalid": 3,
+        "missing": 0,
+        "profile_dimension": "gender",
+        "valid": 7,
+        "valid_coverage_pct": 70.0
+      },
+      {
+        "answered": 10,
+        "channel_name": "Canal B",
+        "coverage_pct": 100.0,
+        "denominator": 10,
+        "invalid": 0,
+        "missing": 0,
+        "profile_dimension": "pace",
+        "valid": 10,
+        "valid_coverage_pct": 100.0
+      },
+      {
+        "answered": 5,
+        "channel_name": "Canal B",
+        "coverage_pct": 50.0,
+        "denominator": 10,
+        "invalid": 0,
+        "missing": 5,
+        "profile_dimension": "club",
+        "valid": 5,
+        "valid_coverage_pct": 50.0
+      }
+    ],
+    "channel_state_mix": [
+      {
+        "channel_count": 4,
+        "channel_denominator": 12,
+        "channel_name": "Canal A",
+        "coverage": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 12,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": -1.28,
+        "denominator": 12,
+        "event_count": 9,
+        "event_denominator": 26,
+        "paid_registrations": 4,
+        "share_pct": 33.33,
+        "state": "PR"
+      },
+      {
+        "channel_count": 4,
+        "channel_denominator": 12,
+        "channel_name": "Canal A",
+        "coverage": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 12,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": 2.56,
+        "denominator": 12,
+        "event_count": 8,
+        "event_denominator": 26,
+        "paid_registrations": 4,
+        "share_pct": 33.33,
+        "state": "SC"
+      },
+      {
+        "channel_count": 4,
+        "channel_denominator": 12,
+        "channel_name": "Canal A",
+        "coverage": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 12,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": -1.28,
+        "denominator": 12,
+        "event_count": 9,
+        "event_denominator": 26,
+        "paid_registrations": 4,
+        "share_pct": 33.33,
+        "state": "SP"
+      },
+      {
+        "channel_count": 4,
+        "channel_denominator": 10,
+        "channel_name": "Canal B",
+        "coverage": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 10,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": 5.38,
+        "denominator": 10,
+        "event_count": 9,
+        "event_denominator": 26,
+        "paid_registrations": 4,
+        "share_pct": 40.0,
+        "state": "PR"
+      },
+      {
+        "channel_count": 3,
+        "channel_denominator": 10,
+        "channel_name": "Canal B",
+        "coverage": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 10,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": -0.77,
+        "denominator": 10,
+        "event_count": 8,
+        "event_denominator": 26,
+        "paid_registrations": 3,
+        "share_pct": 30.0,
+        "state": "SC"
+      },
+      {
+        "channel_count": 3,
+        "channel_denominator": 10,
+        "channel_name": "Canal B",
+        "coverage": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 10,
+          "valid_coverage_pct": 100.0
+        },
+        "delta_pp": -4.62,
+        "denominator": 10,
+        "event_count": 9,
+        "event_denominator": 26,
+        "paid_registrations": 3,
+        "share_pct": 30.0,
+        "state": "SP"
+      }
+    ],
+    "channel_weekly_sales": [
+      {
+        "allocated_gross_value": "700.00",
+        "channel_name": "Canal A",
+        "paid_registrations": 7,
+        "week_start": "2026-06-01"
+      },
+      {
+        "allocated_gross_value": "500.00",
+        "channel_name": "Canal A",
+        "paid_registrations": 5,
+        "week_start": "2026-06-08"
+      },
+      {
+        "allocated_gross_value": "770.00",
+        "channel_name": "Canal B",
+        "paid_registrations": 7,
+        "week_start": "2026-06-01"
+      },
+      {
+        "allocated_gross_value": "330.00",
+        "channel_name": "Canal B",
+        "paid_registrations": 3,
+        "week_start": "2026-06-08"
+      }
+    ],
+    "city_distribution": [
+      {
+        "city": "CURITIBA",
+        "denominator": 26,
+        "paid_registrations": 9,
+        "share_pct": 34.62
+      },
+      {
+        "city": "SAO PAULO",
+        "denominator": 26,
+        "paid_registrations": 9,
+        "share_pct": 34.62
+      },
+      {
+        "city": "FLORIANOPOLIS",
+        "denominator": 26,
+        "paid_registrations": 8,
+        "share_pct": 30.77
+      }
+    ],
+    "club_coverage": [
+      {
+        "club": "Clube Alfa",
+        "coverage": {
+          "answered": 13,
+          "coverage_pct": 50.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 13,
+          "valid": 13,
+          "valid_coverage_pct": 50.0
+        },
+        "denominator": 26,
+        "paid_registrations": 13,
+        "share_pct": 50.0
+      }
+    ],
+    "country_distribution": [
+      {
+        "country": "BRASIL",
+        "denominator": 26,
+        "paid_registrations": 26,
+        "share_pct": 100.0
+      }
+    ],
+    "data_quality": [
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "cashback_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "declared_registration_count",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "device_type",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "discount_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "fee_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "gross_order_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "installments",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "net_transfer_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "order_date",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "payment_date",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "payment_method",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "status",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "age",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "city",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 50.0,
+        "denominator": 26,
+        "field": "club",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 13,
+        "valid": 13
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "country",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "coupon_code",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "coupon_title",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "gender",
+        "grain": "registration",
+        "invalid": 8,
+        "missing": 0,
+        "valid": 18
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "lot",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "modality",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "pace_seconds",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "questionnaire_present",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "raw_products",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "registration_date",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "reported_registration_coupon_discount_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_discount_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_fee_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_gross_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_net_transfer_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "sale_date",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "state",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      }
+    ],
+    "device_mix": [
+      {
+        "denominator": 26,
+        "device_type": "mobile",
+        "paid_orders": 16,
+        "share_pct": 61.54
+      },
+      {
+        "denominator": 26,
+        "device_type": "desktop",
+        "paid_orders": 10,
+        "share_pct": 38.46
+      }
+    ],
+    "event_overview": [
+      {
+        "cashback_value": "26.00",
+        "coupon_assisted_denominator": 26,
+        "coupon_assisted_registrations": 26,
+        "coupon_assisted_share_pct": 100.0,
+        "discount_value": "130.00",
+        "external_considerations_status": "não mensurado",
+        "fee_value": "52.00",
+        "gross_value": "2780.00",
+        "net_transfer_value": "2598.00",
+        "order_ticket": "106.92",
+        "organic_denominator": 26,
+        "organic_registrations": 0,
+        "organic_share_pct": 0.0,
+        "paid_orders": 26,
+        "paid_registrations": 26,
+        "registration_ticket": "106.92",
+        "registrations_per_order": 1.0,
+        "source_field_coverage": {
+          "channel_mapping_coverage_pct": 100.0,
+          "orders": {
+            "cashback_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "declared_registration_count": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "device_type": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "discount_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "fee_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "gross_order_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "installments": {
+              "invalido": 0,
+              "nao_informado": 26,
+              "valido": 0
+            },
+            "net_transfer_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "order_date": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "payment_date": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "payment_method": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "status": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            }
+          },
+          "product_mapping_coverage_pct": 100.0,
+          "registrations": {
+            "age": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "city": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "club": {
+              "invalido": 0,
+              "nao_informado": 13,
+              "valido": 13
+            },
+            "country": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "coupon_code": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "coupon_title": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "gender": {
+              "invalido": 8,
+              "nao_informado": 0,
+              "valido": 18
+            },
+            "lot": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "modality": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "pace_seconds": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "questionnaire_present": {
+              "invalido": 0,
+              "nao_informado": 26,
+              "valido": 0
+            },
+            "raw_products": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "registration_date": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "reported_registration_coupon_discount_value": {
+              "invalido": 0,
+              "nao_informado": 26,
+              "valido": 0
+            },
+            "reported_registration_discount_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "reported_registration_fee_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "reported_registration_gross_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "reported_registration_net_transfer_value": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "sale_date": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            },
+            "state": {
+              "invalido": 0,
+              "nao_informado": 0,
+              "valido": 26
+            }
+          }
+        }
+      }
+    ],
+    "gender_distribution": [
+      {
+        "denominator": 26,
+        "gender": "Feminino",
+        "paid_registrations": 10,
+        "share_pct": 38.46
+      },
+      {
+        "denominator": 26,
+        "gender": "Inválido",
+        "paid_registrations": 8,
+        "share_pct": 30.77
+      },
+      {
+        "denominator": 26,
+        "gender": "Masculino",
+        "paid_registrations": 8,
+        "share_pct": 30.77
+      }
+    ],
+    "geography_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "shared_leading_segments": [
+          "PR"
+        ],
+        "similarity_0_1": 0.9412
+      }
+    ],
+    "long_tail": [
+      {
+        "channel_name": "Canal C",
+        "channel_type": "parceiro",
+        "coupon_codes": [
+          "CANAL-C-1",
+          "CANAL-C-2"
+        ],
+        "coverage_warnings": [
+          "Cobertura válida de club: 50.00%"
+        ],
+        "gross_value": "480.00",
+        "paid_registrations": 4,
+        "principal_modality": {
+          "denominator": 4,
+          "modality": "OUTRA: 10K",
+          "paid_registrations": 2,
+          "share_pct": 50.0
+        },
+        "principal_state": {
+          "denominator": 4,
+          "paid_registrations": 2,
+          "share_pct": 50.0,
+          "state": "SP"
+        },
+        "registration_ticket": "120.00",
+        "sample_warning": "Base abaixo de 10 inscrições pagas; leitura indicativa",
+        "touched_paid_orders": 4,
+        "touched_paid_orders_note": "não aditivo entre canais"
+      }
+    ],
+    "lot_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "shared_leading_segments": [
+          "1",
+          "2"
+        ],
+        "similarity_0_1": 1.0
+      }
+    ],
+    "lot_performance": [
+      {
+        "allocated_discount_value": "65.00",
+        "allocated_gross_value": "1390.00",
+        "event_denominator": 26,
+        "event_share_pct": 50.0,
+        "lot": "1",
+        "paid_registrations": 13,
+        "registration_ticket": "106.92"
+      },
+      {
+        "allocated_discount_value": "65.00",
+        "allocated_gross_value": "1390.00",
+        "event_denominator": 26,
+        "event_share_pct": 50.0,
+        "lot": "2",
+        "paid_registrations": 13,
+        "registration_ticket": "106.92"
+      }
+    ],
+    "modality_mix": [
+      {
+        "denominator": 26,
+        "modality": "21K",
+        "paid_registrations": 9,
+        "share_pct": 34.62
+      },
+      {
+        "denominator": 26,
+        "modality": "OUTRA: 10K",
+        "paid_registrations": 9,
+        "share_pct": 34.62
+      },
+      {
+        "denominator": 26,
+        "modality": "42K",
+        "paid_registrations": 8,
+        "share_pct": 30.77
+      }
+    ],
+    "modality_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "shared_leading_segments": [
+          "21K"
+        ],
+        "similarity_0_1": 0.9412
+      }
+    ],
+    "pace_bands": [
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "4:30–4:59",
+        "paid_registrations": 4,
+        "share_pct": 15.38
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "5:00–5:29",
+        "paid_registrations": 4,
+        "share_pct": 15.38
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "5:30–5:59",
+        "paid_registrations": 3,
+        "share_pct": 11.54
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "6:00–6:29",
+        "paid_registrations": 3,
+        "share_pct": 11.54
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "6:30–6:59",
+        "paid_registrations": 2,
+        "share_pct": 7.69
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "7:00–7:59",
+        "paid_registrations": 4,
+        "share_pct": 15.38
+      },
+      {
+        "coverage": {
+          "answered": 26,
+          "coverage_pct": 100.0,
+          "denominator": 26,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 26,
+          "valid_coverage_pct": 100.0
+        },
+        "denominator": 26,
+        "pace_band": "8:00+",
+        "paid_registrations": 6,
+        "share_pct": 23.08
+      }
+    ],
+    "payment_mix": [
+      {
+        "denominator": 26,
+        "paid_orders": 13,
+        "payment_method": "cartao",
+        "share_pct": 50.0
+      },
+      {
+        "denominator": 26,
+        "paid_orders": 13,
+        "payment_method": "pix",
+        "share_pct": 50.0
+      }
+    ],
+    "product_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "shared_leading_segments": [
+          "Sem adicional"
+        ],
+        "similarity_0_1": 0.9412
+      }
+    ],
+    "product_summary": [
+      {
+        "classification": "adicional",
+        "explicit_revenue": "650.00",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Camiseta Extra",
+        "product_quantity": 10,
+        "registrations_with_product": 10,
+        "take_rate_denominator": 26,
+        "take_rate_pct": 38.46
+      },
+      {
+        "classification": "desconhecido",
+        "explicit_revenue": "75.00",
+        "explicit_revenue_coverage_pct": 100.0,
+        "product_name": "Item não revisado comercialmente",
+        "product_quantity": 6,
+        "registrations_with_product": 6,
+        "take_rate_denominator": 26,
+        "take_rate_pct": 23.08
+      },
+      {
+        "classification": "kit_incluso",
+        "explicit_revenue": null,
+        "explicit_revenue_coverage_pct": 0.0,
+        "product_name": "Kit MIF 2026",
+        "product_quantity": 26,
+        "registrations_with_product": 26,
+        "take_rate_denominator": 26,
+        "take_rate_pct": 100.0
+      }
+    ],
+    "profile_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "profile_dimension": "age",
+        "shared_leading_segments": [
+          "25–34"
+        ],
+        "similarity_0_1": 0.9289
+      },
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 66.67,
+        "coverage_b": 70.0,
+        "profile_dimension": "gender",
+        "shared_leading_segments": [
+          "Feminino"
+        ],
+        "similarity_0_1": 0.9392
+      },
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "profile_dimension": "pace",
+        "shared_leading_segments": [
+          "8:00+"
+        ],
+        "similarity_0_1": 0.8714
+      },
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 50.0,
+        "coverage_b": 50.0,
+        "profile_dimension": "club",
+        "shared_leading_segments": [
+          "Clube Alfa"
+        ],
+        "similarity_0_1": 1.0
+      }
+    ],
+    "state_distribution": [
+      {
+        "denominator": 26,
+        "paid_registrations": 9,
+        "share_pct": 34.62,
+        "state": "PR"
+      },
+      {
+        "denominator": 26,
+        "paid_registrations": 9,
+        "share_pct": 34.62,
+        "state": "SP"
+      },
+      {
+        "denominator": 26,
+        "paid_registrations": 8,
+        "share_pct": 30.77,
+        "state": "SC"
+      }
+    ],
+    "temporal_overlap": [
+      {
+        "channel_a": "Canal A",
+        "channel_b": "Canal B",
+        "coverage_a": 100.0,
+        "coverage_b": 100.0,
+        "shared_leading_segments": [
+          "2026-06-01"
+        ],
+        "similarity_0_1": 0.8965
+      }
+    ],
+    "weekly_sales": [
+      {
+        "allocated_gross_value": "1950.00",
+        "paid_registrations": 18,
+        "week_start": "2026-06-01"
+      },
+      {
+        "allocated_gross_value": "830.00",
+        "paid_registrations": 8,
+        "week_start": "2026-06-08"
+      }
+    ]
+  },
+  "full_dossiers": [
+    {
+      "age_bands": [
+        {
+          "age_band": "18–24",
+          "denominator": 12,
+          "paid_registrations": 5,
+          "share_pct": 41.67,
+          "suppressed": false
+        },
+        {
+          "age_band": "25–34",
+          "denominator": 12,
+          "paid_registrations": 7,
+          "share_pct": 58.33,
+          "suppressed": false
+        }
+      ],
+      "allocated_value_per_touched_order": "100.00",
+      "cashback_value": "12.00",
+      "channel_name": "Canal A",
+      "channel_type": "parceiro",
+      "club_presence": [
+        {
+          "club": "Clube Alfa",
+          "coverage": {
+            "answered": 6,
+            "coverage_pct": 50.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 6,
+            "valid": 6,
+            "valid_coverage_pct": 50.0
+          },
+          "denominator": 12,
+          "paid_registrations": 6,
+          "share_pct": 50.0,
+          "suppressed": false
+        }
+      ],
+      "countries": [
+        {
+          "channel_count": 12,
+          "channel_denominator": 12,
+          "country": "BRASIL",
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 0.0,
+          "denominator": 12,
+          "event_count": 26,
+          "event_denominator": 26,
+          "paid_registrations": 12,
+          "share_pct": 100.0
+        }
+      ],
+      "coupon_aliases": [
+        {
+          "alias_reason": "identidade sintética revisada",
+          "coupon_code": "CANAL-A-1",
+          "coupon_title": "Canal A",
+          "paid_registrations": 6
+        },
+        {
+          "alias_reason": "identidade sintética revisada",
+          "coupon_code": "CANAL-A-2",
+          "coupon_title": "Canal A",
+          "paid_registrations": 6
+        }
+      ],
+      "data_limitations": [
+        "Pedidos tocados não são aditivos entre canais",
+        "Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada",
+        "Cobertura válida abaixo de 70% para clube/assessoria"
+      ],
+      "discount_value": "60.00",
+      "distinctive_signals": [
+        {
+          "comparison": "evento",
+          "count": 5,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -12.18,
+          "denominator": 12,
+          "dimension": "perfil",
+          "event_count": 14,
+          "event_denominator": 26,
+          "segment": "18–24",
+          "signal": "indício em base pequena — perfil 18–24: 12.18 pp abaixo do evento"
+        },
+        {
+          "comparison": "evento",
+          "count": 7,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 12.18,
+          "denominator": 12,
+          "dimension": "perfil",
+          "event_count": 12,
+          "event_denominator": 26,
+          "segment": "25–34",
+          "signal": "indício em base pequena — perfil 25–34: 12.18 pp acima do evento"
+        }
+      ],
+      "external_considerations_status": "não mensurado",
+      "fee_value": "24.00",
+      "gender_mix": [
+        {
+          "denominator": 12,
+          "gender": "Feminino",
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        },
+        {
+          "denominator": 12,
+          "gender": "Inválido",
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        },
+        {
+          "denominator": 12,
+          "gender": "Masculino",
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        }
+      ],
+      "geographic_scope": {
+        "cities": 3,
+        "city_concentration_hhi": 0.3333,
+        "countries": 1,
+        "coverage": {
+          "city": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "country": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "state": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          }
+        },
+        "label": "internacional/fora do Brasil",
+        "leading_city_pct": 33.33,
+        "leading_state_pct": 33.33,
+        "macroregions": 2,
+        "non_brazil_pct": 100.0,
+        "state_concentration_hhi": 0.3333,
+        "states": 3
+      },
+      "gross_value": "1200.00",
+      "lot_delta_pp": [
+        {
+          "channel_count": 6,
+          "channel_denominator": 12,
+          "coverage": {
+            "denominator": 12
+          },
+          "delta_pp": 0.0,
+          "event_count": 13,
+          "event_denominator": 26,
+          "segment": "1"
+        },
+        {
+          "channel_count": 6,
+          "channel_denominator": 12,
+          "coverage": {
+            "denominator": 12
+          },
+          "delta_pp": 0.0,
+          "event_count": 13,
+          "event_denominator": 26,
+          "segment": "2"
+        }
+      ],
+      "lot_mix": [
+        {
+          "denominator": 12,
+          "lot": "1",
+          "paid_registrations": 6,
+          "share_pct": 50.0
+        },
+        {
+          "denominator": 12,
+          "lot": "2",
+          "paid_registrations": 6,
+          "share_pct": 50.0
+        }
+      ],
+      "modality_delta_pp": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "denominator": 12
+          },
+          "delta_pp": -1.28,
+          "event_count": 9,
+          "event_denominator": 26,
+          "segment": "21K"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "denominator": 12
+          },
+          "delta_pp": 2.56,
+          "event_count": 8,
+          "event_denominator": 26,
+          "segment": "42K"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "denominator": 12
+          },
+          "delta_pp": -1.28,
+          "event_count": 9,
+          "event_denominator": 26,
+          "segment": "OUTRA: 10K"
+        }
+      ],
+      "modality_mix": [
+        {
+          "denominator": 12,
+          "modality": "21K",
+          "paid_registrations": 4,
+          "share_pct": 33.33
+        },
+        {
+          "denominator": 12,
+          "modality": "42K",
+          "paid_registrations": 4,
+          "share_pct": 33.33
+        },
+        {
+          "denominator": 12,
+          "modality": "OUTRA: 10K",
+          "paid_registrations": 4,
+          "share_pct": 33.33
+        }
+      ],
+      "net_transfer_value": "1116.00",
+      "pace_bands": [
+        {
+          "pace_band": "Outros / suprimido",
+          "paid_registrations": 9,
+          "suppressed": true
+        },
+        {
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "denominator": 12,
+          "pace_band": "8:00+",
+          "paid_registrations": 3,
+          "share_pct": 25.0,
+          "suppressed": false
+        }
+      ],
+      "paid_registrations": 12,
+      "product_mix": [
+        {
+          "classification": "adicional",
+          "coverage": {
+            "channel_denominator": 12,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 10,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": "260.00",
+          "explicit_revenue_coverage_pct": 100.0,
+          "product_name": "Camiseta Extra",
+          "product_quantity": 4,
+          "registrations_with_product": 4,
+          "take_rate_delta_pp": -5.13,
+          "take_rate_denominator": 12,
+          "take_rate_pct": 33.33
+        },
+        {
+          "classification": "desconhecido",
+          "coverage": {
+            "channel_denominator": 12,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 6,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": "37.50",
+          "explicit_revenue_coverage_pct": 100.0,
+          "product_name": "Item não revisado comercialmente",
+          "product_quantity": 3,
+          "registrations_with_product": 3,
+          "take_rate_delta_pp": 1.92,
+          "take_rate_denominator": 12,
+          "take_rate_pct": 25.0
+        },
+        {
+          "classification": "kit_incluso",
+          "coverage": {
+            "channel_denominator": 12,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 26,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": null,
+          "explicit_revenue_coverage_pct": 0.0,
+          "product_name": "Kit MIF 2026",
+          "product_quantity": 12,
+          "registrations_with_product": 12,
+          "take_rate_delta_pp": 0.0,
+          "take_rate_denominator": 12,
+          "take_rate_pct": 100.0
+        }
+      ],
+      "profile_coverage": {
+        "age": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 12,
+          "valid_coverage_pct": 100.0
+        },
+        "club": {
+          "answered": 6,
+          "coverage_pct": 50.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 6,
+          "valid": 6,
+          "valid_coverage_pct": 50.0
+        },
+        "gender": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 4,
+          "missing": 0,
+          "valid": 8,
+          "valid_coverage_pct": 66.67
+        },
+        "pace": {
+          "answered": 12,
+          "coverage_pct": 100.0,
+          "denominator": 12,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 12,
+          "valid_coverage_pct": 100.0
+        }
+      },
+      "profile_delta_pp": [
+        {
+          "channel_count": 5,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -12.18,
+          "event_count": 14,
+          "event_denominator": 26,
+          "profile_dimension": "age",
+          "segment": "18–24"
+        },
+        {
+          "channel_count": 7,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 12.18,
+          "event_count": 12,
+          "event_denominator": 26,
+          "profile_dimension": "age",
+          "segment": "25–34"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 4,
+            "missing": 0,
+            "valid": 8,
+            "valid_coverage_pct": 66.67
+          },
+          "delta_pp": -5.13,
+          "event_count": 10,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Feminino"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 4,
+            "missing": 0,
+            "valid": 8,
+            "valid_coverage_pct": 66.67
+          },
+          "delta_pp": 2.56,
+          "event_count": 8,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Inválido"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 4,
+            "missing": 0,
+            "valid": 8,
+            "valid_coverage_pct": 66.67
+          },
+          "delta_pp": 2.56,
+          "event_count": 8,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Masculino"
+        },
+        {
+          "channel_count": 2,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 1.28,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "4:30–4:59"
+        },
+        {
+          "channel_count": 2,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 1.28,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "5:00–5:29"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -3.21,
+          "event_count": 3,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "5:30–5:59"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -3.21,
+          "event_count": 3,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "6:00–6:29"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 0.64,
+          "event_count": 2,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "6:30–6:59"
+        },
+        {
+          "channel_count": 2,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 1.28,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "7:00–7:59"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 1.92,
+          "event_count": 6,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "8:00+"
+        }
+      ],
+      "registration_ticket": "100.00",
+      "registrations_per_order": 1.0,
+      "share_of_event_registrations": 46.15,
+      "similar_channels_by_dimension": [
+        {
+          "channel_coverage": 100.0,
+          "dimension": "geography",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "PR"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "lot",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "1",
+            "2"
+          ],
+          "similarity_0_1": 1.0
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "modality",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "21K"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "product",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "Sem adicional"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "profile:age",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "25–34"
+          ],
+          "similarity_0_1": 0.9289
+        },
+        {
+          "channel_coverage": 50.0,
+          "dimension": "profile:club",
+          "other_channel": "Canal B",
+          "other_coverage": 50.0,
+          "shared_leading_segments": [
+            "Clube Alfa"
+          ],
+          "similarity_0_1": 1.0
+        },
+        {
+          "channel_coverage": 66.67,
+          "dimension": "profile:gender",
+          "other_channel": "Canal B",
+          "other_coverage": 70.0,
+          "shared_leading_segments": [
+            "Feminino"
+          ],
+          "similarity_0_1": 0.9392
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "profile:pace",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "8:00+"
+          ],
+          "similarity_0_1": 0.8714
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "temporal",
+          "other_channel": "Canal B",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "2026-06-01"
+          ],
+          "similarity_0_1": 0.8965
+        }
+      ],
+      "top_cities": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "city": "CURITIBA",
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.28,
+          "denominator": 12,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "city": "FLORIANOPOLIS",
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 2.56,
+          "denominator": 12,
+          "event_count": 8,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "city": "SAO PAULO",
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.28,
+          "denominator": 12,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "suppressed": false
+        }
+      ],
+      "top_states": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.28,
+          "denominator": 12,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "state": "PR"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 2.56,
+          "denominator": 12,
+          "event_count": 8,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "state": "SC"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 12,
+          "coverage": {
+            "answered": 12,
+            "coverage_pct": 100.0,
+            "denominator": 12,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 12,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.28,
+          "denominator": 12,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 33.33,
+          "state": "SP"
+        }
+      ],
+      "touched_paid_orders": 12,
+      "weekly_sales": [
+        {
+          "allocated_gross_value": "700.00",
+          "paid_registrations": 7,
+          "week_start": "2026-06-01"
+        },
+        {
+          "allocated_gross_value": "500.00",
+          "paid_registrations": 5,
+          "week_start": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "age_bands": [
+        {
+          "age_band": "18–24",
+          "denominator": 10,
+          "paid_registrations": 5,
+          "share_pct": 50.0,
+          "suppressed": false
+        },
+        {
+          "age_band": "25–34",
+          "denominator": 10,
+          "paid_registrations": 5,
+          "share_pct": 50.0,
+          "suppressed": false
+        }
+      ],
+      "allocated_value_per_touched_order": "110.00",
+      "cashback_value": "10.00",
+      "channel_name": "Canal B",
+      "channel_type": "parceiro",
+      "club_presence": [
+        {
+          "club": "Clube Alfa",
+          "coverage": {
+            "answered": 5,
+            "coverage_pct": 50.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 5,
+            "valid": 5,
+            "valid_coverage_pct": 50.0
+          },
+          "denominator": 10,
+          "paid_registrations": 5,
+          "share_pct": 50.0,
+          "suppressed": false
+        }
+      ],
+      "countries": [
+        {
+          "channel_count": 10,
+          "channel_denominator": 10,
+          "country": "BRASIL",
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 0.0,
+          "denominator": 10,
+          "event_count": 26,
+          "event_denominator": 26,
+          "paid_registrations": 10,
+          "share_pct": 100.0
+        }
+      ],
+      "coupon_aliases": [
+        {
+          "alias_reason": "identidade sintética revisada",
+          "coupon_code": "CANAL-B-1",
+          "coupon_title": "Canal B",
+          "paid_registrations": 5
+        },
+        {
+          "alias_reason": "identidade sintética revisada",
+          "coupon_code": "CANAL-B-2",
+          "coupon_title": "Canal B",
+          "paid_registrations": 5
+        }
+      ],
+      "data_limitations": [
+        "Pedidos tocados não são aditivos entre canais",
+        "Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada",
+        "Cobertura válida abaixo de 70% para clube/assessoria"
+      ],
+      "discount_value": "50.00",
+      "distinctive_signals": [],
+      "external_considerations_status": "não mensurado",
+      "fee_value": "20.00",
+      "gender_mix": [
+        {
+          "denominator": 10,
+          "gender": "Feminino",
+          "paid_registrations": 4,
+          "share_pct": 40.0,
+          "suppressed": false
+        },
+        {
+          "denominator": 10,
+          "gender": "Inválido",
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "suppressed": false
+        },
+        {
+          "denominator": 10,
+          "gender": "Masculino",
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "suppressed": false
+        }
+      ],
+      "geographic_scope": {
+        "cities": 3,
+        "city_concentration_hhi": 0.34,
+        "countries": 1,
+        "coverage": {
+          "city": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "country": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "state": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          }
+        },
+        "label": "internacional/fora do Brasil",
+        "leading_city_pct": 40.0,
+        "leading_state_pct": 40.0,
+        "macroregions": 2,
+        "non_brazil_pct": 100.0,
+        "state_concentration_hhi": 0.34,
+        "states": 3
+      },
+      "gross_value": "1100.00",
+      "lot_delta_pp": [
+        {
+          "channel_count": 5,
+          "channel_denominator": 10,
+          "coverage": {
+            "denominator": 10
+          },
+          "delta_pp": 0.0,
+          "event_count": 13,
+          "event_denominator": 26,
+          "segment": "1"
+        },
+        {
+          "channel_count": 5,
+          "channel_denominator": 10,
+          "coverage": {
+            "denominator": 10
+          },
+          "delta_pp": 0.0,
+          "event_count": 13,
+          "event_denominator": 26,
+          "segment": "2"
+        }
+      ],
+      "lot_mix": [
+        {
+          "denominator": 10,
+          "lot": "1",
+          "paid_registrations": 5,
+          "share_pct": 50.0
+        },
+        {
+          "denominator": 10,
+          "lot": "2",
+          "paid_registrations": 5,
+          "share_pct": 50.0
+        }
+      ],
+      "modality_delta_pp": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 10,
+          "coverage": {
+            "denominator": 10
+          },
+          "delta_pp": 5.38,
+          "event_count": 9,
+          "event_denominator": 26,
+          "segment": "21K"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "denominator": 10
+          },
+          "delta_pp": -0.77,
+          "event_count": 8,
+          "event_denominator": 26,
+          "segment": "42K"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "denominator": 10
+          },
+          "delta_pp": -4.62,
+          "event_count": 9,
+          "event_denominator": 26,
+          "segment": "OUTRA: 10K"
+        }
+      ],
+      "modality_mix": [
+        {
+          "denominator": 10,
+          "modality": "21K",
+          "paid_registrations": 4,
+          "share_pct": 40.0
+        },
+        {
+          "denominator": 10,
+          "modality": "42K",
+          "paid_registrations": 3,
+          "share_pct": 30.0
+        },
+        {
+          "denominator": 10,
+          "modality": "OUTRA: 10K",
+          "paid_registrations": 3,
+          "share_pct": 30.0
+        }
+      ],
+      "net_transfer_value": "1030.00",
+      "pace_bands": [
+        {
+          "pace_band": "Outros / suprimido",
+          "paid_registrations": 7,
+          "suppressed": true
+        },
+        {
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "denominator": 10,
+          "pace_band": "8:00+",
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "suppressed": false
+        }
+      ],
+      "paid_registrations": 10,
+      "product_mix": [
+        {
+          "classification": "adicional",
+          "coverage": {
+            "channel_denominator": 10,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 10,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": "260.00",
+          "explicit_revenue_coverage_pct": 100.0,
+          "product_name": "Camiseta Extra",
+          "product_quantity": 4,
+          "registrations_with_product": 4,
+          "take_rate_delta_pp": 1.54,
+          "take_rate_denominator": 10,
+          "take_rate_pct": 40.0
+        },
+        {
+          "classification": "desconhecido",
+          "coverage": {
+            "channel_denominator": 10,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 6,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": "25.00",
+          "explicit_revenue_coverage_pct": 100.0,
+          "product_name": "Item não revisado comercialmente",
+          "product_quantity": 2,
+          "registrations_with_product": 2,
+          "take_rate_delta_pp": -3.08,
+          "take_rate_denominator": 10,
+          "take_rate_pct": 20.0
+        },
+        {
+          "classification": "kit_incluso",
+          "coverage": {
+            "channel_denominator": 10,
+            "event_denominator": 26,
+            "product_mapping_coverage_pct": 100.0
+          },
+          "event_registrations_with_product": 26,
+          "event_take_rate_denominator": 26,
+          "explicit_revenue": null,
+          "explicit_revenue_coverage_pct": 0.0,
+          "product_name": "Kit MIF 2026",
+          "product_quantity": 10,
+          "registrations_with_product": 10,
+          "take_rate_delta_pp": 0.0,
+          "take_rate_denominator": 10,
+          "take_rate_pct": 100.0
+        }
+      ],
+      "profile_coverage": {
+        "age": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 10,
+          "valid_coverage_pct": 100.0
+        },
+        "club": {
+          "answered": 5,
+          "coverage_pct": 50.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 5,
+          "valid": 5,
+          "valid_coverage_pct": 50.0
+        },
+        "gender": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 3,
+          "missing": 0,
+          "valid": 7,
+          "valid_coverage_pct": 70.0
+        },
+        "pace": {
+          "answered": 10,
+          "coverage_pct": 100.0,
+          "denominator": 10,
+          "invalid": 0,
+          "missing": 0,
+          "valid": 10,
+          "valid_coverage_pct": 100.0
+        }
+      },
+      "profile_delta_pp": [
+        {
+          "channel_count": 5,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -3.85,
+          "event_count": 14,
+          "event_denominator": 26,
+          "profile_dimension": "age",
+          "segment": "18–24"
+        },
+        {
+          "channel_count": 5,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 3.85,
+          "event_count": 12,
+          "event_denominator": 26,
+          "profile_dimension": "age",
+          "segment": "25–34"
+        },
+        {
+          "channel_count": 4,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 3,
+            "missing": 0,
+            "valid": 7,
+            "valid_coverage_pct": 70.0
+          },
+          "delta_pp": 1.54,
+          "event_count": 10,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Feminino"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 3,
+            "missing": 0,
+            "valid": 7,
+            "valid_coverage_pct": 70.0
+          },
+          "delta_pp": -0.77,
+          "event_count": 8,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Inválido"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 3,
+            "missing": 0,
+            "valid": 7,
+            "valid_coverage_pct": 70.0
+          },
+          "delta_pp": -0.77,
+          "event_count": 8,
+          "event_denominator": 26,
+          "profile_dimension": "gender",
+          "segment": "Masculino"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -5.38,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "4:30–4:59"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -5.38,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "5:00–5:29"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.54,
+          "event_count": 3,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "5:30–5:59"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -1.54,
+          "event_count": 3,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "6:00–6:29"
+        },
+        {
+          "channel_count": 1,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 2.31,
+          "event_count": 2,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "6:30–6:59"
+        },
+        {
+          "channel_count": 2,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 4.62,
+          "event_count": 4,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "7:00–7:59"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 6.92,
+          "event_count": 6,
+          "event_denominator": 26,
+          "profile_dimension": "pace",
+          "segment": "8:00+"
+        }
+      ],
+      "registration_ticket": "110.00",
+      "registrations_per_order": 1.0,
+      "share_of_event_registrations": 38.46,
+      "similar_channels_by_dimension": [
+        {
+          "channel_coverage": 100.0,
+          "dimension": "geography",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "PR"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "lot",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "1",
+            "2"
+          ],
+          "similarity_0_1": 1.0
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "modality",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "21K"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "product",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "Sem adicional"
+          ],
+          "similarity_0_1": 0.9412
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "profile:age",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "25–34"
+          ],
+          "similarity_0_1": 0.9289
+        },
+        {
+          "channel_coverage": 50.0,
+          "dimension": "profile:club",
+          "other_channel": "Canal A",
+          "other_coverage": 50.0,
+          "shared_leading_segments": [
+            "Clube Alfa"
+          ],
+          "similarity_0_1": 1.0
+        },
+        {
+          "channel_coverage": 70.0,
+          "dimension": "profile:gender",
+          "other_channel": "Canal A",
+          "other_coverage": 66.67,
+          "shared_leading_segments": [
+            "Feminino"
+          ],
+          "similarity_0_1": 0.9392
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "profile:pace",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "8:00+"
+          ],
+          "similarity_0_1": 0.8714
+        },
+        {
+          "channel_coverage": 100.0,
+          "dimension": "temporal",
+          "other_channel": "Canal A",
+          "other_coverage": 100.0,
+          "shared_leading_segments": [
+            "2026-06-01"
+          ],
+          "similarity_0_1": 0.8965
+        }
+      ],
+      "top_cities": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 10,
+          "city": "CURITIBA",
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 5.38,
+          "denominator": 10,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 40.0,
+          "suppressed": false
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "city": "FLORIANOPOLIS",
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -0.77,
+          "denominator": 10,
+          "event_count": 8,
+          "event_denominator": 26,
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "suppressed": false
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "city": "SAO PAULO",
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -4.62,
+          "denominator": 10,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "suppressed": false
+        }
+      ],
+      "top_states": [
+        {
+          "channel_count": 4,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": 5.38,
+          "denominator": 10,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 4,
+          "share_pct": 40.0,
+          "state": "PR"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -0.77,
+          "denominator": 10,
+          "event_count": 8,
+          "event_denominator": 26,
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "state": "SC"
+        },
+        {
+          "channel_count": 3,
+          "channel_denominator": 10,
+          "coverage": {
+            "answered": 10,
+            "coverage_pct": 100.0,
+            "denominator": 10,
+            "invalid": 0,
+            "missing": 0,
+            "valid": 10,
+            "valid_coverage_pct": 100.0
+          },
+          "delta_pp": -4.62,
+          "denominator": 10,
+          "event_count": 9,
+          "event_denominator": 26,
+          "paid_registrations": 3,
+          "share_pct": 30.0,
+          "state": "SP"
+        }
+      ],
+      "touched_paid_orders": 10,
+      "weekly_sales": [
+        {
+          "allocated_gross_value": "770.00",
+          "paid_registrations": 7,
+          "week_start": "2026-06-01"
+        },
+        {
+          "allocated_gross_value": "330.00",
+          "paid_registrations": 3,
+          "week_start": "2026-06-08"
+        }
+      ]
+    }
+  ],
+  "long_tail": [
+    {
+      "channel_name": "Canal C",
+      "channel_type": "parceiro",
+      "coupon_codes": [
+        "CANAL-C-1",
+        "CANAL-C-2"
+      ],
+      "coverage_warnings": [
+        "Cobertura válida de club: 50.00%"
+      ],
+      "gross_value": "480.00",
+      "paid_registrations": 4,
+      "principal_modality": {
+        "denominator": 4,
+        "modality": "OUTRA: 10K",
+        "paid_registrations": 2,
+        "share_pct": 50.0
+      },
+      "principal_state": {
+        "denominator": 4,
+        "paid_registrations": 2,
+        "share_pct": 50.0,
+        "state": "SP"
+      },
+      "registration_ticket": "120.00",
+      "sample_warning": "Base abaixo de 10 inscrições pagas; leitura indicativa",
+      "touched_paid_orders": 4,
+      "touched_paid_orders_note": "não aditivo entre canais"
+    }
+  ],
+  "overview": {
+    "cashback_value": "26.00",
+    "coupon_assisted_denominator": 26,
+    "coupon_assisted_registrations": 26,
+    "coupon_assisted_share_pct": 100.0,
+    "discount_value": "130.00",
+    "external_considerations_status": "não mensurado",
+    "fee_value": "52.00",
+    "gross_value": "2780.00",
+    "net_transfer_value": "2598.00",
+    "order_ticket": "106.92",
+    "organic_denominator": 26,
+    "organic_registrations": 0,
+    "organic_share_pct": 0.0,
+    "paid_orders": 26,
+    "paid_registrations": 26,
+    "registration_ticket": "106.92",
+    "registrations_per_order": 1.0,
+    "source_field_coverage": {
+      "channel_mapping_coverage_pct": 100.0,
+      "orders": {
+        "cashback_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "declared_registration_count": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "device_type": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "discount_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "fee_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "gross_order_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "installments": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "net_transfer_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "order_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_method": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "status": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        }
+      },
+      "product_mapping_coverage_pct": 100.0,
+      "registrations": {
+        "age": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "city": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "club": {
+          "invalido": 0,
+          "nao_informado": 13,
+          "valido": 13
+        },
+        "country": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "coupon_code": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "coupon_title": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "gender": {
+          "invalido": 8,
+          "nao_informado": 0,
+          "valido": 18
+        },
+        "lot": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "modality": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "pace_seconds": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "questionnaire_present": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "raw_products": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "registration_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_coupon_discount_value": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "reported_registration_discount_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_fee_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_gross_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_net_transfer_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "sale_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "state": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        }
+      }
+    }
+  },
+  "quality": {
+    "data_quality": [
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "cashback_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "declared_registration_count",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "device_type",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "discount_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "fee_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "gross_order_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "installments",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "net_transfer_value",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "order_date",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "payment_date",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "payment_method",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "status",
+        "grain": "order",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "age",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "city",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 50.0,
+        "denominator": 26,
+        "field": "club",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 13,
+        "valid": 13
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "country",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "coupon_code",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "coupon_title",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "gender",
+        "grain": "registration",
+        "invalid": 8,
+        "missing": 0,
+        "valid": 18
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "lot",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "modality",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "pace_seconds",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "questionnaire_present",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "raw_products",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "registration_date",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 0.0,
+        "denominator": 26,
+        "field": "reported_registration_coupon_discount_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 26,
+        "valid": 0
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_discount_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_fee_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_gross_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "reported_registration_net_transfer_value",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "sale_date",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      },
+      {
+        "coverage_pct": 100.0,
+        "denominator": 26,
+        "field": "state",
+        "grain": "registration",
+        "invalid": 0,
+        "missing": 0,
+        "valid": 26
+      }
+    ],
+    "reconciliation": {
+      "allocated_registration_cashback": "26.00",
+      "allocated_registration_discount": "130.00",
+      "allocated_registration_fee": "52.00",
+      "allocated_registration_gross": "2780.00",
+      "allocated_registration_net_transfer": "2598.00",
+      "channel_mapping_coverage_pct": 100.0,
+      "invalid_json_count": 0,
+      "order_field_coverage": {
+        "cashback_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "declared_registration_count": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "device_type": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "discount_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "fee_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "gross_order_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "installments": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "net_transfer_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "order_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_method": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "status": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        }
+      },
+      "orders_with_multiple_registrations": 0,
+      "paid_order_cashback": "26.00",
+      "paid_order_count": 26,
+      "paid_order_discount": "130.00",
+      "paid_order_fee": "52.00",
+      "paid_order_gross": "2780.00",
+      "paid_order_net_transfer": "2598.00",
+      "paid_registration_count": 26,
+      "product_mapping_coverage_pct": 100.0,
+      "registration_field_coverage": {
+        "age": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "city": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "club": {
+          "invalido": 0,
+          "nao_informado": 13,
+          "valido": 13
+        },
+        "country": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "coupon_code": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "coupon_title": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "gender": {
+          "invalido": 8,
+          "nao_informado": 0,
+          "valido": 18
+        },
+        "lot": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "modality": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "pace_seconds": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "questionnaire_present": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "raw_products": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "registration_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_coupon_discount_value": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "reported_registration_discount_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_fee_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_gross_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "reported_registration_net_transfer_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "sale_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "state": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        }
+      },
+      "registration_join_coverage_pct": 100.0,
+      "reported_vs_allocated": {
+        "discount": {
+          "allocated": "130.00",
+          "difference": "0.00",
+          "reported": "130.00"
+        },
+        "fee": {
+          "allocated": "52.00",
+          "difference": "0.00",
+          "reported": "52.00"
+        },
+        "gross": {
+          "allocated": "2780.00",
+          "difference": "0.00",
+          "reported": "2780.00"
+        },
+        "net_transfer": {
+          "allocated": "2598.00",
+          "difference": "0.00",
+          "reported": "2598.00"
+        }
+      },
+      "source_order_rows": 26,
+      "source_registration_rows": 26,
+      "unmatched_registration_count": 0
+    }
+  },
+  "source_notes": {
+    "chart_rationales": {
+      "channel_distribution": "horizontal bar: exact volume and event share without a desirability score",
+      "country_distribution": "horizontal bar: ranked observed country reach",
+      "dimension_overlaps": "table: exact pairwise evidence without visual rank implication",
+      "lot_performance": "stacked bar: volume and ticket by ordered lot",
+      "modality_mix": "stacked bar: comparable composition across channels",
+      "product_summary": "horizontal bar: add-on take rate by canonical product",
+      "state_distribution": "horizontal bar: ranked categorical concentration",
+      "weekly_sales": "line: chronological change and closing-period acceleration"
+    },
+    "commercial_grains": {
+      "channel_money": "valores de pedido alocados às inscrições",
+      "event_orders": "pedidos pagos únicos",
+      "event_registrations": "inscrições pagas",
+      "touched_paid_orders": "não aditivo entre canais"
+    },
+    "external_considerations": {
+      "barter": "não mensurado",
+      "courtesy_valuation": "não mensurado",
+      "expo_space": "não mensurado",
+      "sponsorship": "não mensurado"
+    },
+    "fixture_status": "Fixture sintética de desenvolvimento; a Task 8 substituirá os dados e mapeamentos.",
+    "geographic_scope": "classificação descritiva, não estratégica",
+    "narrative": {
+      "channels": {
+        "Canal A": "Canal A registrou 12 inscrições pagas em 12 pedidos tocados, não aditivos entre canais. Participação no evento: 46.15% da base de 26 inscrições. O ticket médio ponderado por inscrição foi R$ 100.00, na base de 12 inscrições. Mix de modalidade: 21K liderou com 4/12 (33.33%). A abrangência observada foi internacional/fora do Brasil, com 3 UFs e 3 cidades; a concentração foi HHI 0.3333 por cidade e 33.33% na principal cidade. No recorte de lote, 1 reuniu 6/12 inscrições. O pico semanal observado começou em 2026-06-01 com 7 inscrições. Adoção de adicional: Camiseta Extra em 4/12 inscrições (33.33%), com cobertura de mapeamento de 100.00%. Cobertura de perfil: idade 100.00% (12/12 válidos); gênero 66.67% (8/12 válidos); ritmo 100.00% (12/12 válidos); clube/assessoria 50.00% (6/12 válidos). Aliases de origem: Canal A / CANAL-A-1 (6 inscrições); Canal A / CANAL-A-2 (6 inscrições). Limitações de leitura: Pedidos tocados não são aditivos entre canais; Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada; Cobertura válida abaixo de 70% para clube/assessoria.",
+        "Canal B": "Canal B registrou 10 inscrições pagas em 10 pedidos tocados, não aditivos entre canais. Participação no evento: 38.46% da base de 26 inscrições. O ticket médio ponderado por inscrição foi R$ 110.00, na base de 10 inscrições. Mix de modalidade: 21K liderou com 4/10 (40.00%). A abrangência observada foi internacional/fora do Brasil, com 3 UFs e 3 cidades; a concentração foi HHI 0.3400 por cidade e 40.00% na principal cidade. No recorte de lote, 1 reuniu 5/10 inscrições. O pico semanal observado começou em 2026-06-01 com 7 inscrições. Adoção de adicional: Camiseta Extra em 4/10 inscrições (40.00%), com cobertura de mapeamento de 100.00%. Cobertura de perfil: idade 100.00% (10/10 válidos); gênero 70.00% (7/10 válidos); ritmo 100.00% (10/10 válidos); clube/assessoria 50.00% (5/10 válidos). Aliases de origem: Canal B / CANAL-B-1 (5 inscrições); Canal B / CANAL-B-2 (5 inscrições). Limitações de leitura: Pedidos tocados não são aditivos entre canais; Patrocínio externo, espaço Expo, barter e cortesias não possuem fonte financeira identificada; Cobertura válida abaixo de 70% para clube/assessoria."
+      },
+      "decision_questions": [
+        "Quais canais cobrem estados ou modalidades pouco atendidos pelos demais?",
+        "Quais pares apresentam público semelhante em geography, modality, lot, temporal, profile, product e merecem revisão contratual conjunta?",
+        "Onde a concentração regional é intencional e onde ela limita alcance?",
+        "Quais canais têm mix de modalidade ou adicional realmente distinto, com cobertura suficiente para sustentar a leitura?"
+      ],
+      "event": "Grãos: o evento contém 26 pedidos pagos únicos e 26 inscrições pagas; pedidos tocados não são aditivos entre canais, pois um pedido pode conter inscrições atribuídas a canais diferentes. O ticket médio ponderado de pedido foi R$ 106.92 na base de 26 pedidos. O ticket médio ponderado de inscrição foi R$ 106.92 na base de 26 inscrições. Coberturas de fonte: canais 100.00%; produtos 100.00%; os percentuais de perfil são apresentados com seus denominadores nos dossiês. As comparações permanecem separadas por dimensão e só são interpretáveis com bases e coberturas explícitas. Limitações de leitura: sponsorship não mensurado; expo_space não mensurado; barter não mensurado; courtesy_valuation não mensurado."
+    },
+    "similarity": "seis dimensões independentes; nenhum score mestre",
+    "sources": [
+      {
+        "event_code": 72611,
+        "extracted_at": "2026-08-30T22:00:00-03:00",
+        "file_name": "study-orders.csv",
+        "row_count": 26,
+        "sha256": "5f3e8ca514ba0bf717a50a0014b95402a66bec7449ae70173871a3b59afec3bb",
+        "source_id": "orders"
+      },
+      {
+        "event_code": 72611,
+        "extracted_at": "2026-08-30T22:00:00-03:00",
+        "file_name": "study-participants.csv",
+        "row_count": 26,
+        "sha256": "18b0990421ee333301b914cdcd3e3c35bf0148ecdc583011edb3c3af41734812",
+        "source_id": "participants"
+      }
+    ]
+  }
+}

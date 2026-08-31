@@ -1,0 +1,32 @@
+.report-page {
+  --data-app-layout-intent: authored-report;
+  --data-app-content-width: 1040px;
+  --data-app-report-prose-width: 748px;
+  --data-app-layout-gutter: var(--data-app-report-gutter);
+  max-width: calc(var(--data-app-content-width) + 2 * var(--data-app-layout-gutter));
+  padding: 48px var(--data-app-layout-gutter) 120px;
+}
+
+.report-content { display: grid; gap: 48px; width: 100%; min-width: 0; }
+.report-hero, .report-section, .dossier { display: grid; gap: 24px; min-width: 0; }
+.report-hero h1 { margin: 0; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -0.035em; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) { color: color-mix(in srgb, var(--text) 68%, var(--secondary)); font-size: 16px; line-height: 1.65; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) :is(h2, h3) { color: var(--text); letter-spacing: -0.025em; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) h2 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) h3 { margin: 20px 0 8px; font-size: 18px; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) :is(p, ul) { margin: 0 0 12px; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) > :last-child { margin-bottom: 0; }
+.report-page :is(.rich-narrative-content, .report-rich-editable) ul { padding-inline-start: 22px; }
+.report-deck, .report-section > .rich-narrative, .report-section > .dashboard-component[data-component-kind="custom"], .dossier > .dashboard-component[data-component-kind="custom"] { width: min(748px, 100%); }
+.metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; min-width: 0; }
+.evidence-grid > :only-child, .evidence-grid > [data-component-kind="table"] { grid-column: 1 / -1; }
+.overlap-stack { display: grid; gap: 20px; }
+.dossier { padding-block: 8px 32px; border-bottom: 1px solid var(--border); }
+.dossier:last-child { border-bottom: 0; }
+.report-page [data-component-kind="chart"] .chart-container { min-height: 300px; }
+
+@media (max-width: 860px) {
+  .metric-grid, .evidence-grid { grid-template-columns: 1fr; }
+  .report-page { padding-top: 32px; }
+}

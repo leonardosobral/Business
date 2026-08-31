@@ -1,0 +1,208 @@
+{
+  "allocated_registration_cashback": "26.00",
+  "allocated_registration_discount": "130.00",
+  "allocated_registration_fee": "52.00",
+  "allocated_registration_gross": "2780.00",
+  "allocated_registration_net_transfer": "2598.00",
+  "channel_mapping_coverage_pct": 100.0,
+  "invalid_json_count": 0,
+  "order_field_coverage": {
+    "cashback_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "declared_registration_count": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "device_type": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "discount_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "fee_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "gross_order_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "installments": {
+      "invalido": 0,
+      "nao_informado": 26,
+      "valido": 0
+    },
+    "net_transfer_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "order_date": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "payment_date": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "payment_method": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "status": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    }
+  },
+  "orders_with_multiple_registrations": 0,
+  "paid_order_cashback": "26.00",
+  "paid_order_count": 26,
+  "paid_order_discount": "130.00",
+  "paid_order_fee": "52.00",
+  "paid_order_gross": "2780.00",
+  "paid_order_net_transfer": "2598.00",
+  "paid_registration_count": 26,
+  "product_mapping_coverage_pct": 100.0,
+  "registration_field_coverage": {
+    "age": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "city": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "club": {
+      "invalido": 0,
+      "nao_informado": 13,
+      "valido": 13
+    },
+    "country": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "coupon_code": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "coupon_title": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "gender": {
+      "invalido": 8,
+      "nao_informado": 0,
+      "valido": 18
+    },
+    "lot": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "modality": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "pace_seconds": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "questionnaire_present": {
+      "invalido": 0,
+      "nao_informado": 26,
+      "valido": 0
+    },
+    "raw_products": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "registration_date": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "reported_registration_coupon_discount_value": {
+      "invalido": 0,
+      "nao_informado": 26,
+      "valido": 0
+    },
+    "reported_registration_discount_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "reported_registration_fee_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "reported_registration_gross_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "reported_registration_net_transfer_value": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "sale_date": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    },
+    "state": {
+      "invalido": 0,
+      "nao_informado": 0,
+      "valido": 26
+    }
+  },
+  "registration_join_coverage_pct": 100.0,
+  "reported_vs_allocated": {
+    "discount": {
+      "allocated": "130.00",
+      "difference": "0.00",
+      "reported": "130.00"
+    },
+    "fee": {
+      "allocated": "52.00",
+      "difference": "0.00",
+      "reported": "52.00"
+    },
+    "gross": {
+      "allocated": "2780.00",
+      "difference": "0.00",
+      "reported": "2780.00"
+    },
+    "net_transfer": {
+      "allocated": "2598.00",
+      "difference": "0.00",
+      "reported": "2598.00"
+    }
+  },
+  "source_order_rows": 26,
+  "source_registration_rows": 26,
+  "unmatched_registration_count": 0
+}

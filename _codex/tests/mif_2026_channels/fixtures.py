@@ -2,6 +2,7 @@
 
 import json
 from decimal import Decimal
+from pathlib import Path
 
 import pandas as pd
 
@@ -379,3 +380,200 @@ def channel_metric_facts() -> FactBundle:
             "registration_field_coverage": {},
         },
     )
+
+
+def analysis_result():
+    """Return the complete protected synthetic result for artifact tests."""
+    from _codex.analyses.mif_2026_channels.metrics import build_analysis
+    from _codex.analyses.mif_2026_channels.privacy import protect_analysis
+
+    return protect_analysis(build_analysis(channel_metric_facts()))
+
+
+def write_source_exports(root: Path) -> tuple[Path, Path]:
+    """Write the small synthetic TicketSports fixture exports."""
+    orders = root / "orders.csv"
+    participants = root / "participants.csv"
+    pd.DataFrame(orders_rows()).assign(
+        extracted_at="2026-08-30T22:00:00-03:00"
+    ).to_csv(orders, index=False)
+    pd.DataFrame(participant_rows()).assign(
+        extracted_at="2026-08-30T22:00:00-03:00"
+    ).to_csv(participants, index=False)
+    return orders, participants
+
+
+def write_reviewed_mappings(root: Path) -> tuple[Path, Path]:
+    """Write exact reviewed mappings for the small synthetic source fixture."""
+    channel_mapping = root / "channel-mapping.csv"
+    product_mapping = root / "product-mapping.csv"
+    pd.DataFrame(
+        [
+            {
+                "coupon_title_key": "PARCEIRO ALFA",
+                "coupon_code_key": code,
+                "coupon_title_example": "Parceiro Alfa",
+                "coupon_code_example": code,
+                "paid_registrations": 1,
+                "channel_name": "Parceiro Alfa",
+                "channel_type": "parceiro",
+                "alias_reason": "identidade sintética revisada",
+                "reviewed": True,
+            }
+            for code in ("PARCEIRO ALFA", "PARCEIRO ALFA 2")
+        ]
+    ).to_csv(channel_mapping, index=False)
+    pd.DataFrame(
+        [
+            {
+                "product_id_key": product_id,
+                "product_name_key": product_name,
+                "product_id_example": product_id,
+                "product_name_example": product_name,
+                "observed_items": 1,
+                "canonical_name": canonical_name,
+                "classification": classification,
+                "classification_reason": "identidade sintética revisada",
+                "reviewed": True,
+            }
+            for product_id, product_name, canonical_name, classification in (
+                ("1", "KIT MIF 2026", "Kit MIF 2026", "kit_incluso"),
+                ("2", "CAMISETA EXTRA", "Camiseta Extra", "adicional"),
+                ("KIT 21", "KIT 21K", "Kit 21K", "kit_incluso"),
+            )
+        ]
+    ).to_csv(product_mapping, index=False)
+    return channel_mapping, product_mapping
+
+
+def write_study_fixture(root: Path) -> tuple[Path, Path, Path, Path]:
+    """Write a richer anonymous raw-source fixture with full and long-tail channels."""
+    registrations, orders, products = channel_metric_frames()
+    products_by_registration = {
+        registration_id: group.to_dict("records")
+        for registration_id, group in products.groupby("numero_inscricao")
+    }
+    registration_by_order = registrations.set_index("numero_pedido")
+    order_export = []
+    participant_export = []
+    for order in orders.to_dict("records"):
+        registration = registration_by_order.loc[order["numero_pedido"]]
+        order_export.append(
+            {
+                "cod_evento": 72611,
+                "numero_pedido": order["numero_pedido"],
+                "data_pedido": order["order_date"].isoformat(),
+                "extracted_at": "2026-08-30T22:00:00-03:00",
+                "body": json.dumps(
+                    {
+                        "dataPedido": order["order_date"].date().isoformat(),
+                        "dataPagamento": order["payment_date"].date().isoformat(),
+                        "status": "pago",
+                        "valor": str(order["gross_order_value"]),
+                        "desconto": str(order["discount_value"]),
+                        "taxa": str(order["fee_value"]),
+                        "valorRepassePedido": str(order["net_transfer_value"]),
+                        "cashback": str(order["cashback_value"]),
+                        "qtdeInscricao": 1,
+                        "formaDePagamento": order["payment_method"],
+                        "tipoDispositivo": order["device_type"],
+                        "cupom": {
+                            "titulo": registration["coupon_title"],
+                            "codigo": registration["coupon_code"],
+                        },
+                    },
+                    ensure_ascii=False,
+                ),
+            }
+        )
+    for registration in registrations.to_dict("records"):
+        age = int(registration["age"])
+        product_rows = products_by_registration.get(registration["numero_inscricao"], [])
+        raw_products = []
+        for product in product_rows:
+            item = {
+                "id": product["canonical_name"].upper().replace(" ", "-"),
+                "nome": product["canonical_name"],
+                "quantidade": int(product["product_quantity"]),
+            }
+            if product["product_revenue"] is not None:
+                item["valorTotal"] = str(product["product_revenue"])
+            raw_products.append(item)
+        pace_seconds = int(registration["pace_seconds"])
+        participant_export.append(
+            {
+                "cod_evento": 72611,
+                "numero_inscricao": registration["numero_inscricao"],
+                "numero_pedido": registration["numero_pedido"],
+                "extracted_at": "2026-08-30T22:00:00-03:00",
+                "body": json.dumps(
+                    {
+                        "modalidade": registration["modality"],
+                        "lote": registration["lot"],
+                        "dataVenda": registration["sale_date"].date().isoformat(),
+                        "dataInscricao": registration["registration_date"].date().isoformat(),
+                        "valorUnitario": str(registration["allocated_gross_value"]),
+                        "valorTaxa": str(registration["allocated_fee_value"]),
+                        "valorDesconto": str(registration["allocated_discount_value"]),
+                        "valorRepasse": str(registration["allocated_net_transfer_value"]),
+                        "cidade": registration["city"],
+                        "estado": registration["state"],
+                        "pais": registration["country"],
+                        "nascimento": f"{2026 - age:04d}-01-01",
+                        "sexo": registration["gender"],
+                        "ritmo": f"{pace_seconds // 60:02d}:{pace_seconds % 60:02d}",
+                        "nome_grupo": registration["club"],
+                        "tituloCupom": registration["coupon_title"],
+                        "codigoCupom": registration["coupon_code"],
+                        "produtos": raw_products,
+                    },
+                    ensure_ascii=False,
+                ),
+            }
+        )
+    orders_path = root / "study-orders.csv"
+    participants_path = root / "study-participants.csv"
+    pd.DataFrame(order_export).to_csv(orders_path, index=False)
+    pd.DataFrame(participant_export).to_csv(participants_path, index=False)
+
+    channel_path = root / "study-channel-mapping.csv"
+    channel_rows = []
+    for registration in registrations.to_dict("records"):
+        channel_rows.append(
+            {
+                "coupon_title_key": registration["coupon_title"].upper(),
+                "coupon_code_key": registration["coupon_code"].replace("-", " "),
+                "coupon_title_example": registration["coupon_title"],
+                "coupon_code_example": registration["coupon_code"],
+                "paid_registrations": 1,
+                "channel_name": registration["channel_name"],
+                "channel_type": registration["channel_type"],
+                "alias_reason": "identidade sintética revisada",
+                "reviewed": True,
+            }
+        )
+    pd.DataFrame(channel_rows).drop_duplicates(
+        ["coupon_title_key", "coupon_code_key"]
+    ).to_csv(channel_path, index=False)
+
+    product_path = root / "study-product-mapping.csv"
+    product_rows = []
+    for product in products.to_dict("records"):
+        product_id = product["canonical_name"].upper().replace(" ", "-")
+        product_rows.append(
+            {
+                "product_id_key": product_id.replace("-", " "),
+                "product_name_key": product["canonical_name"].upper(),
+                "product_id_example": product_id,
+                "product_name_example": product["canonical_name"],
+                "observed_items": 1,
+                "canonical_name": product["canonical_name"],
+                "classification": product["classification"],
+                "classification_reason": "identidade sintética revisada",
+                "reviewed": True,
+            }
+        )
+    pd.DataFrame(product_rows).drop_duplicates(
+        ["product_id_key", "product_name_key"]
+    ).to_csv(product_path, index=False)
+    return orders_path, participants_path, channel_path, product_path
