@@ -108,6 +108,38 @@ _RECONCILIATION_COUNT_KEYS = frozenset(
     }
 )
 
+_REGISTRATION_FIELDS = (
+    "coupon_title",
+    "coupon_code",
+    "modality",
+    "lot",
+    "sale_date",
+    "registration_date",
+    "reported_registration_gross_value",
+    "reported_registration_fee_value",
+    "reported_registration_discount_value",
+    "reported_registration_coupon_discount_value",
+    "reported_registration_net_transfer_value",
+    "country",
+    "state",
+    "city",
+    "age",
+    "gender",
+    "pace_seconds",
+    "club",
+    "questionnaire_present",
+    "raw_products",
+)
+
+_REGISTRATION_SOURCE_COLUMNS = [
+    "cod_evento",
+    "numero_inscricao",
+    "numero_pedido",
+    *_REGISTRATION_FIELDS,
+    "auxiliary_json_keys",
+    *(f"{field}_status" for field in _REGISTRATION_FIELDS),
+]
+
 _SAFE_PRODUCT_VALUE_KEYS = frozenset(
     {
         "id",
@@ -133,6 +165,30 @@ def _parse_nonnegative_integer(value: object) -> int | None:
     if parsed is None or parsed < 0 or parsed != parsed.to_integral_value():
         return None
     return int(parsed)
+
+
+def _identifier_is_valid(value: object) -> bool:
+    return (
+        not isinstance(value, (bool, dict, list, set, tuple))
+        and normalize_text(value) is not None
+    )
+
+
+def _required_identifier(value: object, field: str) -> object:
+    if not _identifier_is_valid(value):
+        raise ValueError(f"missing or invalid {field}")
+    return value
+
+
+def _assert_required_keys(
+    frame: pd.DataFrame, keys: tuple[str, ...], grain: str
+) -> None:
+    for key in keys:
+        invalid = ~frame[key].map(_identifier_is_valid)
+        if invalid.any():
+            raise ValueError(
+                f"{grain} grain contains missing or invalid {key}: {int(invalid.sum())}"
+            )
 
 
 def _first_present(body: dict[str, Any], *keys: str) -> object:
@@ -185,7 +241,8 @@ def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
     for position, source_row in enumerate(bundle.orders.to_dict("records")):
         body = parse_json_object(source_row["body"], row_position=position)
         event_code = _event_code(source_row["cod_evento"])
-        order_key = (event_code, source_row["numero_pedido"])
+        order_number = _required_identifier(source_row["numero_pedido"], "numero_pedido")
+        order_key = (event_code, order_number)
         raw = {target: body.get(source) for target, source in ORDER_JSON_FIELDS.items()}
 
         parsed: dict[str, object] = {
@@ -206,7 +263,7 @@ def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
         }
         row = {
             "cod_evento": event_code,
-            "numero_pedido": source_row["numero_pedido"],
+            "numero_pedido": order_number,
             **parsed,
             "is_paid": parsed["status"] == PAID_STATUS,
             "parsed_registration_count": participant_counts.get(order_key, 0),
@@ -232,6 +289,12 @@ def _parse_registration_rows(source: pd.DataFrame) -> pd.DataFrame:
     rows: list[dict[str, object]] = []
     for position, source_row in enumerate(source.to_dict("records")):
         body = parse_json_object(source_row["body"], row_position=position)
+        registration_number = _required_identifier(
+            source_row["numero_inscricao"], "numero_inscricao"
+        )
+        order_number = _required_identifier(
+            source_row["numero_pedido"], "numero_pedido"
+        )
 
         raw_coupon_title = _coupon_value(body, "tituloCupom", "titulo")
         raw_coupon_code = _coupon_value(body, "codigoCupom", "codigo")
@@ -281,8 +344,8 @@ def _parse_registration_rows(source: pd.DataFrame) -> pd.DataFrame:
 
         row: dict[str, object] = {
             "cod_evento": _event_code(source_row["cod_evento"]),
-            "numero_inscricao": source_row["numero_inscricao"],
-            "numero_pedido": source_row["numero_pedido"],
+            "numero_inscricao": registration_number,
+            "numero_pedido": order_number,
             "coupon_title": coupon_title,
             "coupon_code": coupon_code,
             "modality": modality,
@@ -349,7 +412,7 @@ def _parse_registration_rows(source: pd.DataFrame) -> pd.DataFrame:
             )
         rows.append(row)
 
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=_REGISTRATION_SOURCE_COLUMNS)
 
 
 def allocate_cents(total: Decimal, weights: list[Decimal]) -> list[Decimal]:
@@ -416,13 +479,19 @@ def _allocate_covered_order_values(
 def build_registration_fact(bundle: SourceBundle, orders: pd.DataFrame) -> pd.DataFrame:
     """Return registration-grain rows linked by the full composite order key."""
     parsed = _parse_registration_rows(bundle.participants)
-    joined = parsed.merge(
-        orders,
-        on=["cod_evento", "numero_pedido"],
-        how="left",
-        validate="many_to_one",
-        suffixes=("", "_order"),
-    )
+    if parsed.empty:
+        joined = parsed.copy()
+        for column in orders.columns:
+            if column not in ("cod_evento", "numero_pedido"):
+                joined[column] = pd.Series(dtype=orders[column].dtype)
+    else:
+        joined = parsed.merge(
+            orders,
+            on=["cod_evento", "numero_pedido"],
+            how="left",
+            validate="many_to_one",
+            suffixes=("", "_order"),
+        )
     if joined.loc[
         joined["is_paid"].isna(), ["cod_evento", "numero_inscricao"]
     ].shape[0]:
@@ -434,12 +503,18 @@ def build_product_fact(registrations: pd.DataFrame) -> pd.DataFrame:
     """Explode safe product items without inferring revenue from names."""
     rows: list[dict[str, object]] = []
     for registration in registrations.to_dict("records"):
+        registration_number = _required_identifier(
+            registration["numero_inscricao"], "numero_inscricao"
+        )
+        order_number = _required_identifier(
+            registration["numero_pedido"], "numero_pedido"
+        )
         for position, product in enumerate(registration.get("raw_products") or []):
             rows.append(
                 {
                     "cod_evento": registration["cod_evento"],
-                    "numero_inscricao": registration["numero_inscricao"],
-                    "numero_pedido": registration["numero_pedido"],
+                    "numero_inscricao": registration_number,
+                    "numero_pedido": order_number,
                     "product_position": position,
                     "product_id": product.get("id") or product.get("codigo"),
                     "product_name": product.get("nome") or product.get("produto"),
@@ -569,6 +644,19 @@ def build_fact_bundle(bundle: SourceBundle) -> FactBundle:
 
 def assert_reconciled(facts: FactBundle) -> None:
     """Fail closed on invalid grains, scope, joins, counts, or covered money."""
+    _assert_required_keys(
+        facts.orders, ("cod_evento", "numero_pedido"), "order"
+    )
+    _assert_required_keys(
+        facts.registrations,
+        ("cod_evento", "numero_inscricao", "numero_pedido"),
+        "registration",
+    )
+    _assert_required_keys(
+        facts.products,
+        ("cod_evento", "numero_inscricao", "numero_pedido", "product_position"),
+        "product",
+    )
     if facts.orders.duplicated(["cod_evento", "numero_pedido"]).any():
         raise ValueError("duplicate order grain")
     if facts.registrations.duplicated(["cod_evento", "numero_inscricao"]).any():

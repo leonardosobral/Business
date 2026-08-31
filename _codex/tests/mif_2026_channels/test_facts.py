@@ -149,6 +149,74 @@ class FactTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate composite order keys: 2"):
             build_order_fact(replace(bundle, orders=duplicated))
 
+    def test_missing_order_number_is_rejected(self):
+        """A single null or blank order number must not create a keyless order fact."""
+        bundle = source_bundle()
+        for invalid in (None, "  "):
+            with self.subTest(invalid=invalid):
+                orders = bundle.orders.copy()
+                orders["numero_pedido"] = orders["numero_pedido"].astype(object)
+                orders.loc[0, "numero_pedido"] = invalid
+                with self.assertRaisesRegex(ValueError, "numero_pedido"):
+                    build_order_fact(replace(bundle, orders=orders))
+
+    def test_missing_registration_number_is_rejected(self):
+        """A null or blank registration number must not create a keyless fact row."""
+        bundle = source_bundle()
+        for invalid in (None, "  "):
+            with self.subTest(invalid=invalid):
+                participants = bundle.participants.copy()
+                participants["numero_inscricao"] = participants[
+                    "numero_inscricao"
+                ].astype(object)
+                participants.loc[0, "numero_inscricao"] = invalid
+                with self.assertRaisesRegex(ValueError, "numero_inscricao"):
+                    build_fact_bundle(replace(bundle, participants=participants))
+
+    def test_missing_registration_order_number_is_rejected_at_parse_boundary(self):
+        """A missing participant order key must fail before a misleading join error."""
+        bundle = source_bundle()
+        participants = bundle.participants.copy()
+        participants.loc[0, "numero_pedido"] = None
+        with self.assertRaisesRegex(ValueError, "numero_pedido"):
+            build_fact_bundle(replace(bundle, participants=participants))
+
+    def test_assert_reconciled_rejects_missing_product_grain_key(self):
+        """A product row detached from its registration must fail hard reconciliation."""
+        facts = build_fact_bundle(source_bundle())
+        products = facts.products.copy()
+        products.loc[0, "numero_inscricao"] = None
+        with self.assertRaisesRegex(ValueError, "numero_inscricao"):
+            assert_reconciled(replace(facts, products=products))
+
+    def test_zero_registration_bundle_builds_empty_schema_and_reconciliation(self):
+        """No participants for unpaid orders must yield controlled empty fact tables."""
+        bundle = source_bundle()
+        unpaid_orders = bundle.orders.loc[bundle.orders["numero_pedido"] == 1002].copy()
+        no_participants = pd.DataFrame(columns=bundle.participants.columns)
+
+        try:
+            facts = build_fact_bundle(
+                replace(bundle, orders=unpaid_orders, participants=no_participants)
+            )
+        except Exception as error:  # pragma: no cover - turns the regression into FAIL
+            self.fail(f"empty registrations raised {type(error).__name__}: {error}")
+
+        self.assertTrue(facts.registrations.empty)
+        self.assertTrue(facts.products.empty)
+        self.assertTrue(
+            {
+                "numero_inscricao",
+                "coupon_title_status",
+                "allocated_gross_value",
+                "allocation_method",
+                "is_paid",
+            }.issubset(facts.registrations.columns)
+        )
+        self.assertEqual(facts.reconciliation["source_registration_rows"], 0)
+        self.assertEqual(facts.reconciliation["paid_registration_count"], 0)
+        self.assertEqual(facts.reconciliation["registration_join_coverage_pct"], 100.0)
+
 
 if __name__ == "__main__":
     unittest.main()
