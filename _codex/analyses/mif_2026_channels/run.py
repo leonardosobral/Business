@@ -208,6 +208,7 @@ def _validate_coverage_identity(
 def _validate_auxiliary_coverage(
     rows: list[dict[str, Any]],
     reconciliation: dict[str, Any],
+    paid_orders: int,
     paid_registrations: int,
 ) -> None:
     by_field: dict[str, dict[str, Any]] = {}
@@ -227,15 +228,29 @@ def _validate_auxiliary_coverage(
     ):
         raise ValueError("unexpected auxiliary_field_coverage field")
 
-    order_coverage = reconciliation.get("order_field_coverage", {})
+    paid_order_coverage = reconciliation.get("paid_order_field_coverage", {})
     for label, grain, source_field in AUXILIARY_FIELD_CONTRACT:
         if grain == "order":
-            counts = order_coverage.get(source_field)
+            expected_denominator = paid_orders
+            counts = paid_order_coverage.get(source_field)
+            if paid_orders == 0 and counts is None:
+                counts = {"valido": 0, "invalido": 0, "nao_informado": 0}
             if not isinstance(counts, dict):
                 raise ValueError(
-                    f"missing auxiliary_field_coverage source counts: {label}"
+                    f"missing paid auxiliary_field_coverage source counts: {label}"
                 )
-            expected_denominator = sum(int(value) for value in counts.values())
+            expected_counts = {
+                "valid": int(counts.get("valido", 0)),
+                "invalid": int(counts.get("invalido", 0)),
+                "missing": int(counts.get("nao_informado", 0)),
+            }
+            if any(
+                by_field[label].get(key) != value
+                for key, value in expected_counts.items()
+            ):
+                raise ValueError(
+                    f"auxiliary_field_coverage source counts mismatch: {label}"
+                )
         else:
             expected_denominator = paid_registrations
         _validate_coverage_identity(
@@ -343,6 +358,7 @@ def _validate_dataset_contracts(
     _validate_auxiliary_coverage(
         datasets["auxiliary_field_coverage"],
         reconciliation,
+        event_orders,
         event_registrations,
     )
     for row in datasets["data_quality"]:

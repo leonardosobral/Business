@@ -116,3 +116,28 @@ Implementação concluída na branch `main` com fixture sintética de desenvolvi
 - CLI canônico: `verification passed`; suíte cumulativa: `105/105`. Regeneração temporária confirmou igualdade byte a byte dos quatro outputs canônicos, portanto notebook, build e sanitização não precisaram ser refeitos e os hashes HTML/snapshot do Fix Round 1 permanecem válidos.
 - Runtime protegido: `140` arquivos sem divergência; tema `codex-classic` idêntico; shareable autocontido e sem metadata/raw/PII; `git diff --check` sem saída.
 - O status continua `fixture`, sem afirmações finais de 2026. Result-import, `/inscricoes/` e infraestrutura protegida permaneceram intocados.
+
+## Fix Round 4 — base comercial de pedidos e ordem cronológica
+
+### TDD RED/GREEN
+
+- RED real contra `0a71b26`: `22` testes focados executados, com exatamente `2` falhas. A fixture pequena expôs cobertura auxiliar de pedido com denominador `2` apesar de apenas `1` pedido pago; o caso com offsets distintos escolheu `2026-08-31T00:30:00+00:00` por ordem lexical, embora `2026-08-30T23:45:00-03:00` fosse o instante mais recente.
+- GREEN: `23/23` focados, incluindo a regressão preexistente de distinção entre inválido e não informado, e `107/107` na suíte MIF. O CLI também verificou com sucesso o output produzido pelo caso de offsets distintos.
+
+### Correções de produção e verify
+
+- `facts.py` produz `paid_order_field_coverage` a partir das linhas de pedido efetivamente pagas, preservando `valido`, `invalido` e `nao_informado`; `metrics.py` usa esse recibo para `payment_method`, `device` e `order_quantity`. Questionnaire e campos de perfil continuam no grão de inscrições pagas.
+- `run.py verify` exige o catálogo e as contagens comerciais do recibo pago, reconcilia sua base exatamente com `paid_orders` e mantém as identidades e percentuais derivados. Eventos legitimamente sem pedidos pagos continuam aceitando contagens zero.
+- `pipeline.py` reutiliza o parser ISO timezone-aware de `source.py`, compara instantes reais e conserva no `generatedAt` a representação canônica da fonte vencedora. O limite mínimo de freshness e a rejeição de 1900 permanecem ativos.
+
+### Outputs e gates finais
+
+- Pipeline canônico reexecutado. `aggregates.json` e `reconciliation.json` ganharam o recibo agregado `paid_order_field_coverage`; `src/data.json` permaneceu byte a byte idêntico porque a fixture canônica tem `26/26` pedidos pagos. Hashes SHA-256: snapshot `25d9833fdaddfb435b8790c2d4bf089df0f709ee53beb13e6b61b9d773ae36fb`, aggregates `b034d2b8762d777a568f18e52bb8a0fbba09dd6f3d4ff8c7569de480dc292c37` e reconciliation `491bcfc5487163924c7f172ab73f97757b945dd6b5c290e6cb467a161e78cd10`.
+- Notebook reexecutado top-to-bottom com `6` células de código, `31` queries, status `fixture`, reconciliação e privacidade aprovadas, zero erros; os outputs persistidos não mudaram.
+- Build oficial prebuilt: `5` módulos, `0` assets externos; hash do builder antes da normalização `1bfb4722f8564458bdce0098827291a931c2e999de8598d07e8ee19563c329c0`. Após sanitização, `dist/index.html` manteve `f66856e2445de6b422ee9aa4ca5768b98a6b02946a60cd94811ed4daa9f360ca` e `dist/shareable.html` manteve `32b8aa80f124653403c7ec78430c5d0655afb88d08bf280b06eaff9b1f40cbfc`.
+- CLI canônico: `verification passed`; runtime protegido: `140` arquivos sem divergência; tema `codex-classic` byte a byte idêntico; shareable autocontido, normalizado e sem metadata de task, raw facts ou PII; `git diff --check` sem saída.
+
+### Self-review e limites
+
+- A mudança ficou restrita aos contratos de cobertura/freshness e aos recibos agregados. Rejeições de `score`, `rank`, `keep-cut`, coberturas contratuais de `100%`, proveniência exata e datasets condicionais permanecem cobertas pela suíte.
+- O app continua marcado como fixture sintética de desenvolvimento; não há afirmações finais de 2026, publicação, nova preview ou broad browser QA. Result-import, `/inscricoes/` e os `140` arquivos de infraestrutura protegida não foram alterados.

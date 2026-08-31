@@ -281,6 +281,13 @@ def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
     if duplicates.any():
         raise ValueError(f"duplicate composite order keys: {int(duplicates.sum())}")
     result.attrs["field_status_counts"] = _status_counts(coverage_rows)
+    result.attrs["paid_field_status_counts"] = _status_counts(
+        [
+            coverage
+            for row, coverage in zip(rows, coverage_rows, strict=True)
+            if row["is_paid"]
+        ]
+    )
     return result
 
 
@@ -613,6 +620,9 @@ def _build_reconciliation(
         "unmatched_registration_count": int(registrations["is_paid"].isna().sum()),
         "invalid_json_count": 0,
         "order_field_coverage": orders.attrs.get("field_status_counts", {}),
+        "paid_order_field_coverage": orders.attrs.get(
+            "paid_field_status_counts", {}
+        ),
         "registration_field_coverage": _registration_field_coverage(registrations),
         "reported_vs_allocated": _reported_vs_allocated(registrations),
     }

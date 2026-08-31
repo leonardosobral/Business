@@ -566,7 +566,7 @@ class MetricTests(unittest.TestCase):
         facts = channel_metric_facts()
         reconciliation = {
             **facts.reconciliation,
-            "order_field_coverage": {
+            "paid_order_field_coverage": {
                 "payment_method": {
                     "valido": 20,
                     "invalido": 2,

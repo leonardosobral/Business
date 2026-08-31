@@ -454,6 +454,56 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(completed.returncode, 0, completed.stderr)
 
+    def test_auxiliary_order_coverage_uses_paid_order_base(self):
+        """Commercial order coverage excludes source orders that are not paid."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            self.assertEqual(aggregates["overview"]["paid_orders"], 1)
+            rows = {
+                row["field"]: row
+                for row in aggregates["datasets"]["auxiliary_field_coverage"]
+            }
+            for field in ("payment_method", "device", "order_quantity"):
+                row = rows[field]
+                self.assertEqual(row["denominator"], 1, field)
+                self.assertEqual(
+                    row["valid"] + row["invalid"] + row["missing"],
+                    row["denominator"],
+                    field,
+                )
+
+            completed = self._verify(paths)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_analyze_chooses_generated_at_by_chronological_instant(self):
+        """Different offsets must not turn lexicographic order into report freshness."""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            orders_frame = pd.read_csv(orders, dtype=object)
+            participants_frame = pd.read_csv(participants, dtype=object)
+            orders_frame["extracted_at"] = "2026-08-31T00:30:00+00:00"
+            participants_frame["extracted_at"] = "2026-08-30T23:45:00-03:00"
+            orders_frame.to_csv(orders, index=False)
+            participants_frame.to_csv(participants, index=False)
+            channel_map, product_map = write_reviewed_mappings(root)
+            paths = run_analysis(
+                orders,
+                participants,
+                channel_map,
+                product_map,
+                root / "report_app",
+                allow_stale=True,
+            )
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+
+            self.assertEqual(
+                snapshot["generatedAt"], "2026-08-30T23:45:00-03:00"
+            )
+            completed = self._verify(paths)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
     def test_verify_rejects_score_field(self):
         """Decision-score fields are forbidden even when aggregate data stays anonymous."""
         with TemporaryDirectory() as directory:

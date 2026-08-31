@@ -1090,10 +1090,10 @@ def _auxiliary_coverage(
     reconciliation: dict[str, Any],
 ) -> list[dict[str, object]]:
     rows = []
-    order_coverage = reconciliation.get("order_field_coverage", {})
+    paid_order_coverage = reconciliation.get("paid_order_field_coverage", {})
     for label, grain, field in AUXILIARY_FIELD_CONTRACT:
         frame = paid_orders if grain == "order" else paid_registrations
-        source_counts = order_coverage.get(field) if grain == "order" else None
+        source_counts = paid_order_coverage.get(field) if grain == "order" else None
         if source_counts:
             valid = int(source_counts.get("valido", 0))
             invalid = int(source_counts.get("invalido", 0))

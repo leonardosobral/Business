@@ -3917,6 +3917,68 @@
       "paid_order_count": 26,
       "paid_order_discount": "130.00",
       "paid_order_fee": "52.00",
+      "paid_order_field_coverage": {
+        "cashback_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "declared_registration_count": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "device_type": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "discount_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "fee_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "gross_order_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "installments": {
+          "invalido": 0,
+          "nao_informado": 26,
+          "valido": 0
+        },
+        "net_transfer_value": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "order_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_date": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "payment_method": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        },
+        "status": {
+          "invalido": 0,
+          "nao_informado": 0,
+          "valido": 26
+        }
+      },
       "paid_order_gross": "2780.00",
       "paid_order_net_transfer": "2598.00",
       "paid_registration_count": 26,
