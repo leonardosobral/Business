@@ -628,12 +628,16 @@ def _build_reconciliation(
     }
     for order_column, (order_key, allocated_key) in _RECONCILIATION_MONEY_KEYS.items():
         allocated_column = _ORDER_MONEY_TO_ALLOCATED[order_column]
-        reconciliation[order_key] = _decimal_string(
-            _covered_decimal_sum(paid_orders, order_column)
+        order_total = _covered_decimal_sum(paid_orders, order_column)
+        allocated_total = _covered_decimal_sum(
+            paid_registrations, allocated_column
         )
-        reconciliation[allocated_key] = _decimal_string(
-            _covered_decimal_sum(paid_registrations, allocated_column)
-        )
+        if paid_orders.empty:
+            order_total = Decimal("0.00")
+        if paid_registrations.empty:
+            allocated_total = Decimal("0.00")
+        reconciliation[order_key] = _decimal_string(order_total)
+        reconciliation[allocated_key] = _decimal_string(allocated_total)
     return reconciliation
 
 

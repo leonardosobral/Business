@@ -20,7 +20,7 @@ from .mappings import (
 from .metrics import build_analysis
 from .narrative import build_decision_questions, describe_channel, describe_event
 from .privacy import assert_anonymous, protect_analysis
-from .source import load_sources, parse_extraction_timestamp
+from .source import load_sources, resolve_report_generated_at
 
 
 CHART_RATIONALES = {
@@ -132,13 +132,7 @@ def run_analysis(
 
     aggregate_payload = dataclasses.asdict(result)
     reconciliation_payload = deepcopy(mapped.reconciliation)
-    latest_snapshot = max(
-        sources.snapshots,
-        key=lambda snapshot: parse_extraction_timestamp(
-            snapshot.extracted_at, snapshot.source_id
-        ),
-    )
-    generated_at = latest_snapshot.extracted_at
+    generated_at = resolve_report_generated_at(sources.snapshots)
     report_payload = build_report_snapshot(result, generated_at)
 
     for payload in (

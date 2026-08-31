@@ -252,9 +252,15 @@ class CliTests(unittest.TestCase):
         *,
         organic_registration: bool = False,
         unpaid_participant: bool = False,
+        zero_paid_orders: bool = False,
     ):
         orders_data = deepcopy(orders_rows())
         participants_data = deepcopy(participant_rows())
+        if zero_paid_orders:
+            for order in orders_data:
+                order_body = json.loads(order["body"])
+                order_body["status"] = "aguardando_pagamento"
+                order["body"] = json.dumps(order_body)
         if organic_registration:
             order = deepcopy(orders_data[0])
             order["numero_pedido"] = 1003
@@ -475,6 +481,69 @@ class CliTests(unittest.TestCase):
 
             completed = self._verify(paths)
             self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_zero_paid_event_has_zero_money_and_verifies(self):
+        """An empty commercial base is valid, but a nonzero receipt remains invalid."""
+        with TemporaryDirectory() as directory:
+            paths = self._variant_outputs(
+                Path(directory), zero_paid_orders=True
+            )
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            reconciliation = json.loads(
+                paths["reconciliation"].read_text(encoding="utf-8")
+            )
+            overview = aggregates["overview"]
+            auxiliary = aggregates["datasets"]["auxiliary_field_coverage"]
+
+            self.assertEqual(overview["paid_orders"], 0)
+            self.assertEqual(overview["gross_value"], "0.00")
+            self.assertEqual(reconciliation["paid_order_gross"], "0.00")
+            self.assertEqual(reconciliation["allocated_registration_gross"], "0.00")
+            self.assertEqual(len(auxiliary), 4)
+            self.assertTrue(all(row["denominator"] == 0 for row in auxiliary))
+            completed = self._verify(paths)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
+            reconciliation["paid_order_gross"] = "1.00"
+            write_json(paths["reconciliation"], reconciliation)
+            completed = self._verify(paths)
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("gross", completed.stderr.lower())
+
+    def test_legacy_allow_stale_without_timestamps_is_fixture_verifiable(self):
+        """Missing extraction evidence has a deterministic fixture-only marker."""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            for path in (orders, participants):
+                frame = pd.read_csv(path, dtype=object).drop(columns="extracted_at")
+                frame.to_csv(path, index=False)
+            channel_map, product_map = write_reviewed_mappings(root)
+            paths = run_analysis(
+                orders,
+                participants,
+                channel_map,
+                product_map,
+                root / "report_app",
+                allow_stale=True,
+            )
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
+
+            self.assertEqual(snapshot["status"], "fixture")
+            self.assertEqual(snapshot["generatedAt"], "not_provided_allow_stale")
+            self.assertEqual(
+                {source["extracted_at"] for source in notes["sources"]},
+                {"not_provided_allow_stale"},
+            )
+            completed = self._verify(paths)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
+            snapshot["status"] = "ready"
+            write_json(paths["report_data"], snapshot)
+            completed = self._verify(paths)
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("ready", completed.stderr.lower())
 
     def test_analyze_chooses_generated_at_by_chronological_instant(self):
         """Different offsets must not turn lexicographic order into report freshness."""

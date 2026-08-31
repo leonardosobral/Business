@@ -23,7 +23,7 @@ _SOURCE_REQUIRED_COLUMNS = {
     "orders": frozenset({"cod_evento", "numero_pedido", "data_pedido", "body"}),
     "participants": frozenset({"cod_evento", "numero_inscricao", "numero_pedido", "body"}),
 }
-_STALE_EXTRACTION_MARKER = "not_provided_allow_stale"
+ALLOW_STALE_EXTRACTION_MARKER = "not_provided_allow_stale"
 
 
 def read_export(path: Path, required_columns: frozenset[str]) -> pd.DataFrame:
@@ -121,23 +121,42 @@ def _filter_event(frame: pd.DataFrame, event_code: int, source_id: str) -> pd.Da
 def _extraction_timestamp(frame: pd.DataFrame, source_id: str, allow_stale: bool) -> str:
     if "extracted_at" not in frame.columns:
         if allow_stale:
-            return _STALE_EXTRACTION_MARKER
+            return ALLOW_STALE_EXTRACTION_MARKER
         raise ValueError(f"{source_id} export is missing required extracted_at column")
 
     values = frame["extracted_at"].tolist()
     if not values or any(pd.isna(value) or not str(value).strip() for value in values):
         if allow_stale:
-            return _STALE_EXTRACTION_MARKER
+            return ALLOW_STALE_EXTRACTION_MARKER
         raise ValueError(f"{source_id} export has no usable extracted_at value")
 
     parsed = [parse_extraction_timestamp(value, source_id) for value in values]
     latest = max(parsed)
-    if not allow_stale and min(parsed) < FINAL_EXTRACTION_MIN_TIMESTAMP:
+    if min(parsed) < FINAL_EXTRACTION_MIN_TIMESTAMP:
+        if allow_stale:
+            return ALLOW_STALE_EXTRACTION_MARKER
         raise ValueError(
             f"{source_id} export extracted_at must be on or after "
             f"{FINAL_EXTRACTION_MIN_TIMESTAMP.isoformat()}"
         )
     return latest.isoformat()
+
+
+def resolve_report_generated_at(snapshots: tuple[SourceSnapshot, ...]) -> str:
+    """Return a real latest instant or the explicit fixture-only stale marker."""
+    if not snapshots:
+        raise ValueError("at least one source snapshot is required")
+    if any(
+        snapshot.extracted_at == ALLOW_STALE_EXTRACTION_MARKER
+        for snapshot in snapshots
+    ):
+        return ALLOW_STALE_EXTRACTION_MARKER
+    return max(
+        snapshots,
+        key=lambda snapshot: parse_extraction_timestamp(
+            snapshot.extracted_at, snapshot.source_id
+        ),
+    ).extracted_at
 
 
 def parse_extraction_timestamp(value: object, source_id: str) -> datetime:

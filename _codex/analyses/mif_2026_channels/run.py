@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 import json
 from pathlib import Path
 import re
@@ -25,6 +25,7 @@ from .metrics import AUXILIARY_FIELD_CONTRACT, DATASET_IDS
 from .pipeline import CHART_RATIONALES, run_analysis
 from .privacy import assert_anonymous
 from .source import (
+    ALLOW_STALE_EXTRACTION_MARKER,
     FINAL_EXTRACTION_MIN_TIMESTAMP,
     load_sources,
     parse_extraction_timestamp,
@@ -90,11 +91,22 @@ def _reject_decision_language(value: Any, path: str = "$") -> None:
         raise ValueError(f"forbidden decision language at {path}: {token}")
 
 
+def _required_decimal(value: object, label: str) -> Decimal:
+    try:
+        parsed = Decimal(str(value))
+    except (InvalidOperation, ValueError) as error:
+        raise ValueError(f"invalid financial receipt: {label}") from error
+    if not parsed.is_finite():
+        raise ValueError(f"invalid financial receipt: {label}")
+    return parsed
+
+
 def _validate_reconciliation(
     overview: dict[str, Any],
     reconciliation: dict[str, Any],
     source_notes: dict[str, Any],
     generated_at: object,
+    snapshot_status: str,
 ) -> None:
     event_orders = int(overview.get("paid_orders", -1))
     event_registrations = int(overview.get("paid_registrations", -1))
@@ -102,13 +114,15 @@ def _validate_reconciliation(
         raise ValueError("receipt paid-order count does not reconcile")
     if int(reconciliation.get("paid_registration_count", -2)) != event_registrations:
         raise ValueError("receipt paid-registration count does not reconcile")
-    if Decimal(str(reconciliation.get("paid_order_gross", "NaN"))) != Decimal(
-        str(overview.get("gross_value", "NaN"))
-    ):
+    overview_gross = _required_decimal(overview.get("gross_value"), "overview gross")
+    if _required_decimal(
+        reconciliation.get("paid_order_gross"), "paid order gross"
+    ) != overview_gross:
         raise ValueError("receipt paid-order gross does not reconcile")
-    if Decimal(str(reconciliation.get("allocated_registration_gross", "NaN"))) != Decimal(
-        str(overview.get("gross_value", "NaN"))
-    ):
+    if _required_decimal(
+        reconciliation.get("allocated_registration_gross"),
+        "allocated registration gross",
+    ) != overview_gross:
         raise ValueError("allocated registration gross does not reconcile")
     for key in (
         "channel_mapping_coverage_pct",
@@ -137,6 +151,7 @@ def _validate_reconciliation(
     if expected_rows["participants"] < event_registrations:
         raise ValueError("source registration rows cannot be below paid-registration count")
     source_timestamps = []
+    has_allow_stale_marker = False
     for source in sources:
         source_id = source["source_id"]
         if source.get("event_code") != EVENT_CODE:
@@ -147,12 +162,19 @@ def _validate_reconciliation(
             raise ValueError(f"invalid source hash: {source_id}")
         if not source.get("file_name") or not source.get("extracted_at"):
             raise ValueError(f"incomplete source receipt: {source_id}")
-        parsed_timestamp = parse_extraction_timestamp(
-            source["extracted_at"], source_id
-        )
+        if source["extracted_at"] == ALLOW_STALE_EXTRACTION_MARKER:
+            if snapshot_status != "fixture":
+                raise ValueError("ready snapshot cannot use allow-stale freshness marker")
+            has_allow_stale_marker = True
+            continue
+        parsed_timestamp = parse_extraction_timestamp(source["extracted_at"], source_id)
         if parsed_timestamp < FINAL_EXTRACTION_MIN_TIMESTAMP:
             raise ValueError(f"source freshness below final contract: {source_id}")
         source_timestamps.append(parsed_timestamp)
+    if has_allow_stale_marker:
+        if generated_at != ALLOW_STALE_EXTRACTION_MARKER:
+            raise ValueError("fixture freshness marker does not match source receipts")
+        return
     generated_timestamp = parse_extraction_timestamp(generated_at, "report snapshot")
     if generated_timestamp != max(source_timestamps):
         raise ValueError("report freshness does not match source receipts")
@@ -457,6 +479,7 @@ def verify_outputs(
         reconciliation,
         source_notes,
         snapshot.get("generatedAt"),
+        snapshot["status"],
     )
     if source_notes.get("chart_rationales") != CHART_RATIONALES:
         raise ValueError("chart rationale receipt is incomplete")

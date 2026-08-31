@@ -141,3 +141,27 @@ Implementação concluída na branch `main` com fixture sintética de desenvolvi
 
 - A mudança ficou restrita aos contratos de cobertura/freshness e aos recibos agregados. Rejeições de `score`, `rank`, `keep-cut`, coberturas contratuais de `100%`, proveniência exata e datasets condicionais permanecem cobertas pela suíte.
 - O app continua marcado como fixture sintética de desenvolvimento; não há afirmações finais de 2026, publicação, nova preview ou broad browser QA. Result-import, `/inscricoes/` e os `140` arquivos de infraestrutura protegida não foram alterados.
+
+## Fix Round 5 — evento sem pagos e freshness ausente em fixture
+
+### TDD RED/GREEN
+
+- RED real contra `5ea14b2`: os `2` testes end-to-end novos reproduziram exatamente os achados. O evento com zero pedidos pagos produziu `paid_order_gross=null` em vez de `0.00`; a execução `--allow-stale` sem coluna `extracted_at` falhou ao tentar interpretar `not_provided_allow_stale` como ISO.
+- GREEN: `2/2` regressões, `25/25` focados e `109/109` na suíte MIF. O caso sem pagos produz quatro linhas auxiliares com denominador zero e passa no verify; adulterar o gross para `1.00` continua sendo rejeitado. A fixture legacy passa, enquanto o mesmo marcador sob status `ready` é rejeitado.
+
+### Contratos corrigidos
+
+- `facts.py` serializa totais financeiros como `0.00` somente quando a respectiva base paga é vazia; bases não vazias com cobertura ausente continuam `null`. `run.py` exige decimais finitos explícitos e rejeita `None`, `NaN`, infinitos e divergências sem deixar `decimal.InvalidOperation` escapar.
+- `source.py` torna público o marcador determinístico `not_provided_allow_stale`, converte freshness ausente ou anterior ao mínimo nesse marcador somente quando `allow_stale=True` e resolve `generatedAt` sem parsear o marcador. `pipeline.py` usa esse resolvedor.
+- `artifact.py` qualifica o marcador na proveniência como freshness não informada e restrita a fixture `--allow-stale`. O verify aceita o marcador somente com status `fixture`; `ready` exige os dois timestamps ISO com timezone, limite mínimo e máximo cronológico coerente.
+
+### Gates e impacto em outputs
+
+- CLI canônico: `verification passed`. Regeneração da fixture canônica em diretório temporário confirmou igualdade byte a byte dos quatro outputs (`src/data.json`, `aggregates.json`, `reconciliation.json`, `source_notes.json`); notebook, build e sanitização não precisaram ser refeitos.
+- Permanecem válidos os hashes: snapshot `25d9833fdaddfb435b8790c2d4bf089df0f709ee53beb13e6b61b9d773ae36fb`, aggregates `b034d2b8762d777a568f18e52bb8a0fbba09dd6f3d4ff8c7569de480dc292c37`, reconciliation `491bcfc5487163924c7f172ab73f97757b945dd6b5c290e6cb467a161e78cd10`, index `f66856e2445de6b422ee9aa4ca5768b98a6b02946a60cd94811ed4daa9f360ca` e shareable `32b8aa80f124653403c7ec78430c5d0655afb88d08bf280b06eaff9b1f40cbfc`.
+- Runtime protegido: `140` arquivos sem divergência; tema `codex-classic` byte a byte idêntico; shareable autocontido, normalizado e sem metadata de task, raw facts ou PII; `git diff --check` sem saída.
+
+### Self-review e limites
+
+- Os caminhos frescos anteriores, comparação cronológica por offset, rejeição de 1900, cobertura de pedidos pagos, coberturas de `100%`, proveniência exata e proibições de `score`, `rank` e `keep-cut` permanecem cobertos.
+- O marcador não alega freshness real e não pode promover um output a `ready`. O app canônico continua fixture sintética, sem afirmações finais de 2026, publicação, nova preview ou broad browser QA; result-import e `/inscricoes/` permaneceram fora do escopo.

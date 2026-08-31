@@ -14,6 +14,7 @@ from .config import (
 from .metrics import DATASET_IDS
 from .models import AnalysisResult
 from .normalize import normalize_key
+from .source import ALLOW_STALE_EXTRACTION_MARKER
 
 
 REPORT_APP_ID = "4551d11e-c315-4402-be71-218fa11e3148"
@@ -200,6 +201,15 @@ def build_source_metadata(
                 "sourceLineage": [{"tables": tables}],
             }
         ]
+    filters = [
+        f"cod_evento = {EVENT_CODE}",
+        "status normalizado = pago",
+        "Task 7 usa somente fixture sintética de desenvolvimento",
+    ]
+    if generated_at == ALLOW_STALE_EXTRACTION_MARKER:
+        filters.append(
+            "freshness não informada; marcador permitido somente em fixture --allow-stale"
+        )
     return {
         "label": (
             "Fixture sintética revisada: agregados de inscrições pagas "
@@ -207,11 +217,7 @@ def build_source_metadata(
         ),
         "sql": _aggregate_sql(tables),
         "tables": tables,
-        "filters": [
-            f"cod_evento = {EVENT_CODE}",
-            "status normalizado = pago",
-            "Task 7 usa somente fixture sintética de desenvolvimento",
-        ],
+        "filters": filters,
         "freshness": generated_at,
         "metricDefinitions": definitions,
         "evidenceFlow": [
