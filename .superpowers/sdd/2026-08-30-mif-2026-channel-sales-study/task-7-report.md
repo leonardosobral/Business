@@ -49,3 +49,30 @@ Implementação concluída na branch `main` com fixture sintética de desenvolvi
 - A fixture é intencionalmente sintética e pequena; a Task 8 precisa substituir dados, mapeamentos e qualquer leitura quantitativa.
 - Não houve broad browser QA, screenshots, DOM inspection ou sweep responsivo, conforme o suplemento. O preview foi aberto uma única vez; build/runtime e fronteira autoral foram validados pelo helper oficial.
 - Patrocínio, espaço de expo, permutas e valoração de cortesias continuam não mensurados.
+
+## Fix Round 1 — proveniência, verify, contrato visual e diff gate
+
+### TDD RED/GREEN
+
+- RED real contra `677060c`: `13` testes focados executados, com `6` falhas esperadas — inscrições/alocações sem a tabela de pedidos, adulterações de `weekly_sales`, campo `score` e component ID inexistente aceitos pelo verify, contrato visual ausente e HTML sem normalização de whitespace.
+- GREEN: `13/13` focados. As novas regressões comprovam as duas tabelas na linhagem de métricas de inscrição/alocação, definições distintas para pedidos, inscrições, gross e ticket, comparação exata das 31 query rows com `aggregates.datasets`, catálogo de componentes, rejeição de linguagem/campos de decisão e normalização atômica dos dois HTMLs.
+
+### Correções e validação
+
+- `artifact.py` agora cita `public.tb_ticketsports_pedidos` e `public.tb_ticketsports_participantes` em todo agregado derivado de inscrições pagas ou valores alocados; `payment_mix` e `device_mix` permanecem corretamente no grão exclusivo de pedido. O SQL exposto continua agregado e sem identificadores.
+- `run.py verify` valida os 31 IDs exatos, igualdade de todas as linhas do snapshot com o recibo agregado, catálogo real de componentes por query, reconciliação de contagem/valor, coberturas, hashes e metadados das duas fontes. Rejeita `score`, `rank` e `keep-cut` em campos ou texto e continua sem argumentos de dados brutos.
+- O relatório usa stacked bar para lote, barras horizontais preservadas para país/UF/cidade e produto, além da tabela de produto. Todo gráfico recebe descrição calculada com período, unidade e denominador; `CHART_RATIONALES` reflete os renders reais.
+- `sanitize_shareable_html` normaliza whitespace do `index.html` preservando sua meta local e cria `shareable.html` normalizado sem session/task metadata. Ambos terminam em exatamente uma quebra de linha e têm zero linhas com whitespace final. `run.py` não tem linha vazia extra no EOF.
+
+### Gates finais do round
+
+- Suíte MIF cumulativa: `98/98`; CLI canônico: `verification passed`; casos adulterados de `weekly_sales`, `score` e component ID inexistente: rejeitados nas regressões.
+- Notebook: reexecução top-to-bottom de `6` células de código, `0` erros, `31` queries, status `fixture`, reconciliação e checks de privacidade completos.
+- Build oficial prebuilt: `5` módulos, `0` assets externos, snapshot SHA-256 `25d9833fdaddfb435b8790c2d4bf089df0f709ee53beb13e6b61b9d773ae36fb`. O hash informado pelo builder antes da normalização foi `1bfb4722f8564458bdce0098827291a931c2e999de8598d07e8ee19563c329c0`.
+- HTML final normalizado: `dist/index.html` SHA-256 `f66856e2445de6b422ee9aa4ca5768b98a6b02946a60cd94811ed4daa9f360ca`; `dist/shareable.html` SHA-256 `32b8aa80f124653403c7ec78430c5d0655afb88d08bf280b06eaff9b1f40cbfc`.
+- Scan do shareable: zero assets externos, metadados/UUID de task, raw facts ou tokens de PII; autocontido. Runtime protegido: `140` arquivos verificados sem divergência; tema `codex-classic` byte a byte idêntico; `git diff --check`: saída vazia.
+
+### Self-review e limites
+
+- O status continua `fixture`; não há afirmação final de 2026, publicação, segunda preview, browser QA amplo ou alteração em `/inscricoes/`.
+- A autoria ficou restrita a `src/content/report/` e `src/data.json`; a infraestrutura protegida não mudou. As alterações concorrentes de result-import permaneceram fora do escopo e do staging.

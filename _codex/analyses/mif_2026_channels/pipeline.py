@@ -26,12 +26,12 @@ from .source import load_sources
 CHART_RATIONALES = {
     "weekly_sales": "line: chronological change and closing-period acceleration",
     "modality_mix": "stacked bar: comparable composition across channels",
-    "country_distribution": "horizontal bar: ranked observed country reach",
-    "state_distribution": "horizontal bar: ranked categorical concentration",
-    "channel_distribution": "horizontal bar: exact volume and event share without a desirability score",
+    "country_distribution": "horizontal bar: observed country volume with explicit base",
+    "state_distribution": "horizontal bar: observed state volume with explicit base",
+    "channel_distribution": "table: exact channel volume and event share in alphabetical index",
     "lot_performance": "stacked bar: volume and ticket by ordered lot",
     "product_summary": "horizontal bar: add-on take rate by canonical product",
-    "dimension_overlaps": "table: exact pairwise evidence without visual rank implication",
+    "dimension_overlaps": "table: exact pairwise evidence kept separate by dimension",
 }
 
 _LOCAL_THREAD_META = re.compile(
@@ -53,18 +53,28 @@ def write_json(path: Path, payload: Any) -> None:
     temporary.replace(path)
 
 
+def _normalize_html_text(value: str) -> str:
+    """Remove trailing whitespace and retain exactly one final newline."""
+    return "\n".join(line.rstrip(" \t") for line in value.splitlines()).rstrip("\n") + "\n"
+
+
+def _write_text_atomically(path: Path, value: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(value, encoding="utf-8")
+    temporary.replace(path)
+
+
 def sanitize_shareable_html(index_path: Path, shareable_path: Path) -> None:
-    """Create a standalone HTML copy without local task/session identity."""
-    original = index_path.read_text(encoding="utf-8")
+    """Normalize the build and create a copy without local task/session identity."""
+    original = _normalize_html_text(index_path.read_text(encoding="utf-8"))
+    _write_text_atomically(index_path, original)
     task_ids = _LOCAL_THREAD_META.findall(original)
     sanitized = _LOCAL_THREAD_META.sub("", original)
     sanitized = _TASK_DEEP_LINK.sub("codex://threads/new", sanitized)
     for task_id in task_ids:
         sanitized = sanitized.replace(task_id, "")
-    shareable_path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = shareable_path.with_suffix(shareable_path.suffix + ".tmp")
-    temporary.write_text(sanitized, encoding="utf-8")
-    temporary.replace(shareable_path)
+    _write_text_atomically(shareable_path, _normalize_html_text(sanitized))
 
 
 def _source_notes(result, sources) -> dict[str, Any]:
@@ -80,6 +90,9 @@ def _source_notes(result, sources) -> dict[str, Any]:
     }
     notes["fixture_status"] = (
         "Fixture sintética de desenvolvimento; a Task 8 substituirá os dados e mapeamentos."
+    )
+    notes["similarity"] = (
+        "seis dimensões independentes; nenhuma avaliação consolidada ou decisão automática"
     )
     notes["sources"] = [
         {

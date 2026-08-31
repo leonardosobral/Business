@@ -1,4 +1,50 @@
 {
+  "componentCatalog": [
+    "mif-age-bands",
+    "mif-auxiliary-field-coverage",
+    "mif-channel-aliases",
+    "mif-channel-index",
+    "mif-city-distribution",
+    "mif-club-coverage",
+    "mif-country-distribution",
+    "mif-data-quality",
+    "mif-device-mix",
+    "mif-dossier-canal-a-lot",
+    "mif-dossier-canal-a-modality",
+    "mif-dossier-canal-a-product",
+    "mif-dossier-canal-a-profile",
+    "mif-dossier-canal-a-state",
+    "mif-dossier-canal-a-summary",
+    "mif-dossier-canal-a-weekly",
+    "mif-dossier-canal-b-lot",
+    "mif-dossier-canal-b-modality",
+    "mif-dossier-canal-b-product",
+    "mif-dossier-canal-b-profile",
+    "mif-dossier-canal-b-state",
+    "mif-dossier-canal-b-summary",
+    "mif-dossier-canal-b-weekly",
+    "mif-event-overview",
+    "mif-gender-distribution",
+    "mif-geography-overlap",
+    "mif-long-tail",
+    "mif-lot-overlap",
+    "mif-lot-performance",
+    "mif-modality-mix",
+    "mif-modality-overlap",
+    "mif-overview-gross",
+    "mif-overview-orders",
+    "mif-overview-registrations",
+    "mif-overview-ticket",
+    "mif-pace-bands",
+    "mif-payment-mix",
+    "mif-product-overlap",
+    "mif-product-summary",
+    "mif-product-summary-chart",
+    "mif-profile-overlap",
+    "mif-state-distribution",
+    "mif-temporal-overlap",
+    "mif-weekly-sales"
+  ],
   "filters": [],
   "generatedAt": "2026-08-30T22:00:00-03:00",
   "id": "4551d11e-c315-4402-be71-218fa11e3148",
@@ -43,19 +89,21 @@
             "componentIds": [
               "mif-age-bands"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — age_bands",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com cobertura explícita, agrupada por faixa etária.",
+            "label": "Inscrições pagas por faixa etária",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -292,19 +340,21 @@
             "componentIds": [
               "mif-auxiliary-field-coverage"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — auxiliary_field_coverage",
+            "definition": "Contagens válidas, inválidas e ausentes entre inscrições vinculadas a pedidos pagos.",
+            "label": "Cobertura de campos auxiliares",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -373,19 +423,21 @@
             "componentIds": [
               "mif-channel-aliases"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_aliases",
+            "definition": "Contagem de inscrições pagas por identidade de origem e canal canônico revisado.",
+            "label": "Aliases observados por canal",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -444,8 +496,8 @@
               "mif-dossier-canal-a-summary",
               "mif-dossier-canal-b-summary"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_index",
+            "definition": "Contagem de inscrições pagas, pedidos tocados não aditivos e valores de pedido alocados por canal revisado.",
+            "label": "Inscrições e valores alocados por canal",
             "sourceLineage": [
               {
                 "tables": [
@@ -514,8 +566,8 @@
               "mif-dossier-canal-a-lot",
               "mif-dossier-canal-b-lot"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_lot_mix",
+            "definition": "Contagem de inscrições pagas e valores de pedido alocados por canal e lote.",
+            "label": "Lote por canal",
             "sourceLineage": [
               {
                 "tables": [
@@ -598,19 +650,21 @@
               "mif-dossier-canal-a-modality",
               "mif-dossier-canal-b-modality"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_modality_mix",
+            "definition": "Contagem de inscrições pagas por canal e modalidade, com denominador do canal.",
+            "label": "Modalidade por canal",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -752,8 +806,8 @@
               "mif-dossier-canal-a-product",
               "mif-dossier-canal-b-product"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_product_mix",
+            "definition": "Contagem de inscrições pagas com produto mapeado por canal; receita inclui somente valores explícitos.",
+            "label": "Produtos por canal",
             "sourceLineage": [
               {
                 "tables": [
@@ -882,19 +936,21 @@
               "mif-dossier-canal-a-profile",
               "mif-dossier-canal-b-profile"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_profile_coverage",
+            "definition": "Contagens válidas e ausentes de perfil na base de inscrições pagas de cada canal.",
+            "label": "Cobertura de perfil por canal",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1048,19 +1104,21 @@
               "mif-dossier-canal-a-state",
               "mif-dossier-canal-b-state"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_state_mix",
+            "definition": "Contagem de inscrições pagas por canal e UF, com cobertura e denominador do canal.",
+            "label": "UF por canal",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1112,8 +1170,8 @@
               "mif-dossier-canal-a-weekly",
               "mif-dossier-canal-b-weekly"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — channel_weekly_sales",
+            "definition": "Contagem de inscrições pagas e valores de pedido alocados por canal e semana da venda.",
+            "label": "Semana por canal",
             "sourceLineage": [
               {
                 "tables": [
@@ -1171,19 +1229,21 @@
             "componentIds": [
               "mif-city-distribution"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — city_distribution",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com denominador explícito, agrupada por cidade.",
+            "label": "Inscrições pagas por cidade",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1225,19 +1285,21 @@
             "componentIds": [
               "mif-club-coverage"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — club_coverage",
+            "definition": "Contagem válida, ausente e total entre inscrições vinculadas a pedidos pagos.",
+            "label": "Cobertura de clube ou assessoria",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1270,19 +1332,21 @@
             "componentIds": [
               "mif-country-distribution"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — country_distribution",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com denominador explícito, agrupada por país.",
+            "label": "Inscrições pagas por país",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1597,8 +1661,8 @@
             "componentIds": [
               "mif-data-quality"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — data_quality",
+            "definition": "Contagens válidas, inválidas e ausentes nos grãos de pedido pago e inscrição paga.",
+            "label": "Qualidade e cobertura",
             "sourceLineage": [
               {
                 "tables": [
@@ -1650,8 +1714,8 @@
             "componentIds": [
               "mif-device-mix"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — device_mix",
+            "definition": "Contagem de pedidos pagos únicos, agrupada pelo dispositivo normalizado.",
+            "label": "Pedidos pagos por dispositivo",
             "sourceLineage": [
               {
                 "tables": [
@@ -1874,14 +1938,68 @@
         "metricDefinitions": [
           {
             "componentIds": [
-              "mif-event-overview",
-              "mif-overview-orders",
-              "mif-overview-registrations",
-              "mif-overview-gross",
+              "mif-event-overview"
+            ],
+            "definition": "Pedidos pagos únicos, inscrições vinculadas, soma do valor bruto e ticket por inscrição, mantidos em grãos separados.",
+            "label": "Visão reconciliada do evento",
+            "sourceLineage": [
+              {
+                "tables": [
+                  "public.tb_ticketsports_pedidos",
+                  "public.tb_ticketsports_participantes"
+                ]
+              }
+            ]
+          },
+          {
+            "componentIds": [
+              "mif-overview-orders"
+            ],
+            "definition": "Contagem de pedidos pagos únicos do evento.",
+            "label": "Pedidos pagos",
+            "sourceLineage": [
+              {
+                "tables": [
+                  "public.tb_ticketsports_pedidos"
+                ]
+              }
+            ]
+          },
+          {
+            "componentIds": [
+              "mif-overview-registrations"
+            ],
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos do evento.",
+            "label": "Inscrições pagas",
+            "sourceLineage": [
+              {
+                "tables": [
+                  "public.tb_ticketsports_pedidos",
+                  "public.tb_ticketsports_participantes"
+                ]
+              }
+            ]
+          },
+          {
+            "componentIds": [
+              "mif-overview-gross"
+            ],
+            "definition": "Soma do valor bruto dos pedidos pagos únicos do evento.",
+            "label": "Valor bruto",
+            "sourceLineage": [
+              {
+                "tables": [
+                  "public.tb_ticketsports_pedidos"
+                ]
+              }
+            ]
+          },
+          {
+            "componentIds": [
               "mif-overview-ticket"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — event_overview",
+            "definition": "Soma do valor bruto dos pedidos pagos dividida pela contagem de inscrições vinculadas.",
+            "label": "Ticket por inscrição",
             "sourceLineage": [
               {
                 "tables": [
@@ -1939,19 +2057,21 @@
             "componentIds": [
               "mif-gender-distribution"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — gender_distribution",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com cobertura explícita, agrupada por gênero informado.",
+            "label": "Inscrições pagas por gênero",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -1988,19 +2108,21 @@
             "componentIds": [
               "mif-geography-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — geography_overlap",
+            "definition": "Semelhança descritiva entre distribuições geográficas de inscrições pagas, com cobertura separada por canal.",
+            "label": "Sobreposição geográfica",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2056,8 +2178,8 @@
             "componentIds": [
               "mif-long-tail"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — long_tail",
+            "definition": "Contagem de inscrições pagas e valores de pedido alocados para canais abaixo do limite de dossiê completo.",
+            "label": "Canais de base reduzida",
             "sourceLineage": [
               {
                 "tables": [
@@ -2108,19 +2230,21 @@
             "componentIds": [
               "mif-lot-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — lot_overlap",
+            "definition": "Semelhança descritiva entre distribuições de lote de inscrições pagas, com bases separadas.",
+            "label": "Sobreposição de lote",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2165,19 +2289,21 @@
             "componentIds": [
               "mif-lot-performance"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — lot_performance",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos e valores de pedido alocados, agrupados por lote.",
+            "label": "Inscrições e valores por lote",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2222,19 +2348,21 @@
             "componentIds": [
               "mif-modality-mix"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — modality_mix",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, agrupada por modalidade.",
+            "label": "Inscrições pagas por modalidade",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2271,19 +2399,21 @@
             "componentIds": [
               "mif-modality-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — modality_overlap",
+            "definition": "Semelhança descritiva entre distribuições de modalidade de inscrições pagas, com bases separadas.",
+            "label": "Sobreposição de modalidade",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2415,19 +2545,21 @@
             "componentIds": [
               "mif-pace-bands"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — pace_bands",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com cobertura explícita, agrupada por faixa de ritmo.",
+            "label": "Inscrições pagas por faixa de ritmo",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2466,8 +2598,8 @@
             "componentIds": [
               "mif-payment-mix"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — payment_mix",
+            "definition": "Contagem de pedidos pagos únicos, agrupada pelo meio de pagamento normalizado.",
+            "label": "Pedidos pagos por meio de pagamento",
             "sourceLineage": [
               {
                 "tables": [
@@ -2515,19 +2647,21 @@
             "componentIds": [
               "mif-product-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — product_overlap",
+            "definition": "Semelhança descritiva entre adoção de produtos na base paga coberta de cada canal.",
+            "label": "Sobreposição de produtos",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2582,21 +2716,24 @@
         "metricDefinitions": [
           {
             "componentIds": [
+              "mif-product-summary-chart",
               "mif-product-summary"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — product_summary",
+            "definition": "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador e receita apenas valores explícitos.",
+            "label": "Adoção de produtos",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2667,19 +2804,21 @@
             "componentIds": [
               "mif-profile-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — profile_overlap",
+            "definition": "Semelhança descritiva por dimensão de perfil entre inscrições pagas, mantendo cobertura separada.",
+            "label": "Sobreposição de perfil",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2724,19 +2863,21 @@
             "componentIds": [
               "mif-state-distribution"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — state_distribution",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, com denominador explícito, agrupada por UF.",
+            "label": "Inscrições pagas por UF",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2773,19 +2914,21 @@
             "componentIds": [
               "mif-temporal-overlap"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — temporal_overlap",
+            "definition": "Semelhança descritiva entre distribuições semanais de inscrições pagas, com bases separadas.",
+            "label": "Sobreposição temporal",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }
@@ -2822,19 +2965,21 @@
             "componentIds": [
               "mif-weekly-sales"
             ],
-            "definition": "Linhas agregadas e anônimas da fixture sintética, calculadas sobre inscrições pagas; bases e denominadores permanecem nos campos revisados.",
-            "label": "Agregado revisado — weekly_sales",
+            "definition": "Contagem de inscrições vinculadas a pedidos pagos, agrupada pela semana da venda.",
+            "label": "Inscrições pagas por semana",
             "sourceLineage": [
               {
                 "tables": [
+                  "public.tb_ticketsports_pedidos",
                   "public.tb_ticketsports_participantes"
                 ]
               }
             ]
           }
         ],
-        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
+        "sql": "SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_pedidos WHERE cod_evento = 72611 GROUP BY cod_evento UNION ALL SELECT cod_evento, COUNT(*) AS source_rows FROM public.tb_ticketsports_participantes WHERE cod_evento = 72611 GROUP BY cod_evento",
         "tables": [
+          "public.tb_ticketsports_pedidos",
           "public.tb_ticketsports_participantes"
         ]
       }

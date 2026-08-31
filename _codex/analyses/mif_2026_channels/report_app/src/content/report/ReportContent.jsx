@@ -4,6 +4,7 @@ import {
   ChartRenderer, DataComponent, DataTable, MetricCard, ReportSection,
   RichNarrative, useDataApp,
 } from "../../data-app-public.jsx";
+import { CHART_SPECS, evidenceDescription } from "./report-contract.js";
 
 const brl = (value) => `R$ ${Number(value ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const slug = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -27,7 +28,7 @@ function EvidenceTable({ id, queryId, title, rows, columns, description }) {
   </DataComponent>;
 }
 
-function ChannelDossier({ channel, rows }) {
+function ChannelDossier({ channel, rows, reportPeriod }) {
   const channelSlug = slug(channel.channel_name);
   const select = (queryId) => rows(queryId).filter((row) => row.channel_name === channel.channel_name);
   const weekly = select("channel_weekly_sales");
@@ -38,6 +39,10 @@ function ChannelDossier({ channel, rows }) {
   const profile = select("channel_profile_coverage");
   const summaryId = `mif-dossier-${channelSlug}-summary`;
   const geographyCoverage = states[0]?.coverage?.valid_coverage_pct ?? 0;
+  const describe = (sourceRows, options) => evidenceDescription(sourceRows, {
+    periodStart: reportPeriod.start, periodEnd: reportPeriod.end,
+    denominator: channel.paid_registrations, ...options,
+  });
 
   return <section className="dossier" id={`canal-${channelSlug}`}>
     <ReportSection id={summaryId} queryId="channel_index" title={channel.channel_name}
@@ -48,20 +53,20 @@ function ChannelDossier({ channel, rows }) {
     <div className="evidence-grid">
       <EvidenceChart id={`mif-dossier-${channelSlug}-weekly`} queryId="channel_weekly_sales"
         title={`Vendas semanais — ${channel.channel_name}`} rows={weekly}
-        spec={{ type: "line", x: "week_start", y: "paid_registrations", yLabel: "Inscrições pagas" }}
-        description="Inscrições pagas por semana; base e período são os da fixture sintética." />
+        spec={CHART_SPECS.weekly_sales}
+        description={describe(weekly, { periodField: "week_start", unit: "inscrições pagas por semana" })} />
       <EvidenceChart id={`mif-dossier-${channelSlug}-modality`} queryId="channel_modality_mix"
         title={`Mix de modalidade — ${channel.channel_name}`} rows={modality}
         spec={{ type: "stackedBar", x: "base", y: "paid_registrations", series: "modality", yLabel: "Inscrições pagas" }}
-        description="Composição das inscrições pagas do canal; o denominador está em cada linha revisada." />
+        description={describe(modality, { unit: "inscrições pagas por modalidade" })} />
       <EvidenceChart id={`mif-dossier-${channelSlug}-lot`} queryId="channel_lot_mix"
         title={`Mix de lote — ${channel.channel_name}`} rows={lots}
         spec={{ type: "stackedBar", x: "base", y: "paid_registrations", series: "lot", yLabel: "Inscrições pagas" }}
-        description="Composição por lote dentro da base paga do canal." />
+        description={describe(lots, { unit: "inscrições pagas por lote" })} />
       {geographyCoverage >= 70 && <EvidenceChart id={`mif-dossier-${channelSlug}-state`} queryId="channel_state_mix"
         title={`Distribuição por UF — ${channel.channel_name}`} rows={states}
-        spec={{ type: "rankedList", x: "state", y: "paid_registrations" }}
-        description="A geografia aparece porque a cobertura válida da fixture é de pelo menos 70%." />}
+        spec={CHART_SPECS.state_distribution}
+        description={describe(states, { unit: "inscrições pagas por UF" })} />}
       <EvidenceTable id={`mif-dossier-${channelSlug}-product`} queryId="channel_product_mix"
         title={`Produtos — ${channel.channel_name}`} rows={products}
         columns={[
@@ -87,6 +92,14 @@ export function ReportContent() {
   const [overview = {}] = rows("event_overview");
   const channelIndex = rows("channel_index");
   const fullChannels = channelIndex.filter((row) => row.dossier_type === "full");
+  const weeklyRows = rows("weekly_sales");
+  const weeks = weeklyRows.map((row) => row.week_start).filter(Boolean).sort();
+  const reportPeriod = { start: weeks[0] ?? snapshot.generatedAt, end: weeks.at(-1) ?? snapshot.generatedAt };
+  const eventDenominator = Number(overview.paid_registrations ?? 0);
+  const describe = (sourceRows, options) => evidenceDescription(sourceRows, {
+    periodStart: reportPeriod.start, periodEnd: reportPeriod.end,
+    denominator: eventDenominator, ...options,
+  });
   const overlapSections = [
     ["geography_overlap", "Geografia", "Comparação descritiva das distribuições geográficas, com cobertura de cada canal."],
     ["modality_overlap", "Modalidade", "Semelhança do mix de modalidades; não compõe uma nota geral."],
@@ -124,30 +137,33 @@ export function ReportContent() {
     <section className="report-section">
       <RichNarrative id="mif-time-lot-modality-intro" label="Editar introdução temporal" value="## Tempo, lote e modalidade\n\nOs três recortes usam a mesma base de inscrições pagas. A série semanal mostra quando a fixture concentra registros; lote e modalidade mostram composição, sem inferir desempenho futuro ou preferência comercial." />
       <div className="evidence-grid">
-        <EvidenceChart id="mif-weekly-sales" queryId="weekly_sales" title="Inscrições pagas por semana" rows={rows("weekly_sales")} spec={{ type: "line", x: "week_start", y: "paid_registrations", yLabel: "Inscrições pagas" }} description="Semanas ISO da fixture; unidade: inscrições pagas." />
-        <EvidenceChart id="mif-lot-performance" queryId="lot_performance" title="Inscrições por lote" rows={rows("lot_performance")} spec={{ type: "bar", x: "lot", y: "paid_registrations", yLabel: "Inscrições pagas" }} description="Contagem e denominador do evento por lote." />
-        <EvidenceChart id="mif-modality-mix" queryId="modality_mix" title="Composição por modalidade" rows={rows("modality_mix").map((row) => ({ ...row, base: "Evento" }))} spec={{ type: "stackedBar", x: "base", y: "paid_registrations", series: "modality", yLabel: "Inscrições pagas" }} description="Modalidades mutuamente exclusivas na base paga da fixture." />
+        <EvidenceChart id="mif-weekly-sales" queryId="weekly_sales" title="Inscrições pagas por semana" rows={weeklyRows} spec={CHART_SPECS.weekly_sales} description={describe(weeklyRows, { periodField: "week_start", unit: "inscrições pagas por semana" })} />
+        <EvidenceChart id="mif-lot-performance" queryId="lot_performance" title="Inscrições por lote" rows={rows("lot_performance").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.lot_performance} description={describe(rows("lot_performance"), { unit: "inscrições pagas por lote" })} />
+        <EvidenceChart id="mif-modality-mix" queryId="modality_mix" title="Composição por modalidade" rows={rows("modality_mix").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.modality_mix} description={describe(rows("modality_mix"), { unit: "inscrições pagas por modalidade" })} />
       </div>
     </section>
 
     <section className="report-section">
       <RichNarrative id="mif-geography-intro" label="Editar leitura geográfica" value="## Geografia\n\nPaís, UF e cidade são descritos no grão de inscrição paga. Cobertura e células suprimidas devem ser consultadas antes de comparar canais; geografia observada não equivale a alcance estratégico." />
       <div className="evidence-grid">
-        <EvidenceChart id="mif-country-distribution" queryId="country_distribution" title="Países observados" rows={rows("country_distribution")} spec={{ type: "rankedList", x: "country", y: "paid_registrations" }} />
-        <EvidenceChart id="mif-state-distribution" queryId="state_distribution" title="Inscrições por UF" rows={rows("state_distribution")} spec={{ type: "rankedList", x: "state", y: "paid_registrations" }} />
-        <EvidenceChart id="mif-city-distribution" queryId="city_distribution" title="Inscrições por cidade" rows={rows("city_distribution")} spec={{ type: "rankedList", x: "city", y: "paid_registrations" }} />
+        <EvidenceChart id="mif-country-distribution" queryId="country_distribution" title="Países observados" rows={rows("country_distribution")} spec={CHART_SPECS.country_distribution} description={describe(rows("country_distribution"), { unit: "inscrições pagas por país" })} />
+        <EvidenceChart id="mif-state-distribution" queryId="state_distribution" title="Inscrições por UF" rows={rows("state_distribution")} spec={CHART_SPECS.state_distribution} description={describe(rows("state_distribution"), { unit: "inscrições pagas por UF" })} />
+        <EvidenceChart id="mif-city-distribution" queryId="city_distribution" title="Inscrições por cidade" rows={rows("city_distribution")} spec={CHART_SPECS.city_distribution} description={describe(rows("city_distribution"), { unit: "inscrições pagas por cidade" })} />
       </div>
     </section>
 
     <section className="report-section">
       <RichNarrative id="mif-profile-products-intro" label="Editar leitura de perfil e produtos" value="## Perfil, cobertura e produtos\n\nAs distribuições de idade, gênero, ritmo e clube dependem da cobertura válida indicada nas próprias linhas. Produtos permanecem separados entre kit incluso, adicional e identidade ainda desconhecida; receita só aparece quando explicitamente observada." />
       <div className="evidence-grid">
-        <EvidenceChart id="mif-age-bands" queryId="age_bands" title="Faixas etárias" rows={rows("age_bands")} spec={{ type: "bar", x: "age_band", y: "paid_registrations" }} />
-        <EvidenceChart id="mif-gender-distribution" queryId="gender_distribution" title="Distribuição de gênero" rows={rows("gender_distribution")} spec={{ type: "bar", x: "gender", y: "paid_registrations" }} />
-        <EvidenceChart id="mif-pace-bands" queryId="pace_bands" title="Faixas de ritmo" rows={rows("pace_bands")} spec={{ type: "bar", x: "pace_band", y: "paid_registrations" }} />
-        <EvidenceChart id="mif-club-coverage" queryId="club_coverage" title="Clube ou assessoria informado" rows={rows("club_coverage")} spec={{ type: "rankedList", x: "club", y: "paid_registrations" }} />
+        <EvidenceChart id="mif-age-bands" queryId="age_bands" title="Faixas etárias" rows={rows("age_bands")} spec={{ type: "bar", x: "age_band", y: "paid_registrations" }} description={describe(rows("age_bands"), { unit: "inscrições pagas por faixa etária" })} />
+        <EvidenceChart id="mif-gender-distribution" queryId="gender_distribution" title="Distribuição de gênero" rows={rows("gender_distribution")} spec={{ type: "bar", x: "gender", y: "paid_registrations" }} description={describe(rows("gender_distribution"), { unit: "inscrições pagas por gênero" })} />
+        <EvidenceChart id="mif-pace-bands" queryId="pace_bands" title="Faixas de ritmo" rows={rows("pace_bands")} spec={{ type: "bar", x: "pace_band", y: "paid_registrations" }} description={describe(rows("pace_bands"), { unit: "inscrições pagas por faixa de ritmo" })} />
+        <EvidenceChart id="mif-club-coverage" queryId="club_coverage" title="Clube ou assessoria informado" rows={rows("club_coverage")} spec={{ type: "horizontalBar", x: "club", y: "paid_registrations", preserveBarChart: true }} description={describe(rows("club_coverage"), { unit: "inscrições pagas por situação de clube" })} />
         <EvidenceTable id="mif-auxiliary-field-coverage" queryId="auxiliary_field_coverage" title="Cobertura dos campos auxiliares" rows={rows("auxiliary_field_coverage")} columns={[{ key: "field", label: "Campo" }, { key: "valid", label: "Válidos", align: "right" }, { key: "invalid", label: "Inválidos", align: "right" }, { key: "missing", label: "Ausentes", align: "right" }, { key: "denominator", label: "Base", align: "right" }, { key: "valid_coverage_pct", label: "Cobertura válida (%)", align: "right" }]} />
+        <EvidenceChart id="mif-product-summary-chart" queryId="product_summary" title="Adoção de produtos" rows={rows("product_summary")} spec={CHART_SPECS.product_summary} description={describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator })} />
         <EvidenceTable id="mif-product-summary" queryId="product_summary" title="Resumo de produtos" rows={rows("product_summary")} columns={[{ key: "product_name", label: "Produto" }, { key: "classification", label: "Classificação" }, { key: "registrations_with_product", label: "Inscrições", align: "right" }, { key: "take_rate_pct", label: "Adoção (%)", align: "right" }, { key: "explicit_revenue", label: "Receita explícita (R$)", align: "right" }]} />
+        <EvidenceTable id="mif-payment-mix" queryId="payment_mix" title="Meios de pagamento" rows={rows("payment_mix")} columns={[{ key: "payment_method", label: "Meio" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />
+        <EvidenceTable id="mif-device-mix" queryId="device_mix" title="Dispositivos" rows={rows("device_mix")} columns={[{ key: "device_type", label: "Dispositivo" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />
       </div>
     </section>
 
@@ -156,11 +172,12 @@ export function ReportContent() {
       <EvidenceTable id="mif-channel-index" queryId="channel_index" title="Canais observados na fixture" rows={channelIndex}
         columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "dossier_type", label: "Tratamento" }, { key: "paid_registrations", label: "Inscrições pagas", align: "right" }, { key: "touched_paid_orders", label: "Pedidos tocados", align: "right" }, { key: "gross_value", label: "Valor bruto (R$)", align: "right" }]}
         description="Pedidos tocados não são aditivos entre canais." />
+      <EvidenceTable id="mif-channel-aliases" queryId="channel_aliases" title="Identidades de origem revisadas" rows={rows("channel_aliases")} columns={[{ key: "channel_name", label: "Canal canônico" }, { key: "coupon_title", label: "Título observado" }, { key: "coupon_code", label: "Código observado" }, { key: "paid_registrations", label: "Inscrições pagas", align: "right" }]} description="Aliases revisados e contagens agregadas; nenhuma identidade de participante é exibida." />
     </section>
 
     <section className="report-section">
-      <RichNarrative id="mif-dossiers-intro" label="Editar introdução aos dossiês" value="## Dossiês completos\n\nCada dossiê preserva os mesmos grãos, denominadores e limites. As leituras são descritivas e não produzem score, ordenação comercial ou decisão automática." />
-      {fullChannels.map((channel) => <ChannelDossier key={channel.channel_name} channel={channel} rows={rows} />)}
+      <RichNarrative id="mif-dossiers-intro" label="Editar introdução aos dossiês" value="## Dossiês completos\n\nCada dossiê preserva os mesmos grãos, denominadores e limites. As leituras são descritivas e não produzem avaliação consolidada, ordenação comercial ou decisão automática." />
+      {fullChannels.map((channel) => <ChannelDossier key={channel.channel_name} channel={channel} rows={rows} reportPeriod={reportPeriod} />)}
     </section>
 
     <section className="report-section">

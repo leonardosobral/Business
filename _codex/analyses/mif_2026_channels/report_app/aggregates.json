@@ -4053,13 +4053,13 @@
   },
   "source_notes": {
     "chart_rationales": {
-      "channel_distribution": "horizontal bar: exact volume and event share without a desirability score",
-      "country_distribution": "horizontal bar: ranked observed country reach",
-      "dimension_overlaps": "table: exact pairwise evidence without visual rank implication",
+      "channel_distribution": "table: exact channel volume and event share in alphabetical index",
+      "country_distribution": "horizontal bar: observed country volume with explicit base",
+      "dimension_overlaps": "table: exact pairwise evidence kept separate by dimension",
       "lot_performance": "stacked bar: volume and ticket by ordered lot",
       "modality_mix": "stacked bar: comparable composition across channels",
       "product_summary": "horizontal bar: add-on take rate by canonical product",
-      "state_distribution": "horizontal bar: ranked categorical concentration",
+      "state_distribution": "horizontal bar: observed state volume with explicit base",
       "weekly_sales": "line: chronological change and closing-period acceleration"
     },
     "commercial_grains": {
@@ -4089,7 +4089,7 @@
       ],
       "event": "Grãos: o evento contém 26 pedidos pagos únicos e 26 inscrições pagas; pedidos tocados não são aditivos entre canais, pois um pedido pode conter inscrições atribuídas a canais diferentes. O ticket médio ponderado de pedido foi R$ 106.92 na base de 26 pedidos. O ticket médio ponderado de inscrição foi R$ 106.92 na base de 26 inscrições. Coberturas de fonte: canais 100.00%; produtos 100.00%; os percentuais de perfil são apresentados com seus denominadores nos dossiês. As comparações permanecem separadas por dimensão e só são interpretáveis com bases e coberturas explícitas. Limitações de leitura: sponsorship não mensurado; expo_space não mensurado; barter não mensurado; courtesy_valuation não mensurado."
     },
-    "similarity": "seis dimensões independentes; nenhum score mestre",
+    "similarity": "seis dimensões independentes; nenhuma avaliação consolidada ou decisão automática",
     "sources": [
       {
         "event_code": 72611,

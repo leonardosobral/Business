@@ -1,6 +1,7 @@
 """Canonical report snapshot and pipeline contracts for the MIF study."""
 
 import csv
+from copy import deepcopy
 import json
 from pathlib import Path
 import subprocess
@@ -42,7 +43,7 @@ class ReportSnapshotTests(unittest.TestCase):
             source = query["source"]
             self.assertTrue(source["metricDefinitions"], query_id)
             self.assertTrue(
-                all(definition.get("componentIds") for definition in source["metricDefinitions"]),
+                all(isinstance(definition.get("componentIds"), list) for definition in source["metricDefinitions"]),
                 query_id,
             )
             self.assertIn("COUNT(*)", source["sql"])
@@ -54,6 +55,40 @@ class ReportSnapshotTests(unittest.TestCase):
                 "public.tb_ticketsports_pedidos",
                 "public.tb_ticketsports_participantes",
             },
+        )
+
+    def test_paid_registration_and_allocation_sources_include_both_tables(self):
+        """Registration counts and allocated money cannot cite participants alone."""
+        snapshot = build_report_snapshot(
+            analysis_result(), "2026-08-30T22:00:00-03:00"
+        )
+        expected = {
+            "public.tb_ticketsports_pedidos",
+            "public.tb_ticketsports_participantes",
+        }
+        for query_id in (
+            "weekly_sales",
+            "lot_performance",
+            "product_summary",
+            "channel_index",
+            "channel_product_mix",
+            "long_tail",
+        ):
+            self.assertEqual(set(snapshot["queries"][query_id]["source"]["tables"]), expected)
+
+        definitions = snapshot["queries"]["event_overview"]["source"]["metricDefinitions"]
+        by_component = {
+            component_id: definition
+            for definition in definitions
+            for component_id in definition["componentIds"]
+        }
+        self.assertIn("pedidos pagos únicos", by_component["mif-overview-orders"]["definition"].lower())
+        self.assertIn("inscrições vinculadas", by_component["mif-overview-registrations"]["definition"].lower())
+        self.assertIn("soma do valor bruto", by_component["mif-overview-gross"]["definition"].lower())
+        self.assertIn("dividida", by_component["mif-overview-ticket"]["definition"].lower())
+        self.assertEqual(
+            set(by_component["mif-overview-ticket"]["sourceLineage"][0]["tables"]),
+            expected,
         )
 
     def test_snapshot_contains_no_raw_facts_or_direct_identifiers(self):
@@ -70,7 +105,7 @@ class ReportSnapshotTests(unittest.TestCase):
 
 
 class PipelineTests(unittest.TestCase):
-    def test_shareable_removes_local_task_metadata_without_touching_index(self):
+    def test_shareable_removes_local_task_metadata_and_normalizes_both_html_files(self):
         """Leaking a desktop task UUID would make the standalone export session-bound."""
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -78,20 +113,57 @@ class PipelineTests(unittest.TestCase):
             shareable = root / "shareable.html"
             task_id = "01a05524-22e1-78a0-bae0-d1b34e729785"
             original = (
-                '<meta name="data-app-local-thread" content="' + task_id + '">\n'
-                '<div id="root">conteúdo preservado</div>\n'
-                f'<a href="codex://threads/{task_id}?prompt=teste">Perguntar</a>\n'
+                '<meta name="data-app-local-thread" content="' + task_id + '">  \n'
+                '<div id="root">conteúdo preservado</div>\t\n'
+                f'<a href="codex://threads/{task_id}?prompt=teste">Perguntar</a>\n\n'
             )
             index.write_text(original, encoding="utf-8")
 
             sanitize_shareable_html(index, shareable)
 
-            self.assertEqual(index.read_text(encoding="utf-8"), original)
+            normalized_index = index.read_text(encoding="utf-8")
+            self.assertIn("data-app-local-thread", normalized_index)
+            self.assertFalse(any(line.endswith((" ", "\t")) for line in normalized_index.splitlines()))
+            self.assertTrue(normalized_index.endswith("\n"))
+            self.assertFalse(normalized_index.endswith("\n\n"))
             result = shareable.read_text(encoding="utf-8")
             self.assertNotIn("data-app-local-thread", result)
             self.assertNotIn(task_id, result)
             self.assertIn("conteúdo preservado", result)
             self.assertIn("codex://threads/new?prompt=teste", result)
+            self.assertFalse(any(line.endswith((" ", "\t")) for line in result.splitlines()))
+            self.assertTrue(result.endswith("\n"))
+            self.assertFalse(result.endswith("\n\n"))
+
+    def test_report_chart_contract_uses_supported_types_and_explicit_evidence_description(self):
+        """The authored chart contract must expose period, unit, and denominator."""
+        module_path = (
+            Path(__file__).parents[2]
+            / "analyses/mif_2026_channels/report_app/src/content/report/report-contract.js"
+        )
+        script = f"""
+          import {{ CHART_SPECS, evidenceDescription }} from {json.dumps(module_path.as_uri())};
+          const description = evidenceDescription(
+            [{{week_start: '2026-05-25', paid_registrations: 2}},
+             {{week_start: '2026-06-01', paid_registrations: 3}}],
+            {{periodField: 'week_start', unit: 'inscrições pagas', denominator: 5}}
+          );
+          console.log(JSON.stringify({{specs: CHART_SPECS, description}}));
+        """
+        completed = subprocess.run(
+            ["node", "--input-type=module", "-e", script],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        contract = json.loads(completed.stdout)
+        self.assertEqual(contract["specs"]["lot_performance"]["type"], "stackedBar")
+        for query_id in ("country_distribution", "state_distribution", "city_distribution", "product_summary"):
+            self.assertEqual(contract["specs"][query_id]["type"], "horizontalBar")
+        self.assertIn("Período:", contract["description"])
+        self.assertIn("Unidade:", contract["description"])
+        self.assertIn("Denominador:", contract["description"])
 
     def test_write_json_atomically_replaces_the_destination(self):
         """Writing the destination in place would expose a partial receipt to readers."""
@@ -157,6 +229,68 @@ class CliTests(unittest.TestCase):
             capture_output=True,
             check=False,
         )
+
+    def _outputs(self, root: Path):
+        orders, participants = write_source_exports(root)
+        channel_map, product_map = write_reviewed_mappings(root)
+        return run_analysis(
+            orders,
+            participants,
+            channel_map,
+            product_map,
+            root / "report_app",
+            allow_stale=True,
+        )
+
+    def _verify(self, paths) -> subprocess.CompletedProcess[str]:
+        return self._run(
+            "verify",
+            "--report-data", str(paths["report_data"]),
+            "--aggregates", str(paths["aggregates"]),
+            "--reconciliation", str(paths["reconciliation"]),
+            "--source-notes", str(paths["source_notes"]),
+        )
+
+    def test_verify_rejects_query_rows_that_diverge_from_aggregate_receipt(self):
+        """Tampering with weekly evidence must not survive receipt verification."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            snapshot["queries"]["weekly_sales"]["rows"][0]["paid_registrations"] += 1
+            write_json(paths["report_data"], snapshot)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("weekly_sales", completed.stderr)
+
+    def test_verify_rejects_score_field(self):
+        """Decision-score fields are forbidden even when aggregate data stays anonymous."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
+            notes["score"] = 100
+            write_json(paths["source_notes"], notes)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("score", completed.stderr.lower())
+
+    def test_verify_rejects_nonexistent_component_reference(self):
+        """Source definitions may only reference components mounted by the report app."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            snapshot["queries"]["weekly_sales"]["source"]["metricDefinitions"][0][
+                "componentIds"
+            ].append("mif-component-that-does-not-exist")
+            write_json(paths["report_data"], snapshot)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("component", completed.stderr.lower())
 
     def test_analyze_and_verify_succeed_without_raw_source_arguments(self):
         """Verify must validate portable receipts without reopening row-level exports."""
