@@ -17,6 +17,10 @@ _SOURCE_SPECS = (
     ("orders", "numero_pedido", "public.tb_ticketsports_pedidos"),
     ("participants", "numero_inscricao", "public.tb_ticketsports_participantes"),
 )
+_SOURCE_REQUIRED_COLUMNS = {
+    "orders": frozenset({"cod_evento", "numero_pedido", "data_pedido", "body"}),
+    "participants": frozenset({"cod_evento", "numero_inscricao", "numero_pedido", "body"}),
+}
 _STALE_EXTRACTION_MARKER = "not_provided_allow_stale"
 
 
@@ -45,8 +49,7 @@ def load_sources(
     snapshots: list[SourceSnapshot] = []
 
     for source_id, path in source_inputs:
-        row_key, _ = _source_details(source_id)
-        required_columns = frozenset({"cod_evento", row_key, "body"})
+        required_columns = _SOURCE_REQUIRED_COLUMNS[source_id]
         if not allow_stale:
             required_columns = required_columns | frozenset({"extracted_at"})
 

@@ -67,6 +67,36 @@ class SourceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "extracted_at"):
                 load_sources(orders_path, participants_path, event_code=72611, allow_stale=False)
 
+    def test_load_sources_rejects_orders_without_order_date(self):
+        """Orders without data_pedido cannot satisfy the extraction contract."""
+        with TemporaryDirectory() as directory:
+            orders_path = Path(directory) / "orders.csv"
+            participants_path = Path(directory) / "participants.csv"
+            orders = orders_rows()
+            participants = participant_rows()
+            for row in orders + participants:
+                row["extracted_at"] = "2026-08-30T00:00:00-03:00"
+            pd.DataFrame(orders).drop(columns="data_pedido").to_csv(orders_path, index=False)
+            pd.DataFrame(participants).to_csv(participants_path, index=False)
+
+            with self.assertRaisesRegex(ValueError, "data_pedido"):
+                load_sources(orders_path, participants_path, event_code=72611, allow_stale=False)
+
+    def test_load_sources_rejects_participants_without_order_link(self):
+        """Participants without numero_pedido cannot join to paid orders."""
+        with TemporaryDirectory() as directory:
+            orders_path = Path(directory) / "orders.csv"
+            participants_path = Path(directory) / "participants.csv"
+            orders = orders_rows()
+            participants = participant_rows()
+            for row in orders + participants:
+                row["extracted_at"] = "2026-08-30T00:00:00-03:00"
+            pd.DataFrame(orders).to_csv(orders_path, index=False)
+            pd.DataFrame(participants).drop(columns="numero_pedido").to_csv(participants_path, index=False)
+
+            with self.assertRaisesRegex(ValueError, "numero_pedido"):
+                load_sources(orders_path, participants_path, event_code=72611, allow_stale=False)
+
     def test_source_manifest_excludes_raw_rows_and_identifiers(self):
         """Traceability output must describe source files without leaking source payloads."""
         with TemporaryDirectory() as directory:
