@@ -9,6 +9,8 @@ import sys
 from tempfile import TemporaryDirectory
 import unittest
 
+import pandas as pd
+
 from _codex.analyses.mif_2026_channels.artifact import (
     REPORT_APP_ID,
     build_report_snapshot,
@@ -21,6 +23,8 @@ from _codex.analyses.mif_2026_channels.pipeline import (
 )
 from _codex.tests.mif_2026_channels.fixtures import (
     analysis_result,
+    orders_rows,
+    participant_rows,
     write_reviewed_mappings,
     write_source_exports,
 )
@@ -242,6 +246,84 @@ class CliTests(unittest.TestCase):
             allow_stale=True,
         )
 
+    def _variant_outputs(
+        self,
+        root: Path,
+        *,
+        organic_registration: bool = False,
+        unpaid_participant: bool = False,
+    ):
+        orders_data = deepcopy(orders_rows())
+        participants_data = deepcopy(participant_rows())
+        if organic_registration:
+            order = deepcopy(orders_data[0])
+            order["numero_pedido"] = 1003
+            order["data_pedido"] = "2026-06-03T12:00:00-03:00"
+            order_body = json.loads(order["body"])
+            order_body.pop("cupom", None)
+            order_body.update(
+                {
+                    "dataPedido": "2026-06-03",
+                    "dataPagamento": "2026-06-03",
+                    "valor": "300.00",
+                    "desconto": "30.00",
+                    "taxa": "15.00",
+                    "valorRepassePedido": "255.00",
+                    "cashback": "3.00",
+                    "qtdeInscricao": 1,
+                }
+            )
+            order["body"] = json.dumps(order_body)
+            orders_data.append(order)
+
+            participant = deepcopy(participants_data[0])
+            participant["numero_inscricao"] = 2003
+            participant["numero_pedido"] = 1003
+            participant_body = json.loads(participant["body"])
+            participant_body.pop("tituloCupom", None)
+            participant_body.pop("codigoCupom", None)
+            participant_body.update(
+                {
+                    "dataVenda": "2026-06-03",
+                    "dataInscricao": "2026-06-03",
+                    "valorUnitario": "300.00",
+                    "valorTaxa": "15.00",
+                    "valorDesconto": "30.00",
+                    "valorDescontoCupom": "0.00",
+                    "valorRepasse": "255.00",
+                }
+            )
+            participant["body"] = json.dumps(participant_body)
+            participants_data.append(participant)
+
+        if unpaid_participant:
+            order_body = json.loads(orders_data[1]["body"])
+            order_body["qtdeInscricao"] = 1
+            orders_data[1]["body"] = json.dumps(order_body)
+            participant = deepcopy(participants_data[0])
+            participant["numero_inscricao"] = 2004
+            participant["numero_pedido"] = 1002
+            participants_data.append(participant)
+
+        orders = root / "orders.csv"
+        participants = root / "participants.csv"
+        extracted_at = "2026-08-30T22:00:00-03:00"
+        pd.DataFrame(orders_data).assign(extracted_at=extracted_at).to_csv(
+            orders, index=False
+        )
+        pd.DataFrame(participants_data).assign(extracted_at=extracted_at).to_csv(
+            participants, index=False
+        )
+        channel_map, product_map = write_reviewed_mappings(root)
+        return run_analysis(
+            orders,
+            participants,
+            channel_map,
+            product_map,
+            root / "report_app",
+            allow_stale=True,
+        )
+
     def _verify(self, paths) -> subprocess.CompletedProcess[str]:
         return self._run(
             "verify",
@@ -310,6 +392,67 @@ class CliTests(unittest.TestCase):
 
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("channel_mapping_coverage_pct", completed.stderr)
+
+    def test_verify_rejects_coherently_truncated_auxiliary_coverage(self):
+        """A nonempty receipt cannot discard required fields or use a zero fake base."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            truncated = [
+                {
+                    "field": "payment_method",
+                    "answered": 0,
+                    "valid": 0,
+                    "invalid": 0,
+                    "missing": 0,
+                    "denominator": 0,
+                    "coverage_pct": 0.0,
+                    "valid_coverage_pct": 0.0,
+                }
+            ]
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            snapshot["queries"]["auxiliary_field_coverage"]["rows"] = truncated
+            aggregates["datasets"]["auxiliary_field_coverage"] = truncated
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("auxiliary_field_coverage", completed.stderr)
+
+    def test_verify_rejects_stale_source_receipt_timestamp(self):
+        """Query freshness cannot mask a stale extraction receipt from 1900."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
+            notes["sources"][0]["extracted_at"] = "1900-01-01T00:00:00-03:00"
+            write_json(paths["source_notes"], notes)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("fresh", completed.stderr.lower())
+
+    def test_verify_accepts_legitimate_organic_alias_in_paid_event(self):
+        """Alias rows include the organic identity and reconcile to all paid registrations."""
+        with TemporaryDirectory() as directory:
+            paths = self._variant_outputs(
+                Path(directory), organic_registration=True
+            )
+
+            completed = self._verify(paths)
+
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_verify_accepts_paid_quality_base_when_source_has_unpaid_participant(self):
+        """Registration quality is measured on paid registrations, not every source row."""
+        with TemporaryDirectory() as directory:
+            paths = self._variant_outputs(Path(directory), unpaid_participant=True)
+
+            completed = self._verify(paths)
+
+            self.assertEqual(completed.returncode, 0, completed.stderr)
 
     def test_verify_rejects_score_field(self):
         """Decision-score fields are forbidden even when aggregate data stays anonymous."""

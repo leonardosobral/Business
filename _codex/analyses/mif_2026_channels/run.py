@@ -21,10 +21,14 @@ from .artifact import (
 from .config import EVENT_CODE
 from .facts import build_fact_bundle
 from .mappings import emit_channel_mapping_draft, emit_product_mapping_draft
-from .metrics import DATASET_IDS
+from .metrics import AUXILIARY_FIELD_CONTRACT, DATASET_IDS
 from .pipeline import CHART_RATIONALES, run_analysis
 from .privacy import assert_anonymous
-from .source import load_sources
+from .source import (
+    FINAL_EXTRACTION_MIN_TIMESTAMP,
+    load_sources,
+    parse_extraction_timestamp,
+)
 
 
 _RAW_BOUNDARY_KEYS = frozenset(
@@ -87,7 +91,10 @@ def _reject_decision_language(value: Any, path: str = "$") -> None:
 
 
 def _validate_reconciliation(
-    overview: dict[str, Any], reconciliation: dict[str, Any], source_notes: dict[str, Any]
+    overview: dict[str, Any],
+    reconciliation: dict[str, Any],
+    source_notes: dict[str, Any],
+    generated_at: object,
 ) -> None:
     event_orders = int(overview.get("paid_orders", -1))
     event_registrations = int(overview.get("paid_registrations", -1))
@@ -129,6 +136,7 @@ def _validate_reconciliation(
         raise ValueError("source order rows cannot be below paid-order count")
     if expected_rows["participants"] < event_registrations:
         raise ValueError("source registration rows cannot be below paid-registration count")
+    source_timestamps = []
     for source in sources:
         source_id = source["source_id"]
         if source.get("event_code") != EVENT_CODE:
@@ -139,6 +147,15 @@ def _validate_reconciliation(
             raise ValueError(f"invalid source hash: {source_id}")
         if not source.get("file_name") or not source.get("extracted_at"):
             raise ValueError(f"incomplete source receipt: {source_id}")
+        parsed_timestamp = parse_extraction_timestamp(
+            source["extracted_at"], source_id
+        )
+        if parsed_timestamp < FINAL_EXTRACTION_MIN_TIMESTAMP:
+            raise ValueError(f"source freshness below final contract: {source_id}")
+        source_timestamps.append(parsed_timestamp)
+    generated_timestamp = parse_extraction_timestamp(generated_at, "report snapshot")
+    if generated_timestamp != max(source_timestamps):
+        raise ValueError("report freshness does not match source receipts")
 
 
 def _sum_rows(rows: list[dict[str, Any]], field: str, query_id: str) -> int:
@@ -161,6 +178,73 @@ def _validate_partition(
         int(row.get(denominator_field, -1)) != expected_total for row in rows
     ):
         raise ValueError(f"invalid denominator for {query_id}")
+
+
+def _validate_coverage_identity(
+    row: dict[str, Any], expected_denominator: int, query_id: str
+) -> None:
+    try:
+        valid = int(row["valid"])
+        invalid = int(row["invalid"])
+        missing = int(row["missing"])
+        answered = int(row["answered"])
+        denominator = int(row["denominator"])
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError(f"invalid coverage counts for {query_id}") from error
+    if min(valid, invalid, missing) < 0:
+        raise ValueError(f"negative coverage counts for {query_id}")
+    if denominator != expected_denominator or valid + invalid + missing != denominator:
+        raise ValueError(f"invalid denominator identity for {query_id}")
+    if answered != valid + invalid:
+        raise ValueError(f"invalid answered identity for {query_id}")
+    expected_coverage = round(answered / denominator * 100, 2) if denominator else 0.0
+    expected_valid_coverage = round(valid / denominator * 100, 2) if denominator else 0.0
+    if float(row.get("coverage_pct", -1)) != expected_coverage or float(
+        row.get("valid_coverage_pct", -1)
+    ) != expected_valid_coverage:
+        raise ValueError(f"invalid coverage percentage for {query_id}")
+
+
+def _validate_auxiliary_coverage(
+    rows: list[dict[str, Any]],
+    reconciliation: dict[str, Any],
+    paid_registrations: int,
+) -> None:
+    by_field: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        field = str(row.get("field", ""))
+        if not field or field in by_field:
+            raise ValueError("invalid auxiliary_field_coverage field catalog")
+        by_field[field] = row
+
+    required_fields = {label for label, _, _ in AUXILIARY_FIELD_CONTRACT}
+    if not required_fields.issubset(by_field):
+        raise ValueError("incomplete auxiliary_field_coverage field catalog")
+    extras = set(by_field) - required_fields
+    if any(
+        not field.startswith("json_key:") or field == "json_key:"
+        for field in extras
+    ):
+        raise ValueError("unexpected auxiliary_field_coverage field")
+
+    order_coverage = reconciliation.get("order_field_coverage", {})
+    for label, grain, source_field in AUXILIARY_FIELD_CONTRACT:
+        if grain == "order":
+            counts = order_coverage.get(source_field)
+            if not isinstance(counts, dict):
+                raise ValueError(
+                    f"missing auxiliary_field_coverage source counts: {label}"
+                )
+            expected_denominator = sum(int(value) for value in counts.values())
+        else:
+            expected_denominator = paid_registrations
+        _validate_coverage_identity(
+            by_field[label], expected_denominator, "auxiliary_field_coverage"
+        )
+    for field in extras:
+        _validate_coverage_identity(
+            by_field[field], paid_registrations, "auxiliary_field_coverage"
+        )
 
 
 def _validate_dataset_contracts(
@@ -193,10 +277,9 @@ def _validate_dataset_contracts(
             event_orders,
         )
 
-    coupon_assisted = int(overview.get("coupon_assisted_registrations", -1))
-    if coupon_assisted < 0 or _sum_rows(
+    if _sum_rows(
         datasets["channel_aliases"], "paid_registrations", "channel_aliases"
-    ) != coupon_assisted:
+    ) != event_registrations:
         raise ValueError("semantic reconciliation mismatch for channel_aliases")
 
     channel_rows = datasets["channel_index"]
@@ -257,11 +340,16 @@ def _validate_dataset_contracts(
         raise ValueError("data_quality is required for a non-empty paid event")
     if (event_orders or event_registrations) and not datasets["auxiliary_field_coverage"]:
         raise ValueError("auxiliary_field_coverage is required for a non-empty paid event")
+    _validate_auxiliary_coverage(
+        datasets["auxiliary_field_coverage"],
+        reconciliation,
+        event_registrations,
+    )
     for row in datasets["data_quality"]:
         expected = (
             int(reconciliation.get("source_order_rows", -1))
             if row.get("grain") == "order"
-            else int(reconciliation.get("source_registration_rows", -1))
+            else event_registrations
         )
         if row.get("grain") not in {"order", "registration"} or int(
             row.get("denominator", -1)
@@ -348,7 +436,12 @@ def verify_outputs(
 
     if referenced_components != set(expected_catalog):
         raise ValueError("not every report component has source metadata")
-    _validate_reconciliation(overview, reconciliation, source_notes)
+    _validate_reconciliation(
+        overview,
+        reconciliation,
+        source_notes,
+        snapshot.get("generatedAt"),
+    )
     if source_notes.get("chart_rationales") != CHART_RATIONALES:
         raise ValueError("chart rationale receipt is incomplete")
 

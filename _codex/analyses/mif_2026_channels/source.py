@@ -12,7 +12,9 @@ import pandas as pd
 from .models import SourceBundle, SourceSnapshot
 
 
-_FRESH_AFTER = datetime(2026, 8, 30, tzinfo=timezone(timedelta(hours=-3)))
+FINAL_EXTRACTION_MIN_TIMESTAMP = datetime(
+    2026, 8, 30, tzinfo=timezone(timedelta(hours=-3))
+)
 _SOURCE_SPECS = (
     ("orders", "numero_pedido", "public.tb_ticketsports_pedidos"),
     ("participants", "numero_inscricao", "public.tb_ticketsports_participantes"),
@@ -128,16 +130,18 @@ def _extraction_timestamp(frame: pd.DataFrame, source_id: str, allow_stale: bool
             return _STALE_EXTRACTION_MARKER
         raise ValueError(f"{source_id} export has no usable extracted_at value")
 
-    parsed = [_parse_timestamp(value, source_id) for value in values]
+    parsed = [parse_extraction_timestamp(value, source_id) for value in values]
     latest = max(parsed)
-    if not allow_stale and min(parsed) < _FRESH_AFTER:
+    if not allow_stale and min(parsed) < FINAL_EXTRACTION_MIN_TIMESTAMP:
         raise ValueError(
-            f"{source_id} export extracted_at must be on or after {_FRESH_AFTER.isoformat()}"
+            f"{source_id} export extracted_at must be on or after "
+            f"{FINAL_EXTRACTION_MIN_TIMESTAMP.isoformat()}"
         )
     return latest.isoformat()
 
 
-def _parse_timestamp(value: object, source_id: str) -> datetime:
+def parse_extraction_timestamp(value: object, source_id: str) -> datetime:
+    """Parse one source timestamp and require an explicit timezone offset."""
     try:
         parsed = datetime.fromisoformat(str(value).strip().replace("Z", "+00:00"))
     except ValueError as error:

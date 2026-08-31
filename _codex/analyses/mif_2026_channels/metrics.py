@@ -60,6 +60,13 @@ DATASET_IDS = (
     "data_quality",
 )
 
+AUXILIARY_FIELD_CONTRACT = (
+    ("payment_method", "order", "payment_method"),
+    ("device", "order", "device_type"),
+    ("order_quantity", "order", "declared_registration_count"),
+    ("questionnaire_completion", "registration", "questionnaire_present"),
+)
+
 BRAZIL_MACROREGIONS = {
     "AC": "Norte",
     "AP": "Norte",
@@ -1084,13 +1091,9 @@ def _auxiliary_coverage(
 ) -> list[dict[str, object]]:
     rows = []
     order_coverage = reconciliation.get("order_field_coverage", {})
-    for label, frame, field in (
-        ("payment_method", paid_orders, "payment_method"),
-        ("device", paid_orders, "device_type"),
-        ("order_quantity", paid_orders, "declared_registration_count"),
-        ("questionnaire_completion", paid_registrations, "questionnaire_present"),
-    ):
-        source_counts = order_coverage.get(field) if frame is paid_orders else None
+    for label, grain, field in AUXILIARY_FIELD_CONTRACT:
+        frame = paid_orders if grain == "order" else paid_registrations
+        source_counts = order_coverage.get(field) if grain == "order" else None
         if source_counts:
             valid = int(source_counts.get("valido", 0))
             invalid = int(source_counts.get("invalido", 0))

@@ -96,3 +96,23 @@ Implementação concluída na branch `main` com fixture sintética de desenvolvi
 - CLI canônico: `verification passed`; runtime protegido: `140` arquivos sem divergência; tema `codex-classic` byte a byte idêntico; `git diff --check`: saída vazia.
 - Uma regeneração em diretório temporário confirmou igualdade byte a byte dos quatro outputs canônicos (`src/data.json`, `aggregates.json`, `reconciliation.json`, `source_notes.json`). Como snapshot e outputs não mudaram, notebook, build e sanitização não precisaram ser refeitos neste round; permanecem válidos os hashes e gates registrados no Fix Round 1.
 - O status permanece `fixture`; nenhuma afirmação final de 2026 foi introduzida. Nenhum arquivo de result-import, `/inscricoes/` ou infraestrutura protegida foi alterado.
+
+## Fix Round 3 — cobertura auxiliar, freshness e bases semânticas
+
+### TDD RED/GREEN
+
+- RED real contra `0ee3f2f`: `20` testes focados executados, com exatamente `4` falhas. O verify aceitou cobertura auxiliar truncada e timestamp de fonte de 1900, além de rejeitar dois outputs legítimos: evento pago com inscrição orgânica e fonte contendo participante de pedido não pago.
+- GREEN: `20/20` focados e `105/105` na suíte MIF. Cada cenário tem regressão CLI end-to-end usando os produtores reais.
+
+### Correções
+
+- O catálogo de cobertura auxiliar é compartilhado entre `metrics.py` e `run.py`: `payment_method`, `device`, `order_quantity` e `questionnaire_completion` são obrigatórios exatamente uma vez; chaves JSON continuam condicionais. Cada linha valida base correta, não negatividade, `valid + invalid + missing = denominator`, `answered = valid + invalid` e percentuais derivados.
+- `source.py` expõe `FINAL_EXTRACTION_MIN_TIMESTAMP` e o parser ISO com timezone usados tanto na carga quanto no verify. Os dois recibos de fonte devem ser parseáveis, respeitar o limite final e reconciliar seu timestamp máximo com `generatedAt`; a proveniência exata mantém a mesma freshness em todas as queries.
+- `channel_aliases` reconcilia todas as inscrições pagas, incluindo `Orgânico / sem cupom`, conforme o produtor. `data_quality` de registro usa `paid_registrations`; somente qualidade no grão de pedido usa a base integral de linhas de pedido da fonte.
+- Cobertura contratual de 100%, metadados de fonte exatos, datasets condicionais, privacidade e rejeições de `score`, `rank` e `keep-cut` foram preservados.
+
+### Gates e impacto
+
+- CLI canônico: `verification passed`; suíte cumulativa: `105/105`. Regeneração temporária confirmou igualdade byte a byte dos quatro outputs canônicos, portanto notebook, build e sanitização não precisaram ser refeitos e os hashes HTML/snapshot do Fix Round 1 permanecem válidos.
+- Runtime protegido: `140` arquivos sem divergência; tema `codex-classic` idêntico; shareable autocontido e sem metadata/raw/PII; `git diff --check` sem saída.
+- O status continua `fixture`, sem afirmações finais de 2026. Result-import, `/inscricoes/` e infraestrutura protegida permaneceram intocados.
