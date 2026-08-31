@@ -264,6 +264,53 @@ class CliTests(unittest.TestCase):
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("weekly_sales", completed.stderr)
 
+    def test_verify_rejects_coherently_emptied_required_weekly_dataset(self):
+        """Matching receipts cannot make a paid event's required weekly evidence empty."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            snapshot["queries"]["weekly_sales"]["rows"] = []
+            aggregates["datasets"]["weekly_sales"] = []
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("weekly_sales", completed.stderr)
+
+    def test_verify_rejects_query_source_tables_that_diverge_from_provenance_contract(self):
+        """Registration evidence must retain the exact orders-and-participants lineage."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            snapshot["queries"]["weekly_sales"]["source"]["tables"] = [
+                "public.tb_ticketsports_participantes"
+            ]
+            write_json(paths["report_data"], snapshot)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("source", completed.stderr.lower())
+            self.assertIn("weekly_sales", completed.stderr)
+
+    def test_verify_requires_complete_reviewed_mapping_and_join_coverage(self):
+        """Final reviewed outputs must fail closed below complete contractual coverage."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            reconciliation = json.loads(
+                paths["reconciliation"].read_text(encoding="utf-8")
+            )
+            reconciliation["channel_mapping_coverage_pct"] = 0
+            write_json(paths["reconciliation"], reconciliation)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("channel_mapping_coverage_pct", completed.stderr)
+
     def test_verify_rejects_score_field(self):
         """Decision-score fields are forbidden even when aggregate data stays anonymous."""
         with TemporaryDirectory() as directory:

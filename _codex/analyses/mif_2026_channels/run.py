@@ -12,7 +12,12 @@ from typing import Any
 from types import SimpleNamespace
 from uuid import UUID
 
-from .artifact import REPORT_APP_ID, report_component_catalog, report_component_map
+from .artifact import (
+    REPORT_APP_ID,
+    build_source_metadata,
+    report_component_catalog,
+    report_component_map,
+)
 from .config import EVENT_CODE
 from .facts import build_fact_bundle
 from .mappings import emit_channel_mapping_draft, emit_product_mapping_draft
@@ -27,6 +32,27 @@ _RAW_BOUNDARY_KEYS = frozenset(
 )
 _FORBIDDEN_DECISION_LANGUAGE = re.compile(
     r"\b(?:score|rank(?:ed|ing)?|keep[\s_/-]*cut)\b", re.IGNORECASE
+)
+_REGISTRATION_PARTITION_CONTRACTS = {
+    "weekly_sales": None,
+    "lot_performance": "event_denominator",
+    "modality_mix": "denominator",
+    "country_distribution": "denominator",
+    "state_distribution": "denominator",
+    "city_distribution": "denominator",
+    "age_bands": "denominator",
+    "gender_distribution": "denominator",
+    "pace_bands": "denominator",
+    "channel_index": None,
+}
+_ORDER_PARTITION_CONTRACTS = {
+    "payment_mix": "denominator",
+    "device_mix": "denominator",
+}
+_FULL_CHANNEL_PARTITIONS = (
+    "channel_modality_mix",
+    "channel_lot_mix",
+    "channel_weekly_sales",
 )
 
 
@@ -83,8 +109,12 @@ def _validate_reconciliation(
         "registration_join_coverage_pct",
     ):
         value = float(reconciliation.get(key, -1))
-        if not 0 <= value <= 100:
-            raise ValueError(f"invalid reconciliation coverage: {key}")
+        if value != 100:
+            raise ValueError(f"incomplete contractual coverage: {key}")
+    overview_coverage = overview.get("source_field_coverage", {})
+    for key in ("channel_mapping_coverage_pct", "product_mapping_coverage_pct"):
+        if float(overview_coverage.get(key, -1)) != 100:
+            raise ValueError(f"incomplete overview coverage: {key}")
     sources = source_notes.get("sources")
     if not isinstance(sources, list) or {source.get("source_id") for source in sources} != {
         "orders",
@@ -95,6 +125,10 @@ def _validate_reconciliation(
         "orders": int(reconciliation.get("source_order_rows", -1)),
         "participants": int(reconciliation.get("source_registration_rows", -1)),
     }
+    if expected_rows["orders"] < event_orders:
+        raise ValueError("source order rows cannot be below paid-order count")
+    if expected_rows["participants"] < event_registrations:
+        raise ValueError("source registration rows cannot be below paid-registration count")
     for source in sources:
         source_id = source["source_id"]
         if source.get("event_code") != EVENT_CODE:
@@ -105,6 +139,135 @@ def _validate_reconciliation(
             raise ValueError(f"invalid source hash: {source_id}")
         if not source.get("file_name") or not source.get("extracted_at"):
             raise ValueError(f"incomplete source receipt: {source_id}")
+
+
+def _sum_rows(rows: list[dict[str, Any]], field: str, query_id: str) -> int:
+    try:
+        return sum(int(row[field]) for row in rows)
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError(f"invalid semantic metric for {query_id}: {field}") from error
+
+
+def _validate_partition(
+    query_id: str,
+    rows: list[dict[str, Any]],
+    metric: str,
+    denominator_field: str | None,
+    expected_total: int,
+) -> None:
+    if _sum_rows(rows, metric, query_id) != expected_total:
+        raise ValueError(f"semantic reconciliation mismatch for {query_id}")
+    if denominator_field is not None and any(
+        int(row.get(denominator_field, -1)) != expected_total for row in rows
+    ):
+        raise ValueError(f"invalid denominator for {query_id}")
+
+
+def _validate_dataset_contracts(
+    datasets: dict[str, list[dict[str, Any]]],
+    aggregates: dict[str, Any],
+    reconciliation: dict[str, Any],
+) -> dict[str, Any]:
+    overview = aggregates.get("overview")
+    if not isinstance(overview, dict) or datasets["event_overview"] != [overview]:
+        raise ValueError("event_overview dataset does not match aggregate overview")
+    event_registrations = int(overview.get("paid_registrations", -1))
+    event_orders = int(overview.get("paid_orders", -1))
+    if event_registrations < 0 or event_orders < 0:
+        raise ValueError("event overview counts must be non-negative")
+
+    for query_id, denominator_field in _REGISTRATION_PARTITION_CONTRACTS.items():
+        _validate_partition(
+            query_id,
+            datasets[query_id],
+            "paid_registrations",
+            denominator_field,
+            event_registrations,
+        )
+    for query_id, denominator_field in _ORDER_PARTITION_CONTRACTS.items():
+        _validate_partition(
+            query_id,
+            datasets[query_id],
+            "paid_orders",
+            denominator_field,
+            event_orders,
+        )
+
+    coupon_assisted = int(overview.get("coupon_assisted_registrations", -1))
+    if coupon_assisted < 0 or _sum_rows(
+        datasets["channel_aliases"], "paid_registrations", "channel_aliases"
+    ) != coupon_assisted:
+        raise ValueError("semantic reconciliation mismatch for channel_aliases")
+
+    channel_rows = datasets["channel_index"]
+    full_channels = {
+        row["channel_name"]: int(row["paid_registrations"])
+        for row in channel_rows
+        if row.get("dossier_type") == "full"
+    }
+    compact_channels = {
+        row["channel_name"]: int(row["paid_registrations"])
+        for row in channel_rows
+        if row.get("dossier_type") == "compact"
+    }
+    for query_id in _FULL_CHANNEL_PARTITIONS:
+        actual = {
+            channel_name: sum(
+                int(row.get("paid_registrations", 0))
+                for row in datasets[query_id]
+                if row.get("channel_name") == channel_name
+            )
+            for channel_name in full_channels
+        }
+        if actual != full_channels:
+            raise ValueError(f"full-channel reconciliation mismatch for {query_id}")
+    long_tail = {
+        row["channel_name"]: int(row["paid_registrations"])
+        for row in datasets["long_tail"]
+    }
+    if long_tail != compact_channels or aggregates.get("long_tail") != datasets["long_tail"]:
+        raise ValueError("long_tail does not match compact channel contract")
+
+    full_dossier_names = {
+        dossier.get("channel_name") for dossier in aggregates.get("full_dossiers", [])
+    }
+    if full_dossier_names != set(full_channels):
+        raise ValueError("full dossier catalog does not match channel_index")
+
+    for query_id in ("channel_state_mix", "channel_product_mix"):
+        for row in datasets[query_id]:
+            channel_name = row.get("channel_name")
+            if channel_name not in full_channels:
+                raise ValueError(f"unknown full channel in {query_id}")
+            denominator = row.get("denominator", row.get("take_rate_denominator", -1))
+            if int(denominator) != full_channels[channel_name]:
+                raise ValueError(f"invalid channel denominator for {query_id}")
+    profile_dimensions: dict[str, set[str]] = {name: set() for name in full_channels}
+    for row in datasets["channel_profile_coverage"]:
+        channel_name = row.get("channel_name")
+        if channel_name not in full_channels:
+            raise ValueError("unknown full channel in channel_profile_coverage")
+        if int(row.get("denominator", -1)) != full_channels[channel_name]:
+            raise ValueError("invalid channel denominator for channel_profile_coverage")
+        profile_dimensions[channel_name].add(str(row.get("profile_dimension")))
+    if any(dimensions != {"age", "gender", "pace", "club"} for dimensions in profile_dimensions.values()):
+        raise ValueError("incomplete channel_profile_coverage dimensions")
+
+    if (event_orders or event_registrations) and not datasets["data_quality"]:
+        raise ValueError("data_quality is required for a non-empty paid event")
+    if (event_orders or event_registrations) and not datasets["auxiliary_field_coverage"]:
+        raise ValueError("auxiliary_field_coverage is required for a non-empty paid event")
+    for row in datasets["data_quality"]:
+        expected = (
+            int(reconciliation.get("source_order_rows", -1))
+            if row.get("grain") == "order"
+            else int(reconciliation.get("source_registration_rows", -1))
+        )
+        if row.get("grain") not in {"order", "registration"} or int(
+            row.get("denominator", -1)
+        ) != expected:
+            raise ValueError("invalid data_quality denominator")
+    return overview
 
 
 def verify_outputs(
@@ -139,6 +302,7 @@ def verify_outputs(
     datasets = aggregates.get("datasets")
     if not isinstance(datasets, dict) or set(datasets) != set(DATASET_IDS):
         raise ValueError("aggregate receipt dataset contract mismatch")
+    overview = _validate_dataset_contracts(datasets, aggregates, reconciliation)
     aggregate_result = SimpleNamespace(
         datasets=datasets,
         full_dossiers=aggregates.get("full_dossiers", []),
@@ -171,18 +335,19 @@ def verify_outputs(
             query_components.update(component_ids)
         if query_components != set(expected_component_map[query_id]):
             raise ValueError(f"incomplete component source scope: {query_id}")
+        expected_source = build_source_metadata(
+            query_id,
+            snapshot.get("generatedAt"),
+            expected_component_map[query_id],
+        )
+        if source != expected_source:
+            raise ValueError(f"source provenance contract mismatch: {query_id}")
         sql = str(source.get("sql", ""))
         if "COUNT(*)" not in sql or "GROUP BY cod_evento" not in sql:
             raise ValueError(f"source SQL is not aggregate-only: {query_id}")
 
     if referenced_components != set(expected_catalog):
         raise ValueError("not every report component has source metadata")
-    overview = aggregates.get("overview", {})
-    event_total = int(overview.get("paid_registrations", 0))
-    for query_id in ("channel_index", "modality_mix", "lot_performance"):
-        total = sum(int(row.get("paid_registrations", 0)) for row in datasets[query_id])
-        if total != event_total:
-            raise ValueError(f"reconciliation mismatch for {query_id}")
     _validate_reconciliation(overview, reconciliation, source_notes)
     if source_notes.get("chart_rationales") != CHART_RATIONALES:
         raise ValueError("chart rationale receipt is incomplete")

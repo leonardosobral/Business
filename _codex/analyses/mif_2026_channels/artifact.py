@@ -150,9 +150,10 @@ def _aggregate_sql(tables: list[str]) -> str:
     return " UNION ALL ".join(selects)
 
 
-def _source(
-    query_id: str, generated_at: str, result: AnalysisResult
+def build_source_metadata(
+    query_id: str, generated_at: str, component_ids: list[str]
 ) -> dict[str, Any]:
+    """Build the exact query provenance contract used by analyze and verify."""
     tables = _tables(query_id)
     if query_id == "event_overview":
         orders = ["public.tb_ticketsports_pedidos"]
@@ -195,7 +196,7 @@ def _source(
             {
                 "label": label,
                 "definition": definition,
-                "componentIds": _component_ids(query_id, result),
+                "componentIds": component_ids,
                 "sourceLineage": [{"tables": tables}],
             }
         ]
@@ -220,6 +221,16 @@ def _source(
             f"Query revisada {query_id} no snapshot canônico",
         ],
     }
+
+
+def _source(
+    query_id: str, generated_at: str, result: AnalysisResult
+) -> dict[str, Any]:
+    return build_source_metadata(
+        query_id,
+        generated_at,
+        _component_ids(query_id, result),
+    )
 
 
 def build_report_snapshot(

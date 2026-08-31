@@ -76,3 +76,23 @@ Implementação concluída na branch `main` com fixture sintética de desenvolvi
 
 - O status continua `fixture`; não há afirmação final de 2026, publicação, segunda preview, browser QA amplo ou alteração em `/inscricoes/`.
 - A autoria ficou restrita a `src/content/report/` e `src/data.json`; a infraestrutura protegida não mudou. As alterações concorrentes de result-import permaneceram fora do escopo e do staging.
+
+## Fix Round 2 — suficiência semântica e proveniência canônica no verify
+
+### TDD RED/GREEN
+
+- RED real contra `e636669`: `16` testes focados executados, com exatamente `3` falhas. O verify aceitou (1) `weekly_sales=[]` simultaneamente no snapshot e em `aggregates.datasets`, (2) `weekly_sales.source.tables` reduzido a participantes e (3) `channel_mapping_coverage_pct=0`.
+- GREEN: `16/16` focados e `101/101` na suíte MIF. As três adulterações agora são rejeitadas pelo CLI com mensagens específicas para dataset, fonte ou cobertura.
+
+### Correção e contratos
+
+- `artifact.py` expõe um único builder determinístico de metadados de fonte. `analyze` e `verify` compartilham esse contrato; por query, o verify compara exatamente tabelas, SQL agregado, filtros/evento, freshness, definições, linhagem e component IDs.
+- O verify aplica contratos por dataset: partições globais obrigatórias de inscrições e pedidos reconciliam seus totais e denominadores; aliases reconciliam a base assistida; partições de dossiês reconciliam cada canal completo; cauda longa, catálogo de dossiês, cobertura de perfil e qualidade também são validados. Produtos, overlaps e demais datasets condicionais continuam autorizados a ficar vazios quando sua evidência não existe.
+- As coberturas `channel_mapping_coverage_pct`, `product_mapping_coverage_pct` e `registration_join_coverage_pct` devem ser exatamente `100%`; canal e produto também são conferidos no overview. Contagens de fonte não podem ser inferiores às contagens pagas.
+- Rejeições anteriores de raw facts, PII, `score`, `rank`, `keep-cut`, divergência snapshot/receipt e component ID inexistente foram preservadas.
+
+### Gates e impacto em artefatos
+
+- CLI canônico: `verification passed`; runtime protegido: `140` arquivos sem divergência; tema `codex-classic` byte a byte idêntico; `git diff --check`: saída vazia.
+- Uma regeneração em diretório temporário confirmou igualdade byte a byte dos quatro outputs canônicos (`src/data.json`, `aggregates.json`, `reconciliation.json`, `source_notes.json`). Como snapshot e outputs não mudaram, notebook, build e sanitização não precisaram ser refeitos neste round; permanecem válidos os hashes e gates registrados no Fix Round 1.
+- O status permanece `fixture`; nenhuma afirmação final de 2026 foi introduzida. Nenhum arquivo de result-import, `/inscricoes/` ou infraestrutura protegida foi alterado.
