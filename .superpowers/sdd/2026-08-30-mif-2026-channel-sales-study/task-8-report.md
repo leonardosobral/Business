@@ -62,10 +62,16 @@ Both receipts identify event `72611`. No source rows, JSON bodies, direct identi
 ### Chart-only rankings and operational order
 
 - RED: the focused Node behavior suite first failed because the report had no reusable chart-row preparation contract; the operational-order extension then failed on missing explicit lot/modality ordering.
-- GREEN: 8/8 focused Node tests pass. Country, state, city, product, and per-channel state rankings are sorted by the displayed primary measure, retain the top 10 categories plus one recomputed `Outros` bucket, resolve ties deterministically, and consolidate a pre-existing `Outros` without duplication.
+- GREEN: 8/8 focused Node tests pass. Country, state, city, product, and per-channel state rankings keep the ten individual categories sorted by the displayed primary measure, append one recomputed `Outros` bucket, resolve leader ties deterministically, and consolidate a pre-existing `Outros` without duplication.
 - Canonical event chart rows are bounded from 21 countries, 29 states, 1,039 cities, and 20 products to 11 displayed buckets each; all totals reconcile. Across 83 full-channel state datasets, 19 require Top 10 + `Outros` and all preserve their original total.
 - Source inspectors and paginated tables continue to receive every reviewed row. Ranking descriptions visibly disclose `Top 10 + Outros` and the full source category count. Weekly charts remain chronological; 8 lots and 5 modalities use explicit business order without grouping or truncation.
 - Complete post-fix Python suite: 124/124 passing.
+
+### Controller visual-QA regression
+
+- RED: after the first controller render, 4 of 8 focused Node tests reproduced that the aggregate `Outros` bucket was being sorted back among the ten individual leaders; the ready-snapshot assertion also exposed the same ordering in the canonical event and channel-state charts.
+- GREEN: the minimal fix removes only the redundant second sort. The ten individual categories retain descending order and deterministic tie-breaking, while the recomputed `Outros` bucket is always the final chart row regardless of its aggregate magnitude. The visible `Top 10 + Outros` description and complete paginated source rows are unchanged.
+- Verification after the visual-QA fix: 8/8 focused Node tests, 124/124 MIF tests, official build, sanitized shareable, 140 protected runtime files, and byte-identical theme all passed.
 
 ## Final commercial headlines
 
@@ -118,8 +124,8 @@ These are descriptive observations, not automatic scores, rankings, or keep/cut 
 - Runtime SHA-256: `bce021364672c86cb27997c683af6351677752ff905dc8c7cdc96d06ece8dc00`.
 - Compiler SHA-256: `ec65601079c80bef7210f2c9760ff7f2db6adef28516ffff280d4c86f91d4078`.
 - Snapshot SHA-256 at build: `b1dd79b60179a7c5cd1b43bf48682ca16ee07e3225472cfae9e438b16d87e0af`.
-- Sanitized `dist/index.html` SHA-256: `123466c05b4578360e45d30b2ea8dd83898106c7ae8c9341ecd6ffab2a899904`.
-- Sanitized `dist/shareable.html` SHA-256: `dc9fe5a5ff3bfa793a2a783debef509bd4c4fdcf05ca9f14a0e5d0c2829a56ef`.
+- Sanitized `dist/index.html` SHA-256: `bbd412bff4a35113028bb519dee199bb4f87bb512f9f5173b451c514863b4593`.
+- Sanitized `dist/shareable.html` SHA-256: `dcce876875a9ed81143ddccf1c1ce1b5c4c6ad488a1eb15ba4f8b1b2a6e033a1`.
 - Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, and Benefício present; 73 compact channels; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
 - `git diff --check`: passed.
 - Desktop/mobile/print visual QA remains an explicit controller handoff; inspect the four event rankings, at least one grouped and one ungrouped channel-state chart, source-table pagination, and the lot/modality order in the final shareable build.

@@ -22,7 +22,7 @@ test("geography rankings are deterministic Top 10 plus one honest Outros bucket"
     denominator: 1_000,
     share_pct: values[index] / 10,
   }));
-  source.push({ country: "Outros", paid_registrations: 5, denominator: 1_000, share_pct: 0.5 });
+  source.push({ country: "Outros", paid_registrations: 55, denominator: 1_000, share_pct: 5.5 });
   const before = structuredClone(source);
 
   const chartRows = prepareChartRows(source, RANKING_CONFIGS.country);
@@ -30,15 +30,16 @@ test("geography rankings are deterministic Top 10 plus one honest Outros bucket"
   assert.deepEqual(source, before, "chart preparation must not mutate reviewed rows");
   assert.equal(chartRows.length, 11);
   assert.equal(chartRows.filter((row) => row.country === "Outros").length, 1);
-  assert.ok(descending(chartRows, "paid_registrations"));
+  assert.ok(descending(chartRows.slice(0, -1), "paid_registrations"));
+  assert.equal(chartRows.at(-1).country, "Outros", "the aggregate bucket follows the ten ranked leaders");
   assert.ok(chartRows.findIndex((row) => row.country === "C")
     < chartRows.findIndex((row) => row.country === "D"), "ties use a deterministic pt-BR label order");
   const other = chartRows.find((row) => row.country === "Outros");
   assert.deepEqual(other, {
     country: "Outros",
-    paid_registrations: 15,
+    paid_registrations: 65,
     denominator: 1_000,
-    share_pct: 1.5,
+    share_pct: 6.5,
   });
   assert.equal(chartRows.reduce((total, row) => total + row.paid_registrations, 0),
     source.reduce((total, row) => total + row.paid_registrations, 0));
@@ -101,7 +102,8 @@ test("product Outros sums quantities but fails closed on partial explicit revenu
   assert.equal(other.classification, "misto");
   assert.equal(other.explicit_revenue, null);
   assert.equal(other.explicit_revenue_coverage_pct, null);
-  assert.ok(descending(chartRows, "registrations_with_product"));
+  assert.ok(descending(chartRows.slice(0, -1), "registrations_with_product"));
+  assert.equal(chartRows.at(-1).product_name, "Outros");
 });
 
 test("channel-state Outros preserves coverage and recomputes both shares and delta", () => {
@@ -135,6 +137,7 @@ test("channel-state Outros preserves coverage and recomputes both shares and del
   assert.equal(other.share_pct, Number((other.paid_registrations / 100 * 100).toFixed(2)));
   assert.equal(other.delta_pp, Number((other.share_pct - other.event_count / 1_000 * 100).toFixed(2)));
   assert.deepEqual(other.coverage, coverage);
+  assert.equal(chartRows.at(-1).state, "Outros");
 });
 
 test("ranking descriptions disclose Top 10 + Outros and full paginated evidence", () => {
@@ -185,7 +188,8 @@ test("the ready snapshot reconciles every authored chart-only transformation", a
     const source = snapshot.queries[queryId].rows;
     const chartRows = prepareChartRows(source, config);
     assert.ok(chartRows.length <= 11, queryId);
-    assert.ok(descending(chartRows, config.valueField), queryId);
+    assert.ok(descending(chartRows.slice(0, -1), config.valueField), queryId);
+    if (source.length > 10) assert.equal(chartRows.at(-1)[config.categoryField], "Outros", queryId);
     assert.equal(chartRows.reduce((total, row) => total + row[config.valueField], 0),
       source.reduce((total, row) => total + row[config.valueField], 0), queryId);
   }
@@ -194,7 +198,8 @@ test("the ready snapshot reconciles every authored chart-only transformation", a
   for (const [channel, source] of stateGroups) {
     const chartRows = prepareChartRows(source, RANKING_CONFIGS.channelState);
     assert.ok(chartRows.length <= 11, channel);
-    assert.ok(descending(chartRows, "paid_registrations"), channel);
+    assert.ok(descending(chartRows.slice(0, -1), "paid_registrations"), channel);
+    if (source.length > 10) assert.equal(chartRows.at(-1).state, "Outros", channel);
     assert.equal(chartRows.reduce((total, row) => total + row.paid_registrations, 0),
       source.reduce((total, row) => total + row.paid_registrations, 0), channel);
   }

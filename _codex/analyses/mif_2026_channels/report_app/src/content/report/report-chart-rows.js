@@ -143,12 +143,7 @@ export function prepareChartRows(rows = [], {
     [categoryField]: otherLabel,
     [valueField]: sumField(tail, valueField),
   };
-  return [...leaders.map(({ row }) => row), normalizedOther]
-    .map((row, index) => ({ row, index }))
-    .sort((left, right) => numericValue(right.row, valueField) - numericValue(left.row, valueField)
-      || categoryCollator.compare(String(left.row[categoryField]), String(right.row[categoryField]))
-      || left.index - right.index)
-    .map(({ row }) => row);
+  return [...leaders.map(({ row }) => row), normalizedOther];
 }
 
 export function chartRankingDescription(description, sourceRows, chartRows, {
