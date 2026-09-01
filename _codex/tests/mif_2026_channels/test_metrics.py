@@ -312,6 +312,27 @@ class MetricTests(unittest.TestCase):
         )
         self.assertTrue(result.datasets["temporal_overlap"])
 
+    def test_weekly_sales_does_not_replace_invalid_sale_dates(self):
+        """An invalid participant date must stay excluded instead of looking missing."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        registrations.loc[:, "order_date"] = registrations[
+            "numero_pedido"
+        ].map(facts.orders.set_index("numero_pedido")["order_date"])
+        invalid_index = registrations.index[0]
+        registrations.loc[invalid_index, "sale_date"] = None
+        registrations.loc[invalid_index, "sale_date_status"] = "invalido"
+
+        result = build_analysis(replace(facts, registrations=registrations))
+
+        self.assertEqual(
+            sum(
+                row["paid_registrations"]
+                for row in result.datasets["weekly_sales"]
+            ),
+            len(registrations) - 1,
+        )
+
     def test_products_keep_classification_and_only_explicit_revenue(self):
         """Combining included and add-on items or imputing kit revenue would fabricate value."""
         result = build_analysis(channel_metric_facts())

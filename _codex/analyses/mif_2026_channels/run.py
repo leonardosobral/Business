@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import json
 from pathlib import Path
 import re
@@ -64,6 +64,49 @@ _FULL_CHANNEL_PARTITIONS = (
     "channel_lot_mix",
     "channel_weekly_sales",
 )
+_MONEY_QUANTUM = Decimal("0.01")
+_FINANCIAL_COMPONENTS = (
+    (
+        "gross",
+        "gross_order_value",
+        "gross_value",
+        "paid_order_gross",
+        "allocated_registration_gross",
+        "required",
+    ),
+    (
+        "discount",
+        "discount_value",
+        "discount_value",
+        "paid_order_discount",
+        "allocated_registration_discount",
+        "explicit_zero",
+    ),
+    (
+        "fee",
+        "fee_value",
+        "fee_value",
+        "paid_order_fee",
+        "allocated_registration_fee",
+        "optional",
+    ),
+    (
+        "net transfer",
+        "net_transfer_value",
+        "net_transfer_value",
+        "paid_order_net_transfer",
+        "allocated_registration_net_transfer",
+        "optional",
+    ),
+    (
+        "cashback",
+        "cashback_value",
+        "cashback_value",
+        "paid_order_cashback",
+        "allocated_registration_cashback",
+        "optional",
+    ),
+)
 
 
 def _read_json(path: Path) -> Any:
@@ -119,6 +162,106 @@ def _required_decimal(value: object, label: str) -> Decimal:
     return parsed
 
 
+def _money_coverage(
+    reconciliation: dict[str, Any], source_field: str, paid_orders: int, label: str
+) -> tuple[int, int, int]:
+    coverage = reconciliation.get("paid_order_field_coverage", {}).get(source_field)
+    if paid_orders == 0 and coverage is None:
+        return 0, 0, 0
+    if not isinstance(coverage, dict):
+        raise ValueError(f"missing paid-order {label} coverage")
+    try:
+        valid = int(coverage["valido"])
+        invalid = int(coverage["invalido"])
+        missing = int(coverage["nao_informado"])
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError(f"invalid paid-order {label} coverage") from error
+    if min(valid, invalid, missing) < 0 or valid + invalid + missing != paid_orders:
+        raise ValueError(f"invalid paid-order {label} coverage")
+    return valid, invalid, missing
+
+
+def _validate_financial_reconciliation(
+    overview: dict[str, Any], reconciliation: dict[str, Any]
+) -> None:
+    paid_orders = int(overview.get("paid_orders", -1))
+    paid_registrations = int(overview.get("paid_registrations", -1))
+    component_totals: dict[str, Decimal] = {}
+
+    for (
+        label,
+        source_field,
+        overview_key,
+        order_key,
+        allocated_key,
+        availability,
+    ) in _FINANCIAL_COMPONENTS:
+        valid, invalid, missing = _money_coverage(
+            reconciliation, source_field, paid_orders, label
+        )
+        overview_value = overview.get(overview_key)
+        order_value = reconciliation.get(order_key)
+        allocated_value = reconciliation.get(allocated_key)
+
+        if paid_orders == 0:
+            expected_overview = "0.00" if availability != "optional" else None
+            if overview_value != expected_overview:
+                raise ValueError(f"zero-base {label} overview availability mismatch")
+            if order_value != "0.00" or allocated_value != "0.00":
+                raise ValueError(f"zero-base {label} receipts must be explicit zero")
+            component_totals[label] = Decimal("0.00")
+            continue
+
+        if availability == "required" and (valid != paid_orders or invalid or missing):
+            raise ValueError(f"paid-order {label} must be fully covered")
+        if availability == "explicit_zero" and invalid:
+            raise ValueError(f"paid-order {label} cannot contain invalid values")
+        available = availability != "optional" or valid == paid_orders
+        if availability == "optional" and not available:
+            if any(value is not None for value in (overview_value, order_value, allocated_value)):
+                raise ValueError(f"unavailable {label} must remain null")
+            continue
+        if availability == "optional" and (invalid or missing):
+            raise ValueError(f"paid-order {label} availability is inconsistent")
+
+        overview_total = _required_decimal(overview_value, f"overview {label}")
+        order_total = _required_decimal(order_value, f"paid order {label}")
+        allocated_total = _required_decimal(
+            allocated_value, f"allocated registration {label}"
+        )
+        if order_total != overview_total:
+            raise ValueError(f"receipt paid-order {label} does not reconcile")
+        if allocated_total != overview_total:
+            raise ValueError(f"allocated registration {label} does not reconcile")
+        if availability == "explicit_zero" and valid == 0 and overview_total != 0:
+            raise ValueError(f"missing paid-order {label} must be explicit zero")
+        component_totals[label] = overview_total
+
+    gross = component_totals["gross"]
+    expected_tickets = {
+        "order ticket": (
+            overview.get("order_ticket"),
+            None
+            if paid_orders == 0
+            else (gross / paid_orders).quantize(_MONEY_QUANTUM, rounding=ROUND_HALF_UP),
+        ),
+        "registration ticket": (
+            overview.get("registration_ticket"),
+            None
+            if paid_registrations == 0
+            else (gross / paid_registrations).quantize(
+                _MONEY_QUANTUM, rounding=ROUND_HALF_UP
+            ),
+        ),
+    }
+    for label, (actual_value, expected_value) in expected_tickets.items():
+        if expected_value is None:
+            if actual_value is not None:
+                raise ValueError(f"zero-base {label} must be unavailable")
+        elif _required_decimal(actual_value, label) != expected_value:
+            raise ValueError(f"{label} does not reconcile to its exact paid base")
+
+
 def _validate_reconciliation(
     overview: dict[str, Any],
     reconciliation: dict[str, Any],
@@ -132,16 +275,7 @@ def _validate_reconciliation(
         raise ValueError("receipt paid-order count does not reconcile")
     if int(reconciliation.get("paid_registration_count", -2)) != event_registrations:
         raise ValueError("receipt paid-registration count does not reconcile")
-    overview_gross = _required_decimal(overview.get("gross_value"), "overview gross")
-    if _required_decimal(
-        reconciliation.get("paid_order_gross"), "paid order gross"
-    ) != overview_gross:
-        raise ValueError("receipt paid-order gross does not reconcile")
-    if _required_decimal(
-        reconciliation.get("allocated_registration_gross"),
-        "allocated registration gross",
-    ) != overview_gross:
-        raise ValueError("allocated registration gross does not reconcile")
+    _validate_financial_reconciliation(overview, reconciliation)
     for key in (
         "channel_mapping_coverage_pct",
         "product_mapping_coverage_pct",
@@ -315,6 +449,17 @@ def _validate_dataset_contracts(
     if event_registrations < 0 or event_orders < 0:
         raise ValueError("event overview counts must be non-negative")
 
+    for field, overview_key in (
+        ("allocated_gross_value", "gross_value"),
+        ("allocated_discount_value", "discount_value"),
+    ):
+        total = sum(
+            (_required_decimal(row.get(field), f"lot {field}") for row in datasets["lot_performance"]),
+            Decimal("0"),
+        )
+        if total != _required_decimal(overview.get(overview_key), f"overview {overview_key}"):
+            raise ValueError(f"lot {overview_key} does not reconcile")
+
     for query_id, denominator_field in _REGISTRATION_PARTITION_CONTRACTS.items():
         _validate_partition(
             query_id,
@@ -461,6 +606,11 @@ def verify_outputs(
     datasets = aggregates.get("datasets")
     if not isinstance(datasets, dict) or set(datasets) != set(DATASET_IDS):
         raise ValueError("aggregate receipt dataset contract mismatch")
+    quality = aggregates.get("quality")
+    if not isinstance(quality, dict) or quality.get("reconciliation") != reconciliation:
+        raise ValueError("aggregate quality reconciliation receipt mismatch")
+    if quality.get("data_quality") != datasets["data_quality"]:
+        raise ValueError("aggregate quality data receipt mismatch")
     overview = _validate_dataset_contracts(datasets, aggregates, reconciliation)
     aggregate_result = SimpleNamespace(
         datasets=datasets,

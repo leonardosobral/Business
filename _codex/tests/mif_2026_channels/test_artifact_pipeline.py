@@ -333,6 +333,7 @@ class PipelineTests(unittest.TestCase):
         for required in (
             "pedidos pagos únicos",
             "inscrições pagas",
+            "itens vinculados a inscrições pagas",
             "cobertura",
             "patrocínio",
             "expo",
@@ -461,6 +462,132 @@ class CliTests(unittest.TestCase):
             "--source-notes", str(paths["source_notes"]),
         )
 
+    def _replace_overview_value(self, paths, key: str, value: object) -> None:
+        """Keep the duplicated overview payloads coherent for tamper probes."""
+        aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+        snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+        aggregates["overview"][key] = value
+        aggregates["datasets"]["event_overview"][0][key] = value
+        snapshot["queries"]["event_overview"]["rows"][0][key] = value
+        write_json(paths["aggregates"], aggregates)
+        write_json(paths["report_data"], snapshot)
+
+    def test_verify_rejects_tampered_non_gross_financial_receipts(self):
+        """Changing both sides of a non-gross receipt must not bypass verification."""
+        components = {
+            "discount": ("paid_order_discount", "allocated_registration_discount"),
+            "fee": ("paid_order_fee", "allocated_registration_fee"),
+            "net transfer": (
+                "paid_order_net_transfer",
+                "allocated_registration_net_transfer",
+            ),
+            "cashback": ("paid_order_cashback", "allocated_registration_cashback"),
+        }
+        for label, keys in components.items():
+            with self.subTest(component=label), TemporaryDirectory() as directory:
+                paths = self._outputs(Path(directory))
+                reconciliation = json.loads(
+                    paths["reconciliation"].read_text(encoding="utf-8")
+                )
+                aggregates = json.loads(
+                    paths["aggregates"].read_text(encoding="utf-8")
+                )
+                for key in keys:
+                    reconciliation[key] = "1.23"
+                    aggregates["quality"]["reconciliation"][key] = "1.23"
+                write_json(paths["reconciliation"], reconciliation)
+                write_json(paths["aggregates"], aggregates)
+
+                completed = self._verify(paths)
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn(label, completed.stderr.lower())
+
+    def test_verify_rejects_tampered_overview_financial_components(self):
+        """Overview money must reconcile to the independent order/allocation receipts."""
+        components = {
+            "discount": "discount_value",
+            "fee": "fee_value",
+            "net transfer": "net_transfer_value",
+            "cashback": "cashback_value",
+        }
+        for label, overview_key in components.items():
+            with self.subTest(component=label), TemporaryDirectory() as directory:
+                paths = self._outputs(Path(directory))
+                self._replace_overview_value(paths, overview_key, "1.23")
+
+                completed = self._verify(paths)
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn(label, completed.stderr.lower())
+
+    def test_verify_recomputes_event_tickets_from_exact_paid_bases(self):
+        """A copied or averaged ticket must fail the exact paid-order/registration bases."""
+        for ticket in ("order_ticket", "registration_ticket"):
+            with self.subTest(ticket=ticket), TemporaryDirectory() as directory:
+                paths = self._outputs(Path(directory))
+                self._replace_overview_value(paths, ticket, "1.23")
+
+                completed = self._verify(paths)
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn(ticket.replace("_", " "), completed.stderr.lower())
+
+    def test_verify_rejects_optional_money_that_conflicts_with_source_availability(self):
+        """Covered zero is a value; unavailable optional money must stay null."""
+        components = {
+            "fee": (
+                "fee_value",
+                "paid_order_fee",
+                "allocated_registration_fee",
+            ),
+            "net transfer": (
+                "net_transfer_value",
+                "paid_order_net_transfer",
+                "allocated_registration_net_transfer",
+            ),
+            "cashback": (
+                "cashback_value",
+                "paid_order_cashback",
+                "allocated_registration_cashback",
+            ),
+        }
+        for label, (source_field, order_key, allocated_key) in components.items():
+            with self.subTest(component=label), TemporaryDirectory() as directory:
+                paths = self._outputs(Path(directory))
+                reconciliation = json.loads(
+                    paths["reconciliation"].read_text(encoding="utf-8")
+                )
+                aggregates = json.loads(
+                    paths["aggregates"].read_text(encoding="utf-8")
+                )
+                paid_orders = reconciliation["paid_order_count"]
+                unavailable = {
+                    "valido": 0,
+                    "invalido": 0,
+                    "nao_informado": paid_orders,
+                }
+                reconciliation["paid_order_field_coverage"][source_field] = unavailable
+                aggregates["quality"]["reconciliation"][
+                    "paid_order_field_coverage"
+                ][source_field] = unavailable
+                write_json(paths["reconciliation"], reconciliation)
+                write_json(paths["aggregates"], aggregates)
+
+                completed = self._verify(paths)
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn(label, completed.stderr.lower())
+
+                for key in (order_key, allocated_key):
+                    reconciliation[key] = None
+                    aggregates["quality"]["reconciliation"][key] = None
+                write_json(paths["reconciliation"], reconciliation)
+                write_json(paths["aggregates"], aggregates)
+                self._replace_overview_value(paths, source_field, None)
+                completed = self._verify(paths)
+                self.assertEqual(completed.returncode, 0, completed.stderr)
+
     def test_verify_rejects_query_rows_that_diverge_from_aggregate_receipt(self):
         """Tampering with weekly evidence must not survive receipt verification."""
         with TemporaryDirectory() as directory:
@@ -514,7 +641,14 @@ class CliTests(unittest.TestCase):
                 paths["reconciliation"].read_text(encoding="utf-8")
             )
             reconciliation["channel_mapping_coverage_pct"] = 0
+            aggregates = json.loads(
+                paths["aggregates"].read_text(encoding="utf-8")
+            )
+            aggregates["quality"]["reconciliation"][
+                "channel_mapping_coverage_pct"
+            ] = 0
             write_json(paths["reconciliation"], reconciliation)
+            write_json(paths["aggregates"], aggregates)
 
             completed = self._verify(paths)
 
@@ -627,7 +761,11 @@ class CliTests(unittest.TestCase):
             self.assertEqual(completed.returncode, 0, completed.stderr)
 
             reconciliation["paid_order_gross"] = "1.00"
+            aggregates["quality"]["reconciliation"][
+                "paid_order_gross"
+            ] = "1.00"
             write_json(paths["reconciliation"], reconciliation)
+            write_json(paths["aggregates"], aggregates)
             completed = self._verify(paths)
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("gross", completed.stderr.lower())

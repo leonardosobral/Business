@@ -518,7 +518,10 @@ def _effective_sale_dates(frame: pd.DataFrame) -> pd.Series:
     if statuses is not None:
         dates = dates.where(statuses == "valido", None)
     if "order_date" in frame:
-        dates = dates.where(dates.notna(), frame["order_date"])
+        fallback = dates.isna()
+        if statuses is not None:
+            fallback &= statuses == "nao_informado"
+        dates = dates.where(~fallback, frame["order_date"])
     return dates
 
 

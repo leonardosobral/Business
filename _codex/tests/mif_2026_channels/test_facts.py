@@ -182,6 +182,27 @@ class FactTests(unittest.TestCase):
         orders = build_order_fact(source_bundle()).set_index("numero_pedido")
         self.assertIsNone(orders.loc[1002, "net_transfer_value"])
 
+    def test_missing_paid_order_discount_is_an_explicit_allocated_zero(self):
+        """A missing discount means no discount, while an invalid value remains invalid."""
+        bundle = source_bundle()
+        orders = bundle.orders.copy()
+        paid_body = json.loads(orders.loc[0, "body"])
+        paid_body.pop("desconto")
+        orders.loc[0, "body"] = json.dumps(paid_body)
+
+        facts = build_fact_bundle(replace(bundle, orders=orders))
+
+        paid_order = facts.orders.loc[facts.orders["is_paid"]].iloc[0]
+        self.assertEqual(paid_order["discount_value"], Decimal("0.00"))
+        self.assertEqual(
+            set(facts.registrations["allocated_discount_value"]),
+            {Decimal("0.00")},
+        )
+        self.assertEqual(facts.reconciliation["paid_order_discount"], "0.00")
+        self.assertEqual(
+            facts.reconciliation["allocated_registration_discount"], "0.00"
+        )
+
     def test_order_date_uses_the_export_contract_column(self):
         """Ignoring data_pedido would discard the reliable fresh extraction timeline."""
         bundle = source_bundle()

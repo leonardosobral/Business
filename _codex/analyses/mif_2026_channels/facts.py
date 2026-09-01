@@ -301,6 +301,8 @@ def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
                 raw["declared_registration_count"]
             ),
         }
+        if normalize_text(raw["discount_value"]) is None:
+            parsed["discount_value"] = Decimal("0.00")
         row = {
             "cod_evento": event_code,
             "numero_pedido": order_number,
@@ -606,6 +608,14 @@ def _covered_decimal_sum(frame: pd.DataFrame, column: str) -> Decimal | None:
     return None if not values else sum(values, Decimal("0"))
 
 
+def _complete_decimal_sum(frame: pd.DataFrame, column: str) -> Decimal | None:
+    """Sum a covered component only when every row carries a parsed amount."""
+    values = frame[column].tolist()
+    if any(not isinstance(value, Decimal) for value in values):
+        return None
+    return sum(values, Decimal("0"))
+
+
 def _decimal_string(value: Decimal | None) -> str | None:
     return None if value is None else str(value.quantize(MONEY_QUANTUM))
 
@@ -670,8 +680,8 @@ def _build_reconciliation(
     }
     for order_column, (order_key, allocated_key) in _RECONCILIATION_MONEY_KEYS.items():
         allocated_column = _ORDER_MONEY_TO_ALLOCATED[order_column]
-        order_total = _covered_decimal_sum(paid_orders, order_column)
-        allocated_total = _covered_decimal_sum(
+        order_total = _complete_decimal_sum(paid_orders, order_column)
+        allocated_total = _complete_decimal_sum(
             paid_registrations, allocated_column
         )
         if paid_orders.empty:

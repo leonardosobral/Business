@@ -4,19 +4,29 @@ import {
   ChartRenderer, DataComponent, DataTable, MetricCard, ReportSection,
   RichNarrative, useDataApp,
 } from "../../data-app-public.jsx";
+import {
+  OPERATIONAL_CONFIGS, RANKING_CONFIGS, chartRankingDescription,
+  prepareChartRows, prepareOperationalChartRows,
+} from "./report-chart-rows.js";
 import { CHART_SPECS, evidenceDescription } from "./report-contract.js";
 import { reportCopy } from "./report-copy.js";
 
 const brl = (value) => `R$ ${Number(value ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const slug = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-function EvidenceChart({ id, queryId, title, rows, spec, description, height = 320 }) {
+function EvidenceChart({ id, queryId, title, rows, spec, description, ranking, operational, height = 320 }) {
   const { chartOverrides, chartProps, visible } = useDataApp();
   if (!visible(id)) return null;
   const chart = chartOverrides[id] ?? spec;
+  const chartRows = ranking
+    ? prepareChartRows(rows, ranking)
+    : operational ? prepareOperationalChartRows(rows, operational) : rows;
+  const chartDescription = ranking
+    ? chartRankingDescription(description, rows, chartRows, ranking)
+    : description;
   return <DataComponent id={id} queryId={queryId} title={title} kind="chart" chart={chart}
-    sourceRows={rows} displayRows={rows} description={description} variant="card">
-    <ChartRenderer spec={chart} rows={rows} height={height} {...chartProps(id)} />
+    sourceRows={rows} displayRows={chartRows} description={chartDescription} variant="card">
+    <ChartRenderer spec={chart} rows={chartRows} height={height} {...chartProps(id)} />
   </DataComponent>;
 }
 
@@ -59,14 +69,17 @@ function ChannelDossier({ channel, rows, reportPeriod, copy }) {
       <EvidenceChart id={`mif-dossier-${channelSlug}-modality`} queryId="channel_modality_mix"
         title={`Mix de modalidade — ${channel.channel_name}`} rows={modality}
         spec={{ type: "stackedBar", x: "base", y: "paid_registrations", series: "modality", yLabel: "Inscrições pagas" }}
+        operational={OPERATIONAL_CONFIGS.modality}
         description={describe(modality, { unit: "inscrições pagas por modalidade" })} />
       <EvidenceChart id={`mif-dossier-${channelSlug}-lot`} queryId="channel_lot_mix"
         title={`Mix de lote — ${channel.channel_name}`} rows={lots}
         spec={{ type: "stackedBar", x: "base", y: "paid_registrations", series: "lot", yLabel: "Inscrições pagas" }}
+        operational={OPERATIONAL_CONFIGS.lot}
         description={describe(lots, { unit: "inscrições pagas por lote" })} />
       {geographyCoverage >= 70 && <EvidenceChart id={`mif-dossier-${channelSlug}-state`} queryId="channel_state_mix"
         title={`Distribuição por UF — ${channel.channel_name}`} rows={states}
         spec={CHART_SPECS.state_distribution}
+        ranking={RANKING_CONFIGS.channelState}
         description={describe(states, { unit: "inscrições pagas por UF" })} />}
       <EvidenceTable id={`mif-dossier-${channelSlug}-product`} queryId="channel_product_mix"
         title={`Produtos — ${channel.channel_name}`} rows={products}
@@ -140,17 +153,17 @@ export function ReportContent() {
       <RichNarrative id="mif-time-lot-modality-intro" label="Editar introdução temporal" value={copy.timeIntro} />
       <div className="evidence-grid">
         <EvidenceChart id="mif-weekly-sales" queryId="weekly_sales" title="Inscrições pagas por semana" rows={weeklyRows} spec={CHART_SPECS.weekly_sales} description={describe(weeklyRows, { periodField: "week_start", unit: "inscrições pagas por semana" })} />
-        <EvidenceChart id="mif-lot-performance" queryId="lot_performance" title="Inscrições por lote" rows={rows("lot_performance").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.lot_performance} description={describe(rows("lot_performance"), { unit: "inscrições pagas por lote" })} />
-        <EvidenceChart id="mif-modality-mix" queryId="modality_mix" title="Composição por modalidade" rows={rows("modality_mix").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.modality_mix} description={describe(rows("modality_mix"), { unit: "inscrições pagas por modalidade" })} />
+        <EvidenceChart id="mif-lot-performance" queryId="lot_performance" title="Inscrições por lote" rows={rows("lot_performance").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.lot_performance} operational={OPERATIONAL_CONFIGS.lot} description={describe(rows("lot_performance"), { unit: "inscrições pagas por lote" })} />
+        <EvidenceChart id="mif-modality-mix" queryId="modality_mix" title="Composição por modalidade" rows={rows("modality_mix").map((row) => ({ ...row, base: "Evento" }))} spec={CHART_SPECS.modality_mix} operational={OPERATIONAL_CONFIGS.modality} description={describe(rows("modality_mix"), { unit: "inscrições pagas por modalidade" })} />
       </div>
     </section>
 
     <section className="report-section">
       <RichNarrative id="mif-geography-intro" label="Editar leitura geográfica" value="## Geografia\n\nPaís, UF e cidade são descritos no grão de inscrição paga. Cobertura e células suprimidas devem ser consultadas antes de comparar canais; geografia observada não equivale a alcance estratégico." />
       <div className="evidence-grid">
-        <EvidenceChart id="mif-country-distribution" queryId="country_distribution" title="Países observados" rows={rows("country_distribution")} spec={CHART_SPECS.country_distribution} description={describe(rows("country_distribution"), { unit: "inscrições pagas por país" })} />
-        <EvidenceChart id="mif-state-distribution" queryId="state_distribution" title="Inscrições por UF" rows={rows("state_distribution")} spec={CHART_SPECS.state_distribution} description={describe(rows("state_distribution"), { unit: "inscrições pagas por UF" })} />
-        <EvidenceChart id="mif-city-distribution" queryId="city_distribution" title="Inscrições por cidade" rows={rows("city_distribution")} spec={CHART_SPECS.city_distribution} description={describe(rows("city_distribution"), { unit: "inscrições pagas por cidade" })} />
+        <EvidenceChart id="mif-country-distribution" queryId="country_distribution" title="Países observados" rows={rows("country_distribution")} spec={CHART_SPECS.country_distribution} ranking={RANKING_CONFIGS.country} description={describe(rows("country_distribution"), { unit: "inscrições pagas por país" })} />
+        <EvidenceChart id="mif-state-distribution" queryId="state_distribution" title="Inscrições por UF" rows={rows("state_distribution")} spec={CHART_SPECS.state_distribution} ranking={RANKING_CONFIGS.state} description={describe(rows("state_distribution"), { unit: "inscrições pagas por UF" })} />
+        <EvidenceChart id="mif-city-distribution" queryId="city_distribution" title="Inscrições por cidade" rows={rows("city_distribution")} spec={CHART_SPECS.city_distribution} ranking={RANKING_CONFIGS.city} description={describe(rows("city_distribution"), { unit: "inscrições pagas por cidade" })} />
       </div>
     </section>
 
@@ -162,7 +175,7 @@ export function ReportContent() {
         <EvidenceChart id="mif-pace-bands" queryId="pace_bands" title="Faixas de ritmo" rows={rows("pace_bands")} spec={{ type: "bar", x: "pace_band", y: "paid_registrations" }} description={describe(rows("pace_bands"), { unit: "inscrições pagas por faixa de ritmo" })} />
         <EvidenceChart id="mif-club-coverage" queryId="club_coverage" title="Clube ou assessoria informado" rows={rows("club_coverage")} spec={{ type: "horizontalBar", x: "club", y: "paid_registrations", preserveBarChart: true }} description={describe(rows("club_coverage"), { unit: "inscrições pagas por situação de clube" })} />
         <EvidenceTable id="mif-auxiliary-field-coverage" queryId="auxiliary_field_coverage" title="Cobertura dos campos auxiliares" rows={rows("auxiliary_field_coverage")} columns={[{ key: "field", label: "Campo" }, { key: "valid", label: "Válidos", align: "right" }, { key: "invalid", label: "Inválidos", align: "right" }, { key: "missing", label: "Ausentes", align: "right" }, { key: "denominator", label: "Base", align: "right" }, { key: "valid_coverage_pct", label: "Cobertura válida (%)", align: "right" }]} />
-        <EvidenceChart id="mif-product-summary-chart" queryId="product_summary" title="Adoção de produtos" rows={rows("product_summary")} spec={CHART_SPECS.product_summary} description={describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator })} />
+        <EvidenceChart id="mif-product-summary-chart" queryId="product_summary" title="Adoção de produtos" rows={rows("product_summary")} spec={CHART_SPECS.product_summary} ranking={RANKING_CONFIGS.product} description={describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator })} />
         <EvidenceTable id="mif-product-summary" queryId="product_summary" title="Resumo de produtos" rows={rows("product_summary")} columns={[{ key: "product_name", label: "Produto" }, { key: "classification", label: "Classificação" }, { key: "registrations_with_product", label: "Inscrições", align: "right" }, { key: "take_rate_pct", label: "Adoção (%)", align: "right" }, { key: "explicit_revenue", label: "Receita explícita (R$)", align: "right" }]} />
         <EvidenceTable id="mif-payment-mix" queryId="payment_mix" title="Meios de pagamento" rows={rows("payment_mix")} columns={[{ key: "payment_method", label: "Meio" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />
         <EvidenceTable id="mif-device-mix" queryId="device_mix" title="Dispositivos" rows={rows("device_mix")} columns={[{ key: "device_type", label: "Dispositivo" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />

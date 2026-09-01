@@ -61,6 +61,22 @@ class MappingTests(unittest.TestCase):
             {"mesmo parceiro, código principal", "mesmo parceiro, ação limitada"},
         )
 
+    def test_final_correcriciuma_aliases_are_versioned_and_consolidated(self):
+        """The reviewed final CSV must retain both observed exact aliases."""
+        mapping = load_channel_mapping(DATA_DIR / "channel_mapping.csv")
+        corre = mapping.loc[mapping["channel_name"] == "Corre Criciúma"]
+
+        self.assertEqual(
+            set(zip(corre["coupon_title_key"], corre["coupon_code_key"], strict=True)),
+            {
+                ("CORRECRICIUMA", "CORRECRICIUMA"),
+                ("CORRECRICIUMA", "CORRECRICIUMA 100"),
+            },
+        )
+        self.assertEqual(int(corre["paid_registrations"].sum()), 23)
+        self.assertEqual(set(corre["channel_type"]), {"assessoria"})
+        self.assertTrue(corre["reviewed"].all())
+
     def test_channel_assignment_is_exact_and_paid_pairs_fail_closed(self):
         """A fuzzy or partial join would silently classify an unreviewed coupon identity."""
         registrations = pd.DataFrame(

@@ -603,6 +603,211 @@ function DashboardContent() {
   ]});
 }
 
+const categoryCollator = new Intl.Collator("pt-BR", {
+  numeric: true,
+  sensitivity: "base",
+});
+
+const normalizedCategory = (value) => String(value ?? "")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/gu, "")
+  .trim()
+  .toLowerCase();
+
+const isOther = (value) => new Set(["outros", "other"]).has(normalizedCategory(value));
+const roundPct = (numerator, denominator) => Number.isFinite(numerator) && denominator > 0
+  ? Number((numerator / denominator * 100).toFixed(2))
+  : null;
+
+function numericValue(row, field) {
+  const value = row?.[field];
+  if (!Number.isFinite(value)) {
+    throw new TypeError(`Ranking field "${field}" must contain only finite numbers.`);
+  }
+  return value;
+}
+
+function sumField(rows, field) {
+  return rows.reduce((total, row) => total + numericValue(row, field), 0);
+}
+
+function completeSum(rows, field) {
+  return rows.every((row) => Number.isFinite(row?.[field])) ? sumField(rows, field) : null;
+}
+
+function constantField(rows, field) {
+  if (!rows.length) return null;
+  const first = JSON.stringify(rows[0]?.[field]);
+  return rows.every((row) => JSON.stringify(row?.[field]) === first) ? rows[0]?.[field] ?? null : null;
+}
+
+function uniqueLabel(rows, field, fallback = "misto") {
+  const values = [...new Set(rows.map((row) => row?.[field]).filter((value) => value != null))];
+  return values.length === 1 ? values[0] : fallback;
+}
+
+function geographyOther(categoryField) {
+  return (tail) => {
+    const paid = sumField(tail, "paid_registrations");
+    const denominator = constantField(tail, "denominator");
+    return {
+      [categoryField]: "Outros",
+      paid_registrations: paid,
+      denominator,
+      share_pct: roundPct(paid, denominator),
+    };
+  };
+}
+
+function productOther(tail) {
+  const registrations = sumField(tail, "registrations_with_product");
+  const denominator = constantField(tail, "take_rate_denominator");
+  const allRevenueAbsent = tail.every((row) => row.explicit_revenue == null);
+  const completeRevenue = tail.every((row) => Number.isFinite(row.explicit_revenue));
+  return {
+    product_name: "Outros",
+    classification: uniqueLabel(tail, "classification"),
+    registrations_with_product: registrations,
+    product_quantity: sumField(tail, "product_quantity"),
+    take_rate_denominator: denominator,
+    take_rate_pct: roundPct(registrations, denominator),
+    explicit_revenue: completeRevenue ? completeSum(tail, "explicit_revenue") : null,
+    explicit_revenue_coverage_pct: completeRevenue
+      ? 100
+      : allRevenueAbsent && tail.every((row) => row.explicit_revenue_coverage_pct === 0) ? 0 : null,
+  };
+}
+
+function channelStateOther(tail) {
+  const registrations = sumField(tail, "paid_registrations");
+  const channelDenominator = constantField(tail, "channel_denominator");
+  const denominator = constantField(tail, "denominator");
+  const eventCount = sumField(tail, "event_count");
+  const eventDenominator = constantField(tail, "event_denominator");
+  const share = roundPct(registrations, denominator);
+  const eventShare = roundPct(eventCount, eventDenominator);
+  return {
+    channel_name: constantField(tail, "channel_name"),
+    state: "Outros",
+    paid_registrations: registrations,
+    channel_count: sumField(tail, "channel_count"),
+    channel_denominator: channelDenominator,
+    denominator,
+    event_count: eventCount,
+    event_denominator: eventDenominator,
+    share_pct: share,
+    delta_pp: share == null || eventShare == null ? null : Number((share - eventShare).toFixed(2)),
+    coverage: constantField(tail, "coverage"),
+  };
+}
+
+/**
+ * Prepare chart-only categorical ranking rows without mutating or truncating the
+ * reviewed source rows used by source inspectors and paginated tables.
+ */
+function prepareChartRows(rows = [], {
+  categoryField,
+  valueField,
+  topN = 10,
+  otherLabel = "Outros",
+  aggregateOther,
+} = {}) {
+  if (!Array.isArray(rows) || !categoryField || !valueField) return rows;
+  if (!Number.isSafeInteger(topN) || topN < 1) throw new TypeError("topN must be a positive safe integer.");
+
+  const seen = new Set();
+  const ranked = rows.map((row, index) => {
+    const category = row?.[categoryField];
+    const normalized = normalizedCategory(category);
+    if (!normalized) throw new TypeError(`Ranking field "${categoryField}" must contain non-empty labels.`);
+    if (!isOther(category) && seen.has(normalized)) {
+      throw new TypeError(`Ranking field "${categoryField}" contains duplicate category "${category}".`);
+    }
+    if (!isOther(category)) seen.add(normalized);
+    numericValue(row, valueField);
+    return { row, index };
+  }).sort((left, right) => numericValue(right.row, valueField) - numericValue(left.row, valueField)
+    || categoryCollator.compare(String(left.row[categoryField]), String(right.row[categoryField]))
+    || left.index - right.index);
+
+  if (ranked.length <= topN) return ranked.map(({ row }) => row);
+
+  const ordinary = ranked.filter(({ row }) => !isOther(row[categoryField]));
+  const reviewedOther = ranked.filter(({ row }) => isOther(row[categoryField]));
+  const leaders = ordinary.slice(0, topN);
+  const tail = [...ordinary.slice(topN), ...reviewedOther].map(({ row }) => row);
+  if (!tail.length) return leaders.map(({ row }) => row);
+
+  const fallback = {
+    [categoryField]: otherLabel,
+    [valueField]: sumField(tail, valueField),
+  };
+  const other = aggregateOther ? aggregateOther(tail, fallback) : fallback;
+  const normalizedOther = {
+    ...other,
+    [categoryField]: otherLabel,
+    [valueField]: sumField(tail, valueField),
+  };
+  return [...leaders.map(({ row }) => row), normalizedOther]
+    .map((row, index) => ({ row, index }))
+    .sort((left, right) => numericValue(right.row, valueField) - numericValue(left.row, valueField)
+      || categoryCollator.compare(String(left.row[categoryField]), String(right.row[categoryField]))
+      || left.index - right.index)
+    .map(({ row }) => row);
+}
+
+function chartRankingDescription(description, sourceRows, chartRows, {
+  categoryField,
+  topN = 10,
+} = {}) {
+  if (!Array.isArray(sourceRows) || sourceRows.length <= topN
+    || !chartRows.some((row) => isOther(row?.[categoryField]))) return description;
+  return `${description} Visualização do gráfico: Top ${topN} + Outros; as ${sourceRows.length.toLocaleString("pt-BR")} categorias completas permanecem na tabela paginada da fonte.`;
+}
+
+/** Apply a reviewed business order without ranking, grouping, or truncating rows. */
+function prepareOperationalChartRows(rows = [], { field, order = [] } = {}) {
+  if (!Array.isArray(rows) || !field || !Array.isArray(order)) return rows;
+  const positions = new Map(order.map((value, index) => [normalizedCategory(value), index]));
+  return rows.map((row, index) => ({ row, index })).sort((left, right) => {
+    const leftLabel = String(left.row?.[field] ?? "");
+    const rightLabel = String(right.row?.[field] ?? "");
+    const leftPosition = positions.get(normalizedCategory(leftLabel)) ?? positions.size;
+    const rightPosition = positions.get(normalizedCategory(rightLabel)) ?? positions.size;
+    return leftPosition - rightPosition
+      || categoryCollator.compare(leftLabel, rightLabel)
+      || left.index - right.index;
+  }).map(({ row }) => row);
+}
+
+const OPERATIONAL_ORDERS = Object.freeze({
+  lot: Object.freeze(["1", "2", "3", "4", "5", "6", "7", "OUTRO: 0"]),
+  modality: Object.freeze(["5K", "21K", "42K", "DESAFIO", "KIDS"]),
+});
+
+const OPERATIONAL_CONFIGS = Object.freeze({
+  lot: Object.freeze({ field: "lot", order: OPERATIONAL_ORDERS.lot }),
+  modality: Object.freeze({ field: "modality", order: OPERATIONAL_ORDERS.modality }),
+});
+
+const RANKING_CONFIGS = Object.freeze({
+  country: Object.freeze({
+    categoryField: "country", valueField: "paid_registrations", aggregateOther: geographyOther("country"),
+  }),
+  state: Object.freeze({
+    categoryField: "state", valueField: "paid_registrations", aggregateOther: geographyOther("state"),
+  }),
+  city: Object.freeze({
+    categoryField: "city", valueField: "paid_registrations", aggregateOther: geographyOther("city"),
+  }),
+  product: Object.freeze({
+    categoryField: "product_name", valueField: "registrations_with_product", aggregateOther: productOther,
+  }),
+  channelState: Object.freeze({
+    categoryField: "state", valueField: "paid_registrations", aggregateOther: channelStateOther,
+  }),
+});
+
 const CHART_SPECS = Object.freeze({
   weekly_sales: { type: "line", x: "week_start", y: "paid_registrations", yLabel: "Inscrições pagas" },
   lot_performance: { type: "stackedBar", x: "base", y: "paid_registrations", series: "lot", yLabel: "Inscrições pagas" },
@@ -675,7 +880,7 @@ function reportCopy(status, overview = {}) {
     timeIntro: "## Tempo, lote e modalidade\n\nOs três recortes usam a mesma base de inscrições pagas. Como a fonte de participantes não informa a data de venda, a série semanal usa a data do pedido vinculado; lote e modalidade mostram composição, sem inferir desempenho futuro ou preferência comercial.",
     temporalOverlapDescription: "Semelhança do calendário semanal observado nas fontes finais.",
     channelIndexTitle: "Canais observados",
-    productDescription: "Adoção por inscrição paga; receita somente quando o valor do produto está explícito na fonte.",
+    productDescription: "Quantidades e adoção restritas aos itens vinculados a inscrições pagas; receita somente quando o valor do produto está explícito na fonte.",
     methodology: `## Metodologia, limitações e reconciliação\n\nA produção filtra o evento **72611**, normaliza o status pago, constrói fatos nos grãos de pedido e inscrição, aplica mapeamentos exatos revisados e só então calcula os agregados. A reconciliação declara **${overview.paid_orders ?? 0} pedidos pagos únicos** e **${overview.paid_registrations ?? 0} inscrições pagas**. Cobertura válida, ausências e valores inválidos permanecem visíveis antes de cada interpretação; células pequenas são agrupadas nos cruzamentos definidos. Nenhum identificador, texto livre de questionário ou fato bruto entra no app.\n\nPatrocínio, espaço de expo, permutas e valor de cortesias não são mensurados neste estudo e não são descontados nem atribuídos aos canais.`,
     dataQualityTitle: "Qualidade e cobertura das fontes finais",
     channelSummary: (channel) => `## ${channel.channel_name}\n\nO canal reúne **${channel.paid_registrations} inscrições pagas** em ${channel.touched_paid_orders} pedidos tocados — contagem não aditiva entre canais. O valor bruto alocado é ${brl$1(channel.gross_value)} e o ticket ponderado por inscrição é ${brl$1(channel.registration_ticket)}. A leitura é descritiva e deve ser combinada com cobertura, composição e limitações; não constitui avaliação comercial nem recomendação.`,
@@ -685,13 +890,19 @@ function reportCopy(status, overview = {}) {
 const brl = (value) => `R$ ${Number(value ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const slug = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-function EvidenceChart({ id, queryId, title, rows, spec, description, height = 320 }) {
+function EvidenceChart({ id, queryId, title, rows, spec, description, ranking, operational, height = 320 }) {
   const { chartOverrides, chartProps, visible } = dataApp.useDataApp();
   if (!visible(id)) return null;
   const chart = chartOverrides[id] ?? spec;
+  const chartRows = ranking
+    ? prepareChartRows(rows, ranking)
+    : operational ? prepareOperationalChartRows(rows, operational) : rows;
+  const chartDescription = ranking
+    ? chartRankingDescription(description, rows, chartRows, ranking)
+    : description;
   return jsxRuntime.jsx(dataApp.DataComponent, { id: id, queryId: queryId, title: title, kind: "chart", chart: chart,
-    sourceRows: rows, displayRows: rows, description: description, variant: "card", children:
-    jsxRuntime.jsx(dataApp.ChartRenderer, { spec: chart, rows: rows, height: height, ...chartProps(id),} )
+    sourceRows: rows, displayRows: chartRows, description: chartDescription, variant: "card", children:
+    jsxRuntime.jsx(dataApp.ChartRenderer, { spec: chart, rows: chartRows, height: height, ...chartProps(id),} )
   });
 }
 
@@ -734,14 +945,17 @@ function ChannelDossier({ channel, rows, reportPeriod, copy }) {
       , jsxRuntime.jsx(EvidenceChart, { id: `mif-dossier-${channelSlug}-modality`, queryId: "channel_modality_mix",
         title: `Mix de modalidade — ${channel.channel_name}`, rows: modality,
         spec: { type: "stackedBar", x: "base", y: "paid_registrations", series: "modality", yLabel: "Inscrições pagas" },
+        operational: OPERATIONAL_CONFIGS.modality,
         description: describe(modality, { unit: "inscrições pagas por modalidade" }),} )
       , jsxRuntime.jsx(EvidenceChart, { id: `mif-dossier-${channelSlug}-lot`, queryId: "channel_lot_mix",
         title: `Mix de lote — ${channel.channel_name}`, rows: lots,
         spec: { type: "stackedBar", x: "base", y: "paid_registrations", series: "lot", yLabel: "Inscrições pagas" },
+        operational: OPERATIONAL_CONFIGS.lot,
         description: describe(lots, { unit: "inscrições pagas por lote" }),} )
       , geographyCoverage >= 70 && jsxRuntime.jsx(EvidenceChart, { id: `mif-dossier-${channelSlug}-state`, queryId: "channel_state_mix",
         title: `Distribuição por UF — ${channel.channel_name}`, rows: states,
         spec: CHART_SPECS.state_distribution,
+        ranking: RANKING_CONFIGS.channelState,
         description: describe(states, { unit: "inscrições pagas por UF" }),} )
       , jsxRuntime.jsx(EvidenceTable, { id: `mif-dossier-${channelSlug}-product`, queryId: "channel_product_mix",
         title: `Produtos — ${channel.channel_name}`, rows: products,
@@ -815,17 +1029,17 @@ function ReportContent() {
       jsxRuntime.jsx(dataApp.RichNarrative, { id: "mif-time-lot-modality-intro", label: "Editar introdução temporal"  , value: copy.timeIntro,} )
       , jsxRuntime.jsxs('div', { className: "evidence-grid", children: [
         jsxRuntime.jsx(EvidenceChart, { id: "mif-weekly-sales", queryId: "weekly_sales", title: "Inscrições pagas por semana"   , rows: weeklyRows, spec: CHART_SPECS.weekly_sales, description: describe(weeklyRows, { periodField: "week_start", unit: "inscrições pagas por semana" }),} )
-        , jsxRuntime.jsx(EvidenceChart, { id: "mif-lot-performance", queryId: "lot_performance", title: "Inscrições por lote"  , rows: rows("lot_performance").map((row) => ({ ...row, base: "Evento" })), spec: CHART_SPECS.lot_performance, description: describe(rows("lot_performance"), { unit: "inscrições pagas por lote" }),} )
-        , jsxRuntime.jsx(EvidenceChart, { id: "mif-modality-mix", queryId: "modality_mix", title: "Composição por modalidade"  , rows: rows("modality_mix").map((row) => ({ ...row, base: "Evento" })), spec: CHART_SPECS.modality_mix, description: describe(rows("modality_mix"), { unit: "inscrições pagas por modalidade" }),} )
+        , jsxRuntime.jsx(EvidenceChart, { id: "mif-lot-performance", queryId: "lot_performance", title: "Inscrições por lote"  , rows: rows("lot_performance").map((row) => ({ ...row, base: "Evento" })), spec: CHART_SPECS.lot_performance, operational: OPERATIONAL_CONFIGS.lot, description: describe(rows("lot_performance"), { unit: "inscrições pagas por lote" }),} )
+        , jsxRuntime.jsx(EvidenceChart, { id: "mif-modality-mix", queryId: "modality_mix", title: "Composição por modalidade"  , rows: rows("modality_mix").map((row) => ({ ...row, base: "Evento" })), spec: CHART_SPECS.modality_mix, operational: OPERATIONAL_CONFIGS.modality, description: describe(rows("modality_mix"), { unit: "inscrições pagas por modalidade" }),} )
       ]})
     ]})
 
     , jsxRuntime.jsxs('section', { className: "report-section", children: [
       jsxRuntime.jsx(dataApp.RichNarrative, { id: "mif-geography-intro", label: "Editar leitura geográfica"  , value: "## Geografia\\n\\nPaís, UF e cidade são descritos no grão de inscrição paga. Cobertura e células suprimidas devem ser consultadas antes de comparar canais; geografia observada não equivale a alcance estratégico."                             ,} )
       , jsxRuntime.jsxs('div', { className: "evidence-grid", children: [
-        jsxRuntime.jsx(EvidenceChart, { id: "mif-country-distribution", queryId: "country_distribution", title: "Países observados" , rows: rows("country_distribution"), spec: CHART_SPECS.country_distribution, description: describe(rows("country_distribution"), { unit: "inscrições pagas por país" }),} )
-        , jsxRuntime.jsx(EvidenceChart, { id: "mif-state-distribution", queryId: "state_distribution", title: "Inscrições por UF"  , rows: rows("state_distribution"), spec: CHART_SPECS.state_distribution, description: describe(rows("state_distribution"), { unit: "inscrições pagas por UF" }),} )
-        , jsxRuntime.jsx(EvidenceChart, { id: "mif-city-distribution", queryId: "city_distribution", title: "Inscrições por cidade"  , rows: rows("city_distribution"), spec: CHART_SPECS.city_distribution, description: describe(rows("city_distribution"), { unit: "inscrições pagas por cidade" }),} )
+        jsxRuntime.jsx(EvidenceChart, { id: "mif-country-distribution", queryId: "country_distribution", title: "Países observados" , rows: rows("country_distribution"), spec: CHART_SPECS.country_distribution, ranking: RANKING_CONFIGS.country, description: describe(rows("country_distribution"), { unit: "inscrições pagas por país" }),} )
+        , jsxRuntime.jsx(EvidenceChart, { id: "mif-state-distribution", queryId: "state_distribution", title: "Inscrições por UF"  , rows: rows("state_distribution"), spec: CHART_SPECS.state_distribution, ranking: RANKING_CONFIGS.state, description: describe(rows("state_distribution"), { unit: "inscrições pagas por UF" }),} )
+        , jsxRuntime.jsx(EvidenceChart, { id: "mif-city-distribution", queryId: "city_distribution", title: "Inscrições por cidade"  , rows: rows("city_distribution"), spec: CHART_SPECS.city_distribution, ranking: RANKING_CONFIGS.city, description: describe(rows("city_distribution"), { unit: "inscrições pagas por cidade" }),} )
       ]})
     ]})
 
@@ -837,7 +1051,7 @@ function ReportContent() {
         , jsxRuntime.jsx(EvidenceChart, { id: "mif-pace-bands", queryId: "pace_bands", title: "Faixas de ritmo"  , rows: rows("pace_bands"), spec: { type: "bar", x: "pace_band", y: "paid_registrations" }, description: describe(rows("pace_bands"), { unit: "inscrições pagas por faixa de ritmo" }),} )
         , jsxRuntime.jsx(EvidenceChart, { id: "mif-club-coverage", queryId: "club_coverage", title: "Clube ou assessoria informado"   , rows: rows("club_coverage"), spec: { type: "horizontalBar", x: "club", y: "paid_registrations", preserveBarChart: true }, description: describe(rows("club_coverage"), { unit: "inscrições pagas por situação de clube" }),} )
         , jsxRuntime.jsx(EvidenceTable, { id: "mif-auxiliary-field-coverage", queryId: "auxiliary_field_coverage", title: "Cobertura dos campos auxiliares"   , rows: rows("auxiliary_field_coverage"), columns: [{ key: "field", label: "Campo" }, { key: "valid", label: "Válidos", align: "right" }, { key: "invalid", label: "Inválidos", align: "right" }, { key: "missing", label: "Ausentes", align: "right" }, { key: "denominator", label: "Base", align: "right" }, { key: "valid_coverage_pct", label: "Cobertura válida (%)", align: "right" }],} )
-        , jsxRuntime.jsx(EvidenceChart, { id: "mif-product-summary-chart", queryId: "product_summary", title: "Adoção de produtos"  , rows: rows("product_summary"), spec: CHART_SPECS.product_summary, description: describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator }),} )
+        , jsxRuntime.jsx(EvidenceChart, { id: "mif-product-summary-chart", queryId: "product_summary", title: "Adoção de produtos"  , rows: rows("product_summary"), spec: CHART_SPECS.product_summary, ranking: RANKING_CONFIGS.product, description: describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator }),} )
         , jsxRuntime.jsx(EvidenceTable, { id: "mif-product-summary", queryId: "product_summary", title: "Resumo de produtos"  , rows: rows("product_summary"), columns: [{ key: "product_name", label: "Produto" }, { key: "classification", label: "Classificação" }, { key: "registrations_with_product", label: "Inscrições", align: "right" }, { key: "take_rate_pct", label: "Adoção (%)", align: "right" }, { key: "explicit_revenue", label: "Receita explícita (R$)", align: "right" }],} )
         , jsxRuntime.jsx(EvidenceTable, { id: "mif-payment-mix", queryId: "payment_mix", title: "Meios de pagamento"  , rows: rows("payment_mix"), columns: [{ key: "payment_method", label: "Meio" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }], description: "Pedidos pagos únicos, com base explícita em cada linha."        ,} )
         , jsxRuntime.jsx(EvidenceTable, { id: "mif-device-mix", queryId: "device_mix", title: "Dispositivos", rows: rows("device_mix"), columns: [{ key: "device_type", label: "Dispositivo" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }], description: "Pedidos pagos únicos, com base explícita em cada linha."        ,} )
