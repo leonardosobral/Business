@@ -400,7 +400,7 @@ def describe_channel(
         )[0]
         closest.append(
             f"{dimension_labels.get(dimension, dimension)}: {row['other_channel']} "
-            f"({float(row['similarity_0_1']):.4f}; coberturas "
+            f"({_pt_number(row['similarity_0_1'], 4)}; coberturas "
             f"{_pt_number(row['channel_coverage'])}%/{_pt_number(row['other_coverage'])}%)"
         )
     similarity_text = (
@@ -455,7 +455,7 @@ def describe_compact_channel(row: dict[str, Any]) -> str:
             f"({_pt_number(share)}%)"
         )
     warning = str(row.get("sample_warning") or "Base abaixo de 10 inscrições pagas; leitura indicativa")
-    return f"{'; '.join(parts)}. **{warning}.**"
+    return f"{'; '.join(parts)}. {warning}."
 
 
 def build_executive_summary(
@@ -501,7 +501,7 @@ def describe_roadrunners_capstone(row: dict[str, Any]) -> str:
         f"- **Escala e valor.** 1º canal com cupom observado: {_count_phrase(row['paid_registrations'], 'inscrição', 'inscrições')}, {_pt_number(row['event_share_pct'])}% do evento e {_pt_number(row['coupon_assisted_share_pct'])}% das inscrições assistidas por cupom. Valor bruto alocado {_money_text(row['gross_value'])} ({_pt_number(row['gross_event_share_pct'])}% do bruto do evento); ticket {_money_text(row['registration_ticket'])} vs. {_money_text(row['event_registration_ticket'])} no evento ({_signed(row['registration_ticket_delta_pct'], '%')}).\n"
         f"- **Distância e alcance.** 21K + 42K somam {_pt_number(row['long_distance_share_pct'])}% vs. {_pt_number(row['event_long_distance_share_pct'])}% no evento ({_signed(row['long_distance_delta_pp'], ' pp')}); {_pt_count(row['observed_states'])} UFs com cobertura válida de {_pt_number(row['state_valid_coverage_pct'])}%. SP está {_signed(row['state_deltas'][0]['delta_pp'], ' pp')} e SC {_signed(row['state_deltas'][1]['delta_pp'], ' pp')} vs. evento.\n"
         f"- **Tempo, lote e adicionais.** Pico na semana de {peak_date} com {_count_phrase(row['peak_week_paid_registrations'], 'inscrição', 'inscrições')}. Mix principal de lote: {lots}. Adicionais: {additions}; receita explícita de produto não disponível na fonte.\n"
-        f"- **Semelhança e leitura.** Frente ao Orgânico / sem cupom, as semelhanças são geografia {float(similarity['geography']):.4f}, modalidade {float(similarity['modality']):.4f} e produtos {float(similarity['product']):.4f}. Escala e alcance são pontos mais claros que uma composição singularmente diferenciada; isso não substitui a leitura separada das dimensões nem incorpora patrocínio, Expo, permuta ou cortesias, que não foram mensurados."
+        f"- **Semelhança e leitura.** Frente ao Orgânico / sem cupom, as semelhanças são geografia {_pt_number(similarity['geography'], 4)}, modalidade {_pt_number(similarity['modality'], 4)} e produtos {_pt_number(similarity['product'], 4)}. Escala e alcance são pontos mais claros que uma composição singularmente diferenciada; isso não substitui a leitura separada das dimensões nem incorpora patrocínio, Expo, permuta ou cortesias, que não foram mensurados."
     )
 
 

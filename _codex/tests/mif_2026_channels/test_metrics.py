@@ -382,6 +382,7 @@ class MetricTests(unittest.TestCase):
         self.assertIn("4 inscrições pagas", highlight)
         self.assertIn("R$ 120,00", highlight)
         self.assertIn("Base abaixo de 10 inscrições pagas", highlight)
+        self.assertNotIn("**", highlight)
 
         capstone = result.datasets.get("roadrunners_capstone")
         self.assertIsInstance(capstone, list)
@@ -407,6 +408,8 @@ class MetricTests(unittest.TestCase):
             "tempo:",
         ):
             self.assertIn(label, summary)
+        self.assertIn("(0,9412; coberturas", summary)
+        self.assertNotRegex(summary, r"\b0\.\d{4}\b")
         self.assertNotRegex(
             summary,
             r"\b(?:geography|lot|modality|product|profile|temporal):",

@@ -50,6 +50,8 @@ test("ready ROADRUNNERS capstone carries the exact reconciled comparisons", () =
   assert.match(row.capstone_markdown, /escala e alcance.*mais claros.*composição/isu);
   assert.match(row.capstone_markdown, /1\.876 inscrições/u);
   assert.match(row.capstone_markdown, /8 jun\. 2026.*87 inscrições/u);
+  assert.match(row.capstone_markdown, /geografia 0,8891, modalidade 0,9672 e produtos 0,9438/u);
+  assert.doesNotMatch(row.capstone_markdown, /\b0\.\d{4}\b/u);
   assert.doesNotMatch(row.capstone_markdown, /\b1876\b|2026-06-08/u);
   assert.doesNotMatch(row.capstone_markdown, /\b(?:manter|cortar|eliminar|priorizar|ranking|score|recomenda)/iu);
 });
@@ -73,6 +75,8 @@ test("generated channel narratives use ranked products, bounded aliases, and pt-
   ]) {
     assert.match(road.executive_summary, new RegExp(label, "u"));
   }
+  assert.match(road.executive_summary, /geografia:[\s\S]*\(0,8891;/u);
+  assert.doesNotMatch(road.executive_summary, /\b0\.\d{4}\b/u);
   assert.doesNotMatch(
     road.executive_summary,
     /\b(?:geography|lot|modality|product|profile|temporal):/u,
@@ -103,6 +107,15 @@ test("channel and compact datasets follow numeric commercial order while aliases
   assert.notEqual(aliases[0].channel_name, channelIndex[0].channel_name, "alias audit must not inherit gross ordering");
 });
 
+test("compact executive highlights are plain text for DataTable cells", () => {
+  const compact = snapshot.queries.long_tail.rows;
+  assert.ok(compact.length > 0);
+  for (const row of compact) {
+    assert.match(row.executive_highlight, /Base abaixo de 10 inscrições pagas/u);
+    assert.doesNotMatch(row.executive_highlight, /\*\*/u);
+  }
+});
+
 test("ReportContent consumes generated executive text in the visible reading path", async () => {
   const report = await readFile(new URL("../src/content/report/ReportContent.jsx", import.meta.url), "utf8");
   assert.match(report, /mif-executive-summary[\s\S]*generatedNarrative\(capstone, "executive_summary"\)/u);
@@ -111,6 +124,8 @@ test("ReportContent consumes generated executive text in the visible reading pat
   assert.match(report, /long_tail[\s\S]*gross_value[\s\S]*Valor bruto \(R\$\)/u);
   assert.match(report, /const fullChannels = channelIndex\.filter/u);
   assert.doesNotMatch(report, /O índice é alfabético/u);
+  assert.match(report, /Dossiês seguem a ordem comercial do índice para leitura e navegação/u);
+  assert.doesNotMatch(report, /não produzem avaliação consolidada, ordenação comercial/u);
   assert.match(report, /mif-roadrunners-capstone[\s\S]*generatedNarrative\(capstone, "capstone_markdown"\)/u);
   assert.ok(report.indexOf("mif-executive-summary") < report.indexOf("mif-event-overview"));
   assert.ok(report.indexOf("mif-decision-questions") < report.indexOf("mif-roadrunners-capstone"));

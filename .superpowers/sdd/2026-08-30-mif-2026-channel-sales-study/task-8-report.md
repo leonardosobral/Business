@@ -100,6 +100,13 @@ Both receipts identify event `72611`. No source rows, JSON bodies, direct identi
 - Fresh aggregate checks confirm ROADRUNNERS uses `Camiseta FINISHER Maratona de Floripa` at 114/1,876 as its leading additional, Sports Week uses `Gravação de medalha` at 69/949, PCD keeps the deterministic 2/71 leader and summarizes 71 aliases as three visible identities plus 68 more, and Corre Criciúma still shows both reviewed identities.
 - Final verification for this wave: 137/137 MIF Python tests, 13/13 focused MIF Node tests, canonical `verify`, fresh notebook execution (5/5 cells, zero errors, 32 queries), official Data App build, sanitized shareable, and 140 protected runtime files all passed.
 
+### Final plain-cell and copy-coherence QA
+
+- RED: the browser handoff exposed literal Markdown `**` around every compact warning because `executive_highlight` feeds a plain `DataTable` cell, not `RichNarrative`. Generated-output regressions failed on both the synthetic fixture and the 73 canonical compact rows.
+- GREEN: compact highlights now contain plain warning text while the wording and separate `Qualificação` column remain unchanged. All 73 final highlights are free of `**`.
+- Reader-facing similarity values now use pt-BR decimal commas in full dossiers and the ROADRUNNERS capstone while the underlying `similarity_0_1` fields remain numeric. The dossier introduction now states that commercial order supports reading/navigation and is not a combined indicator or automatic maintenance/cut decision.
+- Final verification: 137/137 MIF Python tests, 14/14 focused MIF Node tests, canonical `verify`, fresh notebook execution (5/5 cells, zero errors), official build, sanitized shareable, 140 protected runtime files, theme/protected diff, and `git diff --check` all passed.
+
 ## Final commercial headlines
 
 | Metric | Final value |
@@ -150,11 +157,11 @@ These are descriptive observations, not automatic scores, rankings, or keep/cut 
 - Theme: byte-identical to installed `codex-classic`; SHA-256 `d6885cb4e6cd5201935773f47148888bcd634e9cc13df9951803a7beacac25f2`.
 - Runtime SHA-256: `bce021364672c86cb27997c683af6351677752ff905dc8c7cdc96d06ece8dc00`.
 - Compiler SHA-256: `ec65601079c80bef7210f2c9760ff7f2db6adef28516ffff280d4c86f91d4078`.
-- Snapshot SHA-256 at build: `3e6e240fa6779b278e60b35a98be4805320a1fae4baf4f78afdffd95634789d2`.
-- Aggregate receipt SHA-256: `590fd27839b20bb2c7cf3a1e844cd570fa2b0de63e9d883ffe1cc49b1cb92e46`.
-- Source-notes SHA-256: `07d97ff72f3d9a3364d732a820a9a141a4e98f62068555c0a4305db42d6e2983`.
-- Normalized `dist/index.html` SHA-256: `eea39a306c31ecd8532ad266900f53558c97b9d91d8afac66b729a866cf050d4`.
-- Sanitized `dist/shareable.html` SHA-256: `30b3bda257143b2762a2e0a428512854ede325f0200b6a91b1a2c3220c1886ad`.
+- Snapshot SHA-256 at build: `30cdd3e7038f1563394c4cfbe7c335c9d1b0681a18d8a2de6e91d2d4af59c9bf`.
+- Aggregate receipt SHA-256: `c7c70d517a5f9d5e7275a40ce72c3c9314ac319d9849673aedccb3bc9e4d014f`.
+- Source-notes SHA-256: `36f338baeca5ce99de4c07bc7485c9bd54d4a91028b8134f713007ab19faafa3`.
+- Normalized `dist/index.html` SHA-256: `649ebcd7a121f539ea025039a3b6bc34b4c21e98755567ff7e079eb18ba75e36`.
+- Sanitized `dist/shareable.html` SHA-256: `738fe46715a144012b337fe17ff0453fce98d0cc6f7fc9a702b69127fb93e087`.
 - Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, Benefício, and ROADRUNNERS present; 83 generated full dossiers and 73 compact executive highlights; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
 - `git diff --check`: passed.
 - Desktop/mobile/print visual QA remains an explicit controller handoff; additionally inspect the value-ordered channel index/dossiers, the compact gross column, bounded PCD aliases, pt-BR narrative formatting, and the corrected additional-product highlights.

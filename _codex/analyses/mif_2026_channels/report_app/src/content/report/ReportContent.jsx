@@ -203,7 +203,7 @@ export function ReportContent() {
     </section>
 
     <section className="report-section">
-      <RichNarrative id="mif-dossiers-intro" label="Editar introdução aos dossiês" value="## Dossiês completos\n\nCada dossiê preserva os mesmos grãos, denominadores e limites. As leituras são descritivas e não produzem avaliação consolidada, ordenação comercial ou decisão automática." />
+      <RichNarrative id="mif-dossiers-intro" label="Editar introdução aos dossiês" value="## Dossiês completos\n\nCada dossiê preserva os mesmos grãos, denominadores e limites. Dossiês seguem a ordem comercial do índice para leitura e navegação; isso não constitui indicador combinado nem decisão automática de manutenção ou corte." />
       {fullChannels.map((channel) => <ChannelDossier key={channel.channel_name} channel={channel} rows={rows} reportPeriod={reportPeriod} copy={copy} />)}
     </section>
 
