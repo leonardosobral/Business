@@ -91,6 +91,10 @@ class NormalizeTests(unittest.TestCase):
     def test_date_accepts_iso_and_brazilian_values_only(self):
         """Ambiguous date text must not be converted into a participant birth date."""
         self.assertEqual(parse_date("2026-08-30"), date(2026, 8, 30))
+        self.assertEqual(
+            parse_date("2026-08-30T22:15:00-03:00"),
+            date(2026, 8, 30),
+        )
         self.assertIsNone(parse_date("08/30/2026"))
         self.assertIsNone(parse_date("2026-02-30"))
 

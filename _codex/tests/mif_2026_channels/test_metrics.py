@@ -291,6 +291,27 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(overview["organic_share_pct"], 0.0)
         self.assertIn("source_field_coverage", overview)
 
+    def test_weekly_sales_uses_order_date_when_registration_dates_are_absent(self):
+        """Missing participant dates must not erase the paid sales timeline."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        registrations.loc[:, "sale_date"] = None
+        registrations.loc[:, "sale_date_status"] = "nao_informado"
+        registrations.loc[:, "order_date"] = registrations[
+            "numero_pedido"
+        ].map(facts.orders.set_index("numero_pedido")["order_date"])
+
+        result = build_analysis(replace(facts, registrations=registrations))
+
+        self.assertEqual(
+            sum(
+                row["paid_registrations"]
+                for row in result.datasets["weekly_sales"]
+            ),
+            len(registrations),
+        )
+        self.assertTrue(result.datasets["temporal_overlap"])
+
     def test_products_keep_classification_and_only_explicit_revenue(self):
         """Combining included and add-on items or imputing kit revenue would fabricate value."""
         result = build_analysis(channel_metric_facts())

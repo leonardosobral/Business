@@ -1,4 +1,5 @@
 from dataclasses import replace
+from datetime import date
 from decimal import Decimal
 import json
 import unittest
@@ -180,6 +181,25 @@ class FactTests(unittest.TestCase):
         """Falling back to valorRepasse would fabricate the unpaid order's net transfer."""
         orders = build_order_fact(source_bundle()).set_index("numero_pedido")
         self.assertIsNone(orders.loc[1002, "net_transfer_value"])
+
+    def test_order_date_uses_the_export_contract_column(self):
+        """Ignoring data_pedido would discard the reliable fresh extraction timeline."""
+        bundle = source_bundle()
+        orders = bundle.orders.copy()
+        orders.loc[0, "data_pedido"] = "2026-06-01T10:00:00-03:00"
+        body = json.loads(orders.loc[0, "body"])
+        body["dataPedido"] = "formato interno não contratado"
+        orders.loc[0, "body"] = json.dumps(body, ensure_ascii=False)
+
+        fact = build_order_fact(replace(bundle, orders=orders)).set_index(
+            "numero_pedido"
+        )
+
+        self.assertEqual(fact.loc[1001, "order_date"], date(2026, 6, 1))
+        self.assertEqual(
+            fact.attrs["paid_field_status_counts"]["order_date"]["valido"],
+            1,
+        )
 
     def test_registration_fact_does_not_propagate_pii_or_questionnaire_answers(self):
         """Copying raw participant payloads would leak PII and free-text answers."""

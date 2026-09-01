@@ -508,14 +508,33 @@ def _geography_details(frame: pd.DataFrame) -> tuple[
     return scope, countries, states, cities
 
 
+def _effective_sale_dates(frame: pd.DataFrame) -> pd.Series:
+    """Prefer a valid registration sale date, falling back to its order date."""
+    dates = frame.get(
+        "sale_date",
+        pd.Series([None] * len(frame), index=frame.index, dtype=object),
+    ).copy()
+    statuses = frame.get("sale_date_status")
+    if statuses is not None:
+        dates = dates.where(statuses == "valido", None)
+    if "order_date" in frame:
+        dates = dates.where(dates.notna(), frame["order_date"])
+    return dates
+
+
 def _weekly_sales(frame: pd.DataFrame) -> list[dict[str, object]]:
     if frame.empty:
         return []
-    dated = frame.loc[_dimension_series(frame, "sale_date") != "Inválido"].copy()
-    dated = dated.loc[dated["sale_date"].notna()]
+    dated = frame.copy()
+    dated["analysis_sale_date"] = _effective_sale_dates(dated)
+    dated = dated.loc[dated["analysis_sale_date"].notna()]
     if dated.empty:
         return []
-    dated["week_start"] = pd.to_datetime(dated["sale_date"]).dt.to_period("W-SUN").dt.start_time
+    dated["week_start"] = (
+        pd.to_datetime(dated["analysis_sale_date"])
+        .dt.to_period("W-SUN")
+        .dt.start_time
+    )
     rows = []
     for week, group in dated.groupby("week_start", sort=True):
         rows.append(
@@ -861,11 +880,11 @@ def _distribution_for_overlap(
         values = _dimension_series(frame, "lot")
         valid = [str(value) for value in values if value not in {"Não informado", "Inválido"}]
     elif dimension == "temporal":
-        values = _dimension_series(frame, "sale_date")
+        values = _effective_sale_dates(frame)
         valid = [
             pd.Timestamp(value).to_period("W-SUN").start_time.date().isoformat()
             for value in values
-            if value not in {"Não informado", "Inválido"}
+            if pd.notna(value)
         ]
     elif dimension == "age":
         valid = [

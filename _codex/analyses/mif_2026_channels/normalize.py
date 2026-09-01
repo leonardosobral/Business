@@ -111,6 +111,15 @@ def parse_date(value: object) -> date | None:
             return datetime.strptime(text, pattern).date()
         except ValueError:
             continue
+    if re.fullmatch(
+        r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}"
+        r"(?::\d{2}(?:\.\d{1,6})?)?(?:Z|[+-]\d{2}:\d{2})?",
+        text,
+    ):
+        try:
+            return datetime.fromisoformat(text.replace("Z", "+00:00")).date()
+        except ValueError:
+            return None
     return None
 
 

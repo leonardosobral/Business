@@ -21,6 +21,7 @@ from _codex.analyses.mif_2026_channels.pipeline import (
     sanitize_shareable_html,
     write_json,
 )
+from _codex.analyses.mif_2026_channels.run import verify_outputs
 from _codex.tests.mif_2026_channels.fixtures import (
     analysis_result,
     orders_rows,
@@ -106,6 +107,36 @@ class ReportSnapshotTests(unittest.TestCase):
         self.assertNotIn("numero_pedido", text)
         self.assertNotIn("numero_inscricao", text)
         self.assertNotIn("example.com", text)
+
+    def test_ready_snapshot_uses_final_provenance_without_fixture_claims(self):
+        """A fresh final snapshot must not retain development-only provenance."""
+        snapshot = build_report_snapshot(
+            analysis_result(),
+            "2026-08-31T01:00:00-03:00",
+            status="ready",
+        )
+
+        self.assertEqual(snapshot["status"], "ready")
+        self.assertIn(
+            "fontes frescas finais",
+            snapshot["report"]["qualification"].casefold(),
+        )
+        text = json.dumps(snapshot, ensure_ascii=False).casefold()
+        for forbidden in (
+            "fixture",
+            "base sintética",
+            "task 7",
+            "task 8",
+            "serve apenas para provar",
+        ):
+            with self.subTest(forbidden=forbidden):
+                self.assertNotIn(forbidden, text)
+        for query in snapshot["queries"].values():
+            source = query["source"]
+            self.assertIn("fontes frescas finais", source["label"].casefold())
+            self.assertTrue(
+                any("extrações frescas" in step.casefold() for step in source["evidenceFlow"])
+            )
 
 
 class PipelineTests(unittest.TestCase):
@@ -220,6 +251,97 @@ class PipelineTests(unittest.TestCase):
                 json.loads(paths["report_data"].read_text(encoding="utf-8"))["status"],
                 "fixture",
             )
+
+    def test_fresh_pipeline_is_ready_verifiable_and_final_qualified(self):
+        """Default fresh analysis must produce the final ready contract end to end."""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            channel_map, product_map = write_reviewed_mappings(root)
+            paths = run_analysis(
+                orders,
+                participants,
+                channel_map,
+                product_map,
+                root / "report_app",
+            )
+
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
+            self.assertEqual(snapshot["status"], "ready")
+            self.assertEqual(len(snapshot["queries"]), 31)
+            self.assertNotIn("fixture_status", notes)
+            self.assertIn(
+                "fontes frescas finais",
+                notes["source_qualification"].casefold(),
+            )
+            self.assertEqual(
+                {source["extracted_at"] for source in notes["sources"]},
+                {"2026-08-30T22:00:00-03:00"},
+            )
+            combined = "\n".join(
+                path.read_text(encoding="utf-8") for path in paths.values()
+            ).casefold()
+            for forbidden in (
+                "fixture",
+                "base sintética",
+                "task 7",
+                "task 8",
+                "serve apenas para provar",
+            ):
+                with self.subTest(forbidden=forbidden):
+                    self.assertNotIn(forbidden, combined)
+            verify_outputs(
+                paths["report_data"],
+                paths["aggregates"],
+                paths["reconciliation"],
+                paths["source_notes"],
+            )
+
+    def test_ready_report_copy_contains_final_evidence_and_limitations_only(self):
+        """The authored ready view must render final copy, not hidden fixture claims."""
+        module_path = (
+            Path(__file__).parents[2]
+            / "analyses/mif_2026_channels/report_app/src/content/report/report-copy.js"
+        )
+        script = f"""
+          import {{ reportCopy }} from {json.dumps(module_path.as_uri())};
+          const copy = reportCopy('ready', {{paid_orders: 14027, paid_registrations: 15713}});
+          console.log(JSON.stringify({{...copy, channel: copy.channelSummary({{
+            channel_name: 'Sports Week', paid_registrations: 949,
+            touched_paid_orders: 900, gross_value: '100.00', registration_ticket: '10.00'
+          }})}}));
+        """
+        completed = subprocess.run(
+            ["node", "--input-type=module", "-e", script],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        copy = json.loads(completed.stdout)
+        text = json.dumps(copy, ensure_ascii=False).casefold()
+        for forbidden in (
+            "fixture",
+            "base sintética",
+            "task 8 fará",
+            "serve apenas para provar",
+        ):
+            with self.subTest(forbidden=forbidden):
+                self.assertNotIn(forbidden, text)
+        for required in (
+            "pedidos pagos únicos",
+            "inscrições pagas",
+            "cobertura",
+            "patrocínio",
+            "expo",
+            "permutas",
+            "cortesias",
+            "não são mensurados",
+        ):
+            with self.subTest(required=required):
+                self.assertIn(required, text)
 
 
 class CliTests(unittest.TestCase):

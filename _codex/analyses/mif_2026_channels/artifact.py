@@ -19,10 +19,11 @@ from .source import ALLOW_STALE_EXTRACTION_MARKER
 
 REPORT_APP_ID = "4551d11e-c315-4402-be71-218fa11e3148"
 REPORT_TITLE = "Maratona de Floripa 2026 — estudo de vendas e canais"
+SNAPSHOT_STATUSES = frozenset({"fixture", "ready"})
 
 _ORDER_ONLY_QUERIES = frozenset({"payment_mix", "device_mix"})
 _QUERY_DEFINITIONS = {
-    "weekly_sales": ("Inscrições pagas por semana", "Contagem de inscrições vinculadas a pedidos pagos, agrupada pela semana da venda."),
+    "weekly_sales": ("Inscrições pagas por semana", "Contagem de inscrições vinculadas a pedidos pagos, agrupada pela data de venda da inscrição quando válida ou, na ausência dela, pela data do pedido."),
     "lot_performance": ("Inscrições e valores por lote", "Contagem de inscrições vinculadas a pedidos pagos e valores de pedido alocados, agrupados por lote."),
     "modality_mix": ("Inscrições pagas por modalidade", "Contagem de inscrições vinculadas a pedidos pagos, agrupada por modalidade."),
     "country_distribution": ("Inscrições pagas por país", "Contagem de inscrições vinculadas a pedidos pagos, com denominador explícito, agrupada por país."),
@@ -41,13 +42,13 @@ _QUERY_DEFINITIONS = {
     "channel_modality_mix": ("Modalidade por canal", "Contagem de inscrições pagas por canal e modalidade, com denominador do canal."),
     "channel_state_mix": ("UF por canal", "Contagem de inscrições pagas por canal e UF, com cobertura e denominador do canal."),
     "channel_lot_mix": ("Lote por canal", "Contagem de inscrições pagas e valores de pedido alocados por canal e lote."),
-    "channel_weekly_sales": ("Semana por canal", "Contagem de inscrições pagas e valores de pedido alocados por canal e semana da venda."),
+    "channel_weekly_sales": ("Semana por canal", "Contagem de inscrições pagas e valores de pedido alocados por canal, usando a data de venda da inscrição quando válida ou, na ausência dela, a data do pedido."),
     "channel_product_mix": ("Produtos por canal", "Contagem de inscrições pagas com produto mapeado por canal; receita inclui somente valores explícitos."),
     "channel_profile_coverage": ("Cobertura de perfil por canal", "Contagens válidas e ausentes de perfil na base de inscrições pagas de cada canal."),
     "geography_overlap": ("Sobreposição geográfica", "Semelhança descritiva entre distribuições geográficas de inscrições pagas, com cobertura separada por canal."),
     "modality_overlap": ("Sobreposição de modalidade", "Semelhança descritiva entre distribuições de modalidade de inscrições pagas, com bases separadas."),
     "lot_overlap": ("Sobreposição de lote", "Semelhança descritiva entre distribuições de lote de inscrições pagas, com bases separadas."),
-    "temporal_overlap": ("Sobreposição temporal", "Semelhança descritiva entre distribuições semanais de inscrições pagas, com bases separadas."),
+    "temporal_overlap": ("Sobreposição temporal", "Semelhança descritiva entre distribuições semanais de inscrições pagas, usando data de venda válida ou data do pedido como fallback, com bases separadas."),
     "profile_overlap": ("Sobreposição de perfil", "Semelhança descritiva por dimensão de perfil entre inscrições pagas, mantendo cobertura separada."),
     "product_overlap": ("Sobreposição de produtos", "Semelhança descritiva entre adoção de produtos na base paga coberta de cada canal."),
     "long_tail": ("Canais de base reduzida", "Contagem de inscrições pagas e valores de pedido alocados para canais abaixo do limite de dossiê completo."),
@@ -152,9 +153,14 @@ def _aggregate_sql(tables: list[str]) -> str:
 
 
 def build_source_metadata(
-    query_id: str, generated_at: str, component_ids: list[str]
+    query_id: str,
+    generated_at: str,
+    component_ids: list[str],
+    status: str = "fixture",
 ) -> dict[str, Any]:
     """Build the exact query provenance contract used by analyze and verify."""
+    if status not in SNAPSHOT_STATUSES:
+        raise ValueError(f"unsupported report snapshot status: {status}")
     tables = _tables(query_id)
     if query_id == "event_overview":
         orders = ["public.tb_ticketsports_pedidos"]
@@ -201,27 +207,40 @@ def build_source_metadata(
                 "sourceLineage": [{"tables": tables}],
             }
         ]
-    filters = [
-        f"cod_evento = {EVENT_CODE}",
-        "status normalizado = pago",
-        "Task 7 usa somente fixture sintética de desenvolvimento",
-    ]
+    filters = [f"cod_evento = {EVENT_CODE}", "status normalizado = pago"]
+    if status == "fixture":
+        filters.append("Task 7 usa somente fixture sintética de desenvolvimento")
+    else:
+        filters.append(
+            "extrações frescas finais validadas após o encerramento das inscrições"
+        )
     if generated_at == ALLOW_STALE_EXTRACTION_MARKER:
+        if status != "fixture":
+            raise ValueError("ready snapshot cannot use allow-stale freshness marker")
         filters.append(
             "freshness não informada; marcador permitido somente em fixture --allow-stale"
         )
+    label = (
+        "Fixture sintética revisada: agregados de inscrições pagas "
+        f"para {query_id}"
+        if status == "fixture"
+        else "Fontes frescas finais: agregados de inscrições pagas "
+        f"para {query_id}"
+    )
+    first_evidence_step = (
+        "Exportações sintéticas locais filtradas pelo evento 72611"
+        if status == "fixture"
+        else "Extrações frescas finais filtradas pelo evento 72611"
+    )
     return {
-        "label": (
-            "Fixture sintética revisada: agregados de inscrições pagas "
-            f"para {query_id}"
-        ),
+        "label": label,
         "sql": _aggregate_sql(tables),
         "tables": tables,
         "filters": filters,
         "freshness": generated_at,
         "metricDefinitions": definitions,
         "evidenceFlow": [
-            "Exportações sintéticas locais filtradas pelo evento 72611",
+            first_evidence_step,
             "Fatos reconciliados e mapeamentos explicitamente revisados",
             "Agregação, supressão de células pequenas e varredura de anonimidade",
             f"Query revisada {query_id} no snapshot canônico",
@@ -230,18 +249,41 @@ def build_source_metadata(
 
 
 def _source(
-    query_id: str, generated_at: str, result: AnalysisResult
+    query_id: str,
+    generated_at: str,
+    result: AnalysisResult,
+    status: str,
 ) -> dict[str, Any]:
     return build_source_metadata(
         query_id,
         generated_at,
         _component_ids(query_id, result),
+        status=status,
     )
+
+
+def report_qualification(status: str) -> dict[str, str]:
+    """Return the exact top-level qualification for a fixture or final snapshot."""
+    if status == "fixture":
+        return {
+            "fixtureQualification": (
+                "Fixture sintética de desenvolvimento; não representa o resultado final de 2026."
+            )
+        }
+    if status == "ready":
+        return {
+            "qualification": (
+                "Fontes frescas finais após o encerramento das inscrições; "
+                "mapeamentos completos revisados e resultados anônimos."
+            )
+        }
+    raise ValueError(f"unsupported report snapshot status: {status}")
 
 
 def build_report_snapshot(
     result: AnalysisResult,
     generated_at: str,
+    status: str = "fixture",
 ) -> dict[str, Any]:
     """Build the sole canonical ``src/data.json`` report snapshot."""
     if set(result.datasets) != set(DATASET_IDS):
@@ -249,7 +291,7 @@ def build_report_snapshot(
     queries = {
         query_id: {
             "rows": deepcopy(result.datasets[query_id]),
-            "source": _source(query_id, generated_at, result),
+            "source": _source(query_id, generated_at, result, status),
         }
         for query_id in DATASET_IDS
     }
@@ -258,13 +300,9 @@ def build_report_snapshot(
         "title": REPORT_TITLE,
         "surface": "report",
         "generatedAt": generated_at,
-        "status": "fixture",
+        "status": status,
         "filters": [],
-        "report": {
-            "fixtureQualification": (
-                "Fixture sintética de desenvolvimento; não representa o resultado final de 2026."
-            )
-        },
+        "report": report_qualification(status),
         "queries": queries,
         "componentCatalog": report_component_catalog(result),
         "packageInfo": {

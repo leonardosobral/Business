@@ -1,7 +1,1003 @@
 coupon_title_key,coupon_code_key,coupon_title_example,coupon_code_example,paid_registrations,channel_name,channel_type,alias_reason,reviewed
-CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,1,Corre Criciúma,assessoria,"mesmo parceiro, código principal",true
-CORRECRICIUMA,CORRECRICIUMA 100,CORRECRICIUMA,CORRECRICIUMA_100,1,Corre Criciúma,assessoria,"mesmo parceiro, ação limitada",true
-SPORTS WEEK,SPORTS WEEK,Sports Week,SPORTS-WEEK,1,Sports Week,evento_acao,ação de evento revisada,true
-PCD,PCD,PCD,PCD,1,PCD,politica,política de elegibilidade revisada,true
-BENEFICIO,BENEFICIO,Benefício,BENEFICIO,1,Benefício,beneficio,benefício revisado,true
-,,,,1,Orgânico / sem cupom,organico,sem cupom,true
+12LIKEAPRO 100,12LIKEAPRO 100,12LIKEAPRO_100,12LIKEAPRO_100,1,LP Like a Pro,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+2FSPORTS,2FSPORTS,2FSPORTS,2FSPORTS,30,2FSPORTS,comunidade,identidade exata de título e código revisada,True
+2FSPORTS 100,2FSPORTS 100,2FSPORTS_100,2FSPORTS_100,1,2FSPORTS,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+321GOMFLORIPA2026,321GOMFLORIPA2026,321GOMFloripa2026,321GOMFloripa2026,36,321GOMFloripa2026,outro,identidade exata de título e código revisada,True
+321GOMFLORIPA2026 100,321GOMFLORIPA2026 100,321GOMFloripa2026_100,321GOMFloripa2026_100,1,321GOMFloripa2026,outro,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+ANAGODOY10,ANAGODOY10,ANAGODOY10,ANAGODOY10,2,ANAGODOY10,outro,identidade exata de título e código revisada,True
+ANDRE CORRENDO INFLUENCIADOR SEM CASHBACK,CORRENDO10,André Correndo (Influenciador sem cashback),CORRENDO10,2,André Correndo,influenciador,identidade exata de título e código revisada,True
+AREAFITNESS2026,AREAFITNESS2026,AREAFITNESS2026,AREAFITNESS2026,1,AREAFITNESS2026,outro,identidade exata de título e código revisada,True
+ASSESSORIA,SU100,Assessoria,SU100,1,Assessoria,assessoria,identidade exata de título e código revisada,True
+ASSESSORIA ESPORTIVA CORRER BEM,CORRERBEM2025,Assessoria Esportiva Correr Bem,correrbem2025,15,Assessoria Esportiva Correr Bem,assessoria,identidade exata de título e código revisada,True
+ASSESSORIATH2026,ASSESSORIATH2026,Assessoriath2026,Assessoriath2026,9,Assessoriath2026,assessoria,identidade exata de título e código revisada,True
+ASSUMCAO TIME,ASSUMCAOFLORIPA2026,ASSUMÇÃO TIME,ASSUMCAOFLORIPA2026,14,ASSUMÇÃO TIME,comunidade,identidade exata de título e código revisada,True
+ATC SC 20 OFF,ATCSC20,ATC SC 20% OFF,ATCSC20,179,ATC SC 20% OFF,outro,identidade exata de título e código revisada,True
+AVIVARUNNING,AVIVARUNNING,AVIVARUNNING,AVIVARUNNING,20,AVIVARUNNING,comunidade,identidade exata de título e código revisada,True
+BENEFICIO 50,1SZHQ9LL,Benefício 50%,1SZHQ9LL,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,3SS8HZRW,Benefício 50%,3SS8HZRW,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,47SUJVSX,Benefício 50%,47SUJVSX,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,4RVFEJKG,Benefício 50%,4RVFEJKG,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,4TLYAQX8,Benefício 50%,4TLYAQX8,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,6RN67ARS,Benefício 50%,6RN67ARS,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,9QJ5VKQN,Benefício 50%,9QJ5VKQN,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,CB97BQUT,Benefício 50%,CB97BQUT,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,E9CF89ND,Benefício 50%,E9CF89ND,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,EF84USK6,Benefício 50%,EF84USK6,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,FT8RVNL7,Benefício 50%,FT8RVNL7,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,GF2UMIRH,Benefício 50%,GF2UMIRH,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,HU2HNESI,Benefício 50%,HU2HNESI,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,JEXTBTQD,Benefício 50%,JEXTBTQD,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,JY1E7GIW,Benefício 50%,JY1E7GIW,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,K1RX3NVN,Benefício 50%,K1RX3NVN,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,LYT5Y7P7,Benefício 50%,LYT5Y7P7,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,MXWDVRHR,Benefício 50%,MXWDVRHR,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,NIQGMLM2,Benefício 50%,NIQGMLM2,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,PJI7ECTD,Benefício 50%,PJI7ECTD,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,S2HRYAKR,Benefício 50%,S2HRYAKR,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,T58AUHXI,Benefício 50%,T58AUHXI,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,TIE64MS8,Benefício 50%,TIE64MS8,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,UMD3LPIL,Benefício 50%,UMD3LPIL,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,VP5LHWVD,Benefício 50%,VP5LHWVD,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,W448JSWE,Benefício 50%,W448JSWE,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,WM7TEFPW,Benefício 50%,WM7TEFPW,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,XL92BZIG,Benefício 50%,XL92BZIG,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,Y7362UMR,Benefício 50%,Y7362UMR,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BENEFICIO 50,YN1J77U8,Benefício 50%,YN1J77U8,1,Benefício,beneficio,códigos individuais consolidados no benefício pelo título explícito do cupom,True
+BORA,BORA,BORA,BORA,13,BORA,outro,identidade exata de título e código revisada,True
+BOTUESPORTES,BOTUESPORTES2026,BOTUESPORTES,BOTUESPORTES2026,51,BOTUESPORTES,comunidade,identidade exata de título e código revisada,True
+BOTUESPORTES2026 100,BOTUESPORTES2026 100,BOTUESPORTES2026_100,BOTUESPORTES2026_100,1,BOTUESPORTES,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+BRUNA VILAVERDE INFLUENCIADORA SEM CASHBACK,VEGELOVER,Bruna Vilaverde (Influenciadora - Sem Cashback),VEGELOVER,5,Bruna Vilaverde,influenciador,identidade exata de título e código revisada,True
+BRUNINHO INFLU X 10 CASHBACK,BORACORRER,BRUNINHO (Influ x 10% cashback),BORACORRER,61,BRUNINHO,influenciador,identidade exata de título e código revisada,True
+BRUNO FONTES PARCEIRO,BRUNOFONTES,Bruno Fontes (Parceiro),BRUNOFONTES,7,Bruno Fontes,parceiro,identidade exata de título e código revisada,True
+BRUNOBEIRAOASSESSORIA,BRUNOBEIRAOASSESSORIA,BRUNOBEIRAOASSESSORIA,BRUNOBEIRAOASSESSORIA,4,BRUNOBEIRAOASSESSORIA,assessoria,identidade exata de título e código revisada,True
+CANALCORREDORES INFLU X ESPACO EXPO,CC10,CANALCORREDORES (Influ x espaço Expo),CC10,144,CANALCORREDORES,influenciador,identidade exata de título e código revisada,True
+CDO,CDO,CDO,CDO,14,CDO,outro,identidade exata de título e código revisada,True
+CHINTHIA ANDRUCHAK INFLU X 10 CASHBACK,CINTHIA,CHINTHIA ANDRUCHAK (Influ x 10% cashback),CINTHIA,150,CHINTHIA ANDRUCHAK,influenciador,identidade exata de título e código revisada,True
+CIARUNNINGCWB,CIARUNNINGCWB,CiaRunningCWB,CiaRunningCWB,14,CiaRunningCWB,comunidade,identidade exata de título e código revisada,True
+CIRCLERUNNING,CIRCLERUNNING,CIRCLERUNNING,CIRCLERUNNING,16,CIRCLERUNNING,comunidade,identidade exata de título e código revisada,True
+COMCAP,56N85LWK,COMCAP,56N85LWK,1,COMCAP,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+COMCAP,IVUMDL3L,COMCAP,IVUMDL3L,1,COMCAP,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORPORALES RUNNERS,CORPORALES12,CORPORALES RUNNERS,CORPORALES12,35,Corporales Runners,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORPORALES12 100,CORPORALES12 100,CORPORALES12_100,CORPORALES12_100,1,Corporales Runners,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,CORRECRICIUMA,22,Corre Criciúma,assessoria,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORRECRICIUMA,CORRECRICIUMA 100,CORRECRICIUMA,CORRECRICIUMA_100,1,Corre Criciúma,assessoria,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORREDORESRP,CORREDORESRP,CORREDORESRP,CORREDORESRP,3,CORREDORESRP,comunidade,identidade exata de título e código revisada,True
+CORREDORESUY2026,CORREDORESUY2026,Corredoresuy2026,Corredoresuy2026,32,Corredores UY,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORREDORESUY2026 100,CORREDORESUY2026 100,Corredoresuy2026_100,Corredoresuy2026_100,1,Corredores UY,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+CORRER ME CONECTA,CORRERMECONECTA2025,Correr Me Conecta,Corrermeconecta2025,4,Correr Me Conecta,comunidade,identidade exata de título e código revisada,True
+CORRIDANAREDE INFLU X CORTESIAS,CORRIDANAREDE,CORRIDANAREDE (Influ x cortesias),CORRIDANAREDE,15,CORRIDANAREDE,influenciador,identidade exata de título e código revisada,True
+CORRIDANOAR INFLU X 10 CASHBACK,CORRIDANOAR,CORRIDANOAR (Influ x 10% cashback),CORRIDANOAR,12,CORRIDANOAR,influenciador,identidade exata de título e código revisada,True
+CORRIDAS BR 10 CASHBACK,CORRIDASBR,Corridas BR (10% + Cashback),CORRIDASBR,35,Corridas BR,comunidade,identidade exata de título e código revisada,True
+CORRIDASCHAPECO 10,CORRIDASCHAPECO,CORRIDASCHAPECO (10%),CORRIDASCHAPECO,7,CORRIDASCHAPECO,comunidade,identidade exata de título e código revisada,True
+CORRIDASFLORIPA INFLU X CORTESIAS,CORRIDASFLORIPA,CORRIDASFLORIPA (Influ x cortesias),CORRIDASFLORIPA,372,CORRIDASFLORIPA,influenciador,identidade exata de título e código revisada,True
+CORTESIA KIDS,2NI7VDEE,CORTESIA KIDS,2NI7VDEE,1,CORTESIA KIDS,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA KIDS,5989BIIJ,CORTESIA KIDS,5989BIIJ,1,CORTESIA KIDS,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA KIDS,ECPL4DKF,CORTESIA KIDS,ECPL4DKF,1,CORTESIA KIDS,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA KIDS,UKUKVAIU,CORTESIA KIDS,UKUKVAIU,1,CORTESIA KIDS,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA PCD,1DQKY1FL,CORTESIA PCD,1DQKY1FL,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CORTESIA STC,1LEUSJH6,CORTESIA STC,1LEUSJH6,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,21EGUFH7,CORTESIA STC,21EGUFH7,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,2KH3P3AQ,CORTESIA STC,2KH3P3AQ,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,45DECH9K,CORTESIA STC,45DECH9K,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,4KATHUG2,CORTESIA STC,4KATHUG2,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,657558EW,CORTESIA STC,657558EW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,749C2S8F,CORTESIA STC,749C2S8F,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,7J6R74FW,CORTESIA STC,7J6R74FW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,86ZVXZK7,CORTESIA STC,86ZVXZK7,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,9433UIER,CORTESIA STC,9433UIER,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,9N5PP67A,CORTESIA STC,9N5PP67A,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,9QW7KDI2,CORTESIA STC,9QW7KDI2,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,A35BR37B,CORTESIA STC,A35BR37B,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,BPYFHXCL,CORTESIA STC,BPYFHXCL,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,C9UR5BBF,CORTESIA STC,C9UR5BBF,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,CM1MEG65,CORTESIA STC,CM1MEG65,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,DPS6ANIW,CORTESIA STC,DPS6ANIW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,E9NHX3GR,CORTESIA STC,E9NHX3GR,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,G8QPULAB,CORTESIA STC,G8QPULAB,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,GNM4YYHS,CORTESIA STC,GNM4YYHS,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,GUJTKGFL,CORTESIA STC,GUJTKGFL,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,H8JFLCFM,CORTESIA STC,H8JFLCFM,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,HSM2H185,CORTESIA STC,HSM2H185,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,IUDJD8KW,CORTESIA STC,IUDJD8KW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,JCID5E7Z,CORTESIA STC,JCID5E7Z,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,JSFSAREG,CORTESIA STC,JSFSAREG,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,LDC4X6CB,CORTESIA STC,LDC4X6CB,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,LT9H2HJS,CORTESIA STC,LT9H2HJS,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,MBEBTP6V,CORTESIA STC,MBEBTP6V,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,MKZBFVMW,CORTESIA STC,MKZBFVMW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,MRBQY2DC,CORTESIA STC,MRBQY2DC,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,ND5UQWIM,CORTESIA STC,ND5UQWIM,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,NX8FKJB6,CORTESIA STC,NX8FKJB6,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,PC82LGC6,CORTESIA STC,PC82LGC6,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,QX26DBGG,CORTESIA STC,QX26DBGG,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,RW4D9UA1,CORTESIA STC,RW4D9UA1,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,TGZQX99V,CORTESIA STC,TGZQX99V,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,TIR8TGKM,CORTESIA STC,TIR8TGKM,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,TWX42LGC,CORTESIA STC,TWX42LGC,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,UVZCY59W,CORTESIA STC,UVZCY59W,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,W2PSDED1,CORTESIA STC,W2PSDED1,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,WFVNLJ8Q,CORTESIA STC,WFVNLJ8Q,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,WHM7HRKH,CORTESIA STC,WHM7HRKH,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,XZSZ9X6K,CORTESIA STC,XZSZ9X6K,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,Y2II55IC,CORTESIA STC,Y2II55IC,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,Z1KQ2PCW,CORTESIA STC,Z1KQ2PCW,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA STC,ZGH571JD,CORTESIA STC,ZGH571JD,1,CORTESIA STC,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA TREINOS,575W7ADU,Cortesia Treinos,575W7ADU,1,Cortesia Treinos,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA TREINOS,SHYHYB7T,Cortesia Treinos,SHYHYB7T,1,Cortesia Treinos,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIA TREINOS,YKL4YE3D,Cortesia Treinos,YKL4YE3D,1,Cortesia Treinos,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,33Z6F88B,Cortesias (Lote Final),33Z6F88B,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,6VJPKCGR,Cortesias (Lote Final),6VJPKCGR,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,CTALYWFH,Cortesias (Lote Final),CTALYWFH,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,FB96IV7V,Cortesias (Lote Final),FB96IV7V,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,FR6KN7EC,Cortesias (Lote Final),FR6KN7EC,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,IJQ4TBMR,Cortesias (Lote Final),IJQ4TBMR,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,LVU7NAAW,Cortesias (Lote Final),LVU7NAAW,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,PHH17WKH,Cortesias (Lote Final),PHH17WKH,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,S1FKRUDW,Cortesias (Lote Final),S1FKRUDW,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,TYITMD6G,Cortesias (Lote Final),TYITMD6G,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CORTESIAS LOTE FINAL,ZJ1LVAGX,Cortesias (Lote Final),ZJ1LVAGX,1,Cortesias,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+CR RUNNERS BRASIL,ASSESSORIACRRUNNERSBRASIL2025,CR RUNNERS BRASIL,AssessoriaCRRUNNERSBRASIL2025,13,CR RUNNERS BRASIL,comunidade,identidade exata de título e código revisada,True
+CRK2025,CRK2025,CRK2025,CRK2025,8,CRK2025,outro,identidade exata de título e código revisada,True
+CUPOM KIDS INGRID,INGRID KIDS,Cupom Kids - Ingrid,INGRID-KIDS,2,Cupom Kids - Ingrid,outro,identidade exata de título e código revisada,True
+CUPOM PCD,185GQR9J,CUPOM PCD,185GQR9J,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,1E26C97C,CUPOM PCD,1E26C97C,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,1S82KE23,CUPOM PCD,1S82KE23,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,2KDKVFXT,CUPOM PCD,2KDKVFXT,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,35AWJUWM,CUPOM PCD,35AWJUWM,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,3C4D9T1W,CUPOM PCD,3C4D9T1W,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,3S1SD68D,CUPOM PCD,3S1SD68D,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,4R41AP1X,CUPOM PCD,4R41AP1X,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,5DX41J68,CUPOM PCD,5DX41J68,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,5J9JKQWN,CUPOM PCD,5J9JKQWN,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,5YR8SEBI,CUPOM PCD,5YR8SEBI,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,6BZCX4ZS,CUPOM PCD,6BZCX4ZS,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,6GW2JLXK,CUPOM PCD,6GW2JLXK,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,6XTGPY53,CUPOM PCD,6XTGPY53,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,7JMJFT9C,CUPOM PCD,7JMJFT9C,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,7VWNKHXL,CUPOM PCD,7VWNKHXL,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,8HQSCD3W,CUPOM PCD,8HQSCD3W,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,8N27VITC,CUPOM PCD,8N27VITC,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,9FSZ8WWG,CUPOM PCD,9FSZ8WWG,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,A2L4ZR2R,CUPOM PCD,A2L4ZR2R,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,AIII5498,CUPOM PCD,AIII5498,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,BAP2F55Y,CUPOM PCD,BAP2F55Y,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,BMX6KTT8,CUPOM PCD,BMX6KTT8,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,BWI56Z99,CUPOM PCD,BWI56Z99,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,C9R9BNXI,CUPOM PCD,C9R9BNXI,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,E9KZ4F4T,CUPOM PCD,E9KZ4F4T,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,EFGPQX2M,CUPOM PCD,EFGPQX2M,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,ETMKY3WC,CUPOM PCD,ETMKY3WC,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,EVE4UA94,CUPOM PCD,EVE4UA94,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,FM5W8MB8,CUPOM PCD,FM5W8MB8,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,GFAFIN7Y,CUPOM PCD,GFAFIN7Y,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,H8FYTP3P,CUPOM PCD,H8FYTP3P,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,HSIJNDV8,CUPOM PCD,HSIJNDV8,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,I63GSL3L,CUPOM PCD,I63GSL3L,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,ICFVBRU3,CUPOM PCD,ICFVBRU3,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,IJ9C1QYB,CUPOM PCD,IJ9C1QYB,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,IL1VWXA3,CUPOM PCD,IL1VWXA3,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,K46PN5W6,CUPOM PCD,K46PN5W6,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,K7W7JC9X,CUPOM PCD,K7W7JC9X,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,KD8L4IZD,CUPOM PCD,KD8L4IZD,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,KK33TH4M,CUPOM PCD,KK33TH4M,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,KQZSFZ2G,CUPOM PCD,KQZSFZ2G,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,L5YFGV3H,CUPOM PCD,L5YFGV3H,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,LI5BQ1X7,CUPOM PCD,LI5BQ1X7,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,LY2QUD5N,CUPOM PCD,LY2QUD5N,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,MX5XRWY8,CUPOM PCD,MX5XRWY8,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,N5S69M8T,CUPOM PCD,N5S69M8T,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,NB4KSTY9,CUPOM PCD,NB4KSTY9,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,NJY2HS3I,CUPOM PCD,NJY2HS3I,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,NPVR4A1B,CUPOM PCD,NPVR4A1B,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,PXXNJN4J,CUPOM PCD,PXXNJN4J,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,Q4UD662C,CUPOM PCD,Q4UD662C,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,QJRSAI9U,CUPOM PCD,QJRSAI9U,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,QQNHW17M,CUPOM PCD,QQNHW17M,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,R2XL2QVW,CUPOM PCD,R2XL2QVW,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,R4N4XX7N,CUPOM PCD,R4N4XX7N,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,RNRPTKZ7,CUPOM PCD,RNRPTKZ7,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,SAKTJF5H,CUPOM PCD,SAKTJF5H,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,T3QCUG18,CUPOM PCD,T3QCUG18,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,UGQYWC29,CUPOM PCD,UGQYWC29,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,UMMNHVZ3,CUPOM PCD,UMMNHVZ3,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,VSID4DWV,CUPOM PCD,VSID4DWV,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,W7IZ69XW,CUPOM PCD,W7IZ69XW,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,WVAVZK9M,CUPOM PCD,WVAVZK9M,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,XLHM75YX,CUPOM PCD,XLHM75YX,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,XZNIGATM,CUPOM PCD,XZNIGATM,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,Y2F1CH6E,CUPOM PCD,Y2F1CH6E,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,Z6EYUJWS,CUPOM PCD,Z6EYUJWS,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,ZLBDZW49,CUPOM PCD,ZLBDZW49,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PCD,ZT6UPV8I,CUPOM PCD,ZT6UPV8I,1,PCD,politica,códigos individuais consolidados na política PCD pelo título explícito do cupom,True
+CUPOM PRE VENDA MIF 2026 MIPOA E RIO,FLORIPA2026,CUPOM PRÉ VENDA MIF 2026 - MIPOA E RIO,FLORIPA2026,12,CUPOM PRÉ VENDA MIF 2026 - MIPOA E RIO,campanha,identidade exata de título e código revisada,True
+DANILO100,14FEZDZA,DANILO100,14FEZDZA,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,166WVKC2,DANILO100,166WVKC2,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,1GFTTUSQ,DANILO100,1GFTTUSQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,1JCS4Q7R,DANILO100,1JCS4Q7R,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,1NAAITWZ,DANILO100,1NAAITWZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,1Q9HQ95K,DANILO100,1Q9HQ95K,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,1ZIENHK9,DANILO100,1ZIENHK9,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,2485R55L,DANILO100,2485R55L,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,26F4AZI3,DANILO100,26F4AZI3,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,286L67UU,DANILO100,286L67UU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,2HE11A1B,DANILO100,2HE11A1B,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,2LCIFCQJ,DANILO100,2LCIFCQJ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,2NBQMSX5,DANILO100,2NBQMSX5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,31C5G8QK,DANILO100,31C5G8QK,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,3A5TDM3F,DANILO100,3A5TDM3F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,3KFQBVI4,DANILO100,3KFQBVI4,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,3Q28IZAW,DANILO100,3Q28IZAW,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,43BCNNY6,DANILO100,43BCNNY6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,452UJVBX,DANILO100,452UJVBX,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,469U3RNE,DANILO100,469U3RNE,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,4M6973VV,DANILO100,4M6973VV,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,4N5GEI4F,DANILO100,4N5GEI4F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,4S3YTLTP,DANILO100,4S3YTLTP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,55B3ZAHY,DANILO100,55B3ZAHY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,5K8G4MPF,DANILO100,5K8G4MPF,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,5M7NB3XZ,DANILO100,5M7NB3XZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,5R56Q5M8,DANILO100,5R56Q5M8,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,5U251229,DANILO100,5U251229,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,6343GE5G,DANILO100,6343GE5G,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,672KVHUQ,DANILO100,672KVHUQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,691S3X2A,DANILO100,691S3X2A,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,6IBP16IY,DANILO100,6IBP16IY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,6PX77A9R,DANILO100,6PX77A9R,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,74XT96AS,DANILO100,74XT96AS,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,7L27WDUQ,DANILO100,7L27WDUQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,7M1E4T3B,DANILO100,7M1E4T3B,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,7RYWIWSJ,DANILO100,7RYWIWSJ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,7UUVTS7K,DANILO100,7UUVTS7K,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,8471NKGT,DANILO100,8471NKGT,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,89UIUN8L,DANILO100,89UIUN8L,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,8J4FTXNA,DANILO100,8J4FTXNA,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,8TX4QC15,DANILO100,8TX4QC15,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,96XJJSTK,DANILO100,96XJJSTK,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,98WQR826,DANILO100,98WQR826,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,9L3M1DWV,DANILO100,9L3M1DWV,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,9NT5WJ9M,DANILO100,9NT5WJ9M,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,9P15FFL4,DANILO100,9P15FFL4,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,9VNLLIDW,DANILO100,9VNLLIDW,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,A41RGBM5,DANILO100,A41RGBM5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,AAWG3UJY,DANILO100,AAWG3UJY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ADTFDQYY,DANILO100,ADTFDQYY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,AFJY9XBQ,DANILO100,AFJY9XBQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,AQUV76RF,DANILO100,AQUV76RF,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ATQUI36F,DANILO100,ATQUI36F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,B33ZDVFP,DANILO100,B33ZDVFP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,B8QGJY7G,DANILO100,B8QGJY7G,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,BCNYY2WQ,DANILO100,BCNYY2WQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,BSS3ELZZ,DANILO100,BSS3ELZZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,BVRKTPP8,DANILO100,BVRKTPP8,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,C5TH93SG,DANILO100,C5TH93SG,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,C6SPGI11,DANILO100,C6SPGI11,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,CAQ7UKQ9,DANILO100,CAQ7UKQ9,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,CNW34QKY,DANILO100,CNW34QKY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,CUJKATCR,DANILO100,CUJKATCR,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,CUTSQ8IS,DANILO100,CUTSQ8IS,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,D9SFR5JT,DANILO100,D9SFR5JT,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,DCPE21YU,DANILO100,DCPE21YU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,DEFWY8AL,DANILO100,DEFWY8AL,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,DPQTWGRA,DANILO100,DPQTWGRA,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,DYIHTV35,DANILO100,DYIHTV35,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,EBJXMBVK,DANILO100,EBJXMBVK,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ERN14WYV,DANILO100,ERN14WYV,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,EULIIZN4,DANILO100,EULIIZN4,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,F9L6JVP5,DANILO100,F9L6JVP5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,FCH5UR46,DANILO100,FCH5UR46,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,FMS2T1JU,DANILO100,FMS2T1JU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,FTFJZ4BM,DANILO100,FTFJZ4BM,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,FTPREIHN,DANILO100,FTPREIHN,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,FYC8LM9F,DANILO100,FYC8LM9F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,G7NDGEIP,DANILO100,G7NDGEIP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,GBKCRBXP,DANILO100,GBKCRBXP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,GDBVMIAG,DANILO100,GDBVMIAG,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,GRHRWN56,DANILO100,GRHRWN56,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,GVF9AQUF,DANILO100,GVF9AQUF,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,GXEGH63Z,DANILO100,GXEGH63Z,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,HAEWCLVG,DANILO100,HAEWCLVG,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,HJ8K917A,DANILO100,HJ8K917A,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,HNKSKRQ6,DANILO100,HNKSKRQ6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,HQJZS7YQ,DANILO100,HQJZS7YQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,HTHH7ANY,DANILO100,HTHH7ANY,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,IBD3J231,DANILO100,IBD3J231,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,IFBKY5S9,DANILO100,IFBKY5S9,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,IHAS6K1U,DANILO100,IHAS6K1U,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ISAHNEAH,DANILO100,ISAHNEAH,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ISKP4TGI,DANILO100,ISKP4TGI,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,IX77AW8B,DANILO100,IX77AW8B,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,JAGBGLWK,DANILO100,JAGBGLWK,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,JDETUNLT,DANILO100,JDETUNLT,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,JJ1B2SDL,DANILO100,JJ1B2SDL,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,JWAF7G2V,DANILO100,JWAF7G2V,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,K274TYZN,DANILO100,K274TYZN,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,K9AU1WUB,DANILO100,K9AU1WUB,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,KC7TCT9C,DANILO100,KC7TCT9C,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,KH4IXB76,DANILO100,KH4IXB76,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,KSDFWJMU,DANILO100,KSDFWJMU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LA928C3W,DANILO100,LA928C3W,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LE7JMES5,DANILO100,LE7JMES5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LG6RUUZP,DANILO100,LG6RUUZP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LRGNS4GE,DANILO100,LRGNS4GE,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LW36Z776,DANILO100,LW36Z776,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,LYA5H3KN,DANILO100,LYA5H3KN,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,M3ZULQ5Z,DANILO100,M3ZULQ5Z,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,MCARJYKP,DANILO100,MCARJYKP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,MI7G6GIH,DANILO100,MI7G6GIH,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,MIW9Q2CG,DANILO100,MIW9Q2CG,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,MT76PBS6,DANILO100,MT76PBS6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,N133H9YJ,DANILO100,N133H9YJ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,NGZHML61,DANILO100,NGZHML61,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,NR9EKULQ,DANILO100,NR9EKULQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,NU6DWR1Q,DANILO100,NU6DWR1Q,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,P3TKDGBB,DANILO100,P3TKDGBB,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PD3HCPRZ,DANILO100,PD3HCPRZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PF2PJ5ZK,DANILO100,PF2PJ5ZK,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PIZ7X8PT,DANILO100,PIZ7X8PT,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PMW7943U,DANILO100,PMW7943U,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PVY4NH72,DANILO100,PVY4NH72,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PX647DJI,DANILO100,PX647DJI,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,PZWL3JWA,DANILO100,PZWL3JWA,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,Q2VTAZ4V,DANILO100,Q2VTAZ4V,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,QB6Q89KJ,DANILO100,QB6Q89KJ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,QH3FURHD,DANILO100,QH3FURHD,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,QHS8FCBC,DANILO100,QHS8FCBC,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,QMPX1V96,DANILO100,QMPX1V96,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,R4WILLMN,DANILO100,R4WILLMN,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,RJTXQYU5,DANILO100,RJTXQYU5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,RXZUZ4PU,DANILO100,RXZUZ4PU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,RZX27JXE,DANILO100,RZX27JXE,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,S2PJ3RA6,DANILO100,S2PJ3RA6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SCYG1ZQV,DANILO100,SCYG1ZQV,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SEXN8FYF,DANILO100,SEXN8FYF,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SHV6MINP,DANILO100,SHV6MINP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SLS5XE3P,DANILO100,SLS5XE3P,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SV22WMIE,DANILO100,SV22WMIE,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,SYSKSUV6,DANILO100,SYSKSUV6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,T4P9DDTZ,DANILO100,T4P9DDTZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,T6NGKT1J,DANILO100,T6NGKT1J,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,TGN64MB7,DANILO100,TGN64MB7,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,TZRSZA4Q,DANILO100,TZRSZA4Q,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,U3RHAWLI,DANILO100,U3RHAWLI,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,U8EZG1DB,DANILO100,U8EZG1DB,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,UERE164R,DANILO100,UERE164R,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,UGXDJ2H8,DANILO100,UGXDJ2H8,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,UIPWF9TZ,DANILO100,UIPWF9TZ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ULKVQ581,DANILO100,ULKVQ581,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,UWVSNEPQ,DANILO100,UWVSNEPQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,UYTZVUWA,DANILO100,UYTZVUWA,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,V1KIR292,DANILO100,V1KIR292,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,V6H7DJ7V,DANILO100,V6H7DJ7V,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,VGR4CSMJ,DANILO100,VGR4CSMJ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,VKM4MP2K,DANILO100,VKM4MP2K,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,VUX1KXH9,DANILO100,VUX1KXH9,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,W3K83NSU,DANILO100,W3K83NSU,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,WMNTXBKD,DANILO100,WMNTXBKD,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,WYMQNK3L,DANILO100,WYMQNK3L,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,X1MGZ7LE,DANILO100,X1MGZ7LE,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,X5JFA41F,DANILO100,X5JFA41F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,X7AX6AC6,DANILO100,X7AX6AC6,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,XPECTIX5,DANILO100,XPECTIX5,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,XRDI1Y5P,DANILO100,XRDI1Y5P,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,Y5C63U6Q,DANILO100,Y5C63U6Q,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,Y7J5KQI8,DANILO100,Y7J5KQI8,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,YJI2BZ1F,DANILO100,YJI2BZ1F,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,YMGJQ2QP,DANILO100,YMGJQ2QP,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,YZGGGB8X,DANILO100,YZGGGB8X,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,Z2G7RXRQ,DANILO100,Z2G7RXRQ,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ZFM313LF,DANILO100,ZFM313LF,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ZLJSMLJ8,DANILO100,ZLJSMLJ8,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DANILO100,ZR69TPB1,DANILO100,ZR69TPB1,1,DANILO100,cortesia,códigos individuais consolidados pelo mesmo título exato de cupom,True
+DSPERFORMANCE,DSPERFORMANCE,DSPERFORMANCE,DSPERFORMANCE,9,DSPERFORMANCE,outro,identidade exata de título e código revisada,True
+EDUCATIVE2026,EDUCATIVE2026,EDUCATIVE2026,EDUCATIVE2026,2,EDUCATIVE2026,outro,identidade exata de título e código revisada,True
+ELASVAODETENIS,ELASVAODETENIS,ELASVAODETENIS,ELASVAODETENIS,11,ELASVAODETENIS,outro,identidade exata de título e código revisada,True
+EQUIPEGENTILGOULARTE,EQUIPEGENTILGOULARTE12,EQUIPEGENTILGOULARTE,EQUIPEGENTILGOULARTE12,13,EQUIPEGENTILGOULARTE,outro,identidade exata de título e código revisada,True
+F2 ASSESSORIA ESPORTIVA,SOUF212,F2 assessoria esportiva,souf212,11,F2 assessoria esportiva,assessoria,identidade exata de título e código revisada,True
+FABRICIO FLORES INFLUENCIADOR,FAFAFLORES10,Fábricio Flores (Influenciador),FAFAFLORES10,3,Fábricio Flores,influenciador,identidade exata de título e código revisada,True
+FAMILYRUNNERS,FAMILYRUNNERS,Familyrunners,Familyrunners,4,Familyrunners,comunidade,identidade exata de título e código revisada,True
+FE QUINT INFLUENCIADORA 10 10 CASHBACK,FEQUINT,Fe Quint (Influenciadora - 10% + 10% cashback),FEQUINT,5,Fe Quint,influenciador,identidade exata de título e código revisada,True
+FIBRASPORTS10,FIBRASPORTS10,FIBRASPORTS10,FIBRASPORTS10,13,FIBRASPORTS10,comunidade,identidade exata de título e código revisada,True
+FISIORUNACTVITTA,FISIORUNACTVITTA,FisiorunActvitta,FisiorunActvitta,15,FisiorunActvitta,outro,identidade exata de título e código revisada,True
+FLOW ASSESSORIA ESPORTIVA,FLOW2025,FLOW ASSESSORIA ESPORTIVA,FLOW2025,1,FLOW ASSESSORIA ESPORTIVA,assessoria,identidade exata de título e código revisada,True
+FOCO RADICAL PARCEIRO,FOCO10,Foco Radical (Parceiro),FOCO10,4,Foco Radical,parceiro,identidade exata de título e código revisada,True
+FORMACCO12,FORMACCO12,Formacco12,Formacco12,7,Formacco12,outro,identidade exata de título e código revisada,True
+GABRIELA ZAMARCHI INFLUENCIDORA 5 DE CASHBACK,NUTRIGABIZAMARCHI,Gabriela Zamarchi (Influencidora - 5% de cashback),NUTRIGABIZAMARCHI,4,Gabriela Zamarchi,influenciador,identidade exata de título e código revisada,True
+GABYLAURENTINO INFLU X 10 CASHBACK,GABYLAURENTINO,GABYLAURENTINO (Influ x 10% cashback),GABYLAURENTINO,89,GABYLAURENTINO,influenciador,identidade exata de título e código revisada,True
+GDASSESSORIA,GDASSESSORIA,GDASSESSORIA,GDASSESSORIA,4,GDASSESSORIA,assessoria,identidade exata de título e código revisada,True
+GMF,2DQEF9BK,GMF,2DQEF9BK,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,3VV87GXN,GMF,3VV87GXN,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,4XLQ3NAF,GMF,4XLQ3NAF,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,5WPXY74Y,GMF,5WPXY74Y,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,7GKAML2T,GMF,7GKAML2T,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,9HE1EC85,GMF,9HE1EC85,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,CZCJYAZI,GMF,CZCJYAZI,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,D243UHCA,GMF,D243UHCA,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,EJ9WLPXD,GMF,EJ9WLPXD,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,HKVD769Z,GMF,HKVD769Z,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,J6RPUK8U,GMF,J6RPUK8U,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,MNQ9EIZ8,GMF,MNQ9EIZ8,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,PPJZ796J,GMF,PPJZ796J,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,R9FBUN4E,GMF,R9FBUN4E,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,S7HIR8XX,GMF,S7HIR8XX,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,T992MEAP,GMF,T992MEAP,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,WS7L7D24,GMF,WS7L7D24,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,YC4XURZX,GMF,YC4XURZX,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GMF,ZDWNMI69,GMF,ZDWNMI69,1,GMF,outro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+GO ASSESSORIA ESPORTIVA,GO12,GO+ Assessoria Esportiva,GO12,3,GO+ Assessoria Esportiva,assessoria,identidade exata de título e código revisada,True
+GPA2026,GPA2026,GPA2026,GPA2026,47,GPA2026,outro,identidade exata de título e código revisada,True
+GPA2026 100,GPA2026 100,GPA2026_100,GPA2026_100,1,GPA2026,outro,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+GRUPO EU10 CORRIDAS,EU10CORRIDAS,Grupo Eu10 corridas,EU10CORRIDAS,5,Grupo Eu10 corridas,comunidade,identidade exata de título e código revisada,True
+GRUPOSTC10,GRUPOSTC10,GRUPOSTC10,GRUPOSTC10,46,GRUPOSTC10,outro,identidade exata de título e código revisada,True
+HUNI BR 15 ACAO,HUNI15,Huni BR (15%) - Ação,HUNI15,30,Huni BR (15%) - Ação,evento_acao,identidade exata de título e código revisada,True
+INSANOS,INSANOS,INSANOS,INSANOS,19,INSANOS,outro,identidade exata de título e código revisada,True
+INSPIRERUN,INSPIRERUN,INSPIRERUN,INSPIRERUN,3,INSPIRERUN,comunidade,identidade exata de título e código revisada,True
+IRONMIND,IRONMIND,IRONMIND,IRONMIND,2,IRONMIND,outro,identidade exata de título e código revisada,True
+ISIS BERTOLDI INFLU X 10 CASHBACK,ISIS,ISIS BERTOLDI (Influ x 10% cashback),ISIS,51,ISIS BERTOLDI,influenciador,identidade exata de título e código revisada,True
+JEVERRUNNING2026,JEVERRUNNING2026,Jeverrunning2026,Jeverrunning2026,7,Jeverrunning2026,comunidade,identidade exata de título e código revisada,True
+JURANDYR COUTO,PODERDAMENTE,Jurandyr Couto,PODERDAMENTE,7,Jurandyr Couto,outro,identidade exata de título e código revisada,True
+JUST RUN,JUSTRUN,Just Run,JUSTRUN,41,Just Run,comunidade,identidade exata de título e código revisada,True
+JUSTRUN,JUSTRUN 100,JUSTRUN,JUSTRUN_100,1,Just Run,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+KARLA RUNNING IN FLORIPA INFLU X CASHBACK,RUN10,KARLA RUNNING IN FLORIPA  (Influ x cashback),RUN10,90,KARLA RUNNING IN FLORIPA,influenciador,identidade exata de título e código revisada,True
+KAUE TURISMO,KAUEFLORIPA2026,KAUÊ TURISMO,KAUEFLORIPA2026,97,KAUÊ TURISMO,parceiro,identidade exata de título e código revisada,True
+LAP2026,LAP2026,LAP2026,LAP2026,8,LAP2026,outro,identidade exata de título e código revisada,True
+LAPRUN,LAPRUNFLORIPA2026,Laprun,laprunfloripa2026,20,Laprun,comunidade,identidade exata de título e código revisada,True
+LEANDRO PRICOLLI INFLUENCIADOR,PRICOLI10,Leandro Pricolli (Influenciador),PRICOLI10,326,Leandro Pricolli,influenciador,identidade exata de título e código revisada,True
+LIVE PATROCINADOR,LIVE20,LIVE! (Patrocinador),LIVE20,1,LIVE!,parceiro,identidade exata de título e código revisada,True
+LLRUN2026,LLRUN2026,LLRUN2026,LLRUN2026,8,LLRUN2026,outro,identidade exata de título e código revisada,True
+LOBOSDASERRA2025,LOBOSDASERRA2025,Lobosdaserra2025,Lobosdaserra2025,8,Lobosdaserra2025,outro,identidade exata de título e código revisada,True
+LOUCAS E LOUCOS POR CORRIDAS,LOUCASELOUCOS12,Loucas e Loucos por Corridas,LOUCASELOUCOS12,24,Loucas e Loucos por Corridas,comunidade,identidade exata de título e código revisada,True
+LOUCASELOUCOS12 100,LOUCASELOUCOS12 100,LOUCASELOUCOS12_100,LOUCASELOUCOS12_100,1,Loucas e Loucos por Corridas,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+LOUCOS NA PISTA,LOUCOSNAPISTA,Loucos na Pista,LOUCOSNAPISTA,19,Loucos na Pista,outro,identidade exata de título e código revisada,True
+LP LIKE A PRO,12LIKEAPRO,LP LIKE A PRO,12LIKEAPRO,32,LP Like a Pro,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+LUAN MEDEIROS INFLUENCIADOR DOMI,LUAN,Luan Medeiros (Influenciador - Domi),LUAN,3,Luan Medeiros,influenciador,identidade exata de título e código revisada,True
+LUNARDELLI CAPITAL DA FE RUNNING,CAPITALDAFE,Lunardelli Capital da Fe Running,Capitaldafé,10,Lunardelli Capital da Fe Running,comunidade,identidade exata de título e código revisada,True
+MA12,MA12,MA12,MA12,9,MA12,outro,identidade exata de título e código revisada,True
+MANIADECORRIDA INFLU X ESPACO EXPO,MANIADECORRIDA,MANIADECORRIDA (Influ x espaço Expo),MANIADECORRIDA,491,MANIADECORRIDA,influenciador,identidade exata de título e código revisada,True
+MANTOVANI12,MANTOVANI12,MANTOVANI12,MANTOVANI12,18,MANTOVANI12,outro,identidade exata de título e código revisada,True
+MARATONA DE PORTO ALEGRE 2026,MARATONAPOA15,MARATONA DE PORTO ALEGRE 2026,MARATONAPOA15,43,MARATONA DE PORTO ALEGRE 2026,evento_acao,identidade exata de título e código revisada,True
+MARATONA DO PARANA,MIP12,Maratona do Paraná,MIP12,1,Maratona do Paraná,evento_acao,identidade exata de título e código revisada,True
+MARCELOTEAM,MARCELOTEAM,MARCELOTEAM,MARCELOTEAM,17,Marcelo Team,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+MARCELOTEAM 100,MARCELOTEAM 100,MARCELOTEAM_100,MARCELOTEAM_100,1,Marcelo Team,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+MARINA DANTAS INFLU X CORTESIAS,MARIDANTAS,MARINA DANTAS (Influ x cortesias),MARIDANTAS,3,MARINA DANTAS,influenciador,identidade exata de título e código revisada,True
+MARINA SOARES INFLUENCIADORA 5 DE CASHBACK,MARINA10,Marina Soares (Influenciadora - 5% de cashback),MARINA10,1,Marina Soares,influenciador,identidade exata de título e código revisada,True
+MARISSA BORBA INFLUENCIADORA 10 5 DE CASHBACK,MARISSABORBA,Marissa Borba (Influenciadora 10% + 5% de cashback),MARISSABORBA,14,Marissa Borba,influenciador,identidade exata de título e código revisada,True
+MELLPORTO INFLU X 10 CASHBACK,MELLPORTO,MELLPORTO (Influ x 10% cashback),MELLPORTO,71,MELLPORTO,influenciador,identidade exata de título e código revisada,True
+MIF20 CAMPANHAS,MIF20,MIF20 (Campanhas),MIF20,124,MIF20,campanha,identidade exata de título e código revisada,True
+MIF2026 21,1D61WZ8G,MIF2026_21,1D61WZ8G,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,2B99TI21,MIF2026_21,2B99TI21,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,2YZ5MUDR,MIF2026_21,2YZ5MUDR,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,3G6YE2ZU,MIF2026_21,3G6YE2ZU,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,3X3CJD7B,MIF2026_21,3X3CJD7B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,4JWGB8BL,MIF2026_21,4JWGB8BL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,4V5KGXZV,MIF2026_21,4V5KGXZV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,5XV3C5CM,MIF2026_21,5XV3C5CM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,62V1U74Z,MIF2026_21,62V1U74Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,6WYB9N66,MIF2026_21,6WYB9N66,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,83NRMX9B,MIF2026_21,83NRMX9B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,8GUMW341,MIF2026_21,8GUMW341,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,8WR21EBH,MIF2026_21,8WR21EBH,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,9EXVTLXK,MIF2026_21,9EXVTLXK,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,9NHUESEL,MIF2026_21,9NHUESEL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,A1RYJG3V,MIF2026_21,A1RYJG3V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,A6NN6Z1N,MIF2026_21,A6NN6Z1N,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,AGNDPTAC,MIF2026_21,AGNDPTAC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,AMK3AC86,MIF2026_21,AMK3AC86,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,B2JPC886,MIF2026_21,B2JPC886,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,BFQLKD4W,MIF2026_21,BFQLKD4W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,BKMB7V1P,MIF2026_21,BKMB7V1P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,C7GEYQ6Z,MIF2026_21,C7GEYQ6Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,CMDT33DG,MIF2026_21,CMDT33DG,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,D5IMUAZJ,MIF2026_21,D5IMUAZJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,DZLX9R2Q,MIF2026_21,DZLX9R2Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,EJI9W61K,MIF2026_21,EJI9W61K,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,ERCQL55U,MIF2026_21,ERCQL55U,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,F6CDM15V,MIF2026_21,F6CDM15V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,FL9SSDCC,MIF2026_21,FL9SSDCC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,FZFN1H82,MIF2026_21,FZFN1H82,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,G4EKJJYE,MIF2026_21,G4EKJJYE,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,GKBZNW6W,MIF2026_21,GKBZNW6W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,HC2S2A9Z,MIF2026_21,HC2S2A9Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,HIE8KGZF,MIF2026_21,HIE8KGZF,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,HQ8PAF4P,MIF2026_21,HQ8PAF4P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,I58BCB5Q,MIF2026_21,I58BCB5Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,IK5QGMC7,MIF2026_21,IK5QGMC7,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,J3AJ8UXA,MIF2026_21,J3AJ8UXA,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,JDVIT1EB,MIF2026_21,JDVIT1EB,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,JR2F3691,MIF2026_21,JR2F3691,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,K51242A2,MIF2026_21,K51242A2,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,L44A1L4L,MIF2026_21,L44A1L4L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,M91ZM42E,MIF2026_21,M91ZM42E,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,MBRHIBD6,MIF2026_21,MBRHIBD6,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,MQXDSG9W,MIF2026_21,MQXDSG9W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,MVU3DY6P,MIF2026_21,MVU3DY6P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,N4W1TC9X,MIF2026_21,N4W1TC9X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,NNZLNZ2F,MIF2026_21,NNZLNZ2F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,PATQFU7Q,MIF2026_21,PATQFU7Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,PWMT6QC1,MIF2026_21,PWMT6QC1,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,Q8WXCE1A,MIF2026_21,Q8WXCE1A,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,QNTCGR8R,MIF2026_21,QNTCGR8R,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,QUQ2396K,MIF2026_21,QUQ2396K,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,RGJ5T4AV,MIF2026_21,RGJ5T4AV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,S9PN456L,MIF2026_21,S9PN456L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,SVISVZBW,MIF2026_21,SVISVZBW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,T7RW1PZ6,MIF2026_21,T7RW1PZ6,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,TTLZRJ5F,MIF2026_21,TTLZRJ5F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,U9IEWWCX,MIF2026_21,U9IEWWCX,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,UFF4IEAQ,MIF2026_21,UFF4IEAQ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,V8KMTF6G,MIF2026_21,V8KMTF6G,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,VRN8N3YZ,MIF2026_21,VRN8N3YZ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,WSGYGU4B,MIF2026_21,WSGYGU4B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,XEB37P9L,MIF2026_21,XEB37P9L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,YCDA4836,MIF2026_21,YCDA4836,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,YJ7RT77F,MIF2026_21,YJ7RT77F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,YSAP9KAM,MIF2026_21,YSAP9KAM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 21,ZY7EV37F,MIF2026_21,ZY7EV37F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,131MS6CV,MIF2026_42,131MS6CV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,86P9S98F,MIF2026_42,86P9S98F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,99FSNGK7,MIF2026_42,99FSNGK7,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,DS7215HW,MIF2026_42,DS7215HW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,EJXVDIK1,MIF2026_42,EJXVDIK1,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,KVVN18EG,MIF2026_42,KVVN18EG,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,MWPESYJS,MIF2026_42,MWPESYJS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,UZC1S2FB,MIF2026_42,UZC1S2FB,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,VJ9DFGE6,MIF2026_42,VJ9DFGE6,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 42,XK2487JH,MIF2026_42,XK2487JH,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,11IN3W6Z,MIF2026_5K,11IN3W6Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1B4LJI2N,MIF2026_5K,1B4LJI2N,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1EPKB11P,MIF2026_5K,1EPKB11P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1KL9XJYI,MIF2026_5K,1KL9XJYI,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1R11PV95,MIF2026_5K,1R11PV95,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1RXPHQPY,MIF2026_5K,1RXPHQPY,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1SGQMI3S,MIF2026_5K,1SGQMI3S,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1XDF911L,MIF2026_5K,1XDF911L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1XXQBD7Y,MIF2026_5K,1XXQBD7Y,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,1YS67PT8,MIF2026_5K,1YS67PT8,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,27FDNE4T,MIF2026_5K,27FDNE4T,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2CC3AW1L,MIF2026_5K,2CC3AW1L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2DSS8KU9,MIF2026_5K,2DSS8KU9,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2INHU3S3,MIF2026_5K,2INHU3S3,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2J7JZW5V,MIF2026_5K,2J7JZW5V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2JRT28C9,MIF2026_5K,2JRT28C9,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2QIYJ2WC,MIF2026_5K,2QIYJ2WC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2S9GF984,MIF2026_5K,2S9GF984,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,2TP7DX2Q,MIF2026_5K,2TP7DX2Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,343VMA4Q,MIF2026_5K,343VMA4Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,35ILKXWC,MIF2026_5K,35ILKXWC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3AEA7GU6,MIF2026_5K,3AEA7GU6,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3BXCC98Z,MIF2026_5K,3BXCC98Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3H9RWFYF,MIF2026_5K,3H9RWFYF,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3KZASMB7,MIF2026_5K,3KZASMB7,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3Y661S6W,MIF2026_5K,3Y661S6W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,3ZLWYFZJ,MIF2026_5K,3ZLWYFZJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4D6T3N7X,MIF2026_5K,4D6T3N7X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4DKI1B1K,MIF2026_5K,4DKI1B1K,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4JH8LUXD,MIF2026_5K,4JH8LUXD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4QWZE591,MIF2026_5K,4QWZE591,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4W9EXBZG,MIF2026_5K,4W9EXBZG,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4XN4VYT4,MIF2026_5K,4XN4VYT4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,4ZEMR65V,MIF2026_5K,4ZEMR65V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,52QDL64M,MIF2026_5K,52QDL64M,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5354JUXA,MIF2026_5K,5354JUXA,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,56BCDP3N,MIF2026_5K,56BCDP3N,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5B81Z71H,MIF2026_5K,5B81Z71H,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5CMRWVT4,MIF2026_5K,5CMRWVT4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5HJGIDRX,MIF2026_5K,5HJGIDRX,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5I3HP65R,MIF2026_5K,5I3HP65R,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5PEX8CV7,MIF2026_5K,5PEX8CV7,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,5R5F4J8Y,MIF2026_5K,5R5F4J8Y,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,63YUCK3L,MIF2026_5K,63YUCK3L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,64DJA8W8,MIF2026_5K,64DJA8W8,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,6G5QKQXB,MIF2026_5K,6G5QKQXB,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,6JBYEK4P,MIF2026_5K,6JBYEK4P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,6XGUNQYE,MIF2026_5K,6XGUNQYE,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,73J4EX9Y,MIF2026_5K,73J4EX9Y,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,7C2RRY6T,MIF2026_5K,7C2RRY6T,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,7CGHPLZF,MIF2026_5K,7CGHPLZF,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,7ID7B4X9,MIF2026_5K,7ID7B4X9,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,7Q7N131I,MIF2026_5K,7Q7N131I,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,81LCBG3I,MIF2026_5K,81LCBG3I,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,821294W5,MIF2026_5K,821294W5,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,847A2Z2J,MIF2026_5K,847A2Z2J,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,84SK5B9W,MIF2026_5K,84SK5B9W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,8A4ZNHZD,MIF2026_5K,8A4ZNHZD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,8HXGDG4L,MIF2026_5K,8HXGDG4L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,8MU6ZZ2F,MIF2026_5K,8MU6ZZ2F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,8NAVXMU3,MIF2026_5K,8NAVXMU3,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,9MFF2B8T,MIF2026_5K,9MFF2B8T,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,9Q1ETU7U,MIF2026_5K,9Q1ETU7U,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,9WCTC1XA,MIF2026_5K,9WCTC1XA,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,9WX3FC5M,MIF2026_5K,9WX3FC5M,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,A2US1V2G,MIF2026_5K,A2US1V2G,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,A867K2TW,MIF2026_5K,A867K2TW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,AAWQG85N,MIF2026_5K,AAWQG85N,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,AH951EW4,MIF2026_5K,AH951EW4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,AIR7679X,MIF2026_5K,AIR7679X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ANNWSQ7R,MIF2026_5K,ANNWSQ7R,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,AP3LQD1D,MIF2026_5K,AP3LQD1D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,AUZBBWX7,MIF2026_5K,AUZBBWX7,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,B1W1XEV1,MIF2026_5K,B1W1XEV1,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,B339R92E,MIF2026_5K,B339R92E,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,B3MITL8S,MIF2026_5K,B3MITL8S,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BGTF3R3H,MIF2026_5K,BGTF3R3H,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BLQ4N91B,MIF2026_5K,BLQ4N91B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BM6ULXUX,MIF2026_5K,BM6ULXUX,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BM96U3D4,MIF2026_5K,BM96U3D4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BTKLD85K,MIF2026_5K,BTKLD85K,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,BX6J5R4L,MIF2026_5K,BX6J5R4L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,C25GNTUY,MIF2026_5K,C25GNTUY,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,C8J8F56L,MIF2026_5K,C8J8F56L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,C9ZXDSY8,MIF2026_5K,C9ZXDSY8,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,CFBDWYQN,MIF2026_5K,CFBDWYQN,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,CH2VS62F,MIF2026_5K,CH2VS62F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,CPWCH56P,MIF2026_5K,CPWCH56P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,D67QE16I,MIF2026_5K,D67QE16I,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,D7269BSS,MIF2026_5K,D7269BSS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,D7MGCNY5,MIF2026_5K,D7MGCNY5,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,D9SN6I5J,MIF2026_5K,D9SN6I5J,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,DHM6UH9T,MIF2026_5K,DHM6UH9T,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,DMJUG16L,MIF2026_5K,DMJUG16L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,DNYKENZ9,MIF2026_5K,DNYKENZ9,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,DTVA17X3,MIF2026_5K,DTVA17X3,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,DZA1SH8P,MIF2026_5K,DZA1SH8P,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,E2Y7GJ1A,MIF2026_5K,E2Y7GJ1A,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,E9DY8VBW,MIF2026_5K,E9DY8VBW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,EF54PPVZ,MIF2026_5K,EF54PPVZ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,EFPDR22D,MIF2026_5K,EFPDR22D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,EL2TB8TT,MIF2026_5K,EL2TB8TT,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,EL45ICDZ,MIF2026_5K,EL45ICDZ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,EYSYMPUV,MIF2026_5K,EYSYMPUV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,F7F74E5G,MIF2026_5K,F7F74E5G,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,F8VW23Y4,MIF2026_5K,F8VW23Y4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,FDSLNKVW,MIF2026_5K,FDSLNKVW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,FNSB7E6K,MIF2026_5K,FNSB7E6K,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,FQ422E4D,MIF2026_5K,FQ422E4D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,FUP1TX3D,MIF2026_5K,FUP1TX3D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,G5IE1YY1,MIF2026_5K,G5IE1YY1,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,G6X5YLRM,MIF2026_5K,G6X5YLRM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,GLFT6B6H,MIF2026_5K,GLFT6B6H,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,GLUI4YY4,MIF2026_5K,GLUI4YY4,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,GSR8PGWX,MIF2026_5K,GSR8PGWX,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,H1U65UZ5,MIF2026_5K,H1U65UZ5,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,H89XW6AS,MIF2026_5K,H89XW6AS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,H8NMUT4E,MIF2026_5K,H8NMUT4E,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HEKCGC28,MIF2026_5K,HEKCGC28,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HJH23UY2,MIF2026_5K,HJH23UY2,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HKXRZHSN,MIF2026_5K,HKXRZHSN,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HRCIST3B,MIF2026_5K,HRCIST3B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HRWSU6AN,MIF2026_5K,HRWSU6AN,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HX97DB14,MIF2026_5K,HX97DB14,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,HXNXBZUR,MIF2026_5K,HXNXBZUR,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,I6B5TP4C,MIF2026_5K,I6B5TP4C,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,I7RVRDXY,MIF2026_5K,I7RVRDXY,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ICNJDVUS,MIF2026_5K,ICNJDVUS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,IMN9VP5F,MIF2026_5K,IMN9VP5F,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,IPZ1QP38,MIF2026_5K,IPZ1QP38,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ISKYH839,MIF2026_5K,ISKYH839,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,J5T3NWRI,MIF2026_5K,J5T3NWRI,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,JEE3937J,MIF2026_5K,JEE3937J,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,JKBSUK5D,MIF2026_5K,JKBSUK5D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,JKQHS9YZ,MIF2026_5K,JKQHS9YZ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,JS59JJ9L,MIF2026_5K,JS59JJ9L,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,JYHN4QZ3,MIF2026_5K,JYHN4QZ3,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,K75VLGAM,MIF2026_5K,K75VLGAM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,K7JLJ43A,MIF2026_5K,K7JLJ43A,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,K9VCE423,MIF2026_5K,K9VCE423,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KC2K8Y7G,MIF2026_5K,KC2K8Y7G,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KDGA5L14,MIF2026_5K,KDGA5L14,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KJSQPSRJ,MIF2026_5K,KJSQPSRJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KQ8GG436,MIF2026_5K,KQ8GG436,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KQSRIF9J,MIF2026_5K,KQSRIF9J,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,KWJW1ATL,MIF2026_5K,KWJW1ATL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,L6MTFMWU,MIF2026_5K,L6MTFMWU,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LBII26UM,MIF2026_5K,LBII26UM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LBLUABEU,MIF2026_5K,LBLUABEU,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LIDZR5YW,MIF2026_5K,LIDZR5YW,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LLJ8KZ4B,MIF2026_5K,LLJ8KZ4B,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LPAPDMVQ,MIF2026_5K,LPAPDMVQ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LRGX7H24,MIF2026_5K,LRGX7H24,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,LZAEWG6D,MIF2026_5K,LZAEWG6D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,M39BEIWR,MIF2026_5K,M39BEIWR,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,M4P2C7QD,MIF2026_5K,M4P2C7QD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MA4T4H11,MIF2026_5K,MA4T4H11,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MAP36U7D,MIF2026_5K,MAP36U7D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MDA1XD6E,MIF2026_5K,MDA1XD6E,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MJ7QJV48,MIF2026_5K,MJ7QJV48,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MR179U8H,MIF2026_5K,MR179U8H,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,MXDMT1YX,MIF2026_5K,MXDMT1YX,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,N3ULGV44,MIF2026_5K,N3ULGV44,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,N6FJ8E35,MIF2026_5K,N6FJ8E35,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,N8RB3E1X,MIF2026_5K,N8RB3E1X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,NCC9UWZY,MIF2026_5K,NCC9UWZY,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,NIR1L8BL,MIF2026_5K,NIR1L8BL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,NP3F6E22,MIF2026_5K,NP3F6E22,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,NVFUPJSH,MIF2026_5K,NVFUPJSH,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,NVZ5RWZU,MIF2026_5K,NVZ5RWZU,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,P4327A33,MIF2026_5K,P4327A33,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,P4HS5XVP,MIF2026_5K,P4HS5XVP,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PAEHRGTI,MIF2026_5K,PAEHRGTI,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PAHTYKDP,MIF2026_5K,PAHTYKDP,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PBXIW97C,MIF2026_5K,PBXIW97C,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PH9YGFXS,MIF2026_5K,PH9YGFXS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PM6N2XVL,MIF2026_5K,PM6N2XVL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PMQX5A2Y,MIF2026_5K,PMQX5A2Y,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PQBVVS1Z,MIF2026_5K,PQBVVS1Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PUKEU968,MIF2026_5K,PUKEU968,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,PX6DKR59,MIF2026_5K,PX6DKR59,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,Q25A4TVL,MIF2026_5K,Q25A4TVL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,Q9ZRTSZV,MIF2026_5K,Q9ZRTSZV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,QFWGFBXP,MIF2026_5K,QFWGFBXP,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,QPHF1HEQ,MIF2026_5K,QPHF1HEQ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,QVTVJM56,MIF2026_5K,QVTVJM56,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,QW8KHBYT,MIF2026_5K,QW8KHBYT,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,R4WSZ18D,MIF2026_5K,R4WSZ18D,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,R5BIXN21,MIF2026_5K,R5BIXN21,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RA88I7ZU,MIF2026_5K,RA88I7ZU,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RI2P8634,MIF2026_5K,RI2P8634,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RNYEUN1W,MIF2026_5K,RNYEUN1W,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RPE4SCUJ,MIF2026_5K,RPE4SCUJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RTV3G7YQ,MIF2026_5K,RTV3G7YQ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RUBTEUSC,MIF2026_5K,RUBTEUSC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,RVE5LZBJ,MIF2026_5K,RVE5LZBJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,S3Y1WK2X,MIF2026_5K,S3Y1WK2X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,S9AFFQSD,MIF2026_5K,S9AFFQSD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SASHLJ67,MIF2026_5K,SASHLJ67,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SFAGAEAD,MIF2026_5K,SFAGAEAD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SFP77241,MIF2026_5K,SFP77241,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SG5W5PWM,MIF2026_5K,SG5W5PWM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SL2LR8UG,MIF2026_5K,SL2LR8UG,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,SWMLCEBH,MIF2026_5K,SWMLCEBH,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,T119S4VH,MIF2026_5K,T119S4VH,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,T8VQH3ZR,MIF2026_5K,T8VQH3ZR,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TB1YBX55,MIF2026_5K,TB1YBX55,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TESE4LWK,MIF2026_5K,TESE4LWK,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TNDEPRDL,MIF2026_5K,TNDEPRDL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TP7UK3ZV,MIF2026_5K,TP7UK3ZV,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TPS5MF78,MIF2026_5K,TPS5MF78,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TUPT9X42,MIF2026_5K,TUPT9X42,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,TV4J7LXN,MIF2026_5K,TV4J7LXN,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,U3RRNB79,MIF2026_5K,U3RRNB79,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,U9468HYP,MIF2026_5K,U9468HYP,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,UF4725FP,MIF2026_5K,UF4725FP,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,UHXMXG3Y,MIF2026_5K,UHXMXG3Y,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,UMUCJYZS,MIF2026_5K,UMUCJYZS,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,UT7R35R8,MIF2026_5K,UT7R35R8,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,V2UZKU1T,MIF2026_5K,V2UZKU1T,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,V86E51S9,MIF2026_5K,V86E51S9,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,V89QC6BF,MIF2026_5K,V89QC6BF,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,V9NGAT53,MIF2026_5K,V9NGAT53,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VEK5WC3V,MIF2026_5K,VEK5WC3V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VF1VUZWI,MIF2026_5K,VF1VUZWI,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VKXKGITC,MIF2026_5K,VKXKGITC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VSR26HXL,MIF2026_5K,VSR26HXL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VVHJ2PAD,MIF2026_5K,VVHJ2PAD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VVXAYC4Z,MIF2026_5K,VVXAYC4Z,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,VX91TC2S,MIF2026_5K,VX91TC2S,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,W1E9M786,MIF2026_5K,W1E9M786,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,W7RN7DYL,MIF2026_5K,W7RN7DYL,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,WAWW1841,MIF2026_5K,WAWW1841,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,WDNDTVWF,MIF2026_5K,WDNDTVWF,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,WNN3CQ64,MIF2026_5K,WNN3CQ64,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,X2MQDL74,MIF2026_5K,X2MQDL74,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,X5E669YJ,MIF2026_5K,X5E669YJ,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,X8Z5XSXK,MIF2026_5K,X8Z5XSXK,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XFEVP387,MIF2026_5K,XFEVP387,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XFTLMR2U,MIF2026_5K,XFTLMR2U,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XLQB89ZM,MIF2026_5K,XLQB89ZM,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XY2RL384,MIF2026_5K,XY2RL384,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XYHHJR1Q,MIF2026_5K,XYHHJR1Q,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,XZW7HEUC,MIF2026_5K,XZW7HEUC,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,Y1QXA51N,MIF2026_5K,Y1QXA51N,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,Y8JEZ44X,MIF2026_5K,Y8JEZ44X,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,YDG4KM2R,MIF2026_5K,YDG4KM2R,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,YEWUIAVD,MIF2026_5K,YEWUIAVD,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,YRM1USWG,MIF2026_5K,YRM1USWG,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,Z9SVPI4V,MIF2026_5K,Z9SVPI4V,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ZJDT75ZK,MIF2026_5K,ZJDT75ZK,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ZSVGK6WE,MIF2026_5K,ZSVGK6WE,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ZYVHEUDE,MIF2026_5K,ZYVHEUDE,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MIF2026 5K,ZZA8CH72,MIF2026_5K,ZZA8CH72,1,MIF2026 — campanhas por distância,campanha,títulos MIF2026 por distância consolidados como uma campanha interna auditável,True
+MOOVASSESSORIA2025,MOOVASSESSORIA2025,moovassessoria2025,moovassessoria2025,10,moovassessoria2025,assessoria,identidade exata de título e código revisada,True
+NAVEGA RUN NAVEGANTES,ASSESSORIANAVEGARUN2025,NAVEGA RUN NAVEGANTES,Assessorianavegarun2025,38,Navega Run Navegantes,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+NAVEGARUN2025 100,NAVEGARUN2025 100,navegarun2025_100,navegarun2025_100,1,Navega Run Navegantes,comunidade,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+ND PARCEIRO DE MIDIA,ND20,ND (Parceiro de Mídia),ND20,6,ND,parceiro,identidade exata de título e código revisada,True
+NSC PARCEIRO DE MIDIA,NSC20,NSC (Parceiro de Mídia),NSC20,2,NSC,parceiro,identidade exata de título e código revisada,True
+NUTRICAROLB10 10 CASHBACK,NUTRICAROLB10,NUTRICAROLB10 (10% + cashback),NUTRICAROLB10,84,NUTRICAROLB10,outro,identidade exata de título e código revisada,True
+O JOINVILLENSE 10 DE DESCONTO 5 DE CASHBACK,JOINVILENSE,O Joinvillense (10% de desconto + 5% de cashback),JOINVILENSE,34,O Joinvillense,outro,identidade exata de título e código revisada,True
+OJANIO,OJANIO,OJANIO,OJANIO,19,OJANIO,outro,identidade exata de título e código revisada,True
+PACEFLORIPA INFLU X 10 CASHBACK,PACE10,PACEFLORIPA (Influ x 10% cashback),PACE10,444,PACEFLORIPA,influenciador,identidade exata de título e código revisada,True
+PATROCINADOR,119YY8QX,PATROCINADOR,119YY8QX,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,11HNS8AK,PATROCINADOR,11HNS8AK,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,1CRBWQ4G,PATROCINADOR,1CRBWQ4G,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,1SNQ13BX,PATROCINADOR,1SNQ13BX,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,23QKJXT1,PATROCINADOR,23QKJXT1,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,27NC3YCY,PATROCINADOR,27NC3YCY,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,2ABRAPP3,PATROCINADOR,2ABRAPP3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,2IMHJEVM,PATROCINADOR,2IMHJEVM,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,2KU9B47N,PATROCINADOR,2KU9B47N,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,2QRXXL5H,PATROCINADOR,2QRXXL5H,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,35QKYI5I,PATROCINADOR,35QKYI5I,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,3CK2NH9S,PATROCINADOR,3CK2NH9S,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,3D3T4IWW,PATROCINADOR,3D3T4IWW,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4AMAK13B,PATROCINADOR,4AMAK13B,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4IG8B62Y,PATROCINADOR,4IG8B62Y,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4NCCTH1H,PATROCINADOR,4NCCTH1H,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4RJNQDAT,PATROCINADOR,4RJNQDAT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4VG14C9X,PATROCINADOR,4VG14C9X,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,4Y22TX7Z,PATROCINADOR,4Y22TX7Z,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,56JBR9BT,PATROCINADOR,56JBR9BT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,5DDSG8F3,PATROCINADOR,5DDSG8F3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,5PLWLW4C,PATROCINADOR,5PLWLW4C,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,6BG1DR9M,PATROCINADOR,6BG1DR9M,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,6DM2TFJZ,PATROCINADOR,6DM2TFJZ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,6RDEI4G4,PATROCINADOR,6RDEI4G4,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,6XA44MDX,PATROCINADOR,6XA44MDX,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,6YUSLNDB,PATROCINADOR,6YUSLNDB,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,79I8AB27,PATROCINADOR,79I8AB27,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,7G64JGD3,PATROCINADOR,7G64JGD3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,7QFMEN9N,PATROCINADOR,7QFMEN9N,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,8C9R6IEY,PATROCINADOR,8C9R6IEY,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,8NHVB738,PATROCINADOR,8NHVB738,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,96E7J1PK,PATROCINADOR,96E7J1PK,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,9F8NNK6B,PATROCINADOR,9F8NNK6B,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,9JJU2THH,PATROCINADOR,9JJU2THH,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,9Q9D7EFZ,PATROCINADOR,9Q9D7EFZ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,9W53TWDT,PATROCINADOR,9W53TWDT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,A8E7YL22,PATROCINADOR,A8E7YL22,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,AIZ6JSH3,PATROCINADOR,AIZ6JSH3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,AL4UB9XI,PATROCINADOR,AL4UB9XI,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,AY4M4F5H,PATROCINADOR,AY4M4F5H,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,BB5PUTDT,PATROCINADOR,BB5PUTDT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,BG2EGBBM,PATROCINADOR,BG2EGBBM,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,BSM13R2P,PATROCINADOR,BSM13R2P,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,BU8AQG6C,PATROCINADOR,BU8AQG6C,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,C97XRC7D,PATROCINADOR,C97XRC7D,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,CE4LDV57,PATROCINADOR,CE4LDV57,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,CV11H7CN,PATROCINADOR,CV11H7CN,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,CY5U2CTG,PATROCINADOR,CY5U2CTG,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,D1XQ4QAH,PATROCINADOR,D1XQ4QAH,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,DPFD67WY,PATROCINADOR,DPFD67WY,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,DZPZNJKU,PATROCINADOR,DZPZNJKU,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,E3B5EIE7,PATROCINADOR,E3B5EIE7,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,E91NJ3DP,PATROCINADOR,E91NJ3DP,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,E9Q2YKUT,PATROCINADOR,E9Q2YKUT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,EFXC6LAI,PATROCINADOR,EFXC6LAI,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ERX1SWZ2,PATROCINADOR,ERX1SWZ2,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ET49ER68,PATROCINADOR,ET49ER68,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,EY1Y1932,PATROCINADOR,EY1Y1932,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,EZH6HNV4,PATROCINADOR,EZH6HNV4,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,F2RGWGFT,PATROCINADOR,F2RGWGFT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,F93TJ4L4,PATROCINADOR,F93TJ4L4,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,G6QDEI66,PATROCINADOR,G6QDEI66,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,G8MMJ58Z,PATROCINADOR,G8MMJ58Z,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,GCIR2H7I,PATROCINADOR,GCIR2H7I,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,GGQ3XCGT,PATROCINADOR,GGQ3XCGT,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,GN8G2WD1,PATROCINADOR,GN8G2WD1,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,GUWZ7HBJ,PATROCINADOR,GUWZ7HBJ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,GZTPT19C,PATROCINADOR,GZTPT19C,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,H3S94I11,PATROCINADOR,H3S94I11,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,HETBUWAD,PATROCINADOR,HETBUWAD,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,HXWWPJ3W,PATROCINADOR,HXWWPJ3W,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,I1MFKREN,PATROCINADOR,I1MFKREN,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,I6J479CH,PATROCINADOR,I6J479CH,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ICVJRF3X,PATROCINADOR,ICVJRF3X,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,IJQ1GE77,PATROCINADOR,IJQ1GE77,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,IK8SWFUB,PATROCINADOR,IK8SWFUB,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,IRMXCX97,PATROCINADOR,IRMXCX97,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,JYPMHA88,PATROCINADOR,JYPMHA88,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,KDPAJ699,PATROCINADOR,KDPAJ699,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,KKIR95DI,PATROCINADOR,KKIR95DI,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,KWRVEU2S,PATROCINADOR,KWRVEU2S,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,L7ZRELBQ,PATROCINADOR,L7ZRELBQ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,LILY5P72,PATROCINADOR,LILY5P72,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,LVKMSZVL,PATROCINADOR,LVKMSZVL,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,M6PEQWM2,PATROCINADOR,M6PEQWM2,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,MBB9J84J,PATROCINADOR,MBB9J84J,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,MNB3CEBI,PATROCINADOR,MNB3CEBI,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,MXKL7K73,PATROCINADOR,MXKL7K73,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,N3HBT45W,PATROCINADOR,N3HBT45W,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,N68TPAHN,PATROCINADOR,N68TPAHN,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,NJEPXFCD,PATROCINADOR,NJEPXFCD,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PD5QKUIN,PATROCINADOR,PD5QKUIN,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PDJ6CYMZ,PATROCINADOR,PDJ6CYMZ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PHGXUZ6X,PATROCINADOR,PHGXUZ6X,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PNDMGH4R,PATROCINADOR,PNDMGH4R,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PRPTURFW,PATROCINADOR,PRPTURFW,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,PYECZBDE,PATROCINADOR,PYECZBDE,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,Q4B2KUB8,PATROCINADOR,Q4B2KUB8,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,Q69LWC3W,PATROCINADOR,Q69LWC3W,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,QPWEWIQV,PATROCINADOR,QPWEWIQV,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,QQ55CPFI,PATROCINADOR,QQ55CPFI,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,QU9T46VX,PATROCINADOR,QU9T46VX,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,R2D9HD4S,PATROCINADOR,R2D9HD4S,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,R54SDKGJ,PATROCINADOR,R54SDKGJ,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,RIANMQB9,PATROCINADOR,RIANMQB9,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,RN7D8993,PATROCINADOR,RN7D8993,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,RSIJLHK8,PATROCINADOR,RSIJLHK8,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,RXWH7J1U,PATROCINADOR,RXWH7J1U,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,SANDEP7A,PATROCINADOR,SANDEP7A,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,SGCWJA5T,PATROCINADOR,SGCWJA5T,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,SY99S4R5,PATROCINADOR,SY99S4R5,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,T36ZA5A3,PATROCINADOR,T36ZA5A3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,T83PWM8W,PATROCINADOR,T83PWM8W,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,T9D1QZJL,PATROCINADOR,T9D1QZJL,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,TCEVAWJ2,PATROCINADOR,TCEVAWJ2,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,TL9K5S3L,PATROCINADOR,TL9K5S3L,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,U1987N4M,PATROCINADOR,U1987N4M,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,UEYVJBZ4,PATROCINADOR,UEYVJBZ4,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,UM3BXI8X,PATROCINADOR,UM3BXI8X,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,URYNCH72,PATROCINADOR,URYNCH72,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,UUWTMHC7,PATROCINADOR,UUWTMHC7,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,UY3YKUXG,PATROCINADOR,UY3YKUXG,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,V3ZQ3VFE,PATROCINADOR,V3ZQ3VFE,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,V9WFNED8,PATROCINADOR,V9WFNED8,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,VRZV9EV2,PATROCINADOR,VRZV9EV2,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,W22YYF9Y,PATROCINADOR,W22YYF9Y,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,W7YNKX7S,PATROCINADOR,W7YNKX7S,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WK5JU32H,PATROCINADOR,WK5JU32H,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WNV2QAE9,PATROCINADOR,WNV2QAE9,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WSJ1WMMF,PATROCINADOR,WSJ1WMMF,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WSSE48DD,PATROCINADOR,WSSE48DD,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WVQJF9II,PATROCINADOR,WVQJF9II,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,WZV77QYX,PATROCINADOR,WZV77QYX,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,XAX8VFYG,PATROCINADOR,XAX8VFYG,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,XLYAMT8T,PATROCINADOR,XLYAMT8T,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,XTSRCSC3,PATROCINADOR,XTSRCSC3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,Y3GLVSVN,PATROCINADOR,Y3GLVSVN,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,Y8SEDNC3,PATROCINADOR,Y8SEDNC3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,YRVZ8C5L,PATROCINADOR,YRVZ8C5L,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,YV66LKGR,PATROCINADOR,YV66LKGR,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,Z6ULA86M,PATROCINADOR,Z6ULA86M,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ZJ1IID1C,PATROCINADOR,ZJ1IID1C,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ZMR1EKD4,PATROCINADOR,ZMR1EKD4,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ZULH4JHD,PATROCINADOR,ZULH4JHD,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+PATROCINADOR,ZUVTYWT3,PATROCINADOR,ZUVTYWT3,1,PATROCINADOR,parceiro,códigos individuais consolidados pelo mesmo título exato de cupom,True
+POR FALAR EM CORRER INFLU X CORTESIAS,PFC,POR FALAR EM CORRER (Influ x cortesias),PFC,10,POR FALAR EM CORRER,influenciador,identidade exata de título e código revisada,True
+PROELITE12,PROELITE12,Proelite12,Proelite12,14,Proelite12,outro,identidade exata de título e código revisada,True
+PROGRAMA KILOMETRAGEM INFLUENCIADOR 10 DE CASHBACK,KILOMETRAGEM,Programa Kilometragem (Influenciador + 10% de cashback),KILOMETRAGEM,6,Programa Kilometragem,influenciador,identidade exata de título e código revisada,True
+PS ENDURANCE,PSENDURANCE12,PS Endurance,PSENDURANCE12,8,PS Endurance,outro,identidade exata de título e código revisada,True
+QUARK12,QUARK12,QUARK12,QUARK12,2,QUARK12,outro,identidade exata de título e código revisada,True
+RA RUNNERS PORTO ALEGRE,RARUNNERS12,RA Runners (Porto Alegre),RARUNNERS12,1,RA Runners,comunidade,identidade exata de título e código revisada,True
+RADTKE,RADTKE,RADTKE,RADTKE,6,RADTKE,outro,identidade exata de título e código revisada,True
+RBRUNNERS,RBRUNNERS,RBRUNNERS,RBRUNNERS,14,RBRUNNERS,comunidade,identidade exata de título e código revisada,True
+RCRUNNERS,RCRUNNERS,RCRUNNERS,RCRUNNERS,8,RCRUNNERS,comunidade,identidade exata de título e código revisada,True
+RDIAS ASSESSORIA DIAS,RDIASASSESSORIA2025,RDIAS Assessoria Dias,RDIASASSESSORIA2025,10,RDIAS Assessoria Dias,assessoria,identidade exata de título e código revisada,True
+RN2026,RN2026,RN2026,RN2026,13,RN2026,outro,identidade exata de título e código revisada,True
+ROADRUNNERS INFLU X 10 CASHBACK,ROADRUNNERS,ROADRUNNERS (Influ x 10% cashback),ROADRUNNERS,1876,ROADRUNNERS,influenciador,identidade exata de título e código revisada,True
+ROMERO2026,ROMERO2026,ROMERO2026,ROMERO2026,11,ROMERO2026,outro,identidade exata de título e código revisada,True
+RUBIM EXCURSOES,RUBIMEXCURSOES2026,RUBIM EXCURSÕES,RUBIMEXCURSOES2026,26,Rubim Excursões,parceiro,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+RUBIM EXCURSOES 100,RUBIM EXCURSOES 100,RUBIM_EXCURSÕES_100,RUBIM_EXCURSÕES_100,1,Rubim Excursões,parceiro,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+SA12,SA12,SA12,SA12,1,SA12,outro,identidade exata de título e código revisada,True
+SAVAZONI RUNNING TEAM,SAVAZONIFLORIPA2026,Savazoni Running Team,SavazoniFloripa2026,7,Savazoni Running Team,comunidade,identidade exata de título e código revisada,True
+SCHROEDER12,SCHROEDER12,SCHROEDER12,SCHROEDER12,6,SCHROEDER12,outro,identidade exata de título e código revisada,True
+SH RUNNING,SHRUNNING2026,SH Running,SHRunning2026,9,SH Running,comunidade,identidade exata de título e código revisada,True
+SPORTS WEEK 2025,SPORTSWEEK TA 2025 72611,Sports Week 2025,SportsWeek_TA_2025_72611,949,Sports Week,evento_acao,ação de evento explicitamente identificada no título Sports Week 2025,True
+STREET,STREET,Street,Street,3,Street,outro,identidade exata de título e código revisada,True
+T2ASSESSORIA2026,T2ASSESSORIA2026,T2assessoria2026,T2assessoria2026,18,T2assessoria2026,assessoria,identidade exata de título e código revisada,True
+TAVELLA ASSESSORIA JOINVILLE 12,TAVELLA,Tavella (Assessoria - Joinville - 12%),TAVELLA,1,Tavella,assessoria,identidade exata de título e código revisada,True
+TEAM MATHEUS MIGUEL,TMM2026,Team Matheus Miguel,TMM2026,12,Team Matheus Miguel,comunidade,identidade exata de título e código revisada,True
+TEAMSAMUKA2026,TEAMSAMUKA2026,TEAMSAMUKA2026,TEAMSAMUKA2026,1,TEAMSAMUKA2026,comunidade,identidade exata de título e código revisada,True
+TEMPLE RUNNERS ASSESSORIA ESPORTIVA,TEMPLE,Temple Runners (Assessoria Esportiva),TEMPLE,9,Temple Runners,assessoria,identidade exata de título e código revisada,True
+TENISCERTO INFLU X 10 CASHBACK,TENISCERTO,TENISCERTO (Influ x 10% cashback),TENISCERTO,107,TENISCERTO,influenciador,identidade exata de título e código revisada,True
+TESTE,TESTE MICHELE,TESTE,TESTE_MICHELE,1,TESTE,outro,identidade exata de título e código revisada,True
+THAIS CONCEICAO INFLUENCIADORA 10,FISIOQUECORRE,Thais Conceição (Influenciadora - 10%),FISIOQUECORRE,1,Thais Conceição,influenciador,identidade exata de título e código revisada,True
+TIME2026,TIME2026,TIME2026,TIME2026,1,TIME2026,comunidade,identidade exata de título e código revisada,True
+TREINO15,TREINO15,TREINO15,TREINO15,19,TREINO15,evento_acao,identidade exata de título e código revisada,True
+TREINO20,TREINO20,TREINO20,TREINO20,14,TREINO20,evento_acao,identidade exata de título e código revisada,True
+TRIMOD,TRIMOD,TRIMOD,TRIMOD,1,TRIMOD,outro,identidade exata de título e código revisada,True
+TRIUS2026,TRIUS2026,TRIUS2026,TRIUS2026,18,TRIUS2026,outro,identidade exata de título e código revisada,True
+TUBARAORUNNERS,TUBARAORUNNERS,TUBARAORUNNERS,TUBARAORUNNERS,9,TUBARAORUNNERS,comunidade,identidade exata de título e código revisada,True
+UM ATLETA INFLUENCIADOR 5 DE CASHBACK,UMATLETA,Um Atleta (influenciador + 5% de cashback),UMATLETA,59,Um Atleta,influenciador,identidade exata de título e código revisada,True
+VENCEDORES12,VENCEDORES12,vencedores12,vencedores12,3,vencedores12,outro,identidade exata de título e código revisada,True
+VENTUSULI2026,VENTUSULI2026,VENTUSULI2026,VENTUSULI2026,4,VENTUSULI2026,outro,identidade exata de título e código revisada,True
+VIAJANDO,VIAJANDO RG,Viajando,viajando.rg,1,Viajando,outro,identidade exata de título e código revisada,True
+VIBRE ASSESSORIA,VIBREASSESSORIA,Vibre assessoria,VIBREASSESSORIA,35,Vibre Assessoria,assessoria,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+VIBREASSESSORIA 100,VIBREASSESSORIA 100,VIBREASSESSORIA_100,VIBREASSESSORIA_100,1,Vibre Assessoria,assessoria,variante 100% ou nome operacional consolidado ao mesmo canal pelo nome/código base,True
+VIDACORRIDA2026,VIDACORRIDA2026,vidacorrida2026,vidacorrida2026,5,vidacorrida2026,comunidade,identidade exata de título e código revisada,True
+VIDALRUN,VIDALRUN,VIDALRUN,VIDALRUN,9,VIDALRUN,comunidade,identidade exata de título e código revisada,True
+VILARINHO2026,VILARINHO2026,VILARINHO2026,VILARINHO2026,6,VILARINHO2026,outro,identidade exata de título e código revisada,True
+VITORCUNHA10 10,VITORCUNHA10,VITORCUNHA10 (10%),VITORCUNHA10,9,VITORCUNHA10,outro,identidade exata de título e código revisada,True
+VIVABEM12,VIVABEM12,VIVABEM12,VIVABEM12,12,VIVABEM12,outro,identidade exata de título e código revisada,True
+VLOZ2026,VLOZ2026,VLOZ2026,VLOZ2026,6,VLOZ2026,outro,identidade exata de título e código revisada,True
+VTFLORIPA,VTFLORIPA,VTFLORIPA,VTFLORIPA,7,VTFLORIPA,outro,identidade exata de título e código revisada,True
+Z6CLUB,Z6CLUB,Z6CLUB,Z6CLUB,2,Z6CLUB,outro,identidade exata de título e código revisada,True
+ZHRUNNERSCLUB,ZHRUNNERSCLUB,zhrunnersclub,zhrunnersclub,2,zhrunnersclub,comunidade,identidade exata de título e código revisada,True

@@ -282,6 +282,8 @@ def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
         order_number = _required_identifier(source_row["numero_pedido"], "numero_pedido")
         order_key = (event_code, order_number)
         raw = {target: body.get(source) for target, source in ORDER_JSON_FIELDS.items()}
+        if normalize_text(source_row.get("data_pedido")) is not None:
+            raw["order_date"] = source_row["data_pedido"]
 
         parsed: dict[str, object] = {
             "order_date": parse_date(raw["order_date"]),

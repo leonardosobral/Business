@@ -32,7 +32,22 @@ class MappingTests(unittest.TestCase):
     def test_two_correcriciuma_codes_consolidate_and_remain_auditable(self):
         """Matching only one code or replacing source aliases would lose auditability."""
         registrations = mapping_registration_fact().iloc[:2].copy()
-        mapping = load_channel_mapping(DATA_DIR / "channel_mapping.csv")
+        mapping = pd.DataFrame(
+            [
+                {
+                    "coupon_title_key": "CORRECRICIUMA",
+                    "coupon_code_key": code,
+                    "channel_name": "Corre Criciúma",
+                    "channel_type": "assessoria",
+                    "alias_reason": reason,
+                    "reviewed": True,
+                }
+                for code, reason in (
+                    ("CORRECRICIUMA", "mesmo parceiro, código principal"),
+                    ("CORRECRICIUMA_100", "mesmo parceiro, ação limitada"),
+                )
+            ]
+        )
 
         assigned = assign_channels(registrations, mapping)
 
@@ -122,14 +137,14 @@ class MappingTests(unittest.TestCase):
         self.assertEqual(sports_week["paid_registrations"], 1)
         self.assertEqual(sports_week["reviewed"], False)
 
-    def test_seeded_channel_types_encode_reviewed_business_meanings(self):
-        """Generic partner labels would erase the reviewed nature of special channels."""
+    def test_final_channel_types_encode_reviewed_business_meanings(self):
+        """Generic partner labels would erase reviewed meanings from final mappings."""
         mapping = load_channel_mapping(DATA_DIR / "channel_mapping.csv")
-        observed = dict(zip(mapping["channel_name"], mapping["channel_type"], strict=True))
-        self.assertEqual(observed["Sports Week"], "evento_acao")
-        self.assertEqual(observed["PCD"], "politica")
-        self.assertEqual(observed["Benefício"], "beneficio")
-        self.assertEqual(observed["Orgânico / sem cupom"], "organico")
+        observed = mapping.groupby("channel_name")["channel_type"].agg(set).to_dict()
+        self.assertEqual(observed["Sports Week"], {"evento_acao"})
+        self.assertEqual(observed["PCD"], {"politica"})
+        self.assertEqual(observed["Benefício"], {"beneficio"})
+        self.assertNotIn("Orgânico / sem cupom", observed)
 
     def test_product_draft_and_loader_require_exact_reviewed_identities(self):
         """A duplicate or unreviewed identity would make product classification ambiguous."""
@@ -176,7 +191,23 @@ class MappingTests(unittest.TestCase):
     def test_product_classification_uses_only_explicit_values_for_revenue(self):
         """Inferring prices from names would fabricate revenue for included products."""
         products = mapping_product_fact()
-        mapping = load_product_mapping(DATA_DIR / "product_mapping.csv")
+        mapping = pd.DataFrame(
+            [
+                {
+                    "product_id_key": product_id,
+                    "product_name_key": product_name,
+                    "canonical_name": canonical,
+                    "classification": classification,
+                    "classification_reason": "identidade sintética revisada",
+                    "reviewed": True,
+                }
+                for product_id, product_name, canonical, classification in (
+                    ("CAM-INCLUSA", "Camiseta inclusa", "Camiseta inclusa", "kit_incluso"),
+                    ("CAM-EXTRA", "Camiseta extra", "Camiseta extra", "adicional"),
+                    (None, "Item sem classificação comercial", "Item sem classificação comercial", "desconhecido"),
+                )
+            ]
+        )
 
         classified = classify_products(products, mapping).set_index("product_id_key")
 
@@ -193,7 +224,18 @@ class MappingTests(unittest.TestCase):
         """Name similarity must never substitute for a reviewed product identity."""
         products = mapping_product_fact().iloc[[0]].copy()
         products.loc[:, "product_name"] = "Camiseta inclusa nova"
-        mapping = load_product_mapping(DATA_DIR / "product_mapping.csv")
+        mapping = pd.DataFrame(
+            [
+                {
+                    "product_id_key": "CAM-INCLUSA",
+                    "product_name_key": "Camiseta inclusa",
+                    "canonical_name": "Camiseta inclusa",
+                    "classification": "kit_incluso",
+                    "classification_reason": "identidade sintética revisada",
+                    "reviewed": True,
+                }
+            ]
+        )
 
         with self.assertRaisesRegex(ValueError, "unclassified product identities: 1"):
             classify_products(products, mapping)

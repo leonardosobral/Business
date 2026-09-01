@@ -77,7 +77,21 @@ def sanitize_shareable_html(index_path: Path, shareable_path: Path) -> None:
     _write_text_atomically(shareable_path, _normalize_html_text(sanitized))
 
 
-def _source_notes(result, sources) -> dict[str, Any]:
+def source_qualification(status: str) -> str:
+    """Return the exact receipt qualification for the requested snapshot status."""
+    if status == "fixture":
+        return (
+            "Fixture sintética de desenvolvimento; a Task 8 substituirá os dados e mapeamentos."
+        )
+    if status == "ready":
+        return (
+            "Fontes frescas finais após o encerramento das inscrições; "
+            "mapeamentos completos revisados e saída anônima."
+        )
+    raise ValueError(f"unsupported report snapshot status: {status}")
+
+
+def _source_notes(result, sources, status: str) -> dict[str, Any]:
     notes = deepcopy(result.source_notes)
     notes["chart_rationales"] = CHART_RATIONALES
     notes["narrative"] = {
@@ -88,9 +102,12 @@ def _source_notes(result, sources) -> dict[str, Any]:
         },
         "decision_questions": build_decision_questions(result),
     }
-    notes["fixture_status"] = (
-        "Fixture sintética de desenvolvimento; a Task 8 substituirá os dados e mapeamentos."
-    )
+    qualification = source_qualification(status)
+    notes["source_qualification"] = qualification
+    if status == "fixture":
+        notes["fixture_status"] = qualification
+    else:
+        notes.pop("fixture_status", None)
     notes["similarity"] = (
         "seis dimensões independentes; nenhuma avaliação consolidada ou decisão automática"
     )
@@ -127,13 +144,18 @@ def run_analysis(
         load_product_mapping(product_mapping_path),
     )
     result = protect_analysis(build_analysis(mapped))
-    notes = _source_notes(result, sources)
+    snapshot_status = "fixture" if allow_stale else "ready"
+    notes = _source_notes(result, sources, snapshot_status)
     result = dataclasses.replace(result, source_notes=notes)
 
     aggregate_payload = dataclasses.asdict(result)
     reconciliation_payload = deepcopy(mapped.reconciliation)
     generated_at = resolve_report_generated_at(sources.snapshots)
-    report_payload = build_report_snapshot(result, generated_at)
+    report_payload = build_report_snapshot(
+        result,
+        generated_at,
+        status=snapshot_status,
+    )
 
     for payload in (
         aggregate_payload,

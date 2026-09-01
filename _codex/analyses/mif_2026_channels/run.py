@@ -15,6 +15,7 @@ from uuid import UUID
 from .artifact import (
     REPORT_APP_ID,
     build_source_metadata,
+    report_qualification,
     report_component_catalog,
     report_component_map,
 )
@@ -22,7 +23,7 @@ from .config import EVENT_CODE
 from .facts import build_fact_bundle
 from .mappings import emit_channel_mapping_draft, emit_product_mapping_draft
 from .metrics import AUXILIARY_FIELD_CONTRACT, DATASET_IDS
-from .pipeline import CHART_RATIONALES, run_analysis
+from .pipeline import CHART_RATIONALES, run_analysis, source_qualification
 from .privacy import assert_anonymous
 from .source import (
     ALLOW_STALE_EXTRACTION_MARKER,
@@ -37,6 +38,10 @@ _RAW_BOUNDARY_KEYS = frozenset(
 )
 _FORBIDDEN_DECISION_LANGUAGE = re.compile(
     r"\b(?:score|rank(?:ed|ing)?|keep[\s_/-]*cut)\b", re.IGNORECASE
+)
+_READY_DEVELOPMENT_LANGUAGE = re.compile(
+    r"fixture|base sint[ée]tica|task\s*[78]|serve apenas para provar",
+    re.IGNORECASE,
 )
 _REGISTRATION_PARTITION_CONTRACTS = {
     "weekly_sales": None,
@@ -89,6 +94,19 @@ def _reject_decision_language(value: Any, path: str = "$") -> None:
     elif isinstance(value, str) and _FORBIDDEN_DECISION_LANGUAGE.search(value):
         token = _FORBIDDEN_DECISION_LANGUAGE.search(value).group(0)
         raise ValueError(f"forbidden decision language at {path}: {token}")
+
+
+def _reject_ready_development_language(value: Any, path: str = "$") -> None:
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if _READY_DEVELOPMENT_LANGUAGE.search(str(key)):
+                raise ValueError(f"ready snapshot contains development language at {path}.{key}")
+            _reject_ready_development_language(child, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            _reject_ready_development_language(child, f"{path}[{index}]")
+    elif isinstance(value, str) and _READY_DEVELOPMENT_LANGUAGE.search(value):
+        raise ValueError(f"ready snapshot contains development language at {path}")
 
 
 def _required_decimal(value: object, label: str) -> Decimal:
@@ -420,6 +438,21 @@ def verify_outputs(
         raise ValueError("report surface is required")
     if snapshot.get("status") not in {"fixture", "ready"}:
         raise ValueError("snapshot status must be fixture or ready")
+    snapshot_status = snapshot["status"]
+    if snapshot.get("report") != report_qualification(snapshot_status):
+        raise ValueError(f"{snapshot_status} snapshot qualification mismatch")
+    if source_notes.get("source_qualification") != source_qualification(
+        snapshot_status
+    ):
+        raise ValueError(f"{snapshot_status} source qualification mismatch")
+    if snapshot_status == "fixture":
+        if source_notes.get("fixture_status") != source_qualification("fixture"):
+            raise ValueError("fixture source qualification mismatch")
+    else:
+        if "fixture_status" in source_notes:
+            raise ValueError("ready source notes cannot contain fixture status")
+        for payload in (snapshot, aggregates, source_notes):
+            _reject_ready_development_language(payload)
     if snapshot.get("filters") != []:
         raise ValueError("report snapshot must not contain hidden filters")
     queries = snapshot.get("queries")
@@ -465,6 +498,7 @@ def verify_outputs(
             query_id,
             snapshot.get("generatedAt"),
             expected_component_map[query_id],
+            status=snapshot_status,
         )
         if source != expected_source:
             raise ValueError(f"source provenance contract mismatch: {query_id}")
