@@ -348,6 +348,67 @@ class MetricTests(unittest.TestCase):
         self.assertRegex(additional["explicit_revenue"], r"^\d+\.\d{2}$")
         self.assertIn("take_rate_denominator", additional)
 
+    def test_product_chart_tail_counts_distinct_registration_union(self):
+        """Overlapping tail products must not double-count paid registrations in Outros."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.reset_index(drop=True)
+        product_rows = []
+        for product_index in range(10):
+            count = 20 - product_index
+            selected = registrations.iloc[:count]
+            product_name = f"Produto {product_index + 1:02d}"
+            for position, registration in selected.iterrows():
+                product_rows.append(
+                    {
+                        "cod_evento": 72611,
+                        "numero_inscricao": registration["numero_inscricao"],
+                        "numero_pedido": registration["numero_pedido"],
+                        "product_position": position,
+                        "canonical_name": product_name,
+                        "classification": "adicional",
+                        "product_quantity": 1,
+                        "product_revenue": None,
+                    }
+                )
+        for product_name, selected in (
+            ("Produto 11", registrations.iloc[:8]),
+            ("Produto 12", registrations.iloc[4:12]),
+        ):
+            for position, registration in selected.iterrows():
+                product_rows.append(
+                    {
+                        "cod_evento": 72611,
+                        "numero_inscricao": registration["numero_inscricao"],
+                        "numero_pedido": registration["numero_pedido"],
+                        "product_position": position,
+                        "canonical_name": product_name,
+                        "classification": "adicional",
+                        "product_quantity": 1,
+                        "product_revenue": None,
+                    }
+                )
+
+        result = build_analysis(
+            replace(facts, products=pd.DataFrame(product_rows))
+        )
+        metadata = result.chart_metadata["product_summary"]
+
+        self.assertEqual(metadata["tail_categories"], ["Produto 11", "Produto 12"])
+        self.assertEqual(metadata["summed_category_registrations"], 16)
+        self.assertEqual(metadata["distinct_registrations_with_product"], 12)
+        self.assertEqual(metadata["product_quantity"], 16)
+        self.assertEqual(
+            metadata["tail_registration_multiplicity"],
+            [
+                {"tail_product_count": 1, "paid_registrations": 8},
+                {"tail_product_count": 2, "paid_registrations": 4},
+            ],
+        )
+        self.assertEqual(metadata["take_rate_denominator"], len(registrations))
+        self.assertEqual(metadata["take_rate_pct"], 46.15)
+        self.assertEqual(len(result.datasets["product_summary"]), 12)
+        self.assertNotIn("numero_inscricao", str(metadata).casefold())
+
     def test_geography_profile_and_product_deltas_show_bases_and_coverage(self):
         """A delta without both bases and coverage would be unauditable."""
         result = build_analysis(channel_metric_facts())

@@ -88,17 +88,53 @@ test("product Outros sums quantities but fails closed on partial explicit revenu
     explicit_revenue_coverage_pct: index === 10 ? 100 : 0,
   }));
 
-  const chartRows = prepareChartRows(source, RANKING_CONFIGS.product);
   const tail = source.slice(10);
+  const aggregateMetadata = {
+    category_field: "product_name",
+    primary_metric: "registrations_with_product",
+    top_n: 10,
+    source_category_count: 12,
+    tail_category_count: 2,
+    tail_categories: tail.map((row) => row.product_name),
+    summed_category_registrations: 135,
+    distinct_registrations_with_product: 111,
+    product_quantity: 155,
+    tail_registration_multiplicity: [
+      { tail_product_count: 1, paid_registrations: 87 },
+      { tail_product_count: 2, paid_registrations: 24 },
+    ],
+    take_rate_denominator: 1_000,
+    take_rate_pct: 11.1,
+    aggregation_rule: "COUNT(DISTINCT paid registration) across the union of tail products",
+  };
+  assert.throws(
+    () => prepareChartRows(source, RANKING_CONFIGS.product),
+    /distinct.*union.*metadata/iu,
+  );
+  assert.throws(
+    () => prepareChartRows(source, {
+      ...RANKING_CONFIGS.product,
+      aggregateMetadata: {
+        ...aggregateMetadata,
+        tail_registration_multiplicity: [
+          { tail_product_count: 1, paid_registrations: 111 },
+        ],
+      },
+    }),
+    /distinct.*union.*metadata/iu,
+  );
+  const chartRows = prepareChartRows(source, {
+    ...RANKING_CONFIGS.product,
+    aggregateMetadata,
+  });
   const other = chartRows.find((row) => row.product_name === "Outros");
 
   assert.equal(chartRows.length, 11);
-  assert.equal(other.registrations_with_product,
-    tail.reduce((total, row) => total + row.registrations_with_product, 0));
+  assert.equal(other.registrations_with_product, 111);
   assert.equal(other.product_quantity,
     tail.reduce((total, row) => total + row.product_quantity, 0));
   assert.equal(other.take_rate_denominator, 1_000);
-  assert.equal(other.take_rate_pct, other.registrations_with_product / 10);
+  assert.equal(other.take_rate_pct, 11.1);
   assert.equal(other.classification, "misto");
   assert.equal(other.explicit_revenue, null);
   assert.equal(other.explicit_revenue_coverage_pct, null);
@@ -160,9 +196,10 @@ test("ranking descriptions disclose Top 10 + Outros and full paginated evidence"
 test("ReportContent applies ranking preparation only to categorical ranking charts", async () => {
   const report = await readFile(new URL("../src/content/report/ReportContent.jsx", import.meta.url), "utf8");
 
-  for (const ranking of ["country", "state", "city", "product", "channelState"]) {
+  for (const ranking of ["country", "state", "city", "channelState"]) {
     assert.match(report, new RegExp(`ranking=\\{RANKING_CONFIGS\\.${ranking}\\}`, "u"));
   }
+  assert.match(report, /ranking=\{productRanking\}/u);
   assert.match(report, /prepareOperationalChartRows\(rows, operational\)/u);
   assert.equal((report.match(/operational=\{OPERATIONAL_CONFIGS\.lot\}/gu) ?? []).length, 2);
   assert.equal((report.match(/operational=\{OPERATIONAL_CONFIGS\.modality\}/gu) ?? []).length, 2);
@@ -186,12 +223,23 @@ test("the ready snapshot reconciles every authored chart-only transformation", a
   ];
   for (const [queryId, config] of checks) {
     const source = snapshot.queries[queryId].rows;
-    const chartRows = prepareChartRows(source, config);
+    const chartRows = prepareChartRows(source, queryId === "product_summary"
+      ? { ...config, aggregateMetadata: snapshot.chartMetadata?.product_summary }
+      : config);
     assert.ok(chartRows.length <= 11, queryId);
     assert.ok(descending(chartRows.slice(0, -1), config.valueField), queryId);
     if (source.length > 10) assert.equal(chartRows.at(-1)[config.categoryField], "Outros", queryId);
-    assert.equal(chartRows.reduce((total, row) => total + row[config.valueField], 0),
-      source.reduce((total, row) => total + row[config.valueField], 0), queryId);
+    if (queryId === "product_summary") {
+      const metadata = snapshot.chartMetadata.product_summary;
+      assert.equal(chartRows.at(-1).registrations_with_product,
+        metadata.distinct_registrations_with_product);
+      assert.equal(chartRows.at(-1).take_rate_pct, metadata.take_rate_pct);
+      assert.equal(chartRows.reduce((total, row) => total + row.product_quantity, 0),
+        source.reduce((total, row) => total + row.product_quantity, 0), queryId);
+    } else {
+      assert.equal(chartRows.reduce((total, row) => total + row[config.valueField], 0),
+        source.reduce((total, row) => total + row[config.valueField], 0), queryId);
+    }
   }
 
   const stateGroups = Map.groupBy(snapshot.queries.channel_state_mix.rows, (row) => row.channel_name);

@@ -54,16 +54,68 @@ function geographyOther(categoryField) {
   };
 }
 
-function productOther(tail) {
-  const registrations = sumField(tail, "registrations_with_product");
+function productOther(tail, _fallback, metadata, context) {
+  if (!metadata || typeof metadata !== "object") {
+    throw new TypeError("Product Outros requires distinct union metadata.");
+  }
+  const tailCategories = tail.map((row) => String(row.product_name)).sort(categoryCollator.compare);
+  const reviewedCategories = Array.isArray(metadata.tail_categories)
+    ? metadata.tail_categories.map(String).sort(categoryCollator.compare)
+    : [];
+  const summedRegistrations = sumField(tail, "registrations_with_product");
+  const productQuantity = sumField(tail, "product_quantity");
   const denominator = constantField(tail, "take_rate_denominator");
+  const registrations = metadata.distinct_registrations_with_product;
+  const multiplicity = metadata.tail_registration_multiplicity;
+  let previousProductCount = 0;
+  let multiplicityDistinct = 0;
+  let multiplicityPairs = 0;
+  const multiplicityValid = Array.isArray(multiplicity) && multiplicity.every((row) => {
+    const productCount = row?.tail_product_count;
+    const registrationCount = row?.paid_registrations;
+    const valid = Number.isSafeInteger(productCount)
+      && Number.isSafeInteger(registrationCount)
+      && productCount > previousProductCount
+      && productCount <= tail.length
+      && registrationCount > 0;
+    previousProductCount = productCount;
+    if (valid) {
+      multiplicityDistinct += registrationCount;
+      multiplicityPairs += productCount * registrationCount;
+    }
+    return valid;
+  });
+  const expectedRate = roundPct(registrations, denominator);
+  const validMetadata = metadata.category_field === context.categoryField
+    && metadata.primary_metric === context.valueField
+    && metadata.top_n === context.topN
+    && metadata.source_category_count === context.sourceCount
+    && metadata.tail_category_count === tail.length
+    && JSON.stringify(reviewedCategories) === JSON.stringify(tailCategories)
+    && metadata.summed_category_registrations === summedRegistrations
+    && metadata.product_quantity === productQuantity
+    && multiplicityValid
+    && multiplicityDistinct === registrations
+    && multiplicityPairs === summedRegistrations
+    && metadata.take_rate_denominator === denominator
+    && Number.isSafeInteger(registrations)
+    && registrations >= 0
+    && registrations <= summedRegistrations
+    && registrations <= denominator
+    && metadata.take_rate_pct === expectedRate
+    && typeof metadata.aggregation_rule === "string"
+    && /distinct/iu.test(metadata.aggregation_rule)
+    && /union/iu.test(metadata.aggregation_rule);
+  if (!validMetadata) {
+    throw new TypeError("Product Outros distinct union metadata does not reconcile.");
+  }
   const allRevenueAbsent = tail.every((row) => row.explicit_revenue == null);
   const completeRevenue = tail.every((row) => Number.isFinite(row.explicit_revenue));
   return {
     product_name: "Outros",
     classification: uniqueLabel(tail, "classification"),
     registrations_with_product: registrations,
-    product_quantity: sumField(tail, "product_quantity"),
+    product_quantity: productQuantity,
     take_rate_denominator: denominator,
     take_rate_pct: roundPct(registrations, denominator),
     explicit_revenue: completeRevenue ? completeSum(tail, "explicit_revenue") : null,
@@ -106,6 +158,7 @@ export function prepareChartRows(rows = [], {
   topN = 10,
   otherLabel = "Outros",
   aggregateOther,
+  aggregateMetadata,
 } = {}) {
   if (!Array.isArray(rows) || !categoryField || !valueField) return rows;
   if (!Number.isSafeInteger(topN) || topN < 1) throw new TypeError("topN must be a positive safe integer.");
@@ -137,11 +190,17 @@ export function prepareChartRows(rows = [], {
     [categoryField]: otherLabel,
     [valueField]: sumField(tail, valueField),
   };
-  const other = aggregateOther ? aggregateOther(tail, fallback) : fallback;
+  const other = aggregateOther
+    ? aggregateOther(tail, fallback, aggregateMetadata, {
+        categoryField, valueField, topN, sourceCount: rows.length,
+      })
+    : fallback;
   const normalizedOther = {
     ...other,
     [categoryField]: otherLabel,
-    [valueField]: sumField(tail, valueField),
+    [valueField]: aggregateOther
+      ? numericValue(other, valueField)
+      : sumField(tail, valueField),
   };
   return [...leaders.map(({ row }) => row), normalizedOther];
 }

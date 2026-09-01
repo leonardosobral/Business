@@ -108,6 +108,22 @@ class ReportSnapshotTests(unittest.TestCase):
         self.assertNotIn("numero_inscricao", text)
         self.assertNotIn("example.com", text)
 
+    def test_snapshot_carries_anonymous_product_chart_union_metadata(self):
+        """The chart must receive a distinct-union receipt without changing table rows."""
+        result = analysis_result()
+        snapshot = build_report_snapshot(
+            result, "2026-08-30T22:00:00-03:00"
+        )
+
+        self.assertEqual(snapshot["chartMetadata"], result.chart_metadata)
+        self.assertEqual(
+            snapshot["queries"]["product_summary"]["rows"],
+            result.datasets["product_summary"],
+        )
+        text = json.dumps(snapshot["chartMetadata"], ensure_ascii=False).casefold()
+        self.assertNotIn("numero_inscricao", text)
+        self.assertNotIn("numero_pedido", text)
+
     def test_ready_snapshot_uses_final_provenance_without_fixture_claims(self):
         """A fresh final snapshot must not retain development-only provenance."""
         snapshot = build_report_snapshot(
@@ -587,6 +603,27 @@ class CliTests(unittest.TestCase):
                 self._replace_overview_value(paths, source_field, None)
                 completed = self._verify(paths)
                 self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_verify_rejects_tampered_product_chart_union_metadata(self):
+        """A coherent receipt edit cannot invent distinct registrations outside the tail."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            for metadata in (
+                snapshot["chartMetadata"]["product_summary"],
+                aggregates["chart_metadata"]["product_summary"],
+            ):
+                metadata["tail_registration_multiplicity"] = [
+                    {"tail_product_count": 1, "paid_registrations": 1}
+                ]
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("product chart", completed.stderr.lower())
 
     def test_verify_rejects_query_rows_that_diverge_from_aggregate_receipt(self):
         """Tampering with weekly evidence must not survive receipt verification."""

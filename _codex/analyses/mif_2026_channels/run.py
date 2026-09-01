@@ -22,7 +22,13 @@ from .artifact import (
 from .config import EVENT_CODE
 from .facts import build_fact_bundle
 from .mappings import emit_channel_mapping_draft, emit_product_mapping_draft
-from .metrics import AUXILIARY_FIELD_CONTRACT, DATASET_IDS
+from .metrics import (
+    AUXILIARY_FIELD_CONTRACT,
+    DATASET_IDS,
+    PRODUCT_CHART_AGGREGATION_RULE,
+    PRODUCT_CHART_TOP_N,
+)
+from .normalize import normalize_key
 from .pipeline import CHART_RATIONALES, run_analysis, source_qualification
 from .privacy import assert_anonymous
 from .source import (
@@ -559,6 +565,106 @@ def _validate_dataset_contracts(
     return overview
 
 
+def _validate_chart_metadata(
+    snapshot: dict[str, Any],
+    aggregates: dict[str, Any],
+    datasets: dict[str, list[dict[str, Any]]],
+    overview: dict[str, Any],
+) -> None:
+    metadata = aggregates.get("chart_metadata")
+    if snapshot.get("chartMetadata") != metadata:
+        raise ValueError("product chart metadata receipt mismatch")
+    if not isinstance(metadata, dict) or set(metadata) != {"product_summary"}:
+        raise ValueError("product chart metadata contract mismatch")
+    product = metadata["product_summary"]
+    expected_keys = {
+        "category_field",
+        "primary_metric",
+        "top_n",
+        "source_category_count",
+        "tail_category_count",
+        "tail_categories",
+        "summed_category_registrations",
+        "distinct_registrations_with_product",
+        "product_quantity",
+        "tail_registration_multiplicity",
+        "take_rate_denominator",
+        "take_rate_pct",
+        "aggregation_rule",
+    }
+    if not isinstance(product, dict) or set(product) != expected_keys:
+        raise ValueError("product chart metadata contract mismatch")
+
+    rows = datasets["product_summary"]
+    ranked = sorted(
+        rows,
+        key=lambda row: (
+            -int(row.get("registrations_with_product", -1)),
+            normalize_key(row.get("product_name")).casefold(),
+            str(row.get("product_name")),
+        ),
+    )
+    tail = ranked[PRODUCT_CHART_TOP_N:]
+    expected_tail_categories = [str(row["product_name"]) for row in tail]
+    expected_summed = sum(int(row["registrations_with_product"]) for row in tail)
+    expected_quantity = sum(int(row["product_quantity"]) for row in tail)
+    denominator = int(overview["paid_registrations"])
+    distinct = product.get("distinct_registrations_with_product")
+    multiplicity = product.get("tail_registration_multiplicity")
+    multiplicity_valid = isinstance(multiplicity, list)
+    previous_product_count = 0
+    multiplicity_distinct = 0
+    multiplicity_pairs = 0
+    if multiplicity_valid:
+        for row in multiplicity:
+            if not isinstance(row, dict) or set(row) != {
+                "tail_product_count", "paid_registrations"
+            }:
+                multiplicity_valid = False
+                break
+            product_count = row["tail_product_count"]
+            registration_count = row["paid_registrations"]
+            if (
+                not isinstance(product_count, int)
+                or isinstance(product_count, bool)
+                or not isinstance(registration_count, int)
+                or isinstance(registration_count, bool)
+                or product_count <= previous_product_count
+                or product_count > len(tail)
+                or registration_count <= 0
+            ):
+                multiplicity_valid = False
+                break
+            previous_product_count = product_count
+            multiplicity_distinct += registration_count
+            multiplicity_pairs += product_count * registration_count
+    expected_rate = (
+        round(int(distinct) / denominator * 100, 2)
+        if isinstance(distinct, int) and denominator
+        else 0.0
+    )
+    valid = (
+        product["category_field"] == "product_name"
+        and product["primary_metric"] == "registrations_with_product"
+        and product["top_n"] == PRODUCT_CHART_TOP_N
+        and product["source_category_count"] == len(rows)
+        and product["tail_category_count"] == len(tail)
+        and product["tail_categories"] == expected_tail_categories
+        and product["summed_category_registrations"] == expected_summed
+        and product["product_quantity"] == expected_quantity
+        and multiplicity_valid
+        and multiplicity_distinct == distinct
+        and multiplicity_pairs == expected_summed
+        and product["take_rate_denominator"] == denominator
+        and isinstance(distinct, int)
+        and 0 <= distinct <= min(expected_summed, denominator)
+        and product["take_rate_pct"] == expected_rate
+        and product["aggregation_rule"] == PRODUCT_CHART_AGGREGATION_RULE
+    )
+    if not valid:
+        raise ValueError("product chart distinct-union metadata does not reconcile")
+
+
 def verify_outputs(
     report_data_path: Path,
     aggregates_path: Path,
@@ -612,6 +718,7 @@ def verify_outputs(
     if quality.get("data_quality") != datasets["data_quality"]:
         raise ValueError("aggregate quality data receipt mismatch")
     overview = _validate_dataset_contracts(datasets, aggregates, reconciliation)
+    _validate_chart_metadata(snapshot, aggregates, datasets, overview)
     aggregate_result = SimpleNamespace(
         datasets=datasets,
         full_dossiers=aggregates.get("full_dossiers", []),

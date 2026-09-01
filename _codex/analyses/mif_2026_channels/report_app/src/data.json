@@ -1,4 +1,57 @@
 {
+  "chartMetadata": {
+    "product_summary": {
+      "aggregation_rule": "COUNT(DISTINCT paid registration) across the union of product categories outside the top 10",
+      "category_field": "product_name",
+      "distinct_registrations_with_product": 644,
+      "primary_metric": "registrations_with_product",
+      "product_quantity": 781,
+      "source_category_count": 20,
+      "summed_category_registrations": 781,
+      "tail_categories": [
+        "Corta-vento Maratona de Floripa 2026",
+        "Jantar de massas",
+        "Viseira Maratona de Floripa 2026",
+        "Área VIP Atletas",
+        "Plaquinha para pulseira MoveON",
+        "Jaqueta FINISHER Maratona de Floripa 2026",
+        "Boné trucker Maratona de Floripa",
+        "Pulseira MoveON Maratona de Floripa 2026",
+        "Óculos Maratona de Floripa 2026",
+        "Taxa de alteração"
+      ],
+      "tail_category_count": 10,
+      "tail_registration_multiplicity": [
+        {
+          "paid_registrations": 553,
+          "tail_product_count": 1
+        },
+        {
+          "paid_registrations": 66,
+          "tail_product_count": 2
+        },
+        {
+          "paid_registrations": 14,
+          "tail_product_count": 3
+        },
+        {
+          "paid_registrations": 3,
+          "tail_product_count": 4
+        },
+        {
+          "paid_registrations": 6,
+          "tail_product_count": 5
+        },
+        {
+          "paid_registrations": 2,
+          "tail_product_count": 6
+        }
+      ],
+      "take_rate_denominator": 15713,
+      "take_rate_pct": 4.1,
+      "top_n": 10
+    }
+  },
   "componentCatalog": [
     "mif-age-bands",
     "mif-auxiliary-field-coverage",
@@ -182326,7 +182379,7 @@
               "mif-product-summary-chart",
               "mif-product-summary"
             ],
-            "definition": "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador e receita apenas valores explícitos.",
+            "definition": "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador, receita apenas valores explícitos e o agregado Outros do gráfico conta inscrições distintas na união das categorias restantes.",
             "label": "Adoção de produtos",
             "sourceLineage": [
               {

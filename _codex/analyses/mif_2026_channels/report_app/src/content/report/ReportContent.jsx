@@ -106,6 +106,10 @@ export function ReportContent() {
   const [overview = {}] = rows("event_overview");
   const copy = reportCopy(snapshot.status, overview);
   const channelIndex = rows("channel_index");
+  const productRanking = {
+    ...RANKING_CONFIGS.product,
+    aggregateMetadata: snapshot.chartMetadata?.product_summary,
+  };
   const fullChannels = channelIndex.filter((row) => row.dossier_type === "full");
   const weeklyRows = rows("weekly_sales");
   const weeks = weeklyRows.map((row) => row.week_start).filter(Boolean).sort();
@@ -175,7 +179,7 @@ export function ReportContent() {
         <EvidenceChart id="mif-pace-bands" queryId="pace_bands" title="Faixas de ritmo" rows={rows("pace_bands")} spec={{ type: "bar", x: "pace_band", y: "paid_registrations" }} description={describe(rows("pace_bands"), { unit: "inscrições pagas por faixa de ritmo" })} />
         <EvidenceChart id="mif-club-coverage" queryId="club_coverage" title="Clube ou assessoria informado" rows={rows("club_coverage")} spec={{ type: "horizontalBar", x: "club", y: "paid_registrations", preserveBarChart: true }} description={describe(rows("club_coverage"), { unit: "inscrições pagas por situação de clube" })} />
         <EvidenceTable id="mif-auxiliary-field-coverage" queryId="auxiliary_field_coverage" title="Cobertura dos campos auxiliares" rows={rows("auxiliary_field_coverage")} columns={[{ key: "field", label: "Campo" }, { key: "valid", label: "Válidos", align: "right" }, { key: "invalid", label: "Inválidos", align: "right" }, { key: "missing", label: "Ausentes", align: "right" }, { key: "denominator", label: "Base", align: "right" }, { key: "valid_coverage_pct", label: "Cobertura válida (%)", align: "right" }]} />
-        <EvidenceChart id="mif-product-summary-chart" queryId="product_summary" title="Adoção de produtos" rows={rows("product_summary")} spec={CHART_SPECS.product_summary} ranking={RANKING_CONFIGS.product} description={describe(rows("product_summary"), { unit: "inscrições pagas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator })} />
+        <EvidenceChart id="mif-product-summary-chart" queryId="product_summary" title="Adoção de produtos" rows={rows("product_summary")} spec={CHART_SPECS.product_summary} ranking={productRanking} description={describe(rows("product_summary"), { unit: "inscrições pagas distintas com produto", denominator: rows("product_summary")[0]?.take_rate_denominator ?? eventDenominator })} />
         <EvidenceTable id="mif-product-summary" queryId="product_summary" title="Resumo de produtos" rows={rows("product_summary")} columns={[{ key: "product_name", label: "Produto" }, { key: "classification", label: "Classificação" }, { key: "registrations_with_product", label: "Inscrições", align: "right" }, { key: "take_rate_pct", label: "Adoção (%)", align: "right" }, { key: "explicit_revenue", label: "Receita explícita (R$)", align: "right" }]} />
         <EvidenceTable id="mif-payment-mix" queryId="payment_mix" title="Meios de pagamento" rows={rows("payment_mix")} columns={[{ key: "payment_method", label: "Meio" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />
         <EvidenceTable id="mif-device-mix" queryId="device_mix" title="Dispositivos" rows={rows("device_mix")} columns={[{ key: "device_type", label: "Dispositivo" }, { key: "paid_orders", label: "Pedidos pagos", align: "right" }, { key: "share_pct", label: "Participação (%)", align: "right" }]} description="Pedidos pagos únicos, com base explícita em cada linha." />

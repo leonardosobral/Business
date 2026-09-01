@@ -73,6 +73,14 @@ Both receipts identify event `72611`. No source rows, JSON bodies, direct identi
 - GREEN: the minimal fix removes only the redundant second sort. The ten individual categories retain descending order and deterministic tie-breaking, while the recomputed `Outros` bucket is always the final chart row regardless of its aggregate magnitude. The visible `Top 10 + Outros` description and complete paginated source rows are unchanged.
 - Verification after the visual-QA fix: 8/8 focused Node tests, 124/124 MIF tests, official build, sanitized shareable, 140 protected runtime files, and byte-identical theme all passed.
 
+### Product `Outros` distinct-union correction
+
+- RED: the final independent review reconstructed the deterministic paid-product tail from facts and proved that summing per-product distinct registrations overstated the chart bucket as 781; overlapping registrations across tail products reduce the union to 644.
+- GREEN: the paid fact pipeline now publishes a chart-only anonymous receipt for the exact tail: 781 summed category registrations, 644 distinct registrations across their union, 781 additive product units, a 15,713 paid-registration denominator, a 4.10% take rate, and an aggregate multiplicity distribution that reconciles the union without serializing identifiers. The JavaScript transformation validates this receipt before rendering and fails closed if it is absent or inconsistent.
+- The complete 20-row `product_summary` evidence table is unchanged. Only the chart aggregate uses the non-additive distinct union; `product_quantity` remains additive, and `Outros` remains fixed after the ten individually ranked products.
+- Canonical verification independently checks the ranked tail identities, source-category counts, per-category sum, distinct union, product-unit sum, denominator, rate, and aggregation rule against the fresh paid facts.
+- Verification after the correction: 8/8 focused Node tests, 127/127 MIF tests, canonical `verify`, fresh notebook execution, official build, sanitized shareable, 140 protected runtime files, and byte-identical theme all passed.
+
 ## Final commercial headlines
 
 | Metric | Final value |
@@ -123,9 +131,10 @@ These are descriptive observations, not automatic scores, rankings, or keep/cut 
 - Theme: byte-identical to installed `codex-classic`; SHA-256 `d6885cb4e6cd5201935773f47148888bcd634e9cc13df9951803a7beacac25f2`.
 - Runtime SHA-256: `bce021364672c86cb27997c683af6351677752ff905dc8c7cdc96d06ece8dc00`.
 - Compiler SHA-256: `ec65601079c80bef7210f2c9760ff7f2db6adef28516ffff280d4c86f91d4078`.
-- Snapshot SHA-256 at build: `b1dd79b60179a7c5cd1b43bf48682ca16ee07e3225472cfae9e438b16d87e0af`.
-- Sanitized `dist/index.html` SHA-256: `bbd412bff4a35113028bb519dee199bb4f87bb512f9f5173b451c514863b4593`.
-- Sanitized `dist/shareable.html` SHA-256: `dcce876875a9ed81143ddccf1c1ce1b5c4c6ad488a1eb15ba4f8b1b2a6e033a1`.
+- Snapshot SHA-256 at build: `450e22b7d437cf52b849ee0a7bb43a8a3aeba709fa7456d54b6964cd9b0f3220`.
+- Aggregate receipt SHA-256: `44c4ad8326091e2d85b4904fb0109dca1fe54adeb1252b59be9e0e977c00763e`.
+- Normalized `dist/index.html` SHA-256: `b6686b763a15e6957ebbf7129b69255087540682d120adae552a8dcaa0b656d3`.
+- Sanitized `dist/shareable.html` SHA-256: `11e44c54530204c0353bc8ce3956c1f50c8d71fc003827e5489d7a27076df462`.
 - Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, and Benefício present; 73 compact channels; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
 - `git diff --check`: passed.
 - Desktop/mobile/print visual QA remains an explicit controller handoff; inspect the four event rankings, at least one grouped and one ungrouped channel-state chart, source-table pagination, and the lot/modality order in the final shareable build.

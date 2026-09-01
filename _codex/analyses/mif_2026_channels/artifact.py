@@ -36,7 +36,7 @@ _QUERY_DEFINITIONS = {
     "payment_mix": ("Pedidos pagos por meio de pagamento", "Contagem de pedidos pagos únicos, agrupada pelo meio de pagamento normalizado."),
     "device_mix": ("Pedidos pagos por dispositivo", "Contagem de pedidos pagos únicos, agrupada pelo dispositivo normalizado."),
     "auxiliary_field_coverage": ("Cobertura de campos auxiliares", "Contagens válidas, inválidas e ausentes entre inscrições vinculadas a pedidos pagos."),
-    "product_summary": ("Adoção de produtos", "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador e receita apenas valores explícitos."),
+    "product_summary": ("Adoção de produtos", "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador, receita apenas valores explícitos e o agregado Outros do gráfico conta inscrições distintas na união das categorias restantes."),
     "channel_index": ("Inscrições e valores alocados por canal", "Contagem de inscrições pagas, pedidos tocados não aditivos e valores de pedido alocados por canal revisado."),
     "channel_aliases": ("Aliases observados por canal", "Contagem de inscrições pagas por identidade de origem e canal canônico revisado."),
     "channel_modality_mix": ("Modalidade por canal", "Contagem de inscrições pagas por canal e modalidade, com denominador do canal."),
@@ -303,6 +303,7 @@ def build_report_snapshot(
         "status": status,
         "filters": [],
         "report": report_qualification(status),
+        "chartMetadata": deepcopy(result.chart_metadata),
         "queries": queries,
         "componentCatalog": report_component_catalog(result),
         "packageInfo": {

@@ -144,4 +144,5 @@ def protect_analysis(result: AnalysisResult) -> AnalysisResult:
     assert_anonymous(protected.long_tail)
     assert_anonymous(protected.quality)
     assert_anonymous(protected.source_notes)
+    assert_anonymous(protected.chart_metadata)
     return protected

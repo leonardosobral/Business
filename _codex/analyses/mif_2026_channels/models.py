@@ -1,6 +1,6 @@
 """Typed value objects shared by the MIF 2026 analysis pipeline."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -42,3 +42,4 @@ class AnalysisResult:
     long_tail: list[dict[str, Any]]
     quality: dict[str, Any]
     source_notes: dict[str, Any]
+    chart_metadata: dict[str, Any] = field(default_factory=dict)

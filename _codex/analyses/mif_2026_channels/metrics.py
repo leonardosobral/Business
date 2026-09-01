@@ -25,6 +25,11 @@ MONEY_QUANTUM = Decimal("0.01")
 SAMPLE_WARNING = "Base abaixo de 10 inscrições pagas; leitura indicativa"
 NOT_MEASURED = "não mensurado"
 TOUCHED_ORDERS_NOTE = "não aditivo entre canais"
+PRODUCT_CHART_TOP_N = 10
+PRODUCT_CHART_AGGREGATION_RULE = (
+    "COUNT(DISTINCT paid registration) across the union of product categories "
+    "outside the top 10"
+)
 
 DATASET_IDS = (
     "event_overview",
@@ -604,6 +609,65 @@ def _product_mix(
             }
         )
     return rows
+
+
+def _product_chart_metadata(
+    product_rows: list[dict[str, object]],
+    paid_products: pd.DataFrame,
+    paid_registration_count: int,
+) -> dict[str, object]:
+    """Describe the chart-only product tail without serializing registration IDs."""
+    ranked = sorted(
+        product_rows,
+        key=lambda row: (
+            -int(row["registrations_with_product"]),
+            normalize_key(row["product_name"]).casefold(),
+            str(row["product_name"]),
+        ),
+    )
+    tail = ranked[PRODUCT_CHART_TOP_N:]
+    tail_categories = [str(row["product_name"]) for row in tail]
+    tail_products = paid_products.loc[
+        paid_products["canonical_name"].astype(str).isin(tail_categories)
+    ] if tail_categories else paid_products.iloc[0:0]
+    registration_multiplicity = (
+        tail_products.groupby("numero_inscricao")["canonical_name"]
+        .nunique()
+        .value_counts()
+        .sort_index()
+    )
+    multiplicity_receipt = [
+        {
+            "tail_product_count": int(product_count),
+            "paid_registrations": int(registration_count),
+        }
+        for product_count, registration_count in registration_multiplicity.items()
+    ]
+    distinct_registrations = sum(
+        row["paid_registrations"] for row in multiplicity_receipt
+    )
+    denominator = int(paid_registration_count)
+    return {
+        "category_field": "product_name",
+        "primary_metric": "registrations_with_product",
+        "top_n": PRODUCT_CHART_TOP_N,
+        "source_category_count": len(product_rows),
+        "tail_category_count": len(tail),
+        "tail_categories": tail_categories,
+        "summed_category_registrations": sum(
+            int(row["registrations_with_product"]) for row in tail
+        ),
+        "distinct_registrations_with_product": distinct_registrations,
+        "product_quantity": sum(int(row["product_quantity"]) for row in tail),
+        "tail_registration_multiplicity": multiplicity_receipt,
+        "take_rate_denominator": denominator,
+        "take_rate_pct": (
+            round(distinct_registrations / denominator * 100, 2)
+            if denominator
+            else 0.0
+        ),
+        "aggregation_rule": PRODUCT_CHART_AGGREGATION_RULE,
+    }
 
 
 def _profile_rows(frame: pd.DataFrame) -> tuple[
@@ -1545,6 +1609,11 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
     cities = _renamed_distribution(paid_registrations, "city", "city")
     _, ages, genders, paces, clubs = _profile_rows(paid_registrations)
     products = _product_mix(paid_registrations, paid_products)
+    chart_metadata = {
+        "product_summary": _product_chart_metadata(
+            products, paid_products, len(paid_registrations)
+        )
+    }
     full, compact = build_channel_dossiers(paid_registrations, paid_orders, paid_products)
 
     overlap_rows = paid_registrations.copy()
@@ -1660,4 +1729,5 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
         long_tail=compact,
         quality=quality,
         source_notes=source_notes,
+        chart_metadata=chart_metadata,
     )
