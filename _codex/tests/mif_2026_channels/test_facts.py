@@ -14,6 +14,17 @@ from _codex.analyses.mif_2026_channels.facts import (
 from _codex.tests.mif_2026_channels.fixtures import source_bundle
 
 
+def _bundle_with_first_registration_products(
+    products: list[dict[str, object]],
+):
+    bundle = source_bundle()
+    participants = bundle.participants.copy()
+    body = json.loads(participants.loc[0, "body"])
+    body["produtos"] = products
+    participants.loc[0, "body"] = json.dumps(body, ensure_ascii=False)
+    return replace(bundle, participants=participants)
+
+
 class FactTests(unittest.TestCase):
     def test_order_and_registration_grains_are_unique(self):
         """Dropping composite-key validation would allow duplicate fact rows."""
@@ -41,6 +52,83 @@ class FactTests(unittest.TestCase):
         facts = build_fact_bundle(source_bundle())
         self.assertEqual(len(facts.products), 3)
         self.assertEqual(set(facts.products["product_position"]), {0, 1})
+
+    def test_product_fact_reads_normalized_id_produto_and_single_dynamic_name(self):
+        """Ignoring the real dynamic-name schema would collapse products into blanks."""
+        bundle = _bundle_with_first_registration_products(
+            [
+                {
+                    "Id_PrOdUtO": "PROD-900",
+                    "ID_Estoque": "EST-1",
+                    "Camiseta edição limitada R$ 89,90": "segredo-produto",
+                },
+                {
+                    "id_produto": None,
+                    "id_estoque": "EST-2",
+                    "Gravação de medalha": None,
+                },
+            ]
+        )
+
+        products = build_fact_bundle(bundle).products
+        observed = products.loc[products["numero_inscricao"] == 2001].reset_index(
+            drop=True
+        )
+
+        self.assertEqual(list(observed["product_id"]), ["PROD-900", None])
+        self.assertEqual(
+            list(observed["product_name"]),
+            ["Camiseta edição limitada R$ 89,90", "Gravação de medalha"],
+        )
+        self.assertTrue(observed["explicit_unit_value"].isna().all())
+        self.assertTrue(observed["explicit_total_value"].isna().all())
+        self.assertNotIn("segredo-produto", observed.to_string())
+        self.assertEqual(
+            observed.loc[0, "raw_product_keys"],
+            ["Camiseta edição limitada R$ 89,90", "ID_Estoque", "Id_PrOdUtO"],
+        )
+
+    def test_product_fact_keeps_normalized_explicit_name_alias_authoritative(self):
+        """A dynamic fallback must not replace a present explicit nome/produto value."""
+        bundle = _bundle_with_first_registration_products(
+            [
+                {
+                    "iD_pRoDuTo": "PROD-EXPLICIT",
+                    "Id_EsToQuE": "EST-3",
+                    "NoMe": "Nome explícito",
+                    "Chave que não é o nome": None,
+                }
+            ]
+        )
+
+        products = build_fact_bundle(bundle).products
+        observed = products.loc[products["numero_inscricao"] == 2001].iloc[0]
+
+        self.assertEqual(observed["product_id"], "PROD-EXPLICIT")
+        self.assertEqual(observed["product_name"], "Nome explícito")
+        self.assertIn("NoMe", observed["raw_product_keys"])
+
+    def test_product_dynamic_name_fails_closed_without_exactly_one_candidate(self):
+        """Guessing among zero or multiple dynamic keys would invent an identity."""
+        bundle = _bundle_with_first_registration_products(
+            [
+                {"ID_Produto": "PROD-ZERO", "ID_Estoque": "EST-4"},
+                {
+                    "ID_Produto": "PROD-MULTI",
+                    "ID_Estoque": "EST-5",
+                    "Primeira identidade": None,
+                    "Segunda identidade": None,
+                },
+            ]
+        )
+
+        products = build_fact_bundle(bundle).products
+        observed = products.loc[products["numero_inscricao"] == 2001].reset_index(
+            drop=True
+        )
+
+        self.assertEqual(list(observed["product_id"]), ["PROD-ZERO", "PROD-MULTI"])
+        self.assertTrue(observed["product_name"].isna().all())
 
     def test_all_covered_money_allocates_independently_and_reconciles(self):
         """Reusing one financial component for another would break source-backed totals."""

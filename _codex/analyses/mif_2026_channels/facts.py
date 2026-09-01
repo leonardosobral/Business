@@ -16,6 +16,7 @@ from .normalize import (
     normalize_city,
     normalize_country,
     normalize_gender,
+    normalize_key,
     normalize_lot,
     normalize_modality,
     normalize_state,
@@ -140,15 +141,23 @@ _REGISTRATION_SOURCE_COLUMNS = [
     *(f"{field}_status" for field in _REGISTRATION_FIELDS),
 ]
 
+_PRODUCT_ID_KEY_ALIASES = ("ID", "CODIGO", "ID PRODUTO")
+_PRODUCT_NAME_KEY_ALIASES = ("NOME", "PRODUTO")
+_PRODUCT_STOCK_KEY_ALIASES = frozenset({"ID ESTOQUE"})
+_PRODUCT_QUANTITY_KEY_ALIASES = frozenset({"QUANTIDADE"})
+_PRODUCT_VALUE_KEY_ALIASES = frozenset({"VALOR UNITARIO", "VALOR TOTAL"})
 _SAFE_PRODUCT_VALUE_KEYS = frozenset(
     {
-        "id",
-        "codigo",
-        "nome",
-        "produto",
-        "quantidade",
-        "valorUnitario",
-        "valorTotal",
+        *_PRODUCT_ID_KEY_ALIASES,
+        *_PRODUCT_NAME_KEY_ALIASES,
+        *_PRODUCT_QUANTITY_KEY_ALIASES,
+        *_PRODUCT_VALUE_KEY_ALIASES,
+    }
+)
+_PRODUCT_DYNAMIC_NAME_METADATA_KEYS = frozenset(
+    {
+        *_SAFE_PRODUCT_VALUE_KEYS,
+        *_PRODUCT_STOCK_KEY_ALIASES,
     }
 )
 
@@ -216,11 +225,40 @@ def _sanitize_products(raw_value: object) -> list[dict[str, object]] | None:
         return None
     return [
         {
-            key: value if key in _SAFE_PRODUCT_VALUE_KEYS else None
+            key: value if normalize_key(key) in _SAFE_PRODUCT_VALUE_KEYS else None
             for key, value in item.items()
         }
         for item in raw_value
     ]
+
+
+def _product_alias_value(
+    product: dict[str, object], aliases: tuple[str, ...]
+) -> object:
+    """Return the first nonblank scalar value from explicit normalized aliases."""
+    for alias in aliases:
+        for key, value in product.items():
+            if normalize_key(key) != alias:
+                continue
+            if isinstance(value, (bool, dict, list, set, tuple)):
+                continue
+            if normalize_text(value) is not None:
+                return value
+    return None
+
+
+def _product_name(product: dict[str, object]) -> object:
+    """Resolve an explicit name or one unambiguous source-name key."""
+    explicit = _product_alias_value(product, _PRODUCT_NAME_KEY_ALIASES)
+    if explicit is not None:
+        return explicit
+    candidates = [
+        key
+        for key in product
+        if normalize_key(key) not in _PRODUCT_DYNAMIC_NAME_METADATA_KEYS
+        and normalize_text(key) is not None
+    ]
+    return candidates[0] if len(candidates) == 1 else None
 
 
 def build_order_fact(bundle: SourceBundle) -> pd.DataFrame:
@@ -523,8 +561,10 @@ def build_product_fact(registrations: pd.DataFrame) -> pd.DataFrame:
                     "numero_inscricao": registration_number,
                     "numero_pedido": order_number,
                     "product_position": position,
-                    "product_id": product.get("id") or product.get("codigo"),
-                    "product_name": product.get("nome") or product.get("produto"),
+                    "product_id": _product_alias_value(
+                        product, _PRODUCT_ID_KEY_ALIASES
+                    ),
+                    "product_name": _product_name(product),
                     "product_quantity": product.get("quantidade", 1),
                     "explicit_unit_value": parse_decimal(product.get("valorUnitario")),
                     "explicit_total_value": parse_decimal(product.get("valorTotal")),
