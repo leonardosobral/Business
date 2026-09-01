@@ -12,6 +12,7 @@ from _codex.analyses.mif_2026_channels.metrics import (
     geographic_scope,
     jensen_shannon_similarity,
     percentage_point_delta,
+    split_dossiers,
     weighted_ticket,
 )
 from _codex.tests.mif_2026_channels.fixtures import (
@@ -85,8 +86,8 @@ class MetricTests(unittest.TestCase):
             "Base abaixo de 10 inscrições pagas; leitura indicativa",
         )
 
-    def test_dossiers_are_alphabetical_and_distinguish_touched_orders(self):
-        """Volume sorting or additive order labels would imply an unwanted ranking."""
+    def test_dossiers_follow_numeric_commercial_order_and_distinguish_touched_orders(self):
+        """String money or additive order labels would corrupt the approved reading order."""
         registrations, orders, products = channel_metric_frames(
             counts={"Zeta": 11, "Alfa": 10, "Cauda": 2}
         )
@@ -96,11 +97,68 @@ class MetricTests(unittest.TestCase):
 
         full, compact = build_channel_dossiers(registrations, orders, products)
 
-        self.assertEqual([row["channel_name"] for row in full], ["Alfa", "Zeta"])
+        self.assertEqual([row["channel_name"] for row in full], ["Zeta", "Alfa"])
         self.assertEqual([row["channel_name"] for row in compact], ["Cauda"])
-        self.assertEqual(full[1]["touched_paid_orders"], 10)
+        self.assertEqual(full[0]["touched_paid_orders"], 10)
         self.assertNotIn("score", set().union(*(row.keys() for row in full)))
         self.assertNotIn("rank", set().union(*(row.keys() for row in full)))
+
+    def test_numeric_gross_order_uses_paid_volume_and_name_as_deterministic_ties(self):
+        """Lexicographic currency and unstable ties would produce contradictory reports."""
+        full, compact = split_dossiers(
+            [
+                {"channel_name": "Novecentos", "paid_registrations": 12, "gross_value": "900.00"},
+                {"channel_name": "Mil menor", "paid_registrations": 10, "gross_value": "1000.00"},
+                {"channel_name": "Mil maior", "paid_registrations": 11, "gross_value": "1000.00"},
+                {"channel_name": "Zulu", "paid_registrations": 8, "gross_value": "500.00"},
+                {"channel_name": "Árvore", "paid_registrations": 8, "gross_value": "500.00"},
+            ]
+        )
+
+        self.assertEqual(
+            [row["channel_name"] for row in full],
+            ["Mil maior", "Mil menor", "Novecentos"],
+        )
+        self.assertEqual(
+            [row["channel_name"] for row in compact],
+            ["Árvore", "Zulu"],
+        )
+
+    def test_channel_index_dossier_and_long_tail_share_order_with_organic_participation(self):
+        """Organic and compact rows must participate normally in the same commercial order."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        configurations = {
+            "Canal A": ("Alfa", "parceiro", Decimal("75.00")),
+            "Canal B": ("Beta", "parceiro", Decimal("100.00")),
+            "Canal C": ("Orgânico / sem cupom", "organico", Decimal("2500.00")),
+        }
+        for source_name, (channel_name, channel_type, allocated_gross) in configurations.items():
+            selected = registrations["channel_name"] == source_name
+            registrations.loc[selected, "channel_name"] = channel_name
+            registrations.loc[selected, "channel_type"] = channel_type
+            registrations.loc[selected, "allocated_gross_value"] = allocated_gross
+
+        result = build_analysis(replace(facts, registrations=registrations))
+        channel_index = result.datasets["channel_index"]
+
+        self.assertEqual(
+            [row["channel_name"] for row in channel_index],
+            ["Orgânico / sem cupom", "Beta", "Alfa"],
+        )
+        self.assertEqual(
+            [row["channel_name"] for row in result.full_dossiers],
+            [row["channel_name"] for row in channel_index if row["dossier_type"] == "full"],
+        )
+        self.assertEqual(
+            [row["channel_name"] for row in result.long_tail],
+            [row["channel_name"] for row in channel_index if row["dossier_type"] == "compact"],
+        )
+        self.assertEqual(result.long_tail[0]["gross_value"], "10000.00")
+        self.assertEqual(
+            list(dict.fromkeys(row["channel_name"] for row in result.datasets["channel_aliases"])),
+            ["Alfa", "Beta", "Orgânico / sem cupom"],
+        )
 
     def test_full_dossier_exposes_required_evidence_and_money_formats(self):
         """Omitting bases, coverage, or monetary precision would make comparisons unsafe."""
@@ -330,6 +388,82 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(len(capstone), 1)
         self.assertIsInstance(capstone[0].get("executive_summary"), str)
         self.assertGreaterEqual(capstone[0]["executive_summary"].count("\n- **"), 2)
+
+    def test_generated_channel_narrative_localizes_dates_counts_coverages_and_dimensions(self):
+        """Machine-oriented ISO dates and English dimension labels must not leak into executive copy."""
+        result = build_analysis(channel_metric_facts())
+        summary = result.full_dossiers[0]["executive_summary"]
+
+        self.assertIn("semana de pico 1 jun. 2026", summary)
+        self.assertNotIn("2026-06-01", summary)
+        self.assertIn("idade 100,00% (12/12 válidos)", summary)
+        for label in (
+            "geografia:",
+            "lote:",
+            "modalidade:",
+            "produtos:",
+            "perfil: idade:",
+            "perfil: gênero:",
+            "tempo:",
+        ):
+            self.assertIn(label, summary)
+        self.assertNotRegex(
+            summary,
+            r"\b(?:geography|lot|modality|product|profile|temporal):",
+        )
+
+    def test_generated_channel_narrative_selects_the_largest_additional_product(self):
+        """Product copy must rank adoption, rather than inherit alphabetical fact order."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.loc[
+            facts.registrations["channel_name"] == "Canal A"
+        ].head(6)
+        additions = pd.DataFrame(
+            [
+                {
+                    "cod_evento": row.cod_evento,
+                    "numero_inscricao": row.numero_inscricao,
+                    "numero_pedido": row.numero_pedido,
+                    "product_position": 99,
+                    "canonical_name": "Produto Z líder",
+                    "classification": "adicional",
+                    "product_quantity": 1,
+                    "product_revenue": None,
+                }
+                for row in registrations.itertuples()
+            ]
+        )
+        result = build_analysis(
+            replace(facts, products=pd.concat([facts.products, additions], ignore_index=True))
+        )
+        summary = next(
+            row["executive_summary"]
+            for row in result.full_dossiers
+            if row["channel_name"] == "Canal A"
+        )
+
+        self.assertIn("Produto Z líder: 6/12", summary)
+        self.assertNotIn("Produtos e diferenciação** — Camiseta Extra", summary)
+
+    def test_generated_channel_narrative_bounds_aliases_and_uses_singular_counts(self):
+        """The dossier summary must scan quickly while the alias audit remains complete."""
+        facts = channel_metric_facts()
+        registrations = facts.registrations.copy()
+        indexes = registrations.index[registrations["channel_name"] == "Canal A"]
+        aliases = ["A"] * 8 + ["B"] * 2 + ["C", "D"]
+        registrations.loc[indexes, "coupon_title"] = aliases
+        registrations.loc[indexes, "coupon_code"] = aliases
+
+        result = build_analysis(replace(facts, registrations=registrations))
+        dossier = next(row for row in result.full_dossiers if row["channel_name"] == "Canal A")
+        summary = dossier["executive_summary"]
+
+        self.assertIn("4 identidades:", summary)
+        self.assertIn("e mais 1 identidade", summary)
+        self.assertNotIn("D / D", summary)
+        self.assertEqual(len(dossier["coupon_aliases"]), 4)
+        self.assertIn("1 inscrição", summary)
+        self.assertNotIn("1 inscrições", summary)
 
     def test_event_overview_uses_order_and_registration_grains(self):
         """Repeated order money or channel means would inflate overview commerce."""

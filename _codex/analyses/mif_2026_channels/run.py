@@ -496,6 +496,21 @@ def _validate_dataset_contracts(
         raise ValueError("semantic reconciliation mismatch for channel_aliases")
 
     channel_rows = datasets["channel_index"]
+    expected_channel_rows = sorted(
+        channel_rows,
+        key=lambda row: (
+            -_required_decimal(row.get("gross_value"), "channel gross_value"),
+            -int(row.get("paid_registrations", -1)),
+            normalize_key(row.get("channel_name")).casefold(),
+            str(row.get("channel_name", "")).casefold(),
+            str(row.get("channel_name", "")),
+        ),
+    )
+    if channel_rows != expected_channel_rows:
+        raise ValueError("channel performance order does not match gross, registrations, and name")
+    channel_names = [str(row.get("channel_name")) for row in channel_rows]
+    if len(channel_names) != len(set(channel_names)):
+        raise ValueError("channel_index contains duplicate channel names")
     full_channels = {
         row["channel_name"]: int(row["paid_registrations"])
         for row in channel_rows
@@ -517,6 +532,20 @@ def _validate_dataset_contracts(
         }
         if actual != full_channels:
             raise ValueError(f"full-channel reconciliation mismatch for {query_id}")
+    expected_compact_names = [
+        str(row["channel_name"])
+        for row in channel_rows
+        if row.get("dossier_type") == "compact"
+    ]
+    if [str(row.get("channel_name")) for row in datasets["long_tail"]] != expected_compact_names:
+        raise ValueError("long_tail order does not match channel performance order")
+    channel_by_name = {str(row["channel_name"]): row for row in channel_rows}
+    for row in datasets["long_tail"]:
+        channel_row = channel_by_name[str(row["channel_name"])]
+        if _required_decimal(row.get("gross_value"), "long_tail gross_value") != _required_decimal(
+            channel_row.get("gross_value"), "channel gross_value"
+        ):
+            raise ValueError("long_tail gross_value does not match channel_index")
     long_tail = {
         row["channel_name"]: int(row["paid_registrations"])
         for row in datasets["long_tail"]
@@ -524,10 +553,16 @@ def _validate_dataset_contracts(
     if long_tail != compact_channels or aggregates.get("long_tail") != datasets["long_tail"]:
         raise ValueError("long_tail does not match compact channel contract")
 
-    full_dossier_names = {
-        dossier.get("channel_name") for dossier in aggregates.get("full_dossiers", [])
-    }
-    if full_dossier_names != set(full_channels):
+    full_dossier_names = [
+        str(dossier.get("channel_name"))
+        for dossier in aggregates.get("full_dossiers", [])
+    ]
+    expected_full_names = [
+        str(row["channel_name"])
+        for row in channel_rows
+        if row.get("dossier_type") == "full"
+    ]
+    if full_dossier_names != expected_full_names:
         raise ValueError("full dossier catalog does not match channel_index")
 
     for query_id in ("channel_state_mix", "channel_product_mix"):

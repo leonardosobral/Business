@@ -195,7 +195,7 @@ export function ReportContent() {
     </section>
 
     <section className="report-section" id="indice-de-canais">
-      <RichNarrative id="mif-channel-index-intro" label="Editar índice de canais" value="## Índice de canais\n\nO índice é alfabético. Canais com pelo menos 10 inscrições pagas recebem dossiê completo; bases menores permanecem na cauda longa com aviso de leitura indicativa. A ordem não é classificação de qualidade." />
+      <RichNarrative id="mif-channel-index-intro" label="Editar índice de canais" value="## Índice de canais\n\nO índice segue valor bruto alocado decrescente, depois inscrições pagas e nome do canal. Canais com pelo menos 10 inscrições pagas recebem dossiê completo; bases menores permanecem na cauda longa com aviso de leitura indicativa. A ordem organiza a leitura comercial e não é uma classificação de qualidade." />
       <EvidenceTable id="mif-channel-index" queryId="channel_index" title={copy.channelIndexTitle} rows={channelIndex}
         columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "dossier_type", label: "Tratamento" }, { key: "paid_registrations", label: "Inscrições pagas", align: "right" }, { key: "touched_paid_orders", label: "Pedidos tocados", align: "right" }, { key: "gross_value", label: "Valor bruto (R$)", align: "right" }]}
         description="Pedidos tocados não são aditivos entre canais." />
@@ -208,8 +208,8 @@ export function ReportContent() {
     </section>
 
     <section className="report-section">
-      <RichNarrative id="mif-long-tail-intro" label="Editar cauda longa" value="## Cauda longa\n\nBases abaixo de 10 inscrições são exibidas de forma compacta. Percentuais e principais segmentos são indicativos; não se transformam em diagnóstico por causa do tamanho reduzido." />
-      <EvidenceTable id="mif-long-tail" queryId="long_tail" title="Canais com base reduzida" rows={rows("long_tail")} columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "paid_registrations", label: "Inscrições", align: "right" }, { key: "registration_ticket", label: "Ticket (R$)", align: "right" }, { key: "executive_highlight", label: "Resumo executivo" }, { key: "sample_warning", label: "Qualificação" }]} />
+      <RichNarrative id="mif-long-tail-intro" label="Editar cauda longa" value="## Cauda longa\n\nBases abaixo de 10 inscrições são exibidas de forma compacta, na mesma ordem de valor bruto, inscrições e nome usada no índice. Percentuais e principais segmentos são indicativos; não se transformam em diagnóstico por causa do tamanho reduzido." />
+      <EvidenceTable id="mif-long-tail" queryId="long_tail" title="Canais com base reduzida" rows={rows("long_tail")} columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "paid_registrations", label: "Inscrições", align: "right" }, { key: "gross_value", label: "Valor bruto (R$)", align: "right" }, { key: "registration_ticket", label: "Ticket (R$)", align: "right" }, { key: "executive_highlight", label: "Resumo executivo" }, { key: "sample_warning", label: "Qualificação" }]} />
     </section>
 
     <section className="report-section">

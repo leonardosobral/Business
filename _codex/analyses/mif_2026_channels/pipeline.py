@@ -28,7 +28,7 @@ CHART_RATIONALES = {
     "modality_mix": "stacked bar: comparable composition across channels",
     "country_distribution": "horizontal bar: observed country volume with explicit base",
     "state_distribution": "horizontal bar: observed state volume with explicit base",
-    "channel_distribution": "table: exact channel volume and event share in alphabetical index",
+    "channel_distribution": "table: exact channel volume and event share ordered by allocated gross value, paid registrations, and channel name",
     "lot_performance": "stacked bar: volume and ticket by ordered lot",
     "product_summary": "horizontal bar: add-on take rate by canonical product",
     "dimension_overlaps": "table: exact pairwise evidence kept separate by dimension",

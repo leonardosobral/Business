@@ -92,6 +92,14 @@ Both receipts identify event `72611`. No source rows, JSON bodies, direct identi
 - Final audit RED/GREEN: a mixed-case country fixture reproduced that `BRASIL` could be counted as foreign and label a domestic channel as international. Country identity is now normalized before the foreign-share test; the fresh aggregate contains one genuinely majority-external scope and zero international labels inconsistent with the measured proportion.
 - Verification for this enhancement: 131/131 MIF Python tests, 11/11 focused MIF Node tests, canonical `verify`, fresh notebook execution (5/5 cells, 32 queries), official build, sanitized shareable, and 140 protected runtime files all passed.
 
+### Commercial reading order and narrative QA polish
+
+- RED: focused behavior tests proved that the canonical index, full dossiers, and compact channels still followed name order; a numeric-vs.-lexicographic money fixture, tied values, and an organic-channel fixture all failed the approved commercial order. A coherent index reorder also bypassed semantic verification and failed later only as a provenance mismatch.
+- GREEN: `channel_index` now uses exact decimal `gross_value` descending, then paid registrations descending, then normalized deterministic channel name. Full dossier rendering follows the filtered index exactly. `long_tail` retains allocated `gross_value`, uses the same order, and exposes `Valor bruto (R$)` in the visible table. The alias audit remains complete and grouped by channel/coupon rather than inheriting gross order. Canonical verification independently reconstructs order, dossier parity, compact parity, and compact gross values.
+- Narrative RED/GREEN: generated-copy regressions reproduced ungrouped reader counts, ISO dates, English overlap labels, an unbounded 71-alias PCD paragraph, singular `1 inscrições`, and first-row rather than highest-adoption product selection. Reader-facing output now uses pt-BR thousands/percentages/dates, translated dimension labels, top-three bounded alias evidence plus an explicit remainder, correct singular/plural, and the leading additional by paid registrations with deterministic ties. The complete alias and product tables remain untouched.
+- Fresh aggregate checks confirm ROADRUNNERS uses `Camiseta FINISHER Maratona de Floripa` at 114/1,876 as its leading additional, Sports Week uses `Gravação de medalha` at 69/949, PCD keeps the deterministic 2/71 leader and summarizes 71 aliases as three visible identities plus 68 more, and Corre Criciúma still shows both reviewed identities.
+- Final verification for this wave: 137/137 MIF Python tests, 13/13 focused MIF Node tests, canonical `verify`, fresh notebook execution (5/5 cells, zero errors, 32 queries), official Data App build, sanitized shareable, and 140 protected runtime files all passed.
+
 ## Final commercial headlines
 
 | Metric | Final value |
@@ -142,12 +150,13 @@ These are descriptive observations, not automatic scores, rankings, or keep/cut 
 - Theme: byte-identical to installed `codex-classic`; SHA-256 `d6885cb4e6cd5201935773f47148888bcd634e9cc13df9951803a7beacac25f2`.
 - Runtime SHA-256: `bce021364672c86cb27997c683af6351677752ff905dc8c7cdc96d06ece8dc00`.
 - Compiler SHA-256: `ec65601079c80bef7210f2c9760ff7f2db6adef28516ffff280d4c86f91d4078`.
-- Snapshot SHA-256 at build: `d179983e3f0829b1d4cf7c4629a0045e21f881a553e56ca2615d94587e1966ea`.
-- Aggregate receipt SHA-256: `c6235e1cb7d0e0e10580c11e0656a3c78c10b3975d2ffd2cc0dd72fc02549ea1`.
-- Normalized `dist/index.html` SHA-256: `8501ad3c32715e8ce618d63a3815acb23a2f4d8d205b697280ac9bc51d1077e0`.
-- Sanitized `dist/shareable.html` SHA-256: `71a07f4cfe4860cd779f41f2a81121d82633ca3b9ae739adb8f7b05f7a701081`.
+- Snapshot SHA-256 at build: `3e6e240fa6779b278e60b35a98be4805320a1fae4baf4f78afdffd95634789d2`.
+- Aggregate receipt SHA-256: `590fd27839b20bb2c7cf3a1e844cd570fa2b0de63e9d883ffe1cc49b1cb92e46`.
+- Source-notes SHA-256: `07d97ff72f3d9a3364d732a820a9a141a4e98f62068555c0a4305db42d6e2983`.
+- Normalized `dist/index.html` SHA-256: `eea39a306c31ecd8532ad266900f53558c97b9d91d8afac66b729a866cf050d4`.
+- Sanitized `dist/shareable.html` SHA-256: `30b3bda257143b2762a2e0a428512854ede325f0200b6a91b1a2c3220c1886ad`.
 - Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, Benefício, and ROADRUNNERS present; 83 generated full dossiers and 73 compact executive highlights; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
 - `git diff --check`: passed.
-- Desktop/mobile/print visual QA remains an explicit controller handoff; inspect the four event rankings, at least one grouped and one ungrouped channel-state chart, source-table pagination, and the lot/modality order in the final shareable build.
+- Desktop/mobile/print visual QA remains an explicit controller handoff; additionally inspect the value-ordered channel index/dossiers, the compact gross column, bounded PCD aliases, pt-BR narrative formatting, and the corrected additional-product highlights.
 
 The copied template's repository-wide Node test sweep is not an artifact gate and was not made runnable by installing dependencies: it requires local React/Vite modules and plugin-repository example assets that are absent from this checkout. The official builder, protected-runtime verifier, authored-copy behavior test, canonical data verifier, and full MIF suite are the applicable green gates. Broad desktop/mobile/print browser QA remains with the controller per the Task 8 handoff.

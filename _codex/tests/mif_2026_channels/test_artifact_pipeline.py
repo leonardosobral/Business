@@ -667,6 +667,31 @@ class CliTests(unittest.TestCase):
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("executive narrative", completed.stderr.lower())
 
+    def test_verify_rejects_channel_index_outside_the_commercial_order(self):
+        """A coherently serialized but misordered index must fail semantic verification."""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants, channel_map, product_map = write_study_fixture(root)
+            paths = run_analysis(
+                orders,
+                participants,
+                channel_map,
+                product_map,
+                root / "report_app",
+                allow_stale=True,
+            )
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            snapshot["queries"]["channel_index"]["rows"].reverse()
+            aggregates["datasets"]["channel_index"].reverse()
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("channel performance order", completed.stderr.lower())
+
     def test_verify_rejects_coherently_tampered_roadrunners_capstone(self):
         """The capstone must reconcile independently to event and channel datasets."""
         with TemporaryDirectory() as directory:

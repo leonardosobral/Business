@@ -770,8 +770,29 @@ def split_dossiers(
         for row in rows
         if int(row["paid_registrations"]) < FULL_DOSSIER_MIN_REGISTRATIONS
     ]
-    key = lambda row: str(row["channel_name"]).casefold()
-    return sorted(full, key=key), sorted(compact, key=key)
+    return (
+        sorted(full, key=_channel_performance_sort_key),
+        sorted(compact, key=_channel_performance_sort_key),
+    )
+
+
+def _channel_performance_sort_key(row: dict[str, object]) -> tuple[object, ...]:
+    """Commercial reading order without converting money to binary floats."""
+    try:
+        gross_value = Decimal(str(row.get("gross_value")))
+    except (ArithmeticError, ValueError):
+        gross_value = None
+    if gross_value is None or not gross_value.is_finite():
+        raise ValueError("channel gross_value is required for commercial ordering")
+    paid_registrations = int(row.get("paid_registrations", 0))
+    channel_name = str(row.get("channel_name", ""))
+    return (
+        -gross_value,
+        -paid_registrations,
+        normalize_key(channel_name).casefold(),
+        channel_name.casefold(),
+        channel_name,
+    )
 
 
 def build_channel_dossiers(
@@ -1323,7 +1344,7 @@ def _channel_datasets(
                 ),
             }
         )
-    channel_index.sort(key=lambda row: str(row["channel_name"]).casefold())
+    channel_index.sort(key=_channel_performance_sort_key)
     aliases = []
     for channel_name, frame in paid_registrations.groupby("channel_name", sort=False):
         aliases.extend({"channel_name": str(channel_name), **row} for row in _coupon_aliases(frame))

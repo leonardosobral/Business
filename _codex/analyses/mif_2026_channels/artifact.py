@@ -37,7 +37,7 @@ _QUERY_DEFINITIONS = {
     "device_mix": ("Pedidos pagos por dispositivo", "Contagem de pedidos pagos únicos, agrupada pelo dispositivo normalizado."),
     "auxiliary_field_coverage": ("Cobertura de campos auxiliares", "Contagens válidas, inválidas e ausentes entre inscrições vinculadas a pedidos pagos."),
     "product_summary": ("Adoção de produtos", "Contagem de inscrições pagas com produto mapeado; adoção usa a base paga coberta como denominador, receita apenas valores explícitos e o agregado Outros do gráfico conta inscrições distintas na união das categorias restantes."),
-    "channel_index": ("Inscrições e valores alocados por canal", "Contagem de inscrições pagas, pedidos tocados não aditivos e valores de pedido alocados por canal revisado."),
+    "channel_index": ("Inscrições e valores alocados por canal", "Contagem de inscrições pagas, pedidos tocados não aditivos e valores de pedido alocados por canal revisado, ordenada por valor bruto decrescente, inscrições pagas e nome."),
     "channel_aliases": ("Aliases observados por canal", "Contagem de inscrições pagas por identidade de origem e canal canônico revisado."),
     "channel_modality_mix": ("Modalidade por canal", "Contagem de inscrições pagas por canal e modalidade, com denominador do canal."),
     "channel_state_mix": ("UF por canal", "Contagem de inscrições pagas por canal e UF, com cobertura e denominador do canal."),
@@ -52,7 +52,7 @@ _QUERY_DEFINITIONS = {
     "profile_overlap": ("Sobreposição de perfil", "Semelhança descritiva por dimensão de perfil entre inscrições pagas, mantendo cobertura separada."),
     "product_overlap": ("Sobreposição de produtos", "Semelhança descritiva entre adoção de produtos na base paga coberta de cada canal."),
     "roadrunners_capstone": ("Síntese executiva e leitura do canal próprio ROADRUNNERS", "Agregado anônimo reconciliado de escala, valor, composição, alcance e semelhanças do canal ROADRUNNERS; as dimensões permanecem separadas e considerações externas não mensuradas ficam explícitas."),
-    "long_tail": ("Canais de base reduzida", "Contagem de inscrições pagas e valores de pedido alocados para canais abaixo do limite de dossiê completo."),
+    "long_tail": ("Canais de base reduzida", "Contagem de inscrições pagas e valores de pedido alocados para canais abaixo do limite de dossiê completo, na mesma ordem comercial do índice."),
     "data_quality": ("Qualidade e cobertura", "Contagens válidas, inválidas e ausentes nos grãos de pedido pago e inscrição paga."),
 }
 
