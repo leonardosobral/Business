@@ -50,6 +50,7 @@ EXPECTED_DATASET_IDS = {
     "temporal_overlap",
     "profile_overlap",
     "product_overlap",
+    "roadrunners_capstone",
     "long_tail",
     "data_quality",
 }
@@ -191,6 +192,22 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(full[0]["geographic_scope"]["label"], "regional")
         self.assertEqual(full[0]["geographic_scope"]["states"], 2)
 
+    def test_brazilian_coverage_is_not_mislabeled_as_international(self):
+        """Counting every valid country as foreign would invent international reach."""
+        registrations, orders, products = channel_metric_frames(
+            counts={"Canal Brasil": 12}
+        )
+        registrations.loc[:, "country"] = [
+            "BRASIL", "brasil", "Brasil",
+        ] * 4
+
+        full, _ = build_channel_dossiers(registrations, orders, products)
+
+        self.assertNotEqual(
+            full[0]["geographic_scope"]["label"],
+            "internacional/fora do Brasil",
+        )
+
     def test_percentage_delta_requires_visible_nonzero_denominators(self):
         """A hidden or zero denominator would create a misleading percentage delta."""
         self.assertEqual(percentage_point_delta(5, 10, 2, 10), 30.0)
@@ -275,6 +292,44 @@ class MetricTests(unittest.TestCase):
             event_total,
         )
         self.assertEqual(result.datasets["event_overview"], [result.overview])
+
+    def test_build_analysis_emits_generated_full_and_compact_executive_text(self):
+        """Leaving narrative generation to the UI would detach claims from evidence."""
+        result = build_analysis(channel_metric_facts())
+        full_index = {
+            row["channel_name"]: row
+            for row in result.datasets["channel_index"]
+            if row["dossier_type"] == "full"
+        }
+
+        self.assertEqual(len(full_index), 2)
+        for row in full_index.values():
+            summary = row.get("executive_summary")
+            self.assertIsInstance(summary, str)
+            for label in (
+                "**Escala e valor**",
+                "**Onde vende**",
+                "**O que vende**",
+                "**Quando vende**",
+                "**Produtos e diferenciação**",
+                "**Semelhanças e leitura**",
+            ):
+                self.assertIn(label, summary)
+            self.assertIn("do evento", summary)
+
+        compact = result.datasets["long_tail"]
+        self.assertEqual(len(compact), 1)
+        highlight = compact[0].get("executive_highlight")
+        self.assertIsInstance(highlight, str)
+        self.assertIn("4 inscrições pagas", highlight)
+        self.assertIn("R$ 120,00", highlight)
+        self.assertIn("Base abaixo de 10 inscrições pagas", highlight)
+
+        capstone = result.datasets.get("roadrunners_capstone")
+        self.assertIsInstance(capstone, list)
+        self.assertEqual(len(capstone), 1)
+        self.assertIsInstance(capstone[0].get("executive_summary"), str)
+        self.assertGreaterEqual(capstone[0]["executive_summary"].count("\n- **"), 2)
 
     def test_event_overview_uses_order_and_registration_grains(self):
         """Repeated order money or channel means would inflate overview commerce."""

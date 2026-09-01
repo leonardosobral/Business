@@ -51,6 +51,7 @@ _QUERY_DEFINITIONS = {
     "temporal_overlap": ("Sobreposição temporal", "Semelhança descritiva entre distribuições semanais de inscrições pagas, usando data de venda válida ou data do pedido como fallback, com bases separadas."),
     "profile_overlap": ("Sobreposição de perfil", "Semelhança descritiva por dimensão de perfil entre inscrições pagas, mantendo cobertura separada."),
     "product_overlap": ("Sobreposição de produtos", "Semelhança descritiva entre adoção de produtos na base paga coberta de cada canal."),
+    "roadrunners_capstone": ("Síntese executiva e leitura do canal próprio ROADRUNNERS", "Agregado anônimo reconciliado de escala, valor, composição, alcance e semelhanças do canal ROADRUNNERS; as dimensões permanecem separadas e considerações externas não mensuradas ficam explícitas."),
     "long_tail": ("Canais de base reduzida", "Contagem de inscrições pagas e valores de pedido alocados para canais abaixo do limite de dossiê completo."),
     "data_quality": ("Qualidade e cobertura", "Contagens válidas, inválidas e ausentes nos grãos de pedido pago e inscrição paga."),
 }
@@ -88,6 +89,11 @@ def _component_ids(query_id: str, result: AnalysisResult) -> list[str]:
         ]
     if query_id == "product_summary":
         return ["mif-product-summary-chart", "mif-product-summary"]
+    if query_id == "roadrunners_capstone":
+        component_ids = ["mif-executive-summary"]
+        if result.datasets["roadrunners_capstone"][0].get("available"):
+            component_ids.append("mif-roadrunners-capstone")
+        return component_ids
     dossier_suffixes = {
         "channel_modality_mix": "modality",
         "channel_lot_mix": "lot",
@@ -287,7 +293,7 @@ def build_report_snapshot(
 ) -> dict[str, Any]:
     """Build the sole canonical ``src/data.json`` report snapshot."""
     if set(result.datasets) != set(DATASET_IDS):
-        raise ValueError("analysis datasets do not match the 31-query contract")
+        raise ValueError("analysis datasets do not match the 32-query contract")
     queries = {
         query_id: {
             "rows": deepcopy(result.datasets[query_id]),

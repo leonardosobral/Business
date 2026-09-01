@@ -28,6 +28,7 @@ from _codex.tests.mif_2026_channels.fixtures import (
     participant_rows,
     write_reviewed_mappings,
     write_source_exports,
+    write_study_fixture,
 )
 
 
@@ -43,7 +44,7 @@ class ReportSnapshotTests(unittest.TestCase):
         self.assertEqual(snapshot["status"], "fixture")
         self.assertEqual(snapshot["filters"], [])
         self.assertEqual(set(snapshot["queries"]), set(DATASET_IDS))
-        self.assertEqual(len(snapshot["queries"]), 31)
+        self.assertEqual(len(snapshot["queries"]), 32)
         for query_id, query in snapshot["queries"].items():
             source = query["source"]
             self.assertTrue(source["metricDefinitions"], query_id)
@@ -78,6 +79,7 @@ class ReportSnapshotTests(unittest.TestCase):
             "channel_index",
             "channel_product_mix",
             "long_tail",
+            "roadrunners_capstone",
         ):
             self.assertEqual(set(snapshot["queries"][query_id]["source"]["tables"]), expected)
 
@@ -285,7 +287,8 @@ class PipelineTests(unittest.TestCase):
             snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
             notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
             self.assertEqual(snapshot["status"], "ready")
-            self.assertEqual(len(snapshot["queries"]), 31)
+            self.assertEqual(len(snapshot["queries"]), 32)
+            self.assertIn("roadrunners_capstone", snapshot["queries"])
             self.assertNotIn("fixture_status", notes)
             self.assertIn(
                 "fontes frescas finais",
@@ -323,10 +326,7 @@ class PipelineTests(unittest.TestCase):
         script = f"""
           import {{ reportCopy }} from {json.dumps(module_path.as_uri())};
           const copy = reportCopy('ready', {{paid_orders: 14027, paid_registrations: 15713}});
-          console.log(JSON.stringify({{...copy, channel: copy.channelSummary({{
-            channel_name: 'Sports Week', paid_registrations: 949,
-            touched_paid_orders: 900, gross_value: '100.00', registration_ticket: '10.00'
-          }})}}));
+          console.log(JSON.stringify(copy));
         """
         completed = subprocess.run(
             ["node", "--input-type=module", "-e", script],
@@ -624,6 +624,68 @@ class CliTests(unittest.TestCase):
 
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("product chart", completed.stderr.lower())
+
+    def test_verify_rejects_coherently_tampered_generated_channel_narrative(self):
+        """Editing every narrative copy must not bypass evidence reconstruction."""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants, channel_map, product_map = write_study_fixture(root)
+            paths = run_analysis(
+                orders,
+                participants,
+                channel_map,
+                product_map,
+                root / "report_app",
+                allow_stale=True,
+            )
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            notes = json.loads(paths["source_notes"].read_text(encoding="utf-8"))
+            channel_row = next(
+                row for row in aggregates["datasets"]["channel_index"]
+                if row["dossier_type"] == "full"
+            )
+            self.assertIn("executive_summary", channel_row)
+            channel_name = channel_row["channel_name"]
+            tampered = "## Canal\n\n- **Escala e valor.** Texto adulterado."
+            channel_row["executive_summary"] = tampered
+            next(
+                row for row in snapshot["queries"]["channel_index"]["rows"]
+                if row["channel_name"] == channel_name
+            )["executive_summary"] = tampered
+            next(
+                row for row in aggregates["full_dossiers"]
+                if row["channel_name"] == channel_name
+            )["executive_summary"] = tampered
+            notes["narrative"]["channels"][channel_name] = tampered
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+            write_json(paths["source_notes"], notes)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("executive narrative", completed.stderr.lower())
+
+    def test_verify_rejects_coherently_tampered_roadrunners_capstone(self):
+        """The capstone must reconcile independently to event and channel datasets."""
+        with TemporaryDirectory() as directory:
+            paths = self._outputs(Path(directory))
+            snapshot = json.loads(paths["report_data"].read_text(encoding="utf-8"))
+            aggregates = json.loads(paths["aggregates"].read_text(encoding="utf-8"))
+            self.assertIn("roadrunners_capstone", aggregates["datasets"])
+            for row in (
+                snapshot["queries"]["roadrunners_capstone"]["rows"][0],
+                aggregates["datasets"]["roadrunners_capstone"][0],
+            ):
+                row["event_paid_registrations"] = 1
+            write_json(paths["report_data"], snapshot)
+            write_json(paths["aggregates"], aggregates)
+
+            completed = self._verify(paths)
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("roadrunners capstone", completed.stderr.lower())
 
     def test_verify_rejects_query_rows_that_diverge_from_aggregate_receipt(self):
         """Tampering with weekly evidence must not survive receipt verification."""

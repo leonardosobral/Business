@@ -9,7 +9,7 @@ import {
   prepareChartRows, prepareOperationalChartRows,
 } from "./report-chart-rows.js";
 import { CHART_SPECS, evidenceDescription } from "./report-contract.js";
-import { reportCopy } from "./report-copy.js";
+import { generatedNarrative, reportCopy } from "./report-copy.js";
 
 const brl = (value) => `R$ ${Number(value ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const slug = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -59,7 +59,7 @@ function ChannelDossier({ channel, rows, reportPeriod, copy }) {
     <ReportSection id={summaryId} queryId="channel_index" title={channel.channel_name}
       sourceRows={[channel]} showHeading={false}>
       <RichNarrative id={`${summaryId}:body`} label={`Editar leitura de ${channel.channel_name}`}
-        value={copy.channelSummary(channel)} />
+        value={generatedNarrative(channel, "executive_summary")} />
     </ReportSection>
     <div className="evidence-grid">
       <EvidenceChart id={`mif-dossier-${channelSlug}-weekly`} queryId="channel_weekly_sales"
@@ -104,6 +104,7 @@ export function ReportContent() {
   const { snapshot, reviewedRows, visible, canEdit, mode, appTitle, setAppTitle } = useDataApp();
   const rows = (queryId) => reviewedRows(queryId);
   const [overview = {}] = rows("event_overview");
+  const [capstone = {}] = rows("roadrunners_capstone");
   const copy = reportCopy(snapshot.status, overview);
   const channelIndex = rows("channel_index");
   const productRanking = {
@@ -136,9 +137,16 @@ export function ReportContent() {
         onKeyDown={canEdit && mode === "edit" ? (event) => { if (event.key === "Enter") { event.preventDefault(); event.currentTarget.blur(); } } : undefined}>
         {appTitle}
       </h1>
-      <RichNarrative id="mif-report-qualification" className="report-deck" label="Editar qualificação"
-        value={copy.qualification} />
     </header>
+
+    <ReportSection id="mif-executive-summary" queryId="roadrunners_capstone"
+      sourceRows={[capstone]} showHeading={false}>
+      <RichNarrative id="mif-executive-summary:body" label="Editar resumo executivo"
+        value={generatedNarrative(capstone, "executive_summary")} />
+    </ReportSection>
+
+    <RichNarrative id="mif-report-qualification" className="report-deck" label="Editar qualificação"
+      value={copy.qualification} />
 
     <ReportSection id="mif-event-overview" queryId="event_overview" title={copy.eventOverviewTitle}
       sourceRows={[overview]} showHeading={false}>
@@ -201,7 +209,7 @@ export function ReportContent() {
 
     <section className="report-section">
       <RichNarrative id="mif-long-tail-intro" label="Editar cauda longa" value="## Cauda longa\n\nBases abaixo de 10 inscrições são exibidas de forma compacta. Percentuais e principais segmentos são indicativos; não se transformam em diagnóstico por causa do tamanho reduzido." />
-      <EvidenceTable id="mif-long-tail" queryId="long_tail" title="Canais com base reduzida" rows={rows("long_tail")} columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "paid_registrations", label: "Inscrições", align: "right" }, { key: "registration_ticket", label: "Ticket (R$)", align: "right" }, { key: "sample_warning", label: "Qualificação" }]} />
+      <EvidenceTable id="mif-long-tail" queryId="long_tail" title="Canais com base reduzida" rows={rows("long_tail")} columns={[{ key: "channel_name", label: "Canal" }, { key: "channel_type", label: "Tipo revisado" }, { key: "paid_registrations", label: "Inscrições", align: "right" }, { key: "registration_ticket", label: "Ticket (R$)", align: "right" }, { key: "executive_highlight", label: "Resumo executivo" }, { key: "sample_warning", label: "Qualificação" }]} />
     </section>
 
     <section className="report-section">
@@ -215,6 +223,12 @@ export function ReportContent() {
     <section className="report-section">
       <RichNarrative id="mif-decision-questions" label="Editar perguntas de decisão" value="## Perguntas para a decisão humana\n\n- Quais canais cobrem estados ou modalidades pouco atendidos pelos demais?\n- Em quais pares a semelhança por uma dimensão merece investigação contratual conjunta?\n- Onde a concentração regional é intencional e onde limita o alcance desejado?\n- Quais diferenças de produtos persistem após considerar cobertura e denominadores?\n- Que evidência externa de patrocínio, exposição, permuta ou cortesia ainda precisa entrar na discussão?" />
     </section>
+
+    {capstone.available && <ReportSection id="mif-roadrunners-capstone" queryId="roadrunners_capstone"
+      sourceRows={[capstone]} showHeading={false}>
+      <RichNarrative id="mif-roadrunners-capstone:body" label="Editar leitura estratégica do canal próprio"
+        value={generatedNarrative(capstone, "capstone_markdown")} />
+    </ReportSection>}
 
     <section className="report-section">
       <RichNarrative id="mif-methodology-limitations" label="Editar metodologia e limitações" value={copy.methodology} />

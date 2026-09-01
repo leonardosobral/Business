@@ -1,7 +1,10 @@
-const brl = (value) => `R$ ${Number(value ?? 0).toLocaleString("pt-BR", {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-})}`;
+export function generatedNarrative(row, field) {
+  const value = row?.[field];
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new TypeError(`Missing generated narrative: ${field}`);
+  }
+  return value;
+}
 
 export function reportCopy(status, overview = {}) {
   if (!new Set(["fixture", "ready"]).has(status)) {
@@ -24,7 +27,6 @@ export function reportCopy(status, overview = {}) {
       productDescription: "Adoção e receita somente quando o valor do produto está explícito na fixture.",
       methodology: `## Metodologia, limitações e reconciliação\n\nA produção filtra o evento **72611**, normaliza o status pago, constrói facts com grãos explícitos, aplica mapeamentos exatos revisados e só então calcula agregados. Células pequenas são agrupadas nos cruzamentos definidos; nenhum identificador, texto livre de questionário ou fact bruto entra no app.\n\nNesta fixture, a reconciliação declara ${overview.paid_orders ?? 0} pedidos pagos e ${overview.paid_registrations ?? 0} inscrições pagas. Patrocínio, espaço de expo, permutas e valor de cortesias não são mensurados. A Task 8 fará a extração fresca, completará mapeamentos e substituirá toda afirmação baseada na fixture.`,
       dataQualityTitle: "Qualidade e cobertura da fixture",
-      channelSummary: (channel) => `## ${channel.channel_name}\n\nNa fixture, o canal reúne **${channel.paid_registrations} inscrições pagas** em ${channel.touched_paid_orders} pedidos tocados — contagem não aditiva entre canais. O valor bruto alocado é ${brl(channel.gross_value)} e o ticket ponderado por inscrição é ${brl(channel.registration_ticket)}. Esta é uma descrição da base sintética, não uma avaliação comercial nem uma recomendação.`,
     };
   }
 
@@ -43,6 +45,5 @@ export function reportCopy(status, overview = {}) {
     productDescription: "Quantidades e adoção restritas aos itens vinculados a inscrições pagas; receita somente quando o valor do produto está explícito na fonte.",
     methodology: `## Metodologia, limitações e reconciliação\n\nA produção filtra o evento **72611**, normaliza o status pago, constrói fatos nos grãos de pedido e inscrição, aplica mapeamentos exatos revisados e só então calcula os agregados. A reconciliação declara **${overview.paid_orders ?? 0} pedidos pagos únicos** e **${overview.paid_registrations ?? 0} inscrições pagas**. Cobertura válida, ausências e valores inválidos permanecem visíveis antes de cada interpretação; células pequenas são agrupadas nos cruzamentos definidos. Nenhum identificador, texto livre de questionário ou fato bruto entra no app.\n\nPatrocínio, espaço de expo, permutas e valor de cortesias não são mensurados neste estudo e não são descontados nem atribuídos aos canais.`,
     dataQualityTitle: "Qualidade e cobertura das fontes finais",
-    channelSummary: (channel) => `## ${channel.channel_name}\n\nO canal reúne **${channel.paid_registrations} inscrições pagas** em ${channel.touched_paid_orders} pedidos tocados — contagem não aditiva entre canais. O valor bruto alocado é ${brl(channel.gross_value)} e o ticket ponderado por inscrição é ${brl(channel.registration_ticket)}. A leitura é descritiva e deve ser combinada com cobertura, composição e limitações; não constitui avaliação comercial nem recomendação.`,
   };
 }

@@ -27,6 +27,13 @@ from .metrics import (
     DATASET_IDS,
     PRODUCT_CHART_AGGREGATION_RULE,
     PRODUCT_CHART_TOP_N,
+    build_roadrunners_capstone,
+)
+from .narrative import (
+    build_executive_summary,
+    describe_channel,
+    describe_compact_channel,
+    describe_roadrunners_capstone,
 )
 from .normalize import normalize_key
 from .pipeline import CHART_RATIONALES, run_analysis, source_qualification
@@ -565,6 +572,68 @@ def _validate_dataset_contracts(
     return overview
 
 
+def _validate_generated_narratives(
+    datasets: dict[str, list[dict[str, Any]]],
+    aggregates: dict[str, Any],
+    source_notes: dict[str, Any],
+    overview: dict[str, Any],
+) -> None:
+    """Rebuild generated prose and capstone from their independent aggregates."""
+    full = aggregates.get("full_dossiers")
+    compact = aggregates.get("long_tail")
+    if not isinstance(full, list) or not isinstance(compact, list):
+        raise ValueError("executive narrative aggregate catalog is incomplete")
+    channel_index = {
+        str(row.get("channel_name")): row for row in datasets["channel_index"]
+    }
+    expected_channels = {}
+    for dossier in full:
+        channel_name = str(dossier.get("channel_name"))
+        expected = describe_channel(dossier, overview)
+        if dossier.get("executive_summary") != expected:
+            raise ValueError(f"executive narrative does not reconcile: {channel_name}")
+        if channel_index.get(channel_name, {}).get("executive_summary") != expected:
+            raise ValueError(f"executive narrative index does not reconcile: {channel_name}")
+        expected_channels[channel_name] = expected
+
+    expected_compact = {}
+    for dossier in compact:
+        channel_name = str(dossier.get("channel_name"))
+        expected = describe_compact_channel(dossier)
+        if dossier.get("executive_highlight") != expected:
+            raise ValueError(f"compact executive narrative does not reconcile: {channel_name}")
+        if channel_index.get(channel_name, {}).get("executive_highlight") != expected:
+            raise ValueError(f"compact executive narrative index does not reconcile: {channel_name}")
+        expected_compact[channel_name] = expected
+
+    expected_capstone = build_roadrunners_capstone(
+        overview,
+        datasets["modality_mix"],
+        full,
+        compact,
+    )
+    expected_capstone["capstone_markdown"] = describe_roadrunners_capstone(
+        expected_capstone
+    )
+    expected_capstone["executive_summary"] = build_executive_summary(
+        overview, expected_capstone, len(full), len(compact)
+    )
+    if datasets.get("roadrunners_capstone") != [expected_capstone]:
+        raise ValueError("roadrunners capstone does not reconcile")
+
+    narrative = source_notes.get("narrative")
+    if not isinstance(narrative, dict):
+        raise ValueError("executive narrative receipt is incomplete")
+    if narrative.get("channels") != expected_channels:
+        raise ValueError("executive narrative source receipt does not reconcile")
+    if narrative.get("compact_channels") != expected_compact:
+        raise ValueError("compact executive narrative source receipt does not reconcile")
+    if narrative.get("executive_summary") != expected_capstone["executive_summary"]:
+        raise ValueError("executive summary source receipt does not reconcile")
+    if narrative.get("roadrunners_capstone") != expected_capstone["capstone_markdown"]:
+        raise ValueError("roadrunners capstone source receipt does not reconcile")
+
+
 def _validate_chart_metadata(
     snapshot: dict[str, Any],
     aggregates: dict[str, Any],
@@ -708,7 +777,7 @@ def verify_outputs(
         raise ValueError("report snapshot must not contain hidden filters")
     queries = snapshot.get("queries")
     if not isinstance(queries, dict) or set(queries) != set(DATASET_IDS):
-        raise ValueError("snapshot must contain the 31 stable queries")
+        raise ValueError("snapshot must contain the 32 stable queries")
     datasets = aggregates.get("datasets")
     if not isinstance(datasets, dict) or set(datasets) != set(DATASET_IDS):
         raise ValueError("aggregate receipt dataset contract mismatch")
@@ -718,6 +787,7 @@ def verify_outputs(
     if quality.get("data_quality") != datasets["data_quality"]:
         raise ValueError("aggregate quality data receipt mismatch")
     overview = _validate_dataset_contracts(datasets, aggregates, reconciliation)
+    _validate_generated_narratives(datasets, aggregates, source_notes, overview)
     _validate_chart_metadata(snapshot, aggregates, datasets, overview)
     aggregate_result = SimpleNamespace(
         datasets=datasets,

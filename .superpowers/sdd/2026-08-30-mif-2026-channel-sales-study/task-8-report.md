@@ -81,6 +81,17 @@ Both receipts identify event `72611`. No source rows, JSON bodies, direct identi
 - Canonical verification independently checks the ranked tail identities, source-category counts, per-category sum, distinct union, product-unit sum, denominator, rate, and aggregation rule against the fresh paid facts.
 - Verification after the correction: 8/8 focused Node tests, 127/127 MIF tests, canonical `verify`, fresh notebook execution, official build, sanitized shareable, 140 protected runtime files, and byte-identical theme all passed.
 
+### Executive narratives and ROADRUNNERS capstone
+
+- RED: focused Python and Node regressions failed because full dossiers still used generic UI copy, compact channels had no executive highlight, the snapshot exposed only 31 queries, and the report had no source-backed ROADRUNNERS conclusion.
+- GREEN: the analysis layer now generates six deterministic evidence blocks for every one of the 83 full dossiers: scale/value, geography, modality, timing, products, and dimension-specific similarity. Missing denominators or coverage fail closed; city and product claims respect the small-cell boundary; PCD and Benefício retain their mechanism/policy qualification.
+- All 73 compact channels now carry an evidence-bound `executive_highlight` with paid base, ticket, supported leading modality/UF, and an adjacent small-sample warning. The full table evidence remains unchanged.
+- The 32nd aggregate query, `roadrunners_capstone`, feeds both the visible answer-first summary and the final `ROADRUNNERS — leitura estratégica do canal próprio` section. The canonical verifier reconstructs its numbers and every generated narrative from the independent aggregate evidence and rejects coherent prose/receipt tampering.
+- ROADRUNNERS reconciles as the first coupon channel by paid registrations: 1,876 paid registrations, 11.94% of the event, 23.16% of coupon-assisted registrations, R$ 545,290.12 allocated gross (12.62% of event gross), and R$ 290.67 ticket versus R$ 275.05 for the event (+5.68%). The capstone also records 82.35% in 21K+42K versus 79.11% (+3.24 pp), 27 observed UFs with 93.23% valid coverage, SP +4.72 pp, SC -8.70 pp, the 2026-06-08 peak week with 87 registrations, and separate organic similarities of 0.8891 geography, 0.9672 modality, and 0.9438 products.
+- The JSX consumes only generated `executive_summary`, `executive_highlight`, and `capstone_markdown` fields. A visible executive summary follows the report title, and the ROADRUNNERS capstone follows the decision questions before methodology. No combined evaluation or automatic channel action was added.
+- Final audit RED/GREEN: a mixed-case country fixture reproduced that `BRASIL` could be counted as foreign and label a domestic channel as international. Country identity is now normalized before the foreign-share test; the fresh aggregate contains one genuinely majority-external scope and zero international labels inconsistent with the measured proportion.
+- Verification for this enhancement: 131/131 MIF Python tests, 11/11 focused MIF Node tests, canonical `verify`, fresh notebook execution (5/5 cells, 32 queries), official build, sanitized shareable, and 140 protected runtime files all passed.
+
 ## Final commercial headlines
 
 | Metric | Final value |
@@ -124,18 +135,18 @@ These are descriptive observations, not automatic scores, rankings, or keep/cut 
 
 ## Reproducibility and artifact checks
 
-- Canonical CLI `verify`: passed with `status=ready`, 31 stable queries, exact receipt reconstruction, exact additive reconciliation, anonymity, and neutral-language gates.
+- Canonical CLI `verify`: passed with `status=ready`, 32 stable queries, exact receipt reconstruction, exact additive reconciliation, generated-narrative reconstruction, anonymity, and neutral-language gates.
 - Notebook: executed against fresh external sources; 5/5 code cells, zero errors, bounded aggregate-only outputs, and no persisted raw/PII/development markers.
 - Official prebuilt Data App build: passed.
 - Protected runtime: 140 files verified.
 - Theme: byte-identical to installed `codex-classic`; SHA-256 `d6885cb4e6cd5201935773f47148888bcd634e9cc13df9951803a7beacac25f2`.
 - Runtime SHA-256: `bce021364672c86cb27997c683af6351677752ff905dc8c7cdc96d06ece8dc00`.
 - Compiler SHA-256: `ec65601079c80bef7210f2c9760ff7f2db6adef28516ffff280d4c86f91d4078`.
-- Snapshot SHA-256 at build: `450e22b7d437cf52b849ee0a7bb43a8a3aeba709fa7456d54b6964cd9b0f3220`.
-- Aggregate receipt SHA-256: `44c4ad8326091e2d85b4904fb0109dca1fe54adeb1252b59be9e0e977c00763e`.
-- Normalized `dist/index.html` SHA-256: `b6686b763a15e6957ebbf7129b69255087540682d120adae552a8dcaa0b656d3`.
-- Sanitized `dist/shareable.html` SHA-256: `11e44c54530204c0353bc8ce3956c1f50c8d71fc003827e5489d7a27076df462`.
-- Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, and Benefício present; 73 compact channels; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
+- Snapshot SHA-256 at build: `d179983e3f0829b1d4cf7c4629a0045e21f881a553e56ca2615d94587e1966ea`.
+- Aggregate receipt SHA-256: `c6235e1cb7d0e0e10580c11e0656a3c78c10b3975d2ffd2cc0dd72fc02549ea1`.
+- Normalized `dist/index.html` SHA-256: `8501ad3c32715e8ce618d63a3815acb23a2f4d8d205b697280ac9bc51d1077e0`.
+- Sanitized `dist/shareable.html` SHA-256: `71a07f4cfe4860cd779f41f2a81121d82633ca3b9ae739adb8f7b05f7a701081`.
+- Programmatic report-content QA: Corre Criciúma, Sports Week, PCD, Benefício, and ROADRUNNERS present; 83 generated full dossiers and 73 compact executive highlights; required grains/bases/coverage/limitations present; no local thread identity; no automatic decision language in the ready copy.
 - `git diff --check`: passed.
 - Desktop/mobile/print visual QA remains an explicit controller handoff; inspect the four event rankings, at least one grouped and one ungrouped channel-state chart, source-table pagination, and the lot/modality order in the final shareable build.
 

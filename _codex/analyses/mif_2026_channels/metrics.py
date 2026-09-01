@@ -18,6 +18,12 @@ from .config import (
     SMALL_CELL_MIN_REGISTRATIONS,
 )
 from .models import AnalysisResult, FactBundle
+from .narrative import (
+    build_executive_summary,
+    describe_channel,
+    describe_compact_channel,
+    describe_roadrunners_capstone,
+)
 from .normalize import normalize_key
 
 
@@ -61,6 +67,7 @@ DATASET_IDS = (
     "temporal_overlap",
     "profile_overlap",
     "product_overlap",
+    "roadrunners_capstone",
     "long_tail",
     "data_quality",
 )
@@ -477,7 +484,9 @@ def _geography_details(frame: pd.DataFrame) -> tuple[
     )
     country_values = _dimension_series(frame, "country")
     non_brazil = sum(
-        value not in {"Brasil", "Não informado", "Inválido"} for value in country_values
+        value not in {"Não informado", "Inválido"}
+        and normalize_key(value) != "BRASIL"
+        for value in country_values
     )
     scope = geographic_scope(
         total,
@@ -709,7 +718,7 @@ def _compact_dossier(
     channel_type: str,
     frame: pd.DataFrame,
 ) -> dict[str, object]:
-    _, _, states, _ = _geography_details(frame)
+    scope, _, states, _ = _geography_details(frame)
     modalities = _renamed_distribution(frame, "modality", "modality")
     valid_states = [
         row for row in states if row["state"] not in {"Inválido", "Não informado"}
@@ -725,7 +734,7 @@ def _compact_dossier(
         if float(coverage["valid_coverage_pct"]) < 70:
             warnings.append(f"Cobertura válida de {field}: {coverage['valid_coverage_pct']:.2f}%")
     aliases = _coupon_aliases(frame)
-    return {
+    row = {
         "channel_name": channel_name,
         "channel_type": channel_type,
         "touched_paid_orders": int(frame["numero_pedido"].nunique()),
@@ -735,6 +744,7 @@ def _compact_dossier(
         "registration_ticket": _money(weighted_ticket(frame, "allocated_gross_value")) or "0.00",
         "principal_modality": valid_modalities[0] if valid_modalities else None,
         "principal_state": valid_states[0] if valid_states else None,
+        "state_coverage": scope["coverage"]["state"],
         "coupon_codes": sorted(
             {str(row["coupon_code"]) for row in aliases if row["coupon_code"] is not None},
             key=str.casefold,
@@ -742,6 +752,8 @@ def _compact_dossier(
         "coverage_warnings": warnings,
         "sample_warning": SAMPLE_WARNING,
     }
+    row["executive_highlight"] = describe_compact_channel(row)
+    return row
 
 
 def split_dossiers(
@@ -1304,6 +1316,11 @@ def _channel_datasets(
                 "gross_value": dossier["gross_value"],
                 "registration_ticket": dossier["registration_ticket"],
                 "dossier_type": "full" if len(frame) >= FULL_DOSSIER_MIN_REGISTRATIONS else "compact",
+                **(
+                    {"executive_summary": dossier["executive_summary"]}
+                    if len(frame) >= FULL_DOSSIER_MIN_REGISTRATIONS
+                    else {"executive_highlight": dossier["executive_highlight"]}
+                ),
             }
         )
     channel_index.sort(key=lambda row: str(row["channel_name"]).casefold())
@@ -1368,6 +1385,153 @@ def _decorate_similarity(
             comparisons,
             key=lambda row: (str(row["dimension"]), str(row["other_channel"]).casefold()),
         )
+
+
+def build_roadrunners_capstone(
+    overview: dict[str, Any],
+    event_modality: list[dict[str, Any]],
+    full: list[dict[str, Any]],
+    compact: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Build one anonymous ROADRUNNERS row from the already reconciled dossiers."""
+    unavailable = {
+        "available": False,
+        "channel_name": "ROADRUNNERS",
+        "event_paid_registrations": int(overview.get("paid_registrations", 0)),
+        "event_paid_orders": int(overview.get("paid_orders", 0)),
+        "full_channel_count": len(full),
+        "compact_channel_count": len(compact),
+    }
+    road = next(
+        (row for row in full if normalize_key(row.get("channel_name")) == "ROADRUNNERS"),
+        None,
+    )
+    if road is None:
+        return unavailable
+
+    paid = int(road["paid_registrations"])
+    event_paid = int(overview["paid_registrations"])
+    coupon_paid = int(overview["coupon_assisted_registrations"])
+    gross = Decimal(str(road["gross_value"]))
+    event_gross = Decimal(str(overview["gross_value"]))
+    ticket = Decimal(str(road["registration_ticket"]))
+    event_ticket = Decimal(str(overview["registration_ticket"]))
+    coupon_channels = sorted(
+        [
+            row for row in [*full, *compact]
+            if row.get("channel_type") != "organico"
+        ],
+        key=lambda row: (
+            -int(row["paid_registrations"]),
+            normalize_key(row["channel_name"]).casefold(),
+        ),
+    )
+
+    road_modalities = {
+        str(row["modality"]): row for row in road.get("modality_mix", [])
+    }
+    event_modalities = {
+        str(row["modality"]): row for row in event_modality
+    }
+    long_distance_share = round(
+        sum(float(road_modalities.get(distance, {}).get("share_pct", 0)) for distance in ("21K", "42K")),
+        2,
+    )
+    event_long_distance_share = round(
+        sum(float(event_modalities.get(distance, {}).get("share_pct", 0)) for distance in ("21K", "42K")),
+        2,
+    )
+
+    state_by_name = {
+        str(row["state"]): row
+        for row in road.get("top_states", [])
+        if row.get("state") not in {None, "Não informado", "Inválido"}
+    }
+    state_deltas = [
+        {
+            "state": state,
+            "delta_pp": state_by_name.get(state, {}).get("delta_pp"),
+        }
+        for state in ("SP", "SC")
+    ]
+    scope = road.get("geographic_scope", {})
+    state_coverage = scope.get("coverage", {}).get("state", {})
+
+    weeks = [
+        row for row in road.get("weekly_sales", [])
+        if row.get("week_start") is not None
+    ]
+    peak = sorted(
+        weeks,
+        key=lambda row: (-int(row.get("paid_registrations", 0)), str(row.get("week_start"))),
+    )[0] if weeks else {}
+
+    lot_deltas = {
+        str(row["segment"]): row.get("delta_pp")
+        for row in road.get("lot_delta_pp", [])
+    }
+    main_lot_mix = [
+        {
+            "lot": row["lot"],
+            "paid_registrations": int(row["paid_registrations"]),
+            "share_pct": float(row["share_pct"]),
+            "delta_pp": lot_deltas.get(str(row["lot"])),
+        }
+        for row in road.get("lot_mix", [])[:3]
+    ]
+    add_on_strengths = [
+        {
+            "product_name": row["product_name"],
+            "registrations_with_product": int(row["registrations_with_product"]),
+            "take_rate_pct": float(row["take_rate_pct"]),
+            "take_rate_delta_pp": row.get("take_rate_delta_pp"),
+            "explicit_revenue": row.get("explicit_revenue"),
+        }
+        for row in sorted(
+            (
+                row for row in road.get("product_mix", [])
+                if row.get("classification") == "adicional"
+            ),
+            key=lambda row: (
+                -int(row["registrations_with_product"]),
+                normalize_key(row["product_name"]).casefold(),
+            ),
+        )[:3]
+    ]
+    organic_similarity = {}
+    for row in road.get("similar_channels_by_dimension", []):
+        if row.get("other_channel") != "Orgânico / sem cupom":
+            continue
+        dimension = str(row.get("dimension"))
+        if dimension in {"geography", "modality", "product"}:
+            organic_similarity[dimension] = float(row["similarity_0_1"])
+
+    return {
+        **unavailable,
+        "available": True,
+        "coupon_channel_position": coupon_channels.index(road) + 1,
+        "paid_registrations": paid,
+        "event_share_pct": round(paid / event_paid * 100, 2) if event_paid else 0.0,
+        "coupon_assisted_share_pct": round(paid / coupon_paid * 100, 2) if coupon_paid else 0.0,
+        "gross_value": format(gross, ".2f"),
+        "gross_event_share_pct": round(float(gross / event_gross * 100), 2) if event_gross else 0.0,
+        "registration_ticket": format(ticket, ".2f"),
+        "event_registration_ticket": format(event_ticket, ".2f"),
+        "registration_ticket_delta_pct": round(float((ticket / event_ticket - 1) * 100), 2) if event_ticket else None,
+        "long_distance_share_pct": long_distance_share,
+        "event_long_distance_share_pct": event_long_distance_share,
+        "long_distance_delta_pp": round(long_distance_share - event_long_distance_share, 2),
+        "observed_states": int(scope.get("states", 0)),
+        "state_valid": int(state_coverage.get("valid", 0)),
+        "state_denominator": int(state_coverage.get("denominator", paid)),
+        "state_valid_coverage_pct": float(state_coverage.get("valid_coverage_pct", 0)),
+        "state_deltas": state_deltas,
+        "peak_week_start": peak.get("week_start"),
+        "peak_week_paid_registrations": int(peak.get("paid_registrations", 0)),
+        "main_lot_mix": main_lot_mix,
+        "add_on_strengths": add_on_strengths,
+        "organic_similarity": organic_similarity,
+    }
 
 
 def _signal_from_delta(
@@ -1562,6 +1726,8 @@ def _assert_result(
         raise AssertionError("full and compact dossier counts do not reconcile")
     if sum(int(row["paid_registrations"]) for row in datasets["channel_index"]) != event_total:
         raise AssertionError("channel registrations do not reconcile")
+    if len(datasets["roadrunners_capstone"]) != 1:
+        raise AssertionError("roadrunners capstone must contain exactly one aggregate row")
 
     money_pattern = re.compile(r"^-?\d+\.\d{2}$")
 
@@ -1676,6 +1842,13 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
         paid_products,
         effective_product_mapping_coverage_pct,
     )
+    for dossier in full:
+        dossier["executive_summary"] = describe_channel(dossier, overview)
+    capstone = build_roadrunners_capstone(overview, modality, full, compact)
+    capstone["capstone_markdown"] = describe_roadrunners_capstone(capstone)
+    capstone["executive_summary"] = build_executive_summary(
+        overview, capstone, len(full), len(compact)
+    )
     channel_datasets = _channel_datasets(paid_registrations, full, compact)
 
     datasets: dict[str, list[dict[str, Any]]] = {
@@ -1698,6 +1871,7 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
         "product_summary": products,
         **channel_datasets,
         **overlaps,
+        "roadrunners_capstone": [capstone],
         "long_tail": compact,
         "data_quality": _data_quality(facts, paid_registrations),
     }

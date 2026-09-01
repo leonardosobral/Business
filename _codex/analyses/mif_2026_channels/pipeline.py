@@ -18,7 +18,7 @@ from .mappings import (
     load_product_mapping,
 )
 from .metrics import build_analysis
-from .narrative import build_decision_questions, describe_channel, describe_event
+from .narrative import build_decision_questions, describe_event
 from .privacy import assert_anonymous, protect_analysis
 from .source import load_sources, resolve_report_generated_at
 
@@ -97,9 +97,15 @@ def _source_notes(result, sources, status: str) -> dict[str, Any]:
     notes["narrative"] = {
         "event": describe_event(result),
         "channels": {
-            dossier["channel_name"]: describe_channel(dossier, result.overview)
+            dossier["channel_name"]: dossier["executive_summary"]
             for dossier in result.full_dossiers
         },
+        "compact_channels": {
+            dossier["channel_name"]: dossier["executive_highlight"]
+            for dossier in result.long_tail
+        },
+        "executive_summary": result.datasets["roadrunners_capstone"][0]["executive_summary"],
+        "roadrunners_capstone": result.datasets["roadrunners_capstone"][0]["capstone_markdown"],
         "decision_questions": build_decision_questions(result),
     }
     qualification = source_qualification(status)

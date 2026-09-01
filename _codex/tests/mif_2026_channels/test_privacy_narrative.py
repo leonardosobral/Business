@@ -163,20 +163,22 @@ class PrivacyNarrativeTests(unittest.TestCase):
             self.assertNotIn(forbidden, lowered)
         for expected in (
             "42K",
+            "**Escala e valor**",
+            "**Onde vende**",
+            "**O que vende**",
+            "**Quando vende**",
+            "**Produtos e diferenciação**",
+            "**Semelhanças e leitura**",
             "12 inscrições pagas",
-            "12 pedidos tocados",
-            "46.15%",
-            "ticket médio ponderado por inscrição",
-            "abrangência",
-            "concentração",
-            "lote",
-            "adicional",
-            "Cobertura de perfil",
-            "Aliases de origem",
-            "Limitações de leitura:",
+            "46,15% do evento",
+            "-6,47% vs. evento",
+            "pedidos tocados não aditivos",
+            "Coberturas de perfil",
+            "Aliases observados",
+            "Limitações",
         ):
             self.assertIn(expected, text)
-        self.assertTrue(text.endswith(dossier["data_limitations"][-1] + "."))
+        self.assertTrue(text.startswith("## "))
 
     def test_event_text_declares_grains_weighted_tickets_bases_and_limitations(self):
         """Blending order and registration grains would overstate channel evidence."""
@@ -213,17 +215,17 @@ class PrivacyNarrativeTests(unittest.TestCase):
         text = describe_channel(dossier, {})
 
         for expected in (
-            "Participação no evento: não disponível.",
-            "Mix de modalidade: não disponível.",
-            "Adoção de adicional: não disponível.",
-            "Cobertura de perfil: idade não disponível.",
+            "participação no evento não disponível",
+            "modalidades não disponíveis",
+            "adicional não disponível",
+            "idade não disponível",
         ):
             self.assertIn(expected, text)
         for fabricated in (
-            "0.00% da base de 0",
-            "42K liderou com 7/12 (0.00%)",
-            "Camiseta em 0/12 inscrições (0.00%)",
-            "idade 0.00% (7/0 válidos)",
+            "0,00% da base de 0",
+            "42K liderou com 7/12 (0,00%)",
+            "Camiseta em 0/12 inscrições (0,00%)",
+            "idade 0,00% (7/0 válidos)",
         ):
             self.assertNotIn(fabricated, text)
 
@@ -296,10 +298,12 @@ class PrivacyNarrativeTests(unittest.TestCase):
         for expected in (
             "inscrições pagas",
             "pedidos tocados",
-            "ticket médio ponderado por inscrição",
-            "Cobertura de perfil",
-            "Aliases de origem",
-            "Limitações de leitura:",
+            "**Escala e valor**",
+            "**Onde vende**",
+            "**O que vende**",
+            "**Quando vende**",
+            "**Produtos e diferenciação**",
+            "**Semelhanças e leitura**",
         ):
             self.assertIn(expected, text)
 
