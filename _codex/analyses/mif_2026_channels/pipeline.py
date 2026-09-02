@@ -11,6 +11,7 @@ from typing import Any
 
 from .artifact import build_report_snapshot
 from .config import EVENT_CODE
+from .crossings import build_product_cube, build_registration_cube
 from .facts import build_fact_bundle
 from .mappings import (
     apply_reviewed_mappings,
@@ -19,7 +20,9 @@ from .mappings import (
 )
 from .metrics import build_analysis
 from .models import AnalysisResult, FactBundle, SourceBundle
+from .modular_artifact import build_modular_artifacts, write_modular_artifacts
 from .narrative import build_decision_questions, describe_event
+from .phases import build_sale_cycle_boundaries, effective_sale_dates
 from .privacy import assert_anonymous, protect_analysis
 from .source import load_sources, resolve_report_generated_at
 
@@ -222,3 +225,42 @@ def run_analysis(
     write_json(paths["reconciliation"], reconciliation_payload)
     write_json(paths["source_notes"], notes)
     return paths
+
+
+def run_modular_analysis(
+    orders_path: Path,
+    participants_path: Path,
+    channel_mapping_path: Path,
+    product_mapping_path: Path,
+    output_dir: Path,
+    allow_stale: bool = False,
+) -> dict[str, Path]:
+    """Build the reconciled facts once and emit independently cacheable bundles."""
+    context = build_analysis_context(
+        orders_path,
+        participants_path,
+        channel_mapping_path,
+        product_mapping_path,
+        allow_stale=allow_stale,
+    )
+    sale_dates = effective_sale_dates(context.mapped_facts.registrations)
+    boundaries = build_sale_cycle_boundaries(sale_dates)
+    registration_cube = build_registration_cube(context.mapped_facts, boundaries)
+    product_cube = build_product_cube(context.mapped_facts, boundaries)
+    generated_at = resolve_report_generated_at(context.sources.snapshots)
+    artifacts = build_modular_artifacts(
+        context.result,
+        registration_cube,
+        product_cube,
+        context.sources.source_hashes,
+        generated_at=generated_at,
+        cycle_boundaries={
+            "start": boundaries.start.date().isoformat(),
+            "launch_end": boundaries.launch_end.date().isoformat(),
+            "early_end": boundaries.early_end.date().isoformat(),
+            "middle_end": boundaries.middle_end.date().isoformat(),
+            "final_sprint_end": boundaries.final_sprint_end.date().isoformat(),
+            "end": boundaries.end.date().isoformat(),
+        },
+    )
+    return write_modular_artifacts(output_dir, artifacts)

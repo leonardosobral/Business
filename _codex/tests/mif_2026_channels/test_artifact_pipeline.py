@@ -1069,5 +1069,72 @@ class CliTests(unittest.TestCase):
                 )
 
 
+class ModularArtifactPipelineTests(unittest.TestCase):
+    module = "_codex.analyses.mif_2026_channels.run"
+
+    def _run(self, *arguments: str) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            [sys.executable, "-m", self.module, *arguments],
+            cwd=Path(__file__).parents[3],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+    def test_analyze_modular_and_verify_modular_commands_are_portable(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            channel_map, product_map = write_reviewed_mappings(root)
+            output_dir = root / "modular"
+
+            analyze = self._run(
+                "analyze-modular",
+                "--orders", str(orders),
+                "--participants", str(participants),
+                "--channel-map", str(channel_map),
+                "--product-map", str(product_map),
+                "--output-dir", str(output_dir),
+                "--allow-stale",
+            )
+
+            self.assertEqual(analyze.returncode, 0, analyze.stderr)
+            manifest = output_dir / "manifest.json"
+            self.assertTrue(manifest.exists())
+            verify = self._run(
+                "verify-modular",
+                "--manifest", str(manifest),
+            )
+            self.assertEqual(verify.returncode, 0, verify.stderr)
+            self.assertIn("modular verification passed", verify.stdout.casefold())
+
+    def test_verify_modular_rejects_a_tampered_domain_file(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            channel_map, product_map = write_reviewed_mappings(root)
+            output_dir = root / "modular"
+            analyze = self._run(
+                "analyze-modular",
+                "--orders", str(orders),
+                "--participants", str(participants),
+                "--channel-map", str(channel_map),
+                "--product-map", str(product_map),
+                "--output-dir", str(output_dir),
+                "--allow-stale",
+            )
+            self.assertEqual(analyze.returncode, 0, analyze.stderr)
+            cycle = output_dir / "cycle.json"
+            cycle.write_text('{"tampered":true}\n', encoding="utf-8")
+
+            verify = self._run(
+                "verify-modular",
+                "--manifest", str(output_dir / "manifest.json"),
+            )
+
+            self.assertNotEqual(verify.returncode, 0)
+            self.assertIn("hash", verify.stderr.casefold())
+
+
 if __name__ == "__main__":
     unittest.main()

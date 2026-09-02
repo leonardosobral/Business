@@ -205,6 +205,7 @@ def build_modular_artifacts(
     source_hashes: dict[str, str],
     *,
     generated_at: str,
+    cycle_boundaries: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Build independent report, domain, explorer and channel payloads."""
     profiles = _channel_profiles(result)
@@ -226,6 +227,7 @@ def build_modular_artifacts(
         "cycle.json": {
             "meta": metadata,
             "phase_order": list(PHASE_ORDER),
+            "phase_boundaries": deepcopy(cycle_boundaries or {}),
             "datasets": _dataset_subset(
                 result.datasets,
                 ("weekly_sales", "lot_performance", "modality_mix"),

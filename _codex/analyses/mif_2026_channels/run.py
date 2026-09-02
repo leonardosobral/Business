@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import argparse
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import sys
 from typing import Any
@@ -36,7 +37,13 @@ from .narrative import (
     describe_roadrunners_capstone,
 )
 from .normalize import normalize_key
-from .pipeline import CHART_RATIONALES, run_analysis, source_qualification
+from .modular_artifact import TRANSFORM_VERSION, canonical_json_bytes
+from .pipeline import (
+    CHART_RATIONALES,
+    run_analysis,
+    run_modular_analysis,
+    source_qualification,
+)
 from .privacy import assert_anonymous
 from .source import (
     ALLOW_STALE_EXTRACTION_MARKER,
@@ -881,6 +888,139 @@ def verify_outputs(
         raise ValueError("chart rationale receipt is incomplete")
 
 
+def _modular_path(root: Path, relative_path: str) -> Path:
+    candidate = PurePosixPath(relative_path)
+    if candidate.is_absolute() or ".." in candidate.parts or candidate.suffix != ".json":
+        raise ValueError(f"unsafe modular artifact path: {relative_path}")
+    destination = root.joinpath(*candidate.parts)
+    if destination.resolve().parent != root.resolve() and root.resolve() not in destination.resolve().parents:
+        raise ValueError(f"modular artifact escapes its root: {relative_path}")
+    return destination
+
+
+def _sum_modular_registrations(rows: object, label: str) -> int:
+    if not isinstance(rows, list):
+        raise ValueError(f"invalid modular observations: {label}")
+    try:
+        return sum(int(row["paid_registrations"]) for row in rows)
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError(f"invalid modular registration metric: {label}") from error
+
+
+def verify_modular_outputs(manifest_path: Path) -> None:
+    """Verify hashes, privacy and cross-bundle reconciliations without raw sources."""
+    manifest = _read_json(manifest_path)
+    assert_anonymous(manifest)
+    if manifest.get("event_code") != EVENT_CODE:
+        raise ValueError("modular event code mismatch")
+    if manifest.get("transform_version") != TRANSFORM_VERSION:
+        raise ValueError("modular transform version mismatch")
+    sources = manifest.get("sources")
+    if not isinstance(sources, dict) or set(sources) != {"orders", "participants"}:
+        raise ValueError("modular source hashes are incomplete")
+    if any(not re.fullmatch(r"[0-9a-f]{64}", str(value)) for value in sources.values()):
+        raise ValueError("invalid modular source hash")
+    source_sha256 = hashlib.sha256(canonical_json_bytes(sources)).hexdigest()
+    if manifest.get("source_sha256") != source_sha256:
+        raise ValueError("modular combined source hash mismatch")
+
+    receipts = manifest.get("artifacts")
+    if not isinstance(receipts, dict):
+        raise ValueError("modular artifact receipts are missing")
+    required = {
+        "general.json",
+        "cycle.json",
+        "territories.json",
+        "products.json",
+        "channels/index.json",
+        "explorer.json",
+    }
+    if not required.issubset(receipts):
+        raise ValueError("required modular bundles are missing")
+    if any(
+        path not in required
+        and not re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", path)
+        for path in receipts
+    ):
+        raise ValueError("unexpected modular artifact path")
+
+    root = manifest_path.parent
+    payloads: dict[str, Any] = {}
+    for relative_path, receipt in receipts.items():
+        if not isinstance(receipt, dict) or receipt.get("path") != relative_path:
+            raise ValueError(f"invalid modular receipt: {relative_path}")
+        path = _modular_path(root, relative_path)
+        if not path.is_file():
+            raise ValueError(f"modular artifact is missing: {relative_path}")
+        content = path.read_bytes()
+        if hashlib.sha256(content).hexdigest() != receipt.get("sha256"):
+            raise ValueError(f"modular artifact hash mismatch: {relative_path}")
+        if len(content) != int(receipt.get("bytes", -1)):
+            raise ValueError(f"modular artifact byte count mismatch: {relative_path}")
+        if receipt.get("source_sha256") != source_sha256:
+            raise ValueError(f"modular source hash mismatch: {relative_path}")
+        if receipt.get("transform_version") != TRANSFORM_VERSION:
+            raise ValueError(f"modular transform mismatch: {relative_path}")
+        payload = json.loads(content)
+        _reject_raw_boundary(payload)
+        assert_anonymous(payload)
+        payloads[relative_path] = payload
+
+    general = payloads["general.json"]
+    overview = general.get("overview")
+    if not isinstance(overview, dict):
+        raise ValueError("modular event overview is missing")
+    paid_registrations = int(overview.get("paid_registrations", -1))
+    if paid_registrations < 0:
+        raise ValueError("modular registration base is invalid")
+    for relative_path in ("cycle.json", "territories.json"):
+        if _sum_modular_registrations(
+            payloads[relative_path].get("observations"), relative_path
+        ) != paid_registrations:
+            raise ValueError(f"modular partition mismatch: {relative_path}")
+    explorer = payloads["explorer.json"]
+    if _sum_modular_registrations(
+        explorer.get("registration_cube"), "explorer.json"
+    ) != paid_registrations:
+        raise ValueError("modular explorer registration mismatch")
+
+    channel_index = payloads["channels/index.json"].get("channels")
+    if not isinstance(channel_index, list):
+        raise ValueError("modular channel index is invalid")
+    expected_order = sorted(
+        channel_index,
+        key=lambda row: (
+            -_required_decimal(row.get("gross_value"), "modular channel gross"),
+            -int(row.get("paid_registrations", -1)),
+            normalize_key(row.get("channel_name")).casefold(),
+            str(row.get("channel_name", "")).casefold(),
+            str(row.get("channel_name", "")),
+        ),
+    )
+    if channel_index != expected_order:
+        raise ValueError("modular channel index order mismatch")
+    if sum(int(row.get("paid_registrations", 0)) for row in channel_index) != paid_registrations:
+        raise ValueError("modular channel index partition mismatch")
+    expected_dossiers = {f"channels/{row.get('slug')}.json" for row in channel_index}
+    actual_dossiers = set(receipts) - required
+    if expected_dossiers != actual_dossiers:
+        raise ValueError("modular channel dossier catalog mismatch")
+    for row in channel_index:
+        dossier_path = f"channels/{row['slug']}.json"
+        dossier = payloads[dossier_path]
+        channel = dossier.get("channel")
+        if not isinstance(channel, dict) or channel.get("channel_name") != row.get("channel_name"):
+            raise ValueError(f"modular dossier identity mismatch: {dossier_path}")
+        if int(channel.get("paid_registrations", -1)) != int(row.get("paid_registrations", -2)):
+            raise ValueError(f"modular dossier base mismatch: {dossier_path}")
+        if _sum_modular_registrations(
+            dossier.get("registration_cube"), dossier_path
+        ) != int(row.get("paid_registrations", -1)):
+            raise ValueError(f"modular dossier cube mismatch: {dossier_path}")
+        if dossier.get("recommendation") != row.get("recommendation"):
+            raise ValueError(f"modular recommendation mismatch: {dossier_path}")
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -900,11 +1040,22 @@ def _parser() -> argparse.ArgumentParser:
     analyze.add_argument("--output-dir", type=Path, required=True)
     analyze.add_argument("--allow-stale", action="store_true")
 
+    analyze_modular = commands.add_parser("analyze-modular")
+    analyze_modular.add_argument("--orders", type=Path, required=True)
+    analyze_modular.add_argument("--participants", type=Path, required=True)
+    analyze_modular.add_argument("--channel-map", type=Path, required=True)
+    analyze_modular.add_argument("--product-map", type=Path, required=True)
+    analyze_modular.add_argument("--output-dir", type=Path, required=True)
+    analyze_modular.add_argument("--allow-stale", action="store_true")
+
     verify = commands.add_parser("verify")
     verify.add_argument("--report-data", type=Path, required=True)
     verify.add_argument("--aggregates", type=Path, required=True)
     verify.add_argument("--reconciliation", type=Path, required=True)
     verify.add_argument("--source-notes", type=Path, required=True)
+
+    verify_modular = commands.add_parser("verify-modular")
+    verify_modular.add_argument("--manifest", type=Path, required=True)
     return parser
 
 
@@ -934,7 +1085,17 @@ def main(argv: list[str] | None = None) -> int:
                 allow_stale=args.allow_stale,
             )
             print(json.dumps({key: str(path) for key, path in paths.items()}, sort_keys=True))
-        else:
+        elif args.command == "analyze-modular":
+            paths = run_modular_analysis(
+                args.orders,
+                args.participants,
+                args.channel_map,
+                args.product_map,
+                args.output_dir,
+                allow_stale=args.allow_stale,
+            )
+            print(json.dumps({key: str(path) for key, path in paths.items()}, sort_keys=True))
+        elif args.command == "verify":
             verify_outputs(
                 args.report_data,
                 args.aggregates,
@@ -942,6 +1103,9 @@ def main(argv: list[str] | None = None) -> int:
                 args.source_notes,
             )
             print("verification passed")
+        else:
+            verify_modular_outputs(args.manifest)
+            print("modular verification passed")
     except (AssertionError, KeyError, OSError, TypeError, ValueError) as error:
         print(f"{args.command} failed: {error}", file=sys.stderr)
         return 1
