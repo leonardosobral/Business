@@ -18,7 +18,7 @@ EXPOSURE_HIGH_EVENT_SHARE_PCT = Decimal("40.00")
 EXPOSURE_MEDIUM_EVENT_SHARE_PCT = Decimal("20.00")
 EXPOSURE_PARTNER_CONCENTRATION_PCT = Decimal("60.00")
 ACTIONABLE_DIMENSIONS = ("geography", "modality", "temporal", "lot", "product")
-PORTFOLIO_TRANSFORM_VERSION = "mif-2026-portfolio.1"
+PORTFOLIO_TRANSFORM_VERSION = "mif-2026-portfolio.2"
 SIMULATOR_DIMENSIONS = ("phase", "modality", "state", "channel_name")
 SIMULATOR_TOTAL_ALL = "Todos os canais"
 SIMULATOR_TOTAL_COMMERCIAL = "Canais comerciais não orgânicos"
@@ -504,6 +504,12 @@ def _dependency_cells(
                     "event_paid_registrations": int(all_total.get("paid_registrations", 0) or 0),
                     "commercial_paid_registrations": int(commercial_total.get("paid_registrations", 0) or 0),
                     "exposure": exposure,
+                    "sample_status": (
+                        "amostra celular reduzida"
+                        if int(selected["paid_registrations"])
+                        < EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS
+                        else "amostra celular suficiente"
+                    ),
                 }
             )
     return sorted(
@@ -516,6 +522,43 @@ def _dependency_cells(
             str(row["channel_name"]).casefold(),
         ),
     )
+
+
+def _dependency_sample_summary(
+    dependencies: Iterable[dict[str, Any]],
+) -> dict[str, int | str]:
+    """Summarize the published dependency-cell sample without changing exposure."""
+    rows = list(dependencies)
+    reduced = [
+        row
+        for row in rows
+        if int(row.get("paid_registrations", 0) or 0)
+        < EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS
+    ]
+    published_registrations = sum(
+        int(row.get("paid_registrations", 0) or 0) for row in rows
+    )
+    reduced_registrations = sum(
+        int(row.get("paid_registrations", 0) or 0) for row in reduced
+    )
+
+    def share(numerator: int, denominator: int) -> str:
+        if denominator <= 0:
+            return "0.00"
+        return format(Decimal(numerator) * 100 / Decimal(denominator), ".2f")
+
+    return {
+        "published_cells": len(rows),
+        "published_cell_registrations": published_registrations,
+        "reduced_cells": len(reduced),
+        "reduced_cell_registrations": reduced_registrations,
+        "reduced_cell_share_pct": share(len(reduced), len(rows)),
+        "reduced_registration_share_pct": share(
+            reduced_registrations, published_registrations
+        ),
+        "publishable_cell_minimum_registrations": MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+        "sufficient_cell_minimum_registrations": EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+    }
 
 
 def _dimension_panels(
@@ -653,7 +696,8 @@ def build_portfolio_artifacts(
         "definitions": {
             "commercial_universe": "Canais com ticket por inscrição acima de R$ 10,00; orgânico permanece como referência e denominador.",
             "selectable_universe": "Canais comerciais não orgânicos; orgânico não é selecionável.",
-            "similarity": "Semelhanças são descritivas, comparadas por dimensão e condicionadas à cobertura mínima de 70,00% em ambos os canais.",
+            "similarity": "Semelhanças são descritivas e separadas por dimensão. Os benchmarks p25/p90 usam pares entre canais comerciais não orgânicos com ticket por inscrição acima de R$ 10,00, pelo menos 10 inscrições e cobertura mínima de 70,00% em ambos os canais; orgânico não integra esses benchmarks.",
+            "dependency_sample": "Células publicadas com 5–9 inscrições do canal são qualificadas como amostra celular reduzida; a partir de 10 inscrições, como amostra celular suficiente. A classificação de exposição e seus denominadores permanecem inalterados.",
             "product_scope": "Apenas a classificação kit_incluso é excluída do perfil de produto.",
         },
         "overview": dict(overview),
@@ -661,6 +705,7 @@ def build_portfolio_artifacts(
         "dimension_panels": dimension_panels,
         "redundancy_candidates": redundancy[:10],
         "dependency_cells": dependencies,
+        "dependency_sample_summary": _dependency_sample_summary(dependencies),
         "executive_takeaways": takeaways,
     }
     simulator = {

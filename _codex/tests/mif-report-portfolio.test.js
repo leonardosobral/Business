@@ -153,6 +153,7 @@ test('simulation ordering breaks ties by phase, modality and state after exposur
 
 function summaryFixture() {
   const dimensions = ['geography', 'modality', 'temporal', 'lot', 'product'];
+  const dependencyRegistrations = [20, 19, 18, 17, 16, 15, 14, 13, 12, 9, 5];
   return {
     overview: { paid_registrations: 40, gross_value: '10000.00' },
     definitions: { commercial_universe: 'Canais comerciais acima do corte.' },
@@ -189,16 +190,29 @@ function summaryFixture() {
       combined_gross_value: index ? '100.00' : '1234.56',
       similarities: { geography: 0.9, modality: 0.8, temporal: 0.7, lot: 0.6, product: 0.5 },
     })),
-    dependency_cells: Array.from({ length: 11 }, (_, index) => ({
+    dependency_cells: dependencyRegistrations.map((paidRegistrations, index) => ({
       phase: index ? 'Início' : 'Lançamento',
       modality: '21K',
       state: `S${index + 1}`,
       channel_name: 'Alfa',
-      paid_registrations: 12 - index,
+      paid_registrations: paidRegistrations,
       event_paid_registrations: 40,
       commercial_paid_registrations: 20,
       exposure: 'média',
+      sample_status: paidRegistrations < 10
+        ? 'amostra celular reduzida'
+        : 'amostra celular suficiente',
     })),
+    dependency_sample_summary: {
+      published_cells: 11,
+      published_cell_registrations: 158,
+      reduced_cells: 2,
+      reduced_cell_registrations: 14,
+      reduced_cell_share_pct: '18.18',
+      reduced_registration_share_pct: '8.86',
+      publishable_cell_minimum_registrations: 5,
+      sufficient_cell_minimum_registrations: 10,
+    },
     executive_takeaways: [{ title: 'Leitura', evidence: 'Padrão observado.' }],
   };
 }
@@ -278,7 +292,7 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
   );
   assert.match(dependencySection, /Top 10 \+ Outros/);
   assert.equal((dependencySection.match(/>Outros<\/text>/g) || []).length, 1);
-  assert.match(dependencySection, />2<\/text>/);
+  assert.match(dependencySection, />5<\/text>/);
   const dependencyTable = dependencySection.slice(dependencySection.lastIndexOf('<table'));
   assert.doesNotMatch(dependencyTable, /<td>Outros<\/td>/);
   assert.equal((dependencyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 10);
@@ -294,6 +308,26 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
     exactRoot.innerHTML.indexOf('id="portfolio-simulador"'),
   );
   assert.doesNotMatch(exactDependencies, /Top 10 \+ Outros|>Outros<\/text>/);
+});
+
+test('summary renderer visibly qualifies reduced dependency samples without causal wording', () => {
+  const root = { innerHTML: '' };
+
+  portfolio.renderSummary(root, summaryFixture());
+
+  const dependencySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
+    root.innerHTML.indexOf('id="portfolio-simulador"'),
+  );
+  const methodSection = root.innerHTML.slice(root.innerHTML.indexOf('id="portfolio-metodo"'));
+  assert.match(dependencySection, /2 de 11 células publicadas/);
+  assert.match(dependencySection, /18,18% das células/);
+  assert.match(dependencySection, /14 de 158 inscrições publicadas/);
+  assert.match(dependencySection, /8,86% das inscrições/);
+  assert.match(dependencySection, /Qualificação da amostra/);
+  assert.match(dependencySection, /amostra celular reduzida/);
+  assert.match(methodSection, /5–9 inscrições/);
+  assert.match(methodSection, /não estabelecem causalidade/);
 });
 
 test('summary renderer presents every Top 10 redundancy pair as complete semantic evidence cards', () => {

@@ -205,6 +205,14 @@ class PortfolioContractTests(unittest.TestCase):
             ("Escala menor", "Semelhante aos pares"): 2,
         }
 
+        self.assertEqual(
+            {
+                panel["scale_high_gross_value_cutoff"]
+                for panel in summary["dimension_panels"].values()
+            },
+            {325.0},
+        )
+
         for dimension in ("geography", "modality", "temporal", "lot", "product"):
             benchmark = summary["dimension_benchmarks"][dimension]
             self.assertEqual(benchmark["eligible_pairs"], 3)
@@ -248,6 +256,61 @@ class PortfolioContractTests(unittest.TestCase):
         self.assertEqual(len(dependencies), 11)
         self.assertEqual(sum(row["paid_registrations"] for row in dependencies), 132)
         self.assertEqual([row["state"] for row in dependencies], [f"S{index:02d}" for index in range(11)])
+
+    def test_dependency_cells_expose_computed_small_sample_qualification_and_rollup(self):
+        fixture = portfolio_fixture()
+        fixture["registration_cube"] = [
+            row
+            for state, selected, organic in (
+                ("SC", 5, 5),
+                ("RS", 9, 1),
+                ("PR", 10, 10),
+                ("BA", 4, 6),
+            )
+            for row in (
+                {
+                    "phase": "Meio",
+                    "modality": "21K",
+                    "state": state,
+                    "channel_name": "ALFA",
+                    "paid_registrations": selected,
+                },
+                {
+                    "phase": "Meio",
+                    "modality": "21K",
+                    "state": state,
+                    "channel_name": "Orgânico / sem cupom",
+                    "paid_registrations": organic,
+                },
+            )
+        ]
+
+        summary = build_portfolio_artifacts(**fixture)["portfolio/summary.json"]
+
+        self.assertEqual(
+            [
+                (row["paid_registrations"], row.get("sample_status"))
+                for row in summary["dependency_cells"]
+            ],
+            [
+                (10, "amostra celular suficiente"),
+                (9, "amostra celular reduzida"),
+                (5, "amostra celular reduzida"),
+            ],
+        )
+        self.assertEqual(
+            summary["dependency_sample_summary"],
+            {
+                "published_cells": 3,
+                "published_cell_registrations": 24,
+                "reduced_cells": 2,
+                "reduced_cell_registrations": 14,
+                "reduced_cell_share_pct": "66.67",
+                "reduced_registration_share_pct": "58.33",
+                "publishable_cell_minimum_registrations": 5,
+                "sufficient_cell_minimum_registrations": 10,
+            },
+        )
 
     def test_redundancy_excludes_organic_pairs_from_commercial_candidates(self):
         channels = [

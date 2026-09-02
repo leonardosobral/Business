@@ -61,7 +61,7 @@
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifPortfolioPayloadJson#</cfoutput></script>
   <script src="../assets/report.js?v=20260902-5"></script>
-  <script src="../assets/portfolio.js?v=20260902-4"></script>
+  <script src="../assets/portfolio.js?v=20260902-5"></script>
   <script>
     (function renderMifPortfolioPage() {
       'use strict';
