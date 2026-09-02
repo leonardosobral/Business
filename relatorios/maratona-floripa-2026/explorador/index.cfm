@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Explorador de vendas — Maratona de Floripa 2026</title>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-1"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-2"/>
   <link rel="stylesheet" href="../assets/explorer.css?v=20260902-1"/>
 </head>
 <body>
@@ -76,7 +76,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifExplorerPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-1"></script>
+  <script src="../assets/report.js?v=20260902-2"></script>
   <script src="../assets/explorer.js?v=20260902-1"></script>
   <script>
     (function configureMifExplorer() {

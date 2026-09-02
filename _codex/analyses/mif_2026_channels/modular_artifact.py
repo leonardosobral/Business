@@ -15,6 +15,7 @@ from .normalize import normalize_key
 from .phases import PHASE_ORDER
 from .privacy import assert_anonymous
 from .recommendations import recommend_channel
+from .strategy import STRATEGY_TRANSFORM_VERSION, build_strategy
 
 
 TRANSFORM_VERSION = f"{PIPELINE_VERSION}-modular.1"
@@ -181,12 +182,17 @@ def _manifest(
     entries = {}
     for relative_path, payload in sorted(payloads.items()):
         serialized = canonical_json_bytes(payload)
+        artifact_transform_version = str(
+            (payload.get("meta") or {}).get("transform_version", TRANSFORM_VERSION)
+            if isinstance(payload, dict)
+            else TRANSFORM_VERSION
+        )
         entries[relative_path] = {
             "path": relative_path,
             "sha256": _sha256(serialized),
             "bytes": len(serialized),
             "source_sha256": source_sha256,
-            "transform_version": TRANSFORM_VERSION,
+            "transform_version": artifact_transform_version,
         }
     return {
         "event_code": EVENT_CODE,
@@ -215,6 +221,28 @@ def build_modular_artifacts(
         "generated_at": generated_at,
         "transform_version": TRANSFORM_VERSION,
     }
+    strategy = build_strategy(
+        overview=result.overview,
+        summary_datasets=_dataset_subset(
+            result.datasets,
+            (
+                "weekly_sales",
+                "lot_performance",
+                "modality_mix",
+                "state_distribution",
+                "product_summary",
+            ),
+        ),
+        registration_cube=registration_cube,
+        product_cube=product_cube,
+        channel_index=channel_index,
+    )
+    strategy.pop("transform_version", None)
+    strategy["meta"] = {
+        "event_code": EVENT_CODE,
+        "generated_at": generated_at,
+        "transform_version": STRATEGY_TRANSFORM_VERSION,
+    }
     payloads: dict[str, Any] = {
         "general.json": {
             "meta": metadata,
@@ -224,6 +252,7 @@ def build_modular_artifacts(
             "source_notes": deepcopy(result.source_notes),
             "chart_metadata": deepcopy(result.chart_metadata),
         },
+        "strategy.json": strategy,
         "cycle.json": {
             "meta": metadata,
             "phase_order": list(PHASE_ORDER),

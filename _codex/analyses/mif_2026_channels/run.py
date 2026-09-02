@@ -929,6 +929,7 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         raise ValueError("modular artifact receipts are missing")
     required = {
         "general.json",
+        "strategy.json",
         "cycle.json",
         "territories.json",
         "products.json",
@@ -959,9 +960,14 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError(f"modular artifact byte count mismatch: {relative_path}")
         if receipt.get("source_sha256") != source_sha256:
             raise ValueError(f"modular source hash mismatch: {relative_path}")
-        if receipt.get("transform_version") != TRANSFORM_VERSION:
-            raise ValueError(f"modular transform mismatch: {relative_path}")
         payload = json.loads(content)
+        artifact_transform_version = str(
+            (payload.get("meta") or {}).get("transform_version", TRANSFORM_VERSION)
+            if isinstance(payload, dict)
+            else TRANSFORM_VERSION
+        )
+        if receipt.get("transform_version") != artifact_transform_version:
+            raise ValueError(f"modular transform mismatch: {relative_path}")
         _reject_raw_boundary(payload)
         assert_anonymous(payload)
         payloads[relative_path] = payload
@@ -973,6 +979,18 @@ def verify_modular_outputs(manifest_path: Path) -> None:
     paid_registrations = int(overview.get("paid_registrations", -1))
     if paid_registrations < 0:
         raise ValueError("modular registration base is invalid")
+    strategy = payloads["strategy.json"]
+    strategy_datasets = strategy.get("datasets")
+    if not isinstance(strategy_datasets, dict):
+        raise ValueError("modular strategy datasets are missing")
+    if _sum_modular_registrations(
+        strategy_datasets.get("phase_modality"), "strategy.json"
+    ) != paid_registrations:
+        raise ValueError("modular strategy registration mismatch")
+    if any(
+        key in strategy for key in ("observations", "registration_cube", "product_cube")
+    ):
+        raise ValueError("modular strategy contains detailed cubes")
     for relative_path in ("cycle.json", "territories.json"):
         if _sum_modular_registrations(
             payloads[relative_path].get("observations"), relative_path

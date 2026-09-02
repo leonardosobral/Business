@@ -13,7 +13,7 @@
     <cfheader statuscode="404" statustext="Not Found"/>
     <cfcontent type="text/html; charset=utf-8"/>
     <!doctype html>
-    <html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Canal não encontrado</title><link rel="stylesheet" href="../assets/report.css?v=20260902-1"/></head>
+    <html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Canal não encontrado</title><link rel="stylesheet" href="../assets/report.css?v=20260902-2"/></head>
     <body><main class="report-content"><section class="report-section"><h1>Canal não encontrado</h1><p>O dossiê solicitado não existe neste fechamento.</p><p><a href="./">Voltar à lista de canais</a></p></section></main></body></html>
     <cfabort/>
 </cfif>
@@ -31,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Dossiê de canal — Maratona de Floripa 2026</title>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-1"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-2"/>
 </head>
 <body>
   <div class="report-shell">
@@ -61,7 +61,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifChannelPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-1"></script>
+  <script src="../assets/report.js?v=20260902-2"></script>
   <script>
     (function renderMifChannelPage() {
       'use strict';

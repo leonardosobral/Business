@@ -3,9 +3,7 @@
 
 <cfset VARIABLES.mifGeneralPayload = {
     "general" = mifReadDataset("general.json"),
-    "cycle" = mifReadDataset("cycle.json"),
-    "territories" = mifReadDataset("territories.json"),
-    "products" = mifReadDataset("products.json"),
+    "strategy" = mifReadDataset("strategy.json"),
     "channels" = mifReadDataset("channels/index.json")
 }/>
 <cfset VARIABLES.mifGeneralPayloadJson = serializeJson(VARIABLES.mifGeneralPayload)/>
@@ -21,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Maratona de Floripa 2026 — estudo de vendas</title>
-  <link rel="stylesheet" href="assets/report.css?v=20260902-1"/>
+  <link rel="stylesheet" href="assets/report.css?v=20260902-2"/>
 </head>
 <body>
   <div class="report-shell">
@@ -61,7 +59,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifGeneralPayloadJson#</cfoutput></script>
-  <script src="assets/report.js?v=20260902-1"></script>
+  <script src="assets/report.js?v=20260902-2"></script>
   <script>
     (function renderMifGeneralPage() {
       'use strict';

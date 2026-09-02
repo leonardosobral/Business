@@ -58,6 +58,7 @@ class ModularArtifactTests(unittest.TestCase):
         expected = {
             "manifest.json",
             "general.json",
+            "strategy.json",
             "cycle.json",
             "territories.json",
             "products.json",
@@ -80,6 +81,26 @@ class ModularArtifactTests(unittest.TestCase):
             self.assertGreater(receipt["bytes"], 0)
             self.assertEqual(len(receipt["source_sha256"]), 64)
             self.assertTrue(receipt["transform_version"])
+
+        strategy = artifacts["strategy.json"]
+        self.assertNotIn("observations", strategy)
+        self.assertNotIn("registration_cube", strategy)
+        self.assertNotIn("product_cube", strategy)
+        self.assertEqual(
+            sum(
+                row["paid_registrations"]
+                for row in strategy["datasets"]["phase_modality"]
+            ),
+            result.overview["paid_registrations"],
+        )
+        self.assertEqual(
+            manifest["artifacts"]["strategy.json"]["transform_version"],
+            strategy["meta"]["transform_version"],
+        )
+        self.assertNotEqual(
+            manifest["artifacts"]["strategy.json"]["transform_version"],
+            manifest["artifacts"]["general.json"]["transform_version"],
+        )
 
     def test_identical_write_preserves_every_file_mtime(self):
         _, _, _, artifacts = modular_fixture()

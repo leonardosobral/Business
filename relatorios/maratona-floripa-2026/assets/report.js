@@ -122,9 +122,16 @@
   function renderBarChart(config) {
     const labelKey = config.labelKey || 'label';
     const valueKey = config.valueKey || 'value';
+    const limit = config.limit || 10;
+    const sorted = [...(config.rows || [])].sort((left, right) => {
+      const difference = toNumber(right[valueKey]) - toNumber(left[valueKey]);
+      return difference || String(left[labelKey] ?? '').localeCompare(String(right[labelKey] ?? ''), 'pt-BR');
+    });
     const rows = config.preserveOrder
       ? [...(config.rows || [])]
-      : topNWithOthers(config.rows || [], labelKey, valueKey, config.limit || 10);
+      : config.aggregateOther === false
+        ? sorted.slice(0, limit)
+        : topNWithOthers(config.rows || [], labelKey, valueKey, limit);
     const max = Math.max(1, ...rows.map((row) => toNumber(row[valueKey])));
     const rowHeight = 38;
     const width = 920;
@@ -146,7 +153,70 @@
       <figcaption><h3>${escapeHtml(config.title)}</h3><p>${escapeHtml(config.description || '')}</p></figcaption>
       <div class="chart-scroll"><svg class="bar-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(config.title)}">${bars}</svg></div>
       ${sourceNote(config.denominator, config.source)}
-      ${config.rows && config.rows.length > 10 ? '<p class="chart-rule">Visual: Top 10 + Outros. A tabela preserva todos os itens.</p>' : ''}
+      ${config.rows && config.rows.length > limit
+        ? config.aggregateOther === false
+          ? `<p class="chart-rule">Visual: Top ${limit}; os demais itens permanecem na tabela. “Outros” não é somado porque as categorias podem se sobrepor.</p>`
+          : `<p class="chart-rule">Visual: Top ${limit} + Outros. A tabela preserva todos os itens.</p>`
+        : ''}
+    </figure>`;
+  }
+
+  function renderMatrixChart(config) {
+    const rows = config.rows || [];
+    const rowKey = config.rowKey;
+    const columnKey = config.columnKey;
+    const valueKey = config.valueKey || 'paid_registrations';
+    const shareKey = config.shareKey;
+    const observedRows = [...new Set(rows.map((row) => String(row[rowKey] ?? 'Não informado')))];
+    const observedColumns = [...new Set(rows.map((row) => String(row[columnKey] ?? 'Não informado')))];
+    const orderValues = (values, preferred = []) => [...values].sort((left, right) => {
+      const leftIndex = preferred.indexOf(left);
+      const rightIndex = preferred.indexOf(right);
+      if (leftIndex !== -1 || rightIndex !== -1) {
+        if (leftIndex === -1) return 1;
+        if (rightIndex === -1) return -1;
+        return leftIndex - rightIndex;
+      }
+      return left.localeCompare(right, 'pt-BR', { numeric: true, sensitivity: 'base' });
+    });
+    const rowLabels = orderValues(observedRows, config.rowOrder || []);
+    const columnTotals = new Map();
+    for (const row of rows) {
+      const label = String(row[columnKey] ?? 'Não informado');
+      columnTotals.set(label, (columnTotals.get(label) || 0) + toNumber(row[valueKey]));
+    }
+    const rankedColumns = [...observedColumns].sort((left, right) => {
+      const difference = (columnTotals.get(right) || 0) - (columnTotals.get(left) || 0);
+      return difference || left.localeCompare(right, 'pt-BR', { numeric: true, sensitivity: 'base' });
+    });
+    const limitedColumns = config.columnLimit && rankedColumns.length > config.columnLimit
+      ? rankedColumns.slice(0, config.columnLimit)
+      : observedColumns;
+    const columnLabels = config.columnLimit
+      ? limitedColumns
+      : orderValues(limitedColumns, config.columnOrder || []);
+    const cells = new Map(rows.map((row) => [`${String(row[rowKey])}\u0000${String(row[columnKey])}`, row]));
+    const header = columnLabels.map((label) => `<th scope="col">${escapeHtml(label)}</th>`).join('');
+    const body = rowLabels.map((rowLabel) => {
+      const columns = columnLabels.map((columnLabel) => {
+        const row = cells.get(`${rowLabel}\u0000${columnLabel}`) || {};
+        const value = toNumber(row[valueKey]);
+        const share = shareKey ? toNumber(row[shareKey]) : 0;
+        const intensity = Math.max(0.06, Math.min(0.6, 0.06 + (share / 100) * 0.54));
+        return `<td class="matrix-cell" style="--matrix-intensity:${intensity.toFixed(4)}">${escapeHtml(formatInteger(value))}${shareKey ? ` <small>${escapeHtml(formatPercent(share))}</small>` : ''}</td>`;
+      }).join('');
+      return `<tr><th scope="row">${escapeHtml(rowLabel)}</th>${columns}</tr>`;
+    }).join('');
+    return `<figure class="chart-card matrix-card">
+      <figcaption><h3>${escapeHtml(config.title)}</h3><p>${escapeHtml(config.description || '')}</p></figcaption>
+      <div class="table-wrap matrix-wrap"><table class="matrix-table"><thead><tr><th scope="col">${escapeHtml(config.rowLabel || '')}</th>${header}</tr></thead><tbody>${body}</tbody></table></div>
+      <p class="matrix-legend">Intensidade = participação dentro da linha.</p>
+      ${config.columnLimit && observedColumns.length > config.columnLimit
+        ? config.aggregateColumnOther === false
+          ? `<p class="chart-rule">Visual: Top ${config.columnLimit} colunas; as demais permanecem nas tabelas detalhadas. “Outros” não é somado porque os itens podem se sobrepor.</p>`
+          : `<p class="chart-rule">Visual limitado às ${config.columnLimit} principais colunas.</p>`
+        : ''}
+      ${sourceNote(config.denominator, config.source)}
     </figure>`;
   }
 
@@ -246,6 +316,19 @@
     });
   }
 
+  function editorialBlock(title, lead, content, className = '') {
+    return `<div class="editorial-block ${escapeHtml(className)}"><header><h3>${escapeHtml(title)}</h3>${lead ? `<p>${escapeHtml(lead)}</p>` : ''}</header>${content}</div>`;
+  }
+
+  function renderTakeaways(rows) {
+    const cards = (rows || []).map((row) => `<article class="takeaway-card">
+      <h3>${escapeHtml(row.title)}</h3>
+      <p><strong>Evidência:</strong> ${escapeHtml(row.evidence)}</p>
+      <p><strong>Implicação 2027:</strong> ${escapeHtml(row.implication)}</p>
+    </article>`).join('');
+    return `<div class="takeaway-grid">${cards}</div>`;
+  }
+
   function renderChannelIndex(root, data) {
     const channels = sortChannelsByGross(data.channels || []);
     const cards = channels.map((channel, index) => {
@@ -281,18 +364,25 @@
 
   function renderGeneral(root, data) {
     const general = data.general || {};
-    const cycle = data.cycle || {};
-    const territories = data.territories || {};
-    const products = data.products || {};
+    const strategy = data.strategy || {};
+    const datasets = strategy.datasets || {};
+    const insights = strategy.insights || {};
+    const definitions = strategy.definitions || {};
     const overview = general.overview || {};
     const channels = sortChannelsByGross(data.channels?.channels || []);
-    const cycleObservations = cycle.observations || [];
-    const phaseRows = groupSum(cycleObservations, 'phase');
-    const modalityRows = cycle.datasets?.modality_mix || [];
-    const lotRows = naturalOrder(cycle.datasets?.lot_performance || [], 'lot');
-    const productRows = products.datasets?.product_summary || [];
-    const stateRows = territories.datasets?.state_distribution || [];
-    const weeklyRows = cycle.datasets?.weekly_sales || [];
+    const phaseOrder = definitions.phase_order || [];
+    const modalityOrder = definitions.modality_order || [];
+    const modalityRows = datasets.modality_mix || [];
+    const lotRows = naturalOrder(datasets.lot_performance || [], 'lot');
+    const productRows = datasets.product_summary || [];
+    const stateRows = datasets.state_distribution || [];
+    const weeklyRows = datasets.weekly_sales || [];
+    const phasePlaybook = insights.phase_playbook || [];
+    const distancePlaybook = insights.distance_playbook || [];
+    const stateTiming = insights.state_timing || [];
+    const portfolio = insights.channel_portfolio || {};
+    const productOpportunities = insights.product_opportunities || [];
+    const portfolioGroups = portfolio.recommendation_groups || [];
     const capstone = general.datasets?.roadrunners_capstone?.[0] || {};
     const ownChannel = channels.find((row) => String(row.channel_name).toUpperCase() === 'ROADRUNNERS');
     const recommendationCounts = groupSum(
@@ -306,18 +396,86 @@
       ${metricCard('Valor bruto', formatCurrency(overview.gross_value), 'pedidos pagos únicos')}
       ${metricCard('Ticket por inscrição', formatCurrency(overview.registration_ticket), 'razão entre totais')}
     </div>`;
-    const summary = capstone.executive_summary || 'Leitura executiva construída sobre pedidos, inscrições e itens de produto em grãos separados.';
-    const orderedPhases = (cycle.phase_order || []).map((phase) => phaseRows.find((row) => row.label === phase)).filter(Boolean);
+    const orderedPhases = phasePlaybook.map((row) => ({
+      label: row.phase,
+      value: row.paid_registrations,
+    }));
+    const phaseTable = renderTable({
+      columns: [
+        { key: 'phase', label: 'Fase' },
+        { key: 'paid_registrations', label: 'Inscrições', format: formatInteger },
+        { key: 'event_share_pct', label: 'Participação', format: formatPercent },
+        { key: 'lead_modality', label: 'Distância líder' },
+        { key: 'lead_modality_share_pct', label: '% da fase', format: formatPercent },
+        { key: 'lead_lot', label: 'Lote líder' },
+        { key: 'lead_state', label: 'Estado líder' },
+        { key: 'lead_channel', label: 'Canal acionável' },
+      ],
+      rows: phasePlaybook,
+    });
+    const distanceTable = renderTable({
+      columns: [
+        { key: 'modality', label: 'Distância' },
+        { key: 'paid_registrations', label: 'Inscrições', format: formatInteger },
+        { key: 'event_share_pct', label: 'Participação', format: formatPercent },
+        { key: 'peak_phase', label: 'Pico' },
+        { key: 'lead_lot', label: 'Lote líder' },
+        { key: 'lead_state', label: 'Estado líder' },
+        { key: 'volume_channel', label: 'Canal de volume' },
+        { key: 'specialist', label: 'Canal especialista' },
+      ],
+      rows: distancePlaybook.map((row) => ({
+        ...row,
+        specialist: row.specialist_channel && row.specialist_channel !== '—'
+          ? `${row.specialist_channel} (índice ${decimalFormatter.format(toNumber(row.specialist_index))}; n=${formatInteger(row.specialist_cell)})`
+          : 'Sem base robusta',
+      })),
+    });
+    const stateTimingTable = renderTable({
+      columns: [
+        { key: 'state', label: 'Estado' },
+        { key: 'paid_registrations', label: 'Inscrições', format: formatInteger },
+        { key: 'peak_phase', label: 'Fase de pico' },
+        { key: 'early_share_pct', label: 'Lançamento + início', format: formatPercent },
+        { key: 'late_share_pct', label: 'Reta final + encerramento', format: formatPercent },
+      ],
+      rows: stateTiming,
+    });
+    const productOpportunityTable = renderTable({
+      columns: [
+        { key: 'modality', label: 'Distância' },
+        { key: 'paid_registrations', label: 'Base da distância', format: formatInteger },
+        { key: 'leading_product', label: 'Adicional líder' },
+        { key: 'leading_product_registrations', label: 'Inscrições com item', format: formatInteger },
+        { key: 'leading_product_take_rate_pct', label: 'Adoção', format: formatPercent },
+        { key: 'alternatives', label: 'Próximas ofertas observadas' },
+      ],
+      rows: productOpportunities.map((row) => ({
+        ...row,
+        alternatives: (row.top_additional_products || []).slice(1).map((item) => `${item.product_name} (${formatPercent(item.take_rate_pct)})`).join('; ') || '—',
+      })),
+    });
+    const portfolioTable = renderTable({
+      columns: [
+        { key: 'category', label: 'Direção' },
+        { key: 'channels', label: 'Canais', format: formatInteger },
+        { key: 'paid_registrations', label: 'Inscrições', format: formatInteger },
+        { key: 'gross_value', label: 'Valor bruto', format: formatCurrency },
+        { key: 'gross_share_pct', label: 'Participação em valor', format: formatPercent },
+      ],
+      rows: portfolioGroups,
+    });
+    const caveats = (strategy.caveats || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
 
     root.innerHTML = [
-      chapter(GENERAL_CHAPTERS[0], 'Capítulo 1', 'Resumo executivo', 'O que aconteceu, qual foi a escala e quais decisões a evidência sustenta.', `${cards}<div class="executive-copy"><p>${renderNarrative(summary)}</p></div>`),
-      chapter(GENERAL_CHAPTERS[1], 'Capítulo 2', 'Ciclo e sazonalidade das vendas', 'Semanas reais e fases comerciais mostram quando cada demanda apareceu.', `${renderLineChart({ title: 'Inscrições pagas por semana', description: 'Evolução cronológica do fechamento comercial.', rows: weeklyRows, xKey: 'week_start', yKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'Data de venda válida ou data do pedido como fallback controlado.' })}${renderBarChart({ title: 'Participação por fase', description: 'Volume de inscrições em Lançamento, Início, Meio, Reta final e Encerramento.', rows: orderedPhases, labelKey: 'label', valueKey: 'value', preserveOrder: true, denominator: overview.paid_registrations, source: 'Fases calculadas sobre o ciclo fechado.' })}${distributionTable(orderedPhases.map((row) => ({ phase: row.label, paid_registrations: row.value, share_pct: overview.paid_registrations ? row.value / overview.paid_registrations * 100 : 0 })), 'phase')}`),
-      chapter(GENERAL_CHAPTERS[2], 'Capítulo 3', 'Distâncias ao longo do ciclo', 'A composição por distância orienta qual prova promover em cada momento.', `${renderBarChart({ title: 'Mix de distâncias', description: 'Inscrições pagas por modalidade.', rows: modalityRows, labelKey: 'modality', valueKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'Modalidade informada na inscrição paga.' })}${distributionTable(modalityRows, 'modality')}`),
-      chapter(GENERAL_CHAPTERS[3], 'Capítulo 4', 'Lotes e produtos', 'Preço, urgência e itens adicionais ajudam a explicar o tipo de compra.', `${renderBarChart({ title: 'Inscrições por lote', description: 'Ordem natural dos lotes; volume apresentado no fechamento.', rows: lotRows, labelKey: 'lot', valueKey: 'paid_registrations', preserveOrder: true, denominator: overview.paid_registrations, source: 'Lote informado na inscrição paga.' })}${renderBarChart({ title: 'Adoção de produtos', description: 'Inscrições distintas com cada produto mapeado.', rows: productRows, labelKey: 'product_name', valueKey: 'registrations_with_product', denominator: overview.paid_registrations, source: 'Itens vinculados a inscrições pagas; receita somente quando explícita.' })}${renderTable({ columns: [{ key: 'lot', label: 'Lote' }, { key: 'paid_registrations', label: 'Inscrições', format: formatInteger }, { key: 'allocated_gross_value', label: 'Valor bruto', format: formatCurrency }, { key: 'registration_ticket', label: 'Ticket', format: formatCurrency }], rows: lotRows })}${renderTable({ columns: [{ key: 'product_name', label: 'Produto' }, { key: 'classification', label: 'Classificação' }, { key: 'registrations_with_product', label: 'Inscrições', format: formatInteger }, { key: 'take_rate_pct', label: 'Adoção', format: formatPercent }, { key: 'explicit_revenue', label: 'Receita explícita', format: (value) => value == null ? 'não disponível' : formatCurrency(value) }], rows: productRows })}`),
-      chapter(GENERAL_CHAPTERS[4], 'Capítulo 5', 'Territórios e alcance', 'Estados revelam concentração regional, alcance nacional e oportunidades de ativação.', `${renderBarChart({ title: 'Inscrições por estado', description: 'Distribuição territorial das inscrições pagas.', rows: stateRows, labelKey: 'state', valueKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'UF normalizada com cobertura explicitada.' })}${distributionTable(stateRows, 'state')}`),
-      chapter(GENERAL_CHAPTERS[5], 'Capítulo 6', 'Portfólio de canais', 'A lista está em valor bruto decrescente; os gráficos exibem Top 10 + Outros.', `${renderBarChart({ title: 'Valor bruto por canal', description: 'Valores de pedido alocados às inscrições de cada canal.', rows: channels, labelKey: 'channel_name', valueKey: 'gross_value', valueFormatter: formatCurrency, denominator: formatCurrency(overview.gross_value), source: 'Pedidos pagos alocados sem duplicar o total do evento.' })}${generalChannelTable(channels)}`),
+      chapter(GENERAL_CHAPTERS[0], 'Capítulo 1', 'Resumo executivo', 'O que aconteceu, onde o ciclo mudou e quais decisões a evidência sustenta.', `${cards}${renderTakeaways(insights.executive_takeaways || [])}`),
+      chapter(GENERAL_CHAPTERS[1], 'Capítulo 2', 'Ciclo e sazonalidade das vendas', 'Semanas reais e fases comerciais mostram quando cada demanda apareceu.', `${renderLineChart({ title: 'Inscrições pagas por semana', description: 'Evolução cronológica do fechamento comercial.', rows: weeklyRows, xKey: 'week_start', yKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'Data de venda válida ou data do pedido como fallback controlado.' })}${renderBarChart({ title: 'Participação por fase', description: 'Volume de inscrições em Lançamento, Início, Meio, Reta final e Encerramento.', rows: orderedPhases, labelKey: 'label', valueKey: 'value', preserveOrder: true, denominator: overview.paid_registrations, source: 'Fases calculadas sobre o ciclo fechado.' })}${editorialBlock('Calendário de ativação', 'O que liderou em distância, lote, território e canal comercial em cada fase.', phaseTable, 'page-break-block')}`),
+      chapter(GENERAL_CHAPTERS[2], 'Capítulo 3', 'Distâncias ao longo do ciclo', 'A composição por distância orienta qual prova promover em cada momento.', `${renderBarChart({ title: 'Mix de distâncias', description: 'Inscrições pagas por modalidade.', rows: modalityRows, labelKey: 'modality', valueKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'Modalidade informada na inscrição paga.' })}${renderMatrixChart({ title: 'Distâncias por fase', description: 'A matriz mostra como o produto dominante muda ao longo do ciclo.', rows: datasets.phase_modality || [], rowKey: 'phase', columnKey: 'modality', valueKey: 'paid_registrations', shareKey: 'within_phase_share_pct', rowOrder: phaseOrder, columnOrder: modalityOrder, rowLabel: 'Fase', denominator: overview.paid_registrations, source: 'Inscrições pagas por fase comercial e modalidade.' })}${editorialBlock('Playbook por distância', 'Quando, onde e por quais canais cada prova encontrou sua principal tração.', distanceTable, 'page-break-block')}`),
+      chapter(GENERAL_CHAPTERS[3], 'Capítulo 4', 'Lotes e produtos', 'Preço, urgência e itens adicionais ajudam a explicar o tipo de compra.', `${renderBarChart({ title: 'Inscrições por lote', description: 'Ordem natural dos lotes; volume apresentado no fechamento.', rows: lotRows, labelKey: 'lot', valueKey: 'paid_registrations', preserveOrder: true, denominator: overview.paid_registrations, source: 'Lote informado na inscrição paga.' })}${renderMatrixChart({ title: 'Distâncias por lote', description: 'A composição de cada lote evidencia a migração entre provas ao longo do calendário.', rows: datasets.lot_modality || [], rowKey: 'lot', columnKey: 'modality', valueKey: 'paid_registrations', shareKey: 'within_lot_share_pct', columnOrder: modalityOrder, rowLabel: 'Lote', denominator: overview.paid_registrations, source: 'Inscrições pagas por lote e modalidade; lote e fase são colineares.' })}${renderBarChart({ title: 'Adoção de produtos', description: 'Inscrições distintas com cada produto mapeado.', rows: productRows, labelKey: 'product_name', valueKey: 'registrations_with_product', aggregateOther: false, denominator: overview.paid_registrations, source: 'Itens vinculados a inscrições pagas; itens podem se sobrepor e receita aparece somente quando explícita.' })}${renderMatrixChart({ title: 'Produtos adicionais por distância', description: 'Taxa de adoção dentro de cada prova; apenas Top 10 produtos no visual.', rows: datasets.product_modality_additional || [], rowKey: 'modality', columnKey: 'product_name', valueKey: 'registrations_with_product', shareKey: 'take_rate_pct', rowOrder: modalityOrder, rowLabel: 'Distância', columnLimit: 10, aggregateColumnOther: false, denominator: overview.paid_registrations, source: 'Produtos adicionais vinculados a inscrições pagas; itens podem se sobrepor.' })}${renderMatrixChart({ title: 'Produtos adicionais por fase', description: 'Itens que ganharam tração em cada momento comercial.', rows: datasets.product_phase_additional || [], rowKey: 'phase', columnKey: 'product_name', valueKey: 'registrations_with_product', shareKey: 'take_rate_pct', rowOrder: phaseOrder, rowLabel: 'Fase', columnLimit: 10, aggregateColumnOther: false, denominator: overview.paid_registrations, source: 'Produtos adicionais por fase; taxas usam a base de inscrições da própria fase.' })}${renderMatrixChart({ title: 'Produtos adicionais por lote', description: 'Adoção observada ao longo da progressão de lotes.', rows: datasets.product_lot_additional || [], rowKey: 'lot', columnKey: 'product_name', valueKey: 'registrations_with_product', shareKey: 'take_rate_pct', rowLabel: 'Lote', columnLimit: 10, aggregateColumnOther: false, denominator: overview.paid_registrations, source: 'Produtos adicionais por lote; lote e fase são colineares.' })}${editorialBlock('Leitura de oferta adicional', 'A oferta auxiliar deve acompanhar o perfil da prova; taxas são lidas item a item.', productOpportunityTable)}${renderTable({ columns: [{ key: 'lot', label: 'Lote' }, { key: 'paid_registrations', label: 'Inscrições', format: formatInteger }, { key: 'allocated_gross_value', label: 'Valor bruto', format: formatCurrency }, { key: 'registration_ticket', label: 'Ticket', format: formatCurrency }], rows: lotRows })}${renderTable({ columns: [{ key: 'product_name', label: 'Produto' }, { key: 'classification', label: 'Classificação' }, { key: 'registrations_with_product', label: 'Inscrições', format: formatInteger }, { key: 'take_rate_pct', label: 'Adoção', format: formatPercent }, { key: 'explicit_revenue', label: 'Receita explícita', format: (value) => value == null ? 'não disponível' : formatCurrency(value) }], rows: productRows })}`),
+      chapter(GENERAL_CHAPTERS[4], 'Capítulo 5', 'Territórios e alcance', 'Estados revelam concentração regional, alcance nacional e oportunidades de ativação.', `${renderBarChart({ title: 'Inscrições por estado', description: 'Distribuição territorial das inscrições pagas.', rows: stateRows, labelKey: 'state', valueKey: 'paid_registrations', denominator: overview.paid_registrations, source: 'UF normalizada com cobertura explicitada.' })}${renderMatrixChart({ title: 'Distâncias por estado', description: 'O mix de prova diferencia mercados de endurance, meia maratona e entrada.', rows: datasets.state_modality || [], rowKey: 'state', columnKey: 'modality', valueKey: 'paid_registrations', shareKey: 'within_state_share_pct', columnOrder: modalityOrder, rowLabel: 'Estado', denominator: overview.paid_registrations, source: 'Top 10 estados válidos + Outros, por modalidade.' })}${editorialBlock('Timing dos principais estados', 'Participação própria no começo e no fechamento do ciclo.', stateTimingTable, 'page-break-block')}${distributionTable(stateRows, 'state')}`),
+      chapter(GENERAL_CHAPTERS[5], 'Capítulo 6', 'Portfólio de canais', 'A lista está em valor bruto decrescente; escala e diferenciação são avaliadas separadamente.', `${renderBarChart({ title: 'Valor bruto por canal', description: 'Valores de pedido alocados às inscrições de cada canal.', rows: channels, labelKey: 'channel_name', valueKey: 'gross_value', valueFormatter: formatCurrency, denominator: formatCurrency(overview.gross_value), source: 'Pedidos pagos alocados sem duplicar o total do evento.' })}${renderMatrixChart({ title: 'Distâncias por canal', description: 'Top 10 canais por volume + Outros; a composição revela papéis diferentes dentro do portfólio.', rows: datasets.channel_modality || [], rowKey: 'channel_name', columnKey: 'modality', valueKey: 'paid_registrations', shareKey: 'within_channel_share_pct', columnOrder: modalityOrder, rowLabel: 'Canal', denominator: overview.paid_registrations, source: 'Inscrições pagas por canal e modalidade.' })}${editorialBlock('O ganho está na função', `O maior canal concentra ${formatPercent(portfolio.top_1_gross_share_pct)} do valor; Top 3 = ${formatPercent(portfolio.top_3_gross_share_pct)}; Top 10 = ${formatPercent(portfolio.top_10_gross_share_pct)}.`, portfolioTable, 'portfolio-block')}${generalChannelTable(channels)}`),
       chapter(GENERAL_CHAPTERS[6], 'Capítulo 7', 'Aprofundamento ROADRUNNERS', 'O canal próprio recebe uma leitura específica de escala, mix, alcance e papel.', ownChannel ? `<div class="metric-grid">${metricCard('Inscrições', formatInteger(ownChannel.paid_registrations))}${metricCard('Valor bruto', formatCurrency(ownChannel.gross_value))}${metricCard('Ticket', formatCurrency(ownChannel.registration_ticket))}${metricCard('Direção', ownChannel.recommendation?.category || '—')}</div><div class="executive-copy"><p>${renderNarrative(capstone.capstone_markdown || ownChannel.executive_summary || ownChannel.recommendation?.role || '')}</p></div>` : '<p>Canal ROADRUNNERS não observado na base.</p>'),
-      chapter(GENERAL_CHAPTERS[7], 'Capítulo 8', 'Recomendações e método', 'Decisões usam escala, diferenciação e redundância visíveis; não existe nota única.', `${renderBarChart({ title: 'Canais por direção recomendada', description: 'Quantidade de canais em cada categoria de ação.', rows: recommendationCounts, labelKey: 'label', valueKey: 'value', denominator: channels.length, source: 'Regras reproduzíveis com bloqueio de recomendação forte para amostras pequenas.' })}<div class="method-note"><p><strong>Grãos preservados:</strong> pedidos, inscrições e produtos são reconciliados separadamente. Valores por canal são alocados; pedidos tocados não são aditivos. Cobertura e limitações permanecem visíveis.</p></div>`),
+      chapter(GENERAL_CHAPTERS[7], 'Capítulo 8', 'Recomendações e método', 'Decisões usam escala, diferenciação e redundância visíveis; não existe nota única.', `${renderBarChart({ title: 'Canais por direção recomendada', description: 'Quantidade de canais em cada categoria de ação.', rows: recommendationCounts, labelKey: 'label', valueKey: 'value', denominator: channels.length, source: 'Regras reproduzíveis com bloqueio de recomendação forte para amostras pequenas.' })}${editorialBlock('Direção do portfólio 2027', 'Concentrar escala sem eliminar funções complementares comprovadas.', portfolioTable)}<div class="method-note"><p><strong>Grãos preservados:</strong> pedidos, inscrições e produtos são reconciliados separadamente. Valores por canal são alocados; pedidos tocados não são aditivos.</p>${caveats ? `<ul>${caveats}</ul>` : ''}</div>`),
     ].join('');
   }
 
@@ -346,7 +504,7 @@
       chapter(CHANNEL_SECTIONS[1], 'Dossiê · 2', 'Ciclo de venda', 'Semanas e fases indicam quando o canal é mais acionável.', `${renderLineChart({ title: 'Inscrições por semana', description: 'Ritmo semanal do canal.', rows: weeklyRows, xKey: 'week_start', yKey: 'paid_registrations', denominator: paid, source: 'Inscrições pagas atribuídas ao canal.' })}${renderBarChart({ title: 'Mix por fase', rows: phases, labelKey: 'label', valueKey: 'value', preserveOrder: true, denominator: paid, source: 'Fases comerciais do ciclo fechado.' })}`),
       chapter(CHANNEL_SECTIONS[2], 'Dossiê · 3', 'Distâncias e lotes', 'O mix mostra o tipo de prova e o momento de preço que o canal mobiliza.', `${renderBarChart({ title: 'Distâncias vendidas', rows: modalities, labelKey: 'label', valueKey: 'value', denominator: paid, source: 'Modalidade das inscrições pagas do canal.' })}${renderBarChart({ title: 'Lotes vendidos', rows: lots, labelKey: 'label', valueKey: 'value', preserveOrder: true, denominator: paid, source: 'Lote das inscrições pagas do canal.' })}${renderTable({ columns: [{ key: 'label', label: 'Distância' }, { key: 'value', label: 'Inscrições', format: formatInteger }, { key: 'share', label: 'Participação no canal', format: formatPercent }], rows: modalities.map((row) => ({ ...row, share: paid ? row.value / paid * 100 : 0 })) })}`),
       chapter(CHANNEL_SECTIONS[3], 'Dossiê · 4', 'Territórios', 'A distribuição estadual diferencia alcance regional e nacional.', `${renderBarChart({ title: 'Estados do canal', rows: states, labelKey: 'label', valueKey: 'value', denominator: paid, source: 'UF normalizada nas inscrições pagas do canal.' })}${renderTable({ columns: [{ key: 'label', label: 'Estado' }, { key: 'value', label: 'Inscrições', format: formatInteger }, { key: 'share', label: 'Participação', format: formatPercent }], rows: [...states].sort((a, b) => b.value - a.value).map((row) => ({ ...row, share: paid ? row.value / paid * 100 : 0 })) })}`),
-      chapter(CHANNEL_SECTIONS[4], 'Dossiê · 5', 'Produtos e compra auxiliar', 'Itens adicionais ajudam a descrever comportamento além da inscrição.', `${renderBarChart({ title: 'Produtos vinculados', rows: productRows, labelKey: 'label', valueKey: 'value', denominator: paid, source: 'Inscrições distintas com produto; Top 10 + Outros no visual.' })}${renderTable({ columns: [{ key: 'label', label: 'Produto' }, { key: 'value', label: 'Inscrições com produto', format: formatInteger }, { key: 'take_rate', label: 'Adoção', format: formatPercent }], rows: [...productRows].sort((a, b) => b.value - a.value).map((row) => ({ ...row, take_rate: paid ? row.value / paid * 100 : 0 })) })}`),
+      chapter(CHANNEL_SECTIONS[4], 'Dossiê · 5', 'Produtos e compra auxiliar', 'Itens adicionais ajudam a descrever comportamento além da inscrição.', `${renderBarChart({ title: 'Produtos vinculados', rows: productRows, labelKey: 'label', valueKey: 'value', aggregateOther: false, denominator: paid, source: 'Inscrições distintas com produto; Top 10 no visual, sem somar categorias sobrepostas.' })}${renderTable({ columns: [{ key: 'label', label: 'Produto' }, { key: 'value', label: 'Inscrições com produto', format: formatInteger }, { key: 'take_rate', label: 'Adoção', format: formatPercent }], rows: [...productRows].sort((a, b) => b.value - a.value).map((row) => ({ ...row, take_rate: paid ? row.value / paid * 100 : 0 })) })}`),
       chapter(CHANNEL_SECTIONS[5], 'Dossiê · 6', 'Cupons e aliases consolidados', 'Um parceiro pode reunir mais de um código; a tabela preserva as identidades revisadas.', renderTable({ columns: [{ key: 'coupon_title', label: 'Título observado' }, { key: 'coupon_code', label: 'Código de cupom' }, { key: 'paid_registrations', label: 'Inscrições', format: formatInteger }, { key: 'alias_reason', label: 'Regra de consolidação' }], rows: data.aliases || [] })),
       chapter(CHANNEL_SECTIONS[6], 'Dossiê · 7', 'Recomendação executiva', 'A categoria indica uma direção de portfólio e sempre expõe suas evidências.', `<div class="recommendation recommendation-${escapeHtml(String(recommendation.category || '').toLowerCase().replaceAll(/[^a-z0-9]+/g, '-'))}"><span>Direção recomendada</span><strong>${escapeHtml(recommendation.category || 'Sem classificação')}</strong><p>${escapeHtml(recommendation.role || '')}</p><ul>${evidence}</ul></div><div class="method-note"><p><strong>Qualificação:</strong> ${escapeHtml(recommendation.sample_qualification || 'não informada')}. Comparações são descritivas, com cobertura explícita e sem nota única.</p></div>`),
     ].join('');
@@ -365,6 +523,7 @@
     sortChannelsByGross,
     renderBarChart,
     renderLineChart,
+    renderMatrixChart,
     renderStackedChart,
     renderTable,
     renderChannelIndex,

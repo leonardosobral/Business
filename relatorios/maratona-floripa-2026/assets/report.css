@@ -141,6 +141,28 @@ a { color: var(--green); }
   background: #f7eee8;
 }
 
+.takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.takeaway-card,
+.editorial-block {
+  padding: 1.2rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #fbfaf6;
+}
+
+.takeaway-card { border-top: .28rem solid var(--accent); }
+.takeaway-card h3, .editorial-block h3 { margin: 0 0 .55rem; line-height: 1.2; }
+.takeaway-card p { margin: .45rem 0 0; color: var(--muted); }
+.editorial-block { margin: 1.5rem 0; }
+.editorial-block > header p { margin: -.2rem 0 .8rem; color: var(--muted); }
+.portfolio-block { border-color: #aac5bb; background: var(--green-soft); }
+
 .chart-card { margin: 1.5rem 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: 1rem; background: white; }
 .chart-card h3 { margin: 0; font-size: 1.15rem; }
 .chart-card figcaption p, .chart-source, .chart-rule { color: var(--muted); font-size: .84rem; }
@@ -159,6 +181,20 @@ th, td { padding: .72rem .8rem; border-bottom: 1px solid #e9e7e0; text-align: le
 th { color: var(--muted); background: #f4f2ec; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
 tbody tr:last-child td { border-bottom: 0; }
 tbody tr:nth-child(even) { background: #fbfaf6; }
+
+.matrix-wrap { border-radius: .65rem; }
+.matrix-table { min-width: 660px; table-layout: fixed; }
+.matrix-table th:first-child { position: sticky; left: 0; z-index: 2; min-width: 9rem; }
+.matrix-table td, .matrix-table th { text-align: center; }
+.matrix-table tbody th { color: var(--ink); background: #f4f2ec; text-align: left; }
+.matrix-cell {
+  min-width: 6.5rem;
+  background: rgb(232 70 40 / var(--matrix-intensity));
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+.matrix-cell small { display: block; color: var(--muted); font-size: .72rem; font-weight: 650; }
+.matrix-legend { margin: .65rem 0 0; color: var(--muted); font-size: .78rem; }
 
 .warning { padding: .9rem 1rem; border-radius: .7rem; background: var(--warning); font-weight: 700; }
 .recommendation > span { display: block; color: var(--muted); font-size: .8rem; font-weight: 800; text-transform: uppercase; }
@@ -197,6 +233,7 @@ tbody tr:nth-child(even) { background: #fbfaf6; }
   .channel-card { grid-template-columns: 2rem minmax(0, 1fr); }
   .channel-card dl, .channel-open { grid-column: 2; }
   .channel-card dl { flex-wrap: wrap; }
+  .takeaway-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
@@ -219,10 +256,14 @@ tbody tr:nth-child(even) { background: #fbfaf6; }
   .report-section:first-child { break-before: auto; }
   .metric-grid { gap: 3mm; }
   .metric-card { padding: 4mm; break-inside: avoid; }
-  .chart-card, .executive-copy, .method-note, .recommendation { break-inside: avoid; }
+  .chart-card, .executive-copy, .method-note, .recommendation, .takeaway-card, .editorial-block { break-inside: avoid; }
   .chart-scroll { overflow: visible; }
   .chart-scroll svg { width: 100%; min-width: 0; max-height: 145mm; }
   .table-wrap { overflow: visible; border-radius: 0; }
+  .matrix-table { min-width: 0; table-layout: auto; font-size: 6.5pt; }
+  .matrix-table th:first-child { position: static; min-width: 0; }
+  .matrix-cell { min-width: 0; }
+  .takeaway-grid { gap: 3mm; }
   table { font-size: 7.6pt; }
   thead { display: table-header-group; }
   tr, img, svg { break-inside: avoid; }

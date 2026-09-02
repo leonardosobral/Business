@@ -12,7 +12,7 @@ const pagePath = path.resolve(
   'index.cfm',
 );
 
-test('general page authenticates before reading exactly five aggregate bundles', () => {
+test('general page authenticates before reading exactly three compact bundles', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
   const reads = [...page.matchAll(/mifReadDataset\(\s*["']([^"']+)["']\s*\)/gi)]
     .map((match) => match[1]);
@@ -21,10 +21,8 @@ test('general page authenticates before reading exactly five aggregate bundles',
   assert.match(page, /includes\/data\.cfm/i);
   assert.deepEqual(reads.sort(), [
     'channels/index.json',
-    'cycle.json',
     'general.json',
-    'products.json',
-    'territories.json',
+    'strategy.json',
   ]);
   assert.doesNotMatch(page, /channels\/<|channels\/#|channels\/\$|channels\/(?!index\.json)[a-z0-9-]+\.json/i);
 });
