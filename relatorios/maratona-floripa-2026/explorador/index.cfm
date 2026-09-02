@@ -14,13 +14,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Explorador de vendas — Maratona de Floripa 2026</title>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-2"/>
-  <link rel="stylesheet" href="../assets/explorer.css?v=20260902-1"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-4"/>
+  <link rel="stylesheet" href="../assets/explorer.css?v=20260902-2"/>
 </head>
 <body>
   <div class="report-shell">
     <header class="report-topbar no-print">
-      <a href="../">← Análise geral</a>
+      <div class="report-topbar-start">
+        <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
+        <a class="report-back" href="../">← Análise geral</a>
+      </div>
       <span>Explorador controlado · Evento 72611</span>
       <div class="report-actions">
         <a class="button" href="../canais/">Dossiês</a>
@@ -36,7 +42,7 @@
     <main class="report-content explorer-layout">
       <aside class="explorer-panel no-print">
         <h2>Configurar visão</h2>
-        <p>Máximo de duas dimensões. Categorias exclusivas usam Top 10 + Outros; produtos usam Top 10 sem somar Outros. A tabela mantém todas as linhas.</p>
+        <p>Máximo de duas dimensões. Categorias exclusivas usam Top 10 + Outros; produtos vendidos sem itens de kit usam Top 10 sem somar Outros. A tabela mantém todas as linhas.</p>
         <form id="explorer-form">
           <div class="explorer-field">
             <label for="explorer-metric">Métrica</label>
@@ -76,8 +82,8 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifExplorerPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-2"></script>
-  <script src="../assets/explorer.js?v=20260902-2"></script>
+  <script src="../assets/report.js?v=20260902-4"></script>
+  <script src="../assets/explorer.js?v=20260902-3"></script>
   <script>
     (function configureMifExplorer() {
       'use strict';
@@ -134,7 +140,10 @@
           if (!select.disabled) {
             var values = [...new Set(rows.map(function value(row) { return String(row[field] == null ? 'Não informado' : row[field]); }))]
               .sort(function sort(left, right) { return left.localeCompare(right, 'pt-BR', { numeric: true }); });
-            values.forEach(function addValue(value) { select.appendChild(option(value, value)); });
+            values.forEach(function addValue(value) {
+              var label = field === 'lot' ? MifReport.formatLot(value) : (field === 'channel_name' ? MifReport.formatChannelName(value) : value);
+              select.appendChild(option(value, label));
+            });
             if (values.includes(requested)) select.value = requested;
           }
         });

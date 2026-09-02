@@ -11,6 +11,7 @@ const pagePath = path.resolve(
   'maratona-floripa-2026',
   'index.cfm',
 );
+const reportRoot = path.dirname(pagePath);
 
 test('general page authenticates before reading exactly three compact bundles', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
@@ -36,7 +37,7 @@ test('general page declares the eight editorial chapters and print action', () =
     'lotes-e-produtos',
     'territorios',
     'canais',
-    'roadrunners',
+    'aprofundamento-canais',
     'recomendacoes-e-metodo',
   ];
 
@@ -47,7 +48,7 @@ test('general page declares the eight editorial chapters and print action', () =
   assert.match(page, /MifReport\.renderGeneral/i);
 });
 
-test('general page embeds escaped JSON and loads only local shared assets', () => {
+test('general page embeds escaped JSON and limits remote assets to public brand fonts', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
 
   assert.match(page, /application\/json/i);
@@ -55,5 +56,28 @@ test('general page embeds escaped JSON and loads only local shared assets', () =
   assert.match(page, /replace\([^\n]+["']<\/["'][^\n]+["']<\\\/["']/i);
   assert.match(page, /assets\/report\.css/i);
   assert.match(page, /assets\/report\.js/i);
-  assert.doesNotMatch(page, /(?:src|href)=["']https?:\/\//i);
+  const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
+    .map((match) => match[1]);
+  assert.equal(remoteAssets.length, 3);
+  assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
+});
+
+test('report pages render the public Run Pro brand system', () => {
+  const css = fs.readFileSync(path.join(reportRoot, 'assets', 'report.css'), 'utf8');
+  const pages = [
+    pagePath,
+    path.join(reportRoot, 'canais', 'index.cfm'),
+    path.join(reportRoot, 'canais', 'dossie.cfm'),
+    path.join(reportRoot, 'explorador', 'index.cfm'),
+  ].map((file) => fs.readFileSync(file, 'utf8'));
+
+  for (const page of pages) {
+    assert.match(page, /class=["']report-brand["']/i);
+    assert.match(page, /src=["']\/lib\/images\/runpro\.svg["']/i);
+  }
+  assert.match(css, /--ink:\s*#121212/i);
+  assert.match(css, /--paper:\s*#f5f1e8/i);
+  assert.match(css, /--accent:\s*#f6b61e/i);
+  assert.match(css, /--display:\s*["']Barlow Condensed["']/i);
+  assert.match(css, /--body:\s*["']Inter["']/i);
 });

@@ -98,6 +98,13 @@ def _signed(value: Any, suffix: str) -> str | None:
     return f"{parsed:+.2f}".replace(".", ",") + suffix
 
 
+def _lot_label(value: Any) -> str:
+    label = str(value or "").strip()
+    if not label or label.casefold() in {"não informado", "invalido", "inválido", "—"}:
+        return label or "Não informado"
+    return label if label.casefold().startswith("lote ") else f"Lote {label}"
+
+
 def _complete_delta(
     rows: list[dict[str, Any]], segment: object
 ) -> dict[str, Any] | None:
@@ -274,7 +281,7 @@ def describe_channel(
         if valid_states:
             row = valid_states[0]
             geo_parts.append(
-                f"UF líder {row['state']} com {_pt_number(row['share_pct'])}% ({_signed(row['delta_pp'], ' pp')} vs. evento)"
+                f"UF líder {row['state']} com {_pt_number(row['share_pct'])}% ({_signed(row['delta_pp'], '%')} vs. evento)"
             )
         valid_cities = [
             row for row in dossier.get("top_cities", [])
@@ -286,7 +293,7 @@ def describe_channel(
         if valid_cities:
             row = valid_cities[0]
             geo_parts.append(
-                f"cidade líder {row['city']} com {_pt_number(row['share_pct'])}% ({_signed(row['delta_pp'], ' pp')} vs. evento)"
+                f"cidade líder {row['city']} com {_pt_number(row['share_pct'])}% ({_signed(row['delta_pp'], '%')} vs. evento)"
             )
     if not geo_parts:
         geo_parts.append("escopo e comparações regionais não disponíveis com bases completas")
@@ -299,7 +306,7 @@ def describe_channel(
             continue
         segment, count, denominator, segment_share = parsed
         modality_parts.append(
-            f"{segment}: {_pt_count(count)}/{_pt_count(denominator)} ({_pt_number(segment_share)}%; {_signed(delta['delta_pp'], ' pp')} vs. evento)"
+            f"{segment}: {_pt_count(count)}/{_pt_count(denominator)} ({_pt_number(segment_share)}%; {_signed(delta['delta_pp'], '%')} vs. evento)"
         )
         if len(modality_parts) == 2:
             break
@@ -313,7 +320,7 @@ def describe_channel(
             continue
         segment, count, denominator, segment_share = parsed
         lot_parts.append(
-            f"lote líder {segment}: {_pt_count(count)}/{_pt_count(denominator)} ({_pt_number(segment_share)}%; {_signed(delta['delta_pp'], ' pp')} vs. evento)"
+            f"lote líder {_lot_label(segment)}: {_pt_count(count)}/{_pt_count(denominator)} ({_pt_number(segment_share)}%; {_signed(delta['delta_pp'], '%')} vs. evento)"
         )
         break
     weeks = [
@@ -337,7 +344,7 @@ def describe_channel(
     product_candidates = sorted(
         (
             row for row in dossier.get("product_mix", [])
-            if row.get("classification") == "adicional"
+            if row.get("classification") != "kit_incluso"
         ),
         key=lambda row: (
             -(_nonnegative_count(row.get("registrations_with_product")) or 0),
@@ -361,11 +368,11 @@ def describe_channel(
         )
         product_parts.append(
             f"{row['product_name']}: {_pt_count(count)}/{_pt_count(denominator)} "
-            f"({_pt_number(rate)}%; {_signed(delta, ' pp')} vs. evento), "
+            f"({_pt_number(rate)}%; {_signed(delta, '%')} vs. evento), "
             f"{revenue_text}; cobertura de mapeamento {_pt_number(mapping)}%"
         )
         break
-    product_text = "; ".join(product_parts) if product_parts else "adicional não disponível para comparação completa"
+    product_text = "; ".join(product_parts) if product_parts else "produto além do kit não disponível para comparação completa"
 
     closest = []
     by_dimension: dict[str, list[dict[str, Any]]] = {}
@@ -487,11 +494,11 @@ def describe_roadrunners_capstone(row: dict[str, Any]) -> str:
     if not row.get("available"):
         return "## ROADRUNNERS — leitura estratégica do canal próprio\n\nEvidência não disponível nesta base."
     lots = ", ".join(
-        f"{lot['lot']} {_pt_number(lot['share_pct'])}% ({_signed(lot['delta_pp'], ' pp')} vs. evento)"
+        f"{_lot_label(lot['lot'])} {_pt_number(lot['share_pct'])}% ({_signed(lot['delta_pp'], '%')} vs. evento)"
         for lot in row.get("main_lot_mix", [])
     ) or "não disponível"
     additions = "; ".join(
-        f"{product['product_name']} {_pt_number(product['take_rate_pct'])}% ({_signed(product['take_rate_delta_pp'], ' pp')} vs. evento)"
+        f"{product['product_name']} {_pt_number(product['take_rate_pct'])}% ({_signed(product['take_rate_delta_pp'], '%')} vs. evento)"
         for product in row.get("add_on_strengths", [])
     ) or "não disponíveis"
     similarity = row.get("organic_similarity", {})
@@ -499,8 +506,8 @@ def describe_roadrunners_capstone(row: dict[str, Any]) -> str:
     return (
         "## ROADRUNNERS — leitura estratégica do canal próprio\n\n"
         f"- **Escala e valor.** 1º canal com cupom observado: {_count_phrase(row['paid_registrations'], 'inscrição', 'inscrições')}, {_pt_number(row['event_share_pct'])}% do evento e {_pt_number(row['coupon_assisted_share_pct'])}% das inscrições assistidas por cupom. Valor bruto alocado {_money_text(row['gross_value'])} ({_pt_number(row['gross_event_share_pct'])}% do bruto do evento); ticket {_money_text(row['registration_ticket'])} vs. {_money_text(row['event_registration_ticket'])} no evento ({_signed(row['registration_ticket_delta_pct'], '%')}).\n"
-        f"- **Distância e alcance.** 21K + 42K somam {_pt_number(row['long_distance_share_pct'])}% vs. {_pt_number(row['event_long_distance_share_pct'])}% no evento ({_signed(row['long_distance_delta_pp'], ' pp')}); {_pt_count(row['observed_states'])} UFs com cobertura válida de {_pt_number(row['state_valid_coverage_pct'])}%. SP está {_signed(row['state_deltas'][0]['delta_pp'], ' pp')} e SC {_signed(row['state_deltas'][1]['delta_pp'], ' pp')} vs. evento.\n"
-        f"- **Tempo, lote e adicionais.** Pico na semana de {peak_date} com {_count_phrase(row['peak_week_paid_registrations'], 'inscrição', 'inscrições')}. Mix principal de lote: {lots}. Adicionais: {additions}; receita explícita de produto não disponível na fonte.\n"
+        f"- **Distância e alcance.** 21K + 42K somam {_pt_number(row['long_distance_share_pct'])}% vs. {_pt_number(row['event_long_distance_share_pct'])}% no evento ({_signed(row['long_distance_delta_pp'], '%')}); {_pt_count(row['observed_states'])} UFs com cobertura válida de {_pt_number(row['state_valid_coverage_pct'])}%. SP está {_signed(row['state_deltas'][0]['delta_pp'], '%')} e SC {_signed(row['state_deltas'][1]['delta_pp'], '%')} vs. evento.\n"
+        f"- **Tempo, lote e produtos.** Pico na semana de {peak_date} com {_count_phrase(row['peak_week_paid_registrations'], 'inscrição', 'inscrições')}. Mix principal de lote: {lots}. Produtos além do kit: {additions}; receita explícita de produto não disponível na fonte.\n"
         f"- **Semelhança e leitura.** Frente ao Orgânico / sem cupom, as semelhanças são geografia {_pt_number(similarity['geography'], 4)}, modalidade {_pt_number(similarity['modality'], 4)} e produtos {_pt_number(similarity['product'], 4)}. Escala e alcance são pontos mais claros que uma composição singularmente diferenciada; isso não substitui a leitura separada das dimensões nem incorpora patrocínio, Expo, permuta ou cortesias, que não foram mensurados."
     )
 
@@ -593,7 +600,7 @@ def build_decision_questions(result: AnalysisResult) -> list[str]:
         ),
         "Onde a concentração regional é intencional e onde ela limita alcance?",
         (
-            "Quais canais têm mix de modalidade ou adicional realmente distinto, "
+            "Quais canais têm mix de modalidade ou produto além do kit realmente distinto, "
             "com cobertura suficiente para sustentar a leitura?"
         ),
     ]

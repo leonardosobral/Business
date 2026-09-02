@@ -63,7 +63,10 @@ test('dossier declares all seven sections, recommendation and print controls', (
   assert.match(page, /replace\([^\n]+["']<\/["'][^\n]+["']<\\\/["']/i);
   assert.match(page, /assets\/report\.css/i);
   assert.match(page, /assets\/report\.js/i);
-  assert.doesNotMatch(page, /(?:src|href)=["']https?:\/\//i);
+  const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
+    .map((match) => match[1]);
+  assert.equal(remoteAssets.length, 3);
+  assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
 });
 
 test('renderer preserves recommendation, small-sample warning and coupon table', () => {

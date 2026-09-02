@@ -178,6 +178,8 @@ class PrivacyNarrativeTests(unittest.TestCase):
             "Limitações",
         ):
             self.assertIn(expected, text)
+        self.assertRegex(text, r"[+-]\d+,\d{2}% vs\. evento")
+        self.assertNotIn(" pp", text)
         self.assertTrue(text.startswith("## "))
 
     def test_event_text_declares_grains_weighted_tickets_bases_and_limitations(self):
@@ -217,7 +219,7 @@ class PrivacyNarrativeTests(unittest.TestCase):
         for expected in (
             "participação no evento não disponível",
             "modalidades não disponíveis",
-            "adicional não disponível",
+            "produto além do kit não disponível",
             "idade não disponível",
         ):
             self.assertIn(expected, text)

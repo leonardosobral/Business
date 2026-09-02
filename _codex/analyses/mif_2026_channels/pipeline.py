@@ -34,7 +34,7 @@ CHART_RATIONALES = {
     "state_distribution": "horizontal bar: observed state volume with explicit base",
     "channel_distribution": "table: exact channel volume and event share ordered by allocated gross value, paid registrations, and channel name",
     "lot_performance": "stacked bar: volume and ticket by ordered lot",
-    "product_summary": "horizontal bar: add-on take rate by canonical product",
+    "product_summary": "horizontal bar: non-kit product take rate by canonical product; kit_incluso excluded",
     "dimension_overlaps": "table: exact pairwise evidence kept separate by dimension",
 }
 

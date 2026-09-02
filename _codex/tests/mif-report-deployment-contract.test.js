@@ -53,7 +53,12 @@ test('public code has local assets and no embedded production snapshot', () => {
     .map((file) => fs.readFileSync(file, 'utf8'))
     .join('\n');
 
-  assert.doesNotMatch(publicSources, /(?:src|href)=["']https?:\/\//i);
+  const remoteAssets = [...publicSources.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
+    .map((match) => match[1]);
+  assert.equal(remoteAssets.length, 12);
+  assert.ok(
+    remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)),
+  );
   assert.doesNotMatch(
     templates,
     /(?:src|href)=["'][^"']*assets\/[^"'?]+\.(?:js|css)["']/i,

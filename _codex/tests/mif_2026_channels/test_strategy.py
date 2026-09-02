@@ -30,6 +30,7 @@ PRODUCTS = [
     {"phase": "Início", "modality": "21K", "lot": "1", "classification": "kit_incluso", "product_name": "Camiseta do kit", "registrations_with_product": 4},
     {"phase": "Início", "modality": "21K", "lot": "1", "classification": "adicional", "product_name": "Gravação", "registrations_with_product": 2},
     {"phase": "Início", "modality": "21K", "lot": "1", "classification": "adicional", "product_name": "Finisher", "registrations_with_product": 2},
+    {"phase": "Início", "modality": "21K", "lot": "1", "classification": "desconhecido", "product_name": "Item em revisão", "registrations_with_product": 1},
     {"phase": "Encerramento", "modality": "5K", "lot": "7", "classification": "adicional", "product_name": "Gravação", "registrations_with_product": 3},
 ]
 
@@ -110,13 +111,15 @@ class StrategyTests(unittest.TestCase):
         rows = strategy["datasets"]["product_modality_additional"]
 
         self.assertNotIn("Outros", {row["product_name"] for row in rows})
+        self.assertNotIn("Camiseta do kit", {row["product_name"] for row in rows})
+        self.assertIn("Item em revisão", {row["product_name"] for row in rows})
         self.assertEqual(
             [
                 row["registrations_with_product"]
                 for row in rows
                 if row["modality"] == "21K"
             ],
-            [2, 2],
+            [2, 2, 1],
         )
         engraving = next(
             row for row in rows
@@ -164,7 +167,7 @@ class StrategyTests(unittest.TestCase):
                 "O ciclo muda de produto no encerramento",
                 "Estados pedem calendários diferentes",
                 "O portfólio já é concentrado; o ganho está na função",
-                "Produto adicional deve ser ofertado por distância",
+                "Produto vendido deve ser ofertado por distância",
             ],
         )
         self.assertIn("5K", takeaways[0]["evidence"])

@@ -525,20 +525,48 @@ class MetricTests(unittest.TestCase):
             len(registrations) - 1,
         )
 
-    def test_products_keep_classification_and_only_explicit_revenue(self):
-        """Combining included and add-on items or imputing kit revenue would fabricate value."""
+    def test_product_sales_exclude_only_kit_and_sort_by_sales_descending(self):
+        """Mandatory kit products must disappear without hiding other product records."""
         result = build_analysis(channel_metric_facts())
         products = result.datasets["product_summary"]
 
         self.assertEqual(
             {row["classification"] for row in products},
-            {"kit_incluso", "adicional", "desconhecido"},
+            {"adicional", "desconhecido"},
         )
-        included = next(row for row in products if row["classification"] == "kit_incluso")
+        self.assertEqual(
+            {row["product_name"] for row in products},
+            {"Camiseta Extra", "Item não revisado comercialmente"},
+        )
+        self.assertEqual(
+            [(row["registrations_with_product"], row["product_name"]) for row in products],
+            sorted(
+                ((row["registrations_with_product"], row["product_name"]) for row in products),
+                key=lambda item: (-item[0], item[1].casefold()),
+            ),
+        )
         additional = next(row for row in products if row["classification"] == "adicional")
-        self.assertIsNone(included["explicit_revenue"])
         self.assertRegex(additional["explicit_revenue"], r"^\d+\.\d{2}$")
         self.assertIn("take_rate_denominator", additional)
+        self.assertTrue(
+            all(
+                {row["classification"] for row in dossier["product_mix"]}
+                <= {"adicional", "desconhecido"}
+                for dossier in result.full_dossiers
+            )
+        )
+        for dossier in result.full_dossiers:
+            self.assertNotIn("kit_incluso", {row["classification"] for row in dossier["product_mix"]})
+            self.assertEqual(
+                dossier["product_mix"],
+                sorted(
+                    dossier["product_mix"],
+                    key=lambda row: (
+                        -int(row["registrations_with_product"]),
+                        str(row["product_name"]).casefold(),
+                    ),
+                ),
+            )
 
     def test_product_chart_tail_counts_distinct_registration_union(self):
         """Overlapping tail products must not double-count paid registrations in Outros."""

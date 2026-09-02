@@ -577,6 +577,7 @@ def _product_mix(
     selected = products.loc[
         products["numero_inscricao"].isin(registrations["numero_inscricao"])
     ].copy()
+    selected = selected.loc[selected["classification"] != "kit_incluso"].copy()
     if selected.empty:
         return []
     rows = []
@@ -601,7 +602,14 @@ def _product_mix(
                 "explicit_revenue_coverage_pct": round(len(explicit_values) / len(group) * 100, 2),
             }
         )
-    return rows
+    return sorted(
+        rows,
+        key=lambda row: (
+            -int(row["registrations_with_product"]),
+            normalize_key(row["product_name"]).casefold(),
+            str(row["product_name"]),
+        ),
+    )
 
 
 def _product_chart_metadata(
@@ -621,7 +629,8 @@ def _product_chart_metadata(
     tail = ranked[PRODUCT_CHART_TOP_N:]
     tail_categories = [str(row["product_name"]) for row in tail]
     tail_products = paid_products.loc[
-        paid_products["canonical_name"].astype(str).isin(tail_categories)
+        (paid_products["classification"] != "kit_incluso")
+        & paid_products["canonical_name"].astype(str).isin(tail_categories)
     ] if tail_categories else paid_products.iloc[0:0]
     registration_multiplicity = (
         tail_products.groupby("numero_inscricao")["canonical_name"]
@@ -999,7 +1008,7 @@ def _distribution_for_overlap(
             "addon_products", pd.Series([[]] * int(mapped.sum()), index=frame.index[mapped])
         ):
             entries = products if isinstance(products, list) else []
-            valid.extend(str(product) for product in entries or ["Sem adicional"])
+            valid.extend(str(product) for product in entries or ["Sem produto além do kit"])
     else:  # pragma: no cover - internal callers enumerate dimensions
         raise ValueError(f"unsupported overlap dimension: {dimension}")
     coverage = (
@@ -1495,7 +1504,7 @@ def build_roadrunners_capstone(
         for row in sorted(
             (
                 row for row in road.get("product_mix", [])
-                if row.get("classification") == "adicional"
+                if row.get("classification") != "kit_incluso"
             ),
             key=lambda row: (
                 -int(row["registrations_with_product"]),
@@ -1550,7 +1559,7 @@ def _signal_from_delta(
     prefix = "indício em base pequena — " if paid_registrations < 30 else ""
     direction = "acima" if float(value) > 0 else "abaixo"
     return {
-        "signal": f"{prefix}{dimension} {delta['segment']}: {abs(float(value)):.2f} pp {direction} do evento",
+        "signal": f"{prefix}{dimension} {delta['segment']}: {f'{abs(float(value)):.2f}'.replace('.', ',')}% {direction} do evento",
         "dimension": dimension,
         "segment": delta["segment"],
         "count": delta["channel_count"],
@@ -1594,7 +1603,7 @@ def _decorate_distinctive_signals(
     product_mapping_complete = product_mapping_coverage_pct == 100.0
     event_product_counts: dict[str, int] = {}
     if product_mapping_complete and not products.empty:
-        add_ons = products.loc[products["classification"] == "adicional"].merge(
+        add_ons = products.loc[products["classification"] != "kit_incluso"].merge(
             paid_registrations[["numero_inscricao", "channel_name"]],
             on="numero_inscricao",
             how="inner",
@@ -1647,7 +1656,7 @@ def _decorate_distinctive_signals(
             for row in dossier["product_mix"]:
                 signal = _signal_from_delta(
                     dossier["paid_registrations"],
-                    "produto adicional",
+                    "produto vendido",
                     {
                         "segment": row["product_name"],
                         "channel_count": row["registrations_with_product"],
@@ -1671,7 +1680,7 @@ def _decorate_distinctive_signals(
                 continue
             if dimension == "product":
                 matching = products.loc[
-                    (products["classification"] == "adicional")
+                    (products["classification"] != "kit_incluso")
                     & (products["canonical_name"].astype(str) == segment)
                     & products["numero_inscricao"].isin(channel_frame["numero_inscricao"])
                 ]
@@ -1797,7 +1806,7 @@ def build_analysis(facts: FactBundle) -> AnalysisResult:
         product_mapping_coverage_pct = 0.0
     if not paid_products.empty:
         add_ons = (
-            paid_products.loc[paid_products["classification"] == "adicional"]
+            paid_products.loc[paid_products["classification"] != "kit_incluso"]
             .groupby("numero_inscricao")["canonical_name"]
             .agg(list)
         )

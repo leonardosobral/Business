@@ -69,6 +69,8 @@ class RecommendationTests(unittest.TestCase):
 
         self.assertEqual(result["category"], "Priorizar")
         self.assertIn("42K", result["role"])
+        self.assertIn("12,00%", result["role"])
+        self.assertNotIn(" pp", result["role"])
         self.assertGreaterEqual(len(result["evidence"]), 2)
 
     def test_maintain_with_defined_role_for_specific_complement(self):

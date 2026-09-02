@@ -13,7 +13,7 @@
     <cfheader statuscode="404" statustext="Not Found"/>
     <cfcontent type="text/html; charset=utf-8"/>
     <!doctype html>
-    <html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Canal não encontrado</title><link rel="stylesheet" href="../assets/report.css?v=20260902-2"/></head>
+    <html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Canal não encontrado</title><link rel="stylesheet" href="../assets/report.css?v=20260902-4"/></head>
     <body><main class="report-content"><section class="report-section"><h1>Canal não encontrado</h1><p>O dossiê solicitado não existe neste fechamento.</p><p><a href="./">Voltar à lista de canais</a></p></section></main></body></html>
     <cfabort/>
 </cfif>
@@ -31,12 +31,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Dossiê de canal — Maratona de Floripa 2026</title>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-2"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-4"/>
 </head>
 <body>
   <div class="report-shell">
     <header class="report-topbar no-print">
-      <a href="./">← Todos os canais</a>
+      <div class="report-topbar-start">
+        <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
+        <a class="report-back" href="./">← Todos os canais</a>
+      </div>
       <span>Dossiê comercial · Evento 72611</span>
       <div class="report-actions">
         <a class="button" href="../">Análise geral</a>
@@ -61,15 +67,15 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifChannelPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-2"></script>
+  <script src="../assets/report.js?v=20260902-4"></script>
   <script>
     (function renderMifChannelPage() {
       'use strict';
       var payload = JSON.parse(document.getElementById('mif-report-data').textContent);
       var channel = payload.channel || {};
-      document.getElementById('mif-channel-name').textContent = channel.channel_name || 'Perfil comercial';
-      document.getElementById('mif-channel-hero-summary').textContent = (payload.recommendation && payload.recommendation.role) || channel.executive_highlight || 'Perfil consolidado do canal.';
-      document.title = (channel.channel_name || 'Dossiê de canal') + ' — Maratona de Floripa 2026';
+      document.getElementById('mif-channel-name').textContent = MifReport.formatChannelName(channel.channel_name || 'Perfil comercial');
+      document.getElementById('mif-channel-hero-summary').textContent = MifReport.formatChannelMentions((payload.recommendation && payload.recommendation.role) || channel.executive_highlight || 'Perfil consolidado do canal.', [channel.channel_name]);
+      document.title = MifReport.formatChannelName(channel.channel_name || 'Dossiê de canal') + ' — Maratona de Floripa 2026';
       MifReport.renderChannel(document.getElementById('mif-report-root'), payload);
     })();
   </script>

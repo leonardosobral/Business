@@ -19,12 +19,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Maratona de Floripa 2026 — estudo de vendas</title>
-  <link rel="stylesheet" href="assets/report.css?v=20260902-2"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/report.css?v=20260902-4"/>
 </head>
 <body>
   <div class="report-shell">
     <header class="report-topbar no-print">
-      <a href="/">Road Runners Business</a>
+      <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
       <span>Estudo pós-vendas · Evento 72611</span>
       <div class="report-actions">
         <a class="button" href="canais/">Dossiês de canais</a>
@@ -47,7 +50,7 @@
       <a href="#lotes-e-produtos">Lotes e produtos</a>
       <a href="#territorios">Territórios</a>
       <a href="#canais">Canais</a>
-      <a href="#roadrunners">ROADRUNNERS</a>
+      <a href="#aprofundamento-canais">Top 6 canais</a>
       <a href="#recomendacoes-e-metodo">Recomendações</a>
     </nav>
 
@@ -59,7 +62,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifGeneralPayloadJson#</cfoutput></script>
-  <script src="assets/report.js?v=20260902-2"></script>
+  <script src="assets/report.js?v=20260902-4"></script>
   <script>
     (function renderMifGeneralPage() {
       'use strict';

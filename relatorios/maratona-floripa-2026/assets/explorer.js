@@ -7,9 +7,9 @@
     discount_value: { cube: 'registrations', label: 'Desconto alocado', kind: 'sum', field: 'allocated_discount_value', formatter: 'currency' },
     fee_value: { cube: 'registrations', label: 'Taxa alocada', kind: 'sum', field: 'allocated_fee_value', formatter: 'currency' },
     registration_ticket: { cube: 'registrations', label: 'Ticket por inscrição', kind: 'ratio', numerator: 'allocated_gross_value', denominator: 'paid_registrations', formatter: 'currency' },
-    product_quantity: { cube: 'products', label: 'Quantidade de itens', kind: 'sum', field: 'product_quantity', formatter: 'integer' },
-    registrations_with_product: { cube: 'products', label: 'Ocorrências inscrição-produto', kind: 'sum', field: 'registrations_with_product', formatter: 'integer' },
-    explicit_revenue: { cube: 'products', label: 'Receita explícita de produto', kind: 'sum', field: 'explicit_revenue', formatter: 'currency' },
+    product_quantity: { cube: 'products', label: 'Quantidade de produtos vendidos sem kit', kind: 'sum', field: 'product_quantity', formatter: 'integer' },
+    registrations_with_product: { cube: 'products', label: 'Ocorrências inscrição-produto sem kit', kind: 'sum', field: 'registrations_with_product', formatter: 'integer' },
+    explicit_revenue: { cube: 'products', label: 'Receita explícita de produto sem kit', kind: 'sum', field: 'explicit_revenue', formatter: 'currency' },
   });
   const FILTER_FIELDS = Object.freeze([
     'week_start', 'phase', 'modality', 'lot', 'state', 'city', 'channel_name', 'classification', 'product_name',
@@ -141,7 +141,7 @@
       chartTailMode,
       denominator,
       sourceRowCount: rows.length,
-      grain: contract.cube === 'registrations' ? 'inscrições pagas agregadas' : 'itens de produto vinculados',
+      grain: contract.cube === 'registrations' ? 'inscrições pagas agregadas' : 'produtos vendidos sem itens de kit',
     };
   }
 
@@ -166,18 +166,26 @@
     return report.formatInteger;
   }
 
+  function displayDimensionValue(report, dimension, value) {
+    if (dimension === 'lot') return report.formatLot(value);
+    if (dimension === 'channel_name') return report.formatChannelName(value);
+    return value;
+  }
+
   function render(root, data, selection, filters = {}) {
     const result = aggregateRows(data, selection, filters);
     const report = globalScope.MifReport;
     if (!report) throw new Error('Renderizador compartilhado indisponível.');
     const format = formatter(report, result.contract);
     const chartRows = result.rows.map((row) => ({
-      label: row.comparison ? `${row.primary} · ${row.comparison}` : row.primary,
+      label: row.comparison
+        ? `${displayDimensionValue(report, selection.primaryDimension, row.primary)} · ${displayDimensionValue(report, selection.comparisonDimension, row.comparison)}`
+        : displayDimensionValue(report, selection.primaryDimension, row.primary),
       value: row.value,
     }));
     const tableRows = result.rows.map((row) => ({
-      primary: row.primary,
-      comparison: row.comparison || '—',
+      primary: displayDimensionValue(report, selection.primaryDimension, row.primary),
+      comparison: row.comparison ? displayDimensionValue(report, selection.comparisonDimension, row.comparison) : '—',
       value: row.value,
     }));
     root.innerHTML = `<div class="explorer-receipt"><strong>Grão:</strong> ${report.escapeHtml(result.grain)} · <strong>Células observadas:</strong> ${report.formatInteger(result.sourceRowCount)} · <strong>Base aditiva:</strong> ${report.formatInteger(result.denominator)}</div>

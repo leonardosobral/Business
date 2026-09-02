@@ -142,7 +142,7 @@ def recommend_channel(
         direction = "acima" if lead["delta_pp"] > 0 else "abaixo"
         role = (
             f"{lead['dimension']} — {lead['segment']}: "
-            f"{abs(lead['delta_pp']):.2f} pp {direction} do evento"
+            f"{f'{abs(lead['delta_pp']):.2f}'.replace('.', ',')}% {direction} do evento"
         )
     elif redundancy_is_high:
         role = "perfil amplamente semelhante ao orgânico"

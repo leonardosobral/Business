@@ -69,10 +69,14 @@ test('ordered charts preserve commercial sequences such as lots', () => {
     rows: [{ lot: '1', count: 5 }, { lot: '2', count: 10 }],
     labelKey: 'lot',
     valueKey: 'count',
+    labelFormatter: report.formatLot,
     preserveOrder: true,
   });
 
-  assert.ok(chart.indexOf('>1</text>') < chart.indexOf('>2</text>'));
+  assert.ok(chart.indexOf('>Lote 1</text>') < chart.indexOf('>Lote 2</text>'));
+  assert.equal(report.formatLot('Lote 3'), 'Lote 3');
+  assert.equal(report.formatLot('Não informado'), 'Não informado');
+  assert.equal(report.formatChannelName('Corre Criciúma'), 'CORRE CRICIÚMA');
 });
 
 test('channel list is ordered by gross DESC, registrations DESC and name', () => {
@@ -89,17 +93,19 @@ test('channel directory renders executive highlights without raw Markdown', () =
   const root = { innerHTML: '' };
   report.renderChannelIndex(root, {
     channels: [{
-      slug: 'roadrunners',
-      channel_name: 'ROADRUNNERS',
+      slug: 'sports-week',
+      channel_name: 'Sports Week',
       gross_value: '545290.12',
       paid_registrations: 1876,
       registration_ticket: '290.67',
-      executive_summary: '## ROADRUNNERS - **Escala e valor** — destaque <script>',
+      executive_summary: '## Sports Week - **Escala e valor** — destaque <script>',
       recommendation: { category: 'Priorizar' },
     }],
   });
 
   assert.doesNotMatch(root.innerHTML, /##|\*\*/);
+  assert.match(root.innerHTML, /SPORTS WEEK/);
+  assert.doesNotMatch(root.innerHTML, />Sports Week</);
   assert.match(root.innerHTML, /<strong>Escala e valor<\/strong>/);
   assert.match(root.innerHTML, /&lt;script&gt;/);
 });
@@ -247,6 +253,44 @@ test('general and channel renderers expose every print chapter', () => {
   assert.match(channelRoot.innerHTML, /Priorizar/);
 });
 
+test('chapter 7 deep-dives into the six largest non-organic channels by gross value', () => {
+  const root = { innerHTML: '' };
+  const channels = [
+    { channel_name: 'Orgânico / sem cupom', channel_type: 'organico', gross_value: '9999.00', paid_registrations: 90, registration_ticket: '111.10', executive_summary: 'Resumo orgânico.' },
+    { channel_name: 'Canal 7', channel_type: 'influenciador', gross_value: '100.00', paid_registrations: 1, registration_ticket: '100.00', executive_summary: 'Resumo sete.' },
+    { channel_name: 'Canal 3', channel_type: 'influenciador', gross_value: '700.00', paid_registrations: 7, registration_ticket: '100.00', executive_summary: 'Resumo três.' },
+    { channel_name: 'Roadrunners', channel_type: 'influenciador', gross_value: '1000.00', paid_registrations: 10, registration_ticket: '100.00', executive_summary: 'Resumo próprio.' },
+    { channel_name: 'Canal 6', channel_type: 'influenciador', gross_value: '400.00', paid_registrations: 4, registration_ticket: '100.00', executive_summary: 'Resumo seis.' },
+    { channel_name: 'Canal 2', channel_type: 'influenciador', gross_value: '800.00', paid_registrations: 8, registration_ticket: '100.00', executive_summary: 'Resumo dois.' },
+    { channel_name: 'Canal 5', channel_type: 'influenciador', gross_value: '500.00', paid_registrations: 5, registration_ticket: '100.00', executive_summary: 'Resumo cinco.' },
+    { channel_name: 'Canal 4', channel_type: 'influenciador', gross_value: '600.00', paid_registrations: 6, registration_ticket: '100.00', executive_summary: 'Resumo quatro.' },
+  ];
+  report.renderGeneral(root, {
+    general: {
+      overview: { paid_orders: 90, paid_registrations: 100, gross_value: '11099.00', registration_ticket: '110.99' },
+      datasets: { roadrunners_capstone: [{ available: true, capstone_markdown: 'Resumo aprofundado ROADRUNNERS.' }] },
+    },
+    strategy: {
+      definitions: { phase_order: [], modality_order: [] },
+      datasets: {},
+      insights: { phase_playbook: [], distance_playbook: [], state_timing: [], channel_portfolio: { recommendation_groups: [] }, product_opportunities: [] },
+      caveats: [],
+    },
+    channels: { channels },
+  });
+
+  const chapter = root.innerHTML.match(/<section[^>]+id="aprofundamento-canais"[\s\S]*?<\/section>/u)?.[0] || '';
+  assert.match(chapter, /Aprofundamento dos 6 maiores canais/);
+  assert.match(chapter, /Resumo aprofundado ROADRUNNERS/);
+  for (const channel of ['CANAL 2', 'CANAL 3', 'CANAL 4', 'CANAL 5', 'CANAL 6']) {
+    assert.match(chapter, new RegExp(channel));
+  }
+  assert.doesNotMatch(chapter, /ORGÂNICO \/ SEM CUPOM/);
+  assert.doesNotMatch(chapter, /CANAL 7/);
+  assert.ok(chapter.indexOf('ROADRUNNERS') < chapter.indexOf('CANAL 2'));
+  assert.ok(chapter.indexOf('CANAL 2') < chapter.indexOf('CANAL 3'));
+});
+
 test('general report fixes every strategic crossing and playbook in the editorial flow', () => {
   const root = { innerHTML: '' };
   report.renderGeneral(root, {
@@ -297,13 +341,14 @@ test('general report fixes every strategic crossing and playbook in the editoria
     'Calendário de ativação',
     'Playbook por distância',
     'Timing dos principais estados',
-    'Produtos adicionais por distância',
-    'Produtos adicionais por fase',
-    'Produtos adicionais por lote',
+    'Produtos vendidos por distância',
+    'Produtos vendidos por fase',
+    'Produtos vendidos por lote',
   ]) {
     assert.match(root.innerHTML, new RegExp(title));
   }
   assert.match(root.innerHTML, /O ganho está na função/);
-  assert.match(root.innerHTML, /Sports Week/);
+  assert.match(root.innerHTML, /SPORTS WEEK/);
+  assert.match(root.innerHTML, />Lote 1</);
   assert.match(root.innerHTML, /Fase e lote são colineares/);
 });

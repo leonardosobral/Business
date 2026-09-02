@@ -52,7 +52,7 @@ test('page restores URL state, exposes validation, grain and share link', () => 
   assert.match(page, /Cobertura|cobertura/);
 });
 
-test('explorer uses local assets and links back to the static analysis', () => {
+test('explorer uses local report assets, public brand fonts and links back to the static analysis', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
 
   assert.match(page, /\.\.\/assets\/report\.css/i);
@@ -60,5 +60,8 @@ test('explorer uses local assets and links back to the static analysis', () => {
   assert.match(page, /\.\.\/assets\/report\.js/i);
   assert.match(page, /\.\.\/assets\/explorer\.js/i);
   assert.match(page, /href=["']\.\.\/["']/i);
-  assert.doesNotMatch(page, /(?:src|href)=["']https?:\/\//i);
+  const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
+    .map((match) => match[1]);
+  assert.equal(remoteAssets.length, 3);
+  assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
 });

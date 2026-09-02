@@ -98,7 +98,7 @@ def build_registration_cube(
 def build_product_cube(
     facts: FactBundle, boundaries: SaleCycleBoundaries
 ) -> list[dict[str, Any]]:
-    """Aggregate mapped paid-registration products without exporting identifiers."""
+    """Aggregate non-kit paid-registration products without exporting identifiers."""
     paid = facts.registrations.loc[facts.registrations["is_paid"]].copy()
     if paid.empty or facts.products.empty:
         return []
@@ -127,6 +127,9 @@ def build_product_cube(
     products["classification"] = products.get(
         "classification", pd.Series([UNKNOWN] * len(products), index=products.index)
     ).map(lambda value: UNKNOWN if pd.isna(value) or not str(value).strip() else str(value))
+    products = products.loc[products["classification"] != "kit_incluso"].copy()
+    if products.empty:
+        return []
 
     rows: list[dict[str, Any]] = []
     for keys, group in products.groupby(list(PRODUCT_DIMENSIONS), sort=True):

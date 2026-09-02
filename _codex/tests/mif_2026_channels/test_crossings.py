@@ -61,7 +61,8 @@ class CrossingTests(unittest.TestCase):
             {"2025-06-02", "2026-08-17", "2026-08-24"},
         )
 
-    def test_product_cube_uses_distinct_registrations_and_explicit_revenue(self):
+    def test_product_cube_excludes_only_kit_items_and_keeps_other_sales(self):
+        """Mandatory kit items must not hide additional or unknown product sales."""
         facts = four_registration_facts()
         boundaries = build_sale_cycle_boundaries(
             effective_sale_dates(facts.registrations)
@@ -71,9 +72,12 @@ class CrossingTests(unittest.TestCase):
 
         kit_rows = [row for row in cube if row["product_name"] == "Kit MIF 2026"]
         add_on_rows = [row for row in cube if row["product_name"] == "Camiseta Extra"]
-        self.assertEqual(sum(row["registrations_with_product"] for row in kit_rows), 4)
-        self.assertEqual(sum(row["product_quantity"] for row in kit_rows), 4)
-        self.assertIsNone(kit_rows[0]["explicit_revenue"])
+        self.assertEqual(kit_rows, [])
+        self.assertTrue(add_on_rows)
+        self.assertEqual(
+            {row["classification"] for row in cube},
+            {"adicional", "desconhecido"},
+        )
         self.assertEqual(
             sum(Decimal(row["explicit_revenue"]) for row in add_on_rows),
             Decimal("130.00"),

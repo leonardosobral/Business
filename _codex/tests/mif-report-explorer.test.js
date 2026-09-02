@@ -92,6 +92,26 @@ test('two-dimensional grouping stays complete and ordered by value', () => {
   );
 });
 
+test('render standardizes lot labels and channel names without changing filter values', () => {
+  global.MifReport = report;
+  const root = { innerHTML: '' };
+  const formattedData = {
+    ...data,
+    registration_cube: [
+      { lot: '1', channel_name: 'Sports Week', paid_registrations: 4 },
+    ],
+  };
+
+  explorer.render(root, formattedData, {
+    metric: 'paid_registrations',
+    primaryDimension: 'channel_name',
+    comparisonDimension: 'lot',
+  });
+
+  assert.match(root.innerHTML, /SPORTS WEEK · Lote 1/);
+  assert.doesNotMatch(root.innerHTML, /Sports Week/);
+});
+
 test('chart uses Top 10 + Outros while the table remains complete', () => {
   const many = {
     ...data,

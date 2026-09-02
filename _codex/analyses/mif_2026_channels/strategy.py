@@ -131,16 +131,16 @@ def _top_dimension_with_other(
     return dict(projected)
 
 
-def _additional_product_rows(
+def _non_kit_product_rows(
     product_cube: list[dict[str, Any]], dimension: str
 ) -> list[dict[str, Any]]:
-    additional = [
+    non_kit = [
         row
         for row in product_cube
-        if str(row.get("classification", "")).casefold() == "adicional"
+        if str(row.get("classification", "")).casefold() != "kit_incluso"
     ]
     grouped = _group_counts(
-        additional,
+        non_kit,
         (dimension, "product_name"),
         value_key="registrations_with_product",
     )
@@ -462,7 +462,7 @@ def _executive_takeaways(
     leading_product, leading_product_count = max(
         product_totals.items(),
         key=lambda item: (item[1], item[0]),
-        default=("sem adicional mapeado", 0),
+        default=("sem produto além do kit mapeado", 0),
     )
     leading_product_distance = next(
         (
@@ -502,7 +502,7 @@ def _executive_takeaways(
             "implication": "Reduzir redundância na cauda e preservar canais que tragam território, distância ou timing realmente distintos.",
         },
         {
-            "title": "Produto adicional deve ser ofertado por distância",
+            "title": "Produto vendido deve ser ofertado por distância",
             "evidence": (
                 f"{leading_product} aparece em {leading_product_count} vínculos nos líderes por distância, "
                 f"com maior oportunidade observada a partir de {leading_product_distance}."
@@ -545,17 +545,17 @@ def build_strategy(
     )
 
     product_modality = _with_take_rates(
-        _additional_product_rows(product_cube, "modality"),
+        _non_kit_product_rows(product_cube, "modality"),
         "modality",
         registration_cube,
     )
     product_phase = _with_take_rates(
-        _additional_product_rows(product_cube, "phase"),
+        _non_kit_product_rows(product_cube, "phase"),
         "phase",
         registration_cube,
     )
     product_lot = _with_take_rates(
-        _additional_product_rows(product_cube, "lot"),
+        _non_kit_product_rows(product_cube, "lot"),
         "lot",
         registration_cube,
     )
@@ -628,6 +628,7 @@ def build_strategy(
             "modality_order": list(MODALITY_ORDER),
             "chart_tail_rule": "Top 10 + Outros somente para categorias exclusivas.",
             "product_tail_rule": "Produtos são sobrepostos; o visual limita ao Top 10 sem somar Outros.",
+            "product_scope": "Produtos classificados como kit_incluso são excluídos das listagens de venda; adicionais e desconhecidos permanecem visíveis.",
             "specialist_minimums": {"channel_registrations": 30, "cell_registrations": 10},
         },
         "datasets": datasets,
@@ -641,6 +642,7 @@ def build_strategy(
         },
         "caveats": [
             "Fase comercial e lote são colineares neste ciclo: a leitura descreve a combinação observada, mas não separa causalmente efeito de tempo e efeito de preço.",
+            "Produtos classificados como kit_incluso, incluindo as camisetas obrigatórias vinculadas às distâncias, foram excluídos dos agregados de venda; adicionais e desconhecidos permanecem visíveis.",
             "Produtos não são categorias mutuamente exclusivas; taxas de adoção devem ser lidas item a item e nunca somadas entre produtos.",
             "Cruzamentos são descritivos e não demonstram causalidade; células pequenas qualificam especialistas como hipótese.",
         ],
