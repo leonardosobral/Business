@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/report.css?v=20260902-5"/>
-  <link rel="stylesheet" href="../assets/portfolio.css?v=20260902-1"/>
+  <link rel="stylesheet" href="../assets/portfolio.css?v=20260902-2"/>
 </head>
 <body>
   <div class="report-shell">
@@ -82,7 +82,7 @@
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifPortfolioSimulatorPayloadJson#</cfoutput></script>
   <script src="../assets/report.js?v=20260902-5"></script>
-  <script src="../assets/portfolio.js?v=20260902-3"></script>
+  <script src="../assets/portfolio.js?v=20260902-4"></script>
   <script>
     (function configureMifPortfolioSimulator() {
       'use strict';

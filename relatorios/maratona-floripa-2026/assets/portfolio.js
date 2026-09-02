@@ -255,13 +255,35 @@
     </article>`;
   }
 
+  function renderPairCards(rows) {
+    const report = requireReport();
+    const cards = rows.map((row, index) => {
+      const qualifying = new Set(row.qualifying_dimension_keys || []);
+      const dimensions = Object.entries(DIMENSION_LABELS).map(([key, label]) => {
+        const similarity = row.similarities?.[key];
+        const coverage = qualifying.has(key) ? 'Cobertura mínima atendida' : 'Dimensão não qualificada';
+        return `<div class="portfolio-pair-dimension"><span>${report.escapeHtml(label)}</span><strong>${similarity == null ? '—' : report.formatPercent(toNumber(similarity) * 100)}</strong><small>${report.escapeHtml(coverage)}</small></div>`;
+      }).join('');
+      return `<li><article class="portfolio-pair-card">
+        <header class="portfolio-pair-heading"><span class="portfolio-pair-rank" aria-hidden="true">${report.formatInteger(index + 1)}</span><div><span>Par para revisão</span><h3>${report.escapeHtml(row.pair)}</h3></div><p><span>Qualificação do par</span><strong>${report.escapeHtml(row.sample_status || 'não informada')}</strong></p></header>
+        <dl class="portfolio-pair-summary"><div><dt>Dimensões qualificadas</dt><dd>${report.escapeHtml(row.qualifying_dimensions || '—')}</dd></div><div><dt>Valor bruto combinado</dt><dd>${report.formatCurrency(row.combined_gross_value)}</dd></div></dl>
+        <div class="portfolio-pair-similarities" aria-label="Similaridades e cobertura por dimensão">${dimensions}</div>
+        <dl class="portfolio-pair-partners" aria-label="Inscrições e qualificação dos canais"><div><dt>${report.escapeHtml(report.formatChannelName(row.left_channel))}</dt><dd><strong>${report.formatInteger(row.left_paid_registrations)} inscrições</strong><span>${report.escapeHtml(row.left_sample_status || 'não informada')}</span></dd></div><div><dt>${report.escapeHtml(report.formatChannelName(row.right_channel))}</dt><dd><strong>${report.formatInteger(row.right_paid_registrations)} inscrições</strong><span>${report.escapeHtml(row.right_sample_status || 'não informada')}</span></dd></div></dl>
+      </article></li>`;
+    }).join('');
+    return `<ol class="portfolio-pair-list" aria-label="Top 10 pares para revisão">${cards}</ol>`;
+  }
+
   function renderSummary(root, summary) {
     const report = requireReport();
     const overview = summary?.overview || {};
     const redundancy = (summary?.redundancy_candidates || []).map((row) => ({
       ...row,
       pair: pairLabel(row),
-      qualifying_dimensions: (row.qualifying_dimensions || []).join(', '),
+      qualifying_dimension_keys: row.qualifying_dimensions || [],
+      qualifying_dimensions: (row.qualifying_dimensions || [])
+        .map((dimension) => DIMENSION_LABELS[dimension] || dimension)
+        .join(', '),
       similarity_geography: row.similarities?.geography,
       similarity_modality: row.similarities?.modality,
       similarity_temporal: row.similarities?.temporal,
@@ -281,16 +303,7 @@
     root.innerHTML = [
       section(SUMMARY_SECTIONS[0], 'Portfólio · 1', 'Resumo do portfólio', 'Escala, diferenciação e concentração são leituras separadas.', `<div class="metric-grid">${metricCard('Inscrições pagas', report.formatInteger(overview.paid_registrations))}${metricCard('Valor bruto', report.formatCurrency(overview.gross_value))}${metricCard('Pares de redundância', report.formatInteger(redundancy.length))}${metricCard('Células de dependência', report.formatInteger(dependencies.length))}</div><div class="method-note"><p>${report.escapeHtml(summary?.definitions?.commercial_universe || 'Universo comercial não informado.')}</p></div><div class="takeaway-grid">${takeaways}</div>`),
       section(SUMMARY_SECTIONS[1], 'Portfólio · 2', 'Diferenciação por dimensão', 'Cada dimensão mantém seu próprio benchmark e par de referência.', `<div class="portfolio-dimension-grid">${panels}</div>`),
-      section(SUMMARY_SECTIONS[2], 'Portfólio · 3', 'Redundância observada', 'Pares semelhantes em dimensões qualificadas merecem leitura conjunta, sem score mestre.', `${report.renderTable({ columns: [
-        { key: 'pair', label: 'Par', format: report.formatChannelName },
-        { key: 'similarity_geography', label: 'Geografia', format: (value) => value == null ? '—' : report.formatPercent(toNumber(value) * 100) },
-        { key: 'similarity_modality', label: 'Modalidade', format: (value) => value == null ? '—' : report.formatPercent(toNumber(value) * 100) },
-        { key: 'similarity_temporal', label: 'Temporalidade', format: (value) => value == null ? '—' : report.formatPercent(toNumber(value) * 100) },
-        { key: 'similarity_lot', label: 'Lote', format: (value) => value == null ? '—' : report.formatPercent(toNumber(value) * 100) },
-        { key: 'similarity_product', label: 'Produto', format: (value) => value == null ? '—' : report.formatPercent(toNumber(value) * 100) },
-        { key: 'qualifying_dimensions', label: 'Dimensões qualificadas' },
-        { key: 'combined_gross_value', label: 'Valor bruto combinado', format: report.formatCurrency },
-      ], rows: redundancyTop })}`),
+      section(SUMMARY_SECTIONS[2], 'Portfólio · 3', 'Redundância observada', 'Pares semelhantes em dimensões qualificadas merecem leitura conjunta, sem score mestre.', renderPairCards(redundancyTop)),
       section(SUMMARY_SECTIONS[3], 'Portfólio · 4', 'Dependências observadas', 'As células preservam fase, distância e estado; concentração não é previsão de substituição.', `${report.renderBarChart({ title: 'Top 10 células de concentração observada', description: 'Inscrições selecionadas por célula publicada.', rows: dependencies, labelKey: 'label', valueKey: 'value', denominator: overview.paid_registrations, source: 'Células phase × modality × state; exposição usa total do evento e total comercial.' })}${report.renderTable({ columns: [{ key: 'label', label: 'Célula' }, { key: 'channel_name', label: 'Canal', format: report.formatChannelName }, { key: 'paid_registrations', label: 'Inscrições', format: report.formatInteger }, { key: 'exposure', label: 'Cobertura em risco' }], rows: dependencyTop })}`),
       section(SUMMARY_SECTIONS[4], 'Portfólio · 5', 'Simulador descritivo', 'Selecione de 1 a 10 canais comerciais não orgânicos para observar concentração por célula.', '<p>O simulador mantém os agregados selecionados, suprime detalhes abaixo de cinco inscrições e apresenta a maior alternativa comercial observada quando ela existe.</p>'),
       section(SUMMARY_SECTIONS[5], 'Portfólio · 6', 'Método e limites', 'A evidência preserva os grãos e os denominadores do artefato congelado.', '<div class="method-note"><p>Semelhanças, concentrações e alternativas observadas são descritivas e não estabelecem causalidade.</p></div>'),

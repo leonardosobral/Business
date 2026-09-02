@@ -23,9 +23,138 @@
   vertical-align: middle;
 }
 
-#portfolio-redundancia tbody tr,
 #portfolio-dependencias tbody tr {
   break-inside: avoid;
+}
+
+.portfolio-pair-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio-pair-card {
+  height: 100%;
+  padding: 1.15rem;
+  border: 1px solid var(--line);
+  border-top: .3rem solid var(--accent);
+  border-radius: .55rem;
+  background: #fbfaf6;
+}
+
+.portfolio-pair-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .75rem;
+  align-items: start;
+}
+
+.portfolio-pair-rank {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--accent);
+  font-weight: 850;
+}
+
+.portfolio-pair-heading > div > span,
+.portfolio-pair-heading > p span,
+.portfolio-pair-summary dt,
+.portfolio-pair-partners dt,
+.portfolio-pair-dimension span {
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.portfolio-pair-heading h3 {
+  margin: .15rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.portfolio-pair-heading > p {
+  grid-column: 2;
+  margin: 0;
+}
+
+.portfolio-pair-heading > p span,
+.portfolio-pair-heading > p strong {
+  display: block;
+}
+
+.portfolio-pair-summary,
+.portfolio-pair-partners {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+  margin: 1rem 0;
+}
+
+.portfolio-pair-summary > div,
+.portfolio-pair-partners > div {
+  min-width: 0;
+  padding: .7rem;
+  border-radius: .4rem;
+  background: var(--paper-soft);
+}
+
+.portfolio-pair-summary dd,
+.portfolio-pair-partners dd {
+  margin: .15rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-pair-summary dd,
+.portfolio-pair-partners strong,
+.portfolio-pair-partners span {
+  display: block;
+}
+
+.portfolio-pair-partners span {
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.portfolio-pair-similarities {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .45rem;
+}
+
+.portfolio-pair-dimension {
+  min-width: 0;
+  padding: .65rem;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: var(--white);
+}
+
+.portfolio-pair-dimension span,
+.portfolio-pair-dimension strong,
+.portfolio-pair-dimension small {
+  display: block;
+}
+
+.portfolio-pair-dimension strong {
+  margin: .2rem 0;
+  font-size: 1.05rem;
+}
+
+.portfolio-pair-dimension small {
+  color: var(--muted);
+  font-size: .68rem;
+  line-height: 1.3;
 }
 
 .portfolio-selector-grid {
@@ -200,6 +329,14 @@
   .portfolio-choice-list {
     max-height: 24rem;
   }
+
+  .portfolio-pair-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio-pair-similarities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
@@ -214,11 +351,16 @@
   .portfolio-dimension .matrix-table {
     min-width: 36rem;
   }
+
+  .portfolio-pair-summary,
+  .portfolio-pair-partners {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media print {
   .portfolio-dimension,
-  #portfolio-redundancia tbody tr,
+  .portfolio-pair-card,
   #portfolio-dependencias tbody tr,
   .scenario-receipt,
   .portfolio-simulator-result .metric-card,
@@ -237,5 +379,14 @@
 
   .portfolio-selector-grid {
     display: block;
+  }
+
+  .portfolio-pair-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4mm;
+  }
+
+  .portfolio-pair-similarities {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

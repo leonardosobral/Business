@@ -62,6 +62,8 @@ test('static portfolio page uses versioned local report and portfolio assets onl
   for (const asset of ['report.css', 'portfolio.css', 'report.js', 'portfolio.js']) {
     assert.match(page, new RegExp(`\\.\\.\\/assets\\/${asset.replace('.', '\\.') }\\?v=\\d+`, 'i'));
   }
+  assert.match(page, /portfolio\.css\?v=20260902-2/i);
+  assert.match(page, /portfolio\.js\?v=20260902-4/i);
   const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);
@@ -73,7 +75,8 @@ test('portfolio CSS extends the shared system for dimensions, selector, mobile a
 
   assert.doesNotMatch(css, /(^|\})\s*:root\s*\{/i);
   assert.match(css, /\.portfolio-dimension-grid\s*\{[^}]*display:\s*grid/is);
-  assert.match(css, /#portfolio-redundancia[\s\S]*tbody\s+tr/is);
+  assert.match(css, /\.portfolio-pair-list\s*\{[^}]*display:\s*grid/is);
+  assert.match(css, /\.portfolio-pair-card\s*\{/i);
   assert.match(css, /\.portfolio-selector-grid\s*\{[^}]*display:\s*grid/is);
   assert.match(css, /\.portfolio-choice-list\s*\{/i);
   assert.match(css, /@media\s*\(max-width:\s*820px\)[\s\S]*\.chapter-nav/is);
@@ -81,6 +84,9 @@ test('portfolio CSS extends the shared system for dimensions, selector, mobile a
     css.match(/@media\s*\(max-width:\s*820px\)[\s\S]*?(?=@media|$)/i)?.[0] || '',
     /\.chapter-nav\s*\{[^}]*display:\s*none/is,
   );
+  const mobile = css.match(/@media\s*\(max-width:\s*820px\)[\s\S]*?(?=@media|$)/i)?.[0] || '';
+  assert.match(mobile, /\.portfolio-pair-list\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/is);
   assert.match(css, /@media\s+print[\s\S]*\.scenario-receipt[^}]*display:\s*block/is);
+  assert.match(css, /@media\s+print[\s\S]*\.portfolio-pair-card[^}]*break-inside:\s*avoid/is);
   assert.match(css, /break-inside:\s*avoid/i);
 });

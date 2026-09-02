@@ -179,9 +179,14 @@ function summaryFixture() {
     redundancy_candidates: Array.from({ length: 10 }, (_, index) => ({
       left_channel: `Canal ${index + 1}`,
       right_channel: 'Alfa',
-      qualifying_dimensions: ['geography', 'temporal'],
-      qualifying_dimension_count: 2,
-      combined_gross_value: '100.00',
+      qualifying_dimensions: ['geography', 'lot', 'modality', 'product', 'temporal'],
+      qualifying_dimension_count: 5,
+      left_paid_registrations: 12 + index,
+      right_paid_registrations: 34,
+      left_sample_status: 'amostra reduzida',
+      right_sample_status: 'referência disponível',
+      sample_status: 'amostra reduzida',
+      combined_gross_value: index ? '100.00' : '1234.56',
       similarities: { geography: 0.9, modality: 0.8, temporal: 0.7, lot: 0.6, product: 0.5 },
     })),
     dependency_cells: Array.from({ length: 11 }, (_, index) => ({
@@ -241,8 +246,10 @@ test('summary renderer draws one real four-group matrix for every dimension pane
 
 test('summary renderer keeps channel names safe and uses Portuguese report conventions', () => {
   const root = { innerHTML: '' };
+  const summary = summaryFixture();
+  summary.redundancy_candidates[0].left_channel = '<img src=x>';
 
-  portfolio.renderSummary(root, summaryFixture());
+  portfolio.renderSummary(root, summary);
 
   assert.match(root.innerHTML, /ALFA/);
   assert.match(root.innerHTML, /Pré-lançamento/);
@@ -263,8 +270,7 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
   assert.match(redundancySection, /CANAL 10 × ALFA/);
   assert.doesNotMatch(redundancySection, /OUTROS/);
   assert.match(redundancySection, /Geografia|Modalidade|Temporalidade|Lote|Produto/);
-  const redundancyTable = redundancySection.slice(redundancySection.indexOf('<table'));
-  assert.equal((redundancyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 10);
+  assert.equal((redundancySection.match(/<article class="portfolio-pair-card"/g) || []).length, 10);
 
   const dependencySection = root.innerHTML.slice(
     root.innerHTML.indexOf('id="portfolio-dependencias"'),
@@ -288,6 +294,37 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
     exactRoot.innerHTML.indexOf('id="portfolio-simulador"'),
   );
   assert.doesNotMatch(exactDependencies, /Top 10 \+ Outros|>Outros<\/text>/);
+});
+
+test('summary renderer presents every Top 10 redundancy pair as complete semantic evidence cards', () => {
+  const root = { innerHTML: '' };
+
+  portfolio.renderSummary(root, summaryFixture());
+
+  const redundancySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-redundancia"'),
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
+  );
+  const cards = redundancySection.match(/<article class="portfolio-pair-card"[\s\S]*?<\/article>/g) || [];
+  assert.equal(cards.length, 10);
+  const first = cards[0];
+  assert.match(first, /<h3>CANAL 1 × ALFA<\/h3>/);
+  assert.equal((first.match(/class="portfolio-pair-dimension"/g) || []).length, 5);
+  for (const evidence of [
+    ['Geografia', '90,00%'],
+    ['Modalidade', '80,00%'],
+    ['Temporalidade', '70,00%'],
+    ['Lote', '60,00%'],
+    ['Produto', '50,00%'],
+  ]) {
+    assert.match(first, new RegExp(`<span>${evidence[0]}</span>[\\s\\S]*?<strong>${evidence[1]}</strong>`));
+  }
+  assert.equal((first.match(/Cobertura mínima atendida/g) || []).length, 5);
+  assert.match(first, /Dimensões qualificadas<\/dt><dd>Geografia, Lote, Modalidade, Produto, Temporalidade<\/dd>/);
+  assert.match(first, /CANAL 1[\s\S]*?12 inscrições[\s\S]*?amostra reduzida/);
+  assert.match(first, /ALFA[\s\S]*?34 inscrições[\s\S]*?referência disponível/);
+  assert.match(first, /Qualificação do par[\s\S]*?amostra reduzida/);
+  assert.match(first, /Valor bruto combinado[\s\S]*?R\$[\s\u00a0]+1\.234,56/);
 });
 
 test('simulation renderer exposes four KPI cards and complete publishable-cell evidence', () => {
