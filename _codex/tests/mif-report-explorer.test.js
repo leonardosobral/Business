@@ -112,6 +112,38 @@ test('render standardizes lot labels and channel names without changing filter v
   assert.doesNotMatch(root.innerHTML, /Sports Week/);
 });
 
+test('lot dimension omits the invalid OUTRO zero bucket', () => {
+  const withInvalidLot = {
+    ...data,
+    registration_cube: [
+      { lot: '1', paid_registrations: 4, allocated_gross_value: '400.00' },
+      { lot: 'OUTRO: 0', paid_registrations: 1, allocated_gross_value: '0.00' },
+    ],
+  };
+
+  const result = explorer.aggregateRows(withInvalidLot, {
+    metric: 'paid_registrations',
+    primaryDimension: 'lot',
+  });
+  assert.deepEqual(result.rows.map((row) => row.primary), ['1']);
+  assert.equal(result.denominator, 4);
+});
+
+test('explorer presents the technical launch phase as pre-launch', () => {
+  global.MifReport = report;
+  const root = { innerHTML: '' };
+  explorer.render(root, {
+    ...data,
+    registration_cube: [{ phase: 'Lançamento', paid_registrations: 2 }],
+  }, {
+    metric: 'paid_registrations',
+    primaryDimension: 'phase',
+  });
+
+  assert.match(root.innerHTML, /Pré-lançamento/);
+  assert.doesNotMatch(root.innerHTML, />Lançamento</);
+});
+
 test('chart uses Top 10 + Outros while the table remains complete', () => {
   const many = {
     ...data,

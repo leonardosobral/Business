@@ -49,6 +49,13 @@
     return (rows || []).filter((row) => active.every(([key, value]) => String(row[key] ?? '') === value));
   }
 
+  function isVisibleLot(value) {
+    const report = globalScope.MifReport;
+    return report?.isVisibleLot
+      ? report.isVisibleLot(value)
+      : String(value ?? '').trim().toLocaleUpperCase('pt-BR') !== 'OUTRO: 0';
+  }
+
   function emptyComponents(contract) {
     return contract.kind === 'ratio' ? { numerator: 0, denominator: 0 } : { total: 0 };
   }
@@ -84,7 +91,10 @@
     const dimensions = availableDimensions(data, contract.cube);
     const invalidFilter = Object.entries(filters).find(([key, value]) => value != null && String(value).trim() && !dimensions.includes(key));
     if (invalidFilter) throw new Error(`Filtro incompatível com o grão: ${invalidFilter[0]}.`);
-    const rows = filterRows(sourceRows, filters);
+    const filteredRows = filterRows(sourceRows, filters);
+    const rows = [contract.primaryDimension, contract.comparisonDimension].includes('lot')
+      ? filteredRows.filter((row) => isVisibleLot(row.lot))
+      : filteredRows;
     const groups = new Map();
     for (const row of rows) {
       const primary = String(row[contract.primaryDimension] ?? 'Não informado');
@@ -168,6 +178,7 @@
 
   function displayDimensionValue(report, dimension, value) {
     if (dimension === 'lot') return report.formatLot(value);
+    if (dimension === 'phase') return report.formatPhase(value);
     if (dimension === 'channel_name') return report.formatChannelName(value);
     return value;
   }
@@ -203,6 +214,7 @@
     FILTER_FIELDS,
     validateSelection,
     filterRows,
+    isVisibleLot,
     aggregateRows,
     buildShareUrl,
     render,

@@ -64,4 +64,7 @@ test('explorer uses local report assets, public brand fonts and links back to th
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);
   assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
+  assert.doesNotMatch(page, /class=["']report-back["']/i);
+  assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
+  assert.match(page, /MifReport\.isVisibleLot/i);
 });

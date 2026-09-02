@@ -77,6 +77,36 @@ test('ordered charts preserve commercial sequences such as lots', () => {
   assert.equal(report.formatLot('Lote 3'), 'Lote 3');
   assert.equal(report.formatLot('Não informado'), 'Não informado');
   assert.equal(report.formatChannelName('Corre Criciúma'), 'CORRE CRICIÚMA');
+  assert.equal(report.isVisibleLot('OUTRO: 0'), false);
+  assert.equal(report.isVisibleLot('7'), true);
+});
+
+test('phase presentation renames launch and exposes every closed-cycle date range', () => {
+  assert.equal(report.formatPhase('Lançamento'), 'Pré-lançamento');
+  assert.equal(
+    report.formatReportText('Ativação no Lançamento.', []),
+    'Ativação no Pré-lançamento.',
+  );
+  const legend = report.renderPhaseLegend();
+  for (const expected of [
+    'Pré-lançamento', '4–17 jun. 2025',
+    'Início', '18 jun.–24 set. 2025',
+    'Meio', '25 set. 2025–13 abr. 2026',
+    'Reta final', '14 abr.–12 jul. 2026',
+    'Encerramento', '13 jul.–26 ago. 2026',
+  ]) assert.match(legend, new RegExp(expected));
+});
+
+test('channel-volume ordering is descending and keeps Outros last', () => {
+  assert.deepEqual(
+    report.rankRowsByTotal([
+      { channel_name: 'Alfa', paid_registrations: 3 },
+      { channel_name: 'Outros', paid_registrations: 100 },
+      { channel_name: 'Zeta', paid_registrations: 4 },
+      { channel_name: 'Alfa', paid_registrations: 2 },
+    ], 'channel_name', 'paid_registrations', 'Outros'),
+    ['Alfa', 'Zeta', 'Outros'],
+  );
 });
 
 test('channel list is ordered by gross DESC, registrations DESC and name', () => {
@@ -108,6 +138,58 @@ test('channel directory renders executive highlights without raw Markdown', () =
   assert.doesNotMatch(root.innerHTML, />Sports Week</);
   assert.match(root.innerHTML, /<strong>Escala e valor<\/strong>/);
   assert.match(root.innerHTML, /&lt;script&gt;/);
+  assert.ok(root.innerHTML.indexOf('channel-card-metrics') < root.innerHTML.indexOf('channel-card-summary'));
+  assert.match(root.innerHTML, /channel-card-heading/);
+});
+
+test('commercial channel views hide ticket at or below ten reais', () => {
+  const root = { innerHTML: '' };
+  report.renderChannelIndex(root, {
+    channels: [
+      { slug: 'cortesia', channel_name: 'Cortesia', gross_value: '500.00', paid_registrations: 100, registration_ticket: '5.00' },
+      { slug: 'parceiro', channel_name: 'Parceiro', gross_value: '550.00', paid_registrations: 50, registration_ticket: '11.00' },
+    ],
+  });
+
+  assert.doesNotMatch(root.innerHTML, /CORTESIA/);
+  assert.match(root.innerHTML, /PARCEIRO/);
+});
+
+test('general channel matrix filters the commercial cutoff and orders sales descending', () => {
+  const root = { innerHTML: '' };
+  report.renderGeneral(root, {
+    general: {
+      overview: { paid_orders: 12, paid_registrations: 12, gross_value: '1200.00', registration_ticket: '100.00' },
+      datasets: {},
+    },
+    strategy: {
+      definitions: { phase_order: [], modality_order: ['21K'] },
+      datasets: {
+        channel_modality: [
+          { channel_name: 'Alfa', modality: '21K', paid_registrations: 4, within_channel_share_pct: 100 },
+          { channel_name: 'Zeta', modality: '21K', paid_registrations: 8, within_channel_share_pct: 100 },
+          { channel_name: 'Cortesia', modality: '21K', paid_registrations: 99, within_channel_share_pct: 100 },
+          { channel_name: 'Outros', modality: '21K', paid_registrations: 100, within_channel_share_pct: 100 },
+        ],
+      },
+      insights: { phase_playbook: [], distance_playbook: [], state_timing: [], product_opportunities: [] },
+      caveats: [],
+    },
+    channels: {
+      channels: [
+        { channel_name: 'Alfa', gross_value: '400.00', paid_registrations: 4, registration_ticket: '100.00' },
+        { channel_name: 'Zeta', gross_value: '800.00', paid_registrations: 8, registration_ticket: '100.00' },
+        { channel_name: 'Cortesia', gross_value: '990.00', paid_registrations: 99, registration_ticket: '10.00' },
+      ],
+    },
+  });
+
+  const start = root.innerHTML.indexOf('<h3>Distâncias por canal</h3>');
+  const matrix = root.innerHTML.slice(start, root.innerHTML.indexOf('</figure>', start));
+  assert.ok(start >= 0);
+  assert.doesNotMatch(matrix, /CORTESIA/);
+  assert.ok(matrix.indexOf('>ZETA<') < matrix.indexOf('>ALFA<'));
+  assert.ok(matrix.indexOf('>ALFA<') < matrix.indexOf('>OUTROS<'));
 });
 
 test('chart markup states title, denominator, source and Top 10 rule', () => {

@@ -28,6 +28,8 @@ test('channel index reads only the index and renders commercial DESC order', () 
   assert.match(renderer, /sortChannelsByGross/i);
   assert.match(renderer, /encodeURIComponent/i);
   assert.match(renderer, /dossie\.cfm\?canal=/i);
+  assert.doesNotMatch(page, /class=["']report-back["']/i);
+  assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
 });
 
 test('dossier validates the slug against the manifest and loads one file', () => {
@@ -67,6 +69,9 @@ test('dossier declares all seven sections, recommendation and print controls', (
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);
   assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
+  assert.doesNotMatch(page, /class=["']report-back["']/i);
+  assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
+  assert.match(page, /class=["']button["'][^>]+href=["']\.\/["'][^>]*>Todos os canais</i);
 });
 
 test('renderer preserves recommendation, small-sample warning and coupon table', () => {

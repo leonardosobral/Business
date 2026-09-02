@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-4"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-5"/>
   <link rel="stylesheet" href="../assets/explorer.css?v=20260902-2"/>
 </head>
 <body>
@@ -25,10 +25,10 @@
     <header class="report-topbar no-print">
       <div class="report-topbar-start">
         <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
-        <a class="report-back" href="../">← Análise geral</a>
       </div>
       <span>Explorador controlado · Evento 72611</span>
       <div class="report-actions">
+        <a class="button" href="../">← Análise geral</a>
         <a class="button" href="../canais/">Dossiês</a>
         <button class="button button-primary" type="button" onclick="window.print()">Gerar PDF da visão</button>
       </div>
@@ -82,8 +82,8 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifExplorerPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-4"></script>
-  <script src="../assets/explorer.js?v=20260902-3"></script>
+  <script src="../assets/report.js?v=20260902-5"></script>
+  <script src="../assets/explorer.js?v=20260902-4"></script>
   <script>
     (function configureMifExplorer() {
       'use strict';
@@ -139,9 +139,10 @@
           select.disabled = !dimensions.includes(field);
           if (!select.disabled) {
             var values = [...new Set(rows.map(function value(row) { return String(row[field] == null ? 'Não informado' : row[field]); }))]
+              .filter(function visibleValue(value) { return field !== 'lot' || MifReport.isVisibleLot(value); })
               .sort(function sort(left, right) { return left.localeCompare(right, 'pt-BR', { numeric: true }); });
             values.forEach(function addValue(value) {
-              var label = field === 'lot' ? MifReport.formatLot(value) : (field === 'channel_name' ? MifReport.formatChannelName(value) : value);
+              var label = field === 'lot' ? MifReport.formatLot(value) : (field === 'phase' ? MifReport.formatPhase(value) : (field === 'channel_name' ? MifReport.formatChannelName(value) : value));
               select.appendChild(option(value, label));
             });
             if (values.includes(requested)) select.value = requested;
