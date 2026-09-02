@@ -8,8 +8,20 @@ function bannerManagementBuildBaseUrl() {
             ? CGI.https
             : listFindNoCase("on,1,yes,true", trim(CGI.https)) GT 0;
     }
+    if (structKeyExists(CGI, "server_port_secure")
+        AND listFindNoCase(
+            "on,1,yes,true", trim(CGI.server_port_secure & "")
+        ) GT 0) {
+        isHttps = true;
+    }
+    if (structKeyExists(CGI, "server_port")
+        AND val(CGI.server_port & "") EQ 443) {
+        isHttps = true;
+    }
     if (structKeyExists(CGI, "http_x_forwarded_proto")
-        AND listFirst(CGI.http_x_forwarded_proto & "") EQ "https") {
+        AND compareNoCase(
+            trim(listFirst(CGI.http_x_forwarded_proto & "")), "https"
+        ) EQ 0) {
         isHttps = true;
     }
     if (structKeyExists(CGI, "http_host") AND len(trim(CGI.http_host))) {
@@ -42,6 +54,16 @@ function bannerManagementIsUuid(required any value) {
         "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
         trim(arguments.value & "")
     ) EQ 1;
+}
+
+function bannerManagementSafeUploadName(required string extension) {
+    var normalizedExtension = lCase(
+        reReplace(trim(arguments.extension), "[^a-z0-9]", "", "all")
+    );
+    return "banner-"
+        & lCase(reReplace(createUUID(), "-", "", "all"))
+        & "."
+        & normalizedExtension;
 }
 
 function bannerManagementStatusLabel(required any statusCode) {
@@ -340,8 +362,15 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                             <cfset arrayAppend(VARIABLES.bannerSaveErrors,
                                 "A imagem desktop deve ser JPG, PNG ou GIF.")/>
                         <cfelse>
+                            <cfset VARIABLES.bannerDesktopSafeServerFile =
+                                bannerManagementSafeUploadName(VARIABLES.bannerDesktopExtension)/>
+                            <cffile action="rename"
+                                source="#VARIABLES.bannerUploadDiskPath##bannerDesktopUploadResult.serverFile#"
+                                destination="#VARIABLES.bannerUploadDiskPath##VARIABLES.bannerDesktopSafeServerFile#"/>
+                            <cfset VARIABLES.bannerDesktopUploadedServerFile =
+                                VARIABLES.bannerDesktopSafeServerFile/>
                             <cfset VARIABLES.bannerDesktopAssetPath = bannerManagementBuildAssetUrl(
-                                VARIABLES.bannerUploadWebRoot & bannerDesktopUploadResult.serverFile
+                                VARIABLES.bannerUploadWebRoot & VARIABLES.bannerDesktopSafeServerFile
                             )/>
                         </cfif>
                         <cfcatch type="any">
@@ -363,8 +392,15 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                             <cfset arrayAppend(VARIABLES.bannerSaveErrors,
                                 "A imagem mobile deve ser JPG, PNG ou GIF.")/>
                         <cfelse>
+                            <cfset VARIABLES.bannerMobileSafeServerFile =
+                                bannerManagementSafeUploadName(VARIABLES.bannerMobileExtension)/>
+                            <cffile action="rename"
+                                source="#VARIABLES.bannerUploadDiskPath##bannerMobileUploadResult.serverFile#"
+                                destination="#VARIABLES.bannerUploadDiskPath##VARIABLES.bannerMobileSafeServerFile#"/>
+                            <cfset VARIABLES.bannerMobileUploadedServerFile =
+                                VARIABLES.bannerMobileSafeServerFile/>
                             <cfset VARIABLES.bannerMobileAssetPath = bannerManagementBuildAssetUrl(
-                                VARIABLES.bannerUploadWebRoot & bannerMobileUploadResult.serverFile
+                                VARIABLES.bannerUploadWebRoot & VARIABLES.bannerMobileSafeServerFile
                             )/>
                         </cfif>
                         <cfcatch type="any">
@@ -381,8 +417,15 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                 </cfif>
 
                 <cfif arrayLen(VARIABLES.bannerSaveErrors)>
-                    <cfloop list="#VARIABLES.bannerDesktopUploadedServerFile#,#VARIABLES.bannerMobileUploadedServerFile#"
-                        item="bannerUploadedFileToRemove">
+                    <cfset VARIABLES.bannerUploadedFilesToRemove = [
+                        VARIABLES.bannerDesktopUploadedServerFile,
+                        VARIABLES.bannerMobileUploadedServerFile
+                    ]/>
+                    <cfloop from="1"
+                        to="#arrayLen(VARIABLES.bannerUploadedFilesToRemove)#"
+                        index="bannerUploadCleanupIndex">
+                        <cfset bannerUploadedFileToRemove =
+                            VARIABLES.bannerUploadedFilesToRemove[bannerUploadCleanupIndex]/>
                         <cfif len(trim(bannerUploadedFileToRemove))
                             AND fileExists(VARIABLES.bannerUploadDiskPath & bannerUploadedFileToRemove)>
                             <cftry>

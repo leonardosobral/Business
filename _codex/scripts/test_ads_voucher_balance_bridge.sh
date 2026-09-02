@@ -53,8 +53,8 @@ require_pattern \
     "readiness exige a funcao atomica de resgate"
 require_pattern \
     "$backend" \
-    '(?s)adsV1ApiReady[[:space:]]*=[[:space:]]*val\([^)]*expected_count[^)]*\)[[:space:]]+EQ[[:space:]]+9.*?resolved_count[^\n]*EQ[[:space:]]+9' \
-    "readiness exige as nove funcoes do Business"
+    '(?s)adsV1ApiReady[[:space:]]*=[[:space:]]*val\([^)]*expected_count[^)]*\)[[:space:]]+EQ[[:space:]]+10.*?resolved_count[^\n]*EQ[[:space:]]+10' \
+    "readiness exige as dez funcoes do Business"
 require_pattern \
     "$backend" \
     'adsV1VoucherActions[[:space:]]*=[[:space:]]*"redeem_voucher,reserve_voucher"' \

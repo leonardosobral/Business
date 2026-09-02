@@ -9,16 +9,19 @@
 <cfparam name="FORM.path_evento" default=""/>
 <cfparam name="FORM.id_evento" default=""/>
 <cfparam name="FORM.result_import_csrf" default=""/>
+<cfparam name="FORM.open_results_override" default=""/>
 
 <cfset VARIABLES.raceTagError = ""/>
 <cfset VARIABLES.raceTagNotice = ""/>
 <cfset VARIABLES.raceTagSubmissionId = lCase(trim(len(FORM.submission_id) ? FORM.submission_id : URL.submission_id)) />
 <cfset VARIABLES.raceTagSubmissionReady = false/>
 <cfset VARIABLES.raceTagSubmissionCanProcess = true/>
+<cfset VARIABLES.raceTagPayloadIntentAvailable = false/>
+<cfset VARIABLES.raceTagPayloadOpenResultsEnabled = true/>
 <cfset VARIABLES.raceTagUnscopedAccess = isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin/>
 <cfset VARIABLES.raceTagScopeAccountId = isDefined("VARIABLES.businessPermissionAccountId") ? val(VARIABLES.businessPermissionAccountId) : 0/>
 <cfset VARIABLES.raceTagStandaloneAllowed = VARIABLES.raceTagUnscopedAccess/>
-<cfset qRaceTagSubmission = queryNew("id_resultado_importacao,submission_id,id_evento,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,status_processamento,tentativas")/>
+<cfset qRaceTagSubmission = queryNew("id_resultado_importacao,submission_id,id_evento,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,open_results_enabled,status_processamento,tentativas")/>
 <cfset qRaceTagPreviousLink = queryNew("id_evento")/>
 
 <cfif NOT structKeyExists(SESSION, "resultImportManualCsrf") OR NOT len(trim(SESSION.resultImportManualCsrf & ""))>
@@ -39,6 +42,7 @@
                    url_resultado,
                    url_resultado_publica,
                    status_publicacao,
+                   open_results_enabled,
                    status_processamento,
                    tentativas
             FROM public.tb_resultados_importacoes imp
@@ -66,6 +70,8 @@
         <cfelseif qRaceTagSubmission.recordcount>
             <cfset VARIABLES.raceTagSubmissionReady = true/>
             <cfset VARIABLES.raceTagSubmissionCanProcess = listFindNoCase("pendente,falhou", qRaceTagSubmission.status_processamento) GT 0/>
+            <cfset VARIABLES.raceTagPayloadIntentAvailable = true/>
+            <cfset VARIABLES.raceTagPayloadOpenResultsEnabled = qRaceTagSubmission.open_results_enabled/>
             <cfif NOT VARIABLES.raceTagUnscopedAccess>
                 <!--- Para contas externas, a fonte permanece a mesma validada no envio da API. --->
                 <cfset FORM.url_resultado = qRaceTagSubmission.url_resultado/>

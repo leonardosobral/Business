@@ -153,6 +153,88 @@ function raceTagPlace(required string rawPlace) {
 
     return parsed;
 }
+
+function raceTagOpenResultsPolicy(
+    required struct eventPayload,
+    boolean payloadEnabled = true,
+    boolean hasPersistedPayload = false,
+    boolean isInternalAdmin = false,
+    boolean overrideRequested = false
+) {
+    var state = "missing";
+    var serializedValue = "";
+    var standardAllowed = true;
+    var decisionSource = "legacy";
+    var divergent = false;
+    var overrideAvailable = false;
+    var overrideAccepted = false;
+
+    if (structKeyExists(arguments.eventPayload, "openResultsEnabled")
+        AND NOT isNull(arguments.eventPayload.openResultsEnabled)) {
+        try {
+            serializedValue = lCase(trim(serializeJSON(arguments.eventPayload.openResultsEnabled)));
+        } catch (any invalidOpenResultsValue) {
+            serializedValue = "";
+        }
+
+        if (serializedValue EQ "true") {
+            state = "enabled";
+        } else if (serializedValue EQ "false") {
+            state = "disabled";
+        } else {
+            state = "invalid";
+        }
+    }
+
+    if (state EQ "enabled") {
+        standardAllowed = true;
+        decisionSource = "event_json";
+    } else if (state EQ "disabled" OR state EQ "invalid") {
+        standardAllowed = false;
+        decisionSource = "event_json";
+    } else if (arguments.hasPersistedPayload) {
+        standardAllowed = arguments.payloadEnabled;
+        decisionSource = "payload";
+    }
+
+    divergent = arguments.hasPersistedPayload
+        AND listFindNoCase("enabled,disabled", state)
+        AND ((state EQ "enabled") NEQ arguments.payloadEnabled);
+
+    overrideAvailable = arguments.isInternalAdmin AND NOT standardAllowed;
+    overrideAccepted = overrideAvailable AND arguments.overrideRequested;
+
+    return {
+        state = state,
+        eventState = state,
+        decisionSource = decisionSource,
+        divergent = divergent,
+        payloadEnabled = arguments.payloadEnabled,
+        hasPersistedPayload = arguments.hasPersistedPayload,
+        standardAllowed = standardAllowed,
+        overrideAvailable = overrideAvailable,
+        overrideAccepted = overrideAccepted,
+        processingAllowed = standardAllowed OR overrideAccepted
+    };
+}
+
+function raceTagResponseHeaderValue(required any rawValue) {
+    if (isNull(arguments.rawValue)) {
+        return "";
+    }
+    if (isArray(arguments.rawValue)) {
+        return arrayToList(arguments.rawValue, ", ");
+    }
+    if (isSimpleValue(arguments.rawValue)) {
+        return arguments.rawValue & "";
+    }
+
+    try {
+        return serializeJSON(arguments.rawValue);
+    } catch (any headerSerializationError) {
+        return "[valor não exibível]";
+    }
+}
 </cfscript>
 
 <cfset VARIABLES.raceTagAnalyzed = false/>
@@ -165,6 +247,24 @@ function raceTagPlace(required string rawPlace) {
 <cfset VARIABLES.raceTagExternalEvents = []/>
 <cfset VARIABLES.evento = {}/>
 <cfset eventoJSON = {}/>
+<cfset VARIABLES.raceTagEventHttpStatus = ""/>
+<cfset VARIABLES.raceTagEventResponseHeaders = {}/>
+<cfset VARIABLES.raceTagEventRawBody = ""/>
+<cfset VARIABLES.raceTagEventRawDisplayLimit = 262144/>
+<cfset VARIABLES.raceTagEventJsonLoaded = false/>
+<cfset VARIABLES.raceTagOpenResultsOverrideRequested = compareNoCase(trim(FORM.open_results_override & ""), "1") EQ 0/>
+<cfset VARIABLES.raceTagOpenResultsDecision = raceTagOpenResultsPolicy(
+    eventoJSON,
+    VARIABLES.raceTagPayloadOpenResultsEnabled,
+    VARIABLES.raceTagPayloadIntentAvailable,
+    VARIABLES.raceTagUnscopedAccess,
+    VARIABLES.raceTagOpenResultsOverrideRequested
+)/>
+<cfset VARIABLES.raceTagOverrideActorId = isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND listFindNoCase(qPerfil.columnList, "id")
+    ? val(qPerfil.id)
+    : 0/>
 <cfset qRaceTagCandidates = queryNew("id_evento,nome_evento,tag,cidade,estado,data_inicial,data_final")/>
 <cfset qRaceTagSelectedEvent = queryNew("id_evento,nome_evento,tag,cidade,estado,data_inicial,data_final")/>
 
@@ -231,10 +331,26 @@ function raceTagPlace(required string rawPlace) {
                 <cfhttpparam type="header" name="User-Agent" value="RunnerHubBusiness-RaceTagImporter/1.0"/>
             </cfhttp>
 
+            <cfset VARIABLES.raceTagEventHttpStatus = structKeyExists(httpEvento, "statusCode") ? httpEvento.statusCode & "" : ""/>
+            <cfset VARIABLES.raceTagEventResponseHeaders = structKeyExists(httpEvento, "responseHeader") AND isStruct(httpEvento.responseHeader)
+                ? duplicate(httpEvento.responseHeader)
+                : {}/>
+            <cfset VARIABLES.raceTagEventRawBody = structKeyExists(httpEvento, "fileContent") ? httpEvento.fileContent & "" : ""/>
+
             <cfif raceTagHttpSucceeded(httpEvento)
                 AND len(httpEvento.fileContent & "") LTE (8 * 1024 * 1024)
                 AND isJSON(httpEvento.fileContent)>
                 <cfset eventoJSON = deserializeJSON(httpEvento.fileContent)/>
+                <cfif isStruct(eventoJSON)>
+                    <cfset VARIABLES.raceTagEventJsonLoaded = true/>
+                    <cfset VARIABLES.raceTagOpenResultsDecision = raceTagOpenResultsPolicy(
+                        eventoJSON,
+                        VARIABLES.raceTagPayloadOpenResultsEnabled,
+                        VARIABLES.raceTagPayloadIntentAvailable,
+                        VARIABLES.raceTagUnscopedAccess,
+                        VARIABLES.raceTagOpenResultsOverrideRequested
+                    )/>
+                </cfif>
                 <cfif isStruct(eventoJSON)
                     AND structKeyExists(eventoJSON, "routes")
                     AND isArray(eventoJSON.routes)
@@ -393,6 +509,89 @@ function raceTagPlace(required string rawPlace) {
         <div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.raceTagError)#</cfoutput></div>
     </cfif>
 
+    <cfif VARIABLES.raceTagPayloadIntentAvailable>
+        <div class="alert alert-<cfif VARIABLES.raceTagPayloadOpenResultsEnabled>success<cfelse>danger</cfif> border mb-3">
+            <div class="fw-bold">Intenção recebida pela API</div>
+            <code>open_results_enabled: <cfoutput>#VARIABLES.raceTagPayloadOpenResultsEnabled ? "true" : "false"#</cfoutput></code>
+            <div class="small mt-1">Valor persistido junto com a submissão. Se o <code>event.json</code> trouxer a flag, o valor atual dele prevalece.</div>
+        </div>
+    </cfif>
+
+    <cfif len(VARIABLES.raceTagEventHttpStatus)>
+        <cfif VARIABLES.raceTagEventJsonLoaded>
+            <cfif VARIABLES.raceTagOpenResultsDecision.state EQ "enabled">
+                <div class="alert alert-success border border-success">
+                    <div class="fw-bold"><i class="fa-solid fa-circle-check me-1"></i>Envio autorizado pelo provedor</div>
+                    <code>openResultsEnabled: true</code>
+                </div>
+            <cfelseif VARIABLES.raceTagOpenResultsDecision.state EQ "disabled">
+                <div class="alert alert-danger border border-danger">
+                    <div class="fw-bold"><i class="fa-solid fa-circle-xmark me-1"></i>Processamento não autorizado pelo provedor</div>
+                    <code>openResultsEnabled: false</code>
+                    <div class="small mt-1">A importação normal está bloqueada. Somente um administrador interno pode executar uma exceção manual.</div>
+                </div>
+            <cfelseif VARIABLES.raceTagOpenResultsDecision.state EQ "invalid">
+                <div class="alert alert-danger border border-danger">
+                    <div class="fw-bold"><i class="fa-solid fa-triangle-exclamation me-1"></i>Flag de autorização inválida</div>
+                    <code>openResultsEnabled</code> precisa ser um booleano JSON. O processamento normal está bloqueado.
+                </div>
+            <cfelse>
+                <div class="alert alert-<cfif VARIABLES.raceTagOpenResultsDecision.standardAllowed>secondary<cfelse>danger</cfif> border">
+                    <div class="fw-bold"><i class="fa-solid fa-circle-question me-1"></i>Autorização não informada</div>
+                    <code>openResultsEnabled</code> não existe neste <code>event.json</code>.
+                    <cfif VARIABLES.raceTagOpenResultsDecision.decisionSource EQ "payload">
+                        A decisão usa a intenção persistida da API e
+                        <strong><cfif VARIABLES.raceTagOpenResultsDecision.standardAllowed>autoriza<cfelse>bloqueia</cfif></strong> o processamento normal.
+                    <cfelse>
+                        A fonte será tratada como formato legado e autoriza o processamento normal.
+                    </cfif>
+                </div>
+            </cfif>
+
+            <cfif VARIABLES.raceTagOpenResultsDecision.divergent>
+                <div class="alert alert-warning border border-warning">
+                    <div class="fw-bold"><i class="fa-solid fa-code-compare me-1"></i>Intenções divergentes</div>
+                    O valor atual do <code>event.json</code> difere do valor recebido pela API. A decisão efetiva usa o <code>event.json</code>.
+                </div>
+            </cfif>
+        </cfif>
+
+        <details class="card bg-body-tertiary shadow-0 mb-3">
+            <summary class="card-header fw-bold" role="button">
+                Ver resposta atual do event.json
+            </summary>
+            <div class="card-body">
+                <div class="small mb-3">
+                    <strong>Status HTTP:</strong>
+                    <code><cfoutput>#htmlEditFormat(VARIABLES.raceTagEventHttpStatus)#</cfoutput></code>
+                </div>
+
+                <cfif structCount(VARIABLES.raceTagEventResponseHeaders)>
+                    <div class="small fw-bold mb-1">Headers retornados pela fonte</div>
+                    <div class="table-responsive mb-3">
+                        <table class="table table-sm mb-0">
+                            <tbody>
+                                <cfloop collection="#VARIABLES.raceTagEventResponseHeaders#" item="raceTagResponseHeaderName">
+                                    <tr>
+                                        <th scope="row"><code><cfoutput>#htmlEditFormat(raceTagResponseHeaderName)#</cfoutput></code></th>
+                                        <td class="text-break"><cfoutput>#htmlEditFormat(raceTagResponseHeaderValue(VARIABLES.raceTagEventResponseHeaders[raceTagResponseHeaderName]))#</cfoutput></td>
+                                    </tr>
+                                </cfloop>
+                            </tbody>
+                        </table>
+                    </div>
+                </cfif>
+
+                <div class="small fw-bold mb-1">Conteúdo bruto atual</div>
+                <pre class="bg-dark text-light rounded p-3 mb-1" style="max-height: 28rem; overflow: auto; white-space: pre-wrap;"><cfoutput>#htmlEditFormat(left(VARIABLES.raceTagEventRawBody, min(len(VARIABLES.raceTagEventRawBody), VARIABLES.raceTagEventRawDisplayLimit)))#</cfoutput></pre>
+                <cfif len(VARIABLES.raceTagEventRawBody) GT VARIABLES.raceTagEventRawDisplayLimit>
+                    <div class="text-warning small">Exibição limitada aos primeiros 256 KB. O arquivo completo continua sendo validado pelo processador.</div>
+                </cfif>
+                <div class="text-muted small mt-2">Esta é uma consulta atual à URL externa, não uma fotografia do momento em que o webhook foi recebido.</div>
+            </div>
+        </details>
+    </cfif>
+
     <cfif VARIABLES.raceTagAnalyzed>
         <div class="card bg-body-tertiary shadow-0 mb-3">
             <div class="card-body">
@@ -431,7 +630,9 @@ function raceTagPlace(required string rawPlace) {
             </div>
         </div>
 
-        <cfif VARIABLES.raceTagCanProcess AND VARIABLES.raceTagSubmissionCanProcess>
+        <cfif VARIABLES.raceTagCanProcess
+            AND VARIABLES.raceTagSubmissionCanProcess
+            AND VARIABLES.raceTagOpenResultsDecision.standardAllowed>
             <div class="alert alert-warning">
                 <strong>Confirme antes de publicar:</strong>
                 <cfoutput>#htmlEditFormat(qRaceTagSelectedEvent.nome_evento)# · ID #qRaceTagSelectedEvent.id_evento#</cfoutput>.
@@ -440,6 +641,40 @@ function raceTagPlace(required string rawPlace) {
             <button class="btn btn-warning" type="submit" name="action" value="processar">
                 <i class="fa-solid fa-gears me-1"></i>Processar resultado agora
             </button>
+        <cfelseif VARIABLES.raceTagCanProcess
+            AND VARIABLES.raceTagSubmissionCanProcess
+            AND VARIABLES.raceTagOpenResultsDecision.overrideAvailable>
+            <div class="alert alert-danger">
+                <strong>Exceção administrativa:</strong>
+                o provedor não autorizou o processamento normal deste evento.
+                Marque a confirmação somente se houver uma decisão operacional para importar manualmente.
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="inputOpenResultsOverride"
+                       name="open_results_override"
+                       value="1"
+                       data-racetag-open-results-override
+                       <cfif VARIABLES.raceTagOpenResultsOverrideRequested>checked</cfif>/>
+                <label class="form-check-label" for="inputOpenResultsOverride">
+                    Estou ciente de que <code>openResultsEnabled</code> está bloqueando este evento e quero processá-lo manualmente.
+                </label>
+            </div>
+            <button class="btn btn-danger"
+                    type="submit"
+                    name="action"
+                    value="processar"
+                    data-racetag-open-results-force-button
+                    <cfif NOT VARIABLES.raceTagOpenResultsOverrideRequested>disabled</cfif>>
+                <i class="fa-solid fa-triangle-exclamation me-1"></i>Processar manualmente mesmo assim
+            </button>
+        <cfelseif VARIABLES.raceTagCanProcess
+            AND VARIABLES.raceTagSubmissionCanProcess
+            AND NOT VARIABLES.raceTagOpenResultsDecision.standardAllowed>
+            <div class="alert alert-danger mb-0">
+                Esta submissão não pode ser processada porque o provedor não autorizou o envio.
+            </div>
         <cfelseif NOT VARIABLES.raceTagCanProcess>
             <button class="btn btn-warning" type="submit" name="action" value="analisar">
                 Confirmar vínculo
@@ -454,12 +689,33 @@ function raceTagPlace(required string rawPlace) {
     <cfif compareNoCase(FORM.action, "processar") EQ 0
         AND VARIABLES.raceTagAnalyzed
         AND VARIABLES.raceTagCanProcess
-        AND VARIABLES.raceTagSubmissionCanProcess>
+        AND VARIABLES.raceTagSubmissionCanProcess
+        AND NOT VARIABLES.raceTagOpenResultsDecision.processingAllowed>
+        <div class="alert alert-danger mt-3">
+            <strong>Processamento bloqueado.</strong>
+            A fonte externa não autorizou a importação e nenhuma exceção administrativa válida foi confirmada.
+        </div>
+    </cfif>
+
+    <cfif compareNoCase(FORM.action, "processar") EQ 0
+        AND VARIABLES.raceTagAnalyzed
+        AND VARIABLES.raceTagCanProcess
+        AND VARIABLES.raceTagSubmissionCanProcess
+        AND VARIABLES.raceTagOpenResultsDecision.processingAllowed>
         <cfset VARIABLES.raceTagProcessingAttempted = true/>
 
         <cfif compare(FORM.result_import_csrf, VARIABLES.raceTagCsrf) NEQ 0>
             <div class="alert alert-danger mt-3">A sessão de segurança expirou. Recarregue a página e tente novamente.</div>
         <cfelse>
+            <cfif VARIABLES.raceTagOpenResultsDecision.overrideAccepted>
+                <cfset VARIABLES.raceTagOverrideExternalEventLog = left(
+                    reReplace(trim(FORM.external_event_id & ""), "[^A-Za-z0-9._:-]", "-", "all"),
+                    128
+                )/>
+                <cflog file="business_result_imports"
+                       type="warning"
+                       text="action=open_results_manual_override actor_id=#VARIABLES.raceTagOverrideActorId# submission_id=#VARIABLES.raceTagSubmissionId# external_event_id=#VARIABLES.raceTagOverrideExternalEventLog# road_event_id=#val(FORM.id_evento)# state=#VARIABLES.raceTagOpenResultsDecision.state#"/>
+            </cfif>
             <cftry>
                 <cfif NOT raceTagPublicUrlValid(FORM.url_resultado_publica)>
                     <cfthrow type="RaceTag.InvalidPublicUrl" message="A URL pública precisa ser uma URL HTTPS válida com até 2.048 caracteres."/>
@@ -612,4 +868,10 @@ function raceTagPlace(required string rawPlace) {
         </cfif>
     </cfif>
 </form>
+<script src="/assets/js/racetag-open-results.js"></script>
+<script>
+    if (window.RaceTagOpenResults) {
+        window.RaceTagOpenResults.initialize(document);
+    }
+</script>
 </cfif>

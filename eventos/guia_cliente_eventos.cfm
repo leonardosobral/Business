@@ -90,8 +90,9 @@
                             </div>
                             <h5 class="mb-2">Evento aprovado</h5>
                             <p class="text-muted mb-0">A prova já está vinculada à conta e pode ser operada pela equipe.</p>
-                            <div class="business-step-action">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="/eventos/">Ver lista</a>
+                            <div class="business-step-action d-grid gap-2">
+                                <a class="btn btn-sm btn-warning" href="/eventos/#event-request-panel">Solicitar outro evento</a>
+                                <a class="btn btn-sm btn-outline-warning" href="/eventos/">Ver lista</a>
                             </div>
                         </div>
 

@@ -62,7 +62,7 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1SelectedCampaignId = ""/>
 <cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
-<cfset VARIABLES.adsV1CampaignActions = "save_campaign,submit_campaign_review,change_campaign_status"/>
+<cfset VARIABLES.adsV1CampaignActions = "save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status"/>
 <cfset VARIABLES.adsV1FinanceActions = "credit_account,reverse_click_debit"/>
 <cfset VARIABLES.adsV1VoucherActions = "redeem_voucher,reserve_voucher"/>
 <cfset VARIABLES.adsV1VoucherAdminActions = "create_admin_voucher"/>
@@ -74,6 +74,12 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
     "rr-home-upcoming-native",
     "rr-home-upcoming-native-secondary",
+    "rr-search-events-native",
+    "rr-state-events-native",
+    "rr-sidebar-event-native"
+]/>
+<cfset VARIABLES.adsV1SelectableEventPlacementKeys = [
+    "rr-home-upcoming-native",
     "rr-search-events-native",
     "rr-state-events-native",
     "rr-sidebar-event-native"
@@ -151,6 +157,7 @@ function adsV1FormList(required any value) {
 
 <cfswitch expression="#trim(URL.success & '')#">
     <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Campanha salva como rascunho."/></cfcase>
+    <cfcase value="campaign-edit-ready"><cfset VARIABLES.adsV1Notice = "Campanha pausada. Faça as alterações e salve o novo rascunho para enviá-lo novamente à análise."/></cfcase>
     <cfcase value="campaign-submitted"><cfset VARIABLES.adsV1Notice = "Campanha enviada. Ela ficará fora do ar até concluir as aprovações e a análise da RunnerHub."/></cfcase>
     <cfcase value="campaign-approved"><cfset VARIABLES.adsV1Notice = "Campanha aprovada e liberada para veiculação."/></cfcase>
     <cfcase value="campaign-changes-requested"><cfset VARIABLES.adsV1Notice = "Ajustes solicitados ao anunciante."/></cfcase>
@@ -170,6 +177,7 @@ function adsV1FormList(required any value) {
         WITH expected_functions(signature) AS (
             VALUES
                 ('ads.save_event_campaign(uuid,bigint,integer,text,text,text,numeric,numeric,numeric,timestamp with time zone,timestamp with time zone,text,character,text,integer)'),
+                ('ads.prepare_campaign_for_edit(uuid,bigint,integer)'),
                 ('ads.activate_campaign(uuid,integer,text)'),
                 ('ads.change_campaign_status(uuid,text,integer,text)'),
                 ('ads.change_voucher_status(integer,bigint,integer,integer)'),
@@ -231,8 +239,8 @@ function adsV1FormList(required any value) {
 
     <cfif qAdsV1Readiness.recordcount>
         <cfset VARIABLES.adsV1ReadinessFlag = qAdsV1Readiness.ready & ""/>
-        <cfset VARIABLES.adsV1ApiReady = val(qAdsV1Readiness.expected_count) EQ 9
-            AND val(qAdsV1Readiness.resolved_count) EQ 9
+        <cfset VARIABLES.adsV1ApiReady = val(qAdsV1Readiness.expected_count) EQ 10
+            AND val(qAdsV1Readiness.resolved_count) EQ 10
             AND val(qAdsV1Readiness.expected_table_count) EQ 10
             AND val(qAdsV1Readiness.resolved_table_count) EQ 10
             AND listFindNoCase("1,true,t,yes,on", trim(VARIABLES.adsV1ReadinessFlag)) GT 0/>
@@ -576,7 +584,6 @@ function adsV1FormList(required any value) {
                   AND placement.format_key = 'NATIVE_EVENT'
                   AND placement.placement_key IN (
                       'rr-home-upcoming-native',
-                      'rr-home-upcoming-native-secondary',
                       'rr-search-events-native',
                       'rr-state-events-native',
                       'rr-sidebar-event-native'
@@ -584,7 +591,6 @@ function adsV1FormList(required any value) {
                 ORDER BY array_position(
                     ARRAY[
                         'rr-home-upcoming-native',
-                        'rr-home-upcoming-native-secondary',
                         'rr-search-events-native',
                         'rr-state-events-native',
                         'rr-sidebar-event-native'
@@ -1039,6 +1045,24 @@ function adsV1FormList(required any value) {
                 </cfif>
             </cfcase>
 
+            <cfcase value="prepare_campaign_edit">
+                <cfset VARIABLES.adsV1PrepareEditCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1PrepareEditCampaignId)>
+                    <cfthrow type="AdsV1.Validation" message="Campanha inválida."/>
+                </cfif>
+
+                <cfquery name="qAdsV1PrepareEditResult" datasource="runnerhub">
+                    SELECT *
+                    FROM ads.prepare_campaign_for_edit(
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1PrepareEditCampaignId#"/> AS uuid),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer)
+                    )
+                </cfquery>
+
+                <cflocation addtoken="false" url="./?view=campaigns&status=draft&campaign=#urlEncodedFormat(VARIABLES.adsV1PrepareEditCampaignId)#&success=campaign-edit-ready##campaign-form"/>
+            </cfcase>
+
             <cfcase value="save_campaign">
                 <cfset VARIABLES.adsV1FormCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
                 <cfset VARIABLES.adsV1FormEventId = structKeyExists(FORM, "core_event_id") AND isNumeric(FORM.core_event_id) ? val(FORM.core_event_id) : 0/>
@@ -1060,7 +1084,7 @@ function adsV1FormList(required any value) {
 
                 <cfloop array="#VARIABLES.adsV1FormPlacementCandidates#" index="VARIABLES.adsV1FormPlacementCandidate">
                     <cfset VARIABLES.adsV1FormPlacementKey = lCase(trim(VARIABLES.adsV1FormPlacementCandidate & ""))/>
-                    <cfif listFindNoCase(arrayToList(VARIABLES.adsV1AllowedEventPlacementKeys), VARIABLES.adsV1FormPlacementKey)
+                    <cfif listFindNoCase(arrayToList(VARIABLES.adsV1SelectableEventPlacementKeys), VARIABLES.adsV1FormPlacementKey)
                         AND NOT arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)>
                         <cfset arrayAppend(VARIABLES.adsV1FormPlacementKeys, VARIABLES.adsV1FormPlacementKey)/>
                     </cfif>
@@ -1071,6 +1095,10 @@ function adsV1FormList(required any value) {
                 </cfif>
                 <cfif arrayLen(VARIABLES.adsV1FormPlacementKeys) NEQ arrayLen(VARIABLES.adsV1FormPlacementCandidates)>
                     <cfthrow type="AdsV1.Validation" message="A lista de spots de publicidade e invalida ou contem duplicidades."/>
+                </cfif>
+                <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native")
+                    AND NOT arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native-secondary")>
+                    <cfset arrayAppend(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native-secondary")/>
                 </cfif>
                 <cfset VARIABLES.adsV1FormPlacementArrayLiteral = "{" & arrayToList(VARIABLES.adsV1FormPlacementKeys) & "}"/>
 
@@ -1083,8 +1111,8 @@ function adsV1FormList(required any value) {
                 <cfif len(VARIABLES.adsV1FormName) LT 3 OR len(VARIABLES.adsV1FormName) GT 160>
                     <cfthrow type="AdsV1.Validation" message="Informe um nome de campanha entre 3 e 160 caracteres."/>
                 </cfif>
-                <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormCpcRaw) OR VARIABLES.adsV1FormCpc LTE 0>
-                    <cfthrow type="AdsV1.Validation" message="Informe um CPC positivo com no maximo duas casas decimais."/>
+                <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormCpcRaw) OR VARIABLES.adsV1FormCpc LT 0.51>
+                    <cfthrow type="AdsV1.Validation" message="O lance mínimo por clique é R$ 0,51."/>
                 </cfif>
                 <cfif NOT reFind("^[0-9]+([.,][0-9]{1,2})?$", VARIABLES.adsV1FormBudgetTotalRaw) OR VARIABLES.adsV1FormBudgetTotal LTE 0>
                     <cfthrow type="AdsV1.Validation" message="Informe um orcamento total positivo com no maximo duas casas decimais."/>

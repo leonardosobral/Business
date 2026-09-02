@@ -24,8 +24,10 @@ form="ads/includes/workspace_campaign_form.cfm"
 campaigns="ads/includes/workspace_campaigns.cfm"
 access="ads/includes/access.cfm"
 admin_home="ads/includes/workspace_admin.cfm"
+review_permission_migration="_codex/sql/2026-09-02_ads_review_campaign_business_permission.sql"
+admin_submit_migration="_codex/sql/2026-09-02_ads_submit_campaign_review_admin_actor.sql"
 
-require_pattern "$backend" 'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,submit_campaign_review,change_campaign_status"' "cliente possui salvar, enviar e alterar status operacional"
+require_pattern "$backend" 'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status"' "cliente possui salvar, reabrir aprovada, enviar e alterar status operacional"
 reject_pattern "$backend" '<cfcase[[:space:]]+value="activate_campaign">' "cliente nao possui endpoint de ativacao"
 reject_pattern "$campaigns" 'name="ads_v1_action"[[:space:]]+value="activate_campaign"' "cliente nao possui botao de ativacao"
 require_pattern "$backend" '(?s)<cfcase[[:space:]]+value="submit_campaign_review">.*?FROM[[:space:]]+ads\.submit_campaign_review' "envio chama API de revisao"
@@ -52,6 +54,11 @@ require_pattern "$admin_home" 'value="approve_campaign_review"' "admin pode apro
 require_pattern "$admin_home" 'value="request_campaign_changes"' "admin pode solicitar ajustes"
 require_pattern "$admin_home" 'value="cancel_campaign_review"' "admin pode cancelar analise"
 require_pattern "ads/home.cfm" '(?s)adsAccessCanReviewCampaign.*?view=admin.*?Revisão de anúncios' "admin acessa revisao sem depender de conta selecionada"
+require_pattern "ads/home.cfm" '(?s)!VARIABLES\.adsV1HasAccount[[:space:]]+AND[[:space:]]+VARIABLES\.adsAccessCanReviewCampaign[[:space:]]+AND[[:space:]]+!listFindNoCase\("admin,vouchers",[[:space:]]*VARIABLES\.adsV1WorkspaceView\).*?VARIABLES\.adsV1WorkspaceView[[:space:]]*=[[:space:]]*"admin"' "admin em todas as contas sempre entra na fila global a partir de visoes de conta"
+require_pattern "$review_permission_migration" '(?s)GRANT[[:space:]]+EXECUTE[[:space:]]+ON[[:space:]]+FUNCTION[[:space:]]+ads\.review_campaign\([^)]+\)[[:space:]]+TO[[:space:]]+ads_business' "papel da aplicacao pode chamar revisao protegida por ator admin"
+require_pattern "$admin_submit_migration" '(?s)CREATE[[:space:]]+OR[[:space:]]+REPLACE[[:space:]]+FUNCTION[[:space:]]+ads\.submit_campaign_review.*?FROM[[:space:]]+public\.tb_usuarios[[:space:]]+actor.*?actor\.id[[:space:]]*=[[:space:]]*p_actor_id.*?actor\.is_admin.*?actor\.is_dev' "envio reconhece o admin real que personifica uma conta"
+require_pattern "$admin_submit_migration" '(?s)account_active.*?active_operator[[:space:]]+OR[[:space:]]+actor_is_admin.*?OR[[:space:]]+pending_owner' "admin real pode enviar campanha de conta ativa sem perder o ator auditavel"
+require_pattern "$admin_submit_migration" '(?s)GRANT[[:space:]]+EXECUTE[[:space:]]+ON[[:space:]]+FUNCTION[[:space:]]+ads\.submit_campaign_review\([^)]+\)[[:space:]]+TO[[:space:]]+ads_business' "datasource continua autorizado a enviar campanha para revisao"
 
 if (( failures > 0 )); then
     printf '\nADS PENDING ONBOARDING CAMPAIGNS: FAIL (%d gates)\n' "$failures" >&2

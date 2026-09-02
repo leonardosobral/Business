@@ -42,6 +42,11 @@ test("rejects a daily limit above the total budget", () => {
     assert.equal(wizard.isStepValid(2, { cpc: "0.94", budget: "100", daily: "20" }), true);
 });
 
+test("enforces the auction floor for a custom CPC bid", () => {
+    assert.equal(wizard.isStepValid(2, { cpc: "0.50", budget: "100", daily: "" }), false);
+    assert.equal(wizard.isStepValid(2, { cpc: "0.51", budget: "100", daily: "" }), true);
+});
+
 test("requires chronological dates and a country in the audience step", () => {
     assert.equal(wizard.isStepValid(3, {
         startsAt: "2026-08-25T10:00",
@@ -58,4 +63,32 @@ test("requires chronological dates and a country in the audience step", () => {
 test("requires at least one native placement in the final step", () => {
     assert.equal(wizard.isStepValid(4, { placements: [] }), false);
     assert.equal(wizard.isStepValid(4, { placements: ["rr-home-upcoming-native"] }), true);
+});
+
+test("finds the step navigation in the wizard shell outside the form", () => {
+    const navigationButtons = [{ step: 1 }, { step: 2 }, { step: 3 }, { step: 4 }];
+    const shell = {
+        querySelectorAll(selector) {
+            assert.equal(selector, "[data-wizard-step-button]");
+            return navigationButtons;
+        }
+    };
+    const form = {
+        closest(selector) {
+            assert.equal(selector, ".ads-wizard-shell");
+            return shell;
+        }
+    };
+
+    assert.deepEqual(wizard.findStepButtons(form), navigationButtons);
+});
+
+test("allows direct access to every step while editing", () => {
+    assert.equal(wizard.initialMaxReached(false, 1, 4), 4);
+    assert.equal(wizard.initialMaxReached(false, 3, 4), 4);
+});
+
+test("keeps progressive unlocking for a new campaign", () => {
+    assert.equal(wizard.initialMaxReached(true, 1, 4), 1);
+    assert.equal(wizard.initialMaxReached(true, 3, 4), 3);
 });

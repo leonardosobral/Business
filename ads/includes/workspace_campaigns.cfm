@@ -62,6 +62,16 @@
                         <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns"><td class="text-end">
                           <cfif VARIABLES.adsAccessCanManageCampaign>
                             <details class="ads-row-actions text-start"><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
+                              <cfif VARIABLES.adsV1RowReviewStatus EQ "APPROVED"
+                                AND listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)>
+                                <form method="post" action="./?view=campaigns">
+                                  <input type="hidden" name="ads_v1_action" value="prepare_campaign_edit"/>
+                                  <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
+                                  <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
+                                  <p class="small text-warning mb-2">Ao editar, a campanha ficará fora do ar até uma nova aprovação.</p>
+                                  <button class="btn btn-sm btn-outline-warning w-100" type="submit" onclick="return confirm('A campanha ficará fora do ar até a RunnerHub aprovar novamente. Deseja continuar?')"><cfif VARIABLES.adsV1RowStatus EQ "ACTIVE">Pausar e editar<cfelse>Editar e reenviar</cfif></button>
+                                </form>
+                              </cfif>
                               <cfif listFind("DRAFT,PAUSED", VARIABLES.adsV1RowStatus)
                                 AND NOT listFind("PENDING_REVIEW,APPROVED", VARIABLES.adsV1RowReviewStatus)>
                                 <a class="btn btn-sm btn-outline-light" href="./?view=campaigns&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)###campaign-form">Editar</a>

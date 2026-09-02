@@ -45,7 +45,7 @@
             var cpc = parseMoney(data.cpc);
             var budget = parseMoney(data.budget);
             var daily = parseMoney(data.daily);
-            return cpc > 0 && budget > 0 && (!String(data.daily || "").trim() || (daily > 0 && daily <= budget));
+            return cpc >= 0.51 && budget > 0 && (!String(data.daily || "").trim() || (daily > 0 && daily <= budget));
         }
         if (Number(step) === 3) {
             var startsAt = new Date(data.startsAt);
@@ -61,12 +61,27 @@
         return false;
     }
 
+    function findStepButtons(form) {
+        var shell = form && typeof form.closest === "function"
+            ? form.closest(".ads-wizard-shell")
+            : null;
+        var scope = shell || form;
+        if (!scope || typeof scope.querySelectorAll !== "function") return [];
+        return Array.prototype.slice.call(scope.querySelectorAll("[data-wizard-step-button]"));
+    }
+
+    function initialMaxReached(isNew, currentStep, totalSteps) {
+        var lastStep = Math.max(1, Number(totalSteps) || 1);
+        var activeStep = Math.min(lastStep, Math.max(1, Number(currentStep) || 1));
+        return isNew ? activeStep : lastStep;
+    }
+
     function initWizard(form) {
         if (!form || form.dataset.wizardReady === "true") return;
         form.dataset.wizardReady = "true";
 
         var panels = Array.prototype.slice.call(form.querySelectorAll("[data-wizard-panel]"));
-        var stepButtons = Array.prototype.slice.call(form.querySelectorAll("[data-wizard-step-button]"));
+        var stepButtons = findStepButtons(form);
         var backButton = form.querySelector("#ads-wizard-back");
         var nextButton = form.querySelector("#ads-wizard-next");
         var submitButton = form.querySelector("#ads-wizard-submit");
@@ -82,8 +97,8 @@
         var cpcOptions = Array.prototype.slice.call(form.querySelectorAll("input[name='ads_cpc_option']"));
         var placementInputs = Array.prototype.slice.call(form.querySelectorAll("input[name='placement_keys']"));
         var currentStep = Math.min(4, Math.max(1, Number(form.dataset.initialStep) || 1));
-        var maxReached = currentStep;
         var isNew = form.dataset.isNew === "true";
+        var maxReached = initialMaxReached(isNew, currentStep, panels.length || 4);
 
         function valuesForStep(step) {
             if (step === 1) return { eventId: eventSelect.value, name: nameInput.value };
@@ -282,7 +297,9 @@
 
     return {
         estimateClicks: estimateClicks,
+        findStepButtons: findStepButtons,
         initWizard: initWizard,
+        initialMaxReached: initialMaxReached,
         isStepValid: isStepValid,
         parseMoney: parseMoney,
         suggestEndAt: suggestEndAt

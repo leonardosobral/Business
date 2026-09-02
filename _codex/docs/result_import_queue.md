@@ -23,18 +23,36 @@ de resultados.
 - a listagem não altera o estado por `GET`;
 - o processamento exige confirmação em uma segunda tela e `POST` com CSRF.
 
+Submissões `pendente` ou `falhou` podem ser descartadas por usuários com
+`result_imports.process`. O descarte usa `POST` com CSRF e repete a validação do
+escopo no `UPDATE`; ele altera o estado para `cancelado`, preservando o registro
+e a chave de idempotência. Canceladas ficam fora da listagem sem filtro, mas
+continuam disponíveis pelo indicador/filtro **Canceladas**.
+
 ## Informações exibidas
 
 - identificador público e identificador interno;
 - data de recebimento, início, processamento e atualização;
 - cliente da API e código do cronometrador;
 - status de publicação recebido: `extraoficial`, `final` ou `atualizacao`;
+- intenção recebida no payload da API em `open_results_enabled`, exibida como
+  **Importar** ou **Não importar** sem consultar a origem remota;
 - status de processamento: `pendente`, `processando`, `processado`, `falhou` ou
   `cancelado`;
 - evento associado e referências de evento informadas pelo integrador;
 - URLs dos dados e da publicação oficial;
 - tentativas, total de resultados e eventual erro;
 - `Idempotency-Key`, útil para reconciliar reenvios.
+
+Quando ainda não há vínculo Road Runners, a coluna de evento mostra a primeira
+referência disponível entre a tag informada, o `external_event_id`, o fragmento
+ou último segmento da URL pública e o ID presente em `.../data/{id}/event.json`.
+Essa referência é apenas uma pista visual e não cria vínculo automaticamente.
+
+O valor persistido de `open_results_enabled` é a intenção declarada pelo provedor
+no momento da submissão. Ele orienta a fila, mas não substitui a validação feita
+pelo processador: quando o `event.json` informa um `openResultsEnabled` booleano
+válido, esse valor prevalece.
 
 ## Filtros
 

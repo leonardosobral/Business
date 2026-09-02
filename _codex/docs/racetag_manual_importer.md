@@ -49,6 +49,38 @@ corrige a etapa anterior:
 - executa carga, procedures e atualização da fila dentro de transação;
 - atualiza `url_wiclax` e `url_resultado` somente após execução válida.
 
+O payload da API usa `open_results_enabled`. Ao ler `event.json`, a tela avalia
+o campo original da RaceTag, `openResultsEnabled`:
+
+- `true` no `event.json` autoriza o processamento normal, mesmo que o payload
+  recebido anteriormente tenha informado `false`;
+- `false` no `event.json` bloqueia a importação, mesmo que o payload tenha
+  informado `true`;
+- ausência usa a intenção persistida do payload da API; sem uma submissão da
+  fila, mantém compatibilidade com fontes legadas e assume `true`;
+- valor presente que não seja booleano bloqueia por segurança;
+- somente administradores internos podem confirmar uma exceção manual para
+  qualquer decisão efetiva de bloqueio. A exceção exige CSRF, confirmação
+  explícita e é registrada no log `business_result_imports`.
+
+| `event.json` | Payload persistido | Decisão normal | Fonte efetiva |
+| --- | --- | --- | --- |
+| `true` | qualquer valor | processar | `event.json` |
+| `false` | qualquer valor | bloquear | `event.json` |
+| inválido | qualquer valor | bloquear | `event.json` |
+| ausente | `true` | processar | payload da API |
+| ausente | `false` | bloquear | payload da API |
+| ausente | inexistente | processar | compatibilidade legada |
+
+A tela destaca separadamente a intenção recebida pela API, o valor atual do
+`event.json`, eventuais divergências e a decisão efetiva. A fila administrativa
+usa somente o valor persistido, sem fazer requisições remotas durante a listagem.
+
+A resposta atual da fonte pode ser expandida na mesma tela para consultar status
+HTTP, headers e o corpo bruto de `event.json`. A exibição do corpo é limitada aos
+primeiros 256 KB e representa o conteúdo atual da URL, não uma fotografia do
+momento em que a submissão chegou ao webhook.
+
 ## Operação
 
 Na fila administrativa, use o botão de engrenagens de uma submissão RaceZone
@@ -63,9 +95,15 @@ Confira o evento externo, confirme o evento interno e só então use **Processar
 resultado agora**. O feedback detalhado do processador permanece na página para
 inspeção inicial.
 
+Se a decisão efetiva bloquear o envio, o processamento normal não aparece. Uma
+eventual exceção operacional deve ser executada por um administrador interno
+usando **Processar manualmente mesmo assim**.
+
 ## Limites desta fase
 
 - execução exclusivamente manual;
+- o futuro cron deve aplicar a mesma regra de `openResultsEnabled` e nunca usar a
+  exceção administrativa automática;
 - contas externas precisam iniciar pela fila; somente administradores internos
   podem usar uma URL avulsa;
 - formato atual RaceTag Pro com `results.json` agregado;

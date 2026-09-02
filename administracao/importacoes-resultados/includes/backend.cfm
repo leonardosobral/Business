@@ -6,6 +6,10 @@
 <cfparam name="URL.cliente" default=""/>
 <cfparam name="URL.periodo" default="30"/>
 <cfparam name="URL.id" default=""/>
+<cfparam name="URL.descarte" default=""/>
+<cfparam name="FORM.result_import_queue_action" default=""/>
+<cfparam name="FORM.submission_id" default=""/>
+<cfparam name="FORM.result_import_queue_csrf" default=""/>
 
 <cfset VARIABLES.resultImportError = ""/>
 <cfset VARIABLES.resultImportDetailError = ""/>
@@ -25,6 +29,12 @@
 <cfset VARIABLES.resultImportUnscopedAccess = isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin/>
 <cfset VARIABLES.resultImportScopeAccountId = isDefined("VARIABLES.businessPermissionAccountId") ? val(VARIABLES.businessPermissionAccountId) : 0/>
 <cfset VARIABLES.resultImportCanProcess = businessHasPermission("result_imports.process")/>
+<cfset VARIABLES.resultImportDiscardOutcome = lCase(trim(URL.descarte & ""))/>
+
+<cfif NOT structKeyExists(SESSION, "resultImportQueueCsrf") OR NOT len(trim(SESSION.resultImportQueueCsrf & ""))>
+    <cfset SESSION.resultImportQueueCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
+</cfif>
+<cfset VARIABLES.resultImportQueueCsrf = SESSION.resultImportQueueCsrf/>
 
 <cfif NOT listFindNoCase("pendente,processando,processado,falhou,cancelado", VARIABLES.resultImportStatus)>
     <cfset VARIABLES.resultImportStatus = ""/>
@@ -33,8 +43,58 @@
     <cfset VARIABLES.resultImportPublicationStatus = ""/>
 </cfif>
 
+<cfif compareNoCase(FORM.result_import_queue_action, "descartar") EQ 0>
+    <cfset VARIABLES.resultImportDiscardSubmissionId = lCase(trim(FORM.submission_id & ""))/>
+    <cfset VARIABLES.resultImportDiscardSucceeded = false/>
+
+    <cfif VARIABLES.resultImportCanProcess
+        AND reFindNoCase("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", VARIABLES.resultImportDiscardSubmissionId)
+        AND len(trim(FORM.result_import_queue_csrf & ""))
+        AND compare(FORM.result_import_queue_csrf, VARIABLES.resultImportQueueCsrf) EQ 0>
+        <cftry>
+            <cfquery name="qResultImportDiscard">
+                UPDATE public.tb_resultados_importacoes
+                SET status_processamento = 'cancelado',
+                    data_atualizacao = now()
+                WHERE public_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportDiscardSubmissionId#"/> AS uuid)
+                  AND status_processamento IN ('pendente', 'falhou')
+                <cfif NOT VARIABLES.resultImportUnscopedAccess>
+                  AND EXISTS (
+                      SELECT 1
+                      FROM public.tb_conta_integracoes_resultados account_integration
+                      WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
+                        AND account_integration.ativo = true
+                        AND lower(trim(account_integration.client_id)) = lower(trim(tb_resultados_importacoes.client_id))
+                        AND lower(trim(account_integration.cod_timer)) = lower(trim(tb_resultados_importacoes.cod_timer))
+                        AND (
+                          account_integration.abrange_contas_externas = true
+                          OR nullif(trim(account_integration.external_account_id), '')
+                              IS NOT DISTINCT FROM nullif(trim(tb_resultados_importacoes.external_account_id), '')
+                        )
+                  )
+                </cfif>
+                RETURNING public_id
+            </cfquery>
+            <cfset VARIABLES.resultImportDiscardSucceeded = qResultImportDiscard.recordcount EQ 1/>
+            <cfcatch type="any">
+                <cfset VARIABLES.resultImportDiscardSucceeded = false/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfset VARIABLES.resultImportDiscardRedirect = "./?periodo=" & VARIABLES.resultImportPeriodDays
+        & "&pagina=" & VARIABLES.resultImportPage
+        & "&status=" & encodeForURL(VARIABLES.resultImportStatus)
+        & "&publicacao=" & encodeForURL(VARIABLES.resultImportPublicationStatus)
+        & "&timer=" & encodeForURL(VARIABLES.resultImportTimer)
+        & "&cliente=" & encodeForURL(VARIABLES.resultImportClient)
+        & "&busca=" & encodeForURL(VARIABLES.resultImportSearch)
+        & "&descarte=" & (VARIABLES.resultImportDiscardSucceeded ? "ok" : "erro")/>
+    <cflocation addtoken="false" url="#VARIABLES.resultImportDiscardRedirect#"/>
+</cfif>
+
 <cfset qResultImportSummary = queryNew("total,pendentes,pendentes_atrasadas,processando,processados,falhas,cancelados,extraoficiais,finais,atualizacoes,total_resultados")/>
-<cfset qResultImports = queryNew("id_resultado_importacao,submission_id,id_evento,id_evento_informado,tag_evento_informada,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,status_processamento,idempotency_key,tentativas,total_resultados,erro_codigo,erro_detalhe,data_recebimento,data_inicio,data_processamento,data_atualizacao,nome_evento,event_tag,event_city,event_state,event_date")/>
+<cfset qResultImports = queryNew("id_resultado_importacao,submission_id,id_evento,id_evento_informado,tag_evento_informada,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,open_results_enabled,status_processamento,idempotency_key,tentativas,total_resultados,erro_codigo,erro_detalhe,data_recebimento,data_inicio,data_processamento,data_atualizacao,nome_evento,event_tag,event_city,event_state,event_date")/>
 <cfset qResultImportDetail = duplicate(qResultImports)/>
 <cfset qResultImportTimers = queryNew("cod_timer")/>
 <cfset qResultImportClients = queryNew("client_id")/>
@@ -51,7 +111,7 @@
 
     <cfif VARIABLES.resultImportSchemaReady>
         <cfquery name="qResultImportSummary">
-            SELECT count(*) AS total,
+            SELECT count(*) FILTER (WHERE imp.status_processamento <> 'cancelado') AS total,
                    count(*) FILTER (WHERE imp.status_processamento = 'pendente') AS pendentes,
                    count(*) FILTER (
                        WHERE imp.status_processamento = 'pendente'
@@ -190,6 +250,8 @@
             </cfif>
             <cfif len(VARIABLES.resultImportStatus)>
                 AND imp.status_processamento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportStatus#"/>
+            <cfelse>
+                AND imp.status_processamento <> 'cancelado'
             </cfif>
             <cfif len(VARIABLES.resultImportPublicationStatus)>
                 AND imp.status_publicacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportPublicationStatus#"/>
@@ -238,6 +300,7 @@
                    imp.url_resultado,
                    imp.url_resultado_publica,
                    imp.status_publicacao,
+                   imp.open_results_enabled,
                    imp.status_processamento,
                    imp.idempotency_key,
                    imp.tentativas,
@@ -278,6 +341,8 @@
             </cfif>
             <cfif len(VARIABLES.resultImportStatus)>
                 AND imp.status_processamento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportStatus#"/>
+            <cfelse>
+                AND imp.status_processamento <> 'cancelado'
             </cfif>
             <cfif len(VARIABLES.resultImportPublicationStatus)>
                 AND imp.status_publicacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportPublicationStatus#"/>
@@ -326,6 +391,7 @@
                            imp.url_resultado,
                            imp.url_resultado_publica,
                            imp.status_publicacao,
+                           imp.open_results_enabled,
                            imp.status_processamento,
                            imp.idempotency_key,
                            imp.tentativas,

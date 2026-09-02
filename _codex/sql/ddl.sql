@@ -8322,6 +8322,7 @@ create table public.tb_resultados_importacoes
         constraint tb_resultados_importacoes_status_publicacao_ck
             check ((status_publicacao)::text = ANY
                    ((ARRAY ['extraoficial'::character varying, 'final'::character varying, 'atualizacao'::character varying])::text[])),
+    open_results_enabled    boolean     default true                          not null,
     status_processamento    varchar(24) default 'pendente'::character varying not null
         constraint tb_resultados_importacoes_status_processamento_ck
             check ((status_processamento)::text = ANY
@@ -71630,4 +71631,3 @@ begin
     -- missing source code
 end;
 $$;
-

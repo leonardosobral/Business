@@ -83,6 +83,8 @@
   </div>
 </cfif>
 
+<script src="/assets/js/event-request-panel.js" defer></script>
+
 <cfif len(trim(VARIABLES.eventoSolicitacaoErrorMessage))>
   <div class="alert alert-danger mb-3" role="alert">
     <cfoutput>#htmlEditFormat(VARIABLES.eventoSolicitacaoErrorMessage)#</cfoutput>

@@ -42,10 +42,9 @@
   .ads-cpc-value { display: block; font-size: 1.4rem; font-weight: 800; margin: .35rem 0; }
   .ads-estimate-box { background: rgba(10,91,108,.28); border: 1px solid rgba(98,199,216,.32); border-radius: .5rem; min-height: 100%; padding: 1rem; }
   .ads-estimate-value { color: #8ee4f2; font-size: 1.55rem; font-weight: 800; line-height: 1.2; }
-  .ads-placement-grid { display: grid; gap: .75rem; grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .ads-placement-card { border: 1px solid rgba(255,255,255,.14); border-radius: .45rem; display: flex; gap: .75rem; height: 100%; padding: .9rem; }
+  .ads-placement-grid { display: grid; gap: .65rem; grid-template-columns: 1fr; }
+  .ads-placement-card { align-items: flex-start; border: 1px solid rgba(255,255,255,.14); border-radius: .45rem; display: flex; gap: .75rem; padding: .9rem 1rem; }
   .ads-placement-card:has(input:checked) { background: rgba(98,199,216,.07); border-color: #62c7d8; }
-  .ads-placement-thumb { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: .3rem; flex: 0 0 88px; height: 64px; object-fit: cover; }
   .ads-placement-copy { min-width: 0; }
   .ads-preview-panel { background: #181a1d; border: 1px solid rgba(255,255,255,.12); border-radius: .5rem; min-height: 100%; overflow: hidden; position: sticky; top: 90px; }
   .ads-preview-toolbar { border-bottom: 1px solid rgba(255,255,255,.09); padding: 1rem; }
@@ -127,8 +126,8 @@
                   <option value="">Selecione um evento</option>
                   <cfoutput query="qAdsV1Events">
                     <cfset VARIABLES.adsV1EventImageRaw = len(trim(qAdsV1Events.url_imagem_listagem & "")) ? qAdsV1Events.url_imagem_listagem : (len(trim(qAdsV1Events.url_imagem & "")) ? qAdsV1Events.url_imagem : qAdsV1Events.imagem)/>
-                    <cfset VARIABLES.adsV1EventImageUrl = adsV1EventImageUrl(VARIABLES.adsV1EventImageRaw)/>
-                    <option value="#id_evento#" data-event-name="#htmlEditFormat(nome_evento)#" data-event-city="#htmlEditFormat(cidade)#" data-event-state="#htmlEditFormat(estado)#" data-event-tag="#htmlEditFormat(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#htmlEditFormat(VARIABLES.adsV1EventImageUrl)#" data-event-status="#htmlEditFormat(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>>#htmlEditFormat(nome_evento)# — #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
+                    <cfset VARIABLES.adsV1EventImageResolved = adsV1EventImageUrl(VARIABLES.adsV1EventImageRaw)/>
+                    <option value="#id_evento#" data-event-name="#htmlEditFormat(nome_evento)#" data-event-city="#htmlEditFormat(cidade)#" data-event-state="#htmlEditFormat(estado)#" data-event-tag="#htmlEditFormat(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#htmlEditFormat(VARIABLES.adsV1EventImageResolved)#" data-event-status="#htmlEditFormat(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>>#htmlEditFormat(nome_evento)# — #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
                   </cfoutput>
                 </select>
                 <div class="invalid-feedback">Selecione um evento vinculado.</div>
@@ -145,7 +144,7 @@
             <section class="ads-wizard-panel" data-wizard-panel="2" hidden>
               <div class="ads-v1-eyebrow mb-2">Passo 2 de 4</div>
               <h3 class="ads-wizard-panel-title mb-2">Defina seu investimento</h3>
-              <p class="ads-wizard-help mb-4"><strong>CPC</strong> é o valor máximo pago por cada clique. Os anúncios disputam espaço em um leilão: um lance maior tende a aparecer mais vezes, mas nunca garante posição.</p>
+              <p class="ads-wizard-help mb-4"><strong>CPC</strong> é seu lance máximo por clique. O leilão combina aderência regional e lance: entre anúncios com relevância parecida, um lance maior aumenta a chance de aparecer primeiro. Nenhuma posição é garantida.</p>
 
               <fieldset class="mb-4">
                 <legend class="form-label mb-2">Escolha seu lance por clique</legend>
@@ -159,8 +158,8 @@
               <div class="row g-3 align-items-stretch">
                 <div class="col-md-6">
                   <label class="form-label" for="ads-v1-cpc">Seu lance (CPC)</label>
-                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-cpc" type="number" name="cpc_bid" min="0.01" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCpcRaw)#</cfoutput>"/></div>
-                  <div class="form-text">Você pode ajustar o valor sugerido.</div>
+                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-cpc" type="number" name="cpc_bid" min="0.51" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCpcRaw)#</cfoutput>"/></div>
+                  <div class="form-text">Lance mínimo de R$ 0,51. Você paga no máximo esse valor e pode pagar menos: somente o necessário para superar o próximo anúncio.</div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label" for="ads-v1-total">Orçamento total</label>
@@ -200,8 +199,9 @@
 
             <section class="ads-wizard-panel" data-wizard-panel="4" hidden>
               <div class="ads-v1-eyebrow mb-2">Passo 4 de 4</div>
-              <h3 class="ads-wizard-panel-title mb-2">Onde o anúncio poderá aparecer?</h3>
-              <p class="ads-wizard-help mb-4">Escolha os espaços nativos do RoadRunners. A prévia ao lado muda para ajudar você a entender cada local.</p>
+              <h3 class="ads-wizard-panel-title mb-2">Em quais áreas seu evento poderá concorrer?</h3>
+              <p class="ads-wizard-help mb-3">Escolha as áreas do RoadRunners. Você não compra uma posição fixa: em cada área, a ordem é calculada pela aderência regional e pelo lance.</p>
+              <div class="alert alert-info py-2 px-3 mb-3"><strong>Página inicial:</strong> uma única seleção habilita os dois destaques. O anúncio com melhor ranking aparece primeiro e o seguinte aparece depois.</div>
 
               <fieldset>
                 <legend class="visually-hidden">Locais de exibição</legend>
@@ -209,7 +209,6 @@
                   <cfoutput query="qAdsV1Placements">
                     <label class="ads-placement-card" for="ads-v1-placement-#currentRow#">
                       <input class="form-check-input flex-shrink-0 mt-1" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_keys" value="#htmlEditFormat(placement_key)#" data-placement-label="#htmlEditFormat(adsV1PlacementLabel(placement_key))#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
-                      <cfif len(VARIABLES.adsV1PreviewEventImage)><img class="ads-placement-thumb" src="#htmlEditFormat(VARIABLES.adsV1PreviewEventImage)#" alt="" data-event-placement-image/><cfelse><img class="ads-placement-thumb" src="" alt="" data-event-placement-image hidden/></cfif>
                       <span class="ads-placement-copy"><strong class="d-block">#htmlEditFormat(adsV1PlacementLabel(placement_key))#</strong><span class="d-block small text-muted mt-1">#htmlEditFormat(adsV1PlacementDescription(placement_key))#</span></span>
                     </label>
                   </cfoutput>
@@ -259,7 +258,7 @@
           <button class="btn btn-info" id="ads-wizard-submit" type="submit" hidden>Salvar rascunho<i class="fa-solid fa-check ms-2" aria-hidden="true"></i></button>
         </footer>
       </form>
-      <script src="/assets/js/ads-campaign-wizard.js?v=20260825-1"></script>
+      <script src="/assets/js/ads-campaign-wizard.js?v=20260902-2"></script>
     </cfif>
   </div>
 </section>

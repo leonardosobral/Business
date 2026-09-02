@@ -27,6 +27,12 @@ function resultImportPublicationMeta(required string statusValue) {
         : { label = len(normalized) ? normalized : "Desconhecido", className = "secondary" };
 }
 
+function resultImportOpenResultsMeta(required boolean enabled) {
+    return arguments.enabled
+        ? { label = "Importar", className = "success" }
+        : { label = "Não importar", className = "danger" };
+}
+
 function resultImportQueueUrl(struct changes = {}) {
     var values = {
         busca = VARIABLES.resultImportSearch,
@@ -122,7 +128,9 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
   }
 </style>
 
-<section class="business-page result-import-page py-5">
+<section class="business-page result-import-page py-5"
+         data-result-import-queue
+         data-selected-status="<cfoutput>#htmlEditFormat(VARIABLES.resultImportStatus)#</cfoutput>">
   <div class="card shadow-0 business-page-card">
     <div class="card-body business-page-body">
       <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
@@ -139,6 +147,18 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
           </cfoutput>
         </div>
       </div>
+
+      <cfif VARIABLES.resultImportDiscardOutcome EQ "ok">
+        <div class="alert alert-success py-2 small">
+          <i class="fa-solid fa-circle-check me-1"></i>
+          Submissão descartada da fila de processamento.
+        </div>
+      <cfelseif VARIABLES.resultImportDiscardOutcome EQ "erro">
+        <div class="alert alert-danger py-2 small">
+          <i class="fa-solid fa-triangle-exclamation me-1"></i>
+          Não foi possível descartar a submissão. Ela pode já ter sido processada, estar fora do seu escopo ou a sessão pode ter expirado.
+        </div>
+      </cfif>
 
       <cfif NOT VARIABLES.resultImportUnscopedAccess>
         <cfif isDefined("qBusinessResultImportIntegrations") AND qBusinessResultImportIntegrations.recordcount>
@@ -293,6 +313,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         <cfif qResultImportDetail.recordcount>
           <cfset resultImportDetailProcessing = resultImportProcessingMeta(qResultImportDetail.status_processamento)/>
           <cfset resultImportDetailPublication = resultImportPublicationMeta(qResultImportDetail.status_publicacao)/>
+          <cfset resultImportDetailIntent = resultImportOpenResultsMeta(qResultImportDetail.open_results_enabled)/>
           <div class="business-panel mb-3">
             <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
               <div>
@@ -301,6 +322,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                   <cfoutput>
                     <span class="badge badge-#resultImportDetailProcessing.className#">#resultImportDetailProcessing.label#</span>
                     <span class="badge badge-#resultImportDetailPublication.className#">#resultImportDetailPublication.label#</span>
+                    <span class="badge badge-#resultImportDetailIntent.className#">#resultImportDetailIntent.label#</span>
                   </cfoutput>
                 </div>
                 <code class="result-import-id"><cfoutput>#htmlEditFormat(qResultImportDetail.submission_id)#</cfoutput></code>
@@ -348,6 +370,13 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 <cfelse>
                   -
                 </cfif>
+              </div>
+              <div class="result-import-detail-item">
+                <span class="result-import-detail-label">Intenção recebida</span>
+                <cfoutput><span class="badge badge-#resultImportDetailIntent.className#">#resultImportDetailIntent.label#</span></cfoutput>
+                <small class="text-muted d-block">
+                  Valor de <code>open_results_enabled</code> recebido pela API. O processador revalida o campo <code>openResultsEnabled</code> do <code>event.json</code>.
+                </small>
               </div>
             </div>
 
@@ -433,6 +462,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                   <th>Publicação</th>
                   <th>Evento</th>
                   <th>Origem</th>
+                  <th>Intenção recebida</th>
                   <th class="text-end">Resultados</th>
                   <th class="text-end">Ações</th>
                 </tr>
@@ -441,7 +471,8 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 <cfoutput query="qResultImports">
                   <cfset resultImportRowProcessing = resultImportProcessingMeta(status_processamento)/>
                   <cfset resultImportRowPublication = resultImportPublicationMeta(status_publicacao)/>
-                  <tr>
+                  <cfset resultImportRowIntent = resultImportOpenResultsMeta(open_results_enabled)/>
+                  <tr data-result-import-row data-status="#htmlEditFormat(status_processamento)#">
                     <td class="result-import-date-cell">
                       #resultImportDateTime(data_recebimento)#
                       <small class="text-muted d-block">###id_resultado_importacao#</small>
@@ -457,10 +488,22 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                         <small class="text-muted">ID #id_evento#<cfif len(trim(event_tag & ""))> · #htmlEditFormat(event_tag)#</cfif></small>
                       <cfelse>
                         <strong class="d-block text-warning">Sem vínculo</strong>
-                        <small class="text-muted">
-                          <cfif len(trim(id_evento_informado & ""))>ID informado: #id_evento_informado#</cfif>
-                          <cfif len(trim(tag_evento_informada & ""))>#htmlEditFormat(tag_evento_informada)#</cfif>
-                          <cfif NOT len(trim(id_evento_informado & "")) AND NOT len(trim(tag_evento_informada & ""))>aguardando identificação</cfif>
+                        <cfif len(trim(id_evento_informado & ""))>
+                          <small class="text-muted d-block">ID Road Runners informado: #id_evento_informado#</small>
+                        </cfif>
+                        <small class="text-muted d-block"
+                               data-result-import-event-hint
+                               data-submitted-tag="#htmlEditFormat(tag_evento_informada & '')#"
+                               data-external-event-id="#htmlEditFormat(external_event_id & '')#"
+                               data-public-url="#htmlEditFormat(url_resultado_publica & '')#"
+                               data-data-url="#htmlEditFormat(url_resultado & '')#">
+                          <cfif len(trim(tag_evento_informada & ""))>
+                            Evento externo: #htmlEditFormat(tag_evento_informada)#
+                          <cfelseif len(trim(external_event_id & ""))>
+                            Evento externo: #htmlEditFormat(external_event_id)#
+                          <cfelse>
+                            aguardando identificação
+                          </cfif>
                         </small>
                       </cfif>
                     </td>
@@ -468,10 +511,33 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                       <code class="d-block">#htmlEditFormat(cod_timer)#</code>
                       <small class="text-muted">#htmlEditFormat(client_id)#</small>
                     </td>
+                    <td>
+                      <span class="badge badge-#resultImportRowIntent.className#">#resultImportRowIntent.label#</span>
+                      <small class="text-muted d-block"><code>open_results_enabled</code></small>
+                    </td>
                     <td class="text-end">
                       <cfif len(trim(total_resultados & ""))>#LSNumberFormat(total_resultados, "9,999")#<cfelse>-</cfif>
                     </td>
                     <td class="business-row-actions text-end">
+                      <cfif VARIABLES.resultImportCanProcess AND listFindNoCase("pendente,falhou", status_processamento)>
+                        <form class="d-inline"
+                              method="post"
+                              action="#resultImportQueueUrl({ id = '' })#"
+                              data-result-import-discard
+                              data-can-process="true"
+                              data-status="#htmlEditFormat(status_processamento)#"
+                              onsubmit="return confirm('Descartar esta submissão da fila? O histórico será preservado com status cancelado.');">
+                          <input type="hidden" name="result_import_queue_action" value="descartar"/>
+                          <input type="hidden" name="submission_id" value="#htmlEditFormat(submission_id)#"/>
+                          <input type="hidden" name="result_import_queue_csrf" value="#htmlEditFormat(VARIABLES.resultImportQueueCsrf)#"/>
+                          <button class="btn btn-outline-danger btn-sm"
+                                  type="submit"
+                                  title="Descartar da fila"
+                                  aria-label="Descartar submissão da fila">
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                        </form>
+                      </cfif>
                       <cfif VARIABLES.resultImportCanProcess AND compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", status_processamento)>
                         <a class="btn btn-warning btn-sm"
                            href="/racetag/?submission_id=#encodeForURL(submission_id)#"
@@ -520,3 +586,10 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
     </div>
   </div>
 </section>
+
+<script src="/assets/js/result-import-queue.js"></script>
+<script>
+  if (window.ResultImportQueue) {
+    window.ResultImportQueue.initialize(document);
+  }
+</script>

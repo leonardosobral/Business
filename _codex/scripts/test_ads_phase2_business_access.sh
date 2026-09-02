@@ -160,7 +160,7 @@ require_pattern \
     "backend inclui acesso antes do dispatch"
 require_pattern \
     "ads/includes/backend.cfm" \
-    'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,submit_campaign_review,change_campaign_status"' \
+    'adsV1CampaignActions[[:space:]]*=[[:space:]]*"save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status"' \
     "acoes de campanha usam grupo explicito"
 require_pattern \
     "ads/includes/backend.cfm" \

@@ -63,7 +63,27 @@ require_pattern \
 
 require_pattern \
   "backend valida a lista recebida contra a allowlist EVENT" \
-  'adsV1AllowedEventPlacementKeys.*listFindNoCase' \
+  'adsV1SelectableEventPlacementKeys.*listFindNoCase' \
+  "$backend"
+
+require_pattern \
+  "pagina inicial expande para os dois placements tecnicos" \
+  'rr-home-upcoming-native.*arrayAppend\([^)]*rr-home-upcoming-native-secondary' \
+  "$backend"
+
+reject_pattern \
+  "formulario nao vende primeira e segunda posicao separadamente" \
+  'segunda posi[cç][aã]o' \
+  "$home" "$campaign_form"
+
+require_pattern \
+  "passo quatro explica ranking por regiao e lance" \
+  'regi[aã]o.*lance|lance.*regi[aã]o' \
+  "$campaign_form"
+
+require_pattern \
+  "backend aplica piso de CPC do leilao" \
+  'adsV1FormCpc[[:space:]]+LT[[:space:]]+0\.51' \
   "$backend"
 
 reject_pattern \

@@ -7,7 +7,7 @@
 function adsV1PlacementLabel(required any placementKey) {
     switch (lCase(trim(arguments.placementKey & ""))) {
         case "rr-home-upcoming-native": return "Página inicial";
-        case "rr-home-upcoming-native-secondary": return "Página inicial - segunda posição";
+        case "rr-home-upcoming-native-secondary": return "Página inicial";
         case "rr-search-events-native": return "Busca de eventos";
         case "rr-state-events-native": return "Eventos por estado";
         case "rr-sidebar-event-native": return "Página do evento";
@@ -17,8 +17,8 @@ function adsV1PlacementLabel(required any placementKey) {
 
 function adsV1PlacementDescription(required any placementKey) {
     switch (lCase(trim(arguments.placementKey & ""))) {
-        case "rr-home-upcoming-native": return "Destaque principal entre os próximos eventos.";
-        case "rr-home-upcoming-native-secondary": return "Segundo destaque entre os próximos eventos.";
+        case "rr-home-upcoming-native": return "Concorra aos destaques entre os próximos eventos; região e lance definem a ordem.";
+        case "rr-home-upcoming-native-secondary": return "Concorra aos destaques entre os próximos eventos; região e lance definem a ordem.";
         case "rr-search-events-native": return "Resultado patrocinado na busca de provas.";
         case "rr-state-events-native": return "Lista de eventos filtrada por estado.";
         case "rr-sidebar-event-native": return "Área lateral da página de uma prova.";
@@ -40,7 +40,15 @@ function adsV1PlacementSummary(required any placementKeys) {
 }
 
 function adsV1PlacementCountSummary(required any placementKeys) {
-    var count = listLen(arguments.placementKeys & "");
+    var labels = [];
+    var placementKey = "";
+    var count = 0;
+    for (placementKey in listToArray(arguments.placementKeys & "")) {
+        if (len(trim(placementKey)) AND !arrayFindNoCase(labels, adsV1PlacementLabel(placementKey))) {
+            arrayAppend(labels, adsV1PlacementLabel(placementKey));
+        }
+    }
+    count = arrayLen(labels);
     if (count EQ 1) return "1 local de exibição";
     return count & " locais de exibição";
 }
@@ -102,7 +110,11 @@ if (listFindNoCase(VARIABLES.adsV1VoucherAdminActions, FORM.ads_v1_action) AND l
 if (VARIABLES.adsV1WorkspaceView EQ "payments" AND !VARIABLES.adsAccessCanViewPayments) VARIABLES.adsV1WorkspaceView = "overview";
 if (VARIABLES.adsV1WorkspaceView EQ "vouchers" AND !VARIABLES.adsAccessCanAdminVouchers) VARIABLES.adsV1WorkspaceView = "overview";
 if (VARIABLES.adsV1WorkspaceView EQ "admin" AND !VARIABLES.adsAccessCanAdminFinance AND !VARIABLES.adsAccessCanReviewCampaign) VARIABLES.adsV1WorkspaceView = "overview";
-if (!VARIABLES.adsV1HasAccount AND (VARIABLES.adsAccessCanReviewCampaign OR VARIABLES.adsAccessCanAdminVouchers) AND VARIABLES.adsV1WorkspaceView EQ "overview") VARIABLES.adsV1WorkspaceView = "admin";
+if (!VARIABLES.adsV1HasAccount
+    AND VARIABLES.adsAccessCanReviewCampaign
+    AND !listFindNoCase("admin,vouchers", VARIABLES.adsV1WorkspaceView)) {
+    VARIABLES.adsV1WorkspaceView = "admin";
+}
 
 VARIABLES.adsV1CampaignFilter = lCase(trim(URL.status & ""));
 if (!listFindNoCase("ongoing,draft,ended", VARIABLES.adsV1CampaignFilter)) VARIABLES.adsV1CampaignFilter = "";
@@ -155,6 +167,11 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
     <cfset VARIABLES.adsV1FormPlacementKeys = len(trim(qAdsV1SelectedCampaign.placement_keys & "")) ? listToArray(qAdsV1SelectedCampaign.placement_keys & "") : []/>
     <cfset VARIABLES.adsV1CampaignEditable = listFind("DRAFT,PAUSED", qAdsV1SelectedCampaign.status) GT 0
         AND NOT listFind("PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1SelectedCampaign.review_status & "")))/>
+</cfif>
+
+<cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native-secondary")
+    AND NOT arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native")>
+    <cfset arrayAppend(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native")/>
 </cfif>
 
 <cfset VARIABLES.adsV1DraftCount = 0/>
