@@ -22,7 +22,11 @@ from .artifact import (
 )
 from .config import EVENT_CODE
 from .facts import build_fact_bundle
-from .mappings import emit_channel_mapping_draft, emit_product_mapping_draft
+from .mappings import (
+    ALLOWED_CHANNEL_TYPES,
+    emit_channel_mapping_draft,
+    emit_product_mapping_draft,
+)
 from .metrics import (
     AUXILIARY_FIELD_CONTRACT,
     DATASET_IDS,
@@ -941,21 +945,35 @@ def _contains_forbidden_strategy_cube(value: object) -> bool:
     return False
 
 
-def _reject_portfolio_forbidden_keys(value: object, path: str = "$") -> None:
+def _reject_portfolio_forbidden_keys(
+    value: object,
+    path: str = "$",
+    *,
+    allow_summary_city_coverage: bool = False,
+) -> None:
     """Reject fields that would make the portfolio output identifying or too granular."""
     if isinstance(value, dict):
         for key, child in value.items():
             normalized = str(key).strip().casefold()
             is_overview_coverage_field = (
-                normalized == "city"
+                allow_summary_city_coverage
+                and normalized == "city"
                 and path == "$.overview.source_field_coverage.registrations"
             )
             if normalized in _PORTFOLIO_FORBIDDEN_KEYS and not is_overview_coverage_field:
                 raise ValueError(f"forbidden portfolio field at {path}.{key}")
-            _reject_portfolio_forbidden_keys(child, f"{path}.{key}")
+            _reject_portfolio_forbidden_keys(
+                child,
+                f"{path}.{key}",
+                allow_summary_city_coverage=allow_summary_city_coverage,
+            )
     elif isinstance(value, list):
         for index, child in enumerate(value):
-            _reject_portfolio_forbidden_keys(child, f"{path}[{index}]")
+            _reject_portfolio_forbidden_keys(
+                child,
+                f"{path}[{index}]",
+                allow_summary_city_coverage=allow_summary_city_coverage,
+            )
 
 
 def verify_modular_outputs(manifest_path: Path) -> None:
@@ -1030,7 +1048,12 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         _reject_raw_boundary(payload)
         assert_anonymous(payload)
         if relative_path in _PORTFOLIO_ARTIFACTS:
-            _reject_portfolio_forbidden_keys(payload)
+            _reject_portfolio_forbidden_keys(
+                payload,
+                allow_summary_city_coverage=(
+                    relative_path == "portfolio/summary.json"
+                ),
+            )
         payloads[relative_path] = payload
 
     general = payloads["general.json"]
@@ -1080,6 +1103,7 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         raise ValueError("portfolio selectable channels are invalid")
     selectable_names: set[str] = set()
     selectable_slugs: set[str] = set()
+    selectable_types: dict[str, str] = {}
     for row in selectable_channels:
         if not isinstance(row, dict):
             raise ValueError("portfolio selectable channel is invalid")
@@ -1093,10 +1117,17 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             row.get("registration_ticket"), "portfolio registration ticket"
         ) <= Decimal("10.00"):
             raise ValueError("portfolio selectable channel ticket is ineligible")
-        if str(row.get("channel_type", "")).casefold() == "organico":
+        raw_channel_type = row.get("channel_type")
+        if not isinstance(raw_channel_type, str):
+            raise ValueError("portfolio selectable channel type is invalid")
+        channel_type = raw_channel_type.strip().casefold()
+        if not channel_type or channel_type not in ALLOWED_CHANNEL_TYPES:
+            raise ValueError("portfolio selectable channel type is invalid")
+        if channel_type == "organico":
             raise ValueError("portfolio organic channel is selectable")
         selectable_names.add(channel_name)
         selectable_slugs.add(slug)
+        selectable_types[channel_name] = channel_type
 
     coverage_cube = portfolio_simulator.get("coverage_cube")
     if not isinstance(coverage_cube, list):
@@ -1164,6 +1195,16 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         raise ValueError("modular channel index order mismatch")
     if sum(int(row.get("paid_registrations", 0)) for row in channel_index) != paid_registrations:
         raise ValueError("modular channel index partition mismatch")
+    channel_index_types = {
+        str(row.get("channel_name", "")): row.get("channel_type")
+        for row in channel_index
+    }
+    for channel_name, channel_type in selectable_types.items():
+        index_channel_type = channel_index_types.get(channel_name)
+        if not isinstance(index_channel_type, str) or (
+            index_channel_type.strip().casefold() != channel_type
+        ):
+            raise ValueError("portfolio selectable channel type mismatch")
     expected_dossiers = {f"channels/{row.get('slug')}.json" for row in channel_index}
     actual_dossiers = set(receipts) - required
     if expected_dossiers != actual_dossiers:

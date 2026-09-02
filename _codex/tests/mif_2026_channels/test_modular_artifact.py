@@ -224,6 +224,47 @@ class ModularArtifactTests(unittest.TestCase):
 
             verify_modular_outputs(root / "manifest.json")
 
+    def test_portfolio_verification_rejects_city_coverage_in_simulator(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            simulator = deepcopy(artifacts["portfolio/simulator.json"])
+            simulator["overview"] = {
+                "source_field_coverage": {
+                    "registrations": {"city": {"valid": 2, "denominator": 2}}
+                }
+            }
+            self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+            with self.assertRaisesRegex(ValueError, "forbidden portfolio field"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_missing_or_malformed_selectable_type(self):
+        _, _, _, artifacts = modular_fixture()
+        for channel_type in (None, "   ", "desconhecido"):
+            with self.subTest(channel_type=channel_type), TemporaryDirectory() as directory:
+                root = Path(directory)
+                write_modular_artifacts(root, artifacts)
+                simulator = deepcopy(artifacts["portfolio/simulator.json"])
+                simulator["selectable_channels"][0]["channel_type"] = channel_type
+                self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+                with self.assertRaisesRegex(ValueError, "selectable channel type"):
+                    verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_selectable_type_mismatched_with_index(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            simulator = deepcopy(artifacts["portfolio/simulator.json"])
+            simulator["selectable_channels"][0]["channel_type"] = "assessoria"
+            self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+            with self.assertRaisesRegex(ValueError, "selectable channel type mismatch"):
+                verify_modular_outputs(root / "manifest.json")
+
 
 if __name__ == "__main__":
     unittest.main()
