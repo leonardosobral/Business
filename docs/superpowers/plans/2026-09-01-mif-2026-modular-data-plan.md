@@ -38,7 +38,7 @@
 
 ```python
 def test_sale_cycle_uses_launch_and_relative_boundaries():
-    dates = pd.Series(pd.to_datetime(["2025-06-02", "2025-06-16", "2025-09-20", "2026-03-01", "2026-07-15", "2026-08-24"]))
+    dates = pd.Series(pd.to_datetime(["2025-06-02", "2025-06-16", "2025-09-20", "2026-03-01", "2026-07-01", "2026-08-24"]))
     boundaries = build_sale_cycle_boundaries(dates)
     assert assign_sale_phases(dates, boundaries).tolist() == [
         "Lançamento", "Início", "Início", "Meio", "Reta final", "Encerramento"
