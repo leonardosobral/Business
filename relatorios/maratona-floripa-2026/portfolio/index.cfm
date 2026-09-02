@@ -3,7 +3,7 @@
 
 <cfset VARIABLES.mifPortfolioPayload = mifReadDataset("portfolio/summary.json")/>
 <cfset VARIABLES.mifPortfolioPayloadJson = serializeJson(VARIABLES.mifPortfolioPayload)/>
-<cfset VARIABLES.mifPortfolioPayloadJson = replace(VARIABLES.mifPortfolioPayloadJson, "</", "<\/", "all")/>
+<cfset VARIABLES.mifPortfolioPayloadJson = replace(VARIABLES.mifPortfolioPayloadJson, "<", "\u003c", "all")/>
 
 <cfheader name="Cache-Control" value="private, no-store, max-age=0"/>
 <cfheader name="Pragma" value="no-cache"/>
@@ -61,7 +61,7 @@
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifPortfolioPayloadJson#</cfoutput></script>
   <script src="../assets/report.js?v=20260902-5"></script>
-  <script src="../assets/portfolio.js?v=20260902-5"></script>
+  <script src="../assets/portfolio.js?v=20260902-6"></script>
   <script>
     (function renderMifPortfolioPage() {
       'use strict';

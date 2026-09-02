@@ -16,6 +16,15 @@ const portfolio = require(path.join(reportRoot, 'assets', 'portfolio.js'));
 const report = require(path.join(reportRoot, 'assets', 'report.js'));
 const page = fs.readFileSync(pagePath, 'utf8');
 
+function assertHtmlSafeEmbedding(source) {
+  const call = source.match(/replace\([^\n]+,[\s]*["']([^"']*)["'],[\s]*["']([^"']*)["'],[\s]*["']all["']\s*\)/i);
+  assert.ok(call, 'page must transform serialized JSON before embedding it');
+  const malicious = JSON.stringify({ copy: '</ScRiPt><script>alert(1)</script>' });
+  const escaped = malicious.split(call[1]).join(call[2]);
+  assert.doesNotMatch(escaped, /</, 'no literal < may survive in embedded JSON');
+  assert.equal(JSON.parse(escaped).copy, '</ScRiPt><script>alert(1)</script>');
+}
+
 function simulatorFixture() {
   return {
     thresholds: {
@@ -151,7 +160,7 @@ test('simulator authenticates before reading only its compact simulator payload'
   assert.deepEqual(reads, ['portfolio/simulator.json']);
   assert.doesNotMatch(page, /summary\.json|explorer\.json|channels\/[a-z0-9-]+\.json/i);
   assert.match(page, /type=["']application\/json["']/i);
-  assert.match(page, /replace\([^\n]+["']<\/["'][^\n]+["']<\\\/["']/i);
+  assertHtmlSafeEmbedding(page);
 });
 
 test('simulator preserves repeated channel parameters through the authenticated return path', () => {
@@ -171,7 +180,7 @@ test('simulator header exposes general analysis, dossiers, portfolio and PDF act
   assert.match(page, /href=["']\.\/["'][^>]*>Portfólio</i);
   assert.match(page, /window\.print\s*\(/i);
   assert.match(page, /portfolio\.css\?v=20260902-2/i);
-  assert.match(page, /portfolio\.js\?v=20260902-5/i);
+  assert.match(page, /portfolio\.js\?v=20260902-6/i);
   assert.doesNotMatch(page, />Explorador</i);
 });
 
@@ -210,4 +219,18 @@ test('simulator leaves an invalid shared slug visible instead of silently rewrit
   assert.match(elements['portfolio-simulator-error'].textContent, /Canal desconhecido: desconhecido/i);
   assert.equal(elements['mif-portfolio-simulation'].innerHTML, '');
   assert.deepEqual(replaced, []);
+});
+
+test('simulator deduplicates repeated shared slugs before enforcing ten channels', () => {
+  const repeated = Array.from({ length: 11 }, () => 'alto')
+    .map((slug) => `canal=${slug}`)
+    .join('&');
+  const { elements, replaced } = runSimulator(`?${repeated}`);
+
+  assert.equal(elements['portfolio-simulator-error'].hidden, true);
+  assert.match(elements['mif-portfolio-simulation'].innerHTML, /CANAL ALTO/);
+  assert.equal(
+    replaced.at(-1),
+    'https://business.example/relatorios/maratona-floripa-2026/portfolio/simulador.cfm?canal=alto',
+  );
 });

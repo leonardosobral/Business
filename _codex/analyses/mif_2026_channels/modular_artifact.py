@@ -14,7 +14,21 @@ from .config import EVENT_CODE, PIPELINE_VERSION
 from .models import AnalysisResult
 from .normalize import normalize_key
 from .phases import PHASE_ORDER
-from .portfolio import PORTFOLIO_TRANSFORM_VERSION, build_portfolio_artifacts
+from .portfolio import (
+    ACTIONABLE_DIMENSIONS,
+    COMMERCIAL_TICKET_MIN,
+    EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+    EXPOSURE_HIGH_EVENT_SHARE_PCT,
+    EXPOSURE_MEDIUM_EVENT_SHARE_PCT,
+    EXPOSURE_PARTNER_CONCENTRATION_PCT,
+    MIN_DIMENSION_COVERAGE_PCT,
+    MIN_PROFILE_REGISTRATIONS,
+    MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+    MONEY_FIELDS,
+    PORTFOLIO_TRANSFORM_VERSION,
+    SIMULATOR_DIMENSIONS,
+    build_portfolio_artifacts,
+)
 from .privacy import assert_anonymous
 from .recommendations import recommend_channel
 from .strategy import STRATEGY_TRANSFORM_VERSION, build_strategy
@@ -84,6 +98,62 @@ def canonical_json_bytes(payload: Any) -> bytes:
 
 def _sha256(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
+
+
+def portfolio_dependency_receipt(payloads: dict[str, Any]) -> dict[str, str]:
+    """Pin the exact aggregate inputs and rule set used by both portfolio files."""
+    dossier_similarities = []
+    for relative_path in sorted(payloads):
+        if not re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", relative_path):
+            continue
+        dossier = payloads[relative_path]
+        channel = dossier.get("channel", {}) if isinstance(dossier, dict) else {}
+        dossier_similarities.append(
+            {
+                "channel_name": channel.get("channel_name"),
+                "similar_channels_by_dimension": channel.get(
+                    "similar_channels_by_dimension", []
+                ),
+            }
+        )
+    explorer = payloads.get("explorer.json", {})
+    transform_contract = {
+        "transform_version": PORTFOLIO_TRANSFORM_VERSION,
+        "commercial_ticket_min_exclusive": format(COMMERCIAL_TICKET_MIN, ".2f"),
+        "minimum_profile_registrations": MIN_PROFILE_REGISTRATIONS,
+        "minimum_dimension_coverage_pct": format(
+            MIN_DIMENSION_COVERAGE_PCT, ".2f"
+        ),
+        "publishable_cell_minimum_registrations": MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+        "exposure_classification_minimum_registrations": EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+        "exposure_high_event_share_pct": format(
+            EXPOSURE_HIGH_EVENT_SHARE_PCT, ".2f"
+        ),
+        "exposure_medium_event_share_pct": format(
+            EXPOSURE_MEDIUM_EVENT_SHARE_PCT, ".2f"
+        ),
+        "exposure_partner_concentration_pct": format(
+            EXPOSURE_PARTNER_CONCENTRATION_PCT, ".2f"
+        ),
+        "actionable_dimensions": list(ACTIONABLE_DIMENSIONS),
+        "simulator_dimensions": list(SIMULATOR_DIMENSIONS),
+        "money_fields": list(MONEY_FIELDS),
+    }
+    return {
+        "channel_index_sha256": _sha256(
+            canonical_json_bytes(payloads.get("channels/index.json"))
+        ),
+        "dossier_similarities_sha256": _sha256(
+            canonical_json_bytes(dossier_similarities)
+        ),
+        "explorer_registration_cube_sha256": _sha256(
+            canonical_json_bytes(explorer.get("registration_cube"))
+        ),
+        "transform_contract_sha256": _sha256(
+            canonical_json_bytes(transform_contract)
+        ),
+        "transform_version": PORTFOLIO_TRANSFORM_VERSION,
+    }
 
 
 def _money(value: object) -> Decimal | None:
@@ -219,6 +289,9 @@ def _manifest(
             "source_sha256": source_sha256,
             "transform_version": artifact_transform_version,
         }
+    portfolio_dependencies = portfolio_dependency_receipt(payloads)
+    for relative_path in ("portfolio/summary.json", "portfolio/simulator.json"):
+        entries[relative_path]["dependencies"] = portfolio_dependencies
     return {
         "event_code": EVENT_CODE,
         "generated_at": generated_at,

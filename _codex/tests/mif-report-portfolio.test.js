@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 
@@ -76,6 +77,13 @@ test('simulation keeps selected aggregates while suppressing cells below five re
   assert.equal(result.cells[0].selected_paid_registrations, 12);
 });
 
+test('simulation preserves unavailable selected money as explicit null', () => {
+  const result = portfolio.simulate(simulatorFixture(), ['sports-week']);
+
+  assert.equal(result.totals.selected_gross_value, null);
+  assert.equal(result.cells[0].selected_gross_value, null);
+});
+
 test('simulation keeps global event and commercial denominators outside selected cells', () => {
   const result = portfolio.simulate(simulatorFixture(), ['sports-week']);
 
@@ -93,8 +101,38 @@ test('simulation describes exposure and selects the largest remaining commercial
   const result = portfolio.simulate(simulatorFixture(), ['sports-week']);
 
   assert.equal(result.cells[0].remaining_alternative, 'ROADRUNNERS');
+  assert.equal(result.cells[0].remaining_commercial_channels, 2);
   assert.equal(result.cells[0].exposure, 'média');
   assert.doesNotMatch(JSON.stringify(result), /vendas perdidas|perda prevista/i);
+});
+
+test('simulation deduplicates slugs before enforcing the selection limit', () => {
+  const duplicates = Array.from({ length: 11 }, () => 'sports-week');
+
+  assert.deepEqual(
+    portfolio.simulate(simulatorFixture(), duplicates).selected_channels,
+    [{ slug: 'sports-week', channel_name: 'Sports Week' }],
+  );
+});
+
+test('canonical ROADRUNNERS plus SPORTS WEEK scenario reconciles registrations and gross value', () => {
+  const canonical = JSON.parse(fs.readFileSync(path.resolve(
+    __dirname,
+    '..',
+    'analyses',
+    'mif_2026_channels',
+    'modular_dist',
+    'portfolio',
+    'simulator.json',
+  ), 'utf8'));
+  const scenario = portfolio.simulate(canonical, ['roadrunners', 'sports-week']);
+  const root = { innerHTML: '' };
+
+  assert.equal(scenario.totals.selected_paid_registrations, 2825);
+  assert.equal(scenario.totals.selected_gross_value, '778505.90');
+  portfolio.renderSimulation(root, scenario);
+  assert.match(root.innerHTML, /2\.825/);
+  assert.match(root.innerHTML, /R\$[\s\u00a0]+778\.505,90/);
 });
 
 test('simulation consumes every exposure threshold supplied by the payload', () => {
@@ -156,9 +194,27 @@ function summaryFixture() {
   const dependencyRegistrations = [20, 19, 18, 17, 16, 15, 14, 13, 12, 9, 5];
   return {
     overview: { paid_registrations: 40, gross_value: '10000.00' },
-    definitions: { commercial_universe: 'Canais comerciais acima do corte.' },
+    definitions: {
+      commercial_universe: 'Canais comerciais acima do corte.',
+      similarity: 'Pares presentes no índice; orgânico pode aparecer como vizinho exibido, mas fica fora do benchmark.',
+    },
+    executive_summary: {
+      commercial_channel_count: 143,
+      commercial_paid_registrations: 20,
+      commercial_event_share_pct: '50.00',
+      concentration_basis: 'gross_value desc',
+      top_1: { channels: 1, paid_registrations: 8, event_share_pct: '20.00', commercial_share_pct: '40.00', gross_value: '4000.00' },
+      top_3: { channels: 3, paid_registrations: 14, event_share_pct: '35.00', commercial_share_pct: '70.00', gross_value: '7000.00' },
+      top_10: { channels: 10, paid_registrations: 20, event_share_pct: '50.00', commercial_share_pct: '100.00', gross_value: '10000.00' },
+      principal_dependencies: [],
+      implication_2027: 'Para 2027, revisar contratos junto com custos e evidências complementares, sem inferência causal.',
+    },
+    redundancy_summary: { total_qualified_pairs: 16, displayed_pairs: 10 },
     dimension_panels: Object.fromEntries(dimensions.map((dimension) => [dimension, {
       benchmark: { eligible_pairs: 2, p90_similarity_0_1: 0.9, nearest_peer_p25_similarity_0_1: 0.4 },
+      scale_high_gross_value_cutoff: 100,
+      scale_population_channels: 143,
+      sort: ['gross_value desc', 'paid_registrations desc', 'channel_name asc'],
       quadrants: [
         { scale: 'Escala alta', differentiation: 'Mais diferenciado relativamente', channels: 1 },
         { scale: 'Escala alta', differentiation: 'Semelhante aos pares', channels: 2 },
@@ -169,6 +225,19 @@ function summaryFixture() {
         channel_name: 'Alfa',
         paid_registrations: 12,
         gross_value: '100.00',
+        status: 'referência disponível',
+        nearest_channel: '<img src=x>',
+        similarity_0_1: 0.8,
+      }],
+      channels: [{
+        channel_name: 'Alfa',
+        paid_registrations: 12,
+        gross_value: '100.00',
+        event_share_pct: '30.00',
+        registration_ticket: '20.00',
+        scale: 'Escala alta',
+        differentiation: 'Semelhante aos pares',
+        quadrant: 'Escala alta · Semelhante aos pares',
         status: 'referência disponível',
         nearest_channel: '<img src=x>',
         similarity_0_1: 0.8,
@@ -189,6 +258,14 @@ function summaryFixture() {
       sample_status: 'amostra reduzida',
       combined_gross_value: index ? '100.00' : '1234.56',
       similarities: { geography: 0.9, modality: 0.8, temporal: 0.7, lot: 0.6, product: 0.5 },
+      dimension_evidence: Object.fromEntries(dimensions.map((dimension, dimensionIndex) => [dimension, {
+        similarity_0_1: 0.9 - dimensionIndex / 10,
+        left_coverage_pct: '90.00',
+        right_coverage_pct: '80.00',
+        p90_similarity_0_1: 0.5,
+        qualified: true,
+        reason: 'Similaridade no p90 e cobertura bilateral mínima atendida.',
+      }])),
     })),
     dependency_cells: dependencyRegistrations.map((paidRegistrations, index) => ({
       phase: index ? 'Início' : 'Lançamento',
@@ -198,6 +275,8 @@ function summaryFixture() {
       paid_registrations: paidRegistrations,
       event_paid_registrations: 40,
       commercial_paid_registrations: 20,
+      event_share_pct: '50.00',
+      commercial_share_pct: '100.00',
       exposure: 'média',
       sample_status: paidRegistrations < 10
         ? 'amostra celular reduzida'
@@ -295,7 +374,7 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
   assert.match(dependencySection, />5<\/text>/);
   const dependencyTable = dependencySection.slice(dependencySection.lastIndexOf('<table'));
   assert.doesNotMatch(dependencyTable, /<td>Outros<\/td>/);
-  assert.equal((dependencyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 10);
+  assert.equal((dependencyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 11);
   assert.match(root.innerHTML, /Células de dependência<\/span><strong>11<\/strong>/);
 
   const exactTopTen = summaryFixture();
@@ -353,12 +432,105 @@ test('summary renderer presents every Top 10 redundancy pair as complete semanti
   ]) {
     assert.match(first, new RegExp(`<span>${evidence[0]}</span>[\\s\\S]*?<strong>${evidence[1]}</strong>`));
   }
-  assert.equal((first.match(/Cobertura mínima atendida/g) || []).length, 5);
+  assert.equal((first.match(/90,00%/g) || []).length, 6);
+  assert.equal((first.match(/80,00%/g) || []).length, 6);
+  assert.equal((first.match(/p90: 50,00%/g) || []).length, 5);
+  assert.equal((first.match(/Similaridade no p90 e cobertura bilateral mínima atendida/g) || []).length, 5);
   assert.match(first, /Dimensões qualificadas<\/dt><dd>Geografia, Lote, Modalidade, Produto, Temporalidade<\/dd>/);
   assert.match(first, /CANAL 1[\s\S]*?12 inscrições[\s\S]*?amostra reduzida/);
   assert.match(first, /ALFA[\s\S]*?34 inscrições[\s\S]*?referência disponível/);
   assert.match(first, /Qualificação do par[\s\S]*?amostra reduzida/);
   assert.match(first, /Valor bruto combinado[\s\S]*?R\$[\s\u00a0]+1\.234,56/);
+});
+
+test('summary renders global p75, population and a complete expandable gross-desc table', () => {
+  const root = { innerHTML: '' };
+
+  portfolio.renderSummary(root, summaryFixture());
+
+  const dimensionSection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-diferenciacao"'),
+    root.innerHTML.indexOf('id="portfolio-redundancia"'),
+  );
+  assert.match(dimensionSection, /p75 de escala[^<]*R\$[\s\u00a0]+100,00/i);
+  assert.match(dimensionSection, /143 canais comerciais/i);
+  assert.match(dimensionSection, /Valor bruto decrescente/i);
+  assert.match(dimensionSection, /Inscrições/);
+  assert.match(dimensionSection, /Participação no evento/);
+  assert.match(dimensionSection, /Ticket/);
+  assert.match(dimensionSection, /Quadrante/);
+  assert.match(dimensionSection, /<details[^>]+portfolio-dimension-audit/i);
+});
+
+test('missing dimension benchmarks render as insufficient evidence, never zero', () => {
+  const root = { innerHTML: '' };
+  const summary = summaryFixture();
+  summary.dimension_panels.product.benchmark.nearest_peer_p25_similarity_0_1 = null;
+  summary.dimension_panels.product.benchmark.p90_similarity_0_1 = null;
+
+  portfolio.renderSummary(root, summary);
+
+  const product = root.innerHTML.slice(root.innerHTML.indexOf('data-portfolio-dimension="product"'));
+  assert.match(product, /evidência insuficiente/i);
+  assert.doesNotMatch(product.split('</header>')[0], /0,00%/);
+});
+
+test('dependency evidence ranks relevant cells, labels channels and keeps low rows in a full appendix', () => {
+  const root = { innerHTML: '' };
+  const summary = summaryFixture();
+  summary.dependency_cells = [
+    ...summary.dependency_cells,
+    {
+      phase: 'Reta final', modality: '42K', state: 'SC', channel_name: 'Baixo',
+      paid_registrations: 50, event_paid_registrations: 1000,
+      commercial_paid_registrations: 100, event_share_pct: '5.00',
+      commercial_share_pct: '50.00', exposure: 'baixa',
+      sample_status: 'amostra celular suficiente',
+    },
+  ];
+  const originalBar = report.renderBarChart;
+  const calls = [];
+  report.renderBarChart = (config) => {
+    calls.push(config);
+    return originalBar(config);
+  };
+  try {
+    portfolio.renderSummary(root, summary);
+  } finally {
+    report.renderBarChart = originalBar;
+  }
+
+  const dependencyCall = calls.find((call) => /exposição relevante/i.test(call.title));
+  assert.ok(dependencyCall);
+  assert.equal(dependencyCall.rows.length, 11);
+  assert.ok(dependencyCall.rows.every((row) => row.exposure !== 'baixa'));
+  assert.ok(dependencyCall.rows.every((row) => /ALFA/.test(row.label)));
+  const dependencySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
+    root.innerHTML.indexOf('id="portfolio-simulador"'),
+  );
+  assert.match(dependencySection, /portfolio-dependency-appendix/);
+  assert.match(dependencySection, /BAIXO/);
+  assert.match(dependencySection, /Participação no evento/);
+  assert.match(dependencySection, /Participação comercial/);
+});
+
+test('executive summary distinguishes total qualified pairs from the displayed Top 10', () => {
+  const root = { innerHTML: '' };
+
+  portfolio.renderSummary(root, summaryFixture());
+
+  const executive = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-resumo"'),
+    root.innerHTML.indexOf('id="portfolio-diferenciacao"'),
+  );
+  assert.match(executive, /Canais comerciais[\s\S]*?143/);
+  assert.match(executive, /Top 1[\s\S]*?R\$[\s\u00a0]+4\.000,00/);
+  assert.match(executive, /Top 3[\s\S]*?R\$[\s\u00a0]+7\.000,00/);
+  assert.match(executive, /Top 10[\s\S]*?R\$[\s\u00a0]+10\.000,00/);
+  assert.match(executive, /16 pares qualificados[\s\S]*?10 exibidos/i);
+  assert.match(executive, /2027/);
+  assert.doesNotMatch(executive, /vendas perdidas|causou/i);
 });
 
 test('simulation renderer exposes four KPI cards and complete publishable-cell evidence', () => {
@@ -371,6 +543,15 @@ test('simulation renderer exposes four KPI cards and complete publishable-cell e
   assert.match(root.innerHTML, /Top 10 estados/);
   assert.match(root.innerHTML, /Células publicáveis/);
   assert.match(root.innerHTML, /ROADRUNNERS/);
+});
+
+test('simulation renderer states when no commercial alternative was observed', () => {
+  const root = { innerHTML: '' };
+  const scenario = portfolio.simulate(simulatorFixture(), ['sports-week', 'roadrunners', 'pace']);
+
+  portfolio.renderSimulation(root, scenario);
+
+  assert.match(root.innerHTML, /sem alternativa comercial observada/i);
 });
 
 test('share URL repeats deterministically ordered channel parameters', () => {

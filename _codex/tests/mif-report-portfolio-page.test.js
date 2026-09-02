@@ -13,6 +13,15 @@ const reportRoot = path.resolve(
 const pagePath = path.join(reportRoot, 'portfolio', 'index.cfm');
 const cssPath = path.join(reportRoot, 'assets', 'portfolio.css');
 
+function assertHtmlSafeEmbedding(source) {
+  const call = source.match(/replace\([^\n]+,[\s]*["']([^"']*)["'],[\s]*["']([^"']*)["'],[\s]*["']all["']\s*\)/i);
+  assert.ok(call, 'page must transform serialized JSON before embedding it');
+  const malicious = JSON.stringify({ copy: '</ScRiPt><script>alert(1)</script>' });
+  const escaped = malicious.split(call[1]).join(call[2]);
+  assert.doesNotMatch(escaped, /</, 'no literal < may survive in embedded JSON');
+  assert.equal(JSON.parse(escaped).copy, '</ScRiPt><script>alert(1)</script>');
+}
+
 test('static portfolio page authenticates before reading only its compact summary', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
   const reads = [...page.matchAll(/mifReadDataset\(\s*["']([^"']+)["']\s*\)/gi)]
@@ -32,7 +41,7 @@ test('static portfolio page embeds escaped JSON and renders the approved six cha
   const page = fs.readFileSync(pagePath, 'utf8');
 
   assert.match(page, /type=["']application\/json["']/i);
-  assert.match(page, /replace\([^\n]+["']<\/["'][^\n]+["']<\\\/["']/i);
+  assertHtmlSafeEmbedding(page);
   assert.match(page, /MifPortfolio\.renderSummary\(\s*document\.getElementById\(["']mif-portfolio-root["']\),\s*payload\s*\)/i);
   for (const chapter of [
     'portfolio-resumo',
@@ -63,7 +72,7 @@ test('static portfolio page uses versioned local report and portfolio assets onl
     assert.match(page, new RegExp(`\\.\\.\\/assets\\/${asset.replace('.', '\\.') }\\?v=\\d+`, 'i'));
   }
   assert.match(page, /portfolio\.css\?v=20260902-2/i);
-  assert.match(page, /portfolio\.js\?v=20260902-5/i);
+  assert.match(page, /portfolio\.js\?v=20260902-6/i);
   const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);

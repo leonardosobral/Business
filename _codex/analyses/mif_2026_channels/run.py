@@ -44,7 +44,22 @@ from .normalize import normalize_key
 from .modular_artifact import (
     TRANSFORM_VERSION,
     canonical_json_bytes,
+    channel_slug,
     expected_artifact_transform_version,
+    portfolio_dependency_receipt,
+)
+from .portfolio import (
+    ACTIONABLE_DIMENSIONS,
+    COMMERCIAL_TICKET_MIN,
+    EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+    EXPOSURE_HIGH_EVENT_SHARE_PCT,
+    EXPOSURE_MEDIUM_EVENT_SHARE_PCT,
+    EXPOSURE_PARTNER_CONCENTRATION_PCT,
+    MIN_DIMENSION_COVERAGE_PCT,
+    MIN_PROFILE_REGISTRATIONS,
+    MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+    MONEY_FIELDS as PORTFOLIO_MONEY_FIELDS,
+    build_portfolio_artifacts,
 )
 from .pipeline import (
     CHART_RATIONALES,
@@ -960,6 +975,8 @@ def _reject_portfolio_forbidden_keys(
                 and normalized == "city"
                 and path == "$.overview.source_field_coverage.registrations"
             )
+            if normalized == "kit_incluso":
+                raise ValueError(f"kit_incluso outside product scope definition at {path}.{key}")
             if normalized in _PORTFOLIO_FORBIDDEN_KEYS and not is_overview_coverage_field:
                 raise ValueError(f"forbidden portfolio field at {path}.{key}")
             _reject_portfolio_forbidden_keys(
@@ -974,6 +991,17 @@ def _reject_portfolio_forbidden_keys(
                 f"{path}[{index}]",
                 allow_summary_city_coverage=allow_summary_city_coverage,
             )
+    elif (
+        isinstance(value, str)
+        and "kit_incluso" in value.casefold()
+        and not (
+            allow_summary_city_coverage
+            and path == "$.definitions.product_scope"
+            and value
+            == "Apenas a classificação kit_incluso é excluída do perfil de produto."
+        )
+    ):
+        raise ValueError(f"kit_incluso outside product scope definition at {path}")
 
 
 def verify_modular_outputs(manifest_path: Path) -> None:
@@ -1056,6 +1084,13 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             )
         payloads[relative_path] = payload
 
+    expected_portfolio_dependencies = portfolio_dependency_receipt(payloads)
+    for relative_path in _PORTFOLIO_ARTIFACTS:
+        if receipts[relative_path].get("dependencies") != expected_portfolio_dependencies:
+            raise ValueError(
+                f"portfolio dependency receipt mismatch: {relative_path}"
+            )
+
     general = payloads["general.json"]
     overview = general.get("overview")
     if not isinstance(overview, dict):
@@ -1089,6 +1124,56 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         raise ValueError("portfolio overview mismatch")
     if "coverage_cube" in portfolio_summary:
         raise ValueError("portfolio summary contains simulator cube")
+    definitions = portfolio_summary.get("definitions")
+    if (
+        not isinstance(definitions, dict)
+        or definitions.get("product_scope")
+        != "Apenas a classificação kit_incluso é excluída do perfil de produto."
+    ):
+        raise ValueError("portfolio product scope definition mismatch")
+    dimension_panels = portfolio_summary.get("dimension_panels")
+    if not isinstance(dimension_panels, dict) or set(dimension_panels) != set(
+        ACTIONABLE_DIMENSIONS
+    ):
+        raise ValueError("portfolio dimension panel contract mismatch")
+    redundancy_rows = portfolio_summary.get("redundancy_candidates")
+    if not isinstance(redundancy_rows, list) or len(redundancy_rows) > 10:
+        raise ValueError("portfolio redundancy contract mismatch")
+    for pair in redundancy_rows:
+        evidence = pair.get("dimension_evidence") if isinstance(pair, dict) else None
+        if not isinstance(evidence, dict) or set(evidence) != set(ACTIONABLE_DIMENSIONS):
+            raise ValueError("portfolio pair must expose five dimension evidence receipts")
+        qualified_dimensions = set(pair.get("qualifying_dimensions", []))
+        for dimension, dimension_receipt in evidence.items():
+            if not isinstance(dimension_receipt, dict) or set(dimension_receipt) != {
+                "similarity_0_1",
+                "left_coverage_pct",
+                "right_coverage_pct",
+                "p90_similarity_0_1",
+                "qualified",
+                "reason",
+            }:
+                raise ValueError("portfolio pair dimension evidence is incomplete")
+            if not isinstance(dimension_receipt.get("qualified"), bool):
+                raise ValueError("portfolio pair dimension qualification is invalid")
+            if bool(dimension_receipt["qualified"]) != (
+                dimension in qualified_dimensions
+            ):
+                raise ValueError("portfolio pair dimension qualification mismatch")
+            if not str(dimension_receipt.get("reason", "")).strip():
+                raise ValueError("portfolio pair dimension reason is missing")
+            for coverage_key in ("left_coverage_pct", "right_coverage_pct"):
+                coverage = dimension_receipt.get(coverage_key)
+                if coverage is not None and not Decimal("0") <= _required_decimal(
+                    coverage, f"portfolio {coverage_key}"
+                ) <= Decimal("100"):
+                    raise ValueError("portfolio pair dimension coverage is invalid")
+            for similarity_key in ("similarity_0_1", "p90_similarity_0_1"):
+                similarity = dimension_receipt.get(similarity_key)
+                if similarity is not None and not Decimal("0") <= _required_decimal(
+                    similarity, f"portfolio {similarity_key}"
+                ) <= Decimal("1"):
+                    raise ValueError("portfolio pair dimension similarity is invalid")
 
     portfolio_simulator = payloads["portfolio/simulator.json"]
     if portfolio_simulator.get("dimensions") != [
@@ -1098,6 +1183,58 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         "channel_name",
     ]:
         raise ValueError("portfolio simulator dimensions mismatch")
+    expected_thresholds = {
+        "commercial_ticket_min_exclusive": format(COMMERCIAL_TICKET_MIN, ".2f"),
+        "minimum_profile_registrations": MIN_PROFILE_REGISTRATIONS,
+        "minimum_dimension_coverage_pct": format(
+            MIN_DIMENSION_COVERAGE_PCT, ".2f"
+        ),
+        "maximum_selected_channels": 10,
+        "publishable_cell_minimum_registrations": MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+        "exposure_classification_minimum_registrations": EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+        "exposure_high_event_share_pct": format(
+            EXPOSURE_HIGH_EVENT_SHARE_PCT, ".2f"
+        ),
+        "exposure_medium_event_share_pct": format(
+            EXPOSURE_MEDIUM_EVENT_SHARE_PCT, ".2f"
+        ),
+        "exposure_partner_concentration_pct": format(
+            EXPOSURE_PARTNER_CONCENTRATION_PCT, ".2f"
+        ),
+    }
+    if portfolio_simulator.get("thresholds") != expected_thresholds:
+        raise ValueError("portfolio threshold contract mismatch")
+    channel_index = payloads["channels/index.json"].get("channels")
+    if not isinstance(channel_index, list):
+        raise ValueError("modular channel index is invalid")
+    channel_index_types = {
+        str(row.get("channel_name", "")): row.get("channel_type")
+        for row in channel_index
+    }
+    expected_selectable_channels = [
+        {
+            "channel_name": str(row.get("channel_name", "")),
+            "slug": channel_slug(row.get("channel_name")),
+            "channel_type": str(row.get("channel_type", "Não informado")),
+            "paid_registrations": int(row.get("paid_registrations", 0) or 0),
+            "gross_value": format(
+                _required_decimal(row.get("gross_value"), "portfolio channel gross"),
+                ".2f",
+            ),
+            "registration_ticket": format(
+                _required_decimal(
+                    row.get("registration_ticket"), "portfolio registration ticket"
+                ),
+                ".2f",
+            ),
+        }
+        for row in channel_index
+        if _required_decimal(
+            row.get("registration_ticket"), "portfolio registration ticket"
+        )
+        > COMMERCIAL_TICKET_MIN
+        and str(row.get("channel_type", "")).strip().casefold() != "organico"
+    ]
     selectable_channels = portfolio_simulator.get("selectable_channels")
     if not isinstance(selectable_channels, list):
         raise ValueError("portfolio selectable channels are invalid")
@@ -1125,9 +1262,16 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError("portfolio selectable channel type is invalid")
         if channel_type == "organico":
             raise ValueError("portfolio organic channel is selectable")
+        index_channel_type = channel_index_types.get(channel_name)
+        if not isinstance(index_channel_type, str) or (
+            index_channel_type.strip().casefold() != channel_type
+        ):
+            raise ValueError("portfolio selectable channel type mismatch")
         selectable_names.add(channel_name)
         selectable_slugs.add(slug)
         selectable_types[channel_name] = channel_type
+    if selectable_channels != expected_selectable_channels:
+        raise ValueError("portfolio selectable channel catalog mismatch")
 
     coverage_cube = portfolio_simulator.get("coverage_cube")
     if not isinstance(coverage_cube, list):
@@ -1142,6 +1286,14 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             int(row["paid_registrations"])
         except (KeyError, TypeError, ValueError) as error:
             raise ValueError("portfolio simulator row is invalid") from error
+        for money_field in PORTFOLIO_MONEY_FIELDS:
+            if money_field not in row or (
+                row[money_field] is not None
+                and not re.fullmatch(r"-?\d+\.\d{2}", str(row[money_field]))
+            ):
+                raise ValueError(
+                    f"portfolio simulator money contract mismatch: {money_field}"
+                )
         cell_rows.setdefault(cell, []).append(row)
 
     portfolio_total = 0
@@ -1174,6 +1326,34 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError("portfolio simulator commercial total mismatch")
         if commercial_total and not commercial_totals:
             raise ValueError("portfolio simulator commercial total is missing")
+        for money_field in PORTFOLIO_MONEY_FIELDS:
+            def summed_money(money_rows: list[dict[str, Any]]) -> str | None:
+                if any(row[money_field] is None for row in money_rows):
+                    return None
+                return format(
+                    sum(
+                        (Decimal(str(row[money_field])) for row in money_rows),
+                        Decimal("0"),
+                    ),
+                    ".2f",
+                )
+
+            if all_totals[0][money_field] != summed_money(details):
+                raise ValueError(
+                    f"portfolio simulator money total mismatch: {money_field}"
+                )
+            if commercial_totals:
+                commercial_details = [
+                    row
+                    for row in details
+                    if str(row["channel_name"]) in selectable_names
+                ]
+                if commercial_totals[0][money_field] != summed_money(
+                    commercial_details
+                ):
+                    raise ValueError(
+                        f"portfolio simulator commercial money mismatch: {money_field}"
+                    )
         portfolio_total += all_total
     if portfolio_total != paid_registrations:
         raise ValueError("portfolio simulator registration mismatch")
@@ -1199,6 +1379,71 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         str(row.get("channel_name", "")): row.get("channel_type")
         for row in channel_index
     }
+    expected_selectable_channels = [
+        {
+            "channel_name": str(row.get("channel_name", "")),
+            "slug": channel_slug(row.get("channel_name")),
+            "channel_type": str(row.get("channel_type", "Não informado")),
+            "paid_registrations": int(row.get("paid_registrations", 0) or 0),
+            "gross_value": format(
+                _required_decimal(row.get("gross_value"), "portfolio channel gross"),
+                ".2f",
+            ),
+            "registration_ticket": format(
+                _required_decimal(
+                    row.get("registration_ticket"), "portfolio registration ticket"
+                ),
+                ".2f",
+            ),
+        }
+        for row in channel_index
+        if _required_decimal(
+            row.get("registration_ticket"), "portfolio registration ticket"
+        )
+        > COMMERCIAL_TICKET_MIN
+        and str(row.get("channel_type", "")).strip().casefold() != "organico"
+    ]
+    if selectable_channels != expected_selectable_channels:
+        raise ValueError("portfolio selectable channel catalog mismatch")
+    for dimension, panel in dimension_panels.items():
+        if (
+            not isinstance(panel, dict)
+            or panel.get("scale_population_channels")
+            != len(expected_selectable_channels)
+            or panel.get("sort")
+            != [
+                "gross_value desc",
+                "paid_registrations desc",
+                "channel_name asc",
+            ]
+            or not isinstance(panel.get("channels"), list)
+            or len(panel["channels"]) != len(expected_selectable_channels)
+            or panel.get("top_channels") != panel["channels"][:10]
+        ):
+            raise ValueError(
+                f"portfolio dimension panel contract mismatch: {dimension}"
+            )
+    executive_summary = portfolio_summary.get("executive_summary")
+    if not isinstance(executive_summary, dict) or set(executive_summary) != {
+        "commercial_channel_count",
+        "commercial_paid_registrations",
+        "commercial_event_share_pct",
+        "concentration_basis",
+        "top_1",
+        "top_3",
+        "top_10",
+        "principal_dependencies",
+        "implication_2027",
+    }:
+        raise ValueError("portfolio executive summary contract mismatch")
+    redundancy_summary = portfolio_summary.get("redundancy_summary")
+    if (
+        not isinstance(redundancy_summary, dict)
+        or redundancy_summary.get("displayed_pairs") != len(redundancy_rows)
+        or int(redundancy_summary.get("total_qualified_pairs", -1))
+        < len(redundancy_rows)
+    ):
+        raise ValueError("portfolio redundancy summary mismatch")
     for channel_name, channel_type in selectable_types.items():
         index_channel_type = channel_index_types.get(channel_name)
         if not isinstance(index_channel_type, str) or (
@@ -1223,6 +1468,20 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError(f"modular dossier cube mismatch: {dossier_path}")
         if dossier.get("recommendation") != row.get("recommendation"):
             raise ValueError(f"modular recommendation mismatch: {dossier_path}")
+
+    expected_portfolio = build_portfolio_artifacts(
+        overview=overview,
+        channel_index=channel_index,
+        dossiers=[
+            payloads[f"channels/{row['slug']}.json"]["channel"]
+            for row in channel_index
+        ],
+        registration_cube=explorer["registration_cube"],
+        generated_at=str(portfolio_summary["meta"].get("generated_at", "")),
+    )
+    for relative_path in _PORTFOLIO_ARTIFACTS:
+        if payloads[relative_path] != expected_portfolio[relative_path]:
+            raise ValueError(f"portfolio full contract mismatch: {relative_path}")
 
 
 def _parser() -> argparse.ArgumentParser:

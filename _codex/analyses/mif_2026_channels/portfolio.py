@@ -18,7 +18,7 @@ EXPOSURE_HIGH_EVENT_SHARE_PCT = Decimal("40.00")
 EXPOSURE_MEDIUM_EVENT_SHARE_PCT = Decimal("20.00")
 EXPOSURE_PARTNER_CONCENTRATION_PCT = Decimal("60.00")
 ACTIONABLE_DIMENSIONS = ("geography", "modality", "temporal", "lot", "product")
-PORTFOLIO_TRANSFORM_VERSION = "mif-2026-portfolio.2"
+PORTFOLIO_TRANSFORM_VERSION = "mif-2026-portfolio.3"
 SIMULATOR_DIMENSIONS = ("phase", "modality", "state", "channel_name")
 SIMULATOR_TOTAL_ALL = "Todos os canais"
 SIMULATOR_TOTAL_COMMERCIAL = "Canais comerciais não orgânicos"
@@ -153,8 +153,10 @@ def _similarity_rows(similarities: object) -> list[dict[str, Any]]:
     return rows
 
 
-def _canonical_similarity(similarities: object) -> dict[str, list[dict[str, Any]]]:
-    """Deduplicate A-B/B-A rows while preserving coverage for each channel."""
+def _canonical_similarity_evidence(
+    similarities: object,
+) -> dict[str, list[dict[str, Any]]]:
+    """Deduplicate A-B/B-A rows while preserving even unqualified evidence."""
     canonical: dict[tuple[str, str, str], dict[str, Any]] = {}
     for row in _similarity_rows(similarities):
         dimension = str(row.get("dimension", "")).removesuffix("_overlap")
@@ -183,14 +185,26 @@ def _canonical_similarity(similarities: object) -> dict[str, list[dict[str, Any]
         existing = canonical.get(key)
         if existing is None or item["similarity_0_1"] > existing["similarity_0_1"]:
             canonical[key] = item
-    grouped = {dimension: [] for dimension in ACTIONABLE_DIMENSIONS}
+    grouped: dict[str, list[dict[str, Any]]] = {
+        dimension: [] for dimension in ACTIONABLE_DIMENSIONS
+    }
     for (dimension, _, _), row in sorted(canonical.items()):
-        if (
-            row["left_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
-            and row["right_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
-        ):
-            grouped[dimension].append(row)
+        grouped[dimension].append(row)
     return grouped
+
+
+def _canonical_similarity(similarities: object) -> dict[str, list[dict[str, Any]]]:
+    """Return canonical pairs that meet bilateral coverage in each dimension."""
+    evidence = _canonical_similarity_evidence(similarities)
+    return {
+        dimension: [
+            row
+            for row in evidence[dimension]
+            if row["left_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+            and row["right_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+        ]
+        for dimension in ACTIONABLE_DIMENSIONS
+    }
 
 
 def _qualified_channel_rows(
@@ -334,9 +348,23 @@ def redundancy_candidates(
     }
     candidates_by_name = _qualified_channel_rows(channel_rows, selectable=True)
     eligible = set(candidates_by_name)
-    grouped = _canonical_similarity(similarities)
-    grouped = _filter_grouped_pairs(grouped, eligible)
+    all_evidence = _canonical_similarity_evidence(similarities)
+    all_evidence = _filter_grouped_pairs(all_evidence, eligible)
+    grouped = {
+        dimension: [
+            row
+            for row in all_evidence[dimension]
+            if row["left_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+            and row["right_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+        ]
+        for dimension in ACTIONABLE_DIMENSIONS
+    }
     benchmarks = _dimension_benchmarks(grouped)
+    evidence_by_pair = {
+        (dimension, row["left_channel"], row["right_channel"]): row
+        for dimension, rows in all_evidence.items()
+        for row in rows
+    }
     candidates: dict[tuple[str, str], list[tuple[str, float]]] = {}
     for dimension, rows in grouped.items():
         threshold = benchmarks[dimension]["p90_similarity_0_1"]
@@ -354,6 +382,46 @@ def redundancy_candidates(
         dimensions = sorted(dimension for dimension, _ in qualified)
         if len(dimensions) < 4 or not {"geography", "temporal"}.intersection(dimensions):
             continue
+        dimension_evidence = {}
+        for dimension in ACTIONABLE_DIMENSIONS:
+            evidence = evidence_by_pair.get((dimension, left, right))
+            threshold = benchmarks[dimension]["p90_similarity_0_1"]
+            similarity = evidence.get("similarity_0_1") if evidence else None
+            coverage_qualified = bool(
+                evidence
+                and evidence["left_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+                and evidence["right_coverage"] >= MIN_DIMENSION_COVERAGE_PCT
+            )
+            is_qualified = bool(
+                coverage_qualified
+                and threshold is not None
+                and similarity is not None
+                and float(similarity) >= float(threshold)
+            )
+            if evidence is None:
+                reason = "Evidência de similaridade ausente para o par nesta dimensão."
+            elif not coverage_qualified:
+                reason = "cobertura bilateral mínima de 70,00% não atendida."
+            elif threshold is None:
+                reason = "Evidência insuficiente para calcular o p90 desta dimensão."
+            elif not is_qualified:
+                reason = "Similaridade abaixo do p90 da dimensão."
+            else:
+                reason = "Similaridade no p90 e cobertura bilateral mínima atendida."
+            dimension_evidence[dimension] = {
+                "similarity_0_1": (
+                    round(float(similarity), 4) if similarity is not None else None
+                ),
+                "left_coverage_pct": (
+                    format(evidence["left_coverage"], ".2f") if evidence else None
+                ),
+                "right_coverage_pct": (
+                    format(evidence["right_coverage"], ".2f") if evidence else None
+                ),
+                "p90_similarity_0_1": threshold,
+                "qualified": is_qualified,
+                "reason": reason,
+            }
         results.append(
             {
                 "left_channel": left,
@@ -379,6 +447,7 @@ def redundancy_candidates(
                 "similarities": {
                     dimension: round(similarity, 4) for dimension, similarity in qualified
                 },
+                "dimension_evidence": dimension_evidence,
             }
         )
     return sorted(
@@ -494,27 +563,52 @@ def _dependency_cells(
             )
             if exposure is None:
                 continue
+            selected_count = int(selected["paid_registrations"])
+            event_count = int(all_total.get("paid_registrations", 0) or 0)
+            commercial_count = int(
+                commercial_total.get("paid_registrations", 0) or 0
+            )
             dependencies.append(
                 {
                     "phase": cell[0],
                     "modality": cell[1],
                     "state": cell[2],
                     "channel_name": channel_name,
-                    "paid_registrations": int(selected["paid_registrations"]),
-                    "event_paid_registrations": int(all_total.get("paid_registrations", 0) or 0),
-                    "commercial_paid_registrations": int(commercial_total.get("paid_registrations", 0) or 0),
+                    "paid_registrations": selected_count,
+                    "event_paid_registrations": event_count,
+                    "commercial_paid_registrations": commercial_count,
+                    "event_share_pct": format(
+                        Decimal(selected_count) * 100 / Decimal(event_count), ".2f"
+                    ),
+                    "commercial_share_pct": (
+                        format(
+                            Decimal(selected_count) * 100 / Decimal(commercial_count),
+                            ".2f",
+                        )
+                        if commercial_count
+                        else "0.00"
+                    ),
                     "exposure": exposure,
                     "sample_status": (
                         "amostra celular reduzida"
-                        if int(selected["paid_registrations"])
+                        if selected_count
                         < EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS
                         else "amostra celular suficiente"
                     ),
                 }
             )
+    exposure_order = {
+        "alta": 0,
+        "média": 1,
+        "dependência entre parceiros": 2,
+        "baixa": 3,
+    }
     return sorted(
         dependencies,
         key=lambda row: (
+            exposure_order.get(str(row["exposure"]), 4),
+            -_decimal(row["event_share_pct"]),
+            -_decimal(row["commercial_share_pct"]),
             -int(row["paid_registrations"]),
             str(row["phase"]).casefold(),
             str(row["modality"]).casefold(),
@@ -565,6 +659,7 @@ def _dimension_panels(
     peers: dict[str, dict[str, dict[str, Any]]],
     selectable: Iterable[dict[str, Any]],
     benchmarks: dict[str, dict[str, float | int | None]],
+    event_paid_registrations: int,
 ) -> dict[str, dict[str, Any]]:
     """Build separate four-group scale/differentiation panels per dimension."""
     selectable_rows = list(selectable)
@@ -603,23 +698,69 @@ def _dimension_panels(
                 else "Semelhante aos pares"
             )
             counts[(scale, differentiation)] += 1
-        top_channels = []
-        for row in selectable_rows[:10]:
+        channels = []
+        for row in selectable_rows:
             channel_name = str(row["channel_name"])
             profile = peers.get(channel_name, {}).get(dimension, {})
-            top_channels.append(
+            similarity = profile.get("similarity_0_1")
+            if similarity is None or p25 is None:
+                scale = (
+                    "Escala alta"
+                    if scale_cutoff is not None
+                    and float(_decimal(row.get("gross_value"))) >= scale_cutoff
+                    else "Escala menor"
+                )
+                differentiation = "Evidência insuficiente"
+                quadrant = "Evidência insuficiente"
+            else:
+                scale = (
+                    "Escala alta"
+                    if scale_cutoff is not None
+                    and float(_decimal(row.get("gross_value"))) >= scale_cutoff
+                    else "Escala menor"
+                )
+                differentiation = (
+                    "Mais diferenciado relativamente"
+                    if float(similarity) <= float(p25)
+                    else "Semelhante aos pares"
+                )
+                quadrant = f"{scale} · {differentiation}"
+            registrations = int(row.get("paid_registrations", 0) or 0)
+            channels.append(
                 {
                     "channel_name": channel_name,
-                    "paid_registrations": int(row.get("paid_registrations", 0) or 0),
+                    "paid_registrations": registrations,
                     "gross_value": format(_decimal(row.get("gross_value")), ".2f"),
+                    "event_share_pct": (
+                        format(
+                            Decimal(registrations)
+                            * 100
+                            / Decimal(event_paid_registrations),
+                            ".2f",
+                        )
+                        if event_paid_registrations
+                        else "0.00"
+                    ),
+                    "registration_ticket": format(
+                        _decimal(row.get("registration_ticket")), ".2f"
+                    ),
+                    "scale": scale,
+                    "differentiation": differentiation,
+                    "quadrant": quadrant,
                     "status": profile.get("status", "evidência insuficiente"),
                     "nearest_channel": profile.get("nearest_channel"),
-                    "similarity_0_1": profile.get("similarity_0_1"),
+                    "similarity_0_1": similarity,
                 }
             )
         panels[dimension] = {
             "benchmark": benchmarks[dimension],
             "scale_high_gross_value_cutoff": scale_cutoff,
+            "scale_population_channels": len(selectable_rows),
+            "sort": [
+                "gross_value desc",
+                "paid_registrations desc",
+                "channel_name asc",
+            ],
             "quadrants": [
                 {
                     "scale": scale,
@@ -629,13 +770,67 @@ def _dimension_panels(
                 for scale in scale_values
                 for differentiation in differentiation_values
             ],
-            "top_channels": top_channels,
+            "top_channels": channels[:10],
+            "channels": channels,
             "nearest_peers": {
                 channel: profile[dimension]
                 for channel, profile in peers.items()
             },
         }
     return panels
+
+
+def _executive_summary(
+    selectable: list[dict[str, Any]],
+    *,
+    event_paid_registrations: int,
+    dependencies: list[dict[str, Any]],
+) -> dict[str, Any]:
+    commercial_paid = sum(
+        int(row.get("paid_registrations", 0) or 0) for row in selectable
+    )
+
+    def share(numerator: int, denominator: int) -> str:
+        if denominator <= 0:
+            return "0.00"
+        return format(Decimal(numerator) * 100 / Decimal(denominator), ".2f")
+
+    def concentration(size: int) -> dict[str, Any]:
+        rows = selectable[:size]
+        registrations = sum(
+            int(row.get("paid_registrations", 0) or 0) for row in rows
+        )
+        return {
+            "channels": len(rows),
+            "paid_registrations": registrations,
+            "event_share_pct": share(registrations, event_paid_registrations),
+            "commercial_share_pct": share(registrations, commercial_paid),
+            "gross_value": format(
+                sum((_decimal(row.get("gross_value")) for row in rows), Decimal("0")),
+                ".2f",
+            ),
+        }
+
+    relevant_dependencies = [
+        row for row in dependencies if row.get("exposure") != "baixa"
+    ]
+    return {
+        "commercial_channel_count": len(selectable),
+        "commercial_paid_registrations": commercial_paid,
+        "commercial_event_share_pct": share(
+            commercial_paid, event_paid_registrations
+        ),
+        "concentration_basis": "gross_value desc",
+        "top_1": concentration(1),
+        "top_3": concentration(3),
+        "top_10": concentration(10),
+        "principal_dependencies": relevant_dependencies[:3],
+        "implication_2027": (
+            "Para 2027, os padrões observados de concentração e similaridade indicam "
+            "quais canais e células devem ser acompanhados separadamente; esta leitura "
+            "é descritiva e não estima efeito causal."
+        ),
+    }
 
 
 def build_portfolio_artifacts(
@@ -680,8 +875,24 @@ def build_portfolio_artifacts(
         "generated_at": generated_at,
         "transform_version": PORTFOLIO_TRANSFORM_VERSION,
     }
-    dimension_panels = _dimension_panels(peers, selectable, benchmarks)
+    event_paid_registrations = int(overview.get("paid_registrations", 0) or 0)
+    dimension_panels = _dimension_panels(
+        peers, selectable, benchmarks, event_paid_registrations
+    )
+    executive_summary = _executive_summary(
+        selectable,
+        event_paid_registrations=event_paid_registrations,
+        dependencies=dependencies,
+    )
     takeaways = [
+        {
+            "title": "Concentração comercial observada",
+            "evidence": (
+                f"Os {executive_summary['top_10']['channels']} canais de maior valor bruto "
+                f"reúnem {executive_summary['top_10']['commercial_share_pct']}% das "
+                "inscrições do universo comercial elegível."
+            ),
+        },
         {
             "title": "Semelhanças permanecem dimensionais",
             "evidence": "Geografia, modalidade, temporalidade, lote e produto são apresentados separadamente, sem score mestre.",
@@ -690,13 +901,17 @@ def build_portfolio_artifacts(
             "title": "Exposição observada usa dois denominadores",
             "evidence": "As células com exposição usam o total do evento e o total comercial não orgânico da própria célula.",
         },
+        {
+            "title": "Implicação de acompanhamento em 2027",
+            "evidence": executive_summary["implication_2027"],
+        },
     ]
     summary = {
         "meta": metadata,
         "definitions": {
             "commercial_universe": "Canais com ticket por inscrição acima de R$ 10,00; orgânico permanece como referência e denominador.",
             "selectable_universe": "Canais comerciais não orgânicos; orgânico não é selecionável.",
-            "similarity": "Semelhanças são descritivas e separadas por dimensão. Os benchmarks p25/p90 usam pares entre canais comerciais não orgânicos com ticket por inscrição acima de R$ 10,00, pelo menos 10 inscrições e cobertura mínima de 70,00% em ambos os canais; orgânico não integra esses benchmarks.",
+            "similarity": "Semelhanças são descritivas e separadas por dimensão entre canais presentes no índice. Os benchmarks p25/p90 usam pares entre canais comerciais não orgânicos com ticket por inscrição acima de R$ 10,00, pelo menos 10 inscrições e cobertura mínima de 70,00% em ambos os canais; orgânico pode aparecer como vizinho exibido, mas não integra o benchmark.",
             "dependency_sample": "Células publicadas com 5–9 inscrições do canal são qualificadas como amostra celular reduzida; a partir de 10 inscrições, como amostra celular suficiente. A classificação de exposição e seus denominadores permanecem inalterados.",
             "product_scope": "Apenas a classificação kit_incluso é excluída do perfil de produto.",
         },
@@ -704,8 +919,13 @@ def build_portfolio_artifacts(
         "dimension_benchmarks": benchmarks,
         "dimension_panels": dimension_panels,
         "redundancy_candidates": redundancy[:10],
+        "redundancy_summary": {
+            "total_qualified_pairs": len(redundancy),
+            "displayed_pairs": min(10, len(redundancy)),
+        },
         "dependency_cells": dependencies,
         "dependency_sample_summary": _dependency_sample_summary(dependencies),
+        "executive_summary": executive_summary,
         "executive_takeaways": takeaways,
     }
     simulator = {

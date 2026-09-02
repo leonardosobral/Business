@@ -193,6 +193,117 @@ class ModularArtifactTests(unittest.TestCase):
 
             verify_modular_outputs(root / "manifest.json")
 
+    def test_portfolio_receipts_pin_every_transform_dependency(self):
+        _, _, _, artifacts = modular_fixture()
+
+        receipts = artifacts["manifest.json"]["artifacts"]
+        expected_keys = {
+            "channel_index_sha256",
+            "dossier_similarities_sha256",
+            "explorer_registration_cube_sha256",
+            "transform_contract_sha256",
+            "transform_version",
+        }
+        summary_dependencies = receipts["portfolio/summary.json"]["dependencies"]
+        simulator_dependencies = receipts["portfolio/simulator.json"]["dependencies"]
+
+        self.assertEqual(summary_dependencies, simulator_dependencies)
+        self.assertEqual(set(summary_dependencies), expected_keys)
+        for key in expected_keys - {"transform_version"}:
+            self.assertRegex(summary_dependencies[key], r"^[0-9a-f]{64}$")
+        self.assertEqual(
+            summary_dependencies["transform_version"],
+            artifacts["portfolio/summary.json"]["meta"]["transform_version"],
+        )
+
+    def test_portfolio_verification_rejects_dependency_receipt_mismatch(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            manifest_path = root / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["artifacts"]["portfolio/summary.json"]["dependencies"][
+                "channel_index_sha256"
+            ] = "0" * 64
+            manifest_path.write_bytes(canonical_json_bytes(manifest))
+
+            with self.assertRaisesRegex(ValueError, "portfolio dependency receipt mismatch"):
+                verify_modular_outputs(manifest_path)
+
+    def test_portfolio_verification_rejects_incomplete_selectable_catalog(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            simulator = deepcopy(artifacts["portfolio/simulator.json"])
+            simulator["selectable_channels"].pop()
+            self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+            with self.assertRaisesRegex(ValueError, "selectable channel catalog mismatch"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_threshold_drift(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            simulator = deepcopy(artifacts["portfolio/simulator.json"])
+            simulator["thresholds"]["exposure_high_event_share_pct"] = "39.99"
+            self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+            with self.assertRaisesRegex(ValueError, "portfolio threshold contract mismatch"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_incomplete_pair_evidence(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            summary = deepcopy(artifacts["portfolio/summary.json"])
+            summary["redundancy_candidates"][0]["dimension_evidence"].pop("product")
+            self._replace_artifact(root, "portfolio/summary.json", summary)
+
+            with self.assertRaisesRegex(ValueError, "five dimension evidence"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_missing_cube_money(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            simulator = deepcopy(artifacts["portfolio/simulator.json"])
+            simulator["coverage_cube"][0].pop("allocated_gross_value")
+            self._replace_artifact(root, "portfolio/simulator.json", simulator)
+
+            with self.assertRaisesRegex(ValueError, "portfolio simulator money contract"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_kit_incluso_outside_definition(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            summary = deepcopy(artifacts["portfolio/summary.json"])
+            summary["unexpected"] = {"classification": "kit_incluso"}
+            self._replace_artifact(root, "portfolio/summary.json", summary)
+
+            with self.assertRaisesRegex(ValueError, "kit_incluso outside product scope"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_manifest_byte_receipt_mismatch(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            manifest_path = root / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["artifacts"]["portfolio/simulator.json"]["bytes"] += 1
+            manifest_path.write_bytes(canonical_json_bytes(manifest))
+
+            with self.assertRaisesRegex(ValueError, "modular artifact byte count mismatch"):
+                verify_modular_outputs(manifest_path)
+
     def test_portfolio_verification_rejects_overview_divergence(self):
         _, _, _, artifacts = modular_fixture()
         with TemporaryDirectory() as directory:

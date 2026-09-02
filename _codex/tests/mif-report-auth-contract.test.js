@@ -53,6 +53,32 @@ test('private data loader is authorized, rooted and manifest allowlisted', () =>
   assert.match(data, /deserializeJson/i);
 });
 
+test('private data loader validates receipt bytes hash source and transform before deserializing', () => {
+  const data = source('data.cfm');
+  const functionStart = data.search(/<cffunction\s+name=["']mifReadDataset["']/i);
+  const functionSource = data.slice(functionStart);
+  const deserializeAt = functionSource.search(/deserializeJson/i);
+
+  assert.ok(functionStart >= 0 && deserializeAt >= 0);
+  for (const receiptField of ['path', 'bytes', 'sha256', 'source_sha256', 'transform_version']) {
+    const fieldAt = functionSource.search(new RegExp(`receipt[^\\n]*${receiptField}`, 'i'));
+    assert.ok(fieldAt >= 0 && fieldAt < deserializeAt, `${receiptField} must be validated before deserializeJson`);
+  }
+  assert.match(functionSource.slice(0, deserializeAt), /fileReadBinary/i);
+  assert.match(functionSource.slice(0, deserializeAt), /arrayLen/i);
+  assert.match(functionSource.slice(0, deserializeAt), /hash\([^\n]+SHA-256/i);
+  assert.match(functionSource.slice(deserializeAt), /meta[^\n]+transform_version/i);
+});
+
+test('authenticated validation failures render a readable unavailable state without conclusions', () => {
+  const data = source('data.cfm');
+
+  assert.match(data, /statuscode=["']503["']/i);
+  assert.match(data, /Dados autenticados temporariamente indisponíveis/i);
+  assert.match(data, /Nenhuma conclusão foi exibida/i);
+  assert.match(data, /cfabort/i);
+});
+
 test('data files remain outside the web route', () => {
   const data = source('data.cfm');
 
