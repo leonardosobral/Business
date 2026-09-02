@@ -1,0 +1,241 @@
+.portfolio-report .report-section {
+  scroll-margin-top: 5.5rem;
+}
+
+.portfolio-dimension-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.portfolio-dimension {
+  margin: 0;
+  border-top: .3rem solid var(--accent);
+}
+
+.portfolio-dimension .matrix-wrap {
+  border: 1px solid var(--line);
+}
+
+.portfolio-dimension .matrix-table tbody td {
+  width: 50%;
+  min-height: 5rem;
+  vertical-align: middle;
+}
+
+#portfolio-redundancia tbody tr,
+#portfolio-dependencias tbody tr {
+  break-inside: avoid;
+}
+
+.portfolio-selector-grid {
+  display: grid;
+  grid-template-columns: minmax(18rem, 23rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.portfolio-selector-panel {
+  position: sticky;
+  top: 5.3rem;
+  padding: 1.3rem;
+  border: 1px solid var(--line);
+  border-top: .3rem solid var(--accent);
+  border-radius: .65rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.portfolio-selector-panel header .eyebrow {
+  display: block;
+  margin-bottom: .4rem;
+  color: var(--accent-dark);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.portfolio-selector-panel h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 2.15rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.portfolio-selector-panel header p,
+.portfolio-selection-count {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.portfolio-search-field,
+.portfolio-search-field span {
+  display: block;
+}
+
+.portfolio-search-field span {
+  margin-bottom: .35rem;
+  font-size: .76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.portfolio-search-field input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .65rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  color: var(--ink);
+  background: var(--white);
+  font: inherit;
+}
+
+.portfolio-search-field input:focus-visible {
+  border-color: var(--accent-dark);
+  outline: 3px solid rgb(246 182 30 / 24%);
+}
+
+.portfolio-selection-count {
+  margin: .8rem 0 .45rem;
+  font-weight: 750;
+}
+
+.portfolio-choice-list {
+  display: grid;
+  gap: .45rem;
+  max-height: min(54vh, 31rem);
+  padding: .2rem;
+  overflow-y: auto;
+}
+
+.portfolio-choice {
+  display: grid;
+  grid-template-columns: 1.15rem minmax(0, 1fr);
+  gap: .65rem;
+  align-items: start;
+  padding: .7rem;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: #fbfaf6;
+  cursor: pointer;
+}
+
+.portfolio-choice:has(input:checked) {
+  border-color: var(--accent-dark);
+  background: rgb(246 182 30 / 13%);
+}
+
+.portfolio-choice input {
+  margin: .25rem 0 0;
+  accent-color: var(--accent-dark);
+}
+
+.portfolio-choice strong,
+.portfolio-choice small {
+  display: block;
+}
+
+.portfolio-choice strong {
+  line-height: 1.35;
+}
+
+.portfolio-choice small {
+  margin-top: .15rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.portfolio-apply {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+  border-color: var(--accent-dark);
+}
+
+.portfolio-simulator-result {
+  min-width: 0;
+}
+
+.portfolio-simulator-error {
+  margin-bottom: 1rem;
+  padding: 1rem 1.15rem;
+  border-left: .35rem solid var(--accent-dark);
+  border-radius: .35rem;
+  background: var(--warning);
+  font-weight: 750;
+}
+
+.scenario-receipt {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-left: .35rem solid var(--accent);
+  border-radius: .45rem;
+  background: var(--surface);
+}
+
+.scenario-receipt p {
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .chapter-nav {
+    position: relative;
+    z-index: 1;
+    overscroll-behavior-inline: contain;
+  }
+
+  .portfolio-selector-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio-selector-panel {
+    position: static;
+  }
+
+  .portfolio-choice-list {
+    max-height: 24rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-selector-grid {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .portfolio-selector-panel {
+    padding: 1rem;
+  }
+
+  .portfolio-dimension .matrix-table {
+    min-width: 36rem;
+  }
+}
+
+@media print {
+  .portfolio-dimension,
+  #portfolio-redundancia tbody tr,
+  #portfolio-dependencias tbody tr,
+  .scenario-receipt,
+  .portfolio-simulator-result .metric-card,
+  .portfolio-simulator-result .chart-card,
+  .portfolio-simulator-result .editorial-block {
+    break-inside: avoid;
+  }
+
+  .scenario-receipt {
+    display: block;
+    margin: 0 0 5mm;
+    padding: 4mm;
+    border-color: #777;
+    background: white;
+  }
+
+  .portfolio-selector-grid {
+    display: block;
+  }
+}
