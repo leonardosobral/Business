@@ -2,6 +2,7 @@
 
 from copy import deepcopy
 from dataclasses import replace
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -14,6 +15,7 @@ from _codex.analyses.mif_2026_channels.crossings import (
 )
 from _codex.analyses.mif_2026_channels.modular_artifact import (
     build_modular_artifacts,
+    canonical_json_bytes,
     channel_slug,
     write_modular_artifacts,
 )
@@ -21,6 +23,7 @@ from _codex.analyses.mif_2026_channels.phases import (
     build_sale_cycle_boundaries,
     effective_sale_dates,
 )
+from _codex.analyses.mif_2026_channels.run import verify_modular_outputs
 from _codex.tests.mif_2026_channels.fixtures import (
     analysis_result,
     channel_metric_facts,
@@ -49,6 +52,17 @@ def modular_fixture():
 
 
 class ModularArtifactTests(unittest.TestCase):
+    @staticmethod
+    def _replace_artifact(root, relative_path, payload):
+        content = canonical_json_bytes(payload)
+        path = root / relative_path
+        path.write_bytes(content)
+        manifest_path = root / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["artifacts"][relative_path]["sha256"] = hashlib.sha256(content).hexdigest()
+        manifest["artifacts"][relative_path]["bytes"] = len(content)
+        manifest_path.write_bytes(canonical_json_bytes(manifest))
+
     def test_builds_exact_domain_index_dossier_and_manifest_files(self):
         result, _, _, artifacts = modular_fixture()
         channel_names = [
@@ -69,6 +83,7 @@ class ModularArtifactTests(unittest.TestCase):
                 for channel_name in channel_names
             },
         }
+        expected |= {"portfolio/summary.json", "portfolio/simulator.json"}
 
         self.assertEqual(set(artifacts), expected)
         manifest = artifacts["manifest.json"]
@@ -81,6 +96,9 @@ class ModularArtifactTests(unittest.TestCase):
             self.assertGreater(receipt["bytes"], 0)
             self.assertEqual(len(receipt["source_sha256"]), 64)
             self.assertTrue(receipt["transform_version"])
+        self.assertLess(manifest["artifacts"]["portfolio/summary.json"]["bytes"], 750_000)
+        self.assertLess(manifest["artifacts"]["portfolio/simulator.json"]["bytes"], 2_000_000)
+        self.assertNotIn("coverage_cube", artifacts["portfolio/summary.json"])
 
         strategy = artifacts["strategy.json"]
         self.assertNotIn("observations", strategy)
@@ -166,6 +184,45 @@ class ModularArtifactTests(unittest.TestCase):
                 payload = json.loads(path.read_text(encoding="utf-8"))
                 self.assertIsNotNone(payload)
                 self.assertTrue(path.read_bytes().endswith(b"\n"))
+
+    def test_portfolio_artifacts_are_portably_verifiable(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+
+            verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_rejects_overview_divergence(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            summary = deepcopy(artifacts["portfolio/summary.json"])
+            summary["overview"]["paid_registrations"] = 999
+            self._replace_artifact(root, "portfolio/summary.json", summary)
+
+            with self.assertRaisesRegex(ValueError, "portfolio overview mismatch"):
+                verify_modular_outputs(root / "manifest.json")
+
+    def test_portfolio_verification_allows_city_source_coverage_in_equal_overview(self):
+        result, registration_cube, product_cube, _ = modular_fixture()
+        overview = deepcopy(result.overview)
+        overview["source_field_coverage"] = {
+            "registrations": {"city": {"valid": 2, "denominator": 2}}
+        }
+        artifacts = build_modular_artifacts(
+            replace(result, overview=overview),
+            registration_cube,
+            product_cube,
+            SOURCE_HASHES,
+            generated_at="2026-08-30T22:00:00-03:00",
+        )
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+
+            verify_modular_outputs(root / "manifest.json")
 
 
 if __name__ == "__main__":

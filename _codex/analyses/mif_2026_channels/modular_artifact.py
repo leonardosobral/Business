@@ -14,6 +14,7 @@ from .config import EVENT_CODE, PIPELINE_VERSION
 from .models import AnalysisResult
 from .normalize import normalize_key
 from .phases import PHASE_ORDER
+from .portfolio import PORTFOLIO_TRANSFORM_VERSION, build_portfolio_artifacts
 from .privacy import assert_anonymous
 from .recommendations import recommend_channel
 from .strategy import STRATEGY_TRANSFORM_VERSION, build_strategy
@@ -53,6 +54,8 @@ def expected_artifact_transform_version(relative_path: str) -> str:
     """Return the code-owned transform contract for one allowed artifact path."""
     if relative_path == "strategy.json":
         return STRATEGY_TRANSFORM_VERSION
+    if relative_path in {"portfolio/summary.json", "portfolio/simulator.json"}:
+        return PORTFOLIO_TRANSFORM_VERSION
     if relative_path in _BASE_TRANSFORM_ARTIFACTS:
         return TRANSFORM_VERSION
     if re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", relative_path):
@@ -349,6 +352,7 @@ def build_modular_artifacts(
     }
 
     aliases = result.datasets.get("channel_aliases", [])
+    dossier_payloads = []
     for channel_name, profile in profiles.items():
         relative_path = f"channels/{channel_slug(channel_name)}.json"
         payloads[relative_path] = {
@@ -371,6 +375,17 @@ def build_modular_artifacts(
                 if str(row.get("channel_name")) == channel_name
             ],
         }
+        dossier_payloads.append(payloads[relative_path]["channel"])
+
+    payloads.update(
+        build_portfolio_artifacts(
+            overview=result.overview,
+            channel_index=channel_index,
+            dossiers=dossier_payloads,
+            registration_cube=registration_cube,
+            generated_at=generated_at,
+        )
+    )
 
     assert_anonymous(payloads)
     artifacts = dict(payloads)

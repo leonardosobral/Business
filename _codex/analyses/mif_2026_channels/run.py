@@ -60,6 +60,24 @@ from .source import (
 _RAW_BOUNDARY_KEYS = frozenset(
     {"facts", "raw_facts", "numero_pedido", "numero_inscricao", "body"}
 )
+_PORTFOLIO_ARTIFACTS = frozenset(
+    {"portfolio/summary.json", "portfolio/simulator.json"}
+)
+_PORTFOLIO_BYTE_LIMITS = {
+    "portfolio/summary.json": 750_000,
+    "portfolio/simulator.json": 2_000_000,
+}
+_PORTFOLIO_FORBIDDEN_KEYS = frozenset(
+    {
+        "numero_pedido",
+        "numero_inscricao",
+        "email",
+        "documento",
+        "cpf",
+        "city",
+        "week_start",
+    }
+)
 _FORBIDDEN_DECISION_LANGUAGE = re.compile(
     r"\b(?:score|rank(?:ed|ing)?|keep[\s_/-]*cut)\b", re.IGNORECASE
 )
@@ -923,6 +941,23 @@ def _contains_forbidden_strategy_cube(value: object) -> bool:
     return False
 
 
+def _reject_portfolio_forbidden_keys(value: object, path: str = "$") -> None:
+    """Reject fields that would make the portfolio output identifying or too granular."""
+    if isinstance(value, dict):
+        for key, child in value.items():
+            normalized = str(key).strip().casefold()
+            is_overview_coverage_field = (
+                normalized == "city"
+                and path == "$.overview.source_field_coverage.registrations"
+            )
+            if normalized in _PORTFOLIO_FORBIDDEN_KEYS and not is_overview_coverage_field:
+                raise ValueError(f"forbidden portfolio field at {path}.{key}")
+            _reject_portfolio_forbidden_keys(child, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            _reject_portfolio_forbidden_keys(child, f"{path}[{index}]")
+
+
 def verify_modular_outputs(manifest_path: Path) -> None:
     """Verify hashes, privacy and cross-bundle reconciliations without raw sources."""
     manifest = _read_json(manifest_path)
@@ -951,6 +986,7 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         "products.json",
         "channels/index.json",
         "explorer.json",
+        *_PORTFOLIO_ARTIFACTS,
     }
     if not required.issubset(receipts):
         raise ValueError("required modular bundles are missing")
@@ -974,6 +1010,11 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError(f"modular artifact hash mismatch: {relative_path}")
         if len(content) != int(receipt.get("bytes", -1)):
             raise ValueError(f"modular artifact byte count mismatch: {relative_path}")
+        if (
+            relative_path in _PORTFOLIO_BYTE_LIMITS
+            and len(content) >= _PORTFOLIO_BYTE_LIMITS[relative_path]
+        ):
+            raise ValueError(f"portfolio artifact exceeds byte limit: {relative_path}")
         if receipt.get("source_sha256") != source_sha256:
             raise ValueError(f"modular source hash mismatch: {relative_path}")
         payload = json.loads(content)
@@ -988,6 +1029,8 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError(f"modular transform mismatch: {relative_path}")
         _reject_raw_boundary(payload)
         assert_anonymous(payload)
+        if relative_path in _PORTFOLIO_ARTIFACTS:
+            _reject_portfolio_forbidden_keys(payload)
         payloads[relative_path] = payload
 
     general = payloads["general.json"]
@@ -1017,6 +1060,92 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         explorer.get("registration_cube"), "explorer.json"
     ) != paid_registrations:
         raise ValueError("modular explorer registration mismatch")
+
+    portfolio_summary = payloads["portfolio/summary.json"]
+    if portfolio_summary.get("overview") != overview:
+        raise ValueError("portfolio overview mismatch")
+    if "coverage_cube" in portfolio_summary:
+        raise ValueError("portfolio summary contains simulator cube")
+
+    portfolio_simulator = payloads["portfolio/simulator.json"]
+    if portfolio_simulator.get("dimensions") != [
+        "phase",
+        "modality",
+        "state",
+        "channel_name",
+    ]:
+        raise ValueError("portfolio simulator dimensions mismatch")
+    selectable_channels = portfolio_simulator.get("selectable_channels")
+    if not isinstance(selectable_channels, list):
+        raise ValueError("portfolio selectable channels are invalid")
+    selectable_names: set[str] = set()
+    selectable_slugs: set[str] = set()
+    for row in selectable_channels:
+        if not isinstance(row, dict):
+            raise ValueError("portfolio selectable channel is invalid")
+        channel_name = str(row.get("channel_name", ""))
+        slug = str(row.get("slug", ""))
+        if not channel_name or not slug or slug in selectable_slugs:
+            raise ValueError("portfolio selectable channel slugs are invalid")
+        if channel_name in selectable_names:
+            raise ValueError("portfolio selectable channel names are duplicated")
+        if _required_decimal(
+            row.get("registration_ticket"), "portfolio registration ticket"
+        ) <= Decimal("10.00"):
+            raise ValueError("portfolio selectable channel ticket is ineligible")
+        if str(row.get("channel_type", "")).casefold() == "organico":
+            raise ValueError("portfolio organic channel is selectable")
+        selectable_names.add(channel_name)
+        selectable_slugs.add(slug)
+
+    coverage_cube = portfolio_simulator.get("coverage_cube")
+    if not isinstance(coverage_cube, list):
+        raise ValueError("portfolio simulator cube is invalid")
+    cell_rows: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
+    for row in coverage_cube:
+        if not isinstance(row, dict):
+            raise ValueError("portfolio simulator row is invalid")
+        try:
+            cell = (str(row["phase"]), str(row["modality"]), str(row["state"]))
+            str(row["channel_name"])
+            int(row["paid_registrations"])
+        except (KeyError, TypeError, ValueError) as error:
+            raise ValueError("portfolio simulator row is invalid") from error
+        cell_rows.setdefault(cell, []).append(row)
+
+    portfolio_total = 0
+    total_label = "Todos os canais"
+    commercial_total_label = "Canais comerciais não orgânicos"
+    for rows in cell_rows.values():
+        all_totals = [row for row in rows if row["channel_name"] == total_label]
+        commercial_totals = [
+            row for row in rows if row["channel_name"] == commercial_total_label
+        ]
+        details = [
+            row
+            for row in rows
+            if row["channel_name"] not in {total_label, commercial_total_label}
+        ]
+        if len(all_totals) != 1:
+            raise ValueError("portfolio simulator all-channel total is invalid")
+        all_total = int(all_totals[0]["paid_registrations"])
+        if sum(int(row["paid_registrations"]) for row in details) != all_total:
+            raise ValueError("portfolio simulator all-channel total mismatch")
+        commercial_total = sum(
+            int(row["paid_registrations"])
+            for row in details
+            if str(row["channel_name"]) in selectable_names
+        )
+        if len(commercial_totals) > 1 or (
+            commercial_totals
+            and int(commercial_totals[0]["paid_registrations"]) != commercial_total
+        ):
+            raise ValueError("portfolio simulator commercial total mismatch")
+        if commercial_total and not commercial_totals:
+            raise ValueError("portfolio simulator commercial total is missing")
+        portfolio_total += all_total
+    if portfolio_total != paid_registrations:
+        raise ValueError("portfolio simulator registration mismatch")
 
     channel_index = payloads["channels/index.json"].get("channels")
     if not isinstance(channel_index, list):
