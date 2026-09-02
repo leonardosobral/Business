@@ -657,7 +657,7 @@ def build_portfolio_artifacts(
         "dimension_benchmarks": benchmarks,
         "dimension_panels": dimension_panels,
         "redundancy_candidates": redundancy[:10],
-        "dependency_cells": dependencies[:10],
+        "dependency_cells": dependencies,
         "executive_takeaways": takeaways,
     }
     simulator = {

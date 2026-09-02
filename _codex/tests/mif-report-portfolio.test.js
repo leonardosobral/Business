@@ -176,7 +176,7 @@ function summaryFixture() {
         Alfa: { status: 'referência disponível', nearest_channel: '<img src=x>', similarity_0_1: 0.8 },
       },
     }])),
-    redundancy_candidates: Array.from({ length: 12 }, (_, index) => ({
+    redundancy_candidates: Array.from({ length: 10 }, (_, index) => ({
       left_channel: `Canal ${index + 1}`,
       right_channel: 'Alfa',
       qualifying_dimensions: ['geography', 'temporal'],
@@ -184,7 +184,7 @@ function summaryFixture() {
       combined_gross_value: '100.00',
       similarities: { geography: 0.9, modality: 0.8, temporal: 0.7, lot: 0.6, product: 0.5 },
     })),
-    dependency_cells: Array.from({ length: 12 }, (_, index) => ({
+    dependency_cells: Array.from({ length: 11 }, (_, index) => ({
       phase: index ? 'Início' : 'Lançamento',
       modality: '21K',
       state: `S${index + 1}`,
@@ -251,7 +251,7 @@ test('summary renderer keeps channel names safe and uses Portuguese report conve
   assert.match(root.innerHTML, /não estabelecem causalidade/);
 });
 
-test('summary renderer keeps pair tables exact and uses Outros only for additive dependency charts', () => {
+test('summary renderer consumes full producer-shaped dependencies for KPI and additive Outros', () => {
   const root = { innerHTML: '' };
 
   portfolio.renderSummary(root, summaryFixture());
@@ -261,8 +261,10 @@ test('summary renderer keeps pair tables exact and uses Outros only for additive
     root.innerHTML.indexOf('id="portfolio-dependencias"'),
   );
   assert.match(redundancySection, /CANAL 10 × ALFA/);
-  assert.doesNotMatch(redundancySection, /CANAL 11 × ALFA|OUTROS/);
+  assert.doesNotMatch(redundancySection, /OUTROS/);
   assert.match(redundancySection, /Geografia|Modalidade|Temporalidade|Lote|Produto/);
+  const redundancyTable = redundancySection.slice(redundancySection.indexOf('<table'));
+  assert.equal((redundancyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 10);
 
   const dependencySection = root.innerHTML.slice(
     root.innerHTML.indexOf('id="portfolio-dependencias"'),
@@ -270,8 +272,11 @@ test('summary renderer keeps pair tables exact and uses Outros only for additive
   );
   assert.match(dependencySection, /Top 10 \+ Outros/);
   assert.equal((dependencySection.match(/>Outros<\/text>/g) || []).length, 1);
+  assert.match(dependencySection, />2<\/text>/);
   const dependencyTable = dependencySection.slice(dependencySection.lastIndexOf('<table'));
   assert.doesNotMatch(dependencyTable, /<td>Outros<\/td>/);
+  assert.equal((dependencyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 10);
+  assert.match(root.innerHTML, /Células de dependência<\/span><strong>11<\/strong>/);
 
   const exactTopTen = summaryFixture();
   exactTopTen.redundancy_candidates = exactTopTen.redundancy_candidates.slice(0, 10);

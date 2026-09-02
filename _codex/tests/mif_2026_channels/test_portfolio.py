@@ -169,6 +169,35 @@ class PortfolioContractTests(unittest.TestCase):
             self.assertTrue(all(isinstance(row["channels"], int) for row in panel["quadrants"]))
             self.assertLessEqual(len(panel["top_channels"]), 10)
 
+    def test_summary_preserves_full_dependency_population_for_additive_chart_reconciliation(self):
+        fixture = portfolio_fixture()
+        fixture["registration_cube"] = [
+            row
+            for index in range(11)
+            for row in (
+                {
+                    "phase": "Meio",
+                    "modality": "21K",
+                    "state": f"S{index:02d}",
+                    "channel_name": "ALFA",
+                    "paid_registrations": 12,
+                },
+                {
+                    "phase": "Meio",
+                    "modality": "21K",
+                    "state": f"S{index:02d}",
+                    "channel_name": "Orgânico / sem cupom",
+                    "paid_registrations": 8,
+                },
+            )
+        ]
+
+        dependencies = build_portfolio_artifacts(**fixture)["portfolio/summary.json"]["dependency_cells"]
+
+        self.assertEqual(len(dependencies), 11)
+        self.assertEqual(sum(row["paid_registrations"] for row in dependencies), 132)
+        self.assertEqual([row["state"] for row in dependencies], [f"S{index:02d}" for index in range(11)])
+
     def test_redundancy_excludes_organic_pairs_from_commercial_candidates(self):
         channels = [
             {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
