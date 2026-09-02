@@ -257,7 +257,7 @@
         <div class="channel-card-main">
           <span>${escapeHtml(recommendation.category || 'Sem classificação')}</span>
           <h2><a href="${escapeHtml(href)}">${escapeHtml(channel.channel_name)}</a></h2>
-          <p>${escapeHtml(summary)}</p>
+          <p>${renderNarrative(summary)}</p>
         </div>
         <dl>
           <div><dt>Valor bruto</dt><dd>${escapeHtml(formatCurrency(channel.gross_value))}</dd></div>

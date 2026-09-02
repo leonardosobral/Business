@@ -85,6 +85,25 @@ test('channel list is ordered by gross DESC, registrations DESC and name', () =>
   assert.deepEqual(rows.map((row) => row.channel_name), ['Beta', 'Alfa', 'Zeta']);
 });
 
+test('channel directory renders executive highlights without raw Markdown', () => {
+  const root = { innerHTML: '' };
+  report.renderChannelIndex(root, {
+    channels: [{
+      slug: 'roadrunners',
+      channel_name: 'ROADRUNNERS',
+      gross_value: '545290.12',
+      paid_registrations: 1876,
+      registration_ticket: '290.67',
+      executive_summary: '## ROADRUNNERS - **Escala e valor** — destaque <script>',
+      recommendation: { category: 'Priorizar' },
+    }],
+  });
+
+  assert.doesNotMatch(root.innerHTML, /##|\*\*/);
+  assert.match(root.innerHTML, /<strong>Escala e valor<\/strong>/);
+  assert.match(root.innerHTML, /&lt;script&gt;/);
+});
+
 test('chart markup states title, denominator, source and Top 10 rule', () => {
   const chart = report.renderBarChart({
     title: 'Inscrições por canal',
