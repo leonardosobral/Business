@@ -120,6 +120,39 @@ test('chart uses Top 10 + Outros while the table remains complete', () => {
   assert.equal((root.innerHTML.match(/class="bar-label">Outros/g) || []).length, 1);
 });
 
+test('product-name charts use Top 10 without fabricating Outros', () => {
+  const manyProducts = {
+    ...data,
+    product_cube: Array.from({ length: 12 }, (_, index) => ({
+      product_name: `Produto ${index + 1}`,
+      product_quantity: index + 1,
+      explicit_revenue: String((index + 1) * 25),
+      registrations_with_product: index + 1,
+    })),
+  };
+
+  for (const metric of ['registrations_with_product', 'product_quantity']) {
+    const result = explorer.aggregateRows(manyProducts, {
+      metric,
+      primaryDimension: 'product_name',
+    });
+
+    assert.equal(result.rows.length, 12, metric);
+    assert.equal(result.chartRows.length, 10, metric);
+    assert.equal(result.chartTailMode, 'truncate-products', metric);
+    assert.equal(result.chartRows.some((row) => row.primary === 'Outros'), false, metric);
+  }
+
+  global.MifReport = report;
+  const root = { innerHTML: '' };
+  explorer.render(root, manyProducts, {
+    metric: 'registrations_with_product',
+    primaryDimension: 'product_name',
+  });
+  assert.equal((root.innerHTML.match(/class="bar-label">Outros/g) || []).length, 0);
+  assert.match(root.innerHTML, /Produtos são sobrepostos; visual Top 10 sem somar “Outros”/);
+});
+
 test('share URL is deterministic and includes only validated state', () => {
   const selection = {
     metric: 'paid_registrations',

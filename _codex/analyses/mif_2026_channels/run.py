@@ -37,7 +37,11 @@ from .narrative import (
     describe_roadrunners_capstone,
 )
 from .normalize import normalize_key
-from .modular_artifact import TRANSFORM_VERSION, canonical_json_bytes
+from .modular_artifact import (
+    TRANSFORM_VERSION,
+    canonical_json_bytes,
+    expected_artifact_transform_version,
+)
 from .pipeline import (
     CHART_RATIONALES,
     run_analysis,
@@ -907,6 +911,18 @@ def _sum_modular_registrations(rows: object, label: str) -> int:
         raise ValueError(f"invalid modular registration metric: {label}") from error
 
 
+def _contains_forbidden_strategy_cube(value: object) -> bool:
+    """Reject detailed observation structures anywhere in the compact strategy tree."""
+    forbidden = {"observations", "registration_cube", "product_cube"}
+    if isinstance(value, dict):
+        return bool(forbidden.intersection(value)) or any(
+            _contains_forbidden_strategy_cube(child) for child in value.values()
+        )
+    if isinstance(value, list):
+        return any(_contains_forbidden_strategy_cube(child) for child in value)
+    return False
+
+
 def verify_modular_outputs(manifest_path: Path) -> None:
     """Verify hashes, privacy and cross-bundle reconciliations without raw sources."""
     manifest = _read_json(manifest_path)
@@ -961,12 +977,14 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         if receipt.get("source_sha256") != source_sha256:
             raise ValueError(f"modular source hash mismatch: {relative_path}")
         payload = json.loads(content)
-        artifact_transform_version = str(
-            (payload.get("meta") or {}).get("transform_version", TRANSFORM_VERSION)
-            if isinstance(payload, dict)
-            else TRANSFORM_VERSION
-        )
+        artifact_transform_version = expected_artifact_transform_version(relative_path)
         if receipt.get("transform_version") != artifact_transform_version:
+            raise ValueError(f"modular transform mismatch: {relative_path}")
+        if (
+            not isinstance(payload, dict)
+            or not isinstance(payload.get("meta"), dict)
+            or payload["meta"].get("transform_version") != artifact_transform_version
+        ):
             raise ValueError(f"modular transform mismatch: {relative_path}")
         _reject_raw_boundary(payload)
         assert_anonymous(payload)
@@ -987,9 +1005,7 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         strategy_datasets.get("phase_modality"), "strategy.json"
     ) != paid_registrations:
         raise ValueError("modular strategy registration mismatch")
-    if any(
-        key in strategy for key in ("observations", "registration_cube", "product_cube")
-    ):
+    if _contains_forbidden_strategy_cube(strategy):
         raise ValueError("modular strategy contains detailed cubes")
     for relative_path in ("cycle.json", "territories.json"):
         if _sum_modular_registrations(

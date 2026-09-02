@@ -2,6 +2,7 @@
 
 import csv
 from copy import deepcopy
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -1081,6 +1082,42 @@ class ModularArtifactPipelineTests(unittest.TestCase):
             check=False,
         )
 
+    @staticmethod
+    def _rewrite_artifact_and_receipt(
+        output_dir: Path,
+        relative_path: str,
+        payload: dict,
+        *,
+        receipt_transform_version: str | None = None,
+    ) -> None:
+        serialized = (
+            json.dumps(
+                payload,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            + "\n"
+        ).encode("utf-8")
+        (output_dir / relative_path).write_bytes(serialized)
+        manifest_path = output_dir / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        receipt = manifest["artifacts"][relative_path]
+        receipt["sha256"] = hashlib.sha256(serialized).hexdigest()
+        receipt["bytes"] = len(serialized)
+        if receipt_transform_version is not None:
+            receipt["transform_version"] = receipt_transform_version
+        manifest_path.write_text(
+            json.dumps(
+                manifest,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
     def test_analyze_modular_and_verify_modular_commands_are_portable(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -1134,6 +1171,71 @@ class ModularArtifactPipelineTests(unittest.TestCase):
 
             self.assertNotEqual(verify.returncode, 0)
             self.assertIn("hash", verify.stderr.casefold())
+
+    def test_verify_modular_rejects_coherent_untrusted_transform_version(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            channel_map, product_map = write_reviewed_mappings(root)
+            output_dir = root / "modular"
+            analyze = self._run(
+                "analyze-modular",
+                "--orders", str(orders),
+                "--participants", str(participants),
+                "--channel-map", str(channel_map),
+                "--product-map", str(product_map),
+                "--output-dir", str(output_dir),
+                "--allow-stale",
+            )
+            self.assertEqual(analyze.returncode, 0, analyze.stderr)
+            general = json.loads((output_dir / "general.json").read_text(encoding="utf-8"))
+            general["meta"]["transform_version"] = "attacker-controlled-transform.999"
+            self._rewrite_artifact_and_receipt(
+                output_dir,
+                "general.json",
+                general,
+                receipt_transform_version="attacker-controlled-transform.999",
+            )
+
+            verify = self._run(
+                "verify-modular",
+                "--manifest", str(output_dir / "manifest.json"),
+            )
+
+            self.assertNotEqual(verify.returncode, 0)
+            self.assertIn("transform", verify.stderr.casefold())
+
+    def test_verify_modular_rejects_nested_strategy_cube(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            orders, participants = write_source_exports(root)
+            channel_map, product_map = write_reviewed_mappings(root)
+            output_dir = root / "modular"
+            analyze = self._run(
+                "analyze-modular",
+                "--orders", str(orders),
+                "--participants", str(participants),
+                "--channel-map", str(channel_map),
+                "--product-map", str(product_map),
+                "--output-dir", str(output_dir),
+                "--allow-stale",
+            )
+            self.assertEqual(analyze.returncode, 0, analyze.stderr)
+            strategy = json.loads((output_dir / "strategy.json").read_text(encoding="utf-8"))
+            strategy["datasets"]["registration_cube"] = []
+            self._rewrite_artifact_and_receipt(
+                output_dir,
+                "strategy.json",
+                strategy,
+            )
+
+            verify = self._run(
+                "verify-modular",
+                "--manifest", str(output_dir / "manifest.json"),
+            )
+
+            self.assertNotEqual(verify.returncode, 0)
+            self.assertIn("detailed cubes", verify.stderr.casefold())
 
 
 if __name__ == "__main__":

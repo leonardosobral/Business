@@ -7,6 +7,7 @@ from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
+import re
 from typing import Any, Iterable
 
 from .config import EVENT_CODE, PIPELINE_VERSION
@@ -19,6 +20,16 @@ from .strategy import STRATEGY_TRANSFORM_VERSION, build_strategy
 
 
 TRANSFORM_VERSION = f"{PIPELINE_VERSION}-modular.1"
+_BASE_TRANSFORM_ARTIFACTS = frozenset(
+    {
+        "general.json",
+        "cycle.json",
+        "territories.json",
+        "products.json",
+        "channels/index.json",
+        "explorer.json",
+    }
+)
 GENERAL_DATASETS = (
     "event_overview",
     "age_bands",
@@ -36,6 +47,17 @@ REGISTRATION_MONEY_FIELDS = (
     "allocated_discount_value",
     "allocated_fee_value",
 )
+
+
+def expected_artifact_transform_version(relative_path: str) -> str:
+    """Return the code-owned transform contract for one allowed artifact path."""
+    if relative_path == "strategy.json":
+        return STRATEGY_TRANSFORM_VERSION
+    if relative_path in _BASE_TRANSFORM_ARTIFACTS:
+        return TRANSFORM_VERSION
+    if re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", relative_path):
+        return TRANSFORM_VERSION
+    raise ValueError(f"unexpected modular artifact path: {relative_path}")
 
 
 def channel_slug(channel_name: object) -> str:
@@ -182,11 +204,11 @@ def _manifest(
     entries = {}
     for relative_path, payload in sorted(payloads.items()):
         serialized = canonical_json_bytes(payload)
-        artifact_transform_version = str(
-            (payload.get("meta") or {}).get("transform_version", TRANSFORM_VERSION)
-            if isinstance(payload, dict)
-            else TRANSFORM_VERSION
-        )
+        artifact_transform_version = expected_artifact_transform_version(relative_path)
+        if not isinstance(payload, dict) or not isinstance(payload.get("meta"), dict):
+            raise ValueError(f"missing modular artifact metadata: {relative_path}")
+        if payload["meta"].get("transform_version") != artifact_transform_version:
+            raise ValueError(f"modular transform mismatch: {relative_path}")
         entries[relative_path] = {
             "path": relative_path,
             "sha256": _sha256(serialized),

@@ -36,7 +36,7 @@
     <main class="report-content explorer-layout">
       <aside class="explorer-panel no-print">
         <h2>Configurar visão</h2>
-        <p>Máximo de duas dimensões. O gráfico usa Top 10 + Outros e a tabela mantém todas as linhas.</p>
+        <p>Máximo de duas dimensões. Categorias exclusivas usam Top 10 + Outros; produtos usam Top 10 sem somar Outros. A tabela mantém todas as linhas.</p>
         <form id="explorer-form">
           <div class="explorer-field">
             <label for="explorer-metric">Métrica</label>
@@ -77,7 +77,7 @@
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifExplorerPayloadJson#</cfoutput></script>
   <script src="../assets/report.js?v=20260902-2"></script>
-  <script src="../assets/explorer.js?v=20260902-1"></script>
+  <script src="../assets/explorer.js?v=20260902-2"></script>
   <script>
     (function configureMifExplorer() {
       'use strict';

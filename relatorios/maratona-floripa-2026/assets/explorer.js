@@ -107,20 +107,29 @@
         || left.comparison.localeCompare(right.comparison, 'pt-BR', { numeric: true });
     });
 
+    const productNamesOverlap = contract.cube === 'products'
+      && [contract.primaryDimension, contract.comparisonDimension].includes('product_name');
+    let chartTailMode = 'complete';
     let chartRows = resultRows.map((row) => ({ ...row }));
     if (chartRows.length > 10) {
-      const tailComponents = emptyComponents(contract);
-      for (const row of chartRows.slice(10)) mergeComponents(tailComponents, row.components, contract);
-      chartRows = [
-        ...chartRows.slice(0, 10),
-        {
-          primary: 'Outros',
-          comparison: '',
-          value: componentValue(tailComponents, contract),
-          components: tailComponents,
-          aggregated_rows: resultRows.length - 10,
-        },
-      ];
+      if (productNamesOverlap) {
+        chartRows = chartRows.slice(0, 10);
+        chartTailMode = 'truncate-products';
+      } else {
+        const tailComponents = emptyComponents(contract);
+        for (const row of chartRows.slice(10)) mergeComponents(tailComponents, row.components, contract);
+        chartRows = [
+          ...chartRows.slice(0, 10),
+          {
+            primary: 'Outros',
+            comparison: '',
+            value: componentValue(tailComponents, contract),
+            components: tailComponents,
+            aggregated_rows: resultRows.length - 10,
+          },
+        ];
+        chartTailMode = 'aggregate-other';
+      }
     }
     const denominator = contract.cube === 'registrations'
       ? rows.reduce((total, row) => total + number(row.paid_registrations), 0)
@@ -129,6 +138,7 @@
       contract,
       rows: resultRows,
       chartRows,
+      chartTailMode,
       denominator,
       sourceRowCount: rows.length,
       grain: contract.cube === 'registrations' ? 'inscrições pagas agregadas' : 'itens de produto vinculados',
@@ -161,7 +171,7 @@
     const report = globalScope.MifReport;
     if (!report) throw new Error('Renderizador compartilhado indisponível.');
     const format = formatter(report, result.contract);
-    const chartRows = result.chartRows.map((row) => ({
+    const chartRows = result.rows.map((row) => ({
       label: row.comparison ? `${row.primary} · ${row.comparison}` : row.primary,
       value: row.value,
     }));
@@ -171,7 +181,7 @@
       value: row.value,
     }));
     root.innerHTML = `<div class="explorer-receipt"><strong>Grão:</strong> ${report.escapeHtml(result.grain)} · <strong>Células observadas:</strong> ${report.formatInteger(result.sourceRowCount)} · <strong>Base aditiva:</strong> ${report.formatInteger(result.denominator)}</div>
-      ${report.renderBarChart({ title: result.contract.label, description: 'Cruzamento controlado sobre cubos anônimos pré-calculados.', rows: chartRows, labelKey: 'label', valueKey: 'value', valueFormatter: format, limit: chartRows.length, denominator: result.denominator, source: result.grain })}
+      ${report.renderBarChart({ title: result.contract.label, description: result.chartTailMode === 'truncate-products' ? 'Produtos são sobrepostos; visual Top 10 sem somar “Outros”. A tabela mantém todos os itens.' : 'Cruzamento controlado sobre cubos anônimos pré-calculados.', rows: chartRows, labelKey: 'label', valueKey: 'value', valueFormatter: format, limit: 10, aggregateOther: result.chartTailMode === 'truncate-products' ? false : undefined, denominator: result.denominator, source: result.grain })}
       ${report.renderTable({ columns: [
         { key: 'primary', label: selection.primaryDimension },
         { key: 'comparison', label: selection.comparisonDimension || 'Comparação' },
