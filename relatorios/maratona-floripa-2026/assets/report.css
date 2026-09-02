@@ -164,6 +164,28 @@ tbody tr:nth-child(even) { background: #fbfaf6; }
 .recommendation > span { display: block; color: var(--muted); font-size: .8rem; font-weight: 800; text-transform: uppercase; }
 .recommendation > strong { display: block; margin: .2rem 0 .8rem; font-size: 1.65rem; }
 
+.channel-directory { display: grid; gap: .8rem; margin: 1.5rem 0; }
+.channel-card {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: white;
+}
+.channel-position { color: var(--accent); font-size: 1.25rem; font-weight: 900; text-align: center; }
+.channel-card-main > span { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+.channel-card h2 { margin: .1rem 0; font-size: 1.2rem; }
+.channel-card h2 a { color: var(--ink); text-decoration: none; }
+.channel-card p { margin: .2rem 0 0; color: var(--muted); font-size: .85rem; }
+.channel-card dl { display: flex; gap: 1rem; margin: 0; }
+.channel-card dl div { min-width: 6.5rem; }
+.channel-card dt { color: var(--muted); font-size: .68rem; text-transform: uppercase; }
+.channel-card dd { margin: .1rem 0 0; font-weight: 800; }
+.channel-open { padding: .55rem .75rem; border-radius: 999px; color: white; background: var(--green); font-size: .8rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+
 .report-footer { padding: 2rem; color: var(--muted); text-align: center; }
 
 @media (max-width: 820px) {
@@ -172,6 +194,9 @@ tbody tr:nth-child(even) { background: #fbfaf6; }
   .report-topbar > span { display: none; }
   .report-content { width: min(100% - 1rem, 1180px); }
   .report-section { border-radius: .9rem; }
+  .channel-card { grid-template-columns: 2rem minmax(0, 1fr); }
+  .channel-card dl, .channel-open { grid-column: 2; }
+  .channel-card dl { flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {

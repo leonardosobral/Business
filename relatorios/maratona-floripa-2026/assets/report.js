@@ -236,6 +236,39 @@
     });
   }
 
+  function renderChannelIndex(root, data) {
+    const channels = sortChannelsByGross(data.channels || []);
+    const cards = channels.map((channel, index) => {
+      const recommendation = channel.recommendation || {};
+      const summary = channel.executive_summary || channel.executive_highlight || recommendation.role || 'Sem highlight disponível.';
+      const href = `dossie.cfm?canal=${encodeURIComponent(channel.slug || '')}`;
+      return `<article class="channel-card">
+        <div class="channel-position">${index + 1}</div>
+        <div class="channel-card-main">
+          <span>${escapeHtml(recommendation.category || 'Sem classificação')}</span>
+          <h2><a href="${escapeHtml(href)}">${escapeHtml(channel.channel_name)}</a></h2>
+          <p>${escapeHtml(summary)}</p>
+        </div>
+        <dl>
+          <div><dt>Valor bruto</dt><dd>${escapeHtml(formatCurrency(channel.gross_value))}</dd></div>
+          <div><dt>Inscrições</dt><dd>${escapeHtml(formatInteger(channel.paid_registrations))}</dd></div>
+          <div><dt>Ticket</dt><dd>${escapeHtml(formatCurrency(channel.registration_ticket))}</dd></div>
+        </dl>
+        <a class="channel-open" href="${escapeHtml(href)}">Abrir dossiê</a>
+      </article>`;
+    }).join('');
+    root.innerHTML = `${renderBarChart({
+      title: 'Valor bruto por canal',
+      description: 'Ordem comercial do portfólio; o visual usa Top 10 + Outros.',
+      rows: channels,
+      labelKey: 'channel_name',
+      valueKey: 'gross_value',
+      valueFormatter: formatCurrency,
+      denominator: channels.length ? formatCurrency(channels.reduce((total, row) => total + toNumber(row.gross_value), 0)) : 0,
+      source: 'Valores de pedido alocados às inscrições pagas de cada canal.',
+    })}<div class="channel-directory">${cards || '<p>Não há canais observados.</p>'}</div>`;
+  }
+
   function renderGeneral(root, data) {
     const general = data.general || {};
     const cycle = data.cycle || {};
@@ -320,6 +353,7 @@
     renderLineChart,
     renderStackedChart,
     renderTable,
+    renderChannelIndex,
     renderGeneral,
     renderChannel,
   };

@@ -4,9 +4,11 @@
 <cfinclude template="../../../includes/backend/backend_login.cfm"/>
 
 <cfset VARIABLES.mifReportDefaultReturnPath = "/relatorios/maratona-floripa-2026/"/>
-<cfset VARIABLES.mifReportReturnPath = structKeyExists(CGI, "SCRIPT_NAME")
-    ? trim(CGI.SCRIPT_NAME & "")
-    : VARIABLES.mifReportDefaultReturnPath/>
+<cfset VARIABLES.mifReportReturnPath = structKeyExists(VARIABLES, "mifReportRequestedReturnPath")
+    ? trim(VARIABLES.mifReportRequestedReturnPath & "")
+    : (structKeyExists(CGI, "SCRIPT_NAME")
+        ? trim(CGI.SCRIPT_NAME & "")
+        : VARIABLES.mifReportDefaultReturnPath)/>
 
 <cfif NOT (
     len(VARIABLES.mifReportReturnPath)
