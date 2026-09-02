@@ -32,6 +32,19 @@ test('channel index reads only the index and renders commercial DESC order', () 
   assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
 });
 
+test('channel pages keep the general-analysis action and add one portfolio action on the right', () => {
+  for (const pagePath of [indexPath, dossierPath]) {
+    const page = fs.readFileSync(pagePath, 'utf8');
+    const actions = page.match(/<div class=["']report-actions["']>[\s\S]*?<\/div>/i)?.[0] || '';
+
+    assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral<\/a>/i);
+    assert.equal((actions.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+    assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+    assert.equal((page.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+    assert.doesNotMatch(page, /class=["']report-back["']/i);
+  }
+});
+
 test('dossier validates the slug against the manifest and loads one file', () => {
   const page = fs.readFileSync(dossierPath, 'utf8');
 

@@ -28,6 +28,7 @@
       <span>Portfólio de canais · Evento 72611</span>
       <div class="report-actions">
         <a class="button" href="../">← Análise geral</a>
+        <a class="button" href="../portfolio/">Portfólio 2027</a>
         <a class="button" href="../explorador/">Explorador</a>
         <button class="button button-primary" type="button" onclick="window.print()">Gerar PDF da lista</button>
       </div>

@@ -68,3 +68,14 @@ test('explorer uses local report assets, public brand fonts and links back to th
   assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
   assert.match(page, /MifReport\.isVisibleLot/i);
 });
+
+test('explorer keeps the general-analysis action and adds one portfolio action on the right', () => {
+  const page = fs.readFileSync(pagePath, 'utf8');
+  const actions = page.match(/<div class=["']report-actions["']>[\s\S]*?<\/div>/i)?.[0] || '';
+
+  assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral<\/a>/i);
+  assert.equal((actions.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+  assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.equal((page.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+  assert.doesNotMatch(page, /class=["']report-back["']/i);
+});

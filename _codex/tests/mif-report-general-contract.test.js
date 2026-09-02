@@ -48,6 +48,16 @@ test('general page declares the eight editorial chapters and print action', () =
   assert.match(page, /MifReport\.renderGeneral/i);
 });
 
+test('general page offers one portfolio action in the right-side action group', () => {
+  const page = fs.readFileSync(pagePath, 'utf8');
+  const actions = page.match(/<div class=["']report-actions["']>[\s\S]*?<\/div>/i)?.[0] || '';
+
+  assert.equal((actions.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+  assert.match(actions, /class=["']button["'][^>]+href=["']portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.equal((page.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
+  assert.doesNotMatch(page, /class=["']report-back["']/i);
+});
+
 test('general page embeds escaped JSON and limits remote assets to public brand fonts', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
 

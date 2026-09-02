@@ -30,6 +30,7 @@
       <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
       <span>Estudo pós-vendas · Evento 72611</span>
       <div class="report-actions">
+        <a class="button" href="portfolio/">Portfólio 2027</a>
         <a class="button" href="canais/">Dossiês de canais</a>
         <a class="button" href="explorador/">Explorador</a>
         <button class="button button-primary" type="button" onclick="window.print()">Gerar PDF</button>
