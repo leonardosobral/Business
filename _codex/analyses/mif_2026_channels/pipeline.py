@@ -18,6 +18,7 @@ from .mappings import (
     load_product_mapping,
 )
 from .metrics import build_analysis
+from .models import AnalysisResult, FactBundle, SourceBundle
 from .narrative import build_decision_questions, describe_event
 from .privacy import assert_anonymous, protect_analysis
 from .source import load_sources, resolve_report_generated_at
@@ -42,6 +43,16 @@ _TASK_DEEP_LINK = re.compile(
     r"codex://threads/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-"
     r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?=\?)"
 )
+
+
+@dataclasses.dataclass(frozen=True)
+class AnalysisContext:
+    """Reusable reconciled state shared by monolithic and modular writers."""
+
+    sources: SourceBundle
+    mapped_facts: FactBundle
+    result: AnalysisResult
+    snapshot_status: str
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -131,15 +142,15 @@ def _source_notes(result, sources, status: str) -> dict[str, Any]:
     return notes
 
 
-def run_analysis(
+def build_analysis_context(
     orders_path: Path,
     participants_path: Path,
     channel_mapping_path: Path,
     product_mapping_path: Path,
-    output_dir: Path,
+    *,
     allow_stale: bool = False,
-) -> dict[str, Path]:
-    """Run source-to-report analysis and write only anonymous reviewed outputs."""
+) -> AnalysisContext:
+    """Load, reconcile, map and protect the source data exactly once."""
     sources = load_sources(
         orders_path, participants_path, EVENT_CODE, allow_stale=allow_stale
     )
@@ -153,6 +164,35 @@ def run_analysis(
     snapshot_status = "fixture" if allow_stale else "ready"
     notes = _source_notes(result, sources, snapshot_status)
     result = dataclasses.replace(result, source_notes=notes)
+    return AnalysisContext(
+        sources=sources,
+        mapped_facts=mapped,
+        result=result,
+        snapshot_status=snapshot_status,
+    )
+
+
+def run_analysis(
+    orders_path: Path,
+    participants_path: Path,
+    channel_mapping_path: Path,
+    product_mapping_path: Path,
+    output_dir: Path,
+    allow_stale: bool = False,
+) -> dict[str, Path]:
+    """Run source-to-report analysis and write only anonymous reviewed outputs."""
+    context = build_analysis_context(
+        orders_path,
+        participants_path,
+        channel_mapping_path,
+        product_mapping_path,
+        allow_stale=allow_stale,
+    )
+    sources = context.sources
+    mapped = context.mapped_facts
+    result = context.result
+    snapshot_status = context.snapshot_status
+    notes = result.source_notes
 
     aggregate_payload = dataclasses.asdict(result)
     reconciliation_payload = deepcopy(mapped.reconciliation)
