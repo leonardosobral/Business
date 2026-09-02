@@ -11,6 +11,15 @@ const explorer = require(path.resolve(
   'assets',
   'explorer.js',
 ));
+const report = require(path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'relatorios',
+  'maratona-floripa-2026',
+  'assets',
+  'report.js',
+));
 
 const data = {
   dimensions: {
@@ -101,6 +110,14 @@ test('chart uses Top 10 + Outros while the table remains complete', () => {
   assert.equal(result.chartRows.length, 11);
   assert.equal(result.chartRows.at(-1).primary, 'Outros');
   assert.equal(result.chartRows.at(-1).value, 3);
+
+  global.MifReport = report;
+  const root = { innerHTML: '' };
+  explorer.render(root, many, {
+    metric: 'paid_registrations',
+    primaryDimension: 'phase',
+  });
+  assert.equal((root.innerHTML.match(/class="bar-label">Outros/g) || []).length, 1);
 });
 
 test('share URL is deterministic and includes only validated state', () => {

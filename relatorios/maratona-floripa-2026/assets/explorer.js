@@ -171,7 +171,7 @@
       value: row.value,
     }));
     root.innerHTML = `<div class="explorer-receipt"><strong>Grão:</strong> ${report.escapeHtml(result.grain)} · <strong>Células observadas:</strong> ${report.formatInteger(result.sourceRowCount)} · <strong>Base aditiva:</strong> ${report.formatInteger(result.denominator)}</div>
-      ${report.renderBarChart({ title: result.contract.label, description: 'Cruzamento controlado sobre cubos anônimos pré-calculados.', rows: chartRows, labelKey: 'label', valueKey: 'value', valueFormatter: format, denominator: result.denominator, source: result.grain })}
+      ${report.renderBarChart({ title: result.contract.label, description: 'Cruzamento controlado sobre cubos anônimos pré-calculados.', rows: chartRows, labelKey: 'label', valueKey: 'value', valueFormatter: format, limit: chartRows.length, denominator: result.denominator, source: result.grain })}
       ${report.renderTable({ columns: [
         { key: 'primary', label: selection.primaryDimension },
         { key: 'comparison', label: selection.comparisonDimension || 'Comparação' },
