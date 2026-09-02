@@ -12,6 +12,11 @@ from .normalize import normalize_key
 COMMERCIAL_TICKET_MIN = Decimal("10.00")
 MIN_PROFILE_REGISTRATIONS = 10
 MIN_DIMENSION_COVERAGE_PCT = Decimal("70.00")
+MIN_PUBLISHABLE_CELL_REGISTRATIONS = 5
+EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS = MIN_PROFILE_REGISTRATIONS
+EXPOSURE_HIGH_EVENT_SHARE_PCT = Decimal("40.00")
+EXPOSURE_MEDIUM_EVENT_SHARE_PCT = Decimal("20.00")
+EXPOSURE_PARTNER_CONCENTRATION_PCT = Decimal("60.00")
 ACTIONABLE_DIMENSIONS = ("geography", "modality", "temporal", "lot", "product")
 PORTFOLIO_TRANSFORM_VERSION = "mif-2026-portfolio.1"
 SIMULATOR_DIMENSIONS = ("phase", "modality", "state", "channel_name")
@@ -67,7 +72,7 @@ def commercial_channels(
 
 def classify_exposure(*, selected: int, event_total: int, commercial_total: int) -> str | None:
     """Classify observed exposure with explicit event and partner denominators."""
-    if selected < 5 or event_total <= 0:
+    if selected < MIN_PUBLISHABLE_CELL_REGISTRATIONS or event_total <= 0:
         return None
     event_share = Decimal(selected) / Decimal(event_total) * 100
     partner_share = (
@@ -75,11 +80,20 @@ def classify_exposure(*, selected: int, event_total: int, commercial_total: int)
         if commercial_total
         else Decimal("0")
     )
-    if selected >= 10 and event_share >= 40:
+    if (
+        selected >= EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS
+        and event_share >= EXPOSURE_HIGH_EVENT_SHARE_PCT
+    ):
         return "alta"
-    if selected >= 10 and event_share >= 20:
+    if (
+        selected >= EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS
+        and event_share >= EXPOSURE_MEDIUM_EVENT_SHARE_PCT
+    ):
         return "média"
-    if partner_share >= 60 and event_share < 20:
+    if (
+        partner_share >= EXPOSURE_PARTNER_CONCENTRATION_PCT
+        and event_share < EXPOSURE_MEDIUM_EVENT_SHARE_PCT
+    ):
         return "dependência entre parceiros"
     return "baixa"
 
@@ -504,6 +518,83 @@ def _dependency_cells(
     )
 
 
+def _dimension_panels(
+    peers: dict[str, dict[str, dict[str, Any]]],
+    selectable: Iterable[dict[str, Any]],
+    benchmarks: dict[str, dict[str, float | int | None]],
+) -> dict[str, dict[str, Any]]:
+    """Build separate four-group scale/differentiation panels per dimension."""
+    selectable_rows = list(selectable)
+    by_name = {str(row["channel_name"]): row for row in selectable_rows}
+    scale_cutoff = _linear_percentile(
+        (row.get("gross_value") for row in selectable_rows), Decimal("75")
+    )
+    scale_values = ("Escala alta", "Escala menor")
+    differentiation_values = (
+        "Mais diferenciado relativamente",
+        "Semelhante aos pares",
+    )
+    panels: dict[str, dict[str, Any]] = {}
+    for dimension in ACTIONABLE_DIMENSIONS:
+        counts = {
+            (scale, differentiation): 0
+            for scale in scale_values
+            for differentiation in differentiation_values
+        }
+        p25 = benchmarks[dimension]["nearest_peer_p25_similarity_0_1"]
+        for channel_name, profile_by_dimension in peers.items():
+            profile = profile_by_dimension.get(dimension, {})
+            similarity = profile.get("similarity_0_1")
+            row = by_name.get(channel_name)
+            if row is None or similarity is None or p25 is None:
+                continue
+            scale = (
+                "Escala alta"
+                if scale_cutoff is not None
+                and float(_decimal(row.get("gross_value"))) >= scale_cutoff
+                else "Escala menor"
+            )
+            differentiation = (
+                "Mais diferenciado relativamente"
+                if float(similarity) <= float(p25)
+                else "Semelhante aos pares"
+            )
+            counts[(scale, differentiation)] += 1
+        top_channels = []
+        for row in selectable_rows[:10]:
+            channel_name = str(row["channel_name"])
+            profile = peers.get(channel_name, {}).get(dimension, {})
+            top_channels.append(
+                {
+                    "channel_name": channel_name,
+                    "paid_registrations": int(row.get("paid_registrations", 0) or 0),
+                    "gross_value": format(_decimal(row.get("gross_value")), ".2f"),
+                    "status": profile.get("status", "evidência insuficiente"),
+                    "nearest_channel": profile.get("nearest_channel"),
+                    "similarity_0_1": profile.get("similarity_0_1"),
+                }
+            )
+        panels[dimension] = {
+            "benchmark": benchmarks[dimension],
+            "scale_high_gross_value_cutoff": scale_cutoff,
+            "quadrants": [
+                {
+                    "scale": scale,
+                    "differentiation": differentiation,
+                    "channels": counts[(scale, differentiation)],
+                }
+                for scale in scale_values
+                for differentiation in differentiation_values
+            ],
+            "top_channels": top_channels,
+            "nearest_peers": {
+                channel: profile[dimension]
+                for channel, profile in peers.items()
+            },
+        }
+    return panels
+
+
 def build_portfolio_artifacts(
     *,
     overview: dict[str, Any],
@@ -543,16 +634,7 @@ def build_portfolio_artifacts(
         "generated_at": generated_at,
         "transform_version": PORTFOLIO_TRANSFORM_VERSION,
     }
-    dimension_panels = {
-        dimension: {
-            "benchmark": benchmarks[dimension],
-            "nearest_peers": {
-                channel: profile[dimension]
-                for channel, profile in peers.items()
-            },
-        }
-        for dimension in ACTIONABLE_DIMENSIONS
-    }
+    dimension_panels = _dimension_panels(peers, selectable, benchmarks)
     takeaways = [
         {
             "title": "Semelhanças permanecem dimensionais",
@@ -588,6 +670,17 @@ def build_portfolio_artifacts(
                 MIN_DIMENSION_COVERAGE_PCT, ".2f"
             ),
             "maximum_selected_channels": 10,
+            "publishable_cell_minimum_registrations": MIN_PUBLISHABLE_CELL_REGISTRATIONS,
+            "exposure_classification_minimum_registrations": EXPOSURE_CLASSIFICATION_MINIMUM_REGISTRATIONS,
+            "exposure_high_event_share_pct": format(
+                EXPOSURE_HIGH_EVENT_SHARE_PCT, ".2f"
+            ),
+            "exposure_medium_event_share_pct": format(
+                EXPOSURE_MEDIUM_EVENT_SHARE_PCT, ".2f"
+            ),
+            "exposure_partner_concentration_pct": format(
+                EXPOSURE_PARTNER_CONCENTRATION_PCT, ".2f"
+            ),
         },
         "selectable_channels": selectable_payload,
         "coverage_cube": cube,

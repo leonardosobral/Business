@@ -12,10 +12,26 @@ const portfolioPath = path.resolve(
   'portfolio.js',
 );
 const portfolio = require(portfolioPath);
+const report = require(path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'relatorios',
+  'maratona-floripa-2026',
+  'assets',
+  'report.js',
+));
 
 function simulatorFixture() {
   return {
-    thresholds: { maximum_selected_channels: 10 },
+    thresholds: {
+      maximum_selected_channels: 10,
+      publishable_cell_minimum_registrations: 5,
+      exposure_classification_minimum_registrations: 10,
+      exposure_high_event_share_pct: '40.00',
+      exposure_medium_event_share_pct: '20.00',
+      exposure_partner_concentration_pct: '60.00',
+    },
     selectable_channels: [
       { slug: 'sports-week', channel_name: 'Sports Week' },
       { slug: 'roadrunners', channel_name: 'ROADRUNNERS' },
@@ -32,6 +48,11 @@ function simulatorFixture() {
       { phase: 'Meio', modality: '42K', state: 'RS', channel_name: 'ROADRUNNERS', paid_registrations: 1 },
       { phase: 'Meio', modality: '42K', state: 'RS', channel_name: 'Canais comerciais não orgânicos', paid_registrations: 4 },
       { phase: 'Meio', modality: '42K', state: 'RS', channel_name: 'Todos os canais', paid_registrations: 4 },
+      { phase: 'Início', modality: '5K', state: 'BA', channel_name: 'ROADRUNNERS', paid_registrations: 6 },
+      { phase: 'Início', modality: '5K', state: 'BA', channel_name: 'Pace Floripa', paid_registrations: 4 },
+      { phase: 'Início', modality: '5K', state: 'BA', channel_name: 'Orgânico / sem cupom', paid_registrations: 10 },
+      { phase: 'Início', modality: '5K', state: 'BA', channel_name: 'Canais comerciais não orgânicos', paid_registrations: 10 },
+      { phase: 'Início', modality: '5K', state: 'BA', channel_name: 'Todos os canais', paid_registrations: 20 },
     ],
   };
 }
@@ -55,12 +76,65 @@ test('simulation keeps selected aggregates while suppressing cells below five re
   assert.equal(result.cells[0].selected_paid_registrations, 12);
 });
 
+test('simulation keeps global event and commercial denominators outside selected cells', () => {
+  const result = portfolio.simulate(simulatorFixture(), ['sports-week']);
+
+  assert.equal(result.totals.selected_paid_registrations, 15);
+  assert.equal(result.totals.event_paid_registrations, 64);
+  assert.equal(result.totals.commercial_paid_registrations, 44);
+  assert.deepEqual(result.states.map((row) => row.label), ['SC', 'RS']);
+
+  const root = { innerHTML: '' };
+  portfolio.renderSimulation(root, result);
+  assert.match(root.innerHTML, /23,44%/);
+});
+
 test('simulation describes exposure and selects the largest remaining commercial alternative', () => {
   const result = portfolio.simulate(simulatorFixture(), ['sports-week']);
 
   assert.equal(result.cells[0].remaining_alternative, 'ROADRUNNERS');
   assert.equal(result.cells[0].exposure, 'média');
   assert.doesNotMatch(JSON.stringify(result), /vendas perdidas|perda prevista/i);
+});
+
+test('simulation consumes every exposure threshold supplied by the payload', () => {
+  const makeCellData = ({ selected, event, commercial }) => ({
+    thresholds: { ...simulatorFixture().thresholds },
+    selectable_channels: [
+      { slug: 'sports-week', channel_name: 'Sports Week' },
+      { slug: 'roadrunners', channel_name: 'ROADRUNNERS' },
+    ],
+    coverage_cube: [
+      { phase: 'Meio', modality: '21K', state: 'SC', channel_name: 'Sports Week', paid_registrations: selected },
+      { phase: 'Meio', modality: '21K', state: 'SC', channel_name: 'ROADRUNNERS', paid_registrations: commercial - selected },
+      { phase: 'Meio', modality: '21K', state: 'SC', channel_name: 'Canais comerciais não orgânicos', paid_registrations: commercial },
+      { phase: 'Meio', modality: '21K', state: 'SC', channel_name: 'Todos os canais', paid_registrations: event },
+    ],
+  });
+  const exposure = (data) => portfolio.simulate(data, ['sports-week']).cells[0]?.exposure;
+
+  const high = makeCellData({ selected: 12, event: 40, commercial: 30 });
+  high.thresholds.exposure_high_event_share_pct = '30.00';
+  assert.equal(exposure(high), 'alta');
+
+  const medium = makeCellData({ selected: 12, event: 40, commercial: 30 });
+  medium.thresholds.exposure_medium_event_share_pct = '31.00';
+  assert.equal(exposure(medium), 'baixa');
+
+  const partner = makeCellData({ selected: 12, event: 100, commercial: 20 });
+  assert.equal(exposure(partner), 'dependência entre parceiros');
+  partner.thresholds.exposure_partner_concentration_pct = '61.00';
+  assert.equal(exposure(partner), 'baixa');
+
+  const classification = makeCellData({ selected: 9, event: 30, commercial: 20 });
+  assert.equal(exposure(classification), 'baixa');
+  classification.thresholds.exposure_classification_minimum_registrations = 9;
+  assert.equal(exposure(classification), 'média');
+
+  const publishable = makeCellData({ selected: 4, event: 10, commercial: 6 });
+  assert.equal(portfolio.simulate(publishable, ['sports-week']).cells.length, 0);
+  publishable.thresholds.publishable_cell_minimum_registrations = 4;
+  assert.equal(portfolio.simulate(publishable, ['sports-week']).cells.length, 1);
 });
 
 test('simulation ordering breaks ties by phase, modality and state after exposure and volume', () => {
@@ -84,6 +158,20 @@ function summaryFixture() {
     definitions: { commercial_universe: 'Canais comerciais acima do corte.' },
     dimension_panels: Object.fromEntries(dimensions.map((dimension) => [dimension, {
       benchmark: { eligible_pairs: 2, p90_similarity_0_1: 0.9, nearest_peer_p25_similarity_0_1: 0.4 },
+      quadrants: [
+        { scale: 'Escala alta', differentiation: 'Mais diferenciado relativamente', channels: 1 },
+        { scale: 'Escala alta', differentiation: 'Semelhante aos pares', channels: 2 },
+        { scale: 'Escala menor', differentiation: 'Mais diferenciado relativamente', channels: 3 },
+        { scale: 'Escala menor', differentiation: 'Semelhante aos pares', channels: 4 },
+      ],
+      top_channels: [{
+        channel_name: 'Alfa',
+        paid_registrations: 12,
+        gross_value: '100.00',
+        status: 'referência disponível',
+        nearest_channel: '<img src=x>',
+        similarity_0_1: 0.8,
+      }],
       nearest_peers: {
         Alfa: { status: 'referência disponível', nearest_channel: '<img src=x>', similarity_0_1: 0.8 },
       },
@@ -94,6 +182,7 @@ function summaryFixture() {
       qualifying_dimensions: ['geography', 'temporal'],
       qualifying_dimension_count: 2,
       combined_gross_value: '100.00',
+      similarities: { geography: 0.9, modality: 0.8, temporal: 0.7, lot: 0.6, product: 0.5 },
     })),
     dependency_cells: Array.from({ length: 12 }, (_, index) => ({
       phase: index ? 'Início' : 'Lançamento',
@@ -121,6 +210,35 @@ test('summary renderer exposes the six portfolio chapters and five separated dim
   assert.equal((root.innerHTML.match(/data-portfolio-dimension=/g) || []).length, 5);
 });
 
+test('summary renderer draws one real four-group matrix for every dimension panel', () => {
+  const root = { innerHTML: '' };
+  const originalMatrix = report.renderMatrixChart;
+  const calls = [];
+  report.renderMatrixChart = (config) => {
+    calls.push(config);
+    return originalMatrix(config);
+  };
+  try {
+    portfolio.renderSummary(root, summaryFixture());
+  } finally {
+    report.renderMatrixChart = originalMatrix;
+  }
+
+  assert.equal(calls.length, 5);
+  for (const config of calls) {
+    assert.equal(config.rows.length, 4);
+    assert.deepEqual(
+      new Set(config.rows.map((row) => `${row.scale}\u0000${row.differentiation}`)),
+      new Set([
+        'Escala alta\u0000Mais diferenciado relativamente',
+        'Escala alta\u0000Semelhante aos pares',
+        'Escala menor\u0000Mais diferenciado relativamente',
+        'Escala menor\u0000Semelhante aos pares',
+      ]),
+    );
+  }
+});
+
 test('summary renderer keeps channel names safe and uses Portuguese report conventions', () => {
   const root = { innerHTML: '' };
 
@@ -133,18 +251,38 @@ test('summary renderer keeps channel names safe and uses Portuguese report conve
   assert.match(root.innerHTML, /não estabelecem causalidade/);
 });
 
-test('summary renderer limits redundancy and dependency evidence to Top 10 with Outros last', () => {
+test('summary renderer keeps pair tables exact and uses Outros only for additive dependency charts', () => {
   const root = { innerHTML: '' };
 
   portfolio.renderSummary(root, summaryFixture());
 
-  assert.match(root.innerHTML, /Top 10 \+ Outros/);
-  assert.ok(root.innerHTML.lastIndexOf('OUTROS') > root.innerHTML.indexOf('CANAL 12'));
-  const redundancySvg = root.innerHTML.slice(
-    root.innerHTML.indexOf('Top 10 pares com redundância observada'),
-    root.innerHTML.indexOf('</svg>', root.innerHTML.indexOf('Top 10 pares com redundância observada')),
+  const redundancySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-redundancia"'),
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
   );
-  assert.equal(redundancySvg.indexOf('>OUTROS</text>'), redundancySvg.lastIndexOf('>OUTROS</text>'));
+  assert.match(redundancySection, /CANAL 10 × ALFA/);
+  assert.doesNotMatch(redundancySection, /CANAL 11 × ALFA|OUTROS/);
+  assert.match(redundancySection, /Geografia|Modalidade|Temporalidade|Lote|Produto/);
+
+  const dependencySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
+    root.innerHTML.indexOf('id="portfolio-simulador"'),
+  );
+  assert.match(dependencySection, /Top 10 \+ Outros/);
+  assert.equal((dependencySection.match(/>Outros<\/text>/g) || []).length, 1);
+  const dependencyTable = dependencySection.slice(dependencySection.lastIndexOf('<table'));
+  assert.doesNotMatch(dependencyTable, /<td>Outros<\/td>/);
+
+  const exactTopTen = summaryFixture();
+  exactTopTen.redundancy_candidates = exactTopTen.redundancy_candidates.slice(0, 10);
+  exactTopTen.dependency_cells = exactTopTen.dependency_cells.slice(0, 10);
+  const exactRoot = { innerHTML: '' };
+  portfolio.renderSummary(exactRoot, exactTopTen);
+  const exactDependencies = exactRoot.innerHTML.slice(
+    exactRoot.innerHTML.indexOf('id="portfolio-dependencias"'),
+    exactRoot.innerHTML.indexOf('id="portfolio-simulador"'),
+  );
+  assert.doesNotMatch(exactDependencies, /Top 10 \+ Outros|>Outros<\/text>/);
 });
 
 test('simulation renderer exposes four KPI cards and complete publishable-cell evidence', () => {

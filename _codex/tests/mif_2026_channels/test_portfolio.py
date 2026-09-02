@@ -132,6 +132,43 @@ class PortfolioContractTests(unittest.TestCase):
             ["phase", "modality", "state", "channel_name"],
         )
 
+    def test_simulator_contract_exposes_every_exposure_threshold(self):
+        artifacts = build_portfolio_artifacts(**portfolio_fixture())
+
+        self.assertEqual(
+            artifacts["portfolio/simulator.json"]["thresholds"],
+            {
+                "commercial_ticket_min_exclusive": "10.00",
+                "minimum_profile_registrations": 10,
+                "minimum_dimension_coverage_pct": "70.00",
+                "maximum_selected_channels": 10,
+                "publishable_cell_minimum_registrations": 5,
+                "exposure_classification_minimum_registrations": 10,
+                "exposure_high_event_share_pct": "40.00",
+                "exposure_medium_event_share_pct": "20.00",
+                "exposure_partner_concentration_pct": "60.00",
+            },
+        )
+
+    def test_summary_dimension_panels_expose_four_non_combined_quadrants_and_top_ten_rows(self):
+        artifacts = build_portfolio_artifacts(**portfolio_fixture())
+        panels = artifacts["portfolio/summary.json"]["dimension_panels"]
+        expected_groups = {
+            ("Escala alta", "Mais diferenciado relativamente"),
+            ("Escala alta", "Semelhante aos pares"),
+            ("Escala menor", "Mais diferenciado relativamente"),
+            ("Escala menor", "Semelhante aos pares"),
+        }
+
+        self.assertEqual(set(panels), {"geography", "modality", "temporal", "lot", "product"})
+        for panel in panels.values():
+            self.assertEqual(
+                {(row["scale"], row["differentiation"]) for row in panel["quadrants"]},
+                expected_groups,
+            )
+            self.assertTrue(all(isinstance(row["channels"], int) for row in panel["quadrants"]))
+            self.assertLessEqual(len(panel["top_channels"]), 10)
+
     def test_redundancy_excludes_organic_pairs_from_commercial_candidates(self):
         channels = [
             {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
