@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,nofollow,noarchive"/>
   <title>Dossiês de canais — Maratona de Floripa 2026</title>
-  <link rel="stylesheet" href="../assets/report.css"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260902-1"/>
 </head>
 <body>
   <div class="report-shell">
@@ -35,7 +35,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifChannelIndexJson#</cfoutput></script>
-  <script src="../assets/report.js"></script>
+  <script src="../assets/report.js?v=20260902-1"></script>
   <script>
     (function renderMifChannelIndexPage() {
       'use strict';

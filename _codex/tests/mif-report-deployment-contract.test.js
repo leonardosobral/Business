@@ -43,12 +43,21 @@ test('every private-data consumer authenticates first', () => {
 });
 
 test('public code has local assets and no embedded production snapshot', () => {
-  const publicSources = filesBelow(reportRoot)
-    .filter((file) => /\.(?:cfm|js|css)$/i.test(file))
+  const publicFiles = filesBelow(reportRoot)
+    .filter((file) => /\.(?:cfm|js|css)$/i.test(file));
+  const publicSources = publicFiles
+    .map((file) => fs.readFileSync(file, 'utf8'))
+    .join('\n');
+  const templates = publicFiles
+    .filter((file) => file.endsWith('.cfm'))
     .map((file) => fs.readFileSync(file, 'utf8'))
     .join('\n');
 
   assert.doesNotMatch(publicSources, /(?:src|href)=["']https?:\/\//i);
+  assert.doesNotMatch(
+    templates,
+    /(?:src|href)=["'][^"']*assets\/[^"'?]+\.(?:js|css)["']/i,
+  );
   assert.doesNotMatch(publicSources, /4321891\.20|15713\s+inscrições pagas em 14027/i);
   assert.doesNotMatch(publicSources, /numero_inscricao|numero_pedido/i);
   assert.doesNotMatch(publicSources, /\/private\/tmp\/mif-2026-channel-study-source/i);
