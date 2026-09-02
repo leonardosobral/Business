@@ -169,6 +169,57 @@ class PortfolioContractTests(unittest.TestCase):
             self.assertTrue(all(isinstance(row["channels"], int) for row in panel["quadrants"]))
             self.assertLessEqual(len(panel["top_channels"]), 10)
 
+    def test_final_benchmarks_and_quadrants_ignore_ineligible_similarity_endpoints(self):
+        channels = [
+            {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "BETA", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "GAMA", "channel_type": "parceiro", "gross_value": "200.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "SEM COBERTURA", "channel_type": "parceiro", "gross_value": "100.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "CORTESIA", "channel_type": "cortesia", "gross_value": "50.00", "paid_registrations": 30, "registration_ticket": "10.00"},
+            {"channel_name": "Orgânico / sem cupom", "channel_type": "organico", "gross_value": "500.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+        ]
+        similarities = {
+            dimension: [
+                {"channel_a": "ALFA", "channel_b": "BETA", "similarity_0_1": 0.20, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "GAMA", "similarity_0_1": 0.40, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "BETA", "channel_b": "GAMA", "similarity_0_1": 0.60, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "Orgânico / sem cupom", "similarity_0_1": 0.99, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "BETA", "channel_b": "CORTESIA", "similarity_0_1": 0.98, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "GAMA", "channel_b": "AUSENTE DO ÍNDICE", "similarity_0_1": 0.97, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "SEM COBERTURA", "similarity_0_1": 1.00, "coverage_a": 69, "coverage_b": 90},
+            ]
+            for dimension in ("geography", "modality", "temporal", "lot", "product")
+        }
+
+        summary = build_portfolio_artifacts(
+            overview={"paid_registrations": 120, "gross_value": "900.00"},
+            channel_index=channels,
+            dossiers={"similarities": similarities},
+            registration_cube=[],
+            generated_at="2026-09-02T12:00:00-03:00",
+        )["portfolio/summary.json"]
+        expected_quadrants = {
+            ("Escala alta", "Mais diferenciado relativamente"): 0,
+            ("Escala alta", "Semelhante aos pares"): 1,
+            ("Escala menor", "Mais diferenciado relativamente"): 0,
+            ("Escala menor", "Semelhante aos pares"): 2,
+        }
+
+        for dimension in ("geography", "modality", "temporal", "lot", "product"):
+            benchmark = summary["dimension_benchmarks"][dimension]
+            self.assertEqual(benchmark["eligible_pairs"], 3)
+            self.assertAlmostEqual(benchmark["nearest_peer_p25_similarity_0_1"], 0.50)
+            self.assertAlmostEqual(benchmark["p90_similarity_0_1"], 0.56)
+            panel = summary["dimension_panels"][dimension]
+            self.assertEqual(panel["benchmark"], benchmark)
+            self.assertEqual(
+                {
+                    (row["scale"], row["differentiation"]): row["channels"]
+                    for row in panel["quadrants"]
+                },
+                expected_quadrants,
+            )
+
     def test_summary_preserves_full_dependency_population_for_additive_chart_reconciliation(self):
         fixture = portfolio_fixture()
         fixture["registration_cube"] = [

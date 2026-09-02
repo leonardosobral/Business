@@ -607,7 +607,10 @@ def build_portfolio_artifacts(
     channels = [dict(row) for row in channel_index]
     similarities = _similarity_source(dossiers)
     grouped = _canonical_similarity(similarities)
-    benchmarks = _dimension_benchmarks(grouped)
+    benchmark_names = set(_qualified_channel_rows(channels, selectable=True))
+    benchmarks = _dimension_benchmarks(
+        _filter_grouped_pairs(grouped, benchmark_names)
+    )
     peers = nearest_peer_profiles(similarities, channels)
     redundancy = redundancy_candidates(similarities, channels)
     selectable = commercial_channels(channels, selectable=True)
