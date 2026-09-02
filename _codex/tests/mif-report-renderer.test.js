@@ -56,6 +56,25 @@ test('HTML escaping protects headings, table cells and links', () => {
   assert.match(table, /&lt;img/);
 });
 
+test('generated narrative renders safe emphasis without Markdown artifacts', () => {
+  const narrative = report.renderNarrative('## Resumo - **Escala:** forte <script>');
+
+  assert.equal(narrative, 'Resumo<br><strong>Escala:</strong> forte &lt;script&gt;');
+  assert.doesNotMatch(narrative, /##|\*\*/);
+});
+
+test('ordered charts preserve commercial sequences such as lots', () => {
+  const chart = report.renderBarChart({
+    title: 'Lotes',
+    rows: [{ lot: '1', count: 5 }, { lot: '2', count: 10 }],
+    labelKey: 'lot',
+    valueKey: 'count',
+    preserveOrder: true,
+  });
+
+  assert.ok(chart.indexOf('>1</text>') < chart.indexOf('>2</text>'));
+});
+
 test('channel list is ordered by gross DESC, registrations DESC and name', () => {
   const rows = report.sortChannelsByGross([
     { channel_name: 'Zeta', gross_value: '100.00', paid_registrations: 2 },

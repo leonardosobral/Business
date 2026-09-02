@@ -68,7 +68,7 @@
       var payload = JSON.parse(document.getElementById('mif-report-data').textContent);
       var channel = payload.channel || {};
       document.getElementById('mif-channel-name').textContent = channel.channel_name || 'Perfil comercial';
-      document.getElementById('mif-channel-hero-summary').textContent = channel.executive_summary || channel.executive_highlight || 'Perfil consolidado do canal.';
+      document.getElementById('mif-channel-hero-summary').textContent = (payload.recommendation && payload.recommendation.role) || channel.executive_highlight || 'Perfil consolidado do canal.';
       document.title = (channel.channel_name || 'Dossiê de canal') + ' — Maratona de Floripa 2026';
       MifReport.renderChannel(document.getElementById('mif-report-root'), payload);
     })();
