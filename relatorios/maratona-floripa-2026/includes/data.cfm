@@ -5,10 +5,16 @@
     <cfabort/>
 </cfif>
 
-<cfset mifReportDataRoot = trim(getSystemSetting(
-    "MIF_REPORT_DATA_ROOT",
-    "/var/lib/runnerhub/reports/mif-2026"
-) & "")/>
+<cfset mifReportDataRoot = "/var/lib/runnerhub/reports/mif-2026"/>
+<cfset VARIABLES.mifReportEnvironment = createObject(
+    "java",
+    "java.lang.System"
+).getenv()/>
+<cfif VARIABLES.mifReportEnvironment.containsKey("MIF_REPORT_DATA_ROOT")>
+    <cfset mifReportDataRoot = trim(
+        VARIABLES.mifReportEnvironment.get("MIF_REPORT_DATA_ROOT") & ""
+    )/>
+</cfif>
 <cfif NOT len(mifReportDataRoot)>
     <cfthrow type="MifReport.Configuration" message="Diretório privado do relatório não configurado."/>
 </cfif>

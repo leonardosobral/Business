@@ -41,6 +41,8 @@ test('private data loader is authorized, rooted and manifest allowlisted', () =>
 
   assert.match(data, /REQUEST\.mifReportAuthorized/i);
   assert.match(data, /MIF_REPORT_DATA_ROOT/);
+  assert.match(data, /java\.lang\.System/i);
+  assert.doesNotMatch(data, /getSystemSetting\s*\(/i);
   assert.match(data, /\/var\/lib\/runnerhub\/reports\/mif-2026/);
   assert.match(data, /manifest\.json/i);
   assert.match(data, /manifest\.artifacts/i);
