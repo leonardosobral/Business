@@ -34,6 +34,17 @@ def _decimal(value: object, default: Decimal = Decimal("0.00")) -> Decimal:
     return parsed if parsed.is_finite() else default
 
 
+def _similarity(value: object) -> float | None:
+    """Parse a bounded finite similarity without treating invalid data as zero."""
+    try:
+        parsed = Decimal(str(value))
+    except (InvalidOperation, TypeError, ValueError):
+        return None
+    if not parsed.is_finite() or parsed < 0 or parsed > 1:
+        return None
+    return float(parsed)
+
+
 def commercial_channels(
     rows: Iterable[dict[str, Any]], *, selectable: bool = False
 ) -> list[dict[str, Any]]:
@@ -144,10 +155,13 @@ def _canonical_similarity(similarities: object) -> dict[str, list[dict[str, Any]
             first_coverage, second_coverage = row.get("coverage_a"), row.get("coverage_b")
         else:
             first_coverage, second_coverage = row.get("coverage_b"), row.get("coverage_a")
+        similarity = _similarity(row.get("similarity_0_1"))
+        if similarity is None:
+            continue
         item = {
             "left_channel": first,
             "right_channel": second,
-            "similarity_0_1": float(_decimal(row.get("similarity_0_1"))),
+            "similarity_0_1": similarity,
             "left_coverage": _decimal(first_coverage),
             "right_coverage": _decimal(second_coverage),
         }
@@ -165,12 +179,48 @@ def _canonical_similarity(similarities: object) -> dict[str, list[dict[str, Any]
     return grouped
 
 
-def _eligible_channel_names(channel_index: Iterable[dict[str, Any]]) -> list[str]:
-    return [
-        str(row.get("channel_name"))
-        for row in commercial_channels(channel_index)
+def _qualified_channel_rows(
+    channel_index: Iterable[dict[str, Any]], *, selectable: bool
+) -> dict[str, dict[str, Any]]:
+    """Return ticket-qualified channels eligible for profile comparisons."""
+    return {
+        str(row.get("channel_name")): row
+        for row in commercial_channels(channel_index, selectable=selectable)
         if int(row.get("paid_registrations", 0) or 0) >= MIN_PROFILE_REGISTRATIONS
-    ]
+    }
+
+
+def _sample_status(row: Mapping[str, Any]) -> str:
+    registrations = int(row.get("paid_registrations", 0) or 0)
+    if registrations < MIN_PROFILE_REGISTRATIONS:
+        return "evidência insuficiente"
+    if registrations < 30:
+        return "amostra reduzida"
+    return "referência disponível"
+
+
+def _combined_sample_status(*rows: Mapping[str, Any]) -> str:
+    statuses = {_sample_status(row) for row in rows}
+    if "evidência insuficiente" in statuses:
+        return "evidência insuficiente"
+    if "amostra reduzida" in statuses:
+        return "amostra reduzida"
+    return "referência disponível"
+
+
+def _filter_grouped_pairs(
+    grouped: dict[str, list[dict[str, Any]]], allowed_names: set[str]
+) -> dict[str, list[dict[str, Any]]]:
+    """Keep only pairs whose two endpoints belong to one qualified universe."""
+    return {
+        dimension: [
+            row
+            for row in grouped[dimension]
+            if row["left_channel"] in allowed_names
+            and row["right_channel"] in allowed_names
+        ]
+        for dimension in ACTIONABLE_DIMENSIONS
+    }
 
 
 def _dimension_benchmarks(
@@ -201,32 +251,55 @@ def nearest_peer_profiles(
 ) -> dict[str, dict[str, dict[str, Any]]]:
     """Return a nearest peer per dimension without collapsing dimensions."""
     channel_rows = list(channel_index)
-    eligible = _eligible_channel_names(channel_rows)
-    eligible_set = set(eligible)
+    candidate_rows = _qualified_channel_rows(channel_rows, selectable=True)
+    references = _qualified_channel_rows(channel_rows, selectable=False)
+    candidate_names = set(candidate_rows)
+    reference_names = set(references)
     grouped = _canonical_similarity(similarities)
-    benchmarks = _dimension_benchmarks(grouped)
+    benchmarks = _dimension_benchmarks(
+        _filter_grouped_pairs(grouped, candidate_names)
+    )
     profiles: dict[str, dict[str, dict[str, Any]]] = {
-        channel: {} for channel in eligible
+        channel: {} for channel in candidate_rows
     }
     for dimension in ACTIONABLE_DIMENSIONS:
-        peers: dict[str, list[tuple[str, float]]] = {channel: [] for channel in eligible}
+        peers: dict[str, list[tuple[str, float]]] = {
+            channel: [] for channel in candidate_rows
+        }
         for row in grouped[dimension]:
             left, right = row["left_channel"], row["right_channel"]
-            if left in eligible_set and right in eligible_set:
+            if left in reference_names and right in reference_names:
                 similarity = float(row["similarity_0_1"])
-                peers[left].append((right, similarity))
-                peers[right].append((left, similarity))
-        for channel in eligible:
-            candidates = peers[channel]
-            if not candidates:
-                profiles[channel][dimension] = {"status": "evidência insuficiente"}
+                if left in candidate_names:
+                    peers[left].append((right, similarity))
+                if right in candidate_names:
+                    peers[right].append((left, similarity))
+        for channel, channel_row in candidate_rows.items():
+            peer_candidates = peers[channel]
+            if not peer_candidates:
+                profiles[channel][dimension] = {
+                    "status": "evidência insuficiente",
+                    "channel_paid_registrations": int(
+                        channel_row.get("paid_registrations", 0) or 0
+                    ),
+                    "channel_sample_status": _sample_status(channel_row),
+                }
                 continue
             nearest, similarity = sorted(
-                candidates, key=lambda item: (-item[1], item[0].casefold())
+                peer_candidates, key=lambda item: (-item[1], item[0].casefold())
             )[0]
+            nearest_row = references[nearest]
             profiles[channel][dimension] = {
-                "status": "referência disponível",
+                "status": _sample_status(channel_row),
+                "channel_paid_registrations": int(
+                    channel_row.get("paid_registrations", 0) or 0
+                ),
+                "channel_sample_status": _sample_status(channel_row),
                 "nearest_channel": nearest,
+                "nearest_channel_paid_registrations": int(
+                    nearest_row.get("paid_registrations", 0) or 0
+                ),
+                "nearest_channel_sample_status": _sample_status(nearest_row),
                 "similarity_0_1": round(similarity, 4),
                 "p90_similarity_0_1": benchmarks[dimension]["p90_similarity_0_1"],
                 "nearest_peer_p25_similarity_0_1": benchmarks[dimension][
@@ -245,8 +318,10 @@ def redundancy_candidates(
         str(row.get("channel_name")): _decimal(row.get("gross_value"))
         for row in channel_rows
     }
-    eligible = set(_eligible_channel_names(channel_rows))
+    candidates_by_name = _qualified_channel_rows(channel_rows, selectable=True)
+    eligible = set(candidates_by_name)
     grouped = _canonical_similarity(similarities)
+    grouped = _filter_grouped_pairs(grouped, eligible)
     benchmarks = _dimension_benchmarks(grouped)
     candidates: dict[tuple[str, str], list[tuple[str, float]]] = {}
     for dimension, rows in grouped.items():
@@ -271,6 +346,17 @@ def redundancy_candidates(
                 "right_channel": right,
                 "qualifying_dimensions": dimensions,
                 "qualifying_dimension_count": len(dimensions),
+                "left_paid_registrations": int(
+                    candidates_by_name[left].get("paid_registrations", 0) or 0
+                ),
+                "right_paid_registrations": int(
+                    candidates_by_name[right].get("paid_registrations", 0) or 0
+                ),
+                "left_sample_status": _sample_status(candidates_by_name[left]),
+                "right_sample_status": _sample_status(candidates_by_name[right]),
+                "sample_status": _combined_sample_status(
+                    candidates_by_name[left], candidates_by_name[right]
+                ),
                 "combined_gross_value": format(
                     gross_by_channel.get(left, Decimal("0.00"))
                     + gross_by_channel.get(right, Decimal("0.00")),

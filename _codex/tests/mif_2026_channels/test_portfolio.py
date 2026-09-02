@@ -4,17 +4,30 @@ from _codex.analyses.mif_2026_channels.portfolio import (
     build_portfolio_artifacts,
     classify_exposure,
     commercial_channels,
+    coverage_cube,
     nearest_peer_profiles,
     redundancy_candidates,
 )
 
 
 def channel_index_fixture():
-    return [
+    rows = [
         {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 20, "registration_ticket": "20.00"},
         {"channel_name": "BETA", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 20, "registration_ticket": "15.00"},
         {"channel_name": "GAMA", "channel_type": "parceiro", "gross_value": "200.00", "paid_registrations": 20, "registration_ticket": "12.00"},
     ]
+    rows.extend(
+        {
+            "channel_name": f"LOW-{dimension}-{number:02d}",
+            "channel_type": "parceiro",
+            "gross_value": "1.00",
+            "paid_registrations": 30,
+            "registration_ticket": "11.00",
+        }
+        for dimension in ("geography", "modality", "temporal", "lot")
+        for number in range(20)
+    )
+    return rows
 
 
 def similarity_fixture():
@@ -35,8 +48,8 @@ def similarity_fixture():
     for dimension in ("geography", "modality", "temporal", "lot"):
         fixture[dimension].extend(
             {
-                "channel_a": f"LOW-{number:02d}",
-                "channel_b": f"LOW-{number:02d}-PEER",
+                "channel_a": "ALFA",
+                "channel_b": f"LOW-{dimension}-{number:02d}",
                 "similarity_0_1": 0.10,
                 "coverage_a": 90,
                 "coverage_b": 90,
@@ -100,6 +113,7 @@ class PortfolioContractTests(unittest.TestCase):
         self.assertEqual(result["ALFA"]["geography"]["nearest_channel"], "BETA")
         self.assertEqual(result["ALFA"]["temporal"]["nearest_channel"], "GAMA")
         self.assertEqual(result["ALFA"]["product"]["status"], "evidência insuficiente")
+        self.assertEqual(result["ALFA"]["product"]["channel_sample_status"], "amostra reduzida")
 
     def test_redundancy_requires_four_dimensions_including_geography_or_temporal(self):
         rows = redundancy_candidates(similarity_fixture(), channel_index_fixture())
@@ -116,6 +130,115 @@ class PortfolioContractTests(unittest.TestCase):
         self.assertEqual(
             artifacts["portfolio/simulator.json"]["dimensions"],
             ["phase", "modality", "state", "channel_name"],
+        )
+
+    def test_redundancy_excludes_organic_pairs_from_commercial_candidates(self):
+        channels = [
+            {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "BETA", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 30, "registration_ticket": "15.00"},
+            {"channel_name": "Orgânico / sem cupom", "channel_type": "organico", "gross_value": "500.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+        ]
+        similarities = {
+            dimension: [
+                {"channel_a": "ALFA", "channel_b": "BETA", "similarity_0_1": 0.90, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "Orgânico / sem cupom", "similarity_0_1": 0.99, "coverage_a": 90, "coverage_b": 90},
+            ]
+            for dimension in ("geography", "modality", "temporal", "lot")
+        }
+
+        rows = redundancy_candidates(similarities, channels)
+
+        self.assertEqual(
+            [(row["left_channel"], row["right_channel"]) for row in rows],
+            [("ALFA", "BETA")],
+        )
+
+    def test_benchmarks_ignore_ticket_ineligible_and_index_absent_pairs(self):
+        channels = [
+            {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "BETA", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 30, "registration_ticket": "15.00"},
+            {"channel_name": "CORTESIA", "channel_type": "cortesia", "gross_value": "100.00", "paid_registrations": 30, "registration_ticket": "10.00"},
+        ]
+        similarities = {
+            "geography": [
+                {"channel_a": "ALFA", "channel_b": "BETA", "similarity_0_1": 0.80, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "CORTESIA", "similarity_0_1": 0.99, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "ALFA", "channel_b": "AUSENTE", "similarity_0_1": 0.99, "coverage_a": 90, "coverage_b": 90},
+            ]
+        }
+
+        profile = nearest_peer_profiles(similarities, channels)["ALFA"]["geography"]
+
+        self.assertEqual(profile["nearest_channel"], "BETA")
+        self.assertEqual(profile["p90_similarity_0_1"], 0.80)
+        self.assertEqual(profile["nearest_peer_p25_similarity_0_1"], 0.80)
+
+    def test_invalid_similarity_values_fail_closed(self):
+        channels = [
+            {"channel_name": "ALFA", "channel_type": "parceiro", "gross_value": "400.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+            {"channel_name": "BETA", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 30, "registration_ticket": "15.00"},
+        ]
+        similarities = {
+            dimension: [
+                {"channel_a": "ALFA", "channel_b": "BETA", "similarity_0_1": value, "coverage_a": 90, "coverage_b": 90}
+                for value in (None, "NaN", -0.01, 1.01)
+            ]
+            for dimension in ("geography", "modality", "temporal", "lot")
+        }
+
+        profiles = nearest_peer_profiles(similarities, channels)
+
+        self.assertEqual(profiles["ALFA"]["geography"]["status"], "evidência insuficiente")
+        self.assertEqual(redundancy_candidates(similarities, channels), [])
+
+    def test_sample_qualification_marks_10_to_29_and_excludes_below_10(self):
+        channels = [
+            {"channel_name": "N09", "channel_type": "parceiro", "gross_value": "90.00", "paid_registrations": 9, "registration_ticket": "20.00"},
+            {"channel_name": "N10", "channel_type": "parceiro", "gross_value": "100.00", "paid_registrations": 10, "registration_ticket": "20.00"},
+            {"channel_name": "N29", "channel_type": "parceiro", "gross_value": "290.00", "paid_registrations": 29, "registration_ticket": "20.00"},
+            {"channel_name": "N30", "channel_type": "parceiro", "gross_value": "300.00", "paid_registrations": 30, "registration_ticket": "20.00"},
+        ]
+        similarities = {
+            dimension: [
+                {"channel_a": "N10", "channel_b": "N30", "similarity_0_1": 0.90, "coverage_a": 90, "coverage_b": 90},
+                {"channel_a": "N29", "channel_b": "N30", "similarity_0_1": 0.80, "coverage_a": 90, "coverage_b": 90},
+            ]
+            for dimension in ("geography", "modality", "temporal", "lot")
+        }
+
+        profiles = nearest_peer_profiles(similarities, channels)
+        candidates = redundancy_candidates(similarities, channels)
+
+        self.assertNotIn("N09", profiles)
+        self.assertEqual(profiles["N10"]["geography"]["status"], "amostra reduzida")
+        self.assertEqual(profiles["N29"]["geography"]["status"], "amostra reduzida")
+        self.assertEqual(profiles["N30"]["geography"]["status"], "referência disponível")
+        self.assertEqual(profiles["N30"]["geography"]["nearest_channel_sample_status"], "amostra reduzida")
+        candidate = next(row for row in candidates if row["left_channel"] == "N10")
+        self.assertEqual(candidate["left_sample_status"], "amostra reduzida")
+        self.assertEqual(candidate["right_sample_status"], "referência disponível")
+        self.assertEqual(candidate["sample_status"], "amostra reduzida")
+
+    def test_coverage_cube_reconciles_totals_and_omits_city_week_with_fixed_money(self):
+        fixture = portfolio_fixture()
+        cube = coverage_cube(fixture["registration_cube"], fixture["channel_index"])
+        all_total = next(row for row in cube if row["channel_name"] == "Todos os canais")
+        commercial_total = next(
+            row for row in cube
+            if row["channel_name"] == "Canais comerciais não orgânicos"
+        )
+
+        self.assertEqual(all_total["paid_registrations"], 30)
+        self.assertEqual(commercial_total["paid_registrations"], 20)
+        self.assertEqual(all_total["allocated_gross_value"], "485.00")
+        self.assertEqual(commercial_total["allocated_gross_value"], "360.00")
+        self.assertTrue(all("city" not in row and "week_start" not in row for row in cube))
+        self.assertTrue(
+            all(
+                value is None or (isinstance(value, str) and value.count(".") == 1 and len(value.rsplit(".", 1)[1]) == 2)
+                for row in cube
+                for value in (row["allocated_gross_value"], row["allocated_discount_value"], row["allocated_fee_value"])
+            )
         )
 
 
