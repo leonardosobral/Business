@@ -95,6 +95,7 @@ function adsV1FormList(required any value) {
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
 <cfset qAdsV1VoucherReservation = QueryNew("voucher_reservation_id,id_ad_voucher,id_conta,id_solicitacao_cadastro,status,expires_at,transition_reason,codigo,credito")/>
 <cfset qAdsV1CampaignReviewQueue = QueryNew("campaign_review_request_id,campaign_id,account_id,core_event_id,review_status,review_reason,submitted_at,updated_at,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,account_status,event_name,event_tag,event_city,event_state,event_link_status,available_balance,placement_keys")/>
+<cfset qAdsV1AdminOperationalCampaigns = QueryNew("campaign_id,account_id,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,event_name,event_tag,event_city,event_state,spent_total,served_count,viewable_impression_count,valid_click_count,placement_keys,reviewed_at")/>
 <cfset qAdsV1AdminVoucherAccounts = QueryNew("id_conta,nome_conta,status")/>
 <cfset qAdsV1AdminVouchers = QueryNew("id_ad_voucher,codigo,voucher_scope,id_conta,account_name,credito,credito_disponivel,status,data_criacao,data_expiracao,id_usuario_resgate,redeemed_by_name,redeemed_by_email,data_resgate,observacao,reservation_status,reserved_account_name")/>
 <cfset VARIABLES.adsV1Summary = {
@@ -390,6 +391,88 @@ function adsV1FormList(required any value) {
                          review.submitted_at,
                          review.campaign_review_request_id
                 LIMIT 100
+            </cfquery>
+
+            <cfquery name="qAdsV1AdminOperationalCampaigns" datasource="runnerhub">
+                SELECT campaign.campaign_id,
+                       campaign.account_id,
+                       campaign.name AS campaign_name,
+                       campaign.status AS campaign_status,
+                       campaign.cpc_bid,
+                       campaign.budget_total,
+                       campaign.budget_daily,
+                       campaign.starts_at,
+                       campaign.ends_at,
+                       campaign.target_device_class,
+                       campaign.target_country_code,
+                       campaign.target_region_code,
+                       account.nome_conta AS account_name,
+                       event.nome_evento AS event_name,
+                       event.tag AS event_tag,
+                       event.cidade AS event_city,
+                       event.estado AS event_state,
+                       coalesce(budget.spent_total, 0)::numeric(14, 2) AS spent_total,
+                       coalesce(metrics.served_count, 0)::bigint AS served_count,
+                       coalesce(metrics.viewable_impression_count, 0)::bigint AS viewable_impression_count,
+                       coalesce(metrics.valid_click_count, 0)::bigint AS valid_click_count,
+                       placement.placement_keys,
+                       review.reviewed_at
+                FROM ads.campaigns campaign
+                INNER JOIN public.tb_contas account
+                  ON account.id_conta = campaign.account_id
+                INNER JOIN LATERAL (
+                    SELECT request.status,
+                           request.reviewed_at
+                    FROM ads.campaign_review_requests request
+                    WHERE request.campaign_id = campaign.campaign_id
+                      AND request.account_id = campaign.account_id
+                    ORDER BY request.campaign_review_request_id DESC
+                    LIMIT 1
+                ) review ON true
+                LEFT JOIN LATERAL (
+                    SELECT advertisement.core_event_id
+                    FROM ads.advertisements advertisement
+                    WHERE advertisement.campaign_id = campaign.campaign_id
+                      AND advertisement.account_id = campaign.account_id
+                      AND advertisement.billing_model = campaign.billing_model
+                      AND advertisement.ad_type = 'EVENT'
+                      AND advertisement.status <> 'ARCHIVED'
+                    ORDER BY advertisement.created_at, advertisement.advertisement_id
+                    LIMIT 1
+                ) advertisement ON true
+                LEFT JOIN public.tb_evento_corridas event
+                  ON event.id_evento = advertisement.core_event_id
+                LEFT JOIN ads.campaign_budget_state budget
+                  ON budget.campaign_id = campaign.campaign_id
+                 AND budget.account_id = campaign.account_id
+                 AND budget.currency = campaign.currency
+                LEFT JOIN LATERAL (
+                    SELECT sum(metric.served_count) AS served_count,
+                           sum(metric.viewable_impression_count) AS viewable_impression_count,
+                           sum(metric.valid_click_count) AS valid_click_count
+                    FROM ads.daily_metrics metric
+                    WHERE metric.campaign_id = campaign.campaign_id
+                      AND metric.account_id = campaign.account_id
+                ) metrics ON true
+                LEFT JOIN LATERAL (
+                    SELECT string_agg(
+                               DISTINCT selected.placement_key,
+                               ',' ORDER BY selected.placement_key
+                           ) AS placement_keys
+                    FROM ads.campaign_placements link
+                    INNER JOIN ads.placements selected
+                      ON selected.placement_id = link.placement_id
+                    WHERE link.campaign_id = campaign.campaign_id
+                      AND link.account_id = campaign.account_id
+                      AND link.status = 'ACTIVE'
+                ) placement ON true
+                WHERE campaign.billing_model = 'CPC'
+                  AND review.status = 'APPROVED'
+                  AND campaign.status IN ('ACTIVE', 'PAUSED')
+                ORDER BY CASE campaign.status WHEN 'ACTIVE' THEN 0 ELSE 1 END,
+                         campaign.updated_at DESC,
+                         campaign.created_at DESC
+                LIMIT 200
             </cfquery>
         </cfif>
 

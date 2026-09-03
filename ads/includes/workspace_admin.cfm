@@ -79,6 +79,46 @@
       </cfloop>
     </div>
   </cfif>
+
+  <section class="mt-5 mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2">
+    <div><div class="ads-v1-eyebrow">Acompanhamento global</div><h2 class="h5 mb-1">Campanhas em operação</h2><p class="text-muted mb-0">Campanhas aprovadas pela RunnerHub que estão ativas ou pausadas, em todas as contas.</p></div>
+    <span class="badge badge-success"><cfoutput>#qAdsV1AdminOperationalCampaigns.recordcount# campanhas</cfoutput></span>
+  </section>
+
+  <section class="card shadow-0 mb-4">
+    <div class="card-body p-0">
+      <cfif NOT VARIABLES.adsV1ReviewApiReady>
+        <div class="alert alert-warning m-3">O acompanhamento das campanhas ainda não está disponível.</div>
+      <cfelseif NOT qAdsV1AdminOperationalCampaigns.recordcount>
+        <div class="p-4 text-center"><h3 class="h6 mb-2">Nenhuma campanha aprovada em operação</h3><p class="text-muted mb-0">Campanhas ativas ou pausadas aparecerão aqui após a aprovação.</p></div>
+      <cfelse>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead><tr><th>Campanha</th><th>Conta e evento</th><th>Segmentação</th><th>Investimento</th><th>Resultados</th><th>Período</th></tr></thead>
+            <tbody>
+              <cfoutput query="qAdsV1AdminOperationalCampaigns">
+                <cfset VARIABLES.adsV1AdminOperationalStatus = uCase(trim(campaign_status & ""))/>
+                <tr>
+                  <td>
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                      <strong>#htmlEditFormat(campaign_name)#</strong>
+                      <span class="badge <cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE'>badge-success<cfelse>badge-warning</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(campaign_status))#</span>
+                    </div>
+                    <div class="small text-muted">CPC · ID #htmlEditFormat(campaign_id)#</div>
+                  </td>
+                  <td><strong>#htmlEditFormat(account_name)#</strong><div class="small text-muted">#htmlEditFormat(event_name)#<cfif len(trim(event_city & "")) OR len(trim(event_state & ""))> · #htmlEditFormat(event_city)#/#htmlEditFormat(event_state)#</cfif></div></td>
+                  <td><strong><cfif len(trim(target_region_code & ""))>#htmlEditFormat(target_region_code)#<cfelse>Brasil</cfif></strong><div class="small text-muted"><cfif uCase(trim(target_device_class & "")) EQ "MOBILE">Celular<cfelseif uCase(trim(target_device_class & "")) EQ "DESKTOP">Desktop<cfelse>Todos os dispositivos</cfif></div><div class="small text-muted">#htmlEditFormat(adsV1PlacementSummary(placement_keys))#</div></td>
+                  <td><strong>#lsCurrencyFormat(spent_total)# de #lsCurrencyFormat(budget_total)#</strong><div class="small text-muted">Lance #lsCurrencyFormat(cpc_bid)# por clique<cfif isNumeric(budget_daily) AND val(budget_daily) GT 0> · limite #lsCurrencyFormat(budget_daily)#/dia</cfif></div></td>
+                  <td><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><div class="small text-muted">#lsNumberFormat(valid_click_count, "9,999,999")# cliques · #lsNumberFormat(served_count, "9,999,999")# entregas</div></td>
+                  <td><strong><cfif isDate(starts_at)>#lsDateFormat(starts_at, "dd/mm/yyyy")#<cfelse>-</cfif> a <cfif isDate(ends_at)>#lsDateFormat(ends_at, "dd/mm/yyyy")#<cfelse>-</cfif></strong><div class="small text-muted"><cfif isDate(reviewed_at)>Aprovada em #lsDateFormat(reviewed_at, "dd/mm/yyyy")#<cfelse>Aprovada</cfif></div></td>
+                </tr>
+              </cfoutput>
+            </tbody>
+          </table>
+        </div>
+      </cfif>
+    </div>
+  </section>
 </cfif>
 
 <cfif VARIABLES.adsAccessCanAdminFinance>
