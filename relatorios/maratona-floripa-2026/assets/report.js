@@ -223,15 +223,25 @@
     const labelKey = config.labelKey || 'label';
     const valueKey = config.valueKey || 'value';
     const limit = config.limit || 10;
-    const sorted = [...(config.rows || [])].sort((left, right) => {
+    const inputRows = [...(config.rows || [])];
+    const sorted = [...inputRows].sort((left, right) => {
       const difference = toNumber(right[valueKey]) - toNumber(left[valueKey]);
       return difference || String(left[labelKey] ?? '').localeCompare(String(right[labelKey] ?? ''), 'pt-BR');
     });
+    const orderedRows = config.preserveOrder && config.aggregateOther === true && inputRows.length > limit
+      ? [
+          ...inputRows.slice(0, limit),
+          {
+            [labelKey]: 'Outros',
+            [valueKey]: inputRows.slice(limit).reduce((total, row) => total + toNumber(row[valueKey]), 0),
+          },
+        ]
+      : inputRows;
     const rows = config.preserveOrder
-      ? [...(config.rows || [])]
+      ? orderedRows
       : config.aggregateOther === false
         ? sorted.slice(0, limit)
-        : topNWithOthers(config.rows || [], labelKey, valueKey, limit);
+        : topNWithOthers(inputRows, labelKey, valueKey, limit);
     const max = Math.max(1, ...rows.map((row) => toNumber(row[valueKey])));
     const rowHeight = 38;
     const width = 920;

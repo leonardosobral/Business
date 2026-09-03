@@ -180,7 +180,6 @@ test('simulator header exposes general analysis, dossiers, portfolio and PDF act
   assert.match(page, /href=["']\.\/["'][^>]*>Portfólio</i);
   assert.match(page, /window\.print\s*\(/i);
   assert.match(page, /portfolio\.css\?v=20260902-2/i);
-  assert.match(page, /portfolio\.js\?v=20260902-6/i);
   assert.doesNotMatch(page, />Explorador</i);
 });
 

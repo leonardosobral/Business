@@ -515,6 +515,55 @@ test('dependency evidence ranks relevant cells, labels channels and keeps low ro
   assert.match(dependencySection, /Participação comercial/);
 });
 
+test('dependency chart preserves severity ranking and aggregates only the ranked tail', () => {
+  const root = { innerHTML: '' };
+  const summary = summaryFixture();
+  summary.dependency_cells = [
+    {
+      phase: 'Meio', modality: '42K', state: 'RN', channel_name: 'ROADRUNNERS',
+      paid_registrations: 5, event_paid_registrations: 9,
+      commercial_paid_registrations: 6, event_share_pct: '55.56',
+      commercial_share_pct: '83.33', exposure: 'alta',
+      sample_status: 'amostra celular reduzida',
+    },
+    ...Array.from({ length: 11 }, (_, index) => ({
+      phase: 'Meio', modality: '21K', state: `M${index + 1}`,
+      channel_name: `Médio ${index + 1}`,
+      paid_registrations: 100 - index,
+      event_paid_registrations: 200,
+      commercial_paid_registrations: 125,
+      event_share_pct: (50 - index / 2).toFixed(2),
+      commercial_share_pct: (80 - index * 0.8).toFixed(2),
+      exposure: 'média',
+      sample_status: 'amostra celular suficiente',
+    })),
+  ];
+
+  portfolio.renderSummary(root, summary);
+
+  const dependencySection = root.innerHTML.slice(
+    root.innerHTML.indexOf('id="portfolio-dependencias"'),
+    root.innerHTML.indexOf('id="portfolio-simulador"'),
+  );
+  const chartStart = dependencySection.indexOf('<figure class="chart-card">');
+  const chart = dependencySection.slice(
+    chartStart,
+    dependencySection.indexOf('</figure>', chartStart),
+  );
+  const labels = [...chart.matchAll(/class="bar-label">([^<]+)<\/text>/g)]
+    .map((match) => match[1]);
+  const values = [...chart.matchAll(/class="bar-value">([^<]+)<\/text>/g)]
+    .map((match) => match[1]);
+
+  assert.deepEqual(labels, [
+    'ROADRUNNERS · Meio · 42K · RN',
+    ...Array.from({ length: 9 }, (_, index) => `MÉDIO ${index + 1} · Meio · 21K · M${index + 1}`),
+    'Outros',
+  ]);
+  assert.equal(values[0], '5');
+  assert.equal(values.at(-1), '181');
+});
+
 test('executive summary distinguishes total qualified pairs from the displayed Top 10', () => {
   const root = { innerHTML: '' };
 

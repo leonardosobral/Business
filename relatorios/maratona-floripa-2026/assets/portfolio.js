@@ -367,7 +367,7 @@
       { key: 'exposure', label: 'Cobertura em risco' },
     ];
     const dependencyEvidence = relevantDependencies.length
-      ? `${report.renderBarChart({ title: relevantDependencies.length > 10 ? 'Top 10 + Outros · exposição relevante observada' : 'Exposição relevante observada', description: 'Inscrições das células altas, médias ou concentradas entre parceiros; baixas permanecem apenas no apêndice.', rows: relevantDependencies, labelKey: 'label', valueKey: 'value', denominator: overview.paid_registrations, source: 'População completa das células relevantes; Outros soma todas as linhas além das dez exibidas.' })}${report.renderTable({ columns: dependencyColumns, rows: dependencyTop })}`
+      ? `${report.renderBarChart({ title: relevantDependencies.length > 10 ? 'Top 10 + Outros · exposição relevante observada' : 'Exposição relevante observada', description: 'Inscrições das células altas, médias ou concentradas entre parceiros; baixas permanecem apenas no apêndice.', rows: relevantDependencies, labelKey: 'label', valueKey: 'value', preserveOrder: true, aggregateOther: true, denominator: overview.paid_registrations, source: 'População completa das células relevantes; Outros soma todas as linhas além das dez exibidas.' })}${report.renderTable({ columns: dependencyColumns, rows: dependencyTop })}`
       : '<div class="empty-state"><p>Não houve célula com exposição relevante observada.</p></div>';
     const dependencyAppendix = `<details class="portfolio-dependency-appendix"><summary>Apêndice completo · ${report.formatInteger(dependencies.length)} células, incluindo exposição baixa</summary>${report.renderTable({ columns: dependencyColumns, rows: dependencies })}</details>`;
 

@@ -68,7 +68,7 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifChannelPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-5"></script>
+  <script src="../assets/report.js?v=20260903-6"></script>
   <script>
     (function renderMifChannelPage() {
       'use strict';

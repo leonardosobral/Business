@@ -81,8 +81,8 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifPortfolioSimulatorPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260902-5"></script>
-  <script src="../assets/portfolio.js?v=20260902-6"></script>
+  <script src="../assets/report.js?v=20260903-6"></script>
+  <script src="../assets/portfolio.js?v=20260903-7"></script>
   <script>
     (function configureMifPortfolioSimulator() {
       'use strict';

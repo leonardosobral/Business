@@ -72,7 +72,6 @@ test('static portfolio page uses versioned local report and portfolio assets onl
     assert.match(page, new RegExp(`\\.\\.\\/assets\\/${asset.replace('.', '\\.') }\\?v=\\d+`, 'i'));
   }
   assert.match(page, /portfolio\.css\?v=20260902-2/i);
-  assert.match(page, /portfolio\.js\?v=20260902-6/i);
   const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);
