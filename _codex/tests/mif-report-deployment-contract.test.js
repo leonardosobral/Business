@@ -30,7 +30,7 @@ test('every private-data consumer authenticates first', () => {
     .filter((file) => file.endsWith('.cfm'))
     .filter((file) => /mifReadDataset\s*\(/i.test(fs.readFileSync(file, 'utf8')));
 
-  assert.equal(consumers.length, 6);
+  assert.equal(consumers.length, 7);
   for (const consumer of consumers) {
     const source = fs.readFileSync(consumer, 'utf8');
     assert.match(source, /includes\/auth\.cfm/i, consumer);
@@ -55,7 +55,7 @@ test('public code has local assets and no embedded production snapshot', () => {
 
   const remoteAssets = [...publicSources.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
     .map((match) => match[1]);
-  assert.equal(remoteAssets.length, 18);
+  assert.equal(remoteAssets.length, 21);
   assert.ok(
     remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)),
   );

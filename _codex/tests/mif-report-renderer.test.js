@@ -56,6 +56,41 @@ test('HTML escaping protects headings, table cells and links', () => {
   assert.match(table, /&lt;img/);
 });
 
+test('long tables show ten rows first and expose the complete table on demand', () => {
+  const rows = Array.from({ length: 12 }, (_, index) => ({ name: `Canal ${index + 1}` }));
+  const table = report.renderTable({
+    columns: [{ key: 'name', label: 'Canal' }],
+    rows,
+  });
+  const preview = table.match(/<div class="table-preview"[^>]*>([\s\S]*?)<\/div><details/)?.[1] || '';
+
+  assert.equal((preview.match(/<tr>/g) || []).length, 11, 'header plus ten preview rows');
+  assert.match(table, /<details class="table-expansion">/);
+  assert.match(table, /Ver tabela completa <span>· 12 linhas<\/span>/);
+  assert.match(table, /Canal 12/);
+});
+
+test('short tables stay open and callers can disable automatic disclosure', () => {
+  const columns = [{ key: 'name', label: 'Canal' }];
+  const shortTable = report.renderTable({ columns, rows: [{ name: 'Alfa' }] });
+  const completeTable = report.renderTable({
+    columns,
+    rows: Array.from({ length: 12 }, (_, index) => ({ name: `Canal ${index + 1}` })),
+    collapsible: false,
+  });
+
+  assert.doesNotMatch(shortTable, /table-expansion/);
+  assert.doesNotMatch(completeTable, /table-expansion/);
+  assert.match(completeTable, /Canal 12/);
+});
+
+test('metric cards classify numeric values so they never split inside a number', () => {
+  const card = report.metricCard('Valor bruto', report.formatCurrency(4321891.2), 'pedidos pagos');
+
+  assert.match(card, /metric-card-value metric-card-value-numeric/);
+  assert.match(card, /R\$[\s\u00a0]+4\.321\.891,20/);
+});
+
 test('generated narrative renders safe emphasis without Markdown artifacts', () => {
   const narrative = report.renderNarrative('## Resumo - **Escala:** forte <script>');
 
@@ -86,6 +121,10 @@ test('phase presentation renames launch and exposes every closed-cycle date rang
   assert.equal(
     report.formatReportText('Ativação no Lançamento.', []),
     'Ativação no Pré-lançamento.',
+  );
+  assert.equal(
+    report.formatReportText('lote — 4: 9,44% acima do evento.', []),
+    'Lote 4: 9,44% acima do evento.',
   );
   const legend = report.renderPhaseLegend();
   for (const expected of [
@@ -140,6 +179,24 @@ test('channel directory renders executive highlights without raw Markdown', () =
   assert.match(root.innerHTML, /&lt;script&gt;/);
   assert.ok(root.innerHTML.indexOf('channel-card-metrics') < root.innerHTML.indexOf('channel-card-summary'));
   assert.match(root.innerHTML, /channel-card-heading/);
+});
+
+test('channel directory keeps the ten leaders visible and puts the remainder in a disclosure', () => {
+  const root = { innerHTML: '' };
+  report.renderChannelIndex(root, {
+    channels: Array.from({ length: 12 }, (_, index) => ({
+      slug: `canal-${index + 1}`,
+      channel_name: `Canal ${index + 1}`,
+      gross_value: String(1200 - index),
+      paid_registrations: 12,
+      registration_ticket: '100.00',
+    })),
+  });
+
+  const preview = root.innerHTML.match(/<div class="channel-directory channel-directory-preview">([\s\S]*?)<\/div><details/)?.[1] || '';
+  assert.equal((preview.match(/class="channel-card"/g) || []).length, 10);
+  assert.match(root.innerHTML, /<details class="directory-expansion">/);
+  assert.match(root.innerHTML, /Ver os 2 canais restantes/);
 });
 
 test('commercial channel views hide ticket at or below ten reais', () => {

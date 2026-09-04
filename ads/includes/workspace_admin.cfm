@@ -1,4 +1,7 @@
 <cfif VARIABLES.adsAccessCanReviewCampaign>
+  <cfset VARIABLES.adsV1PerformanceContext = "admin"/>
+  <cfinclude template="workspace_performance.cfm"/>
+
   <section class="mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2">
     <div><div class="ads-v1-eyebrow">Uso interno</div><h2 class="h5 mb-1">Campanhas aguardando análise</h2><p class="text-muted mb-0">Cada bloco abaixo representa uma única solicitação, com contexto e decisões agrupados.</p></div>
     <span class="badge badge-info"><cfoutput>#qAdsV1CampaignReviewQueue.recordcount# na fila</cfoutput></span>
@@ -98,6 +101,8 @@
             <tbody>
               <cfoutput query="qAdsV1AdminOperationalCampaigns">
                 <cfset VARIABLES.adsV1AdminOperationalStatus = uCase(trim(campaign_status & ""))/>
+                <cfset VARIABLES.adsV1AdminOperationalCtr = val(viewable_impression_count) GT 0 ? val(valid_click_count) * 100 / val(viewable_impression_count) : 0/>
+                <cfset VARIABLES.adsV1AdminOperationalAverageCpc = val(billable_click_count) GT 0 ? val(cost) / val(billable_click_count) : 0/>
                 <tr>
                   <td>
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
@@ -109,7 +114,7 @@
                   <td><strong>#htmlEditFormat(account_name)#</strong><div class="small text-muted">#htmlEditFormat(event_name)#<cfif len(trim(event_city & "")) OR len(trim(event_state & ""))> · #htmlEditFormat(event_city)#/#htmlEditFormat(event_state)#</cfif></div></td>
                   <td><strong><cfif len(trim(target_region_code & ""))>#htmlEditFormat(target_region_code)#<cfelse>Brasil</cfif></strong><div class="small text-muted"><cfif uCase(trim(target_device_class & "")) EQ "MOBILE">Celular<cfelseif uCase(trim(target_device_class & "")) EQ "DESKTOP">Desktop<cfelse>Todos os dispositivos</cfif></div><div class="small text-muted">#htmlEditFormat(adsV1PlacementSummary(placement_keys))#</div></td>
                   <td><strong>#lsCurrencyFormat(spent_total)# de #lsCurrencyFormat(budget_total)#</strong><div class="small text-muted">Lance #lsCurrencyFormat(cpc_bid)# por clique<cfif isNumeric(budget_daily) AND val(budget_daily) GT 0> · limite #lsCurrencyFormat(budget_daily)#/dia</cfif></div></td>
-                  <td><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><div class="small text-muted">#lsNumberFormat(valid_click_count, "9,999,999")# cliques · #lsNumberFormat(served_count, "9,999,999")# entregas</div></td>
+                  <td><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><div class="small text-muted">#lsNumberFormat(valid_click_count, "9,999,999")# cliques · CTR #lsNumberFormat(VARIABLES.adsV1AdminOperationalCtr, "9.99")#%</div><div class="small text-muted">CPC médio #lsCurrencyFormat(VARIABLES.adsV1AdminOperationalAverageCpc)# · #lsNumberFormat(served_count, "9,999,999")# entregas</div></td>
                   <td><strong><cfif isDate(starts_at)>#lsDateFormat(starts_at, "dd/mm/yyyy")#<cfelse>-</cfif> a <cfif isDate(ends_at)>#lsDateFormat(ends_at, "dd/mm/yyyy")#<cfelse>-</cfif></strong><div class="small text-muted"><cfif isDate(reviewed_at)>Aprovada em #lsDateFormat(reviewed_at, "dd/mm/yyyy")#<cfelse>Aprovada</cfif></div></td>
                 </tr>
               </cfoutput>

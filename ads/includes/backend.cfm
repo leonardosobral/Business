@@ -1,5 +1,8 @@
 <cfparam name="URL.success" default=""/>
 <cfparam name="URL.campaign" default=""/>
+<cfparam name="URL.ads_campaign" default=""/>
+<cfparam name="URL.ads_period" default="30"/>
+<cfparam name="URL.view" default="overview"/>
 <cfparam name="FORM.ads_v1_action" default=""/>
 <cfparam name="FORM.ads_v1_csrf" default=""/>
 <cfparam name="FORM.voucher_code" default=""/>
@@ -60,6 +63,8 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1Notice = ""/>
 <cfset VARIABLES.adsV1ReadinessError = ""/>
 <cfset VARIABLES.adsV1SelectedCampaignId = ""/>
+<cfset VARIABLES.adsV1PerformanceCampaignId = ""/>
+<cfset VARIABLES.adsV1PerformanceCampaignName = ""/>
 <cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1CampaignActions = "save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status"/>
@@ -71,6 +76,9 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1CanReviewMutate = false/>
 <cfset VARIABLES.adsV1AdminVoucherApiReady = false/>
 <cfset VARIABLES.adsV1CanAdminVoucherMutate = false/>
+<cfset VARIABLES.adsV1PerformanceDays = listFind("7,30", trim(URL.ads_period & ""))
+    ? val(URL.ads_period)
+    : 30/>
 <cfset VARIABLES.adsV1AllowedEventPlacementKeys = [
     "rr-home-upcoming-native",
     "rr-home-upcoming-native-secondary",
@@ -89,13 +97,20 @@ function adsV1FormList(required any value) {
 <cfset qAdsV1Events = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,url_imagem,url_imagem_listagem,imagem,event_link_status")/>
 <cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
 <cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at,event_link_status,account_status")/>
-<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,core_event_id,placement_keys,campaign_review_request_id,review_status,review_reason")/>
+<cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,core_event_id,destination_url,event_name,event_tag,event_date,event_city,event_state,placement_keys,spent_total,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at")/>
 <cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name")/>
 <cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name")/>
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
 <cfset qAdsV1VoucherReservation = QueryNew("voucher_reservation_id,id_ad_voucher,id_conta,id_solicitacao_cadastro,status,expires_at,transition_reason,codigo,credito")/>
 <cfset qAdsV1CampaignReviewQueue = QueryNew("campaign_review_request_id,campaign_id,account_id,core_event_id,review_status,review_reason,submitted_at,updated_at,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,account_status,event_name,event_tag,event_city,event_state,event_link_status,available_balance,placement_keys")/>
-<cfset qAdsV1AdminOperationalCampaigns = QueryNew("campaign_id,account_id,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,event_name,event_tag,event_city,event_state,spent_total,served_count,viewable_impression_count,valid_click_count,placement_keys,reviewed_at")/>
+<cfset qAdsV1AdminOperationalCampaigns = QueryNew("campaign_id,account_id,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,event_name,event_tag,event_city,event_state,spent_total,served_count,viewable_impression_count,valid_click_count,billable_click_count,cost,placement_keys,reviewed_at")/>
+<cfset qAdsV1AccountPerformanceDaily = QueryNew("metric_date,impressions,clicks,billable_clicks,conversions,cost")/>
+<cfset qAdsV1AccountPerformanceComparison = QueryNew("current_impressions,previous_impressions,current_clicks,previous_clicks,current_cost,previous_cost")/>
+<cfset qAdsV1CampaignPerformanceDaily = QueryNew("metric_date,impressions,clicks,billable_clicks,conversions,cost")/>
+<cfset qAdsV1CampaignPerformanceComparison = QueryNew("current_impressions,previous_impressions,current_clicks,previous_clicks,current_cost,previous_cost")/>
+<cfset qAdsV1CampaignStatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
+<cfset qAdsV1AdminPerformanceDaily = QueryNew("metric_date,impressions,clicks,billable_clicks,conversions,cost")/>
+<cfset qAdsV1AdminPerformanceComparison = QueryNew("current_impressions,previous_impressions,current_clicks,previous_clicks,current_cost,previous_cost")/>
 <cfset qAdsV1AdminVoucherAccounts = QueryNew("id_conta,nome_conta,status")/>
 <cfset qAdsV1AdminVouchers = QueryNew("id_ad_voucher,codigo,voucher_scope,id_conta,account_name,credito,credito_disponivel,status,data_criacao,data_expiracao,id_usuario_resgate,redeemed_by_name,redeemed_by_email,data_resgate,observacao,reservation_status,reserved_account_name")/>
 <cfset VARIABLES.adsV1Summary = {
@@ -415,6 +430,8 @@ function adsV1FormList(required any value) {
                        coalesce(metrics.served_count, 0)::bigint AS served_count,
                        coalesce(metrics.viewable_impression_count, 0)::bigint AS viewable_impression_count,
                        coalesce(metrics.valid_click_count, 0)::bigint AS valid_click_count,
+                       coalesce(metrics.billable_click_count, 0)::bigint AS billable_click_count,
+                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost,
                        placement.placement_keys,
                        review.reviewed_at
                 FROM ads.campaigns campaign
@@ -449,7 +466,9 @@ function adsV1FormList(required any value) {
                 LEFT JOIN LATERAL (
                     SELECT sum(metric.served_count) AS served_count,
                            sum(metric.viewable_impression_count) AS viewable_impression_count,
-                           sum(metric.valid_click_count) AS valid_click_count
+                           sum(metric.valid_click_count) AS valid_click_count,
+                           sum(metric.billable_click_count) AS billable_click_count,
+                           sum(metric.cost) AS cost
                     FROM ads.daily_metrics metric
                     WHERE metric.campaign_id = campaign.campaign_id
                       AND metric.account_id = campaign.account_id
@@ -473,6 +492,71 @@ function adsV1FormList(required any value) {
                          campaign.updated_at DESC,
                          campaign.created_at DESC
                 LIMIT 200
+            </cfquery>
+
+            <cfquery name="qAdsV1AdminPerformanceDaily" datasource="runnerhub">
+                WITH days AS (
+                    SELECT generate_series(
+                        current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day'),
+                        current_date,
+                        interval '1 day'
+                    )::date AS metric_date
+                ),
+                metrics AS (
+                    SELECT metric.metric_date,
+                           sum(metric.viewable_impression_count)::bigint AS impressions,
+                           sum(metric.valid_click_count)::bigint AS clicks,
+                           sum(metric.billable_click_count)::bigint AS billable_clicks,
+                           sum(metric.conversion_count)::bigint AS conversions,
+                           coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                    FROM ads.daily_metrics metric
+                    WHERE metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
+                    GROUP BY metric.metric_date
+                )
+                SELECT days.metric_date,
+                       coalesce(metrics.impressions, 0)::bigint AS impressions,
+                       coalesce(metrics.clicks, 0)::bigint AS clicks,
+                       coalesce(metrics.billable_clicks, 0)::bigint AS billable_clicks,
+                       coalesce(metrics.conversions, 0)::bigint AS conversions,
+                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost
+                FROM days
+                LEFT JOIN metrics ON metrics.metric_date = days.metric_date
+                ORDER BY days.metric_date
+            </cfquery>
+
+            <cfquery name="qAdsV1AdminPerformanceComparison" datasource="runnerhub">
+                WITH metrics AS (
+                    SELECT metric.metric_date,
+                           sum(metric.viewable_impression_count)::bigint AS impressions,
+                           sum(metric.valid_click_count)::bigint AS clicks,
+                           coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                    FROM ads.daily_metrics metric
+                    WHERE metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsV1PerformanceDays * 2) - 1#"/> * interval '1 day')
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
+                    GROUP BY metric.metric_date
+                )
+                SELECT coalesce(sum(impressions) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS current_impressions,
+                       coalesce(sum(impressions) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS previous_impressions,
+                       coalesce(sum(clicks) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS current_clicks,
+                       coalesce(sum(clicks) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS previous_clicks,
+                       coalesce(sum(cost) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::numeric(14, 2) AS current_cost,
+                       coalesce(sum(cost) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::numeric(14, 2) AS previous_cost
+                FROM metrics
             </cfquery>
         </cfif>
 
@@ -801,6 +885,85 @@ function adsV1FormList(required any value) {
                 ORDER BY c.updated_at DESC, c.created_at DESC
             </cfquery>
 
+            <cfif lCase(trim(URL.view & "")) EQ "overview" AND adsV1IsUuid(URL.ads_campaign)>
+                <cfloop query="qAdsV1Campaigns">
+                    <cfif compareNoCase(trim(qAdsV1Campaigns.campaign_id & ""), trim(URL.ads_campaign & "")) EQ 0>
+                        <cfset VARIABLES.adsV1PerformanceCampaignId = lCase(trim(qAdsV1Campaigns.campaign_id & ""))/>
+                        <cfset VARIABLES.adsV1PerformanceCampaignName = trim(qAdsV1Campaigns.name & "")/>
+                        <cfbreak/>
+                    </cfif>
+                </cfloop>
+            </cfif>
+
+            <cfquery name="qAdsV1AccountPerformanceDaily" datasource="runnerhub">
+                WITH days AS (
+                    SELECT generate_series(
+                        current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day'),
+                        current_date,
+                        interval '1 day'
+                    )::date AS metric_date
+                ),
+                metrics AS (
+                    SELECT metric.metric_date,
+                           sum(metric.viewable_impression_count)::bigint AS impressions,
+                           sum(metric.valid_click_count)::bigint AS clicks,
+                           sum(metric.billable_click_count)::bigint AS billable_clicks,
+                           sum(metric.conversion_count)::bigint AS conversions,
+                           coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                    FROM ads.daily_metrics metric
+                    WHERE metric.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      <cfif len(VARIABLES.adsV1PerformanceCampaignId)>AND metric.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1PerformanceCampaignId#"/> AS uuid)</cfif>
+                      AND metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
+                    GROUP BY metric.metric_date
+                )
+                SELECT days.metric_date,
+                       coalesce(metrics.impressions, 0)::bigint AS impressions,
+                       coalesce(metrics.clicks, 0)::bigint AS clicks,
+                       coalesce(metrics.billable_clicks, 0)::bigint AS billable_clicks,
+                       coalesce(metrics.conversions, 0)::bigint AS conversions,
+                       coalesce(metrics.cost, 0)::numeric(14, 2) AS cost
+                FROM days
+                LEFT JOIN metrics ON metrics.metric_date = days.metric_date
+                ORDER BY days.metric_date
+            </cfquery>
+
+            <cfquery name="qAdsV1AccountPerformanceComparison" datasource="runnerhub">
+                WITH metrics AS (
+                    SELECT metric.metric_date,
+                           sum(metric.viewable_impression_count)::bigint AS impressions,
+                           sum(metric.valid_click_count)::bigint AS clicks,
+                           coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                    FROM ads.daily_metrics metric
+                    WHERE metric.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      <cfif len(VARIABLES.adsV1PerformanceCampaignId)>AND metric.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1PerformanceCampaignId#"/> AS uuid)</cfif>
+                      AND metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsV1PerformanceDays * 2) - 1#"/> * interval '1 day')
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
+                    GROUP BY metric.metric_date
+                )
+                SELECT coalesce(sum(impressions) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS current_impressions,
+                       coalesce(sum(impressions) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS previous_impressions,
+                       coalesce(sum(clicks) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS current_clicks,
+                       coalesce(sum(clicks) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::bigint AS previous_clicks,
+                       coalesce(sum(cost) FILTER (
+                           WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::numeric(14, 2) AS current_cost,
+                       coalesce(sum(cost) FILTER (
+                           WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                       ), 0)::numeric(14, 2) AS previous_cost
+                FROM metrics
+            </cfquery>
+
             <cfif VARIABLES.adsAccessCanAdminFinance>
                 <cfquery name="qAdsV1Ledger" datasource="runnerhub">
                     SELECT ledger.ledger_entry_id,
@@ -893,6 +1056,7 @@ function adsV1FormList(required any value) {
                            c.account_id,
                            c.name,
                            c.status,
+                           c.currency,
                            c.cpc_bid,
                            c.budget_total,
                            c.budget_daily,
@@ -901,14 +1065,26 @@ function adsV1FormList(required any value) {
                            c.target_region_code,
                            c.starts_at,
                            c.ends_at,
+                           c.created_at,
+                           c.updated_at,
                            advertisement.core_event_id,
+                           advertisement.destination_url,
+                           evt.nome_evento AS event_name,
+                           evt.tag AS event_tag,
+                           evt.data_inicial AS event_date,
+                           evt.cidade AS event_city,
+                           evt.estado AS event_state,
                            placement.placement_keys,
+                           coalesce(budget.spent_total, 0)::numeric(14, 2) AS spent_total,
                            review.campaign_review_request_id,
                            review.status AS review_status,
-                           review.review_reason
+                           review.review_reason,
+                           review.submitted_at,
+                           review.reviewed_at
                     FROM ads.campaigns c
                     LEFT JOIN LATERAL (
-                        SELECT ad.core_event_id
+                        SELECT ad.core_event_id,
+                               ad.destination_url
                         FROM ads.advertisements ad
                         WHERE ad.campaign_id = c.campaign_id
                           AND ad.account_id = c.account_id
@@ -916,6 +1092,8 @@ function adsV1FormList(required any value) {
                         ORDER BY ad.created_at, ad.advertisement_id
                         LIMIT 1
                     ) advertisement ON true
+                    LEFT JOIN public.tb_evento_corridas evt
+                      ON evt.id_evento = advertisement.core_event_id
                     LEFT JOIN LATERAL (
                         SELECT string_agg(
                                    DISTINCT pl.placement_key,
@@ -931,18 +1109,119 @@ function adsV1FormList(required any value) {
                     LEFT JOIN LATERAL (
                         SELECT request.campaign_review_request_id,
                                request.status,
-                               request.review_reason
+                               request.review_reason,
+                               request.submitted_at,
+                               request.reviewed_at
                         FROM ads.campaign_review_requests request
                         WHERE request.campaign_id = c.campaign_id
                           AND request.account_id = c.account_id
                         ORDER BY request.campaign_review_request_id DESC
                         LIMIT 1
                     ) review ON true
+                    LEFT JOIN ads.campaign_budget_state budget
+                      ON budget.campaign_id = c.campaign_id
+                     AND budget.account_id = c.account_id
+                     AND budget.currency = c.currency
                     WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
                       AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND c.billing_model = 'CPC'
                     LIMIT 1
                 </cfquery>
+
+                <cfif qAdsV1SelectedCampaign.recordcount AND lCase(trim(URL.view & "")) EQ "campaign-detail">
+                    <cfquery name="qAdsV1CampaignPerformanceDaily" datasource="runnerhub">
+                        WITH days AS (
+                            SELECT generate_series(
+                                current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day'),
+                                current_date,
+                                interval '1 day'
+                            )::date AS metric_date
+                        ),
+                        metrics AS (
+                            SELECT metric.metric_date,
+                                   sum(metric.viewable_impression_count)::bigint AS impressions,
+                                   sum(metric.valid_click_count)::bigint AS clicks,
+                                   sum(metric.billable_click_count)::bigint AS billable_clicks,
+                                   sum(metric.conversion_count)::bigint AS conversions,
+                                   coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                            FROM ads.daily_metrics metric
+                            WHERE metric.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
+                              AND metric.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                              AND metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                              AND metric.billing_model = 'CPC'
+                              AND metric.ad_type = 'EVENT'
+                            GROUP BY metric.metric_date
+                        )
+                        SELECT days.metric_date,
+                               coalesce(metrics.impressions, 0)::bigint AS impressions,
+                               coalesce(metrics.clicks, 0)::bigint AS clicks,
+                               coalesce(metrics.billable_clicks, 0)::bigint AS billable_clicks,
+                               coalesce(metrics.conversions, 0)::bigint AS conversions,
+                               coalesce(metrics.cost, 0)::numeric(14, 2) AS cost
+                        FROM days
+                        LEFT JOIN metrics ON metrics.metric_date = days.metric_date
+                        ORDER BY days.metric_date
+                    </cfquery>
+
+                    <cfquery name="qAdsV1CampaignPerformanceComparison" datasource="runnerhub">
+                        WITH metrics AS (
+                            SELECT metric.metric_date,
+                                   sum(metric.viewable_impression_count)::bigint AS impressions,
+                                   sum(metric.valid_click_count)::bigint AS clicks,
+                                   coalesce(sum(metric.cost), 0)::numeric(14, 2) AS cost
+                            FROM ads.daily_metrics metric
+                            WHERE metric.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
+                              AND metric.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                              AND metric.metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#(VARIABLES.adsV1PerformanceDays * 2) - 1#"/> * interval '1 day')
+                              AND metric.billing_model = 'CPC'
+                              AND metric.ad_type = 'EVENT'
+                            GROUP BY metric.metric_date
+                        )
+                        SELECT coalesce(sum(impressions) FILTER (
+                                   WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::bigint AS current_impressions,
+                               coalesce(sum(impressions) FILTER (
+                                   WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::bigint AS previous_impressions,
+                               coalesce(sum(clicks) FILTER (
+                                   WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::bigint AS current_clicks,
+                               coalesce(sum(clicks) FILTER (
+                                   WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::bigint AS previous_clicks,
+                               coalesce(sum(cost) FILTER (
+                                   WHERE metric_date >= current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::numeric(14, 2) AS current_cost,
+                               coalesce(sum(cost) FILTER (
+                                   WHERE metric_date < current_date - (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1PerformanceDays - 1#"/> * interval '1 day')
+                               ), 0)::numeric(14, 2) AS previous_cost
+                        FROM metrics
+                    </cfquery>
+
+                    <cfquery name="qAdsV1CampaignStatusHistory" datasource="runnerhub">
+                        SELECT history.campaign_status_history_id,
+                               history.campaign_id,
+                               history.account_id,
+                               history.from_status,
+                               history.to_status,
+                               history.reason,
+                               history.changed_by,
+                               history.changed_at,
+                               campaign.name AS campaign_name,
+                               usr.name AS changed_by_name
+                        FROM ads.campaign_status_history history
+                        INNER JOIN ads.campaigns campaign
+                          ON campaign.campaign_id = history.campaign_id
+                         AND campaign.account_id = history.account_id
+                        LEFT JOIN public.tb_usuarios usr
+                          ON usr.id = history.changed_by
+                        WHERE history.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
+                          AND history.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                        ORDER BY history.changed_at DESC,
+                                 history.campaign_status_history_id DESC
+                        LIMIT 20
+                    </cfquery>
+                </cfif>
             </cfif>
             <cfset VARIABLES.adsV1DataReady = true/>
         </cfif>

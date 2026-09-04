@@ -104,7 +104,9 @@
   }
 
   function formatReportText(value, channelNames = []) {
-    return formatChannelMentions(value, channelNames).split('Lançamento').join('Pré-lançamento');
+    return formatChannelMentions(value, channelNames)
+      .split('Lançamento').join('Pré-lançamento')
+      .replace(/\blote\s*[—–-]\s*(\d+)\b/giu, 'Lote $1');
   }
 
   function renderPhaseLegend() {
@@ -378,10 +380,9 @@
     }).replace('bar-chart', 'stacked-chart');
   }
 
-  function renderTable(config) {
-    const columns = config.columns || [];
+  function renderTableMarkup(columns, rows) {
     const header = columns.map((column) => `<th scope="col">${escapeHtml(column.label)}</th>`).join('');
-    const body = (config.rows || []).map((row) => `<tr>${columns.map((column) => {
+    const body = rows.map((row) => `<tr>${columns.map((column) => {
       const raw = row[column.key];
       const formatted = column.format ? column.format(raw, row) : raw;
       return `<td>${escapeHtml(formatted ?? '—')}</td>`;
@@ -389,8 +390,33 @@
     return `<div class="table-wrap"><table><thead><tr>${header}</tr></thead><tbody>${body || `<tr><td colspan="${Math.max(columns.length, 1)}">Sem dados observados.</td></tr>`}</tbody></table></div>`;
   }
 
+  function renderTable(config) {
+    const columns = config.columns || [];
+    const rows = Array.isArray(config.rows) ? config.rows : [];
+    const requestedLimit = Number(config.previewLimit ?? 10);
+    const previewLimit = Number.isFinite(requestedLimit) && requestedLimit > 0
+      ? Math.floor(requestedLimit)
+      : 10;
+
+    if (config.collapsible === false || rows.length <= previewLimit) {
+      return renderTableMarkup(columns, rows);
+    }
+
+    const noun = config.rowLabel || 'linhas';
+    return `<div class="table-preview" data-preview-rows="${previewLimit}">${renderTableMarkup(columns, rows.slice(0, previewLimit))}</div><details class="table-expansion"><summary>Ver tabela completa <span>· ${formatInteger(rows.length)} ${escapeHtml(noun)}</span></summary>${renderTableMarkup(columns, rows)}</details>`;
+  }
+
+  function metricValueClass(value) {
+    const text = String(value ?? '—').trim();
+    if (/^(?:R\$\s*)?[-+]?\d[\d.]*(?:,\d+)?%?$/u.test(text)) {
+      return 'metric-card-value metric-card-value-numeric';
+    }
+    return `metric-card-value${text.length > 18 ? ' metric-card-value-long' : ''}`;
+  }
+
   function metricCard(label, value, note) {
-    return `<article class="metric-card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong>${note ? `<small>${escapeHtml(note)}</small>` : ''}</article>`;
+    const safeValue = escapeHtml(value);
+    return `<article class="metric-card"><span>${escapeHtml(label)}</span><strong class="${metricValueClass(value)}">${safeValue}</strong>${note ? `<small>${escapeHtml(note)}</small>` : ''}</article>`;
   }
 
   function chapter(id, kicker, title, lead, content) {
@@ -498,7 +524,12 @@
         </dl>
         <div class="channel-card-summary"><p>${renderNarrative(formatReportText(summary, channelNames))}</p></div>
       </article>`;
-    }).join('');
+    });
+    const visibleCards = cards.slice(0, 10).join('');
+    const remainingCards = cards.slice(10).join('');
+    const directory = cards.length
+      ? `<div class="channel-directory channel-directory-preview">${visibleCards}</div>${remainingCards ? `<details class="directory-expansion"><summary>Ver os ${formatInteger(cards.length - 10)} canais restantes</summary><div class="channel-directory channel-directory-complete">${remainingCards}</div></details>` : ''}`
+      : '<div class="channel-directory"><p>Não há canais observados.</p></div>';
     root.innerHTML = `${renderBarChart({
       title: 'Valor bruto por canal',
       description: 'Ordem comercial do portfólio; o visual usa Top 10 + Outros.',
@@ -509,7 +540,7 @@
       valueFormatter: formatCurrency,
       denominator: channels.length ? formatCurrency(channels.reduce((total, row) => total + toNumber(row.gross_value), 0)) : 0,
       source: 'Valores de pedido alocados às inscrições pagas de cada canal.',
-    })}<div class="channel-directory">${cards || '<p>Não há canais observados.</p>'}</div>`;
+    })}${directory}`;
   }
 
   function renderGeneral(root, data) {
@@ -707,6 +738,7 @@
     renderMatrixChart,
     renderStackedChart,
     renderTable,
+    metricCard,
     renderChannelIndex,
     renderGeneral,
     renderChannel,

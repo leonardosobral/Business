@@ -48,12 +48,13 @@ test('general page declares the eight editorial chapters and print action', () =
   assert.match(page, /MifReport\.renderGeneral/i);
 });
 
-test('general page offers one portfolio action in the right-side action group', () => {
+test('general page exposes one portfolio action and highlights Visão geral', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
-  const actions = page.match(/<div class=["']report-actions["']>[\s\S]*?<\/div>/i)?.[0] || '';
+  const actions = page.match(/<nav class=["']report-actions["'][^>]*>[\s\S]*?<\/nav>/i)?.[0] || '';
 
   assert.equal((actions.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
-  assert.match(actions, /class=["']button["'][^>]+href=["']portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.match(actions, /href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.match(actions, /button-current[^>]*aria-current=["']page["'][^>]*href=["']\/relatorios\/maratona-floripa-2026\/["']/i);
   assert.equal((page.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
   assert.doesNotMatch(page, /class=["']report-back["']/i);
 });

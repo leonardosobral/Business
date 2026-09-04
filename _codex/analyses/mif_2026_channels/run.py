@@ -47,6 +47,8 @@ from .modular_artifact import (
     channel_slug,
     expected_artifact_transform_version,
     portfolio_dependency_receipt,
+    refresh_state_strategy_artifact,
+    state_strategy_dependency_receipt,
 )
 from .portfolio import (
     ACTIONABLE_DIMENSIONS,
@@ -74,6 +76,7 @@ from .source import (
     load_sources,
     parse_extraction_timestamp,
 )
+from .state_strategy import build_state_strategy
 
 
 _RAW_BOUNDARY_KEYS = frozenset(
@@ -86,6 +89,8 @@ _PORTFOLIO_BYTE_LIMITS = {
     "portfolio/summary.json": 750_000,
     "portfolio/simulator.json": 2_000_000,
 }
+_STATE_STRATEGY_ARTIFACT = "states/strategy.json"
+_STATE_STRATEGY_BYTE_LIMIT = 750_000
 _PORTFOLIO_FORBIDDEN_KEYS = frozenset(
     {
         "numero_pedido",
@@ -1032,6 +1037,7 @@ def verify_modular_outputs(manifest_path: Path) -> None:
         "products.json",
         "channels/index.json",
         "explorer.json",
+        _STATE_STRATEGY_ARTIFACT,
         *_PORTFOLIO_ARTIFACTS,
     }
     if not required.issubset(receipts):
@@ -1061,6 +1067,11 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             and len(content) >= _PORTFOLIO_BYTE_LIMITS[relative_path]
         ):
             raise ValueError(f"portfolio artifact exceeds byte limit: {relative_path}")
+        if (
+            relative_path == _STATE_STRATEGY_ARTIFACT
+            and len(content) >= _STATE_STRATEGY_BYTE_LIMIT
+        ):
+            raise ValueError("state strategy artifact exceeds byte limit")
         if receipt.get("source_sha256") != source_sha256:
             raise ValueError(f"modular source hash mismatch: {relative_path}")
         payload = json.loads(content)
@@ -1090,6 +1101,10 @@ def verify_modular_outputs(manifest_path: Path) -> None:
             raise ValueError(
                 f"portfolio dependency receipt mismatch: {relative_path}"
             )
+
+    expected_state_dependencies = state_strategy_dependency_receipt(payloads)
+    if receipts[_STATE_STRATEGY_ARTIFACT].get("dependencies") != expected_state_dependencies:
+        raise ValueError("state strategy dependency receipt mismatch")
 
     general = payloads["general.json"]
     overview = general.get("overview")
@@ -1482,6 +1497,19 @@ def verify_modular_outputs(manifest_path: Path) -> None:
     for relative_path in _PORTFOLIO_ARTIFACTS:
         if payloads[relative_path] != expected_portfolio[relative_path]:
             raise ValueError(f"portfolio full contract mismatch: {relative_path}")
+    expected_state_strategy = build_state_strategy(
+        overview=overview,
+        channel_index=channel_index,
+        dossiers=[
+            payloads[f"channels/{row['slug']}.json"]["channel"]
+            for row in channel_index
+        ],
+        territory_observations=payloads["territories.json"]["observations"],
+        geography_benchmark=portfolio_summary["dimension_benchmarks"]["geography"],
+        generated_at=str(payloads[_STATE_STRATEGY_ARTIFACT]["meta"].get("generated_at", "")),
+    )
+    if payloads[_STATE_STRATEGY_ARTIFACT] != expected_state_strategy:
+        raise ValueError("state strategy full contract mismatch")
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -1519,6 +1547,8 @@ def _parser() -> argparse.ArgumentParser:
 
     verify_modular = commands.add_parser("verify-modular")
     verify_modular.add_argument("--manifest", type=Path, required=True)
+    refresh_states = commands.add_parser("refresh-state-strategy")
+    refresh_states.add_argument("--manifest", type=Path, required=True)
     return parser
 
 
@@ -1566,9 +1596,13 @@ def main(argv: list[str] | None = None) -> int:
                 args.source_notes,
             )
             print("verification passed")
-        else:
+        elif args.command == "verify-modular":
             verify_modular_outputs(args.manifest)
             print("modular verification passed")
+        else:
+            paths = refresh_state_strategy_artifact(args.manifest)
+            verify_modular_outputs(args.manifest)
+            print(json.dumps({key: str(path) for key, path in paths.items()}, sort_keys=True))
     except (AssertionError, KeyError, OSError, TypeError, ValueError) as error:
         print(f"{args.command} failed: {error}", file=sys.stderr)
         return 1

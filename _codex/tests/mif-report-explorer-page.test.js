@@ -52,30 +52,31 @@ test('page restores URL state, exposes validation, grain and share link', () => 
   assert.match(page, /Cobertura|cobertura/);
 });
 
-test('explorer uses local report assets, public brand fonts and links back to the static analysis', () => {
+test('explorer uses local report assets, public brand fonts and links to the static analysis', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
 
   assert.match(page, /\.\.\/assets\/report\.css/i);
   assert.match(page, /\.\.\/assets\/explorer\.css/i);
   assert.match(page, /\.\.\/assets\/report\.js/i);
   assert.match(page, /\.\.\/assets\/explorer\.js/i);
-  assert.match(page, /href=["']\.\.\/["']/i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/["']/i);
   const remoteAssets = [...page.matchAll(/(?:src|href)=["'](https?:\/\/[^"']+)["']/gi)]
     .map((match) => match[1]);
   assert.equal(remoteAssets.length, 3);
   assert.ok(remoteAssets.every((url) => /^https:\/\/fonts\.(?:googleapis|gstatic)\.com(?:\/|$)/i.test(url)));
   assert.doesNotMatch(page, /class=["']report-back["']/i);
-  assert.match(page, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/["'][^>]*>Visão geral</i);
   assert.match(page, /MifReport\.isVisibleLot/i);
 });
 
-test('explorer keeps the general-analysis action and adds one portfolio action on the right', () => {
+test('explorer keeps the global action group and highlights itself', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
-  const actions = page.match(/<div class=["']report-actions["']>[\s\S]*?<\/div>/i)?.[0] || '';
+  const actions = page.match(/<nav class=["']report-actions["'][^>]*>[\s\S]*?<\/nav>/i)?.[0] || '';
 
-  assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/["'][^>]*>← Análise geral<\/a>/i);
+  assert.match(actions, /href=["']\/relatorios\/maratona-floripa-2026\/["'][^>]*>Visão geral<\/a>/i);
   assert.equal((actions.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
-  assert.match(actions, /class=["']button["'][^>]+href=["']\.\.\/portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.match(actions, /href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/["'][^>]*>Portfólio 2027<\/a>/i);
+  assert.match(actions, /button-current[^>]*aria-current=["']page["'][^>]*href=["']\/relatorios\/maratona-floripa-2026\/explorador\/["']/i);
   assert.equal((page.match(/>Portfólio 2027<\/a>/gi) || []).length, 1);
   assert.doesNotMatch(page, /class=["']report-back["']/i);
 });

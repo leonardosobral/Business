@@ -172,15 +172,16 @@ test('simulator preserves repeated channel parameters through the authenticated 
   assert.match(page, /simulador\.cfm/i);
 });
 
-test('simulator header exposes general analysis, dossiers, portfolio and PDF actions', () => {
+test('simulator header exposes global navigation and highlights simulator', () => {
   assert.match(page, /class=["']report-brand["']/i);
   assert.match(page, /src=["']\/lib\/images\/runpro\.svg["']/i);
-  assert.match(page, /href=["']\.\.\/["'][^>]*>← Análise geral</i);
-  assert.match(page, /href=["']\.\.\/canais\/["'][^>]*>Dossiês</i);
-  assert.match(page, /href=["']\.\/["'][^>]*>Portfólio</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/["'][^>]*>Visão geral</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/canais\/["'][^>]*>Canais</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/["'][^>]*>Portfólio 2027</i);
+  assert.match(page, /button-current[^>]*aria-current=["']page["'][^>]*href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/simulador\.cfm["']/i);
   assert.match(page, /window\.print\s*\(/i);
   assert.match(page, /portfolio\.css\?v=20260902-2/i);
-  assert.doesNotMatch(page, />Explorador</i);
+  assert.match(page, />Explorador</i);
 });
 
 test('simulator restores repeated channels, sorts choices by gross value and replaces a deterministic URL', () => {

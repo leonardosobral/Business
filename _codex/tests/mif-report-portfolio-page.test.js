@@ -53,16 +53,17 @@ test('static portfolio page embeds escaped JSON and renders the approved six cha
   ]) assert.match(page, new RegExp(`href=["']#${chapter}["']`, 'i'));
 });
 
-test('static portfolio header exposes general analysis, dossiers, simulator and PDF actions', () => {
+test('static portfolio header exposes the global navigation and highlights portfolio', () => {
   const page = fs.readFileSync(pagePath, 'utf8');
 
   assert.match(page, /class=["']report-brand["']/i);
   assert.match(page, /src=["']\/lib\/images\/runpro\.svg["']/i);
-  assert.match(page, /href=["']\.\.\/["'][^>]*>← Análise geral</i);
-  assert.match(page, /href=["']\.\.\/canais\/["'][^>]*>Dossiês</i);
-  assert.match(page, /href=["']simulador\.cfm["'][^>]*>Simulador</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/["'][^>]*>Visão geral</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/canais\/["'][^>]*>Canais</i);
+  assert.match(page, /href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/simulador\.cfm["'][^>]*>Simulador</i);
+  assert.match(page, /button-current[^>]*aria-current=["']page["'][^>]*href=["']\/relatorios\/maratona-floripa-2026\/portfolio\/["']/i);
   assert.match(page, /window\.print\s*\(/i);
-  assert.doesNotMatch(page, />Explorador</i);
+  assert.match(page, />Explorador</i);
 });
 
 test('static portfolio page uses versioned local report and portfolio assets only', () => {

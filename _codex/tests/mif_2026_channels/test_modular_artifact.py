@@ -17,6 +17,7 @@ from _codex.analyses.mif_2026_channels.modular_artifact import (
     build_modular_artifacts,
     canonical_json_bytes,
     channel_slug,
+    refresh_state_strategy_artifact,
     write_modular_artifacts,
 )
 from _codex.analyses.mif_2026_channels.phases import (
@@ -84,6 +85,7 @@ class ModularArtifactTests(unittest.TestCase):
             },
         }
         expected |= {"portfolio/summary.json", "portfolio/simulator.json"}
+        expected.add("states/strategy.json")
 
         self.assertEqual(set(artifacts), expected)
         manifest = artifacts["manifest.json"]
@@ -98,6 +100,7 @@ class ModularArtifactTests(unittest.TestCase):
             self.assertTrue(receipt["transform_version"])
         self.assertLess(manifest["artifacts"]["portfolio/summary.json"]["bytes"], 750_000)
         self.assertLess(manifest["artifacts"]["portfolio/simulator.json"]["bytes"], 2_000_000)
+        self.assertLess(manifest["artifacts"]["states/strategy.json"]["bytes"], 750_000)
         self.assertNotIn("coverage_cube", artifacts["portfolio/summary.json"])
 
         strategy = artifacts["strategy.json"]
@@ -215,6 +218,53 @@ class ModularArtifactTests(unittest.TestCase):
             summary_dependencies["transform_version"],
             artifacts["portfolio/summary.json"]["meta"]["transform_version"],
         )
+
+    def test_state_strategy_receipt_pins_only_frozen_aggregate_dependencies(self):
+        _, _, _, artifacts = modular_fixture()
+
+        dependencies = artifacts["manifest.json"]["artifacts"]["states/strategy.json"]["dependencies"]
+
+        self.assertEqual(
+            set(dependencies),
+            {
+                "channel_index_sha256",
+                "dossier_geography_sha256",
+                "territory_observations_sha256",
+                "geography_benchmark_sha256",
+                "transform_contract_sha256",
+                "transform_version",
+            },
+        )
+        for key, value in dependencies.items():
+            if key != "transform_version":
+                self.assertRegex(value, r"^[0-9a-f]{64}$")
+
+    def test_state_strategy_refresh_rewrites_only_new_artifact_and_manifest(self):
+        _, _, _, artifacts = modular_fixture()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_modular_artifacts(root, artifacts)
+            state_path = root / "states" / "strategy.json"
+            state_path.unlink()
+            manifest_path = root / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["artifacts"].pop("states/strategy.json")
+            manifest_path.write_bytes(canonical_json_bytes(manifest))
+            before = {
+                path: path.stat().st_mtime_ns
+                for path in root.rglob("*.json")
+                if path != manifest_path
+            }
+
+            changed = refresh_state_strategy_artifact(manifest_path)
+
+            self.assertEqual(set(changed), {"states/strategy.json", "manifest.json"})
+            self.assertTrue(state_path.is_file())
+            self.assertEqual(
+                {path: path.stat().st_mtime_ns for path in before},
+                before,
+            )
+            verify_modular_outputs(manifest_path)
 
     def test_portfolio_verification_rejects_dependency_receipt_mismatch(self):
         _, _, _, artifacts = modular_fixture()

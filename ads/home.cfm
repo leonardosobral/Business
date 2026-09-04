@@ -98,11 +98,12 @@ function adsV1PaymentStatusLabel(required any status) {
 }
 
 VARIABLES.adsV1WorkspaceView = lCase(trim(URL.view & ""));
-if (!listFindNoCase("overview,campaigns,payments,history,admin,vouchers", VARIABLES.adsV1WorkspaceView)) {
+if (!listFindNoCase("overview,campaigns,campaign-detail,payments,history,admin,vouchers", VARIABLES.adsV1WorkspaceView)) {
     VARIABLES.adsV1WorkspaceView = "overview";
 }
 if (adsV1IsUuid(URL.payment)) VARIABLES.adsV1WorkspaceView = "payments";
-if (adsV1IsUuid(URL.campaign) OR lCase(trim(URL.mode & "")) EQ "new") VARIABLES.adsV1WorkspaceView = "campaigns";
+if ((adsV1IsUuid(URL.campaign) AND VARIABLES.adsV1WorkspaceView NEQ "campaign-detail")
+    OR lCase(trim(URL.mode & "")) EQ "new") VARIABLES.adsV1WorkspaceView = "campaigns";
 if (listFindNoCase(VARIABLES.adsV1CampaignActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "campaigns";
 if (listFindNoCase(VARIABLES.adsV1FinanceActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
 if (listFindNoCase(VARIABLES.adsV1ReviewActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
@@ -123,6 +124,7 @@ if (!listFindNoCase("campaigns,legacy", VARIABLES.adsV1HistoryTab)) VARIABLES.ad
 VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
     AND (lCase(trim(URL.mode & "")) EQ "new" OR qAdsV1SelectedCampaign.recordcount
         OR (FORM.ads_v1_action EQ "save_campaign" AND len(VARIABLES.adsV1Error)));
+VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign-detail";
 </cfscript>
 
 <cfset VARIABLES.adsV1FormCampaignId = ""/>
@@ -209,13 +211,30 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   .ads-health-item { min-height: 118px; padding: 1.25rem; }
   .ads-health-item + .ads-health-item { border-left: 1px solid rgba(255,255,255,.09); }
   .ads-campaign-table { font-size: .84rem; min-width: 720px; }
-  .ads-campaign-table--management { min-width: 850px; }
+  .ads-campaign-table--overview { min-width: 760px; table-layout: fixed; }
+  .ads-campaign-table--overview th:nth-child(1) { width: 31%; }
+  .ads-campaign-table--overview th:nth-child(2) { width: 22%; }
+  .ads-campaign-table--overview th:nth-child(3) { width: 21%; }
+  .ads-campaign-table--overview th:nth-child(4) { width: 26%; }
+  .ads-campaign-table--management { min-width: 920px; table-layout: fixed; }
+  .ads-campaign-table--management th:nth-child(1) { width: 30%; }
+  .ads-campaign-table--management th:nth-child(2) { width: 21%; }
+  .ads-campaign-table--management th:nth-child(3) { width: 18%; }
+  .ads-campaign-table--management th:nth-child(4) { width: 19%; }
+  .ads-campaign-table--management th:nth-child(5) { width: 12%; }
+  .ads-campaign-table--management th, .ads-campaign-table--management td { padding: .9rem .75rem; }
   .ads-campaign-table th, .ads-campaign-table td { vertical-align: middle; }
-  .ads-campaign-mark, .ads-next-step-icon { align-items: center; background: rgba(98,199,216,.12); border: 1px solid rgba(98,199,216,.2); border-radius: .45rem; color: #62c7d8; display: flex; flex: 0 0 42px; height: 42px; justify-content: center; }
+  .ads-campaign-mark { align-items: center; background: rgba(98,199,216,.12); border: 1px solid rgba(98,199,216,.2); border-radius: .45rem; color: #62c7d8; display: flex; flex: 0 0 42px; height: 42px; justify-content: center; }
+  .ads-campaign-title, .ads-campaign-event { display: -webkit-box; line-height: 1.3; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .ads-campaign-performance-link { color: #78d3e1; display: inline-block; font-size: .76rem; font-weight: 750; margin-top: .45rem; text-decoration: none; }
+  .ads-campaign-performance-link:hover { color: #9be2ed; text-decoration: underline; }
+  .ads-campaign-result-grid { display: grid; gap: .7rem 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); min-width: 210px; }
+  .ads-campaign-result-grid small { color: var(--mdb-secondary-color); display: block; font-size: .68rem; margin-bottom: .12rem; text-transform: uppercase; }
+  .ads-campaign-result-grid strong { display: block; font-size: .9rem; white-space: nowrap; }
+  .ads-campaign-result-grid--management { min-width: 0; }
+  .ads-campaign-actions { align-items: flex-end; display: flex; flex-direction: column; gap: .4rem; white-space: nowrap; }
   .ads-budget-progress { background: rgba(255,255,255,.1); border-radius: 999px; height: 6px; overflow: hidden; width: 130px; }
   .ads-budget-progress span { background: #62c7d8; display: block; height: 100%; }
-  .ads-next-step { align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; gap: .85rem; padding: 1rem 0; text-decoration: none; }
-  .ads-next-step:last-child { border-bottom: 0; }
   .ads-activity-row { align-items: center; border-top: 1px solid rgba(255,255,255,.08); display: flex; gap: .85rem; justify-content: space-between; padding: .85rem 0; }
   .ads-activity-row:first-child { border-top: 0; }
   .ads-status-tabs { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -225,10 +244,29 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   .ads-row-actions summary { list-style: none; }
   .ads-row-actions summary::-webkit-details-marker { display: none; }
   .ads-row-actions-panel { background: #303030; border: 1px solid rgba(255,255,255,.12); border-radius: .4rem; display: flex; flex-direction: column; gap: .45rem; margin-top: .35rem; min-width: 230px; padding: .75rem; }
+  .ads-performance-card { border: 1px solid rgba(98,199,216,.22); }
+  .ads-performance-controls { align-items: flex-end; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-end; }
+  .ads-performance-campaign-filter { min-width: min(320px, 100%); }
+  .ads-performance-campaign-filter label { color: var(--mdb-secondary-color); display: block; font-size: .72rem; font-weight: 750; margin-bottom: .3rem; text-transform: uppercase; }
+  .ads-performance-selection { color: #78d3e1; font-size: .8rem; }
+  .ads-performance-kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .ads-performance-kpi { border-left: 1px solid rgba(255,255,255,.09); min-width: 0; padding: .25rem 1.15rem; }
+  .ads-performance-kpi:first-child { border-left: 0; padding-left: 0; }
+  .ads-performance-kpi > span, .ads-performance-kpi > small { color: var(--mdb-secondary-color); display: block; }
+  .ads-performance-kpi > span { font-size: .75rem; font-weight: 750; margin-bottom: .35rem; text-transform: uppercase; }
+  .ads-performance-kpi > strong { display: block; font-size: 1.45rem; line-height: 1.2; margin-bottom: .3rem; }
+  .ads-performance-kpi > small { line-height: 1.35; }
+  .ads-performance-trends { align-items: center; background: rgba(255,255,255,.035); border-radius: .45rem; display: flex; flex-wrap: wrap; font-size: .82rem; gap: .65rem 1.25rem; padding: .75rem 1rem; }
+  .ads-performance-trends > span { color: var(--mdb-secondary-color); }
+  .ads-performance-chart-wrap { height: 330px; position: relative; }
+  .ads-performance-empty { background: rgba(255,255,255,.025); border: 1px dashed rgba(255,255,255,.15); border-radius: .5rem; padding: 3rem 1.5rem; }
+  .ads-performance-empty i { color: #62c7d8; font-size: 2rem; }
+  @media (max-width: 1199.98px) { .ads-performance-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.25rem; } .ads-performance-kpi:nth-child(4) { border-left: 0; padding-left: 0; } }
   @media (max-width: 991.98px) { .ads-health-item + .ads-health-item { border-left: 0; border-top: 1px solid rgba(255,255,255,.09); } }
+  @media (max-width: 575.98px) { .ads-performance-kpis { grid-template-columns: 1fr 1fr; } .ads-performance-kpi { border-left: 0; padding: .25rem .75rem .25rem 0; } .ads-performance-chart-wrap { height: 270px; } }
 </style>
 
-<cfif NOT VARIABLES.adsV1IsCampaignCreationFocus>
+<cfif NOT VARIABLES.adsV1IsCampaignCreationFocus AND NOT VARIABLES.adsV1IsCampaignDetailFocus>
   <section class="mb-4"><div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3"><div><div class="ads-v1-eyebrow">Marketing</div><h1 class="h3 mb-0">Publicidade</h1><p class="text-muted mb-0 mt-2">Acompanhe suas campanhas e avance com as próximas ações.</p></div><cfif VARIABLES.adsAccessCanManageCampaign AND VARIABLES.adsV1HasAccount AND VARIABLES.adsV1ApiReady><a class="btn btn-info" href="./?view=campaigns&amp;mode=new#campaign-form">Criar campanha</a></cfif></div></section>
 </cfif>
 
@@ -260,7 +298,7 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
 <cfelseif NOT VARIABLES.adsV1DataReady>
   <section class="card shadow-0 mb-4"><div class="card-body p-4"><div class="ads-v1-eyebrow mb-2">Leitura indisponível</div><h2 class="h5">Não foi possível carregar a conta</h2><p class="text-muted mb-0">Recarregue a página. Nenhuma alteração foi realizada.</p></div></section>
 <cfelse>
-  <cfif NOT VARIABLES.adsV1IsCampaignCreationFocus>
+  <cfif NOT VARIABLES.adsV1IsCampaignCreationFocus AND NOT VARIABLES.adsV1IsCampaignDetailFocus>
   <section class="ads-health-strip mb-4">
     <div class="row g-0 row-cols-1 row-cols-lg-4">
       <div class="col ads-health-item">
@@ -290,6 +328,11 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   <cfif VARIABLES.adsV1Summary.active GT 0 AND VARIABLES.adsV1Summary.balance LTE 0><div class="alert alert-warning d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2"><div><strong>Campanha ativa sem saldo.</strong> Adicione crédito para retomar a exibição.</div><cfif VARIABLES.adsAccessCanPurchaseCredit><a class="btn btn-sm btn-outline-warning" href="./?view=payments#payment-credit">Adicionar saldo</a></cfif></div></cfif>
   </cfif>
 
+  <cfif VARIABLES.adsV1WorkspaceView EQ "overview" AND NOT VARIABLES.adsV1IsCampaignCreationFocus>
+    <cfset VARIABLES.adsV1PerformanceContext = "account"/>
+    <cfinclude template="includes/workspace_performance.cfm"/>
+  </cfif>
+  <cfif VARIABLES.adsV1WorkspaceView EQ "campaign-detail"><cfinclude template="includes/workspace_campaign_detail.cfm"/></cfif>
   <cfif listFindNoCase("overview,campaigns", VARIABLES.adsV1WorkspaceView) AND NOT VARIABLES.adsV1IsCampaignCreationFocus><cfinclude template="includes/workspace_campaigns.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "campaigns" AND VARIABLES.adsV1ShowCampaignForm><cfinclude template="includes/workspace_campaign_form.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "payments"><cfinclude template="includes/payments_home.cfm"/></cfif>
@@ -297,3 +340,22 @@ VARIABLES.adsV1ShowCampaignForm = VARIABLES.adsAccessCanManageCampaign
   <cfif VARIABLES.adsV1WorkspaceView EQ "admin" AND (VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign)><cfinclude template="includes/workspace_admin.cfm"/></cfif>
   <cfif VARIABLES.adsV1WorkspaceView EQ "history"><cfinclude template="includes/workspace_history.cfm"/></cfif>
 </cfif>
+
+<script src="/assets/js/ads-performance-dashboard.js?2026090203"></script>
+<script type="module">
+  const performanceCharts = document.querySelectorAll("[data-ads-performance-chart]");
+  if (performanceCharts.length && window.AdsPerformanceDashboard) {
+    import("/assets/js/chart.es.min.js").then(({ Chart }) => {
+      performanceCharts.forEach((canvas) => {
+        const source = document.getElementById(canvas.dataset.sourceId);
+        if (!source) return;
+        const rows = JSON.parse(source.textContent || "[]");
+        const config = window.AdsPerformanceDashboard.buildChartConfig(rows);
+        const [data, options] = window.AdsPerformanceDashboard.toMdbChartArguments(config);
+        new Chart(canvas, data, options);
+      });
+    }).catch((error) => {
+      console.error("Não foi possível carregar o gráfico de performance.", error);
+    });
+  }
+</script>

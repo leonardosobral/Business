@@ -32,6 +32,23 @@ from .portfolio import (
 from .privacy import assert_anonymous
 from .recommendations import recommend_channel
 from .strategy import STRATEGY_TRANSFORM_VERSION, build_strategy
+from .state_strategy import (
+    COMMERCIAL_TICKET_MIN as STATE_COMMERCIAL_TICKET_MIN,
+    FEATURED_CHANNELS,
+    MIN_CLASSIFIABLE_REGISTRATIONS,
+    MIN_PUBLISHABLE_STATE_CHANNEL_REGISTRATIONS,
+    MIN_RELEVANT_REGION_REGISTRATIONS,
+    MIN_RELEVANT_STATE_REGISTRATIONS,
+    MIN_VALID_STATE_COVERAGE_PCT,
+    MULTIREGIONAL_MAX_LEADING_STATE_SHARE_PCT,
+    MULTIREGIONAL_MIN_RELEVANT_REGIONS,
+    MULTIREGIONAL_MIN_RELEVANT_STATES,
+    NATIONAL_MAX_LEADING_STATE_SHARE_PCT,
+    NATIONAL_MIN_RELEVANT_REGIONS,
+    NATIONAL_MIN_RELEVANT_STATES,
+    STATE_STRATEGY_TRANSFORM_VERSION,
+    build_state_strategy,
+)
 
 
 TRANSFORM_VERSION = f"{PIPELINE_VERSION}-modular.1"
@@ -70,6 +87,8 @@ def expected_artifact_transform_version(relative_path: str) -> str:
         return STRATEGY_TRANSFORM_VERSION
     if relative_path in {"portfolio/summary.json", "portfolio/simulator.json"}:
         return PORTFOLIO_TRANSFORM_VERSION
+    if relative_path == "states/strategy.json":
+        return STATE_STRATEGY_TRANSFORM_VERSION
     if relative_path in _BASE_TRANSFORM_ARTIFACTS:
         return TRANSFORM_VERSION
     if re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", relative_path):
@@ -153,6 +172,63 @@ def portfolio_dependency_receipt(payloads: dict[str, Any]) -> dict[str, str]:
             canonical_json_bytes(transform_contract)
         ),
         "transform_version": PORTFOLIO_TRANSFORM_VERSION,
+    }
+
+
+def state_strategy_dependency_receipt(payloads: dict[str, Any]) -> dict[str, str]:
+    """Pin the compact frozen inputs and explicit territorial rule contract."""
+    dossier_geography = []
+    for relative_path in sorted(payloads):
+        if not re.fullmatch(r"channels/[a-z0-9]+(?:-[a-z0-9]+)*\.json", relative_path):
+            continue
+        dossier = payloads[relative_path]
+        channel = dossier.get("channel", {}) if isinstance(dossier, dict) else {}
+        dossier_geography.append(
+            {
+                "channel_name": channel.get("channel_name"),
+                "geography": [
+                    row
+                    for row in channel.get("similar_channels_by_dimension", [])
+                    if isinstance(row, dict) and row.get("dimension") == "geography"
+                ],
+            }
+        )
+    portfolio = payloads.get("portfolio/summary.json", {})
+    transform_contract = {
+        "transform_version": STATE_STRATEGY_TRANSFORM_VERSION,
+        "commercial_ticket_min_exclusive": format(STATE_COMMERCIAL_TICKET_MIN, ".2f"),
+        "minimum_classifiable_registrations": MIN_CLASSIFIABLE_REGISTRATIONS,
+        "minimum_valid_state_coverage_pct": format(MIN_VALID_STATE_COVERAGE_PCT, ".2f"),
+        "minimum_relevant_state_registrations": MIN_RELEVANT_STATE_REGISTRATIONS,
+        "minimum_relevant_region_registrations": MIN_RELEVANT_REGION_REGISTRATIONS,
+        "national_minimum_relevant_states": NATIONAL_MIN_RELEVANT_STATES,
+        "national_minimum_relevant_regions": NATIONAL_MIN_RELEVANT_REGIONS,
+        "national_maximum_leading_state_share_pct": format(
+            NATIONAL_MAX_LEADING_STATE_SHARE_PCT, ".2f"
+        ),
+        "multiregional_minimum_relevant_states": MULTIREGIONAL_MIN_RELEVANT_STATES,
+        "multiregional_minimum_relevant_regions": MULTIREGIONAL_MIN_RELEVANT_REGIONS,
+        "multiregional_maximum_leading_state_share_pct": format(
+            MULTIREGIONAL_MAX_LEADING_STATE_SHARE_PCT, ".2f"
+        ),
+        "minimum_publishable_state_channel_registrations": MIN_PUBLISHABLE_STATE_CHANNEL_REGISTRATIONS,
+        "featured_channels": list(FEATURED_CHANNELS),
+    }
+    return {
+        "channel_index_sha256": _sha256(
+            canonical_json_bytes(payloads.get("channels/index.json"))
+        ),
+        "dossier_geography_sha256": _sha256(canonical_json_bytes(dossier_geography)),
+        "territory_observations_sha256": _sha256(
+            canonical_json_bytes(payloads.get("territories.json", {}).get("observations"))
+        ),
+        "geography_benchmark_sha256": _sha256(
+            canonical_json_bytes(
+                portfolio.get("dimension_benchmarks", {}).get("geography")
+            )
+        ),
+        "transform_contract_sha256": _sha256(canonical_json_bytes(transform_contract)),
+        "transform_version": STATE_STRATEGY_TRANSFORM_VERSION,
     }
 
 
@@ -292,6 +368,9 @@ def _manifest(
     portfolio_dependencies = portfolio_dependency_receipt(payloads)
     for relative_path in ("portfolio/summary.json", "portfolio/simulator.json"):
         entries[relative_path]["dependencies"] = portfolio_dependencies
+    entries["states/strategy.json"]["dependencies"] = state_strategy_dependency_receipt(
+        payloads
+    )
     return {
         "event_code": EVENT_CODE,
         "generated_at": generated_at,
@@ -459,6 +538,16 @@ def build_modular_artifacts(
             generated_at=generated_at,
         )
     )
+    payloads["states/strategy.json"] = build_state_strategy(
+        overview=result.overview,
+        channel_index=channel_index,
+        dossiers=dossier_payloads,
+        territory_observations=payloads["territories.json"]["observations"],
+        geography_benchmark=payloads["portfolio/summary.json"]["dimension_benchmarks"][
+            "geography"
+        ],
+        generated_at=generated_at,
+    )
 
     assert_anonymous(payloads)
     artifacts = dict(payloads)
@@ -499,3 +588,62 @@ def write_modular_artifacts(
         write_if_changed(destination, canonical_json_bytes(artifacts[relative_path]))
         paths[relative_path] = destination
     return paths
+
+
+def refresh_state_strategy_artifact(manifest_path: Path) -> dict[str, Path]:
+    """Build only the territorial strategy and its manifest from frozen bundles."""
+    root = manifest_path.parent
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    receipts = manifest.get("artifacts")
+    if not isinstance(receipts, dict):
+        raise ValueError("modular artifact receipts are missing")
+    payloads: dict[str, Any] = {}
+    for relative_path, receipt in receipts.items():
+        if relative_path == "states/strategy.json":
+            continue
+        destination = _safe_destination(root, relative_path)
+        content = destination.read_bytes()
+        if hashlib.sha256(content).hexdigest() != receipt.get("sha256"):
+            raise ValueError(f"modular artifact hash mismatch: {relative_path}")
+        if len(content) != int(receipt.get("bytes", -1)):
+            raise ValueError(f"modular artifact byte count mismatch: {relative_path}")
+        payloads[relative_path] = json.loads(content)
+
+    general = payloads.get("general.json", {})
+    channel_index = payloads.get("channels/index.json", {}).get("channels", [])
+    portfolio = payloads.get("portfolio/summary.json", {})
+    territories = payloads.get("territories.json", {})
+    dossiers = [
+        payloads[f"channels/{row['slug']}.json"]["channel"]
+        for row in channel_index
+    ]
+    payloads["states/strategy.json"] = build_state_strategy(
+        overview=general.get("overview", {}),
+        channel_index=channel_index,
+        dossiers=dossiers,
+        territory_observations=territories.get("observations", []),
+        geography_benchmark=portfolio.get("dimension_benchmarks", {}).get(
+            "geography", {}
+        ),
+        generated_at=str(general.get("meta", {}).get("generated_at", "")),
+    )
+    artifacts = dict(payloads)
+    artifacts["manifest.json"] = _manifest(
+        payloads,
+        manifest.get("sources", {}),
+        str(manifest.get("generated_at", "")),
+    )
+    before = {
+        relative_path: (
+            _safe_destination(root, relative_path).read_bytes()
+            if _safe_destination(root, relative_path).is_file()
+            else None
+        )
+        for relative_path in artifacts
+    }
+    paths = write_modular_artifacts(root, artifacts)
+    return {
+        relative_path: path
+        for relative_path, path in paths.items()
+        if before[relative_path] != path.read_bytes()
+    }

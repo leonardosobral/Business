@@ -648,20 +648,8 @@
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Experiência do portal</span></li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/" data-menu-aliases="destaques capas">
-                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Banners</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/" data-menu-aliases="aplicativos atalhos">
                     <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/" data-menu-aliases="perfis selo">
-                    <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
                 </a>
             </li>
 
@@ -687,6 +675,12 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/" data-menu-aliases="anúncios mídia publicidade">
                     <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/" data-menu-aliases="destaques capas">
+                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Banners</span>
                 </a>
             </li>
 
@@ -774,6 +768,12 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/" data-menu-aliases="empresas clientes cadastro">
                     <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/" data-menu-aliases="perfis selo">
+                    <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
                 </a>
             </li>
 

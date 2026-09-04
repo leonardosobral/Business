@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/report.css?v=20260902-5"/>
+  <link rel="stylesheet" href="../assets/report.css?v=20260903-9"/>
   <link rel="stylesheet" href="../assets/portfolio.css?v=20260902-2"/>
 </head>
 <body>
@@ -31,13 +31,15 @@
       <div class="report-topbar-start">
         <a class="report-brand" href="/" aria-label="Run Pro Business"><img src="/lib/images/runpro.svg" alt="Run Pro"/></a>
       </div>
-      <span>Simulador descritivo · Evento 72611</span>
-      <div class="report-actions">
-        <a class="button" href="../">← Análise geral</a>
-        <a class="button" href="../canais/">Dossiês</a>
-        <a class="button" href="./">Portfólio</a>
-        <button class="button button-primary" type="button" onclick="window.print()">Gerar PDF</button>
-      </div>
+      <nav class="report-actions" aria-label="Áreas do estudo">
+        <a class="button" href="/relatorios/maratona-floripa-2026/">Visão geral</a>
+        <a class="button" href="/relatorios/maratona-floripa-2026/portfolio/">Portfólio 2027</a>
+        <a class="button" href="/relatorios/maratona-floripa-2026/estados/">Estados</a>
+        <a class="button" href="/relatorios/maratona-floripa-2026/canais/">Canais</a>
+        <a class="button button-current" aria-current="page" href="/relatorios/maratona-floripa-2026/portfolio/simulador.cfm">Simulador</a>
+        <a class="button" href="/relatorios/maratona-floripa-2026/explorador/">Explorador</a>
+        <button class="button button-pdf" type="button" onclick="window.print()">Gerar PDF</button>
+      </nav>
     </header>
 
     <section class="report-hero">
@@ -81,8 +83,8 @@
   </div>
 
   <script type="application/json" id="mif-report-data"><cfoutput>#VARIABLES.mifPortfolioSimulatorPayloadJson#</cfoutput></script>
-  <script src="../assets/report.js?v=20260903-6"></script>
-  <script src="../assets/portfolio.js?v=20260903-7"></script>
+  <script src="../assets/report.js?v=20260903-9"></script>
+  <script src="../assets/portfolio.js?v=20260903-8"></script>
   <script>
     (function configureMifPortfolioSimulator() {
       'use strict';

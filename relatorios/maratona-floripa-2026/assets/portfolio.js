@@ -237,8 +237,7 @@
   }
 
   function metricCard(label, value, note = '') {
-    const report = requireReport();
-    return `<article class="metric-card"><span>${report.escapeHtml(label)}</span><strong>${report.escapeHtml(value)}</strong>${note ? `<small>${report.escapeHtml(note)}</small>` : ''}</article>`;
+    return requireReport().metricCard(label, value, note);
   }
 
   function pairLabel(row) {
@@ -292,7 +291,7 @@
         columns,
         rows: previewRows,
       })}
-      <details class="portfolio-dimension-audit"><summary>Tabela completa · ${report.formatInteger(completeRows.length)} canais</summary><p>Ordenação declarada: valor bruto decrescente, inscrições decrescentes e canal crescente.</p>${report.renderTable({ columns, rows: completeRows })}</details>
+      <details class="portfolio-dimension-audit"><summary>Tabela completa · ${report.formatInteger(completeRows.length)} canais</summary><p>Ordenação declarada: valor bruto decrescente, inscrições decrescentes e canal crescente.</p>${report.renderTable({ columns, rows: completeRows, collapsible: false })}</details>
     </article>`;
   }
 
@@ -369,7 +368,7 @@
     const dependencyEvidence = relevantDependencies.length
       ? `${report.renderBarChart({ title: relevantDependencies.length > 10 ? 'Top 10 + Outros · exposição relevante observada' : 'Exposição relevante observada', description: 'Inscrições das células altas, médias ou concentradas entre parceiros; baixas permanecem apenas no apêndice.', rows: relevantDependencies, labelKey: 'label', valueKey: 'value', preserveOrder: true, aggregateOther: true, denominator: overview.paid_registrations, source: 'População completa das células relevantes; Outros soma todas as linhas além das dez exibidas.' })}${report.renderTable({ columns: dependencyColumns, rows: dependencyTop })}`
       : '<div class="empty-state"><p>Não houve célula com exposição relevante observada.</p></div>';
-    const dependencyAppendix = `<details class="portfolio-dependency-appendix"><summary>Apêndice completo · ${report.formatInteger(dependencies.length)} células, incluindo exposição baixa</summary>${report.renderTable({ columns: dependencyColumns, rows: dependencies })}</details>`;
+    const dependencyAppendix = `<details class="portfolio-dependency-appendix"><summary>Apêndice completo · ${report.formatInteger(dependencies.length)} células, incluindo exposição baixa</summary>${report.renderTable({ columns: dependencyColumns, rows: dependencies, collapsible: false })}</details>`;
 
     root.innerHTML = [
       section(SUMMARY_SECTIONS[0], 'Portfólio · 1', 'Resumo do portfólio', 'Escala, diferenciação e concentração são leituras separadas.', `${executiveEvidence}<div class="metric-grid">${metricCard('Inscrições pagas', report.formatInteger(overview.paid_registrations))}${metricCard('Valor bruto', report.formatCurrency(overview.gross_value))}${metricCard('Pares de redundância exibidos', report.formatInteger(redundancy.length))}${metricCard('Células de dependência', report.formatInteger(dependencies.length))}</div><div class="method-note"><p>${report.escapeHtml(summary?.definitions?.commercial_universe || 'Universo comercial não informado.')}</p></div><div class="takeaway-grid">${takeaways}</div>`),

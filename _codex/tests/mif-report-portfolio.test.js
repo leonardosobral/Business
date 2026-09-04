@@ -375,7 +375,7 @@ test('summary renderer consumes full producer-shaped dependencies for KPI and ad
   const dependencyTable = dependencySection.slice(dependencySection.lastIndexOf('<table'));
   assert.doesNotMatch(dependencyTable, /<td>Outros<\/td>/);
   assert.equal((dependencyTable.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 11);
-  assert.match(root.innerHTML, /Células de dependência<\/span><strong>11<\/strong>/);
+  assert.match(root.innerHTML, /Células de dependência<\/span><strong[^>]*>11<\/strong>/);
 
   const exactTopTen = summaryFixture();
   exactTopTen.redundancy_candidates = exactTopTen.redundancy_candidates.slice(0, 10);

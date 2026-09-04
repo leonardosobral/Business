@@ -1,0 +1,949 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e5]:
+          - link [ref=e6] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e72]:
+            - link "Runners Apps" [ref=e74] [cursor=pointer]:
+              - /url: "#"
+            - button "Entrar" [ref=e77] [cursor=pointer]
+    - dialog "Road Runners mobile onboarding" [ref=e79]:
+      - generic [ref=e80]:
+        - img "Road Runners" [ref=e81]
+        - generic [ref=e82]: Dicas rápidas
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - heading "Arraste" [level=2] [ref=e86]
+          - paragraph [ref=e87]: Basta arrastar para navegar.
+        - generic [ref=e88]:
+          - heading "Atividades" [level=2] [ref=e91]
+          - paragraph [ref=e92]: Veja por onde seus amigos correm.
+        - generic [ref=e93]:
+          - heading "Agenda" [level=2] [ref=e96]
+          - paragraph [ref=e97]: Sua programação pessoal de corrida.
+        - generic [ref=e98]:
+          - heading "Resultados" [level=2] [ref=e101]
+          - paragraph [ref=e102]: Sua história salva pra sempre.
+        - generic [ref=e103]:
+          - heading "Desafios" [level=2] [ref=e106]
+          - paragraph [ref=e107]: Encare nossos desafios correndo.
+        - generic [ref=e108]:
+          - heading "Notícias" [level=2] [ref=e111]
+          - paragraph [ref=e112]: Conteúdo selecionado pra você.
+        - generic [ref=e113]:
+          - heading "Vídeos" [level=2] [ref=e116]
+          - paragraph [ref=e117]: Seleção dos melhores criadores.
+        - generic [ref=e118]:
+          - heading "Busca" [level=2] [ref=e121]
+          - paragraph [ref=e122]: Nossa busca sempre ao seu alcance.
+      - generic [ref=e123]:
+        - button "1/8" [ref=e124] [cursor=pointer]
+        - button "2/8" [ref=e125] [cursor=pointer]
+        - button "3/8" [ref=e126] [cursor=pointer]
+        - button "4/8" [ref=e127] [cursor=pointer]
+        - button "5/8" [ref=e128] [cursor=pointer]
+        - button "6/8" [ref=e129] [cursor=pointer]
+        - button "7/8" [ref=e130] [cursor=pointer]
+        - button "8/8" [ref=e131] [cursor=pointer]
+      - button "Pular" [ref=e132] [cursor=pointer]
+    - generic:
+      - generic:
+        - generic:
+          - heading "Encontre a prova certa para o seu momento." [level=1]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - searchbox "Busca Road Runners"
+                  - generic:
+                    - generic:
+                      - button "Tipo de busca"
+                    - button "Modo IA para membros verificados":
+                      - generic: IA
+                    - button "Buscar"
+          - generic:
+            - link "5K":
+              - /url: /busca/?distancia_inicio=5&distancia_fim=5&busca_mode=ai
+            - link "10K":
+              - /url: /busca/?distancia_inicio=10&distancia_fim=10&busca_mode=ai
+            - link "21K":
+              - /url: /busca/?distancia_inicio=21&distancia_fim=21&busca_mode=ai
+            - link "42K":
+              - /url: /busca/?distancia_inicio=42&distancia_fim=42&busca_mode=ai
+            - generic:
+              - combobox "Selecionar estado":
+                - option "Eventos por Estado" [selected]
+                - option "Acre"
+                - option "Alagoas"
+                - option "Amazonas"
+                - option "Amapá"
+                - option "Bahia"
+                - option "Ceará"
+                - option "Distrito Federal"
+                - option "Espírito Santo"
+                - option "Goiás"
+                - option "Maranhão"
+                - option "Minas Gerais"
+                - option "Mato Grosso do Sul"
+                - option "Mato Grosso"
+                - option "Pará"
+                - option "Paraíba"
+                - option "Pernambuco"
+                - option "Piauí"
+                - option "Paraná"
+                - option "Rio de Janeiro"
+                - option "Rio Grande do Norte"
+                - option "Rondônia"
+                - option "Roraima"
+                - option "Rio Grande do Sul"
+                - option "Santa Catarina"
+                - option "Sergipe"
+                - option "São Paulo"
+                - option "Tocantins"
+    - main [ref=e134]:
+      - generic [ref=e136]:
+        - heading "Eventos em Santa Catarina" [level=1] [ref=e137]
+        - combobox "Selecionar estado" [ref=e143] [cursor=pointer]:
+          - option "Eventos no Acre"
+          - option "Eventos em Alagoas"
+          - option "Eventos no Amazonas"
+          - option "Eventos no Amapá"
+          - option "Eventos na Bahia"
+          - option "Eventos no Ceará"
+          - option "Eventos no Distrito Federal"
+          - option "Eventos no Espírito Santo"
+          - option "Eventos em Goiás"
+          - option "Eventos no Maranhão"
+          - option "Eventos em Minas Gerais"
+          - option "Eventos no Mato Grosso do Sul"
+          - option "Eventos no Mato Grosso"
+          - option "Eventos no Pará"
+          - option "Eventos na Paraíba"
+          - option "Eventos em Pernambuco"
+          - option "Eventos no Piauí"
+          - option "Eventos no Paraná"
+          - option "Eventos no Rio de Janeiro"
+          - option "Eventos no Rio Grande do Norte"
+          - option "Eventos em Rondônia"
+          - option "Eventos em Roraima"
+          - option "Eventos no Rio Grande do Sul"
+          - option "Eventos em Santa Catarina" [selected]
+          - option "Eventos em Sergipe"
+          - option "Eventos em São Paulo"
+          - option "Eventos no Tocantins"
+        - combobox "Selecione uma cidade" [ref=e145] [cursor=pointer]:
+          - option "Cidades em Santa Catarina" [disabled] [selected]
+          - option "Florianopolis - 316 eventos"
+          - option "Joinville - 195 eventos"
+          - option "Blumenau - 95 eventos"
+          - option "Jaragua do Sul - 67 eventos"
+          - option "Balneario Camboriu - 63 eventos"
+          - option "Lages - 60 eventos"
+          - option "Chapeco - 57 eventos"
+          - option "Palhoça - 52 eventos"
+          - option "Criciúma - 51 eventos"
+          - option "Itapema - 49 eventos"
+      - generic [ref=e147]:
+        - button "▾ Exibir Filtros ▾" [ref=e149] [cursor=pointer]
+        - generic [ref=e151]:
+          - link [ref=e153] [cursor=pointer]:
+            - /url: /api/ads/v1/click.cfm?delivery=b1afdca5%2D7cf4%2D498b%2D9692%2D7d4677e0d968&event=18a4210b%2D9305%2D3c5b%2D10cf%2D2a60d327767e&token=18a4210c0e167cdf245628ca06b0d30c18a4210da84e7a405e98149a373d02a2
+            - img "Mizuno Neo Vista 3" [ref=e155]
+          - generic [ref=e156]:
+            - generic [ref=e157]: Patrocinado
+            - link "17 set 2026 Avaí Run 2026 Florianópolis - SC Corrida de rua 3km 5km 10km" [ref=e160] [cursor=pointer]:
+              - /url: /api/ads/v1/cpc-click.cfm?delivery=31e777ad%2D869c%2D465e%2D86e1%2D8ba493252428&event=18a42182%2D01bf%2D2c3c%2Dbf46%2Dd93023f6cd1a&token=18a42183d8a00c99a481063408c195f218a4218493222964f1524c025ea36f57
+              - generic [ref=e163]:
+                - generic [ref=e164]:
+                  - generic [ref=e165]: "17"
+                  - generic [ref=e166]: set
+                  - generic [ref=e167]: "2026"
+                - generic [ref=e168]:
+                  - generic [ref=e169]: Avaí Run 2026
+                  - generic [ref=e170]: Florianópolis - SC
+                  - generic [ref=e172]: Corrida de rua
+                  - generic [ref=e174]:
+                    - generic [ref=e175]: 3km
+                    - generic [ref=e177]: 5km
+                    - generic [ref=e179]: 10km
+          - generic [ref=e181]:
+            - generic [ref=e182]: Setembro
+            - link "05 set 2026 1ª Corrida Da Alegria Planalto Alegre - SC Corrida de rua 3km 5km Cobertura fotográfica Foco Radical" [ref=e184] [cursor=pointer]:
+              - /url: /evento/2026-1-corrida-da-alegria/
+              - generic [ref=e187]:
+                - generic [ref=e188]:
+                  - generic [ref=e189]: "05"
+                  - generic [ref=e190]: set
+                  - generic [ref=e191]: "2026"
+                - generic [ref=e192]:
+                  - generic [ref=e193]: 1ª Corrida Da Alegria
+                  - generic [ref=e194]: Planalto Alegre - SC
+                  - generic [ref=e196]: Corrida de rua
+                  - generic [ref=e198]:
+                    - generic [ref=e199]: 3km
+                    - generic [ref=e201]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e204]
+            - link "06 set 2026 Circuito Angeloni 2026 - Etapa Laguna Laguna - SC Corrida de rua 5km 10km Cobertura fotográfica Foco Radical" [ref=e206] [cursor=pointer]:
+              - /url: /evento/2026-circuito-angeloni-2026-etapa-laguna/
+              - generic [ref=e209]:
+                - generic [ref=e210]:
+                  - generic [ref=e211]: "06"
+                  - generic [ref=e212]: set
+                  - generic [ref=e213]: "2026"
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Circuito Angeloni 2026 - Etapa Laguna
+                  - generic [ref=e216]: Laguna - SC
+                  - generic [ref=e218]: Corrida de rua
+                  - generic [ref=e220]:
+                    - generic [ref=e221]: 5km
+                    - generic [ref=e223]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e226]
+            - link "06 set 2026 Circuito Angeloni 2026 - Etapa MaringÁ Maringá - SC Corrida de rua" [ref=e228] [cursor=pointer]:
+              - /url: /evento/2026-circuito-angeloni-2026-etapa-maringa/
+              - generic [ref=e231]:
+                - generic [ref=e232]:
+                  - generic [ref=e233]: "06"
+                  - generic [ref=e234]: set
+                  - generic [ref=e235]: "2026"
+                - generic [ref=e236]:
+                  - generic [ref=e237]: Circuito Angeloni 2026 - Etapa MaringÁ
+                  - generic [ref=e238]: Maringá - SC
+                  - generic [ref=e240]: Corrida de rua
+            - link "06 set 2026 Sebold Soldier Trail Run Alfredo Wagner - SC Corrida de rua 8km 21km" [ref=e243] [cursor=pointer]:
+              - /url: /evento/2026-sebold-soldier-trail-run/
+              - generic [ref=e246]:
+                - generic [ref=e247]:
+                  - generic [ref=e248]: "06"
+                  - generic [ref=e249]: set
+                  - generic [ref=e250]: "2026"
+                - generic [ref=e251]:
+                  - generic [ref=e252]: Sebold Soldier Trail Run
+                  - generic [ref=e253]: Alfredo Wagner - SC
+                  - generic [ref=e255]: Corrida de rua
+                  - generic [ref=e257]:
+                    - generic [ref=e258]: 8km
+                    - generic [ref=e260]: 21km
+            - link "06 set 2026 MEIA MARATONA GUARDA DO EMBAÚ BANLEK 2026 Palhoça - SC Corrida de rua 5km 10km 21km" [ref=e263] [cursor=pointer]:
+              - /url: /evento/2026-meia-maratona-guarda-do-embau-banlek-2026/
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - generic [ref=e268]: "06"
+                  - generic [ref=e269]: set
+                  - generic [ref=e270]: "2026"
+                - generic [ref=e271]:
+                  - generic [ref=e272]: MEIA MARATONA GUARDA DO EMBAÚ BANLEK 2026
+                  - generic [ref=e273]: Palhoça - SC
+                  - generic [ref=e275]: Corrida de rua
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: 5km
+                    - generic [ref=e280]: 10km
+                    - generic [ref=e282]: 21km
+            - link "06 set 2026 UP TRAIL 20K – ETAPA TAQUARAS Balneário Camboriú - SC Corrida de rua 5km 10km 20km" [ref=e285] [cursor=pointer]:
+              - /url: /evento/2026-up-trail-20k-–-etapa-taquaras/
+              - generic [ref=e288]:
+                - generic [ref=e289]:
+                  - generic [ref=e290]: "06"
+                  - generic [ref=e291]: set
+                  - generic [ref=e292]: "2026"
+                - generic [ref=e293]:
+                  - generic [ref=e294]: UP TRAIL 20K – ETAPA TAQUARAS
+                  - generic [ref=e295]: Balneário Camboriú - SC
+                  - generic [ref=e297]: Corrida de rua
+                  - generic [ref=e299]:
+                    - generic [ref=e300]: 5km
+                    - generic [ref=e302]: 10km
+                    - generic [ref=e304]: 20km
+            - link "06 set 2026 MAILING RUNNING VOLTA NA LAGOA Balneário Gaivota - SC Corrida de rua 3km 6km 12km 16km Cobertura fotográfica Foco Radical" [ref=e307] [cursor=pointer]:
+              - /url: /evento/2026-mailing-running-volta-na-lagoa/
+              - generic [ref=e310]:
+                - generic [ref=e311]:
+                  - generic [ref=e312]: "06"
+                  - generic [ref=e313]: set
+                  - generic [ref=e314]: "2026"
+                - generic [ref=e315]:
+                  - generic [ref=e316]: MAILING RUNNING VOLTA NA LAGOA
+                  - generic [ref=e317]: Balneário Gaivota - SC
+                  - generic [ref=e319]: Corrida de rua
+                  - generic [ref=e321]:
+                    - generic [ref=e322]: 3km
+                    - generic [ref=e324]: 6km
+                    - generic [ref=e326]: 12km
+                    - generic [ref=e328]: 16km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e331]
+            - link "06 set 2026 BIO RUN Araranguá - SC Corrida de rua 2km 5km 10km" [ref=e333] [cursor=pointer]:
+              - /url: /evento/2026-bio-run/
+              - generic [ref=e336]:
+                - generic [ref=e337]:
+                  - generic [ref=e338]: "06"
+                  - generic [ref=e339]: set
+                  - generic [ref=e340]: "2026"
+                - generic [ref=e341]:
+                  - generic [ref=e342]: BIO RUN
+                  - generic [ref=e343]: Araranguá - SC
+                  - generic [ref=e345]: Corrida de rua
+                  - generic [ref=e347]:
+                    - generic [ref=e348]: 2km
+                    - generic [ref=e350]: 5km
+                    - generic [ref=e352]: 10km
+            - link "06 set 2026 VASCORRIDA 2026 - FLORIPA Florianópolis - SC Corrida de rua 0.1km 0.2km 0.3km 0.4km 5km 10km Cobertura fotográfica Foco Radical" [ref=e355] [cursor=pointer]:
+              - /url: /evento/2026-vascorrida-2026-floripa/
+              - generic [ref=e358]:
+                - generic [ref=e359]:
+                  - generic [ref=e360]: "06"
+                  - generic [ref=e361]: set
+                  - generic [ref=e362]: "2026"
+                - generic [ref=e363]:
+                  - generic [ref=e364]: VASCORRIDA 2026 - FLORIPA
+                  - generic [ref=e365]: Florianópolis - SC
+                  - generic [ref=e367]: Corrida de rua
+                  - generic [ref=e369]:
+                    - generic [ref=e370]: 0.1km
+                    - generic [ref=e372]: 0.2km
+                    - generic [ref=e374]: 0.3km
+                    - generic [ref=e376]: 0.4km
+                    - generic [ref=e378]: 5km
+                    - generic [ref=e380]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e383]
+            - link "06 set 2026 9ª CORRIDA E CAMINHADA DE COMBATE AO AVC São Francisco do Sul - SC Corrida de rua 4km 8km Cobertura fotográfica Foco Radical" [ref=e385] [cursor=pointer]:
+              - /url: /evento/2026-9-corrida-e-caminhada-de-combate-ao-avc/
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - generic [ref=e390]: "06"
+                  - generic [ref=e391]: set
+                  - generic [ref=e392]: "2026"
+                - generic [ref=e393]:
+                  - generic [ref=e394]: 9ª CORRIDA E CAMINHADA DE COMBATE AO AVC
+                  - generic [ref=e395]: São Francisco do Sul - SC
+                  - generic [ref=e397]: Corrida de rua
+                  - generic [ref=e399]:
+                    - generic [ref=e400]: 4km
+                    - generic [ref=e402]: 8km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e405]
+            - link "06 set 2026 Corrida Irani 63 Anos IRANI - SC Corrida de rua 5km Cobertura fotográfica Foco Radical" [ref=e407] [cursor=pointer]:
+              - /url: /evento/2026-corrida-irani-63-anos/
+              - generic [ref=e410]:
+                - generic [ref=e411]:
+                  - generic [ref=e412]: "06"
+                  - generic [ref=e413]: set
+                  - generic [ref=e414]: "2026"
+                - generic [ref=e415]:
+                  - generic [ref=e416]: Corrida Irani 63 Anos
+                  - generic [ref=e417]: IRANI - SC
+                  - generic [ref=e419]: Corrida de rua
+                  - generic [ref=e421]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e425]
+            - link "06 set 2026 Corrida Da Independência Lages - SC Corrida de rua 5km Cobertura fotográfica Foco Radical" [ref=e427] [cursor=pointer]:
+              - /url: /evento/2026-corrida-da-independencia-sc/
+              - generic [ref=e430]:
+                - generic [ref=e431]:
+                  - generic [ref=e432]: "06"
+                  - generic [ref=e433]: set
+                  - generic [ref=e434]: "2026"
+                - generic [ref=e435]:
+                  - generic [ref=e436]: Corrida Da Independência
+                  - generic [ref=e437]: Lages - SC
+                  - generic [ref=e439]: Corrida de rua
+                  - generic [ref=e441]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e445]
+            - link "12 set 2026 Desafio Internacional Rota Da Baleia 80k 2026 Laguna | Imbituba | Garopaba - SC Corrida de rua 8km 21km 42km 80km" [ref=e447] [cursor=pointer]:
+              - /url: /evento/2026-desafio-internacional-rota-da-baleia-80k-2026/
+              - generic [ref=e450]:
+                - generic [ref=e451]:
+                  - generic [ref=e452]: "12"
+                  - generic [ref=e453]: set
+                  - generic [ref=e454]: "2026"
+                - generic [ref=e455]:
+                  - generic [ref=e456]: Desafio Internacional Rota Da Baleia 80k 2026
+                  - generic [ref=e457]: Laguna | Imbituba | Garopaba - SC
+                  - generic [ref=e459]: Corrida de rua
+                  - generic [ref=e461]:
+                    - generic [ref=e462]: 8km
+                    - generic [ref=e464]: 21km
+                    - generic [ref=e466]: 42km
+                    - generic [ref=e468]: 80km
+            - link "12 set 2026 BALNEÁRIO SHOPPING NIGHT RUN Balneário Camboriú - SC Corrida de rua 2.5km 5km Cobertura fotográfica Foco Radical" [ref=e471] [cursor=pointer]:
+              - /url: /evento/2026-balneario-shopping-night-run/
+              - generic [ref=e474]:
+                - generic [ref=e475]:
+                  - generic [ref=e476]: "12"
+                  - generic [ref=e477]: set
+                  - generic [ref=e478]: "2026"
+                - generic [ref=e479]:
+                  - generic [ref=e480]: BALNEÁRIO SHOPPING NIGHT RUN
+                  - generic [ref=e481]: Balneário Camboriú - SC
+                  - generic [ref=e483]: Corrida de rua
+                  - generic [ref=e485]:
+                    - generic [ref=e486]: 2.5km
+                    - generic [ref=e488]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e491]
+            - link "12 set 2026 1ª CORRIDA DO FOGO - MAFRA (SC) Mafra - SC Corrida de rua 5km Cobertura fotográfica Foco Radical" [ref=e493] [cursor=pointer]:
+              - /url: /evento/2026-1-corrida-do-fogo-mafra-sc/
+              - generic [ref=e496]:
+                - generic [ref=e497]:
+                  - generic [ref=e498]: "12"
+                  - generic [ref=e499]: set
+                  - generic [ref=e500]: "2026"
+                - generic [ref=e501]:
+                  - generic [ref=e502]: 1ª CORRIDA DO FOGO - MAFRA (SC)
+                  - generic [ref=e503]: Mafra - SC
+                  - generic [ref=e505]: Corrida de rua
+                  - generic [ref=e507]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e511]
+            - link "13 set 2026 Barra Run 2026 Barra Velha - SC Corrida de rua 5km 10km 16km Cobertura fotográfica Foco Radical" [ref=e513] [cursor=pointer]:
+              - /url: /evento/2026-barra-run-2026/
+              - generic [ref=e516]:
+                - generic [ref=e517]:
+                  - generic [ref=e518]: "13"
+                  - generic [ref=e519]: set
+                  - generic [ref=e520]: "2026"
+                - generic [ref=e521]:
+                  - generic [ref=e522]: Barra Run 2026
+                  - generic [ref=e523]: Barra Velha - SC
+                  - generic [ref=e525]: Corrida de rua
+                  - generic [ref=e527]:
+                    - generic [ref=e528]: 5km
+                    - generic [ref=e530]: 10km
+                    - generic [ref=e532]: 16km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e535]
+            - link "13 set 2026 TTR - TIROLÊS TRAIL RUN 2026 Treze Tílias - SC Trail run 10km 17km 20km 29km 42km" [ref=e537] [cursor=pointer]:
+              - /url: /evento/2026-ttr-tiroles-trail-run-2026/
+              - generic [ref=e540]:
+                - generic [ref=e541]:
+                  - generic [ref=e542]: "13"
+                  - generic [ref=e543]: set
+                  - generic [ref=e544]: "2026"
+                - generic [ref=e545]:
+                  - generic [ref=e546]: TTR - TIROLÊS TRAIL RUN 2026
+                  - generic [ref=e547]: Treze Tílias - SC
+                  - generic [ref=e549]: Trail run
+                  - generic [ref=e551]:
+                    - generic [ref=e552]: 10km
+                    - generic [ref=e554]: 17km
+                    - generic [ref=e556]: 20km
+                    - generic [ref=e558]: 29km
+                    - generic [ref=e560]: 42km
+            - link "13 set 2026 JTC RUN 2026 - JOINVILLE - SC Joinville - SC Corrida de rua 0km 0.05km 0.1km 0.15km 0.2km 0.3km 3.5km 11km Cobertura fotográfica Foco Radical" [ref=e563] [cursor=pointer]:
+              - /url: /evento/2026-jtc-run-2026-joinville-sc/
+              - generic [ref=e566]:
+                - generic [ref=e567]:
+                  - generic [ref=e568]: "13"
+                  - generic [ref=e569]: set
+                  - generic [ref=e570]: "2026"
+                - generic [ref=e571]:
+                  - generic [ref=e572]: JTC RUN 2026 - JOINVILLE - SC
+                  - generic [ref=e573]: Joinville - SC
+                  - generic [ref=e575]: Corrida de rua
+                  - generic [ref=e577]:
+                    - generic [ref=e578]: 0km
+                    - generic [ref=e580]: 0.05km
+                    - generic [ref=e582]: 0.1km
+                    - generic [ref=e584]: 0.15km
+                    - generic [ref=e586]: 0.2km
+                    - generic [ref=e588]: 0.3km
+                    - generic [ref=e590]: 3.5km
+                    - generic [ref=e592]: 11km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e595]
+            - link "13 set 2026 Circuito Corridas do Bem Sesi Saúde - Etapa Jaraguá do Sul Jaraguá do Sul - SC Corrida de rua 5km 10km Cobertura fotográfica Foco Radical" [ref=e597] [cursor=pointer]:
+              - /url: /evento/2026-circuito-corridas-do-bem-sesi-saude-etapa-jaragua-do-sul/
+              - generic [ref=e600]:
+                - generic [ref=e601]:
+                  - generic [ref=e602]: "13"
+                  - generic [ref=e603]: set
+                  - generic [ref=e604]: "2026"
+                - generic [ref=e605]:
+                  - generic [ref=e606]: Circuito Corridas do Bem Sesi Saúde - Etapa Jaraguá do Sul
+                  - generic [ref=e607]: Jaraguá do Sul - SC
+                  - generic [ref=e609]: Corrida de rua
+                  - generic [ref=e611]:
+                    - generic [ref=e612]: 5km
+                    - generic [ref=e614]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e617]
+            - link "13 set 2026 Circuito Corridas do Bem Sesi Saúde - Etapa Chapecó Águas de Chapecó - SC Corrida de rua 5km 10km" [ref=e619] [cursor=pointer]:
+              - /url: /evento/2026-circuito-corridas-do-bem-sesi-saude-etapa-chapeco/
+              - generic [ref=e622]:
+                - generic [ref=e623]:
+                  - generic [ref=e624]: "13"
+                  - generic [ref=e625]: set
+                  - generic [ref=e626]: "2026"
+                - generic [ref=e627]:
+                  - generic [ref=e628]: Circuito Corridas do Bem Sesi Saúde - Etapa Chapecó
+                  - generic [ref=e629]: Águas de Chapecó - SC
+                  - generic [ref=e631]: Corrida de rua
+                  - generic [ref=e633]:
+                    - generic [ref=e634]: 5km
+                    - generic [ref=e636]: 10km
+            - link "13 set 2026 CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA CRICIÚMA Criciúma - SC Corrida de rua 0.05km 0.1km 0.15km 0.25km 5km 10km Cobertura fotográfica Foco Radical" [ref=e639] [cursor=pointer]:
+              - /url: /evento/2026-corridas-unimed-circuito-sc-2026-etapa-criciuma/
+              - generic [ref=e642]:
+                - generic [ref=e643]:
+                  - generic [ref=e644]: "13"
+                  - generic [ref=e645]: set
+                  - generic [ref=e646]: "2026"
+                - generic [ref=e647]:
+                  - generic [ref=e648]: CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA CRICIÚMA
+                  - generic [ref=e649]: Criciúma - SC
+                  - generic [ref=e651]: Corrida de rua
+                  - generic [ref=e653]:
+                    - generic [ref=e654]: 0.05km
+                    - generic [ref=e656]: 0.1km
+                    - generic [ref=e658]: 0.15km
+                    - generic [ref=e660]: 0.25km
+                    - generic [ref=e662]: 5km
+                    - generic [ref=e664]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e667]
+            - link "13 set 2026 LUPO SPORT CORRE FLORIANÓPOLIS Florianópolis - SC Corrida de rua 3km 5km 10km" [ref=e669] [cursor=pointer]:
+              - /url: /evento/2026-lupo-sport-corre-florianopolis/
+              - generic [ref=e672]:
+                - generic [ref=e673]:
+                  - generic [ref=e674]: "13"
+                  - generic [ref=e675]: set
+                  - generic [ref=e676]: "2026"
+                - generic [ref=e677]:
+                  - generic [ref=e678]: LUPO SPORT CORRE FLORIANÓPOLIS
+                  - generic [ref=e679]: Florianópolis - SC
+                  - generic [ref=e681]: Corrida de rua
+                  - generic [ref=e683]:
+                    - generic [ref=e684]: 3km
+                    - generic [ref=e686]: 5km
+                    - generic [ref=e688]: 10km
+            - link "13 set 2026 Desafio Mirante Alto Da Boa Vista Rancho Queimado - SC Corrida de rua 5km 10km Cobertura fotográfica Foco Radical" [ref=e691] [cursor=pointer]:
+              - /url: /evento/2026-desafio-mirante-alto-da-boa-vista/
+              - generic [ref=e694]:
+                - generic [ref=e695]:
+                  - generic [ref=e696]: "13"
+                  - generic [ref=e697]: set
+                  - generic [ref=e698]: "2026"
+                - generic [ref=e699]:
+                  - generic [ref=e700]: Desafio Mirante Alto Da Boa Vista
+                  - generic [ref=e701]: Rancho Queimado - SC
+                  - generic [ref=e703]: Corrida de rua
+                  - generic [ref=e705]:
+                    - generic [ref=e706]: 5km
+                    - generic [ref=e708]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e711]
+            - link "13 set 2026 VALE RACE 2026 - 2ª EDIÇÃO Turvo - SC Corrida de rua 3km 5km 10km Cobertura fotográfica Foco Radical" [ref=e713] [cursor=pointer]:
+              - /url: /evento/2026-vale-race-2026-2-edicao/
+              - generic [ref=e716]:
+                - generic [ref=e717]:
+                  - generic [ref=e718]: "13"
+                  - generic [ref=e719]: set
+                  - generic [ref=e720]: "2026"
+                - generic [ref=e721]:
+                  - generic [ref=e722]: VALE RACE 2026 - 2ª EDIÇÃO
+                  - generic [ref=e723]: Turvo - SC
+                  - generic [ref=e725]: Corrida de rua
+                  - generic [ref=e727]:
+                    - generic [ref=e728]: 3km
+                    - generic [ref=e730]: 5km
+                    - generic [ref=e732]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e735]
+            - link "13 set 2026 1ª CORRIDA AMANHECER PELA VIDA - SETEMBRO AMARELO 2026 Itajaí - SC Corrida de rua 4km 6km 9km" [ref=e737] [cursor=pointer]:
+              - /url: /evento/2026-1-corrida-amanhecer-pela-vida-setembro-amarelo-2026/
+              - generic [ref=e740]:
+                - generic [ref=e741]:
+                  - generic [ref=e742]: "13"
+                  - generic [ref=e743]: set
+                  - generic [ref=e744]: "2026"
+                - generic [ref=e745]:
+                  - generic [ref=e746]: 1ª CORRIDA AMANHECER PELA VIDA - SETEMBRO AMARELO 2026
+                  - generic [ref=e747]: Itajaí - SC
+                  - generic [ref=e749]: Corrida de rua
+                  - generic [ref=e751]:
+                    - generic [ref=e752]: 4km
+                    - generic [ref=e754]: 6km
+                    - generic [ref=e756]: 9km
+            - link "13 set 2026 Ii Corrida Beneficente Pelo Autismo Maravilha - SC Corrida de rua 1.5km 5km" [ref=e759] [cursor=pointer]:
+              - /url: /evento/2026-ii-corrida-beneficente-pelo-autismo/
+              - generic [ref=e762]:
+                - generic [ref=e763]:
+                  - generic [ref=e764]: "13"
+                  - generic [ref=e765]: set
+                  - generic [ref=e766]: "2026"
+                - generic [ref=e767]:
+                  - generic [ref=e768]: Ii Corrida Beneficente Pelo Autismo
+                  - generic [ref=e769]: Maravilha - SC
+                  - generic [ref=e771]: Corrida de rua
+                  - generic [ref=e773]:
+                    - generic [ref=e774]: 1.5km
+                    - generic [ref=e776]: 5km
+            - link "13 set 2026 1ª PROGRESSSIVE RUN Timbó - SC Corrida de rua 5km Cobertura fotográfica Foco Radical" [ref=e779] [cursor=pointer]:
+              - /url: /evento/2026-1-progresssive-run/
+              - generic [ref=e782]:
+                - generic [ref=e783]:
+                  - generic [ref=e784]: "13"
+                  - generic [ref=e785]: set
+                  - generic [ref=e786]: "2026"
+                - generic [ref=e787]:
+                  - generic [ref=e788]: 1ª PROGRESSSIVE RUN
+                  - generic [ref=e789]: Timbó - SC
+                  - generic [ref=e791]: Corrida de rua
+                  - generic [ref=e793]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e797]
+            - link "13 set 2026 ACIG EM MOVIMENTO – CAMINHADA PELA SAÚDE 3 KM Garopaba - SC Corrida de rua 3km" [ref=e799] [cursor=pointer]:
+              - /url: /evento/2026-acig-em-movimento-–-caminhada-pela-saude-3-km/
+              - generic [ref=e802]:
+                - generic [ref=e803]:
+                  - generic [ref=e804]: "13"
+                  - generic [ref=e805]: set
+                  - generic [ref=e806]: "2026"
+                - generic [ref=e807]:
+                  - generic [ref=e808]: ACIG EM MOVIMENTO – CAMINHADA PELA SAÚDE 3 KM
+                  - generic [ref=e809]: Garopaba - SC
+                  - generic [ref=e811]: Corrida de rua
+                  - generic [ref=e813]: 3km
+            - link "13 set 2026 Circuito de Corrida de Rua de Porto União - 3ª Etapa Porto União - SC Corrida de rua Cobertura fotográfica Foco Radical" [ref=e817] [cursor=pointer]:
+              - /url: /evento/2026-circuito-de-corrida-de-rua-de-porto-uniao-3-etapa/
+              - generic [ref=e820]:
+                - generic [ref=e821]:
+                  - generic [ref=e822]: "13"
+                  - generic [ref=e823]: set
+                  - generic [ref=e824]: "2026"
+                - generic [ref=e825]:
+                  - generic [ref=e826]: Circuito de Corrida de Rua de Porto União - 3ª Etapa
+                  - generic [ref=e827]: Porto União - SC
+                  - generic [ref=e829]: Corrida de rua
+                  - img "Cobertura fotográfica Foco Radical" [ref=e832]
+            - link "13 set 2026 GP TRIATHLON FLORIANÓPOLIS Florianópolis - SC Trail run" [ref=e834] [cursor=pointer]:
+              - /url: /evento/2026-gp-triathlon-florianopolis/
+              - generic [ref=e837]:
+                - generic [ref=e838]:
+                  - generic [ref=e839]: "13"
+                  - generic [ref=e840]: set
+                  - generic [ref=e841]: "2026"
+                - generic [ref=e842]:
+                  - generic [ref=e843]: GP TRIATHLON FLORIANÓPOLIS
+                  - generic [ref=e844]: Florianópolis - SC
+                  - generic [ref=e846]: Trail run
+            - link "14 set 2026 Corrida Da Catedral - TubarÃo/sc Tubarão - SC Corrida de rua 2km 4km 8km Cobertura fotográfica Foco Radical" [ref=e849] [cursor=pointer]:
+              - /url: /evento/2026-corrida-da-catedral-tubaraosc/
+              - generic [ref=e852]:
+                - generic [ref=e853]:
+                  - generic [ref=e854]: "14"
+                  - generic [ref=e855]: set
+                  - generic [ref=e856]: "2026"
+                - generic [ref=e857]:
+                  - generic [ref=e858]: Corrida Da Catedral - TubarÃo/sc
+                  - generic [ref=e859]: Tubarão - SC
+                  - generic [ref=e861]: Corrida de rua
+                  - generic [ref=e863]:
+                    - generic [ref=e864]: 2km
+                    - generic [ref=e866]: 4km
+                    - generic [ref=e868]: 8km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e871]
+            - link "17 set 2026 Avaí Run 2026 Florianópolis - SC Corrida de rua 3km 5km 10km" [ref=e873] [cursor=pointer]:
+              - /url: /evento/2026-avai-run/
+              - generic [ref=e876]:
+                - generic [ref=e877]:
+                  - generic [ref=e878]: "17"
+                  - generic [ref=e879]: set
+                  - generic [ref=e880]: "2026"
+                - generic [ref=e881]:
+                  - generic [ref=e882]: Avaí Run 2026
+                  - generic [ref=e883]: Florianópolis - SC
+                  - generic [ref=e885]: Corrida de rua
+                  - generic [ref=e887]:
+                    - generic [ref=e888]: 3km
+                    - generic [ref=e890]: 5km
+                    - generic [ref=e892]: 10km
+            - link "19 set 2026 3ª Corrida De Rua Da Guarda Municipal De Itapema Itapema - SC Corrida de rua 3km 6km 12km" [ref=e895] [cursor=pointer]:
+              - /url: /evento/2026-3-corrida-de-rua-da-guarda-municipal-de-itapema/
+              - generic [ref=e898]:
+                - generic [ref=e899]:
+                  - generic [ref=e900]: "19"
+                  - generic [ref=e901]: set
+                  - generic [ref=e902]: "2026"
+                - generic [ref=e903]:
+                  - generic [ref=e904]: 3ª Corrida De Rua Da Guarda Municipal De Itapema
+                  - generic [ref=e905]: Itapema - SC
+                  - generic [ref=e907]: Corrida de rua
+                  - generic [ref=e909]:
+                    - generic [ref=e910]: 3km
+                    - generic [ref=e912]: 6km
+                    - generic [ref=e914]: 12km
+            - link "19 set 2026 3ª Corrida SolidÁria Apae Navegantes Navegantes - SC Corrida de rua 3km 5km 10km Cobertura fotográfica Foco Radical" [ref=e917] [cursor=pointer]:
+              - /url: /evento/2026-3-corrida-solidaria-apae-navegantes/
+              - generic [ref=e920]:
+                - generic [ref=e921]:
+                  - generic [ref=e922]: "19"
+                  - generic [ref=e923]: set
+                  - generic [ref=e924]: "2026"
+                - generic [ref=e925]:
+                  - generic [ref=e926]: 3ª Corrida SolidÁria Apae Navegantes
+                  - generic [ref=e927]: Navegantes - SC
+                  - generic [ref=e929]: Corrida de rua
+                  - generic [ref=e931]:
+                    - generic [ref=e932]: 3km
+                    - generic [ref=e934]: 5km
+                    - generic [ref=e936]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e939]
+            - link "19 set 2026 4ª CORRIDA DO FOGO - 100 ANOS DO CORPO DE BOMBEIROS MILITAR DE SANTA CATARINA Florianópolis - SC Corrida de rua 0.1km 0.2km 0.4km 0.6km 5km 10km Cobertura fotográfica Foco Radical" [ref=e941] [cursor=pointer]:
+              - /url: /evento/2026-4-corrida-do-fogo-100-anos-do-corpo-de-bombeiros-militar-de-santa-catarina/
+              - generic [ref=e944]:
+                - generic [ref=e945]:
+                  - generic [ref=e946]: "19"
+                  - generic [ref=e947]: set
+                  - generic [ref=e948]: "2026"
+                - generic [ref=e949]:
+                  - generic [ref=e950]: 4ª CORRIDA DO FOGO - 100 ANOS DO CORPO DE BOMBEIROS MILITAR DE SANTA CATARINA
+                  - generic [ref=e951]: Florianópolis - SC
+                  - generic [ref=e953]: Corrida de rua
+                  - generic [ref=e955]:
+                    - generic [ref=e956]: 0.1km
+                    - generic [ref=e958]: 0.2km
+                    - generic [ref=e960]: 0.4km
+                    - generic [ref=e962]: 0.6km
+                    - generic [ref=e964]: 5km
+                    - generic [ref=e966]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e969]
+            - link "19 set 2026 4º DESAFIO DROGARIA CATARINENSE Joinville - SC Corrida de rua 0.05km 0.1km 0.2km 0.3km 5km 10km Cobertura fotográfica Foco Radical" [ref=e971] [cursor=pointer]:
+              - /url: /evento/2026-4-desafio-drogaria-catarinense/
+              - generic [ref=e974]:
+                - generic [ref=e975]:
+                  - generic [ref=e976]: "19"
+                  - generic [ref=e977]: set
+                  - generic [ref=e978]: "2026"
+                - generic [ref=e979]:
+                  - generic [ref=e980]: 4º DESAFIO DROGARIA CATARINENSE
+                  - generic [ref=e981]: Joinville - SC
+                  - generic [ref=e983]: Corrida de rua
+                  - generic [ref=e985]:
+                    - generic [ref=e986]: 0.05km
+                    - generic [ref=e988]: 0.1km
+                    - generic [ref=e990]: 0.2km
+                    - generic [ref=e992]: 0.3km
+                    - generic [ref=e994]: 5km
+                    - generic [ref=e996]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e999]
+            - link "19 set 2026 1ª Pulse Night Run Mizuno Chapecó - SC Corrida de rua 3km 5km Cobertura fotográfica Foco Radical" [ref=e1001] [cursor=pointer]:
+              - /url: /evento/2026-1-pulse-night-run-mizuno/
+              - generic [ref=e1004]:
+                - generic [ref=e1005]:
+                  - generic [ref=e1006]: "19"
+                  - generic [ref=e1007]: set
+                  - generic [ref=e1008]: "2026"
+                - generic [ref=e1009]:
+                  - generic [ref=e1010]: 1ª Pulse Night Run Mizuno
+                  - generic [ref=e1011]: Chapecó - SC
+                  - generic [ref=e1013]: Corrida de rua
+                  - generic [ref=e1015]:
+                    - generic [ref=e1016]: 3km
+                    - generic [ref=e1018]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1021]
+            - link "19 set 2026 GV Life Run — A Vida em um Novo Ritmo CAMBORIÚ - SC Corrida de rua Cobertura fotográfica Foco Radical" [ref=e1023] [cursor=pointer]:
+              - /url: /evento/2026-gv-life-run-—-a-vida-em-um-novo-ritmo/
+              - generic [ref=e1026]:
+                - generic [ref=e1027]:
+                  - generic [ref=e1028]: "19"
+                  - generic [ref=e1029]: set
+                  - generic [ref=e1030]: "2026"
+                - generic [ref=e1031]:
+                  - generic [ref=e1032]: GV Life Run — A Vida em um Novo Ritmo
+                  - generic [ref=e1033]: CAMBORIÚ - SC
+                  - generic [ref=e1035]: Corrida de rua
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1038]
+            - link "19 set 2026 Floripa Ultra Trail -100k Florianópolis - SC Trail run" [ref=e1040] [cursor=pointer]:
+              - /url: /evento/2026-floripa-ultra-trail-100k/
+              - generic [ref=e1043]:
+                - generic [ref=e1044]:
+                  - generic [ref=e1045]: "19"
+                  - generic [ref=e1046]: set
+                  - generic [ref=e1047]: "2026"
+                - generic [ref=e1048]:
+                  - generic [ref=e1049]: Floripa Ultra Trail -100k
+                  - generic [ref=e1050]: Florianópolis - SC
+                  - generic [ref=e1052]: Trail run
+            - link "20 set 2026 Meia Maratona Unidavi 60 Anos Rio Do Sul - SC Corrida de rua 5km 10km 21km" [ref=e1055] [cursor=pointer]:
+              - /url: /evento/2026-meia-maratona-unidavi-60-anos/
+              - generic [ref=e1058]:
+                - generic [ref=e1059]:
+                  - generic [ref=e1060]: "20"
+                  - generic [ref=e1061]: set
+                  - generic [ref=e1062]: "2026"
+                - generic [ref=e1063]:
+                  - generic [ref=e1064]: Meia Maratona Unidavi 60 Anos
+                  - generic [ref=e1065]: Rio Do Sul - SC
+                  - generic [ref=e1067]: Corrida de rua
+                  - generic [ref=e1069]:
+                    - generic [ref=e1070]: 5km
+                    - generic [ref=e1072]: 10km
+                    - generic [ref=e1074]: 21km
+            - link "20 set 2026 7º Gaiva Running Trail BalneÁrio Gaivota - SC Corrida de rua 4.5km 13km" [ref=e1077] [cursor=pointer]:
+              - /url: /evento/2026-7-gaiva-running-trail/
+              - generic [ref=e1080]:
+                - generic [ref=e1081]:
+                  - generic [ref=e1082]: "20"
+                  - generic [ref=e1083]: set
+                  - generic [ref=e1084]: "2026"
+                - generic [ref=e1085]:
+                  - generic [ref=e1086]: 7º Gaiva Running Trail
+                  - generic [ref=e1087]: BalneÁrio Gaivota - SC
+                  - generic [ref=e1089]: Corrida de rua
+                  - generic [ref=e1091]:
+                    - generic [ref=e1092]: 4.5km
+                    - generic [ref=e1094]: 13km
+            - link "20 set 2026 CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA BLUMENAU Blumenau - SC Corrida de rua 0.05km 0.1km 0.15km 0.25km 5km 10km Cobertura fotográfica Foco Radical" [ref=e1097] [cursor=pointer]:
+              - /url: /evento/2026-corridas-unimed-circuito-sc-2026-etapa-blumenau/
+              - generic [ref=e1100]:
+                - generic [ref=e1101]:
+                  - generic [ref=e1102]: "20"
+                  - generic [ref=e1103]: set
+                  - generic [ref=e1104]: "2026"
+                - generic [ref=e1105]:
+                  - generic [ref=e1106]: CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA BLUMENAU
+                  - generic [ref=e1107]: Blumenau - SC
+                  - generic [ref=e1109]: Corrida de rua
+                  - generic [ref=e1111]:
+                    - generic [ref=e1112]: 0.05km
+                    - generic [ref=e1114]: 0.1km
+                    - generic [ref=e1116]: 0.15km
+                    - generic [ref=e1118]: 0.25km
+                    - generic [ref=e1120]: 5km
+                    - generic [ref=e1122]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1125]
+            - link "20 set 2026 Circuito Corridas do Bem Sesi Saúde - Etapa Florianópolis Florianópolis - SC Corrida de rua 5km 10km Cobertura fotográfica Foco Radical" [ref=e1127] [cursor=pointer]:
+              - /url: /evento/2026-circuito-corridas-do-bem-sesi-saude-etapa-florianopolis/
+              - generic [ref=e1130]:
+                - generic [ref=e1131]:
+                  - generic [ref=e1132]: "20"
+                  - generic [ref=e1133]: set
+                  - generic [ref=e1134]: "2026"
+                - generic [ref=e1135]:
+                  - generic [ref=e1136]: Circuito Corridas do Bem Sesi Saúde - Etapa Florianópolis
+                  - generic [ref=e1137]: Florianópolis - SC
+                  - generic [ref=e1139]: Corrida de rua
+                  - generic [ref=e1141]:
+                    - generic [ref=e1142]: 5km
+                    - generic [ref=e1144]: 10km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1147]
+            - link "20 set 2026 ECO-TRAIL CABEÇO NEGRO Apiúna - SC Corrida de rua 8km" [ref=e1149] [cursor=pointer]:
+              - /url: /evento/2026-eco-trail-cabeco-negro/
+              - generic [ref=e1152]:
+                - generic [ref=e1153]:
+                  - generic [ref=e1154]: "20"
+                  - generic [ref=e1155]: set
+                  - generic [ref=e1156]: "2026"
+                - generic [ref=e1157]:
+                  - generic [ref=e1158]: ECO-TRAIL CABEÇO NEGRO
+                  - generic [ref=e1159]: Apiúna - SC
+                  - generic [ref=e1161]: Corrida de rua
+                  - generic [ref=e1163]: 8km
+            - link "20 set 2026 Corrida Rústica Farroupilha Balneário Arroio do Silva - SC Corrida de rua 2.5km 5km Cobertura fotográfica Foco Radical" [ref=e1167] [cursor=pointer]:
+              - /url: /evento/2026-corrida-rustica-farroupilha/
+              - generic [ref=e1170]:
+                - generic [ref=e1171]:
+                  - generic [ref=e1172]: "20"
+                  - generic [ref=e1173]: set
+                  - generic [ref=e1174]: "2026"
+                - generic [ref=e1175]:
+                  - generic [ref=e1176]: Corrida Rústica Farroupilha
+                  - generic [ref=e1177]: Balneário Arroio do Silva - SC
+                  - generic [ref=e1179]: Corrida de rua
+                  - generic [ref=e1181]:
+                    - generic [ref=e1182]: 2.5km
+                    - generic [ref=e1184]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1187]
+            - link "20 set 2026 3ª Corrida E Caminhada Sest Senat Chapecó-sc Chapecó - SC Corrida de rua 5km Cobertura fotográfica Foco Radical" [ref=e1189] [cursor=pointer]:
+              - /url: /evento/2026-3-corrida-e-caminhada-sest-senat-chapeco-sc/
+              - generic [ref=e1192]:
+                - generic [ref=e1193]:
+                  - generic [ref=e1194]: "20"
+                  - generic [ref=e1195]: set
+                  - generic [ref=e1196]: "2026"
+                - generic [ref=e1197]:
+                  - generic [ref=e1198]: 3ª Corrida E Caminhada Sest Senat Chapecó-sc
+                  - generic [ref=e1199]: Chapecó - SC
+                  - generic [ref=e1201]: Corrida de rua
+                  - generic [ref=e1203]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1207]
+            - link "20 set 2026 CIRCUITO OCEAN | ETAPA ITAPEMA - 2026 Itapema - SC Corrida de rua 3km 5km" [ref=e1209] [cursor=pointer]:
+              - /url: /evento/circuito-ocean-etapa-itapema-2026/
+              - generic [ref=e1212]:
+                - generic [ref=e1213]:
+                  - generic [ref=e1214]: "20"
+                  - generic [ref=e1215]: set
+                  - generic [ref=e1216]: "2026"
+                - generic [ref=e1217]:
+                  - generic [ref=e1218]: CIRCUITO OCEAN | ETAPA ITAPEMA - 2026
+                  - generic [ref=e1219]: Itapema - SC
+                  - generic [ref=e1221]: Corrida de rua
+                  - generic [ref=e1223]:
+                    - generic [ref=e1224]: 3km
+                    - generic [ref=e1226]: 5km
+            - link "20 set 2026 1ª Corrida Ab Run Lages - SC Corrida de rua 2.6km 5km Cobertura fotográfica Foco Radical" [ref=e1229] [cursor=pointer]:
+              - /url: /evento/2026-1-corrida-ab-run/
+              - generic [ref=e1232]:
+                - generic [ref=e1233]:
+                  - generic [ref=e1234]: "20"
+                  - generic [ref=e1235]: set
+                  - generic [ref=e1236]: "2026"
+                - generic [ref=e1237]:
+                  - generic [ref=e1238]: 1ª Corrida Ab Run
+                  - generic [ref=e1239]: Lages - SC
+                  - generic [ref=e1241]: Corrida de rua
+                  - generic [ref=e1243]:
+                    - generic [ref=e1244]: 2.6km
+                    - generic [ref=e1246]: 5km
+                  - img "Cobertura fotográfica Foco Radical" [ref=e1249]
+            - link "20 set 2026 3ª Etapa Circuito Do Contestado 2026 Nova Itaberaba - SC Corrida de rua 5km" [ref=e1251] [cursor=pointer]:
+              - /url: /evento/2026-3-etapa-circuito-do-contestado-2026/
+              - generic [ref=e1254]:
+                - generic [ref=e1255]:
+                  - generic [ref=e1256]: "20"
+                  - generic [ref=e1257]: set
+                  - generic [ref=e1258]: "2026"
+                - generic [ref=e1259]:
+                  - generic [ref=e1260]: 3ª Etapa Circuito Do Contestado 2026
+                  - generic [ref=e1261]: Nova Itaberaba - SC
+                  - generic [ref=e1263]: Corrida de rua
+                  - generic [ref=e1265]: 5km
+            - link "20 set 2026 2º Pedal Da IntegraÇÃo Braço Do Trombudo - SC Corrida de rua" [ref=e1269] [cursor=pointer]:
+              - /url: /evento/2026-2-pedal-da-integracao/
+              - generic [ref=e1272]:
+                - generic [ref=e1273]:
+                  - generic [ref=e1274]: "20"
+                  - generic [ref=e1275]: set
+                  - generic [ref=e1276]: "2026"
+                - generic [ref=e1277]:
+                  - generic [ref=e1278]: 2º Pedal Da IntegraÇÃo
+                  - generic [ref=e1279]: Braço Do Trombudo - SC
+                  - generic [ref=e1281]: Corrida de rua
+  - contentinfo [ref=e1283]:
+    - generic [ref=e1284]:
+      - link [ref=e1286] [cursor=pointer]:
+        - /url: https://runnerhub.run/
+      - generic [ref=e1302]:
+        - img "Feito no Brasil" [ref=e1303]
+        - text: "2026"
+        - link "RunnerHub Inteligência Esportiva" [ref=e1304] [cursor=pointer]:
+          - /url: https://runnerhub.run/
+        - generic [ref=e1305]: "CNPJ: 49.700.174/0001-56"
+  - dialog [active] [ref=e1306]:
+    - generic [ref=e1309]:
+      - paragraph [ref=e1310]: Usamos cookies para melhorar sua experiência no site.
+      - button "Sim, obrigado!" [ref=e1311] [cursor=pointer]
+      - link "Saiba mais" [ref=e1312] [cursor=pointer]:
+        - /url: /privacidade/
+  - tablist [ref=e1314]:
+    - listitem [ref=e1315]:
+      - link [ref=e1316] [cursor=pointer]:
+        - /url: /
+    - listitem [ref=e1322]:
+      - link [ref=e1323] [cursor=pointer]:
+        - /url: "#"
+    - listitem [ref=e1325]:
+      - link "Eventos" [ref=e1326] [cursor=pointer]:
+        - /url: https://roadrunners.run/estado/
+    - listitem [ref=e1328]:
+      - link [ref=e1329] [cursor=pointer]:
+        - /url: "#"
+        - img "Entrar" [ref=e1330]
+    - listitem [ref=e1331]:
+      - link [ref=e1332] [cursor=pointer]:
+        - /url: /noticias/
+    - listitem [ref=e1334]:
+      - link [ref=e1335] [cursor=pointer]:
+        - /url: /videos/
+    - listitem [ref=e1337]:
+      - button "Mostrar ou ocultar busca" [ref=e1338] [cursor=pointer]
