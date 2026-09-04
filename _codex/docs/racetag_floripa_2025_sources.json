@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "catalog_date": "2026-08-25",
+  "source_page": "https://result.racetag.com.br/onsports/#/maratona-de-floripa-2025/tv",
+  "base_data_url": "https://result.racetag.com.br/onsports/data",
+  "transport": {
+    "method": "GET",
+    "authentication": "none",
+    "cors": {
+      "access_control_allow_origin": "*",
+      "allowed_methods": ["GET", "HEAD"]
+    },
+    "storage": "Amazon S3 behind CloudFront",
+    "filtering": "client-side; there is no endpoint per route, checkpoint or sex"
+  },
+  "registry": {
+    "config_url": "https://result.racetag.com.br/onsports/data/config.json",
+    "events_url": "https://result.racetag.com.br/onsports/data/events.json",
+    "events_url_status": 200,
+    "events_size_bytes": 28941,
+    "slug_resolution": {
+      "maratona-de-floripa-2025": "KNY9FL",
+      "maratona-de-floripa-2025-21K": "19IWN2A"
+    }
+  },
+  "sex_codes": {
+    "supported_by_tv_ui": ["M", "F", "X"],
+    "observed_in_these_results": ["M", "F"],
+    "labels": {
+      "M": "Masculino",
+      "F": "Feminino",
+      "X": "Misto"
+    }
+  },
+  "events": [
+    {
+      "scope": "linked_event",
+      "event_id": "KNY9FL",
+      "slug": "maratona-de-floripa-2025",
+      "name": "MARATONA DE FLORIPA 2025 - DOMINGO",
+      "date": "2025-08-31",
+      "distances_m": [5000, 42000],
+      "endpoints": {
+        "event": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/event.json",
+          "status": 200,
+          "content_type": "application/json",
+          "size_bytes": 5978,
+          "last_modified": "2025-12-03T19:21:30Z",
+          "purpose": "routes, categories, checkpoints, awards and teams"
+        },
+        "results": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/results.json",
+          "status": 200,
+          "content_type": "application/json",
+          "size_bytes": 3455209,
+          "last_modified": "2025-12-03T19:21:34Z",
+          "purpose": "all athletes, finish times and checkpoint passages"
+        },
+        "event_changed": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/eventChanged.txt",
+          "status": 404,
+          "optional": true
+        },
+        "result_changed": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/resultChanged.txt",
+          "status": 404,
+          "optional": true
+        },
+        "team_results": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/team_results.json",
+          "status": 404,
+          "optional": true
+        },
+        "theme": {
+          "url": "https://result.racetag.com.br/onsports/data/KNY9FL/theme.json",
+          "status": 404,
+          "optional": true
+        }
+      },
+      "totals": {
+        "records_raw": 9954,
+        "tv_eligible_records": 9916,
+        "tv_eligible_finishers": 7966,
+        "status_counts": {
+          "DSQ": 37,
+          "DNF": 1
+        }
+      },
+      "routes": [
+        {
+          "route_id": "1F1FF6K",
+          "name": "ELITE 42K",
+          "distance_m": 42000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 19, "eligible": 19, "finishers": 11},
+            "M": {"records_raw": 25, "eligible": 25, "finishers": 14}
+          },
+          "checkpoint_passes": {
+            "W7VW2U": {"F": 12, "M": 18},
+            "1DPIRGO": {"F": 12, "M": 18},
+            "3BG7QF": {"F": 1, "M": 8},
+            "1PBHBTT": {"F": 1, "M": 8}
+          }
+        },
+        {
+          "route_id": "BGI6CE",
+          "name": "CORRIDA 42KM - PCD",
+          "distance_m": 42000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 2, "eligible": 2, "finishers": 1},
+            "M": {"records_raw": 21, "eligible": 21, "finishers": 14}
+          },
+          "checkpoint_passes": {
+            "W7VW2U": {"F": 1, "M": 14},
+            "1DPIRGO": {"F": 0, "M": 5},
+            "3BG7QF": {"F": 0, "M": 0},
+            "1PBHBTT": {"F": 0, "M": 1}
+          }
+        },
+        {
+          "route_id": "1YQVM7Y",
+          "name": "CORRIDA 42KM",
+          "distance_m": 42000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 1866, "eligible": 1848, "finishers": 1473},
+            "M": {"records_raw": 4613, "eligible": 4594, "finishers": 3639}
+          },
+          "checkpoint_passes": {
+            "W7VW2U": {"F": 1495, "M": 3695},
+            "1DPIRGO": {"F": 416, "M": 1143},
+            "3BG7QF": {"F": 5, "M": 44},
+            "1PBHBTT": {"F": 7, "M": 28}
+          }
+        },
+        {
+          "route_id": "X4MMI6",
+          "name": "CORRIDA 5KM",
+          "distance_m": 5000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 2229, "eligible": 2228, "finishers": 1869},
+            "M": {"records_raw": 1167, "eligible": 1167, "finishers": 936}
+          },
+          "checkpoint_passes": {}
+        },
+        {
+          "route_id": "VU36Q2",
+          "name": "CORRIDA 5KM - PCD",
+          "distance_m": 5000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 7, "eligible": 7, "finishers": 5},
+            "M": {"records_raw": 5, "eligible": 5, "finishers": 4}
+          },
+          "checkpoint_passes": {}
+        },
+        {
+          "route_id": "ZH30G5",
+          "name": "GUIA",
+          "distance_m": null,
+          "visible": false,
+          "has_results": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "checkpoint_id": "W7VW2U",
+          "name": "PC1",
+          "order": 1,
+          "distance_m": 7800,
+          "route_ids": ["1F1FF6K", "BGI6CE", "1YQVM7Y"]
+        },
+        {
+          "checkpoint_id": "1DPIRGO",
+          "name": "PC2",
+          "order": 2,
+          "distance_m": 11700,
+          "route_ids": ["1F1FF6K", "BGI6CE", "1YQVM7Y"]
+        },
+        {
+          "checkpoint_id": "3BG7QF",
+          "name": "PC3",
+          "order": 3,
+          "distance_m": 21097,
+          "route_ids": ["1F1FF6K", "BGI6CE", "1YQVM7Y"]
+        },
+        {
+          "checkpoint_id": "1PBHBTT",
+          "name": "PC4",
+          "order": 4,
+          "distance_m": 36000,
+          "route_ids": ["1F1FF6K", "BGI6CE", "1YQVM7Y"]
+        }
+      ],
+      "data_quality_notes": [
+        "Checkpoint metadata also references route FIJD9O, which is absent from event.routes and results; ignore it.",
+        "Checkpoint passage counts are not monotonic in the archived file; do not infer completion from the last checkpoint.",
+        "Use tn or tg to identify finishers and treat s=DSQ/DNF as ineligible for the TV ranking."
+      ]
+    },
+    {
+      "scope": "companion_event_same_weekend",
+      "event_id": "19IWN2A",
+      "slug": "maratona-de-floripa-2025-21K",
+      "name": "MARATONA DE FLORIPA 2025",
+      "date_start": "2025-08-30",
+      "date_end": "2025-08-31",
+      "distances_m": [5000, 21000],
+      "endpoints": {
+        "event": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/event.json",
+          "status": 200,
+          "content_type": "application/json",
+          "size_bytes": 5427,
+          "last_modified": "2025-12-03T19:21:34Z",
+          "purpose": "routes, categories, checkpoints, awards and teams"
+        },
+        "results": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/results.json",
+          "status": 200,
+          "content_type": "application/json",
+          "size_bytes": 3258900,
+          "last_modified": "2025-12-03T19:21:37Z",
+          "purpose": "all athletes, finish times and checkpoint passages"
+        },
+        "event_changed": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/eventChanged.txt",
+          "status": 404,
+          "optional": true
+        },
+        "result_changed": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/resultChanged.txt",
+          "status": 404,
+          "optional": true
+        },
+        "team_results": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/team_results.json",
+          "status": 404,
+          "optional": true
+        },
+        "theme": {
+          "url": "https://result.racetag.com.br/onsports/data/19IWN2A/theme.json",
+          "status": 404,
+          "optional": true
+        }
+      },
+      "totals": {
+        "records_raw": 9147,
+        "tv_eligible_records": 9144,
+        "tv_eligible_finishers": 7487,
+        "status_counts": {
+          "DSQ": 3
+        }
+      },
+      "routes": [
+        {
+          "route_id": "KDENMA",
+          "name": "ELITE 21K",
+          "distance_m": 21000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 20, "eligible": 20, "finishers": 12},
+            "M": {"records_raw": 43, "eligible": 43, "finishers": 29}
+          },
+          "checkpoint_passes": {
+            "1FWDVVL": {"F": 11, "M": 29},
+            "VZM78G": {"F": 11, "M": 29},
+            "51IY36": {"F": 12, "M": 29}
+          }
+        },
+        {
+          "route_id": "15J7XXR",
+          "name": "CORRIDA 21KM - PCD",
+          "distance_m": 21000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 6, "eligible": 6, "finishers": 4},
+            "M": {"records_raw": 15, "eligible": 15, "finishers": 12}
+          },
+          "checkpoint_passes": {
+            "1FWDVVL": {"F": 4, "M": 11},
+            "VZM78G": {"F": 3, "M": 11},
+            "51IY36": {"F": 1, "M": 5}
+          }
+        },
+        {
+          "route_id": "10L8GOV",
+          "name": "CORRIDA 21KM",
+          "distance_m": 21000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 4681, "eligible": 4679, "finishers": 3900},
+            "M": {"records_raw": 4379, "eligible": 4378, "finishers": 3530}
+          },
+          "checkpoint_passes": {
+            "1FWDVVL": {"F": 3387, "M": 2991},
+            "VZM78G": {"F": 3806, "M": 3431},
+            "51IY36": {"F": 168, "M": 844}
+          }
+        },
+        {
+          "route_id": "NPVVBH",
+          "name": "05K",
+          "distance_m": 5000,
+          "visible": true,
+          "sexes": {
+            "F": {"records_raw": 1, "eligible": 1, "finishers": 0},
+            "M": {"records_raw": 2, "eligible": 2, "finishers": 0}
+          },
+          "checkpoint_passes": {}
+        },
+        {
+          "route_id": "1NRU63Q",
+          "name": "PACER 21K",
+          "distance_m": 21000,
+          "visible": false,
+          "has_results": false
+        },
+        {
+          "route_id": "1RFML16",
+          "name": "GUIA",
+          "distance_m": 21000,
+          "visible": false,
+          "has_results": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "checkpoint_id": "1FWDVVL",
+          "name": "PC 7,5K",
+          "order": 1,
+          "distance_m": 7500,
+          "route_ids": ["KDENMA", "15J7XXR", "10L8GOV"]
+        },
+        {
+          "checkpoint_id": "VZM78G",
+          "name": "PC 11K",
+          "order": 2,
+          "distance_m": 11000,
+          "route_ids": ["KDENMA", "15J7XXR", "10L8GOV"]
+        },
+        {
+          "checkpoint_id": "51IY36",
+          "name": "PC 16K",
+          "order": 3,
+          "distance_m": 16000,
+          "route_ids": ["KDENMA", "15J7XXR", "10L8GOV"]
+        }
+      ],
+      "data_quality_notes": [
+        "The 05K route contains only three records and no finish times in this companion source.",
+        "Checkpoint passage counts are not monotonic in the archived file; do not infer completion from the last checkpoint."
+      ]
+    }
+  ],
+  "athlete_result_schema": {
+    "n": "bib number",
+    "nm": "athlete name",
+    "g": "sex code",
+    "r": "route id; join event.routes[].i",
+    "c": "category id; join event.categories[].i",
+    "t": "team id; join event.teams[].i",
+    "a": "age",
+    "st": "start crossing timestamp",
+    "ft": "finish crossing timestamp",
+    "tn": "net time HH:MM:SS.mmm",
+    "tg": "gross time HH:MM:SS.mmm",
+    "s": "status such as DSQ or DNF; absent means eligible",
+    "ck": "checkpoint passages [{i,t,r}]",
+    "ck.i": "checkpoint id; join event.checkpoints[].i",
+    "ck.t": "checkpoint crossing timestamp",
+    "ck.r": "stored checkpoint rank; the TV page ignores it and recomputes rank",
+    "aw": "award positions keyed by event.awards[].p",
+    "ct": "custom fields; may contain registration identifiers",
+    "tl": "timing tag identifiers",
+    "ty": "undocumented numeric field; not used by the TV ranking"
+  },
+  "tv_ranking_algorithm": {
+    "refresh_interval_ms": 15000,
+    "eligible_filter": "exclude every athlete with a truthy s status; then match route id and sex",
+    "finish_time": "use positive tn; otherwise positive tg",
+    "checkpoint_time": "new Date(checkpoint.t) - new Date(athlete.st)",
+    "sort": "ascending elapsed milliseconds",
+    "limit_per_sex": 10,
+    "boards": "two boards of five",
+    "stored_checkpoint_rank_used": false,
+    "finish_display": "leader absolute elapsed; subsequent athletes gap to leader",
+    "checkpoint_display": "leader elapsed from own start; subsequent athletes gap to leader"
+  },
+  "integration_notes": [
+    "Resolve the slug in events.json, then fetch event.json and results.json.",
+    "Join routes, categories, checkpoints and teams by their compact i identifiers.",
+    "For historical results prefer HTTP ETag or Last-Modified caching instead of polling every 15 seconds.",
+    "The optional change-marker, team-results and theme files return 404 for both archived events and must not be required.",
+    "Minimize or omit ct and tl when copying data to another application because they can contain personal or timing identifiers."
+  ]
+}

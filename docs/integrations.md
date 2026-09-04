@@ -85,6 +85,14 @@ Ha consumo e links diretos para endpoints externos ou paralelos, por exemplo:
 - atualizacao de Strava em `roadrunners.run`
 - endpoints publicos `runnerhub.run/leaderboard/api/...`
 
+### Trello / Kanban departamental
+
+O módulo [`administracao/kanban`](/Users/geraldoprotta/IdeaProjects/Business/administracao/kanban) permite que administradores operem, dentro do Business, os quadros departamentais autorizados. O Trello permanece como fonte de verdade; o Business mantém apenas a allowlist dos quadros e a auditoria das mutações.
+
+Configuração, instalação e operação:
+
+- [Integração Trello / Kanban](/Users/geraldoprotta/IdeaProjects/Business/docs/trello-kanban.md)
+
 ## APIs internas e remotas
 
 ### APIs baseadas em CFC

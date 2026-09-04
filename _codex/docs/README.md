@@ -15,6 +15,8 @@ Esta pasta existe para dar contexto operacional rapido a futuras execucoes, manu
 - [Contexto Runner Apps API](runner-apps-api-context.md)
 - [Fila de Importações de Resultados](result_import_queue.md)
 - [Importador Manual RaceTag Pro](racetag_manual_importer.md)
+- [Catálogo RaceTag — Maratona de Floripa 2025](racetag_floripa_2025_sources.md)
+- [Planejamento RunTV — Overlays RaceTag](runtv_racetag_overlays_plan.md)
 - [Contexto Push PWA no Business](push-pwa-business-context.md)
 - [Checklist para Novas Features](feature-checklist.md)
 - [Plano de Producao Business](plano-producao-business.md)

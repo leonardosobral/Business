@@ -63,6 +63,9 @@
         <cfset var cronRunnerToken = structKeyExists(environment, "RR_BUSINESS_CRON_RUNNER_TOKEN") ? trim(environment["RR_BUSINESS_CRON_RUNNER_TOKEN"]) : (structKeyExists(businessLocalConfig, "cronRunnerToken") ? trim(businessLocalConfig.cronRunnerToken) : "")/>
         <cfset var cronDefaultTimeoutSeconds = structKeyExists(environment, "RR_BUSINESS_CRON_TIMEOUT_SECONDS") ? val(environment["RR_BUSINESS_CRON_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "cronDefaultTimeoutSeconds") ? val(businessLocalConfig.cronDefaultTimeoutSeconds) : 30)/>
         <cfset var cronSecrets = structKeyExists(businessLocalConfig, "cronSecrets") AND isStruct(businessLocalConfig.cronSecrets) ? duplicate(businessLocalConfig.cronSecrets) : {}/>
+        <cfset var trelloApiKey = structKeyExists(environment, "RR_TRELLO_API_KEY") ? trim(environment["RR_TRELLO_API_KEY"]) : (structKeyExists(businessLocalConfig, "trelloApiKey") ? trim(businessLocalConfig.trelloApiKey) : "")/>
+        <cfset var trelloApiToken = structKeyExists(environment, "RR_TRELLO_API_TOKEN") ? trim(environment["RR_TRELLO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "trelloApiToken") ? trim(businessLocalConfig.trelloApiToken) : "")/>
+        <cfset var trelloTimeoutSeconds = structKeyExists(environment, "RR_TRELLO_TIMEOUT_SECONDS") ? val(environment["RR_TRELLO_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "trelloTimeoutSeconds") ? val(businessLocalConfig.trelloTimeoutSeconds) : 20)/>
         <cfif NOT len(pushDispatchSecret)
             AND structKeyExists(cronSecrets, "road_runners_handoff")
             AND len(trim(cronSecrets.road_runners_handoff & ""))>
@@ -133,6 +136,13 @@
             runnerToken = cronRunnerToken,
             defaultTimeoutSeconds = cronDefaultTimeoutSeconds GT 0 ? cronDefaultTimeoutSeconds : 30,
             secrets = cronSecrets
+        }/>
+        <cfset APPLICATION.trello = {
+            enabled = len(trelloApiKey) GT 0 AND len(trelloApiToken) GT 0,
+            apiKey = trelloApiKey,
+            apiToken = trelloApiToken,
+            baseUrl = "https://api.trello.com/1",
+            timeoutSeconds = min(45, max(5, int(trelloTimeoutSeconds GT 0 ? trelloTimeoutSeconds : 20)))
         }/>
 
         <!--- Return out. --->

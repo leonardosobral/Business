@@ -204,7 +204,7 @@ function cronJobsNormalizeNewsImporterRequestBody(
     var normalizedContentType = lCase(trim(arguments.contentType));
     var rawBody = trim(arguments.requestBody & "");
     var payload = {};
-    var importerEndpointPattern = "/api/admin/importers/(contrarelogio|corridanoar|cbat|cbat-corrida-de-rua)\.cfm$";
+    var importerEndpointPattern = "/api/admin/importers/(contrarelogio|jornalcorrida|corridanoar|cbat|cbat-corrida-de-rua)\.cfm$";
 
     if (!reFindNoCase(importerEndpointPattern, normalizedEndpoint)
         OR left(normalizedContentType, 16) NEQ "application/json") {

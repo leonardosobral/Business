@@ -476,6 +476,12 @@
                 </a>
             </li>
 
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/kanban/">link-warning</cfif>" href="/administracao/kanban/" data-menu-aliases="kanban kamban trello tarefas departamentos cartões">
+                    <i class="fa-brands fa-trello fa-fw me-3"></i><span>Kanban</span>
+                </a>
+            </li>
+
             <!--- EVENTOS E RESULTADOS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos e resultados</span>

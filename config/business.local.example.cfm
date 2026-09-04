@@ -20,6 +20,9 @@
         "apiMonitorCacheSeconds" = 60,
         "cronRunnerToken" = "COLOQUE_AQUI_UM_TOKEN_FORTE_PARA_O_RUNNER",
         "cronDefaultTimeoutSeconds" = 30,
+        "trelloApiKey" = "CHAVE_DA_APLICACAO_TRELLO",
+        "trelloApiToken" = "TOKEN_DO_USUARIO_DE_SERVICO_TRELLO",
+        "trelloTimeoutSeconds" = 20,
         "cronSecrets" = {
             "road_runners_handoff" = "SEGREDO_COMPARTILHADO_COM_ROAD_RUNNERS",
             "business_internal" = "SEGREDO_INTERNO_DO_BUSINESS",

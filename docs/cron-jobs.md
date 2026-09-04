@@ -245,6 +245,7 @@ Projeto Conteudo:
 
 - `https://conteudo.roadrunners.run/admin/importer_corridanoar`
 - `https://conteudo.roadrunners.run/admin/importer_contrarelogio`
+- `https://conteudo.roadrunners.run/admin/importer_jornalcorrida`
 - `https://conteudo.roadrunners.run/admin/importer_correriacampinas`
 
 Road Runners:
