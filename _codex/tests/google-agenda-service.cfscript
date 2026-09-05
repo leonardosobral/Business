@@ -1,0 +1,59 @@
+function check(required boolean condition,required string message) { if(!arguments.condition) throw(message=arguments.message); }
+function rejects(required any callback, required string contains) {
+    var rejected=false;
+    try { arguments.callback(); } catch(any e) { rejected=findNoCase(arguments.contains,e.message)>0; }
+    check(rejected,"Expected rejection: " & arguments.contains);
+}
+// These are disposable test credentials. No Google or production database calls are made.
+variables.testConfig={CLIENT_ID="test",CLIENT_SECRET="test",TOKEN_KEY=generateSecretKey("AES",256),email="contato@runnerhub.run"};
+variables.agendaConfig=function(){return variables.testConfig;};
+variables.sealed=agendaSeal("disposable-refresh-token");
+check(agendaUnseal(sealed)=="disposable-refresh-token","Token round trip");
+check(agendaSeal("disposable-refresh-token")!=sealed,"Encryption must use a fresh IV");
+rejects(function(){agendaUnseal("A" & mid(sealed,2,len(sealed)-1));},"inválido");
+variables.testConfig.TOKEN_KEY=generateSecretKey("AES",256);
+rejects(function(){agendaUnseal(sealed);},"inválido");
+check(find("%40",agendaEventPath("owner@example.com","abc_123"))>0,"Calendar ID encoding");
+rejects(function(){agendaEventPath("calendar","../other");},"inválido");
+// Replace external boundaries, exercising actual dispatch validation and event payload construction.
+variables.agendaMutation=function(){};
+variables.agendaReady=function(){return true;};
+variables.agendaAccessToken=function(boolean force=false){return "test-access";};
+variables.agendaCalendar=function(required string id){return {accessRole="owner"};};
+variables.agendaAudit=function(required string action,string calendarId="",string eventId=""){return 1;};
+variables.agendaAuditEnd=function(required numeric id,required string state){};
+variables.agendaInput=function(required string key,string fallback=""){return structKeyExists(variables.input,arguments.key)?variables.input[arguments.key]:arguments.fallback;};
+variables.calls=[];
+variables.remoteEvent={"id"="existing","etag"='"v1"',"summary"="Original","eventType"="default","start"={"date"="2026-09-05"},"end"={"date"="2026-09-06"},"reminders"={"useDefault"=false,"overrides"=[{"method"="popup","minutes"=30}]},"recurrence"=["RRULE:FREQ=WEEKLY;COUNT=4"]};
+variables.agendaGoogle=function(required string path,string method="GET",struct params={},struct body={},string etag="",boolean allowConflict=false,boolean allowMissing=false){
+    arrayAppend(variables.calls,duplicate(arguments));
+    if(arguments.method=="GET")return duplicate(variables.remoteEvent);
+    return {"id"="saved"};
+};
+variables.input={action="save",calendar_id="calendar",request_id="12345678-1234-1234-1234-123456789012",send_updates="none"};
+variables.draft={"summary"="Reunião","description"="Texto","location"="Sala","allDay"=false,"start"="2026-09-05T09:00","end"="2026-09-05T10:00","attendees"=[],"repeat"="WEEKLY","count"=4};
+variables.input.event=serializeJSON(variables.draft);
+agendaDispatch();
+check(variables.calls[1].method=="POST","Creation uses POST");
+check(variables.calls[1].body.start.dateTime=="2026-09-05T09:00:00-03:00","RFC3339 seconds and São Paulo offset");
+check(variables.calls[1].body.recurrence[1]=="RRULE:FREQ=WEEKLY;COUNT=4","New recurrence");
+check(reFind("^[0-9a-f]{64}$",variables.calls[1].body.id)>0,"Stable Google-compatible event ID");
+variables.calls=[];variables.input.event_id="existing";variables.input.etag='"v1"';agendaDispatch();
+check(variables.calls[2].method=="PUT","Updates replace dates using conditional PUT");
+check(variables.calls[2].etag=='"v1"',"If-Match preserved");
+check(!structKeyExists(variables.calls[2].body.start,"date"),"Old all-day field removed");
+check(variables.calls[2].body.reminders.overrides[1].minutes==30,"Unedited reminders preserved");
+check(variables.calls[2].body.recurrence[1]=="RRULE:FREQ=WEEKLY;COUNT=4","Series rule preserved");
+variables.remoteEvent.start={"dateTime"="2026-09-05T13:00:00+01:00","timeZone"="Europe/Lisbon"};
+variables.remoteEvent.end={"dateTime"="2026-09-05T14:00:00+01:00","timeZone"="Europe/Lisbon"};
+variables.calls=[];agendaDispatch();
+check(variables.calls[2].body.start.timeZone=="Europe/Lisbon","Existing recurrence timezone is preserved");
+check(variables.calls[2].body.start.dateTime=="2026-09-05T13:00:00+01:00","Brasília editor converts back to original timezone");
+variables.input.etag='"stale"';
+rejects(function(){agendaDispatch();},"evento mudou");
+variables.input.etag='"v1"';variables.input.send_updates="";
+rejects(function(){agendaDispatch();},"notificação");
+variables.input.send_updates="all";variables.draft.end="2026-09-05T08:00";variables.input.event=serializeJSON(variables.draft);
+rejects(function(){agendaDispatch();},"posterior");
+variables.draft.end="2026-09-05T10:00";variables.draft.attendees=["not-an-email"];variables.input.event=serializeJSON(variables.draft);
+rejects(function(){agendaDispatch();},"participante inválido");

@@ -17,6 +17,7 @@ Este conjunto de documentos serve para:
 - [Mapa de Módulos](/Users/geraldoprotta/IdeaProjects/Business/docs/modules.md)
 - [Integrações e Dependências](/Users/geraldoprotta/IdeaProjects/Business/docs/integrations.md)
 - [Integração Trello / Kanban](/Users/geraldoprotta/IdeaProjects/Business/docs/trello-kanban.md)
+- [Agenda Google e vínculo com Kanban](/Users/geraldoprotta/IdeaProjects/Business/docs/google-agenda.md)
 - [Plataforma de Notificações](/Users/geraldoprotta/IdeaProjects/Business/docs/notifications-platform.md)
 - [Portal Banners](/Users/geraldoprotta/IdeaProjects/Business/docs/portal-banners.md)
 - [Runner Apps API](/Users/geraldoprotta/IdeaProjects/Business/docs/runner-apps-api.md)

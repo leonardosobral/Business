@@ -10,7 +10,7 @@
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfinclude template="includes/backend.cfm"/>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
-<link rel="stylesheet" href="/administracao/kanban/assets/kanban.css?v=20260904-1"/>
+<link rel="stylesheet" href="/administracao/kanban/assets/kanban.css?v=20260904-2"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <cfinclude template="../../includes/estrutura/header.cfm"/>
@@ -22,6 +22,6 @@
     </main>
 
     <cfinclude template="../../includes/estrutura/footer.cfm"/>
-    <script src="/administracao/kanban/assets/kanban.js?v=20260904-1"></script>
+    <script src="/administracao/kanban/assets/kanban.js?v=20260905-agenda-1"></script>
 </body>
 </html>

@@ -145,6 +145,14 @@
             timeoutSeconds = min(45, max(5, int(trelloTimeoutSeconds GT 0 ? trelloTimeoutSeconds : 20)))
         }/>
 
+        <cfset APPLICATION.googleCalendar = {}/>
+        <cfloop list="CLIENT_ID,CLIENT_SECRET,TOKEN_KEY" index="local.calendarSetting">
+            <cfset APPLICATION.googleCalendar[local.calendarSetting] = structKeyExists(environment, "RR_GOOGLE_CALENDAR_" & local.calendarSetting) ? trim(environment["RR_GOOGLE_CALENDAR_" & local.calendarSetting]) : (structKeyExists(businessLocalConfig, "googleCalendar" & replace(local.calendarSetting, "_", "", "all")) ? trim(businessLocalConfig["googleCalendar" & replace(local.calendarSetting, "_", "", "all")]) : "")/>
+        </cfloop>
+        <cfset APPLICATION.googleCalendar.redirectUri = "https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm"/>
+        <cfset APPLICATION.googleCalendar.email = "contato@runnerhub.run"/>
+        <cfset APPLICATION.googleCalendar.scopes = "openid email https://www.googleapis.com/auth/calendar.calendarlist.readonly https://www.googleapis.com/auth/calendar.events.owned"/>
+
         <!--- Return out. --->
         <cfreturn true />
     </cffunction>

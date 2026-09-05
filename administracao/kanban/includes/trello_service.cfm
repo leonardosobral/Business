@@ -81,12 +81,38 @@ function kanbanLogRemoteFailure(
 
 function kanbanTrelloParamName(required string rawName) {
     var canonicalNames = {
+        "actions_display" = "actions_display",
+        "actions_entities" = "actions_entities",
+        "actions_fields" = "actions_fields",
+        "actions_limit" = "actions_limit",
+        "actions_membercreator" = "actions_memberCreator",
+        "actions_membercreator_fields" = "actions_memberCreator_fields",
+        "attachment_fields" = "attachment_fields",
+        "checkitems" = "checkItems",
+        "checkitem_fields" = "checkItem_fields",
+        "customfielditems" = "customFieldItems",
         "duecomplete" = "dueComplete",
+        "duereminder" = "dueReminder",
+        "idattachmentcover" = "idAttachmentCover",
         "idboard" = "idBoard",
+        "idcardsource" = "idCardSource",
+        "idcheckitem" = "idCheckItem",
+        "idchecklistsource" = "idChecklistSource",
+        "idcustomfield" = "idCustomField",
+        "idlabels" = "idLabels",
         "idlist" = "idList",
+        "idmember" = "idMember",
         "idmembers" = "idMembers",
+        "idvalue" = "idValue",
+        "keepfromsource" = "keepFromSource",
+        "locationname" = "locationName",
+        "manualcoverattachment" = "manualCoverAttachment",
+        "member_fields" = "member_fields",
         "membercreator" = "memberCreator",
-        "membercreator_fields" = "memberCreator_fields"
+        "membercreator_fields" = "memberCreator_fields",
+        "membervoted_fields" = "memberVoted_fields",
+        "setcover" = "setCover",
+        "urlsource" = "urlSource"
     };
     var lookupName = lCase(trim(arguments.rawName));
 
@@ -120,7 +146,8 @@ function kanbanTrelloRequest(
     required string path,
     string method = "GET",
     struct params = {},
-    numeric timeoutSeconds = 0
+    numeric timeoutSeconds = 0,
+    boolean jsonBody = false
 ) {
     var result = {
         success = false,
@@ -170,7 +197,7 @@ function kanbanTrelloRequest(
     authorization = 'OAuth oauth_consumer_key="' & trim(APPLICATION.trello.apiKey & "")
         & '", oauth_token="' & trim(APPLICATION.trello.apiToken & "") & '"';
     if (requestMethod EQ "POST" OR requestMethod EQ "PUT") {
-        requestBody = kanbanFormBody(arguments.params);
+        requestBody = arguments.jsonBody ? serializeJSON(arguments.params) : kanbanFormBody(arguments.params);
     }
 
     try {
@@ -193,7 +220,11 @@ function kanbanTrelloRequest(
                     cfhttpparam(type = "url", name = outboundParamName, value = arguments.params[paramName] & "");
                 }
             } else {
-                cfhttpparam(type = "header", name = "Content-Type", value = "application/x-www-form-urlencoded; charset=UTF-8");
+                cfhttpparam(
+                    type = "header",
+                    name = "Content-Type",
+                    value = arguments.jsonBody ? "application/json; charset=UTF-8" : "application/x-www-form-urlencoded; charset=UTF-8"
+                );
                 cfhttpparam(type = "body", value = requestBody);
             }
         }
@@ -218,6 +249,91 @@ function kanbanTrelloRequest(
         result.message = "Não foi possível comunicar com o Trello.";
         kanbanLogRemoteFailure(
             requestMethod,
+            arguments.path,
+            result.status,
+            requestError.message & "",
+            structKeyExists(requestError, "detail") ? requestError.detail & "" : ""
+        );
+    }
+
+    return result;
+}
+
+function kanbanTrelloFileRequest(
+    required string path,
+    required string filePath,
+    required string originalName,
+    required string mimeType,
+    boolean setCover = false
+) {
+    var result = {
+        success = false,
+        status = 502,
+        data = {},
+        raw = "",
+        message = ""
+    };
+    var baseUrl = "https://api.trello.com/1";
+    var authorization = "";
+    var httpResult = {};
+    var requestTimeout = 45;
+
+    if (!kanbanTrelloConfigured()) {
+        throw(type = "TrelloKanban.Configuration", message = "Configure RR_TRELLO_API_KEY e RR_TRELLO_API_TOKEN no servidor.");
+    }
+    if (!reFind("^/[A-Za-z0-9_/?=&,.-]+$", arguments.path)) {
+        throw(type = "TrelloKanban.Validation", message = "Caminho da API do Trello inválido.");
+    }
+    if (!fileExists(arguments.filePath)) {
+        throw(type = "TrelloKanban.Validation", message = "O arquivo temporário não foi encontrado.");
+    }
+    if (structKeyExists(APPLICATION.trello, "baseUrl") AND len(trim(APPLICATION.trello.baseUrl & ""))) {
+        baseUrl = reReplace(trim(APPLICATION.trello.baseUrl & ""), "/+$", "", "all");
+    }
+    if (!reFindNoCase("^https://api\.trello\.com/1$", baseUrl)) {
+        throw(type = "TrelloKanban.Configuration", message = "A URL base do Trello não é permitida.");
+    }
+    if (reFind('[\r\n"]', APPLICATION.trello.apiKey & "") OR reFind('[\r\n"]', APPLICATION.trello.apiToken & "")) {
+        throw(type = "TrelloKanban.Configuration", message = "A credencial do Trello contém caracteres inválidos.");
+    }
+
+    authorization = 'OAuth oauth_consumer_key="' & trim(APPLICATION.trello.apiKey & "")
+        & '", oauth_token="' & trim(APPLICATION.trello.apiToken & "") & '"';
+
+    try {
+        cfhttp(
+            url = baseUrl & arguments.path,
+            method = "POST",
+            result = "httpResult",
+            timeout = requestTimeout,
+            multipart = true,
+            throwOnError = false
+        ) {
+            cfhttpparam(type = "header", name = "Accept", value = "application/json");
+            cfhttpparam(type = "header", name = "Authorization", value = authorization);
+            cfhttpparam(type = "header", name = "User-Agent", value = "RunnerHub-Business-Kanban/1.0");
+            cfhttpparam(type = "formfield", name = "name", value = left(arguments.originalName, 256));
+            cfhttpparam(type = "formfield", name = "mimeType", value = left(arguments.mimeType, 256));
+            cfhttpparam(type = "formfield", name = "setCover", value = arguments.setCover ? "true" : "false");
+            cfhttpparam(type = "file", name = "file", file = arguments.filePath, mimeType = arguments.mimeType);
+        }
+
+        result.status = kanbanHttpStatus(httpResult);
+        result.raw = structKeyExists(httpResult, "fileContent") ? (httpResult.fileContent & "") : "";
+        result.success = result.status GTE 200 AND result.status LT 300;
+        if (len(trim(result.raw)) AND isJSON(result.raw)) {
+            result.data = deserializeJSON(result.raw);
+        } else if (result.success) {
+            result.data = {};
+        }
+        if (!result.success) {
+            result.message = kanbanRemoteError(result.raw, result.status);
+            kanbanLogRemoteFailure("POST", arguments.path, result.status, result.message);
+        }
+    } catch (any requestError) {
+        result.message = "Não foi possível enviar o arquivo ao Trello.";
+        kanbanLogRemoteFailure(
+            "POST",
             arguments.path,
             result.status,
             requestError.message & "",

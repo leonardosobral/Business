@@ -39,7 +39,8 @@ test("Trello mutations use an explicit URL-encoded body compatible with POST and
 
     assert.match(service, /application\/x-www-form-urlencoded; charset=UTF-8/);
     assert.match(service, /cfhttpparam\(type = "body", value = requestBody\)/);
-    assert.doesNotMatch(service, /type = "formfield"/i);
+    const regularRequest = service.slice(service.indexOf("function kanbanTrelloRequest"), service.indexOf("function kanbanTrelloFileRequest"));
+    assert.doesNotMatch(regularRequest, /type = "formfield"/i);
     assert.match(service, /"idlist" = "idList"/);
     assert.match(service, /"idmembers" = "idMembers"/);
     assert.match(service, /"duecomplete" = "dueComplete"/);
@@ -90,6 +91,53 @@ test("Browser UI supports live board operations without exposing arbitrary Trell
     assert.match(browser, /csrf_token/);
     assert.match(browser, /dragstart/);
     assert.doesNotMatch(browser, /api\.trello\.com/);
+});
+
+test("Card editor exposes the operational Trello card feature set", () => {
+    const api = read("administracao/kanban/api.cfm");
+    const home = read("administracao/kanban/home.cfm");
+    const browser = read("administracao/kanban/assets/kanban.js");
+
+    for (const tab of ["details", "checklists", "attachments", "activity", "custom-fields", "advanced"]) {
+        assert.match(home, new RegExp(`data-kanban-tab="${tab}"`));
+    }
+    for (const action of [
+        "card_details", "archived_cards", "board_lists", "duplicate_card", "transfer_card", "delete_card", "create_label",
+        "create_checklist", "update_checklist", "delete_checklist", "add_check_item",
+        "update_check_item", "delete_check_item", "add_attachment_url", "add_attachment_file",
+        "delete_attachment", "set_attachment_cover", "update_comment", "delete_comment",
+        "update_custom_field"
+    ]) {
+        assert.match(api, new RegExp(`action EQ "${action}"`));
+        assert.match(browser, new RegExp(`\\b${action}\\b`));
+    }
+    assert.match(api, /start = kanbanDateValue/);
+    assert.match(api, /itemParams\.dueReminder/);
+    assert.match(browser, /due_reminder: reminder\.value/);
+    assert.match(api, /subscribed/);
+    assert.match(api, /coordinatesValue = kanbanCoordinates/);
+    assert.match(api, /if \(len\(coordinatesValue\)\) \{[\s\S]*?\.coordinates = coordinatesValue/);
+    assert.doesNotMatch(api, /coordinates\s*=\s*kanbanCoordinates/);
+    assert.match(api, /idLabels = kanbanAssertIdsOnBoard/);
+    assert.match(browser, /moveCard\(cardId, listId, position\)/);
+});
+
+test("Advanced card mutations retain scope, upload, and destructive-action safeguards", () => {
+    const api = read("administracao/kanban/api.cfm");
+    const service = read("administracao/kanban/includes/trello_service.cfm");
+
+    assert.match(api, /function kanbanAssertChecklistOnCard/);
+    assert.match(api, /function kanbanAssertCommentOnCard/);
+    assert.match(api, /function kanbanAssertCustomFieldOnBoard/);
+    assert.match(api, /ForbiddenCustomFieldOption/);
+    assert.match(api, /compare\(kanbanInput\("confirmation", 32\), "EXCLUIR"\)/);
+    assert.match(api, /fileSize\) GT 10485760/);
+    assert.match(api, /blockedExtensions/);
+    assert.match(api, /finally \{[\s\S]*fileDelete\(uploadedFilePath\)/);
+    assert.match(service, /function kanbanTrelloFileRequest/);
+    assert.match(service, /multipart = true/);
+    assert.match(service, /application\/json; charset=UTF-8/);
+    assert.doesNotMatch(service, /apiToken[^\n]*(?:cflog|writeOutput|serializeJSON)/i);
 });
 
 test("Admin navigation exposes the Kanban module", () => {

@@ -482,6 +482,12 @@
                 </a>
             </li>
 
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agenda/">link-warning</cfif>" href="/administracao/agenda/" data-menu-aliases="agenda google calendário compromissos reuniões">
+                    <i class="fa-regular fa-calendar fa-fw me-3"></i><span>Agenda Google</span>
+                </a>
+            </li>
+
             <!--- EVENTOS E RESULTADOS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos e resultados</span>
