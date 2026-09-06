@@ -97,13 +97,31 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         <cfset VARIABLES.contentBulkPublished = VARIABLES.contentBulkStatus EQ "published"/>
 
         <cfquery>
-            UPDATE news.tb_content
+            UPDATE news.tb_content AS content_row
             SET published = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentBulkPublished#"/>,
                 <cfif VARIABLES.contentHasEditorialStatus>
                     editorial_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.contentBulkStatus#"/>,
                 </cfif>
                 <cfif VARIABLES.contentHasPublishedAt AND VARIABLES.contentBulkPublished>
-                    published_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
+                    published_at = COALESCE(
+                        (
+                            SELECT CASE
+                                WHEN COALESCE(ci.detail_json ->> 'source_published_at', '') ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$'
+                                    THEN (ci.detail_json ->> 'source_published_at')::timestamp
+                                WHEN COALESCE(ci.detail_json ->> 'source_pubdate', '') ~ '^[A-Za-z]{3},[[:space:]]+[0-9]{1,2}[[:space:]]+[A-Za-z]{3}[[:space:]]+[0-9]{4}[[:space:]]+[0-9]{2}:[0-9]{2}:[0-9]{2}[[:space:]]+(GMT|UTC|[+-][0-9]{4})$'
+                                    THEN (ci.detail_json ->> 'source_pubdate')::timestamptz AT TIME ZONE 'America/Sao_Paulo'
+                                WHEN COALESCE(ci.detail_json ->> 'source_pubdate', '') ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}'
+                                    THEN (ci.detail_json ->> 'source_pubdate')::timestamptz AT TIME ZONE 'America/Sao_Paulo'
+                                ELSE NULL
+                            END
+                            FROM news.tb_content_imports ci
+                            WHERE ci.content_id = content_row.id
+                            ORDER BY ci.updated_at DESC, ci.id DESC
+                            LIMIT 1
+                        ),
+                        published_at,
+                        <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                    ),
                 </cfif>
                 <cfif VARIABLES.contentHasIsFeatured AND NOT VARIABLES.contentBulkPublished>
                     is_featured = false,
@@ -135,10 +153,28 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
     <cfset VARIABLES.contentTogglePublished = IsBoolean(URL.published) ? URL.published : ListFindNoCase("true,1,yes,sim", trim(URL.published & "")) GT 0/>
 
     <cfquery>
-        UPDATE news.tb_content
+        UPDATE news.tb_content AS content_row
         SET published = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.contentTogglePublished#"/>,
             <cfif VARIABLES.contentHasPublishedAt AND VARIABLES.contentTogglePublished>
-                published_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
+                published_at = COALESCE(
+                    (
+                        SELECT CASE
+                            WHEN COALESCE(ci.detail_json ->> 'source_published_at', '') ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$'
+                                THEN (ci.detail_json ->> 'source_published_at')::timestamp
+                            WHEN COALESCE(ci.detail_json ->> 'source_pubdate', '') ~ '^[A-Za-z]{3},[[:space:]]+[0-9]{1,2}[[:space:]]+[A-Za-z]{3}[[:space:]]+[0-9]{4}[[:space:]]+[0-9]{2}:[0-9]{2}:[0-9]{2}[[:space:]]+(GMT|UTC|[+-][0-9]{4})$'
+                                THEN (ci.detail_json ->> 'source_pubdate')::timestamptz AT TIME ZONE 'America/Sao_Paulo'
+                            WHEN COALESCE(ci.detail_json ->> 'source_pubdate', '') ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}'
+                                THEN (ci.detail_json ->> 'source_pubdate')::timestamptz AT TIME ZONE 'America/Sao_Paulo'
+                            ELSE NULL
+                        END
+                        FROM news.tb_content_imports ci
+                        WHERE ci.content_id = content_row.id
+                        ORDER BY ci.updated_at DESC, ci.id DESC
+                        LIMIT 1
+                    ),
+                    published_at,
+                    <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                ),
             </cfif>
             <cfif VARIABLES.contentHasIsFeatured AND NOT VARIABLES.contentTogglePublished>
                 is_featured = false,

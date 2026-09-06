@@ -248,6 +248,10 @@ Projeto Conteudo:
 - `https://conteudo.roadrunners.run/admin/importer_jornalcorrida`
 - `https://conteudo.roadrunners.run/admin/importer_correriacampinas`
 
+O job do Jornal da Corrida pode ser cadastrado ou atualizado de forma idempotente com `administracao/cron-jobs/jornalcorrida_import_job.sql`. Ele executa a cada 60 minutos, usa HMAC com `secret_ref = conteudo_internal`, atribui os autores importados a Roberta Palma (ID 28) e envia novos conteúdos para a fila de curadoria.
+
+Ao publicar conteúdos importados pela curadoria, o Business prioriza a data canônica registrada em `news.tb_content_imports.detail_json` e a reaplica em `news.tb_content.published_at`, inclusive para corrigir itens importados antes deste ajuste. A data atual só é aplicada a conteúdos sem metadados de importação e sem data de publicação.
+
 Road Runners:
 
 - Endpoints Road Runners que aceitam handoff devem usar `auth_mode = hmac_sha256` e `secret_ref = road_runners_handoff`.
