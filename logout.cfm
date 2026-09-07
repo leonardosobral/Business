@@ -7,14 +7,14 @@
 </cfif>
 
 <cftry>
-    <cfif isDefined("COOKIE.id")>
+    <cfif isDefined("REQUEST.businessIdentity.id")>
         <cfset VARIABLES.logoutName = ""/>
         <cfset VARIABLES.logoutEmail = ""/>
-        <cfif isDefined("COOKIE.name")>
-            <cfset VARIABLES.logoutName = COOKIE.name/>
+        <cfif isDefined("REQUEST.businessIdentity.name")>
+            <cfset VARIABLES.logoutName = REQUEST.businessIdentity.name/>
         </cfif>
-        <cfif isDefined("COOKIE.email")>
-            <cfset VARIABLES.logoutEmail = COOKIE.email/>
+        <cfif isDefined("REQUEST.businessIdentity.email")>
+            <cfset VARIABLES.logoutEmail = REQUEST.businessIdentity.email/>
         </cfif>
 
         <cfquery>
@@ -23,7 +23,7 @@
             VALUES
             (
                 'googlesignout',
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#VARIABLES.logoutName#,#VARIABLES.logoutEmail#"/>,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#VARIABLES.logoutName#,#VARIABLES.logoutEmail#"/>,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.logoutCodSite#"/>
             )
@@ -33,10 +33,9 @@
 </cftry>
 
 <cftry>
-    <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
-    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
-    <cfset StructDelete(SESSION, "businessAccountSelectionConfirmed", false)/>
-    <cfset StructDelete(SESSION, "businessAccountContextCsrf", false)/>
+    <cfset REQUEST.businessAuthSession.clear(SESSION)/>
+    <cfset REQUEST.businessIdentity = {}/>
+    <cfset sessionInvalidate()/>
 <cfcatch type="any"></cfcatch>
 </cftry>
 

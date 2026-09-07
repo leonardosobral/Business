@@ -222,7 +222,7 @@
 <cfset VARIABLES.businessPendingTasksTotal = 0/>
 <cfset VARIABLES.businessIsPendingWorkspace = isDefined("VARIABLES.businessPendingWorkspace")
     AND VARIABLES.businessPendingWorkspace/>
-<cfif isDefined("COOKIE.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
+<cfif isDefined("REQUEST.businessIdentity.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
         <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
     <cfelseif isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
@@ -715,6 +715,12 @@
             </li>
 
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Audiência e relacionamento</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/audiencia/">link-warning</cfif>" href="/portal/audiencia/" data-menu-aliases="audiência inventário posições acessos analytics potencial regional">
+                    <i class="fa-solid fa-chart-area fa-fw me-3"></i><span>Audiência e inventário</span>
+                </a>
+            </li>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/pesquisas/">link-warning</cfif>" href="/administracao/pesquisas/" data-menu-aliases="enquetes respostas formulários">

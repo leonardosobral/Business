@@ -16,7 +16,7 @@
 <cfset VARIABLES.businessPendingAccountName = ""/>
 <cfset VARIABLES.businessPendingAccountRole = ""/>
 <cfset VARIABLES.businessPendingRegistrationId = ""/>
-<cfset VARIABLES.businessEffectiveUserIds = isDefined("COOKIE.id") ? trim(COOKIE.id) : "0"/>
+<cfset VARIABLES.businessEffectiveUserIds = isDefined("REQUEST.businessIdentity.id") ? trim(REQUEST.businessIdentity.id) : "0"/>
 <cfset VARIABLES.businessEffectivePaginaIds = "0"/>
 <cfset VARIABLES.businessAccountContextTablesReady = false/>
 

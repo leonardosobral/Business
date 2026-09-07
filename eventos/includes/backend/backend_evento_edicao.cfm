@@ -141,7 +141,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
             INSERT INTO tb_log
             (log_item, log_item_id, log_user, site)
             VALUES
-            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
         </cfquery>
 
         <cflocation addtoken="false" url="/eventos/?id_evento=#qInsert.id_evento#"/>
@@ -170,7 +170,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
             INSERT INTO tb_log
             (log_item, log_item_id, log_user, site)
             VALUES
-            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
         </cfquery>
 
     </cfif>
@@ -198,7 +198,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -224,7 +224,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -256,7 +256,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_fornecedor#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_fornecedor#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -287,7 +287,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.agregador_tag#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.agregador_tag#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
     <cflocation addtoken="false" url="./?preset=#URL.preset#&periodo=#URL.periodo#&busca=#URL.busca#&regiao=#URL.regiao#&estado=#URL.estado#&cidade=#URL.cidade#&id_agrega_evento=#URL.id_agrega_evento#&agregador_tag=#URL.agregador_tag#&id_evento=#FORM.id_evento#&sessao=configuracoes"/>
@@ -323,7 +323,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento_parceiro#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento_parceiro#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -371,7 +371,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
     <cflocation url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#" addtoken="false"/>
@@ -401,7 +401,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -423,7 +423,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.resumo#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.resumo#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -443,7 +443,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.categorias#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.categorias#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>
@@ -503,7 +503,7 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         INSERT INTO tb_log
         (log_item, log_item_id, log_user, site)
         VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#COOKIE.id#,#FORM.id_evento_percurso#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
+        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento_percurso#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
     </cfquery>
 
 </cfif>

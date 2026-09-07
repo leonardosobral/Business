@@ -104,10 +104,10 @@ function publicResearchSurvey(required string slug) {
 
 function publicResearchAuthenticatedUser() {
     var result = { authenticated = false, userId = 0, email = "" };
-    if (!structKeyExists(COOKIE, "id") || !isNumeric(COOKIE.id) || val(COOKIE.id) LTE 0) return result;
+    if (!structKeyExists(REQUEST.businessIdentity,"id") || !isNumeric(REQUEST.businessIdentity.id) || val(REQUEST.businessIdentity.id) LTE 0) return result;
     var userQuery = queryExecute(
         "SELECT id, email FROM tb_usuarios WHERE id = :user_id LIMIT 1",
-        { user_id = { value = val(COOKIE.id), cfsqltype = "cf_sql_bigint" } }
+        { user_id = { value = val(REQUEST.businessIdentity.id), cfsqltype = "cf_sql_bigint" } }
     );
     if (!userQuery.recordCount) return result;
     result.authenticated = true;

@@ -1,13 +1,13 @@
 <!--- VERIFICA LOGIN COM O GOOGLE --->
 
-<cfif isDefined("COOKIE.id")>
+<cfif isDefined("REQUEST.businessIdentity.id")>
 
     <!--- CHECA SE TEM CUPOM --->
 
     <!---cfquery name="qCheckCupom365">
         select *
         from tb_convite
-        where id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        where id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         AND chave_acesso ILIKE 'CNA%' AND data_aceite is null
     </cfquery--->
 
@@ -38,7 +38,7 @@
             FROM tb_usuarios usr
             inner join tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
             inner join tb_paginas pg on pg.id_pagina = pgusr.id_pagina
-            WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         </cfquery>
 
         <hr class="mt-3 mb-0"/>

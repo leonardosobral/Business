@@ -1058,6 +1058,7 @@
                           <div class="accounts-action-title">Decisão da solicitação</div>
                           <p class="accounts-request-decision-copy">Revise os dados e defina o acesso que este usuário receberá.</p>
                           <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
+                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
 
                           <cfif qBusinessAccountRegistrationRequests.status_conta EQ "ATIVA">
                             <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel após a aprovação</label>

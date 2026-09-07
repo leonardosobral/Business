@@ -63,7 +63,7 @@
 
 <body class="bg-body-secondary">
 
-    <cfif NOT isDefined("COOKIE.id")>
+    <cfif NOT isDefined("REQUEST.businessIdentity.id")>
 
         <cflocation addtoken="false" url="/"/>
 

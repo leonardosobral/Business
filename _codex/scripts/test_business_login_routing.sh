@@ -40,7 +40,7 @@ reject_pattern() {
     fi
 }
 
-backend="includes/backend/backend_login.cfm"
+backend="includes/backend/business_google_callback.cfm"
 
 require_pattern \
     "$backend" \
@@ -58,7 +58,7 @@ require_pattern \
     "somente solicitacao pendente bloqueia a entrada"
 
 reject_pattern \
-    "$backend" \
+    "includes/backend/backend_login.cfm" \
     'usr\.is_partner[[:space:]]*=[[:space:]]*true[[:space:]]+OR[[:space:]]+EXISTS' \
     "is_partner nao autoriza acesso Business"
 

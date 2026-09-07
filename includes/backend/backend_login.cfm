@@ -37,8 +37,8 @@
 
 <cfif isDefined("URL.action")
     AND URL.action EQ "abrir_notificacao"
-    AND isDefined("COOKIE.id")
-    AND len(trim(COOKIE.id))
+    AND isDefined("REQUEST.businessIdentity.id")
+    AND len(trim(REQUEST.businessIdentity.id))
     AND isDefined("URL.id_notifica")
     AND isNumeric(URL.id_notifica)>
 
@@ -60,14 +60,14 @@
         UPDATE tb_notifica
         SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
         WHERE id_notifica = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_notifica#"/>
-          AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+          AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
           AND data_leitura IS NULL
     </cfquery>
 
     <cflocation addtoken="false" url="#VARIABLES.businessNotificationRedirectUrl#"/>
 </cfif>
 
-<cfif NOT VARIABLES.businessSkipCookieLogin AND isDefined("COOKIE.id")>
+<cfif NOT VARIABLES.businessSkipCookieLogin AND isDefined("REQUEST.businessIdentity.id")>
     <cfquery name="qPerfil">
         SELECT usr.id, usr.name, usr.email,
         coalesce(usr.is_admin, false) AS is_admin,
@@ -89,7 +89,7 @@
         </cfif>
         LEFT JOIN tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
         LEFT JOIN tb_paginas pg on pg.id_pagina = pgusr.id_pagina
-        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         <cfif VARIABLES.businessUserManagementStatusReady>
             AND coalesce(usrgest.ativo, true) = true
             AND coalesce(usrgest.excluido, false) = false
@@ -139,7 +139,7 @@
             INNER JOIN tb_conta_cadastro_solicitacoes sol
                 ON lower(sol.email_responsavel) = lower(usr.email)
             LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
-            WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
               AND coalesce(usr.is_admin, false) = false
               AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
               AND NOT EXISTS (
@@ -243,7 +243,7 @@
                            <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
                     FROM tb_helpdesk_chamados cham
                     INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
-                    WHERE setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+                    WHERE setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
                       AND cham.id_usuario <> setr.id_usuario_responsavel
                       AND cham.status IN (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
@@ -278,7 +278,7 @@
             LEFT JOIN tb_notifica_template tpl ON ntf.id_notifica_template = tpl.id_notifica_template
             WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
             AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
-            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
             ORDER BY ntf.data_publicacao DESC, ntf.id_notifica DESC
         </cfquery>
 
@@ -288,14 +288,14 @@
             WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
             AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
             AND ntf.data_leitura IS NULL
-            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         </cfquery>
 
         <cfif isDefined("URL.notificacao")>
             <cfquery>
                 UPDATE tb_notifica
                 SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
                 AND data_leitura IS NULL
             </cfquery>
         </cfif>
@@ -390,138 +390,7 @@
 </cfif>
 
 
-<!--- GOOGLE SIGN IN --->
-
-<cfif isDefined("URL.action") AND URL.action EQ "googlesignin" AND isDefined("URL.credential")>
-
-    <cfset id_token = listToArray(URL.credential, ".")/>
-    <cfset fb_str = replacelist(id_token[2], "-,_", "+,/")>
-    <cfset paddingLength = (4 - (len(fb_str) mod 4)) mod 4>
-    <cfset padding = repeatstring("=", paddingLength)>
-    <cfset user_data = deserializeJSON(toString(BinaryDecode(fb_str & padding,"base64")))>
-
-    <cfquery>
-        INSERT INTO tb_usuarios
-        (name, email, imagem_usuario, password,
-        verification_key, is_email_verified, optin_usuario)
-        VALUES
-        (
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#ucase(user_data.name)#"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>,
-        <cfif isDefined("user_data.picture")>
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.picture#"/>,
-        <cfelse>
-           null,
-        </cfif>
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.sub#"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.sub#"/>,
-        <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>,
-        <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>
-        )
-        ON CONFLICT (email)
-        DO UPDATE SET
-        data_alteracao  = now(),
-        imagem_usuario  = excluded.imagem_usuario,
-        verification_key = excluded.verification_key
-        RETURNING *;
-    </cfquery>
-
-    <cfquery name="qPerfil">
-        select * from tb_usuarios
-        where email = <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>
-    </cfquery>
-
-    <cfquery name="qBusinessGoogleSignInState">
-        SELECT (
-                   coalesce(usr.is_admin, false)
-                   OR coalesce(usr.is_dev, false)
-                   OR EXISTS (
-                       SELECT 1
-                       FROM tb_conta_usuarios cu
-                       INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
-                       WHERE cu.id_usuario = usr.id
-                         AND cu.status = 'ATIVO'::status_usuario_conta
-                         AND cont.status = 'ATIVA'::status_conta
-                   )
-               ) AS has_business_access,
-               EXISTS (
-                   SELECT 1
-                   FROM tb_conta_cadastro_solicitacoes sol
-                   WHERE lower(sol.email_responsavel) = lower(usr.email)
-                     AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
-               ) AS has_pending_registration
-        FROM tb_usuarios usr
-        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
-        LIMIT 1
-    </cfquery>
-
-    <cfset SESSION.cadastroGoogleIdentity = {
-        sub = user_data.sub & "",
-        email = lCase(trim(qPerfil.email & "")),
-        name = trim(qPerfil.name & ""),
-        picture = isDefined("user_data.picture") ? trim(user_data.picture & "") : "",
-        authenticatedAt = now()
-    }/>
-
-    <cfset StructDelete(SESSION, "businessActiveAccountId", false)/>
-    <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
-    <cfset StructDelete(SESSION, "businessAccountSelectionConfirmed", false)/>
-
-    <cfcookie name="id" secure="yes" encodevalue="yes" value="#qPerfil.id#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="name" secure="yes" encodevalue="yes" value="#qPerfil.name#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="email" secure="yes" encodevalue="yes" value="#qPerfil.email#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="imagem_usuario" secure="yes" encodevalue="yes" value="#qPerfil.imagem_usuario#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfheader name="Set-Cookie" value="rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; Secure; SameSite=Lax"/>
-    <cfset VARIABLES.googleSignInHasBusinessAccess = false/>
-    <cfset VARIABLES.googleSignInHasPendingRegistration = false/>
-    <cfif qBusinessGoogleSignInState.recordcount>
-        <cfif IsBoolean(qBusinessGoogleSignInState.has_business_access)>
-            <cfset VARIABLES.googleSignInHasBusinessAccess = qBusinessGoogleSignInState.has_business_access/>
-        <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(qBusinessGoogleSignInState.has_business_access & ""))>
-            <cfset VARIABLES.googleSignInHasBusinessAccess = true/>
-        </cfif>
-
-        <cfif IsBoolean(qBusinessGoogleSignInState.has_pending_registration)>
-            <cfset VARIABLES.googleSignInHasPendingRegistration = qBusinessGoogleSignInState.has_pending_registration/>
-        <cfelseif ListFindNoCase("true,t,1,yes,sim", trim(qBusinessGoogleSignInState.has_pending_registration & ""))>
-            <cfset VARIABLES.googleSignInHasPendingRegistration = true/>
-        </cfif>
-    </cfif>
-
-    <cfset VARIABLES.googleSignInRedirect = "/"/>
-    <cfset VARIABLES.googleSignInRequestedRedirect = isDefined("URL.redirect") AND len(trim(URL.redirect & ""))
-        ? trim(URL.redirect & "")
-        : (structKeyExists(SESSION, "researchLoginRedirect") ? trim(SESSION.researchLoginRedirect & "") : "")/>
-    <cfset VARIABLES.googleSignInValidRedirect = len(VARIABLES.googleSignInRequestedRedirect)
-        AND left(VARIABLES.googleSignInRequestedRedirect, 1) EQ "/"
-        AND left(VARIABLES.googleSignInRequestedRedirect, 2) NEQ "//"
-        AND NOT find("\", VARIABLES.googleSignInRequestedRedirect)
-        AND NOT find(chr(10), VARIABLES.googleSignInRequestedRedirect)
-        AND NOT find(chr(13), VARIABLES.googleSignInRequestedRedirect)
-        AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
-    <cfif VARIABLES.googleSignInValidRedirect AND left(VARIABLES.googleSignInRequestedRedirect, 10) EQ "/pesquisa/">
-        <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
-    <cfelseif VARIABLES.googleSignInHasBusinessAccess>
-        <cfif VARIABLES.googleSignInValidRedirect>
-            <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
-        </cfif>
-    <cfelseif VARIABLES.googleSignInHasPendingRegistration>
-        <cfset VARIABLES.googleSignInRedirect = "/"/>
-    <cfelse>
-        <cfset VARIABLES.googleSignInRedirect = "/cadastro/"/>
-    </cfif>
-    <cfset structDelete(SESSION, "researchLoginRedirect", false)/>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        ('googlesignin',<cfqueryparam cfsqltype="cf_sql_varchar" value="#qPerfil.id#,#qPerfil.name#,#qPerfil.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>)
-    </cfquery>
-
-    <cflocation addtoken="false" url="#VARIABLES.googleSignInRedirect#"/>
-
-</cfif>
+<!--- Google callbacks are verified in OnRequestStart before loading this profile. --->
 
 
 <!--- ATUALIZAR CADASTRO POCKET --->
@@ -544,7 +413,7 @@
         uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
         <!---pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>,--->
         descricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.descricao#"/>,
-        id_usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        id_usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         WHERE id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_pagina#"/>
     </cfquery>
     <cfquery datasource="runner_dba" name="qUpdateUsuario">
@@ -557,7 +426,7 @@
         cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.cidade#"/>,
         estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
         pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>
-        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
     </cfquery>
     <cfif qCheckTagPagina.recordcount>
         <cflocation addtoken="false" url="#FORM.template#inscricao/?info=tag&tag=#FORM.tag#"/>
@@ -584,6 +453,6 @@
     <cfquery datasource="runner_dba" name="qInsertIncricaoTreino">
         UPDATE tb_usuarios
         set partner_info = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.postback)#"/>::jsonb
-        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
     </cfquery>
 </cfif>

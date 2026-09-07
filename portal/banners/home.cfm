@@ -213,11 +213,11 @@
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Largura desktop</label>
-                        <input type="number" min="1" class="form-control" name="banner_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura#</cfoutput><cfelseif isDefined('FORM.banner_largura')><cfoutput>#FORM.banner_largura#</cfoutput></cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura#</cfoutput><cfelseif isDefined('FORM.banner_largura')><cfoutput>#htmlEditFormat(FORM.banner_largura)#</cfoutput></cfif>"/>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Altura desktop</label>
-                        <input type="number" min="1" class="form-control" name="banner_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura#</cfoutput><cfelseif isDefined('FORM.banner_altura')><cfoutput>#FORM.banner_altura#</cfoutput></cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura#</cfoutput><cfelseif isDefined('FORM.banner_altura')><cfoutput>#htmlEditFormat(FORM.banner_altura)#</cfoutput></cfif>"/>
                       </div>
 
                       <div class="col-md-6">
@@ -227,11 +227,11 @@
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Largura mobile</label>
-                        <input type="number" min="1" class="form-control" name="banner_mobile_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_largura')><cfoutput>#FORM.banner_mobile_largura#</cfoutput></cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_mobile_largura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.largura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_largura')><cfoutput>#htmlEditFormat(FORM.banner_mobile_largura)#</cfoutput></cfif>"/>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Altura mobile</label>
-                        <input type="number" min="1" class="form-control" name="banner_mobile_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_altura')><cfoutput>#FORM.banner_mobile_altura#</cfoutput></cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_mobile_altura" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.altura_mobile#</cfoutput><cfelseif isDefined('FORM.banner_mobile_altura')><cfoutput>#htmlEditFormat(FORM.banner_mobile_altura)#</cfoutput></cfif>"/>
                       </div>
 
                       <div class="col-md-4">
@@ -266,19 +266,19 @@
                       </div>
                       <div class="col-md-2">
                         <label class="form-label">Peso de exibicao</label>
-                        <input type="number" min="1" class="form-control" name="banner_peso_exibicao" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.peso_exibicao#</cfoutput><cfelseif isDefined('FORM.banner_peso_exibicao')><cfoutput>#FORM.banner_peso_exibicao#</cfoutput><cfelse>1</cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_peso_exibicao" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.peso_exibicao#</cfoutput><cfelseif isDefined('FORM.banner_peso_exibicao')><cfoutput>#htmlEditFormat(FORM.banner_peso_exibicao)#</cfoutput><cfelse>1</cfif>"/>
                       </div>
                       <div class="col-md-2">
                         <label class="form-label">Prioridade</label>
-                        <input type="number" min="1" class="form-control" name="banner_prioridade" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.prioridade#</cfoutput><cfelseif isDefined('FORM.banner_prioridade')><cfoutput>#FORM.banner_prioridade#</cfoutput><cfelse>1</cfif>"/>
+                        <input type="number" min="1" class="form-control" name="banner_prioridade" value="<cfif qBannerManagementEdit.recordcount><cfoutput>#qBannerManagementEdit.prioridade#</cfoutput><cfelseif isDefined('FORM.banner_prioridade')><cfoutput>#htmlEditFormat(FORM.banner_prioridade)#</cfoutput><cfelse>1</cfif>"/>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label">Inicio de exibicao</label>
-                        <input type="datetime-local" class="form-control" name="banner_inicio_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.inicio_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.inicio_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_inicio_exibicao')><cfoutput>#FORM.banner_inicio_exibicao#</cfoutput></cfif>"/>
+                        <input type="datetime-local" class="form-control" name="banner_inicio_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.inicio_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.inicio_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_inicio_exibicao')><cfoutput>#htmlEditFormat(FORM.banner_inicio_exibicao)#</cfoutput></cfif>"/>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label">Fim de exibicao</label>
-                        <input type="datetime-local" class="form-control" name="banner_fim_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.fim_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.fim_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_fim_exibicao')><cfoutput>#FORM.banner_fim_exibicao#</cfoutput></cfif>"/>
+                        <input type="datetime-local" class="form-control" name="banner_fim_exibicao" required value="<cfif qBannerManagementEdit.recordcount><cfoutput>#dateFormat(qBannerManagementEdit.fim_exibicao, 'yyyy-mm-dd')#T#timeFormat(qBannerManagementEdit.fim_exibicao, 'HH:nn')#</cfoutput><cfelseif isDefined('FORM.banner_fim_exibicao')><cfoutput>#htmlEditFormat(FORM.banner_fim_exibicao)#</cfoutput></cfif>"/>
                       </div>
 
                       <cfif qBannerManagementEdit.recordcount>

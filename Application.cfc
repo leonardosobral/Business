@@ -9,6 +9,7 @@
     <cfset THIS.ApplicationTimeout = CreateTimeSpan( 2, 0, 0, 0 ) />
     <cfset THIS.SessionManagement = true />
     <cfset THIS.SetClientCookies = true />
+    <cfset THIS.sessionCookie = {httpOnly=true,secure=true,sameSite="Lax"}/>
     <cfset THIS.SearchImplicitScopes = true />
     <cfset this.SessionTimeout = createTimeSpan( 0, 0, 50, 0 ) />
     <cfset THIS.datasource = "runner_dba"/>
@@ -183,6 +184,8 @@
                 type="string"
                 required="true"
                 />
+
+        <cfinclude template="includes/backend/business_request_identity.cfm"/>
 
         <cfif IsDefined("url.resetApp")>
           <cfset ApplicationStop()>

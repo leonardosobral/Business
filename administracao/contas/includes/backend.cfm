@@ -303,6 +303,16 @@
     <cfset VARIABLES.accountRegistrationErrors = []/>
     <cfset VARIABLES.accountRegistrationRedirectUrl = ""/>
 
+    <cfset VARIABLES.accountRegistrationCsrf = structKeyExists(FORM, "business_account_access_csrf")
+        AND isSimpleValue(FORM.business_account_access_csrf) ? trim(FORM.business_account_access_csrf) : ""/>
+    <cfif CGI.request_method NEQ "POST"
+        OR NOT len(VARIABLES.accountRegistrationCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR NOT len(VARIABLES.businessAccountContextCsrf)
+        OR compare(VARIABLES.accountRegistrationCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "A sessão do formulário expirou. Atualize a página e tente novamente.")/>
+    </cfif>
+
     <cfif NOT listFindNoCase("aprovar,recusar", VARIABLES.accountRegistrationAction)>
         <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Acao de solicitacao invalida.")/>
     </cfif>

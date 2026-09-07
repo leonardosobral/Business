@@ -25,7 +25,7 @@
 
 <body class="bg-body-secondary">
 
-    <cfif NOT isDefined("COOKIE.id")>
+    <cfif NOT isDefined("REQUEST.businessIdentity.id")>
 
         <div class="g-signin2 ms-2" data-onsuccess="onSignIn"></div>
 

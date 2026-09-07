@@ -107,7 +107,7 @@
               <div>
                 <h6>Acesso</h6>
                 <ul class="doc-list">
-                  <li>O login carrega <code>qPerfil</code> a partir do <code>COOKIE.id</code>.</li>
+                  <li>O login carrega <code>qPerfil</code> a partir do <code>REQUEST.businessIdentity.id</code>.</li>
                   <li>Usuários precisam ser <code>is_admin</code> ou <code>is_partner</code>.</li>
                   <li>Estrutura nova de empresa/conta: <code>tb_contas</code>, <code>tb_conta_usuarios</code> e <code>tb_conta_eventos</code>.</li>
                   <li>Eventos visíveis para parceiros vêm de <code>tb_conta_eventos</code>.</li>

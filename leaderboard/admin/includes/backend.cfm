@@ -187,7 +187,7 @@
                 (
                     'leaderboard_manual_user_create',
                     <cfqueryparam cfsqltype="cf_sql_varchar" value="#qLeaderboardAdminInsertUser.id#,#qLeaderboardAdminInsertUser.email#,#qLeaderboardAdminInsertPage.id_pagina#,#qLeaderboardAdminInsertPage.tag#"/>,
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('COOKIE.id') ? COOKIE.id : cgi.remote_addr#"/>,
+                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#isDefined('REQUEST.businessIdentity.id') ? REQUEST.businessIdentity.id : cgi.remote_addr#"/>,
                     <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>
                 )
             </cfquery>

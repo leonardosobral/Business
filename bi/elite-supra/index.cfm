@@ -108,7 +108,7 @@
 
 <body>
 
-    <cfif NOT isDefined("COOKIE.id")>
+    <cfif NOT isDefined("REQUEST.businessIdentity.id")>
 
         <cflocation addtoken="false" url="/bi/"/>
 

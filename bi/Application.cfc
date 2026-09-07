@@ -5,7 +5,9 @@
 
 
     <!--- Set up the application. --->
-    <cfset THIS.Name = "RunnerHubBI" />
+    <cfset THIS.Name = "RunnerHubBusiness" />
+    <cfset THIS.mappings["/businessRoot"] = getDirectoryFromPath(getCurrentTemplatePath()) & "../"/>
+    <cfset THIS.sessionCookie = {httpOnly=true,secure=true,sameSite="Lax"}/>
     <cfset THIS.ApplicationTimeout = CreateTimeSpan( 2, 0, 0, 0 ) />
     <cfset THIS.SessionManagement = true />
     <cfset THIS.SetClientCookies = true />
@@ -30,28 +32,7 @@
             output="false"
             hint="Fires when the application is first created.">
 
-        <cfset var system = createObject("java", "java.lang.System")/>
-        <cfset var environment = system.getenv()/>
-        <cfset var businessLocalConfig = {}/>
-        <cfset var businessLocalConfigPath = getDirectoryFromPath(getCurrentTemplatePath()) & "../config/business.local.cfm"/>
-        <cfif fileExists(businessLocalConfigPath)>
-            <cfinclude template="../config/business.local.cfm"/>
-            <cfif structKeyExists(VARIABLES, "businessLocalConfig") AND isStruct(VARIABLES.businessLocalConfig)>
-                <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
-            </cfif>
-        </cfif>
-        <cfset var eventoApiToken = structKeyExists(environment, "RR_EVENTO_API_TOKEN") ? trim(environment["RR_EVENTO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "eventoApiToken") ? trim(businessLocalConfig.eventoApiToken) : "")/>
-
-        <!--- APPLICATION VARIABLES --->
-        <cfset APPLICATION.codSite = "RH"/>
-        <cfset APPLICATION.nomeSite = "Runner Hub"/>
-        <cfset APPLICATION.dominio = "runnerhub.run"/>
-        <cfset APPLICATION.baseCanonica = "https://runnerhub.run"/>
-        <cfset APPLICATION.ga = ""/>
-        <cfset APPLICATION.eventoApiToken = eventoApiToken/>
-
-        <!--- Return out. --->
-        <cfreturn true />
+        <cfreturn createObject("component","businessRoot.Application").OnApplicationStart()/>
     </cffunction>
 
 
@@ -81,6 +62,7 @@
                 required="true"
                 />
 
+        <cfinclude template="../includes/backend/business_request_identity.cfm"/>
         <cfif IsDefined("url.resetApp")>
           <cfset ApplicationStop()>
           <cfabort><!--- or, if you like, <cflocation url="index.cfm"> --->

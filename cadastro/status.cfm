@@ -4,8 +4,8 @@
 <cfprocessingdirective pageencoding="utf-8"/>
 
 <cfset VARIABLES.theme = "dark"/>
-<cfset VARIABLES.pendingRegistrationName = isDefined("COOKIE.name") ? COOKIE.name : "Seu cadastro"/>
-<cfset VARIABLES.pendingRegistrationEmail = isDefined("COOKIE.email") ? COOKIE.email : ""/>
+<cfset VARIABLES.pendingRegistrationName = isDefined("REQUEST.businessIdentity.name") ? REQUEST.businessIdentity.name : "Seu cadastro"/>
+<cfset VARIABLES.pendingRegistrationEmail = isDefined("REQUEST.businessIdentity.email") ? REQUEST.businessIdentity.email : ""/>
 <cfset VARIABLES.pendingRegistrationStatus = "PENDENTE"/>
 <cfif isDefined("qBusinessPendingRegistration") AND qBusinessPendingRegistration.recordcount>
     <cfset VARIABLES.pendingRegistrationName = qBusinessPendingRegistration.nome_responsavel/>

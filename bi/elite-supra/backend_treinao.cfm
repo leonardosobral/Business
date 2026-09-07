@@ -14,7 +14,7 @@
         VALUES
         (
         <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_usuario#"/>,
-        <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>,
+        <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="/desafiosupra/inscricao/"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.obs#"/>
         )

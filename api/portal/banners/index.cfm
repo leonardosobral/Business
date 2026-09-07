@@ -234,7 +234,7 @@ function portalBannerApiSafeJson(required any payload) {
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#structKeyExists(CGI, 'http_host') ? CGI.http_host : ''#" null="#NOT structKeyExists(CGI, 'http_host') OR NOT len(trim(CGI.http_host))#"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(URL.path)#" null="#NOT len(trim(URL.path))#"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.portalBannerOriginSite#" null="#NOT len(VARIABLES.portalBannerOriginSite)#"/>,
-        <cfqueryparam cfsqltype="cf_sql_integer" value="#isDefined('COOKIE.id') AND isNumeric(COOKIE.id) ? val(COOKIE.id) : 0#" null="#NOT isDefined('COOKIE.id') OR NOT isNumeric(COOKIE.id)#"/>,
+        <cfqueryparam cfsqltype="cf_sql_integer" value="#isDefined('REQUEST.businessIdentity.id') AND isNumeric(REQUEST.businessIdentity.id) ? val(REQUEST.businessIdentity.id) : 0#" null="#NOT isDefined('REQUEST.businessIdentity.id') OR NOT isNumeric(REQUEST.businessIdentity.id)#"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#structKeyExists(CGI, 'remote_addr') ? CGI.remote_addr : ''#" null="#NOT structKeyExists(CGI, 'remote_addr') OR NOT len(trim(CGI.remote_addr))#"/>,
         <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#structKeyExists(CGI, 'http_user_agent') ? CGI.http_user_agent : ''#" null="#NOT structKeyExists(CGI, 'http_user_agent') OR NOT len(trim(CGI.http_user_agent))#"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON({

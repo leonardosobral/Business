@@ -3,7 +3,7 @@
 <cfset VARIABLES.helpdeskBusinessBaseUrl = "https://" & cgi.http_host/>
 <cfparam name="VARIABLES.helpdeskMode" default="admin"/>
 
-<cfif NOT isDefined("COOKIE.id") OR NOT len(trim(COOKIE.id)) OR NOT isNumeric(COOKIE.id)>
+<cfif NOT isDefined("REQUEST.businessIdentity.id") OR NOT len(trim(REQUEST.businessIdentity.id)) OR NOT isNumeric(REQUEST.businessIdentity.id)>
     <cflocation addtoken="false" url="/"/>
 </cfif>
 
@@ -23,7 +23,7 @@
     FROM tb_usuarios usr
     LEFT JOIN tb_paginas_usuarios pgusr ON usr.id = pgusr.id_usuario
     LEFT JOIN tb_paginas pg ON pg.id_pagina = pgusr.id_pagina
-    WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+    WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
     ORDER BY pg.id_pagina NULLS LAST
     LIMIT 1
 </cfquery>

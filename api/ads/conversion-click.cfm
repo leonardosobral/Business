@@ -141,7 +141,7 @@ function adsConversionClickNormalizeDestination(required string destination) {
             <cfqueryparam cfsqltype="cf_sql_bigint" value="#qAdsConversionClick.id_ad_evento#"/>,
             <cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsConversionClick.id_evento#"/>,
             <cfqueryparam cfsqltype="cf_sql_bigint" value="#qAdsConversionClick.id_conta#" null="#NOT len(trim(qAdsConversionClick.id_conta))#"/>,
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#isDefined('COOKIE.id') AND isNumeric(COOKIE.id) ? val(COOKIE.id) : 0#" null="#NOT isDefined('COOKIE.id') OR NOT isNumeric(COOKIE.id)#"/>,
+            <cfqueryparam cfsqltype="cf_sql_integer" value="#isDefined('REQUEST.businessIdentity.id') AND isNumeric(REQUEST.businessIdentity.id) ? val(REQUEST.businessIdentity.id) : 0#" null="#NOT isDefined('REQUEST.businessIdentity.id') OR NOT isNumeric(REQUEST.businessIdentity.id)#"/>,
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsConversionType#"/>,
             <cfqueryparam cfsqltype="cf_sql_numeric" value="0"/>,
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON({

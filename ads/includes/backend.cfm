@@ -327,10 +327,10 @@ function adsV1FormList(required any value) {
 <cfif VARIABLES.adsAccessCanReviewCampaign AND VARIABLES.adsV1ApiReady>
     <cftry>
         <cfquery name="qAdsV1ReviewReadiness" datasource="runnerhub">
-            SELECT to_regprocedure('ads.review_campaign(uuid,text,integer,text,text)') IS NOT NULL
+            SELECT to_regprocedure('ads.review_campaign(uuid,text,integer,text,text,bigint)') IS NOT NULL
                        AND has_function_privilege(
                            current_user,
-                           to_regprocedure('ads.review_campaign(uuid,text,integer,text,text)'),
+                           to_regprocedure('ads.review_campaign(uuid,text,integer,text,text,bigint)'),
                            'EXECUTE'
                        )
                        AND to_regclass('ads.campaign_review_requests') IS NOT NULL
@@ -1394,7 +1394,8 @@ function adsV1FormList(required any value) {
                         CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewDecision#"/> AS text),
                         CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
                         CAST(<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.adsV1ReviewReason#" null="#NOT len(VARIABLES.adsV1ReviewReason)#"/> AS text),
-                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewApprovalKey#" null="#NOT len(VARIABLES.adsV1ReviewApprovalKey)#"/> AS text)
+                        CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewApprovalKey#" null="#NOT len(VARIABLES.adsV1ReviewApprovalKey)#"/> AS text),
+                        CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ReviewRequestId#"/> AS bigint)
                     )
                 </cfquery>
 

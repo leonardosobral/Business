@@ -54,7 +54,7 @@ require_pattern "$workspace" 'name="voucher_scope"' 'formulario envia escopo exp
 require_pattern "$workspace" 'name="voucher_account_id"' 'formulario permite escolher a conta restrita'
 require_pattern "$workspace" 'create_admin_voucher' 'formulario usa a acao administrativa'
 require_pattern "$workspace" 'qAdsV1AdminVouchers' 'tela exibe a lista global'
-require_pattern "$home" 'overview,campaigns,payments,history,admin,vouchers' 'vouchers possuem rota propria'
+require_pattern "$home" 'listFindNoCase\("[^"]*,vouchers", VARIABLES\.adsV1WorkspaceView\)' 'vouchers possuem rota propria na lista de rotas aceitas'
 require_pattern "$home" 'view=vouchers' 'navegacao abre a tela global de vouchers'
 require_pattern "$home" 'workspace_admin_vouchers\.cfm' 'rota de vouchers carrega seu componente'
 if grep -Eiq 'workspace_admin_vouchers\.cfm' "$admin_workspace"; then

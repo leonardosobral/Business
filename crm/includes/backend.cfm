@@ -634,8 +634,8 @@
         <cfif isDefined("FORM.id_conta")>
             <cfset VARIABLES.crmLinkIdConta = trim(FORM.id_conta)/>
         </cfif>
-        <cfif isDefined("COOKIE.id") AND isNumeric(COOKIE.id)>
-            <cfset VARIABLES.crmLinkUsuario = trim(COOKIE.id)/>
+        <cfif isDefined("REQUEST.businessIdentity.id") AND isNumeric(REQUEST.businessIdentity.id)>
+            <cfset VARIABLES.crmLinkUsuario = trim(REQUEST.businessIdentity.id)/>
         </cfif>
 
         <cfif NOT isNumeric(VARIABLES.crmLinkCodEvento) OR NOT isNumeric(VARIABLES.crmLinkIdConta)>
@@ -670,8 +670,8 @@
         <cfif isDefined("FORM.id_evento")>
             <cfset VARIABLES.crmLinkFonteIdEvento = trim(FORM.id_evento)/>
         </cfif>
-        <cfif isDefined("COOKIE.id") AND isNumeric(COOKIE.id)>
-            <cfset VARIABLES.crmLinkFonteUsuario = trim(COOKIE.id)/>
+        <cfif isDefined("REQUEST.businessIdentity.id") AND isNumeric(REQUEST.businessIdentity.id)>
+            <cfset VARIABLES.crmLinkFonteUsuario = trim(REQUEST.businessIdentity.id)/>
         </cfif>
 
         <cfif NOT isNumeric(VARIABLES.crmLinkFonteCodigo) OR NOT isNumeric(VARIABLES.crmLinkFonteIdEvento)>
@@ -740,8 +740,8 @@
         <cfif isDefined("FORM.id_parceiro")>
             <cfset VARIABLES.crmLinkFonteIdParceiro = trim(FORM.id_parceiro)/>
         </cfif>
-        <cfif isDefined("COOKIE.id") AND isNumeric(COOKIE.id)>
-            <cfset VARIABLES.crmLinkFonteUsuario = trim(COOKIE.id)/>
+        <cfif isDefined("REQUEST.businessIdentity.id") AND isNumeric(REQUEST.businessIdentity.id)>
+            <cfset VARIABLES.crmLinkFonteUsuario = trim(REQUEST.businessIdentity.id)/>
         </cfif>
 
         <cfif NOT len(VARIABLES.crmLinkFonte) OR NOT isNumeric(VARIABLES.crmLinkFonteIdEvento)>
@@ -820,8 +820,8 @@
             <cfset VARIABLES.crmUploadLayout = lCase(trim(FORM.layout_importacao))/>
         </cfif>
 
-        <cfif isDefined("COOKIE.id") AND isNumeric(COOKIE.id)>
-            <cfset VARIABLES.crmUploadUsuario = trim(COOKIE.id)/>
+        <cfif isDefined("REQUEST.businessIdentity.id") AND isNumeric(REQUEST.businessIdentity.id)>
+            <cfset VARIABLES.crmUploadUsuario = trim(REQUEST.businessIdentity.id)/>
         </cfif>
 
         <cfif NOT isNumeric(VARIABLES.crmUploadIdEvento)>

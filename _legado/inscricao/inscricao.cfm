@@ -1,6 +1,6 @@
 <!--- VERIFICA LOGIN COM O GOOGLE --->
 
-<cfif isDefined("COOKIE.id")>
+<cfif isDefined("REQUEST.businessIdentity.id")>
 
         <form class="row g-3 needs-validation" novalidate method="post" action="<cfoutput>#VARIABLES.template#</cfoutput>?filtro=pagamento">
 

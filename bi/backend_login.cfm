@@ -1,8 +1,8 @@
 <!--- DADOS DO USUARIO LOGADO --->
-<cfif isDefined("COOKIE.id")>
+<cfif isDefined("REQUEST.businessIdentity.id")>
     <cfquery name="qPerfil">
         SELECT * FROM tb_usuarios
-        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
         AND (is_admin = true or is_partner = true)
     </cfquery>
     <cfif Len(trim(qPerfil.is_admin)) and qPerfil.is_admin>
@@ -36,21 +36,21 @@
             FROM public.tb_permissoes perm
             inner join tb_bi agr on agr.bi_tag = perm.tag
             inner join tb_temas tema on tema.id_tema = agr.id_tema
-            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
             UNION
             SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
             COALESCE(agr.agregador_nome, 'Brasil') as titulo
             FROM public.tb_permissoes perm
             inner join tb_agregadores agr on agr.agregador_tag = perm.tag
             inner join tb_temas tema on tema.id_tema = agr.id_tema
-            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
             UNION
             SELECT perm.*, agr.tipo_agregacao, tema.*, agr.ordem,
             COALESCE(agr.nome_evento_agregado, 'Brasil') as titulo
             FROM public.tb_permissoes perm
             inner join tb_agrega_eventos agr on agr.tag = perm.tag
             inner join tb_temas tema on tema.id_tema = agr.id_tema
-            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+            WHERE perm.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
             ORDER BY tipo, ordem
         </cfquery>
     </cfif>
@@ -62,71 +62,4 @@
     <cflocation addtoken="false" url="/logout.cfm"/>
 </cfif>
 
-<!--- GOOGLE SIGN IN --->
-
-<cfif isDefined("URL.action") AND URL.action EQ "googlesignin" AND isDefined("URL.credential")>
-
-    <cfset id_token = listToArray(URL.credential, ".")/>
-    <cfset fb_str = replacelist(id_token[2], "-,_", "+,/")>
-    <cfset padding = repeatstring("=",4-len(fb_str) mod 4)>
-    <cfset user_data = deserializeJSON(toString(BinaryDecode(fb_str & padding,"base64")))>
-
-    <cfset token = Replace(Replace(ListGetAt(URL.credential, 2, "."), "-", "+", "ALL"), "_", "/", "ALL")>
-    <cfset jstr = JavaCast("string", token)>
-    <cfset decoder = CreateObject("java", "org.apache.commons.codec.binary.Base64")>
-    <cfset user_data = deserializeJSON(toString(decoder.decodeBase64(jstr.getBytes())))>
-
-    <cfquery>
-        INSERT INTO tb_usuarios
-        (name, email, imagem_usuario, password,
-        verification_key, is_email_verified, optin_usuario)
-        VALUES
-        (
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#ucase(user_data.name)#"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>,
-        <cfif isDefined("user_data.picture")>
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.picture#"/>,
-        <cfelse>
-           null,
-        </cfif>
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.sub#"/>,
-        <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.sub#"/>,
-        <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>,
-        <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>
-        )
-        ON CONFLICT (email)
-        DO UPDATE SET
-        data_alteracao  = now(),
-        imagem_usuario  = excluded.imagem_usuario,
-        verification_key = excluded.verification_key
-        RETURNING *;
-    </cfquery>
-
-    <cfquery name="qPerfil">
-        select * from tb_usuarios
-        where email = <cfqueryparam cfsqltype="cf_sql_varchar" value="#user_data.email#"/>
-    </cfquery>
-
-    <cfcookie name="id" secure="yes" encodevalue="yes" value="#qPerfil.id#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="name" secure="yes" encodevalue="yes" value="#qPerfil.name#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="email" secure="yes" encodevalue="yes" value="#qPerfil.email#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfcookie name="imagem_usuario" secure="yes" encodevalue="yes" value="#qPerfil.imagem_usuario#" expires="#createTimeSpan( 30, 0, 0, 0 )#"/>
-    <cfheader name="Set-Cookie" value="rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; Secure; SameSite=Lax"/>
-    <cfset VARIABLES.googleSignInRedirect = "/bi/"/>
-    <cfif isDefined("URL.redirect") AND len(trim(URL.redirect))>
-        <cfset VARIABLES.googleSignInRedirect = URL.redirect/>
-    </cfif>
-    <cfif findNoCase("logout=1", VARIABLES.googleSignInRedirect)>
-        <cfset VARIABLES.googleSignInRedirect = "/bi/"/>
-    </cfif>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        ('googlesignin',<cfqueryparam cfsqltype="cf_sql_varchar" value="#qPerfil.id#,#qPerfil.name#,#qPerfil.email#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, <cfqueryparam cfsqltype="cf_sql_varchar" value="#APPLICATION.codSite#"/>)
-    </cfquery>
-
-    <cflocation addtoken="false" url="#VARIABLES.googleSignInRedirect#"/>
-
-</cfif>
+<!--- Authentication handled exclusively by the verified request boundary. --->

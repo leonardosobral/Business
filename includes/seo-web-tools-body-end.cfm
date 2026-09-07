@@ -7,10 +7,9 @@
 
 <script>
 
-    <cfif NOT isDefined("COOKIE.id")>
+    <cfif NOT isDefined("REQUEST.businessIdentity.id")>
         function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            window.location.href = '/?action=googlesignin&id=' + profile.getId() + '&name=' + profile.getName() + '&email=' + profile.getEmail() + '&imagem_usuario=' + profile.getImageUrl();
+            window.location.href = '/?login=1';
         }
     </cfif>
 

@@ -1,0 +1,13 @@
+portal/audiencia/index.cfm
+portal/audiencia/home.cfm
+portal/audiencia/queries/filter.sql
+portal/audiencia/queries/summary.sql
+portal/audiencia/queries/inventory.sql
+portal/audiencia/queries/regions.sql
+portal/audiencia/queries/content.sql
+portal/audiencia/queries/acquisition.sql
+portal/audiencia/queries/daily.sql
+portal/audiencia/queries/coverage.sql
+portal/includes/audience_backend.cfm
+includes/estrutura/sidenav.cfm
+_codex/scripts/test_audience_report_local.mjs

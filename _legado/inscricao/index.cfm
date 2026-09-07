@@ -61,7 +61,7 @@
 
         <!--- AREA LOGADA --->
 
-        <cfif isDefined("COOKIE.id")>
+        <cfif isDefined("REQUEST.businessIdentity.id")>
 
             <cfquery name="qPerfil">
                 SELECT usr.id, usr.name, usr.email, usr.is_admin, usr.is_partner, usr.is_dev, usr.strava_id, usr.aka, usr.fonte_lead,
@@ -72,7 +72,7 @@
                 FROM tb_usuarios usr
                 inner join tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
                 inner join tb_paginas pg on pg.id_pagina = pgusr.id_pagina
-                WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#COOKIE.id#"/>
+                WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
             </cfquery>
 
             <cfif URL.filtro EQ "finalizar" AND len(trim(qPerfil.partner_info))>

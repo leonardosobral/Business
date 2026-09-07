@@ -156,6 +156,7 @@
 
             <div class="cadastro-google-signin">
               <div id="g_id_onload"
+                   data-nonce="<cfoutput>#encodeForHTMLAttribute(SESSION.businessLoginNonce)#</cfoutput>"
                    data-client_id="<cfoutput>#htmlEditFormat(VARIABLES.cadastroGoogleClientId)#</cfoutput>"
                    data-callback="handleCadastroCredentialResponse"
                    data-auto_select="false"
@@ -240,9 +241,19 @@
 
     document.cookie = "rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure";
 
-    var baseUrl = window.location.origin;
-    window.location.href = baseUrl
-      + "/?action=googlesignin&credential="
-      + encodeURIComponent(response.credential);
+    var callbackForm = document.createElement("form");
+    callbackForm.method = "POST";
+    callbackForm.action = "/";
+    var callbackFields = {action: "googlesignin", credential: response.credential,
+      business_login_csrf: <cfoutput>#serializeJSON(SESSION.businessLoginCsrf)#</cfoutput>};
+    Object.keys(callbackFields).forEach(function (name) {
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = callbackFields[name];
+      callbackForm.appendChild(input);
+    });
+    document.body.appendChild(callbackForm);
+    callbackForm.submit();
   }
 </script>

@@ -614,9 +614,13 @@
             </cfif>
 
             <div class="google-login-wrap">
+                <cfif structKeyExists(URL,"auth_error")>
+                    <p class="text-danger" role="alert">Não foi possível confirmar seu login. Tente novamente com o Google.</p>
+                </cfif>
                 <div id="g_id_onload"
                      data-client_id="921450846888-qa9a1alk06v6i0ao4jbiihdfrn8j7528.apps.googleusercontent.com"
                      data-callback="handleCredentialResponse"
+                     data-nonce="<cfoutput>#encodeForHTMLAttribute(SESSION.businessLoginNonce)#</cfoutput>"
                      data-auto_select="false"
                      data-auto_prompt="false">
                 </div>
@@ -744,12 +748,25 @@
             }
 
             document.cookie = "rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax; Secure";
-            var callbackUrl = "/?action=googlesignin&credential=" + encodeURIComponent(response.credential);
+            if (!response || !response.credential) return;
+            var callbackForm = document.createElement("form");
+            callbackForm.method = "POST";
+            callbackForm.action = "/";
+            var callbackFields = {action: "googlesignin", credential: response.credential,
+                business_login_csrf: <cfoutput>#serializeJSON(SESSION.businessLoginCsrf)#</cfoutput>};
             var requestedRedirect = new URLSearchParams(window.location.search).get("redirect") || "";
-            if (requestedRedirect.indexOf("/pesquisa/") === 0 && requestedRedirect.indexOf("//") !== 0 && requestedRedirect.indexOf("\\") < 0) {
-                callbackUrl += "&redirect=" + encodeURIComponent(requestedRedirect);
+            if (requestedRedirect.indexOf("/") === 0 && requestedRedirect.indexOf("//") !== 0 && requestedRedirect.indexOf("\\") < 0) {
+                callbackFields.redirect = requestedRedirect;
             }
-            window.location.href = callbackUrl;
+            Object.keys(callbackFields).forEach(function (name) {
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = name;
+                input.value = callbackFields[name];
+                callbackForm.appendChild(input);
+            });
+            document.body.appendChild(callbackForm);
+            callbackForm.submit();
         }
 
         function signOut(event) {

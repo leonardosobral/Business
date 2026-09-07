@@ -30,7 +30,9 @@
 
 <cfif FORM.acao EQ "trocar_conta_google">
     <cfif len(trim(FORM.cadastro_csrf)) AND compare(FORM.cadastro_csrf, SESSION.cadastroGoogleCsrf) EQ 0>
-        <cfset structDelete(SESSION, "cadastroGoogleIdentity", false)/>
+        <cfset REQUEST.businessAuthSession.clear(SESSION)/>
+        <cfset REQUEST.businessIdentity = {}/>
+        <cfset sessionRotate()/>
         <cfset SESSION.cadastroGoogleCsrf = createUUID()/>
         <cflocation addtoken="false" url="/cadastro/"/>
     <cfelse>
