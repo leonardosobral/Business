@@ -13,9 +13,14 @@ CREATE TABLE IF NOT EXISTS public.tb_percursos (
     visibilidade varchar(20) NOT NULL DEFAULT 'privado',
     status varchar(20) NOT NULL DEFAULT 'rascunho',
     id_usuario_criador bigint NOT NULL,
-    id_conta_responsavel bigint NOT NULL REFERENCES public.tb_contas(id_conta) ON UPDATE CASCADE ON DELETE RESTRICT,
+    id_conta_responsavel bigint REFERENCES public.tb_contas(id_conta) ON UPDATE CASCADE ON DELETE RESTRICT,
+    gestao_plataforma boolean NOT NULL DEFAULT false,
     criado_em timestamp without time zone NOT NULL DEFAULT now(),
     atualizado_em timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT tb_percursos_proprietario_chk CHECK (
+        (gestao_plataforma AND id_conta_responsavel IS NULL)
+        OR (NOT gestao_plataforma AND id_conta_responsavel IS NOT NULL)
+    ),
     CONSTRAINT tb_percursos_distancia_chk CHECK (distancia_nominal_m > 0),
     CONSTRAINT tb_percursos_tipo_chk CHECK (tipo_percurso IN ('rua', 'trail', 'misto')),
     CONSTRAINT tb_percursos_visibilidade_chk CHECK (visibilidade IN ('privado', 'compartilhado', 'publico')),

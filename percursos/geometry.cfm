@@ -17,6 +17,7 @@
   <cfif NOT VARIABLES.geometryCanViewAll>
     AND (
       (p.id_conta_responsavel IS NULL
+       AND NOT coalesce((to_jsonb(p)->>'gestao_plataforma')::boolean, false)
        AND p.id_usuario_criador = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>)
       OR p.id_conta_responsavel IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.geometryAccountIds#" list="true"/>)
       <cfif VARIABLES.geometryEventLinksReady>

@@ -53,18 +53,31 @@
 <cfelse>
   <cfif NOT VARIABLES.percursoStorageConfigured><div class="alert alert-warning"><strong>Storage temporário.</strong> Configure <code>config/percursos.local.cfm</code> antes de usar este módulo em produção. Arquivos no diretório temporário do servidor não são persistentes.</div></cfif>
   <cfif NOT VARIABLES.percursoStorageReady><div class="alert alert-danger"><strong>Storage indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.percursoStorageError)#</cfoutput><div class="small mt-1"><code><cfoutput>#htmlEditFormat(VARIABLES.percursoStoragePath)#</cfoutput></code></div></div></cfif>
+  <cfif VARIABLES.percursoIsSystemAdmin AND NOT VARIABLES.percursoPlatformOwnershipReady><div class="alert alert-warning"><strong>Gestão da plataforma ainda não habilitada no banco.</strong> Aplique <code>/_codex/sql/2026-09-07_percursos_gestao_plataforma.sql</code>. Até lá, o admin pode cadastrar selecionando uma conta ativa.</div></cfif>
   <cfif NOT VARIABLES.percursoMapboxPreviewConfigured><div class="alert alert-warning"><strong>Preview Mapbox indisponível.</strong> Configure <code>BUSINESS_MAPBOX_PUBLIC_TOKEN</code> ou <code>mapboxPublicAccessToken</code> em <code>config/percursos.local.cfm</code>.</div></cfif>
   <cfif NOT VARIABLES.percursoElevationConfigured><div class="alert alert-warning"><strong>Altimetria Mapbox indisponível.</strong> Configure um token secreto <code>sk.*</code> com escopo <code>map:read</code> em <code>BUSINESS_MAPBOX_SERVER_TOKEN</code> ou <code>mapboxServerAccessToken</code>. Arquivos sem elevação não poderão ser cadastrados.</div></cfif>
   <cfif isDefined("URL.novo") AND URL.novo EQ "1">
     <cfif NOT VARIABLES.percursoCanCreate>
-      <div class="alert alert-warning"><strong>Selecione uma conta antes de cadastrar.</strong> O novo percurso sempre pertence à conta ativa e exige papel OWNER, ADMIN ou OPERADOR.</div>
+      <cfif VARIABLES.percursoStorageReady><div class="alert alert-warning"><strong>Selecione uma conta antes de cadastrar.</strong> Para usuários de contas, o cadastro exige papel OWNER, ADMIN ou OPERADOR na conta ativa.</div><cfelse><div class="alert alert-warning">O cadastro estará disponível quando o armazenamento de arquivos estiver operacional.</div></cfif>
     <cfelse>
       <div class="card bg-dark border-secondary mb-4"><div class="card-body">
       <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="mb-0">Cadastrar percurso</h5><a href="./" class="btn btn-sm btn-outline-secondary">Cancelar</a></div>
-      <div class="alert alert-secondary py-2"><i class="fa-solid fa-building me-2"></i>Conta proprietária: <strong><cfoutput>#htmlEditFormat(VARIABLES.businessActiveAccountName)#</cfoutput></strong></div>
+      <p class="text-muted">1. Cadastre o arquivo. 2. Busque a prova e vincule à distância/modalidade já cadastrada no evento.</p>
+      <cfif NOT VARIABLES.percursoIsSystemAdmin><div class="alert alert-secondary py-2"><i class="fa-solid fa-building me-2"></i>Conta proprietária: <strong><cfoutput>#htmlEditFormat(VARIABLES.businessActiveAccountName)#</cfoutput></strong></div></cfif>
       <form method="post" enctype="multipart/form-data" action="./?novo=1">
         <input type="hidden" name="acao" value="criar"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.percursoCsrfToken#</cfoutput>"/>
         <div class="row g-3">
+          <cfif VARIABLES.percursoIsSystemAdmin>
+            <div class="col-12">
+              <label class="form-label" for="route-create-owner">Propriedade do percurso</label>
+              <select class="form-select" id="route-create-owner" name="id_conta_responsavel" required>
+                <option value="">Selecione a propriedade</option>
+                <cfif VARIABLES.percursoPlatformOwnershipReady><option value="plataforma" <cfif VARIABLES.percursoOwnerSelection EQ "plataforma">selected</cfif>>Gestão da plataforma — sem conta organizadora</option></cfif>
+                <cfoutput query="qPercursoContasTransferencia"><option value="#id_conta#" <cfif VARIABLES.percursoOwnerSelection EQ id_conta>selected</cfif>>#htmlEditFormat(nome_conta)# (###id_conta#)</option></cfoutput>
+              </select>
+              <div class="form-text">Como admin global, você pode manter a gestão na plataforma ou atribuir a uma conta ativa, sem trocar de contexto. O vínculo à prova é independente: ela pode ter organizador ou não. Vincular não transfere a propriedade nem torna o arquivo público.</div>
+            </div>
+          </cfif>
           <div class="col-lg-6"><label class="form-label">Nome</label><input class="form-control" name="nome" maxlength="180" required value="<cfoutput>#htmlEditFormat(isDefined('FORM.nome') ? FORM.nome : '')#</cfoutput>"/></div>
           <div class="col-lg-2"><label class="form-label">Distância nominal (km)</label><input class="form-control" name="distancia_km" inputmode="decimal" placeholder="42,195" required/></div>
           <div class="col-lg-2"><label class="form-label">Tipo</label><select class="form-select" name="tipo_percurso"><option value="rua">Rua</option><option value="trail">Trail</option><option value="misto">Misto</option></select></div>
@@ -73,7 +86,7 @@
           <div class="col-lg-2"><label class="form-label">Estado</label><input class="form-control text-uppercase" name="estado" maxlength="2"/></div>
           <div class="col-lg-5"><label class="form-label">Arquivo do percurso</label><input class="form-control" type="file" name="arquivo_percurso" accept=".gpx,.kml,.kmz,.geojson,.json,.fit,application/gpx+xml,application/vnd.google-earth.kml+xml,application/vnd.google-earth.kmz,application/geo+json,application/json,application/octet-stream" required/><div class="form-text">GPX, KML, KMZ, GeoJSON ou FIT, até 20 MB e 1 milhão de pontos. Todos os pontos e a elevação informada no original serão preservados.</div></div>
           <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3"></textarea></div>
-          <div class="col-12"><button class="btn btn-warning" type="submit"><i class="fa-solid fa-upload me-2"></i>Processar e cadastrar</button></div>
+          <div class="col-12"><button class="btn btn-warning" type="submit"><i class="fa-solid fa-upload me-2"></i>Cadastrar e continuar para o vínculo</button></div>
         </div>
       </form>
       </div></div>
@@ -83,7 +96,7 @@
   <cfif VARIABLES.percursoSelectedId GT 0>
     <cfif NOT qPercurso.recordcount><div class="alert alert-danger">Percurso não encontrado ou indisponível para sua conta.</div>
     <cfelse>
-      <cfset VARIABLES.routeCanEdit = (VARIABLES.percursoIsAdmin AND len(qPercurso.id_conta_responsavel & ""))
+      <cfset VARIABLES.routeCanEdit = (VARIABLES.percursoIsSystemAdmin AND VARIABLES.percursoHasManagedOwnership)
         OR (VARIABLES.percursoWriteAccountIds NEQ "0" AND len(qPercurso.id_conta_responsavel & "") AND listFind(VARIABLES.percursoWriteAccountIds,qPercurso.id_conta_responsavel))/>
       <cfset VARIABLES.routeCanGenerateElevation = VARIABLES.routeCanEdit
         OR VARIABLES.percursoIsSystemAdmin
@@ -93,8 +106,8 @@
           <div>
             <h4 class="mb-1"><cfoutput>#htmlEditFormat(qPercurso.nome)#</cfoutput></h4>
             <div class="text-muted small"><cfoutput>## #qPercurso.id_percurso# · #qPercurso.codigo_publico#</cfoutput></div>
-            <div class="text-muted small mt-1"><i class="fa-solid fa-building me-1"></i>Conta proprietária:
-              <cfif qPercursoConta.recordcount><cfoutput><strong class="text-light">#htmlEditFormat(qPercursoConta.nome_conta)#</strong> <span>###qPercursoConta.id_conta#</span></cfoutput><cfelse><span class="text-warning">Pendente de atribuição</span></cfif>
+            <div class="text-muted small mt-1"><i class="fa-solid fa-building me-1"></i>Propriedade:
+              <cfif qPercursoConta.recordcount><cfoutput><strong class="text-light">#htmlEditFormat(qPercursoConta.nome_conta)#</strong> <span>###qPercursoConta.id_conta#</span></cfoutput><cfelseif VARIABLES.percursoIsPlatformOwned><span class="text-info">Gestão da plataforma — sem conta organizadora</span><cfelse><span class="text-warning">Pendente de atribuição</span></cfif>
             </div>
             <div class="text-muted small mt-1"><i class="fa-regular fa-user me-1"></i>Criado por: <cfif qPercursoOwner.recordcount><cfoutput>#htmlEditFormat(qPercursoOwner.name)#</cfoutput><cfelse><cfoutput>Usuário ###qPercurso.id_usuario_criador#</cfoutput></cfif></div>
           </div>
@@ -243,32 +256,36 @@
           <div class="route-owner-admin border-top border-secondary mt-4 pt-4">
             <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-3">
               <div>
-                <h5 class="mb-1"><i class="fa-solid fa-building-shield text-warning me-2"></i>Conta proprietária</h5>
-                <p class="small text-muted mb-0">Somente ADMINs do sistema podem transferir o percurso entre contas.</p>
+                <h5 class="mb-1"><i class="fa-solid fa-building-shield text-warning me-2"></i>Propriedade do percurso</h5>
+                <p class="small text-muted mb-0">Somente ADMINs do sistema podem transferir a propriedade. Os vínculos com provas e a autoria original são preservados.</p>
               </div>
             </div>
 
             <div class="route-owner-current p-3 mb-3">
-              <div class="small text-muted mb-1">Conta atual</div>
+              <div class="small text-muted mb-1">Propriedade atual</div>
               <cfif qPercursoConta.recordcount>
                 <cfoutput>
                   <div class="fw-bold">#htmlEditFormat(qPercursoConta.nome_conta)# <span class="text-muted fw-normal">###qPercursoConta.id_conta#</span></div>
                   <div class="small text-muted">Status: #htmlEditFormat(qPercursoConta.status)#</div>
                 </cfoutput>
+              <cfelseif VARIABLES.percursoIsPlatformOwned>
+                <div class="fw-bold text-info">Gestão da plataforma</div>
+                <div class="small text-muted">Gerenciado pelos admins globais, sem conta organizadora. Pode ser atribuído a uma conta posteriormente.</div>
               <cfelse>
                 <div class="fw-bold text-warning">Sem conta proprietária</div>
                 <div class="small text-muted">Percurso legado pendente de atribuição.</div>
               </cfif>
             </div>
 
-            <form method="post" action="./?id=<cfoutput>#qPercurso.id_percurso#</cfoutput>" class="row g-2 align-items-end" onsubmit="return confirm('Transferir este percurso para a conta selecionada?');">
+            <form method="post" action="./?id=<cfoutput>#qPercurso.id_percurso#</cfoutput>" class="row g-2 align-items-end" onsubmit="return confirm('Transferir a propriedade deste percurso? Os vínculos com eventos serão preservados, mas as permissões de gestão serão alteradas.');">
               <input type="hidden" name="acao" value="alterar_conta_proprietaria"/>
               <input type="hidden" name="id_percurso" value="<cfoutput>#qPercurso.id_percurso#</cfoutput>"/>
               <input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.percursoCsrfToken#</cfoutput>"/>
               <div class="col-lg-9">
-                <label class="form-label" for="route-owner-account">Nova conta proprietária</label>
+                <label class="form-label" for="route-owner-account">Nova propriedade</label>
                 <select class="form-select" id="route-owner-account" name="id_conta_responsavel" required>
-                  <option value="">Selecione uma conta ativa</option>
+                  <option value="">Selecione a propriedade</option>
+                  <cfif VARIABLES.percursoPlatformOwnershipReady><option value="plataforma" <cfif VARIABLES.percursoIsPlatformOwned>selected</cfif>>Gestão da plataforma — sem conta organizadora</option></cfif>
                   <cfoutput query="qPercursoContasTransferencia">
                     <option value="#id_conta#" <cfif len(qPercurso.id_conta_responsavel & '') AND id_conta EQ qPercurso.id_conta_responsavel>selected</cfif>>#htmlEditFormat(nome_conta)# (###id_conta#)</option>
                   </cfoutput>
@@ -287,11 +304,12 @@
           <div class="alert alert-warning mb-4"><strong>Vínculos com eventos ainda não disponíveis.</strong> Aplique <code>/_codex/sql/2026-07-21_tb_evento_percursos_gpx.sql</code> no banco.</div>
         </cfif>
       <cfelse>
-        <div class="card bg-dark border-secondary mb-4"><div class="card-body">
+        <div class="card bg-dark border-secondary mb-4" id="vinculos-eventos"><div class="card-body">
           <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-3">
             <div>
               <h5 class="mb-1"><i class="fa-solid fa-route text-warning me-2"></i>Percursos de eventos vinculados</h5>
-              <p class="small text-muted mb-0">Cada percurso cadastrado no evento pode ter apenas um arquivo de percurso vinculado.</p>
+              <p class="small text-muted mb-0">Cada distância/modalidade cadastrada no evento pode ter apenas um arquivo de percurso vinculado.</p>
+              <cfif VARIABLES.percursoIsSystemAdmin><p class="small text-info mb-0 mt-1">Admin global: você pode vincular a qualquer prova, com ou sem organizador associado, sem alterar a propriedade do percurso.</p></cfif>
             </div>
             <span class="badge badge-secondary"><cfoutput>#qPercursoEventos.recordcount#</cfoutput> vínculo<cfif qPercursoEventos.recordcount NEQ 1>s</cfif></span>
           </div>
@@ -322,7 +340,8 @@
                             <div class="small text-muted mt-1">Sem percurso específico do evento</div>
                           </cfif>
                         </div>
-                        <cfif VARIABLES.percursoHasOwnerAccount AND (VARIABLES.percursoCanManageRouteEventLinks OR percursoBoolean(qPercursoEventos.conta_pode_gerenciar))>
+                        <cfif (VARIABLES.percursoIsSystemAdmin AND VARIABLES.percursoHasManagedOwnership)
+                          OR (VARIABLES.percursoHasOwnerAccount AND (VARIABLES.percursoCanManageRouteEventLinks OR percursoBoolean(qPercursoEventos.conta_pode_gerenciar)))>
                           <form method="post" action="./?id=#VARIABLES.routeEventRouteId#" class="m-0" onsubmit="return confirm('Remover o vínculo deste percurso do evento com o arquivo?');">
                             <input type="hidden" name="acao" value="desvincular_evento"/>
                             <input type="hidden" name="id_percurso" value="#VARIABLES.routeEventRouteId#"/>
@@ -342,9 +361,11 @@
             <div class="alert alert-secondary mb-4">Este arquivo ainda não está vinculado a nenhum percurso de evento.</div>
           </cfif>
 
-          <cfif VARIABLES.percursoCanLinkEvents>
+          <cfif NOT VARIABLES.percursoEventRouteColumnReady>
+            <div class="alert alert-warning">O banco ainda não permite vínculos por distância/modalidade. Aplique a migração de vínculos com eventos antes de continuar.</div>
+          <cfelseif VARIABLES.percursoCanLinkEvents>
             <div class="border-top border-secondary pt-3">
-              <form method="get" action="./" class="row g-2 align-items-end mb-3">
+              <form method="get" action="./#vinculos-eventos" class="row g-2 align-items-end mb-3">
                 <input type="hidden" name="id" value="<cfoutput>#qPercurso.id_percurso#</cfoutput>"/>
                 <div class="col-lg-9">
                   <label class="form-label" for="route-event-search">Vincular a um percurso de evento</label>
@@ -410,7 +431,7 @@
                   </cfoutput>
                 </div>
               <cfelseif len(trim(URL.evento_busca)) GTE 2 OR (isNumeric(trim(URL.evento_busca)) AND val(URL.evento_busca) GT 0)>
-                <div class="alert alert-secondary mb-0">Nenhum percurso de evento disponível foi encontrado para esta busca.</div>
+                <div class="alert alert-secondary mb-0">Nenhuma distância/modalidade de evento foi encontrada para esta busca. Verifique o nome ou ID da prova e se ela já possui distâncias/modalidades cadastradas.</div>
               </cfif>
             </div>
           <cfelseif VARIABLES.percursoCanManageEventLinks>
@@ -477,7 +498,7 @@
         <tr>
           <td>#id_percurso#</td>
           <td><strong>#htmlEditFormat(nome)#</strong><div class="small text-muted">#htmlEditFormat(tipo_percurso)# · #htmlEditFormat(visibilidade)#</div></td>
-          <td><cfif len(conta_proprietaria & '')><strong>#htmlEditFormat(conta_proprietaria)#</strong><div class="small text-muted">###id_conta_responsavel#</div><cfelse><span class="badge badge-warning">Pendente</span></cfif></td>
+          <td><cfif len(conta_proprietaria & '')><strong>#htmlEditFormat(conta_proprietaria)#</strong><div class="small text-muted">###id_conta_responsavel#</div><cfelseif percursoBoolean(gestao_plataforma)><span class="badge badge-info">Gestão da plataforma</span><cfelse><span class="badge badge-warning">Pendente</span></cfif></td>
           <td>
             <cfif structKeyExists(VARIABLES.percursoListEventLinks, VARIABLES.routeListKey)>
               <cfloop array="#VARIABLES.percursoListEventLinks[VARIABLES.routeListKey]#" index="routeEventLink">
