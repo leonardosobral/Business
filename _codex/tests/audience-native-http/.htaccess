@@ -1,0 +1,13 @@
+<IfModule mod_authz_core.c>
+    Require local
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+</IfModule>
+
+<FilesMatch "\.(in|sql)$">
+    Require all denied
+</FilesMatch>

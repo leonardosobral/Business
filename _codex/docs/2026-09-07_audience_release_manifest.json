@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07T04:08:35.274Z",
+  "status": "local-source-verified-not-deployed-collection-disabled",
+  "notes": [
+    "Runtime allowlists only; no tests or fixtures in public deployment",
+    "Private SQL migrations and retention CLI require operator workflow",
+    "No secrets included; local operational config not part of this manifest",
+    "Hashes describe local source; compare remote state before overwriting"
+  ],
+  "projects": [
+    {
+      "project": "Business",
+      "baseCommit": "846d68d257a6f48f78a502cf6d4a94c5ee5a5025",
+      "runtime": [
+        {
+          "path": "portal/audiencia/index.cfm",
+          "sha256": "953a7ec442c874814031860459bd38d369a00dc484904dd1f9c8750794a7e488"
+        },
+        {
+          "path": "portal/audiencia/home.cfm",
+          "sha256": "6d00df41a82056150fb0fb7540cf346f3069abe72989bbe582312a168bc357c5"
+        },
+        {
+          "path": "portal/audiencia/queries/filter.sql",
+          "sha256": "139bbacf39f268a688dcb399d14af3286c684d5a6877af0784b3e52082c28676"
+        },
+        {
+          "path": "portal/audiencia/queries/summary.sql",
+          "sha256": "1daf2290b04b9d54e2b7e9b7c67685b6b57b624e2857b68d6904cbe5df73fe64"
+        },
+        {
+          "path": "portal/audiencia/queries/inventory.sql",
+          "sha256": "1d6ad43cb539fde8bc0447dd88c2883057f378387d20a0fbcc0ac6e83a85c65a"
+        },
+        {
+          "path": "portal/audiencia/queries/regions.sql",
+          "sha256": "6e5ef59a0e8aa614902384fdd1dd64cdbf39de3326fc377ea265a80811e4fa5f"
+        },
+        {
+          "path": "portal/audiencia/queries/content.sql",
+          "sha256": "4994772bec042e7b848f91e23dd4ee76e848a7bfffb049be8d03abeded4ac3b7"
+        },
+        {
+          "path": "portal/audiencia/queries/acquisition.sql",
+          "sha256": "918a944ebdbae03a77d8da42b6ddf3cbd5a759dc82d93e87190509b0b83cf955"
+        },
+        {
+          "path": "portal/audiencia/queries/daily.sql",
+          "sha256": "4d28d4a77dbe7adf383d284d3d94c24cdec360ff2229828bb6b6c6eac3b1a6a2"
+        },
+        {
+          "path": "portal/audiencia/queries/coverage.sql",
+          "sha256": "9fe8d8d47139e46c9943f7b5b15aed2512b2e78ad74dc9a4cb7d901d26f4cc5f"
+        },
+        {
+          "path": "portal/includes/audience_backend.cfm",
+          "sha256": "9982c1e1ca16f0a0b9615c9ffa75d63a49e5a92d7897843000f4790a61b31800"
+        },
+        {
+          "path": "includes/estrutura/sidenav.cfm",
+          "sha256": "0664c5a17bcafb5d4440f1b8a7327f65aa97c8976bf6b17f8a995caf15fa5ac4"
+        },
+        {
+          "path": "assets/css/audience-dashboard.css",
+          "sha256": "c6c36d93f186d43cb8615cb1398fb9f9e274044e5113324b38f6889a0b9569d0"
+        },
+        {
+          "path": "assets/js/audience-dashboard.js",
+          "sha256": "6b9f89c922903c55f1d0c511f798c9c55eedfe63d89b35651d335f7f8bd2ee2e"
+        }
+      ]
+    },
+    {
+      "project": "RoadRunners",
+      "baseCommit": "36f71675d3a65a67be84b2a3b9c12d955c3359c4",
+      "runtime": [
+        {
+          "path": "Application.cfc",
+          "sha256": "846983fdc60adc07bd381d236850da721dc186f467d9471d1cc8d2b04b5a4dfd"
+        },
+        {
+          "path": "config/settings.cfm",
+          "sha256": "fb3f09ec6ea868351e51c9b449231de0908db01950e14a3f73dbd34b85ffb17f"
+        },
+        {
+          "path": "api/analytics/collect.cfm",
+          "sha256": "b4a264b7f5a45a7475693a0ed4978a2c1e76b0324c115b03d41c2456e7afe59d"
+        },
+        {
+          "path": "api/eventos_busca.cfm",
+          "sha256": "7c2003dd10af3def8d5e43be4bc3cc58f8e38b4007369e662f3b1fb9c4dd62be"
+        },
+        {
+          "path": "services/AudienceMeasurementService.cfc",
+          "sha256": "6d81b030ef78fe75c040b2399544e87baaa040049ee280f170f028ddca594e1b"
+        },
+        {
+          "path": "services/AudienceRequestControlService.cfc",
+          "sha256": "72310cd01c1c92b04d84cc5c1be9af45bb7c3e212e9fc8af52ebba81d008f9ec"
+        },
+        {
+          "path": "assets/js/rr-audience.js",
+          "sha256": "92a0b5139696028306258299d0b4cbeec3d85eb78ebf27c19ba9dac0a5a11f4f"
+        },
+        {
+          "path": "assets/js/rr-audience-privacy.js",
+          "sha256": "b0b1439945831271e00b119c96efd550402862f088fc1930e6eb7db45dcacd1f"
+        },
+        {
+          "path": "assets/css/rr-audience-privacy.css",
+          "sha256": "07b10f8cb883b3dae52bcc5b1df39310f632476c9cb670d927e442861cd7750a"
+        },
+        {
+          "path": "assets/js/runnerhub-busca-page.js",
+          "sha256": "3f13c9304cec5111d9f288615c756568bc74190b6c648df2a71d6f0a2a0da4e0"
+        },
+        {
+          "path": "assets/js/runnerhub-event-filters.js",
+          "sha256": "59aa1a980d072d4f794c394c709a87bb94e508b1ea0a970124a9825ecffdd735"
+        },
+        {
+          "path": "i18n/pt-BR.cfm",
+          "sha256": "02bc4da1c2bfba934a699f2e6b6bf5b50917415eb4cfc117cacc271b72f67f8a"
+        },
+        {
+          "path": "i18n/en.cfm",
+          "sha256": "2cff2355bbe1b53c8c8041a3fefa9a799a88eabcc23ff437ff2858c61e961dd7"
+        },
+        {
+          "path": "i18n/es.cfm",
+          "sha256": "a96ad36bdb044f43f6861415c4d3c781db086cc02cf63e6c124d89fdb0ca71d1"
+        },
+        {
+          "path": "includes/analytics/bootstrap.cfm",
+          "sha256": "89f85770491d8400ea14f03d27c7096d5beaee701536f9e3c5fb694b37c9d290"
+        },
+        {
+          "path": "includes/analytics/partial_context.cfm",
+          "sha256": "824e1c18411b8fe3035ea1920ef570f078e5715f2be14993daae1d4892b63ad0"
+        },
+        {
+          "path": "includes/analytics/slot_marker.cfm",
+          "sha256": "957273fc0ad7fe57497fc83367bde8f8836f8c3b530fe6564e9efebf372d3bca"
+        },
+        {
+          "path": "includes/analytics/sidebar_inventory.cfm",
+          "sha256": "dd3e28f4e924d0e131860193b4a9b0348598ca5d37a6c5e38b10eabda9aae914"
+        },
+        {
+          "path": "includes/analytics/empty_event_inventory.cfm",
+          "sha256": "79d89df373a525e2dd8810ca49adb5b04651d618055b3291e7787461559c4ce1"
+        },
+        {
+          "path": "includes/analytics/privacy_controls.cfm",
+          "sha256": "8809387359419184b077306702a9f6124aa4b65ab221ad8d973d0d385deadc15"
+        },
+        {
+          "path": "includes/estrutura/seo-web-tools-body-end.cfm",
+          "sha256": "28247f473ed7d8a4e584c0adc6d4d1f3cf71f1e599bfb8b24c91b9108db5792a"
+        },
+        {
+          "path": "includes/eventos_ads.cfm",
+          "sha256": "79e160b06f320d41b9ffa068aef70cf6a3e87f9d87db5e9d31c1332b56222c83"
+        },
+        {
+          "path": "includes/ads_v1/banner_delivery.cfm",
+          "sha256": "e6a9e8f68027952e780f44c61192466d493957bef51095e3c648d864917f9150"
+        },
+        {
+          "path": "includes/ads_v1/banner_slot.cfm",
+          "sha256": "758ddfd0f3985aebf9e18ac94bc25b811bbca2eacd8c20de3159f7d2ebf77511"
+        },
+        {
+          "path": "includes/ads_v1/native_event_slot.cfm",
+          "sha256": "5ed718a0d8a37ee1c04b261ce10d4adee6e3051f4cb0b527ae45332bdfbc9e1c"
+        },
+        {
+          "path": "includes/ads_v1/viewability.cfm",
+          "sha256": "505d148a965e653c8b1ad0370f0a81eacdad80ab558d26dcbe1959741c130af0"
+        },
+        {
+          "path": "includes/estrutura/home_sidebar_promos.cfm",
+          "sha256": "0a1ee3ceacf2a91c57800bf3765d62ab252e0a81fefb9dda98e39a8ec83ea7d7"
+        },
+        {
+          "path": "includes/estrutura/home_sidebar_async_slot.cfm",
+          "sha256": "380efc0e82ba1d4c628a8ba4d52a4ee9cfa977ade2aae899b474b86c5e9de746"
+        },
+        {
+          "path": "includes/estrutura/home_sidebar_mobile_banner_slot.cfm",
+          "sha256": "5bc8888d6b8ef3cc0b51225b551f1d8aafcc1d6c8d933057614a4dba3d1e86d3"
+        },
+        {
+          "path": "includes/modal/modal_youtube.cfm",
+          "sha256": "0c7f36ac73ac0873f08b2946a150a949f6aba0b656eac1677938ee03329d7e48"
+        },
+        {
+          "path": "index.cfm",
+          "sha256": "af81f93cce7935307fc4f3e5bebf5eebbc3273279daf29baab757bff38c09ac5"
+        }
+      ]
+    }
+  ],
+  "privateArtifacts": [
+    {
+      "project": "RoadRunners",
+      "path": "_codex/sql/2026-09-07_audience_inventory.sql",
+      "sha256": "0188eccb892944273fae060601daa57ad15abb1ad68a3dd3123f71ca294f245f"
+    },
+    {
+      "project": "RoadRunners",
+      "path": "_codex/sql/2026-09-07_audience_retention.sql",
+      "sha256": "b7f0a0ac5bacdf18f27f2c75540d8d855d700731e2898c6225c07c7b21a2e666"
+    },
+    {
+      "project": "RoadRunners",
+      "path": "_codex/scripts/run_audience_retention.mjs",
+      "sha256": "49105c8dba600c0b641e674b0976d331c5dad2a8cc60924975b7cd45dc8f0c5f"
+    },
+    {
+      "project": "RoadRunners",
+      "path": "config/audience.local.example.cfm",
+      "sha256": "7b8e54a1e5e78f7d948e44662bb1755b3bd22f7e678f511f3c0dc487b19d759d"
+    }
+  ]
+}

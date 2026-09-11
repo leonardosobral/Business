@@ -85,6 +85,7 @@
     <cfset sessionRotate()/>
     <cfset REQUEST.businessAuthSession.establish(SESSION,qPerfil.id,user_data)/>
     <cfset REQUEST.businessIdentity = REQUEST.businessAuthSession.identity(SESSION)/>
+    <cfinclude template="business_remember_issue.cfm"/>
     <cfheader name="Set-Cookie" value="rr_logged_out=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; Secure; SameSite=Lax"/>
     <cfset VARIABLES.googleSignInHasBusinessAccess = false/>
     <cfset VARIABLES.googleSignInHasPendingRegistration = false/>

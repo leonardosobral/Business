@@ -32,6 +32,7 @@
 <cfcatch type="any"></cfcatch>
 </cftry>
 
+<cfinclude template="includes/backend/business_remember_revoke.cfm"/>
 <cftry>
     <cfset REQUEST.businessAuthSession.clear(SESSION)/>
     <cfset REQUEST.businessIdentity = {}/>

@@ -1,0 +1,132 @@
+{
+  "status": "published-production-editorial-e2e-verified",
+  "publication": {
+    "published_at_server_utc": "2026-09-11T02:34:17Z",
+    "runtime_files": 13,
+    "unchanged_guards": 28,
+    "sql_execution": "reported-by-user; new event acceptance verified through Business",
+    "remote_backup": "/var/backups/rr-audience-editorial.w1RcDs",
+    "archive_sha256": "1a6c8f8345fc1424558635fcf211d1e3d6026883e423661ade9e561cc130cdbc",
+    "receipt": "2026-09-10_audience_editorial_publicado.md"
+  },
+  "roadrunners": [
+    {
+      "path": "_codex/scripts/test_audience_editorial_cfml_local.sh",
+      "before": null,
+      "after": "90096b9ca78b75ff7350794faf3a4492a33582dfe605e62eecfef47cbca6b040",
+      "bytes": 1459
+    },
+    {
+      "path": "_codex/scripts/test_audience_editorial_sql_local.mjs",
+      "before": null,
+      "after": "d5592a567edf847daea5d5f94eb5fcb051c157170d51610898f51a576dc8aa70",
+      "bytes": 4270
+    },
+    {
+      "path": "_codex/sql/2026-09-10_audience_editorial.sql",
+      "before": null,
+      "after": "987ad749076e6535e58108c82cb9c47e83c2e00e409ee73b88d754377eff9ee9",
+      "bytes": 11102
+    },
+    {
+      "path": "_codex/sql/2026-09-10_audience_editorial_contract_tests.sql",
+      "before": null,
+      "after": "5cee8b4dd558bfdde726ba60e20432ca7220f5c521d6ef68e43520a00f77c1f0",
+      "bytes": 4726
+    },
+    {
+      "path": "_codex/tests/audience-editorial-contract.cfm",
+      "before": null,
+      "after": "f8033e4e7395c784266aaf4dcc8ebb14fa743fc53b8ca700b322002e8fea9d92",
+      "bytes": 4037
+    },
+    {
+      "path": "_codex/tests/audience-editorial-templates.test.js",
+      "before": null,
+      "after": "c28568ae0ad97551cf8a318a5f440813f43869d1ea92f7c22e0847c1ed2f28c2",
+      "bytes": 2328
+    },
+    {
+      "path": "_codex/tests/audience-editorial.test.js",
+      "before": null,
+      "after": "596b83b342c1f2c004f99e938a66a9fb06602ba53e1979f5aceb3c5b76803443",
+      "bytes": 14738
+    },
+    {
+      "path": "api/home_news.cfm",
+      "before": "6446d6a90dbb16603675245616f4e5566749d01d55fa9442b1b0f676972675d3",
+      "after": "7935a2c4fbb452e4cc8d3cf43aa420f7b93aef17ba59e570121ed2bfc3962bd1",
+      "bytes": 16061
+    },
+    {
+      "path": "api/noticias_busca.cfm",
+      "before": "9ecd2e18203d3ccadfba35b016f21a8d85087b23080671465df39a6840869ca5",
+      "after": "287580262e5d3f916405ac48242ec0be0e53489afcd9e3810317348bd9c89290",
+      "bytes": 10759
+    },
+    {
+      "path": "api/videos_busca.cfm",
+      "before": "b12df0c4dd76807a1a6ebd560410f3a624ee3a1ebf698dcf061d7e7cd7d5c40c",
+      "after": "997c24f28ac8f9629199d5bd196a90508df001f67526a7c67e6d6efd27156175",
+      "bytes": 6405
+    },
+    {
+      "path": "assets/js/rr-audience.js",
+      "before": "b79bb913eb5f604eecd1ad6a77024198c96179850e3da299d82997f1a409a7d2",
+      "after": "9c78e93c98d77539b4f84c66cc4956b2c3b7788b875914e3d30909557d66d54d",
+      "bytes": 28011
+    },
+    {
+      "path": "includes/analytics/bootstrap.cfm",
+      "before": "9578188a77ba16a6c7a48b7c45c37b7137bccd7507892582d02317ee99c32d51",
+      "after": "343b6b22f5f9268a06ffece255f6ad55e3c515423b55f4e93745ec58f180fd1a",
+      "bytes": 1772
+    },
+    {
+      "path": "includes/estrutura/conteudo_lateral_api.cfm",
+      "before": "d60b7699e2147094a5ec89dbbed465c221a6324af101f900009daa2296bd8615",
+      "after": "5af07653a671c4cc8694b393a1f374bc64b778907ef230205e9cc16af6741f23",
+      "bytes": 18260
+    },
+    {
+      "path": "includes/estrutura/noticias_lista_cards.cfm",
+      "before": "d1891943f35c49f9de3c918dd74eaaec7bf169585bb10864795c110982b57a5a",
+      "after": "9e27e6dd75c63e1d2c5c7d2cf2549e6267b6aa830550b23f4354b2f30a292c61",
+      "bytes": 5969
+    },
+    {
+      "path": "includes/estrutura/videos_lista_cards.cfm",
+      "before": "0fdfd9f974cca52ca41621cfd27bfa8f3fdaa5f4126ecd0cd6cef550456a6872",
+      "after": "2879dcccfb26ea335a7073fb445ef5fdf04489ec667fbca6c7608f65fdeb6f93",
+      "bytes": 2127
+    },
+    {
+      "path": "index.cfm",
+      "before": "af81f93cce7935307fc4f3e5bebf5eebbc3273279daf29baab757bff38c09ac5",
+      "after": "d29494366462266effef2957d21dd66b3b8bf3675e81b26890adaed5d04e28ed",
+      "bytes": 75931
+    },
+    {
+      "path": "noticias/index.cfm",
+      "before": "76a6d8e71b6e25bc950af8f76e086b52ca3c3e001347ddede409c0a796458ac0",
+      "after": "c4c1f86986b9d6e879924095a52059e8402a1c9d2e067ff02f222ca2dda4b8ea",
+      "bytes": 100172
+    },
+    {
+      "path": "services/AudienceMeasurementService.cfc",
+      "before": "6d81b030ef78fe75c040b2399544e87baaa040049ee280f170f028ddca594e1b",
+      "after": "12eb010069ae5cd4e4324c832c7135d1e0a81a4b513454ebe37c4d4ffcd030e1",
+      "bytes": 16928
+    }
+  ],
+  "business": [
+    {
+      "path": "portal/audiencia/queries/content.sql",
+      "sha256": "7ced96e1dbfb1a56914ef4dd415a748c15452598ac834e8e13720f4f4477d5b8"
+    },
+    {
+      "path": "portal/audiencia/home.cfm",
+      "sha256": "280ce0fb49118ebb57f3d7c60a7f01cf2aefc4bd1bdbe8a107679faf3fb4eb60"
+    }
+  ]
+}

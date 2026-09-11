@@ -40,6 +40,7 @@ try {
     INSERT INTO audience.events SELECT page_view_id,'slot:two','slot_opportunity',occurred_at,received_at,visitor_id,session_id,environment,is_internal,visitor_uf,profile_uf,context_uf,market_uf,page_family,page_path,content_type,content_id,source,medium,campaign,creative,'home-two','native-two','filled',device_class,0,0,0 FROM audience.events WHERE event_key='page' AND market_uf='SC';
     INSERT INTO audience.events SELECT page_view_id,'render:two','slot_render',occurred_at,received_at,visitor_id,session_id,environment,is_internal,visitor_uf,profile_uf,context_uf,market_uf,page_family,page_path,content_type,content_id,source,medium,campaign,creative,'home-two','native-two','filled',device_class,0,0,0 FROM audience.events WHERE event_key='page' AND market_uf='SC';
     INSERT INTO audience.events SELECT page_view_id,'visible:two','slot_viewable',occurred_at,received_at,visitor_id,session_id,environment,is_internal,visitor_uf,profile_uf,context_uf,market_uf,page_family,page_path,content_type,content_id,source,medium,campaign,creative,'home-two','native-two','filled',device_class,0,1000,1000 FROM audience.events WHERE event_key='page' AND market_uf='SC';
+    ALTER TABLE audience.events ADD COLUMN view_ratio numeric(5,4) DEFAULT 0;
     INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,is_internal,market_uf) VALUES
     ('00000000-0000-4000-8000-000000000004','page','page_view','10000000-0000-4000-8000-000000000003','20000000-0000-4000-8000-000000000003',true,'SC');
     INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,environment,market_uf) VALUES
@@ -78,6 +79,8 @@ try {
   const regions = query('regions');
   assert.equal(regions.length,3);
   assert.equal(Number(query('acquisition')[0].pageviews),3);
+  assert.equal(Number(query('acquisition')[0].engaged_sessions),1,'acquisition distinguishes qualified sessions from traffic alone');
+  assert.equal(Number(query('acquisition',{uf:'SP'})[0].engaged_sessions),0,'qualification respects the same commercial filter');
   assert.equal(query('content').length,0);
   assert.ok(query('coverage').some(r=>r.page_family==='home' && Number(r.pageviews)===3));
   assert.equal(query('daily').reduce((sum,r)=>sum+Number(r.pageviews),0),3);
@@ -106,7 +109,34 @@ try {
   sql(`UPDATE audience.events SET slot_state='pending' WHERE slot_key='home-one';`);
   assert.equal(Number(query('inventory').find(r=>r.slot_key==='home-one').pending_slots),1);
   assert.equal(Number(query('inventory').find(r=>r.slot_key==='home-one').empty_slots),0,'pending AJAX is not confirmed empty');
-  console.log('Audience report SQL: 37 assertions passed against isolated PostgreSQL.');
+  // Profile paths deliberately omit personal slugs: distinct public content IDs
+  // must qualify, while reloading the same profile or opening modals must not.
+  sql(`INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,market_uf,page_family,page_path,content_type,content_id)
+       VALUES ('00000000-0000-4000-8000-000000000011','page','page_view','10000000-0000-4000-8000-000000000011','20000000-0000-4000-8000-000000000011','SC','profile','/atleta/','profile','page-101'),
+              ('00000000-0000-4000-8000-000000000012','page','page_view','10000000-0000-4000-8000-000000000011','20000000-0000-4000-8000-000000000011','SC','profile','/atleta/','profile','page-102');`);
+  assert.equal(Number(query('summary',{page_family:'profile'})[0].engaged_sessions),1,'two distinct profiles qualify despite one privacy-safe path');
+  assert.equal(Number(query('acquisition',{page_family:'profile'})[0].engaged_sessions),1,'acquisition qualifies two distinct profiles');
+  sql(`UPDATE audience.events SET content_id='page-101' WHERE page_view_id='00000000-0000-4000-8000-000000000012';`);
+  assert.equal(Number(query('summary',{page_family:'profile'})[0].engaged_sessions),0,'reloading one profile is not two distinct pages');
+  assert.equal(Number(query('acquisition',{page_family:'profile'})[0].engaged_sessions),0,'acquisition does not qualify profile reloads');
+  sql(`UPDATE audience.events SET content_id='page-102' WHERE page_view_id='00000000-0000-4000-8000-000000000012';
+       UPDATE audience.events SET market_uf='SP' WHERE page_family='profile';
+       INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,market_uf,page_family,page_path,slot_key,slot_state)
+       SELECT page_view_id,'slot:SC','slot_opportunity',visitor_id,session_id,'SC',page_family,page_path,'profile-slot','empty'
+       FROM audience.events WHERE page_family='profile';`);
+  const profileSc=query('summary',{page_family:'profile',uf:'SC'})[0];
+  assert.equal(Number(profileSc.engaged_sessions),1,'slot-only SC activity reuses the original page identity without content IDs');
+  assert.equal(Number(query('acquisition',{page_family:'profile',uf:'SC'})[0].engaged_sessions),1,'acquisition resolves original identity across contextual UF');
+  assert.equal(Number(profileSc.pageviews),0,'identity lookup never imports SP openings into SC');
+  assert.equal(Number(profileSc.active_pages),2,'SC still has exactly two physical pages with activity');
+  sql(`INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,market_uf,page_family,page_path,content_type,content_id)
+       VALUES ('00000000-0000-4000-8000-000000000013','page','page_view','10000000-0000-4000-8000-000000000013','20000000-0000-4000-8000-000000000013','SC','videos','/videos/','',''),
+              ('00000000-0000-4000-8000-000000000013','video:one','content_open','10000000-0000-4000-8000-000000000013','20000000-0000-4000-8000-000000000013','SC','videos','/videos/','video','video-1'),
+              ('00000000-0000-4000-8000-000000000013','video:two','content_open','10000000-0000-4000-8000-000000000013','20000000-0000-4000-8000-000000000013','SC','videos','/videos/','video','video-2');`);
+  assert.equal(Number(query('summary',{page_family:'videos'})[0].engaged_sessions),0,'two video modals on one page do not qualify a session');
+  assert.equal(Number(query('acquisition',{page_family:'videos'})[0].engaged_sessions),0,'acquisition ignores modal content identity for page qualification');
+  assert.equal(Number(query('summary',{page_family:'videos'})[0].pageviews),1,'opening modals does not create page views');
+  console.log('Audience report SQL: 51 assertions passed against isolated PostgreSQL.');
 } finally {
   if (started) run('pg_ctl', ['-D', resolve(scratch,'data'), '-m', 'immediate', '-w', 'stop']);
   rmSync(scratch, {recursive:true, force:true});

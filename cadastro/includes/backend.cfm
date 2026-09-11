@@ -30,6 +30,7 @@
 
 <cfif FORM.acao EQ "trocar_conta_google">
     <cfif len(trim(FORM.cadastro_csrf)) AND compare(FORM.cadastro_csrf, SESSION.cadastroGoogleCsrf) EQ 0>
+        <cfinclude template="../../includes/backend/business_remember_revoke.cfm"/>
         <cfset REQUEST.businessAuthSession.clear(SESSION)/>
         <cfset REQUEST.businessIdentity = {}/>
         <cfset sessionRotate()/>

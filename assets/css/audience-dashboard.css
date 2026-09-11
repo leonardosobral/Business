@@ -1,0 +1,36 @@
+.audience-page {max-width:1600px;margin:auto;padding:1.2rem 0 3rem;--aud-border:rgba(184,198,220,.16);--aud-muted:#abb5c4;--aud-gold:#efbb55;--aud-blue:#81b8f4;color:#edf0f5}
+.audience-page .audience-panel {border:1px solid var(--aud-border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;background:rgba(255,255,255,.018)}
+.audience-page .audience-kpi {height:100%;padding:1.2rem;border:1px solid var(--aud-border);border-radius:12px;background:rgba(255,255,255,.025)}
+.audience-page .audience-kpi-primary {border-color:rgba(239,187,85,.45)}
+.audience-page .audience-value {font-size:2rem;font-weight:650;line-height:1.25;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:.35rem 0}
+.audience-page .audience-meta {color:var(--aud-muted);font-size:.81rem;line-height:1.55}
+.audience-page .text-muted {color:var(--aud-muted)!important}
+.audience-page .audience-eyebrow {color:var(--aud-gold);font-size:.72rem;font-weight:650;letter-spacing:.12em;margin-bottom:.55rem}
+.audience-page .audience-title {font-size:clamp(1.55rem,3vw,2rem);font-weight:650;letter-spacing:-.035em}
+.audience-page th {white-space:nowrap;font-size:.74rem;font-weight:600;color:var(--aud-muted);padding:.8rem .65rem}
+.audience-page td {font-size:.84rem;vertical-align:middle;padding:.8rem .65rem;font-variant-numeric:tabular-nums}
+.audience-page .audience-text {max-width:310px;overflow-wrap:anywhere}
+.audience-page .audience-nav {display:flex;gap:.45rem;flex-wrap:wrap;margin:1.25rem 0}
+.audience-page .audience-nav a {border:1px solid var(--aud-border);border-radius:7px;padding:.45rem .85rem;font-size:.8rem;color:var(--aud-muted)}
+.audience-page .audience-nav a:hover {color:#fff;border-color:var(--aud-gold)}
+.audience-page section {scroll-margin-top:90px}
+.audience-page .audience-chart-grid {display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.25rem}
+.audience-page .audience-chart-grid .audience-panel {min-width:0}
+.audience-page .audience-chart-frame {height:260px;position:relative;margin-top:1rem;margin-bottom:1rem}
+.audience-page .audience-chart-frame[hidden] {display:none}
+.audience-page summary {cursor:pointer;font-size:.82rem;color:var(--aud-muted);padding:.35rem 0}
+.audience-page details[open]>summary {margin-bottom:.65rem;color:#edf0f5}
+.audience-page .audience-health {display:flex;gap:.65rem;align-items:baseline;flex-wrap:wrap;border-left:3px solid var(--aud-blue);padding:.5rem .85rem;margin:.8rem 0}
+.audience-page .audience-pill {display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--aud-border);border-radius:99px;padding:.3rem .65rem;font-size:.73rem;color:var(--aud-muted)}
+.audience-page .audience-note {border-left:2px solid var(--aud-gold);padding-left:.8rem}
+.audience-page .audience-definition-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.audience-page .audience-definition-grid p {margin-bottom:0}
+.audience-page .form-select {min-height:36px}
+.audience-page .audience-table-scroll {max-height:570px;overflow:auto}
+.audience-page .audience-table-scroll thead {position:sticky;top:0;background:#24282e;z-index:1}
+.audience-page .audience-advanced {border-top:1px solid var(--aud-border);margin-top:1rem;padding-top:.5rem}
+.audience-page .audience-section-title {font-size:1.03rem;font-weight:600;letter-spacing:-.015em}
+.audience-page a:focus-visible,.audience-page summary:focus-visible,.audience-page button:focus-visible {outline:2px solid var(--aud-gold);outline-offset:3px}
+@media(max-width:900px) {.audience-page .audience-chart-grid {grid-template-columns:1fr}.audience-page .audience-definition-grid {grid-template-columns:1fr}}
+@media(max-width:575px) {.audience-page {padding-top:.4rem}.audience-page .audience-panel {padding:1rem}.audience-page .audience-kpi {padding:.9rem}.audience-page .audience-value {font-size:1.6rem}.audience-page .audience-chart-frame {height:235px}.audience-page .audience-nav a {padding:.4rem .6rem}}
+@media print {.audience-page form,.audience-page .audience-nav {display:none}.audience-page {color:#111;--aud-muted:#444;--aud-border:#ccc}.audience-page .audience-panel {break-inside:avoid}.audience-page .audience-table-scroll {max-height:none}.audience-page details>* {display:block!important}}

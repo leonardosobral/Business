@@ -11,7 +11,7 @@
     <cfset THIS.SetClientCookies = true />
     <cfset THIS.sessionCookie = {httpOnly=true,secure=true,sameSite="Lax"}/>
     <cfset THIS.SearchImplicitScopes = true />
-    <cfset this.SessionTimeout = createTimeSpan( 0, 0, 50, 0 ) />
+    <cfset this.SessionTimeout = createTimeSpan( 1, 0, 0, 0 ) />
     <cfset THIS.datasource = "runner_dba"/>
     <cfset oldlocale = SetLocale("Portuguese (Brazilian)")>
 

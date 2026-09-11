@@ -10,10 +10,20 @@ Este repositório hoje funciona como um monólito em Adobe ColdFusion/CFML, com 
 - Estilo de arquitetura: monólito orientado a páginas, com muita regra de negócio em `include` e `backend/*.cfm`.
 - Entrada principal: [`Application.cfc`](/Users/leonardosobral/Git/RunnerHub/Business/Application.cfc).
 - Datasource padrão da aplicação: `runner_dba`.
-- Autenticação: cookies (`COOKIE.id`, `COOKIE.name`, `COOKIE.email`) e fluxo de Google Sign-In.
+- Autenticação: Google Sign-In verificado no servidor, sessão com 24 horas de inatividade e credencial persistente de 30 dias (requer a migration de dispositivos). Cookies legados de ID não autenticam.
 - Áreas principais: `eventos`, `bi`, `crm`, `emailmkt`, `leaderboard`, `inscricoes` e módulos satélite para operação.
 
 ## Como o projeto está organizado
+
+### Audiência e inventário (07–08/09/2026)
+
+O módulo administrativo [`portal/audiencia/`](/Users/Shared/Projects/RunnerHub/Business/portal/audiencia/index.cfm) reúne acessos, inventário de posições, exposição visível, regiões, conteúdo e aquisição UTM. A medição é produzida pelo RoadRunners, sem depender da interface do Google Analytics e sem debitar créditos Ads. O painel usa o datasource explícito `runnerhub` para leitura do schema `audience`.
+
+Painel publicado no Business em 07/09/2026, com SQLs protegidos contra download e autenticação existente preservada. Após a instalação dos objetos de audiência pelo operador, a revalidação autenticada reconheceu a instalação e mostrou **“Aguardando os primeiros eventos”**; a retenção aparecia instalada, ainda sem execução. O recorte SC/30 dias/contexto comercial passou em desktop1460px e mobile390px. Esse registro descreve o estado anterior à ativação, não métricas reais.
+
+O runtime RoadRunners de audiência também foi publicado nessa data: 30 arquivos, sendo18 substituídos e12 novos. `includes/ads_v1/viewability.cfm`, que controla beacon Ads independente, ficou fora do pacote e foi preservado. Verificação independente confirmou os30 hashes/metadados,18 backups, seis guards e ausência dos três overrides locais. No momento da publicação, o coletor permaneceu desligado (`503`, corpo `disabled`) e as páginas testadas não carregaram tracker; 104/104 verificações HTTP passaram em cinco rotas públicas/origin e três assets. Apache PID1780160 e ColdFusion PID1780425 permaneceram sem restart.
+
+A coleta foi ativada em 08/09/2026 às 23:53:19.083536 UTC (20:53 em Brasília), por override local protegido em `/var/www/roadrunners.com.br/config/audience.local.cfm` (`0600`, UID/GID65534), com backup privado em `/var/backups/roadrunners-audience-activation-20260908.az0scvhm`. Às20:56, o painel Business sem incluir acessos internos mostrou2 visitantes,2 páginas/aberturas,2 sessões,7 posições,2 posições visíveis e2 anúncios visíveis. O recorte contém uma visita anônima de validação e, por isso, não deve ser descrito como tráfego orgânico. O proxy confiável já havia sido aplicado e verificado às16:34:43 UTC. A role de runtime e a identidade `rr_audience_retention_job` foram validadas; somente senha, conexão privada e agenda de retenção ainda serão providenciadas pelo DBA, sem bloquear a coleta, e a retenção segue sem execução comprovada. Consulte o [recibo da ativação](/Users/Shared/Projects/RunnerHub/Business/_codex/docs/2026-09-08_audience_activation_receipt.json), [publicação e gates operacionais](/Users/Shared/Projects/RunnerHub/Business/_codex/docs/2026-09-07_audiencia_publicacao.md), [publicação RoadRunners](/Users/Shared/Projects/RunnerHub/Business/_codex/docs/2026-09-07_audiencia_publicacao_roadrunners.md) e [testes da implementação](/Users/Shared/Projects/RunnerHub/Business/_codex/docs/2026-09-07_audiencia_painel_finalizacao.md). Senha/conexão privada/agenda de retenção e homologação operacional final continuam pendentes. O restante deste README preserva o diagnóstico inicial do repositório; para autenticação, prevalecem o código e os registros específicos de segurança mais recentes.
 
 ### Bootstrap da aplicação
 
@@ -49,11 +59,13 @@ A aplicação nasce em [`Application.cfc`](/Users/leonardosobral/Git/RunnerHub/B
 
 Grande parte das páginas protegidas inclui [`includes/backend/backend_login.cfm`](/Users/leonardosobral/Git/RunnerHub/Business/includes/backend/backend_login.cfm), que:
 
-- carrega o perfil do usuário a partir de `COOKIE.id`
+- carrega o perfil do usuário a partir de `REQUEST.businessIdentity`, estabelecida pela sessão verificada
 - resolve permissões
 - carrega vínculos com contas, usuários, páginas e eventos
 - trata login/logout com Google
 - faz redirects com `cflocation` quando o contexto não está válido
+
+O fluxo de permanência do login, a migration necessária e o procedimento de publicação estão documentados em [Login persistente do Business](_codex/docs/2026-09-09_business_login_persistente.md).
 
 ### 3. Composição das telas
 

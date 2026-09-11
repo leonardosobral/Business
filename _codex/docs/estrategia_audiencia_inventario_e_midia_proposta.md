@@ -1,6 +1,8 @@
 # Proposta — audiência, inventário e crescimento do RoadRunners
 
-Status: proposta estratégica para discussão e implementação posterior. Baseada na leitura dos checkouts locais de Business e RoadRunners e em referências oficiais de mensuração e mídia. Não é uma medição atual do tráfego de produção. Nenhuma campanha, orçamento ou aplicação foi alterada nesta análise.
+Atualização de 07/09/2026: o usuário definiu **opt-out**, respeitando GPC e oferecendo recusa, e **90 dias de retenção para eventos detalhados**. O painel nativo e os controles de interface, coleta e expurgo foram implementados; implantação, agenda de retenção e configuração do proxy confiável continuam sendo pré-requisitos para ativar. Uma política maior para agregados não foi aprovada nem implementada. Estado atual em [Fechamento da implementação](2026-09-07_audiencia_painel_finalizacao.md).
+
+Status: documento estratégico de origem; a parte de mensuração avançou para implementação local conforme o registro acima. O diagnóstico e as recomendações abaixo não são uma medição atual do tráfego de produção. A mídia paga permanece proposta: nenhuma campanha ou verba externa foi criada/gasta. Itens propostos como retorno em sete dias, funil de ativação, gasto importado e previsão de entrega não estão implicitamente incluídos no painel atual.
 
 ## Decisão recomendada
 

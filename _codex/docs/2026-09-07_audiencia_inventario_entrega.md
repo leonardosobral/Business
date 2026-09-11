@@ -1,5 +1,7 @@
 # Audiência e inventário — entrega da primeira etapa
 
+> Registro histórico da primeira entrega. O pacote atual, incluindo painel gráfico, opt-out, controles de servidor e retenção implementados, está em [Fechamento da implementação](2026-09-07_audiencia_painel_finalizacao.md). Produção continua desligada. As flags escalares e o roteiro abaixo foram substituídos pelo contrato de configuração exata por host desse documento; não usar os manifestos antigos como lista de publicação, pois incluem fixtures e testes.
+
 ## Situação
 
 Implementação aplicada e verificada nos projetos locais, com coleta desligada por padrão. Nenhum deploy de site, migração de produção, ativação de coleta ou investimento em mídia foi executado. O compilador ColdFusion foi usado somente sobre cópias em uma pasta temporária fora dos sites publicados; compilação não executa a aplicação.

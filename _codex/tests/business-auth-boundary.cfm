@@ -21,6 +21,11 @@ if (boundaryEnv.containsKey("JOSE4J_TEST_JAR")) arrayAppend(boundaryJavaPaths, b
 boundaryMappings = duplicate(getApplicationSettings().mappings);
 boundaryMappings["/authBoundaryRoot"] = boundaryRoot;
 application action="update" mappings=boundaryMappings javaSettings={loadPaths=boundaryJavaPaths,loadColdFusionClassPath=true};
+if (boundaryEnv.containsKey("BUSINESS_AUTH_TEST_PORT")) {
+    application action="update" datasources={remember_test={class="org.postgresql.Driver",bundleName="org.postgresql.jdbc",bundleVersion="42.2.20",
+        connectionString="jdbc:postgresql://127.0.0.1:" & boundaryEnv.get("BUSINESS_AUTH_TEST_PORT") & "/business_auth_test",
+        username="business_auth_test",password=""}};
+}
 
 function boundaryCheck(required boolean condition, required string label) {
     variables.boundaryChecks++;
@@ -34,6 +39,10 @@ function boundaryRotate() { variables.boundaryResult.rotations++; }
 function boundaryInvalidate() { variables.boundaryResult.invalidations++; }
 function boundaryHeader(required string name, required string value) {
     variables.boundaryResult.headers[arguments.name] = arguments.value;
+    if (arguments.name=="Set-Cookie") arrayAppend(variables.boundaryResult.cookies,arguments.value);
+}
+function boundaryLog(required any failure) {
+    variables.boundaryResult.error=arguments.failure.type & ": " & arguments.failure.message & " " & arguments.failure.detail;
 }
 function boundaryQuery(required string name, required string sql) {
     arrayAppend(variables.boundaryResult.queries, {name=arguments.name,sql=arguments.sql});
@@ -55,9 +64,18 @@ function boundaryQuery(required string name, required string sql) {
 // only. A removed verification gate therefore reaches the observable SQL sink.
 function boundaryAdapt(required string source) {
     var adapted = arguments.source;
-    for (var scopeName in ["SESSION","REQUEST","FORM","URL","CGI","COOKIE"])
+    for (var scopeName in ["SESSION","REQUEST","FORM","URL","CGI","COOKIE"]) {
         adapted = reReplaceNoCase(adapted,"\b" & scopeName & "(?=\s*[.,)])","VARIABLES.boundary" & scopeName,"all");
+        adapted = reReplaceNoCase(adapted,"\b" & scopeName & "(?=\s*\[)","VARIABLES.boundary" & scopeName,"all");
+    }
     adapted = replace(adapted,'"services.','"authBoundaryRoot.services.',"all");
+    adapted = replace(adapted,'"authBoundaryRoot.services.BusinessRememberDevice").init()',
+        '"authBoundaryRoot.services.BusinessRememberDevice").init("remember_test")',"all");
+    adapted = replaceNoCase(adapted,'scope="session"','name="BusinessRememberOfflineSession"',"all");
+    for (var helper in ["business_remember_issue","business_remember_request","business_remember_revoke"]) {
+        adapted = reReplace(adapted,'template="[^"]*' & helper & '\.cfm"',
+            'template="' & variables.boundaryScratch & '/' & helper & '.cfm"',"all");
+    }
     adapted = replaceNoCase(adapted,"sessionRotate()","boundaryRotate()","all");
     adapted = replaceNoCase(adapted,"sessionInvalidate()","boundaryInvalidate()","all");
     for (var queryTag in reMatchNoCase("(?s)<cfquery\b[^>]*>.*?</cfquery>",adapted)) {
@@ -90,7 +108,9 @@ function boundaryAdapt(required string source) {
             & mid(headerTag,headerName.pos[2],headerName.len[2]) & '","'
             & mid(headerTag,headerValue.pos[2],headerValue.len[2]) & '")/>',"one");
     }
-    adapted = reReplaceNoCase(adapted,"<cf(?:cookie|log)\b[^>]*>","<!--- external cookie/log adapter --->","all");
+    for (var logTag in reMatchNoCase("<cflog\b[^>]*>",adapted))
+        adapted=replace(adapted,logTag,find("Remembered login",logTag) ? "<cfset boundaryLog(cfcatch)/>" : "<!--- expected provider log --->","one");
+    adapted = reReplaceNoCase(adapted,"<cfcookie\b[^>]*>","<!--- external cookie adapter --->","all");
     return adapted;
 }
 function boundaryRun(required string source) {
@@ -108,8 +128,9 @@ function boundaryReset() {
     variables.boundaryCookie = {id="1",name="Forged Admin",email="admin@example.test"};
     variables.boundaryCgi = {request_method="POST",remote_addr="127.0.0.1",script_name="/index.cfm"};
     variables.boundarySession = {businessLoginCsrf="session-csrf",businessLoginNonce="session-nonce"};
-    variables.boundaryRequest = {businessAuthSession=variables.boundaryAuthSession,businessIdentity={}};
-    variables.boundaryResult = {redirect="",queries=[],headers={},rotations=0,invalidations=0,error=""};
+    variables.boundaryRequest = {businessAuthSession=variables.boundaryAuthSession,businessIdentity={},
+        businessRememberDevice=variables.boundaryRemember,businessRememberCookie=""};
+    variables.boundaryResult = {redirect="",queries=[],headers={},cookies=[],rotations=0,invalidations=0,error=""};
     variables.boundaryAccess = "false";
     variables.boundaryPending = "false";
     variables.boundaryLegacyBi = "false";
@@ -133,6 +154,10 @@ function boundaryToken(required any key, struct changes={}) {
 
 try {
     boundaryAuthSession = createObject("component","authBoundaryRoot.services.BusinessAuthSession");
+    boundaryRemember = createObject("component","authBoundaryRoot.services.BusinessRememberDevice").init("remember_test");
+    for (boundaryHelper in ["business_remember_issue","business_remember_request","business_remember_revoke"])
+        fileWrite(boundaryScratch & "/" & boundaryHelper & ".cfm",
+            boundaryAdapt(fileRead(boundaryRoot & "includes/backend/" & boundaryHelper & ".cfm","utf-8")),"utf-8");
     // Constructor configures Google's transport without fetching a JWKS document.
     boundaryDefaultVerifier = createObject("component","authBoundaryRoot.services.GoogleIdentityVerifier").init("boundary-test-client");
     boundaryKeys = createObject("java","java.security.KeyPairGenerator").getInstance("RSA");
@@ -229,6 +254,8 @@ try {
             AND boundaryRequest.businessIdentity.email == "verified@example.test"
             AND boundaryRequest.businessIdentity.name == "Stored Verified Name",
             boundaryCase.label & " principal comes from verified claims/database, not cookies");
+        boundaryCheck(structKeyExists(boundarySession,"businessRememberSelector")
+            AND structKeyExists(boundaryResult.headers,"Set-Cookie"),boundaryCase.label & " persists verified login");
         boundaryCheck(!structKeyExists(boundarySession,"businessActiveAccountId")
             AND !structKeyExists(boundarySession,"businessAccountContextCsrf")
             AND !structKeyExists(boundarySession,"researchLoginRedirect")
@@ -279,17 +306,22 @@ try {
         boundaryReset();
         boundaryAuthSession.establish(boundarySession,42,{sub="verified-subject",email="verified@example.test",name="Verified",picture=""});
         boundaryRequest.businessIdentity=boundaryAuthSession.identity(boundarySession);
+        boundarySwitchDevice=boundaryRemember.issue(boundaryRequest.businessIdentity);
+        boundaryRequest.businessRememberCookie=boundarySwitchDevice.cookieValue;
+        boundarySession.businessRememberSelector=boundarySwitchDevice.selector;
         boundarySession.cadastroGoogleCsrf="switch-csrf";
         boundarySession.businessActiveAccountId="old-account";
         boundarySession.businessAccountContextCsrf="old-context";
         boundaryForm={acao="trocar_conta_google",cadastro_csrf=boundarySwitchToken};
         boundaryRun(boundarySwitch);
         if (boundarySwitchToken == "wrong") boundaryCheck(boundaryRequest.businessIdentity.id == 42 AND boundaryResult.rotations == 0
-            AND !len(boundaryResult.error),"account switch with invalid CSRF preserves login");
+            AND !structIsEmpty(boundaryRemember.restore(boundarySwitchDevice.cookieValue))
+            AND !len(boundaryResult.error),"account switch with invalid CSRF preserves login and remembered device");
         else boundaryCheck(structIsEmpty(boundaryRequest.businessIdentity) AND structIsEmpty(boundaryAuthSession.identity(boundarySession))
             AND !structKeyExists(boundarySession,"cadastroGoogleIdentity") AND !structKeyExists(boundarySession,"businessActiveAccountId")
             AND !structKeyExists(boundarySession,"businessAccountContextCsrf") AND boundaryResult.rotations == 1
-            AND boundaryResult.redirect == "/cadastro/" AND !len(boundaryResult.error),"actual account switch clears identity and tenant state before rotating");
+            AND structIsEmpty(boundaryRemember.restore(boundarySwitchDevice.cookieValue))
+            AND boundaryResult.redirect == "/cadastro/" AND !len(boundaryResult.error),"actual account switch revokes device and clears identity and tenant state before rotating");
     }
     // Construction compiles the real application components, but deliberately
     // does not call lifecycle methods (which access configuration and databases).
@@ -303,6 +335,71 @@ try {
     for (boundaryApplication in [boundaryMainApplication,boundaryBiApplication])
         boundaryCheck(boundaryApplication.sessionCookie.httpOnly AND boundaryApplication.sessionCookie.secure
             AND boundaryApplication.sessionCookie.sameSite == "Lax","application config protects native session cookie");
+    boundaryCheck(boundaryMainApplication.sessionTimeout GTE createTimeSpan(1,0,0,0)
+        AND boundaryBiApplication.sessionTimeout GTE createTimeSpan(1,0,0,0),"Business and BI keep a session for at least twenty-four idle hours");
+
+    boundaryReset();
+    boundaryDevice=boundaryRemember.issue({version=1,id=42,sub="verified-subject",email="verified@example.test"});
+    boundaryCookie[boundaryRemember.cookieName()]=boundaryDevice.cookieValue;
+    boundarySession={};
+    boundaryCgi.request_method="GET";
+    boundaryCgi.script_name="/ads/index.cfm";
+    boundaryRun(boundaryIdentity);
+    boundaryCheck(!len(boundaryResult.error) AND boundaryRequest.businessIdentity.id==42 AND boundaryResult.rotations==1,
+        "expired CF session is restored by the actual request boundary: " & boundaryResult.error);
+    boundaryCheck(structKeyExists(boundarySession,"cadastroGoogleIdentity")
+        AND !structKeyExists(boundarySession,"businessActiveAccountId"),"restoration rebuilds verified onboarding identity without granting tenant permissions");
+    boundaryCheck(structKeyExists(boundaryResult.headers,"Cache-Control") AND boundaryResult.headers["Cache-Control"]=="private, no-store",
+        "restored private page is not cacheable: " & boundaryResult.error);
+    // The raw incoming credential remains revocable during the rotation grace.
+    boundaryRun(boundaryLogout);
+    boundaryCheck(structIsEmpty(boundaryRemember.restore(boundaryDevice.cookieValue))
+        AND arrayFind(boundaryResult.cookies,boundaryRemember.expireCookieHeader())>0
+        AND !len(boundaryResult.error),"actual logout revokes remembered device before clearing session");
+
+    for (boundarySuppression in ["marker","logout-route","logout-query","switch"] ) {
+        boundaryReset();
+        boundaryDevice=boundaryRemember.issue({version=1,id=42,sub="verified-subject",email="verified@example.test"});
+        boundaryCookie[boundaryRemember.cookieName()]=boundaryDevice.cookieValue;
+        boundarySession={};
+        if (boundarySuppression=="marker") boundaryCookie.rr_logged_out="1";
+        if (boundarySuppression=="logout-route") boundaryCgi.script_name="/logout.cfm";
+        if (boundarySuppression=="logout-query") boundaryUrl.logout="1";
+        if (boundarySuppression=="switch") boundaryForm.acao="trocar_conta_google";
+        boundaryRun(boundaryIdentity);
+        boundaryCheck(structIsEmpty(boundaryRequest.businessIdentity) AND !boundaryResult.rotations AND !len(boundaryResult.error),
+            "remembered cookie does not silently sign in during " & boundarySuppression);
+    }
+    for (boundaryMissingCookie in [false,true]) {
+        boundaryReset();
+        boundaryAuthSession.establish(boundarySession,42,{sub="verified-subject",email="verified@example.test",name="Verified",picture=""});
+        boundaryDevice=boundaryRemember.issue(boundaryAuthSession.identity(boundarySession));
+        boundarySession.businessRememberSelector=boundaryDevice.selector;
+        boundarySession.businessRememberCheckedAt=dateAdd("n",-6,now());
+        if (!boundaryMissingCookie) boundaryCookie[boundaryRemember.cookieName()]=boundaryDevice.cookieValue;
+        boundaryRemember.revoke(boundaryDevice.cookieValue);
+        boundaryRun(boundaryIdentity);
+        boundaryCheck(structIsEmpty(boundaryRequest.businessIdentity) AND boundaryResult.rotations==1 AND !len(boundaryResult.error),
+            "revoked device ends active session, cookie missing=" & boundaryMissingCookie);
+    }
+    // Loss of the persistence table must not reject an otherwise valid Google login.
+    queryExecute("ALTER TABLE public.tb_business_remember_devices RENAME TO remember_unavailable",{},{datasource="remember_test"});
+    try {
+        boundaryReset();
+        boundaryAccess="true";
+        boundaryForm={action="googlesignin",credential=boundaryValidToken,business_login_csrf="session-csrf"};
+        boundaryRun(boundaryIdentity);
+        boundaryCheck(boundaryResult.redirect=="/" AND boundaryRequest.businessIdentity.id==42
+            AND !structKeyExists(boundarySession,"businessRememberSelector"),"database persistence outage preserves valid twenty-four-hour Google session");
+        boundaryReset();
+        boundaryCookie[boundaryRemember.cookieName()]=boundaryDevice.cookieValue;
+        boundarySession={};
+        boundaryRun(boundaryIdentity);
+        boundaryCheck(structIsEmpty(boundaryRequest.businessIdentity) AND !boundaryResult.rotations,
+            "database persistence outage cannot restore an anonymous session");
+    } finally {
+        queryExecute("ALTER TABLE public.remember_unavailable RENAME TO tb_business_remember_devices",{},{datasource="remember_test"});
+    }
 } finally {
     structDelete(APPLICATION,"businessGoogleVerifierV1",false);
     directoryDelete(boundaryScratch,true);

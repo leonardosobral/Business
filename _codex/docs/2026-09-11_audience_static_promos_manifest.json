@@ -1,0 +1,68 @@
+{
+  "status": "published-production-verified",
+  "publication": {
+    "server_timestamp_utc": "2026-09-11T03:28:43Z",
+    "host": "ssh.runnerhub.run",
+    "webroot": "/var/www/roadrunners.com.br",
+    "backup": "/var/backups/rr-audience-static.BUGVqM",
+    "protected_files_unchanged": 31,
+    "receipt": "2026-09-11_audience_static_promos_publicado.md"
+  },
+  "created": "2026-09-11",
+  "runtime_files": 6,
+  "files": [
+    {
+      "path": "atleta/parts/sidebar_desktop.cfm",
+      "before": "069344721400612a77f7173fdd89332132d0cbf2d663e8f6572db5f3fa145706",
+      "after": "4bdfa03537602090466171d44a4f204a52e88d74899de172fa8091fac5edca40",
+      "runtime": true
+    },
+    {
+      "path": "includes/estrutura/barra_lateral.cfm",
+      "before": "3649445ab69e0fbe2ceddf895baaa6398d1825510f0e6c1f8a7557cedd9484dc",
+      "after": "27ffee91db933c3196eb6fe6c0867d5c42f4421181f8da17f3993d938456faf3",
+      "runtime": true
+    },
+    {
+      "path": "canal/index.cfm",
+      "before": "004b77f559d5ddfc7be68590560e73e2b820b20801584f719b3f6a1903494100",
+      "after": "735582cbde53b49e100c6d48c5bc8d94e31f51fd84ebc2729f349e347278e10e",
+      "runtime": true
+    },
+    {
+      "path": "desafios/desafio_confirmado.cfm",
+      "before": "f330770907842e56bcb995065cb14d94cdf1c98494f244fc4659e853e7bb8e91",
+      "after": "419d5a8d57bd44976d53ec92f5fa8926d4c5a0078ef101e1e9a423e05f6b2d5a",
+      "runtime": true
+    },
+    {
+      "path": "assets/js/rr-audience.js",
+      "before": "9c78e93c98d77539b4f84c66cc4956b2c3b7788b875914e3d30909557d66d54d",
+      "after": "27dd026e4ad85d1b88c1a2de40be3dae10ee9f097399ea5b9bbd30c7fd330351",
+      "runtime": true
+    },
+    {
+      "path": "includes/analytics/bootstrap.cfm",
+      "before": "343b6b22f5f9268a06ffece255f6ad55e3c515423b55f4e93745ec58f180fd1a",
+      "after": "0f90edfd5881ab5d1f5113abf7012debcc32f09ee99506dd090d9c04a09a30de",
+      "runtime": true
+    },
+    {
+      "path": "_codex/tests/audience-static-promos.test.js",
+      "before": null,
+      "after": "584735fd793c865c7e0737fa456d2c70c8d4d9ba7330c2150b2f57c65eff66d8",
+      "runtime": false
+    },
+    {
+      "path": "_codex/scripts/render_audience_static_promos_fixture.mjs",
+      "before": null,
+      "after": "9a9ca3b8dfc37946db2e03111d058b216016bc9283a7bb4c623dc8a05034f361",
+      "runtime": false
+    }
+  ],
+  "archive": "../releases/2026-09-11_audience_static_promos_linux.tar.gz",
+  "archive_sha256": "c4ee24969fcef97482aa9fe4acdceee64c2c4b39dbbb5977b13baa01162fd3f7",
+  "review_patch_sha256": "2f8dd11c21250eff8fd12b7f576166172557b881b22562a3fd6766cf45099672",
+  "sql_required": false,
+  "source_backup": "/private/tmp/rr-static-promos.QP552l/before"
+}

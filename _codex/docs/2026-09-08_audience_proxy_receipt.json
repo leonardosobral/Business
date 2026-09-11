@@ -1,0 +1,44 @@
+{
+  "status": "proxy-applied-collection-disabled",
+  "appliedAt": "2026-09-08T16:34:43.077261+00:00",
+  "backup": "/var/backups/roadrunners-audience-proxy-20260907.zwm7w76p",
+  "targets": [
+    {
+      "path": "/etc/apache2/sites-available/roadrunners.run-le-ssl.conf",
+      "beforeSha256": "5b97dbe8d766881fade3c015c6f83458538ff492d923d91d0215e3b6abeffad7",
+      "afterSha256": "77c9c0b40007c238c2166db8f85eb646f80391465d94435817877dea76184cb9"
+    },
+    {
+      "path": "/etc/apache2/sites-available/www.roadrunners.run-le-ssl.conf",
+      "beforeSha256": "0903b5a939431d535ad73584e95fac3c0e6a37770c620099115075dcaaadd6a7",
+      "afterSha256": "8aedb11323a46c871b819e0952f6b7eeab8faa26aa61b60ddfbccc511e87aab3"
+    }
+  ],
+  "verification": {
+    "hashesMatch": true,
+    "apacheConfigTest": true,
+    "apacheActive": true,
+    "gracefulReload": true,
+    "apacheMasterPidPreserved": 1780160,
+    "coldFusionPidPreserved": 1780425,
+    "canonicalOriginRobotsStatus": 200,
+    "canonicalPublicRobotsStatus": 200,
+    "wwwOriginRobotsStatus": 301,
+    "wwwPublicRobotsStatus": 301,
+    "bothOriginsIgnoreForgedIpHeaders": true,
+    "bothPublicRequestsLogNonCloudflareClientIp": true,
+    "canonicalCollectorPost": { "status": 503, "error": "disabled" },
+    "businessBrowserAuthenticated": true,
+    "businessNoEvents": true,
+    "businessRetentionNeverRun": true
+  },
+  "limitations": [
+    "IP assertions are derived from Apache access entries for uniquely identified synthetic requests; raw logs and IP values are not retained here.",
+    "ColdFusion CGI client identity was not independently exposed or probed through a new diagnostic endpoint.",
+    "Collection has not been activated and no real audience ingestion was confirmed.",
+    "Dedicated retention database login, private connection configuration and scheduler remain pending."
+  ],
+  "databaseChanges": false,
+  "authenticationCodeChanges": false,
+  "runnerDbaPermissionsChanged": false
+}

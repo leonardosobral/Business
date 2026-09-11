@@ -1,0 +1,149 @@
+<cfcomponent output="false">
+    <!--- Test-only report subapplication with a unique application-scoped datasource. --->
+    <cfset THIS.Name = "RRAudHttpBusiness__RUN_ID__"/>
+    <cfset THIS.ApplicationTimeout = createTimeSpan(0, 1, 0, 0)/>
+    <cfset THIS.SessionManagement = false/>
+    <cfset THIS.SetClientCookies = false/>
+    <cfset THIS.datasource = "__DATASOURCE_BUSINESS__"/>
+    <cfset THIS.datasources = {
+        "__DATASOURCE_BUSINESS__" = {
+            "driver" = "other",
+            "url" = "jdbc:postgresql://127.0.0.1:__PG_PORT__/rr_audience_http",
+            "class" = "org.postgresql.Driver",
+            "username" = "runner_dba",
+            "password" = "__PG_PASSWORD__"
+        }
+    }/>
+
+    <cffunction name="onApplicationStart" access="public" returntype="boolean" output="false">
+        <cfset APPLICATION.audienceMeasurement = {"hosts"={}}/>
+        <cfset APPLICATION.audienceNativeHttpRunId = "__RUN_ID__"/>
+        <cfreturn true/>
+    </cffunction>
+
+    <cffunction name="onRequestStart" access="public" returntype="boolean" output="false">
+        <cfargument name="targetPage" type="string" required="true"/>
+        <cfset var requestHeaders = getHTTPRequestData(false).headers/>
+        <cfset var remoteAddress = structKeyExists(CGI, "REMOTE_ADDR") ? trim(CGI.REMOTE_ADDR & "") : ""/>
+        <cfset var suppliedToken = structKeyExists(requestHeaders, "X-RR-Audience-Test")
+            ? trim(requestHeaders["X-RR-Audience-Test"] & "") : ""/>
+        <cfset var datasourceConfig = {}/>
+        <cfset var effectiveSettings = {}/>
+        <cfset var effectiveDatasourceConfig = {}/>
+        <cfset var expectedUrl = "jdbc:postgresql://127.0.0.1:__PG_PORT__/rr_audience_http"/>
+        <cfset var probe = queryNew("")/>
+
+        <cfif NOT listFind("127.0.0.1,::1", remoteAddress)
+            OR NOT fixtureTokensMatch(suppliedToken, "__TEST_TOKEN__")>
+            <cfset stopFixtureRequest(403, "fixture_guard")/>
+        </cfif>
+
+        <cfif THIS.datasource NEQ "__DATASOURCE_BUSINESS__"
+            OR NOT structKeyExists(THIS.datasources, "__DATASOURCE_BUSINESS__")
+            OR NOT isStruct(THIS.datasources["__DATASOURCE_BUSINESS__"])>
+            <cfset stopFixtureRequest(503, "fixture_datasource")/>
+        </cfif>
+
+        <cfset datasourceConfig = THIS.datasources["__DATASOURCE_BUSINESS__"]/>
+        <cfif NOT structKeyExists(datasourceConfig, "driver")
+            OR datasourceConfig.driver NEQ "other"
+            OR NOT structKeyExists(datasourceConfig, "url")
+            OR datasourceConfig.url NEQ expectedUrl
+            OR NOT structKeyExists(datasourceConfig, "class")
+            OR datasourceConfig.class NEQ "org.postgresql.Driver"
+            OR NOT structKeyExists(datasourceConfig, "username")
+            OR datasourceConfig.username NEQ "runner_dba">
+            <cfset stopFixtureRequest(503, "fixture_datasource")/>
+        </cfif>
+
+        <cftry>
+            <cfset effectiveSettings = getApplicationMetadata()/>
+            <cfif NOT structKeyExists(effectiveSettings, "datasource")
+                OR effectiveSettings.datasource NEQ "__DATASOURCE_BUSINESS__"
+                OR NOT structKeyExists(effectiveSettings, "datasources")
+                OR NOT isStruct(effectiveSettings.datasources)
+                OR NOT structKeyExists(effectiveSettings.datasources, "__DATASOURCE_BUSINESS__")>
+                <cfset stopFixtureRequest(503, "fixture_datasource")/>
+            </cfif>
+            <cfset effectiveDatasourceConfig = effectiveSettings.datasources["__DATASOURCE_BUSINESS__"]/>
+            <cfcatch type="any">
+                <cfset stopFixtureRequest(503, "fixture_datasource")/>
+            </cfcatch>
+        </cftry>
+        <cfif NOT isStruct(effectiveDatasourceConfig)
+            OR NOT structKeyExists(effectiveDatasourceConfig, "driver")
+            OR effectiveDatasourceConfig.driver NEQ "other"
+            OR NOT structKeyExists(effectiveDatasourceConfig, "url")
+            OR effectiveDatasourceConfig.url NEQ expectedUrl
+            OR NOT structKeyExists(effectiveDatasourceConfig, "class")
+            OR effectiveDatasourceConfig.class NEQ "org.postgresql.Driver"
+            OR NOT structKeyExists(effectiveDatasourceConfig, "username")
+            OR effectiveDatasourceConfig.username NEQ "runner_dba">
+            <cfset stopFixtureRequest(503, "fixture_datasource")/>
+        </cfif>
+
+        <cftry>
+            <cfset probe = queryExecute(
+                "SELECT current_database() AS database_name,
+                        current_user AS database_user,
+                        EXISTS (
+                            SELECT 1
+                              FROM public.rr_audience_test_marker
+                             WHERE run_id = :run_id
+                        ) AS marker_matches",
+                {
+                    "run_id" = {
+                        "value" = "__RUN_ID__",
+                        "cfsqltype" = "cf_sql_varchar"
+                    }
+                },
+                {
+                    "datasource" = "__DATASOURCE_BUSINESS__",
+                    "timeout" = 3
+                }
+            )/>
+            <cfcatch type="any">
+                <cfset stopFixtureRequest(503, "fixture_database")/>
+            </cfcatch>
+        </cftry>
+
+        <cfif probe.recordCount NEQ 1
+            OR probe.database_name[1] NEQ "rr_audience_http"
+            OR probe.database_user[1] NEQ "runner_dba"
+            OR NOT fixtureTruthy(probe.marker_matches[1])>
+            <cfset stopFixtureRequest(503, "fixture_database")/>
+        </cfif>
+
+        <cfset REQUEST.audienceNativeHttpFixtureAuthorized = true/>
+        <cfset REQUEST.audienceNativeHttpRunId = "__RUN_ID__"/>
+        <cfreturn true/>
+    </cffunction>
+
+    <cffunction name="fixtureTokensMatch" access="private" returntype="boolean" output="false">
+        <cfargument name="leftValue" type="string" required="true"/>
+        <cfargument name="rightValue" type="string" required="true"/>
+        <cfif len(arguments.leftValue) NEQ len(arguments.rightValue)>
+            <cfreturn false/>
+        </cfif>
+        <cfreturn createObject("java", "java.security.MessageDigest").isEqual(
+            charsetDecode(arguments.leftValue, "UTF-8"),
+            charsetDecode(arguments.rightValue, "UTF-8")
+        )/>
+    </cffunction>
+
+    <cffunction name="fixtureTruthy" access="private" returntype="boolean" output="false">
+        <cfargument name="value" required="true"/>
+        <cfreturn isBoolean(arguments.value)
+            ? arguments.value
+            : listFindNoCase("true,1,yes", trim(arguments.value & "")) GT 0/>
+    </cffunction>
+
+    <cffunction name="stopFixtureRequest" access="private" returntype="void" output="false">
+        <cfargument name="statusCode" type="numeric" required="true"/>
+        <cfargument name="errorCode" type="string" required="true"/>
+        <cfcontent type="application/json; charset=utf-8" reset="true"/>
+        <cfheader statuscode="#arguments.statusCode#"/>
+        <cfoutput>{"error":"#encodeForJavaScript(arguments.errorCode)#"}</cfoutput>
+        <cfabort/>
+    </cffunction>
+</cfcomponent>

@@ -8,6 +8,8 @@
 
 **Spec:** `_codex/docs/estrategia_audiencia_inventario_e_midia_proposta.md`, com a correção regional aprovada pelo usuário.
 
+**Estado atual:** `_codex/docs/2026-09-07_audiencia_painel_finalizacao.md` registra o painel final e os controles implementados após a rodada HTTP inicial. O usuário confirmou opt-out e 90 dias de eventos detalhados; produção permanece desligada. A configuração escalar mencionada na tarefa 1 é histórica e foi substituída pelo mapa exato por host na tarefa 5.
+
 ## Restrições e decisões de execução
 
 - Contexto SC conta como audiência comercial SC, inclusive com acesso/perfil SP. `market_uf = context_uf`, depois perfil e acesso como fallback; campos preservados separadamente. Não alterar o leilão/segmentação existente.
@@ -75,8 +77,26 @@ Arquivos Business: `portal/audiencia/index.cfm`, `portal/audiencia/home.cfm`, `p
 
 ## Progresso
 
+O progresso abaixo registra as tarefas 1–4 na primeira entrega; a continuação está na tarefa 5 e no documento de fechamento indicado no início.
+
 Implementação local e verificação das tarefas 1–4 concluídas. Aplicados 13 arquivos ao Business e 32 ao RoadRunners, conferidos byte a byte contra as versões revisadas. O registro de conclusão e dos gates operacionais fica em `_codex/docs/2026-09-07_audiencia_inventario_entrega.md`.
 
 Evidência final: 37 assertivas de consultas Business; 27 assertivas da migração/ingestão reais com as sete consultas Business; 25 testes Node do tracker; contrato PostgreSQL com reaplicação da migração e isolamento financeiro; regressão Ads DOM-ready; Chrome real desktop/mobile, troca SP→SC, busca vazia e controlador real de filtros/paginação; compilação Adobe ColdFusion de 20 arquivos RoadRunners e 4 Business. As suítes finais de consultas, integração, tracker e navegador foram repetidas sobre os checkouts aplicados. A revisão independente não encontrou P1/P2 remanescentes nos pontos corrigidos.
 
 Homologação HTTP/CFML integrada, produção, retenção/controles operacionais e mídia paga não foram executadas. Nenhum commit ou branch criado. Backups locais dos arquivos substituídos: `/private/tmp/rr-audience-before-PnTQsl` (temporários, não substituem versionamento).
+
+## Tarefa 5 — painel final, preferências e controles de operação
+
+- [x] Hierarquia resumo-primeiro no Business, gráficos MDB nativos sem empilhamento, filtros e tabelas completas; layout desktop/mobile e fallback sem JavaScript.
+- [x] Sessões qualificadas por tempo ativo ou páginas de conteúdo distintas; reabertura do mesmo perfil/modal não cria uma segunda página distinta.
+- [x] Recusa acessível, GPC prioritário, preferência entre abas e limpeza/expiração de identificadores; fila respeita HTTP 429 e Retry-After.
+- [x] Configuração `APPLICATION.audienceMeasurement.hosts[hostname]` exata por ambiente, defaults desligados; bots/prefetch excluídos, limite por host/cliente com memória limitada.
+- [x] Rotina privada de exclusão em lotes após 90 dias, com estado operacional opcional no painel; sem retenção agregada indefinida.
+- [x] Encerrar a regressão integrada final e registrar a evidência no documento de fechamento: 73 verificações Adobe/HTTP, 51 consultas, 27 integração, 43 cliente/privacidade, 5 dashboard, Chrome desktop/mobile, contratos CFML e retenção/ACLs PostgreSQL.
+
+### Gates de ativação — não confundir com implementação local
+
+- [ ] Operador de DDL aplica inventário e retenção, valida permissões reais e provisiona a identidade/agenda horária do job.
+- [ ] Responsável de infraestrutura configura proxy confiável nos hosts públicos e comprova IP de cliente correto, sem confiar em headers arbitrários.
+- [ ] Publicar somente arquivos runtime e configurar todos os webroots coerentemente; homologar páginas completas e acesso administrativo real antes de habilitar o host.
+- [ ] Após linha de base confiável, definir teto de verba e autorizar o piloto SC A/B. Nenhum gasto foi autorizado ou realizado.

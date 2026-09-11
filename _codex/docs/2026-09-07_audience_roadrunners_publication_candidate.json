@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-09-07T21:07:31.378Z",
+  "project": "RoadRunners",
+  "status": "prepared-locally-not-published-not-activated",
+  "sourceCommit": "36f71675d3a65a67be84b2a3b9c12d955c3359c4",
+  "sourceManifestSha256": "1edfd282deb38bc549e5e294b4e2e65d789506bd33ac89ebe6d06a477c932d82",
+  "destination": {
+    "host": "ssh.runnerhub.run",
+    "documentRoot": "/var/www/roadrunners.com.br"
+  },
+  "productionBaselineCapturedAt": "2026-09-07T20:38:05.041301+00:00",
+  "privateBackup": {
+    "path": "/var/backups/roadrunners-audience-20260907.qko32783/before.tar.gz",
+    "sha256": "5035a71b74d125dc6dc54dfc029b8ba500f75faaa337f1dc9b9337f107333ab3"
+  },
+  "candidate": {
+    "directory": "/private/tmp/rr-audience-reconcile.iCyecF/candidate",
+    "archivePath": "/private/tmp/rr-audience-reconcile.iCyecF/candidate.tar.gz",
+    "sha256": "5983a424b6ca50bb803d63290699b1a197684b9dcf0a14fac4d720f8cacea3d6",
+    "size": 184320,
+    "runtimeFileCount": 30
+  },
+  "collectionDisabledByDefault": true,
+  "runtimeDisabledVerified": false,
+  "preservedFiles": [
+    {
+      "path": "includes/ads_v1/viewability.cfm",
+      "baseline": {
+        "path": "includes/ads_v1/viewability.cfm",
+        "exists": true,
+        "sha256": "6824fabb64fc6715d6e48464113560636e78ded7f1004b6a2c1557c1eb37bc20",
+        "size": 4066,
+        "mode": 420,
+        "uid": 501,
+        "gid": 50,
+        "mtimeNs": 1788466054000000000
+      },
+      "reason": "Independent Ads beacon behavior change runs regardless of audience flag; excluded to preserve the current campaign behavior. The audience tracker is independent."
+    }
+  ],
+  "constraints": [
+    "No publication or activation performed by this preparer.",
+    "All 30 payload files exactly match the reviewed source manifest; no source files edited.",
+    "Archive is private and contains shared runtime configuration; never expose as a web download.",
+    "Private configuration, tests, SQL migrations, retention CLI and all unrelated files are excluded.",
+    "Do not alter runner_dba, authentication code, Ads activation config, database schema, proxy or scheduler in this step.",
+    "Defaults are off; before publication verify effective per-host application state and any pre-existing local override. Do not assume defaults prove live disabled state.",
+    "Before publication recheck all 31 baselines, preserve existing owner/mode and install dependencies before callers and Application.cfc.",
+    "The 30-file publication needs its own reviewed executor and operational checkpoint; this manifest is not a publication receipt."
+  ],
+  "files": [
+    {
+      "path": "Application.cfc",
+      "sha256": "846983fdc60adc07bd381d236850da721dc186f467d9471d1cc8d2b04b5a4dfd",
+      "size": 146446,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "Application.cfc",
+        "exists": true,
+        "sha256": "38350745616a040449486080afd3c929d5cccd07078bb66fa952e52ca5e278e7",
+        "size": 146018,
+        "mode": 493,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787334471000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "config/settings.cfm",
+      "sha256": "fb3f09ec6ea868351e51c9b449231de0908db01950e14a3f73dbd34b85ffb17f",
+      "size": 49843,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "config/settings.cfm",
+        "exists": true,
+        "sha256": "d02a2cbf12535f937ddb33974e6713f97175c2acda8d192be39724f32c28b948",
+        "size": 46664,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787589690000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "api/analytics/collect.cfm",
+      "sha256": "b4a264b7f5a45a7475693a0ed4978a2c1e76b0324c115b03d41c2456e7afe59d",
+      "size": 3598,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "api/analytics/collect.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "api/eventos_busca.cfm",
+      "sha256": "7c2003dd10af3def8d5e43be4bc3cc58f8e38b4007369e662f3b1fb9c4dd62be",
+      "size": 6482,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "api/eventos_busca.cfm",
+        "exists": true,
+        "sha256": "88c40767fe747deb8f3f0a764798a7ba276909a34d4229dd56b8922161bde390",
+        "size": 6396,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1780595103000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "services/AudienceMeasurementService.cfc",
+      "sha256": "6d81b030ef78fe75c040b2399544e87baaa040049ee280f170f028ddca594e1b",
+      "size": 16068,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "services/AudienceMeasurementService.cfc",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "services/AudienceRequestControlService.cfc",
+      "sha256": "72310cd01c1c92b04d84cc5c1be9af45bb7c3e212e9fc8af52ebba81d008f9ec",
+      "size": 6669,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "services/AudienceRequestControlService.cfc",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "assets/js/rr-audience.js",
+      "sha256": "92a0b5139696028306258299d0b4cbeec3d85eb78ebf27c19ba9dac0a5a11f4f",
+      "size": 21005,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "assets/js/rr-audience.js",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "assets/js/rr-audience-privacy.js",
+      "sha256": "b0b1439945831271e00b119c96efd550402862f088fc1930e6eb7db45dcacd1f",
+      "size": 5456,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "assets/js/rr-audience-privacy.js",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "assets/css/rr-audience-privacy.css",
+      "sha256": "07b10f8cb883b3dae52bcc5b1df39310f632476c9cb670d927e442861cd7750a",
+      "size": 3093,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "assets/css/rr-audience-privacy.css",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "assets/js/runnerhub-busca-page.js",
+      "sha256": "3f13c9304cec5111d9f288615c756568bc74190b6c648df2a71d6f0a2a0da4e0",
+      "size": 47163,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "assets/js/runnerhub-busca-page.js",
+        "exists": true,
+        "sha256": "b4abbf086181add493b084599480f5716a8c190b5d1626204cbc164cdc8a3dba",
+        "size": 46614,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1786462212000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "assets/js/runnerhub-event-filters.js",
+      "sha256": "59aa1a980d072d4f794c394c709a87bb94e508b1ea0a970124a9825ecffdd735",
+      "size": 26445,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "assets/js/runnerhub-event-filters.js",
+        "exists": true,
+        "sha256": "ab1aa1d3a15ed93e71e0c8ae795567ece84b754ed59770794357f83b5fc73295",
+        "size": 25054,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1780316721000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "i18n/pt-BR.cfm",
+      "sha256": "02bc4da1c2bfba934a699f2e6b6bf5b50917415eb4cfc117cacc271b72f67f8a",
+      "size": 95810,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "i18n/pt-BR.cfm",
+        "exists": true,
+        "sha256": "d179c9657954d49f244465fe9943d2c93f744f44999c003821291dda870b612b",
+        "size": 93972,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787666014000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "i18n/en.cfm",
+      "sha256": "2cff2355bbe1b53c8c8041a3fefa9a799a88eabcc23ff437ff2858c61e961dd7",
+      "size": 90161,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "i18n/en.cfm",
+        "exists": true,
+        "sha256": "f8c0bd8dd5ac68d1e1508ceab3f8011c1c0d272fced42a5b84664b3838823981",
+        "size": 88452,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787666014000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "i18n/es.cfm",
+      "sha256": "a96ad36bdb044f43f6861415c4d3c781db086cc02cf63e6c124d89fdb0ca71d1",
+      "size": 96005,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "i18n/es.cfm",
+        "exists": true,
+        "sha256": "e047fd4550009e6da16c707d132736f91d68fa7e03773d949b4cffd19fa46b27",
+        "size": 94076,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787666014000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/bootstrap.cfm",
+      "sha256": "89f85770491d8400ea14f03d27c7096d5beaee701536f9e3c5fb694b37c9d290",
+      "size": 1757,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/bootstrap.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/partial_context.cfm",
+      "sha256": "824e1c18411b8fe3035ea1920ef570f078e5715f2be14993daae1d4892b63ad0",
+      "size": 2939,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/partial_context.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/slot_marker.cfm",
+      "sha256": "957273fc0ad7fe57497fc83367bde8f8836f8c3b530fe6564e9efebf372d3bca",
+      "size": 714,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/slot_marker.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/sidebar_inventory.cfm",
+      "sha256": "dd3e28f4e924d0e131860193b4a9b0348598ca5d37a6c5e38b10eabda9aae914",
+      "size": 514,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/sidebar_inventory.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/empty_event_inventory.cfm",
+      "sha256": "79d89df373a525e2dd8810ca49adb5b04651d618055b3291e7787461559c4ce1",
+      "size": 1189,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/empty_event_inventory.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/analytics/privacy_controls.cfm",
+      "sha256": "8809387359419184b077306702a9f6124aa4b65ab221ad8d973d0d385deadc15",
+      "size": 3198,
+      "action": "create-if-absent",
+      "baseline": {
+        "path": "includes/analytics/privacy_controls.cfm",
+        "exists": false
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/estrutura/seo-web-tools-body-end.cfm",
+      "sha256": "28247f473ed7d8a4e584c0adc6d4d1f3cf71f1e599bfb8b24c91b9108db5792a",
+      "size": 57111,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/estrutura/seo-web-tools-body-end.cfm",
+        "exists": true,
+        "sha256": "614f9b424115057ae1669bc1a2bdb95f3254494e9e5c92f09b2d0c61903f5222",
+        "size": 56927,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787320294000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/eventos_ads.cfm",
+      "sha256": "79e160b06f320d41b9ffa068aef70cf6a3e87f9d87db5e9d31c1332b56222c83",
+      "size": 14281,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/eventos_ads.cfm",
+        "exists": true,
+        "sha256": "b866082dbf15fb7b25ba1bd2511926401461fff308ca8ca2b26dd2a398c09502",
+        "size": 13756,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1788379444000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/ads_v1/banner_delivery.cfm",
+      "sha256": "e6a9e8f68027952e780f44c61192466d493957bef51095e3c648d864917f9150",
+      "size": 4778,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/ads_v1/banner_delivery.cfm",
+        "exists": true,
+        "sha256": "f9a752958f66066c0a296952b8f7923b387559b30bab9b7e4b7aaf0972d74789",
+        "size": 4120,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787320051000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/ads_v1/banner_slot.cfm",
+      "sha256": "758ddfd0f3985aebf9e18ac94bc25b811bbca2eacd8c20de3159f7d2ebf77511",
+      "size": 4949,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/ads_v1/banner_slot.cfm",
+        "exists": true,
+        "sha256": "15aa5e5b4c4815820ebc7a3d3f92da8ef67e498177e63382743d856e0586877f",
+        "size": 4402,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787578616000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/ads_v1/native_event_slot.cfm",
+      "sha256": "5ed718a0d8a37ee1c04b261ce10d4adee6e3051f4cb0b527ae45332bdfbc9e1c",
+      "size": 10200,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/ads_v1/native_event_slot.cfm",
+        "exists": true,
+        "sha256": "2db121f3ef50cce8df0287e8b01ab49e9b4549b0cd5b8006908983d6b76ce979",
+        "size": 9326,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787269059000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/estrutura/home_sidebar_promos.cfm",
+      "sha256": "0a1ee3ceacf2a91c57800bf3765d62ab252e0a81fefb9dda98e39a8ec83ea7d7",
+      "size": 8155,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/estrutura/home_sidebar_promos.cfm",
+        "exists": true,
+        "sha256": "529c9f4f9f8d2fb4969be8fed33c05526f3658051a2bfbd0e82d9a6f0ed6f2d7",
+        "size": 7471,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787320223000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/estrutura/home_sidebar_async_slot.cfm",
+      "sha256": "380efc0e82ba1d4c628a8ba4d52a4ee9cfa977ade2aae899b474b86c5e9de746",
+      "size": 5449,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/estrutura/home_sidebar_async_slot.cfm",
+        "exists": true,
+        "sha256": "6cf86409f8248f6859864bf64d2a1e7f525cc96869b97246fc851e2f3af4fb28",
+        "size": 5389,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1784643732000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/estrutura/home_sidebar_mobile_banner_slot.cfm",
+      "sha256": "5bc8888d6b8ef3cc0b51225b551f1d8aafcc1d6c8d933057614a4dba3d1e86d3",
+      "size": 5142,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/estrutura/home_sidebar_mobile_banner_slot.cfm",
+        "exists": true,
+        "sha256": "cf771c0999326504bdde8a518e0e02bfad654186cd361022790bb84f05d23c7f",
+        "size": 4921,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1787270995000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "includes/modal/modal_youtube.cfm",
+      "sha256": "0c7f36ac73ac0873f08b2946a150a949f6aba0b656eac1677938ee03329d7e48",
+      "size": 6334,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "includes/modal/modal_youtube.cfm",
+        "exists": true,
+        "sha256": "b60549c406e3f1d0b58d559fc8e8740cc0c912b20368cd7125ed039ee45d13eb",
+        "size": 5463,
+        "mode": 420,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1784643732000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    },
+    {
+      "path": "index.cfm",
+      "sha256": "af81f93cce7935307fc4f3e5bebf5eebbc3273279daf29baab757bff38c09ac5",
+      "size": 75841,
+      "action": "replace-if-baseline-matches",
+      "baseline": {
+        "path": "index.cfm",
+        "exists": true,
+        "sha256": "423dae65aabb53bc52f3640c8c6e812656fb1aaa4253123bdb079c6ecfe26f04",
+        "size": 75604,
+        "mode": 493,
+        "uid": 0,
+        "gid": 0,
+        "mtimeNs": 1786839093000000000
+      },
+      "plannedRuntimeMetadata": {
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "contentDecision": "copy-exact-reviewed-local-source"
+    }
+  ]
+}

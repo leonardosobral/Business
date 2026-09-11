@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared-awaiting-explicit-transfer-authorization-not-deployed",
+  "targetHost": "ssh.runnerhub.run",
+  "targetRoot": "/var/www/business.roadrunners.run",
+  "notes": [
+    "Only Business runtime, guard before SQL and menu last",
+    "No RoadRunners, Apache, auth, database migration, retention job or collection activation",
+    "Remote baselines must be checked again immediately before publication"
+  ],
+  "files": [
+    {
+      "path": "portal/audiencia/queries/.htaccess",
+      "sha256": "ee3276aea9a68b0453d91bb5456d8947b2dd6780a18a344af9c0b370933163a1",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/filter.sql",
+      "sha256": "139bbacf39f268a688dcb399d14af3286c684d5a6877af0784b3e52082c28676",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/summary.sql",
+      "sha256": "1daf2290b04b9d54e2b7e9b7c67685b6b57b624e2857b68d6904cbe5df73fe64",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/inventory.sql",
+      "sha256": "1d6ad43cb539fde8bc0447dd88c2883057f378387d20a0fbcc0ac6e83a85c65a",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/regions.sql",
+      "sha256": "6e5ef59a0e8aa614902384fdd1dd64cdbf39de3326fc377ea265a80811e4fa5f",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/content.sql",
+      "sha256": "4994772bec042e7b848f91e23dd4ee76e848a7bfffb049be8d03abeded4ac3b7",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/acquisition.sql",
+      "sha256": "918a944ebdbae03a77d8da42b6ddf3cbd5a759dc82d93e87190509b0b83cf955",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/daily.sql",
+      "sha256": "4d28d4a77dbe7adf383d284d3d94c24cdec360ff2229828bb6b6c6eac3b1a6a2",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/queries/coverage.sql",
+      "sha256": "9fe8d8d47139e46c9943f7b5b15aed2512b2e78ad74dc9a4cb7d901d26f4cc5f",
+      "before": null
+    },
+    {
+      "path": "assets/css/audience-dashboard.css",
+      "sha256": "c6c36d93f186d43cb8615cb1398fb9f9e274044e5113324b38f6889a0b9569d0",
+      "before": null
+    },
+    {
+      "path": "assets/js/audience-dashboard.js",
+      "sha256": "6b9f89c922903c55f1d0c511f798c9c55eedfe63d89b35651d335f7f8bd2ee2e",
+      "before": null
+    },
+    {
+      "path": "portal/includes/audience_backend.cfm",
+      "sha256": "9982c1e1ca16f0a0b9615c9ffa75d63a49e5a92d7897843000f4790a61b31800",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/home.cfm",
+      "sha256": "6d00df41a82056150fb0fb7540cf346f3069abe72989bbe582312a168bc357c5",
+      "before": null
+    },
+    {
+      "path": "portal/audiencia/index.cfm",
+      "sha256": "953a7ec442c874814031860459bd38d369a00dc484904dd1f9c8750794a7e488",
+      "before": null
+    },
+    {
+      "path": "includes/estrutura/sidenav.cfm",
+      "sha256": "0664c5a17bcafb5d4440f1b8a7327f65aa97c8976bf6b17f8a995caf15fa5ac4",
+      "before": {
+        "sha256": "77fee4b002de40ce24dd6d4168213c97e807aaed3117df4ca08c73073a9581a4",
+        "mode": 420,
+        "uid": 501,
+        "gid": 50
+      }
+    }
+  ],
+  "authBaseline": {
+    "Application.cfc": "7320a875a9055dda24cd709fb2edc65aa37f96e1b41df0e363eb956c14a01ec8",
+    "includes/backend/backend_login.cfm": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0"
+  }
+}
