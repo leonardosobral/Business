@@ -40,6 +40,114 @@
     opacity: .28;
   }
 
+  .business-meet-topbar-item {
+    align-items: center;
+    display: flex;
+  }
+
+  .business-meet-topbar-link {
+    align-items: center;
+    background: rgba(255, 255, 255, .045);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, .82) !important;
+    display: inline-flex;
+    font-family: inherit;
+    gap: .38rem;
+    margin: 0 .35rem;
+    min-height: 2.15rem;
+    padding: .22rem .55rem !important;
+    transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+  }
+
+  .business-meet-topbar-link:hover,
+  .business-meet-topbar-link:focus {
+    background: rgba(52, 168, 83, .14);
+    border-color: rgba(82, 210, 119, .45);
+    color: #fff !important;
+  }
+
+  .business-meet-topbar-link.disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  .business-meet-topbar-status {
+    background: #8b949e;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .12);
+    flex: 0 0 .62rem;
+    height: .62rem;
+    width: .62rem;
+  }
+
+  .business-meet-topbar-item.is-active .business-meet-topbar-status {
+    background: #52d273;
+    box-shadow: 0 0 0 1px rgba(82, 210, 115, .3), 0 0 .5rem rgba(82, 210, 115, .45);
+  }
+
+  .business-meet-topbar-item.is-warning .business-meet-topbar-status {
+    background: #fab120;
+  }
+
+  .business-meet-topbar-item.is-error .business-meet-topbar-status {
+    background: #ef6c72;
+  }
+
+  .business-meet-topbar-label {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  .business-meet-topbar-avatars {
+    align-items: center;
+    display: flex;
+    padding-left: .15rem;
+  }
+
+  .business-meet-topbar-avatar {
+    align-items: center;
+    border: 2px solid #333;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 1.65rem;
+    font-size: .57rem;
+    font-weight: 800;
+    height: 1.65rem;
+    justify-content: center;
+    letter-spacing: -.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    width: 1.65rem;
+  }
+
+  .business-meet-topbar-avatar + .business-meet-topbar-avatar {
+    margin-left: -.42rem;
+  }
+
+  .business-meet-topbar-avatar-tone-0 { background: #3568d4; }
+  .business-meet-topbar-avatar-tone-1 { background: #8b5cc7; }
+  .business-meet-topbar-avatar-tone-2 { background: #168b75; }
+  .business-meet-topbar-avatar-tone-3 { background: #b45c46; }
+  .business-meet-topbar-avatar-tone-4 { background: #60758d; }
+  .business-meet-topbar-avatar-overflow { background: #59616b; }
+
+  .business-meet-topbar-count {
+    align-items: center;
+    background: rgba(82, 210, 115, .16);
+    border-radius: 999px;
+    color: #9ce8b1;
+    display: none;
+    font-size: .68rem;
+    font-weight: 800;
+    justify-content: center;
+    min-width: 1.35rem;
+    padding: .14rem .32rem;
+  }
+
   .business-navbar-account-context {
     align-items: center;
     display: flex;
@@ -113,6 +221,22 @@
     .business-navbar-account-name {
       max-width: 42vw;
     }
+
+    .business-meet-topbar-link {
+      gap: .28rem;
+      margin-left: .15rem;
+      margin-right: .15rem;
+      padding-left: .42rem !important;
+      padding-right: .42rem !important;
+    }
+
+    .business-meet-topbar-avatars {
+      display: none;
+    }
+
+    .business-meet-topbar-count:not([hidden]) {
+      display: inline-flex;
+    }
   }
 </style>
 
@@ -160,6 +284,20 @@
                             <span class="badge rounded-pill badge-notification bg-danger"><cfoutput>#VARIABLES.businessPendingTasksTotal#</cfoutput></span>
                         </cfif>
                     </span>
+                </li>
+            </cfif>
+            <cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+                <li class="nav-item business-meet-topbar-item" id="businessMeetTopbar"
+                    data-status-url="/administracao/meet/status.cfm" data-poll-ms="20000">
+                    <button class="nav-link business-meet-topbar-link disabled" id="businessMeetTopbarJoin"
+                       type="button" disabled aria-disabled="true"
+                       aria-label="Verificando a sala virtual" title="Verificando a sala virtual…">
+                        <span class="business-meet-topbar-status" id="businessMeetTopbarStatus" aria-hidden="true"></span>
+                        <i class="fa-solid fa-video" aria-hidden="true"></i>
+                        <span class="business-meet-topbar-label d-none d-xl-inline">Meet</span>
+                        <span class="business-meet-topbar-avatars" id="businessMeetTopbarAvatars" aria-hidden="true"></span>
+                        <span class="business-meet-topbar-count" id="businessMeetTopbarCount" hidden></span>
+                    </button>
                 </li>
             </cfif>
             <!-- Notification dropdown -->
@@ -297,6 +435,10 @@
     </div>
     <!-- Container wrapper -->
 </nav>
+
+<cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+    <script src="/assets/js/business-meet-room.js?v=2026091004" defer></script>
+</cfif>
 
 <cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
     <cfset VARIABLES.businessAccountModalRequired = false/>

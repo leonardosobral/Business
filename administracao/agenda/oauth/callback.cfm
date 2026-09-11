@@ -18,7 +18,7 @@ try {
         identity=agendaHttp("https://openidconnect.googleapis.com/v1/userinfo","GET",{},{},token.data.access_token);
         if (identity.status!=200 || !structKeyExists(identity.data,"email") || !structKeyExists(identity.data,"email_verified") || !identity.data.email_verified || !structKeyExists(identity.data,"sub") || compareNoCase(identity.data.email,c.email)!=0) agendaFail("Conecte exclusivamente a conta contato@runnerhub.run.");
         if (!structKeyExists(token.data,"scope")) agendaFail("O Google não informou as permissões autorizadas.");
-        for (scope in ["https://www.googleapis.com/auth/calendar.calendarlist.readonly","https://www.googleapis.com/auth/calendar.events.owned"]) if (!listFind(token.data.scope,scope," ")) agendaFail("Autorize as duas permissões de Agenda solicitadas.");
+        for (scope in ["https://www.googleapis.com/auth/calendar.calendarlist.readonly","https://www.googleapis.com/auth/calendar.events.owned","https://www.googleapis.com/auth/meetings.space.readonly"]) if (!listFind(token.data.scope,scope," ")) agendaFail("Autorize todas as permissões de Agenda e Google Meet solicitadas.");
         if (!structKeyExists(token.data,"refresh_token") || !len(token.data.refresh_token)) agendaFail("O Google não forneceu acesso offline. Remova a autorização antiga na Conta Google e conecte novamente.");
         audit=agendaAudit("connect");
         transaction {

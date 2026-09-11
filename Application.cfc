@@ -67,6 +67,8 @@
         <cfset var trelloApiKey = structKeyExists(environment, "RR_TRELLO_API_KEY") ? trim(environment["RR_TRELLO_API_KEY"]) : (structKeyExists(businessLocalConfig, "trelloApiKey") ? trim(businessLocalConfig.trelloApiKey) : "")/>
         <cfset var trelloApiToken = structKeyExists(environment, "RR_TRELLO_API_TOKEN") ? trim(environment["RR_TRELLO_API_TOKEN"]) : (structKeyExists(businessLocalConfig, "trelloApiToken") ? trim(businessLocalConfig.trelloApiToken) : "")/>
         <cfset var trelloTimeoutSeconds = structKeyExists(environment, "RR_TRELLO_TIMEOUT_SECONDS") ? val(environment["RR_TRELLO_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "trelloTimeoutSeconds") ? val(businessLocalConfig.trelloTimeoutSeconds) : 20)/>
+        <cfset var googleMeetRoom = structKeyExists(environment, "RR_GOOGLE_MEET_ROOM") ? trim(environment["RR_GOOGLE_MEET_ROOM"]) : (structKeyExists(businessLocalConfig, "googleMeetRoom") ? trim(businessLocalConfig.googleMeetRoom) : "")/>
+        <cfset var googleMeetCacheSeconds = structKeyExists(environment, "RR_GOOGLE_MEET_CACHE_SECONDS") ? val(environment["RR_GOOGLE_MEET_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "googleMeetCacheSeconds") ? val(businessLocalConfig.googleMeetCacheSeconds) : 15)/>
         <cfif NOT len(pushDispatchSecret)
             AND structKeyExists(cronSecrets, "road_runners_handoff")
             AND len(trim(cronSecrets.road_runners_handoff & ""))>
@@ -152,7 +154,11 @@
         </cfloop>
         <cfset APPLICATION.googleCalendar.redirectUri = "https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm"/>
         <cfset APPLICATION.googleCalendar.email = "contato@runnerhub.run"/>
-        <cfset APPLICATION.googleCalendar.scopes = "openid email https://www.googleapis.com/auth/calendar.calendarlist.readonly https://www.googleapis.com/auth/calendar.events.owned"/>
+        <cfset APPLICATION.googleCalendar.scopes = "openid email https://www.googleapis.com/auth/calendar.calendarlist.readonly https://www.googleapis.com/auth/calendar.events.owned https://www.googleapis.com/auth/meetings.space.readonly"/>
+        <cfset APPLICATION.googleMeet = {
+            room = googleMeetRoom,
+            cacheSeconds = min(60, max(5, int(googleMeetCacheSeconds GT 0 ? googleMeetCacheSeconds : 15)))
+        }/>
 
         <!--- Return out. --->
         <cfreturn true />

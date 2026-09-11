@@ -82,6 +82,7 @@ Os importadores abaixo sao bons candidatos, mas hoje os arquivos em `/admin/` ex
 | Corrida no Ar | `https://conteudo.roadrunners.run/admin/importer_corridanoar` | `https://conteudo.roadrunners.run/api/admin/importers/corridanoar.cfm` | 60 min |
 | Contra Relogio | `https://conteudo.roadrunners.run/admin/importer_contrarelogio` | `https://conteudo.roadrunners.run/api/admin/importers/contrarelogio.cfm` | 60 min |
 | Jornal da Corrida | `https://conteudo.roadrunners.run/admin/importer_jornalcorrida` | `https://conteudo.roadrunners.run/api/admin/importers/jornalcorrida.cfm` | 60 min; cadastro em `administracao/cron-jobs/jornalcorrida_import_job.sql` |
+| SixComm | `https://conteudo.roadrunners.run/admin/importer_sixcomm_email` | `https://conteudo.roadrunners.run/api/admin/importers/sixcomm.cfm` | 15 min; cadastro em `administracao/cron-jobs/sixcomm_import_job.sql` |
 | Correria Campinas | `https://conteudo.roadrunners.run/admin/importer_correriacampinas` | `https://conteudo.roadrunners.run/api/admin/importers/correriacampinas.cfm` | 120 min |
 | CBAt Corrida de Rua | `https://conteudo.roadrunners.run/admin/importer_cbat_corridaderua` | `https://conteudo.roadrunners.run/api/admin/importers/cbat-corrida-de-rua.cfm` | 180 min |
 

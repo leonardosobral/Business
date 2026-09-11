@@ -246,9 +246,12 @@ Projeto Conteudo:
 - `https://conteudo.roadrunners.run/admin/importer_corridanoar`
 - `https://conteudo.roadrunners.run/admin/importer_contrarelogio`
 - `https://conteudo.roadrunners.run/admin/importer_jornalcorrida`
+- `https://conteudo.roadrunners.run/admin/importer_sixcomm_email`
 - `https://conteudo.roadrunners.run/admin/importer_correriacampinas`
 
 O job do Jornal da Corrida pode ser cadastrado ou atualizado de forma idempotente com `administracao/cron-jobs/jornalcorrida_import_job.sql`. Ele executa a cada 60 minutos, usa HMAC com `secret_ref = conteudo_internal`, atribui os autores importados a Roberta Palma (ID 28) e envia novos conteúdos para a fila de curadoria.
+
+O job do SixComm fica em `administracao/cron-jobs/sixcomm_import_job.sql`. Ele consulta a caixa a cada 15 minutos, usa a mesma referência HMAC e envia os releases autenticados para a curadoria do canal SixComm. Configure e teste a senha de aplicativo na tela do News antes de aplicar esse SQL.
 
 Ao publicar conteúdos importados pela curadoria, o Business prioriza a data canônica registrada em `news.tb_content_imports.detail_json` e a reaplica em `news.tb_content.published_at`, inclusive para corrigir itens importados antes deste ajuste. A data atual só é aplicada a conteúdos sem metadados de importação e sem data de publicação.
 

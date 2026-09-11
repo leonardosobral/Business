@@ -12,6 +12,13 @@ public class GoogleAgendaCfmlCheck {
         try {
             String service=Files.readString(root.resolve("administracao/agenda/includes/service.cfm"));
             engine.eval(service.replace("<cfscript>","").replace("</cfscript>",""));
+            String meetService=Files.readString(root.resolve("administracao/meet/includes/service.cfm"));
+            engine.eval(meetService.replace("<cfscript>","").replace("</cfscript>",""));
+            String meetEndpoint=Files.readString(root.resolve("administracao/meet/status.cfm"));
+            meetEndpoint=meetEndpoint.substring(meetEndpoint.indexOf("<cfscript>")+10,meetEndpoint.indexOf("</cfscript>"));
+            int meetEndpointBody=meetEndpoint.indexOf("statusMeetingUri =");
+            engine.eval(meetEndpoint.substring(0,meetEndpointBody));
+            engine.eval("function compileMeetEndpointOnly() {"+meetEndpoint.substring(meetEndpointBody)+"}");
             String api=Files.readString(root.resolve("administracao/agenda/api.cfm"));
             api=api.substring(api.indexOf("<cfscript>")+10,api.lastIndexOf("\ntry {"));
             engine.eval(api);
@@ -19,7 +26,8 @@ public class GoogleAgendaCfmlCheck {
             callback=callback.substring(callback.indexOf("<cfscript>")+10,callback.indexOf("</cfscript>"));
             engine.eval("function compileCallbackOnly() {"+callback+"}");
             engine.eval(Files.readString(root.resolve("_codex/tests/google-agenda-service.cfscript")));
-            System.out.println("PASS: service/API/OAuth compile and offline backend regressions");
+            engine.eval(Files.readString(root.resolve("_codex/tests/google-meet-room-service.cfscript")));
+            System.out.println("PASS: Agenda/Meet services, endpoints, API/OAuth compile and offline backend regressions");
             System.exit(0);
         } catch(Exception ex) { ex.printStackTrace();System.exit(1); }
     }

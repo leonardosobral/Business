@@ -2,6 +2,8 @@
 
 Módulo: `/administracao/agenda/`. Conta autorizada: **contato@runnerhub.run**.
 
+A mesma conexão OAuth também fornece a credencial de leitura usada pelo card da sala virtual no dashboard dos administradores globais. A configuração específica da sala está documentada em [`google-meet-room.md`](google-meet-room.md).
+
 O código implementa OAuth 2.0 com PKCE, agenda mensal/semanal/lista, busca no período, criação/edição/exclusão, eventos de dia inteiro, participantes, recorrências e vínculo com cartões do Kanban. O Google mantém os eventos; o banco local guarda a conexão criptografada, as agendas habilitadas, os vínculos e a auditoria. Nenhum evento é publicado no portal de provas.
 
 ## Ativação no servidor
@@ -21,7 +23,7 @@ O código implementa OAuth 2.0 com PKCE, agenda mensal/semanal/lista, busca no p
    Como alternativa, mescle estes campos no struct existente de `config/business.local.cfm`, ignorado pelo Git: `googleCalendarClientId`, `googleCalendarClientSecret`, `googleCalendarTokenKey`. Não substitua as outras configurações. Consulte `config/business.local.example.cfm`. Variáveis de ambiente têm precedência.
 4. Reinicie a aplicação ColdFusion pelo procedimento administrativo do servidor. Não é necessário reiniciar a conta Google.
 5. Acesse `https://business.roadrunners.run/administracao/agenda/` como administrador do Business e clique em **Conectar Google**.
-6. Entre com **contato@runnerhub.run** e conceda todas as permissões solicitadas. O módulo rejeita outro e-mail e exige e-mail verificado pelo Google.
+6. Entre com **contato@runnerhub.run** e conceda todas as permissões solicitadas, incluindo a leitura de espaços do Google Meet. O módulo rejeita outro e-mail e exige e-mail verificado pelo Google.
 7. Abra **Configurar agendas**, marque as agendas que os administradores poderão operar e salve. A seleção é compartilhada entre os administradores do Business.
 8. Faça um teste com um compromisso sem participantes: criar, confirmar no Google, editar no Google, atualizar no Business, editar no Business e excluir. Depois teste um cartão pelo botão **Agendar**. Só use participantes reais quando desejar enviar os convites.
 
@@ -31,8 +33,8 @@ O código por si só não configura o servidor nem autoriza a conta. A validaç�
 
 - Cliente OAuth: **Aplicativo da Web**.
 - URI de retorno exata: `https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm`.
-- API: **Google Calendar API**, habilitada no projeto desse cliente.
-- Escopos: `openid`, `email`, `https://www.googleapis.com/auth/calendar.calendarlist.readonly`, `https://www.googleapis.com/auth/calendar.events.owned`.
+- APIs: **Google Calendar API** e, quando o card da sala virtual for usado, **Google Meet REST API**, habilitadas no projeto desse cliente.
+- Escopos: `openid`, `email`, `https://www.googleapis.com/auth/calendar.calendarlist.readonly`, `https://www.googleapis.com/auth/calendar.events.owned`, `https://www.googleapis.com/auth/meetings.space.readonly`.
 - Agendas compartilhadas em que a conta não seja proprietária não são habilitadas nesta versão. O escopo solicitado corresponde às agendas próprias, conforme o planejamento inicial.
 - Se o aplicativo for Externo/Testing, adicione a conta como test user; o refresh token para esses escopos expira em sete dias. Para operação contínua, configure o público/publicação apropriados e atenda à verificação que o Google exigir. Para um app interno de uma organização Workspace, use Internal quando disponível. O administrador Workspace pode precisar liberar o cliente.
 
@@ -64,7 +66,7 @@ O código por si só não configura o servidor nem autoriza a conta. A validaç�
 - A agenda selecionada é validada tanto na lista local quanto no Google antes de acessar eventos. Toda mutação registra o administrador do Business. A autoria exibida pelo Google é da conta compartilhada.
 - Os registros de auditoria começam como `pending` antes da escrita remota e terminam como `success` ou `failed`. Um `pending` após uma interrupção ou `failed` após uma falha de rede exige conferir o Google antes de concluir que a alteração não aconteceu. A auditoria não armazena conteúdo dos eventos ou participantes.
 - Operações da integração são serializadas por um lock da aplicação, protegendo renovação de tokens, conexão, seleção de agendas e reservas de cartões. Este mecanismo pressupõe uma única instância ColdFusion; múltiplas instâncias exigem lock distribuído antes de habilitar escritas concorrentes.
-- Desconectar remove o refresh token local e tenta revogá-lo no Google. Se a revogação falhar, a tela orienta remover o acesso em Conta Google → Segurança → Conexões com apps de terceiros. Os eventos e vínculos são preservados.
+- Desconectar remove o refresh token local e tenta revogá-lo no Google. Se a revogação falhar, a tela orienta remover o acesso em Conta Google → Segurança → Conexões com apps de terceiros. Os eventos e vínculos são preservados, mas o card da sala virtual deixa de conseguir consultar presença até a reconexão.
 
 ## Verificação reproduzível
 
@@ -78,4 +80,4 @@ NODE_PATH=/tmp/runnerhub-agenda-test/node_modules node --test _codex/tests/googl
 
 `GoogleAgendaCfmlCheck.java` compila as funções CFML da API, serviço e callback e executa `google-agenda-service.cfscript` com fronteiras externas simuladas. Requer Java, Lucee 6.2.1.122 e os JARs Servlet API 4.0.1/JSP API 2.3.3 no classpath. Passe a raiz do repositório e uma pasta temporária gravável como argumentos. Este teste não substitui a homologação na versão ColdFusion do servidor.
 
-Referências: [OAuth Web Server](https://developers.google.com/identity/protocols/oauth2/web-server), [escopos Calendar](https://developers.google.com/workspace/calendar/api/auth), [criar eventos e notificações](https://developers.google.com/workspace/calendar/api/v3/reference/events/insert), [atualizar eventos](https://developers.google.com/workspace/calendar/api/v3/reference/events/update).
+Referências: [OAuth Web Server](https://developers.google.com/identity/protocols/oauth2/web-server), [escopos Calendar](https://developers.google.com/workspace/calendar/api/auth), [autorização do Meet](https://developers.google.com/workspace/meet/api/guides/authenticate-authorize), [criar eventos e notificações](https://developers.google.com/workspace/calendar/api/v3/reference/events/insert), [atualizar eventos](https://developers.google.com/workspace/calendar/api/v3/reference/events/update).

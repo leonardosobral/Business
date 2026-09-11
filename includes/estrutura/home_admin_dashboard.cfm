@@ -540,6 +540,46 @@
         word-break: break-word;
     }
 
+    .business-meet-room-card {
+        background:
+            radial-gradient(circle at 88% 15%, rgba(52, 168, 83, .16), transparent 34%),
+            var(--mdb-card-bg);
+    }
+
+    .business-meet-room-card .business-meet-room-icon {
+        align-items: center;
+        background: rgba(52, 168, 83, .14);
+        border: 1px solid rgba(52, 168, 83, .28);
+        border-radius: .75rem;
+        color: #78d995;
+        display: inline-flex;
+        flex: 0 0 2.7rem;
+        height: 2.7rem;
+        justify-content: center;
+        width: 2.7rem;
+    }
+
+    .business-meet-room-card .business-meet-room-people {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .45rem;
+    }
+
+    .business-meet-room-card .business-meet-room-person {
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .12);
+        border-radius: 999px;
+        color: var(--mdb-body-color);
+        display: inline-flex;
+        font-size: .78rem;
+        line-height: 1.2;
+        max-width: 18rem;
+        overflow: hidden;
+        padding: .42rem .68rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     .business-admin-status-metrics {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -648,6 +688,39 @@
                     </cfif>
                 </div>
             </cfif>
+        </div>
+    </div>
+</section>
+
+<section class="col-12 business-admin-home business-page"
+         id="businessMeetRoom"
+         data-status-url="/administracao/meet/status.cfm"
+         data-poll-ms="20000">
+    <div class="card business-page-card business-meet-room-card">
+        <div class="card-body business-page-body">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3">
+                <div class="d-flex gap-3 align-items-start">
+                    <span class="business-meet-room-icon" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
+                    <div>
+                        <div class="admin-home-label mb-1">Comunicação</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                            <h5 class="mb-0">Sala virtual da equipe</h5>
+                            <span class="badge rounded-pill badge-secondary" id="businessMeetBadge">Verificando…</span>
+                        </div>
+                        <p class="text-muted mb-1" id="businessMeetSummary" role="status" aria-live="polite">Consultando o Google Meet…</p>
+                        <small class="text-muted" id="businessMeetUpdated"></small>
+                    </div>
+                </div>
+                <div class="business-page-actions">
+                    <button class="btn btn-sm btn-success disabled" id="businessMeetJoin" type="button" disabled aria-disabled="true">
+                        <i class="fa-solid fa-right-to-bracket me-1"></i>Entrar na sala
+                    </button>
+                    <button class="btn btn-sm btn-outline-light" id="businessMeetRefresh" type="button" aria-label="Atualizar presença na sala">
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="business-meet-room-people mt-3" id="businessMeetPeople" role="list" aria-label="Pessoas conectadas" hidden></div>
         </div>
     </div>
 </section>

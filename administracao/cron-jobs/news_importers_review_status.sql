@@ -15,6 +15,7 @@ SET request_body = (
 WHERE endpoint_url IN (
     'https://conteudo.roadrunners.run/api/admin/importers/contrarelogio.cfm',
     'https://conteudo.roadrunners.run/api/admin/importers/jornalcorrida.cfm',
+    'https://conteudo.roadrunners.run/api/admin/importers/sixcomm.cfm',
     'https://conteudo.roadrunners.run/api/admin/importers/corridanoar.cfm',
     'https://conteudo.roadrunners.run/api/admin/importers/cbat.cfm',
     'https://conteudo.roadrunners.run/api/admin/importers/cbat-corrida-de-rua.cfm'

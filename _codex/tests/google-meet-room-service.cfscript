@@ -1,0 +1,34 @@
+application.googleMeet={room="https://meet.google.com/abc-defg-hij?authuser=1",cacheSeconds=15};
+variables.roomConfig=meetRoomConfig();
+check(variables.roomConfig.configured,"Meet room configured");
+check(variables.roomConfig.meetingCode=="abc-defg-hij","Meeting code normalized");
+check(variables.roomConfig.meetingUri=="https://meet.google.com/abc-defg-hij","Meeting URI canonicalized");
+
+application.googleMeet.room="https://meet.google.com.evil.test/abc-defg-hij";
+rejects(function(){meetRoomConfig();},"válido");
+
+variables.signedInParticipant=meetRoomParticipant({
+    name="conferenceRecords/test/participants/one",
+    signedinUser={displayName="  Ana  "}
+});
+check(variables.signedInParticipant.displayName=="Ana","Signed-in display name normalized");
+check(variables.signedInParticipant.type=="signed_in","Signed-in participant type");
+check(reFind("^[0-9a-f]{64}$",variables.signedInParticipant.id)>0,"Participant resource is irreversibly hashed");
+
+variables.anonymousParticipant=meetRoomParticipant({anonymousUser={displayName="Visitante"}});
+check(variables.anonymousParticipant.displayName=="Visitante","Anonymous display name supported");
+check(variables.anonymousParticipant.type=="anonymous","Anonymous participant type");
+check(meetRoomParticipantIsActive({signedinUser={displayName="Ana"}}),"Participant without latest end is active");
+check(!meetRoomParticipantIsActive({signedinUser={displayName="Ana"},latestEndTime="2026-09-10T13:00:00Z"}),"Participant with latest end has left");
+
+variables.jsonContract=serializeJSON({"success"=false,"meetingUri"="https://meet.google.com/abc-defg-hij","message"="Teste"});
+check(find('"success"',variables.jsonContract)>0,"JSON success key casing preserved");
+check(find('"meetingUri"',variables.jsonContract)>0,"JSON meetingUri key casing preserved");
+check(find('"message"',variables.jsonContract)>0,"JSON message key casing preserved");
+
+variables.queryParams={"pageSize"=250};
+variables.queryParams["pageToken"]="next";
+variables.queryParamNames=[];
+for(variables.queryParamName in variables.queryParams) arrayAppend(variables.queryParamNames,variables.queryParamName);
+check(arrayFind(variables.queryParamNames,"pageSize")>0,"Google pageSize query casing preserved");
+check(arrayFind(variables.queryParamNames,"pageToken")>0,"Google pageToken query casing preserved");
