@@ -7,8 +7,8 @@
     <div class="card shadow-0 overflow-hidden h-100">
         <div class="card-header bg-black bg-opacity-25 d-flex flex-wrap gap-2 justify-content-between align-items-center">
             <div>
-                <h5 class="mb-0">Cron Jobs Status</h5>
-                <small class="text-muted">Agendamentos e estado das últimas execuções</small>
+                <h2 class="mb-0">Rotinas automáticas</h2>
+                <small class="text-muted">Cron jobs · Agendamentos e últimas execuções</small>
             </div>
             <div class="d-flex flex-wrap gap-2 align-items-center">
                 <a class="btn btn-sm btn-outline-warning" href="/administracao/cron-jobs/">Gerenciar</a>
@@ -20,7 +20,7 @@
 
         <div class="card-body">
             <cfif VARIABLES.businessAdminHomeCronLoaded>
-                <div class="row g-2 business-admin-status-metrics">
+                <div class="row g-2 business-admin-status-metrics gd-cron-metrics">
                     <div class="col-3">
                         <a class="border rounded-4 h-100 d-block text-reset text-decoration-none business-admin-status-metric" href="/administracao/cron-jobs/">
                             <small class="text-muted d-block">Total</small>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-3">
                         <a class="border border-warning rounded-4 h-100 d-block text-reset text-decoration-none business-admin-status-metric" href="/administracao/cron-jobs/?status=vencidos">
-                            <small class="text-muted d-block">Vencidos</small>
+                            <small class="text-muted d-block">A executar</small>
                             <strong class="fs-3 text-warning"><cfoutput>#numberFormat(VARIABLES.businessAdminHomeCronDue, "9")#</cfoutput></strong>
                         </a>
                     </div>
@@ -46,6 +46,7 @@
                         </a>
                     </div>
                 </div>
+                <p class="gd-infra-note">A executar: rotinas ativas cujo horário programado já chegou. Com erro: última execução falhou. Uma rotina pode aparecer nos dois grupos.</p>
             <cfelse>
                 <div class="alert alert-info mb-0">
                     <cfif VARIABLES.businessAdminHomeHasCronTables>
