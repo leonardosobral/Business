@@ -69,6 +69,10 @@
         <cfset var trelloTimeoutSeconds = structKeyExists(environment, "RR_TRELLO_TIMEOUT_SECONDS") ? val(environment["RR_TRELLO_TIMEOUT_SECONDS"]) : (structKeyExists(businessLocalConfig, "trelloTimeoutSeconds") ? val(businessLocalConfig.trelloTimeoutSeconds) : 20)/>
         <cfset var googleMeetRoom = structKeyExists(environment, "RR_GOOGLE_MEET_ROOM") ? trim(environment["RR_GOOGLE_MEET_ROOM"]) : (structKeyExists(businessLocalConfig, "googleMeetRoom") ? trim(businessLocalConfig.googleMeetRoom) : "")/>
         <cfset var googleMeetCacheSeconds = structKeyExists(environment, "RR_GOOGLE_MEET_CACHE_SECONDS") ? val(environment["RR_GOOGLE_MEET_CACHE_SECONDS"]) : (structKeyExists(businessLocalConfig, "googleMeetCacheSeconds") ? val(businessLocalConfig.googleMeetCacheSeconds) : 15)/>
+        <cfset var googleDriveRootName = structKeyExists(environment, "RR_GOOGLE_DRIVE_ROOT_NAME") ? trim(environment["RR_GOOGLE_DRIVE_ROOT_NAME"]) : (structKeyExists(businessLocalConfig, "googleDriveRootName") ? trim(businessLocalConfig.googleDriveRootName) : "RunnerHub Business")/>
+        <cfset var googleDriveMaxUploadBytes = structKeyExists(environment, "RR_GOOGLE_DRIVE_MAX_UPLOAD_BYTES") ? val(environment["RR_GOOGLE_DRIVE_MAX_UPLOAD_BYTES"]) : (structKeyExists(businessLocalConfig, "googleDriveMaxUploadBytes") ? val(businessLocalConfig.googleDriveMaxUploadBytes) : 26214400)/>
+        <cfset var googleDrivePickerApiKey = structKeyExists(environment, "RR_GOOGLE_DRIVE_PICKER_API_KEY") ? trim(environment["RR_GOOGLE_DRIVE_PICKER_API_KEY"]) : (structKeyExists(businessLocalConfig, "googleDrivePickerApiKey") ? trim(businessLocalConfig.googleDrivePickerApiKey) : "")/>
+        <cfset var googleDriveAppId = structKeyExists(environment, "RR_GOOGLE_DRIVE_APP_ID") ? trim(environment["RR_GOOGLE_DRIVE_APP_ID"]) : (structKeyExists(businessLocalConfig, "googleDriveAppId") ? trim(businessLocalConfig.googleDriveAppId) : "")/>
         <cfif NOT len(pushDispatchSecret)
             AND structKeyExists(cronSecrets, "road_runners_handoff")
             AND len(trim(cronSecrets.road_runners_handoff & ""))>
@@ -154,10 +158,17 @@
         </cfloop>
         <cfset APPLICATION.googleCalendar.redirectUri = "https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm"/>
         <cfset APPLICATION.googleCalendar.email = "contato@runnerhub.run"/>
-        <cfset APPLICATION.googleCalendar.scopes = "openid email https://www.googleapis.com/auth/calendar.calendarlist.readonly https://www.googleapis.com/auth/calendar.events.owned https://www.googleapis.com/auth/meetings.space.readonly"/>
+        <cfset APPLICATION.googleCalendar.scopes = "openid email https://www.googleapis.com/auth/calendar.calendarlist.readonly https://www.googleapis.com/auth/calendar.events.owned https://www.googleapis.com/auth/meetings.space.readonly https://www.googleapis.com/auth/drive.file"/>
         <cfset APPLICATION.googleMeet = {
             room = googleMeetRoom,
             cacheSeconds = min(60, max(5, int(googleMeetCacheSeconds GT 0 ? googleMeetCacheSeconds : 15)))
+        }/>
+        <cfset APPLICATION.googleDrive = {
+            rootName = len(googleDriveRootName) ? left(googleDriveRootName, 255) : "RunnerHub Business",
+            maxUploadBytes = min(104857600, max(1048576, int(googleDriveMaxUploadBytes GT 0 ? googleDriveMaxUploadBytes : 26214400))),
+            pickerApiKey = googleDrivePickerApiKey,
+            appId = googleDriveAppId,
+            pickerConfigured = len(googleDrivePickerApiKey) GT 0 AND reFind("^[0-9]{6,32}$", googleDriveAppId) GT 0
         }/>
 
         <!--- Return out. --->

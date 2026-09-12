@@ -10,24 +10,37 @@
 <html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 <link rel="stylesheet" href="/administracao/agenda/assets/agenda.css?v=1"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260911-1"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 <cfinclude template="../../includes/estrutura/header.cfm"/>
-<main class="container-fluid px-3 px-lg-4 agenda-page" id="googleAgenda" data-csrf="<cfoutput>#encodeForHtmlAttribute(session.agendaCsrf)#</cfoutput>">
-    <header class="agenda-header">
-        <div><div class="text-muted small">Operação RunnerHub</div><h1 class="h3">Agenda Google</h1><p class="text-muted mb-0">contato@runnerhub.run · Horários de Brasília</p></div>
-        <div class="agenda-actions">
-            <a class="btn btn-outline-light" href="/administracao/kanban/">Kanban</a>
+<main class="container-fluid px-3 px-lg-4 business-page agenda-page admin-suite-page admin-suite-main" id="googleAgenda" data-csrf="<cfoutput>#encodeForHtmlAttribute(session.agendaCsrf)#</cfoutput>">
+    <header class="admin-suite-header">
+        <div class="admin-suite-heading">
+            <span class="admin-suite-heading-icon" aria-hidden="true"><i class="fa-regular fa-calendar"></i></span>
+            <div class="admin-suite-heading-copy">
+                <div class="admin-suite-kicker">Ferramentas administrativas</div>
+                <h1 class="admin-suite-title">Agenda</h1>
+                <p class="admin-suite-subtitle">Compromissos compartilhados · contato@runnerhub.run · Brasília</p>
+            </div>
+        </div>
+        <cfinclude template="../../includes/estrutura/admin_suite_nav.cfm"/>
+    </header>
+    <section class="admin-suite-commandbar" aria-label="Ações da Agenda">
+        <div class="admin-suite-status">
+            <i class="fa-solid fa-circle" aria-hidden="true"></i>
+            <span id="agendaStatus" role="status" aria-live="polite">Verificando conexão…</span>
+        </div>
+        <div class="agenda-actions admin-suite-actions">
             <button class="btn btn-outline-light" id="agendaConnect">Conectar Google</button>
             <button class="btn btn-outline-light" id="agendaSettings" disabled>Configurar agendas</button>
             <button class="btn btn-warning" id="agendaNew" disabled>Novo compromisso</button>
         </div>
-    </header>
+    </section>
     <cfif structKeyExists(session,"agendaMessage")>
         <p class="alert alert-info"><cfoutput>#encodeForHTML(session.agendaMessage)#</cfoutput></p>
         <cfset structDelete(session,"agendaMessage")/>
     </cfif>
-    <p id="agendaStatus" role="status" aria-live="polite">Verificando conexão…</p>
-    <section class="agenda-toolbar" aria-label="Filtros da agenda">
+    <section class="agenda-toolbar admin-suite-workbar" aria-label="Filtros da agenda">
         <label>Agenda<select id="agendaCalendar" class="form-select" disabled></select></label>
         <label>Visualização<select id="agendaView" class="form-select"><option value="month">Mês</option><option value="week">Semana</option><option value="list">Lista do mês</option></select></label>
         <label>Data<input id="agendaDate" type="date" class="form-control" required/></label>

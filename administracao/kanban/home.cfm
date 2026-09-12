@@ -1,18 +1,29 @@
 <div
-    class="business-page trello-kanban-page"
+    class="business-page trello-kanban-page admin-suite-page"
     id="trelloKanban"
     data-api-url="/administracao/kanban/api.cfm"
     data-csrf-token="<cfoutput>#encodeForHtmlAttribute(VARIABLES.trelloKanbanCsrf)#</cfoutput>"
     data-schema-ready="<cfoutput>#VARIABLES.trelloKanbanSchemaReady ? 'true' : 'false'#</cfoutput>"
     data-configured="<cfoutput>#VARIABLES.trelloKanbanConfigured ? 'true' : 'false'#</cfoutput>"
 >
-    <header class="trello-kanban-header mb-3">
-        <div>
-            <div class="trello-kanban-kicker">Operação RunnerHub</div>
-            <h1 class="business-page-title mb-1">Kanban dos departamentos</h1>
-            <p class="text-muted mb-0">Gerencie os quadros autorizados do Trello sem sair do Business.</p>
+    <header class="admin-suite-header">
+        <div class="admin-suite-heading">
+            <span class="admin-suite-heading-icon" aria-hidden="true"><i class="fa-brands fa-trello"></i></span>
+            <div class="admin-suite-heading-copy">
+                <div class="admin-suite-kicker">Ferramentas administrativas</div>
+                <h1 class="admin-suite-title">Kanban</h1>
+                <p class="admin-suite-subtitle">Quadros dos departamentos · Trello</p>
+            </div>
         </div>
-        <div class="business-page-actions">
+        <cfinclude template="../../includes/estrutura/admin_suite_nav.cfm"/>
+    </header>
+
+    <section class="admin-suite-commandbar" aria-label="Ações do Kanban">
+        <div class="admin-suite-status">
+            <i class="fa-solid fa-circle" aria-hidden="true"></i>
+            <span class="trello-kanban-status text-muted" data-kanban-status aria-live="polite">Preparando o painel…</span>
+        </div>
+        <div class="business-page-actions admin-suite-actions">
             <select class="form-select trello-kanban-board-select" data-kanban-board-select aria-label="Selecionar departamento">
                 <option value="">Carregando quadros…</option>
             </select>
@@ -29,7 +40,7 @@
                 <i class="fa-solid fa-gear me-2"></i>Quadros
             </button>
         </div>
-    </header>
+    </section>
 
     <cfif NOT VARIABLES.trelloKanbanSchemaReady>
         <div class="alert alert-warning" role="alert">
@@ -43,7 +54,6 @@
         </div>
     </cfif>
 
-    <div class="trello-kanban-status text-muted" data-kanban-status aria-live="polite">Preparando o painel…</div>
     <div class="trello-kanban-board" data-kanban-board aria-busy="true"></div>
 
     <dialog class="trello-kanban-dialog trello-kanban-card-dialog" data-kanban-card-dialog aria-labelledby="trelloKanbanCardTitle">

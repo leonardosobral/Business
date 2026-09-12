@@ -14,6 +14,8 @@ public class GoogleAgendaCfmlCheck {
             engine.eval(service.replace("<cfscript>","").replace("</cfscript>",""));
             String meetService=Files.readString(root.resolve("administracao/meet/includes/service.cfm"));
             engine.eval(meetService.replace("<cfscript>","").replace("</cfscript>",""));
+            String driveService=Files.readString(root.resolve("administracao/drive/includes/service.cfm"));
+            engine.eval(driveService.replace("<cfscript>","").replace("</cfscript>",""));
             String meetEndpoint=Files.readString(root.resolve("administracao/meet/status.cfm"));
             meetEndpoint=meetEndpoint.substring(meetEndpoint.indexOf("<cfscript>")+10,meetEndpoint.indexOf("</cfscript>"));
             int meetEndpointBody=meetEndpoint.indexOf("statusMeetingUri =");
@@ -22,12 +24,19 @@ public class GoogleAgendaCfmlCheck {
             String api=Files.readString(root.resolve("administracao/agenda/api.cfm"));
             api=api.substring(api.indexOf("<cfscript>")+10,api.lastIndexOf("\ntry {"));
             engine.eval(api);
+            String driveApi=Files.readString(root.resolve("administracao/drive/api.cfm"));
+            driveApi=driveApi.substring(driveApi.indexOf("<cfscript>")+10,driveApi.lastIndexOf("\ntry {"));
+            engine.eval(driveApi);
+            String driveDownload=Files.readString(root.resolve("administracao/drive/download.cfm"));
+            driveDownload=driveDownload.substring(driveDownload.indexOf("<cfscript>")+10,driveDownload.lastIndexOf("</cfscript>"));
+            engine.eval("function compileDriveDownloadOnly() {"+driveDownload+"}");
             String callback=Files.readString(root.resolve("administracao/agenda/oauth/callback.cfm"));
             callback=callback.substring(callback.indexOf("<cfscript>")+10,callback.indexOf("</cfscript>"));
             engine.eval("function compileCallbackOnly() {"+callback+"}");
             engine.eval(Files.readString(root.resolve("_codex/tests/google-agenda-service.cfscript")));
             engine.eval(Files.readString(root.resolve("_codex/tests/google-meet-room-service.cfscript")));
-            System.out.println("PASS: Agenda/Meet services, endpoints, API/OAuth compile and offline backend regressions");
+            engine.eval(Files.readString(root.resolve("_codex/tests/google-drive-service.cfscript")));
+            System.out.println("PASS: Agenda/Meet/Drive services, endpoints, API/OAuth compile and offline backend regressions");
             System.exit(0);
         } catch(Exception ex) { ex.printStackTrace();System.exit(1); }
     }

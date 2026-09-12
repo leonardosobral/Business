@@ -484,7 +484,13 @@
 
             <li class="sidenav-item business-sidenav-fixed-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agenda/">link-warning</cfif>" href="/administracao/agenda/" data-menu-aliases="agenda google calendário compromissos reuniões">
-                    <i class="fa-regular fa-calendar fa-fw me-3"></i><span>Agenda Google</span>
+                    <i class="fa-regular fa-calendar fa-fw me-3"></i><span>Agenda</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/drive/">link-warning</cfif>" href="/administracao/drive/" data-menu-aliases="documentos arquivos pastas google drive docs sheets planilhas">
+                    <i class="fa-brands fa-google-drive fa-fw me-3"></i><span>Documentos</span>
                 </a>
             </li>
 

@@ -28,6 +28,10 @@
         "googleCalendarTokenKey" = "",
         "googleMeetRoom" = "https://meet.google.com/abc-defg-hij",
         "googleMeetCacheSeconds" = 15,
+        "googleDriveRootName" = "RunnerHub Business",
+        "googleDriveMaxUploadBytes" = 26214400,
+        "googleDrivePickerApiKey" = "CHAVE_DE_API_RESTRITA_AO_GOOGLE_PICKER",
+        "googleDriveAppId" = "NUMERO_DO_PROJETO_GOOGLE_CLOUD",
         "cronSecrets" = {
             "road_runners_handoff" = "SEGREDO_COMPARTILHADO_COM_ROAD_RUNNERS",
             "business_internal" = "SEGREDO_INTERNO_DO_BUSINESS",

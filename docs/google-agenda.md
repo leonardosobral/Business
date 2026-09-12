@@ -2,7 +2,7 @@
 
 Módulo: `/administracao/agenda/`. Conta autorizada: **contato@runnerhub.run**.
 
-A mesma conexão OAuth também fornece a credencial de leitura usada pelo card da sala virtual no dashboard dos administradores globais. A configuração específica da sala está documentada em [`google-meet-room.md`](google-meet-room.md).
+A mesma conexão OAuth também fornece a credencial usada pelo card da sala virtual e pelo módulo de Documentos do Google Drive. As configurações específicas estão documentadas em [`google-meet-room.md`](google-meet-room.md) e [`google-drive.md`](google-drive.md).
 
 O código implementa OAuth 2.0 com PKCE, agenda mensal/semanal/lista, busca no período, criação/edição/exclusão, eventos de dia inteiro, participantes, recorrências e vínculo com cartões do Kanban. O Google mantém os eventos; o banco local guarda a conexão criptografada, as agendas habilitadas, os vínculos e a auditoria. Nenhum evento é publicado no portal de provas.
 
@@ -23,7 +23,7 @@ O código implementa OAuth 2.0 com PKCE, agenda mensal/semanal/lista, busca no p
    Como alternativa, mescle estes campos no struct existente de `config/business.local.cfm`, ignorado pelo Git: `googleCalendarClientId`, `googleCalendarClientSecret`, `googleCalendarTokenKey`. Não substitua as outras configurações. Consulte `config/business.local.example.cfm`. Variáveis de ambiente têm precedência.
 4. Reinicie a aplicação ColdFusion pelo procedimento administrativo do servidor. Não é necessário reiniciar a conta Google.
 5. Acesse `https://business.roadrunners.run/administracao/agenda/` como administrador do Business e clique em **Conectar Google**.
-6. Entre com **contato@runnerhub.run** e conceda todas as permissões solicitadas, incluindo a leitura de espaços do Google Meet. O módulo rejeita outro e-mail e exige e-mail verificado pelo Google.
+6. Entre com **contato@runnerhub.run** e conceda todas as permissões solicitadas, incluindo a leitura de espaços do Google Meet e o acesso limitado aos arquivos criados pelo Business no Drive. O módulo rejeita outro e-mail e exige e-mail verificado pelo Google.
 7. Abra **Configurar agendas**, marque as agendas que os administradores poderão operar e salve. A seleção é compartilhada entre os administradores do Business.
 8. Faça um teste com um compromisso sem participantes: criar, confirmar no Google, editar no Google, atualizar no Business, editar no Business e excluir. Depois teste um cartão pelo botão **Agendar**. Só use participantes reais quando desejar enviar os convites.
 
@@ -33,8 +33,8 @@ O código por si só não configura o servidor nem autoriza a conta. A validaç�
 
 - Cliente OAuth: **Aplicativo da Web**.
 - URI de retorno exata: `https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm`.
-- APIs: **Google Calendar API** e, quando o card da sala virtual for usado, **Google Meet REST API**, habilitadas no projeto desse cliente.
-- Escopos: `openid`, `email`, `https://www.googleapis.com/auth/calendar.calendarlist.readonly`, `https://www.googleapis.com/auth/calendar.events.owned`, `https://www.googleapis.com/auth/meetings.space.readonly`.
+- APIs: **Google Calendar API**, **Google Meet REST API** e **Google Drive API**, habilitadas no projeto desse cliente.
+- Escopos: `openid`, `email`, `https://www.googleapis.com/auth/calendar.calendarlist.readonly`, `https://www.googleapis.com/auth/calendar.events.owned`, `https://www.googleapis.com/auth/meetings.space.readonly`, `https://www.googleapis.com/auth/drive.file`.
 - Agendas compartilhadas em que a conta não seja proprietária não são habilitadas nesta versão. O escopo solicitado corresponde às agendas próprias, conforme o planejamento inicial.
 - Se o aplicativo for Externo/Testing, adicione a conta como test user; o refresh token para esses escopos expira em sete dias. Para operação contínua, configure o público/publicação apropriados e atenda à verificação que o Google exigir. Para um app interno de uma organização Workspace, use Internal quando disponível. O administrador Workspace pode precisar liberar o cliente.
 

@@ -1,0 +1,26 @@
+application.googleDrive={rootName="RunnerHub Business",maxUploadBytes=26214400,pickerConfigured=false,pickerApiKey="",appId=""};
+
+check(!drivePickerConfigured(),"Drive Picker disabled without config");
+application.googleDrive.pickerConfigured=true;
+application.googleDrive.pickerApiKey="browser-key";
+application.googleDrive.appId="921450846888";
+check(drivePickerConfigured(),"Drive Picker enabled with API key and numeric project number");
+application.googleDrive.appId="project-text-id";
+check(!drivePickerConfigured(),"Drive Picker rejects textual project ID");
+application.googleDrive.appId="921450846888";
+
+check(driveId("abc_DEF-123")=="abc_DEF-123","Drive ID accepted");
+rejects(function(){driveId("../../etc/passwd");},"Identificador");
+rejects(function(){driveId("abc?alt=media");},"Identificador");
+check(driveName(" Relatórios 2026 ")=="Relatórios 2026","Drive name trimmed");
+rejects(function(){driveName("");},"nome");
+check(driveMimeFor("folder")=="application/vnd.google-apps.folder","Folder MIME");
+check(driveMimeFor("document")=="application/vnd.google-apps.document","Document MIME");
+check(driveMimeFor("spreadsheet")=="application/vnd.google-apps.spreadsheet","Spreadsheet MIME");
+rejects(function(){driveMimeFor("script");},"Tipo");
+check(driveQueryEscape("D'Angelo") == "D\'Angelo","Drive query apostrophe escaped");
+
+variables.driveJson=serializeJSON({"success"=true,"rootConfigured"=false,"maxUploadBytes"=26214400});
+check(find('"success"',variables.driveJson)>0,"Drive JSON key casing preserved");
+check(find('"rootConfigured"',variables.driveJson)>0,"Drive rootConfigured key casing preserved");
+check(find('"maxUploadBytes"',variables.driveJson)>0,"Drive maxUploadBytes key casing preserved");
