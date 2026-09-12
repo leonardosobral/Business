@@ -1,0 +1,90 @@
+--- live-measurement/release-tools/publish.py
++++ live-highlight/release-tools/publish.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Guarded, reversible file release for LIVE measurement. No SSH or SQL execution."""
++"""Guarded, reversible file release for the LIVE circuit highlight. No SSH or SQL execution."""
+ import argparse
+ import base64
+ import errno
+@@ -21,6 +21,11 @@
+     "Business": Path("/var/www/business.roadrunners.run"),
+ }
+ ORDER = (
++    ("RoadRunners", "circuito/live_highlight.cfm"),
++    ("RoadRunners", "circuito/index.cfm"),
++)
++NEW_FILES = frozenset(ORDER[:1])
++MEASUREMENT_GUARDS = (
+     ("Business", "portal/audiencia/queries/live_journey.sql"),
+     ("Business", "portal/audiencia/live_journey.cfm"),
+     ("Business", "portal/includes/audience_backend.cfm"),
+@@ -33,7 +38,6 @@
+     ("RoadRunners", "evento/parts/edicoes_evento.cfm"),
+     ("RoadRunners", "includes/analytics/bootstrap.cfm"),
+ )
+-NEW_FILES = frozenset(ORDER[:2])
+ GUARD_FILES = {
+     "RoadRunners": (
+         "Application.cfc", "config/settings.cfm", "config/ads.local.cfm",
+@@ -46,7 +50,7 @@
+         "api/ads/v1/cpc-viewable.cfm", "api/analytics/collect.cfm", "sw.js",
+         "includes/modal/modal_youtube.cfm", "includes/analytics/slot_marker.cfm",
+         "includes/ads_v1/banner_delivery.cfm", "includes/estrutura/home_sidebar_promos.cfm",
+-        "includes/eventos_ads.cfm", "circuito/index.cfm",
++        "includes/eventos_ads.cfm",
+     ),
+     "Business": (
+         "Application.cfc", "includes/backend/business_request_identity.cfm",
+@@ -56,6 +60,9 @@
+         "portal/audiencia/queries/inventory.sql",
+     ),
+ }
++# All eleven deployed measurement files are read-only guards in this release.
++for guard_site, guard_path in MEASUREMENT_GUARDS:
++    GUARD_FILES[guard_site] += (guard_path,)
+ # Snapshot inventories too: an added/deleted protected file is a change.
+ # An absent optional tree is recorded as absent; it cannot appear mid-release.
+ GUARD_TREES = {
+@@ -214,7 +221,7 @@
+         path = self.release / "runtime.tsv"
+         manifest_sha = sha256(path)
+         lines = path.read_text(encoding="utf-8").splitlines()
+-        require(len(lines) == len(ORDER), "runtime.tsv must have exactly 11 rows; no header or blank rows")
++        require(len(lines) == len(ORDER), f"runtime.tsv must have exactly {len(ORDER)} rows; no header or blank rows")
+         rows = []
+         for expected, line in zip(ORDER, lines):
+             parts = line.split("\t")
+@@ -320,7 +327,8 @@
+         self.check_before(rows)
+         self.check_guards()
+         self.save()
+-        self.event("prepared", existing=9, absent=2, guards=len(guards))
++        self.event("prepared", existing=sum(row["before"] != "ABSENT" for row in rows),
++                   absent=sum(row["before"] == "ABSENT" for row in rows), guards=len(guards))
+ 
+     def load(self, rows, manifest_sha):
+         path = self.release / "state.json"
+@@ -501,11 +509,11 @@
+ 
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("release", help="/var/backups/rr-live-measurement.<alphanumeric>")
++    parser.add_argument("release", help="/var/backups/rr-live-highlight.<lowercase hex>")
+     parser.add_argument("mode", choices=("prepare", "publish", "verify", "rollback"))
+     args = parser.parse_args()
+     try:
+-        require(bool(re.fullmatch(r"/var/backups/rr-live-measurement\.[A-Za-z0-9]+", args.release)), "Unexpected release directory")
++        require(bool(re.fullmatch(r"/var/backups/rr-live-highlight\.[a-f0-9]+", args.release)), "Unexpected release directory")
+         require(os.geteuid() == 0, "Run the reviewed CLI as root on the server")
+         safe_path(Path(args.release))
+         require(Path(args.release).stat().st_uid == 0, "Release directory must be root-owned")
+@@ -515,7 +523,7 @@
+         for number in (signal.SIGTERM, signal.SIGHUP):
+             signal.signal(number, interrupted)
+         phase = Release(Path(args.release)).run(args.mode)
+-        print(f"{args.mode}: {phase}; 11 whitelisted runtime targets; details in operations.jsonl")
++        print(f"{args.mode}: {phase}; {len(ORDER)} whitelisted runtime targets; details in operations.jsonl")
+     except (OSError, ValueError, KeyError, ReleaseError) as error:
+         print(f"STOP: {error}", file=sys.stderr)
+         return 1

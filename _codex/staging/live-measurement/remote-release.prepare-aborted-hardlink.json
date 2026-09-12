@@ -1,0 +1,1 @@
+{"directory": "/var/backups/rr-live-measurement.c9bc9f83f1b0", "scriptSHA": "ff2bc2f580a3b3f03d87dae56f557e8cf935b0ccdd651c299ef6270159da2a2d", "mode": "prepare", "returncode": 1, "output": "STOP: Not a private regular file: /var/www/roadrunners.com.br/config/audience.local.cfm\n", "phase": null, "target_count": 0, "guard_count": 0, "rollback_conflicts": []}

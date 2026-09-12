@@ -1,0 +1,138 @@
+{
+  "checked_at_utc": "2026-09-12T18:16:31.719452+00:00",
+  "host": "ssh.runnerhub.run",
+  "roots": {
+    "RoadRunners": "/var/www/roadrunners.com.br",
+    "Business": "/var/www/business.roadrunners.run"
+  },
+  "files": [
+    {
+      "repository": "RoadRunners",
+      "path": "assets/js/rr-audience.js",
+      "absolute_path": "/var/www/roadrunners.com.br/assets/js/rr-audience.js",
+      "sha256": "27dd026e4ad85d1b88c1a2de40be3dae10ee9f097399ea5b9bbd30c7fd330351",
+      "size": 28122,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-11T03:28:43.168000+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "services/AudienceMeasurementService.cfc",
+      "absolute_path": "/var/www/roadrunners.com.br/services/AudienceMeasurementService.cfc",
+      "sha256": "12eb010069ae5cd4e4324c832c7135d1e0a81a4b513454ebe37c4d4ffcd030e1",
+      "size": 16928,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-11T02:34:17.680000+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "circuito/index.cfm",
+      "absolute_path": "/var/www/roadrunners.com.br/circuito/index.cfm",
+      "sha256": "21815dc7d984ffda97aeeee2038d28bd7bd71b58357028f8b697553482148268",
+      "size": 9276,
+      "mode": "0755",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-07-01T20:05:44+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "includes/modal/modal_cupom_link_conteudo.cfm",
+      "absolute_path": "/var/www/roadrunners.com.br/includes/modal/modal_cupom_link_conteudo.cfm",
+      "sha256": "db8c38fbb271a7c7e0982a2ee69c588c52fbc4e300f438e064a3039c8f6625d3",
+      "size": 5008,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-05-28T17:53:16+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "evento/index.cfm",
+      "absolute_path": "/var/www/roadrunners.com.br/evento/index.cfm",
+      "sha256": "94a1d90ee66e9e0663a4755a09f65ebc0c14180cc222f3b7f862630b039dd4ae",
+      "size": 64596,
+      "mode": "0755",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-08-12T16:55:21+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "evento/parts/barra_acoes.cfm",
+      "absolute_path": "/var/www/roadrunners.com.br/evento/parts/barra_acoes.cfm",
+      "sha256": "9e0ee4689c4460a3ecc31d60eb050e3b5101b3ce8182b686e304fa7c63aaa5bc",
+      "size": 7402,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-07-17T17:32:23+00:00"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "includes/analytics/bootstrap.cfm",
+      "absolute_path": "/var/www/roadrunners.com.br/includes/analytics/bootstrap.cfm",
+      "sha256": "0f90edfd5881ab5d1f5113abf7012debcc32f09ee99506dd090d9c04a09a30de",
+      "size": 1772,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-11T03:28:43.236000+00:00"
+    },
+    {
+      "repository": "Business",
+      "path": "portal/includes/audience_backend.cfm",
+      "absolute_path": "/var/www/business.roadrunners.run/portal/includes/audience_backend.cfm",
+      "sha256": "9982c1e1ca16f0a0b9615c9ffa75d63a49e5a92d7897843000f4790a61b31800",
+      "size": 6515,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-07T03:41:11.724622+00:00"
+    },
+    {
+      "repository": "Business",
+      "path": "portal/audiencia/index.cfm",
+      "absolute_path": "/var/www/business.roadrunners.run/portal/audiencia/index.cfm",
+      "sha256": "953a7ec442c874814031860459bd38d369a00dc484904dd1f9c8750794a7e488",
+      "size": 737,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-07T01:26:48+00:00"
+    },
+    {
+      "repository": "Business",
+      "path": "portal/audiencia/home.cfm",
+      "absolute_path": "/var/www/business.roadrunners.run/portal/audiencia/home.cfm",
+      "sha256": "280ce0fb49118ebb57f3d7c60a7f01cf2aefc4bd1bdbe8a107679faf3fb4eb60",
+      "size": 24077,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "symlink": false,
+      "mtime_utc": "2026-09-11T02:34:17.848000+00:00"
+    }
+  ],
+  "runtime": {
+    "compiler_candidates": [
+      "/opt/ColdFusion/cfusion/bin/cfcompile.sh"
+    ],
+    "update_jars": [
+      "chf20230016.jar"
+    ]
+  }
+}

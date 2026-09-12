@@ -1,0 +1,30 @@
+{
+  "status": "published-smoke-verified",
+  "project": "RoadRunners",
+  "runtimeRoot": "/var/www/roadrunners.com.br",
+  "publishedAt": "2026-09-12T14:48:22Z",
+  "verifiedAt": "2026-09-12T14:50:40Z",
+  "productionBackup": "/var/backups/rr-sidebar-house.OYC1Vr",
+  "archive": "_codex/releases/2026-09-12_audience_sidebar_house_linux.tar.gz",
+  "archiveSha256": "21e1ef89f8b4c08942b4b12a21329baa3ccc717d09969984580649daa7e66866",
+  "publicationReceipt": "_codex/docs/2026-09-12_audience_sidebar_house_publicado.md",
+  "noSql": true,
+  "noBusinessRuntimeChange": true,
+  "protectedFilesUnchanged": 39,
+  "fallbackObservedInProduction": false,
+  "fallbackVerifiedLocally": true,
+  "liveCampaignContinuityVerified": true,
+  "businessCollectionContinuityVerified": true,
+  "files": [
+    {
+      "path": "includes/ads_v1/sidebar_house_pilot.cfm",
+      "before": null,
+      "candidate": "745c9c94434e848b6339237c9c5ef20c9575cbd291d529d59b62217b06387834"
+    },
+    {
+      "path": "includes/ads_v1/banner_delivery.cfm",
+      "before": "60bc90d500652d3fe2f2604d135c500922c98911324d8f0293deb21e69667777",
+      "candidate": "4bc928f0af817aa2824dd5f8fee06e26fbd48cb011361effed39693d07e194d1"
+    }
+  ]
+}

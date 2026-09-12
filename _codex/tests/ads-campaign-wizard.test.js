@@ -15,11 +15,109 @@ test("returns no estimate when budget or CPC is invalid", () => {
     assert.deepEqual(wizard.estimateClicks("abc", 0.94), { min: 0, max: 0 });
 });
 
-test("suggests ending the campaign three days before the event", () => {
+test("suggests ending the campaign on the event date at 23:59", () => {
     assert.equal(
-        wizard.suggestEndAt("2026-11-23", 3),
-        "2026-11-20T23:59"
+        wizard.suggestEndAt("2026-11-23"),
+        "2026-11-23T23:59"
     );
+});
+
+// DOM boundary doubles: run the real initWizard and its registered handlers.
+// No network, saved campaign or application session is involved.
+function setupEventWizard({ isNew = true, region = "", end = "2026-10-11T14:51", preserve = false, initialStep = 1 } = {}) {
+    const elements = new Map();
+    function element(selector) {
+        if (!elements.has(selector)) elements.set(selector, {
+            value: "", dataset: {}, handlers: {}, hidden: false,
+            classList: { toggle() {}, remove() {}, add() {} },
+            addEventListener(type, handler) { this.handlers[type] = handler; },
+            removeAttribute() {}, setAttribute() {}, setCustomValidity() {}
+        });
+        return elements.get(selector);
+    }
+    const form = {
+        dataset: { isNew: String(isNew), preserveInputs: String(preserve), initialStep: String(initialStep) },
+        querySelector: element, querySelectorAll: () => [], addEventListener() {}
+    };
+    const select = element("#ads-v1-event");
+    select.options = [
+        { value: "", dataset: {} },
+        { value: "1", dataset: { eventName: "Brasília", eventCity: "Brasília", eventState: "DF", eventEnd: "2026-10-11", eventDate: "11/10/2026", eventTag: "brasilia", eventImage: "" } },
+        { value: "2", dataset: { eventName: "Campinas", eventCity: "Campinas", eventState: "SP", eventEnd: "2026-10-18", eventDate: "18/10/2026", eventTag: "campinas", eventImage: "" } }
+    ];
+    select.selectedIndex = preserve || !isNew ? 1 : 0;
+    element("#ads-v1-region").value = region;
+    element("#ads-v1-end").value = end;
+    wizard.initWizard(form);
+    return {
+        element,
+        choose(index) { select.selectedIndex = index; select.handlers.change(); },
+        input(selector, value) {
+            const field = element(selector);
+            field.value = value;
+            if (field.handlers.input) field.handlers.input();
+            if (field.handlers.change) field.handlers.change();
+        }
+    };
+}
+
+test("draft and review buttons only appear on the last step", () => {
+    const first = setupEventWizard();
+    assert.equal(first.element("#ads-wizard-submit").hidden, true);
+    assert.equal(first.element("#ads-wizard-draft").hidden, true);
+    const last = setupEventWizard({ initialStep: 4 });
+    assert.equal(last.element("#ads-wizard-submit").hidden, false);
+    assert.equal(last.element("#ads-wizard-draft").hidden, false);
+    last.element("#ads-wizard-back").handlers.click();
+    assert.equal(last.element("#ads-wizard-submit").hidden, true);
+    assert.equal(last.element("#ads-wizard-draft").hidden, true);
+});
+
+test("switching events replaces the automatically suggested region", () => {
+    const app = setupEventWizard();
+    app.choose(1);
+    assert.equal(app.element("#ads-v1-region").value, "DF");
+    app.choose(2);
+    assert.equal(app.element("#ads-v1-region").value, "SP");
+});
+
+test("selecting another event suggests its final day at 23:59", () => {
+    const app = setupEventWizard();
+    app.choose(1);
+    assert.equal(app.element("#ads-v1-end").value, "2026-10-11T23:59");
+    app.choose(2);
+    assert.equal(app.element("#ads-v1-end").value, "2026-10-18T23:59");
+});
+
+test("event changes preserve manually entered region and end date", () => {
+    const app = setupEventWizard();
+    app.choose(1);
+    app.input("#ads-v1-region", "SC");
+    app.input("#ads-v1-end", "2026-10-20T12:30");
+    app.choose(2);
+    assert.equal(app.element("#ads-v1-region").value, "SC");
+    assert.equal(app.element("#ads-v1-end").value, "2026-10-20T12:30");
+});
+
+test("a manually cleared region stays unrestricted on event change", () => {
+    const app = setupEventWizard();
+    app.choose(1);
+    app.input("#ads-v1-region", "");
+    app.choose(2);
+    assert.equal(app.element("#ads-v1-region").value, "");
+});
+
+test("reopening an existing campaign preserves saved targeting and dates", () => {
+    const app = setupEventWizard({ isNew: false, region: "SC", end: "2026-10-20T12:30" });
+    app.choose(2);
+    assert.equal(app.element("#ads-v1-region").value, "SC");
+    assert.equal(app.element("#ads-v1-end").value, "2026-10-20T12:30");
+});
+
+test("redisplaying a failed submission preserves the user's blank region and date", () => {
+    const app = setupEventWizard({ preserve: true, end: "2026-10-20T12:30" });
+    assert.equal(app.element("#ads-v1-region").value, "");
+    assert.equal(app.element("#ads-v1-end").value, "2026-10-20T12:30");
 });
 
 test("does not invent an end date when the event date is unavailable", () => {

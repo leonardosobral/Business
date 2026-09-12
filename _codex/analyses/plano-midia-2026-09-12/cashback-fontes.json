@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "cashback-variavel",
+      "title": "Cashback e limite de aquisição por preço pago",
+      "assumptions": ["Reservar 30% do cashback e gastar até 70% em mídia é uma meta inicial proposta, antes dos demais custos."],
+      "queries": [{
+        "id": "regra-e-carrinho",
+        "source": {
+          "label": "Regra comercial e carrinho fornecidos pelo usuário",
+          "metricDefinitions": [{"label":"Cashback", "definition":"O Road Runners recebe 10% do valor efetivamente pago pelo corredor, segundo confirmação do usuário."}],
+          "caveats": ["R$ 144,42 é o total observado no carrinho de Jaraguá; a imagem não comprova pagamento concluído. Os demais preços são exemplos.","O total exibido foi preservado apesar da diferença de um centavo na subtração de subtotal e desconto.","As quantidades de inscrições são cenários de preço uniforme. Com preços diferentes, somar os valores pagos elegíveis e conciliar o cashback do relatório da LIVE!.","O cupom usado em diferentes canais não comprova sozinho que uma venda veio do Google Ads."]
+        },
+        "columns": [{"field":"tipo","label":"Base"},{"field":"pago","label":"Valor pago (R$)"},{"field":"cashback","label":"Cashback calculado (R$)"},{"field":"cpa_meta","label":"Meta proposta de CPA (R$)"},{"field":"inscricoes_equilibrio","label":"Inscrições para cobrir R$ 608"}],
+        "rows": [
+          {"tipo":"Exemplo","pago":100,"cashback":10,"cpa_meta":7,"inscricoes_equilibrio":61},
+          {"tipo":"Carrinho Jaraguá","pago":144.42,"cashback":14.442,"cpa_meta":10.11,"inscricoes_equilibrio":43},
+          {"tipo":"Exemplo","pago":200,"cashback":20,"cpa_meta":14,"inscricoes_equilibrio":31},
+          {"tipo":"Exemplo","pago":250,"cashback":25,"cpa_meta":17.5,"inscricoes_equilibrio":25}
+        ],
+        "methods": [{"language":"calculation","code":"Cashback = valor pago × 0,10\nMeta proposta de CPA = cashback × 0,70\nInscrições para cobrir mídia = teto(608 ÷ cashback por inscrição)\nJaraguá: 144,42 × 0,10 = 14,442; 14,442 × 0,70 = 10,1094; teto(608 ÷ 14,442) = 43."}]
+      }]
+    },
+    {
+      "id": "campanha-retomada",
+      "title": "Campanha retomada com R$ 20 por dia",
+      "queries": [{
+        "id":"google-smart-status",
+        "source": {
+          "label":"Google Ads — Circuito Live Run XP",
+          "filters":["Campanha: Smart 20864149648","Cidades: Jaraguá do Sul, Juiz de Fora e Campinas"],
+          "caveats":["O orçamento é uma média diária; a interface mostrou R$ 608 de orçamento mensal máximo.","Ativa é o estado confirmado na interface. Ainda não foram medidos novos resultados após a retomada.","A Smart usa Maximizar cliques; a meta econômica de CPA não foi configurada como limite automático."]
+        },
+        "summary":"Após a confirmação do usuário de que ROADRUNNERS vale em todas as etapas de 2026, a retomada foi executada e a interface mostrou Ativa.",
+        "columns":[{"field":"status","label":"Estado"},{"field":"orcamento_dia","label":"Média diária (R$)"},{"field":"orcamento_mes","label":"Mensal exibido (R$)"}],
+        "rows":[{"status":"Ativa","orcamento_dia":20,"orcamento_mes":608}],
+        "reportingPeriod":"Verificação em 12/09/2026"
+      }]
+    }
+  ]
+}

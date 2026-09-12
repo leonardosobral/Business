@@ -1,0 +1,9 @@
+test_bad_candidate_hash_symlink_and_hardlink_are_rejected_locally (__main__.TransferTest.test_bad_candidate_hash_symlink_and_hardlink_are_rejected_locally) ... ok
+test_compile_remote_checks_exact_names_count_regular_members_and_hashes (__main__.TransferTest.test_compile_remote_checks_exact_names_count_regular_members_and_hashes) ... ok
+test_rejects_extra_member_wrong_site_traversal_wrong_absence_and_swapped_order (__main__.TransferTest.test_rejects_extra_member_wrong_site_traversal_wrong_absence_and_swapped_order) ... ok
+test_valid_archive_has_exact_two_roadrunners_templates_and_no_other_members (__main__.TransferTest.test_valid_archive_has_exact_two_roadrunners_templates_and_no_other_members) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+OK

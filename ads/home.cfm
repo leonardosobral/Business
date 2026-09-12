@@ -10,7 +10,7 @@ function adsV1PlacementLabel(required any placementKey) {
         case "rr-home-upcoming-native-secondary": return "Página inicial";
         case "rr-search-events-native": return "Busca de eventos";
         case "rr-state-events-native": return "Eventos por estado";
-        case "rr-sidebar-event-native": return "Página do evento";
+        case "rr-sidebar-event-native": return "Lateral do site";
         default: return "Outros locais";
     }
 }
@@ -21,7 +21,7 @@ function adsV1PlacementDescription(required any placementKey) {
         case "rr-home-upcoming-native-secondary": return "Concorra aos destaques entre os próximos eventos; região e lance definem a ordem.";
         case "rr-search-events-native": return "Resultado patrocinado na busca de provas.";
         case "rr-state-events-native": return "Lista de eventos filtrada por estado.";
-        case "rr-sidebar-event-native": return "Área lateral da página de uma prova.";
+        case "rr-sidebar-event-native": return "Sugestão patrocinada na lateral da página inicial para usuários logados. Não é um anúncio dentro do próprio evento.";
         default: return "Área adicional de divulgação.";
     }
 }
@@ -138,7 +138,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
 <cfset VARIABLES.adsV1FormDevice = "ALL"/>
 <cfset VARIABLES.adsV1FormCountry = "BR"/>
 <cfset VARIABLES.adsV1FormRegion = ""/>
-<cfset VARIABLES.adsV1FormPlacementKeys = ["rr-home-upcoming-native"]/>
+<cfset VARIABLES.adsV1FormPlacementKeys = duplicate(VARIABLES.adsV1SelectableEventPlacementKeys)/>
 <cfset VARIABLES.adsV1CampaignEditable = true/>
 
 <cfif VARIABLES.adsAccessCanManageCampaign AND FORM.ads_v1_action EQ "save_campaign" AND len(VARIABLES.adsV1Error)>
@@ -168,7 +168,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
     <cfset VARIABLES.adsV1FormRegion = trim(qAdsV1SelectedCampaign.target_region_code & "")/>
     <cfset VARIABLES.adsV1FormPlacementKeys = len(trim(qAdsV1SelectedCampaign.placement_keys & "")) ? listToArray(qAdsV1SelectedCampaign.placement_keys & "") : []/>
     <cfset VARIABLES.adsV1CampaignEditable = listFind("DRAFT,PAUSED", qAdsV1SelectedCampaign.status) GT 0
-        AND NOT listFind("PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1SelectedCampaign.review_status & "")))/>
+        AND NOT listFind("WAITING_PREREQUISITES,PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1SelectedCampaign.review_status & "")))/>
 </cfif>
 
 <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, "rr-home-upcoming-native-secondary")

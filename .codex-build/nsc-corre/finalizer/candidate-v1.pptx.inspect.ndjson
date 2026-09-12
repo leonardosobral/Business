@@ -1,0 +1,522 @@
+{"kind":"deck","id":"pr/zircd7","name":"Deck"}
+{"kind":"layout","layoutId":"eaaab92d-d93a-4172-8e38-c1a7c43d31be","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"b2c961ed-8b7d-4c49-bcc7-ab1598c7e7e4","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/ahhebw","slide":1,"title":"PROPOSTA DE PLATAFORMA ANUAL","textShapes":6}
+{"kind":"shape","id":"sh/ilcnmtcj","slide":1,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/365ofyd4","slide":1,"bbox":[0,0,18,720]}
+{"kind":"shape","id":"sh/sbe5s3ul","slide":1,"bbox":[1004,-40,330,112]}
+{"kind":"shape","id":"sh/q9wnqtcv","slide":1,"bbox":[1088,25,126,74]}
+{"kind":"shape","id":"sh/8fu5gjeh","slide":1,"bbox":[72,150,296,30]}
+{"kind":"textbox","id":"sh/tg3m94v2","slide":1,"text":"PROPOSTA DE PLATAFORMA ANUAL","textPreview":"PROPOSTA DE PLATAFORMA ANUAL","textChars":28,"textLines":1,"bbox":[82,153,276,24]}
+{"kind":"textbox","id":"sh/h8zyhwjy","slide":1,"text":"NSC CORRE","textPreview":"NSC CORRE","textChars":9,"textLines":1,"bbox":[72,212,900,112]}
+{"kind":"textbox","id":"sh/g7qxorid","slide":1,"text":"A casa da corrida catarinense","textPreview":"A casa da corrida catarinense","textChars":29,"textLines":1,"bbox":[76,330,820,58]}
+{"kind":"textbox","id":"sh/vmhgfm1s","slide":1,"text":"Dados confiáveis, conteúdo útil, comunidade, benefícios e experiências ao longo de 365 dias.","textPreview":"Dados confiáveis, conteúdo útil, comunidade, benefícios e experiências ao longo de 365 dias.","textChars":92,"textLines":1,"bbox":[76,401,790,78]}
+{"kind":"shape","id":"sh/ulofmh07","slide":1,"bbox":[76,540,820,0]}
+{"kind":"textbox","id":"sh/5czylgju","slide":1,"text":"RUNNERHUB × NSC","textPreview":"RUNNERHUB × NSC","textChars":15,"textLines":1,"bbox":[76,560,350,32]}
+{"kind":"textbox","id":"sh/4bqhsbi9","slide":1,"text":"Setembro de 2026","textPreview":"Setembro de 2026","textChars":16,"textLines":1,"bbox":[76,598,300,28]}
+{"kind":"image","id":"im/kzypkv2t","slide":1,"name":"","alt":"Textura de asfalto RunnerHub","bbox":[0,0,1280,720]}
+{"kind":"image","id":"im/s3ipof2p","slide":1,"name":"","alt":"RunnerHub","bbox":[72,56,188,34]}
+{"kind":"image","id":"im/61g7m5kj","slide":1,"name":"","alt":"NSC","bbox":[1101,33,100,58]}
+{"kind":"notes","id":"nt/ahhebw","slide":1,"text":"Objetivo: propor uma plataforma anual para posicionar a NSC como referência catarinense em corrida e a RunnerHub como sua camada de inteligência e dados.\nImagem: ativo institucional RunnerHub, assets/rr_fundo_horiz.jpg."}
+{"kind":"slide","id":"sl/7v40b3","slide":2,"title":"OPORTUNIDADE","textShapes":12}
+{"kind":"shape","id":"sh/czyd4rip","slide":2,"bbox":[64,38,138,30]}
+{"kind":"textbox","id":"sh/rypwvmh4","slide":2,"text":"OPORTUNIDADE","textPreview":"OPORTUNIDADE","textChars":12,"textLines":1,"bbox":[74,41,118,24]}
+{"kind":"textbox","id":"sh/qxgv210j","slide":2,"text":"Santa Catarina já corre. Falta um lugar que organize essa conversa.","textPreview":"Santa Catarina já corre. Falta um lugar que organize essa conversa.","textChars":67,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/pw7etwzy","slide":2,"text":"A densidade do calendário cria pauta, serviço, comunidade e receita durante o ano inteiro.","textPreview":"A densidade do calendário cria pauta, serviço, comunidade e receita durante o ano inteiro.","textChars":90,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/4vyd0rit","slide":2,"bbox":[72,230,48,6]}
+{"kind":"textbox","id":"sh/3upwrmh8","slide":2,"text":"559","textPreview":"559","textChars":3,"textLines":1,"bbox":[72,244,250,64]}
+{"kind":"textbox","id":"sh/2twvyh0n","slide":2,"text":"corridas de rua ativas e não canceladas no calendário RunnerHub em 2025","textPreview":"corridas de rua ativas e não canceladas no calendário RunnerHub em 2025","textChars":71,"textLines":1,"bbox":[72,306,250,56]}
+{"kind":"shape","id":"sh/9sre5gzi","slide":2,"bbox":[72,396,48,6]}
+{"kind":"textbox","id":"sh/orixwbix","slide":2,"text":"+38%","textPreview":"+38%","textChars":4,"textLines":1,"bbox":[72,410,250,64]}
+{"kind":"textbox","id":"sh/uh4ry14z","slide":2,"text":"crescimento do calendário cadastrado versus 2024","textPreview":"crescimento do calendário cadastrado versus 2024","textChars":48,"textLines":1,"bbox":[72,472,250,56]}
+{"kind":"shape","id":"sh/v2dsr65k","slide":2,"bbox":[72,570,250,30]}
+{"kind":"textbox","id":"sh/w3m90bm5","slide":2,"text":"5º NO PAÍS EM 2025","textPreview":"5º NO PAÍS EM 2025","textChars":18,"textLines":1,"bbox":[82,573,230,24]}
+{"kind":"shape","id":"sh/md4ruh43","slide":2,"bbox":[380,586,812,66]}
+{"kind":"textbox","id":"sh/7edsnm58","slide":2,"text":"Até 10/09, 2026 já soma 399 provas no período","textPreview":"Até 10/09, 2026 já soma 399 provas no período","textChars":45,"textLines":1,"bbox":[404,599,520,28]}
+{"kind":"textbox","id":"sh/8fm9wrmt","slide":2,"text":"+43,5% vs. 2025","textPreview":"+43,5% vs. 2025","textChars":15,"textLines":1,"bbox":[940,596,224,32]}
+{"kind":"textbox","id":"sh/9gvapwne","slide":2,"text":"Base RunnerHub. Calendário cadastrado, não uma declaração de provas concluídas.","textPreview":"Base RunnerHub. Calendário cadastrado, não uma declaração de provas concluídas.","textChars":79,"textLines":1,"bbox":[72,651,810,19]}
+{"kind":"shape","id":"sh/69ob6l47","slide":2,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/3e9oril4","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"chart","id":"ch/xozalc7i","slide":2,"name":"","chartType":"bar","title":"Calendário cadastrado na RunnerHub — Santa Catarina","bbox":[380,218,812,350]}
+{"kind":"image","id":"im/obipsjyl","slide":2,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/7v40b3","slide":2,"text":"Fonte: base oficial RunnerHub fornecida pelo usuário. Corte em 10/09/2026.\nDados: calendário cadastrado SC — 2024: 405; 2025: 559; 2026: 596. Até 10/09 — 2024: 226; 2025: 278; 2026: 399.\nCrescimentos: 2025 vs 2024 = 38,0%; 2026 vs 2025 = 6,6%; período até 10/09: 2025 vs 2024 = 23,0%; 2026 vs 2025 = 43,5%.\nPosição nacional: 6º em 2024; 5º em 2025 e 2026."}
+{"kind":"slide","id":"sl/fi9o9y","slide":3,"title":"PRECISÃO EDITORIAL","textShapes":19}
+{"kind":"shape","id":"sh/jm5gjqp8","slide":3,"bbox":[64,38,186,30]}
+{"kind":"textbox","id":"sh/k7excvqd","slide":3,"text":"PRECISÃO EDITORIAL","textPreview":"PRECISÃO EDITORIAL","textChars":18,"textLines":1,"bbox":[74,41,166,24]}
+{"kind":"textbox","id":"sh/587yl07y","slide":3,"text":"O problema não é falta de números. É falta de contexto sobre o número.","textPreview":"O problema não é falta de números. É falta de contexto sobre o número.","textChars":70,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/69gfe58j","slide":3,"text":"Duas fontes públicas e operacionais podem descrever o mesmo estado com universos diferentes.","textPreview":"Duas fontes públicas e operacionais podem descrever o mesmo estado com universos diferentes.","textChars":92,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/7apgnap4","slide":3,"bbox":[64,220,520,360]}
+{"kind":"shape","id":"sh/sbyxgfqp","slide":3,"bbox":[92,246,184,30]}
+{"kind":"textbox","id":"sh/tc7ypk7a","slide":3,"text":"ABRACEO / CBAt","textPreview":"ABRACEO / CBAt","textChars":14,"textLines":1,"bbox":[102,249,164,24]}
+{"kind":"textbox","id":"sh/mdcf218f","slide":3,"text":"478","textPreview":"478","textChars":3,"textLines":1,"bbox":[92,292,210,78]}
+{"kind":"textbox","id":"sh/nelwb690","slide":3,"text":"provas em SC em 2025","textPreview":"provas em SC em 2025","textChars":20,"textLines":1,"bbox":[92,365,390,36]}
+{"kind":"textbox","id":"sh/fat8fq1g","slide":3,"text":"+71%","textPreview":"+71%","textChars":4,"textLines":1,"bbox":[92,425,150,45]}
+{"kind":"textbox","id":"sh/e9kr6l0v","slide":3,"text":"crescimento divulgado","textPreview":"crescimento divulgado","textChars":21,"textLines":1,"bbox":[92,466,220,28]}
+{"kind":"textbox","id":"sh/1cbah0j6","slide":3,"text":"Fontes declaradas: CBAt, federações estaduais e DF. Sem microdados públicos acessíveis no material consultado.","textPreview":"Fontes declaradas: CBAt, federações estaduais e DF. Sem microdados públicos acessíveis no material consultado.","textChars":110,"textLines":1,"bbox":[92,515,436,46]}
+{"kind":"shape","id":"sh/0b298vi1","slide":3,"bbox":[696,220,520,360]}
+{"kind":"shape","id":"sh/r698bq14","slide":3,"bbox":[724,246,156,30]}
+{"kind":"textbox","id":"sh/650r2l0j","slide":3,"text":"RUNNERHUB","textPreview":"RUNNERHUB","textChars":9,"textLines":1,"bbox":[734,249,136,24]}
+{"kind":"textbox","id":"sh/t8bqdgja","slide":3,"text":"559","textPreview":"559","textChars":3,"textLines":1,"bbox":[724,292,210,78]}
+{"kind":"textbox","id":"sh/s7i94bip","slide":3,"text":"provas ativas e não canceladas em SC em 2025","textPreview":"provas ativas e não canceladas em SC em 2025","textChars":44,"textLines":1,"bbox":[724,365,420,58]}
+{"kind":"textbox","id":"sh/j2987618","slide":3,"text":"+38%","textPreview":"+38%","textChars":4,"textLines":1,"bbox":[724,435,150,45]}
+{"kind":"textbox","id":"sh/ih0ry10n","slide":3,"text":"crescimento do calendário","textPreview":"crescimento do calendário","textChars":25,"textLines":1,"bbox":[724,476,250,28]}
+{"kind":"textbox","id":"sh/mdgrq14f","slide":3,"text":"Base operacional contínua do ecossistema RunnerHub. O indicador não mede o mesmo universo da ABRACEO.","textPreview":"Base operacional contínua do ecossistema RunnerHub. O indicador não mede o mesmo universo da ABRACEO.","textChars":101,"textLines":1,"bbox":[724,515,436,46]}
+{"kind":"shape","id":"sh/7epsj6l0","slide":3,"bbox":[608,335,64,64]}
+{"kind":"textbox","id":"sh/8fy9sbml","slide":3,"text":"≠","textPreview":"≠","textChars":1,"textLines":1,"bbox":[608,336,64,62]}
+{"kind":"shape","id":"sh/907alg36","slide":3,"bbox":[162,602,956,54]}
+{"kind":"textbox","id":"sh/u10rul4r","slide":3,"text":"A NSC ganha um filtro técnico para não tratar cadastro parcial como o total do mercado.","textPreview":"A NSC ganha um filtro técnico para não tratar cadastro parcial como o total do mercado.","textChars":87,"textLines":1,"bbox":[186,615,908,28]}
+{"kind":"textbox","id":"sh/v29sn6lw","slide":3,"text":"Fontes: ABRACEO/Máquina do Esporte e base RunnerHub. Comparação de medidas, não cálculo de cobertura.","textPreview":"Fontes: ABRACEO/Máquina do Esporte e base RunnerHub. Comparação de medidas, não cálculo de cobertura.","textChars":101,"textLines":1,"bbox":[64,661,960,18]}
+{"kind":"shape","id":"sh/w3itwb2h","slide":3,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/i50bylkn","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/a9o3a9gb","slide":3,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/fi9o9y","slide":3,"text":"Fontes externas:\nhttps://maquinadoesporte.com.br/running/corridas-de-rua-crescem-85-no-brasil-em-2025/\nhttps://abraceo.com.br/4o-summit-abraceo-cbat-corridas-de-rua-cresceram-85-em-2025-no-brasil/\nFonte RunnerHub: base oficial fornecida pelo usuário.\nNota metodológica: não calcular cobertura, subnotificação ou erro de uma fonte pela diferença entre 478 e 559. Os universos e critérios de inclusão não são publicamente equivalentes. O argumento seguro é exigir fonte, critério, corte e cobertura em qualquer pauta."}
+{"kind":"slide","id":"sl/h21lev","slide":4,"title":"DIFERENCIAL RUNNERHUB","textShapes":18}
+{"kind":"shape","id":"sh/9crqtofu","slide":4,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/8ri9kje9","slide":4,"bbox":[64,38,210,30]}
+{"kind":"textbox","id":"sh/zmp8nexs","slide":4,"text":"DIFERENCIAL RUNNERHUB","textPreview":"DIFERENCIAL RUNNERHUB","textChars":21,"textLines":1,"bbox":[74,41,190,24]}
+{"kind":"textbox","id":"sh/ylg7e9w7","slide":4,"text":"Dados que começam no resultado, não terminam no cadastro.","textPreview":"Dados que começam no resultado, não terminam no cadastro.","textChars":57,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/lo7qpofi","slide":4,"text":"O resultado publicado confirma execução e abre a leitura de perfil, distância, tempo, território e recorrência.","textPreview":"O resultado publicado confirma execução e abre a leitura de perfil, distância, tempo, território e recorrência.","textChars":111,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/0nypgjex","slide":4,"bbox":[74,274,236,200]}
+{"kind":"shape","id":"sh/ji98zidw","slide":4,"bbox":[162,244,60,60]}
+{"kind":"textbox","id":"sh/ih0rqdwb","slide":4,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[162,245,60,58]}
+{"kind":"textbox","id":"sh/wbyt4fep","slide":4,"text":"9,2 mil","textPreview":"9,2 mil","textChars":7,"textLines":1,"bbox":[92,324,200,56]}
+{"kind":"textbox","id":"sh/hcrudkfu","slide":4,"text":"eventos mapeados\nem 2025","textPreview":"eventos mapeados | em 2025","textChars":24,"textLines":2,"bbox":[98,390,188,60]}
+{"kind":"shape","id":"sh/upgb2pwj","slide":4,"bbox":[310,372,44,0]}
+{"kind":"shape","id":"sh/vapcbux4","slide":4,"bbox":[354,274,236,200]}
+{"kind":"shape","id":"sh/8nyt0fed","slide":4,"bbox":[442,244,60,60]}
+{"kind":"textbox","id":"sh/9o7u9kfy","slide":4,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[442,245,60,58]}
+{"kind":"textbox","id":"sh/mlgby5w7","slide":4,"text":"84,1%","textPreview":"84,1%","textChars":5,"textLines":1,"bbox":[372,324,200,56]}
+{"kind":"textbox","id":"sh/7mpc7axs","slide":4,"text":"dos eventos com base\nanalítica disponível","textPreview":"dos eventos com base | analítica disponível","textChars":41,"textLines":2,"bbox":[378,390,188,60]}
+{"kind":"shape","id":"sh/kjetwveh","slide":4,"bbox":[590,372,44,0]}
+{"kind":"shape","id":"sh/lk7u50f2","slide":4,"bbox":[634,274,236,200]}
+{"kind":"shape","id":"sh/14fidc3e","slide":4,"bbox":[722,244,60,60]}
+{"kind":"textbox","id":"sh/0361k7mt","slide":4,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[722,245,60,58]}
+{"kind":"textbox","id":"sh/f2d0b2l8","slide":4,"text":"5,3 mi","textPreview":"5,3 mi","textChars":6,"textLines":1,"bbox":[652,324,200,56]}
+{"kind":"textbox","id":"sh/e14jix43","slide":4,"text":"conclusões registradas\nem 2025","textPreview":"conclusões registradas | em 2025","textChars":30,"textLines":2,"bbox":[658,390,188,60]}
+{"kind":"shape","id":"sh/t0vi9s3i","slide":4,"bbox":[870,372,44,0]}
+{"kind":"shape","id":"sh/szmhgnmx","slide":4,"bbox":[914,274,236,200]}
+{"kind":"shape","id":"sh/ryd07ilc","slide":4,"bbox":[1002,244,60,60]}
+{"kind":"textbox","id":"sh/6x4zed4r","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1002,245,60,58]}
+{"kind":"textbox","id":"sh/xwzilw3m","slide":4,"text":"11 mi+","textPreview":"11 mi+","textChars":6,"textLines":1,"bbox":[932,324,200,56]}
+{"kind":"textbox","id":"sh/cvq1srm1","slide":4,"text":"resultados no acervo\nOpen Results","textPreview":"resultados no acervo | Open Results","textChars":33,"textLines":2,"bbox":[938,390,188,60]}
+{"kind":"shape","id":"sh/uh0f69kj","slide":4,"bbox":[102,520,1076,92]}
+{"kind":"textbox","id":"sh/v29gfe14","slide":4,"text":"Registro diz que a prova foi informada. Resultado publicado mostra que ela aconteceu e revela o que veio depois.","textPreview":"Registro diz que a prova foi informada. Resultado publicado mostra que ela aconteceu e revela o que veio depois.","textChars":112,"textLines":1,"bbox":[140,538,1000,58]}
+{"kind":"textbox","id":"sh/w3ix8j2p","slide":4,"text":"Fonte: Brasil que Corre — Provas 2025. ‘Conclusões’ não equivale a pessoas únicas.","textPreview":"Fonte: Brasil que Corre — Provas 2025. ‘Conclusões’ não equivale a pessoas únicas.","textChars":82,"textLines":1,"bbox":[74,651,860,20]}
+{"kind":"shape","id":"sh/h4byhoja","slide":4,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/7e9gbe18","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/7ud0fat0","slide":4,"name":"","alt":"Textura de dados RunnerHub","bbox":[0,0,1280,720]}
+{"kind":"image","id":"im/dgri50v2","slide":4,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/h21lev","slide":4,"text":"Fonte: /Users/leonardosobral/Downloads/BrasilQueCorreProvas2025_v3.10.3 (1).pdf, páginas 2–3.\nO estudo reporta 9,2 mil eventos mapeados, 5,3 milhões de concluintes e cobertura analítica de 84,1% dos eventos mapeados. Os demais 15,9% incluem provas sem resultado publicado, sem confirmação de execução, não cronometradas ou não competitivas.\nO acervo Open Results contém mais de 11 milhões de resultados republicados, conforme o estudo.\nUsar ‘conclusões registradas’ ou ‘resultados’, nunca ‘corredores únicos’.\nImagem: ativo institucional RunnerHub, assets/rbi_fundo_horizontal.jpg."}
+{"kind":"slide","id":"sl/9z2a0o","slide":5,"title":"AUDIÊNCIA","textShapes":14}
+{"kind":"shape","id":"sh/j2l8vil8","slide":5,"bbox":[64,38,114,30]}
+{"kind":"textbox","id":"sh/k3u9on2t","slide":5,"text":"AUDIÊNCIA","textPreview":"AUDIÊNCIA","textChars":9,"textLines":1,"bbox":[74,41,94,24]}
+{"kind":"textbox","id":"sh/l43qxs3e","slide":5,"text":"Quem corre oferece uma agenda editorial muito maior que prova e pódio.","textPreview":"Quem corre oferece uma agenda editorial muito maior que prova e pódio.","textChars":70,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/65crqxkz","slide":5,"text":"A base revela uma audiência ampla, acessível e recorrente para conteúdo de serviço e histórias locais.","textPreview":"A base revela uma audiência ampla, acessível e recorrente para conteúdo de serviço e histórias locais.","textChars":102,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"textbox","id":"sh/87u9s72p","slide":5,"text":"52,9%","textPreview":"52,9%","textChars":5,"textLines":1,"bbox":[156,336,172,44]}
+{"kind":"textbox","id":"sh/t83a1c3a","slide":5,"text":"mulheres","textPreview":"mulheres","textChars":8,"textLines":1,"bbox":[166,380,152,26]}
+{"kind":"textbox","id":"sh/vu5s32lg","slide":5,"text":"59,1%","textPreview":"59,1%","textChars":5,"textLines":1,"bbox":[554,336,172,44]}
+{"kind":"textbox","id":"sh/jmpo72t8","slide":5,"text":"até 5 km","textPreview":"até 5 km","textChars":8,"textLines":1,"bbox":[564,380,152,26]}
+{"kind":"shape","id":"sh/ylw7yxcn","slide":5,"bbox":[866,230,328,120]}
+{"kind":"textbox","id":"sh/lo7q9sby","slide":5,"text":"50,5%","textPreview":"50,5%","textChars":5,"textLines":1,"bbox":[892,248,278,54]}
+{"kind":"textbox","id":"sh/knyp07ud","slide":5,"text":"Millennials","textPreview":"Millennials","textChars":11,"textLines":1,"bbox":[894,302,270,30]}
+{"kind":"shape","id":"sh/bi5o3itw","slide":5,"bbox":[866,372,328,74]}
+{"kind":"textbox","id":"sh/ahw7udcb","slide":5,"text":"Q4 concentra 33,5%","textPreview":"Q4 concentra 33,5%","textChars":18,"textLines":1,"bbox":[890,390,280,30]}
+{"kind":"shape","id":"sh/xkn65sb2","slide":5,"bbox":[866,468,328,74]}
+{"kind":"textbox","id":"sh/wjepwnuh","slide":5,"text":"Novembro chega a 13,4%","textPreview":"Novembro chega a 13,4%","textChars":22,"textLines":1,"bbox":[890,486,280,30]}
+{"kind":"shape","id":"sh/ve98fmt0","slide":5,"bbox":[92,570,1102,70]}
+{"kind":"textbox","id":"sh/ud076hcv","slide":5,"text":"Conteúdo de saúde, treinamento, calendário regional e histórias de iniciantes pode ampliar a audiência além dos atletas de elite.","textPreview":"Conteúdo de saúde, treinamento, calendário regional e histórias de iniciantes pode ampliar a audiência além dos atletas de elite.","textChars":129,"textLines":1,"bbox":[120,589,1044,40]}
+{"kind":"textbox","id":"sh/q9krylw3","slide":5,"text":"Fonte: Brasil que Corre — Provas 2025.","textPreview":"Fonte: Brasil que Corre — Provas 2025.","textChars":38,"textLines":1,"bbox":[64,657,500,18]}
+{"kind":"shape","id":"sh/rats7qd8","slide":5,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/dcva9gve","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"chart","id":"ch/ni5cji98","slide":5,"name":"","chartType":"doughnut","title":"Perfil por gênero","bbox":[68,215,348,322]}
+{"kind":"chart","id":"ch/alwvexsz","slide":5,"name":"","chartType":"doughnut","title":"Distância dos resultados","bbox":[466,215,348,322]}
+{"kind":"image","id":"im/z6tkjm9s","slide":5,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/9z2a0o","slide":5,"text":"Fonte: /Users/leonardosobral/Downloads/BrasilQueCorreProvas2025_v3.10.3 (1).pdf, páginas 3, 5, 11 e 12.\nDados: 52,9% mulheres; 47,1% homens; 59,1% dos resultados em distâncias de até 5 km; Millennials 50,5%; quarto trimestre 33,5%; novembro 13,4%.\nA frase sobre oportunidade editorial é uma inferência estratégica da RunnerHub baseada no perfil, recorrência e sazonalidade observados."}
+{"kind":"slide","id":"sl/ycdpdq","slide":6,"title":"A PROPRIEDADE","textShapes":16}
+{"kind":"shape","id":"sh/ja5wnahk","slide":6,"bbox":[64,38,146,30]}
+{"kind":"textbox","id":"sh/kbexwfy5","slide":6,"text":"A PROPRIEDADE","textPreview":"A PROPRIEDADE","textChars":13,"textLines":1,"bbox":[74,41,126,24]}
+{"kind":"textbox","id":"sh/5cnepkzq","slide":6,"text":"NSC Corre: uma plataforma anual, não uma cobertura eventual.","textPreview":"NSC Corre: uma plataforma anual, não uma cobertura eventual.","textChars":60,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/alwfq5g3","slide":6,"text":"Um mesmo guarda-chuva conecta utilidade, conteúdo, comunidade e experiência.","textPreview":"Um mesmo guarda-chuva conecta utilidade, conteúdo, comunidade e experiência.","textChars":76,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/vm5wjaho","slide":6,"bbox":[498,319,284,156]}
+{"kind":"textbox","id":"sh/wnexsfy9","slide":6,"text":"NSC","textPreview":"NSC","textChars":3,"textLines":1,"bbox":[528,353,90,46]}
+{"kind":"textbox","id":"sh/xonelkze","slide":6,"text":"CORRE","textPreview":"CORRE","textChars":5,"textLines":1,"bbox":[625,353,132,46]}
+{"kind":"textbox","id":"sh/uhgf29g7","slide":6,"text":"A casa da corrida catarinense","textPreview":"A casa da corrida catarinense","textChars":29,"textLines":1,"bbox":[530,411,220,28]}
+{"kind":"shape","id":"sh/fipwvuhs","slide":6,"bbox":[74,250,350,130]}
+{"kind":"shape","id":"sh/329ove90","slide":6,"bbox":[74,250,9,130]}
+{"kind":"textbox","id":"sh/i107m98f","slide":6,"text":"UTILIDADE","textPreview":"UTILIDADE","textChars":9,"textLines":1,"bbox":[102,272,290,27]}
+{"kind":"textbox","id":"sh/54b6xor6","slide":6,"text":"Calendário confiável, mudanças, cancelamentos e guia de provas.","textPreview":"Calendário confiável, mudanças, cancelamentos e guia de provas.","textChars":63,"textLines":1,"bbox":[102,308,292,56]}
+{"kind":"shape","id":"sh/432pojql","slide":6,"bbox":[856,250,350,130]}
+{"kind":"shape","id":"sh/r6tozy9w","slide":6,"bbox":[856,250,9,130]}
+{"kind":"textbox","id":"sh/q5k7qt8b","slide":6,"text":"CONTEÚDO","textPreview":"CONTEÚDO","textChars":8,"textLines":1,"bbox":[884,272,290,27]}
+{"kind":"textbox","id":"sh/dsb61or2","slide":6,"text":"Agenda, histórias locais, especialistas e dados que viram pauta.","textPreview":"Agenda, histórias locais, especialistas e dados que viram pauta.","textChars":64,"textLines":1,"bbox":[884,308,292,56]}
+{"kind":"shape","id":"sh/sr2psjqh","slide":6,"bbox":[74,444,350,130]}
+{"kind":"shape","id":"sh/futo3yp8","slide":6,"bbox":[74,444,9,130]}
+{"kind":"textbox","id":"sh/etk7ut8n","slide":6,"text":"COMUNIDADE","textPreview":"COMUNIDADE","textChars":10,"textLines":1,"bbox":[102,466,290,27]}
+{"kind":"textbox","id":"sh/apor2xsv","slide":6,"text":"Clubes, assessorias, desafios, ranking e conversa regional.","textPreview":"Clubes, assessorias, desafios, ranking e conversa regional.","textChars":59,"textLines":1,"bbox":[102,502,292,56]}
+{"kind":"shape","id":"sh/bqxsv2tg","slide":6,"bbox":[856,444,350,130]}
+{"kind":"shape","id":"sh/wr6947a1","slide":6,"bbox":[856,444,9,130]}
+{"kind":"textbox","id":"sh/xsfaxcr6","slide":6,"text":"EXPERIÊNCIA","textPreview":"EXPERIÊNCIA","textChars":11,"textLines":1,"bbox":[884,466,290,27]}
+{"kind":"textbox","id":"sh/2l4ryxsj","slide":6,"text":"Treinos, ativações, eventos parceiros e cobertura ao vivo.","textPreview":"Treinos, ativações, eventos parceiros e cobertura ao vivo.","textChars":58,"textLines":1,"bbox":[884,502,292,56]}
+{"kind":"shape","id":"sh/nmx8rit4","slide":6,"bbox":[424,314,74,55]}
+{"kind":"shape","id":"sh/on690nap","slide":6,"bbox":[782,314,74,55]}
+{"kind":"shape","id":"sh/pofatsba","slide":6,"bbox":[424,455,74,55]}
+{"kind":"shape","id":"sh/6h8ruhs3","slide":6,"bbox":[782,455,74,55]}
+{"kind":"shape","id":"sh/7ihs3m9o","slide":6,"bbox":[214,603,852,48]}
+{"kind":"textbox","id":"sh/hcjutgbq","slide":6,"text":"RunnerHub estrutura o dado e a jornada. NSC transforma isso em alcance, narrativa e receita.","textPreview":"RunnerHub estrutura o dado e a jornada. NSC transforma isso em alcance, narrativa e receita.","textChars":92,"textLines":1,"bbox":[236,614,808,26]}
+{"kind":"shape","id":"sh/gbad0bu5","slide":6,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/upsbylcz","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/kji9kr61","slide":6,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/ycdpdq","slide":6,"text":"Proposta conceitual RunnerHub. Os quatro pilares são componentes a co-desenhar com a NSC.\nEvidências de capacidade NSC: TV, rádio, digital, imprensa e experiências presenciais integradas.\nFontes: https://nsc.com.br/marcas-nsc/nsc-tv/ e https://nsc.com.br/quem-somos/."}
+{"kind":"slide","id":"sl/ef21ig","slide":7,"title":"JORNADA","textShapes":35}
+{"kind":"shape","id":"sh/wfet0jel","slide":7,"bbox":[64,38,110,30]}
+{"kind":"textbox","id":"sh/be5crex0","slide":7,"text":"JORNADA","textPreview":"JORNADA","textChars":7,"textLines":1,"bbox":[74,41,90,24]}
+{"kind":"textbox","id":"sh/adwby9wf","slide":7,"text":"Uma relação de 365 dias entre intenção, preparação e conquista.","textPreview":"Uma relação de 365 dias entre intenção, preparação e conquista.","textChars":63,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/l47uxov2","slide":7,"text":"Cada etapa da jornada gera serviço para o corredor e inventário para a NSC.","textPreview":"Cada etapa da jornada gera serviço para o corredor e inventário para a NSC.","textChars":75,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/k3yt4jex","slide":7,"bbox":[106,296,966,0]}
+{"kind":"shape","id":"sh/jipcvedc","slide":7,"bbox":[78,264,64,64]}
+{"kind":"textbox","id":"sh/yhgb29wr","slide":7,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[78,265,64,62]}
+{"kind":"textbox","id":"sh/t87u18ve","slide":7,"text":"DESCOBRE","textPreview":"DESCOBRE","textChars":8,"textLines":1,"bbox":[50,337,120,25]}
+{"kind":"textbox","id":"sh/87yt83et","slide":7,"text":"agenda","textPreview":"agenda","textChars":6,"textLines":1,"bbox":[50,376,120,24]}
+{"kind":"textbox","id":"sh/il8fmhkf","slide":7,"text":"pauta","textPreview":"pauta","textChars":5,"textLines":1,"bbox":[50,441,120,24]}
+{"kind":"shape","id":"sh/j6hgvm10","slide":7,"bbox":[239,264,64,64]}
+{"kind":"textbox","id":"sh/47qxor2l","slide":7,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[239,265,64,62]}
+{"kind":"textbox","id":"sh/58zyxwjq","slide":7,"text":"ESCOLHE","textPreview":"ESCOLHE","textChars":7,"textLines":1,"bbox":[211,337,120,25]}
+{"kind":"textbox","id":"sh/698fqhkb","slide":7,"text":"comparação","textPreview":"comparação","textChars":10,"textLines":1,"bbox":[211,376,120,24]}
+{"kind":"textbox","id":"sh/ra1gzm1w","slide":7,"text":"serviço","textPreview":"serviço","textChars":7,"textLines":1,"bbox":[211,441,120,24]}
+{"kind":"shape","id":"sh/sbahsr2h","slide":7,"bbox":[400,264,64,64]}
+{"kind":"textbox","id":"sh/tcjy1wj2","slide":7,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[400,265,64,62]}
+{"kind":"textbox","id":"sh/mdofexk7","slide":7,"text":"PREPARA","textPreview":"PREPARA","textChars":7,"textLines":1,"bbox":[372,337,120,25]}
+{"kind":"textbox","id":"sh/7exgn21s","slide":7,"text":"treino","textPreview":"treino","textChars":6,"textLines":1,"bbox":[372,376,120,24]}
+{"kind":"textbox","id":"sh/bitcvyhk","slide":7,"text":"conteúdo","textPreview":"conteúdo","textChars":8,"textLines":1,"bbox":[372,441,120,24]}
+{"kind":"shape","id":"sh/qhkvmt0z","slide":7,"bbox":[561,264,64,64]}
+{"kind":"textbox","id":"sh/dkvux8zq","slide":7,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[561,265,64,62]}
+{"kind":"textbox","id":"sh/cjmdo3i5","slide":7,"text":"CORRE","textPreview":"CORRE","textChars":5,"textLines":1,"bbox":[533,337,120,25]}
+{"kind":"textbox","id":"sh/3utcreh8","slide":7,"text":"prova","textPreview":"prova","textChars":5,"textLines":1,"bbox":[533,376,120,24]}
+{"kind":"textbox","id":"sh/2tkvi903","slide":7,"text":"cobertura","textPreview":"cobertura","textChars":9,"textLines":1,"bbox":[533,441,120,24]}
+{"kind":"shape","id":"sh/pgbutoze","slide":7,"bbox":[722,264,64,64]}
+{"kind":"textbox","id":"sh/ov2dkjit","slide":7,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[722,265,64,62]}
+{"kind":"textbox","id":"sh/7qdw3ihs","slide":7,"text":"CONFIRMA","textPreview":"CONFIRMA","textChars":8,"textLines":1,"bbox":[694,337,120,25]}
+{"kind":"textbox","id":"sh/mp4vud07","slide":7,"text":"resultado","textPreview":"resultado","textChars":9,"textLines":1,"bbox":[694,376,120,24]}
+{"kind":"textbox","id":"sh/4vy9ofyp","slide":7,"text":"dados","textPreview":"dados","textChars":5,"textLines":1,"bbox":[694,441,120,24]}
+{"kind":"shape","id":"sh/5w7ahkfa","slide":7,"bbox":[883,264,64,64]}
+{"kind":"textbox","id":"sh/itgrm5gj","slide":7,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[883,265,64,62]}
+{"kind":"textbox","id":"sh/jupsfax4","slide":7,"text":"COMPARTILHA","textPreview":"COMPARTILHA","textChars":11,"textLines":1,"bbox":[855,337,120,25]}
+{"kind":"textbox","id":"sh/szy9sfyl","slide":7,"text":"história","textPreview":"história","textChars":8,"textLines":1,"bbox":[855,376,120,24]}
+{"kind":"textbox","id":"sh/t0ralkf6","slide":7,"text":"comunidade","textPreview":"comunidade","textChars":10,"textLines":1,"bbox":[855,441,120,24]}
+{"kind":"shape","id":"sh/6xgrqpgv","slide":7,"bbox":[1044,264,64,64]}
+{"kind":"textbox","id":"sh/rypsjax0","slide":7,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[1044,265,64,62]}
+{"kind":"textbox","id":"sh/gnitwzyx","slide":7,"text":"RECOMEÇA","textPreview":"RECOMEÇA","textChars":8,"textLines":1,"bbox":[1016,337,120,25]}
+{"kind":"textbox","id":"sh/1orap4fi","slide":7,"text":"nova meta","textPreview":"nova meta","textChars":9,"textLines":1,"bbox":[1016,376,120,24]}
+{"kind":"textbox","id":"sh/1kz2p0f6","slide":7,"text":"CRM opt-in","textPreview":"CRM opt-in","textChars":10,"textLines":1,"bbox":[1016,441,120,24]}
+{"kind":"shape","id":"sh/0jq1gvyl","slide":7,"bbox":[80,374,118,30]}
+{"kind":"textbox","id":"sh/fihknqxg","slide":7,"text":"CORREDOR","textPreview":"CORREDOR","textChars":8,"textLines":1,"bbox":[90,377,98,24]}
+{"kind":"shape","id":"sh/ex8jelgv","slide":7,"bbox":[80,438,156,30]}
+{"kind":"textbox","id":"sh/dwfilgfa","slide":7,"text":"NSC + RUNNERHUB","textPreview":"NSC + RUNNERHUB","textChars":15,"textLines":1,"bbox":[90,441,136,24]}
+{"kind":"shape","id":"sh/sv61cbyp","slide":7,"bbox":[116,535,1048,78]}
+{"kind":"textbox","id":"sh/rux0j6x4","slide":7,"text":"A corrida deixa de ser evento pontual e vira hábito editorial, benefício recorrente e plataforma comercial.","textPreview":"A corrida deixa de ser evento pontual e vira hábito editorial, benefício recorrente e plataforma comercial.","textChars":107,"textLines":1,"bbox":[150,554,980,44]}
+{"kind":"shape","id":"sh/qtoja1gj","slide":7,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/cra1ofyt","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/mt4zmx8b","slide":7,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/ef21ig","slide":7,"text":"Proposta conceitual RunnerHub. A etapa ‘inscrição’ foi deliberadamente descrita como escolha/comparação, pois a RunnerHub pode direcionar o atleta sem afirmar que processa toda inscrição.\nCRM e segmentação devem operar somente com consentimento e governança LGPD."}
+{"kind":"slide","id":"sl/yy381t","slide":8,"title":"NOVO MOTOR DE VALOR","textShapes":30}
+{"kind":"shape","id":"sh/q9ojepkf","slide":8,"bbox":[64,38,194,30]}
+{"kind":"textbox","id":"sh/dcfip4j6","slide":8,"text":"NOVO MOTOR DE VALOR","textPreview":"NOVO MOTOR DE VALOR","textChars":19,"textLines":1,"bbox":[74,41,174,24]}
+{"kind":"textbox","id":"sh/cb61gz2l","slide":8,"text":"Corre no Clube: benefício que transforma audiência em relação.","textPreview":"Corre no Clube: benefício que transforma audiência em relação.","textChars":62,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/zehkre1w","slide":8,"text":"Uma vertical esportiva dentro do Clube NSC pode conectar assinatura, economia, experiência e dados consentidos.","textPreview":"Uma vertical esportiva dentro do Clube NSC pode conectar assinatura, economia, experiência e dados consentidos.","textChars":111,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/edoji9kr","slide":8,"bbox":[64,222,280,370]}
+{"kind":"shape","id":"sh/10z2t4j2","slide":8,"bbox":[88,246,118,30]}
+{"kind":"textbox","id":"sh/0fq1kj2h","slide":8,"text":"PROPOSTA","textPreview":"PROPOSTA","textChars":8,"textLines":1,"bbox":[98,249,98,24]}
+{"kind":"shape","id":"sh/fid0fa1s","slide":8,"bbox":[88,296,232,142]}
+{"kind":"textbox","id":"sh/s3ax8bul","slide":8,"text":"CORRE","textPreview":"CORRE","textChars":5,"textLines":1,"bbox":[100,449,208,45]}
+{"kind":"textbox","id":"sh/d4jyhgb6","slide":8,"text":"benefício esportivo para assinantes","textPreview":"benefício esportivo para assinantes","textChars":35,"textLines":1,"bbox":[100,502,208,48]}
+{"kind":"shape","id":"sh/6hsf61cf","slide":8,"bbox":[382,222,492,76]}
+{"kind":"shape","id":"sh/r21gf6t0","slide":8,"bbox":[398,237,46,46]}
+{"kind":"textbox","id":"sh/07axcbuh","slide":8,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[398,238,46,44]}
+{"kind":"textbox","id":"sh/183ylgb2","slide":8,"text":"VAGA COM VANTAGEM","textPreview":"VAGA COM VANTAGEM","textChars":17,"textLines":1,"bbox":[458,234,390,23]}
+{"kind":"textbox","id":"sh/e5sfalcb","slide":8,"text":"Descontos, lotes antecipados e cotas limitadas em provas parceiras.","textPreview":"Descontos, lotes antecipados e cotas limitadas em provas parceiras.","textChars":67,"textLines":1,"bbox":[458,260,390,31]}
+{"kind":"shape","id":"sh/f61gjqtw","slide":8,"bbox":[382,312,492,76]}
+{"kind":"shape","id":"sh/wbqx0rud","slide":8,"bbox":[398,327,46,46]}
+{"kind":"textbox","id":"sh/hcze9wvy","slide":8,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[398,328,46,44]}
+{"kind":"textbox","id":"sh/xw7mhoja","slide":8,"text":"PREPARE-SE MELHOR","textPreview":"PREPARE-SE MELHOR","textChars":17,"textLines":1,"bbox":[458,324,390,23]}
+{"kind":"textbox","id":"sh/cvylojip","slide":8,"text":"Academias, fisioterapia, laboratórios, nutrição e recuperação.","textPreview":"Academias, fisioterapia, laboratórios, nutrição e recuperação.","textChars":62,"textLines":1,"bbox":[458,350,390,31]}
+{"kind":"shape","id":"sh/bup4fe1k","slide":8,"bbox":[382,402,492,76]}
+{"kind":"shape","id":"sh/atg3m90z","slide":8,"bbox":[398,417,46,46]}
+{"kind":"textbox","id":"sh/lkrmlojm","slide":8,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[398,418,46,44]}
+{"kind":"textbox","id":"sh/kzi5s3i1","slide":8,"text":"VIVA A PROVA","textPreview":"VIVA A PROVA","textChars":12,"textLines":1,"bbox":[458,414,390,23]}
+{"kind":"textbox","id":"sh/zyp4jy1g","slide":8,"text":"Treinos, preview de percurso, retirada VIP e hospitalidade.","textPreview":"Treinos, preview de percurso, retirada VIP e hospitalidade.","textChars":59,"textLines":1,"bbox":[458,440,390,31]}
+{"kind":"shape","id":"sh/yxg3qt0v","slide":8,"bbox":[382,492,492,76]}
+{"kind":"shape","id":"sh/9ormp8ji","slide":8,"bbox":[398,507,46,46]}
+{"kind":"textbox","id":"sh/8ni5w3ix","slide":8,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[398,508,46,44]}
+{"kind":"textbox","id":"sh/q9cjq5gf","slide":8,"text":"CORRA E GANHE","textPreview":"CORRA E GANHE","textChars":13,"textLines":1,"bbox":[458,504,390,23]}
+{"kind":"textbox","id":"sh/ral0jah0","slide":8,"text":"Desafios, recorrência e recompensas com consentimento do usuário.","textPreview":"Desafios, recorrência e recompensas com consentimento do usuário.","textChars":65,"textLines":1,"bbox":[458,530,390,31]}
+{"kind":"shape","id":"sh/svu1sfyl","slide":8,"bbox":[910,222,306,370]}
+{"kind":"textbox","id":"sh/dw32lkz6","slide":8,"text":"A EQUAÇÃO","textPreview":"A EQUAÇÃO","textChars":9,"textLines":1,"bbox":[936,247,252,24]}
+{"kind":"textbox","id":"sh/excju5gr","slide":8,"text":"Assinante","textPreview":"Assinante","textChars":9,"textLines":1,"bbox":[936,292,110,24]}
+{"kind":"textbox","id":"sh/fylknahc","slide":8,"text":"economia + acesso","textPreview":"economia + acesso","textChars":17,"textLines":1,"bbox":[1050,294,138,22]}
+{"kind":"shape","id":"sh/0zu1wfyh","slide":8,"bbox":[936,329,252,0]}
+{"kind":"textbox","id":"sh/10n2pkz2","slide":8,"text":"NSC","textPreview":"NSC","textChars":3,"textLines":1,"bbox":[936,349,110,24]}
+{"kind":"textbox","id":"sh/21wjypgn","slide":8,"text":"aquisição + retenção","textPreview":"aquisição + retenção","textChars":20,"textLines":1,"bbox":[1044,351,144,22]}
+{"kind":"shape","id":"sh/n25kruh8","slide":8,"bbox":[936,386,252,0]}
+{"kind":"textbox","id":"sh/bi10bu9c","slide":8,"text":"Marcas","textPreview":"Marcas","textChars":6,"textLines":1,"bbox":[936,406,110,24]}
+{"kind":"textbox","id":"sh/ahsj2p8r","slide":8,"text":"conversão + contexto","textPreview":"conversão + contexto","textChars":20,"textLines":1,"bbox":[1042,408,146,22]}
+{"kind":"shape","id":"sh/xkjidkri","slide":8,"bbox":[936,443,252,0]}
+{"kind":"textbox","id":"sh/wja14fqx","slide":8,"text":"RunnerHub","textPreview":"RunnerHub","textChars":9,"textLines":1,"bbox":[936,463,110,24]}
+{"kind":"textbox","id":"sh/jmlkfu9o","slide":8,"text":"distribuição + medição","textPreview":"distribuição + medição","textChars":22,"textLines":1,"bbox":[1036,465,152,22]}
+{"kind":"shape","id":"sh/ylsj6p83","slide":8,"bbox":[936,511,252,54]}
+{"kind":"textbox","id":"sh/lo32h47e","slide":8,"text":"Benefício gera dado de valor","textPreview":"Benefício gera dado de valor","textChars":28,"textLines":1,"bbox":[950,524,224,28]}
+{"kind":"textbox","id":"sh/knu18zqt","slide":8,"text":"O Clube NSC declara 500+ parceiros em SC e benefícios de até 50%. Os itens acima são propostas sujeitas a negociação.","textPreview":"O Clube NSC declara 500+ parceiros em SC e benefícios de até 50%. Os itens acima são propostas sujeitas a negociação.","textChars":117,"textLines":1,"bbox":[64,626,1134,34]}
+{"kind":"shape","id":"sh/zqh03a94","slide":8,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/4vmx4b6h","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/fe987m9s","slide":8,"name":"","alt":"Clube NSC","bbox":[148,309,112,108]}
+{"kind":"image","id":"im/hk3apcjm","slide":8,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/yy381t","slide":8,"text":"Fonte oficial Clube NSC: https://clubensc.com.br/sobre-o-clube/ e https://clubensc.com.br/.\nO Clube NSC é apresentado como programa de benefícios exclusivo para assinantes NSC Total, com mais de 500 parceiros em Santa Catarina, descontos de até 50%, eventos e promoções exclusivas.\nTodos os benefícios listados neste slide são propostas. Dependem de negociação comercial, disponibilidade, integração técnica e consentimento do usuário quando houver dados pessoais ou ranking.\nLogo Clube NSC obtido do site oficial para uso nesta proposta interna."}
+{"kind":"slide","id":"sl/tfmb8j","slide":9,"title":"MONETIZAÇÃO","textShapes":27}
+{"kind":"shape","id":"sh/ra1knm9k","slide":9,"bbox":[64,38,130,30]}
+{"kind":"textbox","id":"sh/sba1wrq5","slide":9,"text":"MONETIZAÇÃO","textPreview":"MONETIZAÇÃO","textChars":11,"textLines":1,"bbox":[74,41,110,24]}
+{"kind":"textbox","id":"sh/tcj2pwrq","slide":9,"text":"Uma oferta que soma mídia, benefício, dados e experiência.","textPreview":"Uma oferta que soma mídia, benefício, dados e experiência.","textChars":58,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/il8jqhs3","slide":9,"text":"O patrocinador compra presença ao longo da jornada, com entregas e métricas que cabem no mesmo painel.","textPreview":"O patrocinador compra presença ao longo da jornada, com entregas e métricas que cabem no mesmo painel.","textChars":102,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/jmhkjm98","slide":9,"bbox":[72,236,434,64]}
+{"kind":"textbox","id":"sh/knq1srat","slide":9,"text":"01  PROPRIEDADE ALWAYS-ON","textPreview":"01  PROPRIEDADE ALWAYS-ON","textChars":25,"textLines":1,"bbox":[94,246,390,21]}
+{"kind":"textbox","id":"sh/5oz2lwre","slide":9,"text":"Naming, presença na home, agenda e quadros recorrentes.","textPreview":"Naming, presença na home, agenda e quadros recorrentes.","textChars":55,"textLines":1,"bbox":[94,270,390,22]}
+{"kind":"shape","id":"sh/2hcj2187","slide":9,"bbox":[112,314,474,64]}
+{"kind":"textbox","id":"sh/3ilkv69s","slide":9,"text":"02  CONTEÚDO E SERVIÇO","textPreview":"02  CONTEÚDO E SERVIÇO","textChars":22,"textLines":1,"bbox":[134,324,430,21]}
+{"kind":"textbox","id":"sh/7ypgjmtw","slide":9,"text":"Radar da semana, histórias, especialistas e dados da corrida.","textPreview":"Radar da semana, histórias, especialistas e dados da corrida.","textChars":61,"textLines":1,"bbox":[134,348,430,22]}
+{"kind":"shape","id":"sh/mxgzqhsr","slide":9,"bbox":[152,392,514,64]}
+{"kind":"textbox","id":"sh/907ylwb2","slide":9,"text":"03  BENEFÍCIO NO CLUBE","textPreview":"03  BENEFÍCIO NO CLUBE","textChars":22,"textLines":1,"bbox":[174,402,470,21]}
+{"kind":"textbox","id":"sh/8zyhsrah","slide":9,"text":"Vantagem do mês, cotas de vagas e experiências exclusivas.","textPreview":"Vantagem do mês, cotas de vagas e experiências exclusivas.","textChars":58,"textLines":1,"bbox":[174,426,470,22]}
+{"kind":"shape","id":"sh/v29gn6t8","slide":9,"bbox":[192,470,554,64]}
+{"kind":"textbox","id":"sh/u1gzu1sn","slide":9,"text":"04  EXPERIÊNCIA E EVENTO","textPreview":"04  EXPERIÊNCIA E EVENTO","textChars":24,"textLines":1,"bbox":[214,480,510,21]}
+{"kind":"textbox","id":"sh/horipwbe","slide":9,"text":"Treinos, Corrida Verde, recovery lounge e cobertura ao vivo.","textPreview":"Treinos, Corrida Verde, recovery lounge e cobertura ao vivo.","textChars":60,"textLines":1,"bbox":[214,504,510,22]}
+{"kind":"shape","id":"sh/wnihwbat","slide":9,"bbox":[808,226,408,330]}
+{"kind":"textbox","id":"sh/jq90r6t4","slide":9,"text":"PAINEL DE VALOR","textPreview":"PAINEL DE VALOR","textChars":15,"textLines":1,"bbox":[838,252,340,26]}
+{"kind":"shape","id":"sh/ip0zy1sj","slide":9,"bbox":[838,297,20,20]}
+{"kind":"textbox","id":"sh/el4jq5cr","slide":9,"text":"Alcance","textPreview":"Alcance","textChars":7,"textLines":1,"bbox":[870,296,116,24]}
+{"kind":"textbox","id":"sh/fmdkjadc","slide":9,"text":"pessoas expostas","textPreview":"pessoas expostas","textChars":16,"textLines":1,"bbox":[988,297,184,22]}
+{"kind":"shape","id":"sh/0nm1sfux","slide":9,"bbox":[838,337,20,20]}
+{"kind":"textbox","id":"sh/1ov2lkvi","slide":9,"text":"Consumo","textPreview":"Consumo","textChars":7,"textLines":1,"bbox":[870,336,116,24]}
+{"kind":"textbox","id":"sh/qhkjm5cv","slide":9,"text":"tempo, vídeo e retorno","textPreview":"tempo, vídeo e retorno","textChars":22,"textLines":1,"bbox":[988,337,184,22]}
+{"kind":"shape","id":"sh/ritkfadg","slide":9,"bbox":[838,377,20,20]}
+{"kind":"textbox","id":"sh/sj21ovu1","slide":9,"text":"Benefício","textPreview":"Benefício","textChars":9,"textLines":1,"bbox":[870,376,116,24]}
+{"kind":"textbox","id":"sh/dkb2h0vm","slide":9,"text":"resgates e economia","textPreview":"resgates e economia","textChars":19,"textLines":1,"bbox":[988,377,184,22]}
+{"kind":"shape","id":"sh/ado3ypcz","slide":9,"bbox":[838,417,20,20]}
+{"kind":"textbox","id":"sh/bexkrutk","slide":9,"text":"Conversão","textPreview":"Conversão","textChars":9,"textLines":1,"bbox":[870,416,116,24]}
+{"kind":"textbox","id":"sh/l8zmxofm","slide":9,"text":"leads opt-in e inscrições","textPreview":"leads opt-in e inscrições","textChars":25,"textLines":1,"bbox":[988,417,184,22]}
+{"kind":"shape","id":"sh/k7q5ojeh","slide":9,"bbox":[838,457,20,20]}
+{"kind":"textbox","id":"sh/z6h4vyxw","slide":9,"text":"Assinatura","textPreview":"Assinatura","textChars":10,"textLines":1,"bbox":[870,456,116,24]}
+{"kind":"textbox","id":"sh/yl8nmtwb","slide":9,"text":"aquisição e retenção","textPreview":"aquisição e retenção","textChars":20,"textLines":1,"bbox":[988,457,184,22]}
+{"kind":"shape","id":"sh/xkfmtofq","slide":9,"bbox":[838,497,20,20]}
+{"kind":"textbox","id":"sh/cj65kje5","slide":9,"text":"Receita","textPreview":"Receita","textChars":7,"textLines":1,"bbox":[870,496,116,24]}
+{"kind":"textbox","id":"sh/bix4rexk","slide":9,"text":"patrocínio e pipeline","textPreview":"patrocínio e pipeline","textChars":21,"textLines":1,"bbox":[988,497,184,22]}
+{"kind":"shape","id":"sh/ahoni9wz","slide":9,"bbox":[808,578,408,30]}
+{"kind":"textbox","id":"sh/hgj658vu","slide":9,"text":"LGPD: DADOS E SEGMENTAÇÃO SOMENTE COM CONSENTIMENTO","textPreview":"LGPD: DADOS E SEGMENTAÇÃO SOMENTE COM CONSENTIMENTO","textChars":51,"textLines":1,"bbox":[818,581,388,24]}
+{"kind":"textbox","id":"sh/wfa5w3e9","slide":9,"text":"Categorias naturais: saúde, finanças, mobilidade, hidratação, nutrição, vestuário e turismo regional.","textPreview":"Categorias naturais: saúde, finanças, mobilidade, hidratação, nutrição, vestuário e turismo regional.","textChars":101,"textLines":1,"bbox":[72,626,1144,34]}
+{"kind":"shape","id":"sh/ojydwne5","slide":9,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/2hgvudwz","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/m5sf2pcz","slide":9,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/tfmb8j","slide":9,"text":"Proposta comercial RunnerHub. Inventário, métricas e categorias são hipóteses para desenho conjunto com editorial, comercial, produto e Clube NSC.\nQualquer uso de dados pessoais, segmentação, ranking, CRM ou compartilhamento com patrocinadores deve respeitar consentimento, finalidade e governança LGPD."}
+{"kind":"slide","id":"sl/skshsm","slide":10,"title":"PRIMEIRO PASSO","textShapes":35}
+{"kind":"shape","id":"sh/pgvq1cna","slide":10,"bbox":[64,38,154,30]}
+{"kind":"textbox","id":"sh/2d4r6hoj","slide":10,"text":"PRIMEIRO PASSO","textPreview":"PRIMEIRO PASSO","textChars":14,"textLines":1,"bbox":[74,41,134,24]}
+{"kind":"textbox","id":"sh/3ed8zm54","slide":10,"text":"Piloto de 90 dias para provar valor antes de escalar.","textPreview":"Piloto de 90 dias para provar valor antes de escalar.","textChars":53,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/cj69cr6l","slide":10,"text":"Um ciclo curto cria o produto mínimo, ativa o Clube NSC e mede adesão real.","textPreview":"Um ciclo curto cria o produto mínimo, ativa o Clube NSC e mede adesão real.","textChars":75,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/dkfq5wn6","slide":10,"bbox":[64,230,332,304]}
+{"kind":"shape","id":"sh/qhorahov","slide":10,"bbox":[64,230,332,64]}
+{"kind":"textbox","id":"sh/bix83m5g","slide":10,"text":"DIAS 0–30","textPreview":"DIAS 0–30","textChars":9,"textLines":1,"bbox":[86,245,120,30]}
+{"kind":"textbox","id":"sh/0769gr6x","slide":10,"text":"FUNDAR","textPreview":"FUNDAR","textChars":6,"textLines":1,"bbox":[224,245,148,30]}
+{"kind":"shape","id":"sh/l8za9wni","slide":10,"bbox":[88,326,24,24]}
+{"kind":"textbox","id":"sh/50jytk3e","slide":10,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[88,327,24,22]}
+{"kind":"textbox","id":"sh/kzqxkfmt","slide":10,"text":"nome e identidade","textPreview":"nome e identidade","textChars":17,"textLines":1,"bbox":[124,326,236,27]}
+{"kind":"shape","id":"sh/jyhgral8","slide":10,"bbox":[88,372,24,24]}
+{"kind":"textbox","id":"sh/id8fi54n","slide":10,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[88,373,24,22]}
+{"kind":"textbox","id":"sh/t4jyxk3a","slide":10,"text":"ritual editorial","textPreview":"ritual editorial","textChars":16,"textLines":1,"bbox":[124,372,236,27]}
+{"kind":"shape","id":"sh/s3axof2p","slide":10,"bbox":[88,418,24,24]}
+{"kind":"textbox","id":"sh/721gval4","slide":10,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[88,419,24,22]}
+{"kind":"textbox","id":"sh/61sfm5kj","slide":10,"text":"feed de calendário","textPreview":"feed de calendário","textChars":18,"textLines":1,"bbox":[124,418,236,27]}
+{"kind":"shape","id":"sh/98fel036","slide":10,"bbox":[88,464,24,24]}
+{"kind":"textbox","id":"sh/876xcvml","slide":10,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[88,465,24,22]}
+{"kind":"textbox","id":"sh/0rax8vuh","slide":10,"text":"3 benefícios iniciais","textPreview":"3 benefícios iniciais","textChars":21,"textLines":1,"bbox":[124,464,236,27]}
+{"kind":"shape","id":"sh/1sjy10b2","slide":10,"bbox":[410,368,20,20]}
+{"kind":"shape","id":"sh/epsf6lcb","slide":10,"bbox":[442,230,332,304]}
+{"kind":"shape","id":"sh/zq1gzqtw","slide":10,"bbox":[442,230,332,64]}
+{"kind":"textbox","id":"sh/ofuxcvud","slide":10,"text":"DIAS 31–60","textPreview":"DIAS 31–60","textChars":10,"textLines":1,"bbox":[464,245,120,30]}
+{"kind":"textbox","id":"sh/9g3y50by","slide":10,"text":"ATIVAR","textPreview":"ATIVAR","textChars":6,"textLines":1,"bbox":[602,245,148,30]}
+{"kind":"shape","id":"sh/mdsfa5c7","slide":10,"bbox":[466,326,24,24]}
+{"kind":"textbox","id":"sh/nelg3qts","slide":10,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[466,327,24,22]}
+{"kind":"textbox","id":"sh/wjux0fup","slide":10,"text":"lançamento ao público","textPreview":"lançamento ao público","textChars":21,"textLines":1,"bbox":[502,326,236,27]}
+{"kind":"shape","id":"sh/xk3y9kbu","slide":10,"bbox":[466,372,24,24]}
+{"kind":"textbox","id":"sh/7q9sfyho","slide":10,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[466,373,24,22]}
+{"kind":"textbox","id":"sh/6pgrmd03","slide":10,"text":"agenda semanal","textPreview":"agenda semanal","textChars":14,"textLines":1,"bbox":[502,372,236,27]}
+{"kind":"shape","id":"sh/tsrah8ze","slide":10,"bbox":[466,418,24,24]}
+{"kind":"textbox","id":"sh/sri9o3it","slide":10,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[466,419,24,22]}
+{"kind":"textbox","id":"sh/jmpsryhc","slide":10,"text":"primeiro treino","textPreview":"primeiro treino","textChars":15,"textLines":1,"bbox":[502,418,236,27]}
+{"kind":"shape","id":"sh/ilgrit0r","slide":10,"bbox":[466,464,24,24]}
+{"kind":"textbox","id":"sh/5o7at8zi","slide":10,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[466,465,24,22]}
+{"kind":"textbox","id":"sh/kny9k3ix","slide":10,"text":"pacotes a marcas","textPreview":"pacotes a marcas","textChars":16,"textLines":1,"bbox":[502,464,236,27]}
+{"kind":"shape","id":"sh/3itsnihg","slide":10,"bbox":[788,368,20,20]}
+{"kind":"shape","id":"sh/2h0rux0b","slide":10,"bbox":[820,230,332,304]}
+{"kind":"shape","id":"sh/a50vihwf","slide":10,"bbox":[820,230,332,64]}
+{"kind":"textbox","id":"sh/b69wrmd0","slide":10,"text":"DIAS 61–90","textPreview":"DIAS 61–90","textChars":10,"textLines":1,"bbox":[842,245,120,30]}
+{"kind":"textbox","id":"sh/cridkrel","slide":10,"text":"PROVAR","textPreview":"PROVAR","textChars":6,"textLines":1,"bbox":[980,245,148,30]}
+{"kind":"shape","id":"sh/xsretwvq","slide":10,"bbox":[844,326,24,24]}
+{"kind":"textbox","id":"sh/21gvehw3","slide":10,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[844,327,24,22]}
+{"kind":"textbox","id":"sh/n2pcnmdo","slide":10,"text":"evento âncora","textPreview":"evento âncora","textChars":13,"textLines":1,"bbox":[880,326,236,27]}
+{"kind":"shape","id":"sh/o3ydg7e9","slide":10,"bbox":[844,372,24,24]}
+{"kind":"textbox","id":"sh/p47upcvu","slide":10,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[844,373,24,22]}
+{"kind":"textbox","id":"sh/mxkvq1wn","slide":10,"text":"conteúdo de resultados","textPreview":"conteúdo de resultados","textChars":22,"textLines":1,"bbox":[880,372,236,27]}
+{"kind":"shape","id":"sh/7ytwz6d8","slide":10,"bbox":[844,418,24,24]}
+{"kind":"textbox","id":"sh/hsvyp0fa","slide":10,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[844,419,24,22]}
+{"kind":"textbox","id":"sh/wrmxgvyp","slide":10,"text":"dashboard do piloto","textPreview":"dashboard do piloto","textChars":19,"textLines":1,"bbox":[880,418,236,27]}
+{"kind":"shape","id":"sh/vqdgnqx4","slide":10,"bbox":[844,464,24,24]}
+{"kind":"textbox","id":"sh/up4fe5gj","slide":10,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[844,465,24,22]}
+{"kind":"textbox","id":"sh/9ovyl0fy","slide":10,"text":"roadmap de escala","textPreview":"roadmap de escala","textChars":17,"textLines":1,"bbox":[880,464,236,27]}
+{"kind":"shape","id":"sh/8n2xcvyt","slide":10,"bbox":[144,568,992,64]}
+{"kind":"textbox","id":"sh/7mtgjqx8","slide":10,"text":"Métricas do piloto: audiência • cadastros opt-in • resgates • conversões • pipeline comercial • sinal de assinatura","textPreview":"Métricas do piloto: audiência • cadastros opt-in • resgates • conversões • pipeline comercial • sinal de assinatura","textChars":115,"textLines":1,"bbox":[172,586,936,32]}
+{"kind":"shape","id":"sh/mlkfalgn","slide":10,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/sj6hofyx","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/mdwbu983","slide":10,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/skshsm","slide":10,"text":"Proposta operacional RunnerHub. Metas quantitativas devem ser definidas depois da linha de base dos canais NSC, do Clube NSC e do inventário de parceiros.\nSugestão: usar um evento âncora já relacionado à NSC ou uma prova parceira com acesso operacional aos dados e direitos de cobertura."}
+{"kind":"slide","id":"sl/icvsrq","slide":11,"title":"PRÓXIMO PASSO","textShapes":14}
+{"kind":"shape","id":"sh/gbexc7i9","slide":11,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/fa5g321o","slide":11,"bbox":[980,-70,380,150]}
+{"kind":"shape","id":"sh/e9wfax03","slide":11,"bbox":[-70,640,420,120]}
+{"kind":"shape","id":"sh/pg7y9cjq","slide":11,"bbox":[72,54,168,30]}
+{"kind":"textbox","id":"sh/ofyhg7i5","slide":11,"text":"PRÓXIMO PASSO","textPreview":"PRÓXIMO PASSO","textChars":13,"textLines":1,"bbox":[82,57,148,24]}
+{"kind":"textbox","id":"sh/3epg721k","slide":11,"text":"A decisão que pedimos nesta reunião","textPreview":"A decisão que pedimos nesta reunião","textChars":35,"textLines":1,"bbox":[72,112,1000,72]}
+{"kind":"textbox","id":"sh/2dgzeh0z","slide":11,"text":"Sair com um piloto patrocinado, donos claros e uma data de estreia.","textPreview":"Sair com um piloto patrocinado, donos claros e uma data de estreia.","textChars":67,"textLines":1,"bbox":[72,188,940,42]}
+{"kind":"shape","id":"sh/5k3yxsjm","slide":11,"bbox":[72,286,342,214]}
+{"kind":"shape","id":"sh/4jux4ni1","slide":11,"bbox":[96,310,54,54]}
+{"kind":"textbox","id":"sh/214rupwv","slide":11,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[96,311,54,52]}
+{"kind":"textbox","id":"sh/n2dsnuxg","slide":11,"text":"APROVAR O CO-DESENHO","textPreview":"APROVAR O CO-DESENHO","textChars":20,"textLines":1,"bbox":[96,382,294,28]}
+{"kind":"textbox","id":"sh/o3m9wze1","slide":11,"text":"Piloto de 90 dias sob a marca NSC Corre.","textPreview":"Piloto de 90 dias sob a marca NSC Corre.","textChars":40,"textLines":1,"bbox":[96,426,294,50]}
+{"kind":"shape","id":"sh/p4fap4fm","slide":11,"bbox":[454,286,342,214]}
+{"kind":"shape","id":"sh/apoby9w7","slide":11,"bbox":[478,310,54,54]}
+{"kind":"textbox","id":"sh/bqxsrexc","slide":11,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[478,311,54,52]}
+{"kind":"textbox","id":"sh/cr6t0jex","slide":11,"text":"NOMEAR OS DONOS","textPreview":"NOMEAR OS DONOS","textChars":15,"textLines":1,"bbox":[478,382,294,28]}
+{"kind":"textbox","id":"sh/xsfatofi","slide":11,"text":"Editorial, comercial, produto, Clube NSC e RunnerHub.","textPreview":"Editorial, comercial, produto, Clube NSC e RunnerHub.","textChars":53,"textLines":1,"bbox":[478,426,294,50]}
+{"kind":"shape","id":"sh/ytob2tw3","slide":11,"bbox":[836,286,342,214]}
+{"kind":"shape","id":"sh/juxsvedo","slide":11,"bbox":[860,310,54,54]}
+{"kind":"textbox","id":"sh/vyhsjytw","slide":11,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[860,311,54,52]}
+{"kind":"textbox","id":"sh/ux8ratcb","slide":11,"text":"ESCOLHER A ÂNCORA","textPreview":"ESCOLHER A ÂNCORA","textChars":17,"textLines":1,"bbox":[860,382,294,28]}
+{"kind":"textbox","id":"sh/h0zalobm","slide":11,"text":"Um evento e três benefícios para a primeira ativação.","textPreview":"Um evento e três benefícios para a primeira ativação.","textChars":53,"textLines":1,"bbox":[860,426,294,50]}
+{"kind":"shape","id":"sh/gzq9cju1","slide":11,"bbox":[278,548,724,70]}
+{"kind":"textbox","id":"sh/7ux8fetk","slide":11,"text":"Saída desejada: workshop agendado + responsáveis + data de lançamento","textPreview":"Saída desejada: workshop agendado + responsáveis + data de lançamento","textChars":69,"textLines":1,"bbox":[306,568,668,32]}
+{"kind":"textbox","id":"sh/twzqhobq","slide":11,"text":"NSC CORRE","textPreview":"NSC CORRE","textChars":9,"textLines":1,"bbox":[1042,660,166,28]}
+{"kind":"image","id":"im/5cjaxwzm","slide":11,"name":"","alt":"RunnerHub","bbox":[72,660,158,28]}
+{"kind":"notes","id":"nt/icvsrq","slide":11,"text":"Fechamento sugerido: solicitar um workshop de 90 minutos com líderes de editorial, comercial, produto e Clube NSC para fechar o escopo do piloto.\nA proposta não depende de criar uma nova corrida imediatamente. Pode começar sobre um evento existente ou parceiro."}
+{"kind":"slide","id":"sl/towp8w","slide":12,"title":"APÊNDICE 1","textShapes":17}
+{"kind":"shape","id":"sh/f65s7axs","slide":12,"bbox":[64,38,122,30]}
+{"kind":"textbox","id":"sh/g7e9gfed","slide":12,"text":"APÊNDICE 1","textPreview":"APÊNDICE 1","textChars":10,"textLines":1,"bbox":[74,41,102,24]}
+{"kind":"textbox","id":"sh/18na9kfi","slide":12,"text":"Nota metodológica: números diferentes não podem ser somados.","textPreview":"Nota metodológica: números diferentes não podem ser somados.","textChars":60,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/29wripw3","slide":12,"text":"Antes de comparar fontes, quatro perguntas precisam estar respondidas.","textPreview":"Antes de comparar fontes, quatro perguntas precisam estar respondidas.","textChars":70,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/3a5sbuxo","slide":12,"bbox":[64,222,552,148]}
+{"kind":"shape","id":"sh/oby9kze9","slide":12,"bbox":[86,244,50,50]}
+{"kind":"textbox","id":"sh/pc7ad4fu","slide":12,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[86,245,50,48]}
+{"kind":"textbox","id":"sh/qdgrmpwf","slide":12,"text":"QUAL É O UNIVERSO?","textPreview":"QUAL É O UNIVERSO?","textChars":18,"textLines":1,"bbox":[152,244,420,25]}
+{"kind":"textbox","id":"sh/bypsfux0","slide":12,"text":"Permit, federação, cadastro próprio, evento mapeado ou prova com resultado publicado?","textPreview":"Permit, federação, cadastro próprio, evento mapeado ou prova com resultado publicado?","textChars":85,"textLines":1,"bbox":[152,280,420,66]}
+{"kind":"shape","id":"sh/b2tg32pw","slide":12,"bbox":[648,222,552,148]}
+{"kind":"shape","id":"sh/q10fux8b","slide":12,"bbox":[670,244,50,50]}
+{"kind":"textbox","id":"sh/d4by5s7m","slide":12,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[670,245,50,48]}
+{"kind":"textbox","id":"sh/c32xwnq1","slide":12,"text":"QUAL É O CORTE?","textPreview":"QUAL É O CORTE?","textChars":15,"textLines":1,"bbox":[736,244,420,25]}
+{"kind":"textbox","id":"sh/3y9wzipk","slide":12,"text":"Calendário completo, ano corrido ou posição até uma data específica?","textPreview":"Calendário completo, ano corrido ou posição até uma data específica?","textChars":68,"textLines":1,"bbox":[736,280,420,66]}
+{"kind":"shape","id":"sh/2x0fqd8z","slide":12,"bbox":[64,398,552,148]}
+{"kind":"shape","id":"sh/p0re1s7q","slide":12,"bbox":[86,420,50,50]}
+{"kind":"textbox","id":"sh/ozixsnq5","slide":12,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[86,421,50,48]}
+{"kind":"textbox","id":"sh/nudgbmpo","slide":12,"text":"HÁ CONFIRMAÇÃO?","textPreview":"HÁ CONFIRMAÇÃO?","textChars":15,"textLines":1,"bbox":[152,420,420,25]}
+{"kind":"textbox","id":"sh/mt4f2h8j","slide":12,"text":"Cadastro informa intenção. Resultado, cobertura ou evidência operacional informa execução.","textPreview":"Cadastro informa intenção. Resultado, cobertura ou evidência operacional informa execução.","textChars":90,"textLines":1,"bbox":[152,456,420,66]}
+{"kind":"shape","id":"sh/ipojulsr","slide":12,"bbox":[648,398,552,148]}
+{"kind":"shape","id":"sh/jqx03q9w","slide":12,"bbox":[670,420,50,50]}
+{"kind":"textbox","id":"sh/4r61wbah","slide":12,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[670,421,50,48]}
+{"kind":"textbox","id":"sh/5sfi5gr2","slide":12,"text":"COMO DUPLICAÇÕES SÃO TRATADAS?","textPreview":"COMO DUPLICAÇÕES SÃO TRATADAS?","textChars":30,"textLines":1,"bbox":[736,420,420,25]}
+{"kind":"textbox","id":"sh/6t8jylsn","slide":12,"text":"Sem microdados e chave de deduplicação, diferenças não viram taxa de cobertura.","textPreview":"Sem microdados e chave de deduplicação, diferenças não viram taxa de cobertura.","textChars":79,"textLines":1,"bbox":[736,456,420,66]}
+{"kind":"shape","id":"sh/ruh07q98","slide":12,"bbox":[152,584,976,56]}
+{"kind":"textbox","id":"sh/svq10vat","slide":12,"text":"Regra editorial: publicar fonte, definição, período e limitação junto do número.","textPreview":"Regra editorial: publicar fonte, definição, período e limitação junto do número.","textChars":80,"textLines":1,"bbox":[178,599,924,28]}
+{"kind":"shape","id":"sh/twzi90re","slide":12,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/nyd0v694","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/98fa9wrm","slide":12,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/towp8w","slide":12,"text":"Fontes: artigo Máquina do Esporte, publicação ABRACEO e base oficial RunnerHub.\nhttps://maquinadoesporte.com.br/running/corridas-de-rua-crescem-85-no-brasil-em-2025/\nhttps://abraceo.com.br/4o-summit-abraceo-cbat-corridas-de-rua-cresceram-85-em-2025-no-brasil/\nNão afirmar que uma fonte ‘espera passivamente’ informação de afiliados sem documentação pública. O ponto demonstrável é que universos e critérios diferem e precisam ser explicitados."}
+{"kind":"slide","id":"sl/qf11qx","slide":13,"title":"APÊNDICE 2","textShapes":22}
+{"kind":"shape","id":"sh/ydgnyhgb","slide":13,"bbox":[64,38,122,30]}
+{"kind":"textbox","id":"sh/l07m9wzm","slide":13,"text":"APÊNDICE 2","textPreview":"APÊNDICE 2","textChars":10,"textLines":1,"bbox":[74,41,102,24]}
+{"kind":"textbox","id":"sh/kfy50ry1","slide":13,"text":"Modelo de parceria para começar leve e preservar credibilidade.","textPreview":"Modelo de parceria para começar leve e preservar credibilidade.","textChars":63,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/7294bmhs","slide":13,"text":"Papéis claros evitam retrabalho editorial, comercial e de produto.","textPreview":"Papéis claros evitam retrabalho editorial, comercial e de produto.","textChars":66,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/m1gn2hg7","slide":13,"bbox":[64,226,348,300]}
+{"kind":"shape","id":"sh/94rmdwzy","slide":13,"bbox":[64,226,348,66]}
+{"kind":"textbox","id":"sh/83i54ryd","slide":13,"text":"RUNNERHUB","textPreview":"RUNNERHUB","textChars":9,"textLines":1,"bbox":[88,244,300,30]}
+{"kind":"shape","id":"sh/n654z2ho","slide":13,"bbox":[92,322,22,22]}
+{"kind":"textbox","id":"sh/25w3qx03","slide":13,"text":"taxonomia e calendário","textPreview":"taxonomia e calendário","textChars":22,"textLines":1,"bbox":[130,320,248,27]}
+{"kind":"shape","id":"sh/832d8bq9","slide":13,"bbox":[92,370,22,22]}
+{"kind":"textbox","id":"sh/94behgru","slide":13,"text":"validação e contexto","textPreview":"validação e contexto","textChars":20,"textLines":1,"bbox":[130,368,248,27]}
+{"kind":"shape","id":"sh/m1kv61s3","slide":13,"bbox":[92,418,22,22]}
+{"kind":"textbox","id":"sh/n2twf69o","slide":13,"text":"resultados e inteligência","textPreview":"resultados e inteligência","textChars":25,"textLines":1,"bbox":[130,416,248,27]}
+{"kind":"shape","id":"sh/w72dcvq5","slide":13,"bbox":[92,466,22,22]}
+{"kind":"textbox","id":"sh/x8vel0rq","slide":13,"text":"painel do piloto","textPreview":"painel do piloto","textChars":16,"textLines":1,"bbox":[130,464,248,27]}
+{"kind":"shape","id":"sh/a5kval8f","slide":13,"bbox":[434,226,348,300]}
+{"kind":"shape","id":"sh/v6twjq90","slide":13,"bbox":[434,226,348,66]}
+{"kind":"textbox","id":"sh/cbid0ra1","slide":13,"text":"NSC","textPreview":"NSC","textChars":3,"textLines":1,"bbox":[458,244,300,30]}
+{"kind":"shape","id":"sh/dcru9wrm","slide":13,"bbox":[462,322,22,22]}
+{"kind":"textbox","id":"sh/twz2hofe","slide":13,"text":"linha editorial","textPreview":"linha editorial","textChars":15,"textLines":1,"bbox":[500,320,248,27]}
+{"kind":"shape","id":"sh/svq1ojyt","slide":13,"bbox":[462,370,22,22]}
+{"kind":"textbox","id":"sh/7uhkfyx8","slide":13,"text":"distribuição multicanal","textPreview":"distribuição multicanal","textChars":23,"textLines":1,"bbox":[500,368,248,27]}
+{"kind":"shape","id":"sh/6t8jmtgn","slide":13,"bbox":[462,418,22,22]}
+{"kind":"textbox","id":"sh/hkj2l8fa","slide":13,"text":"venda e branded content","textPreview":"venda e branded content","textChars":23,"textLines":1,"bbox":[500,416,248,27]}
+{"kind":"shape","id":"sh/gjqls3yp","slide":13,"bbox":[462,466,22,22]}
+{"kind":"textbox","id":"sh/fihkjyx4","slide":13,"text":"produção e experiência","textPreview":"produção e experiência","textChars":22,"textLines":1,"bbox":[500,464,248,27]}
+{"kind":"shape","id":"sh/ux8jqtgj","slide":13,"bbox":[804,226,348,300]}
+{"kind":"shape","id":"sh/poj2p8f6","slide":13,"bbox":[804,226,348,66]}
+{"kind":"textbox","id":"sh/4nalw3y1","slide":13,"text":"EM CONJUNTO","textPreview":"EM CONJUNTO","textChars":11,"textLines":1,"bbox":[828,244,300,30]}
+{"kind":"shape","id":"sh/mt4zq5wj","slide":13,"bbox":[832,322,22,22]}
+{"kind":"textbox","id":"sh/nudgjado","slide":13,"text":"benefícios do Clube","textPreview":"benefícios do Clube","textChars":19,"textLines":1,"bbox":[870,320,248,27]}
+{"kind":"shape","id":"sh/8vmhsfe9","slide":13,"bbox":[832,370,22,22]}
+{"kind":"textbox","id":"sh/9wvilkvu","slide":13,"text":"pacotes a patrocinadores","textPreview":"pacotes a patrocinadores","textChars":24,"textLines":1,"bbox":[870,368,248,27]}
+{"kind":"shape","id":"sh/ax4zupwf","slide":13,"bbox":[832,418,22,22]}
+{"kind":"textbox","id":"sh/vyd0nud0","slide":13,"text":"governança de marca","textPreview":"governança de marca","textChars":19,"textLines":1,"bbox":[870,416,248,27]}
+{"kind":"shape","id":"sh/wzmhwfel","slide":13,"bbox":[832,466,22,22]}
+{"kind":"textbox","id":"sh/x0vipkv6","slide":13,"text":"roadmap e metas","textPreview":"roadmap e metas","textChars":15,"textLines":1,"bbox":[870,464,248,27]}
+{"kind":"shape","id":"sh/i1ozypwb","slide":13,"bbox":[64,558,120,30]}
+{"kind":"textbox","id":"sh/j2x0rudw","slide":13,"text":"PROTEÇÕES","textPreview":"PROTEÇÕES","textChars":9,"textLines":1,"bbox":[74,561,100,24]}
+{"kind":"textbox","id":"sh/ritgbu50","slide":13,"text":"fonte visível • protocolo de correção • consentimento LGPD • aprovação de marcas • direitos sobre eventos e imagens","textPreview":"fonte visível • protocolo de correção • consentimento LGPD • aprovação de marcas • direitos sobre eventos e imagens","textChars":115,"textLines":1,"bbox":[204,559,948,28]}
+{"kind":"shape","id":"sh/6hkzipov","slide":13,"bbox":[226,608,828,40]}
+{"kind":"textbox","id":"sh/tkbyd4n6","slide":13,"text":"Credibilidade é parte do produto, não apenas uma etapa de revisão.","textPreview":"Credibilidade é parte do produto, não apenas uma etapa de revisão.","textChars":66,"textLines":1,"bbox":[244,618,792,22]}
+{"kind":"shape","id":"sh/sj2hkz6l","slide":13,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/elkzm9or","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/knulczix","slide":13,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/qf11qx","slide":13,"text":"Proposta de governança RunnerHub. Ajustar responsabilidades no workshop de co-desenho.\nConfirmar direitos de uso de marcas, eventos, imagens, resultados e bases antes do lançamento público."}
+{"kind":"slide","id":"sl/zs0t1b","slide":14,"title":"APÊNDICE 3","textShapes":23}
+{"kind":"shape","id":"sh/mto32ho7","slide":14,"bbox":[64,38,122,30]}
+{"kind":"textbox","id":"sh/9gz2dw7i","slide":14,"text":"APÊNDICE 3","textPreview":"APÊNDICE 3","textChars":10,"textLines":1,"bbox":[74,41,102,24]}
+{"kind":"textbox","id":"sh/8vql4r6x","slide":14,"text":"Fontes e limites desta proposta","textPreview":"Fontes e limites desta proposta","textChars":31,"textLines":1,"bbox":[64,80,1152,74]}
+{"kind":"textbox","id":"sh/zqxk7mpg","slide":14,"text":"Dados externos e materiais fornecidos foram mantidos separados das recomendações de parceria.","textPreview":"Dados externos e materiais fornecidos foram mantidos separados das recomendações de parceria.","textChars":93,"textLines":1,"bbox":[64,151,1130,44]}
+{"kind":"shape","id":"sh/ypo3yhov","slide":14,"bbox":[64,224,536,310]}
+{"kind":"shape","id":"sh/lsf29w7m","slide":14,"bbox":[64,224,536,56]}
+{"kind":"textbox","id":"sh/0r6l0r61","slide":14,"text":"MATERIAIS RUNNERHUB","textPreview":"MATERIAIS RUNNERHUB","textChars":19,"textLines":1,"bbox":[88,239,488,28]}
+{"kind":"textbox","id":"sh/jm14j6pk","slide":14,"text":"Brasil que Corre — Provas 2025","textPreview":"Brasil que Corre — Provas 2025","textChars":30,"textLines":1,"bbox":[92,305,300,24]}
+{"kind":"textbox","id":"sh/ils3a1oz","slide":14,"text":"PDF fornecido pelo usuário","textPreview":"PDF fornecido pelo usuário","textChars":26,"textLines":1,"bbox":[392,306,178,24]}
+{"kind":"shape","id":"sh/0fqxkrax","slide":14,"bbox":[92,343,480,0]}
+{"kind":"textbox","id":"sh/lgjedwri","slide":14,"text":"Base oficial SC 2024–2026","textPreview":"Base oficial SC 2024–2026","textChars":25,"textLines":1,"bbox":[92,360,300,24]}
+{"kind":"textbox","id":"sh/yd8fihs7","slide":14,"text":"números fornecidos pelo usuário","textPreview":"números fornecidos pelo usuário","textChars":31,"textLines":1,"bbox":[392,361,178,24]}
+{"kind":"shape","id":"sh/zehwbm9s","slide":14,"bbox":[92,398,480,0]}
+{"kind":"textbox","id":"sh/crqdg7a1","slide":14,"text":"Mapear parceria RunnerHub NSC","textPreview":"Mapear parceria RunnerHub NSC","textChars":29,"textLines":1,"bbox":[92,415,300,24]}
+{"kind":"textbox","id":"sh/dsze9crm","slide":14,"text":"briefing inicial","textPreview":"briefing inicial","textChars":16,"textLines":1,"bbox":[392,416,178,24]}
+{"kind":"shape","id":"sh/qp8vexsv","slide":14,"bbox":[92,453,480,0]}
+{"kind":"textbox","id":"sh/bqhw729g","slide":14,"text":"Apresentação anterior","textPreview":"Apresentação anterior","textChars":21,"textLines":1,"bbox":[92,470,300,24]}
+{"kind":"textbox","id":"sh/on6dc7a5","slide":14,"text":"referência crítica, não template","textPreview":"referência crítica, não template","textChars":32,"textLines":1,"bbox":[392,471,178,24]}
+{"kind":"shape","id":"sh/poze5cra","slide":14,"bbox":[648,224,536,310]}
+{"kind":"shape","id":"sh/5872t4z2","slide":14,"bbox":[648,224,536,56]}
+{"kind":"textbox","id":"sh/47ylkzyh","slide":14,"text":"FONTES PÚBLICAS","textPreview":"FONTES PÚBLICAS","textChars":15,"textLines":1,"bbox":[672,239,488,28]}
+{"kind":"textbox","id":"sh/j65kruhw","slide":14,"text":"ABRACEO / CBAt","textPreview":"ABRACEO / CBAt","textChars":14,"textLines":1,"bbox":[676,305,300,24]}
+{"kind":"textbox","id":"sh/i5w3ipgb","slide":14,"text":"levantamento divulgado em 2026","textPreview":"levantamento divulgado em 2026","textChars":30,"textLines":1,"bbox":[976,306,178,24]}
+{"kind":"shape","id":"sh/h4n2pkz6","slide":14,"bbox":[676,343,480,0]}
+{"kind":"textbox","id":"sh/w3elgfyl","slide":14,"text":"Máquina do Esporte","textPreview":"Máquina do Esporte","textChars":18,"textLines":1,"bbox":[676,360,300,24]}
+{"kind":"textbox","id":"sh/v25knuh0","slide":14,"text":"matéria sobre crescimento em 2025","textPreview":"matéria sobre crescimento em 2025","textChars":33,"textLines":1,"bbox":[976,361,178,24]}
+{"kind":"shape","id":"sh/u1w3epgf","slide":14,"bbox":[676,398,480,0]}
+{"kind":"textbox","id":"sh/10rm1ofa","slide":14,"text":"NSC TV e NSC Esporte","textPreview":"NSC TV e NSC Esporte","textChars":20,"textLines":1,"bbox":[676,415,300,24]}
+{"kind":"textbox","id":"sh/gzilsjyp","slide":14,"text":"alcance e iniciativas esportivas","textPreview":"alcance e iniciativas esportivas","textChars":32,"textLines":1,"bbox":[976,416,178,24]}
+{"kind":"shape","id":"sh/y5szmlw7","slide":14,"bbox":[676,453,480,0]}
+{"kind":"textbox","id":"sh/z610vqxs","slide":14,"text":"Clube NSC","textPreview":"Clube NSC","textChars":9,"textLines":1,"bbox":[676,470,300,24]}
+{"kind":"textbox","id":"sh/07a1oved","slide":14,"text":"benefícios e presença em SC","textPreview":"benefícios e presença em SC","textChars":27,"textLines":1,"bbox":[976,471,178,24]}
+{"kind":"shape","id":"sh/l83ixgfy","slide":14,"bbox":[102,566,1076,74]}
+{"kind":"textbox","id":"sh/qhszi1wv","slide":14,"text":"Limite central: 478 e 559 são medidas de universos distintos. A proposta usa a diferença para defender contexto metodológico, não para acusar erro ou calcular cobertura.","textPreview":"Limite central: 478 e 559 são medidas de universos distintos. A proposta usa a diferença para defender contexto metodológico, não para ac...","textChars":169,"textLines":1,"bbox":[132,581,1016,48]}
+{"kind":"shape","id":"sh/bi10r6xg","slide":14,"bbox":[64,679,1152,0]}
+{"kind":"textbox","id":"sh/dkjitgfm","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1166,687,50,22]}
+{"kind":"image","id":"im/bep0zix0","slide":14,"name":"","alt":"RunnerHub","bbox":[64,688,138,23]}
+{"kind":"notes","id":"nt/zs0t1b","slide":14,"text":"Materiais locais:\n/Users/leonardosobral/Downloads/BrasilQueCorreProvas2025_v3.10.3 (1).pdf\n/Users/leonardosobral/Downloads/Mapear parceria RunnerHub NSC.pdf\n/Users/leonardosobral/Downloads/Apresentacao_Parceria_RunnerHub_NSC.pptx.pdf\nFontes públicas:\nhttps://maquinadoesporte.com.br/running/corridas-de-rua-crescem-85-no-brasil-em-2025/\nhttps://abraceo.com.br/4o-summit-abraceo-cbat-corridas-de-rua-cresceram-85-em-2025-no-brasil/\nhttps://nsc.com.br/marcas-nsc/nsc-tv/\nhttps://nsc.com.br/imprensa/nsc-esporte-amplia-presenca-digital-com-novos-canais-de-conteudo-esportivo/\nhttps://nsc.com.br/imprensa/corrida-verde-chega-a-joinville-com-experiencia-completa-para-toda-a-familia/\nhttps://nsc.com.br/imprensa/nsc-esporte-amplia-cobertura-e-participacao-na-24a-edicao-do-ironman/\nhttps://clubensc.com.br/\nhttps://clubensc.com.br/sobre-o-clube/"}

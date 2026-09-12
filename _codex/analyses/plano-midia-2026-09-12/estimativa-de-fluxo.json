@@ -1,0 +1,55 @@
+{
+  "formulas": {
+    "sessoes": "investimento / custo_sessao",
+    "pageviews": "sessoes * paginas_sessao",
+    "qualificadas": "sessoes * taxa_qualificada"
+  },
+  "scenarios": [
+    {
+      "cenario": "Cauteloso",
+      "investimento": 2700,
+      "custo_sessao": 1.8,
+      "paginas_sessao": 1.8,
+      "taxa_qualificada": 0.4,
+      "sessoes": 1500,
+      "pageviews": 2700,
+      "qualificadas": 600
+    },
+    {
+      "cenario": "Central",
+      "investimento": 2700,
+      "custo_sessao": 1.2,
+      "paginas_sessao": 2.4,
+      "taxa_qualificada": 0.5,
+      "sessoes": 2250,
+      "pageviews": 5400,
+      "qualificadas": 1125
+    },
+    {
+      "cenario": "Favorável",
+      "investimento": 2700,
+      "custo_sessao": 0.75,
+      "paginas_sessao": 3,
+      "taxa_qualificada": 0.55,
+      "sessoes": 3600,
+      "pageviews": 10800,
+      "qualificadas": 1980
+    }
+  ],
+  "baseline": {
+    "snapshot": "2026-09-12; última recepção 11:26 Brasília",
+    "aberturas": 4490,
+    "sessoes": 1329,
+    "qualificadas": 752,
+    "paginas_sessao": 3.3784800601956357,
+    "taxa_qualificada": 0.5658389766741911
+  },
+  "full_budget_central": {
+    "investimento": 3000,
+    "sessoes": 2500,
+    "pageviews": 6000,
+    "qualificadas": 1250
+  },
+  "classification": "Simulações condicionais; premissas não consultadas nas contas e não benchmarks; não são intervalos de confiança.",
+  "scope": "30 dias; gasto2700 previsto,300reserva fora tabela; somente tráfego atribuível ao piloto, sem somar base orgânica ou presumir incremento causal."
+}

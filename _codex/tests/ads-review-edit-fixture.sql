@@ -1,0 +1,23 @@
+-- ONLY for a fresh, isolated local PostgreSQL cluster. Synthetic data.
+CREATE ROLE ads_owner;
+CREATE ROLE runner;
+CREATE ROLE runner_dba;
+CREATE ROLE ads_reader;
+CREATE ROLE ads_delivery;
+CREATE ROLE ads_admin;
+CREATE ROLE ads_finance;
+CREATE ROLE ads_business;
+CREATE SCHEMA ads AUTHORIZATION ads_owner;
+CREATE TABLE public.tb_usuarios(id integer PRIMARY KEY, is_admin boolean, is_dev boolean);
+CREATE TABLE public.tb_conta_usuarios(id_conta bigint, id_usuario integer, status text, papel text);
+CREATE TABLE ads.campaigns(campaign_id uuid PRIMARY KEY, account_id bigint, billing_model text, status text, updated_by integer, version integer DEFAULT 1, metadata jsonb DEFAULT '{}');
+CREATE TABLE ads.campaign_review_requests(campaign_review_request_id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, campaign_id uuid, account_id bigint, status text, reviewed_by integer, reviewed_at timestamptz, updated_at timestamptz, review_reason text);
+CREATE TABLE ads.campaign_status_history(campaign_id uuid, account_id bigint, from_status text, to_status text, reason text, changed_by integer, metadata jsonb);
+CREATE TABLE ads.campaign_review_history(campaign_review_request_id bigint, from_status text, to_status text, actor_id integer, reason text);
+CREATE TABLE ads.schema_migrations(migration_key text PRIMARY KEY, description text);
+GRANT SELECT ON public.tb_usuarios, public.tb_conta_usuarios TO ads_owner;
+GRANT ALL ON ALL TABLES IN SCHEMA ads TO ads_owner;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA ads TO ads_owner;
+GRANT USAGE ON SCHEMA ads TO ads_business;
+INSERT INTO public.tb_usuarios VALUES (1,false,false),(2,true,false),(3,false,false),(4,false,false);
+INSERT INTO public.tb_conta_usuarios VALUES (10,1,'ATIVO','OWNER'),(10,3,'ATIVO','VISUALIZADOR'),(10,4,'PENDENTE','OPERADOR');

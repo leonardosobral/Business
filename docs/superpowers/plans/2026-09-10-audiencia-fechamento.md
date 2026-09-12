@@ -10,6 +10,8 @@
 
 **Spec:** `_codex/docs/estrategia_audiencia_inventario_e_midia_proposta.md`, continuação aprovada em 10/09/2026 e solicitação de aposentadoria condicional de `tb_log`.
 
+**Revisão de escopo em 12/09/2026:** o usuário retirou a segunda parte, de mídia e crescimento, desta tarefa; ela está sendo tratada em outra frente. Este plano continua restrito à mensuração. Estado consolidado e próximas entregas: [escopo e pendências](../../../_codex/docs/2026-09-12_audiencia_escopo_e_pendencias.md).
+
 ## Restrições
 
 - Preservar opt-out/GPC, retenção detalhada de 90 dias, autenticação, DSN `runner`, Ads e cobrança.
@@ -28,6 +30,7 @@ Arquivos RR: `assets/js/rr-audience.js`, `includes/modal/modal_youtube.cfm`, `in
 - [x] Testar abertura, fechamento, troca rápida, API atrasada/indisponível e integração com o tracker real; executar regressões existentes. 69/69 testes Node RR, 5/5 Business e contrato CFML passaram.
 - [x] Atualizar hash do asset no bootstrap e documentar ordem de publicação e validação do painel.
 - [x] Publicar somente os três arquivos de vídeos com backup. Publicado em 10/09/2026 às 10:34:32 Brasília; reprodução desktop/móvel e dois inícios reais confirmados no Business, sem duplicar após reabertura. Conclusões/quartis ainda sem comprovação ponta a ponta. Recibo: `_codex/docs/2026-09-10_audience_youtube_publicado.md`.
+- [x] Continuação em 12/09: término real do player e incremento de início/conclusão confirmados no Business, com teste interno excluído do recorte comercial. Houve avanço pela barra de tempo; não comprova reprodução integral. Quartis continuam sem comprovação individual pela tela. [Registro](../../../_codex/docs/2026-09-12_audience_youtube_conclusao_verificada.md).
 
 ## 2. Recuperação do cache negativo de geolocalização
 
@@ -46,4 +49,6 @@ Arquivo Business: `_codex/docs/2026-09-10_tb_log_eventos_transicao.md`.
 
 ## Fora da conclusão desta etapa
 
-Exposição de cards/leitura, promoções estáticas restantes, potencial visual de espaços colapsados, projeção comercial com semanas completas e piloto de aquisição continuam no plano original. O piloto exige verba aprovada; nenhuma campanha é ativada por esta continuação.
+Este é o registro do lote de 10/09, não a lista atual de pendências. Cards/leitura, promoções estáticas, classificação dos estados de entrega e piloto institucional lateral tiveram publicações posteriores, com limites registrados nos respectivos recibos. A previsão comercial ainda depende de semanas completas e da cobertura identificada. Consultar o [estado consolidado de 12/09](../../../_codex/docs/2026-09-12_audiencia_escopo_e_pendencias.md) para não reabrir entregas concluídas.
+
+O piloto de aquisição, seus criativos, verba e acompanhamento de custos foram retirados deste plano por solicitação do usuário em 12/09. A medição de origem/UTM já existente permanece. A aposentadoria específica do log de visualização em `tb_log` continua condicional e por último.

@@ -1,0 +1,72 @@
+{
+  "url": "https://roadrunners.run/circuito/live-run-xp/",
+  "synthetic_geography_only": true,
+  "cases": [
+    {
+      "case": "foreign",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "private, no-store",
+        "CF-Cache-Status": "DYNAMIC",
+        "Age": null,
+        "Content-Type": "text/html;charset=UTF-8"
+      },
+      "highlight": [],
+      "first": "/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiiiiiii/",
+      "upcoming": 18,
+      "completed": 169,
+      "all_links_preserved": true
+    },
+    {
+      "case": "city",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "private, no-store",
+        "CF-Cache-Status": "DYNAMIC",
+        "Age": null,
+        "Content-Type": "text/html;charset=UTF-8"
+      },
+      "highlight": [
+        "37484"
+      ],
+      "first": "/evento/2026-live-run-xp-campinas-2026/",
+      "upcoming": 18,
+      "completed": 169,
+      "all_links_preserved": true
+    },
+    {
+      "case": "accent",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "private, no-store",
+        "CF-Cache-Status": "DYNAMIC",
+        "Age": null,
+        "Content-Type": "text/html;charset=UTF-8"
+      },
+      "highlight": [
+        "37536"
+      ],
+      "first": "/evento/2026-live-run-xp-santo-andre-2026/",
+      "upcoming": 18,
+      "completed": 169,
+      "all_links_preserved": true
+    },
+    {
+      "case": "state",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "private, no-store",
+        "CF-Cache-Status": "DYNAMIC",
+        "Age": null,
+        "Content-Type": "text/html;charset=UTF-8"
+      },
+      "highlight": [
+        "37532"
+      ],
+      "first": "/evento/2026-live-run-xp-jaragua-do-sul-2026/",
+      "upcoming": 18,
+      "completed": 169,
+      "all_links_preserved": true
+    }
+  ]
+}

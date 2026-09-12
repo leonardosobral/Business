@@ -85,6 +85,7 @@
         var backButton = form.querySelector("#ads-wizard-back");
         var nextButton = form.querySelector("#ads-wizard-next");
         var submitButton = form.querySelector("#ads-wizard-submit");
+        var draftButton = form.querySelector("#ads-wizard-draft");
         var eventSelect = form.querySelector("#ads-v1-event");
         var nameInput = form.querySelector("#ads-v1-name");
         var cpcInput = form.querySelector("#ads-v1-cpc");
@@ -98,6 +99,9 @@
         var placementInputs = Array.prototype.slice.call(form.querySelectorAll("input[name='placement_keys']"));
         var currentStep = Math.min(4, Math.max(1, Number(form.dataset.initialStep) || 1));
         var isNew = form.dataset.isNew === "true";
+        var preserveInputs = form.dataset.preserveInputs === "true";
+        var suggestRegion = isNew && !preserveInputs && !regionInput.value.trim();
+        var suggestEnd = isNew && !preserveInputs;
         var maxReached = initialMaxReached(isNew, currentStep, panels.length || 4);
 
         function valuesForStep(step) {
@@ -164,6 +168,7 @@
             backButton.hidden = currentStep === 1;
             nextButton.hidden = currentStep === 4;
             submitButton.hidden = currentStep !== 4;
+            if (draftButton) draftButton.hidden = currentStep !== 4;
             var heading = form.querySelector("[data-wizard-panel='" + currentStep + "'] h3");
             if (heading) heading.setAttribute("tabindex", "-1");
         }
@@ -225,9 +230,9 @@
                     nameInput.value = eventName + " — Divulgação";
                     nameInput.dataset.autoSuggested = "true";
                 }
-                if (!regionInput.value.trim()) regionInput.value = state;
-                var suggestedEnd = suggestEndAt(option.dataset.eventEnd, 3);
-                if (suggestedEnd) endsInput.value = suggestedEnd;
+                if (suggestRegion) regionInput.value = state;
+                var suggestedEnd = suggestEndAt(option.dataset.eventEnd);
+                if (suggestEnd && suggestedEnd) endsInput.value = suggestedEnd;
             }
         }
 
@@ -253,7 +258,9 @@
         [cpcInput, budgetInput].forEach(function (input) { input.addEventListener("input", updateEstimate); });
         dailyInput.addEventListener("input", clearCustomValidity);
         startsInput.addEventListener("change", clearCustomValidity);
-        endsInput.addEventListener("change", clearCustomValidity);
+        regionInput.addEventListener("input", function () { suggestRegion = false; });
+        endsInput.addEventListener("input", function () { suggestEnd = false; });
+        endsInput.addEventListener("change", function () { suggestEnd = false; clearCustomValidity(); });
         nameInput.addEventListener("input", function () { nameInput.dataset.autoSuggested = "false"; });
         eventSelect.addEventListener("change", updateEvent);
         placementInputs.forEach(function (input) {

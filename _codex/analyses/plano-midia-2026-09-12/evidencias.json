@@ -1,0 +1,163 @@
+{
+  "source": "https://business.roadrunners.run/portal/audiencia/",
+  "method": "Leitura autenticada da interface e extração somente leitura do DOM; sem SQL executado diretamente.",
+  "observedDate": "2026-09-12",
+  "latestReception": "2026-09-12 11:26 America/Sao_Paulo",
+  "firstObservedEvent": "2026-09-08 20:56 America/Sao_Paulo",
+  "filters": {
+    "dias": 7,
+    "env": "prod",
+    "regiao": "market",
+    "uf": "Todas",
+    "pagina": "Todas",
+    "dispositivo": "Todos",
+    "incluir_internos": false
+  },
+  "metrics": {
+    "visitantes": 964,
+    "sessoes": 1329,
+    "qualificadas": 752,
+    "aberturas": 4490,
+    "paginas_com_atividade": 4492,
+    "posicoes_registradas": 5246,
+    "posicoes_visiveis": 1459,
+    "anuncios_renderizados": 2115,
+    "anuncios_visiveis": 1479
+  },
+  "daily": [
+    {
+      "dia": "08/09",
+      "aberturas": 177,
+      "posicoes": 273,
+      "visiveis": 37,
+      "periodo": "parcial"
+    },
+    {
+      "dia": "09/09",
+      "aberturas": 1296,
+      "posicoes": 1708,
+      "visiveis": 396,
+      "periodo": "completo"
+    },
+    {
+      "dia": "10/09",
+      "aberturas": 1235,
+      "posicoes": 1491,
+      "visiveis": 415,
+      "periodo": "completo"
+    },
+    {
+      "dia": "11/09",
+      "aberturas": 1454,
+      "posicoes": 1506,
+      "visiveis": 483,
+      "periodo": "completo"
+    },
+    {
+      "dia": "12/09",
+      "aberturas": 328,
+      "posicoes": 268,
+      "visiveis": 128,
+      "periodo": "parcial"
+    }
+  ],
+  "acquisition": [
+    {
+      "origem": "direct",
+      "meio": "none",
+      "campanha": "",
+      "criativo": "",
+      "paginas": 3340,
+      "visitantes": 700,
+      "sessoes": 1026,
+      "qualificadas": 576
+    },
+    {
+      "origem": "referral",
+      "meio": "referral",
+      "campanha": "",
+      "criativo": "",
+      "paginas": 899,
+      "visitantes": 223,
+      "sessoes": 241,
+      "qualificadas": 149
+    },
+    {
+      "origem": "ig",
+      "meio": "social",
+      "campanha": "",
+      "criativo": "link_in_bio",
+      "paginas": 203,
+      "visitantes": 24,
+      "sessoes": 27,
+      "qualificadas": 15
+    },
+    {
+      "origem": "chatgpt.com",
+      "meio": "none",
+      "campanha": "",
+      "criativo": "",
+      "paginas": 51,
+      "visitantes": 34,
+      "sessoes": 34,
+      "qualificadas": 11
+    },
+    {
+      "origem": "chatgpt.com",
+      "meio": "referral",
+      "campanha": "",
+      "criativo": "",
+      "paginas": 8,
+      "visitantes": 1,
+      "sessoes": 1,
+      "qualificadas": 1
+    }
+  ],
+  "regions": [
+    {
+      "uf": "SC",
+      "paginas": 574,
+      "visitantes": 128,
+      "posicoes": 621,
+      "visiveis": 259
+    },
+    {
+      "uf": "SP",
+      "paginas": 1030,
+      "visitantes": 212,
+      "posicoes": 825,
+      "visiveis": 267
+    },
+    {
+      "uf": "Desconhecida",
+      "paginas": 1041,
+      "visitantes": 335,
+      "posicoes": 1475,
+      "visiveis": 312
+    }
+  ],
+  "budget": {
+    "meta": 1800,
+    "google": 900,
+    "reserva": 300,
+    "phase1": {
+      "meta": 800,
+      "google": 400
+    },
+    "phase2": {
+      "meta": 1000,
+      "google": 500,
+      "reserva": 300
+    }
+  },
+  "derived": {
+    "qualifiedRate": 0.5658389766741911
+  },
+  "caveats": [
+    "Dias inicial e final parciais; apenas três dias completos.",
+    "UF comercial não equivale a residência; UF do acesso ausente em 4.490 aberturas.",
+    "Pedidos no inventário são solicitações de anúncios.",
+    "Consumo Ads/voucher não equivale a receita recebida.",
+    "Não há atribuição de receita por UTM verificada no painel."
+  ]
+}

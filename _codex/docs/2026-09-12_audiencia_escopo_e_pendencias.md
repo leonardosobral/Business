@@ -1,0 +1,125 @@
+# Audiência no Business — escopo e pendências
+
+Revisão de 12/09/2026, solicitada pelo usuário. Este registro orienta as próximas
+continuações do [plano de audiência e inventário](estrategia_audiencia_inventario_e_midia_proposta.md).
+Consolida as entregas e verificações registradas abaixo. A revisão de escopo é
+documental; a continuação de 12/09 também verificou o término de um vídeo em
+produção, sem alterar runtime, banco ou configurações.
+
+## O que continua e o que saiu
+
+Continuam: medição do site, Ads, banners, posições sem campanha e conteúdo;
+recortes por página, posição, dispositivo e UF; acompanhamento no Business;
+capacidade comercial baseada no inventário observado; privacidade e operação
+da coleta. Origem e UTM já implementadas são preservadas.
+
+**Saiu a segunda parte de mídia e crescimento.** Campanhas externas, investimento,
+criativos, testes A/B de aquisição, canais, remarketing e expansão de público
+estão em outra frente. Não solicitar verba, acessar contas de mídia, construir
+um novo funil de custos de aquisição ou modificar os artefatos daquela frente.
+Esta revisão não desliga funcionalidades nem apaga métricas ou dados existentes.
+
+**Também dispensado pelo usuário em 12/09: versionamento do layout.** Não criar
+campo, filtro ou SQL para isso. Mudanças podem ser tratadas como nova campanha
+ou otimização de campanha, sem um mecanismo adicional de versões. Esta decisão
+encerra o requisito, não o adia; não reabri-lo em outra continuação. Peças sem
+campanha continuam sem identidade fictícia de Ads e sem consumo de crédito.
+
+A peça institucional lateral continua: é conteúdo próprio no espaço sem campanha
+para medir sua exposição física, não compra de mídia. A definição comercial de
+UF também permanece: visitante de SP consultando provas em SC conta no contexto
+comercial de SC; a UF física é um campo separado.
+
+## Entregas já publicadas
+
+- Coleta e painel ativos desde 08/09: [recibo de ativação](2026-09-08_audience_activation_receipt.json).
+- Reprodução de YouTube integrada em 10/09, com inícios confirmados no Business: [recibo](2026-09-10_audience_youtube_publicado.md).
+- Conclusão de YouTube confirmada na tela em 12/09, excluída do recorte comercial como acesso interno: [verificação e limites](2026-09-12_audience_youtube_conclusao_verificada.md).
+- Persistência de início, 25%, 50%, 75% e conclusão de YouTube confirmada pelo resultado SQL devolvido pelo usuário em 12/09: os cinco sinais ocorreram na mesma visualização interna. Pendência dos quartis encerrada; não implica reprodução integral nem nova exibição dos quartis no painel.
+- Exposição de cards e profundidade editorial em 10/09: [recibo](2026-09-10_audience_editorial_publicado.md).
+- Medição das promoções estáticas do lote de 11/09: [recibo](2026-09-11_audience_static_promos_publicado.md).
+- Classificação de estados de entrega em 12/09: [recibo](2026-09-12_audience_delivery_states_publicado.md).
+- Piloto institucional lateral em 12/09 às 11:48:22 BRT, preservando campanhas e coleta: [recibo e limites](2026-09-12_audience_sidebar_house_publicado.md).
+
+Não reabrir esses lotes como se não estivessem publicados. Os limites abaixo
+continuam explícitos; publicação não equivale a confirmação de todos os cenários.
+
+## Trabalho restante e dependências
+
+| Item | Estado comprovado / próximo resultado necessário |
+| --- | --- |
+| Capacidade comercial | A ativação em 08/09 ainda não fornece semanas completas em 12/09. Usar a linha de base prevista no plano — duas semanas para primeira leitura, quatro para variação — com cobertura e períodos comparáveis; não fabricar previsão ou volume histórico. Mudanças de layout exigem cuidado adicional na comparação. |
+| UF física do acesso | CFHTTP recebeu HTTP 403 na verificação de 12/09; a correção de cache está local e não resolve esse bloqueio. GeoJS foi pesquisado como candidato, ainda sem teste CFHTTP, integração ou autorização de uso para IPs de visitantes. Não basta trocar a URL: o payload exige adaptação. Não bloqueia contagens nem o contexto comercial. [Diagnóstico e alternativa](2026-09-12_audience_geo_diagnostico.md). |
+| Retenção de 90 dias | Resultado SQL devolvido pelo usuário em 12/09: registro presente, 90 dias, `status=never`, tentativa e sucesso nulos. Ainda sem execução registrada; o DBA deve concluir a operação/agendamento da rotina existente. Não mudar permissões de `runner_dba` nem exigir isso para contar acessos. Não recriar a identidade já instalada. [Registro anterior](2026-09-11_audience_static_promos_publicado.md). |
+| Institucional lateral sem candidato | Ramo validado localmente e arquivos publicados por hash. Navegação normal em 12/09, por volta de 17:54 BRT, da home para São Paulo pelo seletor também encontrou Avaí Run elegível, com imagem carregada (318×318). Ambiente `prod`, família `state`, acesso interno, sem erros de console capturados. O ramo sem candidato continua não observado. Não repetir esse teste sem novo cenário, desativar campanhas, injetar eventos ou forçar contexto para obter número. [Limite anterior](2026-09-12_audience_sidebar_house_publicado.md). |
+| Visualização de evento em `tb_log` | Somente no final: resolver cobertura, leitores, histórico e data de corte antes de retirar exclusivamente essa gravação. Demais logs e histórico intactos. [Transição condicional](2026-09-10_tb_log_eventos_transicao.md). |
+
+## Ordem de continuação
+
+1. Completar as verificações de campo ainda pendentes quando houver cenário
+   observável, com tráfego interno separado e sem implementar versionamento de
+   layout. Início, quartis e conclusão de YouTube já verificados. Não repetir diagnósticos de infraestrutura
+   inalterada nem transformar essas verificações em bloqueio da coleta.
+2. Com linha de base suficiente, avançar a capacidade comercial observada/projetada.
+   Isso não depende de executar mídia paga.
+3. Retomar a transição específica de `tb_log` por último, respeitando seus critérios.
+
+UF física e execução da retenção são pendências operacionais independentes;
+não justificam zerar, suspender ou atrasar os contadores existentes. Permanecem
+opt-out/GPC, DSN `runner`, autenticação, regras de Ads e cobrança. Não há nova
+publicação ou SQL necessário para esta alteração de escopo.
+
+## Resultado recebido das duas verificações de banco
+
+[SQL somente leitura — vídeo e retenção](../sql/2026-09-12_audience_verificacao_final_readonly.sql).
+O usuário executou a consulta e devolveu as duas linhas em 12/09. Não é necessário
+repeti-la para encerrar a verificação dos vídeos. A role usada não foi informada.
+Não é migração nem requisito para manter a contagem funcionando. Não conecta ao
+banco por conta própria, não altera permissões e não executa ingestão ou expurgo.
+
+- `video_teste`: recorta o teste interno de 12/09, das 16:40 às 16:50 BRT, com
+  limite final exclusivo. Cada contador representa páginas de visualização com
+  aquele sinal. `paginas_com_todos_os_sinais >= 1` comprova os cinco sinais na
+  mesma página; não comprova reprodução integral, pois houve avanço no player.
+  Resultado recebido: uma página com registros; uma com início, uma com cada
+  marco (25/50/75), uma com fim e uma com todos os sinais. Persistência confirmada
+  para esse teste interno em produção, sem extrapolar para toda a cobertura do site.
+- `retencao`: apresenta o registro da rotina, última tentativa e último sucesso.
+  `status=never` com sucesso nulo significa execução ainda não registrada;
+  a consulta não dispara a rotina. `ainda_ha_expirados` é o estado salvo pela
+  última execução, não uma nova varredura dos eventos expirados.
+  Resultado recebido: registro presente, 90 dias, `status=never`, última tentativa
+  e último sucesso nulos, código de erro vazio, zero removidos e
+  `ainda_ha_expirados=false`. Esses valores iniciais não comprovam limpeza nem
+  ausência atual de registros expirados; a operação da retenção segue pendente.
+
+Validação local em 12/09: PostgreSQL 16.15, banco temporário sintético, sem rede
+ou credenciais de produção, executando o arquivo como `runner` com apenas
+`USAGE` no schema e `SELECT` nas duas tabelas. Passaram os casos de base vazia,
+cinco sinais na mesma página, sinais distribuídos em páginas diferentes, chaves
+exatas de início/fim, exclusões de ambiente/host/conteúdo/interno, limites da
+janela e estados da retenção. As tabelas permaneceram idênticas antes/depois da
+consulta. O ambiente temporário foi encerrado e removido. A primeira tentativa
+foi impedida pelo sandbox ao iniciar o PostgreSQL; o teste passou com autorização
+para execução local isolada. O agente não acessou o PostgreSQL 17.6 de produção;
+a confirmação de produção acima vem exclusivamente do resultado fornecido pelo
+usuário, sem publicação, alteração de runtime ou novo SQL nesta atualização.
+
+## Continuação após o resultado SQL
+
+Verificação de banner em aba temporária própria, encerrada ao final; abas do
+usuário e das outras frentes permaneceram intactas. Não houve clique em anúncio,
+alteração de viewport, conta, campanha, privacidade ou configuração. A imagem Avaí
+foi conferida visualmente após rolagem; a ausência da peça de Maratonas não é
+falha quando há banner elegível. Nenhuma nova persistência no Business foi alegada
+com base somente no DOM.
+
+Revisão preparatória de `tb_log`, somente leitura, confirmou as dependências já
+mapeadas: painel legado com onze consultas, contador visível da home administrativa
+e consulta mensal `qAcessosRR` do BI (executada, sem consumidor visual encontrado).
+O writer compartilhado também atende o hotsite. Nada foi desligado ou migrado.
+Quando a transição for retomada no final, o contador da home é uma superfície
+pequena para começar, sem somar o período sobreposto das fontes; preservar erros,
+404, OR/CT e histórico. Política mensal além de 90 dias e destino das análises
+legadas baseadas em IP/UA ainda precisam de decisão, não de retenção permanente
+presumida. Não antecipar essa transição por causa desta revisão.

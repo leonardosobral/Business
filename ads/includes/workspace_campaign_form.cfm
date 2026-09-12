@@ -1,3 +1,4 @@
+<cfinclude template="event_campaign_summary.cfm"/>
 <cfset VARIABLES.adsV1PreviewEventName = "Selecione um evento vinculado"/>
 <cfset VARIABLES.adsV1PreviewEventCity = ""/>
 <cfset VARIABLES.adsV1PreviewEventState = ""/>
@@ -108,7 +109,7 @@
     <cfelseif NOT qAdsV1Placements.recordcount>
       <div class="p-3 p-lg-4"><div class="alert alert-warning mb-0">Nenhum local de exibição está disponível.</div></div>
     <cfelse>
-      <form method="post" action="./?view=campaigns#campaign-form" id="ads-campaign-wizard" data-initial-step="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>4<cfelse>1</cfif>" data-is-new="<cfif len(VARIABLES.adsV1FormCampaignId)>false<cfelse>true</cfif>" novalidate>
+      <form method="post" action="./?view=campaigns#campaign-form" id="ads-campaign-wizard" data-initial-step="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>4<cfelse>1</cfif>" data-is-new="<cfif len(VARIABLES.adsV1FormCampaignId)>false<cfelse>true</cfif>" data-preserve-inputs="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>true<cfelse>false</cfif>" novalidate>
         <input type="hidden" name="ads_v1_action" value="save_campaign"/>
         <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
         <input type="hidden" name="campaign_id" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCampaignId)#</cfoutput>"/>
@@ -127,7 +128,8 @@
                   <cfoutput query="qAdsV1Events">
                     <cfset VARIABLES.adsV1EventImageRaw = len(trim(qAdsV1Events.url_imagem_listagem & "")) ? qAdsV1Events.url_imagem_listagem : (len(trim(qAdsV1Events.url_imagem & "")) ? qAdsV1Events.url_imagem : qAdsV1Events.imagem)/>
                     <cfset VARIABLES.adsV1EventImageResolved = adsV1EventImageUrl(VARIABLES.adsV1EventImageRaw)/>
-                    <option value="#id_evento#" data-event-name="#htmlEditFormat(nome_evento)#" data-event-city="#htmlEditFormat(cidade)#" data-event-state="#htmlEditFormat(estado)#" data-event-tag="#htmlEditFormat(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#htmlEditFormat(VARIABLES.adsV1EventImageResolved)#" data-event-status="#htmlEditFormat(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>>#htmlEditFormat(nome_evento)# — #htmlEditFormat(cidade)#/#htmlEditFormat(estado)#<cfif isDate(data_final)> — #dateFormat(data_final, 'dd/mm/yyyy')#</cfif> <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
+                    <cfset VARIABLES.adsV1EventCampaignSummary = structKeyExists(VARIABLES.adsV1EventCampaignSummaries, id_evento & "") ? VARIABLES.adsV1EventCampaignSummaries[id_evento & ""] : "Sem campanha"/>
+                    <option value="#id_evento#" data-event-name="#htmlEditFormat(nome_evento)#" data-event-city="#htmlEditFormat(cidade)#" data-event-state="#htmlEditFormat(estado)#" data-event-tag="#htmlEditFormat(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#htmlEditFormat(VARIABLES.adsV1EventImageResolved)#" data-event-status="#htmlEditFormat(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>><cfif isDate(data_final)>#dateFormat(data_final, 'dd/mm/yyyy')# — </cfif>[#htmlEditFormat(VARIABLES.adsV1EventCampaignSummary)#] — #htmlEditFormat(nome_evento)# — #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
                   </cfoutput>
                 </select>
                 <div class="invalid-feedback">Selecione um evento vinculado.</div>
@@ -185,11 +187,11 @@
             <section class="ads-wizard-panel" data-wizard-panel="3" hidden>
               <div class="ads-v1-eyebrow mb-2">Passo 3 de 4</div>
               <h3 class="ads-wizard-panel-title mb-2">Escolha o período e o público</h3>
-              <p class="ads-wizard-help mb-4">Para campanhas de evento, sugerimos terminar poucos dias antes da prova. Assim você concentra o investimento enquanto ainda há tempo para o atleta agir.</p>
+              <p class="ads-wizard-help mb-4">Sugerimos manter a campanha até as 23:59 do último dia do evento, incluindo o público que volta para consultar os resultados. Você pode ajustar o período e o público abaixo.</p>
 
               <div class="row g-3">
                 <div class="col-md-6"><label class="form-label" for="ads-v1-start">Início</label><input class="form-control" id="ads-v1-start" type="datetime-local" name="starts_at" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormStartsDisplay)#</cfoutput>"/></div>
-                <div class="col-md-6"><label class="form-label" for="ads-v1-end">Fim</label><input class="form-control" id="ads-v1-end" type="datetime-local" name="ends_at" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormEndsDisplay)#</cfoutput>"/><div class="form-text" id="ads-end-suggestion">Sugerimos encerrar 3 dias antes do evento.</div></div>
+                <div class="col-md-6"><label class="form-label" for="ads-v1-end">Fim</label><input class="form-control" id="ads-v1-end" type="datetime-local" name="ends_at" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormEndsDisplay)#</cfoutput>"/><div class="form-text" id="ads-end-suggestion">Sugestão: último dia do evento, às 23:59.</div></div>
                 <div class="col-md-4"><label class="form-label" for="ads-v1-device">Dispositivo</label><select class="form-select" id="ads-v1-device" name="target_device_class"><option value="ALL" <cfif VARIABLES.adsV1FormDevice EQ "ALL">selected</cfif>>Todos</option><option value="DESKTOP" <cfif VARIABLES.adsV1FormDevice EQ "DESKTOP">selected</cfif>>Desktop</option><option value="MOBILE" <cfif VARIABLES.adsV1FormDevice EQ "MOBILE">selected</cfif>>Celular</option></select></div>
                 <div class="col-md-4"><label class="form-label" for="ads-v1-country">País</label><input class="form-control text-uppercase" id="ads-v1-country" name="target_country_code" maxlength="2" pattern="[A-Za-z]{2}" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCountry)#</cfoutput>"/></div>
                 <div class="col-md-4"><label class="form-label" for="ads-v1-region">Estado ou região</label><input class="form-control text-uppercase" id="ads-v1-region" name="target_region_code" maxlength="40" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormRegion)#</cfoutput>" placeholder="Opcional, ex.: BA"/></div>
@@ -215,7 +217,7 @@
                 </div>
               </fieldset>
               <div class="ads-wizard-error mt-3" data-step-error="4">Selecione pelo menos um local de exibição.</div>
-              <div class="alert alert-info mt-4 mb-0"><strong>Antes de entrar no ar:</strong> a campanha ficará em rascunho e precisará da aprovação da conta, do evento e da equipe RunnerHub.</div>
+              <div class="alert alert-info mt-4 mb-0"><strong>Tudo pronto?</strong> Clique em <strong>Enviar para análise</strong> para salvar e encaminhar sua campanha à RunnerHub. Ela só poderá entrar no ar após as aprovações da conta, do evento e do anúncio. Se quiser continuar depois, escolha <strong>Salvar como rascunho</strong>: essa opção não envia a campanha para análise.</div>
             </section>
           </div>
 
@@ -228,7 +230,7 @@
                   <button type="button" class="ads-preview-tab is-active" data-preview-placement="Página inicial">Página inicial</button>
                   <button type="button" class="ads-preview-tab" data-preview-placement="Busca de eventos">Busca de eventos</button>
                   <button type="button" class="ads-preview-tab" data-preview-placement="Eventos por estado">Por estado</button>
-                  <button type="button" class="ads-preview-tab" data-preview-placement="Página do evento">Página do evento</button>
+                  <button type="button" class="ads-preview-tab" data-preview-placement="Lateral do site">Lateral do site</button>
                 </div>
               </div>
               <div class="ads-preview-site">
@@ -255,10 +257,11 @@
           <button class="btn btn-outline-light" id="ads-wizard-back" type="button" hidden><i class="fa-solid fa-arrow-left me-2" aria-hidden="true"></i>Voltar</button>
           <span class="d-none d-sm-block"></span>
           <button class="btn btn-info" id="ads-wizard-next" type="button">Continuar<i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i></button>
-          <button class="btn btn-info" id="ads-wizard-submit" type="submit" hidden>Salvar rascunho<i class="fa-solid fa-check ms-2" aria-hidden="true"></i></button>
+          <button class="btn btn-info" id="ads-wizard-submit" name="campaign_intent" value="submit" type="submit" hidden>Enviar para análise<i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i></button>
+          <button class="btn btn-outline-light" id="ads-wizard-draft" name="campaign_intent" value="draft" type="submit" hidden>Salvar como rascunho</button>
         </footer>
       </form>
-      <script src="/assets/js/ads-campaign-wizard.js?v=20260902-2"></script>
+      <script src="/assets/js/ads-campaign-wizard.js?v=20260911-2"></script>
     </cfif>
   </div>
 </section>

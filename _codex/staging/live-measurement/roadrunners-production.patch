@@ -1,0 +1,543 @@
+--- /dev/null
++++ b/_codex/docs/audience-live-registration.md
+@@ -0,0 +1,104 @@
++# Saída para inscrições LIVE! e contexto de circuito
++
++Implementação local de 12/09/2026. O produtor reutiliza o coletor de audiência;
++não chama endpoints financeiros de Ads, não registra compra e não instala código
++no parceiro. A publicação e a confirmação de recepção ficam a cargo do rollout.
++
++## Contrato
++
++- `kind`: `outbound_click`.
++- `key`: `outbound_click:live_registration:<id_evento>`; `emit` acrescenta o prefixo
++  `outbound_click:` à chave da ação.
++- `contentType`: `event`; `contentId`: ID positivo da prova.
++- Sessão, visitante estimado, origem, meio, campanha e variante usam o envelope
++  existente. `campaignId` continua reservado à publicidade interna.
++- Nenhuma URL externa, cupom, GCLID, localização pessoal ou campo novo é enviado.
++- O servidor rejeita identidade inconsistente, campos financeiros e durações de
++  engajamento inventadas nessa ação. Outros tipos/chaves existentes permanecem
++  compatíveis.
++
++O SQL existente admite `outbound_click`, famílias por regex e IDs de conteúdo;
++não há migration. A família `circuit` e o tipo `circuit` usam o
++`qAgrega.id_agrega_evento`; o caminho canônico público distingue
++`/circuito/live-run-xp/` e exclui a query string. Perfis continuam sem slug pessoal.
++
++## Superfícies e navegação
++
++Os CTAs usam `data-audience-live-registration` com o ID da prova:
++
++1. `#linkInscricao` no conteúdo assíncrono do modal de cupom, somente quando a linha
++   de cupom possui ID de evento válido;
++2. link principal de inscrição da página do evento;
++3. botão de inscrição da barra de ações, cujo `window.open` foi preservado;
++4. edição atual que está aberta para inscrição, com destino externo.
++
++Links de informações, resultados, edições fechadas e navegação interna não recebem
++o marcador. O destino é conferido no clique e exige HTTPS, sem credenciais nem
++porta alternativa, nos hosts exatos `liverun.com.br`, `www.liverun.com.br`,
++`appliveexperience.com.br` e `www.appliveexperience.com.br`. Não são aceitos
++subdomínios arbitrários nem hosts parecidos. Essa conferência classifica a ação;
++não impede nem altera a navegação existente para destinos fora da lista.
++
++Um listener delegado cobre conteúdo inserido após o carregamento, clique em ícone,
++ativação por teclado, clique modificado e botão do meio em links. Não chama
++`preventDefault`, não aguarda rede e não modifica `href`, `target` ou `window.open`.
++O envio usa `sendBeacon` e o fallback existente. Bloqueio/falha de coleta não pode
++impedir o encaminhamento. O hash do script no bootstrap foi atualizado para evitar
++o uso inicial de um asset antigo em cache.
++
++## Privacidade, deduplicação e limites
++
++GPC e recusa por cookie/localStorage interrompem a coleta; recusa posterior limpa
++a fila. Permanecem os filtros de UTM, validade do contexto assinado, retenção dos
++identificadores e limites de fila/rede existentes.
++
++Cliques repetidos em CTAs da mesma prova na mesma página usam a mesma chave.
++Revisitas e recarregamentos podem produzir novos registros; o Business deve contar
++uma única saída por `session_id + content_id`, e uma única sessão no total da
++campanha, mesmo que tenha saído para mais de uma prova. Não somar etapas como
++pessoas distintas.
++
++O contrato existente associa a chave ao `pageViewId`: uma aba contínua que rotacione
++a sessão após 30 minutos não cria uma nova abertura da página. Se já houve saída
++naquela página/prova, um novo clique pode ficar deduplicado; navegar ou recarregar
++obtém outro contexto. Nenhum contrato de sessão foi alterado neste lote.
++
++Um beacon pode ser perdido e o clique não comprova carregamento do parceiro,
++inscrição ou pagamento. Ausência de recepção não comprova que ninguém clicou.
++Attribution continua sendo a do início da sessão; o relatório de cupom universal
++não permite atribuir vendas ao Google sem vínculo adicional.
++
++## Verificação local
++
++TDD: o teste Node falhou sem emissor; o contrato CFML falhou sem identidade do
++circuito; os testes Chrome falharam sem marcador no modal e depois na edição.
++
++- `node --test _codex/tests/audience-tracker.test.js _codex/tests/audience-editorial.test.js _codex/tests/audience-live-registration.test.js _codex/tests/audience-sw-navigation.test.js`: 74 passaram.
++- `node --check assets/js/rr-audience.js`: passou.
++- `bash _codex/scripts/test_audience_live_cfml_local.sh`: passou no runtime CFML
++  isolado existente, sem bootstrap, datasource ou rede.
++- `bash _codex/scripts/test_audience_editorial_cfml_local.sh`: passou com o serviço
++  candidato.
++- `NODE_PATH=<dependencias-node> node _codex/tests/audience-live-browser.test.mjs`:
++  oito cenários passaram em Chrome headless (1280 e 390 pixels). O teste renderiza
++  os fragmentos reais de CFML e intercepta toda a rede, inclusive novas abas.
++  Cobre modal substituído, repetição, teclado, nova aba, barra `window.open`,
++  edição aberta/fechada e recusa posterior. O teste Node cobre GPC inicial, opt-out,
++  armazenamento indisponível, destinos rejeitados e falha de transporte.
++
++Os testes de navegador verificam fragmentos reais; não renderizam toda a página de
++evento com banco. O service worker permaneceu intacto e a regressão existente
++passou. Não houve teste no parceiro, ingestão no banco ou alteração de produção.
++
++## Rollout
++
++Primeiro disponibilizar no Business o consumidor que reconhece a chave e a família
++`circuit`; depois publicar serviço, tracker com bootstrap atualizado e marcadores
++dos quatro CTAs. A coleta pode chegar antes do relatório, porque os campos e tipos
++já são aceitos. Conferir versão efetivamente implantada e recepção após publicação.
++Rollback do produtor remove a emissão futura; eventos já recebidos permanecem
++sujeitos à retenção existente.
++
++O candidato `evento/index.cfm` também preserva dois blocos de sidebar/footer que
++já existiam em produção e estavam ausentes na cópia local. Isso é reconciliação
++do baseline, não funcionalidade nova desta instrumentação.
+--- /dev/null
++++ b/_codex/scripts/test_audience_live_cfml_local.sh
+@@ -0,0 +1,25 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
++ROADRUNNERS_ROOT="${1:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"
++COMMANDBOX_HOME="${2:-${AUDIENCE_CFML_COMMANDBOX_HOME:-/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox}}"
++BOX_RUNTIME="${3:-${AUDIENCE_CFML_BOX_RUNTIME:-/Users/Shared/Projects/ColdFusion Certification/box}}"
++JAVA_RUNTIME="${AUDIENCE_CFML_JAVA_RUNTIME:-/usr/bin/java}"
++TEST_FILE="${ROADRUNNERS_ROOT}/_codex/tests/audience-live-contract.cfm"
++SERVICE_FILE="${ROADRUNNERS_ROOT}/services/AudienceMeasurementService.cfc"
++
++for required_file in "${TEST_FILE}" "${SERVICE_FILE}" "${BOX_RUNTIME}" "${JAVA_RUNTIME}" "${COMMANDBOX_HOME}/lib/lucee-5.3.10.120.jar"; do
++    [[ -f "${required_file}" ]] || { echo "ERRO: arquivo necessario ausente: ${required_file}" >&2; exit 2; }
++done
++
++TEST_ROOT="$(mktemp -d /private/tmp/runnerhub-audience-live-cfml.XXXXXX)"
++cleanup_test_root() {
++    case "${TEST_ROOT}" in /private/tmp/runnerhub-audience-live-cfml.*) rm -rf -- "${TEST_ROOT}" ;; esac
++}
++trap cleanup_test_root EXIT HUP INT TERM
++mkdir -p "${TEST_ROOT}/services"
++cp "${TEST_FILE}" "${TEST_ROOT}/audience-live-contract.cfm"
++cp "${SERVICE_FILE}" "${TEST_ROOT}/services/AudienceMeasurementService.cfc"
++cd "${TEST_ROOT}"
++RUNNERHUB_OFFLINE_CFML_TESTS=1 "${JAVA_RUNTIME}" -cp "${BOX_RUNTIME}" cliloader.LoaderCLIMain "-CommandBox_home=${COMMANDBOX_HOME}" execute audience-live-contract.cfm
+--- /dev/null
++++ b/_codex/tests/audience-live-browser.test.mjs
+@@ -0,0 +1,95 @@
++// Offline browser contract: render real CTA fragments with CFML, route every
++// browser request locally, and exercise the real tracker. No partner requests.
++import { createRequire } from 'node:module';
++import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
++import { spawnSync } from 'node:child_process';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import assert from 'node:assert/strict';
++const require=createRequire(import.meta.url);
++const { chromium }=require('playwright');
++const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
++const temp=await mkdtemp('/private/tmp/rr-live-browser-');
++let browser;
++try {
++    const modal=await readFile(path.join(root,'includes/modal/modal_cupom_link_conteudo.cfm'),'utf8');
++    const direct=await readFile(path.join(root,'evento/index.cfm'),'utf8');
++    const bar=await readFile(path.join(root,'evento/parts/barra_acoes.cfm'),'utf8');
++    const edition=await readFile(path.join(root,'evento/parts/edicoes_evento.cfm'),'utf8');
++    const fragments={
++        edition: [...edition.matchAll(/<a\b[\s\S]*?<\/a>/g)].map(m=>m[0]).find(s=>s.includes('event-edition-link')),
++        modal: modal.match(/<a id="linkInscricao"[\s\S]*?<\/a>/)?.[0],
++        direct: [...direct.matchAll(/<a\b[\s\S]*?<\/a>/g)].map(m=>m[0]).find(s=>s.includes('#eventActions.register#')),
++        bar: [...bar.matchAll(/<button\b[\s\S]*?<\/button>/g)].map(m=>m[0]).find(s=>s.includes('#eventActions.register#'))
++    };
++    for (const [name,fragment] of Object.entries(fragments)) {
++        assert.ok(fragment,`${name} real registration control is present`);
++        await writeFile(path.join(temp,`${name}.cfm`),['modal','edition'].includes(name)?`<cfoutput>${fragment}</cfoutput>`:fragment);
++    }
++    await writeFile(path.join(temp,'render.cfm'),`<cfscript>
++qEvento=queryNew('id_evento,url_inscricao,url_hotsite','integer,varchar,varchar',[{'id_evento'=304,'url_inscricao'='https://www.appliveexperience.com.br/evento/test/?coupon=test','url_hotsite'='https://liverun.com.br/etapa/test/'}]);
++qCupom=queryNew('id_evento,curl','integer,varchar',[{'id_evento'=304,'curl'='https://www.liverun.com.br/etapa/test/?coupon=test'}]);
++qEventoEdicoes={'id_evento'=304,'data_final'=now(),'nome_evento'='Evento teste','cidade'='Cidade teste','estado'='SP','concluintes'=0,'tempo_campeao_masculino'='','tempo_campea_feminina'=''};
++VARIABLES.eventEditionIsCurrent=true;VARIABLES.eventEditionIsOpenForRegistration=true;VARIABLES.eventEditionIsHidden=false;VARIABLES.eventEditionPath=qEvento.url_inscricao;VARIABLES.eventEditionAnchorAttrs=' target="_blank" rel="noopener"';VARIABLES.eventEditionRegistrationLabel='Inscreva-se';REQUEST.t=function(key){return key;};
++couponLinkModal={'useCoupon'='Usar cupom'};eventActions={'register'='Inscrever'};fixtures={};
++</cfscript>
++<cfsavecontent variable="fixtures.modal"><cfinclude template="modal.cfm"/></cfsavecontent>
++<cfsavecontent variable="fixtures.direct"><cfinclude template="direct.cfm"/></cfsavecontent>
++<cfsavecontent variable="fixtures.bar"><cfinclude template="bar.cfm"/></cfsavecontent>
++<cfsavecontent variable="fixtures.edition"><cfinclude template="edition.cfm"/></cfsavecontent>
++<cfset VARIABLES.eventEditionIsOpenForRegistration=false/>
++<cfsavecontent variable="fixtures.closedEdition"><cfinclude template="edition.cfm"/></cfsavecontent>
++<cfscript>writeOutput('LIVE_FIXTURE_START' & serializeJSON(fixtures) & 'LIVE_FIXTURE_END');</cfscript>`);
++    const cfml=spawnSync(process.env.AUDIENCE_CFML_JAVA_RUNTIME||'/usr/bin/java',[
++        '-cp',process.env.AUDIENCE_CFML_BOX_RUNTIME||'/Users/Shared/Projects/ColdFusion Certification/box',
++        'cliloader.LoaderCLIMain',`-CommandBox_home=${process.env.AUDIENCE_CFML_COMMANDBOX_HOME||'/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox'}`,'execute','render.cfm'
++    ],{cwd:temp,encoding:'utf8',timeout:60000,env:{...process.env,RUNNERHUB_OFFLINE_CFML_TESTS:'1'}});
++    assert.equal(cfml.status,0,cfml.stderr+cfml.stdout);
++    const fixtures=JSON.parse(cfml.stdout.match(/LIVE_FIXTURE_START([\s\S]*?)LIVE_FIXTURE_END/)?.[1]||'null');
++    assert.ok(fixtures,'CFML rendered fixtures');
++    const tracker=await readFile(path.join(root,'assets/js/rr-audience.js'),'utf8');
++    browser=await chromium.launch({headless:true,channel:process.env.AUDIENCE_BROWSER_CHANNEL||'chrome'});
++    for (const width of [1280,390]) {
++        for (const surface of ['edition','modal','direct','bar']) {
++            const context=await browser.newContext({viewport:{width,height:900}});
++            const bodies=[],destinations=[],errors=[];
++            const config={endpoint:'/api/analytics/collect.cfm',contextToken:'local-fixture',signature:'local-fixture',context:{pageViewId:'11111111-1111-4111-8111-111111111111',pageFamily:'event',contentType:'event',contentId:'304'}};
++            await context.route('**/*',async route=>{
++                const request=route.request(),url=new URL(request.url());
++                if(url.hostname!=='roadrunners.test') { destinations.push(request.url()); await route.fulfill({status:200,contentType:'text/html',body:'Offline partner fixture'}); return; }
++                if(url.pathname==='/api/analytics/collect.cfm') { bodies.push(request.postDataJSON()); await route.fulfill({status:204,body:''}); return; }
++                if(url.pathname==='/assets/js/rr-audience.js') { await route.fulfill({contentType:'application/javascript',body:tracker}); return; }
++                await route.fulfill({contentType:'text/html',body:`<!doctype html><html><body><div id="controls">${surface==='modal'?'':fixtures[surface]}</div><script>window.RoadRunnersAudienceConfig=${JSON.stringify(config)}</script><script src="/assets/js/rr-audience.js"></script></body></html>`});
++            });
++            const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
++            await page.goto('https://roadrunners.test/?utm_source=google&utm_medium=cpc&utm_campaign=live_run_retomada&utm_content=smart_retomada');
++            if(surface==='modal') await page.locator('#controls').evaluate((el,html)=>{el.innerHTML=html;},fixtures.modal);
++            const control=page.locator(surface==='bar'?'#controls button':'#controls a');
++            const expected=surface==='modal'?'https://www.liverun.com.br/etapa/test/?coupon=test':'https://www.appliveexperience.com.br/evento/test/?coupon=test';
++            const popup=page.waitForEvent('popup');
++            if(surface==='direct') { await control.focus();await page.keyboard.press('Enter'); }
++            else await control.click();
++            const destination=await popup;await destination.waitForLoadState('domcontentloaded');
++            assert.equal(destination.url(),expected,`${surface} preserves new-tab navigation`);await destination.close();
++            await page.waitForTimeout(100);
++            let outbound=bodies.flatMap(b=>b.events).filter(e=>e.kind==='outbound_click');
++            assert.equal(outbound.length,1,`${width}px ${surface} sends one outbound event`);
++            if(surface==='edition') {
++                await page.locator('#controls').evaluate((el,html)=>{el.innerHTML=html;},fixtures.closedEdition);
++                assert.equal(await page.locator('[data-audience-live-registration]').count(),0,'closed edition carries no registration marker');
++                await page.locator('#controls').evaluate((el,html)=>{el.innerHTML=html;},fixtures.edition);
++            }
++            assert.equal(outbound[0].key,'outbound_click:live_registration:304');
++            assert.equal(outbound[0].contentType,'event');assert.equal(outbound[0].contentId,'304');
++            assert.equal(bodies.find(b=>b.events.some(e=>e.kind==='outbound_click')).campaign,'live_run_retomada');
++            if(surface==='modal') await page.locator('#controls').evaluate((el,html)=>{el.innerHTML=html;},fixtures.modal);
++            const nextPopup=page.waitForEvent('popup');await control.click();await (await nextPopup).close();await page.waitForTimeout(100);
++            assert.equal(bodies.flatMap(b=>b.events).filter(e=>e.kind==='outbound_click').length,1,'repeat/modal replacement does not duplicate the event');
++            await page.evaluate(()=>window.dispatchEvent(new CustomEvent('rr-audience-preference',{detail:{allowed:false}})));
++            const refusedPopup=page.waitForEvent('popup');await control.click();await (await refusedPopup).close();await page.waitForTimeout(50);
++            assert.equal(bodies.flatMap(b=>b.events).filter(e=>e.kind==='outbound_click').length,1,'refusal preserves navigation without collecting');
++            assert.deepEqual(errors,[]);assert.ok(destinations.every(url=>url.startsWith('https://www.liverun.com.br/')||url.startsWith('https://www.appliveexperience.com.br/')));
++            await context.close();console.log(`PASS: ${width}px real CFML ${surface}, new tab/keyboard, repetition and refusal`);
++        }
++    }
++} finally { await browser?.close(); await rm(temp,{recursive:true,force:true}); }
+--- /dev/null
++++ b/_codex/tests/audience-live-contract.cfm
+@@ -0,0 +1,38 @@
++<!--- Isolated CFML only: no application bootstrap, datasource or network. --->
++<cfscript>
++liveEnv=createObject("java","java.lang.System").getenv();
++if (!liveEnv.containsKey("RUNNERHUB_OFFLINE_CFML_TESTS") || liveEnv.get("RUNNERHUB_OFFLINE_CFML_TESTS") != "1") { cfheader(statuscode=404); abort; }
++function liveAssert(required boolean condition, required string label) {
++    if (!arguments.condition) throw(type="AudienceLiveTestFailure",message=arguments.label);
++}
++liveSvc=createObject("component","services.AudienceMeasurementService").init({"enabled"=true,"secret"=createUUID()});
++liveCircuit=queryNew("id_agrega_evento,tag","integer,varchar",[{"id_agrega_evento"=42,"tag"="live-run-xp"}]);
++liveContext=liveSvc.buildContext({"template"="/circuito/","qAgrega"=liveCircuit,"canonical"="https://roadrunners.run/circuito/live-run-xp/?utm_source=google"},{},{"HTTP_HOST"="roadrunners.run"});
++liveAssert(liveContext.pageFamily=="circuit" && liveContext.contentType=="circuit" && liveContext.contentId=="42", "circuit context has a stable database identity");
++liveAssert(liveContext.pagePath=="/circuito/live-run-xp/", "circuit canonical path excludes attribution queries");
++liveProfile=queryNew("id_pagina","integer",[{"id_pagina"=42}]);
++liveProfileContext=liveSvc.buildContext({"template"="/atleta/","qPagina"=liveProfile,"canonical"="https://roadrunners.run/atleta/private-person/"},{},{"HTTP_HOST"="roadrunners.run"});
++liveAssert(liveProfileContext.pagePath=="/atleta/", "adding public circuits never exposes profile canonical slugs");
++liveSigned=liveSvc.signContext(liveContext);
++livePayload={"contextToken"=liveSigned.contextToken,"signature"=liveSigned.signature,
++    "visitorId"="22222222-2222-4222-8222-222222222222","sessionId"="33333333-3333-4333-8333-333333333333",
++    "source"="google","medium"="cpc","campaign"="live_run_retomada","creative"="smart_retomada",
++    "events"=[{"kind"="outbound_click","key"="outbound_click:live_registration:304","contentType"="event","contentId"="304"}]};
++liveHeaders={"Origin"="https://roadrunners.run","Sec-Fetch-Site"="same-origin"};
++liveBatch=liveSvc.validateBatch(livePayload,"roadrunners.run",liveHeaders);
++liveAssert(liveBatch.events[1].contentId=="304" && liveBatch.client.campaign=="live_run_retomada", "event identity and session campaign survive validation from a circuit page");
++for (liveBad in [
++    {"contentType"="circuit"},{"contentId"="wrong"},{"contentId"="0"},{"key"="outbound_click:live_registration:305"},
++    {"slotKey"="inventory"},{"campaignId"="44444444-4444-4444-8444-444444444444"},{"activeMs"=1},{"ratio"=0.5}
++]) {
++    liveRejected=false;
++    try {
++        liveInvalid=duplicate(livePayload); structAppend(liveInvalid.events[1],liveBad,true);
++        liveSvc.validateBatch(liveInvalid,"roadrunners.run",liveHeaders);
++    } catch (Audience.Invalid invalid) { liveRejected=true; }
++    liveAssert(liveRejected,"malformed LIVE identity or invented Ads/engagement data is rejected");
++}
++liveOther=duplicate(livePayload); liveOther.events=[{"kind"="outbound_click","key"="outbound_click:other"}];
++liveAssert(arrayLen(liveSvc.validateBatch(liveOther,"roadrunners.run",liveHeaders).events)==1,"other existing outbound keys remain compatible");
++writeOutput("PASS: LIVE outbound contract, signed circuit context and profile privacy");
++</cfscript>
+--- /dev/null
++++ b/_codex/tests/audience-live-registration.test.js
+@@ -0,0 +1,127 @@
++const { test } = require('node:test');
++const assert = require('node:assert/strict');
++const fs = require('node:fs');
++const vm = require('node:vm');
++const path = require('node:path');
++const trackerPath = path.resolve(__dirname, '../../assets/js/rr-audience.js');
++
++function harness(options = {}) {
++    let now = 0;
++    const slots = [], requests = [], listeners = {}, timers = new Map();
++    const storage = new Map(Object.entries(options.storage || {}));
++    let sequence = 0, intersectionObserver;
++    const doc = { visibilityState: 'visible', readyState: 'complete', referrer: 'https://example.org/story?private=1', cookie: '',
++        documentElement: { clientWidth: 1200, clientHeight: 900 },
++        addEventListener(type, callback) { (listeners[type] ||= []).push(callback); },
++        querySelectorAll(selector) { return selector === '[data-audience-slot]' ? slots : []; } };
++    if (options.cookieThrows) Object.defineProperty(doc, 'cookie', { get() { throw Error('cookies blocked'); } });
++    const win = { document: doc, innerWidth: 1200, innerHeight: 900, location: new URL('https://roadrunners.run/busca/?estado=SC&utm_source=newsletter&utm_campaign=run'),
++        RoadRunnersAudienceConfig: { endpoint: '/api/analytics/collect.cfm', contextToken: 'signed-context', signature: 'signature', context: { pageViewId: '11111111-1111-4111-8111-111111111111', visitorUf: 'SP', contextUf: 'SC', marketUf: 'SC', contentType: '', contentId: '' } },
++        navigator: { globalPrivacyControl: options.gpc || false, sendBeacon(url, body) { requests.push({ url, body: JSON.parse(body) }); return true; } },
++        localStorage: {
++            getItem(k) { if (options.storageThrows) throw Error('blocked'); return storage.get(k) || null; },
++            setItem(k, v) { if (options.storageThrows) throw Error('blocked'); storage.set(k, v); },
++            removeItem(k) { if (options.storageThrows) throw Error('blocked'); storage.delete(k); }
++        },
++        crypto: require('node:crypto').webcrypto, performance: { now: () => now },
++        setInterval(callback, delay) { timers.set(++sequence, { callback, delay, at: now + delay, repeat: true }); return sequence; },
++        setTimeout(callback, delay) { timers.set(++sequence, { callback, delay, at: now + delay }); return sequence; },
++        clearTimeout(id) { timers.delete(id); },
++        clearInterval(id) { timers.delete(id); },
++        addEventListener: doc.addEventListener,
++        getComputedStyle(el) { return { display: el.hidden ? 'none' : typeof el.displayAt === 'function' ? el.displayAt(win.innerWidth) : 'block', visibility: 'visible', opacity: '1' }; },
++        matchMedia(query) { return { matches: query === '(max-width: 767.98px)' ? win.innerWidth < 768 : true }; },
++        fetch(url, opts) { requests.push({ url, body: JSON.parse(opts.body) }); return Promise.resolve({ ok: true }); }
++    };
++    if (options.intersectionObserver) win.IntersectionObserver = class {
++        constructor(callback) { this.callback = callback; this.observed = new Set(); intersectionObserver = this; }
++        observe(el) { this.observed.add(el); }
++        unobserve(el) { this.observed.delete(el); }
++    };
++    function slot(key, state = 'filled', extra = {}) {
++        const el = { dataset: { audienceSlot: key, audiencePlacement: 'placement', audienceState: state, audienceRequested: 'true', audienceServed: state === 'filled' ? 'true' : 'false', audienceDelivery: '22222222-2222-4222-8222-222222222222', audienceCampaign: '33333333-3333-4333-8333-333333333333' },
++            isConnected: true, hidden: false, images: [], parentElement: null,
++            getBoundingClientRect() { return { top: 0, left: 0, right: 300, bottom: 250, width: this.collapsed || this.hidden ? 0 : 300, height: this.collapsed || this.hidden ? 0 : 250 }; },
++            querySelectorAll(selector) { return selector === 'img' ? this.images : []; },
++            querySelector() { return null; }, ...extra };
++        slots.push(el); return el;
++    }
++    const ctx = vm.createContext({ window: win, document: doc, navigator: win.navigator, URL, URLSearchParams, console, Date: class extends Date { static now() { return 1800000000000 + now; } } });
++    function run() { if (fs.existsSync(trackerPath)) vm.runInContext(fs.readFileSync(trackerPath, 'utf8'), ctx); }
++    function tick(ms) { const end = now + ms; while (true) { const next = [...timers.entries()].filter(([, t]) => t.at <= end).sort((a, b) => a[1].at - b[1].at)[0]; if (!next) break; now = next[1].at; if (next[1].repeat) next[1].at += next[1].delay; else timers.delete(next[0]); next[1].callback(); } now = end; }
++    function event(type, data = {}) { (listeners[type] || []).forEach(fn => fn({ type, ...data })); }
++    function events() { win.RoadRunnersAudience?.flush(); return requests.flatMap(r => r.body.events); }
++    function intersect(el, ratios) { if (intersectionObserver) intersectionObserver.callback(ratios.map(ratio => ({ target: el, isIntersecting: ratio > 0, intersectionRatio: ratio }))); }
++    function evaluate(source, globals = {}) { Object.assign(ctx, globals); return vm.runInContext(source, ctx); }
++    return { win, doc, slot, run, tick, event, requests, events, storage, intersect, evaluate };
++}
++
++
++function registration(id = '304', href = 'https://www.liverun.com.br/etapa/live-run-test/?private=secret', extra = {}) {
++    return { tagName: 'A', dataset: { audienceLiveRegistration: id }, href,
++        getAttribute(name) { return name === 'href' ? this.href : null; },
++        closest(selector) { return selector === '[data-audience-live-registration]' ? this : null; }, ...extra };
++}
++function click(h, target, extra = {}) { h.event('click', { target, button: 0, ...extra }); }
++const outbound = h => h.events().filter(event => event.kind === 'outbound_click');
++
++test('LIVE registration emits one stable event across nested icons, repeated clicks and replacement modal content', () => {
++    const h = harness(); h.run();
++    const target = registration();
++    click(h, { closest: selector => target.closest(selector) });
++    click(h, target); click(h, registration());
++    assert.deepEqual(outbound(h).map(({ kind, key, contentType, contentId }) => ({ kind, key, contentType, contentId })), [
++        { kind: 'outbound_click', key: 'outbound_click:live_registration:304', contentType: 'event', contentId: '304' }
++    ]);
++    const payload = h.requests.find(request => request.body.events.some(event => event.kind === 'outbound_click')).body;
++    assert.equal(payload.source, 'newsletter'); assert.equal(payload.campaign, 'run');
++    assert.equal(payload.contextToken, 'signed-context');
++    assert.equal(JSON.stringify(payload).includes('private=secret'), false);
++    assert.equal(outbound(h)[0].campaignId, undefined); assert.equal(outbound(h)[0].activeMs, undefined);
++});
++
++test('keyboard activation, modified click and middle click collect without cancelling navigation', () => {
++    for (const activation of [{type:'click', button:0, detail:0}, {type:'click', button:0, ctrlKey:true}, {type:'auxclick', button:1}]) {
++        const h = harness(); h.run(); let prevented = false;
++        h.event(activation.type, { target: registration(), ...activation, preventDefault() { prevented = true; } });
++        assert.equal(outbound(h).length, 1); assert.equal(prevented, false);
++    }
++});
++
++test('window.open registration buttons and exact LIVE checkout hosts share the event identity', () => {
++    const h = harness(); h.run();
++    click(h, registration('305', '', {tagName:'BUTTON', dataset:{audienceLiveRegistration:'305', audienceRegistrationUrl:'https://www.appliveexperience.com.br/evento/test/'}}));
++    click(h, registration('306', 'https://appliveexperience.com.br/evento/test/'));
++    click(h, registration('307', 'https://liverun.com.br/etapa/test/'));
++    assert.deepEqual(outbound(h).map(e => e.contentId), ['305','306','307']);
++});
++
++test('unmarked links, wrong hosts, non-HTTPS, credentials, ports and invalid event IDs never become LIVE registrations', () => {
++    const h = harness(); h.run();
++    for (const href of ['https://liverun.com.br.evil.test/a','https://evil.test/?next=https://liverun.com.br/',
++        'https://sub.liverun.com.br/a','https://user@liverun.com.br/a','https://liverun.com.br:8443/a','http://liverun.com.br/a','javascript:alert(1)','/evento/test/']) click(h, registration('304', href));
++    for (const id of ['', '0','-1','0304','1.5','304:other','user@example.com','12345678901']) click(h, registration(id));
++    click(h, { closest() { return null; } });
++    assert.equal(outbound(h).length, 0);
++});
++
++test('disabled/cancelled activation and right/middle button actions on a button are ignored', () => {
++    const h = harness(); h.run();
++    click(h, registration(), {defaultPrevented:true}); click(h, registration('304','https://liverun.com.br/',{disabled:true}));
++    h.event('auxclick',{target:registration(),button:2});
++    h.event('auxclick',{target:registration('304','',{tagName:'BUTTON',dataset:{audienceLiveRegistration:'304',audienceRegistrationUrl:'https://liverun.com.br/'}}),button:1});
++    assert.equal(outbound(h).length,0);
++});
++
++test('GPC, initial opt-out, storage failure and later refusal preserve controls and never send refused clicks', () => {
++    for (const options of [{gpc:true},{storage:{'rr-audience-opt-out':'1'}}]) {
++        const h=harness(options); h.run(); click(h,registration()); assert.equal(h.requests.length,0);
++    }
++    const h=harness({storageThrows:true}); h.run(); click(h,registration()); assert.equal(outbound(h).length,1);
++    h.event('rr-audience-preference',{detail:{allowed:false}}); click(h,registration('305')); assert.equal(outbound(h).length,1);
++});
++
++test('transport failure does not escape the registration click handler', () => {
++    const h=harness(); h.win.navigator.sendBeacon=()=>{throw Error('offline');}; h.win.fetch=()=>{throw Error('offline');}; h.run();
++    assert.doesNotThrow(()=>click(h,registration()));
++});
+--- a/assets/js/rr-audience.js
++++ b/assets/js/rr-audience.js
+@@ -293,6 +293,24 @@
+         });
+     }
+     function contentOpen(type, id) { id = label(id, 100); if (id) emit('content_open', label(type, 20) + ':' + id, { contentType: label(type, 20), contentId: id }); }
++    function liveRegistrationClick(event) {
++        // Delegation also covers the asynchronously replaced coupon modal. Never
++        // cancel navigation or wait for delivery to the first-party collector.
++        try {
++            if (collectionBlocked() || !session || event.defaultPrevented || !event.target || !event.target.closest) return;
++            var el = event.target.closest('[data-audience-live-registration]');
++            if (!el || el.disabled || el.getAttribute('aria-disabled') === 'true') return;
++            if (event.type === 'auxclick' ? event.button !== 1 || el.tagName !== 'A' : event.button > 0) return;
++            var id = String(el.dataset.audienceLiveRegistration || '');
++            if (!/^[1-9][0-9]{0,9}$/.test(id)) return;
++            var destination = new URL(el.tagName === 'A' ? el.href : el.dataset.audienceRegistrationUrl, window.location.href);
++            if (destination.protocol !== 'https:' || destination.username || destination.password || destination.port
++                || ['liverun.com.br', 'www.liverun.com.br', 'appliveexperience.com.br', 'www.appliveexperience.com.br'].indexOf(destination.hostname) < 0) return;
++            touchSession();
++            emit('outbound_click', 'live_registration:' + id, { contentType: 'event', contentId: id });
++            flush();
++        } catch (_) {}
++    }
+     function adoptContext(container) {
+         if (!container || collectionBlocked()) return;
+         var marker = container.querySelector('[data-audience-context]');
+@@ -365,6 +383,8 @@
+         }, { threshold: [0, 0.5, 1] });
+     }
+     window.RoadRunnersAudience = { observe: sample, flush: flush, contentOpen: contentOpen, bindVideo: bindVideo, bindYouTube: bindYouTube, adoptContext: adoptContext };
++    document.addEventListener('click', liveRegistrationClick);
++    document.addEventListener('auxclick', liveRegistrationClick);
+     sample();
+     window.setInterval(sample, 250);
+     window.setInterval(function () { if (!pageStarted || collectionBlocked() || !session) return; if (document.visibilityState === 'visible' && now() - lastInput < 60000) touchSession(); emit('page_engagement', session.id, { activeMs: Math.floor(activeMs) }, true); flush(false); }, 10000);
+--- a/evento/index.cfm
++++ b/evento/index.cfm
+@@ -702,6 +702,7 @@
+                                             <cfif qEvento.status_evento NEQ 'cancelado'>
+                                                 <!---<cfif Usuario.logado>--->
+                                                     <a class="btn btn-primary w-100 shadow-0"
++                                                        data-audience-live-registration="<cfoutput>#HTMLEditFormat(qEvento.id_evento)#</cfoutput>"
+                                                         href="<cfoutput>#Len(trim(qEvento.url_inscricao)) ? qEvento.url_inscricao : qEvento.url_hotsite#</cfoutput>" target="_blank">
+                                                         <cfoutput>#eventActions.register#</cfoutput>&nbsp;&nbsp;<icon class="fa fa-up-right-from-square"></icon>
+                                                     </a>
+--- a/evento/parts/barra_acoes.cfm
++++ b/evento/parts/barra_acoes.cfm
+@@ -33,7 +33,10 @@
+                         <!--- INSCRICAO NORMAL --->
+ 
+                         <cfif qEvento.status_evento NEQ 'cancelado'>
+-                            <button type="button" class="btn btn-primary active" data-mdb-ripple-init onClick="window.open('<cfoutput>#qEvento.url_inscricao#</cfoutput>', '_blank');"><cfoutput>#eventActions.register#</cfoutput>&nbsp;&nbsp;<icon class="fa fa-up-right-from-square"></icon></button>
++                            <button type="button" class="btn btn-primary active" data-mdb-ripple-init
++                                    data-audience-live-registration="<cfoutput>#HTMLEditFormat(qEvento.id_evento)#</cfoutput>"
++                                    data-audience-registration-url="<cfoutput>#HTMLEditFormat(qEvento.url_inscricao)#</cfoutput>"
++                                    onClick="window.open('<cfoutput>#qEvento.url_inscricao#</cfoutput>', '_blank');"><cfoutput>#eventActions.register#</cfoutput>&nbsp;&nbsp;<icon class="fa fa-up-right-from-square"></icon></button>
+                         </cfif>
+                         <button type="button" class="btn btn-light" data-mdb-ripple-init onClick="window.open('<cfoutput>#Len(trim(qEvento.url_hotsite)) ? qEvento.url_hotsite : qEvento.url_inscricao#</cfoutput>', '_blank');"><cfoutput>#eventActions.learnMore#</cfoutput>&nbsp;&nbsp;<icon class="fa fa-up-right-from-square"></icon></button>
+ 
+--- a/evento/parts/edicoes_evento.cfm
++++ b/evento/parts/edicoes_evento.cfm
+@@ -851,6 +851,7 @@
+                         <a class="event-edition-link<cfif VARIABLES.eventEditionIsCurrent> is-current</cfif><cfif VARIABLES.eventEditionIsOpenForRegistration> has-action</cfif><cfif VARIABLES.eventEditionIsHidden> d-none</cfif>"
+                            href="#VARIABLES.eventEditionPath#"
+                            #VARIABLES.eventEditionAnchorAttrs#
++                           <cfif VARIABLES.eventEditionIsOpenForRegistration>data-audience-live-registration="#HTMLEditFormat(qEventoEdicoes.id_evento)#"</cfif>
+                            <cfif VARIABLES.eventEditionIsHidden>data-event-edition-extra="true"</cfif>>
+                             <span class="event-edition-date">
+                                 <span class="day">#lsDateFormat(qEventoEdicoes.data_final, "dd")#</span>
+--- a/includes/analytics/bootstrap.cfm
++++ b/includes/analytics/bootstrap.cfm
+@@ -13,7 +13,7 @@
+                 VARIABLES.audienceMeasurementSecret="";
+                 if (VARIABLES.audienceMeasurementService.isEnabled()) {
+                     REQUEST.audienceMeasurementContext=VARIABLES.audienceMeasurementService.buildContext(VARIABLES,REQUEST,CGI);
+-                    writeOutput('<script>window.RoadRunnersAudienceConfig=' & VARIABLES.audienceMeasurementService.configJson(REQUEST.audienceMeasurementContext) & ';</script><script src="/assets/js/rr-audience.js?v=27dd026e4ad8" defer></script>');
++                    writeOutput('<script>window.RoadRunnersAudienceConfig=' & VARIABLES.audienceMeasurementService.configJson(REQUEST.audienceMeasurementContext) & ';</script><script src="/assets/js/rr-audience.js?v=62bc8dc568f4" defer></script>');
+                 }
+             }
+         }
+--- a/includes/modal/modal_cupom_link_conteudo.cfm
++++ b/includes/modal/modal_cupom_link_conteudo.cfm
+@@ -69,7 +69,8 @@
+                     </button>
+                 </div>
+                 <div class="col-12">
+-                    <a id="linkInscricao" type="button" href="#qCupom.curl#" target="_blank" class="btn w-100 btn-success shadow-0">
++                    <a id="linkInscricao" type="button" href="#qCupom.curl#" target="_blank" class="btn w-100 btn-success shadow-0"
++                        <cfif NOT isNull(qCupom.id_evento) AND reFind("^[1-9][0-9]{0,9}$",trim(qCupom.id_evento & ""))>data-audience-live-registration="#HTMLEditFormat(qCupom.id_evento)#"</cfif>>
+                         #couponLinkModal.useCoupon#&nbsp;&nbsp;<icon class="fa fa-up-right-from-square"></icon>
+                     </a>
+                 </div>
+--- a/services/AudienceMeasurementService.cfc
++++ b/services/AudienceMeasurementService.cfc
+@@ -41,7 +41,7 @@
+         var c = {};
+         var host = lCase(scalar(arguments.cgiData,"HTTP_HOST"));
+         if (!reFind("^(roadrunners\.run|www\.roadrunners\.run|beta\.roadrunners\.run|dev\.roadrunners\.run|localhost(:[0-9]{1,5})?|127\.0\.0\.1(:[0-9]{1,5})?)$",host)) invalid();
+-        var familyMap = {"/"="home","/estado/"="state","/busca/"="search","/evento/"="event","/atleta/"="profile","/noticias/"="news","/videos/"="videos","/resultados/"="results","/agenda/"="calendar"};
++        var familyMap = {"/"="home","/estado/"="state","/busca/"="search","/evento/"="event","/circuito/"="circuit","/atleta/"="profile","/noticias/"="news","/videos/"="videos","/resultados/"="results","/agenda/"="calendar"};
+         var route = scalar(arguments.page,"template","/");
+         var family = structKeyExists(familyMap,route) ? familyMap[route] : "other";
+         var path = reFind("^/[a-zA-Z0-9/_-]{0,255}$",route) ? route : "/";
+@@ -65,6 +65,13 @@
+             contentType = "event"; contentId=label(queryValue(arguments.page,"qEvento","id_evento"));
+             var eventTag = label(queryValue(arguments.page,"qEvento","tag"));
+             if (len(eventTag)) path="/evento/" & eventTag & "/";
++        } else if (family == "circuit") {
++            var circuitId=queryValue(arguments.page,"qAgrega","id_agrega_evento");
++            if (reFind("^[1-9][0-9]{0,9}$",circuitId)) {
++                contentType="circuit"; contentId=circuitId;
++                var circuitTag=queryValue(arguments.page,"qAgrega","tag");
++                if (reFind("^[a-zA-Z0-9_-]{1,100}$",circuitTag)) path="/circuito/" & circuitTag & "/";
++            }
+         } else if (family == "home" && !truth(arguments.page,"homeContextFallback")) {
+             contextUf=uf(scalar(arguments.page,"homeContextUf"));
+         } else if (family == "state") {
+@@ -87,7 +94,7 @@
+             path="/noticias/" & label(scalar(arguments.page.noticia,"slug")) & "/";
+         }
+         // Preserve a server-produced canonical URL only for public content routes.
+-        if (listFind("home,state,search,event,news,news_detail,videos,results,calendar",family) && len(scalar(arguments.page,"canonical"))) {
++        if (listFind("home,state,search,event,circuit,news,news_detail,videos,results,calendar",family) && len(scalar(arguments.page,"canonical"))) {
+             try {
+                 var canonicalUri=createObject("java","java.net.URI").init(scalar(arguments.page,"canonical"));
+                 var canonicalPath=canonicalUri.getPath() & "";
+@@ -203,6 +210,11 @@
+             if (listFind("slot_viewable,ad_viewable",e.kind) && (e.maxContinuousMs<1000 || e.ratio<0.5 || !listFind("filled,house,empty,disabled",e.slotState))) invalid();
+             if (e.kind == "ad_viewable" && !listFind("filled,house",e.slotState)) invalid();
+             if (find("ad_",e.kind)==1 && (!len(e.deliveryId) || !len(e.campaignId))) invalid();
++            if (e.kind == "outbound_click" && find("outbound_click:live_registration:",e.key)==1) {
++                if (e.contentType != "event" || !reFind("^[1-9][0-9]{0,9}$",e.contentId) || e.key != "outbound_click:live_registration:" & e.contentId
++                    || len(e.slotKey) || len(e.placementKey) || len(e.slotState) || len(e.deliveryId) || len(e.campaignId)
++                    || e.activeMs != 0 || e.visibleMs != 0 || e.maxContinuousMs != 0 || e.ratio != 0) invalid();
++            }
+             if (listFind("content_viewable,content_progress",e.kind)) {
+                 if (!len(e.contentId) || len(e.slotKey) || len(e.placementKey) || len(e.slotState) || len(e.deliveryId) || len(e.campaignId) || e.activeMs != 0) invalid();
+                 if (e.kind == "content_viewable") {

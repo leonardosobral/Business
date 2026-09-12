@@ -69,10 +69,12 @@ Implementado localmente em `RoadRunners/services/LocationResolver.cfc`, SHA-256 
 - 30 verificações CFML offline passaram no candidato e novamente nos arquivos finais do checkout, em execução independente do agente principal; `bash -n` passou; revisão independente sem achados. O ambiente usa Lucee, não comprova execução Adobe ColdFusion de produção.
 - Com o 403 persistente, tentativas mais frequentes podem aumentar consultas e latência. Esse arquivo é um lote independente da medição de vídeos; não tratar seu deploy como recuperação comprovada de UF nem torná-lo pré-requisito para publicar os vídeos.
 
-## Restante do plano
+## Restante do plano — atualizado em 12/09/2026
 
 Bloqueio HTTP 403 diagnosticado no provedor de UF permanece pendência de origem/infraestrutura; cache curto não é correção desse bloqueio. A fonte confiável de localização e seu transporte até CF precisam ser validados antes de se declarar a medição por UF física completa.
 
-Exposição editorial e profundidade alcançada (não leitura comprovada) foram publicadas no lote seguinte, em 10/09/2026 às 23:34:17 Brasília, após o usuário informar a execução do SQL; os novos sinais chegaram ao Business em navegação interna de validação: [recibo editorial](2026-09-10_audience_editorial_publicado.md). Promoções estáticas restantes, potencial visual de slots colapsados, projeção comercial com semanas completas e piloto de aquisição permanecem no plano. Nenhuma verba foi aprovada/gasta nesta etapa. Retenção continua independente da contagem.
+Exposição editorial e profundidade alcançada (não leitura comprovada) foram publicadas no lote seguinte, em 10/09/2026 às 23:34:17 Brasília, após o usuário informar a execução do SQL; os novos sinais chegaram ao Business em navegação interna de validação: [recibo editorial](2026-09-10_audience_editorial_publicado.md). Promoções estáticas, classificação dos estados de entrega e piloto institucional lateral também tiveram publicações posteriores. O [estado consolidado de 12/09](2026-09-12_audiencia_escopo_e_pendencias.md) registra os lotes e as pendências reais, incluindo a base necessária à projeção comercial. Retenção continua independente da contagem.
+
+Em 12/09, o usuário retirou a segunda parte de mídia e crescimento desta tarefa, pois está sendo tratada em outra frente. Não há piloto de aquisição, verba, criativos externos ou testes A/B de mídia a executar aqui. A coleta de origem/UTM existente permanece, assim como o piloto institucional lateral para medir a área sem campanha.
 
 A pedido reforçado do usuário, eventual aposentadoria **somente do writer de visualização de página de evento** em `tb_log` fica para o final; demais registros e todo histórico permanecem. Não transforma essa migração em pré-requisito para avançar a mensuração.

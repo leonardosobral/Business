@@ -1,0 +1,14 @@
+test_bad_candidate_symlink_and_hardlink_are_refused (__main__.HighlightReleaseTest.test_bad_candidate_symlink_and_hardlink_are_refused) ... ok
+test_each_of_eleven_measurement_files_is_protected_and_blocks_publish_on_drift (__main__.HighlightReleaseTest.test_each_of_eleven_measurement_files_is_protected_and_blocks_publish_on_drift) ... ok
+test_existing_runtime_hash_drift_is_preserved_before_any_publication (__main__.HighlightReleaseTest.test_existing_runtime_hash_drift_is_preserved_before_any_publication) ... ok
+test_explicit_rollback_preserves_concurrent_hash_change_and_removes_unchanged_new (__main__.HighlightReleaseTest.test_explicit_rollback_preserves_concurrent_hash_change_and_removes_unchanged_new) ... ok
+test_failure_on_second_install_automatically_restores_new_absence (__main__.HighlightReleaseTest.test_failure_on_second_install_automatically_restores_new_absence) ... ok
+test_new_file_creation_is_exclusive_even_after_last_absence_check (__main__.HighlightReleaseTest.test_new_file_creation_is_exclusive_even_after_last_absence_check) ... ok
+test_only_two_authorized_paths_in_fixed_order_are_allowed (__main__.HighlightReleaseTest.test_only_two_authorized_paths_in_fixed_order_are_allowed) ... ok
+test_shared_hardlink_guard_is_readable_but_edit_via_alias_blocks_publish (__main__.HighlightReleaseTest.test_shared_hardlink_guard_is_readable_but_edit_via_alias_blocks_publish) ... ok
+test_two_file_roundtrip_preserves_backup_metadata_and_new_absence (__main__.HighlightReleaseTest.test_two_file_roundtrip_preserves_backup_metadata_and_new_absence) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.387s
+
+OK

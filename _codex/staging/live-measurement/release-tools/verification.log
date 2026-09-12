@@ -1,0 +1,20 @@
+test_backup_tamper_stops_publish_without_runtime_changes (__main__.ReleaseTest.test_backup_tamper_stops_publish_without_runtime_changes) ... ok
+test_different_filesystem_is_refused (__main__.ReleaseTest.test_different_filesystem_is_refused) ... ok
+test_existing_sql_addition_is_a_guard_failure_but_new_query_is_allowed (__main__.ReleaseTest.test_existing_sql_addition_is_a_guard_failure_but_new_query_is_allowed) ... ok
+test_hardlinked_candidate_is_refused (__main__.ReleaseTest.test_hardlinked_candidate_is_refused) ... ok
+test_hardlinked_readonly_guard_is_allowed_but_change_via_alias_blocks_publish (__main__.ReleaseTest.test_hardlinked_readonly_guard_is_allowed_but_change_via_alias_blocks_publish) ... ok
+test_hardlinked_runtime_and_backup_are_still_refused (__main__.ReleaseTest.test_hardlinked_runtime_and_backup_are_still_refused) ... ok
+test_new_file_created_after_final_absence_check_is_never_overwritten (__main__.ReleaseTest.test_new_file_created_after_final_absence_check_is_never_overwritten) ... ok
+test_partial_failure_rolls_back_in_reverse_and_preserves_concurrent_change (__main__.ReleaseTest.test_partial_failure_rolls_back_in_reverse_and_preserves_concurrent_change) ... ok
+test_prepare_does_not_change_runtime_and_roundtrip_restores_metadata_and_absence (__main__.ReleaseTest.test_prepare_does_not_change_runtime_and_roundtrip_restores_metadata_and_absence) ... ok
+test_publish_rechecks_all_baselines_and_guards_before_first_replacement (__main__.ReleaseTest.test_publish_rechecks_all_baselines_and_guards_before_first_replacement) ... ok
+test_rejects_bad_candidate_and_existing_new_file (__main__.ReleaseTest.test_rejects_bad_candidate_and_existing_new_file) ... ok
+test_rejects_target_or_candidate_symlink_and_symlink_parent (__main__.ReleaseTest.test_rejects_target_or_candidate_symlink_and_symlink_parent) ... ok
+test_rejects_wrong_order_path_or_absence_before_any_write (__main__.ReleaseTest.test_rejects_wrong_order_path_or_absence_before_any_write) ... ok
+test_rollback_does_not_need_candidate_and_is_idempotent (__main__.ReleaseTest.test_rollback_does_not_need_candidate_and_is_idempotent) ... ok
+test_verification_failure_triggers_automatic_rollback_and_keeps_guard_change (__main__.ReleaseTest.test_verification_failure_triggers_automatic_rollback_and_keeps_guard_change) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.679s
+
+OK

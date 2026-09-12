@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkout": "/Users/Shared/Projects/RunnerHub/RoadRunners",
+  "candidateRoot": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/live-measurement/RoadRunners",
+  "note": "Production SHA is known only where a captured production baseline is available; null is unknown, never an assertion of parity. No checkout or deployment mutations performed.",
+  "files": [
+    {
+      "path": "_codex/docs/audience-live-registration.md",
+      "baselineLocalSHA": null,
+      "baselineProductionSHA": null,
+      "candidateSHA": "6114b2af91a6731b522681683bf70e3196e80d474d91c47b54e0a7d33c55aa92"
+    },
+    {
+      "path": "_codex/scripts/test_audience_live_cfml_local.sh",
+      "baselineLocalSHA": null,
+      "baselineProductionSHA": null,
+      "candidateSHA": "58b6d76ecc3f69b0c677a1139018c113d7fbabe2c92c7f5f0c338fd59f097c4f"
+    },
+    {
+      "path": "_codex/tests/audience-live-browser.test.mjs",
+      "baselineLocalSHA": null,
+      "baselineProductionSHA": null,
+      "candidateSHA": "de7b0ba4b10c7442cdec44855fd33ec073163030d1bc87c6eb72f0ee2c6f814b"
+    },
+    {
+      "path": "_codex/tests/audience-live-contract.cfm",
+      "baselineLocalSHA": null,
+      "baselineProductionSHA": null,
+      "candidateSHA": "2a7c5a907717802c1c04de2460ad6e18519dc1e5a83cbf8e676094cfb0e8b50a"
+    },
+    {
+      "path": "_codex/tests/audience-live-registration.test.js",
+      "baselineLocalSHA": null,
+      "baselineProductionSHA": null,
+      "candidateSHA": "f0f3424bc9250c1f8e8430d1823b9bf76c249f68e7772fefd11dc1bc6825aabd"
+    },
+    {
+      "path": "assets/js/rr-audience.js",
+      "baselineLocalSHA": "27dd026e4ad85d1b88c1a2de40be3dae10ee9f097399ea5b9bbd30c7fd330351",
+      "baselineProductionSHA": null,
+      "candidateSHA": "62bc8dc568f4f9b4630b809d59a7bd716e6acd5af6f0a71c457c5ef0951b8be8"
+    },
+    {
+      "path": "evento/index.cfm",
+      "baselineLocalSHA": "efed01071c6c15cd625ee27d612cdfceac3e630fb86c76fe84a05147a4682f59",
+      "baselineProductionSHA": "94a1d90ee66e9e0663a4755a09f65ebc0c14180cc222f3b7f862630b039dd4ae",
+      "candidateSHA": "29c22d21cb4afd4c5da397fa725b7dcafd3320df4d1788cd1da78b9400bff63e",
+      "note": "Preserves the two sidebar/footer blocks already present in production; tracking marker is the only new product behavior."
+    },
+    {
+      "path": "evento/parts/barra_acoes.cfm",
+      "baselineLocalSHA": "9e0ee4689c4460a3ecc31d60eb050e3b5101b3ce8182b686e304fa7c63aaa5bc",
+      "baselineProductionSHA": null,
+      "candidateSHA": "a9d5dc6a0be9872c5c0ab612a40cfefa453f92bf09bf8d53822220214262b8df"
+    },
+    {
+      "path": "evento/parts/edicoes_evento.cfm",
+      "baselineLocalSHA": "d72ff53a7c667b1bdc99c416bd1f3d19b7e6c73614561f1349583e5b72fc62f8",
+      "baselineProductionSHA": null,
+      "candidateSHA": "05f32680f37535b3618eb31e0b105c0ff51d7d4ce73b6f4ddf37c55cf88b76f8"
+    },
+    {
+      "path": "includes/analytics/bootstrap.cfm",
+      "baselineLocalSHA": "0f90edfd5881ab5d1f5113abf7012debcc32f09ee99506dd090d9c04a09a30de",
+      "baselineProductionSHA": null,
+      "candidateSHA": "93f0632abd42cf086adfb87373d73b8c958dd71c89d7b02f057d803110f330aa"
+    },
+    {
+      "path": "includes/modal/modal_cupom_link_conteudo.cfm",
+      "baselineLocalSHA": "db8c38fbb271a7c7e0982a2ee69c588c52fbc4e300f438e064a3039c8f6625d3",
+      "baselineProductionSHA": null,
+      "candidateSHA": "bf910436a10cc215be6eee95fa99026b807e14ad3c6b0e4dceda1b0829a02d9e"
+    },
+    {
+      "path": "services/AudienceMeasurementService.cfc",
+      "baselineLocalSHA": "12eb010069ae5cd4e4324c832c7135d1e0a81a4b513454ebe37c4d4ffcd030e1",
+      "baselineProductionSHA": null,
+      "candidateSHA": "ece8218e02d5886540b2a1963ae0b343cf521bff7386c53aaefc7955a60ad476"
+    }
+  ]
+}

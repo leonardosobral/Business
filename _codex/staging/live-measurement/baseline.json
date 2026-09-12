@@ -1,0 +1,9 @@
+{
+  "assets/js/rr-audience.js": "27dd026e4ad85d1b88c1a2de40be3dae10ee9f097399ea5b9bbd30c7fd330351",
+  "services/AudienceMeasurementService.cfc": "12eb010069ae5cd4e4324c832c7135d1e0a81a4b513454ebe37c4d4ffcd030e1",
+  "includes/modal/modal_cupom_link_conteudo.cfm": "db8c38fbb271a7c7e0982a2ee69c588c52fbc4e300f438e064a3039c8f6625d3",
+  "evento/index.cfm": "efed01071c6c15cd625ee27d612cdfceac3e630fb86c76fe84a05147a4682f59",
+  "evento/parts/barra_acoes.cfm": "9e0ee4689c4460a3ecc31d60eb050e3b5101b3ce8182b686e304fa7c63aaa5bc",
+  "includes/analytics/bootstrap.cfm": "0f90edfd5881ab5d1f5113abf7012debcc32f09ee99506dd090d9c04a09a30de",
+  "evento/parts/edicoes_evento.cfm": "d72ff53a7c667b1bdc99c416bd1f3d19b7e6c73614561f1349583e5b72fc62f8"
+}

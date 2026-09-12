@@ -172,9 +172,9 @@ function adsV1FormList(required any value) {
 </cfif>
 
 <cfswitch expression="#trim(URL.success & '')#">
-    <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Campanha salva como rascunho."/></cfcase>
-    <cfcase value="campaign-edit-ready"><cfset VARIABLES.adsV1Notice = "Campanha pausada. Faça as alterações e salve o novo rascunho para enviá-lo novamente à análise."/></cfcase>
-    <cfcase value="campaign-submitted"><cfset VARIABLES.adsV1Notice = "Campanha enviada. Ela ficará fora do ar até concluir as aprovações e a análise da RunnerHub."/></cfcase>
+    <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Rascunho salvo. A campanha ainda não foi enviada para análise."/></cfcase>
+    <cfcase value="campaign-edit-ready"><cfset VARIABLES.adsV1Notice = "Campanha liberada para edição e fora do ar. A análise anterior foi cancelada. Após alterar, escolha Enviar para análise ou Salvar como rascunho."/></cfcase>
+    <cfcase value="campaign-submitted"><cfset VARIABLES.adsV1Notice = "Campanha enviada para análise. Ainda não está no ar: aguardará as aprovações da conta, do evento e da RunnerHub."/></cfcase>
     <cfcase value="campaign-approved"><cfset VARIABLES.adsV1Notice = "Campanha aprovada e liberada para veiculação."/></cfcase>
     <cfcase value="campaign-changes-requested"><cfset VARIABLES.adsV1Notice = "Ajustes solicitados ao anunciante."/></cfcase>
     <cfcase value="campaign-review-canceled"><cfset VARIABLES.adsV1Notice = "Análise da campanha cancelada."/></cfcase>
@@ -739,7 +739,8 @@ function adsV1FormList(required any value) {
                     </cfif>
                   )
                   AND evt.ativo = true
-                ORDER BY evt.data_inicial DESC NULLS LAST,
+                  AND evt.data_final >= CURRENT_DATE
+                ORDER BY evt.data_final ASC NULLS LAST,
                          evt.nome_evento
             </cfquery>
 
@@ -1557,7 +1558,7 @@ function adsV1FormList(required any value) {
                         LIMIT 1
                     </cfquery>
                     <cfif NOT qAdsV1CampaignSaveTarget.recordcount
-                        OR listFind("PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1CampaignSaveTarget.review_status & "")))>
+                        OR listFind("WAITING_PREREQUISITES,PENDING_REVIEW,APPROVED", uCase(trim(qAdsV1CampaignSaveTarget.review_status & "")))>
                         <cfthrow type="AdsV1.Validation" message="Somente campanhas em rascunho ou pausadas e fora de análise podem ser editadas."/>
                     </cfif>
                 </cfif>
@@ -1603,9 +1604,23 @@ function adsV1FormList(required any value) {
                             CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="Spots salvos pelo Business"/> AS text)
                         )
                     </cfquery>
+                    <cfif structKeyExists(FORM, "campaign_intent") AND FORM.campaign_intent EQ "submit">
+                        <cfquery name="qAdsV1CampaignSaveSubmit" datasource="runnerhub">
+                            SELECT * FROM ads.submit_campaign_review(
+                                CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#qAdsV1CampaignSave.campaign_id#"/> AS uuid),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/> AS bigint),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.adsV1ActorId#"/> AS integer),
+                                CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#qAdsV1EventTarget.id_evento#"/> AS integer)
+                            )
+                        </cfquery>
+                    </cfif>
                 </cftransaction>
 
-                <cflocation addtoken="false" url="./?view=campaigns&amp;status=draft&amp;success=campaign-saved"/>
+                <cfif structKeyExists(FORM, "campaign_intent") AND FORM.campaign_intent EQ "submit">
+                    <cflocation addtoken="false" url="./?view=campaigns&status=draft&success=campaign-submitted"/>
+                <cfelse>
+                    <cflocation addtoken="false" url="./?view=campaigns&status=draft&success=campaign-saved"/>
+                </cfif>
             </cfcase>
 
             <cfcase value="submit_campaign_review">
@@ -1643,7 +1658,7 @@ function adsV1FormList(required any value) {
                     )
                 </cfquery>
 
-                <cflocation addtoken="false" url="./?view=campaigns&amp;success=campaign-submitted"/>
+                <cflocation addtoken="false" url="./?view=campaigns&status=draft&success=campaign-submitted"/>
             </cfcase>
 
             <cfcase value="credit_account">

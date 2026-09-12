@@ -1,0 +1,30 @@
+{
+  "checkout": "/Users/Shared/Projects/RunnerHub/RoadRunners",
+  "files": [
+    {
+      "path": "circuito/live_highlight.cfm",
+      "baselineLocalSHA": null,
+      "candidateSHA": "a903ea66b520326e7837651f3044c0d5def21931211c9cd90eecfc0ff6ad7d97"
+    },
+    {
+      "path": "circuito/index.cfm",
+      "baselineLocalSHA": "82482ffa9b70c5a3975b0fc52ba0fbdea97a8816b555a8c9d194839934775e6a",
+      "candidateSHA": "b11b0fd4c7488265a3cc5194b908942ca3a0c54d4ad3d64deb1d482f6bed9fbe"
+    },
+    {
+      "path": "_codex/tests/circuit-live-highlight.cfm",
+      "baselineLocalSHA": null,
+      "candidateSHA": "106a5895ebaf024f7e67a461f7d7df19f8ce84516709cd82fb47be208d7dd6e3"
+    },
+    {
+      "path": "_codex/scripts/test_circuit_live_highlight.sh",
+      "baselineLocalSHA": null,
+      "candidateSHA": "a751c124272e7472f7863b014ac0baaedaae89828789bb0b06ec81f0c46afa6c"
+    },
+    {
+      "path": "_codex/docs/circuit-live-highlight.md",
+      "baselineLocalSHA": null,
+      "candidateSHA": "b523584829112898eff364e43572d3be529e97115fa5917215cb3187b6529007"
+    }
+  ]
+}

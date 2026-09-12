@@ -1,0 +1,1 @@
+{"directory": "/var/backups/rr-live-highlight.5ccccbd11911", "scriptSHA": "fea1cfb363cc2aa000789d1c7fbcbc90b75af9af9f7ae7141291997be801086a", "mode": "verify", "returncode": 0, "output": "verify: published; 2 whitelisted runtime targets; details in operations.jsonl\n", "phase": "published", "target_count": 2, "guard_count": 116, "rollback_conflicts": []}

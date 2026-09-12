@@ -1,0 +1,61 @@
+{
+  "date": "2026-09-12",
+  "status": "published-production-verified",
+  "publishedAt": "2026-09-12T12:47:50Z",
+  "verifiedAt": "2026-09-12T12:53:08Z",
+  "productionBackup": "/var/backups/rr-audience-delivery.lumqNj",
+  "publicationReceipt": "_codex/docs/2026-09-12_audience_delivery_states_publicado.md",
+  "archive": "_codex/releases/2026-09-12_audience_delivery_states_linux.tar.gz",
+  "archiveSha256": "7e93720b0bff35e2dc554ace1c2f341acb55075862c6ba0a2396e7ca440b1f7d",
+  "project": "RoadRunners",
+  "runtimeRoot": "/var/www/roadrunners.com.br",
+  "snapshotRoot": "/private/tmp/rr-audience-empty-state.nIlvuC",
+  "reviewPatchSha256": "56faf3e512c489d30ab2f05b3865861db896267f6cce1bd8da06269687ad96fd",
+  "noSql": true,
+  "noLayoutChange": true,
+  "retrospectiveRewrite": false,
+  "files": [
+    {
+      "path": "includes/analytics/slot_marker.cfm",
+      "runtime": true,
+      "before": "36a8b60876fb6e1246c353354fdc1c19565d32687f07fc01e34a9c81b616fcf8",
+      "candidate": "4ef3287c7b833265a762e6940f4530b197822bc0afa5b59f7fd01d0ab44572b1"
+    },
+    {
+      "path": "includes/ads_v1/banner_delivery.cfm",
+      "runtime": true,
+      "before": "e28141ec19c01a160c772db29fdc3c97f5681040caddd39cef18f5bb33446077",
+      "candidate": "60bc90d500652d3fe2f2604d135c500922c98911324d8f0293deb21e69667777"
+    },
+    {
+      "path": "includes/estrutura/home_sidebar_promos.cfm",
+      "runtime": true,
+      "before": "307d992b76917868e60640ec6a513a5e7088737c92632cfcfc28f84fbcffb86f",
+      "candidate": "9fa1278a8eafe860c1c819d0bc22bbd0f453e255ea68deef7e6735a3f710a106"
+    },
+    {
+      "path": "includes/eventos_ads.cfm",
+      "runtime": true,
+      "before": "fd2f5d8b08cc89531d095f28fdddb00d70532a1c95baa18122c1afcddbbe7e38",
+      "candidate": "b6f1083272fbb9d8455f273ccffad9ef2f427524fce804ecd52bd73786e6de35"
+    },
+    {
+      "path": "_codex/docs/audience-delivery-states.md",
+      "runtime": false,
+      "before": null,
+      "candidate": "761656fe05eb6d8467f3ad8ae5735cfcb3bb6731c59f49fdaa9317a096de0cc3"
+    },
+    {
+      "path": "_codex/scripts/test_audience_delivery_states_local.mjs",
+      "runtime": false,
+      "before": null,
+      "candidate": "f4b5cc0a9ca31dd1664aab8478521e73079525fb2a77a44b576d40017d0d2b45"
+    },
+    {
+      "path": "_codex/tests/audience-delivery-state-contract.cfm",
+      "runtime": false,
+      "before": null,
+      "candidate": "e47059f3bc0fad564960168c36b8a48e048c09c80743b353c51b9390a1bb76df"
+    }
+  ]
+}

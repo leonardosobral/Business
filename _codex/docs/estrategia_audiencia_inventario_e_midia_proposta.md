@@ -1,12 +1,18 @@
-# Proposta — audiência, inventário e crescimento do RoadRunners
+# Plano — audiência e inventário do RoadRunners no Business
 
-Atualização de 07/09/2026: o usuário definiu **opt-out**, respeitando GPC e oferecendo recusa, e **90 dias de retenção para eventos detalhados**. O painel nativo e os controles de interface, coleta e expurgo foram implementados; implantação, agenda de retenção e configuração do proxy confiável continuam sendo pré-requisitos para ativar. Uma política maior para agregados não foi aprovada nem implementada. Estado atual em [Fechamento da implementação](2026-09-07_audiencia_painel_finalizacao.md).
+**Revisão de escopo — 12/09/2026:** por solicitação do usuário, a segunda parte do plano, de mídia e crescimento, foi retirada desta tarefa e está sendo tratada em outra frente. Não fazem parte das próximas entregas aqui: criação ou compra de mídia, verba, criativos externos, testes A/B de aquisição, escolha de canais, remarketing ou expansão regional. A mensuração de origem/UTM já existente permanece; nenhuma funcionalidade, coleta ou dado é removido por esta revisão. A outra frente não foi alterada.
 
-Status: documento estratégico de origem; a parte de mensuração avançou para implementação local conforme o registro acima. O diagnóstico e as recomendações abaixo não são uma medição atual do tráfego de produção. A mídia paga permanece proposta: nenhuma campanha ou verba externa foi criada/gasta. Itens propostos como retorno em sete dias, funil de ativação, gasto importado e previsão de entrega não estão implicitamente incluídos no painel atual.
+**Simplificação aprovada em 12/09/2026:** o usuário dispensou o versionamento persistido de layout. Não criar campo, filtro, migração ou subsistema para distinguir versões de apresentação; mudanças podem ser tratadas como nova campanha ou otimização da campanha existente. Prosseguir as demais pendências de mensuração. Não atribuir uma campanha fictícia às peças institucionais sem campanha.
+
+Estado e próximas entregas: [escopo e pendências de audiência em 12/09](2026-09-12_audiencia_escopo_e_pendencias.md). A coleta e o painel estão ativos em produção; a execução da rotina de retenção e a resolução da UF física são pendências independentes, não bloqueios para exibir contagens.
+
+Decisões preservadas desde 07/09: **opt-out**, respeitando GPC e oferecendo recusa, e **90 dias de retenção para eventos detalhados**. Uma política maior para agregados não foi aprovada nem implementada. O [fechamento de 07/09](2026-09-07_audiencia_painel_finalizacao.md) é histórico, não o estado atual de implantação.
+
+Este documento conserva as definições e requisitos de mensuração da proposta original. O diagnóstico inicial abaixo não é uma medição atual do tráfego de produção nem uma lista de falhas ainda abertas. Itens propostos, como retorno em sete dias e previsão de entrega, não estão implicitamente incluídos no painel atual. Funil de aquisição paga e importação de gastos não são entregas desta tarefa.
 
 ## Decisão recomendada
 
-Construir no Business uma área de **Audiência e inventário**, com coleta própria no RoadRunners e ligação com os anúncios existentes. Primeiro estabelecer uma base confiável de audiência, posições e exposição; depois executar um piloto de aquisição e retenção. O objetivo é crescimento nacional. Conforme direcionamento do usuário, SC pode ser o piloto menor e controlado; SP é uma possível prioridade de expansão regional. O orçamento permanece em aberto.
+Consolidar no Business a área de **Audiência e inventário**, com coleta própria no RoadRunners e ligação com os anúncios existentes. Estabelecer uma base confiável de audiência, posições e exposição para conhecer a capacidade real do site, com recortes por UF e família de página. A previsão comercial de inventário observado continua neste plano; planejar ou executar aquisição de público, não.
 
 O resultado operacional deve responder:
 
@@ -14,9 +20,9 @@ O resultado operacional deve responder:
 - Quantas oportunidades cada posição teve, com ou sem campanha, e quantas atingiram o critério de visibilidade?
 - Que parte da capacidade veio de home, estado, busca, evento, perfil, notícia e vídeo, em cada dispositivo?
 - Por que uma campanha entrega pouco: audiência, posição inexistente/oculta, falta de elegibilidade, disputa, erro ou exposição curta?
-- Quanto custa adquirir audiência que usa e volta ao site, e que retorno comercial ela produz?
+- Qual capacidade observada podemos oferecer a um anunciante, distinguindo exposição medida de projeção?
 
-## O que o código atual permite afirmar
+## Diagnóstico inicial do código — referência histórica
 
 | Evidência local | Consequência para a estratégia |
 | --- | --- |
@@ -31,7 +37,7 @@ O resultado operacional deve responder:
 
 A baixa entrega da Avaí justifica investigar o funil, mas não permite atribuir toda a diferença a falta de visitantes. Esta proposta não usa os pequenos snapshots históricos dessa campanha como previsão de SC.
 
-## Passo 1 — medir e tornar o inventário utilizável
+## Escopo ativo — medir e tornar o inventário utilizável
 
 ### Escolha de abordagem
 
@@ -68,15 +74,15 @@ Registrar a posição antes da seleção de anúncio, com campanha opcional. Usa
 
 Existe uma limitação física: uma posição removida do layout por estar vazia não tem exposição observável. Nesse caso, registrar sua oportunidade lógica e sinalizar exposição como **não medida**. Para medir o espaço real, usar uma peça institucional de tamanho equivalente — por exemplo, chamada para agenda, conteúdo ou recurso do próprio site — na mesma área. Não atribuir impressão publicitária ao anunciante nem consumo de crédito a essa peça.
 
-Um marcador sem área não comprova que um banner inteiro ficaria visível. Reservar espaços também pode mudar a navegação; por isso, guardar a versão do layout e validar mobile/desktop antes de comparar períodos.
+Um marcador sem área não comprova que um banner inteiro ficaria visível. Reservar espaços também pode mudar a navegação; validar mobile/desktop e considerar mudanças de apresentação ao comparar períodos, sem implementar versionamento de layout, conforme decisão do usuário.
 
 ### Recortes obrigatórios
 
 - **Audiência:** UF inferida do acesso, país, fonte da localização e estado desconhecido/exterior. UF do perfil e UF de interesse/contexto da página permanecem campos separados. Conforme definição comercial aprovada pelo usuário, uma pessoa em SP consultando corridas em SC **conta como audiência comercial de SC**, pois pode consumir um anúncio de SC, e também permanece identificada como origem geográfica SP. A visão principal de potencial usa o contexto comercial; a visão de origem mostra a localização. A mesma visita não se duplica no total geral.
 - **Página:** família e variante — home, estado, busca, evento, perfil, notícias/listagem, notícia/detalhe, vídeos/listagem, vídeo/detalhe ou modal e demais rotas públicas descobertas no inventário.
-- **Posição:** chave comercial, posição física, variante desktop/tablet/mobile e versão do layout. “Banner lateral” pode ser consolidado, preservando o desdobramento por família de página.
+- **Posição:** chave comercial, posição física e variante desktop/tablet/mobile. “Banner lateral” pode ser consolidado, preservando o desdobramento por família de página. Versionamento de layout foi dispensado pelo usuário.
 - **Conteúdo:** tipo e ID estável para notícia, vídeo, evento ou perfil; título/slug como atributos. O ID serve ao relatório editorial, sem fragmentar a visão comercial principal.
-- **Aquisição:** origem, meio, campanha e criativo por UTM; referência de entrada; sessão de aquisição e sessões posteriores. Links internos não devem sobrescrever a origem da aquisição.
+- **Origem do tráfego:** preservar origem, meio, campanha e criativo por UTM e referência de entrada já coletados. Links internos não devem sobrescrever a origem da aquisição. Esses dados continuam disponíveis para análise por outras frentes; não implicam implementar aqui um funil de mídia paga.
 - **Contexto:** sessão, identificador pseudônimo de navegador, page-view ID, idioma, ambiente e condição anônimo/logado.
 
 Localização é uma inferência e visitantes únicos são uma estimativa por navegador/identidade disponível. Não prometer contagem perfeita entre dispositivos. Informar a parcela sem localização ou sem medição; não atribuir uma UF por suposição. Usar agregados e dados mínimos, sem e-mail, CPF ou URLs com dados pessoais no evento analítico.
@@ -96,7 +102,7 @@ Vídeos: separar exposição do card, abertura do modal/página, início real, t
 1. **Audiência:** evolução diária, sessões qualificadas, visitantes estimados, origens, UFs, dispositivos e retorno.
 2. **Inventário:** linhas por posição × família de página; colunas de oportunidades, montagem, anúncios renderizados, exposição visível, exposição curta, preenchimento e ausência/erro. Filtros comuns de período, UF do visitante, UF de contexto e dispositivo.
 3. **Conteúdo:** notícias e vídeos individuais, com aquisição, consumo e continuação da navegação.
-4. **Aquisição:** campanha externa → visita → sessão qualificada → retorno → inventário visível e resultado comercial, com gasto importado ou integrado.
+4. **Origem do tráfego:** preservar os recortes existentes de fonte, meio e campanha/UTM. A criação de um painel de custos, ativação e retorno de campanhas externas saiu deste escopo.
 
 As visões globais de audiência e inventário pertencem à administração do Business. Anunciantes veem apenas seus próprios resultados e previsões pertinentes à contratação.
 
@@ -126,81 +132,15 @@ Robôs conhecidos, acessos internos de teste e tráfego suspeito precisam ficar 
 
 Começar a linha de base após essa validação: duas semanas completas dão uma primeira leitura; quatro semanas ajudam a observar variação por dia e eventos. São janelas de observação propostas, não prazo prometido de desenvolvimento. Visibilidade histórica não coletada não pode ser reconstruída a partir de entregas.
 
-## Passo 2 — adquirir e reter audiência regional
-
-### Destino e conteúdo do piloto
-
-Comparar as duas propostas indicadas pelo usuário: **“Ache sua corrida”** e **“Monte seu histórico”**. SC limita a área do primeiro experimento; a proposta da plataforma continua nacional. Antes de comprar mídia, validar os dois destinos, informações atualizadas, navegação mobile, velocidade, cobertura das posições e próximos passos úteis.
-
-| Variante | Mensagem inicial proposta | Destino e ação útil | Hipótese a testar |
-| --- | --- | --- | --- |
-| A — Ache sua corrida | “Qual vai ser sua próxima largada? Ache sua corrida no RoadRunners.” | Busca/agenda, podendo iniciar na [agenda de SC](https://roadrunners.run/estado/sc/); consultar uma prova e seguir para uma ação útil. | A descoberta de eventos traz mais primeiras visitas qualificadas. |
-| B — Monte seu histórico | “Cada chegada faz parte da sua história. Monte seu histórico de corridas.” | Entrada em `/resultados/`, login e vinculação válida do primeiro resultado ao usuário. | O histórico pessoal traz maior ativação e retorno ao site. |
-
-Essas são hipóteses, não resultados esperados comprovados. Validar a jornada B e a persistência do histórico antes de usar a promessa no anúncio; visita a perfil ou login isolado não comprovam histórico montado. Para A, clique em inscrição não comprova inscrição concluída.
-
-O código atual permite começar a busca sem login, enquanto `/resultados/` exige autenticação e preserva o destino no redirecionamento. Portanto B tem uma barreira inicial diferente. Medir separadamente chegada, início/conclusão do login e primeiro resultado vinculado no servidor; se B perder nesse ponto, investigar a jornada antes de descartar o apelo “histórico”. Uma apresentação pública do benefício pode ser avaliada como melhoria posterior. Em A, salvar um evento na agenda/interesse também é uma ação persistida, após login.
-
-O primeiro teste compara a **proposta completa, mensagem mais destino**, e não permite atribuir uma diferença só ao texto. Depois, dentro da proposta promissora, testar criativos com o mesmo destino. Campanhas da plataforma precisam gerar interesse recorrente no RoadRunners. Promoção direta da Avaí é uma frente comercial distinta, com sua própria atribuição.
-
-### Desenho do A/B inicial
-
-Começar em um único canal, propondo Meta/Instagram/Facebook, com o mesmo público elegível de SC, período, formatos, posicionamentos e objetivo de otimização. Planejar divisão equilibrada de verba/exposição entre A e B, usando experimento com grupos separados e atribuição estável quando disponível. Duas peças entregues livremente pelo algoritmo são comparação exploratória, não comprovação causal de um A/B.
-
-O resultado principal para comparar as propostas será custo por primeira sessão qualificada pós-clique, usando a mesma definição nos dois grupos. Mostrar também chegada confirmada ao site, custo por visitante qualificado estimado, retorno em sete dias e oportunidades visíveis geradas por visitante. As ativações específicas de A e B ajudam a entender a jornada, mas suas taxas brutas não são diretamente equivalentes porque as ações têm esforços diferentes.
-
-Manter a janela e os critérios de comparação definidos antes do início. Após a base inicial, dimensionar amostra conforme frequência do resultado e diferença mínima relevante. Se o volume não permitir conclusão, registrar resultado inconclusivo e a faixa de incerteza. Não declarar vitória apenas pelo menor CPC externo ou por poucos cliques; a opção com menos visitas pode ter melhor retorno.
-
-Depois de aprender com SC, validar a proposta em SP ou ampliar para outras regiões, mantendo relatórios por UF. O desempenho de SC não deve ser presumido igual ao nacional. Comparar canais e cidades em uma etapa posterior evita misturar o teste de mensagem com o de público.
-
-### Distribuição proposta
-
-| Frente | Experimento | Critério de avaliação |
-| --- | --- | --- |
-| Meta / Instagram / Facebook | Primeiro A/B entre “Ache sua corrida” e “Monte seu histórico”, com destinos correspondentes. | Custo por sessão qualificada, inventário visível gerado, ativação específica e retorno. |
-| Google Pesquisa | Termos com intenção explícita, como agenda de corridas em SC e corridas em Florianópolis, com destino correspondente. | Qualidade regional e uso do site, além do clique. |
-| Parceiros e canais próprios | Distribuição com organizadores, assessorias e canais locais; links identificados; comunicações para base que optou por recebê-las. | Visitas, retorno e custo total da parceria/conteúdo. |
-| Conteúdo e busca orgânica | Agenda atualizada, informações originais, guias úteis e ligações entre eventos, notícias e vídeos. | Crescimento de visitas qualificadas e recorrentes ao longo do tempo. |
-
-A [orientação oficial da Meta](https://developers.meta.com/horizon/resources/launch-ad-campaign/) diferencia objetivos de campanha e cita tráfego para levar público a um destino. A configuração exata de otimização deve ser conferida na conta ao preparar o piloto. Na Pesquisa Google, usar presença na região se o objetivo é audiência localizada em SC; a opção padrão também pode incluir interesse na região, conforme a [documentação de localização do Google Ads](https://support.google.com/google-ads/answer/1722038?hl=pt-BR). A localização inferida pelo Business será uma verificação independente, com limitações próprias.
-
-Para conteúdo orgânico, priorizar utilidade, informação original e experiência satisfatória, alinhadas à [orientação do Google Search Central](https://developers.google.com/search/docs/fundamentals/creating-helpful-content). Não estabelecer promessa de volume ou prazo de SEO antes da linha de base.
-
-Concentrar a verba inicial no teste A/B de um canal, com divisão planejada de 50% para cada proposta. Não presumir que isso produzirá exatamente o mesmo número de impressões ou visitas. Abrir Pesquisa e outros testes depois de obter uma leitura interpretável, conforme teto de investimento. A execução depende da definição do gasto e acesso às contas. Em testes futuros na Pesquisa Google, a [documentação de experimentos](https://support.google.com/google-ads/answer/6261395/set-up-a-campaign-experiment) também recomenda divisão de 50% para comparação; isso não substitui a configuração e validação do experimento na plataforma escolhida.
-
-### Retenção e leitura semanal
-
-Conectar a chegada a uma próxima ação útil: consultar outro evento, salvar agenda, acompanhar resultado ou assinar atualização regional, conforme recursos existentes e implementação aprovada. E-mails e comunicações regionais usam base optante. Remarketing pode entrar depois, se houver público suficiente e mensuração adequada.
-
-Três KPIs principais propostos:
-
-1. **Oportunidades visíveis válidas por UF/semana:** base do potencial comercial, após filtros de tráfego inválido; não depende de a sessão ter sido classificada como engajada. Acompanhar posições ativas, exposição por sessão e parcela não preenchida como explicadores.
-2. **Retorno em sete dias:** visitantes adquiridos que retornam em D1–D7, dividido pelos visitantes da coorte que já completaram a janela e são mensuráveis. Avaliar por canal e conteúdo; não comparar coorte madura com a recém-adquirida.
-3. **Custo por primeira sessão qualificada da região:** gasto do canal no período dividido pelas primeiras sessões pós-clique que se qualificaram na UF-alvo, com a mesma janela e regra de atribuição. Sessões de retorno ficam no indicador de retenção. Mostrar também visitantes únicos estimados para detectar crescimento por repetição excessiva.
-
-Guardas para a decisão: qualidade do tráfego/experiência e resultado econômico. Manter visível a parcela de UF desconhecida, falhas de carregamento e suspeita de automação. Crescimento comprado deve produzir uso e recorrência sem piorar a navegação ou multiplicar impressões artificialmente.
-
-Toda campanha terá UTM, destino, gasto, período e criativo identificados. Inicialmente o gasto pode ser importado no Business; APIs podem automatizar isso depois. Não confundir a atribuição das plataformas com a atribuição interna: regras e janelas precisam estar nomeadas. Quando houver volume, usar comparação controlada para avaliar incremento, pois atribuição sozinha não demonstra causalidade.
-
-Revisar semanalmente; corrigir imediatamente erro de destino, gasto fora da região ou falha de coleta. Durante o A/B, preservar a divisão prevista até o encerramento ou uma condição de interrupção predefinida. Realocar verba na fase posterior, depois de comparar volume e coortes equivalentes; não escolher vencedor por dois ou três cliques. Definir limites monetários depois da linha de base e do teto do piloto, sem inventar CPC/CPM esperado.
-
-### Viabilidade econômica
-
-A receita para o RoadRunners depende da monetização efetiva, da recorrência e de outras receitas possíveis. Consumo de voucher promocional não equivale a receita recebida; comparar aquisição com receita líquida reconhecida, preservando essa distinção.
-
-Exemplo exclusivamente ilustrativo, não previsão: uma sessão com duas exposições de anúncios pagos, taxa de clique de 1% em cada e CPC recebido de R$ 0,50 produz R$ 0,01 de receita bruta esperada. Comprar essa sessão por R$ 0,30 exige retorno futuro ou outras receitas para se sustentar. Ainda faltariam custos, preenchimento e elegibilidade reais.
-
-Assim, o piloto precisa de um teto de investimento e deve ser avaliado como aquisição de público. Escalar quando houver evidência de qualidade, retorno e caminho econômico plausível; desacelerar se a melhora se limitar a cliques externos ou gasto de créditos subsidiados.
-
-## Sequência operacional proposta
+## Sequência operacional — somente mensuração
 
 1. Mapear templates e posições ativas, definir métricas, separar as UFs e validar o coletor em conjunto com Ads.
 2. Entregar a visão do Business e formar a linha de base, incluindo posições sem campanha e conteúdo editorial.
-3. Corrigir perdas de exposição/layout identificadas; publicar a previsão comercial baseada em capacidade observada.
-4. Validar os fluxos “Ache sua corrida” e “Monte seu histórico”, preparar os dois anúncios, definir teto financeiro e iniciar o A/B em SC, com janela inicial proposta de até 30 dias e critérios de amostra definidos antes do início.
-5. Revisar qualidade e custos semanalmente; medir retorno das coortes e decidir continuidade/escala. Havendo evidência, validar em SP ou expandir nacionalmente; se faltar volume, declarar o teste inconclusivo.
+3. Fechar lacunas de mensuração e exposição física identificadas, distinguindo implementação, validação local e comprovação em produção. O piloto institucional lateral pertence a esta etapa: mede uma área sem campanha e não é uma campanha de aquisição.
+4. Com semanas completas e cobertura identificada, apresentar a previsão comercial baseada em capacidade observada. Não condicionar este trabalho à verba ou execução de mídia externa.
+5. Somente no final, avaliar a retirada da gravação específica de visualização de página de evento em `tb_log`, com cobertura, leitores e histórico preservados, conforme o [plano de transição condicional](2026-09-10_tb_log_eventos_transicao.md). Não desligar a tabela ou os outros logs.
 
-Decisões ainda em aberto: teto de gasto e duração comercial pretendida para campanhas regionais. A definição regional foi aprovada: interesse/contexto que torna o anúncio elegível participa da audiência comercial da UF, independentemente da origem física do visitante. A coleta preserva os campos de origem, perfil e contexto para explicar essa composição.
+O [registro de pendências de 12/09](2026-09-12_audiencia_escopo_e_pendencias.md) diferencia os lotes já publicados do trabalho restante. Não solicitar orçamento nem acesso a plataformas de mídia nesta tarefa. A definição regional permanece aprovada: interesse/contexto que torna o anúncio elegível participa da audiência comercial da UF, independentemente da origem física do visitante. A coleta preserva os campos de origem, perfil e contexto para explicar essa composição.
 
 ## Evidências locais principais
 
@@ -212,6 +152,5 @@ Decisões ainda em aberto: teto de gasto e duração comercial pretendida para c
 - [Escolha da UF de contexto](/Users/Shared/Projects/RunnerHub/RoadRunners/includes/eventos_ads.cfm:26).
 - [Registro separado da impressão](/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/sql/2026-08-19_ads_v1_cpc_delivery.sql:161) e [cobrança por clique](/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/sql/2026-08-19_ads_v1_cpc_delivery.sql:261).
 - [Vídeo aberto em modal](/Users/Shared/Projects/RunnerHub/RoadRunners/includes/modal/modal_youtube.cfm:85).
-- [Busca disponível ao visitante](/Users/Shared/Projects/RunnerHub/RoadRunners/includes/estrutura/busca.cfm:10), [entrada autenticada de resultados](/Users/Shared/Projects/RunnerHub/RoadRunners/resultados/index.cfm:18) e [vinculação persistida do resultado](/Users/Shared/Projects/RunnerHub/RoadRunners/includes/backend/backend_perfil_publico.cfm:751).
 
-A paridade entre checkout e produção, números atuais de audiência, geografia efetiva, cobertura de coleta e performance dos canais precisam ser comprovadas nas etapas operacionais. As conclusões acima sobre funcionamento referem-se ao código inspecionado, sem extrapolar documentos históricos de incidentes.
+A paridade entre checkout e produção, números atuais de audiência, geografia efetiva e cobertura de coleta precisam ser comprovadas nas etapas operacionais. O diagnóstico inicial refere-se ao código inspecionado na origem da proposta; os recibos posteriores registram as mudanças e seus limites de validação.

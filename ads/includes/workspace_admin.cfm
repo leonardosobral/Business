@@ -95,31 +95,79 @@
       <cfelseif NOT qAdsV1AdminOperationalCampaigns.recordcount>
         <div class="p-4 text-center"><h3 class="h6 mb-2">Nenhuma campanha aprovada em operação</h3><p class="text-muted mb-0">Campanhas ativas ou pausadas aparecerão aqui após a aprovação.</p></div>
       <cfelse>
-        <div class="table-responsive">
-          <table class="table align-middle mb-0">
-            <thead><tr><th>Campanha</th><th>Conta e evento</th><th>Segmentação</th><th>Investimento</th><th>Resultados</th><th>Período</th></tr></thead>
-            <tbody>
-              <cfoutput query="qAdsV1AdminOperationalCampaigns">
-                <cfset VARIABLES.adsV1AdminOperationalStatus = uCase(trim(campaign_status & ""))/>
-                <cfset VARIABLES.adsV1AdminOperationalCtr = val(viewable_impression_count) GT 0 ? val(valid_click_count) * 100 / val(viewable_impression_count) : 0/>
-                <cfset VARIABLES.adsV1AdminOperationalAverageCpc = val(billable_click_count) GT 0 ? val(cost) / val(billable_click_count) : 0/>
-                <tr>
-                  <td>
-                    <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                      <strong>#htmlEditFormat(campaign_name)#</strong>
-                      <span class="badge <cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE'>badge-success<cfelse>badge-warning</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(campaign_status))#</span>
-                    </div>
-                    <div class="small text-muted">CPC · ID #htmlEditFormat(campaign_id)#</div>
-                  </td>
-                  <td><strong>#htmlEditFormat(account_name)#</strong><div class="small text-muted">#htmlEditFormat(event_name)#<cfif len(trim(event_city & "")) OR len(trim(event_state & ""))> · #htmlEditFormat(event_city)#/#htmlEditFormat(event_state)#</cfif></div></td>
-                  <td><strong><cfif len(trim(target_region_code & ""))>#htmlEditFormat(target_region_code)#<cfelse>Brasil</cfif></strong><div class="small text-muted"><cfif uCase(trim(target_device_class & "")) EQ "MOBILE">Celular<cfelseif uCase(trim(target_device_class & "")) EQ "DESKTOP">Desktop<cfelse>Todos os dispositivos</cfif></div><div class="small text-muted">#htmlEditFormat(adsV1PlacementSummary(placement_keys))#</div></td>
-                  <td><strong>#lsCurrencyFormat(spent_total)# de #lsCurrencyFormat(budget_total)#</strong><div class="small text-muted">Lance #lsCurrencyFormat(cpc_bid)# por clique<cfif isNumeric(budget_daily) AND val(budget_daily) GT 0> · limite #lsCurrencyFormat(budget_daily)#/dia</cfif></div></td>
-                  <td><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><div class="small text-muted">#lsNumberFormat(valid_click_count, "9,999,999")# cliques · CTR #lsNumberFormat(VARIABLES.adsV1AdminOperationalCtr, "9.99")#%</div><div class="small text-muted">CPC médio #lsCurrencyFormat(VARIABLES.adsV1AdminOperationalAverageCpc)# · #lsNumberFormat(served_count, "9,999,999")# entregas</div></td>
-                  <td><strong><cfif isDate(starts_at)>#lsDateFormat(starts_at, "dd/mm/yyyy")#<cfelse>-</cfif> a <cfif isDate(ends_at)>#lsDateFormat(ends_at, "dd/mm/yyyy")#<cfelse>-</cfif></strong><div class="small text-muted"><cfif isDate(reviewed_at)>Aprovada em #lsDateFormat(reviewed_at, "dd/mm/yyyy")#<cfelse>Aprovada</cfif></div></td>
-                </tr>
-              </cfoutput>
-            </tbody>
-          </table>
+        <style>
+          .ads-operation-grid { display: grid; grid-template-columns: minmax(0,2.1fr) minmax(65px,.6fr) minmax(0,1fr) minmax(0,1fr) 124px 118px; gap: 16px; align-items: center; }
+          .ads-operation-head { padding: 12px 20px; color: var(--mdb-secondary-color); font-size: .75rem; font-weight: 700; }
+          .ads-operation-row { border-top: 1px solid rgba(255,255,255,.12); }
+          .ads-operation-row > summary { list-style: none; cursor: pointer; padding: 14px 20px; font-size: .85rem; }
+          .ads-operation-row > summary::-webkit-details-marker { display: none; }
+          .ads-operation-row > summary:hover { background: rgba(98,199,216,.04); }
+          .ads-operation-row > summary:focus-visible { outline: 2px solid #62c7d8; outline-offset: -2px; }
+          .ads-operation-grid > span { min-width: 0; }
+          .ads-operation-name { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.35; overflow-wrap: anywhere; }
+          .ads-operation-secondary { display: block; color: var(--mdb-secondary-color); font-size: .78rem; margin-top: 3px; }
+          .ads-operation-label { display: none; }
+          .ads-operation-toggle { border: 1px solid #62c7d8; border-radius: 4px; color: #78d3e1; font-size: .75rem; padding: 7px 8px; text-align: center; white-space: nowrap; }
+          .ads-operation-toggle i { margin-left: 5px; }
+          .ads-operation-hide, .ads-operation-row[open] .ads-operation-show { display: none; }
+          .ads-operation-row[open] .ads-operation-hide { display: inline; }
+          .ads-operation-row[open] .ads-operation-toggle i { transform: rotate(180deg); }
+          .ads-operation-detail { border-top: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.12); padding: 20px; }
+          .ads-operation-detail h3 { font-size: .95rem; margin: 0 0 16px; overflow-wrap: anywhere; }
+          .ads-operation-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px 24px; margin: 0; }
+          .ads-operation-facts dt { color: var(--mdb-secondary-color); font-size: .72rem; text-transform: uppercase; margin-bottom: 4px; }
+          .ads-operation-facts dd { font-size: .84rem; margin: 0; overflow-wrap: anywhere; }
+          .ads-operation-id { color: var(--mdb-secondary-color); font-size: .72rem; margin: 18px 0 0; overflow-wrap: anywhere; }
+          @media (max-width: 1100px) {
+            .ads-operation-head { display: none; }
+            .ads-operation-grid { grid-template-columns: minmax(0,2fr) minmax(0,1fr) minmax(0,1fr); gap: 12px 18px; }
+            .ads-operation-label { display: block; color: var(--mdb-secondary-color); font-size: .68rem; margin-bottom: 3px; text-transform: uppercase; }
+          }
+          @media (max-width: 600px) {
+            .ads-operation-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .ads-operation-campaign { grid-column: 1 / -1; }
+            .ads-operation-toggle { grid-column: 1 / -1; justify-self: end; }
+            .ads-operation-facts { grid-template-columns: 1fr; gap: 14px; }
+            .ads-operation-row > summary, .ads-operation-detail { padding: 14px; }
+          }
+        </style>
+        <div class="ads-operation-list">
+          <div class="ads-operation-grid ads-operation-head" aria-hidden="true"><span>Campanha / conta</span><span>Status</span><span>Investimento</span><span>Resultados</span><span>CTR / CPC médio</span><span>Detalhes</span></div>
+          <cfoutput query="qAdsV1AdminOperationalCampaigns">
+            <cfset VARIABLES.adsV1AdminOperationalStatus = uCase(trim(campaign_status & ""))/>
+            <cfset VARIABLES.adsV1AdminOperationalCtr = val(viewable_impression_count) GT 0 ? val(valid_click_count) * 100 / val(viewable_impression_count) : 0/>
+            <cfset VARIABLES.adsV1AdminOperationalCtrLabel = val(viewable_impression_count) GT 0 ? lsNumberFormat(VARIABLES.adsV1AdminOperationalCtr, "9.99") & "%" : "—"/>
+            <cfset VARIABLES.adsV1AdminOperationalAverageCpc = val(billable_click_count) GT 0 ? val(cost) / val(billable_click_count) : 0/>
+            <cfset VARIABLES.adsV1AdminOperationalPlaces = []/>
+            <cfloop list="#placement_keys#" index="VARIABLES.adsV1AdminOperationalPlaceKey">
+              <cfset VARIABLES.adsV1AdminOperationalPlaceLabel = adsV1PlacementLabel(VARIABLES.adsV1AdminOperationalPlaceKey)/>
+              <cfif NOT arrayFindNoCase(VARIABLES.adsV1AdminOperationalPlaces, VARIABLES.adsV1AdminOperationalPlaceLabel)>
+                <cfset arrayAppend(VARIABLES.adsV1AdminOperationalPlaces, VARIABLES.adsV1AdminOperationalPlaceLabel)/>
+              </cfif>
+            </cfloop>
+            <details class="ads-operation-row">
+              <summary class="ads-operation-grid">
+                <span class="ads-operation-campaign"><strong class="ads-operation-name">#htmlEditFormat(campaign_name)#</strong><span class="ads-operation-secondary">#htmlEditFormat(account_name)#</span></span>
+                <span><span class="ads-operation-label">Status</span><span class="badge <cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE'>badge-success<cfelse>badge-warning</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(campaign_status))#</span></span>
+                <span><span class="ads-operation-label">Investimento</span><strong>#lsCurrencyFormat(spent_total)#</strong><span class="ads-operation-secondary">de #lsCurrencyFormat(budget_total)#</span></span>
+                <span><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><span class="ads-operation-secondary">#lsNumberFormat(valid_click_count, "9,999,999")# cliques</span></span>
+                <span><strong<cfif val(viewable_impression_count) LTE 0> title="CTR indisponível: ainda não há impressões registradas."</cfif>>CTR #VARIABLES.adsV1AdminOperationalCtrLabel#</strong><span class="ads-operation-secondary">CPC médio #lsCurrencyFormat(VARIABLES.adsV1AdminOperationalAverageCpc)#</span></span>
+                <span class="ads-operation-toggle"><span class="ads-operation-show">Ver detalhes</span><span class="ads-operation-hide">Recolher</span><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+              </summary>
+              <div class="ads-operation-detail">
+                <h3>#htmlEditFormat(campaign_name)#</h3>
+                <dl class="ads-operation-facts">
+                  <div><dt>Conta e evento</dt><dd><strong>#htmlEditFormat(account_name)#</strong><br/>#htmlEditFormat(event_name)#<br/>#htmlEditFormat(event_city)#<cfif len(trim(event_state & ""))>/#htmlEditFormat(event_state)#</cfif></dd></div>
+                  <div><dt>Público</dt><dd><cfif len(trim(target_region_code & ""))>#htmlEditFormat(target_region_code)#<cfelse>Todo o país</cfif> · #htmlEditFormat(target_country_code)#<br/><cfif uCase(trim(target_device_class & "")) EQ "MOBILE">Celular<cfelseif uCase(trim(target_device_class & "")) EQ "DESKTOP">Desktop<cfelse>Todos os dispositivos</cfif></dd></div>
+                  <div><dt>Locais de exibição</dt><dd>#htmlEditFormat(arrayToList(VARIABLES.adsV1AdminOperationalPlaces, ", "))#</dd></div>
+                  <div><dt>Lance e orçamento</dt><dd>Lance #lsCurrencyFormat(cpc_bid)# por clique<br/>Gasto #lsCurrencyFormat(spent_total)# de #lsCurrencyFormat(budget_total)#<br/><cfif isNumeric(budget_daily) AND val(budget_daily) GT 0>Limite diário: #lsCurrencyFormat(budget_daily)#<cfelse>Sem limite diário definido</cfif></dd></div>
+                  <div><dt>Desempenho acumulado</dt><dd>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões · #lsNumberFormat(valid_click_count, "9,999,999")# cliques<br/>CTR #VARIABLES.adsV1AdminOperationalCtrLabel# · CPC médio #lsCurrencyFormat(VARIABLES.adsV1AdminOperationalAverageCpc)#<br/>#lsNumberFormat(served_count, "9,999,999")# entregas</dd></div>
+                  <div><dt>Período e aprovação</dt><dd><cfif isDate(starts_at)>#lsDateFormat(starts_at, "dd/mm/yyyy")# #lsTimeFormat(starts_at, "HH:nn")#<cfelse>Início não informado</cfif><br/>até <cfif isDate(ends_at)>#lsDateFormat(ends_at, "dd/mm/yyyy")# #lsTimeFormat(ends_at, "HH:nn")#<cfelse>data não informada</cfif><br/><cfif isDate(reviewed_at)>Aprovada em #lsDateFormat(reviewed_at, "dd/mm/yyyy")#<cfelse>Aprovada pela RunnerHub</cfif></dd></div>
+                </dl>
+                <p class="ads-operation-id">CPC · ID #htmlEditFormat(campaign_id)#</p>
+              </div>
+            </details>
+          </cfoutput>
         </div>
       </cfif>
     </div>

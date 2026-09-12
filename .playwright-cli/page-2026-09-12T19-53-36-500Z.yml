@@ -1,0 +1,102 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - region "Etapa em destaque" [ref=e5]:
+      - heading "Etapa em destaque" [level=2] [ref=e6]
+      - link "17 Sep 2026 LIVE! Campinas Campinas - SP Cupom 15% search.eventList.roadRace 5km 10km" [ref=e9] [cursor=pointer]:
+        - /url: /evento/campinas/
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: "17"
+            - generic [ref=e15]: Sep
+            - generic [ref=e16]: "2026"
+          - generic [ref=e17]:
+            - generic [ref=e18]: LIVE! Campinas
+            - generic [ref=e19]: Campinas - SP
+            - generic [ref=e20]:
+              - generic [ref=e21]: Cupom 15%
+              - generic [ref=e22]: search.eventList.roadRace
+            - generic [ref=e23]:
+              - generic [ref=e24]: 5km
+              - generic [ref=e25]: 10km
+    - link "13 Sep 2026 LIVE! São Paulo São Paulo - SP Cupom 15% search.eventList.roadRace 5km 10km" [ref=e27] [cursor=pointer]:
+      - /url: /evento/sao-paulo/
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: "13"
+          - generic [ref=e33]: Sep
+          - generic [ref=e34]: "2026"
+        - generic [ref=e35]:
+          - generic [ref=e36]: LIVE! São Paulo
+          - generic [ref=e37]: São Paulo - SP
+          - generic [ref=e38]:
+            - generic [ref=e39]: Cupom 15%
+            - generic [ref=e40]: search.eventList.roadRace
+          - generic [ref=e41]:
+            - generic [ref=e42]: 5km
+            - generic [ref=e43]: 10km
+    - link "14 Sep 2026 LIVE! Campinas[ search.eventList.cancelledTag ] Campinas - SP Cupom 15% search.eventList.roadRace 5km 10km" [ref=e45] [cursor=pointer]:
+      - /url: /evento/campinas-cancelada/
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]: "14"
+          - generic [ref=e51]: Sep
+          - generic [ref=e52]: "2026"
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - text: LIVE! Campinas
+            - mark [ref=e55]: "[ search.eventList.cancelledTag ]"
+          - generic [ref=e56]: Campinas - SP
+          - generic [ref=e57]:
+            - generic [ref=e58]: Cupom 15%
+            - generic [ref=e59]: search.eventList.roadRace
+          - generic [ref=e60]:
+            - generic [ref=e61]: 5km
+            - generic [ref=e62]: 10km
+    - link "15 Sep 2026 LIVE! Jaraguá do Sul Jaraguá do Sul - SC Cupom 15% search.eventList.roadRace 5km 10km" [ref=e64] [cursor=pointer]:
+      - /url: /evento/jaragua/
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - generic [ref=e69]: "15"
+          - generic [ref=e70]: Sep
+          - generic [ref=e71]: "2026"
+        - generic [ref=e72]:
+          - generic [ref=e73]: LIVE! Jaraguá do Sul
+          - generic [ref=e74]: Jaraguá do Sul - SC
+          - generic [ref=e75]:
+            - generic [ref=e76]: Cupom 15%
+            - generic [ref=e77]: search.eventList.roadRace
+          - generic [ref=e78]:
+            - generic [ref=e79]: 5km
+            - generic [ref=e80]: 10km
+    - link "16 Sep 2026 LIVE! Campinas Campinas - MG Cupom 15% search.eventList.roadRace 5km 10km" [ref=e82] [cursor=pointer]:
+      - /url: /evento/campinas-mg/
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e87]: "16"
+          - generic [ref=e88]: Sep
+          - generic [ref=e89]: "2026"
+        - generic [ref=e90]:
+          - generic [ref=e91]: LIVE! Campinas
+          - generic [ref=e92]: Campinas - MG
+          - generic [ref=e93]:
+            - generic [ref=e94]: Cupom 15%
+            - generic [ref=e95]: search.eventList.roadRace
+          - generic [ref=e96]:
+            - generic [ref=e97]: 5km
+            - generic [ref=e98]: 10km
+    - link "19 Sep 2026 LIVE! São Caetano do Sul São Caetano do Sul - SP Cupom 15% search.eventList.roadRace 5km 10km" [ref=e100] [cursor=pointer]:
+      - /url: /evento/sao-caetano/
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - generic [ref=e105]: "19"
+          - generic [ref=e106]: Sep
+          - generic [ref=e107]: "2026"
+        - generic [ref=e108]:
+          - generic [ref=e109]: LIVE! São Caetano do Sul
+          - generic [ref=e110]: São Caetano do Sul - SP
+          - generic [ref=e111]:
+            - generic [ref=e112]: Cupom 15%
+            - generic [ref=e113]: search.eventList.roadRace
+          - generic [ref=e114]:
+            - generic [ref=e115]: 5km
+            - generic [ref=e116]: 10km
