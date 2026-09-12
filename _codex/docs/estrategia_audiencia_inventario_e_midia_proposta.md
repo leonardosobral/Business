@@ -4,7 +4,7 @@
 
 **Simplificação aprovada em 12/09/2026:** o usuário dispensou o versionamento persistido de layout. Não criar campo, filtro, migração ou subsistema para distinguir versões de apresentação; mudanças podem ser tratadas como nova campanha ou otimização da campanha existente. Prosseguir as demais pendências de mensuração. Não atribuir uma campanha fictícia às peças institucionais sem campanha.
 
-Estado e próximas entregas: [escopo e pendências de audiência em 12/09](2026-09-12_audiencia_escopo_e_pendencias.md). A coleta e o painel estão ativos em produção; a execução da rotina de retenção e a resolução da UF física são pendências independentes, não bloqueios para exibir contagens.
+Estado e próximas entregas: [escopo e pendências de audiência em 12/09](2026-09-12_audiencia_escopo_e_pendencias.md). A coleta e o painel estão ativos em produção; a execução da rotina de retenção é uma pendência operacional independente, não bloqueio para exibir contagens. A geolocalização foi retirada do trabalho ativo pelo usuário: manter a integração existente, retomando somente diante de problema recorrente.
 
 Decisões preservadas desde 07/09: **opt-out**, respeitando GPC e oferecendo recusa, e **90 dias de retenção para eventos detalhados**. Uma política maior para agregados não foi aprovada nem implementada. O [fechamento de 07/09](2026-09-07_audiencia_painel_finalizacao.md) é histórico, não o estado atual de implantação.
 
@@ -109,6 +109,14 @@ As visões globais de audiência e inventário pertencem à administração do B
 Os totais devem considerar o período inteiro, sem limite silencioso de linhas. Amostras para investigação ficam explicitamente rotuladas. Exibir atualização dos dados, cobertura por template e eventuais falhas de coleta.
 
 ### Previsão comercial
+
+**Recorte de implementação aprovado em 12/09:** entregar primeiro capacidade em
+exposições, histórico disponível e cenários direcionais de 30 dias; cliques e
+consumo de créditos ficam para uma etapa posterior. A seção será nativa no Business,
+com a tela organizada em abas, resumo claro e tabelas compactas. Os critérios e
+limites do lote estão no [registro de capacidade](2026-09-12_audience_capacity_business.md).
+As fórmulas CPC abaixo continuam como referência futura, não entrega implícita
+deste lote nem motivo para bloquear os contadores.
 
 Após obter semanas completas de base, estimar por período, UF, posição, dispositivo e elegibilidade. Separar capacidade observada, projeção e capacidade ainda não instrumentada.
 

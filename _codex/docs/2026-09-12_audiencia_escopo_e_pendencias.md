@@ -25,6 +25,19 @@ ou otimização de campanha, sem um mecanismo adicional de versões. Esta decis�
 encerra o requisito, não o adia; não reabri-lo em outra continuação. Peças sem
 campanha continuam sem identidade fictícia de Ads e sem consumo de crédito.
 
+**Geolocalização: retirada das pendências ativas por decisão do usuário.** Manter
+FreeIPAPI e a integração existente, sem troca por GeoJS nem novo fallback. O usuário
+optou por tratar o 403 como pontual e retomar somente se houver evidências de
+problema recorrente. Não repetir sondagens nem exigir esse tema para prosseguir
+com audiência. O diagnóstico anterior fica como histórico, sem afirmar que o
+bloqueio foi corrigido ou que permanece contínuo. Esta decisão não solicita uma
+automação de monitoramento nem autoriza consultas a novos fornecedores.
+
+**Capacidade em exposições aprovada nesta continuação:** entregar primeiro
+volume observado, histórico/lacunas e cenários de exposição, sem estimar cliques
+ou créditos nesta etapa. O usuário também pediu resumo claro no topo, abas e
+tabelas compactas. [Implementação e critérios](2026-09-12_audience_capacity_business.md).
+
 A peça institucional lateral continua: é conteúdo próprio no espaço sem campanha
 para medir sua exposição física, não compra de mídia. A definição comercial de
 UF também permanece: visitante de SP consultando provas em SC conta no contexto
@@ -48,8 +61,7 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
 
 | Item | Estado comprovado / próximo resultado necessário |
 | --- | --- |
-| Capacidade comercial | A ativação em 08/09 ainda não fornece semanas completas em 12/09. Usar a linha de base prevista no plano — duas semanas para primeira leitura, quatro para variação — com cobertura e períodos comparáveis; não fabricar previsão ou volume histórico. Mudanças de layout exigem cuidado adicional na comparação. |
-| UF física do acesso | CFHTTP recebeu HTTP 403 na verificação de 12/09; a correção de cache está local e não resolve esse bloqueio. GeoJS foi pesquisado como candidato, ainda sem teste CFHTTP, integração ou autorização de uso para IPs de visitantes. Não basta trocar a URL: o payload exige adaptação. Não bloqueia contagens nem o contexto comercial. [Diagnóstico e alternativa](2026-09-12_audience_geo_diagnostico.md). |
+| Capacidade em exposições | Implementação local concluída e validada: leitura de capacidade, cenários de 30 dias, seis abas, topo explicativo e tabelas compactas. Pronta para publicação dos seis arquivos, sem migração de banco; ainda não publicada. Cenários exigem base recente de 14/28 dias encerrados com sinais por grupo, sem usar hoje, o primeiro dia observado ou preencher lacunas com zero. A ativação em 08/09 não fornece essa base em 12/09; o volume observado continua sendo exibido. Sinais diários não certificam continuidade da coleta nem comparabilidade do layout. Cliques e créditos ficaram para depois por aprovação do usuário. [Contrato, testes e estado](2026-09-12_audience_capacity_business.md). |
 | Retenção de 90 dias | Resultado SQL devolvido pelo usuário em 12/09: registro presente, 90 dias, `status=never`, tentativa e sucesso nulos. Ainda sem execução registrada; o DBA deve concluir a operação/agendamento da rotina existente. Não mudar permissões de `runner_dba` nem exigir isso para contar acessos. Não recriar a identidade já instalada. [Registro anterior](2026-09-11_audience_static_promos_publicado.md). |
 | Institucional lateral sem candidato | Ramo validado localmente e arquivos publicados por hash. Navegação normal em 12/09, por volta de 17:54 BRT, da home para São Paulo pelo seletor também encontrou Avaí Run elegível, com imagem carregada (318×318). Ambiente `prod`, família `state`, acesso interno, sem erros de console capturados. O ramo sem candidato continua não observado. Não repetir esse teste sem novo cenário, desativar campanhas, injetar eventos ou forçar contexto para obter número. [Limite anterior](2026-09-12_audience_sidebar_house_publicado.md). |
 | Visualização de evento em `tb_log` | Somente no final: resolver cobertura, leitores, histórico e data de corte antes de retirar exclusivamente essa gravação. Demais logs e histórico intactos. [Transição condicional](2026-09-10_tb_log_eventos_transicao.md). |
@@ -60,14 +72,18 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
    observável, com tráfego interno separado e sem implementar versionamento de
    layout. Início, quartis e conclusão de YouTube já verificados. Não repetir diagnósticos de infraestrutura
    inalterada nem transformar essas verificações em bloqueio da coleta.
-2. Com linha de base suficiente, avançar a capacidade comercial observada/projetada.
+2. Publicar, quando solicitado, o lote local concluído de capacidade e organização
+   do painel. Validar então a leitura autenticada real. O volume observado não
+   aguarda linha de base; os cenários aparecem somente com histórico suficiente.
    Isso não depende de executar mídia paga.
 3. Retomar a transição específica de `tb_log` por último, respeitando seus critérios.
 
-UF física e execução da retenção são pendências operacionais independentes;
-não justificam zerar, suspender ou atrasar os contadores existentes. Permanecem
-opt-out/GPC, DSN `runner`, autenticação, regras de Ads e cobrança. Não há nova
-publicação ou SQL necessário para esta alteração de escopo.
+Execução da retenção é uma pendência operacional independente; a investigação
+de UF física saiu do trabalho ativo por decisão do usuário. Nenhuma delas
+justifica zerar, suspender ou atrasar os contadores existentes. Permanecem
+opt-out/GPC, DSN `runner`, autenticação, regras de Ads e cobrança. Não há novo
+SQL necessário para esta alteração de escopo nem para o lote de capacidade.
+A publicação dos seis arquivos de runtime desse lote ainda não foi realizada.
 
 ## Resultado recebido das duas verificações de banco
 

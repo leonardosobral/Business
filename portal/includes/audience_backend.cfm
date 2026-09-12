@@ -37,6 +37,7 @@ VARIABLES.audienceReady = false;
 VARIABLES.audienceUnavailable = false;
 VARIABLES.audienceRetention = {state="not_installed", lastSuccess="", hasMore=false};
 VARIABLES.audienceQueries = {};
+VARIABLES.audienceCapacityStatus = "not_commercial";
 VARIABLES.audienceLiveSource = left(audienceInput("live_origem"),100);
 VARIABLES.audienceLiveCampaign = left(audienceInput("live_campanha"),100);
 VARIABLES.audienceLiveCity = left(audienceInput("live_cidade"),100);
@@ -64,6 +65,18 @@ try {
         }
         VARIABLES.audienceSummary = {first_event="", last_received=""};
         structAppend(VARIABLES.audienceSummary, queryGetRow(VARIABLES.audienceQueries.summary, 1), true);
+        // Optional read: a missing template or query failure cannot hide the existing counters.
+        // Commercial scenarios never use internal tests, nonproduction or origin-UF filters.
+        if (VARIABLES.audienceDimension EQ "market" AND VARIABLES.audienceEnvironment EQ "prod" AND NOT VARIABLES.audienceIncludeInternal) {
+            try {
+                VARIABLES.audienceCapacitySql = fileRead(VARIABLES.audienceQueryDirectory & "capacity.sql","UTF-8");
+                VARIABLES.audienceCapacityQuery = queryExecute(VARIABLES.audienceCapacitySql,VARIABLES.audienceParams,{datasource="runnerhub",timeout=15,cachedwithin=createTimeSpan(0,0,1,0)});
+                VARIABLES.audienceCapacityStatus = "ready";
+            } catch(any audienceCapacityReadError) {
+                VARIABLES.audienceCapacityStatus = "unavailable";
+                writeLog(file="audience_measurement",type="error",text="Business audience capacity unavailable: " & left(audienceCapacityReadError.type & "",100));
+            }
+        }
         // Catalog lookup and the new report are optional: failure cannot hide existing audience data.
         try {
             VARIABLES.audienceLiveParams = duplicate(VARIABLES.audienceParams);

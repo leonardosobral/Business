@@ -10,9 +10,9 @@ import { spawnSync } from 'node:child_process';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const scratch = mkdtempSync(resolve(tmpdir(), 'audience-editorial-cfml-'));
 const renderRoot = mkdtempSync(resolve(tmpdir(), 'audience-editorial-render-'));
-const commandboxHome = process.env.AUDIENCE_EDITORIAL_COMMANDBOX_HOME
+const commandboxHome = process.env.AUDIENCE_CFML_COMMANDBOX_HOME || process.env.AUDIENCE_EDITORIAL_COMMANDBOX_HOME
   || '/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox';
-const box = process.env.AUDIENCE_EDITORIAL_BOX_RUNTIME
+const box = process.env.AUDIENCE_CFML_BOX_RUNTIME || process.env.AUDIENCE_EDITORIAL_BOX_RUNTIME
   || '/Users/Shared/Projects/ColdFusion Certification/box';
 
 try {
@@ -26,9 +26,11 @@ try {
   copyFileSync(resolve(root, 'portal/audiencia/home.cfm'), resolve(scratch, 'portal/audiencia/home.cfm'));
   copyFileSync(resolve(root, 'includes/backend/require_admin.cfm'), resolve(scratch, 'includes/backend/require_admin.cfm'));
 
-  const rendered = spawnSync(box, [
-    `-CommandBox_home=${commandboxHome}`, 'execute', 'render.cfm'
-  ], { cwd: scratch, encoding: 'utf8', env: { PATH: process.env.PATH, LC_ALL: 'C', TMPDIR: tmpdir() } });
+  const java = process.env.AUDIENCE_CFML_JAVA_RUNTIME || '/usr/bin/java';
+  if (!existsSync(java)) throw new Error('Java runtime not found; set AUDIENCE_CFML_JAVA_RUNTIME');
+  const rendered = spawnSync(java, ['-Dfile.encoding=UTF-8', '-Dsun.stdout.encoding=UTF-8', '-Dsun.stderr.encoding=UTF-8', '-cp', box,
+    'cliloader.LoaderCLIMain', `-CommandBox_home=${commandboxHome}`, 'execute', 'render.cfm'
+  ], { cwd: scratch, encoding: 'utf8', env: { PATH: process.env.PATH, LC_ALL: 'en_US.UTF-8', TMPDIR: tmpdir(), RUNNERHUB_OFFLINE_CFML_TESTS: '1' } });
   if (rendered.status !== 0) throw new Error(`CommandBox: ${rendered.stdout || ''}${rendered.stderr || ''}`);
   const html = rendered.stdout;
 
@@ -41,7 +43,7 @@ try {
 
   const rowFor = contentId => html.match(new RegExp(`<tr>\\s*<td[^>]*>${contentId}[\\s\\S]*?<\\/tr>`, 'i'))?.[0] || '';
   const exposureRow = rowFor('card-sem-abertura');
-  assert.match(exposureRow, />\s*2<[^]*>\s*1<[^]*>\s*0<[^]*>\s*0</,
+  assert.match(exposureRow, />\s*2 cartões[^]*>\s*1 navegador[^]*>\s*0 aberturas[^]*>\s*0 páginas/,
     'exposure-only content must show 2 pages, 1 person and zero opens');
   assert.match(exposureRow, /<div class="audience-meta">—<\/div>/, 'exposure-only content must not invent a content path');
   assert.match(exposureRow, /Profundidade indisponível|>—</, 'no progress signal must render unavailable, not measured zero');

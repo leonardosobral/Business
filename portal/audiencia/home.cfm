@@ -1,16 +1,19 @@
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
-<link rel="stylesheet" href="/assets/css/audience-dashboard.css?v=20260907"/>
-<script defer src="/assets/js/audience-dashboard.js?v=20260907"></script>
+<link rel="stylesheet" href="/assets/css/audience-dashboard.css?v=20260912-tabs1"/>
+<script defer src="/assets/js/audience-dashboard.js?v=20260912-tabs1"></script>
 <div class="audience-page">
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
         <div><div class="audience-eyebrow">ROADRUNNERS / BUSINESS</div>
             <h1 class="audience-title mb-2">Audiência e inventário</h1>
-            <p class="text-muted mb-0">De onde vem o público, quais regiões ele procura e quanto cada posição pode entregar.</p>
+            <p class="text-muted mb-0">Audiência medida, exposição das posições e cenários de capacidade por região.</p>
         </div>
         <div class="d-flex gap-2 flex-wrap"><a href="?dias=30&amp;uf=SC&amp;regiao=market" class="btn btn-outline-warning btn-sm">Ver piloto SC</a><a href="/ads/" class="btn btn-outline-secondary btn-sm">Campanhas Ads</a></div>
     </div>
 
     <form method="get" class="audience-panel" aria-label="Filtros de audiência">
+        <cfset audRegionLabels = {"market"="Contexto comercial","visitor"="UF do acesso","profile"="UF do perfil","context"="UF da página / busca"}/>
+        <details class="audience-filter-details" <cfif VARIABLES.audienceEnvironment NEQ "prod" OR VARIABLES.audienceIncludeInternal>open</cfif>>
+        <summary><span class="audience-filter-heading">Filtros <span class="audience-filter-edit">· editar recorte</span></span><span class="audience-filter-scope"><cfoutput>#VARIABLES.audienceDays# dias · #encodeForHtml(audRegionLabels[VARIABLES.audienceDimension])# · <cfif NOT len(VARIABLES.audienceUf)>Todas as UFs<cfelseif VARIABLES.audienceUf EQ "--">UF desconhecida<cfelse>#encodeForHtml(VARIABLES.audienceUf)#</cfif> · <cfif len(VARIABLES.audienceFamily)>#encodeForHtml(audienceLabel(VARIABLES.audienceFamily))#<cfelse>Todas as páginas</cfif> · <cfif len(VARIABLES.audienceDevice)>#encodeForHtml(audienceLabel(VARIABLES.audienceDevice))#<cfelse>Todos os dispositivos</cfif> · #encodeForHtml(VARIABLES.audienceEnvironment)#<cfif VARIABLES.audienceIncludeInternal> · inclui internos</cfif></cfoutput></span></summary>
         <cfif structKeyExists(VARIABLES,"audienceLiveSource")><cfoutput>
             <input type="hidden" name="live_origem" value="#encodeForHtmlAttribute(VARIABLES.audienceLiveSource)#"/>
             <input type="hidden" name="live_campanha" value="#encodeForHtmlAttribute(VARIABLES.audienceLiveCampaign)#"/>
@@ -41,6 +44,7 @@
                 <select id="aud-env" name="ambiente" class="form-select form-select-sm"><cfoutput><cfloop list="prod,beta,dev" index="audOption"><option value="#audOption#" <cfif audOption EQ VARIABLES.audienceEnvironment>selected</cfif>>#audOption#</option></cfloop></cfoutput></select></div>
             <div class="col-6 col-md-3"><label class="form-check-label small"><input type="checkbox" name="internos" value="1" class="form-check-input me-1" <cfif VARIABLES.audienceIncludeInternal>checked</cfif>> Incluir acessos internos</label></div>
         </div></details>
+        </details>
         <p class="audience-meta mt-3 mb-0"><strong>Contexto comercial:</strong> buscar provas em SC conta para SC, mesmo com acesso de SP. As UFs de origem, perfil e contexto permanecem separadas.</p>
     </form>
 
@@ -78,8 +82,12 @@
             <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Anúncios visíveis</div><div class="audience-value">#audienceCount(audStats.ad_views)#</div><div class="audience-meta">#audienceCount(audStats.ad_renders)# renderizados</div></div></div>
         </cfoutput></div>
         <div class="audience-health"><cfoutput><span class="audience-pill">#encodeForHtml(VARIABLES.audienceEnvironment)# · #VARIABLES.audienceDays# dias<cfif len(VARIABLES.audienceUf)> · #encodeForHtml(VARIABLES.audienceUf)#</cfif></span><span class="audience-meta">Última recepção: #audienceDate(audStats.last_received)# · Brasília · cache de até 1 minuto</span></cfoutput></div>
-        <nav class="audience-nav" aria-label="Seções do relatório"><a class="btn btn-outline-secondary btn-sm" href="#inventario">Posições</a><a class="btn btn-outline-secondary btn-sm" href="#regioes">Regiões</a><a class="btn btn-outline-secondary btn-sm" href="#conteudo">Conteúdo</a><a class="btn btn-outline-secondary btn-sm" href="#aquisicao">Aquisição</a><cfif structKeyExists(VARIABLES,"audienceLiveUnavailable")><a class="btn btn-outline-secondary btn-sm" href="#jornada-live">Jornada LIVE!</a></cfif><a class="btn btn-outline-secondary btn-sm" href="#cobertura">Cobertura</a></nav>
+        <p class="audience-reading-guide audience-meta"><strong>Registradas:</strong> posições detectadas, inclusive vazias. <strong>Visíveis:</strong> ao menos 50% da área por 1 segundo contínuo. <strong>Cenários:</strong> estimativas na aba Capacidade, condicionadas ao histórico; não são garantia de entrega.</p>
+        <nav class="audience-nav" data-audience-tabs aria-label="Seções do relatório">
+            <a href="#audience-overview">Visão geral</a><a href="#audience-capacity">Capacidade</a><a href="#audience-positions">Posições</a><a href="#audience-content">Conteúdo</a><a href="#audience-acquisition">Origem e LIVE!</a><a href="#audience-coverage">Cobertura</a>
+        </nav>
 
+        <div class="audience-tab-panel" data-audience-panel id="audience-overview">
         <div class="audience-chart-grid">
             <section class="audience-panel" aria-labelledby="audience-daily-title"><h2 id="audience-daily-title" class="audience-section-title">Acessos e posições visíveis por dia</h2><p class="audience-meta">Contagens nos dias observados · horário de Brasília. Dias sem medição não são preenchidos com zeros.</p>
                 <div class="audience-chart-frame" data-audience-chart hidden><canvas id="audience-daily-chart" role="img" aria-label="Evolução diária de aberturas de página e posições visíveis; valores na tabela abaixo"></canvas></div>
@@ -94,48 +102,67 @@
             </section>
         </div>
 
+        <section class="audience-panel" id="regioes"><h2 class="h5">Regiões do público</h2><p class="audience-meta">Páginas e visitantes com atividade no recorte, inclusive posições carregadas depois da abertura inicial. O total geral é deduplicado.</p><div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Todas as UFs do recorte"><table class="table table-sm"><thead><tr><th scope="col">UF</th><th scope="col">Páginas com atividade</th><th scope="col">Visitantes</th><th scope="col">Posições registradas</th><th scope="col">Posições visíveis</th></tr></thead><tbody>
+            <cfset audRegions = VARIABLES.audienceQueries.regions/><cfoutput query="audRegions"><tr><td><cfif audience_uf EQ "--">Desconhecida<cfelse>#encodeForHtml(audience_uf)#</cfif></td><td>#audienceCount(active_pages)#</td><td>#audienceCount(visitors)#</td><td>#audienceCount(opportunities)#</td><td>#audienceCount(slot_views)#</td></tr></cfoutput>
+            <cfif NOT audRegions.recordcount><tr><td colspan="5" class="text-muted">Sem dados para o período.</td></tr></cfif></tbody></table></div></section>
+
         <details class="audience-panel"><summary>Como interpretar o potencial comercial</summary><div class="audience-definition-grid audience-meta">
             <p><strong>Registrada → montada → visível</strong><br>Registrar uma posição ou pedir um anúncio não prova exposição. “Visível” exige 50% da área por 1 segundo contínuo, aba ativa e imagem carregada.</p>
             <p><strong>Espaço não é anúncio</strong><br>Uma posição vazia pode ser montada e vista. Isso ajuda a medir inventário, mas não cobra créditos e não garante a entrega de uma campanha.</p>
             <p><strong>UF comercial não é origem</strong><br>A busca por SC conta para SC. Uma mesma página pode ter atividade em mais de uma UF; visitantes, sessões e páginas regionais não devem ser somados.</p>
         </div></details>
+        </div>
 
+        <div class="audience-tab-panel" data-audience-panel id="audience-capacity">
+            <cfif structKeyExists(VARIABLES,"audienceCapacityStatus")><cfinclude template="capacity.cfm"/>
+            <cfelse><section class="audience-panel" id="capacidade"><h2 class="h5">Capacidade em exposições</h2><p class="audience-meta mb-0" role="status">A capacidade está indisponível nesta consulta; isso não significa audiência zero.</p></section></cfif>
+        </div>
+
+        <div class="audience-tab-panel" data-audience-panel id="audience-positions">
         <section class="audience-panel" id="inventario"><h2 class="h5">Inventário por posição e página</h2><p class="audience-meta">Uma posição vazia ou colapsada pode ser registrada sem renderização nem exposição. “A confirmar” indica carregamento assíncrono sem estado final recebido, não espaço comprovadamente vazio. Entrega do servidor não comprova que o anúncio apareceu na tela.</p>
-            <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Inventário detalhado, role horizontalmente para todas as métricas"><table class="table table-sm mb-0"><thead><tr><th>Posição</th><th>Página</th><th>Dispositivo</th><th>Registradas</th><th>Pagas / institucionais</th><th>Pedidos</th><th>Entregas</th><th>Montadas</th><th>Visíveis</th><th>Anúncios renderizados / visíveis</th><th>Vazias / a confirmar</th><th>Indisponíveis</th><th>Erros</th></tr></thead><tbody>
+            <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Inventário por posição; detalhes de entrega em cada linha"><table class="table table-sm mb-0 audience-inventory-table"><thead><tr><th scope="col">Posição / página</th><th scope="col">Registradas</th><th scope="col">Montadas</th><th scope="col">Visíveis</th><th scope="col">Anúncios</th><th scope="col">Entrega e estados</th></tr></thead><tbody>
             <cfset audInventory = VARIABLES.audienceQueries.inventory/>
-            <cfoutput query="audInventory" maxrows="200"><tr><td class="audience-text">#encodeForHtml(slot_key)#<div class="audience-meta">#encodeForHtml(placement_key)#</div></td><td>#encodeForHtml(audienceLabel(page_family))#</td><td>#encodeForHtml(audienceLabel(device_class))#</td><td>#audienceCount(opportunities)#</td><td>#audienceCount(filled_slots)# / #audienceCount(house_slots)#</td><td>#audienceCount(requests)#</td><td>#audienceCount(served)#</td><td>#audienceCount(renders)#</td><td class="text-warning">#audienceCount(slot_views)#</td><td>#audienceCount(ad_renders)# / #audienceCount(ad_views)#</td><td>#audienceCount(empty_slots)# / #audienceCount(pending_slots)#</td><td>#audienceCount(unavailable_slots)#</td><td>#audienceCount(errors)#</td></tr></cfoutput>
-            <cfif NOT audInventory.recordcount><tr><td colspan="13" class="text-muted">Ainda sem posições registradas neste recorte.</td></tr></cfif>
+            <cfoutput query="audInventory" maxrows="200"><tr>
+                <td class="audience-text">#encodeForHtml(slot_key)#<div class="audience-meta">#encodeForHtml(audienceLabel(page_family))# · #encodeForHtml(audienceLabel(device_class))#</div><div class="audience-meta">#encodeForHtml(placement_key)#</div></td>
+                <td>#audienceCount(opportunities)#</td><td>#audienceCount(renders)#</td><td class="text-warning">#audienceCount(slot_views)#</td>
+                <td><span>#audienceCount(ad_views)# visíveis</span><div class="audience-meta">#audienceCount(ad_renders)# renderizados</div></td>
+                <td><details class="audience-row-details"><summary aria-label="Ver detalhes de #encodeForHtmlAttribute(slot_key)#, #encodeForHtmlAttribute(audienceLabel(page_family))#, #encodeForHtmlAttribute(audienceLabel(device_class))#<cfif val(errors)> · #audienceCount(errors)# erros</cfif>">Ver detalhes<cfif val(errors)> · #audienceCount(errors)# erros</cfif></summary><dl class="audience-delivery-details">
+                    <dt>Pedidos</dt><dd>#audienceCount(requests)#</dd><dt>Entregas</dt><dd>#audienceCount(served)#</dd><dt>Pagas</dt><dd>#audienceCount(filled_slots)#</dd><dt>Institucionais</dt><dd>#audienceCount(house_slots)#</dd><dt>Vazias</dt><dd>#audienceCount(empty_slots)#</dd><dt>A confirmar</dt><dd>#audienceCount(pending_slots)#</dd><dt>Indisponíveis</dt><dd>#audienceCount(unavailable_slots)#</dd><dt>Erros</dt><dd>#audienceCount(errors)#</dd>
+                </dl></details></td>
+            </tr></cfoutput>
+            <cfif NOT audInventory.recordcount><tr><td colspan="6" class="text-muted">Ainda sem posições registradas neste recorte.</td></tr></cfif>
             </tbody></table></div><cfif audInventory.recordcount GT 200><p class="audience-meta mt-2 mb-0">Exibindo as 200 combinações com mais registros. Os indicadores superiores usam o período inteiro.</p></cfif>
         </section>
+        </div>
 
-        <section class="audience-panel" id="regioes"><h2 class="h5">Regiões do público</h2><p class="audience-meta">Páginas e visitantes com atividade no recorte, inclusive posições carregadas depois da abertura inicial. O total geral é deduplicado.</p><div class="table-responsive"><table class="table table-sm"><thead><tr><th>UF</th><th>Páginas com atividade</th><th>Visitantes</th><th>Posições</th><th>Visíveis</th></tr></thead><tbody>
-            <cfset audRegions = VARIABLES.audienceQueries.regions/><cfoutput query="audRegions"><tr><td><cfif audience_uf EQ "--">Desconhecida<cfelse>#encodeForHtml(audience_uf)#</cfif></td><td>#audienceCount(active_pages)#</td><td>#audienceCount(visitors)#</td><td>#audienceCount(opportunities)#</td><td>#audienceCount(slot_views)#</td></tr></cfoutput>
-            <cfif NOT audRegions.recordcount><tr><td colspan="5" class="text-muted">Sem dados para o período.</td></tr></cfif></tbody></table></div></section>
-
+        <div class="audience-tab-panel" data-audience-panel id="audience-content">
         <section class="audience-panel" id="conteudo">
             <h2 class="h5">Conteúdo individual</h2>
             <p class="audience-meta">Cartão exposto exige ao menos 50% visível por 1 segundo contínuo e conta páginas distintas por conteúdo; alcance exposto conta navegadores distintos. Profundidade é o trecho da notícia alcançado na tela, não leitura comprovada. Quando a instrumentação for ativada, esses sinais editoriais começarão naquele momento, sem histórico retroativo; “—” indica ausência do novo sinal ou métrica não aplicável.</p>
             <p class="audience-meta">Abrir um vídeo não significa reproduzi-lo. A reprodução só aparece quando há evento confirmado do player. Identificadores referem-se ao conteúdo visitado, não ao anunciante.</p>
-            <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Conteúdo detalhado, role horizontalmente para todas as métricas"><table class="table table-sm mb-0"><thead><tr><th>Conteúdo</th><th>Tipo</th><th>Cartões expostos</th><th>Alcance exposto</th><th>Páginas</th><th>Aberturas</th><th>Visitantes da abertura</th><th>Inícios de vídeo</th><th>Conclusões</th><th>Profundidade da notícia</th><th>Uso ativo</th></tr></thead><tbody>
+            <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Conteúdo detalhado, role horizontalmente para todas as métricas"><table class="table table-sm mb-0 audience-content-table"><thead><tr><th scope="col">Conteúdo / tipo</th><th scope="col">Cartões expostos / alcance</th><th scope="col">Aberturas / público</th><th scope="col">Vídeo</th><th scope="col">Profundidade da notícia</th><th scope="col">Uso ativo</th></tr></thead><tbody>
             <cfset audContent = VARIABLES.audienceQueries.content/>
+            <cfset audContentLabels = {"news"="Notícia","video"="Vídeo","event"="Evento","profile"="Perfil"}/>
             <cfoutput query="audContent" maxrows="100"><tr>
-                <td class="audience-text">#encodeForHtml(content_id)#<div class="audience-meta"><cfif len(trim(page_path))>#encodeForHtml(page_path)#<cfelse>—</cfif></div></td>
-                <td>#encodeForHtml(content_type)#</td>
-                <td><cfif val(card_views)>#audienceCount(card_views)#<cfelse><span class="text-muted" title="Sinal editorial ainda ausente">—</span></cfif></td>
-                <td><cfif val(card_views)>#audienceCount(exposed_visitors)#<cfelse><span class="text-muted" title="Sinal editorial ainda ausente">—</span></cfif></td>
-                <td>#audienceCount(pageviews)#</td><td>#audienceCount(opens)#</td><td>#audienceCount(visitors)#</td>
-                <td>#audienceCount(video_starts)#</td><td>#audienceCount(video_completions)#</td>
+                <td class="audience-text">#encodeForHtml(content_id)#<div class="audience-meta"><cfif structKeyExists(audContentLabels,content_type)>#encodeForHtml(audContentLabels[content_type])#<cfelse>#encodeForHtml(content_type)#</cfif></div><div class="audience-meta"><cfif len(trim(page_path))>#encodeForHtml(page_path)#<cfelse>—</cfif></div></td>
+                <td><cfif val(card_views)>#audienceCount(card_views)# <cfif val(card_views) EQ 1>cartão<cfelse>cartões</cfif><div class="audience-meta">#audienceCount(exposed_visitors)# <cfif val(exposed_visitors) EQ 1>navegador<cfelse>navegadores</cfif><br>Alcance exposto</div><cfelse><span class="text-muted" title="Sinal editorial ainda ausente">—</span><div class="audience-meta">Exposição sem sinal</div></cfif></td>
+                <td>#audienceCount(opens)# <cfif val(opens) EQ 1>abertura<cfelse>aberturas</cfif><div class="audience-meta">#audienceCount(pageviews)# <cfif val(pageviews) EQ 1>página<cfelse>páginas</cfif> · #audienceCount(visitors)# <cfif val(visitors) EQ 1>visitante<cfelse>visitantes</cfif> da abertura</div></td>
+                <td>#audienceCount(video_starts)# <cfif val(video_starts) EQ 1>início<cfelse>inícios</cfif><div class="audience-meta">#audienceCount(video_completions)# <cfif val(video_completions) EQ 1>conclusão<cfelse>conclusões</cfif></div></td>
                 <td><cfif content_type NEQ "news"><span class="text-muted" title="Não se aplica a vídeo, evento ou perfil">—</span><cfelseif val(depth_25)><div class="d-flex flex-wrap gap-2 audience-meta" aria-label="Páginas distintas que alcançaram cada trecho"><span class="text-nowrap"><strong>25%</strong> #audienceCount(depth_25)#</span><span class="text-nowrap"><strong>50%</strong> #audienceCount(depth_50)#</span><span class="text-nowrap"><strong>75%</strong> #audienceCount(depth_75)#</span><span class="text-nowrap"><strong>100%</strong> #audienceCount(depth_100)#</span></div><cfelse><span class="text-muted" title="Profundidade indisponível: ainda sem sinal editorial de progresso">—</span></cfif></td>
                 <td>#audienceCount(int(val(active_ms)/60000))# min</td>
-            </tr></cfoutput><cfif NOT audContent.recordcount><tr><td colspan="11" class="text-muted">Ainda sem consumo de conteúdo identificado neste recorte.</td></tr></cfif></tbody></table></div>
+            </tr></cfoutput><cfif NOT audContent.recordcount><tr><td colspan="6" class="text-muted">Ainda sem consumo de conteúdo identificado neste recorte.</td></tr></cfif></tbody></table></div>
             <cfif audContent.recordcount GT 100><p class="audience-meta mt-2 mb-0">Exibindo os 100 conteúdos com mais páginas, aberturas ou exposições qualificadas, incluindo itens apenas expostos.</p></cfif>
         </section>
+        </div>
 
-        <section class="audience-panel" id="aquisicao"><h2 class="h5">Aquisição e testes de mensagem</h2><p class="audience-meta">Compare “Ache sua corrida” e “Monte seu histórico” por campanha e variante UTM. Sessão qualificada: 30 segundos ativos ou duas páginas distintas neste recorte. Sem gasto importado, não há custo de aquisição calculado.</p><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Origem / meio</th><th>Campanha</th><th>Criativo / variante</th><th>Páginas com atividade</th><th>Visitantes</th><th>Sessões</th><th>Qualificadas</th><th>Uso ativo</th></tr></thead><tbody>
-            <cfset audAcquisition = VARIABLES.audienceQueries.acquisition/><cfoutput query="audAcquisition" maxrows="100"><tr><td>#encodeForHtml(source)#<div class="audience-meta">#encodeForHtml(medium)#</div></td><td class="audience-text">#encodeForHtml(campaign)#</td><td class="audience-text">#encodeForHtml(creative)#</td><td>#audienceCount(active_pages)#</td><td>#audienceCount(visitors)#</td><td>#audienceCount(sessions)#</td><td>#audienceCount(engaged_sessions)#<div class="audience-meta">#audienceRate(engaged_sessions,sessions)#</div></td><td>#audienceCount(int(val(active_ms)/60000))# min</td></tr></cfoutput><cfif NOT audAcquisition.recordcount><tr><td colspan="8" class="text-muted">Ainda sem sessões identificadas neste recorte.</td></tr></cfif></tbody></table></div><cfif audAcquisition.recordcount GT 100><p class="audience-meta">Exibindo as 100 combinações com mais páginas.</p></cfif></section>
+        <div class="audience-tab-panel" data-audience-panel id="audience-acquisition">
+        <section class="audience-panel" id="aquisicao"><h2 class="h5">Aquisição e testes de mensagem</h2><p class="audience-meta">Compare “Ache sua corrida” e “Monte seu histórico” por campanha e variante UTM. Sessão qualificada: 30 segundos ativos ou duas páginas distintas neste recorte. Sem gasto importado, não há custo de aquisição calculado.</p><div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Aquisição por origem e campanha"><table class="table table-sm"><thead><tr><th scope="col">Origem / meio</th><th scope="col">Campanha / variante</th><th scope="col">Público</th><th scope="col">Sessões / qualificadas</th><th scope="col">Uso ativo</th></tr></thead><tbody>
+            <cfset audAcquisition = VARIABLES.audienceQueries.acquisition/><cfoutput query="audAcquisition" maxrows="100"><tr><td class="audience-text">#encodeForHtml(source)#<div class="audience-meta">#encodeForHtml(medium)#</div></td><td class="audience-text"><cfif len(trim(campaign))>#encodeForHtml(campaign)#<cfelse>Sem campanha</cfif><div class="audience-meta">Criativo / variante: <cfif len(trim(creative))>#encodeForHtml(creative)#<cfelse>—</cfif></div></td><td>#audienceCount(visitors)# visitantes<div class="audience-meta">#audienceCount(active_pages)# páginas com atividade</div></td><td>#audienceCount(sessions)# sessões<div class="audience-meta">#audienceCount(engaged_sessions)# qualificadas · #audienceRate(engaged_sessions,sessions)#</div></td><td>#audienceCount(int(val(active_ms)/60000))# min</td></tr></cfoutput><cfif NOT audAcquisition.recordcount><tr><td colspan="5" class="text-muted">Ainda sem sessões identificadas neste recorte.</td></tr></cfif></tbody></table></div><cfif audAcquisition.recordcount GT 100><p class="audience-meta">Exibindo as 100 combinações com mais páginas.</p></cfif></section>
 
         <cfif structKeyExists(VARIABLES,"audienceLiveUnavailable")><cfinclude template="live_journey.cfm"/></cfif>
+        </div>
 
+        <div class="audience-tab-panel" data-audience-panel id="audience-coverage">
         <section class="audience-panel" id="cobertura"><h2 class="h5">Cobertura observada</h2><p class="audience-meta">Mostra somente as famílias que enviaram eventos. A ausência de uma família pode indicar falta de acesso ou instrumentação; não comprova audiência zero. Totais sem amostragem de linhas.</p><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Página</th><th>Páginas vistas</th><th>Páginas com posições</th><th>Posições</th><th>Visíveis</th><th>Última recepção</th></tr></thead><tbody>
             <cfset audCoverage = VARIABLES.audienceQueries.coverage/><cfoutput query="audCoverage"><tr><td>#encodeForHtml(audienceLabel(page_family))#</td><td>#audienceCount(pageviews)#</td><td>#audienceCount(pages_with_slots)#</td><td>#audienceCount(opportunities)#</td><td>#audienceCount(slot_views)#</td><td>#audienceDate(last_received)#</td></tr></cfoutput><cfif NOT audCoverage.recordcount><tr><td colspan="6" class="text-muted">Sem cobertura observada no recorte.</td></tr></cfif></tbody></table></div>
             <p class="audience-meta mb-0">Visitantes são estimados por navegador. Sessões com uso qualificado atingem 30 segundos ativos ou duas páginas distintas no recorte. Bloqueios, opt-out e falhas de coleta limitam a cobertura. Cliques faturáveis e consumo de créditos permanecem no painel de campanhas.</p>
@@ -154,5 +181,6 @@
                 <cfif isDate(VARIABLES.audienceRetention.lastSuccess)><cfoutput> Último sucesso: #audienceDate(VARIABLES.audienceRetention.lastSuccess)# · Brasília.</cfoutput></cfif>
             </div>
         </section>
+        </div>
     </cfif>
 </div>

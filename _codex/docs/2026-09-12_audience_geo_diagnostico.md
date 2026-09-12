@@ -1,8 +1,17 @@
 # UF física — rechecagem de 12/09/2026
 
+## Decisão posterior do usuário — assunto fora do trabalho ativo
+
+Manter FreeIPAPI e a integração existente. O usuário optou por considerar o 403
+pontual e pular este ponto; retomar apenas se surgirem evidências de problema
+recorrente. Não implementar troca ou fallback GeoJS, não repetir sondagens e não
+bloquear o plano de audiência por esse diagnóstico. Nenhum monitoramento automático
+foi solicitado. O conteúdo abaixo preserva a evidência histórica e a pesquisa,
+não uma alegação de falha contínua ou uma implementação autorizada.
+
 ## Resultado
 
-O bloqueio do provedor continua no caminho nativo do ColdFusion. Não foi alterada
+Na verificação registrada, houve bloqueio no caminho nativo do ColdFusion. Não foi alterada
 a configuração, o provedor, o proxy nem a fonte de IP. O cache negativo local não
 foi publicado e não deve ser apresentado como correção do bloqueio.
 

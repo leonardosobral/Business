@@ -46,6 +46,7 @@ try{
   await page.getByText('Como interpretar o potencial comercial',{exact:true}).click();
   assert.equal(await page.getByText('Espaço não é anúncio',{exact:true}).isVisible(),true);
   await page.getByText('Como interpretar o potencial comercial',{exact:true}).click();
+  await page.locator('.audience-filter-details > summary').click();
   await page.locator('#aud-uf').selectOption('SP');await page.locator('#aud-region').selectOption('visitor');
   const entries=await page.locator('form').evaluate(f=>Object.fromEntries(new FormData(f).entries()));
   assert.equal(entries.uf,'SP');assert.equal(entries.regiao,'visitor');
@@ -59,6 +60,7 @@ try{
  }
  const nojs=await browser.newPage({javaScriptEnabled:false});await nojs.goto(`http://127.0.0.1:${server.address().port}/`);
  assert.equal(await nojs.locator('#inventario table tbody tr').count(),1);
+ await nojs.locator('.audience-filter-details > summary').click();
  assert.equal(await nojs.getByRole('button',{name:'Aplicar filtros'}).isVisible(),true);
  console.log('PASS no-JavaScript exact inventory and server-side filter fallback');
  console.log(`Screenshots: ${output}`);
