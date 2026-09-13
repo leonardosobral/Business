@@ -240,8 +240,11 @@
                       </cfif>
 
                       <div class="col-12">
-                        <label class="form-label">Nova mensagem</label>
-                        <textarea class="form-control" name="ticket_mensagem" rows="5" placeholder="Descreva o andamento, a solução aplicada ou a sua nova dúvida."></textarea>
+                        <cfif VARIABLES.helpdeskCanManage>
+                          <cfinclude template="includes/ai-editor.cfm"/>
+                        </cfif>
+                        <label class="form-label" for="helpdesk-reply-message">Nova mensagem</label>
+                        <textarea id="helpdesk-reply-message" class="form-control" name="ticket_mensagem" rows="<cfif VARIABLES.helpdeskCanManage>7<cfelse>5</cfif>" placeholder="Descreva o andamento, a solução aplicada ou a sua nova dúvida."></textarea>
                       </div>
                     </div>
 
