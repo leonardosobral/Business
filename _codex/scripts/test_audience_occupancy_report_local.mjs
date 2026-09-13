@@ -15,9 +15,11 @@ const ids = { delivery_id: '10000000-0000-4000-8000-000000000001', campaign_id: 
 const formats = ['all', 'ads', 'banners', 'other'];
 const metrics = ['registered', 'potential', 'filled', 'empty', 'unclassified'];
 let checks = 0;
+let extensionChecks = 0;
 let sequence = 0;
 let started = false;
 const equal = (actual, expected, message) => { assert.deepEqual(actual, expected, message); checks++; };
+const extensionEqual = (actual, expected, message) => { assert.deepEqual(actual, expected, message); extensionChecks++; };
 const run = (name, args, input) => {
   const result = spawnSync(resolve(bin, name), args, {
     input, encoding: 'utf8', env: { PATH: process.env.PATH, LC_ALL: 'C', TMPDIR: tmpdir() }
@@ -40,7 +42,7 @@ const event = (pageId, kind, overrides = {}) => ({
   page_view_id: pageId, event_key: `event-${++sequence}`, event_kind: kind,
   occurred_at: date(-1), received_at: date(-1), environment: 'prod', is_internal: false,
   visitor_uf: 'SP', profile_uf: 'RJ', context_uf: 'SC', market_uf: 'SC',
-  page_family: 'home', device_class: 'DESKTOP', slot_key: 'rr-home-upcoming-native',
+  page_family: 'home', page_path: '/', device_class: 'DESKTOP', slot_key: 'rr-home-upcoming-native',
   placement_key: '', slot_state: 'empty', delivery_id: null, campaign_id: null, ...overrides
 });
 const opportunity = (overrides = {}, { view = true, ad = false } = {}) => {
@@ -60,6 +62,10 @@ const executeReport = (name, overrides = {}) => {
   const params = { days: 30, environment: 'prod', include_internal: false,
     region_dimension: 'market', uf: '', page_family: '', device_class: '', ...overrides };
   let statement = readFileSync(resolve(root, `portal/audiencia/queries/${name}.sql`), 'utf8');
+  for (const [marker, fragment] of [['/* AUDIENCE_OCCUPANCY_BASE */', 'occupancy_base'], ['/* AUDIENCE_FILTER */', 'filter']]) {
+    if (statement.includes(marker)) statement = statement.replace(marker,
+      readFileSync(resolve(root, `portal/audiencia/queries/${fragment}.sql`), 'utf8'));
+  }
   // Fixed test clock is substituted only here; the production query has no test clock parameter.
   statement = statement.replace(/\bnow\(\)/g, `${literal(asOf)}::timestamptz`);
   for (const [key, value] of Object.entries(params)) {
@@ -79,6 +85,24 @@ const query = (overrides = {}) => {
   }
   for (const key of metrics) assert.equal(rows[0][key], rows.slice(1).reduce((sum, row) => sum + row[key], 0), `${key}: categories partition total`);
   checks += 17;
+  verifyRegions(overrides);
+  return rows;
+};
+const verifyRegions = (overrides = {}) => {
+  const rows = executeReport('occupancy_regions', overrides);
+  const regions = [...new Set(rows.map(row => row.audience_uf))];
+  extensionEqual(regions, [...regions].sort(), 'regional report orders observed UFs deterministically');
+  const selected = executeReport('occupancy', overrides)[0];
+  extensionEqual(rows.length > 0, selected.registered > 0, 'regional output cannot silently omit all registered observations');
+  if (overrides.uf) extensionEqual(regions, selected.registered > 0 ? [overrides.uf] : [],
+    'UF selection returns exactly its observed region or no region');
+  for (const audienceUf of regions) {
+    const regional = rows.filter(row => row.audience_uf === audienceUf)
+      .map(({ audience_uf, ...counts }) => counts);
+    extensionEqual(regional.map(row => row.format), formats, `${audienceUf}: four format rows including explicit zero counts`);
+    extensionEqual(regional, executeReport('occupancy', { ...overrides, uf: audienceUf }),
+      `${audienceUf}: one regional query equals the original selected-UF semantics`);
+  }
   return rows;
 };
 const count = (rows, format = 'all') => metrics.map(key => rows.find(row => row.format === format)[key]);
@@ -92,6 +116,9 @@ const compareCapacity = (overrides = {}) => {
 try {
   // Expected RED before implementation: explicit missing-query assertion, not a connection failure.
   equal(existsSync(resolve(root, 'portal/audiencia/queries/occupancy.sql')), true, 'occupancy query must exist');
+  for (const name of ['occupancy_base', 'occupancy_regions', 'coverage_paths']) {
+    extensionEqual(existsSync(resolve(root, `portal/audiencia/queries/${name}.sql`)), true, `${name} query must exist`);
+  }
   run('initdb', ['-D', resolve(scratch, 'data'), '-U', 'postgres', '-A', 'trust', '--no-locale']);
   run('pg_ctl', ['-D', resolve(scratch, 'data'), '-l', resolve(scratch, 'postgres.log'),
     '-o', `-F -k ${scratch} -c listen_addresses=''`, '-w', 'start']);
@@ -101,7 +128,10 @@ try {
       page_view_id uuid NOT NULL, event_key text NOT NULL, event_kind text NOT NULL,
       occurred_at timestamptz NOT NULL, received_at timestamptz NOT NULL,
       environment text, is_internal boolean, visitor_uf text, profile_uf text, context_uf text, market_uf text,
-      page_family text, device_class text, slot_key text, placement_key text, slot_state text,
+      page_family text, page_path text, device_class text, slot_key text, placement_key text, slot_state text,
+      visitor_id uuid, session_id uuid, content_type text DEFAULT '', content_id text DEFAULT '',
+      source text DEFAULT 'direct', medium text DEFAULT '(none)', campaign text DEFAULT '', creative text DEFAULT '',
+      active_ms integer DEFAULT 0,
       delivery_id uuid, campaign_id uuid, PRIMARY KEY (page_view_id,event_key));
     CREATE ROLE occupancy_reader LOGIN;
     GRANT USAGE ON SCHEMA audience TO occupancy_reader;
@@ -326,7 +356,110 @@ try {
   equal(count(query(), 'other'), [205, 205, 0, 205, 0], 'unknown positions remain reconciled in other');
   compareCapacity();
   equal(sql("SELECT has_schema_privilege(current_user,'audience','USAGE') AND has_table_privilege(current_user,'audience.events','SELECT') AND NOT has_table_privilege(current_user,'audience.events','INSERT,UPDATE,DELETE,TRUNCATE');", 'occupancy_reader'), 't', 'every report execution uses SELECT-only role');
-  console.log(`Audience occupancy SQL: ${checks} assertions passed against isolated PostgreSQL as SELECT-only role.`);
+  extensionEqual(checks, 1565, 'all 1565 original occupancy assertions remain executed');
+
+  seed([]);
+  extensionEqual(verifyRegions(), [], 'no opportunity evidence means no observed UF rows');
+  seed(Array.from({ length: 200 }, () => opportunity({ market_uf: 'AC' }, { view: false })).flat());
+  extensionEqual(count(verifyRegions().filter(row => row.audience_uf === 'AC')), [200, 200, 0, 200, 0],
+    'regional Acre reports all 200 empty opportunities without requiring visibility');
+  extensionEqual(verifyRegions({ uf: 'SP' }), [], 'a selected UF without opportunities creates no regional rows');
+
+  const sharedAcre = page();
+  seed([event(sharedAcre, 'slot_opportunity', { market_uf: 'AC' }),
+    event(sharedAcre, 'slot_opportunity', { market_uf: 'SP', slot_state: 'filled' })]);
+  const acreOverlap = verifyRegions();
+  extensionEqual(count(acreOverlap.filter(row => row.audience_uf === 'AC')), [1, 1, 0, 1, 0], 'SP fill never fills Acre on the same page');
+  extensionEqual(count(acreOverlap.filter(row => row.audience_uf === 'SP')), [1, 1, 1, 0, 0], 'SP keeps its own fill evidence on the same page');
+  extensionEqual(count(executeReport('occupancy')), [1, 1, 1, 0, 0], 'global physical opportunity remains one despite two regional observations');
+  extensionEqual(acreOverlap.filter(row => row.format === 'all').reduce((sum, row) => sum + row.potential, 0), 2,
+    'regional potential can overlap and is not a global physical total');
+
+  seed([
+    ...opportunity({ market_uf: 'AC', slot_state: 'hidden' }, { view: false }),
+    ...opportunity({ market_uf: 'SP', slot_state: 'not_applicable' }, { view: false }),
+    ...opportunity({ market_uf: 'RJ', slot_state: 'pending' }, { view: false }),
+    ...opportunity({ market_uf: 'BA', slot_state: 'house', slot_key: 'rr-home-banner-mobile' }, { view: false }),
+    ...opportunity({ market_uf: '', visitor_uf: '', profile_uf: '', context_uf: '', slot_key: 'legacy_unknown' }, { view: false }),
+    event(page(), 'page_view', { market_uf: 'AM' }),
+    event(page(), 'slot_viewable', { market_uf: 'AP' }),
+    event(page(), 'slot_opportunity', { market_uf: 'ES', slot_key: '' })
+  ]);
+  const regionalStates = verifyRegions();
+  extensionEqual([...new Set(regionalStates.map(row => row.audience_uf))], ['--', 'AC', 'BA', 'RJ', 'SP'],
+    'observed UFs require nonempty-slot opportunities, not page views or orphan visibility');
+  extensionEqual(count(regionalStates.filter(row => row.audience_uf === 'AC')), [1, 0, 0, 0, 0], 'inactive Acre remains registered with zero potential');
+  extensionEqual(count(regionalStates.filter(row => row.audience_uf === 'SP')), [1, 0, 0, 0, 0], 'inapplicable SP remains registered with zero potential');
+  extensionEqual(count(regionalStates.filter(row => row.audience_uf === 'RJ')), [1, 1, 0, 0, 1], 'pending region remains explicitly unclassified');
+  extensionEqual(count(regionalStates.filter(row => row.audience_uf === 'BA'), 'banners'), [1, 1, 1, 0, 0], 'house banners fill the correct regional format');
+  extensionEqual(count(regionalStates.filter(row => row.audience_uf === '--'), 'other'), [1, 1, 0, 1, 0], 'unknown UF and format remain represented');
+
+  const coverageCounts = rows => ['pageviews', 'pages_with_slots', 'opportunities', 'slot_views']
+    .map(key => rows.reduce((sum, row) => sum + row[key], 0));
+  const verifyCoverage = (overrides = {}) => {
+    const rows = executeReport('coverage_paths', overrides);
+    const family = executeReport('coverage', overrides).filter(row => row.page_family === 'other');
+    extensionEqual(coverageCounts(rows), coverageCounts(family), 'folder breakdown reconciles with coverage for one persisted folder per page');
+    extensionEqual(rows.every(row => row.page_folder === '' || /^\/[A-Za-z0-9_-]+\/$/.test(row.page_folder)), true,
+      'folder output is always a canonical safe first segment or the unidentified bucket');
+    return rows;
+  };
+  seed([]);
+  extensionEqual(verifyCoverage(), [], 'empty coverage has no invented folder rows');
+  const routePage = page();
+  seed([
+    event(routePage, 'page_view', { page_family: 'other', page_path: '/arena/legacy/item/' }),
+    event(routePage, 'slot_opportunity', { page_family: 'other', page_path: '/arena/legacy/item/' }),
+    event(routePage, 'slot_opportunity', { page_family: 'other', page_path: '/arena/legacy/item/' }),
+    event(routePage, 'slot_viewable', { page_family: 'other', page_path: '/arena/legacy/item/' }),
+    event(routePage, 'slot_viewable', { page_family: 'other', page_path: '/arena/legacy/item/' }),
+    event(routePage, 'slot_render', { page_family: 'other', page_path: '/arena/legacy/item/', received_at: date(0) }),
+    event(page(), 'page_view', { page_family: 'other', page_path: '/arena/' }),
+    ...opportunity({ page_family: 'other', page_path: '/legacy_Route-2020/template/' }, { view: false }),
+    event(page(), 'page_view', { page_family: 'home', page_path: '/arena/' })
+  ]);
+  const paths = verifyCoverage();
+  extensionEqual(paths.map(row => row.page_folder), ['/arena/', '/legacy_Route-2020/'], 'valid historical templates group by their first persisted segment');
+  extensionEqual(coverageCounts(paths.filter(row => row.page_folder === '/arena/')), [2, 1, 2, 2], 'coverage retains raw signals and distinct pages within each folder');
+  extensionEqual(new Date(paths[0].last_received).getTime(), new Date(asOf).getTime(), 'latest reception includes non-counted signals as in coverage');
+  extensionEqual(executeReport('coverage_paths', { page_family: 'home' }), [], 'only other is broken down even when another family is selected');
+
+  seed(['/arena', '/Arena/', '/OLD_Route-2020/deep/template/', `/${'a'.repeat(255)}`]
+    .map(page_path => event(page(), 'page_view', { page_family: 'other', page_path })));
+  extensionEqual(verifyCoverage().map(row => row.page_folder), ['/Arena/', '/OLD_Route-2020/', `/${'a'.repeat(255)}/`, '/arena/'],
+    'case, historical segments and maximal safe segment survive normalization; a trailing slash is added');
+
+  const unsafePaths = ['', '/', null, '//arena/', '/arena//leaf/', '/arena/../admin/', '/./arena/', '/../arena/',
+    '/arena?token=secret', '/arena/#fragment', 'https://example.invalid/arena/', 'arena/path', '/arena/%2e%2e/',
+    '/arena/with space/', '/arena/with\\slash/', '/arena/<script>/', '/arena/\nleaf/', `/${'a'.repeat(256)}`];
+  seed(unsafePaths.map(page_path => event(page(), 'page_view', { page_family: 'other', page_path })));
+  const unsafe = verifyCoverage();
+  extensionEqual(unsafe.length, 1, 'unsafe, missing and root paths collapse into one unidentified bucket');
+  extensionEqual(unsafe[0].page_folder, '', 'unidentified folder is an empty data value for the UI label');
+  extensionEqual(unsafe[0].pageviews, unsafePaths.length, 'unsafe paths remain counted without exposing their strings');
+
+  seed(Array.from({ length: 205 }, (_, index) => event(page(), 'page_view', {
+    page_family: 'other', page_path: `/historical_${index}/template/`
+  })));
+  extensionEqual(verifyCoverage().length, 205, 'all 205 distinct folders are grouped without top-N truncation');
+
+  seed([
+    ...opportunity({ page_family: 'other', page_path: '/arena/', market_uf: 'AC' }, { view: false }),
+    ...opportunity({ page_family: 'other', page_path: '/old/', market_uf: '', visitor_uf: '', profile_uf: '', context_uf: '', device_class: 'MOBILE' }),
+    ...opportunity({ page_family: 'other', page_path: '/internal/', is_internal: true }),
+    ...opportunity({ page_family: 'other', page_path: '/development/', environment: 'dev' }),
+    ...opportunity({ page_family: 'other', page_path: '/old-period/', occurred_at: date(-40) }),
+    ...opportunity({ page_family: 'other', page_path: '/future/', occurred_at: date(1) }),
+    ...opportunity({ page_family: 'other', page_path: '/boundary/', occurred_at: '2026-09-06T03:00:00Z' })
+  ]);
+  for (const overrides of [{}, { uf: 'AC' }, { uf: '--' }, { uf: 'SP' }, { region_dimension: 'visitor', uf: 'SP' },
+    { region_dimension: 'profile', uf: 'RJ' }, { region_dimension: 'context', uf: 'SC' }, { include_internal: true },
+    { environment: 'dev' }, { days: 7 }, { days: 90 }, { device_class: 'MOBILE' }, { page_family: 'other' },
+    { uf: "SC' OR true --" }, { page_family: "other' OR true --" }, { device_class: "MOBILE' OR true --" },
+    { environment: "prod' OR true --" }]) verifyCoverage(overrides);
+  extensionEqual(verifyCoverage({ uf: 'AC' }).map(row => row.page_folder), ['/arena/'], 'commercial UF filters the folder evidence');
+  extensionEqual(verifyCoverage({ environment: 'dev' }).map(row => row.page_folder), ['/development/'], 'environment filter applies to folder evidence');
+  console.log(`Audience occupancy SQL: ${checks} original assertions plus ${extensionChecks} regional/coverage assertions passed against isolated PostgreSQL as SELECT-only role.`);
 } finally {
   if (started) run('pg_ctl', ['-D', resolve(scratch, 'data'), '-m', 'immediate', '-w', 'stop']);
   rmSync(scratch, { recursive: true, force: true });

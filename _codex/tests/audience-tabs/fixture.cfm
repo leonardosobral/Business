@@ -9,4 +9,5 @@ VARIABLES.audienceLiveEvent = "102";
 </cfscript>
 <cfinclude template="capacity-data.cfm"/>
 <cfinclude template="occupancy-data.cfm"/>
+<cfinclude template="region-data.cfm"/>
 <cfinclude template="base-fixture.cfm"/>

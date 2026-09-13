@@ -169,3 +169,24 @@ Conferência real do Acre em 7 dias: 27 oportunidades de Ads, zero preenchidas e
 já funciona; uma comparação comercial consolidada de todos os estados continua
 como extensão posterior, não foi acrescentada outra tabela nesta correção.
 [Contrato, testes e recibo](2026-09-12_audience_delivery_opportunities.md).
+
+## Comparação regional e cobertura por pasta — 13/09, 00:16 BRT
+
+Publicado no Business o lote solicitado de Regiões, Origem e Cobertura.
+Regiões agora compara oportunidades, preenchidas, sem anúncio e sem confirmação
+por UF, com seleção Ads/Banners/Total, percentuais e barras, ordenada pelo volume
+sem anúncio. A comparação usa a mesma regra comercial do topo; regiões podem se
+sobrepor e não são somadas para reconstruir o total global. A tabela antiga de
+público saiu da visão geral e permanece recolhida na nova aba.
+
+“Origem e LIVE!” passou a “Origem”, sem remover seus relatórios. “Outras páginas”
+ganhou detalhe pela primeira pasta já persistida. Produção em 7 dias: `/mif/`
+com 752 páginas vistas, `/desafios/` com 682 e `/circuitocatarinense/` com 173.
+Na nova tabela regional, AC mostra 27 oportunidades de Ads e 27 sem anúncio;
+banners separados têm 21 oportunidades preenchidas. Conferência autenticada e
+visual concluída; não há SQL manual ou ação de instalação para o usuário.
+
+[Contratos, testes e recibo da publicação](2026-09-13_audience_regions_and_paths.md).
+Demais pendências e exclusões de escopo permanecem: retenção operacional é
+independente, geolocalização foi adiada, mídia está em outra frente e a transição
+específica de `tb_log` continua reservada para o final.

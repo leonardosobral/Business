@@ -29,6 +29,6 @@ try {
     cwd:scratch,encoding:'utf8',timeout:60000,env:{PATH:process.env.PATH,LC_ALL:'en_US.UTF-8',TMPDIR:tmpdir(),RUNNERHUB_OFFLINE_CFML_TESTS:'1'}
   });
   assert.equal(result.status,0,`Backend must compile: ${result.error || ''}${result.stdout || ''}${result.stderr || ''}`);
-  assert.ok(result.stdout.includes('OCCUPANCY_BACKEND_PASS_17'),`Backend contract failed: ${result.stdout.slice(-9000)}`);
-  console.log('Occupancy backend: 17 behavior assertions passed (isolated database boundary).');
+  assert.ok(result.stdout.includes('OCCUPANCY_BACKEND_PASS_33'),`Backend contract failed: ${result.stdout.slice(-9000)}`);
+  console.log('Occupancy backend: 33 behavior assertions passed (isolated database boundary).');
 } finally {rmSync(scratch,{recursive:true,force:true});}

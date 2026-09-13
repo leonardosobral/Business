@@ -30,6 +30,35 @@
     return {type:'bar',data:{labels:sorted.map(row=>value(row,'audience_uf')==='--'?'Desconhecida':value(row,'audience_uf')),
       datasets:[{label:'Posições visíveis',data:sorted.map(row=>count(row,'slot_views')),backgroundColor:colors.gold,borderColor:colors.gold,borderWidth:1}]},options:chartOptions};
   }
+  function mountRegionFormats(page) {
+    const navigation = page.querySelector('[data-region-filters]');
+    if (!navigation) return;
+    const choices = Array.from(navigation.querySelectorAll('a[data-region-choice]'));
+    const panels = choices.map(choice => root.document.getElementById(choice.hash.slice(1)));
+    if (!choices.length || panels.some(panel => !panel || !page.contains(panel))) return;
+    let active = Math.max(0, choices.findIndex(choice => choice.getAttribute('data-region-choice') === 'ads'));
+    function activate(index) {
+      active = index;
+      choices.forEach((choice, i) => {
+        choice.setAttribute('aria-current', String(i === index));
+        choice.setAttribute('aria-controls', panels[i].id);
+        panels[i].hidden = i !== index;
+      });
+    }
+    function restoreFormat() {
+      const index = choices.findIndex(choice => choice.hash === root.location.hash);
+      activate(index < 0 ? active : index);
+    }
+    choices.forEach((choice, index) => choice.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      event.preventDefault();
+      if (root.location.hash !== choice.hash) root.history.pushState(null, '', choice.hash);
+      activate(index);
+    }));
+    root.addEventListener('hashchange', restoreFormat);
+    root.addEventListener('popstate', restoreFormat);
+    restoreFormat();
+  }
   function mountTabs(page, refreshCharts) {
     const navigation = page.querySelector('[data-audience-tabs]');
     if (!navigation) return;
@@ -125,6 +154,7 @@
       // MDB's responsive charts listen for size changes after their panel is shown.
       root.requestAnimationFrame(() => root.dispatchEvent(new Event('resize')));
     }
+    mountRegionFormats(page);
     mountTabs(page, refreshCharts);
     refreshCharts();
   }

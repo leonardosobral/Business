@@ -18,7 +18,7 @@ if (!input) {
   try {
     mkdirSync(resolve(scratch, 'portal/audiencia'), { recursive: true });
     mkdirSync(resolve(scratch, 'includes/backend'), { recursive: true });
-    for (const name of ['home.cfm', 'live_journey.cfm', 'capacity.cfm', 'occupancy.cfm']) {
+    for (const name of ['home.cfm', 'live_journey.cfm', 'capacity.cfm', 'occupancy.cfm', 'regions.cfm', 'coverage_paths.cfm']) {
       copyFileSync(resolve(root, 'portal/audiencia', name), resolve(scratch, 'portal/audiencia', name));
     }
     copyFileSync(resolve(root, 'includes/backend/require_admin.cfm'), resolve(scratch, 'includes/backend/require_admin.cfm'));
@@ -33,6 +33,7 @@ if (!input) {
     assert.ok(occupancyData, 'Reuse the independently hand-calculated occupancy fixture');
     writeFileSync(resolve(scratch, 'occupancy-data.cfm'), `<cfscript>VARIABLES.audienceOccupancyStatus = "ready";${occupancyData}</cfscript>`, 'utf8');
     copyFileSync(resolve(root, '_codex/tests/audience-tabs/fixture.cfm'), resolve(scratch, 'render.cfm'));
+    copyFileSync(resolve(root, '_codex/tests/audience-regions/data.cfm'), resolve(scratch, 'region-data.cfm'));
     const box = process.env.AUDIENCE_CFML_BOX_RUNTIME || process.env.AUDIENCE_TABS_BOX_RUNTIME || '/Users/Shared/Projects/ColdFusion Certification/box';
     const boxHome = process.env.AUDIENCE_CFML_COMMANDBOX_HOME || process.env.AUDIENCE_TABS_COMMANDBOX_HOME || '/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox';
     const java = process.env.AUDIENCE_CFML_JAVA_RUNTIME || '/usr/bin/java';
@@ -52,6 +53,11 @@ if (!input) {
 assert.ok(/audience-tabs-render-[a-zA-Z0-9]+\/tabs-fixture\.html$/.test(input), 'Use isolated tabs fixture output only');
 const html = readFileSync(input, 'utf8');
 assert.ok(html.includes('Fixture local sintética'), 'Synthetic data required');
+const navigation = html.match(/<nav[^>]*data-audience-tabs[^>]*>([^]*?)<\/nav>/)?.[1] || '';
+assert.equal((navigation.match(/<a /g) || []).length, 7, 'Seven report sections must remain reachable');
+assert.match(navigation, /href="#audience-acquisition">Origem<\/a>/);
+assert.match(html, /id="audience-regions"[^]*?id="regioes"[^]*?data-region-audience[^]*?id="audience-capacity"/, 'Legacy region anchors and historical detail belong to the new regional panel');
+assert.match(html, /id="audience-acquisition"[^]*?id="aquisicao"[^]*?id="jornada-live"/, 'Renaming navigation retains both acquisition reports');
 const allowed = new Set(['/assets/css/mdb.min.css', '/assets/css/business-ui.css', '/assets/css/audience-dashboard.css', '/assets/js/audience-dashboard.js', '/assets/js/mdb.umd.min.js']);
 for (const asset of allowed) {
   const target = resolve(dirname(input), '.' + asset);
@@ -104,7 +110,7 @@ try {
     await page.goto(origin + '/#conteudo', { waitUntil: 'networkidle' });
     assert.equal(await page.locator('.audience-filter-details > summary').isVisible(), true, 'The compact filter summary exposes the current reporting scope');
     // Catches missing progressive enhancement and inaccessible multiple-panel states.
-    assert.equal(await page.getByRole('tab').count(), 6, 'Six navigable report tabs');
+    assert.equal(await page.getByRole('tab').count(), 7, 'Seven navigable report tabs');
     const selected = () => page.getByRole('tab', { selected: true });
     assert.equal(await selected().innerText(), 'Conteúdo', 'A descendant hash opens its owning panel on load');
     const onePanel = async () => assert.equal(await page.locator('[role="tabpanel"]:visible').count(), 1, 'Exactly one report panel is visible');
@@ -144,7 +150,7 @@ try {
     assert.equal(await page.locator('#conteudo tbody tr').count(), 100, 'Existing bounded content detail preserved');
     // Catches missing roving focus, incorrect edge wrapping and focus stranded in hidden content.
     await selected().focus(); await page.keyboard.press('ArrowRight');
-    assert.equal(await selected().innerText(), 'Origem e LIVE!');
+    assert.equal(await selected().innerText(), 'Origem');
     assert.equal(await selected().evaluate(el => el === document.activeElement), true);
     await page.keyboard.press('End'); assert.equal(await selected().innerText(), 'Cobertura');
     await page.keyboard.press('ArrowRight'); assert.equal(await selected().innerText(), 'Visão geral');
@@ -166,10 +172,10 @@ try {
       await page.setViewportSize({ width, height: 1000 });
     }
     await page.evaluate(() => { location.hash = 'jornada-live'; });
-    await page.waitForFunction(() => document.querySelector('[role="tab"][aria-selected="true"]')?.textContent === 'Origem e LIVE!');
+    await page.waitForFunction(() => document.querySelector('[role="tab"][aria-selected="true"]')?.textContent === 'Origem');
     assert.equal(await page.locator('#jornada-live').isVisible(), true, 'Existing LIVE deep link reveals its report');
     await page.getByRole('tab', { name: 'Posições', exact: true }).click();
-    await page.goBack(); assert.equal(await selected().innerText(), 'Origem e LIVE!', 'Back restores owning tab');
+    await page.goBack(); assert.equal(await selected().innerText(), 'Origem', 'Back restores owning tab');
     await page.goForward(); assert.equal(await selected().innerText(), 'Posições', 'Forward restores owning tab');
     await page.locator('.audience-filter-details > summary').click();
     await page.locator('#aud-uf').selectOption('SC');
@@ -177,11 +183,11 @@ try {
     assert.equal(await selected().innerText(), 'Posições', 'GET filter submission preserves current panel');
     assert.equal(new URL(page.url()).searchParams.get('live_campanha'), 'fixture-campaign', 'Global filters retain LIVE filters');
     assert.equal(new URL(page.url()).searchParams.get('dias'), '30', 'Capacity fixture uses a period that supports its 14-day baseline');
-    await page.getByRole('tab', { name: 'Origem e LIVE!', exact: true }).click();
+    await page.getByRole('tab', { name: 'Origem', exact: true }).click();
     await page.locator('#live-city').fill('Florianópolis');
     await Promise.all([page.waitForURL(url => url.searchParams.get('live_cidade') === 'Florianópolis'), page.getByRole('button', { name: 'Filtrar jornada' }).click()]);
-    assert.equal(await selected().innerText(), 'Origem e LIVE!', 'LIVE form stays in its panel');
-    for (const label of ['Visão geral', 'Capacidade', 'Posições', 'Conteúdo', 'Origem e LIVE!', 'Cobertura']) {
+    assert.equal(await selected().innerText(), 'Origem', 'LIVE form stays in its panel');
+    for (const label of ['Visão geral', 'Regiões', 'Capacidade', 'Posições', 'Conteúdo', 'Origem', 'Cobertura']) {
       await page.getByRole('tab', { name: label, exact: true }).click(); await onePanel();
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, `${label}: no whole-page overflow at ${width}px`);
     }
@@ -197,7 +203,7 @@ try {
       await page.screenshot({ path: resolve(output, 'capacity-history-390.png'), fullPage: true });
     }
     if (width !== 768) {
-      for (const [label, filename] of [['Conteúdo', 'content'], ['Origem e LIVE!', 'acquisition'], ['Cobertura', 'coverage']]) {
+      for (const [label, filename] of [['Regiões', 'regions'], ['Conteúdo', 'content'], ['Origem', 'acquisition'], ['Cobertura', 'coverage']]) {
         await page.getByRole('tab', { name: label, exact: true }).click();
         await page.screenshot({ path: resolve(output, `${filename}-${width}.png`), fullPage: true });
       }
