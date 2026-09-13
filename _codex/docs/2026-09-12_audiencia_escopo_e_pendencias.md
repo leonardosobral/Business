@@ -53,6 +53,7 @@ comercial de SC; a UF física é um campo separado.
 - Medição das promoções estáticas do lote de 11/09: [recibo](2026-09-11_audience_static_promos_publicado.md).
 - Classificação de estados de entrega em 12/09: [recibo](2026-09-12_audience_delivery_states_publicado.md).
 - Piloto institucional lateral em 12/09 às 11:48:22 BRT, preservando campanhas e coleta: [recibo e limites](2026-09-12_audience_sidebar_house_publicado.md).
+- Capacidade em exposições, seis abas, topo explicativo e tabelas compactas em 12/09; leitura real confirmada após correção pontual de compatibilidade Adobe no SQL: [recibo e limites](2026-09-12_audience_capacity_publicado.md).
 
 Não reabrir esses lotes como se não estivessem publicados. Os limites abaixo
 continuam explícitos; publicação não equivale a confirmação de todos os cenários.
@@ -61,7 +62,7 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
 
 | Item | Estado comprovado / próximo resultado necessário |
 | --- | --- |
-| Capacidade em exposições | Implementação local concluída e validada: leitura de capacidade, cenários de 30 dias, seis abas, topo explicativo e tabelas compactas. Pronta para publicação dos seis arquivos, sem migração de banco; ainda não publicada. Cenários exigem base recente de 14/28 dias encerrados com sinais por grupo, sem usar hoje, o primeiro dia observado ou preencher lacunas com zero. A ativação em 08/09 não fornece essa base em 12/09; o volume observado continua sendo exibido. Sinais diários não certificam continuidade da coleta nem comparabilidade do layout. Cliques e créditos ficaram para depois por aprovação do usuário. [Contrato, testes e estado](2026-09-12_audience_capacity_business.md). |
+| Histórico para cenários de capacidade | Capacidade observada e interface já publicadas e confirmadas com dados reais, sem migração. Não repetir sua implementação/publicação como pendência. Cenários exigem base recente de 14/28 dias encerrados com sinais por grupo, sem usar hoje, o primeiro dia observado ou preencher lacunas com zero. A ativação em 08/09 não fornece essa base em 12/09; o volume observado continua sendo exibido. Sinais diários não certificam continuidade da coleta nem comparabilidade do layout. Cliques e créditos ficaram para depois por aprovação do usuário. [Contrato e critérios](2026-09-12_audience_capacity_business.md), [recibo](2026-09-12_audience_capacity_publicado.md). |
 | Retenção de 90 dias | Resultado SQL devolvido pelo usuário em 12/09: registro presente, 90 dias, `status=never`, tentativa e sucesso nulos. Ainda sem execução registrada; o DBA deve concluir a operação/agendamento da rotina existente. Não mudar permissões de `runner_dba` nem exigir isso para contar acessos. Não recriar a identidade já instalada. [Registro anterior](2026-09-11_audience_static_promos_publicado.md). |
 | Institucional lateral sem candidato | Ramo validado localmente e arquivos publicados por hash. Navegação normal em 12/09, por volta de 17:54 BRT, da home para São Paulo pelo seletor também encontrou Avaí Run elegível, com imagem carregada (318×318). Ambiente `prod`, família `state`, acesso interno, sem erros de console capturados. O ramo sem candidato continua não observado. Não repetir esse teste sem novo cenário, desativar campanhas, injetar eventos ou forçar contexto para obter número. [Limite anterior](2026-09-12_audience_sidebar_house_publicado.md). |
 | Visualização de evento em `tb_log` | Somente no final: resolver cobertura, leitores, histórico e data de corte antes de retirar exclusivamente essa gravação. Demais logs e histórico intactos. [Transição condicional](2026-09-10_tb_log_eventos_transicao.md). |
@@ -72,9 +73,9 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
    observável, com tráfego interno separado e sem implementar versionamento de
    layout. Início, quartis e conclusão de YouTube já verificados. Não repetir diagnósticos de infraestrutura
    inalterada nem transformar essas verificações em bloqueio da coleta.
-2. Publicar, quando solicitado, o lote local concluído de capacidade e organização
-   do painel. Validar então a leitura autenticada real. O volume observado não
-   aguarda linha de base; os cenários aparecem somente com histórico suficiente.
+2. Capacidade e organização do painel já publicadas; leitura autenticada real
+   confirmada. O volume observado não aguarda linha de base; os cenários aparecem
+   somente com histórico suficiente. Não forçar coleta para produzir projeções.
    Isso não depende de executar mídia paga.
 3. Retomar a transição específica de `tb_log` por último, respeitando seus critérios.
 
@@ -83,7 +84,7 @@ de UF física saiu do trabalho ativo por decisão do usuário. Nenhuma delas
 justifica zerar, suspender ou atrasar os contadores existentes. Permanecem
 opt-out/GPC, DSN `runner`, autenticação, regras de Ads e cobrança. Não há novo
 SQL necessário para esta alteração de escopo nem para o lote de capacidade.
-A publicação dos seis arquivos de runtime desse lote ainda não foi realizada.
+A publicação dos seis arquivos foi concluída e está documentada no recibo acima.
 
 ## Resultado recebido das duas verificações de banco
 
@@ -139,3 +140,32 @@ pequena para começar, sem somar o período sobreposto das fontes; preservar err
 404, OR/CT e histórico. Política mensal além de 90 dias e destino das análises
 legadas baseadas em IP/UA ainda precisam de decisão, não de retenção permanente
 presumida. Não antecipar essa transição por causa desta revisão.
+
+## Resumo de ocupação publicado — 12/09, 22:36 BRT
+
+Topo reorganizado em potencial observado, preenchidos e sem anúncio, com barras
+separadas de Ads/banners e visitantes/sessões juntos. Crédito/pago adiado conforme
+decisão do usuário; institucionais contam como preenchimento, não como venda.
+Novo resumo conferido no Adobe e no Business autenticado com valores reais.
+[Recibo do lote de cinco arquivos](2026-09-12_audience_occupancy_publicado.md).
+Nenhuma alteração em coleta, autenticação, retenção ou `tb_log`. Preferência de
+publicar as alterações solicitadas ao final registrada no `AGENTS.md` do Business.
+
+## Correção comercial das oportunidades — 12/09, 23:23 BRT
+
+A definição do resumo de 22:36 foi corrigida após o usuário demonstrar que o
+denominador de posições vistas excluía oportunidades sem campanha. Não considerar
+o 100% daquela versão como prova de ocupação comercial do site.
+
+Agora o topo usa oportunidades de entrega sem exigência de visibilidade;
+preenchimento servido conta independentemente do segundo de exposição, e vazio
+sem campanha permanece no total. Falhas e posições desligadas ficam separadas.
+Somente dois arquivos do Business publicados, sem SQL manual, alterações em
+coleta, autenticação, cobrança, retenção ou `tb_log`.
+
+Conferência real do Acre em 7 dias: 27 oportunidades de Ads, zero preenchidas e
+27 sem anúncio; banners separados com 21 preenchidas. Geral: 5.258 oportunidades,
+2.677 preenchidas, 2.151 sem anúncio e 430 sem confirmação. O filtro de UF atual
+já funciona; uma comparação comercial consolidada de todos os estados continua
+como extensão posterior, não foi acrescentada outra tabela nesta correção.
+[Contrato, testes e recibo](2026-09-12_audience_delivery_opportunities.md).

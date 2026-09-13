@@ -1,5 +1,5 @@
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
-<link rel="stylesheet" href="/assets/css/audience-dashboard.css?v=20260912-tabs1"/>
+<link rel="stylesheet" href="/assets/css/audience-dashboard.css?v=20260912-occupancy1"/>
 <script defer src="/assets/js/audience-dashboard.js?v=20260912-tabs1"></script>
 <div class="audience-page">
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
@@ -73,16 +73,9 @@
         <cfif NOT val(audStats.active_pages)>
             <div class="alert alert-info" role="status">Nenhum acesso confirmado para estes filtros. A coleta pode estar recém-ativada ou ainda sem tráfego; não há histórico de visibilidade anterior à instrumentação.</div>
         </cfif>
-        <div class="row g-3 mb-3"><cfoutput>
-            <div class="col-6 col-lg-2"><div class="audience-kpi audience-kpi-primary"><div class="audience-meta">Posições visíveis</div><div class="audience-value text-warning">#audienceCount(audStats.slot_views)#</div><div class="audience-meta">50% por 1 segundo contínuo</div></div></div>
-            <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Visitantes estimados</div><div class="audience-value">#audienceCount(audStats.visitors)#</div></div></div>
-            <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Páginas com atividade</div><div class="audience-value">#audienceCount(audStats.active_pages)#</div><div class="audience-meta">#audienceCount(audStats.pageviews)# aberturas neste contexto</div></div></div>
-            <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Sessões</div><div class="audience-value">#audienceCount(audStats.sessions)#</div><div class="audience-meta">#audienceCount(audStats.engaged_sessions)# com uso qualificado</div></div></div>
-            <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Posições registradas</div><div class="audience-value">#audienceCount(audStats.opportunities)#</div><div class="audience-meta">inclui vazias / indisponíveis</div></div></div>
-            <div class="col-6 col-lg-2"><div class="audience-kpi"><div class="audience-meta">Anúncios visíveis</div><div class="audience-value">#audienceCount(audStats.ad_views)#</div><div class="audience-meta">#audienceCount(audStats.ad_renders)# renderizados</div></div></div>
-        </cfoutput></div>
+        <cfinclude template="occupancy.cfm"/>
         <div class="audience-health"><cfoutput><span class="audience-pill">#encodeForHtml(VARIABLES.audienceEnvironment)# · #VARIABLES.audienceDays# dias<cfif len(VARIABLES.audienceUf)> · #encodeForHtml(VARIABLES.audienceUf)#</cfif></span><span class="audience-meta">Última recepção: #audienceDate(audStats.last_received)# · Brasília · cache de até 1 minuto</span></cfoutput></div>
-        <p class="audience-reading-guide audience-meta"><strong>Registradas:</strong> posições detectadas, inclusive vazias. <strong>Visíveis:</strong> ao menos 50% da área por 1 segundo contínuo. <strong>Cenários:</strong> estimativas na aba Capacidade, condicionadas ao histórico; não são garantia de entrega.</p>
+        <p class="audience-reading-guide audience-meta"><strong>Cenários futuros:</strong> estimativas na aba Capacidade, condicionadas ao histórico; não são garantia de entrega.</p>
         <nav class="audience-nav" data-audience-tabs aria-label="Seções do relatório">
             <a href="#audience-overview">Visão geral</a><a href="#audience-capacity">Capacidade</a><a href="#audience-positions">Posições</a><a href="#audience-content">Conteúdo</a><a href="#audience-acquisition">Origem e LIVE!</a><a href="#audience-coverage">Cobertura</a>
         </nav>

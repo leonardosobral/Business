@@ -7,9 +7,10 @@ cliques ou consumo de créditos. Na continuação, pediu explicações mais clar
 no topo, abas e tabelas compactas. Trabalho restrito ao Business; não altera
 coletor, opt-out/GPC, localização, campanhas, cobrança, retenção ou `tb_log`.
 
-Estado deste registro: capacidade, abas e compactação implementadas e validadas
-localmente; lote pronto para publicação. Ainda não publicado. Os dados dos testes
-são sintéticos e não descrevem a audiência de produção.
+Estado deste registro: capacidade, abas e compactação implementadas e publicadas
+em 12/09. A validação real encontrou e corrigiu uma incompatibilidade do parser
+Adobe no SQL; capacidade confirmada com dados reais. Ver [recibo e limites](2026-09-12_audience_capacity_publicado.md).
+Os dados dos testes locais continuam sintéticos, separados da evidência de produção.
 
 ## Contrato de capacidade
 
@@ -69,8 +70,9 @@ CTR, CPC, receita ou consumo de créditos derivado deste cálculo.
   `assets/css/audience-dashboard.css`: organização em abas e tabelas compactas.
 
 Os SQLs continuam protegidos pelo `.htaccess` da pasta `queries`. Autenticação e
-autorização administrativa existentes não são alteradas. Sem commit, branch,
-conexão a banco de produção ou publicação automática nesta etapa.
+autorização administrativa existentes não são alteradas. Sem commit, branch ou
+conexão direta a banco de produção pelo agente. A publicação posterior foi
+expressamente autorizada pelo usuário e está registrada no recibo.
 
 ## Organização da tela
 
@@ -149,13 +151,12 @@ validado visualmente neste lote; sua consulta passou na regressão SQL e o inclu
 existente foi preservado. A navegação integrada foi exercitada com o estado de
 indisponibilidade dessa seção.
 
-## Publicação posterior
+## Publicação e reversão
 
-Publicar somente os seis arquivos de runtime acima, com cópias de recuperação dos
-arquivos substituídos e conferência de hashes. Disponibilizar SQL/template de
-capacidade e assets antes dos consumidores backend/home. Preservar `.htaccess`,
-configurações e fontes das outras frentes. Não precisa rodar migração nem reiniciar
-o serviço por mudança de configuração. A validação autenticada posterior deverá
-confirmar contagens reais, abas/filtros e histórico insuficiente enquanto a base
-recente ainda não tiver os dias necessários; não gerar tráfego publicitário para
-produzir projeção. Reversão é restaurar os arquivos deste lote, sem apagar dados.
+Foram publicados somente os seis arquivos acima, com cópias de recuperação e
+conferência de hashes, dependências antes dos consumidores. A correção posterior
+de uma expressão em `capacity.sql` foi novamente testada e publicada com backup.
+`.htaccess`, configurações e fontes das outras frentes foram preservados.
+Sem migração ou reinício. A validação autenticada confirmou as abas e contagens
+reais, com histórico insuficiente. Procedimento de reversão no recibo, sem apagar
+eventos nem restaurar diretórios inteiros.

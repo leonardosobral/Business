@@ -10,14 +10,15 @@ import { createRequire } from 'node:module';
 import { createServer } from 'node:http';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-let input = process.argv[2];
+const renderOnly = process.argv.includes('--render-only');
+let input = process.argv.slice(2).find(arg => arg !== '--render-only');
 if (!input) {
   const scratch = mkdtempSync(resolve(tmpdir(), 'audience-tabs-cfml-'));
   const output = mkdtempSync(resolve(tmpdir(), 'audience-tabs-render-'));
   try {
     mkdirSync(resolve(scratch, 'portal/audiencia'), { recursive: true });
     mkdirSync(resolve(scratch, 'includes/backend'), { recursive: true });
-    for (const name of ['home.cfm', 'live_journey.cfm', 'capacity.cfm']) {
+    for (const name of ['home.cfm', 'live_journey.cfm', 'capacity.cfm', 'occupancy.cfm']) {
       copyFileSync(resolve(root, 'portal/audiencia', name), resolve(scratch, 'portal/audiencia', name));
     }
     copyFileSync(resolve(root, 'includes/backend/require_admin.cfm'), resolve(scratch, 'includes/backend/require_admin.cfm'));
@@ -27,6 +28,10 @@ if (!input) {
     const capacityData = capacityFixture.match(/VARIABLES\.audienceCapacityQuery = queryNew[\s\S]*?(?=<\/cfscript>)/)?.[0];
     assert.ok(capacityData, 'Reuse the capacity fixture query without duplicating the model');
     writeFileSync(resolve(scratch, 'capacity-data.cfm'), `<cfscript>${capacityData}</cfscript>`, 'utf8');
+    const occupancyFixture = readFileSync(resolve(root, '_codex/tests/audience-occupancy/fixture.cfm'), 'utf8');
+    const occupancyData = occupancyFixture.match(/VARIABLES\.audienceOccupancyQuery = queryNew[\s\S]*?(?=<\/cfscript>)/)?.[0];
+    assert.ok(occupancyData, 'Reuse the independently hand-calculated occupancy fixture');
+    writeFileSync(resolve(scratch, 'occupancy-data.cfm'), `<cfscript>VARIABLES.audienceOccupancyStatus = "ready";${occupancyData}</cfscript>`, 'utf8');
     copyFileSync(resolve(root, '_codex/tests/audience-tabs/fixture.cfm'), resolve(scratch, 'render.cfm'));
     const box = process.env.AUDIENCE_CFML_BOX_RUNTIME || process.env.AUDIENCE_TABS_BOX_RUNTIME || '/Users/Shared/Projects/ColdFusion Certification/box';
     const boxHome = process.env.AUDIENCE_CFML_COMMANDBOX_HOME || process.env.AUDIENCE_TABS_COMMANDBOX_HOME || '/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox';
@@ -53,6 +58,11 @@ for (const asset of allowed) {
   mkdirSync(dirname(target), { recursive: true });
   copyFileSync(resolve(root, '.' + asset), target);
 }
+// Reuse the real CFML fixture with the host's browser controls, without launching a second browser.
+if (renderOnly) {
+  console.log(`Render-only fixture ready: ${input}`);
+  process.exit(0);
+}
 const server = createServer((req, res) => {
   const path = new URL(req.url, 'http://localhost').pathname;
   if (path === '/' || path === '/portal/audiencia/') { res.setHeader('Content-Type', 'text/html; charset=utf-8'); res.end(html); }
@@ -70,6 +80,24 @@ try {
     const errors = []; page.on('pageerror', error => errors.push(error.message));
     await page.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
     await page.goto(origin + '/', { waitUntil: 'networkidle' });
+    assert.equal((await page.locator('[data-occupancy="potential"]').innerText()).trim(), '100', 'Home uses physical delivery opportunities, not raw slot signals');
+    assert.equal((await page.locator('[data-occupancy="filled"]').innerText()).trim(), '60');
+    assert.equal((await page.locator('[data-occupancy-rate="filled"]').innerText()).trim(), '60.0%', 'Headline percent uses delivery opportunities independently of viewability');
+    assert.equal((await page.locator('[data-occupancy="empty"]').innerText()).trim(), '30');
+    assert.equal((await page.locator('[data-occupancy="unclassified"]').innerText()).trim(), '10');
+    assert.equal(await page.locator('[data-audience-people]').count(), 1, 'Visitors and sessions share one block');
+    const occupation = page.locator('.audience-occupancy');
+    for (const [format, expectedFill] of [['ads', 5 / 7], ['banners', .5]]) {
+      const bar = occupation.locator(`[data-occupancy-format="${format}"] [role="img"]`);
+      const ratio = await bar.evaluate(el => el.querySelector('[data-occupancy-segment="filled"]').getBoundingClientRect().width / el.getBoundingClientRect().width);
+      assert.ok(Math.abs(ratio - expectedFill) < .003, `${format}: rendered bar width follows its own opportunity denominator`);
+      assert.match(await bar.getAttribute('aria-label'), /preenchid[oa]s.*sem anúncio.*sem (?:classificação|confirmação)/, 'Bar has an accessible count and percentage equivalent');
+    }
+    assert.equal(await page.locator('[data-occupancy-diagnostics]').getAttribute('open'), null, 'Technical signals start collapsed');
+    await page.locator('[data-occupancy-diagnostics] > summary').click();
+    assert.equal(await page.getByText('Posições registradas — sinais', { exact: true }).isVisible(), true);
+    await page.locator('[data-occupancy-diagnostics] > summary').click();
+    await occupation.screenshot({ path: resolve(output, `occupancy-${width}.png`) });
     await page.getByRole('tab', { name: 'Posições', exact: true }).click();
     await page.goBack();
     assert.equal(await page.getByRole('tab', { selected: true }).innerText(), 'Visão geral', 'Back to the initial URL without a fragment restores overview');
@@ -186,6 +214,8 @@ try {
     await page.locator('.audience-filter-details > summary').click();
     assert.equal(await page.getByRole('button', { name: 'Aplicar filtros', exact: true }).isVisible(), true);
     if (mode === 'nojs') {
+      assert.equal(await page.locator('[data-occupancy="potential"]').isVisible(), true, 'Occupation and exact counts need no JavaScript');
+      assert.equal(await page.locator('[data-occupancy-format="ads"] [role="img"]').isVisible(), true, 'Occupation bars need no chart library');
       assert.equal(await page.getByRole('tab').count(), 0, 'No-JS navigation remains ordinary anchors');
       for (const id of ['inventario', 'regioes', 'conteudo', 'aquisicao', 'jornada-live', 'cobertura', 'capacidade']) assert.equal(await page.locator('#' + id).isVisible(), true, `${id} remains visible without JS`);
       await page.locator('#inventario details summary').click();

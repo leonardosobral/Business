@@ -3,7 +3,7 @@ WITH clock AS (
     SELECT now() AS as_of, (now() AT TIME ZONE 'America/Sao_Paulo')::date AS today
 ), slot_events AS (
     SELECT e.page_view_id, e.event_key, e.event_kind, e.occurred_at, e.received_at,
-           coalesce(nullif(e.market_uf, ''), '--') AS audience_uf,
+           coalesce(nullif(e.market_uf, ''), repeat('-', 2)) AS audience_uf,
            e.slot_key, e.page_family, e.device_class
     FROM audience.events e CROSS JOIN clock c
     WHERE :region_dimension = 'market' AND :environment = 'prod' AND :include_internal = false

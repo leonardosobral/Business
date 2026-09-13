@@ -38,6 +38,8 @@ VARIABLES.audienceUnavailable = false;
 VARIABLES.audienceRetention = {state="not_installed", lastSuccess="", hasMore=false};
 VARIABLES.audienceQueries = {};
 VARIABLES.audienceCapacityStatus = "not_commercial";
+VARIABLES.audienceOccupancyStatus = "unavailable";
+VARIABLES.audienceOccupancyQuery = queryNew("format,registered,potential,filled,empty,unclassified");
 VARIABLES.audienceLiveSource = left(audienceInput("live_origem"),100);
 VARIABLES.audienceLiveCampaign = left(audienceInput("live_campanha"),100);
 VARIABLES.audienceLiveCity = left(audienceInput("live_cidade"),100);
@@ -65,6 +67,33 @@ try {
         }
         VARIABLES.audienceSummary = {first_event="", last_received=""};
         structAppend(VARIABLES.audienceSummary, queryGetRow(VARIABLES.audienceQueries.summary, 1), true);
+        // Observed occupancy supports diagnostic filters and fails independently of existing reports.
+        try {
+            VARIABLES.audienceOccupancySql = fileRead(VARIABLES.audienceQueryDirectory & "occupancy.sql","UTF-8");
+            VARIABLES.audienceOccupancyResult = queryExecute(VARIABLES.audienceOccupancySql,VARIABLES.audienceParams,{datasource="runnerhub",timeout=15,cachedwithin=createTimeSpan(0,0,1,0)});
+            if (VARIABLES.audienceOccupancyResult.recordcount NEQ 4) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+            for (VARIABLES.audienceOccupancyColumn in ["format","registered","potential","filled","empty","unclassified"]) {
+                if (!listFindNoCase(VARIABLES.audienceOccupancyResult.columnList,VARIABLES.audienceOccupancyColumn)) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+            }
+            VARIABLES.audienceOccupancyFormats = {};
+            for (VARIABLES.audienceOccupancyRowIndex=1;VARIABLES.audienceOccupancyRowIndex LTE VARIABLES.audienceOccupancyResult.recordcount;VARIABLES.audienceOccupancyRowIndex++) {
+                VARIABLES.audienceOccupancyRow = queryGetRow(VARIABLES.audienceOccupancyResult,VARIABLES.audienceOccupancyRowIndex);
+                if (!listFind("all,ads,banners,other",VARIABLES.audienceOccupancyRow.format) OR structKeyExists(VARIABLES.audienceOccupancyFormats,VARIABLES.audienceOccupancyRow.format)) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+                for (VARIABLES.audienceOccupancyColumn in ["registered","potential","filled","empty","unclassified"]) {
+                    VARIABLES.audienceOccupancyValue = VARIABLES.audienceOccupancyRow[VARIABLES.audienceOccupancyColumn];
+                    if (!isNumeric(VARIABLES.audienceOccupancyValue) OR VARIABLES.audienceOccupancyValue LT 0 OR fix(VARIABLES.audienceOccupancyValue) NEQ VARIABLES.audienceOccupancyValue) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+                }
+                if (VARIABLES.audienceOccupancyRow.potential GT VARIABLES.audienceOccupancyRow.registered OR VARIABLES.audienceOccupancyRow.potential NEQ VARIABLES.audienceOccupancyRow.filled + VARIABLES.audienceOccupancyRow.empty + VARIABLES.audienceOccupancyRow.unclassified) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+                VARIABLES.audienceOccupancyFormats[VARIABLES.audienceOccupancyRow.format] = VARIABLES.audienceOccupancyRow;
+            }
+            for (VARIABLES.audienceOccupancyColumn in ["registered","potential","filled","empty","unclassified"]) {
+                if (VARIABLES.audienceOccupancyFormats.all[VARIABLES.audienceOccupancyColumn] NEQ VARIABLES.audienceOccupancyFormats.ads[VARIABLES.audienceOccupancyColumn] + VARIABLES.audienceOccupancyFormats.banners[VARIABLES.audienceOccupancyColumn] + VARIABLES.audienceOccupancyFormats.other[VARIABLES.audienceOccupancyColumn]) throw(type="AudienceOccupancyContract",message="Invalid occupancy result");
+            }
+            VARIABLES.audienceOccupancyQuery = VARIABLES.audienceOccupancyResult;
+            VARIABLES.audienceOccupancyStatus = "ready";
+        } catch(any audienceOccupancyReadError) {
+            writeLog(file="audience_measurement",type="error",text="Business audience occupancy unavailable: " & left(audienceOccupancyReadError.type & "",100));
+        }
         // Optional read: a missing template or query failure cannot hide the existing counters.
         // Commercial scenarios never use internal tests, nonproduction or origin-UF filters.
         if (VARIABLES.audienceDimension EQ "market" AND VARIABLES.audienceEnvironment EQ "prod" AND NOT VARIABLES.audienceIncludeInternal) {

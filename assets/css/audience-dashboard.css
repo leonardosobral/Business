@@ -2,6 +2,33 @@
 .audience-page .audience-panel {border:1px solid var(--aud-border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;background:rgba(255,255,255,.018)}
 .audience-page .audience-kpi {height:100%;padding:.85rem 1rem;border:1px solid var(--aud-border);border-radius:12px;background:rgba(255,255,255,.025)}
 .audience-page .audience-kpi-primary {border-color:rgba(239,187,85,.45)}
+.audience-page .audience-occupancy-top {display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(260px,1.3fr);gap:1rem}
+.audience-page .audience-occupancy-top>* {min-width:0}
+.audience-page .audience-occupancy-unavailable {grid-column:span 3;align-content:center}
+.audience-page .audience-people-values {display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin:.45rem 0}
+.audience-page .audience-people-values strong {display:block;font-size:1.45rem;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.25}
+.audience-page .audience-people-values span {display:block}
+.audience-page .audience-occupation-breakdown {margin:.8rem 0 0}
+.audience-page .audience-occupation-definition {margin-bottom:.7rem}
+.audience-page .audience-occupation-formats {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem 1.75rem}
+.audience-page .audience-occupation-format {min-width:0}
+.audience-page .audience-occupation-heading {display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem .75rem;margin-bottom:.4rem;font-size:.86rem}
+.audience-page .audience-occupation-bar {display:flex;height:14px;border-radius:4px;overflow:hidden}
+.audience-page .audience-occupation-segment {display:block;flex-shrink:0;height:100%}
+.audience-page .audience-occupation-filled {background:var(--aud-gold)}
+.audience-page .audience-occupation-empty {background:#69778c}
+.audience-page .audience-occupation-unclassified {background:repeating-linear-gradient(135deg,#81b8f4 0px,#81b8f4 3px,#3f5975 3px,#3f5975 6px)}
+.audience-page .audience-occupation-legend {display:flex;flex-wrap:wrap;gap:.25rem .9rem;margin-top:.4rem;font-variant-numeric:tabular-nums}
+.audience-page .audience-occupation-legend span {display:inline-flex;align-items:baseline;gap:.3rem;flex-wrap:wrap}
+.audience-page .audience-occupation-legend i {display:inline-block;width:.6rem;height:.6rem;border-radius:2px;flex-shrink:0}
+.audience-page .audience-occupation-legend strong {color:#edf0f5;font-weight:600}
+.audience-page .audience-occupation-diagnostics {margin-top:.7rem}
+.audience-page .audience-occupation-diagnostics>div {max-width:1050px;margin-top:.7rem}
+.audience-page .audience-technical-counts {display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+.audience-page .audience-technical-counts dt {font-weight:400}
+.audience-page .audience-technical-counts dd {font-weight:600;color:#edf0f5;margin:0}
+@media(max-width:1100px) {.audience-page .audience-occupancy-top {grid-template-columns:repeat(2,minmax(0,1fr))}.audience-page .audience-occupancy-unavailable {grid-column:auto}}
+@media(max-width:575px) {.audience-page .audience-occupancy-top {gap:.65rem}.audience-page .audience-occupation-formats {grid-template-columns:1fr;gap:.9rem}.audience-page .audience-people-values {gap:.45rem}.audience-page .audience-people-values strong {font-size:1.15rem}}
 .audience-page .audience-value {font-size:2rem;font-weight:650;line-height:1.25;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:.35rem 0}
 .audience-page .audience-meta {color:var(--aud-muted);font-size:.81rem;line-height:1.55}
 .audience-page .text-muted {color:var(--aud-muted)!important}

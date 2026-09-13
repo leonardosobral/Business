@@ -24,6 +24,7 @@ try {
   mkdirSync(resolve(scratch, 'includes/backend'), { recursive: true });
   copyFileSync(resolve(root, '_codex/tests/audience-editorial-business/home-fixture.cfm'), resolve(scratch, 'render.cfm'));
   copyFileSync(resolve(root, 'portal/audiencia/home.cfm'), resolve(scratch, 'portal/audiencia/home.cfm'));
+  copyFileSync(resolve(root, 'portal/audiencia/occupancy.cfm'), resolve(scratch, 'portal/audiencia/occupancy.cfm'));
   copyFileSync(resolve(root, 'includes/backend/require_admin.cfm'), resolve(scratch, 'includes/backend/require_admin.cfm'));
 
   const java = process.env.AUDIENCE_CFML_JAVA_RUNTIME || '/usr/bin/java';
