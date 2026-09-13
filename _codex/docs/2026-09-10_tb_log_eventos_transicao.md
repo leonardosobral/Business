@@ -1,5 +1,15 @@
 # Transição condicional do log de eventos — Implementation Plan
 
+> **Atualização de 13/09/2026 — concluído e publicado às 11:43:25 BRT.**
+> O usuário autorizou desligar somente o writer das páginas de evento RR já
+> cobertas e **dispensou a migração dos leitores legados**, passando a usar a
+> tela de Audiência. O guard `codSite=RR` + template `/evento/` foi publicado;
+> hotsites, outros tipos/sites e histórico permanecem intactos. Nenhum SQL foi
+> executado. [Escopo, testes, corte e backup](/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/docs/audiencia_evento_tb_log_desligado_2026_09_13.md).
+> O roteiro abaixo é o registro preparatório de 10–12/09: não reabrir seus
+> gates de migração nem tratá-los como pendências atuais. Não houve consulta
+> direta ao banco para reconciliação pós-corte.
+
 > **For agentic workers:** Use superpowers:executing-plans somente quando esta frente for retomada. Os checkboxes abaixo são critérios futuros, não autorização para executar agora.
 
 **Goal:** Desligar **somente no final** a gravação de visualização de página de evento RR em `tb_log`, se a nova audiência cobrir os usos necessários, mantendo todos os outros logs e o histórico.

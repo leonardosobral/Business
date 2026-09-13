@@ -45,6 +45,7 @@ comercial de SC; a UF física é um campo separado.
 
 ## Entregas já publicadas
 
+- Retirada somente do writer de visualização de evento RR em `tb_log`, em 13/09 às 11:43:25 BRT. Usuário dispensou migração dos leitores legados e adotou a tela de Audiência; hotsites, outros logs/sites e histórico preservados. Sem SQL. [Corte, testes e backup](/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/docs/audiencia_evento_tb_log_desligado_2026_09_13.md).
 - Coleta e painel ativos desde 08/09: [recibo de ativação](2026-09-08_audience_activation_receipt.json).
 - Reprodução de YouTube integrada em 10/09, com inícios confirmados no Business: [recibo](2026-09-10_audience_youtube_publicado.md).
 - Conclusão de YouTube confirmada na tela em 12/09, excluída do recorte comercial como acesso interno: [verificação e limites](2026-09-12_audience_youtube_conclusao_verificada.md).
@@ -65,7 +66,6 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
 | Histórico para cenários de capacidade | Capacidade observada e interface já publicadas e confirmadas com dados reais, sem migração. Não repetir sua implementação/publicação como pendência. Cenários exigem base recente de 14/28 dias encerrados com sinais por grupo, sem usar hoje, o primeiro dia observado ou preencher lacunas com zero. A ativação em 08/09 não fornece essa base em 12/09; o volume observado continua sendo exibido. Sinais diários não certificam continuidade da coleta nem comparabilidade do layout. Cliques e créditos ficaram para depois por aprovação do usuário. [Contrato e critérios](2026-09-12_audience_capacity_business.md), [recibo](2026-09-12_audience_capacity_publicado.md). |
 | Retenção de 90 dias | Resultado SQL devolvido pelo usuário em 12/09: registro presente, 90 dias, `status=never`, tentativa e sucesso nulos. Ainda sem execução registrada; o DBA deve concluir a operação/agendamento da rotina existente. Não mudar permissões de `runner_dba` nem exigir isso para contar acessos. Não recriar a identidade já instalada. [Registro anterior](2026-09-11_audience_static_promos_publicado.md). |
 | Institucional lateral sem candidato | Ramo validado localmente e arquivos publicados por hash. Navegação normal em 12/09, por volta de 17:54 BRT, da home para São Paulo pelo seletor também encontrou Avaí Run elegível, com imagem carregada (318×318). Ambiente `prod`, família `state`, acesso interno, sem erros de console capturados. O ramo sem candidato continua não observado. Não repetir esse teste sem novo cenário, desativar campanhas, injetar eventos ou forçar contexto para obter número. [Limite anterior](2026-09-12_audience_sidebar_house_publicado.md). |
-| Visualização de evento em `tb_log` | Somente no final: resolver cobertura, leitores, histórico e data de corte antes de retirar exclusivamente essa gravação. Demais logs e histórico intactos. [Transição condicional](2026-09-10_tb_log_eventos_transicao.md). |
 
 ## Ordem de continuação
 
@@ -77,7 +77,8 @@ continuam explícitos; publicação não equivale a confirmação de todos os ce
    confirmada. O volume observado não aguarda linha de base; os cenários aparecem
    somente com histórico suficiente. Não forçar coleta para produzir projeções.
    Isso não depende de executar mídia paga.
-3. Retomar a transição específica de `tb_log` por último, respeitando seus critérios.
+3. A retirada específica do writer `tb_log` foi concluída em 13/09. Não reabrir
+   a migração dos leitores antigos: o usuário a dispensou e adotou a audiência.
 
 Execução da retenção é uma pendência operacional independente; a investigação
 de UF física saiu do trabalho ativo por decisão do usuário. Nenhuma delas
