@@ -1,493 +1,105 @@
-<cfinclude template="../includes/event_analytics_backend.cfm"/>
-
-<cfset VARIABLES.eventAnalyticsBaseQuery = "dias=#urlEncodedFormat(VARIABLES.eventAnalyticsDays)#&limite=#urlEncodedFormat(VARIABLES.eventAnalyticsSampleLimit)#&bot=#urlEncodedFormat(VARIABLES.eventAnalyticsBotFilter)#"/>
-<cfif len(VARIABLES.eventAnalyticsSite)>
-  <cfset VARIABLES.eventAnalyticsBaseQuery = VARIABLES.eventAnalyticsBaseQuery & "&site=#urlEncodedFormat(VARIABLES.eventAnalyticsSite)#"/>
-</cfif>
-<cfif len(VARIABLES.eventAnalyticsTerm)>
-  <cfset VARIABLES.eventAnalyticsBaseQuery = VARIABLES.eventAnalyticsBaseQuery & "&termo=#urlEncodedFormat(VARIABLES.eventAnalyticsTerm)#"/>
-</cfif>
-
+<cfprocessingdirective pageencoding="utf-8"/>
+<cfinclude template="../includes/event_interest_backend.cfm"/>
 <style>
-  .event-analytics-page .analytics-filter,
-  .event-analytics-page .analytics-metric,
-  .event-analytics-page .analytics-panel {
-    border: 1px solid rgba(255, 255, 255, .12);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .03);
-  }
-
-  .event-analytics-page .analytics-filter,
-  .event-analytics-page .analytics-panel {
-    padding: 1rem;
-  }
-
-  .event-analytics-page .analytics-metric {
-    height: 100%;
-    padding: 1rem;
-  }
-
-  .event-analytics-page .analytics-metric-label {
-    color: var(--mdb-secondary-color);
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-
-  .event-analytics-page .analytics-table {
-    min-width: 1120px;
-  }
-
-  .event-analytics-page .analytics-table th,
-  .event-analytics-page .analytics-table td {
-    vertical-align: middle;
-  }
-
-  .event-analytics-page .analytics-text-cell {
-    max-width: 420px;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .event-analytics-page .analytics-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .35rem;
-  }
+.event-interest{--ei-border:rgba(255,255,255,.14);max-width:1600px;margin:0 auto;padding:24px 0 48px;color:#e8ebef}
+.event-interest .ei-muted{color:#b7bec8}.event-interest .ei-panel{padding:20px;background:#25282d;border:1px solid var(--ei-border);border-radius:16px;margin-bottom:18px}
+.event-interest .ei-heading{display:flex;gap:18px;align-items:start;justify-content:space-between;flex-wrap:wrap}.event-interest h1{font-size:1.85rem;font-weight:750;margin:4px 0 8px}
+.event-interest .ei-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}.event-interest .ei-kpi{padding:20px;border:1px solid var(--ei-border);border-radius:15px;background:#25282d}.event-interest .ei-kpi:first-child{border-color:#947133}.event-interest .ei-value{display:block;font-size:2.15rem;font-weight:750;line-height:1.4;color:#fff}.event-interest .ei-kpi:first-child .ei-value{color:#ffc454}
+.event-interest .ei-filters{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.event-interest label{display:block;font-size:.8rem;margin-bottom:5px;color:#c6ccd4}.event-interest input,.event-interest select{max-width:100%;background:#1f2227;color:#f0f2f6;border:1px solid #697382;border-radius:7px;padding:8px 10px;min-height:40px}.event-interest .ei-search{flex:1;min-width:190px}.event-interest .ei-search input{width:100%}
+.event-interest .ei-tabs{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--ei-border)}.event-interest .ei-tabs a{padding:10px 14px;color:#cbd1d9;border-radius:8px}.event-interest .ei-tabs a[aria-current=page]{color:#1c2025;background:#ffc454;font-weight:700}
+.event-interest .ei-table{color:#e8ebef;font-size:.88rem;margin:0;width:100%;border-collapse:collapse}.event-interest .ei-table th{font-size:.75rem;color:#b7bec8;font-weight:600;text-transform:uppercase;letter-spacing:.04em}.event-interest .ei-table th,.event-interest .ei-table td{padding:13px 10px;border-bottom:1px solid var(--ei-border);vertical-align:top}.event-interest .ei-table th:first-child,.event-interest .ei-table td:first-child{padding-left:0}.event-interest .ei-table .ei-title{min-width:230px;max-width:440px;white-space:normal;overflow-wrap:anywhere}.event-interest .ei-table .ei-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.event-interest .ei-scroll{overflow-x:auto}.event-interest .ei-table a{color:#aad0ff}.event-interest .ei-table strong{color:#f0f2f5}.event-interest .ei-pill{display:inline-block;padding:3px 7px;border-radius:5px;background:#353d49;color:#d6e2f1;font-size:.72rem;margin:3px 4px 0 0}.event-interest .ei-up{color:#82dfb3}.event-interest .ei-warn{color:#ffd17c}.event-interest .ei-note{font-size:.82rem;line-height:1.6}.event-interest .ei-columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.event-interest .ei-bar{display:inline-block;height:7px;border-radius:5px;background:#e8ae45;vertical-align:middle;max-width:100%}.event-interest .ei-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;flex-wrap:wrap}.event-interest details summary{cursor:pointer;color:#d2dae5}.event-interest a:focus-visible,.event-interest button:focus-visible{outline:3px solid #ffc454;outline-offset:3px}
+@media(max-width:767px){.event-interest{padding-top:12px}.event-interest .ei-kpis{grid-template-columns:1fr 1fr;gap:10px}.event-interest .ei-kpi{padding:14px}.event-interest .ei-value{font-size:1.7rem}.event-interest .ei-panel{padding:15px}.event-interest .ei-columns{grid-template-columns:1fr}.event-interest .ei-tabs a{font-size:.85rem;padding:8px 10px}.event-interest h1{font-size:1.5rem}.event-interest .ei-table .ei-title{min-width:210px}}
 </style>
-
-<section>
-  <div class="row gx-xl-5">
-    <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-      <div class="card shadow-0">
-        <div class="card-body event-analytics-page">
-
-          <div class="d-flex flex-column flex-xl-row justify-content-between gap-3">
-            <div>
-              <h3 class="mb-1">Portal - Eventos visitados</h3>
-              <p class="text-muted mb-0">Analise carregamentos de paginas de evento a partir da <strong>tb_log</strong>, usando <strong>log_item = evento</strong>.</p>
-            </div>
-            <div class="text-xl-end">
-              <div class="small text-muted">Amostra maxima</div>
-              <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsSampleLimit, "9,999")# logs</cfoutput></div>
-            </div>
-          </div>
-
-          <hr/>
-
-          <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
-            <div class="alert alert-warning mb-0">
-              Voce nao tem permissao para acessar o analytics de eventos do Portal.
-            </div>
-          <cfelseif NOT VARIABLES.eventAnalyticsTablesReady>
-            <div class="alert alert-warning mb-0">
-              As tabelas <strong>tb_log</strong> e <strong>tb_evento_corridas</strong> precisam existir neste ambiente.
-            </div>
-          <cfelse>
-            <form class="analytics-filter mb-4" method="get" action="./">
-              <div class="row g-3 align-items-end">
-                <div class="col-md-2">
-                  <label class="form-label">Periodo</label>
-                  <select class="form-select" name="dias">
-                    <option value="1"<cfif VARIABLES.eventAnalyticsDays EQ 1> selected</cfif>>1 dia</option>
-                    <option value="7"<cfif VARIABLES.eventAnalyticsDays EQ 7> selected</cfif>>7 dias</option>
-                    <option value="30"<cfif VARIABLES.eventAnalyticsDays EQ 30> selected</cfif>>30 dias</option>
-                    <option value="90"<cfif VARIABLES.eventAnalyticsDays EQ 90> selected</cfif>>90 dias</option>
-                  </select>
-                </div>
-
-                <div class="col-md-2">
-                  <label class="form-label">Site</label>
-                  <select class="form-select" name="site">
-                    <option value="">Todos</option>
-                    <option value="RR"<cfif VARIABLES.eventAnalyticsSite EQ "RR"> selected</cfif>>RR</option>
-                    <option value="OR"<cfif VARIABLES.eventAnalyticsSite EQ "OR"> selected</cfif>>OR</option>
-                    <option value="CT"<cfif VARIABLES.eventAnalyticsSite EQ "CT"> selected</cfif>>CT</option>
-                  </select>
-                </div>
-
-                <div class="col-md-2">
-                  <label class="form-label">Bots</label>
-                  <select class="form-select" name="bot">
-                    <option value="todos"<cfif VARIABLES.eventAnalyticsBotFilter EQ "todos"> selected</cfif>>Todos</option>
-                    <option value="nao"<cfif VARIABLES.eventAnalyticsBotFilter EQ "nao"> selected</cfif>>Sem bots</option>
-                    <option value="sim"<cfif VARIABLES.eventAnalyticsBotFilter EQ "sim"> selected</cfif>>So bots</option>
-                  </select>
-                </div>
-
-                <div class="col-md-2">
-                  <label class="form-label">Amostra</label>
-                  <select class="form-select" name="limite">
-                    <option value="500"<cfif VARIABLES.eventAnalyticsSampleLimit EQ 500> selected</cfif>>500</option>
-                    <option value="1000"<cfif VARIABLES.eventAnalyticsSampleLimit EQ 1000> selected</cfif>>1000</option>
-                    <option value="3000"<cfif VARIABLES.eventAnalyticsSampleLimit EQ 3000> selected</cfif>>3000</option>
-                  </select>
-                </div>
-
-                <div class="col-md-3">
-                  <label class="form-label">Termo</label>
-                  <input type="search" class="form-control" name="termo" value="<cfoutput>#htmlEditFormat(VARIABLES.eventAnalyticsTerm)#</cfoutput>" placeholder="Evento, tag, cidade, estado, IP ou agente"/>
-                </div>
-
-                <div class="col-md-1">
-                  <button type="submit" class="btn btn-warning w-100">Filtrar</button>
-                </div>
-              </div>
-            </form>
-
-            <div class="alert alert-info">
-              Os numeros sao calculados sobre a amostra recente da <strong>tb_log</strong>. O fluxo usa a sequencia de eventos por origem textual (<code>log_user</code>), entao e uma aproximacao, nao uma sessao web real.
-            </div>
-
-            <div class="row g-3 mb-4">
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Pageviews</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.pageviews, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Eventos</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.eventos, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Origens</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.origens, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Bots</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.bots, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Mobile</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.mobile, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="analytics-metric">
-                  <div class="analytics-metric-label mb-1">Sem cadastro</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.eventAnalyticsStats.semCadastro, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-            </div>
-
-            <cfif VARIABLES.eventAnalyticsEventId GT 0>
-              <div class="analytics-panel mb-4">
-                <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
-                  <div>
-                    <h5 class="mb-1">
-                      <cfif qEventAnalyticsDetailEvent.recordcount>
-                        <cfoutput>#htmlEditFormat(qEventAnalyticsDetailEvent.nome_evento)#</cfoutput>
-                      <cfelse>
-                        <cfoutput>Evento ###VARIABLES.eventAnalyticsEventId#</cfoutput>
-                      </cfif>
-                    </h5>
-                    <div class="text-muted small">
-                      <cfif qEventAnalyticsDetailEvent.recordcount>
-                        <cfoutput>
-                          #qEventAnalyticsDetailEvent.id_evento# -
-                          #htmlEditFormat(qEventAnalyticsDetailEvent.cidade)#/#htmlEditFormat(qEventAnalyticsDetailEvent.estado)# -
-                          #dateFormat(qEventAnalyticsDetailEvent.data_inicial, "dd/mm/yyyy")#
-                        </cfoutput>
-                      <cfelse>
-                        Cadastro do evento nao localizado.
-                      </cfif>
-                    </div>
-                  </div>
-                  <cfoutput><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.eventAnalyticsBaseQuery#">Fechar detalhe</a></cfoutput>
-                </div>
-
-                <cfif qEventAnalyticsDetailStats.recordcount>
-                  <div class="row g-3 mb-3">
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Views</div><div class="h5 mb-0"><cfoutput>#LSNumberFormat(qEventAnalyticsDetailStats.views, "9,999,999")#</cfoutput></div></div></div>
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Origens</div><div class="h5 mb-0"><cfoutput>#LSNumberFormat(qEventAnalyticsDetailStats.origens, "9,999,999")#</cfoutput></div></div></div>
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Bots</div><div class="h5 mb-0"><cfoutput>#LSNumberFormat(qEventAnalyticsDetailStats.bots, "9,999,999")#</cfoutput></div></div></div>
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Mobile</div><div class="h5 mb-0"><cfoutput>#LSNumberFormat(qEventAnalyticsDetailStats.mobile, "9,999,999")#</cfoutput></div></div></div>
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Primeiro</div><div class="small mb-0"><cfoutput>#eventAnalyticsFormatDateTime(qEventAnalyticsDetailStats.primeiro_acesso)#</cfoutput></div></div></div>
-                    <div class="col-sm-6 col-xl-2"><div class="analytics-metric"><div class="analytics-metric-label mb-1">Ultimo</div><div class="small mb-0"><cfoutput>#eventAnalyticsFormatDateTime(qEventAnalyticsDetailStats.ultimo_acesso)#</cfoutput></div></div></div>
-                  </div>
-                </cfif>
-
-                <cfif qEventAnalyticsDetailRecent.recordcount>
-                  <div class="table-responsive">
-                    <table class="table table-sm table-striped table-hover analytics-table mb-0">
-                      <thead>
-                        <tr>
-                          <th>Data</th>
-                          <th>Origem</th>
-                          <th>Site</th>
-                          <th>Dispositivo</th>
-                          <th>Navegador</th>
-                          <th>User agent</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qEventAnalyticsDetailRecent">
-                          <tr>
-                            <td>#eventAnalyticsFormatDateTime(qEventAnalyticsDetailRecent.log_timestamp)#</td>
-                            <td>#htmlEditFormat(qEventAnalyticsDetailRecent.log_user)#</td>
-                            <td><span class="badge badge-secondary">#htmlEditFormat(qEventAnalyticsDetailRecent.site)#</span></td>
-                            <td>#htmlEditFormat(qEventAnalyticsDetailRecent.dispositivo)#</td>
-                            <td>#htmlEditFormat(qEventAnalyticsDetailRecent.navegador)#</td>
-                            <td class="analytics-text-cell">#htmlEditFormat(eventAnalyticsShortText(qEventAnalyticsDetailRecent.log_user_agent, 180))#</td>
-                          </tr>
-                        </cfoutput>
-                      </tbody>
-                    </table>
-                  </div>
-                </cfif>
-              </div>
-            </cfif>
-
-            <div class="analytics-panel mb-4">
-              <h5 class="mb-3">Eventos mais visitados</h5>
-              <cfif qEventAnalyticsTopEvents.recordcount>
-                <div class="table-responsive">
-                  <table class="table table-sm table-striped table-hover analytics-table mb-0">
-                    <thead>
-                      <tr>
-                        <th>Evento</th>
-                        <th>Cidade</th>
-                        <th>Data</th>
-                        <th>Views</th>
-                        <th>Origens</th>
-                        <th>Bots</th>
-                        <th>Ultimo</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <cfoutput query="qEventAnalyticsTopEvents">
-                        <tr>
-                          <td class="analytics-text-cell">
-                            <strong>#htmlEditFormat(qEventAnalyticsTopEvents.evento_nome)#</strong>
-                            <div class="small text-muted">###qEventAnalyticsTopEvents.id_evento# <cfif len(trim(qEventAnalyticsTopEvents.evento_tag))>- #htmlEditFormat(qEventAnalyticsTopEvents.evento_tag)#</cfif></div>
-                          </td>
-                          <td>#htmlEditFormat(qEventAnalyticsTopEvents.cidade)#<cfif len(trim(qEventAnalyticsTopEvents.estado))>/#htmlEditFormat(qEventAnalyticsTopEvents.estado)#</cfif></td>
-                          <td><cfif isDate(qEventAnalyticsTopEvents.data_inicial)>#dateFormat(qEventAnalyticsTopEvents.data_inicial, "dd/mm/yyyy")#</cfif></td>
-                          <td>#LSNumberFormat(qEventAnalyticsTopEvents.views, "9,999,999")#</td>
-                          <td>#LSNumberFormat(qEventAnalyticsTopEvents.origens, "9,999,999")#</td>
-                          <td>#LSNumberFormat(qEventAnalyticsTopEvents.bots, "9,999,999")#</td>
-                          <td>#eventAnalyticsFormatDateTime(qEventAnalyticsTopEvents.ultimo_acesso)#</td>
-                          <td>
-                            <cfif len(trim(qEventAnalyticsTopEvents.id_evento & ""))>
-                              <a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.eventAnalyticsBaseQuery#&evento_id=#qEventAnalyticsTopEvents.id_evento#">Detalhe</a>
-                            </cfif>
-                          </td>
-                        </tr>
-                      </cfoutput>
-                    </tbody>
-                  </table>
-                </div>
-              <cfelse>
-                <div class="text-muted">Nenhum evento encontrado nos filtros atuais.</div>
-              </cfif>
-            </div>
-
-            <div class="row g-4 mb-4">
-              <div class="col-xl-4">
-                <div class="analytics-panel h-100">
-                  <h5 class="mb-3">Cidades</h5>
-                  <cfif qEventAnalyticsByCity.recordcount>
-                    <div class="table-responsive">
-                      <table class="table table-sm table-striped table-hover mb-0">
-                        <thead><tr><th>Cidade</th><th>Views</th><th>Eventos</th></tr></thead>
-                        <tbody>
-                          <cfoutput query="qEventAnalyticsByCity">
-                            <tr>
-                              <td>#htmlEditFormat(qEventAnalyticsByCity.cidade)#<cfif len(trim(qEventAnalyticsByCity.estado))>/#htmlEditFormat(qEventAnalyticsByCity.estado)#</cfif></td>
-                              <td>#LSNumberFormat(qEventAnalyticsByCity.views, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsByCity.eventos, "9,999,999")#</td>
-                            </tr>
-                          </cfoutput>
-                        </tbody>
-                      </table>
-                    </div>
-                  <cfelse><div class="text-muted">Sem cidades.</div></cfif>
-                </div>
-              </div>
-
-              <div class="col-xl-4">
-                <div class="analytics-panel h-100">
-                  <h5 class="mb-3">Dispositivos</h5>
-                  <cfif qEventAnalyticsByDevice.recordcount>
-                    <div class="table-responsive">
-                      <table class="table table-sm table-striped table-hover mb-0">
-                        <thead><tr><th>Dispositivo</th><th>Views</th><th>Eventos</th><th>Origens</th></tr></thead>
-                        <tbody>
-                          <cfoutput query="qEventAnalyticsByDevice">
-                            <tr>
-                              <td>#htmlEditFormat(qEventAnalyticsByDevice.dispositivo)#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsByDevice.views, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsByDevice.eventos, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsByDevice.origens, "9,999,999")#</td>
-                            </tr>
-                          </cfoutput>
-                        </tbody>
-                      </table>
-                    </div>
-                  <cfelse><div class="text-muted">Sem dispositivos.</div></cfif>
-                </div>
-              </div>
-
-              <div class="col-xl-4">
-                <div class="analytics-panel h-100">
-                  <h5 class="mb-3">Sites</h5>
-                  <cfif qEventAnalyticsBySite.recordcount>
-                    <div class="table-responsive">
-                      <table class="table table-sm table-striped table-hover mb-0">
-                        <thead><tr><th>Site</th><th>Views</th><th>Eventos</th><th>Bots</th></tr></thead>
-                        <tbody>
-                          <cfoutput query="qEventAnalyticsBySite">
-                            <tr>
-                              <td><span class="badge badge-secondary">#htmlEditFormat(qEventAnalyticsBySite.site)#</span></td>
-                              <td>#LSNumberFormat(qEventAnalyticsBySite.views, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsBySite.eventos, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsBySite.bots, "9,999,999")#</td>
-                            </tr>
-                          </cfoutput>
-                        </tbody>
-                      </table>
-                    </div>
-                  <cfelse><div class="text-muted">Sem sites.</div></cfif>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-4 mb-4">
-              <div class="col-xl-6">
-                <div class="analytics-panel h-100">
-                  <h5 class="mb-3">Fluxo aproximado entre eventos</h5>
-                  <cfif qEventAnalyticsFlow.recordcount>
-                    <div class="table-responsive">
-                      <table class="table table-sm table-striped table-hover analytics-table mb-0">
-                        <thead><tr><th>De</th><th>Para</th><th>Transições</th><th>Origens</th></tr></thead>
-                        <tbody>
-                          <cfoutput query="qEventAnalyticsFlow">
-                            <tr>
-                              <td class="analytics-text-cell">#htmlEditFormat(qEventAnalyticsFlow.evento_anterior_nome)#</td>
-                              <td class="analytics-text-cell">#htmlEditFormat(qEventAnalyticsFlow.evento_atual_nome)#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsFlow.transicoes, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsFlow.origens, "9,999,999")#</td>
-                            </tr>
-                          </cfoutput>
-                        </tbody>
-                      </table>
-                    </div>
-                  <cfelse>
-                    <div class="text-muted">Sem transicoes suficientes na amostra.</div>
-                  </cfif>
-                </div>
-              </div>
-
-              <div class="col-xl-6">
-                <div class="analytics-panel h-100">
-                  <h5 class="mb-3">Top origens</h5>
-                  <cfif qEventAnalyticsOrigins.recordcount>
-                    <div class="table-responsive">
-                      <table class="table table-sm table-striped table-hover analytics-table mb-0">
-                        <thead><tr><th>Origem</th><th>Views</th><th>Eventos</th><th>Ultimo agente</th></tr></thead>
-                        <tbody>
-                          <cfoutput query="qEventAnalyticsOrigins">
-                            <tr>
-                              <td>#htmlEditFormat(qEventAnalyticsOrigins.log_user)#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsOrigins.views, "9,999,999")#</td>
-                              <td>#LSNumberFormat(qEventAnalyticsOrigins.eventos, "9,999,999")#</td>
-                              <td class="analytics-text-cell">#htmlEditFormat(eventAnalyticsShortText(qEventAnalyticsOrigins.ultimo_user_agent, 160))#</td>
-                            </tr>
-                          </cfoutput>
-                        </tbody>
-                      </table>
-                    </div>
-                  <cfelse>
-                    <div class="text-muted">Sem origens para listar.</div>
-                  </cfif>
-                </div>
-              </div>
-            </div>
-
-            <div class="analytics-panel mb-4">
-              <h5 class="mb-3">Volume por hora</h5>
-              <cfif qEventAnalyticsByHour.recordcount>
-                <div class="table-responsive">
-                  <table class="table table-sm table-striped table-hover mb-0">
-                    <thead><tr><th>Hora</th><th>Views</th><th>Eventos</th><th>Bots</th></tr></thead>
-                    <tbody>
-                      <cfoutput query="qEventAnalyticsByHour">
-                        <tr>
-                          <td>#dateTimeFormat(qEventAnalyticsByHour.hora, "dd/mm HH:nn")#</td>
-                          <td>#LSNumberFormat(qEventAnalyticsByHour.views, "9,999,999")#</td>
-                          <td>#LSNumberFormat(qEventAnalyticsByHour.eventos, "9,999,999")#</td>
-                          <td>#LSNumberFormat(qEventAnalyticsByHour.bots, "9,999,999")#</td>
-                        </tr>
-                      </cfoutput>
-                    </tbody>
-                  </table>
-                </div>
-              <cfelse>
-                <div class="text-muted">Sem volume por hora.</div>
-              </cfif>
-            </div>
-
-            <div class="analytics-panel">
-              <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
-                <div>
-                  <h5 class="mb-1">Ultimos acessos a eventos</h5>
-                  <div class="text-muted small"><cfoutput>Exibindo ate #VARIABLES.eventAnalyticsDisplayLimit# registros da amostra filtrada</cfoutput></div>
-                </div>
-                <a class="btn btn-outline-light btn-sm" href="./">Voltar ao padrao</a>
-              </div>
-
-              <cfif qEventAnalyticsRecent.recordcount>
-                <div class="table-responsive">
-                  <table class="table table-sm table-striped table-hover analytics-table mb-0">
-                    <thead>
-                      <tr>
-                        <th>Data</th>
-                        <th>Evento</th>
-                        <th>Site</th>
-                        <th>Origem</th>
-                        <th>Dispositivo</th>
-                        <th>Navegador</th>
-                        <th>User agent</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <cfoutput query="qEventAnalyticsRecent">
-                        <tr>
-                          <td>#eventAnalyticsFormatDateTime(qEventAnalyticsRecent.log_timestamp)#</td>
-                          <td class="analytics-text-cell">
-                            <strong>#htmlEditFormat(qEventAnalyticsRecent.evento_nome)#</strong>
-                            <div class="small text-muted">###qEventAnalyticsRecent.id_evento# <cfif len(trim(qEventAnalyticsRecent.cidade))>- #htmlEditFormat(qEventAnalyticsRecent.cidade)#/#htmlEditFormat(qEventAnalyticsRecent.estado)#</cfif></div>
-                          </td>
-                          <td><span class="badge badge-secondary">#htmlEditFormat(qEventAnalyticsRecent.site)#</span></td>
-                          <td>#htmlEditFormat(qEventAnalyticsRecent.log_user)#</td>
-                          <td>
-                            #htmlEditFormat(qEventAnalyticsRecent.dispositivo)#
-                            <cfif qEventAnalyticsRecent.parece_bot><span class="badge badge-warning ms-1">bot</span></cfif>
-                          </td>
-                          <td>#htmlEditFormat(qEventAnalyticsRecent.navegador)#</td>
-                          <td class="analytics-text-cell">#htmlEditFormat(eventAnalyticsShortText(qEventAnalyticsRecent.log_user_agent, 180))#</td>
-                        </tr>
-                      </cfoutput>
-                    </tbody>
-                  </table>
-                </div>
-              <cfelse>
-                <div class="text-muted">Nenhum acesso encontrado para os filtros atuais.</div>
-              </cfif>
-            </div>
-          </cfif>
+<cfoutput>
+<section class="event-interest" aria-labelledby="ei-title">
+  <div class="ei-heading"><div><div class="small ei-muted">INTELIGÊNCIA DO PORTAL · ROAD RUNNERS</div><h1 id="ei-title">Quais provas estão despertando interesse?</h1><p class="ei-muted mb-2">Acessos medidos, interesse em agenda e prioridades para melhorar os cadastros.</p></div><a class="btn btn-sm btn-outline-light" href="/portal/audiencia/">Audiência do site</a></div>
+  <form method="get" class="ei-panel ei-filters mt-3">
+    <div><label for="ei-days">Acessos no período</label><select name="dias" id="ei-days"><cfloop list="#listFind('alta,agenda',VARIABLES.eiFilters.aba) ? '7,30' : '1,7,30,90'#" index="eiOption"><option value="#eiOption#" <cfif VARIABLES.eiFilters.dias EQ eiOption>selected</cfif>><cfif eiOption EQ "1">Hoje<cfelse>#eiOption# dias</cfif></option></cfloop></select></div>
+    <div><label for="ei-uf">UF da prova</label><select id="ei-uf" name="uf"><option value="">Todas</option><cfloop list="#VARIABLES.eiUfs#" index="eiOption"><option <cfif VARIABLES.eiFilters.uf EQ eiOption>selected</cfif>>#eiOption#</option></cfloop></select></div>
+    <cfif VARIABLES.eiFilters.aba NEQ 'agenda'><div><label for="ei-stage">Data da prova</label><select name="fase" id="ei-stage"><option value="all" <cfif VARIABLES.eiFilters.fase EQ 'all'>selected</cfif>>Todas</option><option value="future" <cfif VARIABLES.eiFilters.fase EQ 'future'>selected</cfif>>Hoje e futuras</option><option value="past" <cfif VARIABLES.eiFilters.fase EQ 'past'>selected</cfif>>Já realizadas</option></select></div><cfelse><input type="hidden" name="fase" value="future"></cfif>
+    <div class="ei-search"><label for="ei-search">Prova, cidade ou ID</label><input id="ei-search" name="termo" maxlength="120" value="#encodeForHTMLAttribute(VARIABLES.eiFilters.termo)#" placeholder="Buscar uma prova"></div>
+    <div><label for="ei-internal">Tráfego</label><select name="internos" id="ei-internal"><option value="0" <cfif VARIABLES.eiFilters.internos EQ '0'>selected</cfif>>Público</option><option value="1" <cfif VARIABLES.eiFilters.internos EQ '1'>selected</cfif>>Público + interno</option></select></div>
+    <input type="hidden" name="aba" value="#VARIABLES.eiFilters.aba#"><cfif len(VARIABLES.eiFilters.evento_id)><input type="hidden" name="evento_id" value="#encodeForHTMLAttribute(VARIABLES.eiFilters.evento_id)#"></cfif>
+    <button class="btn btn-warning" type="submit">Aplicar</button>
+  </form>
+  <nav class="ei-tabs" aria-label="Visões de interesse"><cfloop array="#[{key='ranking',label='Mais acessadas'},{key='alta',label='Em alta'},{key='agenda',label='Agenda'},{key='cadastro',label='Melhorar cadastros'},{key='origem',label='Origem'},{key='publico',label='Público e navegação'},{key='metodo',label='Como interpretar'}]#" index="eiTab"><a href="#encodeForHTMLAttribute(eventInterestUrl({aba=eiTab.key,p=1}))#" <cfif VARIABLES.eiFilters.aba EQ eiTab.key>aria-current="page"</cfif>>#eiTab.label#</a></cfloop></nav>
+  <cfif NOT VARIABLES.eiReady>
+    <cfif VARIABLES.eiFilters.aba EQ 'agenda'><div class="ei-panel" role="status"><h2 class="h5">Agenda indisponível</h2><p class="ei-muted mb-0">Não foi possível consultar as provas salvas agora. Isso não significa que a agenda está vazia. Tente atualizar a página ou consulte outra aba.</p></div><cfelse>
+    <div class="ei-panel" role="status"><h2 class="h5">Leitura de audiência indisponível</h2><p class="ei-muted mb-0">Não foi possível consultar a nova medição agora. Isso não significa zero acessos. Tente atualizar a página.</p></div>
+    </cfif>
+  <cfelse>
+    <cfset ei=VARIABLES.eiReport>
+    <cfif VARIABLES.eiFilters.aba EQ 'agenda'>
+      <cfinclude template="agenda.cfm">
+    <cfelse>
+    <div class="ei-note ei-muted">#encodeForHTML(ei.meta.since)# até #encodeForHTML(ei.meta.until)# · Brasília · Hoje é parcial · Último recebimento: #encodeForHTML(ei.meta.last_received)# · Atualização em até 1 minuto.</div>
+    <cfif len(VARIABLES.eiFilters.evento_id)><div class="ei-panel mt-3 mb-2">Detalhe da prova ###encodeForHTML(VARIABLES.eiFilters.evento_id)# <a class="ms-3" href="#encodeForHTMLAttribute(eventInterestUrl({evento_id='',p=1}))#">Voltar a todas as provas</a></div></cfif>
+    <div class="ei-kpis">
+      <div class="ei-kpi"><span class="ei-muted">Aberturas de provas</span><strong class="ei-value" data-metric="pageviews">#eventInterestNumber(ei.summary.pageviews)#</strong><small class="ei-muted">Aberturas medidas, sem amostra</small></div>
+      <div class="ei-kpi"><span class="ei-muted">Visitantes estimados</span><strong class="ei-value">#eventInterestNumber(ei.summary.visitors)#</strong><small class="ei-muted">#eventInterestNumber(ei.summary.sessions)# sessões · navegadores, não pessoas</small></div>
+      <div class="ei-kpi"><span class="ei-muted">Provas acessadas</span><strong class="ei-value">#eventInterestNumber(ei.summary.events)#</strong><small class="ei-muted">#eventInterestNumber(ei.summary.gaps)# com campos para revisar</small></div>
+      <div class="ei-kpi"><span class="ei-muted">Futuras em destaque</span><strong class="ei-value" data-metric="highlights">#eventInterestNumber(ei.summary.hot)#</strong><small class="ei-muted">Últimos #ei.meta.trend_days# dias · 3+ visitantes</small></div>
+    </div>
+    <cfif listFind('ranking,alta,cadastro',VARIABLES.eiFilters.aba)>
+      <cfset eiRows=ei.ranking>
+      <cfif VARIABLES.eiFilters.aba EQ 'alta'><cfset eiRows=ei.hot><cfelseif VARIABLES.eiFilters.aba EQ 'cadastro'><cfset eiRows=ei.gaps></cfif>
+      <div class="ei-panel">
+        <cfif VARIABLES.eiFilters.aba EQ 'alta'>
+          <h2 class="h5">Provas em destaque nos últimos #ei.meta.trend_days# dias</h2><p class="ei-note ei-muted">Provas ativas, de hoje ou futuras, com pelo menos 3 visitantes distintos. Ordem: mais visitantes, depois aberturas. Até 20 provas; não é necessário estar crescendo para aparecer. Agenda ao lado mostra o saldo atual.</p>
+          <p class="ei-note ei-muted">Período: #encodeForHTML(ei.meta.recent)# · Brasília. Escolha 7 ou 30 dias no filtro acima.</p>
+          <cfif NOT ei.meta.comparison_ready><p class="ei-warn">Histórico ainda parcial: mostramos os destaques observados, sem percentual de crescimento. Os dias sem coleta não representam zero procura.</p><cfelse><p class="ei-note ei-muted">Comparação: #encodeForHTML(ei.meta.previous)#. Hoje e o último dia da base anterior são considerados até o mesmo horário. Variações sobre bases pequenas são apenas sinais exploratórios.</p></cfif>
+        <cfelseif VARIABLES.eiFilters.aba EQ 'cadastro'>
+          <h2 class="h5">Demanda observada, informação faltando</h2><p class="ei-note ei-muted">Até 20 prioridades: futuras primeiro, depois mais aberturas. Os campos são verificados no cadastro atual; a ausência indica revisão, não erro confirmado. Links e imagens herdados podem já aparecer no portal.</p>
+        <cfelse><h2 class="h5">Mais acessadas no período</h2><p class="ei-note ei-muted">Compare volume de acessos com atletas que mantêm a prova na agenda. Agenda é o saldo atual compartilhado entre os portais, não inclusões deste período nem conversão desses visitantes.</p></cfif>
+        <cfif NOT VARIABLES.eiAgendaReady><p class="ei-warn">Agenda indisponível no momento. Os acessos continuam disponíveis.</p></cfif>
+        <cfif arrayLen(eiRows)>
+        <div class="ei-scroll" tabindex="0" aria-label="Tabela de provas; role horizontalmente em telas pequenas"><table class="ei-table"><thead><tr><th>Prova</th><th class="ei-num">Aberturas</th><th class="ei-num">Visitantes</th><th>Interesse · #ei.meta.trend_days# dias</th><th>Agenda atual</th><cfif VARIABLES.eiFilters.aba EQ 'cadastro'><th>Revisar</th></cfif></tr></thead><tbody>
+        <cfloop array="#eiRows#" index="eiRow"><tr>
+          <td class="ei-title"><a href="#encodeForHTMLAttribute(eventInterestUrl({evento_id=eiRow.content_id,p=1,aba='ranking'}))#"><strong>#encodeForHTML(eiRow.event_name)#</strong></a><div class="ei-note ei-muted">#encodeForHTML(eiRow.city)#<cfif len(eiRow.uf)> / #encodeForHTML(eiRow.uf)#</cfif> · #encodeForHTML(eiRow.event_date)#</div><div><span class="ei-pill"><cfif eiRow.catalog_missing>Sem cadastro<cfelseif eiRow.upcoming>Hoje ou futura<cfelse>Já realizada</cfif></span><cfif NOT eiRow.active AND NOT eiRow.catalog_missing><span class="ei-pill">Inativa</span></cfif><cfif arrayLen(eiRow.missing_fields) AND VARIABLES.eiFilters.aba NEQ 'cadastro'><span class="ei-pill">#arrayLen(eiRow.missing_fields)# campos para revisar</span></cfif></div></td>
+          <td class="ei-num"><strong>#eventInterestNumber(eiRow.pageviews)#</strong><div class="ei-note ei-muted">#eventInterestNumber(eiRow.sessions)# sessões</div></td><td class="ei-num">#eventInterestNumber(eiRow.visitors)#</td>
+          <td><cfif NOT ei.meta.comparison_ready><span class="ei-muted"><cfif VARIABLES.eiFilters.aba EQ 'alta'>Destaque no período<cfelse>Sem base comparável</cfif></span><div class="ei-note ei-muted">#eventInterestNumber(eiRow.recent_visitors)# visitantes · #ei.meta.trend_days# dias</div>
+          <cfelse><cfif structKeyExists(eiRow,'growth_pct') AND isNumeric(eiRow.growth_pct)><strong class="<cfif eiRow.growth_pct GT 0>ei-up</cfif>"><cfif eiRow.growth_pct GT 0>+</cfif>#replace(numberFormat(eiRow.growth_pct,'0.0'),'.',',')#%</strong><cfelseif eiRow.recent_visitors GT 0><span class="ei-up">Novo interesse</span><cfelse><span class="ei-muted">Sem interesse recente</span></cfif><div class="ei-note ei-muted">#eventInterestNumber(eiRow.recent_visitors)# vs. #eventInterestNumber(eiRow.previous_visitors)# visitantes</div><cfif eiRow.previous_visitors GT 0 AND eiRow.previous_visitors LT 3><div class="ei-note ei-muted">Base anterior pequena</div></cfif></cfif></td>
+          <td style="min-width:180px"><span class="ei-note">#encodeForHTML(eventInterestAgenda(eiRow.content_id))#</span></td>
+          <cfif VARIABLES.eiFilters.aba EQ 'cadastro'><td style="min-width:190px"><div class="ei-note ei-warn">#encodeForHTML(arrayToList(eiRow.missing_fields,', '))#</div><cfif NOT eiRow.catalog_missing><a class="ei-note" href="/admin/?periodo=#eiRow.event_year#&amp;id_evento=#encodeForURL(eiRow.content_id)#">Revisar cadastro →</a></cfif></td></cfif>
+        </tr></cfloop></tbody></table></div>
+        <cfelse><p class="ei-muted mb-0">Nenhuma prova encontrada para esta visão e estes filtros.</p></cfif>
+        <cfif VARIABLES.eiFilters.aba EQ 'ranking'><div class="ei-pagination ei-note"><span class="ei-muted">#eventInterestNumber(ei.summary.events)# provas · até 50 por página · página #VARIABLES.eiFilters.p#</span><div><cfif val(VARIABLES.eiFilters.p) GT 1><a class="btn btn-sm btn-outline-light me-2" href="#encodeForHTMLAttribute(eventInterestUrl({p=val(VARIABLES.eiFilters.p)-1}))#">Anterior</a></cfif><cfif val(VARIABLES.eiFilters.p)*50 LT ei.summary.events><a class="btn btn-sm btn-outline-light" href="#encodeForHTMLAttribute(eventInterestUrl({p=val(VARIABLES.eiFilters.p)+1}))#">Próxima</a></cfif></div></div></cfif>
+      </div>
+      <cfif VARIABLES.eiFilters.aba EQ 'ranking'><details class="ei-panel"><summary>Aberturas por dia</summary><div class="ei-scroll mt-3"><table class="ei-table"><thead><tr><th>Dia</th><th class="ei-num">Aberturas</th><th>Volume</th></tr></thead><tbody><cfset eiMax=1><cfloop array="#ei.daily#" index="eiRow"><cfset eiMax=max(eiMax,eiRow.pageviews)></cfloop><cfloop array="#ei.daily#" index="eiRow"><tr><td>#encodeForHTML(eiRow.day)#</td><td class="ei-num">#eventInterestNumber(eiRow.pageviews)#</td><td style="width:60%"><span class="ei-bar" style="width:#round(100*eiRow.pageviews/eiMax)#%" aria-hidden="true"></span></td></tr></cfloop></tbody></table></div></details></cfif>
+    <cfelseif VARIABLES.eiFilters.aba EQ 'origem'>
+      <div class="ei-panel"><h2 class="h5">De onde vem o interesse nas provas?</h2><p class="ei-note ei-muted">Origem atribuída às aberturas de páginas de evento deste recorte. Até 30 combinações, ordenadas por aberturas. Visitantes e sessões podem aparecer em mais de uma combinação.</p>
+      <cfif arrayLen(ei.sources)><div class="ei-scroll"><table class="ei-table"><thead><tr><th>Origem / meio</th><th>Campanha</th><th class="ei-num">Aberturas</th><th class="ei-num">Visitantes</th><th class="ei-num">Sessões</th></tr></thead><tbody><cfloop array="#ei.sources#" index="eiRow"><tr><td><strong>#encodeForHTML(eiRow.source)#</strong><div class="ei-note ei-muted">#encodeForHTML(eiRow.medium)#</div></td><td class="ei-title">#encodeForHTML(eiRow.campaign)#</td><td class="ei-num">#eventInterestNumber(eiRow.pageviews)#</td><td class="ei-num">#eventInterestNumber(eiRow.visitors)#</td><td class="ei-num">#eventInterestNumber(eiRow.sessions)#</td></tr></cfloop></tbody></table></div><cfelse><p class="ei-muted">Nenhuma origem medida neste recorte.</p></cfif></div>
+    <cfelseif VARIABLES.eiFilters.aba EQ 'publico'>
+      <div class="ei-columns">
+        <div class="ei-panel"><h2 class="h5">UF aproximada do acesso</h2>
+          <p class="ei-note ei-muted">Localização de quem acessou, não a UF da prova. Percentuais sobre as #eventInterestNumber(ei.summary.pageviews)# aberturas do recorte, incluindo as sem UF.</p>
+          <div class="ei-scroll"><table class="ei-table" id="ei-regions"><thead><tr><th>UF</th><th class="ei-num">Aberturas · % do total</th></tr></thead><tbody>
+          <cfloop array="#ei.regions#" index="eiRow"><tr><td>#encodeForHTML(eiRow.uf)#</td><td class="ei-num">#eventInterestNumber(eiRow.pageviews)# <strong>(#eventInterestPercent(eiRow.pageviews,ei.summary.pageviews)#)</strong></td></tr></cfloop>
+          <cfif NOT arrayLen(ei.regions)><tr><td colspan="2" class="ei-muted">Nenhuma abertura neste recorte.</td></tr></cfif>
+          </tbody></table></div>
+          <cfif arrayLen(ei.regions)><p class="ei-note ei-muted mt-3 mb-0">“Não identificada” significa que o registro chegou sem uma UF válida. Os registros antigos sem UF não são preenchidos com o estado da prova.</p></cfif>
+        </div>
+        <div class="ei-panel"><h2 class="h5">Faixa de tela</h2>
+          <p class="ei-note ei-muted">Largura da janela, não identificação do aparelho. Percentuais sobre as #eventInterestNumber(ei.summary.pageviews)# aberturas do recorte.</p>
+          <div class="ei-scroll"><table class="ei-table" id="ei-devices"><thead><tr><th>Faixa</th><th class="ei-num">Aberturas · % do total</th></tr></thead><tbody>
+          <cfloop array="#ei.devices#" index="eiRow"><tr><td>#encodeForHTML(eiRow.device)#</td><td class="ei-num">#eventInterestNumber(eiRow.pageviews)# <strong>(#eventInterestPercent(eiRow.pageviews,ei.summary.pageviews)#)</strong></td></tr></cfloop>
+          <cfif NOT arrayLen(ei.devices)><tr><td colspan="2" class="ei-muted">Nenhuma abertura neste recorte.</td></tr></cfif>
+          </tbody></table></div>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="ei-panel"><h2 class="h5">Provas exploradas na mesma sessão</h2>
+        <p class="ei-note ei-muted">Até 20 sequências de aberturas de eventos, ordenadas no tempo. Não são cliques diretos: abas paralelas e páginas intermediárias podem existir. Os filtros se aplicam à prova de destino.</p>
+        <p class="ei-note ei-muted">Base dos percentuais: #eventInterestNumber(ei.summary.flow_transitions)# sequências no total, antes do limite de 20 linhas; e #eventInterestNumber(ei.summary.sessions)# sessões do recorte. Uma sessão pode aparecer em várias sequências; seus percentuais não devem ser somados.</p>
+        <cfif arrayLen(ei.flows)><div class="ei-scroll" tabindex="0" aria-label="Sequências entre provas; role horizontalmente em telas pequenas"><table class="ei-table" id="ei-flows"><thead><tr><th>Anterior</th><th>Seguinte</th><th class="ei-num">Sequências · %</th><th class="ei-num">Sessões · %</th></tr></thead><tbody>
+        <cfloop array="#ei.flows#" index="eiRow"><tr><td class="ei-title">#encodeForHTML(eiRow.from_event)#</td><td class="ei-title">#encodeForHTML(eiRow.to_event)#</td><td class="ei-num">#eventInterestNumber(eiRow.transitions)# <strong>(#eventInterestPercent(eiRow.transitions,ei.summary.flow_transitions)#)</strong></td><td class="ei-num">#eventInterestNumber(eiRow.sessions)# <strong>(#eventInterestPercent(eiRow.sessions,ei.summary.sessions)#)</strong></td></tr></cfloop>
+        </tbody></table></div><cfelse><p class="ei-muted">Sem sequências entre provas neste recorte.</p></cfif>
+      </div>
+    <cfelse>
+      <div class="ei-panel"><h2 class="h5">Sinais para priorizar, não uma previsão de vendas</h2>
+<ul class="ei-note"><li><strong>Aberturas:</strong> páginas de evento medidas no navegador, uma por identificador de abertura. Recarregamentos contam; interações não geram uma segunda abertura. Somente Road Runners em produção, com internos excluídos por padrão.</li><li><strong>Visitantes estimados:</strong> identificadores de navegador. Não são pessoas únicas; recusa, bloqueadores e troca de navegador podem reduzir a cobertura ou fragmentar identidades. Não há garantia de eliminação de todos os bots.</li><li><strong>Em alta:</strong> destaques de provas ativas de hoje ou futuras com pelo menos 3 visitantes distintos nos últimos 7 ou 30 dias, ordenados por visitantes e depois aberturas. Crescimento não é requisito. Hoje usa 7 dias; o filtro de 90 dias usa 30 dias para interesse. Na aba Em alta, o período fica em 7 ou 30 dias. A comparação com o período anterior termina no mesmo horário de Brasília; exige registro anterior à base e sinais diários do site nas duas janelas. Presença diária não certifica coleta sem interrupções. Sem histórico, exibimos o volume observado sem variação; base anterior zero vira “Novo interesse”, sem percentual. Bases pequenas são exploratórias, não previsão de inscrições.</li><li><strong>Agenda atual:</strong> atletas distintos por prova, unificando os registros de agenda e interesse sem fornecedores. Cada atleta conta uma vez por prova, mesmo com os dois tipos de registro. O botão Salvar também usa o tipo interno de inscrição; por isso não separamos esses registros como inscrições confirmadas. É um saldo do ecossistema, não necessariamente originado no Road Runners, nem venda ou pagamento. Remoções não têm histórico recuperável nesta fonte; não calculamos conversão nem inclusões por período. A aba Agenda lista provas ativas, não canceladas e ainda não encerradas, mesmo sem acessos medidos; ordena pelo saldo de atletas, depois data e ID. Os filtros de período e tráfego afetam apenas as colunas de acessos.</li><li><strong>Cadastros:</strong> revisão de localização, descrição, imagem, percursos e link de inscrição para provas não encerradas. São campos do cadastro base; complementos herdados podem preencher a apresentação pública. A ausência do cadastro não descarta acessos medidos.</li><li><strong>Histórico:</strong> somente a nova audiência. Não mistura logs antigos de requisições, OR ou MIF. Coleta iniciada em 08/09/2026, com implantação progressiva; períodos anteriores ou parcialmente cobertos não representam zero demanda. Eventos detalhados sujeitos à retenção de 90 dias. Primeiro registro disponível na janela lida: #encodeForHTML(ei.meta.first_observed)#.</li><li><strong>Totais:</strong> calculados antes da paginação. Distintos por prova ou origem não devem ser somados para obter visitantes e sessões do topo.</li></ul>
+      </div>
+    </cfif>
+    </cfif>
+  </cfif>
 </section>
+</cfoutput>

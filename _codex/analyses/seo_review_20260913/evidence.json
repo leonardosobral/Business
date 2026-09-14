@@ -1,0 +1,98 @@
+{
+  "review_date": "2026-09-13",
+  "reviewer_model": "gpt-6-astra",
+  "node_version": "v22.21.1",
+  "scope": "local simulated fetch; no production crawl",
+  "script": "/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/seo_inventory.mjs",
+  "script_sha256": "8aae6497f5de87a7c9e621b795dd62540d1788d4f80d4b5ad6d0da6900425403",
+  "astra_cases": [
+    {
+      "name": "HTTP 200 HTML instead of sitemap",
+      "elapsed_ms": 48,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n",
+      "stderr": "URLs verificadas: 0; com falha ou redirecionamento: 0.\n"
+    },
+    {
+      "name": "Truncated malformed sitemap",
+      "elapsed_ms": 0,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n",
+      "stderr": "URLs verificadas: 0; com falha ou redirecionamento: 0.\n"
+    },
+    {
+      "name": "Valid XML with namespace prefix",
+      "elapsed_ms": 0,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n",
+      "stderr": "URLs verificadas: 0; com falha ou redirecionamento: 0.\n"
+    },
+    {
+      "name": "200 HTML marked noindex and different canonical",
+      "elapsed_ms": 0,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.test/page\",\"200\",\"https://fixture.test/page\",\"false\",\"text/html\",\"noindex\",\"https://fixture.test/other\",\"noindex\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\n"
+    },
+    {
+      "name": "Timeout 1000 ms does not include sitemap body taking 1250 ms",
+      "elapsed_ms": 1252,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.test/page\",\"200\",\"https://fixture.test/page\",\"false\",\"text/html\",\"\",\"\",\"\",\"1\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\n",
+      "abort_fired": false
+    },
+    {
+      "name": "Timeout 1000 ms does not include deep HTML body taking 1250 ms",
+      "elapsed_ms": 1255,
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.test/page\",\"200\",\"https://fixture.test/page\",\"false\",\"\",\"\",\"\",\"\",\"1253\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\n",
+      "abort_fired": false
+    }
+  ],
+  "compatibility_cases": [
+    {
+      "name": "html_attributes_with_spaces",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.example/a\",\"200\",\"https://fixture.example/a\",\"false\",\"text/html\",\"\",\"\",\"\",\"1\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    },
+    {
+      "name": "canonical_rel_substring",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.example/a\",\"200\",\"https://fixture.example/a\",\"false\",\"text/html\",\"\",\"https://fixture.example/wrong\",\"\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    },
+    {
+      "name": "googlebot_directive",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.example/a\",\"200\",\"https://fixture.example/a\",\"false\",\"text/html\",\"\",\"\",\"\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    },
+    {
+      "name": "canonical_inside_comment",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.example/a\",\"200\",\"https://fixture.example/a\",\"false\",\"text/html\",\"\",\"https://fixture.example/obsolete\",\"\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    },
+    {
+      "name": "all_sitemaps_loaded_before_limit",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://fixture.example/a\",\"200\",\"https://fixture.example/a\",\"false\",\"text/html\",\"\",\"\",\"\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/one.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/two.xml\",\"method\":\"GET\"},{\"url\":\"https://fixture.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    },
+    {
+      "name": "cross_origin_url_followed",
+      "exitCode": 0,
+      "stdout": "\"source_url\",\"status\",\"final_url\",\"redirected\",\"content_type\",\"x_robots_tag\",\"canonical_url\",\"meta_robots\",\"duration_ms\",\"error\"\n\"https://foreign.example/a\",\"200\",\"https://foreign.example/a\",\"false\",\"text/html\",\"\",\"\",\"\",\"0\",\"\"\n",
+      "stderr": "URLs verificadas: 1; com falha ou redirecionamento: 0.\nCALLS=[{\"url\":\"https://fixture.example/sitemap.xml\",\"method\":\"GET\"},{\"url\":\"https://foreign.example/a\",\"method\":\"GET\"}]\n",
+      "spawnError": null
+    }
+  ]
+}

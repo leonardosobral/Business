@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "sites": [
+    {
+      "site_id": "roadrunners",
+      "base_url": "https://roadrunners.run",
+      "sitemap_url": "https://roadrunners.run/sitemap.xml",
+      "strategic_urls": [
+        "https://roadrunners.run/",
+        "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+        "https://roadrunners.run/evento/2026-3-corrida-alcance-run/",
+        "https://roadrunners.run/noticias/",
+        "https://roadrunners.run/videos/"
+      ],
+      "description": "Calendário, eventos e conteúdo editorial Road Runners"
+    },
+    {
+      "site_id": "openresults",
+      "base_url": "https://openresults.run",
+      "sitemap_url": "https://openresults.run/sitemap.cfm",
+      "strategic_urls": [
+        "https://openresults.run/",
+        "https://openresults.run/evento/2026-maratona-de-bonito/",
+        "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+        "https://openresults.run/evento/2026-maratona-salvador-2026/"
+      ],
+      "description": "Eventos e resultados públicos Open Results"
+    }
+  ]
+}

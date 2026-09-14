@@ -6,7 +6,8 @@ function resultImportProcessingMeta(required string statusValue) {
         processando = { label = "Processando", className = "info" },
         processado = { label = "Processado", className = "success" },
         falhou = { label = "Falhou", className = "danger" },
-        cancelado = { label = "Cancelado", className = "secondary" }
+        cancelado = { label = "Cancelado", className = "secondary" },
+        arquivado = { label = "Arquivado", className = "secondary" }
     };
 
     return structKeyExists(statuses, normalized)
@@ -42,9 +43,10 @@ function resultImportQueueUrl(struct changes = {}) {
         cliente = VARIABLES.resultImportClient,
         periodo = VARIABLES.resultImportPeriodDays,
         pagina = VARIABLES.resultImportPage,
+        grupo = VARIABLES.resultImportGroup,
         id = VARIABLES.resultImportSelectedId
     };
-    var orderedKeys = ["busca", "status", "publicacao", "timer", "cliente", "periodo", "pagina", "id"];
+    var orderedKeys = ["busca", "status", "publicacao", "timer", "cliente", "periodo", "pagina", "id", "grupo"];
     var keyValue = "";
     var pairs = [];
 
@@ -130,14 +132,15 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
 
 <section class="business-page result-import-page py-5"
          data-result-import-queue
-         data-selected-status="<cfoutput>#htmlEditFormat(VARIABLES.resultImportStatus)#</cfoutput>">
+         data-selected-status="<cfoutput>#htmlEditFormat(VARIABLES.resultImportStatus)#</cfoutput>"
+         data-history="<cfoutput>#len(VARIABLES.resultImportGroup) GT 0 ? 'true' : 'false'#</cfoutput>">
   <div class="card shadow-0 business-page-card">
     <div class="card-body business-page-body">
       <div class="business-page-header d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
         <div>
           <div class="text-warning text-uppercase small fw-bold">Resultados</div>
           <h1 class="business-page-title mb-1">Fila de importações</h1>
-          <p class="text-muted mb-0">Submissões recebidas de cronometradores e seu estado de processamento.</p>
+          <p class="text-muted mb-0">Uma linha por evento, com a chamada mais recente e o histórico preservado.</p>
         </div>
         <div class="business-page-actions">
           <cfoutput>
@@ -186,19 +189,19 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         <div class="business-kpi-grid mb-3">
           <cfoutput>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = '', pagina = 1, id = '' })#">
-              <small>Recebidas</small>
+              <small>Eventos na fila</small>
               <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.total, "9,999")#</strong>
               <span class="business-meta">#htmlEditFormat(resultImportPeriodLabel)#</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'pendente', pagina = 1, id = '' })#">
-              <small>Pendentes</small>
+              <small>Eventos pendentes</small>
               <strong class="business-kpi-value d-block text-warning">#LSNumberFormat(qResultImportSummary.pendentes, "9,999")#</strong>
               <span class="business-meta">#qResultImportSummary.pendentes_atrasadas# há mais de 15 min</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'processando', pagina = 1, id = '' })#">
               <small>Processando</small>
               <strong class="business-kpi-value d-block text-info">#LSNumberFormat(qResultImportSummary.processando, "9,999")#</strong>
-              <span class="business-meta">em execução</span>
+              <span class="business-meta">última chamada em execução</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'processado', pagina = 1, id = '' })#">
               <small>Processadas</small>
@@ -214,6 +217,11 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               <small>Canceladas</small>
               <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.cancelados, "9,999")#</strong>
               <span class="business-meta">fora da fila ativa</span>
+            </a>
+            <a class="business-kpi" href="#resultImportQueueUrl({ status = 'arquivado', pagina = 1, id = '' })#">
+              <small>Arquivadas</small>
+              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.arquivados, "9,999")#</strong>
+              <span class="business-meta">substituídas por importação posterior</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ publicacao = 'extraoficial', status = '', pagina = 1, id = '' })#">
               <small>Extraoficiais</small>
@@ -234,6 +242,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         </div>
 
         <form class="business-filterbar mb-3" method="get" action="./">
+          <cfif len(VARIABLES.resultImportGroup)><input type="hidden" name="grupo" value="<cfoutput>#htmlEditFormat(VARIABLES.resultImportGroup)#</cfoutput>"/></cfif>
           <div class="row g-2 align-items-end">
             <div class="col-12 col-xl-3">
               <label class="form-label small mb-1" for="result-import-search">Busca</label>
@@ -249,7 +258,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               <label class="form-label small mb-1" for="result-import-status">Processamento</label>
               <select class="form-select form-select-sm" id="result-import-status" name="status">
                 <option value="">Todos</option>
-                <cfloop list="pendente,processando,processado,falhou,cancelado" index="resultImportStatusOption">
+                <cfloop list="pendente,processando,processado,falhou,cancelado,arquivado" index="resultImportStatusOption">
                   <cfset resultImportStatusMeta = resultImportProcessingMeta(resultImportStatusOption)/>
                   <cfoutput><option value="#resultImportStatusOption#" <cfif VARIABLES.resultImportStatus EQ resultImportStatusOption>selected</cfif>>#resultImportStatusMeta.label#</option></cfoutput>
                 </cfloop>
@@ -311,7 +320,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         </cfif>
 
         <cfif qResultImportDetail.recordcount>
-          <cfset resultImportDetailProcessing = resultImportProcessingMeta(qResultImportDetail.status_processamento)/>
+          <cfset resultImportDetailProcessing = resultImportProcessingMeta(qResultImportDetail.queue_status)/>
           <cfset resultImportDetailPublication = resultImportPublicationMeta(qResultImportDetail.status_publicacao)/>
           <cfset resultImportDetailIntent = resultImportOpenResultsMeta(qResultImportDetail.open_results_enabled)/>
           <div class="business-panel mb-3">
@@ -443,11 +452,19 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
           </div>
         </cfif>
 
+        <cfif len(VARIABLES.resultImportGroup)>
+          <div class="alert alert-info d-flex flex-wrap justify-content-between gap-2">
+            <span>Histórico do evento externo — inclui processadas, canceladas e arquivadas.</span>
+            <a href="<cfoutput>#resultImportQueueUrl({grupo='',status='',pagina=1,id=''})#</cfoutput>">Voltar aos eventos</a>
+          </div>
+        <cfelse>
+          <p class="small text-muted">Chamadas anteriores a uma importação concluída ficam arquivadas. Uma chamada recebida depois dela continua pendente. Nenhum resultado é processado automaticamente.</p>
+        </cfif>
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-2">
           <div>
-            <h2 class="h5 mb-1">Submissões</h2>
+            <h2 class="h5 mb-1"><cfif len(VARIABLES.resultImportGroup)>Histórico de submissões<cfelse>Eventos / última chamada</cfif></h2>
             <div class="text-muted small">
-              <cfoutput>#LSNumberFormat(VARIABLES.resultImportTotal, "9,999")# registro(s) · página #VARIABLES.resultImportPage# de #VARIABLES.resultImportTotalPages#</cfoutput>
+              <cfoutput>#LSNumberFormat(VARIABLES.resultImportTotal, "9,999")# <cfif len(VARIABLES.resultImportGroup) OR listFindNoCase("cancelado,arquivado",VARIABLES.resultImportStatus)>chamada(s)<cfelse>evento(s)</cfif> · página #VARIABLES.resultImportPage# de #VARIABLES.resultImportTotalPages#</cfoutput>
             </div>
           </div>
         </div>
@@ -469,10 +486,10 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               </thead>
               <tbody>
                 <cfoutput query="qResultImports">
-                  <cfset resultImportRowProcessing = resultImportProcessingMeta(status_processamento)/>
+                  <cfset resultImportRowProcessing = resultImportProcessingMeta(queue_status)/>
                   <cfset resultImportRowPublication = resultImportPublicationMeta(status_publicacao)/>
                   <cfset resultImportRowIntent = resultImportOpenResultsMeta(open_results_enabled)/>
-                  <tr data-result-import-row data-status="#htmlEditFormat(status_processamento)#">
+                  <tr data-result-import-row data-status="#htmlEditFormat(queue_status)#">
                     <td class="result-import-date-cell">
                       #resultImportDateTime(data_recebimento)#
                       <small class="text-muted d-block">###id_resultado_importacao#</small>
@@ -480,14 +497,22 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                     <td>
                       <span class="badge badge-#resultImportRowProcessing.className#">#resultImportRowProcessing.label#</span>
                       <small class="text-muted d-block">#tentativas# tentativa(s)</small>
+                      <cfif queue_status EQ "arquivado">
+                        <small class="text-muted d-block">Substituída<cfif val(superseding_id) GT 0> pela ###superseding_id#</cfif></small>
+                      <cfelseif listFindNoCase("pendente,falhou",queue_status) AND isDate(last_processed_at)>
+                        <small class="text-warning d-block">Nova chamada após a versão importada</small>
+                      </cfif>
+                      <cfif isDate(last_processed_at)>
+                        <small class="text-muted d-block">Última importação: #resultImportDateTime(last_processed_at)#</small>
+                      </cfif>
                     </td>
                     <td><span class="badge badge-#resultImportRowPublication.className#">#resultImportRowPublication.label#</span></td>
                     <td class="result-import-event-cell">
-                      <cfif len(trim(id_evento & ""))>
+                      <cfif val(suggested_event_id) GT 0>
                         <strong class="d-block">#htmlEditFormat(nome_evento)#</strong>
-                        <small class="text-muted">ID #id_evento#<cfif len(trim(event_tag & ""))> · #htmlEditFormat(event_tag)#</cfif></small>
+                        <small class="text-muted">ID #suggested_event_id#<cfif len(trim(event_tag & ""))> · #htmlEditFormat(event_tag)#</cfif></small>
                       <cfelse>
-                        <strong class="d-block text-warning">Sem vínculo</strong>
+                        <strong class="d-block text-warning"><cfif link_source EQ "ambiguous">Vínculo ambíguo<cfelse>Sem vínculo</cfif></strong>
                         <cfif len(trim(id_evento_informado & ""))>
                           <small class="text-muted d-block">ID Road Runners informado: #id_evento_informado#</small>
                         </cfif>
@@ -506,6 +531,10 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                           </cfif>
                         </small>
                       </cfif>
+                      <cfif NOT val(id_evento) AND val(suggested_event_id)>
+                        <small class="text-info d-block">Pré-selecionado <cfif link_source EQ "history">pelo histórico<cfelse>pela URL cadastrada</cfif></small>
+                      </cfif>
+                      <a class="small d-block mt-1" href="#resultImportQueueUrl({grupo=event_group,status='',publicacao='',busca='',periodo=0,pagina=1,id=''})#">Histórico: #group_total# chamada(s)</a>
                     </td>
                     <td class="result-import-client-cell">
                       <code class="d-block">#htmlEditFormat(cod_timer)#</code>
@@ -513,19 +542,19 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                     </td>
                     <td>
                       <span class="badge badge-#resultImportRowIntent.className#">#resultImportRowIntent.label#</span>
-                      <small class="text-muted d-block"><code>open_results_enabled</code></small>
+                      <small class="text-muted d-block">intenção no payload</small>
                     </td>
                     <td class="text-end">
                       <cfif len(trim(total_resultados & ""))>#LSNumberFormat(total_resultados, "9,999")#<cfelse>-</cfif>
                     </td>
                     <td class="business-row-actions text-end">
-                      <cfif VARIABLES.resultImportCanProcess AND listFindNoCase("pendente,falhou", status_processamento)>
+                      <cfif VARIABLES.resultImportCanProcess AND listFindNoCase("pendente,falhou", queue_status)>
                         <form class="d-inline"
                               method="post"
                               action="#resultImportQueueUrl({ id = '' })#"
                               data-result-import-discard
                               data-can-process="true"
-                              data-status="#htmlEditFormat(status_processamento)#"
+                              data-status="#htmlEditFormat(queue_status)#"
                               onsubmit="return confirm('Descartar esta submissão da fila? O histórico será preservado com status cancelado.');">
                           <input type="hidden" name="result_import_queue_action" value="descartar"/>
                           <input type="hidden" name="submission_id" value="#htmlEditFormat(submission_id)#"/>
@@ -538,7 +567,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                           </button>
                         </form>
                       </cfif>
-                      <cfif VARIABLES.resultImportCanProcess AND compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", status_processamento)>
+                      <cfif VARIABLES.resultImportCanProcess AND compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", queue_status)>
                         <a class="btn btn-warning btn-sm"
                            href="/racetag/?submission_id=#encodeForURL(submission_id)#"
                            target="_blank"

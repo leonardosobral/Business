@@ -723,6 +723,12 @@
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Audiência e relacionamento</span></li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/seo/">link-warning</cfif>" href="/portal/seo/" data-menu-aliases="otimização busca orgânica google auditoria canonical indexação correções">
+                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>SEO</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/audiencia/">link-warning</cfif>" href="/portal/audiencia/" data-menu-aliases="audiência inventário posições acessos analytics potencial regional">
                     <i class="fa-solid fa-chart-area fa-fw me-3"></i><span>Audiência e inventário</span>
                 </a>

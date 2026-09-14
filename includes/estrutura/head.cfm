@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Road Runners Business</title>
+    <title><cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/portal/seo/">SEO · <cfelseif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/portal/conteudo/">Conteúdo das provas · </cfif>Road Runners Business</title>
 
     <!--- FONT AWESOME --->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" />

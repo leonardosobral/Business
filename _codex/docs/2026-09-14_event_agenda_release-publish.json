@@ -1,0 +1,78 @@
+{
+  "directory": "/var/backups/business-event-agenda.928b362f0287",
+  "scriptSHA": "3eb8817db616fcfb9e430b1b8d0a8b490928d9131d49e8c927e08a9093437764",
+  "mode": "publish",
+  "phase": "published",
+  "files": [
+    {
+      "after": "d22b31ba74d43a52eb9d7e1741c55c42e68ded91d65c6f8e301bf08e7f148b53",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/audiencia/queries/event_agenda_ranking.sql",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181433205396,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "55823f8a4f380c380f3db0c9b27e0919dc0eedc547758c0e4f5ad6f21d0d14ab",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/eventos-analytics/agenda.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181439633339,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "2fc6aaec72f8e99a12fff3497e043c4fae3cee9af995b269da6c4c348743b3d2",
+      "before": "8a27fa10ea402ff47369a59e990bbeae099d09bd0f4c76d05e2fd9be7a86471e",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789402205791082644,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/event_interest_backend.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181445944621,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "6e9b6aec915c71122a8277a71a619a0fc16c93cc3a4c253aa3452b143bf4755d",
+      "before": "5fca554e2c431479dcb37f6740d5da2fcb0a68c5d2f4c0918f9f357af1d5a297",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789402205798938300,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/eventos-analytics/home.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181452835945,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 117,
+  "compile_log": "/var/backups/business-event-agenda.928b362f0287/compile.log"
+}

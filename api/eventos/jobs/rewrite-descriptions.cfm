@@ -26,6 +26,110 @@ function rewriteValidHmac(required string secret, required string body, required
     return hash(expected, "SHA-256") EQ hash(lCase(arguments.signature), "SHA-256");
 }
 
+function rewriteTranslation(required struct row, required boolean dryRun, required string apiKey, required string model) {
+    var dbOptions = {datasource="runner_dba"};
+    var source = arguments.row.source_text & "";
+    var language = arguments.row.language & "";
+    // The column name comes only from the server's two-language queue, never SQL input.
+    var targetColumn = language EQ "en" ? "descricao_en" : "descricao_es";
+    var outcome = {httpStatus=200, processed=0, updated=0, skipped=0, errors=0,
+        result={id=arguments.row.id_evento, language=language, status="error", reused=arguments.row.cached_id GT 0}};
+    var params = {
+        event_id={value=arguments.row.id_evento, cfsqltype="cf_sql_integer"},
+        language={value=language, cfsqltype="cf_sql_varchar"},
+        source_text={value=source, cfsqltype="cf_sql_longvarchar"},
+        source_hash={value=lCase(hash(source, "MD5", "UTF-8")), cfsqltype="cf_sql_varchar"},
+        target_before={value=arguments.row.target_text, null=arguments.row.target_is_null, cfsqltype="cf_sql_longvarchar"},
+        model={value=arguments.row.cached_id GT 0 ? arguments.row.cached_model : arguments.model, cfsqltype="cf_sql_varchar"},
+        attempt_count={value=arguments.row.cached_id GT 0 ? 1 : arguments.row.attempt_count + 1, cfsqltype="cf_sql_integer"},
+        reused_from_id={value=arguments.row.cached_id, null=arguments.row.cached_id EQ 0, cfsqltype="cf_sql_bigint"}
+    };
+    var auditId = 0;
+    var audit = queryNew("");
+    var output = {};
+    var errorCode = "";
+    var updated = queryNew("");
+    var service = new services.EventDescriptionRewriteService();
+    if (!arguments.dryRun) {
+        audit = queryExecute("
+            INSERT INTO public.tb_evento_descricao_translations
+                (id_evento, language, source_hash, source_text, status, description_before,
+                 metadata_before, model, attempt_count, reused_from_id)
+            SELECT evt.id_evento, :language, :source_hash, evt.descricao, 'running', evt." & targetColumn & ",
+                evt.descricao_traducoes_meta -> CAST(:language AS text), :model, :attempt_count, :reused_from_id
+            FROM public.tb_evento_corridas evt
+            WHERE evt.id_evento = :event_id AND evt.descricao = :source_text
+              AND evt." & targetColumn & " IS NOT DISTINCT FROM :target_before
+            RETURNING id", params, dbOptions);
+        if (!audit.recordCount) {
+            outcome.result.status = "source_changed";
+            outcome.skipped = 1;
+            return outcome;
+        }
+        auditId = audit.id[1];
+    }
+    try {
+        outcome.processed = 1;
+        if (arguments.row.cached_id GT 0) {
+            output = {html=arguments.row.cached_html,
+                text=arguments.dryRun ? decodeForHTML(reReplace(arguments.row.cached_html, "(?i)<br\s*/?>", chr(10), "all")) : "",
+                model=arguments.row.cached_model};
+        } else {
+            output = service.translate(source, language, arguments.apiKey, arguments.model);
+        }
+        if (arguments.dryRun) {
+            outcome.result.status = "preview";
+            outcome.result.text = output.text;
+        } else {
+            var writeParams = {
+                event_id=params.event_id, language=params.language, source_text=params.source_text,
+                source_hash=params.source_hash, target_before=params.target_before,
+                description={value=output.html, cfsqltype="cf_sql_longvarchar"}
+            };
+            updated = queryExecute("UPDATE public.tb_evento_corridas SET " & targetColumn & " = :description,
+                    descricao_traducoes_meta = jsonb_set(COALESCE(descricao_traducoes_meta,CAST('{}' AS jsonb)),
+                        ARRAY[CAST(:language AS text)], jsonb_build_object('source_hash',CAST(:source_hash AS text),
+                        'description_hash',md5(CAST(:description AS text))),true)
+                WHERE id_evento = :event_id AND descricao = :source_text
+                  AND " & targetColumn & " IS NOT DISTINCT FROM :target_before
+                RETURNING id_evento", writeParams, dbOptions);
+            if (updated.recordCount) {
+                outcome.result.status = "updated";
+                outcome.updated = 1;
+            } else {
+                outcome.result.status = "source_changed";
+                outcome.skipped = 1;
+            }
+        }
+    } catch (EventDescriptionRewrite.Validation rejectedTranslation) {
+        outcome.result.status = "rejected";
+        errorCode = "validation_rejected";
+        outcome.httpStatus = 422;
+        outcome.errors = 1;
+    } catch (EventDescriptionRewrite.Provider providerFailure) {
+        errorCode = "provider_error";
+        outcome.httpStatus = 502;
+        outcome.errors = 1;
+    }
+    if (!arguments.dryRun) {
+        queryExecute("
+            UPDATE public.tb_evento_descricao_translations
+            SET status = :status, description_after = :description_after, error_code = :error_code,
+                finished_at = clock_timestamp(), next_retry_at = CASE
+                    WHEN :status = 'error' AND attempt_count = 1 THEN clock_timestamp() + interval '5 minutes'
+                    WHEN :status = 'error' AND attempt_count = 2 THEN clock_timestamp() + interval '30 minutes'
+                    ELSE NULL END
+            WHERE id = :audit_id", {
+            status={value=outcome.result.status, cfsqltype="cf_sql_varchar"},
+            description_after={value=structKeyExists(output, "html") ? output.html : "", null=!structKeyExists(output, "html"), cfsqltype="cf_sql_longvarchar"},
+            error_code={value=errorCode, null=!len(errorCode), cfsqltype="cf_sql_varchar"},
+            audit_id={value=auditId, cfsqltype="cf_sql_bigint"}
+        }, dbOptions);
+    }
+    if (len(errorCode)) outcome.result.errorCode = errorCode;
+    return outcome;
+}
+
 if (uCase(CGI.request_method & "") NEQ "POST") {
     cfheader(name="Allow", value="POST");
     rewriteJsonResponse(405, {success=false, status="method_not_allowed", message="Use POST com corpo JSON."});
@@ -63,13 +167,20 @@ for (VARIABLES.rewriteField in VARIABLES.rewritePayload) {
     if (isNull(VARIABLES.rewritePayload[VARIABLES.rewriteField])) {
         rewriteJsonResponse(400, {success=false, status="validation_error", message="Parâmetros não podem ser null."});
     }
-    if (!listFindNoCase("limit,dryRun,eventId", VARIABLES.rewriteField)) {
-        rewriteJsonResponse(400, {success=false, status="validation_error", message="Parâmetro não permitido. Use limit, dryRun e eventId."});
+    if (!listFindNoCase("limit,dryRun,eventId,language", VARIABLES.rewriteField)) {
+        rewriteJsonResponse(400, {success=false, status="validation_error", message="Parâmetro não permitido. Use limit, dryRun, eventId e language."});
     }
 }
 VARIABLES.rewriteLimit = 1;
 VARIABLES.rewriteDryRun = true;
 VARIABLES.rewriteEventId = 0;
+VARIABLES.rewriteLanguage = "auto";
+if (structKeyExists(VARIABLES.rewritePayload, "language")) {
+    if (!isSimpleValue(VARIABLES.rewritePayload.language) OR !listFind("auto,pt-BR,en,es", VARIABLES.rewritePayload.language & "")) {
+        rewriteJsonResponse(400, {success=false, status="validation_error", message="language deve ser auto, pt-BR, en ou es."});
+    }
+    VARIABLES.rewriteLanguage = VARIABLES.rewritePayload.language & "";
+}
 if (structKeyExists(VARIABLES.rewritePayload, "limit")) {
     if (!isSimpleValue(VARIABLES.rewritePayload.limit) OR !reFind("^1$", VARIABLES.rewritePayload.limit & "")) {
         rewriteJsonResponse(400, {success=false, status="validation_error", message="limit deve ser 1."});
@@ -101,14 +212,19 @@ if (!len(VARIABLES.rewriteApiKey) OR !len(VARIABLES.rewriteModel) OR len(VARIABL
 
 VARIABLES.rewriteDbOptions = {datasource="runner_dba"};
 try {
-    VARIABLES.rewriteSchema = queryExecute("SELECT to_regclass('public.tb_evento_descricao_rewrites') IS NOT NULL AS ready", [], VARIABLES.rewriteDbOptions);
+    VARIABLES.rewriteSchema = queryExecute("SELECT
+        to_regclass('public.tb_evento_descricao_rewrites') IS NOT NULL
+        AND to_regclass('public.tb_evento_descricao_translations') IS NOT NULL
+        AND (SELECT count(*) FROM information_schema.columns WHERE table_schema='public'
+            AND table_name='tb_evento_corridas' AND ((column_name IN ('descricao_en','descricao_es') AND data_type='text')
+                OR (column_name='descricao_traducoes_meta' AND data_type='jsonb'))) = 3 AS ready", [], VARIABLES.rewriteDbOptions);
 } catch (any unavailableDatabase) {
     rewriteJsonResponse(503, {success=false, status="database_unavailable", message="Banco indisponível para a reescrita."});
 }
 if (!VARIABLES.rewriteSchema.ready[1]) {
     rewriteJsonResponse(503, {success=false, status="schema_required", message="Instale o schema de auditoria da reescrita antes de executar."});
 }
-VARIABLES.rewriteResponse = {success=true, status="completed", dryRun=VARIABLES.rewriteDryRun, selected=0, processed=0, updated=0, skipped=0, errors=0, results=[]};
+VARIABLES.rewriteResponse = {success=true, status="completed", language=VARIABLES.rewriteLanguage, dryRun=VARIABLES.rewriteDryRun, selected=0, processed=0, updated=0, skipped=0, errors=0, results=[]};
 VARIABLES.rewriteHttpStatus = 200;
 VARIABLES.rewriteLocked = false;
 try {
@@ -117,24 +233,28 @@ try {
         VARIABLES.rewriteLock = queryExecute("SELECT pg_try_advisory_xact_lock(1380472914, 1) AS acquired", [], VARIABLES.rewriteDbOptions);
         VARIABLES.rewriteLocked = !VARIABLES.rewriteLock.acquired[1];
         if (!VARIABLES.rewriteLocked) {
-            VARIABLES.rewriteCandidates = queryExecute("
-                SELECT evt.id_evento, evt.descricao_original AS source_text
-                FROM public.tb_evento_corridas evt
-                WHERE length(COALESCE(evt.descricao_original, '')) > 200
-                  AND btrim(COALESCE(evt.descricao, '')) = ''
-                  AND (:event_id = 0 OR evt.id_evento = :event_id)
-                  AND NOT EXISTS (
-                      SELECT 1 FROM public.tb_evento_descricao_rewrites audit
-                      WHERE audit.id_evento = evt.id_evento AND audit.source_hash = md5(evt.descricao_original)
-                  )
-                ORDER BY CASE WHEN COALESCE(evt.data_final, evt.data_inicial) >= CURRENT_DATE THEN 0 ELSE 1 END, evt.id_evento
-                LIMIT 1", {event_id={value=VARIABLES.rewriteEventId, cfsqltype="cf_sql_integer"}}, VARIABLES.rewriteDbOptions);
+            include "queue.cfm";
+            VARIABLES.rewriteCandidates = queryExecute(eventDescriptionQueueSql() &
+                "SELECT * FROM work WHERE queue_status='ready' ORDER BY date_rank,id_evento,language_rank LIMIT 1", {
+                    event_id={value=VARIABLES.rewriteEventId, cfsqltype="cf_sql_integer"},
+                    language={value=VARIABLES.rewriteLanguage, cfsqltype="cf_sql_varchar"}
+                }, VARIABLES.rewriteDbOptions);
             VARIABLES.rewriteResponse.selected = VARIABLES.rewriteCandidates.recordCount;
             for (VARIABLES.rewriteRow in VARIABLES.rewriteCandidates) {
+                if (VARIABLES.rewriteRow.language NEQ "pt-BR") {
+                    VARIABLES.translationOutcome = rewriteTranslation(VARIABLES.rewriteRow, VARIABLES.rewriteDryRun, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel);
+                    VARIABLES.rewriteResponse.processed += VARIABLES.translationOutcome.processed;
+                    VARIABLES.rewriteResponse.updated += VARIABLES.translationOutcome.updated;
+                    VARIABLES.rewriteResponse.skipped += VARIABLES.translationOutcome.skipped;
+                    VARIABLES.rewriteResponse.errors += VARIABLES.translationOutcome.errors;
+                    VARIABLES.rewriteHttpStatus = VARIABLES.translationOutcome.httpStatus;
+                    arrayAppend(VARIABLES.rewriteResponse.results, VARIABLES.translationOutcome.result);
+                    continue;
+                }
                 VARIABLES.rewriteSource = VARIABLES.rewriteRow.source_text & "";
                 VARIABLES.rewriteSourceHash = lCase(hash(VARIABLES.rewriteSource, "MD5", "UTF-8"));
                 VARIABLES.rewriteAuditId = 0;
-                VARIABLES.rewriteResult = {id=VARIABLES.rewriteRow.id_evento, status="error"};
+                VARIABLES.rewriteResult = {id=VARIABLES.rewriteRow.id_evento, language="pt-BR", status="error"};
                 if (!VARIABLES.rewriteDryRun) {
                     VARIABLES.rewriteAudit = queryExecute("
                         INSERT INTO public.tb_evento_descricao_rewrites

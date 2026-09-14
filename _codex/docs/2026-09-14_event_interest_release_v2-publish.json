@@ -1,0 +1,72 @@
+{
+  "directory": "/var/backups/business-event-interest.d6c8b786a631",
+  "scriptSHA": "9b7b51ee4539a413b205dccbfd7c680054e902e915fc74b7606d6fbee2333ff8",
+  "mode": "publish",
+  "phase": "published",
+  "files": [
+    {
+      "after": "81063c2c6621bfa91c118fac0ba5c842a1c1c802d1ca1cbbd3c64dc503c7566e",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/audiencia/queries/event_interest.sql",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734932047094,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "3d0281da108cfadc5062244e5cfcc8a02b23893ac3c83574507538fec2c8680a",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/audiencia/queries/event_agenda.sql",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734939509109,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "03e3874d205c00f81ab1757d5acf0154d2743cf8277e5c7d8027e42179f1c884",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/event_interest_backend.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734950108390,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "7f775b363f36631df90814f8ec2e86fae473a6bfbd1ea083527de12515373b5a",
+      "before": "6cbf8e276af64f09e9c7bad27551f6f1c725565a54734f6d8b3875e29745f260",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1780679098000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/eventos-analytics/home.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734957408575,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 115,
+  "compile_log": "/var/backups/business-event-interest.d6c8b786a631/compile.log"
+}

@@ -783,6 +783,22 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 <cfset VARIABLES.raceTagProcessStartedAt = now()/>
 
                 <cftransaction>
+                    <cfif VARIABLES.raceTagSubmissionReady>
+                        <!--- Serialize the external event even if two operators choose different internal IDs. --->
+                        <cfquery>
+                            SELECT pg_advisory_xact_lock(20260914, hashtext(
+                                <cfqueryparam cfsqltype="cf_sql_varchar" value="#qRaceTagSubmission.event_group#"/>
+                            ))
+                        </cfquery>
+                        <cfset qRaceTagFreshSubmission = VARIABLES.raceTagQueueService.submission(
+                            VARIABLES.raceTagSubmissionId, VARIABLES.raceTagUnscopedAccess, VARIABLES.raceTagScopeAccountId)/>
+                        <cfif NOT qRaceTagFreshSubmission.recordcount>
+                            <cfthrow type="RaceTag.QueueConflict" message="A submissão não está mais no escopo autorizado da conta."/>
+                        </cfif>
+                        <cfif qRaceTagFreshSubmission.is_superseded>
+                            <cfthrow type="RaceTag.Superseded" message="Uma chamada posterior deste evento já foi processada. Esta chamada foi arquivada sem substituir os resultados atuais."/>
+                        </cfif>
+                    </cfif>
                     <cfquery name="qRaceTagEventLock">
                         SELECT pg_advisory_xact_lock(
                             20260806,
@@ -830,6 +846,8 @@ function raceTagResponseHeaderValue(required any rawValue) {
                                 erro_detalhe = <cfqueryparam cfsqltype="cf_sql_varchar" value="A procedure concluiu com avisos; consulte o log detalhado." null="#NOT qRaceTagCurrentProcessing.erro_execucao#"/>
                             WHERE public_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagSubmissionId#"/> AS uuid)
                         </cfquery>
+                        <cfset VARIABLES.raceTagArchivedCount = VARIABLES.raceTagQueueService.archivePrevious(
+                            VARIABLES.raceTagSubmissionId, VARIABLES.raceTagUnscopedAccess, VARIABLES.raceTagScopeAccountId)/>
                     </cfif>
                 </cftransaction>
 
@@ -838,6 +856,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                     <strong>Resultado processado.</strong>
                     <cfif VARIABLES.raceTagSubmissionReady>
                         A fila e as URLs do evento foram atualizadas.
+                        <span class="d-block mt-1"><cfoutput>#VARIABLES.raceTagArchivedCount#</cfoutput> chamada(s) anterior(es) arquivada(s). Chamadas posteriores permanecem na fila.</span>
                     <cfelse>
                         As URLs do evento foram atualizadas.
                     </cfif>
@@ -851,10 +870,10 @@ function raceTagResponseHeaderValue(required any rawValue) {
                     <cfif VARIABLES.raceTagSubmissionReady AND VARIABLES.raceTagQueueClaimed>
                         <cfquery>
                             UPDATE public.tb_resultados_importacoes
-                            SET status_processamento = 'falhou',
+                            SET status_processamento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#cfcatch.type EQ 'RaceTag.Superseded' ? 'cancelado' : 'falhou'#"/>,
                                 data_processamento = now(),
                                 data_atualizacao = now(),
-                                erro_codigo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#left(listLast(cfcatch.type, '.'), 64)#"/>,
+                                erro_codigo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#cfcatch.type EQ 'RaceTag.Superseded' ? 'superseded' : left(listLast(cfcatch.type, '.'), 64)#"/>,
                                 erro_detalhe = <cfqueryparam cfsqltype="cf_sql_varchar" value="#left(cfcatch.message & (len(trim(cfcatch.detail & '')) ? ' ' & cfcatch.detail : ''), 1024)#"/>
                             WHERE public_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagSubmissionId#"/> AS uuid)
                         </cfquery>

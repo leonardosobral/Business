@@ -1,0 +1,110 @@
+{
+  "directory": "/var/backups/business-publico-location.6ff74deb121f",
+  "scriptSHA": "98bdfe19aa9357bb3d257d17571ea9cb7cef35b408873c8f3e26f9113a3b01a5",
+  "mode": "publish",
+  "phase": "published",
+  "files": [
+    {
+      "after": "b7b2be301e3ec687d5f9f4744d672c0b351a5a758f11dc37ea69e0b9a7b6321f",
+      "before": "09bba9d0f16adf1dd90c2b6cc5e97ee65391b75be45ea30011af7040b9472b9d",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1777168309000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "services/LocationResolver.cfc",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580783153995,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "RoadRunners"
+    },
+    {
+      "after": "6fb023800f9caf30a4fe5fcdc1ed30c823ae233688ee75c0b8f4012f8b72bc09",
+      "before": "2e81c368a8251ff13882104be30b2b66f02f9aaecbea2bf5af077540c774bf48",
+      "metadata": {
+        "gid": 0,
+        "mode": 493,
+        "mtime_ns": 1789176178000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "Application.cfc",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 493,
+        "mtime_ns": 1789407580789914859,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "RoadRunners"
+    },
+    {
+      "after": "10be889aee67cb298032c75bb43e79c5d48132f8810337d79acc7018e44a924a",
+      "before": "4382b640eff5eb12f054bb2a1765deaa9410e6047fc8137ad5f16664066aff55",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789402205782934378,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/audiencia/queries/event_interest.sql",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580797068133,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "34ce8e517875667f35fb5c1631ff800f9540f0202c7eab21a2611ac24cb0ff5e",
+      "before": "2fc6aaec72f8e99a12fff3497e043c4fae3cee9af995b269da6c4c348743b3d2",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181445944621,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/event_interest_backend.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580804004667,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "69ef25fc1f0db3ae35edc43818db6e21222f090129e3433820c63e283ea8c358",
+      "before": "6e9b6aec915c71122a8277a71a619a0fc16c93cc3a4c253aa3452b143bf4755d",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789405181452835945,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/eventos-analytics/home.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580810657750,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 119,
+  "compile_log": "/var/backups/business-publico-location.6ff74deb121f/compile.log"
+}

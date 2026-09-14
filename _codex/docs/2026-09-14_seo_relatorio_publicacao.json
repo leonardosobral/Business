@@ -1,0 +1,93 @@
+{
+  "published_at": "2026-09-14T13:41:07.772993+00:00",
+  "backup": "/var/backups/seo-score-Business-ycv76bd7",
+  "rows": [
+    {
+      "path": "portal/includes/seo_score_data.cfm",
+      "before": null,
+      "after": "7d1190317b552f74053caa7a83ba0a5e6e2d24c57aae814e46ccc90926de8f1c",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/includes/seo_score_backend.cfm",
+      "before": null,
+      "after": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/seo_report.cfm",
+      "before": null,
+      "after": "ee535c8d0e73293732e189da7ffd86713d83a5dcaf3153fb934da01bf5c57d9a",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/seo.cfm",
+      "before": "08847d1d993abeb97cfd6651e8686abdf27fec374918c055f86c82b56d204715",
+      "after": "10f84deecb5e9d038f7a59c292b19a2d143125a88fc64511e89b86cca92b3e5c",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  ],
+  "published": [
+    "portal/includes/seo_score_data.cfm",
+    "portal/includes/seo_score_backend.cfm",
+    "portal/conteudo/seo_report.cfm",
+    "portal/conteudo/seo.cfm"
+  ],
+  "protected": {
+    "portal/includes/seo_queue_data.cfm": "293cf2983497de7526ce13381c12b31349e96b2bac8f658f5d734b20d96da97e",
+    "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+    "portal/conteudo/index.cfm": "19be8e0d3e7653707d8bc5378922939af4c4b52e1d7508da1c2958f3287da7e8",
+    "portal/conteudo/home.cfm": "821d503e75d76bdeb65c12ede8c3cf3d6c8597a3c28317ff8a242981cfdef68a"
+  },
+  "verified_at": "2026-09-14T13:41:07.779010+00:00",
+  "checks": {
+    "node_tests": 37,
+    "cfml_scenarios": 23,
+    "adobe_templates_compiled": 4,
+    "public_access_checks": 9,
+    "astra_review": "P2 de comparabilidade corrigido e revalidado",
+    "ui": {
+      "verified_at": "2026-09-14T13:44:55.100061+00:00",
+      "url": "https://business.roadrunners.run/portal/conteudo/?visao=seo",
+      "authenticated": true,
+      "desktop": {
+        "visual_review": true,
+        "scores": [
+          "70,0",
+          "87,5"
+        ],
+        "site_cards": 2,
+        "criteria": 32,
+        "history_points": 2,
+        "queue_items": 7
+      },
+      "error_filter": {
+        "selected": "error",
+        "visible_checks": 1,
+        "openresults_empty_state": true,
+        "scores_unchanged": true,
+        "queue_items": 7
+      },
+      "mobile": {
+        "viewport_width": 390,
+        "viewport_height": 844,
+        "document_scroll_width": 390,
+        "expanded_check": "alignment",
+        "expanded_scroll_width": 390,
+        "visual_review": true
+      },
+      "viewport_restored": true,
+      "deliverable_tab_open": true
+    }
+  },
+  "evidence_root": "/Users/Shared/RunnerHubReports/seo/score-report-20260914"
+}

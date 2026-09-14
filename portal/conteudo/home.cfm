@@ -61,8 +61,8 @@
 
           <div class="d-flex flex-column flex-xl-row justify-content-between gap-3">
             <div>
-              <h3 class="mb-1">Portal - Conteudo das provas</h3>
-              <p class="text-muted mb-0">KPIs de completude para saber quais provas precisam de conteudo, descricao original, inscricao, categorias, organizador, precificacao e dados basicos.</p>
+              <h1 class="h3 mb-1">Conteúdo das provas</h1>
+              <p class="text-muted mb-0">Acompanhe quais provas precisam de descrição, inscrição, categorias, organizador, preços e dados básicos.</p>
             </div>
             <div class="text-xl-end">
               <div class="small text-muted">Ano monitorado</div>

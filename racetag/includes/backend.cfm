@@ -22,7 +22,7 @@
 <cfset VARIABLES.raceTagScopeAccountId = isDefined("VARIABLES.businessPermissionAccountId") ? val(VARIABLES.businessPermissionAccountId) : 0/>
 <cfset VARIABLES.raceTagStandaloneAllowed = VARIABLES.raceTagUnscopedAccess/>
 <cfset qRaceTagSubmission = queryNew("id_resultado_importacao,submission_id,id_evento,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,open_results_enabled,status_processamento,tentativas")/>
-<cfset qRaceTagPreviousLink = queryNew("id_evento")/>
+<cfset VARIABLES.raceTagQueueService = createObject("component", "services.ResultImportQueueService")/>
 
 <cfif NOT structKeyExists(SESSION, "resultImportManualCsrf") OR NOT len(trim(SESSION.resultImportManualCsrf & ""))>
     <cfset SESSION.resultImportManualCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
@@ -31,45 +31,14 @@
 
 <cfif len(VARIABLES.raceTagSubmissionId)>
     <cfif reFindNoCase("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", VARIABLES.raceTagSubmissionId)>
-        <cfquery name="qRaceTagSubmission">
-            SELECT id_resultado_importacao,
-                   public_id::text AS submission_id,
-                   id_evento,
-                   client_id,
-                   cod_timer,
-                   external_account_id,
-                   external_event_id,
-                   url_resultado,
-                   url_resultado_publica,
-                   status_publicacao,
-                   open_results_enabled,
-                   status_processamento,
-                   tentativas
-            FROM public.tb_resultados_importacoes imp
-            WHERE imp.public_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagSubmissionId#"/> AS uuid)
-            <cfif NOT VARIABLES.raceTagUnscopedAccess>
-              AND EXISTS (
-                  SELECT 1
-                  FROM public.tb_conta_integracoes_resultados account_integration
-                  WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.raceTagScopeAccountId#"/>
-                    AND account_integration.ativo = true
-                    AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                    AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                    AND (
-                      account_integration.abrange_contas_externas = true
-                      OR nullif(trim(account_integration.external_account_id), '')
-                          IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                    )
-              )
-            </cfif>
-            LIMIT 1
-        </cfquery>
+        <cfset qRaceTagSubmission = VARIABLES.raceTagQueueService.submission(
+            VARIABLES.raceTagSubmissionId, VARIABLES.raceTagUnscopedAccess, VARIABLES.raceTagScopeAccountId)/>
 
         <cfif qRaceTagSubmission.recordcount AND compareNoCase(qRaceTagSubmission.cod_timer, "racezone") NEQ 0>
             <cfset VARIABLES.raceTagError = "A submissão informada não utiliza o adaptador RaceTag Pro."/>
         <cfelseif qRaceTagSubmission.recordcount>
             <cfset VARIABLES.raceTagSubmissionReady = true/>
-            <cfset VARIABLES.raceTagSubmissionCanProcess = listFindNoCase("pendente,falhou", qRaceTagSubmission.status_processamento) GT 0/>
+            <cfset VARIABLES.raceTagSubmissionCanProcess = listFindNoCase("pendente,falhou", qRaceTagSubmission.queue_status) GT 0/>
             <cfset VARIABLES.raceTagPayloadIntentAvailable = true/>
             <cfset VARIABLES.raceTagPayloadOpenResultsEnabled = qRaceTagSubmission.open_results_enabled/>
             <cfif NOT VARIABLES.raceTagUnscopedAccess>
@@ -96,23 +65,16 @@
                 <cfset FORM.id_evento = qRaceTagSubmission.id_evento/>
             </cfif>
 
-            <cfif NOT len(trim(FORM.id_evento)) AND len(trim(qRaceTagSubmission.external_event_id & ""))>
-                <cfquery name="qRaceTagPreviousLink">
-                    SELECT id_evento
-                    FROM public.tb_resultados_importacoes
-                    WHERE client_id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qRaceTagSubmission.client_id#"/>
-                      AND external_event_id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qRaceTagSubmission.external_event_id#"/>
-                      AND external_account_id IS NOT DISTINCT FROM <cfqueryparam cfsqltype="cf_sql_varchar" value="#qRaceTagSubmission.external_account_id#" null="#NOT len(trim(qRaceTagSubmission.external_account_id & ''))#"/>
-                      AND id_evento IS NOT NULL
-                      AND public_id <> CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagSubmissionId#"/> AS uuid)
-                    ORDER BY data_processamento DESC NULLS LAST, data_recebimento DESC
-                    LIMIT 1
-                </cfquery>
-
-                <cfif qRaceTagPreviousLink.recordcount>
-                    <cfset FORM.id_evento = qRaceTagPreviousLink.id_evento/>
-                    <cfset VARIABLES.raceTagNotice = "Vínculo interno reaproveitado de uma submissão anterior do mesmo evento externo."/>
-                </cfif>
+            <cfif NOT len(trim(FORM.id_evento)) AND val(qRaceTagSubmission.suggested_event_id) GT 0>
+                <cfset FORM.id_evento = qRaceTagSubmission.suggested_event_id/>
+                <cfset VARIABLES.raceTagNotice = qRaceTagSubmission.link_source EQ "history"
+                    ? "Vínculo reaproveitado do histórico deste evento externo."
+                    : "Evento pré-selecionado pela URL cadastrada em url_resultado ou url_wiclax. Confira o vínculo antes de processar."/>
+            <cfelseif qRaceTagSubmission.link_source EQ "ambiguous">
+                <cfset VARIABLES.raceTagNotice = "Há mais de um evento compatível com esta origem. Escolha o vínculo correto manualmente."/>
+            </cfif>
+            <cfif qRaceTagSubmission.queue_status EQ "arquivado">
+                <cfset VARIABLES.raceTagNotice = "Esta chamada está arquivada: uma submissão posterior deste evento já foi processada. Consulte o histórico da fila."/>
             </cfif>
         <cfelse>
             <cfset VARIABLES.raceTagError = "A submissão informada não foi encontrada na fila."/>

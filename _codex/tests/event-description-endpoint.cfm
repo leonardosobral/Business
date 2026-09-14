@@ -40,6 +40,12 @@ cases = [
     {method='POST', body='{"eventId":null}', headers=signedHeaders('{"eventId":null}'), code=400, status='validation_error'},
     {method='POST', body='{"model":"caller-model"}', headers=signedHeaders('{"model":"caller-model"}'), code=400, status='validation_error'},
     {method='POST', body='{"eventId":{}}', headers=signedHeaders('{"eventId":{}}'), code=400, status='validation_error'},
+    {method='POST', body='{"language":"fr"}', headers=signedHeaders('{"language":"fr"}'), code=400, status='validation_error'},
+    {method='POST', body='{"language":{}}', headers=signedHeaders('{"language":{}}'), code=400, status='validation_error'},
+    {method='POST', body='{"language":"en"}', headers=signedHeaders('{"language":"en"}'), code=503, status='configuration_error'},
+    {method='POST', body='{"language":"es"}', headers=signedHeaders('{"language":"es"}'), code=503, status='configuration_error'},
+    {method='POST', body='{"language":"pt-BR"}', headers=signedHeaders('{"language":"pt-BR"}'), code=503, status='configuration_error'},
+    {method='POST', body='{"language":"auto"}', headers=signedHeaders('{"language":"auto"}'), code=503, status='configuration_error'},
     {method='POST', body='{}', headers=signedHeaders('{}'), code=503, status='configuration_error'},
     {method='POST', body='{"dryRun":false,"eventId":1,"limit":1}', headers=signedHeaders('{"dryRun":false,"eventId":1,"limit":1}'), code=503, status='configuration_error'}
 ];
@@ -50,6 +56,6 @@ for (scenario in cases) {
 }
 result = runCase('POST', '{}', {}, false);
 check(result.code EQ 503 AND result.payload.status EQ 'configuration_error', 'Missing HMAC configuration is explicit');
-writeOutput('Endpoint guards passed: 22' & chr(10));
+writeOutput('Endpoint guards passed: 28' & chr(10));
 include 'integration.cfm';
 </cfscript>

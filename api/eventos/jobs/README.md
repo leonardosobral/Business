@@ -1,21 +1,26 @@
-# Reescrita de descrições de eventos
+# Descrições de eventos em português, inglês e espanhol
 
 O Business preenche `tb_evento_corridas.descricao` com uma reescrita de
-`descricao_original`, usando a API da OpenAI diretamente. O n8n não participa
-deste fluxo. O cron existente oferece agenda, execução manual e histórico.
+`descricao_original`, usando a API da OpenAI diretamente. Também traduz a
+descrição portuguesa publicada (`descricao`) para `descricao_en` e `descricao_es`.
+O n8n não participa deste fluxo. O mesmo cron oferece agenda, execução manual e
+histórico; cada execução processa um evento em um idioma.
 
 ## Contrato
 
 `POST https://business.roadrunners.run/api/event-description-rewrite.cfm`
 
 ```json
-{"limit":1,"dryRun":true}
+{"limit":1,"dryRun":true,"language":"auto"}
 ```
 
-`eventId` pode restringir a consulta a um evento. `limit` deve ser 1: cada evento
-pode precisar de duas chamadas à IA, dentro do timeout de 120 segundos do cron.
+`eventId` pode restringir a consulta a um evento. `language` aceita `auto`
+(padrão), `pt-BR`, `en` ou `es`. `limit` deve ser 1: cada trabalho pode precisar
+de duas chamadas à IA, dentro do timeout de 120 segundos do cron.
 O padrão é `dryRun=true`; a simulação consome chamadas à IA, retorna uma prévia
-e não altera os eventos nem a auditoria.
+e não altera os eventos nem a auditoria. Uma tradução reaproveitada da auditoria
+não faz novas chamadas à IA. Cada item de `results` informa o idioma efetivamente
+processado; traduções também informam `reused`.
 
 Autenticação: `X-RR-Handoff-Timestamp` e `X-RR-Handoff-Signature`, com
 HMAC-SHA256 de `timestamp + "." + corpo` e janela de cinco minutos. O segredo é
@@ -46,6 +51,17 @@ Credenciais e URL do provedor não são aceitas no corpo da requisição.
 - O `UPDATE` altera somente `descricao` e exige que ela continue vazia e que
   `descricao_original` permaneça exatamente igual à fonte consultada. Não altera
   categorias, datas do cadastro, distâncias estruturadas ou `data_processamento`.
+- As traduções usam somente `descricao` como fonte, mantendo português e original
+  intactos. Publicam no campo do idioma escolhido após a mesma verificação factual
+  em duas etapas. A comparação final exige fonte portuguesa e campo de destino
+  exatamente iguais aos valores lidos, incluindo a distinção entre `NULL` e vazio.
+- Uma tradução preenchida somente é atualizada se ainda coincidir com a última
+  saída publicada pelo cron para aquele idioma e a fonte portuguesa tiver mudado.
+  Traduções manuais preexistentes ou editadas após o cron são preservadas.
+- O mesmo `UPDATE` grava, em `descricao_traducoes_meta`, os hashes MD5 da fonte
+  portuguesa e do texto publicado para o idioma, preservando os metadados do
+  outro idioma. O site identifica traduções desatualizadas por essa marca, sem
+  obter acesso à auditoria privada do Business.
 
 ## Fila e auditoria
 
@@ -55,12 +71,40 @@ há criação de usuários, credenciais ou concessão de permissões.
 `public.tb_evento_descricao_rewrites` guarda fonte, hash, descrição anterior,
 descrição gravada, modelo, status e horários. Um lock transacional evita duas
 execuções simultâneas. A gravação do evento e a auditoria são atômicas.
+`public.tb_evento_descricao_translations` mantém auditoria separada por idioma e
+tentativa, com os mesmos dados, contador de tentativas, próximo retry e vínculo
+com a validação anterior quando uma saída é reaproveitada. `metadata_before`
+preserva o bloco anterior do idioma para permitir restauração conjunta.
+
+A fila `auto` prioriza eventos ainda não encerrados, depois o ID do evento e a
+ordem português, inglês, espanhol. Assim, termina os idiomas de um evento antes
+de seguir para o próximo. Uma tradução rejeitada, aguardando retry ou com erros
+esgotados não impede o outro idioma ou os demais eventos de avançarem. A CTE
+em `queue.cfm`, função `eventDescriptionQueueSql()`, é compartilhada pelo cron
+e pelo painel de contadores, sem fazer chamadas à IA.
 
 Uma versão de fonte já processada ou rejeitada não é tentada automaticamente de
 novo. Falhas do provedor também ficam registradas, evitando repetição de custos.
 Uma alteração real em `descricao_original` cria uma nova versão elegível se a
 descrição continuar vazia. O MD5 identifica versões; não é usado como credencial
-nem substitui a comparação exata do texto antes da gravação.
+nem substitui a comparação exata do texto antes da gravação. Esse comportamento
+de reescrita portuguesa foi preservado.
+
+Para traduções, a deduplicação usa evento, idioma, hash e fonte portuguesa exata.
+Rejeições factuais não são repetidas para a mesma versão/idioma. Falhas do
+provedor têm no máximo três tentativas: o primeiro retry espera cinco minutos,
+o segundo espera trinta. Após a terceira falha, a versão fica em
+`errors_exhausted` para revisão operacional. Uma nova fonte tem histórico próprio.
+Não há ciclos automáticos ilimitados de retry.
+
+Uma saída já validada pode ser reaplicada sem IA quando a fonte muda de A para B
+e volta para A, ou quando o campo traduzido é esvaziado. A auditoria registra a
+reaplicação e sua origem em `reused_from_id`. A regra de preservar edição manual
+também se aplica ao reaproveitamento. Uma tradução só corresponde à fonte atual
+quando seus metadados contêm `source_hash=md5(descricao)` e
+`description_hash=md5(campo_traduzido)`. Ausência de marca para o idioma ou texto
+modificado após a publicação identificam conteúdo manual; dados malformados
+na marca não devem autorizar a exibição de uma tradução antiga.
 
 HTTP: `200` sucesso/prévia/fila vazia; `400` parâmetros; `401` assinatura; `405`
 método; `409` execução em andamento; `422` reescrita rejeitada; `502` falha da IA;
@@ -69,18 +113,33 @@ pois o cron classifica o resultado pelo status HTTP.
 
 ## Instalação e operação
 
-1. Aplicar `schema.sql` e publicar o serviço e os dois templates CFML.
+1. Pausar este cron, aplicar `schema.sql` e publicar o serviço, os dois templates
+   CFML e `queue.cfm`. A migração adiciona os dois campos TEXT, o campo JSONB de
+   metadados e a auditoria de traduções; é idempotente e preserva a auditoria
+   portuguesa.
 2. Aplicar `administracao/cron-jobs/event_description_rewrite_job.sql`. O cadastro
    é idempotente e começa pausado, com simulação, a cada cinco minutos.
 3. Validar uma prévia e uma execução unitária, comparando os dados antes/depois.
 4. No gerenciador `/administracao/cron-jobs/`, usar `{"limit":1,"dryRun":false}`
-   e ativar o job após a validação. Não manter outro agendamento n8n equivalente.
+   e ativar o job após a validação. Na operação atual, a agenda é de um minuto;
+   `language` omitido equivale a `auto`. Não manter outro agendamento n8n equivalente.
 5. Acompanhar o histórico. Fontes rejeitadas podem ser tratadas pela edição de
    conteúdo já existente em `/eventos/`; o cron não as republica automaticamente.
 
 Reaplicar o SQL de cadastro preserva agenda, corpo e estado de um job existente.
 O código antigo no RunnerHub permanece preservado; nenhuma rota antiga foi
 redirecionada ou removida por esta migração.
+
+O painel `/administracao/cron-jobs/descricoes.cfm` mostra etapas pendentes,
+novas tentativas e itens para revisão por idioma. Atualiza a cada 30 segundos
+enquanto estiver visível. Cada idioma conta como uma etapa; as traduções de um
+evento entram na contagem quando a descrição portuguesa fica pronta.
+
+O agendador atual calcula o próximo horário um minuto após o término da chamada.
+Como o runner consulta tarefas vencidas a cada minuto, a cadência observada com
+essa configuração é de aproximadamente dois minutos entre inícios. Uma cadência
+fixa por horário de início exige alteração no agendador central, que foi mantido
+nesta entrega.
 
 ## Validação e recuperação
 
@@ -97,6 +156,12 @@ banco de produção.
 Para suspender, desativar apenas este job. Para reverter uma descrição específica,
 usar `description_before` da auditoria somente se a descrição atual ainda for
 exatamente `description_after` e o original continuar igual a `source_text`.
+Para traduções, comparar `descricao` com `source_text` e restaurar somente o
+campo de idioma da auditoria, incluindo o `NULL` anterior quando aplicável, e o
+bloco do mesmo idioma em `descricao_traducoes_meta` a partir de `metadata_before`,
+no mesmo `UPDATE`. Se o bloco anterior era ausente, remover apenas essa chave.
+Conferir também que a marca atual ainda corresponde à saída sendo revertida e
+preservar sempre o bloco do outro idioma.
 Não restaurar por cima de uma edição posterior. Conservar a auditoria e o recibo
 de publicação; arquivos novos podem ser retirados após a pausa, conferindo seus
 hashes para não apagar alterações posteriores.

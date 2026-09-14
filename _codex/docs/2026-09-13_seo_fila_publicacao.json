@@ -1,0 +1,134 @@
+{
+  "published_at": "2026-09-13T19:24:35.736525+00:00",
+  "root": "/var/www/business.roadrunners.run",
+  "backup": "/var/backups/business-seo-screen-20260913.1igzwy3v",
+  "rows": [
+    {
+      "path": "portal/includes/seo_queue_data.cfm",
+      "before": null,
+      "after": "264f50aeb8e769c1313291f82788a70d98af3ce8ba733f44b95ece685f05dda4"
+    },
+    {
+      "path": "portal/includes/seo_queue_backend.cfm",
+      "before": null,
+      "after": "1a6b11631a30daef340321a0f85a5369b0ea8481c148e5e714c86020f9c7adcd"
+    },
+    {
+      "path": "portal/conteudo/seo.cfm",
+      "before": null,
+      "after": "5329a429a88b1229de46bb52c861bb14f66b3176ffe84ddc1f39942dd77f87bc"
+    },
+    {
+      "path": "portal/conteudo/index.cfm",
+      "before": "cb12103464268cfc0d5f694919c98da1a94c766e5f94333435d776d2ea126151",
+      "after": "19be8e0d3e7653707d8bc5378922939af4c4b52e1d7508da1c2958f3287da7e8"
+    },
+    {
+      "path": "portal/conteudo/home.cfm",
+      "before": "487dd1777f491112799ce566a50ebc0029963571fd1d3796b9d4dc5ffa7eea0b",
+      "after": "821d503e75d76bdeb65c12ede8c3cf3d6c8597a3c28317ff8a242981cfdef68a"
+    }
+  ],
+  "attributes": {
+    "portal/includes/seo_queue_data.cfm": {
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/includes/seo_queue_backend.cfm": {
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/conteudo/seo.cfm": {
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/conteudo/index.cfm": {
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/conteudo/home.cfm": {
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  },
+  "protected": {
+    "Application.cfc": "573c86a10325f847395a182bac7703662304d527f71f7f50941aa2e50032ab99",
+    "includes/backend/backend_login.cfm": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+    "includes/estrutura/head.cfm": "fa9b22b63e629cba283a61d72d59200a29ce26b8ab0f49cbce143a84399a63df",
+    "includes/estrutura/header.cfm": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+    "includes/estrutura/footer.cfm": "3ce72ccc0842762fcc97d0d0bf5f9822ac89920d6eea5480dc9e7dafe5cb1a93",
+    "includes/estrutura/sidenav.cfm": "7d69136a1ede07951b6cbf5522a8f88548c3743681234992d8430864d1ced520",
+    "portal/includes/event_content_kpi_backend.cfm": "d6bfc38f8287d228cf141e5ae5469bce68805ae5f7a1032311aa68b515aee248"
+  },
+  "published": [
+    "portal/includes/seo_queue_data.cfm",
+    "portal/includes/seo_queue_backend.cfm",
+    "portal/conteudo/seo.cfm",
+    "portal/conteudo/index.cfm",
+    "portal/conteudo/home.cfm"
+  ],
+  "verified_at": "2026-09-13T19:24:35.741031+00:00",
+  "post_browser_verification": {
+    "files_verified": 5,
+    "protected_unchanged": 8,
+    "verified_at": "2026-09-13T19:28:27.258923+00:00"
+  },
+  "http_anonymous_checks": [
+    {
+      "route": "/portal/conteudo/?visao=seo",
+      "status": "302",
+      "headers": [
+        "cache-control: no-cache",
+        "location: /"
+      ],
+      "exposes_queue": false
+    },
+    {
+      "route": "/portal/conteudo/seo.cfm",
+      "status": "403",
+      "headers": [
+        "cache-control: private, no-store"
+      ],
+      "exposes_queue": false
+    },
+    {
+      "route": "/portal/includes/seo_queue_backend.cfm",
+      "status": "403",
+      "headers": [],
+      "exposes_queue": false
+    },
+    {
+      "route": "/portal/includes/seo_queue_data.cfm",
+      "status": "403",
+      "headers": [],
+      "exposes_queue": false
+    }
+  ],
+  "ui_checks": {
+    "authenticated": true,
+    "content_link": true,
+    "filters_empty": true,
+    "filters_openresults_p2": [
+      "OR-01"
+    ],
+    "final_scope": "7 of 7",
+    "viewports": [
+      {
+        "width": 1415,
+        "document_width": 1415
+      },
+      {
+        "width": 390,
+        "document_width": 390
+      }
+    ],
+    "raw_reports_exposed": false,
+    "collection_triggered_by_ui": false
+  }
+}

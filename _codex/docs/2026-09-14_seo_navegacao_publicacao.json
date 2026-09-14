@@ -1,0 +1,154 @@
+{
+  "published_at": "2026-09-14T13:57:52.138957+00:00",
+  "backup": "/var/backups/seo-navigation-Business-h7rbayhl",
+  "rows": [
+    {
+      "path": "portal/seo/index.cfm",
+      "before": null,
+      "after": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/seo.cfm",
+      "before": "10f84deecb5e9d038f7a59c292b19a2d143125a88fc64511e89b86cca92b3e5c",
+      "after": "6d5559e5044aff7708f515aeb556482aee5d19d0b17ac73f3146ab0c1e2fb8d7",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/seo_report.cfm",
+      "before": "ee535c8d0e73293732e189da7ffd86713d83a5dcaf3153fb934da01bf5c57d9a",
+      "after": "6a9ee23dedc77dd7f7d925b79284c4860dd763e844cef8cfe5d7ae0ae960e613",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/home.cfm",
+      "before": "821d503e75d76bdeb65c12ede8c3cf3d6c8597a3c28317ff8a242981cfdef68a",
+      "after": "a4913063364c94ceb71156c8b2ab45e315078d510928c27477afdb6f67d05e72",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    {
+      "path": "includes/estrutura/head.cfm",
+      "before": "fa9b22b63e629cba283a61d72d59200a29ce26b8ab0f49cbce143a84399a63df",
+      "after": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606",
+      "uid": 501,
+      "gid": 50,
+      "mode": 420
+    },
+    {
+      "path": "includes/estrutura/sidenav.cfm",
+      "before": "7d69136a1ede07951b6cbf5522a8f88548c3743681234992d8430864d1ced520",
+      "after": "0befc1e7f789d8400635ee5ee9f3643151a49927a83bec2fa66d5eaf7b99eea7",
+      "uid": 501,
+      "gid": 50,
+      "mode": 420
+    },
+    {
+      "path": "portal/conteudo/index.cfm",
+      "before": "19be8e0d3e7653707d8bc5378922939af4c4b52e1d7508da1c2958f3287da7e8",
+      "after": "d6af7783d7b0fd02698db522d094f140d4c611f0bd79ef46628765f44b696247",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  ],
+  "published": [
+    "portal/seo/index.cfm",
+    "portal/conteudo/seo.cfm",
+    "portal/conteudo/seo_report.cfm",
+    "portal/conteudo/home.cfm",
+    "includes/estrutura/head.cfm",
+    "includes/estrutura/sidenav.cfm",
+    "portal/conteudo/index.cfm"
+  ],
+  "protected": {
+    "portal/includes/seo_queue_data.cfm": "293cf2983497de7526ce13381c12b31349e96b2bac8f658f5d734b20d96da97e",
+    "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+    "portal/includes/seo_score_data.cfm": "7d1190317b552f74053caa7a83ba0a5e6e2d24c57aae814e46ccc90926de8f1c",
+    "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+    "includes/backend/backend_login.cfm": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add"
+  },
+  "verified_at": "2026-09-14T13:57:52.151396+00:00",
+  "validation": {
+    "menu_tests": 6,
+    "cfml_render_scenarios": 2,
+    "adobe_templates": 7,
+    "ui": {
+      "verified_at": "2026-09-14T14:01:49.456589+00:00",
+      "legacy_redirect": {
+        "from": "/portal/conteudo/?visao=seo&site=openresults&prioridade=p3&verificacao=warning",
+        "to": "/portal/seo/?site=openresults&prioridade=p3&verificacao=warning",
+        "filters_preserved": true
+      },
+      "seo": {
+        "heading": "SEO",
+        "title": "SEO · Road Runners Business",
+        "active_menu": "/portal/seo/",
+        "menu_section": "Marketing e audiência",
+        "forms": [
+          "/portal/seo/",
+          "/portal/seo/"
+        ],
+        "shared_tabs": 0,
+        "checks": 32
+      },
+      "content": {
+        "heading": "Conteúdo das provas",
+        "title": "Conteúdo das provas · Road Runners Business",
+        "active_menu": "/portal/conteudo/",
+        "menu_section": "Conteúdo e portal",
+        "shared_tabs": 0,
+        "seo_cards": 0
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844,
+        "seo_scroll_width": 390,
+        "content_scroll_width": 390,
+        "navigation_via_menu": true
+      },
+      "filter_submit": {
+        "path": "/portal/seo/?site=all&prioridade=all&verificacao=error",
+        "checks": 1,
+        "queue_items": 7
+      },
+      "viewport_restored": true
+    },
+    "anonymous_access": {
+      "note": "Cliente urllib padrão recebeu 403 nas três rotas; resposta de 17 bytes, sem dados privados. Não distingue a proteção de borda do guard da aplicação. Sessão administrativa conferida no navegador.",
+      "initial_expected_302_assertion": false,
+      "results": [
+        {
+          "path": "/portal/seo/",
+          "status": 403,
+          "private_data_exposed": false
+        },
+        {
+          "path": "/portal/conteudo/",
+          "status": 403,
+          "private_data_exposed": false
+        },
+        {
+          "path": "/portal/conteudo/?visao=seo",
+          "status": 403,
+          "private_data_exposed": false
+        }
+      ]
+    }
+  },
+  "preserved_production_difference": {
+    "file": "includes/estrutura/head.cfm",
+    "production_css": "pesquisas.css?v=20260824-7",
+    "local_css": "pesquisas.css?v=20260824-8",
+    "deployment": "Somente title foi alterado sobre baseline de produção; versão local alheia preservada sem publicação."
+  },
+  "evidence_root": "/Users/Shared/RunnerHubReports/seo/navigation-20260914"
+}

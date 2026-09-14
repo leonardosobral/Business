@@ -6,6 +6,7 @@
 <cfparam name="URL.cliente" default=""/>
 <cfparam name="URL.periodo" default="30"/>
 <cfparam name="URL.id" default=""/>
+<cfparam name="URL.grupo" default=""/>
 <cfparam name="URL.descarte" default=""/>
 <cfparam name="FORM.result_import_queue_action" default=""/>
 <cfparam name="FORM.submission_id" default=""/>
@@ -23,6 +24,7 @@
 <cfset VARIABLES.resultImportClient = left(lCase(trim(URL.cliente & "")), 128)/>
 <cfset VARIABLES.resultImportPeriodDays = listFind("0,1,7,30,90", trim(URL.periodo & "")) ? val(URL.periodo) : 30/>
 <cfset VARIABLES.resultImportSelectedId = lCase(trim(URL.id & ""))/>
+<cfset VARIABLES.resultImportGroup = reFindNoCase("^[0-9a-f]{32}$", URL.grupo & "") ? lCase(URL.grupo) : ""/>
 <cfset VARIABLES.resultImportTotal = 0/>
 <cfset VARIABLES.resultImportTotalPages = 1/>
 <cfset VARIABLES.resultImportOffset = 0/>
@@ -36,7 +38,7 @@
 </cfif>
 <cfset VARIABLES.resultImportQueueCsrf = SESSION.resultImportQueueCsrf/>
 
-<cfif NOT listFindNoCase("pendente,processando,processado,falhou,cancelado", VARIABLES.resultImportStatus)>
+<cfif NOT listFindNoCase("pendente,processando,processado,falhou,cancelado,arquivado", VARIABLES.resultImportStatus)>
     <cfset VARIABLES.resultImportStatus = ""/>
 </cfif>
 <cfif NOT listFindNoCase("extraoficial,final,atualizacao", VARIABLES.resultImportPublicationStatus)>
@@ -89,356 +91,40 @@
         & "&timer=" & encodeForURL(VARIABLES.resultImportTimer)
         & "&cliente=" & encodeForURL(VARIABLES.resultImportClient)
         & "&busca=" & encodeForURL(VARIABLES.resultImportSearch)
+        & "&grupo=" & encodeForURL(VARIABLES.resultImportGroup)
         & "&descarte=" & (VARIABLES.resultImportDiscardSucceeded ? "ok" : "erro")/>
     <cflocation addtoken="false" url="#VARIABLES.resultImportDiscardRedirect#"/>
 </cfif>
 
-<cfset qResultImportSummary = queryNew("total,pendentes,pendentes_atrasadas,processando,processados,falhas,cancelados,extraoficiais,finais,atualizacoes,total_resultados")/>
-<cfset qResultImports = queryNew("id_resultado_importacao,submission_id,id_evento,id_evento_informado,tag_evento_informada,client_id,cod_timer,external_account_id,external_event_id,url_resultado,url_resultado_publica,status_publicacao,open_results_enabled,status_processamento,idempotency_key,tentativas,total_resultados,erro_codigo,erro_detalhe,data_recebimento,data_inicio,data_processamento,data_atualizacao,nome_evento,event_tag,event_city,event_state,event_date")/>
-<cfset qResultImportDetail = duplicate(qResultImports)/>
-<cfset qResultImportTimers = queryNew("cod_timer")/>
-<cfset qResultImportClients = queryNew("client_id")/>
-
+<cfset qResultImportDetail = queryNew("submission_id")/>
 <cftry>
-    <cfquery name="qResultImportSchema">
-        SELECT count(*) AS total
-        FROM information_schema.tables
-        WHERE table_schema = 'public'
-          AND table_name = 'tb_resultados_importacoes'
-    </cfquery>
+    <cfset VARIABLES.resultImportQueueService = createObject("component", "services.ResultImportQueueService")/>
+    <cfset VARIABLES.resultImportData = VARIABLES.resultImportQueueService.queue({
+        days=VARIABLES.resultImportPeriodDays, search=VARIABLES.resultImportSearch,
+        status=VARIABLES.resultImportStatus, status_publicacao=VARIABLES.resultImportPublicationStatus,
+        cod_timer=VARIABLES.resultImportTimer, client_id=VARIABLES.resultImportClient,
+        event_group=VARIABLES.resultImportGroup, page=VARIABLES.resultImportPage
+    }, VARIABLES.resultImportUnscopedAccess, VARIABLES.resultImportScopeAccountId)/>
+    <cfset qResultImportSummary = VARIABLES.resultImportData.summary/>
+    <cfset qResultImports = VARIABLES.resultImportData.rows/>
+    <cfset qResultImportTimers = VARIABLES.resultImportData.timers/>
+    <cfset qResultImportClients = VARIABLES.resultImportData.clients/>
+    <cfset VARIABLES.resultImportTotal = VARIABLES.resultImportData.total/>
+    <cfset VARIABLES.resultImportPage = VARIABLES.resultImportData.page/>
+    <cfset VARIABLES.resultImportTotalPages = VARIABLES.resultImportData.pages/>
+    <cfset VARIABLES.resultImportSchemaReady = true/>
 
-    <cfset VARIABLES.resultImportSchemaReady = val(qResultImportSchema.total) EQ 1/>
-
-    <cfif VARIABLES.resultImportSchemaReady>
-        <cfquery name="qResultImportSummary">
-            SELECT count(*) FILTER (WHERE imp.status_processamento <> 'cancelado') AS total,
-                   count(*) FILTER (WHERE imp.status_processamento = 'pendente') AS pendentes,
-                   count(*) FILTER (
-                       WHERE imp.status_processamento = 'pendente'
-                         AND imp.data_recebimento < now() - interval '15 minutes'
-                   ) AS pendentes_atrasadas,
-                   count(*) FILTER (WHERE imp.status_processamento = 'processando') AS processando,
-                   count(*) FILTER (WHERE imp.status_processamento = 'processado') AS processados,
-                   count(*) FILTER (WHERE imp.status_processamento = 'falhou') AS falhas,
-                   count(*) FILTER (WHERE imp.status_processamento = 'cancelado') AS cancelados,
-                   count(*) FILTER (WHERE imp.status_publicacao = 'extraoficial') AS extraoficiais,
-                   count(*) FILTER (WHERE imp.status_publicacao = 'final') AS finais,
-                   count(*) FILTER (WHERE imp.status_publicacao = 'atualizacao') AS atualizacoes,
-                   coalesce(sum(imp.total_resultados) FILTER (WHERE imp.status_processamento = 'processado'), 0) AS total_resultados
-            FROM public.tb_resultados_importacoes imp
-            LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
-            WHERE 1 = 1
-            <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                AND EXISTS (
-                    SELECT 1
-                    FROM public.tb_conta_integracoes_resultados account_integration
-                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                      AND account_integration.ativo = true
-                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                      AND (
-                        account_integration.abrange_contas_externas = true
-                        OR nullif(trim(account_integration.external_account_id), '')
-                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                      )
-                )
+    <cfif len(VARIABLES.resultImportSelectedId)>
+        <cfif reFindNoCase("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", VARIABLES.resultImportSelectedId)>
+            <cfset qResultImportDetail = VARIABLES.resultImportQueueService.submission(
+                VARIABLES.resultImportSelectedId, VARIABLES.resultImportUnscopedAccess, VARIABLES.resultImportScopeAccountId)/>
+            <cfif NOT qResultImportDetail.recordcount>
+                <cfset VARIABLES.resultImportDetailError = "Submissão não encontrada."/>
             </cfif>
-            <cfif VARIABLES.resultImportPeriodDays GT 0>
-                AND imp.data_recebimento >= now() - (
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
-                )
-            </cfif>
-            <cfif len(VARIABLES.resultImportPublicationStatus)>
-                AND imp.status_publicacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportPublicationStatus#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportTimer)>
-                AND lower(imp.cod_timer) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportTimer#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportClient)>
-                AND lower(imp.client_id) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportClient#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportSearch)>
-                AND position(
-                    lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportSearch#"/>)
-                    IN lower(concat_ws(' ',
-                        imp.public_id::text,
-                        imp.id_resultado_importacao::text,
-                        imp.id_evento::text,
-                        imp.id_evento_informado::text,
-                        imp.tag_evento_informada,
-                        imp.external_account_id,
-                        imp.external_event_id,
-                        imp.url_resultado,
-                        imp.url_resultado_publica,
-                        evt.nome_evento,
-                        evt.tag
-                    ))
-                ) > 0
-            </cfif>
-        </cfquery>
-
-        <cfquery name="qResultImportTimers">
-            SELECT DISTINCT imp.cod_timer
-            FROM public.tb_resultados_importacoes imp
-            WHERE imp.cod_timer IS NOT NULL
-              AND trim(imp.cod_timer) <> ''
-            <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                AND EXISTS (
-                    SELECT 1
-                    FROM public.tb_conta_integracoes_resultados account_integration
-                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                      AND account_integration.ativo = true
-                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                      AND (
-                        account_integration.abrange_contas_externas = true
-                        OR nullif(trim(account_integration.external_account_id), '')
-                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                      )
-                )
-            </cfif>
-            ORDER BY imp.cod_timer
-        </cfquery>
-
-        <cfquery name="qResultImportClients">
-            SELECT DISTINCT imp.client_id
-            FROM public.tb_resultados_importacoes imp
-            WHERE imp.client_id IS NOT NULL
-              AND trim(imp.client_id) <> ''
-            <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                AND EXISTS (
-                    SELECT 1
-                    FROM public.tb_conta_integracoes_resultados account_integration
-                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                      AND account_integration.ativo = true
-                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                      AND (
-                        account_integration.abrange_contas_externas = true
-                        OR nullif(trim(account_integration.external_account_id), '')
-                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                      )
-                )
-            </cfif>
-            ORDER BY imp.client_id
-        </cfquery>
-
-        <cfquery name="qResultImportCount">
-            SELECT count(*) AS total
-            FROM public.tb_resultados_importacoes imp
-            LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
-            WHERE 1 = 1
-            <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                AND EXISTS (
-                    SELECT 1
-                    FROM public.tb_conta_integracoes_resultados account_integration
-                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                      AND account_integration.ativo = true
-                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                      AND (
-                        account_integration.abrange_contas_externas = true
-                        OR nullif(trim(account_integration.external_account_id), '')
-                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                      )
-                )
-            </cfif>
-            <cfif VARIABLES.resultImportPeriodDays GT 0>
-                AND imp.data_recebimento >= now() - (
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
-                )
-            </cfif>
-            <cfif len(VARIABLES.resultImportStatus)>
-                AND imp.status_processamento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportStatus#"/>
-            <cfelse>
-                AND imp.status_processamento <> 'cancelado'
-            </cfif>
-            <cfif len(VARIABLES.resultImportPublicationStatus)>
-                AND imp.status_publicacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportPublicationStatus#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportTimer)>
-                AND lower(imp.cod_timer) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportTimer#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportClient)>
-                AND lower(imp.client_id) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportClient#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportSearch)>
-                AND position(
-                    lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportSearch#"/>)
-                    IN lower(concat_ws(' ',
-                        imp.public_id::text,
-                        imp.id_resultado_importacao::text,
-                        imp.id_evento::text,
-                        imp.id_evento_informado::text,
-                        imp.tag_evento_informada,
-                        imp.external_account_id,
-                        imp.external_event_id,
-                        imp.url_resultado,
-                        imp.url_resultado_publica,
-                        evt.nome_evento,
-                        evt.tag
-                    ))
-                ) > 0
-            </cfif>
-        </cfquery>
-
-        <cfset VARIABLES.resultImportTotal = val(qResultImportCount.total)/>
-        <cfset VARIABLES.resultImportTotalPages = max(1, ceiling(VARIABLES.resultImportTotal / VARIABLES.resultImportPerPage))/>
-        <cfset VARIABLES.resultImportPage = min(VARIABLES.resultImportPage, VARIABLES.resultImportTotalPages)/>
-        <cfset VARIABLES.resultImportOffset = (VARIABLES.resultImportPage - 1) * VARIABLES.resultImportPerPage/>
-
-        <cfquery name="qResultImports">
-            SELECT imp.id_resultado_importacao,
-                   imp.public_id::text AS submission_id,
-                   imp.id_evento,
-                   imp.id_evento_informado,
-                   imp.tag_evento_informada,
-                   imp.client_id,
-                   imp.cod_timer,
-                   imp.external_account_id,
-                   imp.external_event_id,
-                   imp.url_resultado,
-                   imp.url_resultado_publica,
-                   imp.status_publicacao,
-                   imp.open_results_enabled,
-                   imp.status_processamento,
-                   imp.idempotency_key,
-                   imp.tentativas,
-                   imp.total_resultados,
-                   imp.erro_codigo,
-                   imp.erro_detalhe,
-                   imp.data_recebimento,
-                   imp.data_inicio,
-                   imp.data_processamento,
-                   imp.data_atualizacao,
-                   evt.nome_evento,
-                   evt.tag AS event_tag,
-                   evt.cidade AS event_city,
-                   evt.estado AS event_state,
-                   evt.data_inicial AS event_date
-            FROM public.tb_resultados_importacoes imp
-            LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
-            WHERE 1 = 1
-            <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                AND EXISTS (
-                    SELECT 1
-                    FROM public.tb_conta_integracoes_resultados account_integration
-                    WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                      AND account_integration.ativo = true
-                      AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                      AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                      AND (
-                        account_integration.abrange_contas_externas = true
-                        OR nullif(trim(account_integration.external_account_id), '')
-                            IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                      )
-                )
-            </cfif>
-            <cfif VARIABLES.resultImportPeriodDays GT 0>
-                AND imp.data_recebimento >= now() - (
-                    <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPeriodDays#"/> * interval '1 day'
-                )
-            </cfif>
-            <cfif len(VARIABLES.resultImportStatus)>
-                AND imp.status_processamento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportStatus#"/>
-            <cfelse>
-                AND imp.status_processamento <> 'cancelado'
-            </cfif>
-            <cfif len(VARIABLES.resultImportPublicationStatus)>
-                AND imp.status_publicacao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportPublicationStatus#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportTimer)>
-                AND lower(imp.cod_timer) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportTimer#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportClient)>
-                AND lower(imp.client_id) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportClient#"/>
-            </cfif>
-            <cfif len(VARIABLES.resultImportSearch)>
-                AND position(
-                    lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportSearch#"/>)
-                    IN lower(concat_ws(' ',
-                        imp.public_id::text,
-                        imp.id_resultado_importacao::text,
-                        imp.id_evento::text,
-                        imp.id_evento_informado::text,
-                        imp.tag_evento_informada,
-                        imp.external_account_id,
-                        imp.external_event_id,
-                        imp.url_resultado,
-                        imp.url_resultado_publica,
-                        evt.nome_evento,
-                        evt.tag
-                    ))
-                ) > 0
-            </cfif>
-            ORDER BY imp.data_recebimento DESC, imp.id_resultado_importacao DESC
-            LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportPerPage#"/>
-            OFFSET <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.resultImportOffset#"/>
-        </cfquery>
-
-        <cfif len(VARIABLES.resultImportSelectedId)>
-            <cfif reFindNoCase("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", VARIABLES.resultImportSelectedId)>
-                <cfquery name="qResultImportDetail">
-                    SELECT imp.id_resultado_importacao,
-                           imp.public_id::text AS submission_id,
-                           imp.id_evento,
-                           imp.id_evento_informado,
-                           imp.tag_evento_informada,
-                           imp.client_id,
-                           imp.cod_timer,
-                           imp.external_account_id,
-                           imp.external_event_id,
-                           imp.url_resultado,
-                           imp.url_resultado_publica,
-                           imp.status_publicacao,
-                           imp.open_results_enabled,
-                           imp.status_processamento,
-                           imp.idempotency_key,
-                           imp.tentativas,
-                           imp.total_resultados,
-                           imp.erro_codigo,
-                           imp.erro_detalhe,
-                           imp.data_recebimento,
-                           imp.data_inicio,
-                           imp.data_processamento,
-                           imp.data_atualizacao,
-                           evt.nome_evento,
-                           evt.tag AS event_tag,
-                           evt.cidade AS event_city,
-                           evt.estado AS event_state,
-                           evt.data_inicial AS event_date
-                    FROM public.tb_resultados_importacoes imp
-                    LEFT JOIN public.tb_evento_corridas evt ON evt.id_evento = imp.id_evento
-                    WHERE imp.public_id::text = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.resultImportSelectedId#"/>
-                    <cfif NOT VARIABLES.resultImportUnscopedAccess>
-                      AND EXISTS (
-                          SELECT 1
-                          FROM public.tb_conta_integracoes_resultados account_integration
-                          WHERE account_integration.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.resultImportScopeAccountId#"/>
-                            AND account_integration.ativo = true
-                            AND lower(trim(account_integration.client_id)) = lower(trim(imp.client_id))
-                            AND lower(trim(account_integration.cod_timer)) = lower(trim(imp.cod_timer))
-                            AND (
-                              account_integration.abrange_contas_externas = true
-                              OR nullif(trim(account_integration.external_account_id), '')
-                                  IS NOT DISTINCT FROM nullif(trim(imp.external_account_id), '')
-                            )
-                      )
-                    </cfif>
-                    LIMIT 1
-                </cfquery>
-
-                <cfif NOT qResultImportDetail.recordcount>
-                    <cfset VARIABLES.resultImportDetailError = "Submissão não encontrada."/>
-                </cfif>
-            <cfelse>
-                <cfset VARIABLES.resultImportDetailError = "Identificador de submissão inválido."/>
-            </cfif>
+        <cfelse>
+            <cfset VARIABLES.resultImportDetailError = "Identificador de submissão inválido."/>
         </cfif>
-    <cfelse>
-        <cfset VARIABLES.resultImportError = "A tabela public.tb_resultados_importacoes ainda não existe neste ambiente."/>
     </cfif>
-
     <cfcatch type="any">
         <cfset VARIABLES.resultImportError = "Não foi possível consultar a fila de importações: " & CFCATCH.message/>
     </cfcatch>

@@ -1,0 +1,206 @@
+{
+  "roadrunners": {
+    "project": "RoadRunners",
+    "root": "/var/www/roadrunners.com.br",
+    "backup": "/var/backups/seo-discovery-RoadRunners-fu2l3k4g",
+    "published_at": "2026-09-14T00:22:37.343729+00:00",
+    "rows": [
+      {
+        "path": "sitemaps/index.cfm",
+        "before": "6ee29670d7b87405fb25e62bcc75d56ecb42e4a1a4cf037e61fdfdd0989924b3",
+        "after": "33936c484b8fd3f4bb7e32557d61bdce381c02bca465ea13d113ce5a57295272",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      }
+    ],
+    "protected": {
+      "Application.cfc": "2e81c368a8251ff13882104be30b2b66f02f9aaecbea2bf5af077540c774bf48",
+      ".htaccess": "3ff2cdd1750e602cb5f0487b92d71219db7f1ed04603cba03344b9a6e6f61dac",
+      "evento/index.cfm": "053f120b68f854848990ef6085d123a07b6499ebddc9ecbf627391b8647cdacf"
+    },
+    "published": [
+      "sitemaps/index.cfm"
+    ],
+    "verified_at": "2026-09-14T00:22:37.345142+00:00"
+  },
+  "business": {
+    "project": "Business",
+    "root": "/var/www/business.roadrunners.run",
+    "backup": "/var/backups/seo-discovery-Business-hobudpeo",
+    "published_at": "2026-09-14T00:32:23.807715+00:00",
+    "rows": [
+      {
+        "path": "portal/includes/seo_queue_data.cfm",
+        "before": "264f50aeb8e769c1313291f82788a70d98af3ce8ba733f44b95ece685f05dda4",
+        "after": "dcf33040477737a7aff2c047b86862e15c044485a96cb392449a0d706d66ef0c",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      },
+      {
+        "path": "portal/includes/seo_queue_backend.cfm",
+        "before": "1a6b11631a30daef340321a0f85a5369b0ea8481c148e5e714c86020f9c7adcd",
+        "after": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      },
+      {
+        "path": "portal/conteudo/seo.cfm",
+        "before": "5329a429a88b1229de46bb52c861bb14f66b3176ffe84ddc1f39942dd77f87bc",
+        "after": "08847d1d993abeb97cfd6651e8686abdf27fec374918c055f86c82b56d204715",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      }
+    ],
+    "protected": {
+      "Application.cfc": "573c86a10325f847395a182bac7703662304d527f71f7f50941aa2e50032ab99",
+      "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+      "includes/backend/backend_login.cfm": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add",
+      "portal/conteudo/index.cfm": "19be8e0d3e7653707d8bc5378922939af4c4b52e1d7508da1c2958f3287da7e8",
+      "portal/conteudo/home.cfm": "821d503e75d76bdeb65c12ede8c3cf3d6c8597a3c28317ff8a242981cfdef68a"
+    },
+    "published": [
+      "portal/includes/seo_queue_data.cfm",
+      "portal/includes/seo_queue_backend.cfm",
+      "portal/conteudo/seo.cfm"
+    ],
+    "verified_at": "2026-09-14T00:32:23.810764+00:00"
+  },
+  "production_verification": {
+    "verified_at": "2026-09-14T00:34:15.172133+00:00",
+    "projects": [
+      {
+        "project": "RoadRunners",
+        "files_verified": 1,
+        "protected_unchanged": 3
+      },
+      {
+        "project": "Business",
+        "files_verified": 3,
+        "protected_unchanged": 5
+      }
+    ],
+    "anonymous_http": [
+      {
+        "path": "/portal/conteudo/?visao=seo",
+        "status": 302,
+        "location": "/",
+        "cache_control": "no-cache",
+        "queue_exposed": false
+      },
+      {
+        "path": "/portal/conteudo/seo.cfm",
+        "status": 403,
+        "location": null,
+        "cache_control": "private, no-store",
+        "queue_exposed": false
+      },
+      {
+        "path": "/portal/includes/seo_queue_data.cfm",
+        "status": 403,
+        "location": null,
+        "cache_control": null,
+        "queue_exposed": false
+      },
+      {
+        "path": "/portal/includes/seo_queue_backend.cfm",
+        "status": 403,
+        "location": null,
+        "cache_control": null,
+        "queue_exposed": false
+      }
+    ]
+  },
+  "ui_verification": {
+    "verified_at": "2026-09-14T00:36:59.133694+00:00",
+    "method": "Authenticated Chrome via CUA; readonly DOM and visual verification",
+    "url": "https://business.roadrunners.run/portal/conteudo/?visao=seo",
+    "road_runners": {
+      "collected": 99360,
+      "inspected": 100,
+      "collection_failures": 0,
+      "page_errors": 1,
+      "warnings": 111,
+      "audit_label": "13/09/2026 às 21:26 (Brasília)"
+    },
+    "open_results": {
+      "collected": 33096,
+      "audit_label": "13/09/2026 às 15:25 (Brasília)"
+    },
+    "queue": {
+      "all": 7,
+      "open": 6,
+      "resolved": 1,
+      "open_p1": 1,
+      "roadrunners_p1_shown": [
+        "RR-01",
+        "RR-02"
+      ]
+    },
+    "viewports": [
+      {
+        "width": 1530,
+        "document_width": 1530
+      },
+      {
+        "width": 390,
+        "document_width": 390,
+        "rr01_details_expanded": true
+      }
+    ],
+    "viewport_reset": true,
+    "final_all_items_visible": true,
+    "tab_marked_deliverable": true
+  },
+  "reconciliation": {
+    "reconciled": true,
+    "discovery_measured_at": "2026-09-14T00:24:32.113Z",
+    "database_measured_at": "2026-09-13T21:26:08.532559-03:00",
+    "database_timezone": "America/Sao_Paulo",
+    "events": 33095,
+    "event_urls": 99285,
+    "other_urls": 75,
+    "total_urls": 99360,
+    "locales": {
+      "pt": {
+        "events": 33095,
+        "distinct_tags": 33095,
+        "tags_md5": "08e2fceed295603e6b45da9d55a991b5"
+      },
+      "en": {
+        "events": 33095,
+        "distinct_tags": 33095,
+        "tags_md5": "08e2fceed295603e6b45da9d55a991b5"
+      },
+      "es": {
+        "events": 33095,
+        "distinct_tags": 33095,
+        "tags_md5": "08e2fceed295603e6b45da9d55a991b5"
+      }
+    },
+    "buckets": [
+      {
+        "bucket": "history",
+        "events": 30339,
+        "tags_md5": "79f07b1d4b5f4ed29e8506aab68b3b56",
+        "matches_database": true
+      },
+      {
+        "bucket": "upcoming",
+        "events": 2756,
+        "tags_md5": "bf732b3837e61d74685624c53e9b1583",
+        "matches_database": true
+      }
+    ],
+    "files": {
+      "discovery-after.json": "4df106941bad8f1c93eab722a41ac01f98047a57a9e92f57e56e04caeb3b727f",
+      "database-reconcile-br.json": "0fdce40b2c15e065801480234bc24a9f66eba2eded117e5dc4e904b9cceae037",
+      "discovered-urls.jsonl": "4b2207a0f5ac7c30f8c7c24fbe694627328d4e41e90ea29cf60bad222b7d9661"
+    }
+  },
+  "private_evidence_root": "/Users/Shared/RunnerHubReports/seo/discovery-review-20260913",
+  "audit_run_id": "2026-09-14T00-26-50-435Z-23615362"
+}

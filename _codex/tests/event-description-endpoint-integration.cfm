@@ -12,14 +12,15 @@ function fixtureSql(required string statement, struct params={}) {
 }
 fixtureSql('CREATE TABLE public.tb_evento_corridas(id_evento integer PRIMARY KEY, descricao_original text, descricao text, categorias text, data_inicial date, data_final date)');
 fixtureSql(fileRead(fixtureRoot & 'schema.sql'));
+fixtureSql(fileRead(fixtureRoot & 'schema.sql'));
 fixtureSource = repeatString('Corrida de 5 km. Largada às 07:00 na Praça Central. ', 6);
 function resetFixture() {
-    fixtureSql('TRUNCATE public.tb_evento_descricao_rewrites, public.tb_evento_corridas RESTART IDENTITY');
-    fixtureSql("INSERT INTO public.tb_evento_corridas VALUES (1,:source,NULL,'5 km',current_date,current_date)", {source={value=VARIABLES.fixtureSource, cfsqltype='cf_sql_longvarchar'}});
+    fixtureSql('TRUNCATE public.tb_evento_descricao_translations, public.tb_evento_descricao_rewrites, public.tb_evento_corridas RESTART IDENTITY');
+    fixtureSql("INSERT INTO public.tb_evento_corridas (id_evento,descricao_original,descricao,categorias,data_inicial,data_final) VALUES (1,:source,NULL,'5 km',current_date,current_date)", {source={value=VARIABLES.fixtureSource, cfsqltype='cf_sql_longvarchar'}});
     REQUEST.fixtureProviderMode = 'success';
     REQUEST.fixtureProviderCalls = 0;
 }
-function invokeFixture(string body='{"dryRun":false}') {
+function invokeFixture(string body='{"dryRun":false,"language":"pt-BR"}') {
     return runCase('POST', arguments.body, signedHeaders(arguments.body), true, true);
 }
 resetFixture();
@@ -84,6 +85,7 @@ thread action='join' name='descriptionFixtureLock' timeout=5000;
 check(result.code EQ 409 AND result.payload.status EQ 'locked' AND REQUEST.fixtureProviderCalls EQ 0, 'Concurrent runner is rejected before selecting or spending provider requests');
 check(fixtureSql('SELECT * FROM public.tb_evento_descricao_rewrites').recordCount EQ 0, 'Blocked runner leaves audit untouched');
 
+include 'translation-integration.cfm';
 resetFixture();
 fixtureSql('DROP TABLE public.tb_evento_descricao_rewrites');
 result = invokeFixture();

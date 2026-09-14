@@ -70,11 +70,11 @@
         return Boolean(canProcess) && ["pendente", "falhou"].indexOf(normalized(status).toLowerCase()) >= 0;
     }
 
-    function shouldList(status, selectedStatus) {
+    function shouldList(status, selectedStatus, history) {
         var normalizedStatus = normalized(status).toLowerCase();
         var normalizedFilter = normalized(selectedStatus).toLowerCase();
 
-        return normalizedFilter ? normalizedStatus === normalizedFilter : normalizedStatus !== "cancelado";
+        return normalizedFilter ? normalizedStatus === normalizedFilter : Boolean(history) || ["cancelado", "arquivado"].indexOf(normalizedStatus) < 0;
     }
 
     function initialize(rootElement) {
@@ -88,7 +88,7 @@
         var discardElements = rootNode.querySelectorAll("[data-result-import-discard]");
 
         Array.prototype.forEach.call(rowElements, function (element) {
-            element.hidden = !shouldList(element.dataset.status, selectedStatus);
+            element.hidden = !shouldList(element.dataset.status, selectedStatus, queueElement && queueElement.dataset.history === "true");
         });
 
         Array.prototype.forEach.call(discardElements, function (element) {

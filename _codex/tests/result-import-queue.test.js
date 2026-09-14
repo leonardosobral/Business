@@ -74,6 +74,10 @@ test("hides cancelled submissions only from the unfiltered queue", () => {
     assert.equal(queue.shouldList("cancelado", ""), false);
     assert.equal(queue.shouldList("cancelado", "cancelado"), true);
     assert.equal(queue.shouldList("pendente", ""), true);
+    assert.equal(queue.shouldList("arquivado", ""), false);
+    assert.equal(queue.shouldList("arquivado", "arquivado"), true);
+    assert.equal(queue.shouldList("arquivado", "", true), true);
+    assert.equal(queue.shouldList("cancelado", "", true), true);
 });
 
 test("renders the external event hint in unlinked queue rows", () => {

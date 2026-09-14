@@ -391,6 +391,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
           <p class="text-muted mb-0">Orquestre chamadas recorrentes para APIs do Business, Road Runners e demais serviços da plataforma.</p>
         </div>
         <div class="business-page-actions">
+          <a class="btn btn-sm btn-outline-light" href="./descricoes.cfm">Fila de descrições</a>
           <a class="btn btn-sm btn-warning" href="./?job_novo=1">Novo job</a>
           <a class="btn btn-sm btn-outline-light" href="/cron-jobs/runner.cfm?token=SEU_TOKEN" target="_blank" rel="noopener">Runner</a>
         </div>

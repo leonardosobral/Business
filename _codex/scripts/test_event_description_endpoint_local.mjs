@@ -37,15 +37,18 @@ try {
   writeFileSync(resolve(scratch, 'api/eventos/jobs/rewrite-descriptions.cfm'), source);
   copyFileSync(resolve(root, '_codex/tests/event-description-endpoint.cfm'), resolve(scratch, 'test.cfm'));
   copyFileSync(resolve(root, '_codex/tests/event-description-endpoint-integration.cfm'), resolve(scratch, 'integration.cfm'));
+  copyFileSync(resolve(root, '_codex/tests/event-description-translation-integration.cfm'), resolve(scratch, 'translation-integration.cfm'));
   copyFileSync(resolve(root, '_codex/tests/event-description-endpoint-service.cfc'), resolve(scratch, 'services/EventDescriptionRewriteService.cfc'));
   copyFileSync(resolve(root, 'api/eventos/jobs/schema.sql'), resolve(scratch, 'schema.sql'));
+  copyFileSync(resolve(root, 'api/eventos/jobs/queue.cfm'), resolve(scratch, 'api/eventos/jobs/queue.cfm'));
   const result = spawnSync('/usr/bin/java', ['-Dfile.encoding=UTF-8', '-cp', box, 'cliloader.LoaderCLIMain', `-CommandBox_home=${boxHome}`, 'execute', 'test.cfm'], {
     cwd: scratch, encoding: 'utf8', timeout: 60000,
     env: {PATH: process.env.PATH, TMPDIR: tmpdir(), RUNNERHUB_OFFLINE_CFML_TESTS: '1', EVENT_DESCRIPTION_TEST_PG_PORT: pgPort},
   });
   assert.equal(result.status, 0, `${result.error || ''}${result.stdout}${result.stderr}`);
-  assert.match(result.stdout, /Endpoint guards passed: 22/);
+  assert.match(result.stdout, /Endpoint guards passed: 28/);
   assert.match(result.stdout, /Endpoint database flow passed: 10/);
+  assert.match(result.stdout, /Translation database flow passed: 16/);
   console.log(result.stdout.trim());
 } finally {
   if (pgStarted) pg('pg_ctl', ['-D', resolve(scratch, 'db'), '-m', 'fast', '-w', 'stop']);

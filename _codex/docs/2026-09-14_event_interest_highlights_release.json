@@ -1,0 +1,49 @@
+{
+  "directory": "/var/backups/business-event-interest.34dcc6b21049",
+  "scriptSHA": "ce9eccf04bcce1845924529430c74c6f946edb09346f87093832a65f6b5d67bd",
+  "mode": "prepare",
+  "phase": "prepared",
+  "files": [
+    {
+      "after": "4382b640eff5eb12f054bb2a1765deaa9410e6047fc8137ad5f16664066aff55",
+      "before": "81063c2c6621bfa91c118fac0ba5c842a1c1c802d1ca1cbbd3c64dc503c7566e",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734932047094,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/audiencia/queries/event_interest.sql",
+      "site": "Business"
+    },
+    {
+      "after": "8a27fa10ea402ff47369a59e990bbeae099d09bd0f4c76d05e2fd9be7a86471e",
+      "before": "03e3874d205c00f81ab1757d5acf0154d2743cf8277e5c7d8027e42179f1c884",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734950108390,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/event_interest_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "5fca554e2c431479dcb37f6740d5da2fcb0a68c5d2f4c0918f9f357af1d5a297",
+      "before": "7f775b363f36631df90814f8ec2e86fae473a6bfbd1ea083527de12515373b5a",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789400734957408575,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/eventos-analytics/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 117,
+  "compile_log": "/var/backups/business-event-interest.34dcc6b21049/compile.log"
+}
