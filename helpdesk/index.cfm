@@ -31,7 +31,7 @@
 
     <main class="" style="margin-top: -55px;">
 
-      <div class="container px-4">
+      <div class="container-fluid px-3 px-lg-4" style="max-width: 1680px;">
 
         <cfinclude template="home.cfm">
 

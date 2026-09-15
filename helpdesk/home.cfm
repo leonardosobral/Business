@@ -1,3 +1,6 @@
+<cfif VARIABLES.helpdeskCanManage>
+  <cfinclude template="includes/workspace.cfm"/>
+<cfelse>
 <cfset VARIABLES.helpdeskShowTicketForm = (isDefined("URL.ticket_novo") AND URL.ticket_novo) OR qHelpdeskTicketEdit.recordcount/>
 <cfset VARIABLES.helpdeskShowSetorForm = VARIABLES.helpdeskCanManage AND ((isDefined("URL.setor_novo") AND URL.setor_novo) OR qHelpdeskSetorEdit.recordcount)/>
 
@@ -463,3 +466,4 @@
     </div>
   </div>
 </section>
+</cfif>

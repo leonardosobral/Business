@@ -1,5 +1,6 @@
-<cfparam name="URL.pagina" default="1" type="numeric"/>
-<cfset VARIABLES.helpdeskPage = max(1, int(URL.pagina))/>
+<cfparam name="URL.pagina" default="1"/>
+<cfset VARIABLES.helpdeskPage = reFind("^[0-9]{1,6}$",URL.pagina) ? max(1, int(URL.pagina)) : 1/>
+<cfset helpdeskAdminHandled=false/>
 <cfset VARIABLES.helpdeskBusinessBaseUrl = "https://" & cgi.http_host/>
 <cfparam name="VARIABLES.helpdeskMode" default="admin"/>
 
@@ -59,6 +60,7 @@
 <cfset QuerySetCell(qHelpdeskStats, "total_chamados", 0, 1)/>
 <cfset QuerySetCell(qHelpdeskStats, "total_abertos", 0, 1)/>
 <cfset QuerySetCell(qHelpdeskStats, "total_setores", 0, 1)/>
+<cfif VARIABLES.helpdeskCanManage><cfinclude template="workspace-init.cfm"/></cfif>
 
 <cfscript>
     function helpdeskResolveNotificationDispatchUrl(required string configuredUrl) {
@@ -298,9 +300,12 @@
     </cfquery>
 </cfif>
 
+<cfif VARIABLES.helpdeskTablesReady AND VARIABLES.helpdeskCanManage><cfinclude template="workspace-actions.cfm"/></cfif>
+
 <cfif isDefined("FORM.helpdesk_action")
     AND VARIABLES.helpdeskTablesReady
-    AND VARIABLES.helpdeskCanAccess>
+    AND VARIABLES.helpdeskCanAccess
+    AND (NOT VARIABLES.helpdeskCanManage OR NOT helpdeskAdminHandled)>
 
     <cfif FORM.helpdesk_action EQ "salvar_setor" AND VARIABLES.helpdeskCanManage>
         <cfset VARIABLES.helpdeskSetorDescricao = isDefined("FORM.setor_descricao") ? trim(FORM.setor_descricao) : ""/>
@@ -473,22 +478,26 @@
 
 <cfif VARIABLES.helpdeskTablesReady
     AND VARIABLES.helpdeskCanManage
-    AND isDefined("URL.setor_acao")
-    AND isDefined("URL.setor_id")
-    AND URL.setor_acao EQ "status"
-    AND isDefined("URL.setor_status")>
+    AND isDefined("FORM.helpdesk_action") AND FORM.helpdesk_action EQ "status_setor"
+    AND isDefined("FORM.setor_id") AND isDefined("FORM.setor_status")>
 
     <cfquery>
         UPDATE tb_helpdesk_setores
-        SET ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.setor_status#"/>,
+        SET ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#FORM.setor_status#"/>,
             updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-        WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.setor_id#"/>
+        WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.setor_id#"/>
     </cfquery>
 
     <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#"/>
 </cfif>
 
 <cfif VARIABLES.helpdeskTablesReady AND VARIABLES.helpdeskCanAccess>
+  <cfif VARIABLES.helpdeskCanManage>
+    <cfset hdData=hdService.load(hdFilters,val(qPerfil.id))/>
+    <cfset hdFilters.pagina=hdData.page/>
+    <cfset VARIABLES.helpdeskPage=hdData.page/>
+    <cfset qHelpdeskChamados=hdData.tickets/>
+  <cfelse>
     <cfquery name="qHelpdeskChamados">
         SELECT cham.id_chamado,
                cham.protocolo,
@@ -525,6 +534,7 @@
             (SELECT count(*) FROM tb_helpdesk_setores WHERE ativo = true) as total_setores
     </cfquery>
 
+  </cfif>
     <cfif isDefined("URL.ticket_id") AND len(trim(URL.ticket_id)) AND isNumeric(URL.ticket_id)>
         <cfquery name="qHelpdeskTicketEdit">
             SELECT cham.id_chamado,
@@ -537,6 +547,8 @@
                    cham.updated_at,
                    usr.name as nome_usuario,
                    usr.email as email_usuario,
+                   to_char(cham.updated_at,'YYYY-MM-DD HH24:MI:SS.US') AS revision,
+                   (SELECT coalesce(max(id_mensagem),0) FROM tb_helpdesk_mensagens WHERE id_chamado=cham.id_chamado) AS last_message_id,
                    setr.nome_setor,
                    coalesce(resp.name, '') as nome_responsavel
             FROM tb_helpdesk_chamados cham
@@ -563,6 +575,7 @@
                 FROM tb_helpdesk_mensagens msg
                 INNER JOIN tb_usuarios usr ON usr.id = msg.id_usuario
                 WHERE msg.id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.ticket_id#"/>
+                <cfif NOT VARIABLES.helpdeskCanManage>AND msg.interno=false</cfif>
                 ORDER BY msg.created_at ASC, msg.id_mensagem ASC
             </cfquery>
         </cfif>

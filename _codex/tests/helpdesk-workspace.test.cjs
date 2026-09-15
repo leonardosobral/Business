@@ -1,0 +1,28 @@
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const script=fs.readFileSync('helpdesk/assets/workspace.js','utf8');
+test('includes internos rejeitam acesso sem contexto administrativo',()=>{for(const name of ['workspace-init.cfm','workspace-actions.cfm','workspace-sectors.cfm','workspace.cfm']){const source=fs.readFileSync('helpdesk/includes/'+name,'utf8');assert.match(source,/NOT structKeyExists\(VARIABLES,"helpdeskCanManage"\) OR NOT VARIABLES.helpdeskCanManage/);assert.match(source,/<cfheader statuscode="403" statustext="Forbidden"\/><cfabort\/>/);}});
+function fixture(text='') {
+  const listeners={},windowEvents={},nodes={};let confirm=true;
+  const form={querySelector:key=>nodes[key],addEventListener:(key,fn)=>listeners[key]=fn,setAttribute(){},removeAttribute(){}};
+  for(const key of ['[name="ticket_mensagem"]','[data-hd-feedback]','[data-hd-count]','[data-hd-insert]','[data-hd-template]']) nodes[key]={value:'',textContent:'',focus(){},addEventListener(key,fn){this[key]=fn;},dispatchEvent(event){listeners[event.type]?.(event);}};
+  const editor=nodes['[name="ticket_mensagem"]'];editor.value=text;
+  vm.runInNewContext(script,{document:{querySelector:()=>form},window:{confirm:()=>confirm,addEventListener:(key,fn)=>windowEvents[key]=fn},Event:class{constructor(type){this.type=type;}}});
+  return {editor,nodes,confirm:value=>confirm=value,insert(key){nodes['[data-hd-template]'].value=key;nodes['[data-hd-insert]'].click();},
+    submit(value){const e={submitter:{value},preventDefault(){this.prevented=true;}};listeners.submit(e);return e;},
+    leave(){const e={preventDefault(){this.prevented=true;}};windowEvents.beforeunload(e);return e;},pageshow(){windowEvents.pageshow();},edit(value){editor.value=value;listeners.input({});}};
+}
+test('resposta rápida preserva o texto humano e não envia',()=>{const f=fixture('Texto humano');f.insert('contexto');assert.match(f.editor.value,/^Texto humano\n\nOlá!/);assert.equal(f.leave().prevented,true);});
+test('resposta rápida respeita o limite sem truncar o rascunho',()=>{const initial='a'.repeat(11990),f=fixture(initial);f.insert('contexto');assert.equal(f.editor.value,initial);assert.match(f.nodes['[data-hd-feedback]'].textContent,/ultrapassaria/);});
+test('modelo não escolhido não altera o editor',()=>{const f=fixture('texto');f.insert('');assert.equal(f.editor.value,'texto');});
+test('envio em branco é bloqueado; status sem mensagem é permitido',()=>{const f=fixture('  ');assert.equal(f.submit('responder_ticket').prevented,true);assert.notEqual(f.submit('atualizar_ticket').prevented,true);});
+test('salvar somente status exige confirmação para descartar texto',()=>{const f=fixture('Rascunho importante');f.confirm(false);assert.equal(f.submit('atualizar_ticket').prevented,true);assert.equal(f.editor.value,'Rascunho importante');f.confirm(true);assert.notEqual(f.submit('atualizar_ticket').prevented,true);});
+test('duplo envio é bloqueado e retorno pelo navegador reabilita',()=>{const f=fixture('Resposta');assert.notEqual(f.submit('responder_ticket').prevented,true);assert.equal(f.submit('responder_ticket').prevented,true);assert.notEqual(f.leave().prevented,true);f.pageshow();assert.notEqual(f.submit('responder_ticket').prevented,true);});
+test('edição atualiza contador e protege contra navegação acidental',()=>{const f=fixture();assert.notEqual(f.leave().prevented,true);f.edit('12345');assert.match(f.nodes['[data-hd-count]'].textContent,/5 \/ 12/);assert.equal(f.leave().prevented,true);});
+test('ação desconhecida e resposta longa não submetem',()=>{const f=fixture('a'.repeat(12001));assert.equal(f.submit('responder_ticket').prevented,true);assert.equal(f.submit('outra').prevented,true);});
+test('ações administrativas exigem POST, CSRF, revisão e transação',()=>{const source=fs.readFileSync('helpdesk/includes/workspace-actions.cfm','utf8');assert.match(source,/CGI.request_method NEQ "POST"/);assert.match(source,/SESSION.helpdeskCsrf/);assert.match(source,/<cftransaction>/);assert.match(source,/FOR UPDATE/);assert.match(source,/ticket_revision/);assert.match(source,/ticket_last_message/);assert.match(source,/<cfif hdActionReply>[\s\S]*INSERT INTO tb_helpdesk_mensagens/);assert.match(source,/<cfif hdActionReply><cftry><cfset helpdeskNotifyTicketOwner/);});
+test('paginação no servidor e busca parametrizada compartilham o filtro',()=>{const source=fs.readFileSync('helpdesk/includes/HelpdeskWorkspace.cfc','utf8');assert.match(source,/LIMIT :limite OFFSET :deslocamento/);assert.match(source,/ESCAPE '!'/);assert.match(source,/p.params.busca=/);assert.match(source,/result.total=queryExecute\("SELECT count\(\*\) AS total" & base & p.sql/);assert.match(source,/result.page=min\(arguments.filters.pagina,result.pages\)/);});
+test('área do usuário preserva escopo por dono e oculta mensagens internas',()=>{const source=fs.readFileSync('helpdesk/includes/backend.cfm','utf8');assert.match(source,/VARIABLES.helpdeskCanManage><cfinclude template="workspace-init.cfm"/);assert.match(source,/AND cham.id_usuario = <cfqueryparam/);assert.match(source,/NOT VARIABLES.helpdeskCanManage>AND msg.interno=false/);assert.doesNotMatch(source,/SET ativo =[^\n]*URL.setor_status/);});
+test('editor mantém a integração IA e distingue mensagens públicas',()=>{const source=fs.readFileSync('helpdesk/includes/workspace.cfm','utf8');assert.match(source,/template="ai-editor.cfm"/);assert.match(source,/Mensagem pública/);assert.match(source,/indicadores não usam os filtros da fila/);assert.match(source,/encodeForHTML\(qHelpdeskMensagens.mensagem\)/);assert.match(source,/name="ticket_mensagem"/);});
