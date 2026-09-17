@@ -41,6 +41,41 @@
         }, 0) % 5;
     }
 
+    function participantIdentity(participant) {
+        const id = field(participant, 'id');
+        if (typeof id === 'string' && id.trim()) return 'id:' + id.trim().toLocaleLowerCase('pt-BR');
+        return 'name:' + participantLabel(participant).toLocaleLowerCase('pt-BR');
+    }
+
+    function presenceSnapshot(payload) {
+        if (!payload || field(payload, 'success') === false || !field(payload, 'configured') || !field(payload, 'connected')) {
+            return null;
+        }
+        const participants = field(payload, 'participants');
+        if (!Array.isArray(participants)) return [];
+        const identities = new Set();
+        return participants.reduce((snapshot, participant) => {
+            const id = participantIdentity(participant);
+            if (identities.has(id)) return snapshot;
+            identities.add(id);
+            snapshot.push({id, name: participantLabel(participant)});
+            return snapshot;
+        }, []);
+    }
+
+    function participantArrivals(previous, current) {
+        if (!Array.isArray(previous) || !Array.isArray(current)) return [];
+        const known = new Set(previous.map(participant => participant.id));
+        return current.filter(participant => !known.has(participant.id));
+    }
+
+    function presenceUpdate(previous, payload) {
+        const current = presenceSnapshot(payload);
+        if (current === null) return {baseline: previous, arrivals: []};
+        if (previous === null) return {baseline: current, arrivals: []};
+        return {baseline: current, arrivals: participantArrivals(previous, current)};
+    }
+
     function viewModel(payload) {
         if (!payload || field(payload, 'success') === false) {
             return {
@@ -114,6 +149,112 @@
         const pollMs = Math.max(10000, Number(statusRoot.dataset.pollMs) || 20000);
         let loading = false;
         let meetingUri = '';
+        let presenceBaseline = null;
+        let audioContext = null;
+
+        function toastRegion() {
+            let region = byId('businessMeetArrivalToasts');
+            if (region) return region;
+            region = document.createElement('div');
+            region.id = 'businessMeetArrivalToasts';
+            region.className = 'business-meet-arrival-toasts';
+            region.setAttribute('role', 'region');
+            region.setAttribute('aria-label', 'Entradas na sala virtual');
+            region.setAttribute('aria-live', 'polite');
+            document.body.appendChild(region);
+            return region;
+        }
+
+        function removeToast(toast) {
+            if (!toast || !toast.parentNode) return;
+            toast.classList.add('is-leaving');
+            window.setTimeout(() => toast.remove(), 180);
+        }
+
+        function showArrivalToast(participant) {
+            const region = toastRegion();
+            const toast = document.createElement('div');
+            toast.className = 'business-meet-arrival-toast';
+            const avatar = document.createElement('span');
+            avatar.className = 'business-meet-arrival-avatar business-meet-topbar-avatar-tone-' + participantTone(participant.name);
+            avatar.textContent = participantInitials(participant.name);
+            avatar.setAttribute('aria-hidden', 'true');
+
+            const copy = document.createElement('span');
+            copy.className = 'business-meet-arrival-copy';
+            const title = document.createElement('strong');
+            title.textContent = participant.name;
+            const detail = document.createElement('span');
+            detail.textContent = 'entrou na sala virtual';
+            copy.append(title, detail);
+
+            const close = document.createElement('button');
+            close.className = 'business-meet-arrival-close';
+            close.type = 'button';
+            close.setAttribute('aria-label', 'Fechar aviso');
+            close.textContent = '×';
+            close.addEventListener('click', () => removeToast(toast));
+
+            toast.append(avatar, copy, close);
+            region.appendChild(toast);
+            while (region.children.length > 5) region.firstElementChild.remove();
+            window.setTimeout(() => removeToast(toast), 7500);
+        }
+
+        function getAudioContext() {
+            if (audioContext) return audioContext;
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return null;
+            try {
+                audioContext = new AudioContext();
+            } catch (error) {
+                audioContext = null;
+            }
+            return audioContext;
+        }
+
+        function scheduleBellTone(context, frequency, startAt, duration, volume) {
+            const oscillator = context.createOscillator();
+            const gain = context.createGain();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(frequency, startAt);
+            gain.gain.setValueAtTime(0.0001, startAt);
+            gain.gain.exponentialRampToValueAtTime(volume, startAt + 0.025);
+            gain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
+            oscillator.connect(gain);
+            gain.connect(context.destination);
+            oscillator.start(startAt);
+            oscillator.stop(startAt + duration + 0.03);
+        }
+
+        function playDoorbell() {
+            const context = getAudioContext();
+            if (!context) return;
+            const ring = () => {
+                const now = context.currentTime + 0.02;
+                scheduleBellTone(context, 783.99, now, 0.52, 0.12);
+                scheduleBellTone(context, 659.25, now + 0.34, 0.68, 0.1);
+            };
+            if (context.state === 'suspended') {
+                context.resume().then(ring).catch(() => {});
+            } else {
+                ring();
+            }
+        }
+
+        function unlockDoorbell() {
+            const context = getAudioContext();
+            if (context && context.state === 'suspended') context.resume().catch(() => {});
+        }
+
+        function announceArrivals(payload) {
+            const update = presenceUpdate(presenceBaseline, payload);
+            presenceBaseline = update.baseline;
+            const arrivals = update.arrivals;
+            if (!arrivals.length) return;
+            arrivals.forEach(showArrivalToast);
+            playDoorbell();
+        }
 
         function setMeetingUri(value) {
             meetingUri = safeMeetingUri(value);
@@ -222,6 +363,7 @@
                     throw new Error(field(payload, 'message') || 'Não foi possível consultar o Google Meet.');
                 }
                 render(payload);
+                announceArrivals(payload);
             } catch (error) {
                 render({success: false, message: error.message, meetingUri});
             } finally {
@@ -235,6 +377,8 @@
             dashboard.refreshButton.addEventListener('click', refresh);
         }
         if (topbar) topbar.join.addEventListener('click', openMeetingWindow);
+        document.addEventListener('pointerdown', unlockDoorbell, {once: true, passive: true});
+        document.addEventListener('keydown', unlockDoorbell, {once: true});
         document.addEventListener('visibilitychange', function () {
             if (!document.hidden) refresh();
         });
@@ -243,5 +387,8 @@
         refresh();
     }
 
-    return {field, participantInitials, participantLabel, participantTone, safeMeetingUri, viewModel, mount};
+    return {
+        field, participantArrivals, participantIdentity, participantInitials, participantLabel,
+        participantTone, presenceSnapshot, presenceUpdate, safeMeetingUri, viewModel, mount
+    };
 }));

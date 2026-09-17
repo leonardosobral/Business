@@ -148,6 +148,101 @@
     padding: .14rem .32rem;
   }
 
+  .business-meet-arrival-toasts {
+    display: grid;
+    gap: .65rem;
+    max-width: calc(100vw - 2rem);
+    pointer-events: none;
+    position: fixed;
+    right: 1rem;
+    top: 4.6rem;
+    width: min(23rem, calc(100vw - 2rem));
+    z-index: 2000000;
+  }
+
+  .business-meet-arrival-toast {
+    align-items: center;
+    animation: business-meet-toast-in .22s ease-out both;
+    background: rgba(35, 40, 45, .97);
+    border: 1px solid rgba(82, 210, 115, .38);
+    border-radius: .8rem;
+    box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .3);
+    color: #fff;
+    display: grid;
+    gap: .7rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 4.2rem;
+    padding: .72rem .78rem;
+    pointer-events: auto;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+
+  .business-meet-arrival-toast.is-leaving {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  .business-meet-arrival-avatar {
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, .22);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 2.55rem;
+    font-size: .76rem;
+    font-weight: 800;
+    height: 2.55rem;
+    justify-content: center;
+    letter-spacing: -.02em;
+    width: 2.55rem;
+  }
+
+  .business-meet-arrival-copy {
+    display: grid;
+    gap: .08rem;
+    min-width: 0;
+  }
+
+  .business-meet-arrival-copy strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .business-meet-arrival-copy span {
+    color: rgba(255, 255, 255, .68);
+    font-size: .78rem;
+  }
+
+  .business-meet-arrival-close {
+    align-self: start;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .62);
+    font-size: 1.25rem;
+    height: 1.8rem;
+    line-height: 1;
+    padding: 0;
+    width: 1.8rem;
+  }
+
+  .business-meet-arrival-close:hover,
+  .business-meet-arrival-close:focus-visible {
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+    outline: none;
+  }
+
+  @keyframes business-meet-toast-in {
+    from { opacity: 0; transform: translateY(-.5rem) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .business-meet-arrival-toast { animation: none; transition: none; }
+  }
+
   .business-navbar-account-context {
     align-items: center;
     display: flex;
@@ -437,7 +532,7 @@
 </nav>
 
 <cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
-    <script src="/assets/js/business-meet-room.js?v=2026091004" defer></script>
+    <script src="/assets/js/business-meet-room.js?v=2026091701" defer></script>
 </cfif>
 
 <cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>

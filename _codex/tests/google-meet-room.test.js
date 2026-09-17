@@ -61,6 +61,29 @@ test('builds compact, deterministic participant avatars', () => {
     assert.ok(meet.participantTone('Ana') >= 0 && meet.participantTone('Ana') <= 4);
 });
 
+test('detects only participants who appeared after the silent baseline', () => {
+    const first = meet.presenceUpdate(null, {
+        success: true, configured: true, connected: true,
+        participants: [{id: 'A-1', displayName: 'Ana'}, {id: 'B-2', displayName: 'Beto'}]
+    });
+    assert.deepEqual(first.arrivals, []);
+    const second = meet.presenceUpdate(first.baseline, {
+        SUCCESS: true, CONFIGURED: true, CONNECTED: true,
+        PARTICIPANTS: [
+            {ID: 'A-1', DISPLAYNAME: 'Ana Renomeada'},
+            {ID: 'B-2', DISPLAYNAME: 'Beto'},
+            {ID: 'C-3', DISPLAYNAME: 'Carla'}
+        ]
+    });
+    assert.deepEqual(second.arrivals, [{id: 'id:c-3', name: 'Carla'}]);
+    const disconnected = meet.presenceUpdate(second.baseline, {success: false});
+    assert.equal(disconnected.baseline, second.baseline);
+    assert.deepEqual(disconnected.arrivals, []);
+    assert.equal(meet.participantIdentity({id: ' A-1 ', displayName: 'Outro nome'}), 'id:a-1');
+    assert.equal(meet.presenceSnapshot({success: false}), null);
+    assert.equal(meet.presenceSnapshot({success: true, configured: true, connected: true, participants: []}).length, 0);
+});
+
 test('keeps the Meet endpoint admin-only, read-only and non-cacheable', () => {
     const endpoint = fs.readFileSync(path.join(root, 'administracao/meet/status.cfm'), 'utf8');
     const service = fs.readFileSync(path.join(root, 'administracao/meet/includes/service.cfm'), 'utf8');
@@ -82,7 +105,7 @@ test('keeps the Meet endpoint admin-only, read-only and non-cacheable', () => {
     assert.match(dashboard, /data-status-url="\/administracao\/meet\/status\.cfm"/);
     assert.ok(navbar.indexOf('id="businessMeetTopbar"') < navbar.indexOf('id="navbarDropdownNotifications"'));
     assert.match(navbar, /id="businessMeetTopbarAvatars"/);
-    assert.match(navbar, /business-meet-room\.js\?v=2026091004/);
+    assert.match(navbar, /business-meet-room\.js\?v=2026091701/);
     assert.doesNotMatch(dashboard, /business-meet-room\.js/);
     assert.match(dashboard, /<button[^>]+id="businessMeetJoin"/);
     assert.doesNotMatch(dashboard, /businessMeetPopup|businessMeetPip|picture-in-picture|Como usar PiP/);
@@ -90,6 +113,11 @@ test('keeps the Meet endpoint admin-only, read-only and non-cacheable', () => {
     assert.match(browser, /dashboard\.join\.addEventListener\('click', openMeetingWindow\)/);
     assert.match(browser, /topbar\.join\.addEventListener\('click', openMeetingWindow\)/);
     assert.match(browser, /window\.open\(meetingUri, 'runnerhub-team-room'/);
+    assert.match(browser, /aria-live', 'polite'/);
+    assert.match(browser, /presenceUpdate\(presenceBaseline, payload\)/);
+    assert.match(browser, /context\.createOscillator\(\)/);
+    assert.match(browser, /arrivals\.forEach\(showArrivalToast\)[\s\S]*playDoorbell\(\)/);
+    assert.match(navbar, /business-meet-arrival-toasts/);
 });
 
 test('requests the Meet read-only OAuth scope and enforces it on callback', () => {
