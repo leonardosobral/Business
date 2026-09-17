@@ -15,8 +15,41 @@
 <cfset VARIABLES.businessAdminHomeHasCronTables = false/>
 <cfset VARIABLES.businessAdminHomeCronLoaded = false/>
 <cfset VARIABLES.businessAdminHomeHasNotificationTable = false/>
+<cfset VARIABLES.businessAdminHomeHasHelpdeskTable = false/>
+<cfset VARIABLES.businessAdminHomeHasEditorialTable = false/>
+<cfset VARIABLES.businessAdminHomeHasAdsReviewTable = false/>
+<cfset VARIABLES.businessAdminHomeHasChallengeTable = false/>
+<cfset VARIABLES.businessAdminHomeHasResultImportTable = false/>
+<cfset VARIABLES.businessAdminHomeHasAthleteReviewTable = false/>
+<cfset VARIABLES.businessAdminHomeHasCrmPendingTable = false/>
+<cfset VARIABLES.businessAdminHomeHasStravaMigrationTable = false/>
+<cfset VARIABLES.businessAdminHomeHasPushQueueTable = false/>
+<cfset VARIABLES.businessAdminHomeHasEmailQueueTable = false/>
+<cfset VARIABLES.businessAdminHomeHasVickyProactiveTable = false/>
+<cfset VARIABLES.businessAdminHomeHasVickyDocumentTable = false/>
 <cfset VARIABLES.businessAdminHomeFocoPendingTotal = 0/>
 <cfset VARIABLES.businessAdminHomeAgregaPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeHelpdeskPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeHelpdeskReplyTotal = 0/>
+<cfset VARIABLES.businessAdminHomeHelpdeskStaleTotal = 0/>
+<cfset VARIABLES.businessAdminHomeEditorialPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeAdsReviewPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeChallengePendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeResultImportFailureTotal = 0/>
+<cfset VARIABLES.businessAdminHomeResultImportDelayedTotal = 0/>
+<cfset VARIABLES.businessAdminHomeAthleteReviewPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeCrmPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeStravaPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeStravaReviewTotal = 0/>
+<cfset VARIABLES.businessAdminHomeStravaErrorTotal = 0/>
+<cfset VARIABLES.businessAdminHomeStravaStuckTotal = 0/>
+<cfset VARIABLES.businessAdminHomePushPendingStuckTotal = 0/>
+<cfset VARIABLES.businessAdminHomePushRetryStuckTotal = 0/>
+<cfset VARIABLES.businessAdminHomePushProcessingStuckTotal = 0/>
+<cfset VARIABLES.businessAdminHomeEmailPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeEmailErrorTotal = 0/>
+<cfset VARIABLES.businessAdminHomeVickyDeliveryFailureTotal = 0/>
+<cfset VARIABLES.businessAdminHomeVickyDocumentFailureTotal = 0/>
 <cfset VARIABLES.businessAdminHomePortalErrors = 0/>
 <cfset VARIABLES.businessAdminHomePortalNotFound = 0/>
 <cfset VARIABLES.businessAdminHomePortalEventViews = 0/>
@@ -44,6 +77,18 @@
 <!--- Availability is separate from zero: a failed source must not look healthy. --->
 <cfset VARIABLES.businessAdminHomeFocoLoaded = false/>
 <cfset VARIABLES.businessAdminHomeAgregaLoaded = false/>
+<cfset VARIABLES.businessAdminHomeHelpdeskLoaded = false/>
+<cfset VARIABLES.businessAdminHomeEditorialLoaded = false/>
+<cfset VARIABLES.businessAdminHomeAdsReviewLoaded = false/>
+<cfset VARIABLES.businessAdminHomeChallengeLoaded = false/>
+<cfset VARIABLES.businessAdminHomeResultImportLoaded = false/>
+<cfset VARIABLES.businessAdminHomeAthleteReviewLoaded = false/>
+<cfset VARIABLES.businessAdminHomeCrmPendingLoaded = false/>
+<cfset VARIABLES.businessAdminHomeStravaMigrationLoaded = false/>
+<cfset VARIABLES.businessAdminHomePushQueueLoaded = false/>
+<cfset VARIABLES.businessAdminHomeEmailQueueLoaded = false/>
+<cfset VARIABLES.businessAdminHomeVickyProactiveLoaded = false/>
+<cfset VARIABLES.businessAdminHomeVickyDocumentLoaded = false/>
 <cfset VARIABLES.businessAdminHomePortalLoaded = false/>
 <cfset VARIABLES.businessAdminHomeSearchLoaded = false/>
 <cfset VARIABLES.businessAdminHomeContentLoaded = false/>
@@ -73,10 +118,26 @@
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_evento_agrega_review_candidates"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_cron_jobs"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_cron_job_runs"/>,
-              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_notifica"/>
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_notifica"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_helpdesk_chamados"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="desafios"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_resultados_importacoes"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_atleta_verificacao_solicitacao"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_percurso_migracoes_strava"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_push_delivery_queue"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_mailing"/>
           )) OR (
               table_schema = 'ads'
-              AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_eventos"/>
+              AND table_name IN (
+                  <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_eventos"/>,
+                  <cfqueryparam cfsqltype="cf_sql_varchar" value="campaign_review_requests"/>
+              )
+          ) OR (
+              table_schema = 'news'
+              AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_content"/>
+          ) OR (
+              table_schema = 'crm'
+              AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_crm_participacoes"/>
           )
     </cfquery>
 
@@ -98,6 +159,16 @@
     <cfset VARIABLES.businessAdminHomeHasCronTables = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_cron_jobs")
         AND ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_cron_job_runs")/>
     <cfset VARIABLES.businessAdminHomeHasNotificationTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_notifica")/>
+    <cfset VARIABLES.businessAdminHomeHasHelpdeskTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_helpdesk_chamados")/>
+    <cfset VARIABLES.businessAdminHomeHasEditorialTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_content")/>
+    <cfset VARIABLES.businessAdminHomeHasAdsReviewTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "campaign_review_requests")/>
+    <cfset VARIABLES.businessAdminHomeHasChallengeTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "desafios")/>
+    <cfset VARIABLES.businessAdminHomeHasResultImportTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_resultados_importacoes")/>
+    <cfset VARIABLES.businessAdminHomeHasAthleteReviewTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_atleta_verificacao_solicitacao")/>
+    <cfset VARIABLES.businessAdminHomeHasCrmPendingTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_crm_participacoes")/>
+    <cfset VARIABLES.businessAdminHomeHasStravaMigrationTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_percurso_migracoes_strava")/>
+    <cfset VARIABLES.businessAdminHomeHasPushQueueTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_push_delivery_queue")/>
+    <cfset VARIABLES.businessAdminHomeHasEmailQueueTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_mailing")/>
 
     <cfif NOT VARIABLES.businessAdminHomeTablesReady>
         <cfset VARIABLES.businessAdminHomeReady = false/>
@@ -108,6 +179,26 @@
         <cfset VARIABLES.businessAdminHomeReady = false/>
         <cfset VARIABLES.businessAdminHomeTablesReady = false/>
         <cfset VARIABLES.businessAdminHomeError = cfcatch.message/>
+    </cfcatch>
+</cftry>
+
+<!--- Vicky uses the privileged datasource; include its queues only when that module is installed. --->
+<cftry>
+    <cfquery name="qBusinessAdminHomeVickyTableCheck" datasource="runner_dba">
+        SELECT table_name
+        FROM information_schema.tables
+        WHERE table_schema = 'public'
+          AND table_name IN (
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_vicky_notificacao_fila"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_vicky_documento"/>
+          )
+    </cfquery>
+    <cfset VARIABLES.businessAdminHomeVickyTableNames = ValueList(qBusinessAdminHomeVickyTableCheck.table_name)/>
+    <cfset VARIABLES.businessAdminHomeHasVickyProactiveTable = ListFindNoCase(VARIABLES.businessAdminHomeVickyTableNames, "tb_vicky_notificacao_fila")/>
+    <cfset VARIABLES.businessAdminHomeHasVickyDocumentTable = ListFindNoCase(VARIABLES.businessAdminHomeVickyTableNames, "tb_vicky_documento")/>
+    <cfcatch type="any">
+        <cfset VARIABLES.businessAdminHomeHasVickyProactiveTable = false/>
+        <cfset VARIABLES.businessAdminHomeHasVickyDocumentTable = false/>
     </cfcatch>
 </cftry>
 
@@ -220,6 +311,291 @@
             <cfset VARIABLES.businessAdminHomeAgregaLoaded = true/>
             <cfcatch type="any">
                 <cfset VARIABLES.businessAdminHomeAgregaPendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasHelpdeskTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeHelpdeskPending">
+                SELECT
+                    (count(*) FILTER (WHERE status IN ('aberto', 'cliente_respondeu')))::integer AS a_responder,
+                    (count(*) FILTER (
+                        WHERE status NOT IN ('resolvido', 'fechado')
+                          AND updated_at < now() - interval '48 hours'
+                    ))::integer AS sem_atualizacao,
+                    (count(*) FILTER (
+                        WHERE status IN ('aberto', 'cliente_respondeu')
+                           OR (
+                               status NOT IN ('resolvido', 'fechado')
+                               AND updated_at < now() - interval '48 hours'
+                           )
+                    ))::integer AS pendentes
+                FROM public.tb_helpdesk_chamados
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeHelpdeskPendingTotal = val(qBusinessAdminHomeHelpdeskPending.pendentes)/>
+            <cfset VARIABLES.businessAdminHomeHelpdeskReplyTotal = val(qBusinessAdminHomeHelpdeskPending.a_responder)/>
+            <cfset VARIABLES.businessAdminHomeHelpdeskStaleTotal = val(qBusinessAdminHomeHelpdeskPending.sem_atualizacao)/>
+            <cfset VARIABLES.businessAdminHomeHelpdeskLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeHelpdeskPendingTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeHelpdeskReplyTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeHelpdeskStaleTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasEditorialTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeEditorialPending">
+                SELECT count(*)::integer AS total
+                FROM news.tb_content
+                WHERE published = false
+                  AND lower(coalesce(editorial_status, '')) = 'review'
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeEditorialPendingTotal = val(qBusinessAdminHomeEditorialPending.total)/>
+            <cfset VARIABLES.businessAdminHomeEditorialLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeEditorialPendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasAdsReviewTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeAdsReviewPending" datasource="runnerhub">
+                SELECT count(*)::integer AS total
+                FROM ads.campaign_review_requests
+                WHERE status = 'PENDING_REVIEW'
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeAdsReviewPendingTotal = val(qBusinessAdminHomeAdsReviewPending.total)/>
+            <cfset VARIABLES.businessAdminHomeAdsReviewLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeAdsReviewPendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasChallengeTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeChallengePending">
+                SELECT count(*)::integer AS total
+                FROM public.desafios challenge
+                CROSS JOIN LATERAL jsonb_array_elements(
+                    CASE
+                        WHEN jsonb_typeof(challenge.body -> 'validacoes_documentais') = 'array'
+                            THEN challenge.body -> 'validacoes_documentais'
+                        ELSE '[]'::jsonb
+                    END
+                ) AS validation
+                WHERE challenge.produto = 'circuitobrasilgigante'
+                  AND coalesce(nullif(lower(trim(validation ->> 'status_analise')), ''), 'pendente') = 'pendente'
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeChallengePendingTotal = val(qBusinessAdminHomeChallengePending.total)/>
+            <cfset VARIABLES.businessAdminHomeChallengeLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeChallengePendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasResultImportTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeResultImportPending">
+                WITH source_rows AS (
+                    SELECT imp.*,
+                           nullif(regexp_replace(trim(imp.url_resultado), '[/##]+$', ''), '') AS data_url_key,
+                           nullif(regexp_replace(trim(imp.url_resultado_publica), '[/##]+$', ''), '') AS public_url_key
+                    FROM public.tb_resultados_importacoes imp
+                ), identified AS (
+                    SELECT source_rows.*,
+                           md5(jsonb_build_array(
+                               lower(trim(client_id)),
+                               lower(trim(cod_timer)),
+                               nullif(trim(external_account_id), ''),
+                               CASE
+                                   WHEN data_url_key ~ '^https://[^/]+/.*/data/[^/]+/event\.json$'
+                                       OR data_url_key ~ '^https://[^/]+/data/[^/]+/event\.json$'
+                                       THEN 'data:' || data_url_key
+                                   WHEN public_url_key ~ '^https://[^/]+/.*[^/##]$'
+                                       THEN 'public:' || public_url_key
+                                   WHEN nullif(trim(external_event_id), '') IS NOT NULL
+                                       THEN 'external:' || trim(external_event_id)
+                                   ELSE 'submission:' || public_id::text
+                               END
+                           )::text) AS event_group
+                    FROM source_rows
+                ), latest_active AS (
+                    SELECT DISTINCT ON (event_group)
+                           status_processamento,
+                           data_recebimento
+                    FROM identified
+                    WHERE status_processamento <> 'cancelado'
+                    ORDER BY event_group, data_recebimento DESC, id_resultado_importacao DESC
+                )
+                SELECT
+                    (count(*) FILTER (WHERE status_processamento = 'falhou'))::integer AS falhas,
+                    (count(*) FILTER (
+                        WHERE status_processamento = 'pendente'
+                          AND data_recebimento < now() - interval '15 minutes'
+                    ))::integer AS atrasadas
+                FROM latest_active
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeResultImportFailureTotal = val(qBusinessAdminHomeResultImportPending.falhas)/>
+            <cfset VARIABLES.businessAdminHomeResultImportDelayedTotal = val(qBusinessAdminHomeResultImportPending.atrasadas)/>
+            <cfset VARIABLES.businessAdminHomeResultImportLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeResultImportFailureTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeResultImportDelayedTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasCrmPendingTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeCrmPending">
+                SELECT count(*)::integer AS total
+                FROM (
+                    SELECT DISTINCT fonte, cod_evento_externo
+                    FROM crm.tb_crm_participacoes
+                    WHERE id_evento IS NULL
+                      AND cod_evento_externo IS NOT NULL
+                      AND trim(cod_evento_externo) <> ''
+                ) pending_sources
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeCrmPendingTotal = val(qBusinessAdminHomeCrmPending.total)/>
+            <cfset VARIABLES.businessAdminHomeCrmPendingLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeCrmPendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasStravaMigrationTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeStravaMigrationPending">
+                SELECT
+                    (count(*) FILTER (WHERE status = 'pendente'))::integer AS pendentes,
+                    (count(*) FILTER (WHERE status = 'revisao'))::integer AS revisao,
+                    (count(*) FILTER (WHERE status = 'erro'))::integer AS erros,
+                    (count(*) FILTER (
+                        WHERE status = 'processando'
+                          AND data_atualizacao < now() - interval '15 minutes'
+                    ))::integer AS travados
+                FROM public.tb_percurso_migracoes_strava
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeStravaPendingTotal = val(qBusinessAdminHomeStravaMigrationPending.pendentes)/>
+            <cfset VARIABLES.businessAdminHomeStravaReviewTotal = val(qBusinessAdminHomeStravaMigrationPending.revisao)/>
+            <cfset VARIABLES.businessAdminHomeStravaErrorTotal = val(qBusinessAdminHomeStravaMigrationPending.erros)/>
+            <cfset VARIABLES.businessAdminHomeStravaStuckTotal = val(qBusinessAdminHomeStravaMigrationPending.travados)/>
+            <cfset VARIABLES.businessAdminHomeStravaMigrationLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeStravaPendingTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeStravaReviewTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeStravaErrorTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeStravaStuckTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasPushQueueTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomePushQueuePending">
+                SELECT
+                    (count(*) FILTER (
+                        WHERE status = 'pending'
+                          AND updated_at < now() - interval '15 minutes'
+                    ))::integer AS pendentes,
+                    (count(*) FILTER (
+                        WHERE status = 'retry'
+                          AND updated_at < now() - interval '15 minutes'
+                    ))::integer AS retentativas,
+                    (count(*) FILTER (
+                        WHERE status = 'processing'
+                          AND updated_at < now() - interval '15 minutes'
+                    ))::integer AS processando
+                FROM public.tb_push_delivery_queue
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomePushPendingStuckTotal = val(qBusinessAdminHomePushQueuePending.pendentes)/>
+            <cfset VARIABLES.businessAdminHomePushRetryStuckTotal = val(qBusinessAdminHomePushQueuePending.retentativas)/>
+            <cfset VARIABLES.businessAdminHomePushProcessingStuckTotal = val(qBusinessAdminHomePushQueuePending.processando)/>
+            <cfset VARIABLES.businessAdminHomePushQueueLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomePushPendingStuckTotal = 0/>
+                <cfset VARIABLES.businessAdminHomePushRetryStuckTotal = 0/>
+                <cfset VARIABLES.businessAdminHomePushProcessingStuckTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasEmailQueueTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeEmailQueuePending">
+                SELECT
+                    (count(*) FILTER (
+                        WHERE data_envio IS NULL
+                          AND bounce IS NULL
+                          AND data_disparo < now()
+                    ))::integer AS atrasados,
+                    (count(*) FILTER (
+                        WHERE data_envio IS NULL
+                          AND bounce IS NOT NULL
+                    ))::integer AS erros
+                FROM public.tb_mailing
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeEmailPendingTotal = val(qBusinessAdminHomeEmailQueuePending.atrasados)/>
+            <cfset VARIABLES.businessAdminHomeEmailErrorTotal = val(qBusinessAdminHomeEmailQueuePending.erros)/>
+            <cfset VARIABLES.businessAdminHomeEmailQueueLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeEmailPendingTotal = 0/>
+                <cfset VARIABLES.businessAdminHomeEmailErrorTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasVickyProactiveTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeVickyDeliveryPending" datasource="runner_dba">
+                SELECT (count(*) FILTER (
+                    WHERE status IN ('failed', 'dead_letter')
+                      AND created_at >= now() - interval '30 days'
+                ))::integer AS falhas
+                FROM public.tb_vicky_notificacao_fila
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeVickyDeliveryFailureTotal = val(qBusinessAdminHomeVickyDeliveryPending.falhas)/>
+            <cfset VARIABLES.businessAdminHomeVickyProactiveLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeVickyDeliveryFailureTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <cfif VARIABLES.businessAdminHomeHasVickyDocumentTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeVickyDocumentPending" datasource="runner_dba">
+                SELECT (count(*) FILTER (WHERE status = 'failed'))::integer AS falhas
+                FROM public.tb_vicky_documento
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeVickyDocumentFailureTotal = val(qBusinessAdminHomeVickyDocumentPending.falhas)/>
+            <cfset VARIABLES.businessAdminHomeVickyDocumentLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeVickyDocumentFailureTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
+    <!--- This queue is optional until the verified-athlete request workflow is installed. --->
+    <cfif VARIABLES.businessAdminHomeHasAthleteReviewTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeAthleteReviewPending">
+                SELECT count(*)::integer AS total
+                FROM public.tb_atleta_verificacao_solicitacao
+                WHERE status = 'pendente'
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeAthleteReviewPendingTotal = val(qBusinessAdminHomeAthleteReviewPending.total)/>
+            <cfset VARIABLES.businessAdminHomeAthleteReviewLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeAthleteReviewPendingTotal = 0/>
             </cfcatch>
         </cftry>
     </cfif>
@@ -536,22 +912,79 @@
         return !arguments.available ? "muted" : (arguments.value > 0 ? "warning" : "success");
     }
     VARIABLES.businessAdminHomeStatsLoaded = VARIABLES.businessAdminHomeReady AND qBusinessAdminHomeStats.recordcount > 0;
-    VARIABLES.businessAdminHomeDecisionLoaded = VARIABLES.businessAdminHomeStatsLoaded AND VARIABLES.businessAdminHomeFocoLoaded AND VARIABLES.businessAdminHomeAgregaLoaded;
     VARIABLES.businessAdminHomeRegistrationTotal = VARIABLES.businessAdminHomeStatsLoaded ? val(qBusinessAdminHomeStats.solicitacoes_cadastro) : 0;
     VARIABLES.businessAdminHomeEventRequestTotal = VARIABLES.businessAdminHomeStatsLoaded ? val(qBusinessAdminHomeStats.solicitacoes_eventos) : 0;
-    VARIABLES.businessAdminHomeDecisionTotal = VARIABLES.businessAdminHomeRegistrationTotal + VARIABLES.businessAdminHomeEventRequestTotal + VARIABLES.businessAdminHomeFocoPendingTotal + VARIABLES.businessAdminHomeAgregaPendingTotal;
     VARIABLES.businessAdminHomeContentComplete = max(0, VARIABLES.businessAdminHomeContentTotal - VARIABLES.businessAdminHomeContentIncomplete);
     VARIABLES.businessAdminHomeContentModerate = max(0, VARIABLES.businessAdminHomeContentIncomplete - VARIABLES.businessAdminHomeContentCritical);
     VARIABLES.businessAdminHomeReconcileLabel = VARIABLES.businessAdminHomeAdsReconcileLastStatus;
     if (listFindNoCase("success,ok,completed", VARIABLES.businessAdminHomeAdsReconcileLastStatus)) VARIABLES.businessAdminHomeReconcileLabel = "Concluída";
     else if (listFindNoCase("error,http_error,failed,timeout", VARIABLES.businessAdminHomeAdsReconcileLastStatus)) VARIABLES.businessAdminHomeReconcileLabel = "Falha na execução";
     else if (VARIABLES.businessAdminHomeAdsReconcileLastStatus == "running") VARIABLES.businessAdminHomeReconcileLabel = "Em execução";
+    VARIABLES.businessAdminHomeHelpdeskDescription = "Abertos, com nova resposta ou parados há 48 h";
+    if (VARIABLES.businessAdminHomeHelpdeskLoaded) {
+        VARIABLES.businessAdminHomeHelpdeskDescription = LSNumberFormat(VARIABLES.businessAdminHomeHelpdeskReplyTotal, "9,999") & " a responder · " & LSNumberFormat(VARIABLES.businessAdminHomeHelpdeskStaleTotal, "9,999") & " sem atualização há 48 h";
+    }
+    VARIABLES.businessAdminHomeResultImportTotal = VARIABLES.businessAdminHomeResultImportFailureTotal + VARIABLES.businessAdminHomeResultImportDelayedTotal;
+    VARIABLES.businessAdminHomeResultImportDescription = "Falhas e itens parados há mais de 15 min";
+    if (VARIABLES.businessAdminHomeResultImportLoaded) {
+        VARIABLES.businessAdminHomeResultImportDescription = LSNumberFormat(VARIABLES.businessAdminHomeResultImportFailureTotal, "9,999") & " falhas · " & LSNumberFormat(VARIABLES.businessAdminHomeResultImportDelayedTotal, "9,999") & " atrasadas";
+    }
+    VARIABLES.businessAdminHomeStravaMigrationTotal = VARIABLES.businessAdminHomeStravaPendingTotal + VARIABLES.businessAdminHomeStravaReviewTotal + VARIABLES.businessAdminHomeStravaErrorTotal + VARIABLES.businessAdminHomeStravaStuckTotal;
+    VARIABLES.businessAdminHomeStravaMigrationDescription = "Pendentes, revisões, erros e processos parados";
+    if (VARIABLES.businessAdminHomeStravaMigrationLoaded) {
+        VARIABLES.businessAdminHomeStravaMigrationDescription = LSNumberFormat(VARIABLES.businessAdminHomeStravaPendingTotal, "9,999") & " pendentes · " & LSNumberFormat(VARIABLES.businessAdminHomeStravaReviewTotal, "9,999") & " revisão · " & LSNumberFormat(VARIABLES.businessAdminHomeStravaErrorTotal, "9,999") & " erros · " & LSNumberFormat(VARIABLES.businessAdminHomeStravaStuckTotal, "9,999") & " travados";
+    }
+    VARIABLES.businessAdminHomePushQueueTotal = VARIABLES.businessAdminHomePushPendingStuckTotal + VARIABLES.businessAdminHomePushRetryStuckTotal + VARIABLES.businessAdminHomePushProcessingStuckTotal;
+    VARIABLES.businessAdminHomePushQueueDescription = "Entregas paradas há mais de 15 min";
+    if (VARIABLES.businessAdminHomePushQueueLoaded) {
+        VARIABLES.businessAdminHomePushQueueDescription = LSNumberFormat(VARIABLES.businessAdminHomePushPendingStuckTotal, "9,999") & " pendentes · " & LSNumberFormat(VARIABLES.businessAdminHomePushRetryStuckTotal, "9,999") & " retentativas · " & LSNumberFormat(VARIABLES.businessAdminHomePushProcessingStuckTotal, "9,999") & " processando";
+    }
+    VARIABLES.businessAdminHomeEmailQueueTotal = VARIABLES.businessAdminHomeEmailPendingTotal + VARIABLES.businessAdminHomeEmailErrorTotal;
+    VARIABLES.businessAdminHomeEmailQueueDescription = "Envios vencidos e falhas sem conclusão";
+    if (VARIABLES.businessAdminHomeEmailQueueLoaded) {
+        VARIABLES.businessAdminHomeEmailQueueDescription = LSNumberFormat(VARIABLES.businessAdminHomeEmailPendingTotal, "9,999") & " vencidos · " & LSNumberFormat(VARIABLES.businessAdminHomeEmailErrorTotal, "9,999") & " com erro";
+    }
     VARIABLES.businessAdminHomeQueue = [
-        {label="Cadastros de conta", description="Empresas aguardando aprovação", value=VARIABLES.businessAdminHomeRegistrationTotal, loaded=VARIABLES.businessAdminHomeStatsLoaded, href="/administracao/contas/", icon="fa-building"},
-        {label="Vínculos de eventos", description="Pedidos de associação a uma conta", value=VARIABLES.businessAdminHomeEventRequestTotal, loaded=VARIABLES.businessAdminHomeStatsLoaded, href="/eventos/", icon="fa-link"},
-        {label="Foco Radical", description="Eventos com galerias para revisar", value=VARIABLES.businessAdminHomeFocoPendingTotal, loaded=VARIABLES.businessAdminHomeFocoLoaded, href="/administracao/foco-revisao/", icon="fa-camera"},
-        {label="Agregadores", description="Grupos de edições para consolidar", value=VARIABLES.businessAdminHomeAgregaPendingTotal, loaded=VARIABLES.businessAdminHomeAgregaLoaded, href="/administracao/agrega-revisao/", icon="fa-layer-group"}
+        {kind="Atendimento", label="Help Desk", description=VARIABLES.businessAdminHomeHelpdeskDescription, value=VARIABLES.businessAdminHomeHelpdeskPendingTotal, loaded=VARIABLES.businessAdminHomeHelpdeskLoaded, href="/helpdesk/?ordem=prioridade", icon="fa-headset"},
+        {kind="Curadoria", label="Conteúdos editoriais", description="Matérias ocultas aguardando decisão", value=VARIABLES.businessAdminHomeEditorialPendingTotal, loaded=VARIABLES.businessAdminHomeEditorialLoaded, href="/portal/conteudos/?status=pendentes", icon="fa-newspaper"},
+        {kind="Aprovação", label="Cadastros de conta", description="Empresas aguardando aprovação", value=VARIABLES.businessAdminHomeRegistrationTotal, loaded=VARIABLES.businessAdminHomeStatsLoaded, href="/administracao/contas/", icon="fa-building"},
+        {kind="Aprovação", label="Vínculos de eventos", description="Pedidos de associação a uma conta", value=VARIABLES.businessAdminHomeEventRequestTotal, loaded=VARIABLES.businessAdminHomeStatsLoaded, href="/eventos/", icon="fa-link"},
+        {kind="Aprovação", label="Anúncios", description="Campanhas prontas para análise", value=VARIABLES.businessAdminHomeAdsReviewPendingTotal, loaded=VARIABLES.businessAdminHomeAdsReviewLoaded, href="/ads/?view=admin", icon="fa-rectangle-ad"},
+        {kind="Validação", label="Brasil Gigante", description="Documentos de participantes para conferir", value=VARIABLES.businessAdminHomeChallengePendingTotal, loaded=VARIABLES.businessAdminHomeChallengeLoaded, href="/desafios/circuitobrasilgigante/?tela=validacoes", icon="fa-file-shield"},
+        {kind="Curadoria", label="Foco Radical", description="Eventos com galerias para revisar", value=VARIABLES.businessAdminHomeFocoPendingTotal, loaded=VARIABLES.businessAdminHomeFocoLoaded, href="/administracao/foco-revisao/", icon="fa-camera"},
+        {kind="Curadoria", label="Agregadores", description="Grupos de edições para consolidar", value=VARIABLES.businessAdminHomeAgregaPendingTotal, loaded=VARIABLES.businessAdminHomeAgregaLoaded, href="/administracao/agrega-revisao/", icon="fa-layer-group"},
+        {kind="Operação", label="Importações de resultados", description=VARIABLES.businessAdminHomeResultImportDescription, value=VARIABLES.businessAdminHomeResultImportTotal, loaded=VARIABLES.businessAdminHomeResultImportLoaded, href="/administracao/importacoes-resultados/?periodo=0", icon="fa-stopwatch"}
     ];
+    if (VARIABLES.businessAdminHomeHasCrmPendingTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Validação", label="Vínculos do CRM", description="Fontes importadas sem vínculo com evento RR", value=VARIABLES.businessAdminHomeCrmPendingTotal, loaded=VARIABLES.businessAdminHomeCrmPendingLoaded, href="/crm/", icon="fa-address-book"});
+    }
+    if (VARIABLES.businessAdminHomeHasStravaMigrationTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Operação", label="Migração Strava", description=VARIABLES.businessAdminHomeStravaMigrationDescription, value=VARIABLES.businessAdminHomeStravaMigrationTotal, loaded=VARIABLES.businessAdminHomeStravaMigrationLoaded, href="/percursos/migracao-strava.cfm", icon="fa-route"});
+    }
+    if (VARIABLES.businessAdminHomeHasPushQueueTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Operação", label="Fila de Push", description=VARIABLES.businessAdminHomePushQueueDescription, value=VARIABLES.businessAdminHomePushQueueTotal, loaded=VARIABLES.businessAdminHomePushQueueLoaded, href="/notificacoes/envio/?view=push", icon="fa-mobile-screen-button"});
+    }
+    if (VARIABLES.businessAdminHomeHasEmailQueueTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Operação", label="E-mail marketing", description=VARIABLES.businessAdminHomeEmailQueueDescription, value=VARIABLES.businessAdminHomeEmailQueueTotal, loaded=VARIABLES.businessAdminHomeEmailQueueLoaded, href="/emailmkt/", icon="fa-envelope"});
+    }
+    if (VARIABLES.businessAdminHomeHasVickyProactiveTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Operação", label="Entregas da Vicky", description="Falhas e itens sem entrega nos últimos 30 dias", value=VARIABLES.businessAdminHomeVickyDeliveryFailureTotal, loaded=VARIABLES.businessAdminHomeVickyProactiveLoaded, href="/administracao/vicky/?secao=interacoes", icon="fa-comments"});
+    }
+    if (VARIABLES.businessAdminHomeHasVickyDocumentTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Operação", label="Base da Vicky", description="Documentos com falha de processamento", value=VARIABLES.businessAdminHomeVickyDocumentFailureTotal, loaded=VARIABLES.businessAdminHomeVickyDocumentLoaded, href="/administracao/vicky/?secao=conhecimento", icon="fa-book-open"});
+    }
+    if (VARIABLES.businessAdminHomeHasAthleteReviewTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Aprovação", label="Atletas verificados", description="Solicitações de selo aguardando decisão", value=VARIABLES.businessAdminHomeAthleteReviewPendingTotal, loaded=VARIABLES.businessAdminHomeAthleteReviewLoaded, href="/portal/verificados/?status=pendentes", icon="fa-circle-check"});
+    }
+    VARIABLES.businessAdminHomeDecisionLoaded = true;
+    VARIABLES.businessAdminHomeDecisionTotal = 0;
+    for (VARIABLES.businessAdminHomeQueueItem in VARIABLES.businessAdminHomeQueue) {
+        if (VARIABLES.businessAdminHomeQueueItem.loaded) {
+            VARIABLES.businessAdminHomeDecisionTotal += VARIABLES.businessAdminHomeQueueItem.value;
+        } else {
+            VARIABLES.businessAdminHomeDecisionLoaded = false;
+        }
+    }
     VARIABLES.businessAdminHomeOverview = [
         {label="Contas ativas", description="Empresas com acesso ativo", value=VARIABLES.businessAdminHomeStatsLoaded ? val(qBusinessAdminHomeStats.contas_ativas) : 0, href="/administracao/contas/", icon="fa-building"},
         {label="Usuários nas contas", description="Vínculos ativos de usuários", value=VARIABLES.businessAdminHomeStatsLoaded ? val(qBusinessAdminHomeStats.usuarios_ativos) : 0, href="/administracao/usuarios/", icon="fa-users"},
@@ -568,7 +1001,7 @@
 </cfscript>
 
 <link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260911-1"/>
-<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=20260912-2"/>
+<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=20260917-1"/>
 
 <div class="col-12 business-global-dashboard admin-suite-page">
     <header class="admin-suite-header">
@@ -634,27 +1067,25 @@
     <div class="gd-priorities">
         <section class="gd-panel" id="business-admin-pending" aria-labelledby="gd-pending-title">
             <header class="gd-panel-heading">
-                <div><span class="gd-eyebrow">Decisões · Fila atual</span><h2 id="gd-pending-title">Aguardando revisão</h2></div>
+                <div><span class="gd-eyebrow">Ações humanas · Fila atual</span><h2 id="gd-pending-title">Central de pendências</h2><p>Atendimento, aprovações, curadoria, validações e exceções operacionais.</p></div>
                 <span class="gd-icon" aria-hidden="true"><i class="fa-solid fa-list-check"></i></span>
             </header>
-            <div class="gd-headline"><strong><cfoutput>#businessAdminMetric(VARIABLES.businessAdminHomeDecisionTotal, VARIABLES.businessAdminHomeDecisionLoaded)#</cfoutput></strong><span>itens na fila<br><small>cadastros, vínculos e revisões</small></span></div>
+            <div class="gd-headline"><strong><cfoutput>#businessAdminMetric(VARIABLES.businessAdminHomeDecisionTotal, VARIABLES.businessAdminHomeDecisionLoaded)#</cfoutput></strong><span>itens que pedem ação<br><small>cada item é contado em uma única fila</small></span></div>
             <cfif NOT VARIABLES.businessAdminHomeDecisionLoaded><p class="gd-unavailable">Total indisponível: uma das filas não pôde ser consultada.</p>
-            <cfelseif VARIABLES.businessAdminHomeDecisionTotal EQ 0><p class="gd-success-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Nenhuma decisão pendente.</p></cfif>
+            <cfelseif VARIABLES.businessAdminHomeDecisionTotal EQ 0><p class="gd-success-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Nenhuma ação humana pendente.</p></cfif>
             <div class="gd-queue">
                 <cfloop array="#VARIABLES.businessAdminHomeQueue#" index="businessQueueItem">
                     <cfoutput>
                         <a class="gd-queue-row" href="#businessQueueItem.href#">
                             <i class="fa-solid #businessQueueItem.icon# gd-queue-icon" aria-hidden="true"></i>
-                            <span class="gd-queue-copy"><strong>#businessQueueItem.label#</strong><small>#businessQueueItem.description#</small>
-                                <span class="gd-track" aria-hidden="true"><span style="width:#numberFormat(VARIABLES.businessAdminHomeDecisionLoaded ? businessAdminPercent(businessQueueItem.value, VARIABLES.businessAdminHomeDecisionTotal) : 0, '0.00')#%"></span></span>
-                            </span>
+                            <span class="gd-queue-copy"><strong>#businessQueueItem.label#</strong><small><span class="gd-queue-kind">#businessQueueItem.kind#</span>#businessQueueItem.description#</small></span>
                             <strong class="gd-count gd-#businessAdminTone(businessQueueItem.value, businessQueueItem.loaded)#">#businessAdminMetric(businessQueueItem.value, businessQueueItem.loaded)#</strong>
                             <i class="fa-solid fa-chevron-right gd-chevron" aria-hidden="true"></i>
                         </a>
                     </cfoutput>
                 </cfloop>
             </div>
-            <p class="gd-caption">As barras mostram a participação de cada fila no total.</p>
+            <p class="gd-caption">O total reúne somente filas acionáveis e evita duplicar indicadores de qualidade, pagamentos, cron e disponibilidade exibidos nos painéis próprios.</p>
         </section>
 
         <section class="gd-panel" id="business-admin-content" aria-labelledby="gd-content-title">
