@@ -15,6 +15,16 @@
 <cfif NOT len(VARIABLES.vectorStoreId)>
   <cfthrow type="Vicky.KnowledgeNotConfigured" message="O índice documental ainda não foi configurado."/>
 </cfif>
+<cfhttp method="get" url="https://api.openai.com/v1/vector_stores/#urlEncodedFormat(VARIABLES.vectorStoreId)#" result="vickyKnowledgeStoreResponse" timeout="30" throwonerror="false">
+  <cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/>
+  <cfhttpparam type="header" name="OpenAI-Beta" value="assistants=v2"/>
+</cfhttp>
+<cfset VARIABLES.knowledgeStoreHttp=val(left(vickyKnowledgeStoreResponse.statusCode&"",3))/>
+<cfif VARIABLES.knowledgeStoreHttp EQ 404>
+  <cfthrow type="Vicky.KnowledgeIndexMissing" message="O índice documental configurado não existe mais na OpenAI. Use “Reparar índice” para reaproveitar os arquivos já enviados."/>
+<cfelseif VARIABLES.knowledgeStoreHttp LT 200 OR VARIABLES.knowledgeStoreHttp GTE 300>
+  <cfthrow type="Vicky.OpenAI" message="Não foi possível validar o índice documental na OpenAI (HTTP #VARIABLES.knowledgeStoreHttp#). Tente novamente em alguns instantes."/>
+</cfif>
 
 <cfif FORM.action EQ "refresh_documents_batch">
   <cfset VARIABLES.vickyErrorStep="verificação em lote dos documentos"/>
@@ -81,6 +91,7 @@
     <cfset VARIABLES.vickyTempFile=vickyUpload.serverDirectory&"/"&vickyUpload.serverFile/>
     <cfset VARIABLES.clientFile=left(vickyUpload.clientFile&"",255)/>
     <cfset VARIABLES.openAiFileId=""/>
+    <cfset VARIABLES.documentPersisted=false/>
     <cftry>
       <cfset VARIABLES.vickyPdfBinary=fileReadBinary(VARIABLES.vickyTempFile)/>
       <cfif lCase(vickyUpload.serverFileExt&"") NEQ "pdf" OR val(vickyUpload.fileSize) GT 20971520 OR uCase(left(binaryEncode(VARIABLES.vickyPdfBinary,"hex"),8)) NEQ "25504446">
@@ -122,6 +133,18 @@
         <cfset VARIABLES.filePayload=deserializeJSON(vickyFileResponse.fileContent)/>
         <cfif NOT structKeyExists(VARIABLES.filePayload,"id") OR NOT len(VARIABLES.filePayload.id&"")><cfthrow type="Vicky.OpenAI" message="A OpenAI não retornou o identificador do arquivo."/></cfif>
         <cfset VARIABLES.openAiFileId=VARIABLES.filePayload.id&""/>
+        <cfif qVickyExistingDocument.recordCount AND qVickyExistingDocument.status EQ "failed">
+          <cfquery name="qVickyStoredDocument" datasource="runner_dba">
+            UPDATE tb_vicky_documento SET titulo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentTitle#"/>,categoria=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentCategory#"/>,entidade=<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_issuer&''),160)#" null="#!len(trim(FORM.document_issuer&''))#"/>,versao=<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_version&''),80)#" null="#!len(trim(FORM.document_version&''))#"/>,vigencia=<cfqueryparam cfsqltype="cf_sql_date" value="#FORM.document_effective_date#" null="#!isDate(FORM.document_effective_date)#"/>,nome_arquivo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.clientFile#"/>,tamanho_bytes=<cfqueryparam cfsqltype="cf_sql_bigint" value="#vickyUpload.fileSize#"/>,openai_file_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.openAiFileId#"/>,status='failed',id_operador=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE id_vicky_documento=<cfqueryparam cfsqltype="cf_sql_bigint" value="#qVickyExistingDocument.id_vicky_documento#"/> AND status='failed' RETURNING id_vicky_documento
+          </cfquery>
+        <cfelse>
+          <cfquery name="qVickyStoredDocument" datasource="runner_dba">
+            INSERT INTO tb_vicky_documento (titulo,categoria,entidade,versao,vigencia,nome_arquivo,tamanho_bytes,sha256,openai_file_id,status,id_operador) VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentTitle#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentCategory#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_issuer&''),160)#" null="#!len(trim(FORM.document_issuer&''))#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_version&''),80)#" null="#!len(trim(FORM.document_version&''))#"/>,<cfqueryparam cfsqltype="cf_sql_date" value="#FORM.document_effective_date#" null="#!isDate(FORM.document_effective_date)#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.clientFile#"/>,<cfqueryparam cfsqltype="cf_sql_bigint" value="#vickyUpload.fileSize#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentSha#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.openAiFileId#"/>,'failed',<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>) RETURNING id_vicky_documento
+          </cfquery>
+        </cfif>
+        <cfif NOT qVickyStoredDocument.recordCount><cfthrow type="Vicky.Database" message="Não foi possível preservar o arquivo enviado para reprocessamento."/></cfif>
+        <cfset VARIABLES.storedDocumentId=qVickyStoredDocument.id_vicky_documento/>
+        <cfset VARIABLES.documentPersisted=true/>
         <cfset VARIABLES.attachPayload=structNew("ordered")/><cfset VARIABLES.attachPayload["file_id"]=VARIABLES.openAiFileId/>
         <cfhttp method="post" url="https://api.openai.com/v1/vector_stores/#urlEncodedFormat(VARIABLES.vectorStoreId)#/files" result="vickyAttachResponse" timeout="60" throwonerror="false">
           <cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/>
@@ -130,18 +153,13 @@
           <cfhttpparam type="body" value="#serializeJSON(VARIABLES.attachPayload)#"/>
         </cfhttp>
         <cfset VARIABLES.attachHttp=val(left(vickyAttachResponse.statusCode&"",3))/>
-        <cfif VARIABLES.attachHttp LT 200 OR VARIABLES.attachHttp GTE 300><cfthrow type="Vicky.OpenAI" message="O PDF foi enviado, mas não pôde ser anexado ao índice (HTTP #VARIABLES.attachHttp#)."/></cfif>
+        <cfif VARIABLES.attachHttp LT 200 OR VARIABLES.attachHttp GTE 300><cfthrow type="Vicky.OpenAI" message="O PDF foi preservado, mas não pôde ser anexado ao índice (HTTP #VARIABLES.attachHttp#). Use “Reparar índice” para tentar novamente sem reenviar o arquivo."/></cfif>
+        <cfquery datasource="runner_dba">UPDATE tb_vicky_documento SET status='processing',updated_at=now() WHERE id_vicky_documento=<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.storedDocumentId#"/> AND status='failed'</cfquery>
 
         <cfif qVickyExistingDocument.recordCount AND qVickyExistingDocument.status EQ "failed">
-          <cfquery datasource="runner_dba">
-            UPDATE tb_vicky_documento SET titulo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentTitle#"/>,categoria=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentCategory#"/>,entidade=<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_issuer&''),160)#" null="#!len(trim(FORM.document_issuer&''))#"/>,versao=<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_version&''),80)#" null="#!len(trim(FORM.document_version&''))#"/>,vigencia=<cfqueryparam cfsqltype="cf_sql_date" value="#FORM.document_effective_date#" null="#!isDate(FORM.document_effective_date)#"/>,nome_arquivo=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.clientFile#"/>,tamanho_bytes=<cfqueryparam cfsqltype="cf_sql_bigint" value="#vickyUpload.fileSize#"/>,openai_file_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.openAiFileId#"/>,status='processing',id_operador=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE id_vicky_documento=<cfqueryparam cfsqltype="cf_sql_bigint" value="#qVickyExistingDocument.id_vicky_documento#"/> AND status='failed'
-          </cfquery>
           <cfset VARIABLES.replacedCount=VARIABLES.replacedCount+1/>
           <cfset arrayAppend(VARIABLES.vickyBatchResults,{file=VARIABLES.clientFile,status="reprocessed",detail="Registro com falha atualizado; aguardando indexação"})/>
         <cfelse>
-          <cfquery datasource="runner_dba">
-            INSERT INTO tb_vicky_documento (titulo,categoria,entidade,versao,vigencia,nome_arquivo,tamanho_bytes,sha256,openai_file_id,status,id_operador) VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentTitle#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentCategory#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_issuer&''),160)#" null="#!len(trim(FORM.document_issuer&''))#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#left(trim(FORM.document_version&''),80)#" null="#!len(trim(FORM.document_version&''))#"/>,<cfqueryparam cfsqltype="cf_sql_date" value="#FORM.document_effective_date#" null="#!isDate(FORM.document_effective_date)#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.clientFile#"/>,<cfqueryparam cfsqltype="cf_sql_bigint" value="#vickyUpload.fileSize#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.documentSha#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.openAiFileId#"/>,'processing',<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)
-          </cfquery>
           <cfset VARIABLES.uploadedCount=VARIABLES.uploadedCount+1/>
           <cfset arrayAppend(VARIABLES.vickyBatchResults,{file=VARIABLES.clientFile,status="uploaded",detail="Novo documento; aguardando indexação"})/>
         </cfif>
@@ -150,7 +168,7 @@
         <cfset VARIABLES.failedCount=VARIABLES.failedCount+1/>
         <cfset VARIABLES.itemError=len(trim(cfcatch.message&""))?left(trim(cfcatch.message&""),240):"Falha inesperada no processamento."/>
         <cfset arrayAppend(VARIABLES.vickyBatchResults,{file=VARIABLES.clientFile,status="failed",detail=VARIABLES.itemError})/>
-        <cfif len(VARIABLES.openAiFileId)>
+        <cfif len(VARIABLES.openAiFileId) AND NOT VARIABLES.documentPersisted>
           <cftry><cfhttp method="delete" url="https://api.openai.com/v1/files/#urlEncodedFormat(VARIABLES.openAiFileId)#" result="vickyCleanupResponse" timeout="20" throwonerror="false"><cfhttpparam type="header" name="Authorization" value="Bearer #APPLICATION.vickyKnowledge.apiKey#"/></cfhttp><cfcatch></cfcatch></cftry>
         </cfif>
       </cfcatch>

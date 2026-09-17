@@ -104,6 +104,8 @@
         <cfif NOT len(VARIABLES.manychatLabel) OR NOT len(VARIABLES.manychatTrigger)><cfthrow type="Vicky.ManychatValidation" message="Nome da conta e trigger são obrigatórios."/></cfif>
         <cfquery datasource="runner_dba">UPDATE tb_vicky_manychat_config SET enabled=(<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatEnabled ? 1 : 0#"/> = 1),account_label=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatLabel#"/>,trigger_name=<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.manychatTrigger#"/>,max_attempts=<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.manychatAttempts#"/>,updated_by=<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,updated_at=now() WHERE id_config=1</cfquery>
         <cfset VARIABLES.vickyMessage="Configuração do canal atualizada. Segredos permanecem protegidos no ambiente do Road Runners."/>
+      <cfelseif FORM.action EQ "rebuild_knowledge_index">
+        <cfinclude template="knowledge_rebuild.cfm"/>
       <cfelseif listFindNoCase("upload_documents_batch,refresh_documents_batch",FORM.action&"")>
         <cfinclude template="knowledge_batch.cfm"/>
       <cfelseif FORM.action EQ "document_status">
