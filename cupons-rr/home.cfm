@@ -1,341 +1,41 @@
-<!--- BACKEND --->
-
-<cfinclude template="includes/backend.cfm"/>
-
-<cfset VARIABLES.cuponsRrTotalLinkedCoupons = qCupons.recordcount + qEventosCupons.recordcount + qCircuitosCupons.recordcount + qPaginasCupons.recordcount/>
-<cfset VARIABLES.cuponsRrHasLinkedCoupons = VARIABLES.cuponsRrTotalLinkedCoupons GT 0/>
-<cfset VARIABLES.cuponsRrHasLinkedEvents = NOT (VARIABLES.cuponsRrRestrictByConta AND VARIABLES.cuponsRrEventosContaIds EQ "0")/>
-<cfset VARIABLES.cuponsRrShowOnboarding = VARIABLES.cuponsRrRestrictByConta
-    AND NOT VARIABLES.cuponsRrHasLinkedCoupons
-    AND NOT isDefined("URL.acao")
-    AND NOT isDefined("URL.campanha")/>
-
-<!--- WIDGETS
-
-<section class="mb-4">
-
-  <div class="row gx-xl-3">
-
-    <div class="col mb-3 mb-lg-0">
-      <div class="card shadow-0">
-        <div class="card-body p-3">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0">
-              <div class="p-3 badge-primary rounded-4">
-                <i class="fas fa-eye fa-lg fa-fw"></i>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">Views</p>
-              <h4 class="mb-0">
-                <cfoutput>#LSNumberFormat(qAdCountViews.total, "9,999,999")#</cfoutput>
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col mb-3 d-none d-xl-block mb-lg-0">
-      <div class="card shadow-0">
-        <div class="card-body p-3">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0">
-              <div class="p-3 badge-primary rounded-4">
-                <i class="fas fa-hand-pointer fa-lg fa-fw"></i>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">Clicks</p>
-              <h4 class="mb-0">
-                <cfoutput>#LSNumberFormat(qAdCountClicks.total, "9,999,999")#</cfoutput>
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col mb-3 mb-lg-0">
-      <div class="card shadow-0">
-        <div class="card-body p-3">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0">
-              <div class="p-3 badge-primary rounded-4">
-                <i class="fas fa-dollar-sign fa-lg fa-fw"></i>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">CPC Médio</p>
-              <h4 class="mb-0">
-                <cfoutput>#lsCurrencyFormat(qAdValorMedio.total)#</cfoutput>
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col mb-3 mb-lg-0">
-      <div class="card shadow-0">
-        <div class="card-body p-3">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0">
-              <div class="p-3 badge-primary rounded-4">
-                <i class="fas fa-dollar-sign fa-lg fa-fw"></i>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">Investimento</p>
-              <h4 class="mb-0">
-                <cfoutput>#lsCurrencyFormat(qAdValorTotal.total)#</cfoutput>
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-    
+<cfif NOT structKeyExists(VARIABLES,'cpData')><cfheader statuscode="403"/><cfabort/></cfif>
+<link rel="stylesheet" href="/cupons-rr/assets/manager.css?v=20260916-1"/>
+<section class="cp-manager">
+<cfoutput>
+<header class="cp-header"><div><span class="cp-kicker">Benefícios e inscrições</span><h1>Cupons de desconto</h1><p>Organize os códigos, as condições e os eventos que recebem cada benefício.</p></div><cfif cuponsRrCanOperate><a class="btn btn-warning" href="./?novo=1##cp-editor">Novo cupom</a></cfif></header>
+<div class="cp-stats" aria-label="Resumo do catálogo"><div><span>Total de cupons</span><strong>#cpData.stats.total#</strong></div><div><span>Ativos</span><strong>#cpData.stats.ativos#</strong></div><div><span>Expirados</span><strong>#cpData.stats.expirados#</strong></div><div><span>Inativos</span><strong>#cpData.stats.inativos#</strong></div></div>
+<p class="cp-help">Resumo de todos os cupons acessíveis à sua conta. A validade em cada evento é definida nos vínculos.</p>
+<cfif len(cpError)><div class="alert alert-warning" role="alert">#encodeForHTML(cpError)#<cfif cpConflict> <a href="./?cupom_id=#cpSelected#">Recarregar cadastro</a></cfif></div></cfif>
+<cfif (URL.salvo ?: '') EQ '1'><div class="alert alert-success" role="status">Cupom atualizado com sucesso.</div></cfif>
+<cfif NOT cuponsRrCanOperate><div class="alert alert-info">Você pode consultar os cupons disponíveis para sua conta. Para cadastrar ou alterar, é necessário acesso de operação ao evento.</div></cfif>
+<div class="cp-layout">
+<section class="cp-panel" aria-label="Catálogo de cupons">
+<form class="cp-filters" action="./" method="get" role="search">
+<div><label for="cp-search">Buscar cupom</label><input class="form-control" id="cp-search" type="search" name="busca" maxlength="120" placeholder="Código, parceiro ou evento" value="#encodeForHTMLAttribute(cpData.filters.search)#"/></div>
+<div><label for="cp-status">Situação</label><select class="form-select" id="cp-status" name="status"><option value="">Todas</option><cfloop array="#[{value='ativos',label='Ativos'},{value='expirados',label='Expirados'},{value='inativos',label='Inativos'}]#" item="cpOption"><option value="#cpOption.value#" <cfif cpData.filters.status EQ cpOption.value>selected</cfif>>#cpOption.label#</option></cfloop></select></div><button class="btn btn-outline-warning" type="submit">Filtrar</button><a href="./">Limpar</a>
+</form>
+<div class="cp-list-heading"><h2>Catálogo</h2><span>#cpData.total# resultado(s)</span></div>
+<div class="cp-list">
+<cfloop query="cpData.coupons"><cfset cpItem=queryGetRow(cpData.coupons,cpData.coupons.currentRow)/>
+<a class="cp-item <cfif cpSelected EQ cpItem.id_cupom>is-selected</cfif>" href="#encodeForHTMLAttribute(cpListUrl(cpData.page))#&amp;cupom_id=#cpItem.id_cupom###cp-editor"><div class="cp-row"><strong class="cp-code">#encodeForHTML(cpItem.cupom)#</strong><span class="cp-badge" data-status="#cpItem.situacao#">#cpItem.situacao#</span></div><div>#encodeForHTML(cpItem.parceiro)#</div><p>#encodeForHTML(cpItem.condicoes)#</p><small>Expiração: #cpDate(cpItem.data_expiracao)#</small></a>
+</cfloop>
+<cfif NOT cpData.total><div class="cp-empty"><h3>Nenhum cupom encontrado</h3><p>Altere a busca ou cadastre o primeiro cupom para um evento autorizado.</p></div></cfif>
+</div>
+<nav class="cp-pagination" aria-label="Paginação"><cfif cpData.page GT 1><a href="#encodeForHTMLAttribute(cpListUrl(cpData.page-1))#">Anterior</a><cfelse><span></span></cfif><span>#cpData.page# / #cpData.pages#</span><cfif cpData.page LT cpData.pages><a href="#encodeForHTMLAttribute(cpListUrl(cpData.page+1))#">Próxima</a><cfelse><span></span></cfif></nav>
 </section>
-
- --->
-
-<!--- CONTEUDO --->
-
-<cfif VARIABLES.cuponsRrShowOnboarding>
-  <cfinclude template="onboarding_cupons.cfm"/>
+<section class="cp-panel cp-detail" id="cp-editor" aria-label="Cadastro do cupom">
+<cfif (cpNew AND cuponsRrCanOperate) OR cpCoupon.recordcount>
+<header class="cp-detail-heading"><div><span class="cp-kicker"><cfif cpNew>Novo benefício<cfelse>Código ## #cpSelected#</cfif></span><h2><cfif cpNew>Cadastrar cupom<cfelse>#encodeForHTML(cpValues.cupom)#</cfif></h2></div><a href="./" aria-label="Fechar cadastro">Fechar</a></header>
+<cfif cpNew OR cpCanEdit>
+<cfinclude template="includes/form_cupom.cfm"/>
+<cfelse>
+<div class="alert alert-info">Consulta disponível. Cupons compartilhados entre contas, páginas ou circuitos só podem ser alterados por um administrador global.</div>
+<dl><dt>Parceiro</dt><dd>#encodeForHTML(cpValues.parceiro)#</dd><dt>Desconto / condições</dt><dd>#encodeForHTML(cpValues.condicoes)#</dd><dt>Descrição</dt><dd>#encodeForHTML(cpValues.descricao)#</dd><dt>Expiração</dt><dd>#cpDate(cpValues.data_expiracao)#</dd></dl>
 </cfif>
-
-<cfif NOT VARIABLES.cuponsRrShowOnboarding>
-<section class="">
-
-  <div class="row gx-xl-5">
-
-    <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-
-      <div class="card shadow-0">
-
-        <div class="card-body">
-
-          <div class="bg-light bg-opacity-10 rounded p-3">
-
-            <!--- INCLUIR CAMPANHA --->
-
-            <h3>Cupons de Desconto Road Runners</h3>
-
-            <cfif VARIABLES.cuponsRrCanOperate AND NOT isDefined("URL.acao") AND NOT isDefined("URL.campanha")>
-
-                <cfinclude template="includes/form_campanha.cfm"/>
-
-            <cfelseif NOT VARIABLES.cuponsRrCanOperate>
-
-                <cfif VARIABLES.cuponsRrRestrictByConta AND VARIABLES.cuponsRrEventosContaIds EQ "0">
-                    <div class="alert alert-info mb-0" role="alert">Sua conta ainda nao possui eventos aprovados para gerenciar cupons. Solicite o vinculo do evento em <a href="/eventos/">Eventos</a>.</div>
-                <cfelse>
-                    <div class="alert alert-info mb-0" role="alert">Seu acesso permite visualizar cupons desta conta, mas nao criar ou alterar cupons.</div>
-                </cfif>
-
-            </cfif>
-
-          </div>
-
-          <hr/>
-
-          <!--- ABAS --->
-          <ul class="nav nav-tabs nav-fill mb-4" id="ex1" role="tablist">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="ex1-tab-1" data-mdb-pill-init href="#ex1-pills-1" role="tab"
-                 aria-controls="ex1-pills-1" aria-selected="true">Cupons (<cfoutput>#qCupons.recordcount#</cfoutput>)</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-2" data-mdb-pill-init href="#ex1-pills-2" role="tab"
-                 aria-controls="ex1-pills-2" aria-selected="false">Cupons de Provas (<cfoutput>#qEventosCupons.recordcount#</cfoutput>)</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-3" data-mdb-pill-init href="#ex1-pills-3" role="tab"
-                 aria-controls="ex1-pills-3" aria-selected="false">Cupons de Circuitos (<cfoutput>#qCircuitosCupons.recordcount#</cfoutput>)</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-4" data-mdb-pill-init href="#ex1-pills-4" role="tab"
-                 aria-controls="ex1-pills-4" aria-selected="false">Cupons de Páginas (<cfoutput>#qPaginasCupons.recordcount#</cfoutput>)</a>
-            </li>
-          </ul>
-
-          <!--- CONTEUDO ABAS --->
-          <div class="tab-content" id="ex1-content">
-
-            <div class="tab-pane fade show active tableFixHead rounded" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-
-                  <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th></th>
-                            <th>Cupom</th>
-                            <th>Parceiro</th>
-                            <th class="text-end">Desconto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qCupons">
-                            <tr>
-                                <td>
-                                    <!---cfif qCupons.ativo EQ 1><a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=status_campanha&status=2"><icon class="fa fa-thumbs-up"></icon></a></cfif>
-                                    <cfif qCupons.ativo GT 1>
-                                    <a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=status_campanha&status=3"><icon class="fa fa-pause"></icon></a>
-                                    <a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=status_campanha&status=4"><icon class="fa fa-archive"></icon></a>
-                                    </cfif--->
-                                    <cfif VARIABLES.cuponsRrCanOperate><a href="/cupons-rr/?campanha=#qCupons.id_cupom#&acao=editar"><icon class="fa fa-edit"></icon></a></cfif>
-                                </td>
-                                <td>#qCupons.cupom# <cfif len(trim(qCupons.data_expiracao)) AND qCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
-                                <td>#qCupons.parceiro#</td>
-                                <td class="text-end">#qCupons.condicoes#</td>
-                                <!---td><small>#qCupons.descricao#</small></td--->
-                            </tr>
-                            <cfif VARIABLES.cuponsRrCanOperate AND isDefined("URL.acao") AND URL.acao EQ "editar" AND isDefined("URL.campanha") and URL.campanha EQ qCupons.id_cupom>
-                                <tr>
-                                    <td colspan="9" class="p-3">
-                                        <!--- EDITAR CAMPANHA --->
-                                        <cfset VARIABLES.campanha = QueryGetRow(qCupons, qCupons.currentRow)>
-                                        <h5 class="mb-3">Editar Campanha</h5>
-                                        <a href="./"><h5 class="mb-3 float-end">X</h5></a>
-                                        <cfinclude template="includes/form_campanha.cfm"/>
-                                    </td>
-                                </tr>
-                            </cfif>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-            </div>
-
-
-            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-
-                  <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th></th>
-                            <th>Evento</th>
-                            <th>Cupom</th>
-                            <th class="text-end">Início</th>
-                            <th class="text-end">Validade</th>
-                            <th class="text-end">Desconto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qEventosCupons">
-                            <tr>
-                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
-                                <td>#qEventosCupons.nome_evento#</td>
-                                <td>#qEventosCupons.cupom# <cfif len(trim(qEventosCupons.data_expiracao)) AND qEventosCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qEventosCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
-                                <td class="text-end">#lsDateFormat(qEventosCupons.data_validade_inicio, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#lsDateFormat(qEventosCupons.data_validade_fim, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#qEventosCupons.condicoes#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-            </div>
-
-
-            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-
-                  <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th></th>
-                            <th>Circuito</th>
-                            <th>Cupom</th>
-                            <th class="text-end">Início</th>
-                            <th class="text-end">Validade</th>
-                            <th class="text-end">Desconto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qCircuitosCupons">
-                            <tr>
-                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
-                                <td>#qCircuitosCupons.nome_evento_agregado#</td>
-                                <td>#qCircuitosCupons.cupom# <cfif len(trim(qCircuitosCupons.data_expiracao)) AND qCircuitosCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qCircuitosCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
-                                <td class="text-end">#lsDateFormat(qCircuitosCupons.data_validade_inicio, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#lsDateFormat(qCircuitosCupons.data_validade_fim, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#qCircuitosCupons.condicoes#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-            </div>
-
-
-            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-4" role="tabpanel" aria-labelledby="ex1-tab-4">
-
-                  <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th></th>
-                            <th>Página</th>
-                            <th>Cupom</th>
-                            <th>Parceiro</th>
-                            <th class="text-end">Início</th>
-                            <th class="text-end">Validade</th>
-                            <th class="text-end">Desconto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qPaginasCupons">
-                            <tr>
-                                <td><cfif VARIABLES.cuponsRrCanOperate><a href=""><icon class="fa fa-edit"></icon></a></cfif></td>
-                                <td>#qPaginasCupons.nome#</td>
-                                <td>#qPaginasCupons.cupom# <cfif len(trim(qPaginasCupons.data_expiracao)) AND qPaginasCupons.data_expiracao LT now()><span class="badge badge-warning">expirado #lsDateFormat(qPaginasCupons.data_expiracao, "dd/mm/yyyy")#</span></cfif></td>
-                                <td>#qPaginasCupons.parceiro#</td>
-                                <td class="text-end">#lsDateFormat(qPaginasCupons.data_cadastro, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#lsDateFormat(qPaginasCupons.data_expiracao, "dd/mm/yyyy")#</td>
-                                <td class="text-end">#qPaginasCupons.condicoes#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-            </div>
-
-            <!---
-
-            <div class="tab-pane fade tableFixHead rounded" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-
-                  <table class="table table-sm table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th>Evento</th>
-                            <th class="text-end">CPC max</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <cfoutput query="qCuponsFinalizados">
-                            <tr>
-                                <td>#qCuponsFinalizados.nome_evento#</td>
-                                <td class="text-end">#lsCurrencyFormat(qCuponsFinalizados.cpc_max)#</td>
-                            </tr>
-                        </cfoutput>
-                      </tbody>
-                  </table>
-
-            </div>
-
-            --->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
+<cfif cpCoupon.recordcount><cfinclude template="includes/links.cfm"/></cfif>
+<cfelse><div class="cp-empty"><i class="fa-solid fa-ticket" aria-hidden="true"></i><h2><cfif cpSelected>Cupom indisponível<cfelse>Um código, vários eventos</cfif></h2><p>Selecione um cupom para consultar seus dados, editar as condições ou gerenciar os vínculos com eventos.</p><small>Os códigos e as regras de desconto devem existir também na plataforma que vende as inscrições. Este cadastro organiza a divulgação no Road Runners.</small></div></cfif>
 </section>
-</cfif>
+</div>
+</cfoutput>
+</section>
+<script src="/cupons-rr/assets/manager.js?v=20260916-1" defer></script>
