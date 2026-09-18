@@ -6,10 +6,12 @@
 <cfheader name="Cache-Control" value="no-store"/>
 <cfheader name="Referrer-Policy" value="no-referrer"/>
 <cfscript>
+oauthAiMails=false;
 try {
     lock name="RunnerHubBusiness.GoogleAgenda" type="exclusive" timeout="60" {
         if (!structKeyExists(session,"agendaOAuth") || !structKeyExists(url,"state") || compare(url.state,session.agendaOAuth.state)!=0 || session.agendaOAuth.actor!=val(qPerfil.id) || dateCompare(now(),session.agendaOAuth.expires)>0) agendaFail("A autorização expirou ou é inválida. Clique em Conectar Google novamente.");
         oauth=session.agendaOAuth;
+        oauthAiMails=structKeyExists(oauth,"aiMails") && oauth.aiMails;
         structDelete(session,"agendaOAuth");
         if (structKeyExists(url,"error") || !structKeyExists(url,"code")) agendaFail("A autorização foi cancelada. Tente conectar novamente.");
         c=agendaConfig();
@@ -19,7 +21,10 @@ try {
         if (identity.status!=200 || !structKeyExists(identity.data,"email") || !structKeyExists(identity.data,"email_verified") || !identity.data.email_verified || !structKeyExists(identity.data,"sub") || compareNoCase(identity.data.email,c.email)!=0) agendaFail("Conecte exclusivamente a conta contato@runnerhub.run.");
         if (!structKeyExists(token.data,"scope")) agendaFail("O Google não informou as permissões autorizadas.");
         for (scope in ["https://www.googleapis.com/auth/calendar.calendarlist.readonly","https://www.googleapis.com/auth/calendar.events.owned","https://www.googleapis.com/auth/meetings.space.readonly","https://www.googleapis.com/auth/drive.file"]) if (!listFind(token.data.scope,scope," ")) agendaFail("Autorize todas as permissões de Agenda, Google Meet e Documentos solicitadas.");
-        if (!structKeyExists(token.data,"refresh_token") || !len(token.data.refresh_token)) agendaFail("O Google não forneceu acesso offline. Remova a autorização antiga na Conta Google e conecte novamente.");
+        previousConnection=agendaDb("SELECT scopes FROM public.tb_google_agenda_conexao WHERE id=1");
+        preserveGmail=oauthAiMails || (previousConnection.recordCount && listFind(previousConnection.scopes,"https://www.googleapis.com/auth/gmail.readonly"," "));
+        if(preserveGmail && !listFind(token.data.scope,"https://www.googleapis.com/auth/gmail.readonly"," ")) agendaFail("Autorize a leitura do Gmail. A conexão anterior foi preservada.");
+        if (!structKeyExists(token.data,"refresh_token") || !len(token.data.refresh_token)) agendaFail("O Google não forneceu acesso offline. A conexão anterior foi preservada; tente autorizar novamente.");
         audit=agendaAudit("connect");
         transaction {
             agendaDb("INSERT INTO public.tb_google_agenda_conexao(id,email,google_sub,refresh_token,scopes) VALUES(1,:email,:sub,:token,:scopes) ON CONFLICT(id) DO UPDATE SET email=EXCLUDED.email,google_sub=EXCLUDED.google_sub,refresh_token=EXCLUDED.refresh_token,scopes=EXCLUDED.scopes,atualizado_em=now()",{email=agendaParam(c.email),sub=agendaParam(identity.data.sub),token=agendaParam(agendaSeal(token.data.refresh_token)),scopes=agendaParam(token.data.scope)});
@@ -27,9 +32,11 @@ try {
         }
         structDelete(application,"agendaAccess");
         session.agendaMessage="Conta Google conectada. Configure as agendas e, em Documentos, crie a pasta raiz do Business.";
+        if(oauthAiMails) session.aiMailMessage="Gmail autorizado. Abra Configurações para confirmar o processamento e ativar o monitor.";
     }
 } catch(any error) {
     session.agendaMessage=error.type=="Agenda.Validation" ? error.message : "Não foi possível conectar a Agenda. Verifique a configuração do servidor e tente novamente.";
+    if(oauthAiMails) session.aiMailMessage=session.agendaMessage;
 }
-location(url="/administracao/agenda/",addtoken=false);
+location(url=oauthAiMails?"/administracao/ai-mails/":"/administracao/agenda/",addtoken=false);
 </cfscript>

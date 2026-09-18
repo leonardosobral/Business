@@ -401,6 +401,11 @@ function cronJobsReconcileStaleRuns() {
 function cronJobsGetSecret(required string secretRef) {
     var diskSecret = "";
 
+    // AI-mails jobs use the already configured Business scheduler identity.
+    if (arguments.secretRef == "business_ai_mails" && structKeyExists(APPLICATION,"cronJobs") && structKeyExists(APPLICATION.cronJobs,"runnerToken")) {
+        return trim(APPLICATION.cronJobs.runnerToken & "");
+    }
+
     if (!len(trim(arguments.secretRef))) {
         return "";
     }

@@ -17,4 +17,10 @@
         <span class="admin-suite-nav-icon" aria-hidden="true"><i class="fa-brands fa-google-drive"></i></span>
         <span class="admin-suite-nav-copy"><strong>Documentos</strong><small>Arquivos</small></span>
     </a>
+    <a class="admin-suite-nav-link<cfif VARIABLES.template EQ "/administracao/ai-mails/"> is-active</cfif>"
+       href="/administracao/ai-mails/"
+       <cfif VARIABLES.template EQ "/administracao/ai-mails/">aria-current="page"</cfif>>
+        <span class="admin-suite-nav-icon" aria-hidden="true"><i class="fa-solid fa-envelope-open-text"></i></span>
+        <span class="admin-suite-nav-copy"><strong>AI-mails</strong><small>Atenção</small></span>
+    </a>
 </nav>

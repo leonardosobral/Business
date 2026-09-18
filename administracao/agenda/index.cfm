@@ -10,7 +10,7 @@
 <html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 <link rel="stylesheet" href="/administracao/agenda/assets/agenda.css?v=1"/>
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260911-1"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 <cfinclude template="../../includes/estrutura/header.cfm"/>
 <main class="container-fluid px-3 px-lg-4 business-page agenda-page admin-suite-page admin-suite-main" id="googleAgenda" data-csrf="<cfoutput>#encodeForHtmlAttribute(session.agendaCsrf)#</cfoutput>">

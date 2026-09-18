@@ -494,6 +494,12 @@
                 </a>
             </li>
 
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/ai-mails/">link-warning</cfif>" href="/administracao/ai-mails/" data-menu-aliases="ai-mails email gmail inteligência resumos mensagens caixa entrada">
+                    <i class="fa-solid fa-envelope-open-text fa-fw me-3"></i><span>AI-mails</span>
+                </a>
+            </li>
+
             <!--- EVENTOS E RESULTADOS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos e resultados</span>

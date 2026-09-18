@@ -900,6 +900,21 @@
     <cfcatch type="any"></cfcatch>
 </cftry>
 
+<cfset VARIABLES.businessAdminAiMailLoaded=false/>
+<cfset VARIABLES.businessAdminAiMailCount=0/>
+<cfset VARIABLES.businessAdminAiMailDescription="Conversas importantes aguardando atenção"/>
+<cftry>
+    <cfquery name="qBusinessAdminAiMail">
+        SELECT count(*) FILTER(WHERE state<>'resolved' AND source_available AND (relevant OR needs_review))::int AS total,
+               (SELECT count(*) FROM public.tb_ai_mail_queue WHERE last_error<>'')::int AS errors,
+               (SELECT enabled FROM public.tb_ai_mail_config WHERE id=1) AS enabled
+        FROM public.tb_ai_mail_threads
+    </cfquery>
+    <cfset VARIABLES.businessAdminAiMailCount=val(qBusinessAdminAiMail.total)/>
+    <cfset VARIABLES.businessAdminAiMailLoaded=true/>
+    <cfset VARIABLES.businessAdminAiMailDescription=qBusinessAdminAiMail.enabled ? "Conversas importantes · " & val(qBusinessAdminAiMail.errors) & " falhas de análise" : "Monitor pausado: confira a autorização e ativação"/>
+    <cfcatch type="any"></cfcatch>
+</cftry>
 <cfscript>
     // This include is reached only by the existing global-admin branch in home_logado.cfm.
     function businessAdminMetric(required numeric value, boolean available = true) {
@@ -945,6 +960,7 @@
         VARIABLES.businessAdminHomeEmailQueueDescription = LSNumberFormat(VARIABLES.businessAdminHomeEmailPendingTotal, "9,999") & " vencidos · " & LSNumberFormat(VARIABLES.businessAdminHomeEmailErrorTotal, "9,999") & " com erro";
     }
     VARIABLES.businessAdminHomeQueue = [
+        {kind="Comunicação", label="AI-mails", description=VARIABLES.businessAdminAiMailDescription, value=VARIABLES.businessAdminAiMailCount, loaded=VARIABLES.businessAdminAiMailLoaded, href="/administracao/ai-mails/", icon="fa-envelope-open-text"},
         {kind="Atendimento", label="Help Desk", description=VARIABLES.businessAdminHomeHelpdeskDescription, value=VARIABLES.businessAdminHomeHelpdeskPendingTotal, loaded=VARIABLES.businessAdminHomeHelpdeskLoaded, href="/helpdesk/?ordem=prioridade", icon="fa-headset"},
         {kind="Curadoria", label="Conteúdos editoriais", description="Matérias ocultas aguardando decisão", value=VARIABLES.businessAdminHomeEditorialPendingTotal, loaded=VARIABLES.businessAdminHomeEditorialLoaded, href="/portal/conteudos/?status=pendentes", icon="fa-newspaper"},
         {kind="Aprovação", label="Cadastros de conta", description="Empresas aguardando aprovação", value=VARIABLES.businessAdminHomeRegistrationTotal, loaded=VARIABLES.businessAdminHomeStatsLoaded, href="/administracao/contas/", icon="fa-building"},
@@ -1000,7 +1016,7 @@
     ];
 </cfscript>
 
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260911-1"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
 <link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=20260917-1"/>
 
 <div class="col-12 business-global-dashboard admin-suite-page">
