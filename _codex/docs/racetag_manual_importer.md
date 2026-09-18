@@ -37,9 +37,15 @@ corrige a etapa anterior:
 
 - aceita URL técnica `.../data/{id}/event.json` ou pública `.../#/{slug}`;
 - usa `external_event_id` da fila quando disponível;
-- reaproveita vínculo anterior do mesmo cliente, conta externa e evento externo;
+- reaproveita vínculo anterior bem-sucedido do mesmo cliente, timer, conta externa
+  e fonte de evento, mesmo sem `external_event_id` no envio;
+- pré-seleciona evento ativo quando sua URL de resultado/técnica coincide de forma
+  única; ambiguidades continuam exigindo escolha manual;
 - permite navegar pelos eventos retornados por `events.json`;
-- sugere vínculos por datas e UF, priorizando cidade exata;
+- sugere vínculos na mesma UF, priorizando cidade exata, com tolerância de um dia
+  antes do início e um dia depois do fim informado pela fonte; uma prova de 12/09
+  inclui os cadastros de 11, 12 e 13/09. Eventos de vários dias são comparados por
+  sobreposição de períodos, sem reduzir a busca apenas à data inicial;
 - preserva todos os campos do formulário entre as confirmações;
 - exige `POST` com CSRF antes de alterar resultados;
 - reaplica o escopo da conta ao abrir e ao reservar a submissão;
@@ -48,6 +54,13 @@ corrige a etapa anterior:
 - reserva e atualiza o estado da submissão da fila;
 - executa carga, procedures e atualização da fila dentro de transação;
 - atualiza `url_wiclax` e `url_resultado` somente após execução válida.
+- arquiva pendências/falhas anteriores da mesma fonte após sucesso, preservando
+  histórico e chamadas posteriores; uma releitura serializada impede uma aba
+  antiga de substituir uma importação mais nova já concluída.
+- ao concluir uma submissão, exige que a fonte/evento externo selecionado ainda
+  corresponda à chamada original. Trocar para outra prova não conclui a chamada
+  nem arquiva suas pendências; deve-se abrir a submissão correta ou usar o modo
+  avulso interno.
 
 O payload da API usa `open_results_enabled`. Ao ler `event.json`, a tela avalia
 o campo original da RaceTag, `openResultsEnabled`:
@@ -84,7 +97,8 @@ momento em que a submissão chegou ao webhook.
 ## Operação
 
 Na fila administrativa, use o botão de engrenagens de uma submissão RaceZone
-pendente ou com falha. A nova aba já recebe:
+pendente ou com falha. O processador abre na mesma aba, com botão para voltar à
+fila, e já recebe:
 
 - URL técnica;
 - URL pública;

@@ -28,7 +28,7 @@ if(!listFind(VARIABLES.eiUfs,VARIABLES.eiFilters.uf)) VARIABLES.eiFilters.uf="";
 if(!listFind("all,future,past",VARIABLES.eiFilters.fase)) VARIABLES.eiFilters.fase="all";
 VARIABLES.eiFilters.internos=VARIABLES.eiFilters.internos EQ "1" ? "1" : "0";
 if(!reFind("^[1-9][0-9]{0,29}$",VARIABLES.eiFilters.evento_id)) VARIABLES.eiFilters.evento_id="";
-if(!listFind("ranking,alta,agenda,cadastro,origem,publico,metodo",VARIABLES.eiFilters.aba)) VARIABLES.eiFilters.aba="ranking";
+if(!listFind("ranking,alta,agenda,cadastro,origem,campanha,publico,metodo",VARIABLES.eiFilters.aba)) VARIABLES.eiFilters.aba="ranking";
 if(listFind("alta,agenda",VARIABLES.eiFilters.aba)) VARIABLES.eiFilters.dias=val(VARIABLES.eiFilters.dias) GTE 30 ? "30" : "7";
 if(VARIABLES.eiFilters.aba EQ "agenda") VARIABLES.eiFilters.fase="future";
 if(!reFind("^[1-9][0-9]{0,3}$",VARIABLES.eiFilters.p)) VARIABLES.eiFilters.p="1";
@@ -56,7 +56,7 @@ try {
     if (VARIABLES.eiSchema.ready[1]) {
         VARIABLES.eiQuery=queryExecute(fileRead(VARIABLES.eiSqlDirectory & "event_interest.sql","UTF-8"),VARIABLES.eiParams,{datasource="runnerhub",timeout=8,cachedwithin=createTimeSpan(0,0,1,0)});
         VARIABLES.eiReport=deserializeJSON(VARIABLES.eiQuery.report[1]);
-        for(VARIABLES.eiKey in ["ranking","hot","gaps","daily","sources","devices","regions","flows"])
+        for(VARIABLES.eiKey in ["ranking","hot","gaps","daily","sources","campaigns","devices","regions","flows"])
             if(!structKeyExists(VARIABLES.eiReport,VARIABLES.eiKey) OR !isArray(VARIABLES.eiReport[VARIABLES.eiKey])) throw(type="EventInterestContract",message="Invalid report section");
         for(VARIABLES.eiKey in ["pageviews","visitors","sessions","events","gaps","hot","flow_transitions"])
             if(!structKeyExists(VARIABLES.eiReport.summary,VARIABLES.eiKey) OR !isNumeric(VARIABLES.eiReport.summary[VARIABLES.eiKey]) OR VARIABLES.eiReport.summary[VARIABLES.eiKey] LT 0) throw(type="EventInterestContract",message="Invalid report count");

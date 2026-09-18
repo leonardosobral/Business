@@ -1,0 +1,191 @@
+{
+  "directory": "/var/backups/house-banner-scope.c72ca0556cff",
+  "publisherSHA": "512feca9b058db452dd6cb2189e813055f671a657d3b4a36975c2d4a97521d04",
+  "manifestSHA": "02d4c7c6cdc5dfefc255fd0b887b4a98fabc78aa493c9f9f4eec25e28df81fbb",
+  "phase": "prepared",
+  "mode": "prepare",
+  "files": [
+    {
+      "after": "544145cd29ecc734736222230757df14d364046759cb76242584ea374f2ab380",
+      "before": "8d011e205238dc932246bb141424cb6989eb32849fdc181a55fad151d213ca62",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1781024972000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/banners/index.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "a214d7fdbeddb0955219ad087d20f6050e675dbe866a28bc4871ceef9aab1ff6",
+      "before": "16be1ecf36983825fbc89086ef87a28bf296f514478e3642bcbd4fa165d76888",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789559978750979927,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/banners/home.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "415b02984fe32353010dc997997429ea88887ed0dd2a06c44f3b2332e5fbd3ad",
+      "before": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1788644823000000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "includes/backend/backend_login.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "b668f8926f9c10689ab7f8b01e91a40e9a337cf37d86ea60be7627e0f8b4b9ad",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "includes/backend/business_pending_access.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "e0d17f5cc0af375ff815b4516244924d7a0666f66f485daa77c57cfebaa5e772",
+      "before": "0befc1e7f789d8400635ee5ee9f3643151a49927a83bec2fa66d5eaf7b99eea7",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789394272144000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "includes/estrutura/sidenav.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "f56124a6c35f9be5b49808cf347892fe1975875dfc7564b6fa6daf802a3a9b1a",
+      "before": "5ee0a62053d032d5fe7b983007ef746fb2c6fd7517ffe4f61e60212f890492ab",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789556109839069131,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_management_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "854ca7ff44b1e2d2a3c9ec15b0e7287de36b3509e3f0bd9879cb90e49402de14",
+      "before": "485db413fb6e42a2125386f661b38fd85d20d7fb26ed3619b7003b8e8b2732ba",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109830955215,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_form.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "146e38a1e3e01d2c2e2b72ceb52b21dfe263369c7754bf418f960b9a83919238",
+      "before": "3e63272f78f8967868fe702417f5c308a9cd5e16bab6440e4adeef01871444b8",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789559978729006553,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_dashboard_list.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "44275fe70b8d119b40c599acd6f88fc6456dae9dfdfa0f72dc77ac8969c56d10",
+      "before": "3455c42d670f27631e7e651ada0c51d8a108103e6ccfee8a66fcfb33b54732a6",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789157012308000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "ads/includes/backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "e68671dcbb8da1dacd2cfcfe37b88b0a46925bdce145bdda01d36ed749f04ece",
+      "before": "4047a859ffba4367d049897d681880a37d8e5eea0fbf64444c090cbfeadb30cc",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789175073684000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "ads/includes/workspace_admin.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "a420b8ebca158ca8a7c59ccfee576f715f461428a473286f6057f534e9c9382f",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_actions.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "d39cd1ddddf299dc0f7aed9e1b37ac448c00e579fa397e4785cfcfbd888d3f4b",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "223905468317f08f0d6e18e13de23ee4aaf0f8daa6ade4ece97f71bbba00a58d",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_form.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "d78f0c8f1cf9ea77665aff3f544cb82100a458b8d7d600cdb1ee308c4e0b88c3",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_helpers.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "e65675da75570d7e6d78cc29138d645708dec7f062c68d36ba4f4fec8dffe7bc",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_home.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "ed66f886a1f3f8585f29e0864016e5a3381750612d72acd5d4c8ec5a1c4236f8",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_list.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "ecf9756c4c9b88d65a2c75b9263a6e2711b8fdc771f14683f0d4fdbc60910694",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_queries.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "a7025bbf67166034b22e652d04c4b72255a2fedf96b92336dc7c3d7471270756",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "assets/css/paid-banner-workspace.css",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 115,
+  "compile_log": "/var/backups/house-banner-scope.c72ca0556cff/compile.log"
+}

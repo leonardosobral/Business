@@ -25,6 +25,17 @@
 <cfset VARIABLES.inscricoesHasLinkedEvents = NOT (VARIABLES.cuponsRestrictByConta AND VARIABLES.cuponsEventosContaIds EQ "0")/>
 <cfset VARIABLES.inscricoesHasData = VARIABLES.inscricoesHasLinkedEvents AND qCuponsBase.recordcount GT 0 AND VARIABLES.inscricoesTotalPedidos GT 0/>
 
+<section class="business-page mb-4">
+  <form method="get" action="/inscricoes/">
+    <label class="form-label" for="inscricoes-evento">Evento</label>
+    <select class="form-select w-auto" id="inscricoes-evento" name="cod_evento" onchange="this.form.submit()">
+      <cfloop list="#VARIABLES.inscricoesEventos#" index="VARIABLES.inscricoesEvento">
+        <cfoutput><option value="#VARIABLES.inscricoesEvento#" <cfif VARIABLES.inscricoesEvento EQ VARIABLES.cuponsTicketSportsCodEvento>selected</cfif>>#VARIABLES.inscricoesEvento#</option></cfoutput>
+      </cfloop>
+    </select>
+  </form>
+</section>
+
 <!--- WIDGETS --->
 
 <section class="business-page mb-4">

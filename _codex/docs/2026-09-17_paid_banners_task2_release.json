@@ -1,0 +1,130 @@
+{
+  "files": [
+    {
+      "site": "Business",
+      "path": "portal/banners/index.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/banners/index.cfm",
+      "before": "8d011e205238dc932246bb141424cb6989eb32849fdc181a55fad151d213ca62",
+      "after": "544145cd29ecc734736222230757df14d364046759cb76242584ea374f2ab380"
+    },
+    {
+      "site": "Business",
+      "path": "portal/banners/home.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/banners/home.cfm",
+      "before": "16be1ecf36983825fbc89086ef87a28bf296f514478e3642bcbd4fa165d76888",
+      "after": "a214d7fdbeddb0955219ad087d20f6050e675dbe866a28bc4871ceef9aab1ff6"
+    },
+    {
+      "site": "Business",
+      "path": "includes/backend/backend_login.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/includes/backend/backend_login.cfm",
+      "before": "514b8246fa95340c511389b1deaa18431c0537239ef5cd82c7892a574dfe0add",
+      "after": "415b02984fe32353010dc997997429ea88887ed0dd2a06c44f3b2332e5fbd3ad"
+    },
+    {
+      "site": "Business",
+      "path": "includes/backend/business_pending_access.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/includes/backend/business_pending_access.cfm",
+      "before": "ABSENT",
+      "after": "b668f8926f9c10689ab7f8b01e91a40e9a337cf37d86ea60be7627e0f8b4b9ad"
+    },
+    {
+      "site": "Business",
+      "path": "includes/estrutura/sidenav.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/includes/estrutura/sidenav.cfm",
+      "before": "0befc1e7f789d8400635ee5ee9f3643151a49927a83bec2fa66d5eaf7b99eea7",
+      "after": "e0d17f5cc0af375ff815b4516244924d7a0666f66f485daa77c57cfebaa5e772"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_management_backend.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_management_backend.cfm",
+      "before": "5ee0a62053d032d5fe7b983007ef746fb2c6fd7517ffe4f61e60212f890492ab",
+      "after": "f56124a6c35f9be5b49808cf347892fe1975875dfc7564b6fa6daf802a3a9b1a"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_form.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_form.cfm",
+      "before": "485db413fb6e42a2125386f661b38fd85d20d7fb26ed3619b7003b8e8b2732ba",
+      "after": "854ca7ff44b1e2d2a3c9ec15b0e7287de36b3509e3f0bd9879cb90e49402de14"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_dashboard_list.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_dashboard_list.cfm",
+      "before": "3e63272f78f8967868fe702417f5c308a9cd5e16bab6440e4adeef01871444b8",
+      "after": "146e38a1e3e01d2c2e2b72ceb52b21dfe263369c7754bf418f960b9a83919238"
+    },
+    {
+      "site": "Business",
+      "path": "ads/includes/backend.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/ads/includes/backend.cfm",
+      "before": "3455c42d670f27631e7e651ada0c51d8a108103e6ccfee8a66fcfb33b54732a6",
+      "after": "44275fe70b8d119b40c599acd6f88fc6456dae9dfdfa0f72dc77ac8969c56d10"
+    },
+    {
+      "site": "Business",
+      "path": "ads/includes/workspace_admin.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/ads/includes/workspace_admin.cfm",
+      "before": "4047a859ffba4367d049897d681880a37d8e5eea0fbf64444c090cbfeadb30cc",
+      "after": "e68671dcbb8da1dacd2cfcfe37b88b0a46925bdce145bdda01d36ed749f04ece"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_actions.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_actions.cfm",
+      "before": "ABSENT",
+      "after": "a420b8ebca158ca8a7c59ccfee576f715f461428a473286f6057f534e9c9382f"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_backend.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_backend.cfm",
+      "before": "ABSENT",
+      "after": "d39cd1ddddf299dc0f7aed9e1b37ac448c00e579fa397e4785cfcfbd888d3f4b"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_form.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_form.cfm",
+      "before": "ABSENT",
+      "after": "223905468317f08f0d6e18e13de23ee4aaf0f8daa6ade4ece97f71bbba00a58d"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_helpers.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_helpers.cfm",
+      "before": "ABSENT",
+      "after": "d78f0c8f1cf9ea77665aff3f544cb82100a458b8d7d600cdb1ee308c4e0b88c3"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_home.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_home.cfm",
+      "before": "ABSENT",
+      "after": "e65675da75570d7e6d78cc29138d645708dec7f062c68d36ba4f4fec8dffe7bc"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_list.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_list.cfm",
+      "before": "ABSENT",
+      "after": "ed66f886a1f3f8585f29e0864016e5a3381750612d72acd5d4c8ec5a1c4236f8"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/paid_banner_queries.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/paid_banner_queries.cfm",
+      "before": "ABSENT",
+      "after": "ecf9756c4c9b88d65a2c75b9263a6e2711b8fdc771f14683f0d4fdbc60910694"
+    },
+    {
+      "site": "Business",
+      "path": "assets/css/paid-banner-workspace.css",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/assets/css/paid-banner-workspace.css",
+      "before": "ABSENT",
+      "after": "a7025bbf67166034b22e652d04c4b72255a2fedf96b92336dc7c3d7471270756"
+    }
+  ]
+}

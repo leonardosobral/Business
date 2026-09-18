@@ -150,4 +150,5 @@ result=invokeFixture('{"dryRun":false,"language":"en"}');
 check(result.code EQ 503 AND result.payload.status EQ 'schema_required' AND REQUEST.fixtureProviderCalls EQ 0, 'Missing metadata migration prevents publishing unverifiable translations');
 fixtureSql('ALTER TABLE public.tb_evento_corridas ADD COLUMN descricao_traducoes_meta jsonb');
 writeOutput('Translation database flow passed: 16' & chr(10));
+include 'batch-integration.cfm';
 </cfscript>

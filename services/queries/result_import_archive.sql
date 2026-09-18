@@ -1,6 +1,6 @@
 UPDATE public.tb_resultados_importacoes target
 SET status_processamento='cancelado', erro_codigo='superseded',
-    erro_detalhe='Substituída pela submissão #' || completed.id_resultado_importacao::text || '.',
+    erro_detalhe='Substituída pela submissão #' || CAST(completed.id_resultado_importacao AS text) || '.',
     data_atualizacao=now()
 FROM result_import_context completed, result_import_context older
 WHERE completed.public_id=CAST(:submission_id AS uuid)

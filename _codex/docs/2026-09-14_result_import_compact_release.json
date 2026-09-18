@@ -1,0 +1,23 @@
+{
+  "directory": "/var/backups/business-result-import-compact.e6ab27350e20",
+  "scriptSHA": "fbfcccfe143dbf48aac1a85da01916225835a257425763b1836c74bbd277eb83",
+  "mode": "prepare",
+  "phase": "prepared",
+  "files": [
+    {
+      "after": "f026bc3eba34978356d5b984393dbb887daabbd097e07a5a78dfc45067b0a6d0",
+      "before": "322ee60469c860b7eb08a31801980e237bb4b902dcc55028a6bebd062a6628d8",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789409137502912008,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "administracao/importacoes-resultados/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 123,
+  "compile_log": "/var/backups/business-result-import-compact.e6ab27350e20/compile.log"
+}

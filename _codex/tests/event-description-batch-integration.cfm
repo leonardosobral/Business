@@ -1,0 +1,31 @@
+<cfscript>
+resetFixture();
+result=invokeFixture('{"dryRun":false,"limit":3}');
+check(result.code EQ 200 AND result.payload.updated EQ 3 AND arrayLen(result.payload.results) EQ 3, 'Batch publishes PT, EN and ES in one request');
+check(result.payload.results[1].language EQ 'pt-BR' AND result.payload.results[2].language EQ 'en' AND result.payload.results[3].language EQ 'es', 'Batch reselects queue after each committed language');
+check(fixtureSql('SELECT descricao IS NOT NULL AND descricao_en IS NOT NULL AND descricao_es IS NOT NULL AS complete FROM public.tb_evento_corridas').complete[1], 'All three fields are persisted');
+resetFixture();
+REQUEST.fixtureProviderMode='reject-en';
+result=invokeFixture('{"dryRun":false,"limit":3}');
+check(result.code EQ 422 AND result.payload.updated EQ 2 AND result.payload.errors EQ 1, 'Rejection remains visible after later success');
+check(result.payload.results[3].language EQ 'es' AND result.payload.results[3].status EQ 'updated', 'Rejected English does not block Spanish within the batch');
+resetFixture();
+REQUEST.fixtureProviderMode='unexpected-en';
+result=invokeFixture('{"dryRun":false,"limit":3}');
+check(result.code EQ 503 AND result.payload.updated EQ 1, 'Failure reports previously committed progress');
+check(fixtureSql('SELECT descricao IS NOT NULL AND descricao_en IS NULL AS preserved FROM public.tb_evento_corridas').preserved[1], 'Second-stage exception preserves Portuguese and rolls back English');
+check(fixtureSql('SELECT * FROM public.tb_evento_descricao_translations').recordCount EQ 0, 'Failed stage leaves no running audit');
+resetFixture();
+REQUEST.fixtureProviderMode='budget-en';
+result=invokeFixture('{"dryRun":false,"limit":3}');
+check(result.code EQ 200 AND result.payload.updated EQ 1 AND result.payload.stopReason EQ 'time_budget', 'Budget exhaustion returns committed progress');
+check(fixtureSql('SELECT * FROM public.tb_evento_descricao_translations').recordCount EQ 0, 'Budget interruption leaves the translation retryable without a failed attempt');
+resetFixture();
+result=invokeFixture('{"limit":3}');
+check(result.payload.selected EQ 1 AND REQUEST.fixtureProviderCalls EQ 1, 'Preview does not regenerate the unchanged first candidate');
+resetFixture();
+fixtureSql("INSERT INTO public.tb_evento_corridas(id_evento,descricao_original,data_inicial,data_final) VALUES (2,:source,current_date,current_date)",{source={value=fixtureSource,cfsqltype='cf_sql_longvarchar'}});
+result=invokeFixture('{"dryRun":false,"language":"pt-BR","limit":3}');
+check(result.payload.updated EQ 2 AND result.payload.selected EQ 2, 'Batch spans events and stops on an empty queue');
+writeOutput('Batch database flow passed' & chr(10));
+</cfscript>

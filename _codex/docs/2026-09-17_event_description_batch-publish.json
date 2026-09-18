@@ -1,0 +1,50 @@
+{
+  "directory": "/var/backups/business-description-batch.747aefd63653",
+  "scriptSHA": "774357ae1b5db1ab6ad2e323749756d30fa6095979a43b5f314a37327efe8d16",
+  "mode": "publish",
+  "phase": "published",
+  "files": [
+    {
+      "after": "3b2439381eedd5212253a8beb372b43d1225143de755727946874d6adaae011a",
+      "before": "bee90db7d8cfe72657f7023b7fe04ef4acd35ea958aa233fe5d27c12c2468e21",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789395370172000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "services/EventDescriptionRewriteService.cfc",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789646737650777261,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "1d383864a44385496711224475fc55b08e2023faaee191aeef790f389f8d05ba",
+      "before": "cb6adff0daff8c2dcc3efa73183b7835687200502f02c4050e8a64942a434e77",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789395370172000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "api/eventos/jobs/rewrite-descriptions.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789646737660832641,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 126,
+  "compile_log": "/var/backups/business-description-batch.747aefd63653/compile.log"
+}

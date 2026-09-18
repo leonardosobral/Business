@@ -1,0 +1,116 @@
+{
+  "files": [
+    {
+      "site": "RoadRunners",
+      "path": "includes/ads_v1/banner_context.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/ads_v1/banner_context.cfm",
+      "before": "ABSENT",
+      "after": "77ec07d0e1f39e8a9226e84a96d6c059ab694cb29ead301db698c19a62fea9c5"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "services/AdsV1BannerDeliveryService.cfc",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/services/AdsV1BannerDeliveryService.cfc",
+      "before": "47f1fde5e214c5c3946b4863a1b526e803ecc031f278313af32cd443c775ddaf",
+      "after": "8e62ca2e37bb56477e28ee34ec0ecb429bd24ce69a7d792447989c8b7254b908"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/ads_v1/banner_delivery.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/ads_v1/banner_delivery.cfm",
+      "before": "4bc928f0af817aa2824dd5f8fee06e26fbd48cb011361effed39693d07e194d1",
+      "after": "65b279ae7ab1856ebd55a20a524f9f7cd6e9aca71d50461b89c5eb5d48bb0a60"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/eventos_ads.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/eventos_ads.cfm",
+      "before": "b6f1083272fbb9d8455f273ccffad9ef2f427524fce804ecd52bd73786e6de35",
+      "after": "27fc141bb871ab8207deaddb80c7fd0eade8e34c07cf00dab1ec7b739dfd4c9f"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/estrutura/home_sidebar_promos.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/estrutura/home_sidebar_promos.cfm",
+      "before": "9fa1278a8eafe860c1c819d0bc22bbd0f453e255ea68deef7e6735a3f710a106",
+      "after": "4010fcd2983bdd03b3644d3cfde0bacb4f5003594a5cc1250409b82b61d3141d"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/estrutura/home_sidebar_mobile_banner.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/estrutura/home_sidebar_mobile_banner.cfm",
+      "before": "e71cff9658e5dc83fb1cf2e593f1f62083ffb06974c84e590bcd9260f1127f0f",
+      "after": "af64cce38215da83054abbd6b122f6a331687a6b6a9f0558a1cbfcbe9fdc5feb"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/estrutura/home_sidebar_async_slot.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/.superpowers/sdd/2026-09-15_house_banner_scope_plan/release-candidate/RoadRunners/includes/estrutura/home_sidebar_async_slot.cfm",
+      "before": "5e0ca76ec06ad2c83b15e786c8c86c6603b7f9128cc32b321a620b455ac319f3",
+      "after": "ec201d9bd66f3849a173e748fd97590ee7fdc4bf08323b967c0a8545126bb523"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/estrutura/home_sidebar_mobile_banner_slot.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/estrutura/home_sidebar_mobile_banner_slot.cfm",
+      "before": "5bc8888d6b8ef3cc0b51225b551f1d8aafcc1d6c8d933057614a4dba3d1e86d3",
+      "after": "b43279ae3b3a9b42557c6aae004d7bb9f982f6ee32c03dcb7b93921dd2249b01"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/estrutura/feed_lateral.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/estrutura/feed_lateral.cfm",
+      "before": "cde83cc3f9fb7e1eaca47fa3026fb6df2943b77f83638309b0f3af0e1c720bfa",
+      "after": "f911407815ba4153ea8e96f1c404468114012985fd04fd71dcbfec261260689e"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "api/home_sidebar.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/.superpowers/sdd/2026-09-15_house_banner_scope_plan/release-candidate/RoadRunners/api/home_sidebar.cfm",
+      "before": "ad545f13888bfd3452b574a7bd32e920b2a5361edb4ea115ea3d0efce1ed5e97",
+      "after": "857f89aca6c930b7a7d141c1ae4af9ea8e30576d3ba2f4f459adc639c7684bab"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "api/home_mobile_banner.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/api/home_mobile_banner.cfm",
+      "before": "f487b2c73c6306d58f4af597f05439fa013a2bb402cc468ecce5f49c8dadedf8",
+      "after": "a5c542647fe5bdbe45c8c65b8345e3e1635dbf9fd0b5bb66a13d795e4b3ad665"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_form_helpers.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_form_helpers.cfm",
+      "before": "ABSENT",
+      "after": "19b0b58d9d016389ae02af0ba6a1a59608150588e5835aa84d30858f41bd7c0f"
+    },
+    {
+      "site": "Business",
+      "path": "assets/js/portal-banners.js",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/assets/js/portal-banners.js",
+      "before": "ABSENT",
+      "after": "a494726cddaec32a304b296de48c646ff52ca0b91eefc6e2db55b38001735215"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_form.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_form.cfm",
+      "before": "ABSENT",
+      "after": "485db413fb6e42a2125386f661b38fd85d20d7fb26ed3619b7003b8e8b2732ba"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_management_backend.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_management_backend.cfm",
+      "before": "56350db9e69a3693f03baf6db98541f3874a3c601ad4a0033b22c95f456901a3",
+      "after": "5ee0a62053d032d5fe7b983007ef746fb2c6fd7517ffe4f61e60212f890492ab"
+    },
+    {
+      "site": "Business",
+      "path": "portal/banners/home.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/banners/home.cfm",
+      "before": "7ab20bacc1f83332ed12a247fcc7f6c4e59071efa8ae0073569638abc7a4280e",
+      "after": "1f2639b83fa4a2cf5b7fdbe4e8d983b5f0c41f42b850f05ebc32dd141ba2bb39"
+    }
+  ]
+}

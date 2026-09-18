@@ -82,6 +82,10 @@ WITH clock AS (
     GROUP BY d.day ORDER BY d.day
 ), sources AS (
     SELECT coalesce(nullif(source,''),nullif(referrer_host,''),'Não identificada') AS source,
+           count(*) AS pageviews,count(DISTINCT visitor_id) AS visitors,count(DISTINCT session_id) AS sessions
+    FROM period_pages GROUP BY 1 ORDER BY pageviews DESC,source LIMIT 30
+), campaigns AS (
+    SELECT coalesce(nullif(source,''),nullif(referrer_host,''),'Não identificada') AS source,
            coalesce(medium,'') AS medium,coalesce(campaign,'') AS campaign,
            count(*) AS pageviews,count(DISTINCT visitor_id) AS visitors,count(DISTINCT session_id) AS sessions
     FROM period_pages GROUP BY 1,2,3 ORDER BY pageviews DESC,source,medium,campaign LIMIT 30
@@ -125,6 +129,7 @@ SELECT json_build_object(
     'gaps',coalesce((SELECT json_agg(r) FROM gaps r),'[]'::json),
     'daily',coalesce((SELECT json_agg(r) FROM daily r),'[]'::json),
     'sources',coalesce((SELECT json_agg(r) FROM sources r),'[]'::json),
+    'campaigns',coalesce((SELECT json_agg(r) FROM campaigns r),'[]'::json),
     'devices',coalesce((SELECT json_agg(r) FROM devices r),'[]'::json),
     'regions',coalesce((SELECT json_agg(r) FROM regions r),'[]'::json),
     'flows',coalesce((SELECT json_agg(r) FROM flows r),'[]'::json)

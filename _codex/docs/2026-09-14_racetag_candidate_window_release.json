@@ -1,0 +1,36 @@
+{
+  "directory": "/var/backups/business-racetag-candidate-window.dc6e35a43d7d",
+  "scriptSHA": "c12931f7385624209bf04c9d114380e689840f6f5e7616aaf8f858d1b6484f03",
+  "mode": "prepare",
+  "phase": "prepared",
+  "files": [
+    {
+      "after": "93cb5e3ed9cc2cc8f08b2bc21c4d0e6705d49a149bb456867935652c041c2c98",
+      "before": "5bbd1201185779a259b9e34b9d77b5cfead80b7086e143caca927523885a98be",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789409137479467631,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "racetag/form.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "749c04db29be1c54642b5c9778ee36303528da45001e1b4e55d4b4860bf79520",
+      "before": "f026bc3eba34978356d5b984393dbb887daabbd097e07a5a78dfc45067b0a6d0",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789414958982401181,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "administracao/importacoes-resultados/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 123,
+  "compile_log": "/var/backups/business-racetag-candidate-window.dc6e35a43d7d/compile.log"
+}

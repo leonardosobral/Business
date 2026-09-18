@@ -4,7 +4,7 @@ O Business preenche `tb_evento_corridas.descricao` com uma reescrita de
 `descricao_original`, usando a API da OpenAI diretamente. Também traduz a
 descrição portuguesa publicada (`descricao`) para `descricao_en` e `descricao_es`.
 O n8n não participa deste fluxo. O mesmo cron oferece agenda, execução manual e
-histórico; cada execução processa um evento em um idioma.
+histórico; cada execução processa até três etapas, cada uma sendo um evento em um idioma.
 
 ## Contrato
 
@@ -15,12 +15,17 @@ histórico; cada execução processa um evento em um idioma.
 ```
 
 `eventId` pode restringir a consulta a um evento. `language` aceita `auto`
-(padrão), `pt-BR`, `en` ou `es`. `limit` deve ser 1: cada trabalho pode precisar
-de duas chamadas à IA, dentro do timeout de 120 segundos do cron.
+(padrão), `pt-BR`, `en` ou `es`. `limit` aceita inteiros de 1 a 3 (padrão 1).
+Cada etapa pode precisar de duas chamadas à IA. O lote tem orçamento de 85 segundos;
+cada chamada usa no máximo 45 segundos, reduzidos ao tempo restante. Com menos de
+10 segundos disponíveis, outra etapa não é iniciada. Isso preserva margem para
+finalizar a resposta dentro dos 110 segundos do endpoint e 120 segundos do cron.
+O limite é de etapas, não de provas completas: três etapas podem concluir os
+três idiomas de uma prova ou avançar por provas diferentes.
 O padrão é `dryRun=true`; a simulação consome chamadas à IA, retorna uma prévia
-e não altera os eventos nem a auditoria. Uma tradução reaproveitada da auditoria
+e não altera os eventos nem a auditoria. A prévia continua limitada a uma etapa, mesmo com `limit=3`. Uma tradução reaproveitada da auditoria
 não faz novas chamadas à IA. Cada item de `results` informa o idioma efetivamente
-processado; traduções também informam `reused`.
+processado e `durationMs`; traduções também informam `reused`.
 
 Autenticação: `X-RR-Handoff-Timestamp` e `X-RR-Handoff-Signature`, com
 HMAC-SHA256 de `timestamp + "." + corpo` e janela de cinco minutos. O segredo é
@@ -70,7 +75,9 @@ há criação de usuários, credenciais ou concessão de permissões.
 
 `public.tb_evento_descricao_rewrites` guarda fonte, hash, descrição anterior,
 descrição gravada, modelo, status e horários. Um lock transacional evita duas
-execuções simultâneas. A gravação do evento e a auditoria são atômicas.
+etapas simultâneas. A gravação de cada etapa e sua auditoria são atômicas e
+confirmadas antes de selecionar a próxima. Uma falha posterior não desfaz as
+etapas anteriores. O lote não repete um par evento/idioma na mesma execução.
 `public.tb_evento_descricao_translations` mantém auditoria separada por idioma e
 tentativa, com os mesmos dados, contador de tentativas, próximo retry e vínculo
 com a validação anterior quando uma saída é reaproveitada. `metadata_before`
@@ -109,7 +116,12 @@ na marca não devem autorizar a exibição de uma tradução antiga.
 HTTP: `200` sucesso/prévia/fila vazia; `400` parâmetros; `401` assinatura; `405`
 método; `409` execução em andamento; `422` reescrita rejeitada; `502` falha da IA;
 `503` configuração, schema ou execução indisponíveis. Falhas não usam HTTP 200,
-pois o cron classifica o resultado pelo status HTTP.
+pois o cron classifica o resultado pelo status HTTP. Em lotes mistos, uma etapa
+bem-sucedida não apaga o erro anterior: resultados e contadores mostram o progresso
+confirmado. `stopReason=time_budget` é uma parada normal (HTTP 200 na ausência de
+outros erros): a etapa interrompida é revertida e fica disponível para a próxima
+execução, sem registrar rejeição nem consumir tentativa de retry. Uma exceção
+inesperada retorna 503 com os resultados já confirmados e `stopReason=execution_error`.
 
 ## Instalação e operação
 
@@ -120,7 +132,7 @@ pois o cron classifica o resultado pelo status HTTP.
 2. Aplicar `administracao/cron-jobs/event_description_rewrite_job.sql`. O cadastro
    é idempotente e começa pausado, com simulação, a cada cinco minutos.
 3. Validar uma prévia e uma execução unitária, comparando os dados antes/depois.
-4. No gerenciador `/administracao/cron-jobs/`, usar `{"limit":1,"dryRun":false}`
+4. No gerenciador `/administracao/cron-jobs/`, usar `{"limit":3,"dryRun":false}`
    e ativar o job após a validação. Na operação atual, a agenda é de um minuto;
    `language` omitido equivale a `auto`. Não manter outro agendamento n8n equivalente.
 5. Acompanhar o histórico. Fontes rejeitadas podem ser tratadas pela edição de

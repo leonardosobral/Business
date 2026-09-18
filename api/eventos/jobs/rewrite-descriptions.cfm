@@ -26,7 +26,7 @@ function rewriteValidHmac(required string secret, required string body, required
     return hash(expected, "SHA-256") EQ hash(lCase(arguments.signature), "SHA-256");
 }
 
-function rewriteTranslation(required struct row, required boolean dryRun, required string apiKey, required string model) {
+function rewriteTranslation(required struct row, required boolean dryRun, required string apiKey, required string model, numeric deadlineTick=0) {
     var dbOptions = {datasource="runner_dba"};
     var source = arguments.row.source_text & "";
     var language = arguments.row.language & "";
@@ -75,7 +75,7 @@ function rewriteTranslation(required struct row, required boolean dryRun, requir
                 text=arguments.dryRun ? decodeForHTML(reReplace(arguments.row.cached_html, "(?i)<br\s*/?>", chr(10), "all")) : "",
                 model=arguments.row.cached_model};
         } else {
-            output = service.translate(source, language, arguments.apiKey, arguments.model);
+            output = service.translate(source, language, arguments.apiKey, arguments.model, arguments.deadlineTick);
         }
         if (arguments.dryRun) {
             outcome.result.status = "preview";
@@ -182,10 +182,11 @@ if (structKeyExists(VARIABLES.rewritePayload, "language")) {
     VARIABLES.rewriteLanguage = VARIABLES.rewritePayload.language & "";
 }
 if (structKeyExists(VARIABLES.rewritePayload, "limit")) {
-    if (!isSimpleValue(VARIABLES.rewritePayload.limit) OR !reFind("^1$", VARIABLES.rewritePayload.limit & "")) {
-        rewriteJsonResponse(400, {success=false, status="validation_error", message="limit deve ser 1."});
+    if (!isSimpleValue(VARIABLES.rewritePayload.limit) OR !reFind("^[1-3]$", VARIABLES.rewritePayload.limit & "")) {
+        rewriteJsonResponse(400, {success=false, status="validation_error", message="limit deve ser um inteiro entre 1 e 3."});
     }
 }
+if (structKeyExists(VARIABLES.rewritePayload, "limit")) VARIABLES.rewriteLimit = val(VARIABLES.rewritePayload.limit);
 if (structKeyExists(VARIABLES.rewritePayload, "dryRun")) {
     if (!isSimpleValue(VARIABLES.rewritePayload.dryRun) OR !reFindNoCase("^(true|false)$", serializeJSON(VARIABLES.rewritePayload.dryRun))) {
         rewriteJsonResponse(400, {success=false, status="validation_error", message="dryRun deve ser true ou false."});
@@ -227,27 +228,38 @@ if (!VARIABLES.rewriteSchema.ready[1]) {
 VARIABLES.rewriteResponse = {success=true, status="completed", language=VARIABLES.rewriteLanguage, dryRun=VARIABLES.rewriteDryRun, selected=0, processed=0, updated=0, skipped=0, errors=0, results=[]};
 VARIABLES.rewriteHttpStatus = 200;
 VARIABLES.rewriteLocked = false;
-try {
+VARIABLES.rewriteDeadline = getTickCount() + 85000;
+VARIABLES.rewriteVisited = ["0:none"];
+include "queue.cfm";
+for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit; VARIABLES.rewriteStep++) {
+    if (getTickCount() GTE VARIABLES.rewriteDeadline - 10000) {
+        VARIABLES.rewriteResponse.stopReason = "time_budget";
+        break;
+    }
+    VARIABLES.rewriteBeforeStep = duplicate(VARIABLES.rewriteResponse);
+    VARIABLES.rewriteStepStarted = getTickCount();
+    try {
     transaction {
-        // The transaction lock covers selection, provider calls and compare-and-set write.
+        // Each step commits independently; the transaction lock covers selection, provider calls and compare-and-set write.
         VARIABLES.rewriteLock = queryExecute("SELECT pg_try_advisory_xact_lock(1380472914, 1) AS acquired", [], VARIABLES.rewriteDbOptions);
         VARIABLES.rewriteLocked = !VARIABLES.rewriteLock.acquired[1];
         if (!VARIABLES.rewriteLocked) {
-            include "queue.cfm";
             VARIABLES.rewriteCandidates = queryExecute(eventDescriptionQueueSql() &
-                "SELECT * FROM work WHERE queue_status='ready' ORDER BY date_rank,id_evento,language_rank LIMIT 1", {
+                "SELECT * FROM work WHERE queue_status='ready' AND (CAST(id_evento AS text) || ':' || language) NOT IN (:visited) ORDER BY date_rank,id_evento,language_rank LIMIT 1", {
+                    visited={value=arrayToList(VARIABLES.rewriteVisited), list=true, cfsqltype="cf_sql_varchar"},
                     event_id={value=VARIABLES.rewriteEventId, cfsqltype="cf_sql_integer"},
                     language={value=VARIABLES.rewriteLanguage, cfsqltype="cf_sql_varchar"}
                 }, VARIABLES.rewriteDbOptions);
-            VARIABLES.rewriteResponse.selected = VARIABLES.rewriteCandidates.recordCount;
+            VARIABLES.rewriteResponse.selected += VARIABLES.rewriteCandidates.recordCount;
             for (VARIABLES.rewriteRow in VARIABLES.rewriteCandidates) {
+                arrayAppend(VARIABLES.rewriteVisited, VARIABLES.rewriteRow.id_evento & ":" & VARIABLES.rewriteRow.language);
                 if (VARIABLES.rewriteRow.language NEQ "pt-BR") {
-                    VARIABLES.translationOutcome = rewriteTranslation(VARIABLES.rewriteRow, VARIABLES.rewriteDryRun, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel);
+                    VARIABLES.translationOutcome = rewriteTranslation(VARIABLES.rewriteRow, VARIABLES.rewriteDryRun, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel, VARIABLES.rewriteDeadline);
                     VARIABLES.rewriteResponse.processed += VARIABLES.translationOutcome.processed;
                     VARIABLES.rewriteResponse.updated += VARIABLES.translationOutcome.updated;
                     VARIABLES.rewriteResponse.skipped += VARIABLES.translationOutcome.skipped;
                     VARIABLES.rewriteResponse.errors += VARIABLES.translationOutcome.errors;
-                    VARIABLES.rewriteHttpStatus = VARIABLES.translationOutcome.httpStatus;
+                    VARIABLES.rewriteHttpStatus = max(VARIABLES.rewriteHttpStatus, VARIABLES.translationOutcome.httpStatus);
                     arrayAppend(VARIABLES.rewriteResponse.results, VARIABLES.translationOutcome.result);
                     continue;
                 }
@@ -281,7 +293,7 @@ try {
                 VARIABLES.rewriteOutput = {};
                 try {
                     VARIABLES.rewriteResponse.processed++;
-                    VARIABLES.rewriteOutput = new services.EventDescriptionRewriteService().rewrite(VARIABLES.rewriteSource, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel);
+                    VARIABLES.rewriteOutput = new services.EventDescriptionRewriteService().rewrite(VARIABLES.rewriteSource, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel, VARIABLES.rewriteDeadline);
                     if (VARIABLES.rewriteDryRun) {
                         VARIABLES.rewriteResult.status = "preview";
                         VARIABLES.rewriteResult.text = VARIABLES.rewriteOutput.text;
@@ -307,7 +319,7 @@ try {
                 } catch (EventDescriptionRewrite.Validation rejectedDescription) {
                     VARIABLES.rewriteResult.status = "rejected";
                     VARIABLES.rewriteErrorCode = "validation_rejected";
-                    VARIABLES.rewriteHttpStatus = 422;
+                    VARIABLES.rewriteHttpStatus = max(VARIABLES.rewriteHttpStatus, 422);
                     VARIABLES.rewriteResponse.errors++;
                 } catch (EventDescriptionRewrite.Provider providerFailure) {
                     VARIABLES.rewriteErrorCode = "provider_error";
@@ -330,16 +342,36 @@ try {
             }
         }
     }
-} catch (any executionFailure) {
-    // The surrounding transaction rolls back all writes; exception details may contain SQL/source data.
-    rewriteJsonResponse(503, {success=false, status="execution_error", message="A reescrita não foi concluída. Nenhuma alteração desta execução foi confirmada."});
-}
-if (VARIABLES.rewriteLocked) {
-    rewriteJsonResponse(409, {success=false, status="locked", message="Já existe uma reescrita em execução."});
+    } catch (EventDescriptionRewrite.Budget budgetExhausted) {
+        // Only the current step rolls back. Previously committed results remain accurate.
+        VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;
+        VARIABLES.rewriteResponse.stopReason = "time_budget";
+        break;
+    } catch (any executionFailure) {
+        VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;
+        VARIABLES.rewriteResponse.errors++;
+        VARIABLES.rewriteResponse.status = "execution_error";
+        VARIABLES.rewriteResponse.stopReason = "execution_error";
+        VARIABLES.rewriteHttpStatus = 503;
+        break;
+    }
+    if (VARIABLES.rewriteLocked) {
+        if (!VARIABLES.rewriteResponse.selected) {
+            rewriteJsonResponse(409, {success=false, status="locked", message="Já existe uma reescrita em execução."});
+        }
+        VARIABLES.rewriteResponse.stopReason = "locked";
+        break;
+    }
+    if (!VARIABLES.rewriteCandidates.recordCount) break;
+    if (arrayLen(VARIABLES.rewriteResponse.results) GT arrayLen(VARIABLES.rewriteBeforeStep.results)) {
+        VARIABLES.rewriteResponse.results[arrayLen(VARIABLES.rewriteResponse.results)].durationMs = getTickCount() - VARIABLES.rewriteStepStarted;
+    }
+    // A preview does not change the queue; avoid spending calls on unchanged work.
+    if (VARIABLES.rewriteDryRun) break;
 }
 if (VARIABLES.rewriteResponse.errors) {
     VARIABLES.rewriteResponse.success = false;
-    VARIABLES.rewriteResponse.status = "failed";
+    if (VARIABLES.rewriteResponse.status NEQ "execution_error") VARIABLES.rewriteResponse.status = "failed";
 }
 rewriteJsonResponse(VARIABLES.rewriteHttpStatus, VARIABLES.rewriteResponse);
 </cfscript>

@@ -30,9 +30,10 @@ function securityRender(required string source) {
 }
 
 try {
-    securityBannerSource = fileRead(securityRepoRoot & "portal/banners/home.cfm", "utf-8");
+    securityBannerSource = fileRead(securityRepoRoot & "portal/includes/banner_form.cfm", "utf-8");
     securityBannerBackend = fileRead(securityRepoRoot & "portal/includes/banner_management_backend.cfm", "utf-8");
     securityRender(left(securityBannerBackend, find("</cfscript>", securityBannerBackend) + len("</cfscript>") - 1));
+    include securityRepoRoot & "portal/includes/banner_form_helpers.cfm";
     securityBannerActionAt = find('<cfif len(trim(FORM.acao & ""))>', securityBannerBackend);
     securityBannerActionEnd = find('<cfif VARIABLES.bannerManagementApiReady>', securityBannerBackend, securityBannerActionAt);
     securityBannerAction = mid(securityBannerBackend, securityBannerActionAt, securityBannerActionEnd - securityBannerActionAt);
@@ -44,7 +45,7 @@ try {
     FORM.acao = "salvar_banner";
     FORM.banner_id = "";
     securityBannerFields = [
-        "banner_largura", "banner_altura", "banner_mobile_largura", "banner_mobile_altura",
+        "banner_nome", "banner_alt_text", "banner_link_destino",
         "banner_peso_exibicao", "banner_prioridade", "banner_inicio_exibicao", "banner_fim_exibicao"
     ];
     securityPayloads = [
@@ -63,7 +64,8 @@ try {
                 securityRender(securityBannerAction);
                 securityAssert(VARIABLES.bannerManagementAlert.type == "danger",
                     securityField & " reaches the real validation catch with " & securityCsrf);
-                securityOutput = securityRender(securityInputs[1]);
+                VARIABLES.bannerForm = bannerFormValues(FORM);
+                securityOutput = securityRender('<cfoutput>' & securityInputs[1] & '</cfoutput>');
                 securityValueMatch = reFind('value="([^"]*)"', securityOutput, 1, true);
                 securityDecodedValue = "";
                 if (arrayLen(securityValueMatch.pos) == 2 AND securityValueMatch.len[2] > 0) {
@@ -77,7 +79,8 @@ try {
         securityOrdinaryValue = find("exibicao", securityField) AND find("banner_peso", securityField) == 0
             ? "2026-09-07T09:30" : "300";
         FORM[securityField] = securityOrdinaryValue;
-        securityOutput = securityRender(securityInputs[1]);
+        VARIABLES.bannerForm = bannerFormValues(FORM);
+        securityOutput = securityRender('<cfoutput>' & securityInputs[1] & '</cfoutput>');
         securityAssert(find('value="' & securityOrdinaryValue & '"', securityOutput) > 0,
             securityField & " preserves its ordinary value");
     }

@@ -391,8 +391,8 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 </cfif>
                 <cfif isDate(VARIABLES.raceTagEventStart)>
                     (
-                        data_inicial <= <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.raceTagEventEnd#"/>
-                        AND data_final >= <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.raceTagEventStart#"/>
+                        data_inicial <= <cfqueryparam cfsqltype="cf_sql_date" value="#dateAdd('d', 1, VARIABLES.raceTagEventEnd)#"/>
+                        AND data_final >= <cfqueryparam cfsqltype="cf_sql_date" value="#dateAdd('d', -1, VARIABLES.raceTagEventStart)#"/>
                         <cfif len(VARIABLES.raceTagEventPlace.state)>
                             AND upper(trim(estado)) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.raceTagEventPlace.state#"/>
                         </cfif>
@@ -626,7 +626,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 </cfoutput>
             </select>
             <div class="form-text">
-                As sugestões combinam data, cidade e UF. Se não houver candidato, cadastre ou localize o evento antes de processar.
+                As sugestões incluem o dia anterior e o posterior à prova, na mesma UF, priorizando a cidade. Para provas de vários dias, consideram todo o período. Se não houver candidato, cadastre ou localize o evento antes de processar.
             </div>
         </div>
 
@@ -717,6 +717,11 @@ function raceTagResponseHeaderValue(required any rawValue) {
                        text="action=open_results_manual_override actor_id=#VARIABLES.raceTagOverrideActorId# submission_id=#VARIABLES.raceTagSubmissionId# external_event_id=#VARIABLES.raceTagOverrideExternalEventLog# road_event_id=#val(FORM.id_evento)# state=#VARIABLES.raceTagOpenResultsDecision.state#"/>
             </cfif>
             <cftry>
+                <cfif VARIABLES.raceTagSubmissionReady AND NOT VARIABLES.raceTagQueueService.sameSource(
+                    {url_resultado=qRaceTagSubmission.url_resultado, url_resultado_publica=qRaceTagSubmission.url_resultado_publica, external_event_id=qRaceTagSubmission.external_event_id & ''},
+                    FORM.url_resultado, VARIABLES.evento.id & '', structKeyExists(VARIABLES.evento, 'link') ? VARIABLES.evento.link & '' : '')>
+                    <cfthrow type="RaceTag.SourceChanged" message="O evento externo selecionado não corresponde à fonte desta submissão. Abra a chamada correta na fila; para outro evento, use o importador avulso."/>
+                </cfif>
                 <cfif NOT raceTagPublicUrlValid(FORM.url_resultado_publica)>
                     <cfthrow type="RaceTag.InvalidPublicUrl" message="A URL pública precisa ser uma URL HTTPS válida com até 2.048 caracteres."/>
                 </cfif>

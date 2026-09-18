@@ -7,8 +7,13 @@ tabela `public.tb_resultados_importacoes` e um ponto de entrada manual para o
 adaptador RaceTag Pro.
 
 Ela não utiliza a telemetria do Apache e não faz parte do Monitor da API. Cada
-linha representa uma submissão realmente persistida pelo endpoint de integração
-de resultados.
+linha da visão principal representa a chamada mais recente de um evento externo.
+O link **Histórico** abre todas as submissões persistidas daquele grupo.
+
+A entrada na fila usa **Processamento: Pendente** por padrão. A opção **Todos**
+continua disponível e é preservada nos links de atualização, paginação e detalhes
+por `status=` explícito. O histórico de um evento não herda o padrão Pendente:
+continua mostrando todas as suas chamadas, inclusive canceladas e arquivadas.
 
 ## Acesso
 
@@ -47,7 +52,10 @@ continuam disponíveis pelo indicador/filtro **Canceladas**.
 Quando ainda não há vínculo Road Runners, a coluna de evento mostra a primeira
 referência disponível entre a tag informada, o `external_event_id`, o fragmento
 ou último segmento da URL pública e o ID presente em `.../data/{id}/event.json`.
-Essa referência é apenas uma pista visual e não cria vínculo automaticamente.
+Quando há um único vínculo anterior bem-sucedido ou uma URL específica coincidente
+com `url_resultado`/`url_wiclax` de um evento ativo, esse evento aparece como
+pré-selecionado também no importador. A confirmação continua manual; ambiguidade
+não gera escolha automática nem alteração do cadastro por GET.
 
 O valor persistido de `open_results_enabled` é a intenção declarada pelo provedor
 no momento da submissão. Ele orienta a fila, mas não substitui a validação feita
@@ -61,16 +69,52 @@ publicação, cronometrador, cliente e período. Os indicadores respeitam perío
 publicação, cronometrador, cliente e busca; o filtro de processamento é aplicado
 somente à lista para permitir comparar os estados no mesmo recorte.
 
+## Agrupamento e arquivamento (14/09/2026)
+
+- A identidade é isolada por `client_id`, `cod_timer` e `external_account_id`.
+  A URL técnica `data/{id}/event.json` tem preferência; depois vem a URL pública
+  RaceTag com fragmento de evento. Uma URL genérica não identifica uma prova:
+  nesses casos usa-se o ID externo com sua origem, ou mantém-se a chamada isolada.
+- URLs são comparadas integralmente (apenas espaços e barras finais são
+  normalizados), nunca por `LIKE '%slug%'`. Eventos de outro domínio não são
+  vinculados só por terem o mesmo slug. Casos inconclusivos exigem escolha manual.
+- A chamada representativa é escolhida antes dos filtros da visão principal;
+  filtrar publicação não promove uma versão anterior como se fosse a última.
+- O corte usa `(data_recebimento, id_resultado_importacao)` da submissão que foi
+  processada com sucesso, **não** a hora em que o processamento terminou. Empates
+  no recebimento são desempatados pelo ID sequencial.
+- Após sucesso, chamadas anteriores `pendente`/`falhou` são arquivadas na mesma
+  transação: estado persistido `cancelado`, `erro_codigo = superseded`, e referência
+  à submissão substituta. Não apaga linhas, IDs nem chaves de idempotência.
+- Registros `processando`, `processado` e cancelamentos manuais não são alterados
+  por essa limpeza. Chamadas posteriores permanecem disponíveis.
+- O backlog anterior à implantação recebe a classificação **Arquivado** por
+  consulta quando já existe sucesso posterior. Não há migração nem escrita por
+  GET. A mesma consulta impede o processamento via links antigos.
+- O importador serializa pelo evento externo e revalida o corte dentro da
+  transação antes de carregar resultados, inclusive para abas abertas anteriormente.
+- **Arquivadas** e **Canceladas** são filtros distintos. O histórico mantém ambos.
+  Indicadores operacionais contam eventos; os de arquivo/cancelamento contam chamadas.
+
+Implementação compartilhada: `services/ResultImportQueueService.cfc` e SQLs em
+`services/queries/` (bloqueados para HTTP por `.htaccess`). Não muda a API pública,
+não cria cron e não busca arquivos remotos ao abrir a fila.
+
+Validação local integrada: `node _codex/scripts/test_result_import_groups.mjs`
+(PostgreSQL temporário + CommandBox/Lucee existentes). Compilação nativa Adobe CF
+e backup/hash-check fazem parte de `_codex/scripts/deploy_result_import_groups.py`.
+
 ## Processamento manual RaceZone
 
 Submissões com `cod_timer = racezone` e estado `pendente` ou `falhou` exibem uma
-ação que abre `/racetag/` em uma nova aba quando o papel também possui
+ação que abre `/racetag/` na mesma aba quando o papel também possui
 `result_imports.process`. A tela:
 
 1. lê `data/events.json` quando disponível;
 2. resolve o `event.json` pelo ID externo ou slug da URL pública;
 3. valida que o documento possui percursos RaceTag Pro;
-4. sugere eventos Road Runners pela sobreposição de data e UF, priorizando a
+4. sugere eventos Road Runners pela sobreposição do período com um dia de
+   tolerância antes e depois, na mesma UF, priorizando a
    mesma cidade;
 5. exige confirmação explícita do vínculo;
 6. executa o processador legado completo e mantém seu feedback detalhado;

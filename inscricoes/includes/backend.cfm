@@ -3,7 +3,11 @@
 <cfset VARIABLES.cuponsRestrictByConta = true/>
 <cfset VARIABLES.cuponsEventosContaIds = "0"/>
 <cfset VARIABLES.cuponsEventosOperacaoIds = "0"/>
-<cfset VARIABLES.cuponsTicketSportsCodEvento = 72611/>
+<cfset VARIABLES.inscricoesEventos = "88278,72611,37071,72266,70020,72357"/>
+<cfset VARIABLES.cuponsTicketSportsCodEvento = 88278/>
+<cfif structKeyExists(URL, "cod_evento") AND isSimpleValue(URL.cod_evento) AND listFind(VARIABLES.inscricoesEventos, trim(URL.cod_evento))>
+    <cfset VARIABLES.cuponsTicketSportsCodEvento = val(URL.cod_evento)/>
+</cfif>
 <cfset VARIABLES.cuponsEffectiveIsAdmin = false/>
 <cfset VARIABLES.cuponsCanOperate = false/>
 
@@ -182,13 +186,13 @@
     count(DISTINCT tsorders.data_pedido::date) as dias,
     (sum(replace(tsorders.body ->> 'valorUnitario', ',', '.')::numeric)/count(*)) as ticket_medio,
     (sum(replace(tsorders.body ->> 'valorRepasse', ',', '.')::numeric)/count(*)) as ticket_medio_repasse,
-    (sum(replace(tsorders.body ->> 'valorRepasse', ',', '.')::numeric))/(select count(DISTINCT internal.data_pedido::date) from tb_ticketsports_participantes internal where (internal.body ->> 'tituloCupom') = '' and internal.data_pedido::date >= '2025-10-08' and internal.cod_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsTicketSportsCodEvento#"/>) as media_dia,
+    (sum(replace(tsorders.body ->> 'valorRepasse', ',', '.')::numeric))/(select nullif(count(DISTINCT internal.data_pedido::date), 0) from tb_ticketsports_participantes internal where (internal.body ->> 'tituloCupom') = '' and internal.data_pedido::date >= '2025-10-08' and internal.cod_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsTicketSportsCodEvento#"/>) as media_dia,
     sum(replace(tsorders.body ->> 'valorDescontoCupom', ',', '.')::numeric) as desconto_cupom,
     sum(replace(tsorders.body ->> 'valorTaxa', ',', '.')::numeric) as taxas,
     sum(replace(tsorders.body ->> 'valorRepasse', ',', '.')::numeric) as repasse,
     (sum(replace(tsorders.body ->> 'valorRepasse', ',', '.')::numeric)/10) as cashback
     from tb_ticketsports_participantes tsorders
-    inner join public.tb_ticketsports_pedidos ttp on tsorders.numero_pedido = ttp.numero_pedido
+    inner join public.tb_ticketsports_pedidos ttp on tsorders.numero_pedido = ttp.numero_pedido and tsorders.cod_evento = ttp.cod_evento
     where (tsorders.body ->> 'tituloCupom') <> '1'
     and tsorders.cod_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cuponsTicketSportsCodEvento#"/>
     and trim(ttp.body ->> 'status') = 'Pago'

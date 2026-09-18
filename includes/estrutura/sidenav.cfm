@@ -432,6 +432,14 @@
                 </cfif>
             </li>
 
+            <cfif NOT (isDefined("VARIABLES.businessPendingExistingAccountRequest") AND VARIABLES.businessPendingExistingAccountRequest)>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">
+                        <i class="fa-regular fa-image fa-fw me-3"></i><span>Banners</span>
+                    </a>
+                </li>
+            </cfif>
+
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ajuda</span>
             </li>
@@ -943,6 +951,12 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/">
                     <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">
+                    <i class="fa-regular fa-image fa-fw me-3"></i><span>Banners</span>
                 </a>
             </li>
 

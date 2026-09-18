@@ -1,0 +1,59 @@
+{
+  "directory": "/var/backups/house-banner-scope.c6ef925786d3",
+  "publisherSHA": "512feca9b058db452dd6cb2189e813055f671a657d3b4a36975c2d4a97521d04",
+  "manifestSHA": "a1b254d9ad62d9cce577a63f46bc068913ce40398e8daa6e15229ed1d509c659",
+  "phase": "prepared",
+  "mode": "prepare",
+  "files": [
+    {
+      "after": "8cb24ec4a0e8621448ddd39cbf8ce41aa2f2a1c5c552937749456760ca7c5833",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/banner_dashboard_helpers.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "631f5cbeb151bb1740afa2574381a504d792a347d2c2dc2c0dd169c41c5b13f8",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/banner_dashboard_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "3e63272f78f8967868fe702417f5c308a9cd5e16bab6440e4adeef01871444b8",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/banner_dashboard_list.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "72b7b3fb60d2baba0bb3262d2deae77e33091a0c4cf0c327416d50d41fc84ae4",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "assets/css/portal-banner-dashboard.css",
+      "site": "Business"
+    },
+    {
+      "after": "b3b2d7136d0546d3edd6ed9e3bea90eac30a5332e47fac8f780cb54b9e6b38d6",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "assets/js/portal-banner-dashboard.js",
+      "site": "Business"
+    },
+    {
+      "after": "16be1ecf36983825fbc89086ef87a28bf296f514478e3642bcbd4fa165d76888",
+      "before": "1f2639b83fa4a2cf5b7fdbe4e8d983b5f0c41f42b850f05ebc32dd141ba2bb39",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109847415768,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/banners/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 115,
+  "compile_log": "/var/backups/house-banner-scope.c6ef925786d3/compile.log"
+}

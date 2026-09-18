@@ -16,6 +16,7 @@ function expectError(required any operation,required string expectedType,require
 }
 check(fileExists(getDirectoryFromPath(getCurrentTemplatePath()) & "services/EventDescriptionRewriteService.cfc"),"Rewrite service is available");
 service=createObject("component","services.EventDescriptionRewriteService");
+expectError(function(){service.requestProvider({},"fixture-only",getTickCount()-1000);},"EventDescriptionRewrite.Budget","Expired batch cannot start a provider request");
 source=service.normalizeSource('<p>Corrida &amp; caminhada: 5 km e 10 km.</p><p>Largada: 07h30 na Pra&ccedil;a da S&eacute;.</p><a href="https://exemplo.run/prova?x=1&amp;y=2">Inscri&ccedil;&otilde;es</a><script>999 segredo</script>');
 check(find("Corrida & caminhada: 5 km e 10 km.",source) GT 0,"HTML entities preserve source facts");
 check(find("Praça da Sé",source) GT 0,"Named HTML entities decode accents");

@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_dashboard_helpers.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_dashboard_helpers.cfm",
+      "before": "ABSENT",
+      "after": "8cb24ec4a0e8621448ddd39cbf8ce41aa2f2a1c5c552937749456760ca7c5833"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_dashboard_backend.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_dashboard_backend.cfm",
+      "before": "ABSENT",
+      "after": "d8c338628aad4d62be90189c278054bd17d7e8bcc08c4547003fbc3bd353207d"
+    },
+    {
+      "site": "Business",
+      "path": "portal/includes/banner_dashboard_list.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/includes/banner_dashboard_list.cfm",
+      "before": "ABSENT",
+      "after": "3e63272f78f8967868fe702417f5c308a9cd5e16bab6440e4adeef01871444b8"
+    },
+    {
+      "site": "Business",
+      "path": "assets/css/portal-banner-dashboard.css",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/assets/css/portal-banner-dashboard.css",
+      "before": "ABSENT",
+      "after": "def035d145dd89dbbc5c4cc132fa1d8b199f63e7e64a27d18a5c66c2b959e95d"
+    },
+    {
+      "site": "Business",
+      "path": "assets/js/portal-banner-dashboard.js",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/assets/js/portal-banner-dashboard.js",
+      "before": "ABSENT",
+      "after": "b3b2d7136d0546d3edd6ed9e3bea90eac30a5332e47fac8f780cb54b9e6b38d6"
+    },
+    {
+      "site": "Business",
+      "path": "portal/banners/home.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/portal/banners/home.cfm",
+      "before": "1f2639b83fa4a2cf5b7fdbe4e8d983b5f0c41f42b850f05ebc32dd141ba2bb39",
+      "after": "16be1ecf36983825fbc89086ef87a28bf296f514478e3642bcbd4fa165d76888"
+    }
+  ]
+}

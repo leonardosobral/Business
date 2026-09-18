@@ -1,12 +1,12 @@
 <cfparam name="URL.pagina" default="1"/>
 <cfparam name="URL.busca" default=""/>
-<cfparam name="URL.status" default=""/>
 <cfparam name="URL.publicacao" default=""/>
 <cfparam name="URL.timer" default=""/>
 <cfparam name="URL.cliente" default=""/>
 <cfparam name="URL.periodo" default="30"/>
 <cfparam name="URL.id" default=""/>
 <cfparam name="URL.grupo" default=""/>
+<cfparam name="URL.status" default="#reFindNoCase('^[0-9a-f]{32}$', URL.grupo & '') ? '' : 'pendente'#"/>
 <cfparam name="URL.descarte" default=""/>
 <cfparam name="FORM.result_import_queue_action" default=""/>
 <cfparam name="FORM.submission_id" default=""/>

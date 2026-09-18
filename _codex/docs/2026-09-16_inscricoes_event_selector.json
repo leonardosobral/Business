@@ -1,0 +1,36 @@
+{
+  "directory": "/var/backups/business-inscricoes-event-selector.6ffc4143d195",
+  "scriptSHA": "58166546bc242fc515fd481bbd79eefe0676fe473debfd8d96038eb582450b02",
+  "mode": "prepare",
+  "phase": "prepared",
+  "files": [
+    {
+      "after": "2f5dc20019563696259bd448b2c44bc751700418d991a707a2888960bcac380b",
+      "before": "6bccdbc0e01ee2abcde4c1a209a2efc6ece3b4f9a2562f7559d9baa8f805e063",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1787013140000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "inscricoes/includes/backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "6265f5866316dd4b549a6d768788ac81e6835f8e76846626fa3494de86b41567",
+      "before": "2d4110b31fd6af561d81ba54b3674ae6234bffdda0244f5876c000fbb0fc49b5",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1782756352000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "inscricoes/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 120,
+  "compile_log": "/var/backups/business-inscricoes-event-selector.6ffc4143d195/compile.log"
+}

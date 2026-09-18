@@ -17,14 +17,17 @@ assert.doesNotMatch(report,/c\.id_evento::text\s*=/,'catalog lookup must preserv
 const scratch=mkdtempSync(resolve(tmpdir(),'event-interest-pg-'));
 const bin='/opt/homebrew/opt/postgresql@16/bin';
 function run(name,args,input){const r=spawnSync(resolve(bin,name),args,{input,encoding:'utf8',env:{PATH:process.env.PATH,LC_ALL:'C',TMPDIR:tmpdir()}});if(r.status!==0)process.stderr.write(r.stdout+r.stderr);assert.equal(r.status,0,r.stdout+r.stderr);return r.stdout.trim();}
-const sql=s=>run('psql',['-X','-qAt','-v','ON_ERROR_STOP=1','-h',scratch,'-U','postgres','-d','postgres'],s.replaceAll('now()',"TIMESTAMPTZ '2026-11-16 15:00:00+00'").replaceAll('current_date',"DATE '2026-11-16'"));
+const externalFixture=process.env.AUDIENCE_EXTERNAL_FIXTURE==='1';
+const sql=s=>run('psql',['-X','-qAt','-v','ON_ERROR_STOP=1','-h',externalFixture?'127.0.0.1':scratch,'-p',externalFixture?process.env.AUDIENCE_FIXTURE_PORT:'5432','-U','postgres','-d',externalFixture?'event_interest_test':'postgres'],s.replaceAll('now()',"TIMESTAMPTZ '2026-11-16 15:00:00+00'").replaceAll('current_date',"DATE '2026-11-16'"));
 function bind(s,p){for(const [k,v] of Object.entries(p))s=s.replace(new RegExp(`(?<!:):${k}\\b`,'g'),typeof v==='string'?`'${v.replaceAll("'","''")}'`:String(v));return s;}
 const params={days:7,include_internal:false,term:'',uf:'',stage:'all',event_id:'',offset:0};
 const query=(p={})=>JSON.parse(sql(bind(report,{...params,...p})));
 let started=false;
 try{
+ if(!externalFixture){
  run('initdb',['-D',resolve(scratch,'data'),'-U','postgres','-A','trust','--no-locale']);
  run('pg_ctl',['-D',resolve(scratch,'data'),'-l',resolve(scratch,'postgres.log'),'-o',`-F -k ${scratch} -c listen_addresses=''`,'-w','start']);started=true;
+ }
  sql(`CREATE SCHEMA audience;
  CREATE TABLE audience.events(page_view_id text,event_key text,event_kind text,occurred_at timestamptz,received_at timestamptz DEFAULT now(),visitor_id text,session_id text,environment text DEFAULT 'prod',is_internal boolean DEFAULT false,site_host text DEFAULT 'roadrunners.run',page_family text DEFAULT 'event',content_type text DEFAULT 'event',content_id text,source text DEFAULT 'direct',medium text DEFAULT '(none)',campaign text DEFAULT '',referrer_host text DEFAULT '',device_class text DEFAULT 'MOBILE',visitor_uf text DEFAULT 'SP');
  CREATE TABLE public.tb_evento_corridas(id_evento integer,nome_evento text,tag text,cidade text,estado text,data_inicial date,data_final date,descricao text,imagem text,url_imagem text,url_inscricao text,ativo boolean DEFAULT true);
@@ -53,6 +56,14 @@ try{
  assert.equal(r.hot[0].content_id,'1');assert.equal(r.hot[0].growth_pct,null,'incomplete weekly history cannot produce a percentage');assert.equal(r.meta.comparison_ready,false);
  assert.equal(r.meta.trend_days,7);assert.equal(r.hot[0].recent_visitors,12);
  assert.equal(r.gaps[0].content_id,'1');assert.equal(r.sources.find(s=>s.source==='openresults').pageviews,1);
+ sql(`INSERT INTO audience.events(page_view_id,event_key,event_kind,occurred_at,visitor_id,session_id,content_id,source,medium,campaign)
+ VALUES ('origin-a','page','page_view',now(),'v1','s1','1','openresults','referral','link-a'),
+        ('origin-b','page','page_view',now(),'v1','s1','1','openresults','banner','link-b');`);
+ const consolidated=query();
+ assert.deepEqual(consolidated.sources.find(s=>s.source==='openresults'),{source:'openresults',pageviews:3,visitors:1,sessions:1},'source totals deduplicate across campaigns and media');
+ assert.equal(consolidated.campaigns.filter(s=>s.source==='openresults').length,3,'campaign tab keeps each campaign/medium breakdown');
+ assert.equal(query({event_id:'1'}).sources.find(s=>s.source==='openresults').pageviews,2,'origin aggregation respects the event filter');
+ sql("DELETE FROM audience.events WHERE page_view_id IN ('origin-a','origin-b')");
  assert.equal(query({include_internal:true}).summary.pageviews,25);
  assert.equal(query({uf:'SC'}).summary.pageviews,18);assert.equal(query({term:'Prova completa'}).summary.pageviews,5);
  assert.equal(query({term:"' OR true"}).summary.pageviews,0);

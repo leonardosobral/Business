@@ -10,6 +10,7 @@ const output=mkdtempSync(resolve(tmpdir(),'event-interest-preview-'));
 const event={content_id:'1',event_name:'Prova <script>alert(1)</script>',city:'Florianópolis',uf:'SC',tag:'prova',event_date:'30/09/2026',event_year:2026,catalog_missing:false,active:true,upcoming:true,missing_fields:['Imagem','Percursos'],pageviews:120,visitors:70,sessions:90,recent_visitors:20,previous_visitors:10,growth_pct:100,last_view:'14/09 12:00'};
 const data={meta:{since:'08/09/2026 00:00',until:'14/09/2026 12:00',recent:'08/09/2026 00:00 a 14/09/2026 12:00',previous:'01/09/2026 00:00 a 07/09/2026 12:00',trend_days:7,comparison_ready:true,first_observed:'08/09/2026 20:53',last_received:'14/09/2026 11:59'},summary:{pageviews:120,visitors:70,sessions:90,events:1,gaps:1,hot:1},ranking:[event],hot:[event],gaps:[event],daily:[{day:'13/09',pageviews:120}],sources:[{source:'openresults',medium:'referral',campaign:'salvar',pageviews:120,visitors:70,sessions:90}],devices:[{device:'MOBILE',pageviews:120}],regions:[{uf:'SP',pageviews:120}],flows:[]};
 const agendaData={meta:{since:'08/09/2026 00:00',until:'14/09/2026 12:00',days:7},summary:{events:51,athletes:31,gaps:12},ranking:[{...event,athletes:8,pageviews:0,visitors:0,sessions:0}]};
+data.campaigns=structuredClone(data.sources);
 data.summary.flow_transitions=24;
 data.regions=[{uf:'SP',pageviews:90},{uf:'Não identificada',pageviews:30}];
 data.devices=[{device:'MOBILE',pageviews:90},{device:'DESKTOP',pageviews:30}];
@@ -21,7 +22,7 @@ try{
  const backend=readFileSync(p,'utf8');
  writeFileSync(p,backend.replace(/\bqueryExecute\(/g,'eventFixtureQuery('));
  let count=0;
- const modes=['publico','publico-empty','publico-unknown','agenda-direct-forbidden','agenda','agenda-monthly','agenda-empty','agenda-unavailable','agenda-invalid','agenda-forbidden','ranking','alta','alta-partial','alta-monthly','alta-new','alta-declining','cadastro','origem','metodo','empty','error','agenda-error','forbidden'];
+ const modes=['publico','publico-empty','publico-unknown','agenda-direct-forbidden','agenda','agenda-monthly','agenda-empty','agenda-unavailable','agenda-invalid','agenda-forbidden','ranking','alta','alta-partial','alta-monthly','alta-new','alta-declining','cadastro','origem','campanha','metodo','empty','error','agenda-error','forbidden'];
  for(const mode of modes){
   const report=structuredClone(data);
   const agendaView=mode==='agenda'||mode.startsWith('agenda-')&&mode!=='agenda-error';
@@ -34,7 +35,7 @@ try{
   if(mode==='alta-partial'){report.meta.comparison_ready=false;report.hot[0].growth_pct=null;}
   if(mode==='alta-new'){report.hot[0].previous_visitors=0;report.hot[0].growth_pct=null;}
   if(mode==='alta-declining')report.hot[0].growth_pct=-25;
-  if(mode==='empty'||mode==='publico-empty'){for(const k of ['ranking','hot','gaps','daily','sources','devices','regions','flows'])report[k]=[];for(const k in report.summary)report.summary[k]=0;}
+  if(mode==='empty'||mode==='publico-empty'){for(const k of ['ranking','hot','gaps','daily','sources','campaigns','devices','regions','flows'])report[k]=[];for(const k in report.summary)report.summary[k]=0;}
   if(mode==='publico-unknown')report.regions=[{uf:'Não identificada',pageviews:120}];
   writeFileSync(resolve(scratch,'fixture.json'),JSON.stringify(report));
   writeFileSync(resolve(scratch,'render.cfm'),`<cfprocessingdirective pageencoding="utf-8"><cfscript>
@@ -90,7 +91,8 @@ function eventFixtureQuery(sql,params={},options={}){
   assert.match(html,/data-metric="pageviews">\s*120</);assert.ok(!html.includes('<script>alert(1)</script>'));count+=2;
   assert.match(html,/data-metric="highlights">\s*1</,'a populated highlight count does not depend on historical comparison');
   if(mode==='ranking'){assert.match(html,/Prova &lt;script&gt;/);assert.match(html,/8 atletas na agenda/);assert.ok(!/6 quero ir|4 inscritos/.test(html));}
-  if(mode==='origem')assert.match(html,/openresults/);
+  if(mode==='origem') {assert.match(html,/openresults/);assert.ok(!html.includes('<th>Campanha</th>'),'origin view has no campaign grouping');assert.match(html,/Uma linha por origem/);}
+  if(mode==='campanha'){assert.match(html,/<a[^>]*aria-current="page"[^>]*>Campanha<\/a>/);assert.match(html,/<th>Campanha<\/th>/);assert.match(html,/salvar/);}
   if(mode==='alta')assert.match(html,/100/);
   if(mode==='alta-partial'){assert.match(html,/Destaque no período/);assert.ok(!html.includes('vs. 10 visitantes'),'unknown historical baseline must not appear as a measured comparison');}
   if(mode==='alta-monthly')assert.match(html,/Últimos 30 dias/);

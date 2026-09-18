@@ -1,0 +1,50 @@
+{
+  "directory": "/var/backups/business-inscricoes-event-selector.9a02def81585",
+  "scriptSHA": "58166546bc242fc515fd481bbd79eefe0676fe473debfd8d96038eb582450b02",
+  "mode": "verify",
+  "phase": "published",
+  "files": [
+    {
+      "after": "8fc09bc18ebf48a122faf2e06a11987f222dda20f1f9520725153a4e6a22af5f",
+      "before": "6bccdbc0e01ee2abcde4c1a209a2efc6ece3b4f9a2562f7559d9baa8f805e063",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1787013140000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "inscricoes/includes/backend.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789584448722174489,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    },
+    {
+      "after": "61239e720e300761066991d173ae33141bbf5ae22a0924f90b9cf72f48b6a9c2",
+      "before": "2d4110b31fd6af561d81ba54b3674ae6234bffdda0244f5876c000fbb0fc49b5",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1782756352000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "inscricoes/home.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789584448728873123,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 120,
+  "compile_log": "/var/backups/business-inscricoes-event-selector.9a02def81585/compile.log"
+}

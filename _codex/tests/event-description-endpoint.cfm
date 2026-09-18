@@ -30,7 +30,8 @@ cases = [
     {method='POST', body='{"dryRun":false}', headers=signedHeaders('{}'), code=401, status='unauthorized'},
     {method='POST', body='[1]', headers=signedHeaders('[1]'), code=400, status='validation_error'},
     {method='POST', body='{bad}', headers=signedHeaders('{bad}'), code=400, status='invalid_json'},
-    {method='POST', body='{"limit":2}', headers=signedHeaders('{"limit":2}'), code=400, status='validation_error'},
+    {method='POST', body='{"limit":4}', headers=signedHeaders('{"limit":4}'), code=400, status='validation_error'},
+    {method='POST', body='{"limit":3}', headers=signedHeaders('{"limit":3}'), code=503, status='configuration_error'},
     {method='POST', body='{"eventId":0}', headers=signedHeaders('{"eventId":0}'), code=400, status='validation_error'},
     {method='POST', body='{"eventId":1.5}', headers=signedHeaders('{"eventId":1.5}'), code=400, status='validation_error'},
     {method='POST', body='{"dryRun":"maybe"}', headers=signedHeaders('{"dryRun":"maybe"}'), code=400, status='validation_error'},
@@ -56,6 +57,6 @@ for (scenario in cases) {
 }
 result = runCase('POST', '{}', {}, false);
 check(result.code EQ 503 AND result.payload.status EQ 'configuration_error', 'Missing HMAC configuration is explicit');
-writeOutput('Endpoint guards passed: 28' & chr(10));
-include 'integration.cfm';
+writeOutput('Endpoint guards passed: 29' & chr(10));
+if (!structKeyExists(REQUEST, 'guardsOnly')) include 'integration.cfm';
 </cfscript>

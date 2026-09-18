@@ -1,6 +1,10 @@
 component output=false {
-    public struct function translate(required string source, required string language, required string apiKey, string model='gpt-4.1-mini') {
+    public struct function translate(required string source, required string language, required string apiKey, string model='gpt-4.1-mini', numeric deadlineTick=0) {
         REQUEST.fixtureProviderCalls++;
+        if (structKeyExists(arguments, 'language') AND arguments.language EQ 'en') {
+            if (REQUEST.fixtureProviderMode EQ 'unexpected-en') throw(type='FixtureUnexpected', message='DO_NOT_EXPOSE');
+            if (REQUEST.fixtureProviderMode EQ 'budget-en') throw(type='EventDescriptionRewrite.Budget', message='Time budget');
+        }
         if (REQUEST.fixtureProviderMode EQ 'reject' OR (REQUEST.fixtureProviderMode EQ 'reject-en' AND arguments.language EQ 'en')) throw(type='EventDescriptionRewrite.Validation', message='Fixture translation rejected');
         if (REQUEST.fixtureProviderMode EQ 'provider-error') throw(type='EventDescriptionRewrite.Provider', message='DO_NOT_EXPOSE_PROVIDER_SECRET');
         if (REQUEST.fixtureProviderMode EQ 'unexpected-error') throw(type='FixtureUnexpected', message='DO_NOT_EXPOSE_SOURCE_OR_SQL');
@@ -16,7 +20,7 @@ component output=false {
         var output = arguments.language & ' translation ' & lCase(hash(arguments.source, 'MD5', 'UTF-8'));
         return {text=output, html=output, model=arguments.model, language=arguments.language};
     }
-    public struct function rewrite(required string source, required string apiKey, string model='gpt-4.1-mini') {
+    public struct function rewrite(required string source, required string apiKey, string model='gpt-4.1-mini', numeric deadlineTick=0) {
         REQUEST.fixtureProviderCalls++;
         if (REQUEST.fixtureProviderMode EQ 'reject') throw(type='EventDescriptionRewrite.Validation', message='Fixture source rejected');
         if (REQUEST.fixtureProviderMode EQ 'provider-error') throw(type='EventDescriptionRewrite.Provider', message='DO_NOT_EXPOSE_PROVIDER_SECRET');

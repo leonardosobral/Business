@@ -53,7 +53,8 @@ function resultImportQueueUrl(struct changes = {}) {
     structAppend(values, arguments.changes, true);
 
     for (keyValue in orderedKeys) {
-        if (len(trim(values[keyValue] & ""))) {
+        // Empty status explicitly means All; omitting it selects pending by default.
+        if (keyValue EQ "status" OR len(trim(values[keyValue] & ""))) {
             arrayAppend(pairs, keyValue & "=" & encodeForURL(values[keyValue] & ""));
         }
     }
@@ -75,6 +76,110 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
 </cfscript>
 
 <style>
+  .result-import-page .business-page-body {
+    container: result-import-layout / inline-size;
+  }
+
+  .result-import-page .result-import-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(2, minmax(0, 1.25fr));
+  }
+
+  .result-import-page .result-import-summary .business-kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .3rem;
+    min-width: 0;
+    padding: .65rem .75rem;
+  }
+
+  .result-import-page .result-import-kpi-heading {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    font-size: .8rem;
+    font-weight: 600;
+  }
+
+  .result-import-page .result-import-summary .business-meta {
+    font-size: .75rem;
+    line-height: 1.3;
+  }
+
+  .result-import-page .result-import-kpi-pair {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .35rem .85rem;
+  }
+
+  .result-import-page .result-import-kpi-pair a {
+    color: inherit;
+    font-size: .75rem;
+    white-space: nowrap;
+  }
+
+  .result-import-page .result-import-kpi-pair a:hover {
+    text-decoration: underline;
+  }
+
+  .result-import-page .result-import-kpi-pair strong {
+    font-size: 1.05rem;
+    margin-right: .2rem;
+  }
+
+  .result-import-page .result-import-summary a:focus-visible {
+    outline: 2px solid var(--mdb-warning);
+    outline-offset: 3px;
+  }
+
+  .result-import-page .result-import-filter-grid {
+    display: grid;
+    grid-template-columns: minmax(160px, 2fr) minmax(112px, 1.15fr) minmax(106px, 1fr) minmax(82px, .8fr) minmax(105px, 1fr) minmax(80px, .65fr) auto;
+    gap: .5rem;
+    align-items: end;
+  }
+
+  .result-import-page .result-import-filter-grid > div {
+    min-width: 0;
+  }
+
+  .result-import-page .result-import-filter-actions {
+    display: flex;
+    gap: .4rem;
+    white-space: nowrap;
+  }
+
+  .result-import-page .result-import-filter-actions .btn {
+    padding-inline: .7rem;
+  }
+
+  @container result-import-layout (max-width: 959px) {
+    .result-import-page .result-import-filter-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .result-import-page .result-import-filter-search {
+      grid-column: span 2;
+    }
+  }
+
+  @container result-import-layout (max-width: 759px) {
+    .result-import-page .result-import-summary {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @container result-import-layout (max-width: 479px) {
+    .result-import-page .result-import-summary,
+    .result-import-page .result-import-filter-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .result-import-page .result-import-summary > :last-child,
+    .result-import-page .result-import-filter-actions {
+      grid-column: span 2;
+    }
+  }
+
   .result-import-page .result-import-id,
   .result-import-page .result-import-url {
     overflow-wrap: anywhere;
@@ -186,65 +291,50 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
           <cfoutput>#htmlEditFormat(VARIABLES.resultImportError)#</cfoutput>
         </div>
       <cfelse>
-        <div class="business-kpi-grid mb-3">
+        <nav class="business-kpi-grid result-import-summary mb-3" aria-label="Resumo da fila">
           <cfoutput>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = '', pagina = 1, id = '' })#">
-              <small>Eventos na fila</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.total, "9,999")#</strong>
+              <span class="result-import-kpi-heading">
+                <strong class="business-kpi-value">#LSNumberFormat(qResultImportSummary.total, "9,999")#</strong>
+                <span>Eventos</span>
+              </span>
               <span class="business-meta">#htmlEditFormat(resultImportPeriodLabel)#</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'pendente', pagina = 1, id = '' })#">
-              <small>Eventos pendentes</small>
-              <strong class="business-kpi-value d-block text-warning">#LSNumberFormat(qResultImportSummary.pendentes, "9,999")#</strong>
-              <span class="business-meta">#qResultImportSummary.pendentes_atrasadas# há mais de 15 min</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ status = 'processando', pagina = 1, id = '' })#">
-              <small>Processando</small>
-              <strong class="business-kpi-value d-block text-info">#LSNumberFormat(qResultImportSummary.processando, "9,999")#</strong>
-              <span class="business-meta">última chamada em execução</span>
+              <span class="result-import-kpi-heading">
+                <strong class="business-kpi-value text-warning">#LSNumberFormat(qResultImportSummary.pendentes, "9,999")#</strong>
+                <span>Pendentes</span>
+              </span>
+              <span class="business-meta">#LSNumberFormat(qResultImportSummary.pendentes_atrasadas, "9,999")# aguardando há +15 min</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'processado', pagina = 1, id = '' })#">
-              <small>Processadas</small>
-              <strong class="business-kpi-value d-block text-success">#LSNumberFormat(qResultImportSummary.processados, "9,999")#</strong>
+              <span class="result-import-kpi-heading">
+                <strong class="business-kpi-value text-success">#LSNumberFormat(qResultImportSummary.processados, "9,999")#</strong>
+                <span>Processados</span>
+              </span>
               <span class="business-meta">#LSNumberFormat(qResultImportSummary.total_resultados, "9,999")# resultados</span>
             </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ status = 'falhou', pagina = 1, id = '' })#">
-              <small>Falhas</small>
-              <strong class="business-kpi-value d-block text-danger">#LSNumberFormat(qResultImportSummary.falhas, "9,999")#</strong>
-              <span class="business-meta">exigem revisão</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ status = 'cancelado', pagina = 1, id = '' })#">
-              <small>Canceladas</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.cancelados, "9,999")#</strong>
-              <span class="business-meta">fora da fila ativa</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ status = 'arquivado', pagina = 1, id = '' })#">
-              <small>Arquivadas</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.arquivados, "9,999")#</strong>
-              <span class="business-meta">substituídas por importação posterior</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ publicacao = 'extraoficial', status = '', pagina = 1, id = '' })#">
-              <small>Extraoficiais</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.extraoficiais, "9,999")#</strong>
-              <span class="business-meta">status recebido</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ publicacao = 'final', status = '', pagina = 1, id = '' })#">
-              <small>Finais</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.finais, "9,999")#</strong>
-              <span class="business-meta">status recebido</span>
-            </a>
-            <a class="business-kpi" href="#resultImportQueueUrl({ publicacao = 'atualizacao', status = '', pagina = 1, id = '' })#">
-              <small>Atualizações</small>
-              <strong class="business-kpi-value d-block">#LSNumberFormat(qResultImportSummary.atualizacoes, "9,999")#</strong>
-              <span class="business-meta">status recebido</span>
-            </a>
+            <div class="business-kpi">
+              <small>Operação</small>
+              <div class="result-import-kpi-pair">
+                <a href="#resultImportQueueUrl({ status = 'processando', pagina = 1, id = '' })#"><strong class="text-info">#LSNumberFormat(qResultImportSummary.processando, "9,999")#</strong> processando</a>
+                <a href="#resultImportQueueUrl({ status = 'falhou', pagina = 1, id = '' })#"><strong class="text-danger">#LSNumberFormat(qResultImportSummary.falhas, "9,999")#</strong> falhas</a>
+              </div>
+            </div>
+            <div class="business-kpi">
+              <small>Histórico · chamadas</small>
+              <div class="result-import-kpi-pair">
+                <a href="#resultImportQueueUrl({ status = 'cancelado', pagina = 1, id = '' })#"><strong>#LSNumberFormat(qResultImportSummary.cancelados, "9,999")#</strong> canceladas</a>
+                <a href="#resultImportQueueUrl({ status = 'arquivado', pagina = 1, id = '' })#"><strong>#LSNumberFormat(qResultImportSummary.arquivados, "9,999")#</strong> arquivadas</a>
+              </div>
+            </div>
           </cfoutput>
-        </div>
+        </nav>
 
         <form class="business-filterbar mb-3" method="get" action="./">
           <cfif len(VARIABLES.resultImportGroup)><input type="hidden" name="grupo" value="<cfoutput>#htmlEditFormat(VARIABLES.resultImportGroup)#</cfoutput>"/></cfif>
-          <div class="row g-2 align-items-end">
-            <div class="col-12 col-xl-3">
+          <div class="result-import-filter-grid">
+            <div class="result-import-filter-search">
               <label class="form-label small mb-1" for="result-import-search">Busca</label>
               <input class="form-control form-control-sm"
                      id="result-import-search"
@@ -254,7 +344,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                      value="<cfoutput>#htmlEditFormat(VARIABLES.resultImportSearch)#</cfoutput>"
                      placeholder="Evento, ID, URL ou referência externa"/>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="result-import-filter-field">
               <label class="form-label small mb-1" for="result-import-status">Processamento</label>
               <select class="form-select form-select-sm" id="result-import-status" name="status">
                 <option value="">Todos</option>
@@ -264,7 +354,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 </cfloop>
               </select>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="result-import-filter-field">
               <label class="form-label small mb-1" for="result-import-publication">Publicação</label>
               <select class="form-select form-select-sm" id="result-import-publication" name="publicacao">
                 <option value="">Todos</option>
@@ -274,7 +364,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 </cfloop>
               </select>
             </div>
-            <div class="col-6 col-md-4 col-xl-1">
+            <div class="result-import-filter-field">
               <label class="form-label small mb-1" for="result-import-timer">Timer</label>
               <select class="form-select form-select-sm" id="result-import-timer" name="timer">
                 <option value="">Todos</option>
@@ -283,7 +373,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 </cfoutput>
               </select>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="result-import-filter-field">
               <label class="form-label small mb-1" for="result-import-client">Cliente</label>
               <select class="form-select form-select-sm" id="result-import-client" name="cliente">
                 <option value="">Todos</option>
@@ -292,7 +382,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 </cfoutput>
               </select>
             </div>
-            <div class="col-6 col-md-4 col-xl-1">
+            <div class="result-import-filter-field">
               <label class="form-label small mb-1" for="result-import-period">Período</label>
               <select class="form-select form-select-sm" id="result-import-period" name="periodo">
                 <option value="1" <cfif VARIABLES.resultImportPeriodDays EQ 1>selected</cfif>>24h</option>
@@ -302,11 +392,11 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 <option value="0" <cfif VARIABLES.resultImportPeriodDays EQ 0>selected</cfif>>Tudo</option>
               </select>
             </div>
-            <div class="col-12 col-md-auto d-flex gap-2">
+            <div class="result-import-filter-actions">
               <button class="btn btn-warning btn-sm" type="submit">
                 <i class="fa-solid fa-filter me-1"></i>Filtrar
               </button>
-              <a class="btn btn-outline-light btn-sm" href="./" title="Limpar filtros">
+              <a class="btn btn-outline-light btn-sm" href="./" title="Limpar filtros" aria-label="Limpar filtros">
                 <i class="fa-solid fa-xmark"></i>
               </a>
             </div>
@@ -392,11 +482,12 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
             <div class="row g-3 mb-3">
               <div class="col-12 col-xl-6">
                 <span class="result-import-detail-label">Evento associado</span>
-                <cfif len(trim(qResultImportDetail.id_evento & ""))>
+                <cfif val(qResultImportDetail.suggested_event_id) GT 0>
                   <strong class="d-block"><cfoutput>#htmlEditFormat(qResultImportDetail.nome_evento)#</cfoutput></strong>
                   <span class="text-muted small">
                     <cfoutput>
-                      ID #qResultImportDetail.id_evento#
+                      ID #qResultImportDetail.suggested_event_id#
+                      <cfif NOT val(qResultImportDetail.id_evento)> · Pré-selecionado; confirme no importador</cfif>
                       <cfif len(trim(qResultImportDetail.event_tag & ""))> · #htmlEditFormat(qResultImportDetail.event_tag)#</cfif>
                       <cfif isDate(qResultImportDetail.event_date)> · #lsDateFormat(qResultImportDetail.event_date, "dd/mm/yyyy")#</cfif>
                       <cfif len(trim(qResultImportDetail.event_city & ""))> · #htmlEditFormat(qResultImportDetail.event_city)#/#htmlEditFormat(qResultImportDetail.event_state)#</cfif>
@@ -504,6 +595,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                       </cfif>
                       <cfif isDate(last_processed_at)>
                         <small class="text-muted d-block">Última importação: #resultImportDateTime(last_processed_at)#</small>
+                        <small class="text-muted d-block">Chamada ###superseding_id# recebida em #resultImportDateTime(superseding_received)#</small>
                       </cfif>
                     </td>
                     <td><span class="badge badge-#resultImportRowPublication.className#">#resultImportRowPublication.label#</span></td>
@@ -539,6 +631,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                     <td class="result-import-client-cell">
                       <code class="d-block">#htmlEditFormat(cod_timer)#</code>
                       <small class="text-muted">#htmlEditFormat(client_id)#</small>
+                      <cfif len(trim(external_account_id & ''))><small class="text-muted d-block">Conta externa: #htmlEditFormat(external_account_id)#</small></cfif>
                     </td>
                     <td>
                       <span class="badge badge-#resultImportRowIntent.className#">#resultImportRowIntent.label#</span>
@@ -570,8 +663,6 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                       <cfif VARIABLES.resultImportCanProcess AND compareNoCase(cod_timer, "racezone") EQ 0 AND listFindNoCase("pendente,falhou", queue_status)>
                         <a class="btn btn-warning btn-sm"
                            href="/racetag/?submission_id=#encodeForURL(submission_id)#"
-                           target="_blank"
-                           rel="noopener noreferrer"
                            title="Abrir processamento manual RaceTag Pro"
                            aria-label="Abrir processamento manual RaceTag Pro">
                           <i class="fa-solid fa-gears"></i>

@@ -1,0 +1,30 @@
+{
+  "directory": "/var/backups/business-inscricoes-default-88278.12e1a3a8a9e9",
+  "scriptSHA": "3484fe487b5cce4307527901e6e219770a87f329c9c7e76089e7bf4ac19df8bd",
+  "mode": "verify",
+  "phase": "published",
+  "files": [
+    {
+      "after": "83f964356b064d88bb64118b94dd18776fb9f4600e2ca3317d9de04b4d8a8cec",
+      "before": "8fc09bc18ebf48a122faf2e06a11987f222dda20f1f9520725153a4e6a22af5f",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789584448722174489,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "inscricoes/includes/backend.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789584991187580524,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "Business"
+    }
+  ],
+  "guard_count": 126,
+  "compile_log": "/var/backups/business-inscricoes-default-88278.12e1a3a8a9e9/compile.log"
+}

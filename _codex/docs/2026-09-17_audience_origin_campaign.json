@@ -1,0 +1,82 @@
+{
+  "directory": "/var/backups/business-origin-campaign.c1abe40ce5a3",
+  "scriptSHA": "bfcc3882da05bda3beccbe5ad6ab7ff228bfde90d2cc1744fe91dd3155a9b8d4",
+  "mode": "prepare",
+  "phase": "prepared",
+  "files": [
+    {
+      "after": "8e9481fa01caafd73c60366221750fca562882007d84ce77775dfbbdb2422e5d",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/audiencia/queries/origins.sql",
+      "site": "Business"
+    },
+    {
+      "after": "917bd76ff03270400f46b254bf7c1e4553900f0070dfb4336e30877c3a514e8a",
+      "before": "10be889aee67cb298032c75bb43e79c5d48132f8810337d79acc7018e44a924a",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580797068133,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/audiencia/queries/event_interest.sql",
+      "site": "Business"
+    },
+    {
+      "after": "75b53c0cc37d6bbe23c7fbaecaf87e8dd855d3f2889029cb3bab7a09624ad1a9",
+      "before": "4411c8297b86965029a9c69ba9e38fc2ed575df26be7abdda5fd61146a61eb08",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789269360032000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/audience_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "89e1f010df0b92c450237df6e949d583d619e77905161933e2ba8f6126392f60",
+      "before": "34ce8e517875667f35fb5c1631ff800f9540f0202c7eab21a2611ac24cb0ff5e",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580804004667,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/event_interest_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "d27e58e1c733b1d5ea63fff08eedf06af8550aae65049de6646bfb5c0b262c0f",
+      "before": "1aa489f4bb73a9764f078e826ae08991e4986185e65709783bf124bca179ca6c",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789269360088000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/audiencia/home.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "4766442dd98c452934a0f71054c960513ac7c35d21f72d8e96cf3447e0e12fbe",
+      "before": "69ef25fc1f0db3ae35edc43818db6e21222f090129e3433820c63e283ea8c358",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789407580810657750,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/eventos-analytics/home.cfm",
+      "site": "Business"
+    }
+  ],
+  "guard_count": 125,
+  "compile_log": "/var/backups/business-origin-campaign.c1abe40ce5a3/compile.log"
+}

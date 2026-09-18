@@ -81,12 +81,14 @@ test("reads the persisted intent and never fetches event.json from the queue", (
     const backend = read(businessRoot, "administracao/importacoes-resultados/includes/backend.cfm");
     const home = read(businessRoot, "administracao/importacoes-resultados/home.cfm");
 
-    assert.match(backend, /open_results_enabled/);
+    // Persisted true/false values are exercised through the real service and
+    // rendered queue in _codex/scripts/test_result_import_groups.mjs.
     assert.match(home, /Intenção recebida/);
     assert.match(home, /Não importar/);
     assert.match(home, /Importar/);
     assert.doesNotMatch(backend, /<cfhttp/i);
     assert.doesNotMatch(home, /<cfhttp/i);
+    assert.doesNotMatch(read(businessRoot, "services/ResultImportQueueService.cfc"), /\b(?:cfhttp|new\s+http)\b/i);
 });
 
 test("passes the persisted intent to the RaceTag processor and lets event.json prevail", () => {

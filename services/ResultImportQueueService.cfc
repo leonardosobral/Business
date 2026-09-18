@@ -7,6 +7,23 @@ component output="false" {
                 account_id={value=arguments.accountId,cfsqltype="cf_sql_bigint"}};
     }
 
+    public boolean function sameSource(required struct submission, required string inputUrl, required string eventId, string eventSlug="") {
+        // Queue completion must describe its original source. Other events belong
+        // in their own submissions (or in the internal-admin standalone importer).
+        if(compare(trim(arguments.submission.url_resultado),trim(arguments.inputUrl)) NEQ 0) return false;
+        var uri=createObject("java","java.net.URI").init(trim(arguments.submission.url_resultado));
+        var path=uri.getPath();
+        if(reFindNoCase("/data/[^/]+/event\.json$",path)) {
+            return compare(reReplaceNoCase(path,"^.*/data/([^/]+)/event\.json$","\1"),trim(arguments.eventId)) EQ 0;
+        }
+        if(len(trim(arguments.submission.external_event_id))) return compare(trim(arguments.submission.external_event_id),trim(arguments.eventId)) EQ 0;
+        var publicUri=createObject("java","java.net.URI").init(trim(arguments.submission.url_resultado_publica));
+        var fragment=isNull(publicUri.getFragment()) ? "" : reReplace(publicUri.getFragment(),"^/|/$","","all");
+        if(len(fragment)) return compare(fragment,trim(arguments.eventSlug)) EQ 0;
+        // A source with no event identifier starts as an isolated submission.
+        return true;
+    }
+
     public query function submission(required string submissionId, required boolean unscoped, required numeric accountId) {
         var params=scopeParams(arguments.unscoped,arguments.accountId);
         params.submission_id={value=arguments.submissionId,cfsqltype="cf_sql_varchar"};
@@ -32,13 +49,15 @@ component output="false" {
         }
         if(len(f.search)) {
             params.search={value=f.search,cfsqltype="cf_sql_varchar"};
-            whereSql &= " AND position(lower(:search) IN lower(concat_ws(' ',submission_id,id_resultado_importacao::text,suggested_event_id::text,id_evento_informado::text,tag_evento_informada,external_event_id,external_account_id,url_resultado,url_resultado_publica,nome_evento,event_tag)))>0";
+            whereSql &= " AND position(lower(:search) IN lower(concat_ws(' ',submission_id,CAST(id_resultado_importacao AS text),CAST(suggested_event_id AS text),CAST(id_evento_informado AS text),tag_evento_informada,external_event_id,external_account_id,url_resultado,url_resultado_publica,nome_evento,event_tag)))>0";
         }
-        var base=variables.contextSql & ", filtered AS (SELECT * FROM result_import_context" & whereSql & ")";
+        // Choose the latest globally before filtering. A publication/search filter
+        // must never make an older submission look like the newest update.
+        var base=variables.contextSql & ", representatives AS (SELECT DISTINCT ON(event_group) * FROM result_import_context WHERE queue_status NOT IN ('cancelado','arquivado') ORDER BY event_group,data_recebimento DESC,id_resultado_importacao DESC), filtered AS (SELECT * FROM result_import_context" & whereSql & "), filtered_representatives AS (SELECT * FROM representatives" & whereSql & ")";
         var result={};
-        result.summary=queryExecute(base & ", active AS (SELECT DISTINCT ON(event_group) * FROM filtered WHERE queue_status NOT IN ('cancelado','arquivado') ORDER BY event_group,data_recebimento DESC,id_resultado_importacao DESC) SELECT count(*) AS total, count(*) FILTER(WHERE queue_status='pendente') AS pendentes, count(*) FILTER(WHERE queue_status='pendente' AND data_recebimento<now()-interval '15 minutes') AS pendentes_atrasadas, count(*) FILTER(WHERE queue_status='processando') AS processando, count(*) FILTER(WHERE queue_status='processado') AS processados, count(*) FILTER(WHERE queue_status='falhou') AS falhas, (SELECT count(*) FROM filtered WHERE queue_status='cancelado') AS cancelados, (SELECT count(*) FROM filtered WHERE queue_status='arquivado') AS arquivados, count(*) FILTER(WHERE status_publicacao='extraoficial') AS extraoficiais, count(*) FILTER(WHERE status_publicacao='final') AS finais, count(*) FILTER(WHERE status_publicacao='atualizacao') AS atualizacoes, coalesce(sum(total_resultados) FILTER(WHERE queue_status='processado'),0) AS total_resultados FROM active",params);
+        result.summary=queryExecute(base & " SELECT count(*) AS total, count(*) FILTER(WHERE queue_status='pendente') AS pendentes, count(*) FILTER(WHERE queue_status='pendente' AND data_recebimento<now()-interval '15 minutes') AS pendentes_atrasadas, count(*) FILTER(WHERE queue_status='processando') AS processando, count(*) FILTER(WHERE queue_status='processado') AS processados, count(*) FILTER(WHERE queue_status='falhou') AS falhas, (SELECT count(*) FROM filtered WHERE queue_status='cancelado') AS cancelados, (SELECT count(*) FROM filtered WHERE queue_status='arquivado') AS arquivados, count(*) FILTER(WHERE status_publicacao='extraoficial') AS extraoficiais, count(*) FILTER(WHERE status_publicacao='final') AS finais, count(*) FILTER(WHERE status_publicacao='atualizacao') AS atualizacoes, coalesce(sum(total_resultados) FILTER(WHERE queue_status='processado'),0) AS total_resultados FROM filtered_representatives",params);
         var history=len(f.event_group)>0 OR listFindNoCase("cancelado,arquivado",f.status)>0;
-        var selection=history ? "SELECT * FROM filtered" : "SELECT DISTINCT ON(event_group) * FROM filtered WHERE queue_status NOT IN ('cancelado','arquivado') ORDER BY event_group,data_recebimento DESC,id_resultado_importacao DESC";
+        var selection=history ? "SELECT * FROM filtered" : "SELECT * FROM filtered_representatives";
         base &= ", selected AS (" & selection & ")";
         var statusSql="";
         if(len(f.status)) {params.status={value=f.status,cfsqltype="cf_sql_varchar"};statusSql=" WHERE queue_status=:status";}
