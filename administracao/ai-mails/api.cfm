@@ -1,9 +1,12 @@
 <cfprocessingdirective pageencoding="utf-8"/>
-<cfsetting showdebugoutput="false" requesttimeout="30"/>
+<cfsetting showdebugoutput="false" requesttimeout="110"/>
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfinclude template="../agenda/includes/service.cfm"/>
 <cfinclude template="includes/service.cfm"/>
+<cfinclude template="includes/sync.cfm"/>
+<cfinclude template="includes/ai.cfm"/>
+<cfinclude template="includes/batch.cfm"/>
 <cfheader name="Cache-Control" value="no-store"/>
 <cfcontent type="application/json; charset=utf-8" reset="true"/>
 <cfscript>
@@ -14,6 +17,10 @@ try {
     switch(varAction) {
         case "status": result=mailStatus();break;
         case "list": result=mailList(form);break;
+        case "batches": result=mailBatchList(form);break;
+        case "batch_detail": result=mailBatchDetail(val(agendaInput("id")));break;
+        case "batch_create":
+            result=mailBatchCreate(agendaInput("thread_ids"),agendaInput("title"),agendaInput("instruction"),val(qPerfil.id),qPerfil.name);break;
         case "detail":
             rows=mailRows(agendaDb("SELECT to_jsonb(t) AS data FROM public.tb_ai_mail_threads t WHERE id=:id",{id=mailInt(agendaInput("id"))}));
             if(!arrayLen(rows)) mailFail("Conversa não encontrada.");
@@ -32,16 +39,18 @@ try {
             if(enabled && (!mailAuthorized() || agendaInput("consent")!="true")) mailFail("Autorize o Gmail e confirme o processamento das mensagens pela IA.");
             model=trim(agendaInput("model","gpt-4.1-mini"));
             if(!reFind("^[A-Za-z0-9._-]{1,100}$",model)) mailFail("Modelo inválido.");
-            days=val(agendaInput("initial_days","30"));daily=val(agendaInput("daily_limit","100"));retention=val(agendaInput("retention_days","90"));
-            if(days<1 || days>365 || daily<1 || daily>2000 || retention<7 || retention>365) mailFail("Confira os limites das configurações.");
+            daily=val(agendaInput("daily_limit","100"));retention=val(agendaInput("retention_days","90"));
+            if(daily<1 || daily>2000 || retention<7 || retention>365) mailFail("Confira os limites das configurações.");
             transaction {
                 cfg=mailConfig();
-                agendaDb("UPDATE public.tb_ai_mail_config SET enabled=:enabled,model=:model,initial_days=:days,daily_limit=:daily,retention_days=:retention,consent_at=CASE WHEN :enabled THEN now() ELSE consent_at END,consent_by=CASE WHEN :enabled THEN :actor ELSE consent_by END,initial_complete=CASE WHEN :reset THEN false ELSE initial_complete END,initial_history=CASE WHEN :reset THEN '' ELSE initial_history END,page_token=CASE WHEN :reset THEN '' ELSE page_token END,next_attempt_at=now(),updated_at=now() WHERE id=1",{enabled=mailBool(enabled),model=agendaParam(model),days=mailInt(days),daily=mailInt(daily),retention=mailInt(retention),actor=mailInt(qPerfil.id),reset=mailBool(days!=cfg.initial_days)});
+                agendaDb("UPDATE public.tb_ai_mail_config SET enabled=:enabled,model=:model,daily_limit=:daily,retention_days=:retention,consent_at=CASE WHEN :enabled THEN now() ELSE consent_at END,consent_by=CASE WHEN :enabled THEN :actor ELSE consent_by END,next_attempt_at=now(),updated_at=now() WHERE id=1",{enabled=mailBool(enabled),model=agendaParam(model),daily=mailInt(daily),retention=mailInt(retention),actor=mailInt(qPerfil.id)});
                 mailAudit(enabled?"monitor_enabled":"monitor_paused","",val(qPerfil.id),qPerfil.name);
             }
             result={message=enabled?"Monitor ativado. A coleta será executada pelo servidor a cada cinco minutos.":"Monitoramento pausado. As decisões existentes foram preservadas."};break;
         case "resolve":case "reopen":case "assign":case "note":case "classify":case "reanalyze":
             result=mailUpdate(varAction,val(agendaInput("id")),val(agendaInput("version")),val(qPerfil.id),qPerfil.name);break;
+        case "batch_assign":case "batch_classify":case "batch_note":case "batch_start":case "batch_resolve":case "batch_reopen":
+            result=mailBatchUpdate(varAction,val(agendaInput("id")),val(agendaInput("version")),val(qPerfil.id),qPerfil.name);break;
         default: mailFail("Operação não reconhecida.");
     }
     result.success=true;writeOutput(serializeJSON(mailWire(result)));

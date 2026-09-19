@@ -63,9 +63,9 @@ function mailAnalyze(required struct context,required struct previous,required s
     var usageId=0;
     transaction {
         agendaDb("SELECT id FROM public.tb_ai_mail_config WHERE id=1 FOR UPDATE");
-        var used=agendaDb("SELECT count(*) AS total FROM public.tb_ai_mail_usage WHERE (created_at AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date").total;
+        var used=agendaDb("SELECT count(*) AS total FROM public.tb_ai_mail_usage WHERE operation='thread' AND (created_at AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date AND (:cutoff=0 OR created_at>=to_timestamp(:cutoff/1000.0))",{cutoff=mailInt(arguments.cfg.monitor_since_ms)}).total;
         if(used>=arguments.cfg.daily_limit) throw(type="AIMail.Limit",message="Limite diário de análises atingido. As conversas permanecem na fila.");
-        usageId=agendaDb("INSERT INTO public.tb_ai_mail_usage(model) VALUES(:m) RETURNING id",{m=agendaParam(arguments.cfg.model)}).id;
+        usageId=agendaDb("INSERT INTO public.tb_ai_mail_usage(model,operation) VALUES(:m,'thread') RETURNING id",{m=agendaParam(arguments.cfg.model)}).id;
     }
     try {
         var rag=mailKnowledge(arguments.context);
@@ -99,6 +99,10 @@ function mailProcessOne() {
     try {
         var raw=mailGoogle("/threads/"&encodeForURL(id),{"format"="full"},true);
         var context=mailContext(raw,cfg.email);
+        if(context.source_available && val(cfg.monitor_since_ms)>0 && context.last_inbound_ms<=val(cfg.monitor_since_ms)) {
+            agendaDb("DELETE FROM public.tb_ai_mail_queue WHERE thread_id=:id AND revision=:revision AND lease_token=:lease",{id=agendaParam(id),revision=mailInt(revision),lease=agendaParam(lease)});
+            return {success=true,status="ok",processed=0,message="Conversa anterior ao início do monitor ignorada."};
+        }
         if(!context.source_available) {
             mailPurge(id);
         } else {

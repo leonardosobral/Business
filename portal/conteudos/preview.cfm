@@ -82,7 +82,7 @@
 <cfif qPreviewContent.recordcount>
     <cfoutput query="qPreviewContent">
         <article class="preview-shell">
-            <span class="preview-status<cfif published> is-published</cfif>"><cfif published>Publicado<cfelseif lCase(trim(editorial_status & "")) EQ "rejected">Rejeitado — prévia administrativa<cfelse>Oculto — prévia administrativa</cfif></span>
+            <span class="preview-status<cfif published> is-published</cfif>"><cfif published>Publicado<cfelseif lCase(trim(editorial_status & "")) EQ "review">Pendente de curadoria — prévia administrativa<cfelseif lCase(trim(editorial_status & "")) EQ "rejected">Rejeitado — prévia administrativa<cfelse>Oculto — prévia administrativa</cfif></span>
             <div class="preview-meta">
                 <cfif len(trim(channel_name & ""))>#htmlEditFormat(channel_name)#</cfif>
                 <cfif len(trim(category_name & ""))> · #htmlEditFormat(category_name)#</cfif>

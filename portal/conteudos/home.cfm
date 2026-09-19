@@ -17,7 +17,7 @@
   }
 
   .content-actions-cell {
-    min-width: 260px;
+    min-width: 340px;
   }
 
   .content-thumb-cell {
@@ -136,7 +136,7 @@
               <h3 class="mb-1">Portal - Conteúdos</h3>
               <p class="text-muted mb-0">Liste os conteúdos editoriais do repositório News, controle a visibilidade no site e acesse os importadores remotos dos parceiros.</p>
             </div>
-            <div class="text-lg-end d-flex gap-4">
+            <div class="text-lg-end d-flex flex-wrap gap-4">
               <div>
                 <div class="small text-muted">Total</div>
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qContentStats.total)#</cfoutput></div>
@@ -146,8 +146,14 @@
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qContentStats.total_publicados)#</cfoutput></div>
               </div>
               <div>
-                <div class="small text-muted">Ocultos</div>
+                <div class="small text-muted">Não publicados</div>
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qContentStats.total_ocultos)#</cfoutput></div>
+              </div>
+              <div>
+                <a href="./?status=pendentes" class="text-warning" title="Ver conteúdos aguardando decisão da curadoria">
+                  <div class="small">Pendentes de curadoria</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qContentStats.total_pendentes)#</cfoutput></div>
+                </a>
               </div>
               <div>
                 <div class="small text-muted">Destaques</div>
@@ -157,6 +163,12 @@
           </div>
 
           <hr/>
+
+          <cfif len(trim(URL.summary_notice))>
+            <div class="alert <cfif URL.summary_result EQ 'success'>alert-success<cfelse>alert-warning</cfif>" role="status">
+              <cfoutput>#htmlEditFormat(left(URL.summary_notice, 600))#</cfoutput>
+            </div>
+          </cfif>
 
           <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
             <div class="alert alert-warning mb-0">
@@ -192,7 +204,7 @@
                   <option value="pendentes" <cfif VARIABLES.contentStatusFilter EQ "pendentes">selected</cfif>>Pendentes de curadoria</option>
                   <option value="rejeitados" <cfif VARIABLES.contentStatusFilter EQ "rejeitados">selected</cfif>>Rejeitados</option>
                   <option value="publicados" <cfif VARIABLES.contentStatusFilter EQ "publicados">selected</cfif>>Publicados</option>
-                  <option value="ocultos" <cfif VARIABLES.contentStatusFilter EQ "ocultos">selected</cfif>>Ocultos</option>
+                  <option value="ocultos" <cfif VARIABLES.contentStatusFilter EQ "ocultos">selected</cfif>>Não publicados (todos)</option>
                 </select>
               </div>
 
@@ -218,6 +230,7 @@
 
             <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" id="contentBulkForm">
               <input type="hidden" name="content_bulk_action" value="apply_status"/>
+              <input type="hidden" name="content_summary_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
               <div class="d-flex flex-wrap align-items-end gap-2 mb-3">
                 <div>
                   <label class="form-label mb-1" for="contentBulkStatus">Alterar status dos selecionados</label>
@@ -302,16 +315,42 @@
                         </td>
                         <td class="content-cell">
                           <div class="mb-1">
-                            <span class="badge <cfif VARIABLES.contentPublished>badge-success<cfelseif VARIABLES.contentEditorialStatus EQ "rejected">badge-secondary<cfelse>badge-danger</cfif>">
+                            <span class="badge <cfif VARIABLES.contentPublished>badge-success<cfelseif VARIABLES.contentEditorialStatus EQ "review">badge-warning text-dark<cfelseif VARIABLES.contentEditorialStatus EQ "rejected">badge-secondary<cfelse>badge-danger</cfif>">
                               <cfif VARIABLES.contentPublished>Exibido<cfelseif VARIABLES.contentEditorialStatus EQ "rejected">Rejeitado<cfelseif VARIABLES.contentEditorialStatus EQ "review">Pendente de curadoria<cfelse>Oculto</cfif>
                             </span>
                           </div>
                           <cfif VARIABLES.contentFeatured>
                             <div><span class="badge badge-warning text-dark"><i class="fa-solid fa-star me-1"></i>Destaque na home</span></div>
                           </cfif>
+                          <cfif VARIABLES.contentSummaryReady AND qContents.summary_policy EQ "summary_link">
+                            <div class="small mt-2">
+                              <cfif qContents.summary_status EQ "done">
+                                <span class="text-success"><i class="fa-solid fa-wand-magic-sparkles me-1"></i>Resumo por IA concluído</span>
+                              <cfelseif qContents.summary_status EQ "processing">
+                                <span class="text-info"><i class="fa-solid fa-spinner me-1"></i>Resumo em processamento</span>
+                              <cfelseif qContents.summary_status EQ "pending">
+                                <span class="text-warning"><i class="fa-regular fa-clock me-1"></i>Resumo aguardando processamento</span>
+                              <cfelseif qContents.summary_status EQ "failed">
+                                <span class="text-danger" title="#htmlEditFormat(left(qContents.summary_error, 500))#"><i class="fa-solid fa-triangle-exclamation me-1"></i>Falha no resumo</span>
+                              <cfelse>
+                                <span class="text-muted"><i class="fa-solid fa-wand-magic-sparkles me-1"></i>Resumo ainda não processado</span>
+                              </cfif>
+                            </div>
+                          </cfif>
                         </td>
                         <td class="content-actions-cell">
                           <div class="d-flex flex-wrap gap-2">
+                            <cfif VARIABLES.contentSummaryReady AND qContents.summary_policy EQ "summary_link">
+                              <button class="btn btn-sm btn-outline-info" type="submit"
+                                name="process_summary_id" value="#qContents.id#"
+                                formnovalidate
+                                data-summary-action
+                                data-summary-reprocess="#(len(trim(qContents.excerpt & '')) GT 0 OR qContents.summary_status EQ 'done') ? 'true' : 'false'#"
+                                <cfif qContents.summary_status EQ "processing">disabled</cfif>
+                                title="<cfif NOT qContents.summary_source_available>A fonte disponível será validada pelo processador antes da execução.<cfelseif len(trim(qContents.excerpt & ''))>Gerar novamente o resumo deste conteúdo.<cfelse>Gerar o resumo deste conteúdo.</cfif>">
+                                <i class="fa-solid fa-wand-magic-sparkles me-1"></i><cfif len(trim(qContents.excerpt & "")) GT 0 OR qContents.summary_status EQ "done">Reprocessar resumo<cfelse>Processar resumo</cfif>
+                              </button>
+                            </cfif>
                             <a class="btn btn-sm <cfif VARIABLES.contentPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&content_id=#qContents.id#&published=#NOT VARIABLES.contentPublished#&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">
                               <cfif VARIABLES.contentPublished>Ocultar<cfelse>Exibir</cfif>
                             </a>
@@ -319,7 +358,7 @@
                               <a class="btn btn-sm btn-outline-danger" href="./?acao=editorial_status&content_id=#qContents.id#&editorial_status=rejected&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#" onclick="return confirm('Rejeitar este conteúdo e mantê-lo oculto?');">
                                 Rejeitar
                               </a>
-                            <cfelseif VARIABLES.contentEditorialStatus EQ "rejected">
+                            <cfelseif NOT VARIABLES.contentPublished AND listFindNoCase("rejected,draft", VARIABLES.contentEditorialStatus)>
                               <a class="btn btn-sm btn-outline-warning" href="./?acao=editorial_status&content_id=#qContents.id#&editorial_status=review&pagina=#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#">
                                 Retornar à curadoria
                               </a>
@@ -447,6 +486,21 @@
 
     if (bulkForm) {
       bulkForm.addEventListener('submit', function (event) {
+        const summaryButton = event.submitter && event.submitter.matches('[data-summary-action]')
+          ? event.submitter
+          : null;
+        if (summaryButton) {
+          if (summaryButton.dataset.summaryReprocess === 'true'
+              && !window.confirm('Gerar novamente o resumo por IA deste conteúdo? O resumo atual só será substituído se a nova versão for validada.')) {
+            event.preventDefault();
+            return;
+          }
+          summaryButton.setAttribute('aria-disabled', 'true');
+          summaryButton.classList.add('disabled');
+          summaryButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Processando…';
+          return;
+        }
+
         const selectedCount = bulkCheckboxes.filter(function (checkbox) {
           return checkbox.checked;
         }).length;

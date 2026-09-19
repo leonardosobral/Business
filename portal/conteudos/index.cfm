@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <cfprocessingdirective pageencoding="utf-8"/>
+<cfsetting requesttimeout="120"/>
 
 <cfset VARIABLES.theme = "dark"/>
 <cfset VARIABLES.template = "/portal/conteudos/"/>

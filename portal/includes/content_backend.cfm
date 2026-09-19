@@ -4,6 +4,8 @@
 <cfparam name="URL.status" default="todos"/>
 <cfparam name="URL.destaque" default="todos"/>
 <cfparam name="URL.published" default=""/>
+<cfparam name="URL.summary_notice" default=""/>
+<cfparam name="URL.summary_result" default=""/>
 
 <cfset VARIABLES.contentPageSize = 20/>
 <cfset VARIABLES.contentPage = max(1, int(URL.pagina))/>
@@ -17,6 +19,10 @@
 <cfset VARIABLES.contentAdminBaseUrl = structKeyExists(APPLICATION, "contentAdmin") AND isStruct(APPLICATION.contentAdmin) AND structKeyExists(APPLICATION.contentAdmin, "baseUrl") ? trim(APPLICATION.contentAdmin.baseUrl) : "https://conteudo.roadrunners.run"/>
 <cfset VARIABLES.contentStatusFilter = lCase(trim(URL.status))/>
 <cfset VARIABLES.contentFeaturedFilter = lCase(trim(URL.destaque))/>
+<cfif NOT structKeyExists(SESSION, "contentSummaryCsrf") OR NOT len(trim(SESSION.contentSummaryCsrf & ""))>
+    <cfset SESSION.contentSummaryCsrf = createUUID()/>
+</cfif>
+<cfset VARIABLES.contentSummaryCsrf = SESSION.contentSummaryCsrf/>
 
 <cfif NOT listFindNoCase("todos,publicados,ocultos,pendentes,rejeitados", VARIABLES.contentStatusFilter)>
     <cfset VARIABLES.contentStatusFilter = "todos"/>
@@ -41,8 +47,22 @@
     ORDER BY ordinal_position
 </cfquery>
 
+<cfquery name="qContentTypeColumns">
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_schema = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.contentSchema#"/>
+      AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.contentTypeTable#"/>
+    ORDER BY ordinal_position
+</cfquery>
+
+<cfquery name="qContentSummarySchema">
+    SELECT to_regclass('news.tb_article_summary_jobs') IS NOT NULL AS jobs_ready,
+           to_regclass('news.tb_content_imports') IS NOT NULL AS imports_ready
+</cfquery>
+
 <cfset VARIABLES.contentColumns = ValueList(qContentColumns.column_name)/>
 <cfset VARIABLES.contentUserColumns = ValueList(qContentUserColumns.column_name)/>
+<cfset VARIABLES.contentTypeColumns = ValueList(qContentTypeColumns.column_name)/>
 <cfset VARIABLES.contentHasExcerpt = ListFindNoCase(VARIABLES.contentColumns, "excerpt")/>
 <cfset VARIABLES.contentHasPublishedAt = ListFindNoCase(VARIABLES.contentColumns, "published_at")/>
 <cfset VARIABLES.contentHasEditorialStatus = ListFindNoCase(VARIABLES.contentColumns, "editorial_status")/>
@@ -55,6 +75,11 @@
 <cfset VARIABLES.contentUserHasDisplayName = ListFindNoCase(VARIABLES.contentUserColumns, "display_name")/>
 <cfset VARIABLES.contentUserHasName = ListFindNoCase(VARIABLES.contentUserColumns, "name")/>
 <cfset VARIABLES.contentUserHasEmail = ListFindNoCase(VARIABLES.contentUserColumns, "email")/>
+<cfset VARIABLES.contentSummaryReady = qContentSummarySchema.recordcount
+    AND qContentSummarySchema.jobs_ready
+    AND qContentSummarySchema.imports_ready
+    AND ListFindNoCase(VARIABLES.contentTypeColumns, "rr_publication_mode")
+    AND ListFindNoCase(VARIABLES.contentTypeColumns, "rr_license_expires_at")/>
 
 <cfscript>
 VARIABLES.contentAuthorExpressionParts = [];
@@ -72,7 +97,77 @@ if (VARIABLES.contentUserHasEmail) {
 VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionParts)
     ? "coalesce(" & arrayToList(VARIABLES.contentAuthorExpressionParts, ", ") & ", '')"
     : "''";
+
+VARIABLES.contentReturnUrl = "./?pagina=" & VARIABLES.contentPage
+    & "&busca=" & urlEncodedFormat(URL.busca)
+    & "&canal=" & urlEncodedFormat(URL.canal)
+    & "&status=" & urlEncodedFormat(VARIABLES.contentStatusFilter)
+    & "&destaque=" & urlEncodedFormat(VARIABLES.contentFeaturedFilter);
+
+function contentSummaryProcess(required numeric contentId) {
+    var result = {success=false,message="Não foi possível processar o resumo."};
+    var secret = "";
+    var endpoint = "";
+    var httpResult = {};
+    var statusCode = 0;
+    var payload = {};
+    var item = {};
+
+    if (structKeyExists(APPLICATION, "cronJobs")
+        AND isStruct(APPLICATION.cronJobs)
+        AND structKeyExists(APPLICATION.cronJobs, "secrets")
+        AND isStruct(APPLICATION.cronJobs.secrets)
+        AND structKeyExists(APPLICATION.cronJobs.secrets, "conteudo_internal")) {
+        secret = trim(APPLICATION.cronJobs.secrets.conteudo_internal & "");
+    }
+    if (!len(secret)) return {success=false,message="A credencial interna do processador de resumos não está configurada."};
+
+    endpoint = reReplace(VARIABLES.contentAdminBaseUrl, "/+$", "", "all")
+        & "/api/admin/jobs/article_summary.cfm?content_id=" & int(arguments.contentId);
+    try {
+        cfhttp(url=endpoint,method="post",result="httpResult",timeout=110,throwOnError=false,redirect=false) {
+            cfhttpparam(type="header",name="Content-Type",value="application/json; charset=utf-8");
+            cfhttpparam(type="header",name="X-API-Key",value=secret);
+            cfhttpparam(type="body",value="{}");
+        }
+        statusCode = val(listFirst(httpResult.statusCode ?: "0", " "));
+        if (statusCode LT 200 OR statusCode GTE 300 OR !isJSON(httpResult.fileContent ?: "")) {
+            return {success=false,message="O processador de resumos não respondeu com sucesso (HTTP " & statusCode & ")."};
+        }
+        payload = deserializeJSON(httpResult.fileContent);
+        if (!(payload.ok ?: false) OR !isArray(payload.results ?: "") OR !arrayLen(payload.results)) {
+            return {success=false,message=left(trim(payload.message ?: payload.error ?: "Resposta inválida do processador de resumos."),500)};
+        }
+        item = payload.results[1];
+        if (item.ready ?: false) return {success=true,message="Resumo por IA concluído e enviado para o fluxo editorial."};
+        if ((item.reason ?: "") EQ "already_processing") return {success=false,message="Este resumo já está sendo processado. Atualize a página em instantes."};
+        if ((item.reason ?: "") EQ "source_unavailable") return {success=false,message="A fonte integral não está mais disponível para reprocessamento. Reimporte o conteúdo antes de tentar novamente."};
+        if ((item.reason ?: "") EQ "policy_changed") return {success=false,message="Este canal não está configurado para resumo por IA."};
+        if (item.retry ?: false) return {success=false,message="A tentativa não foi concluída e ficou agendada para nova execução: " & left(trim(item.error ?: "falha temporária"),350)};
+        return {success=false,message=left(trim(item.error ?: item.message ?: item.reason ?: "O resumo não foi concluído."),500)};
+    } catch(any error) {
+        return {success=false,message="Falha ao consultar o processador de resumos: " & left(trim(error.message ?: "erro desconhecido"),350)};
+    }
+}
 </cfscript>
+
+<cfif isDefined("FORM.process_summary_id")
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin>
+    <cfset VARIABLES.contentSummaryResult = {success=false,message="Solicitação inválida."}/>
+    <cfif compare(trim(FORM.content_summary_csrf ?: ""), VARIABLES.contentSummaryCsrf) NEQ 0>
+        <cfset VARIABLES.contentSummaryResult.message = "A sessão expirou. Atualize a página e tente novamente."/>
+    <cfelseif NOT VARIABLES.contentSummaryReady>
+        <cfset VARIABLES.contentSummaryResult.message = "O processador de resumos ainda não está instalado."/>
+    <cfelseif NOT isNumeric(FORM.process_summary_id) OR val(FORM.process_summary_id) LTE 0>
+        <cfset VARIABLES.contentSummaryResult.message = "Conteúdo inválido."/>
+    <cfelse>
+        <cfset VARIABLES.contentSummaryResult = contentSummaryProcess(int(FORM.process_summary_id))/>
+    </cfif>
+    <cfset VARIABLES.contentSummaryResultType = VARIABLES.contentSummaryResult.success ? "success" : "warning"/>
+    <cflocation addtoken="false" url="#VARIABLES.contentReturnUrl#&summary_result=#VARIABLES.contentSummaryResultType#&summary_notice=#urlEncodedFormat(VARIABLES.contentSummaryResult.message)#"/>
+</cfif>
 
 <cfif isDefined("FORM.content_bulk_action")
     AND FORM.content_bulk_action EQ "apply_status"
@@ -340,6 +435,7 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
         count(*) AS total,
         count(*) FILTER (WHERE published = true) AS total_publicados,
         count(*) FILTER (WHERE published = false) AS total_ocultos,
+        count(*) FILTER (WHERE published = false AND <cfif VARIABLES.contentHasEditorialStatus>lower(coalesce(editorial_status, '')) = 'review'<cfelse>false</cfif>) AS total_pendentes,
         count(*) FILTER (WHERE <cfif VARIABLES.contentHasIsFeatured>is_featured = true<cfelse>false</cfif>) AS total_destaques
     FROM news.tb_content
 </cfquery>
@@ -358,13 +454,50 @@ VARIABLES.contentAuthorExpression = arrayLen(VARIABLES.contentAuthorExpressionPa
            typ.slug AS canal_slug,
            cat.name AS categoria_nome,
            #preserveSingleQuotes(VARIABLES.contentAuthorExpression)# AS autor_nome,
-           <cfif VARIABLES.contentHasFeaturedMedia>med.url_public<cfelse>NULL::text</cfif> AS featured_media_url
+           <cfif VARIABLES.contentHasFeaturedMedia>med.url_public<cfelse>NULL::text</cfif> AS featured_media_url,
+           <cfif VARIABLES.contentSummaryReady>
+             CASE
+               WHEN typ.rr_publication_mode = 'licensed_full'
+                AND typ.rr_license_expires_at IS NOT NULL
+                AND typ.rr_license_expires_at < CURRENT_DATE THEN 'summary_link'
+               ELSE typ.rr_publication_mode
+             END AS summary_policy,
+             COALESCE(summary_job.status, '') AS summary_status,
+             COALESCE(summary_job.last_error, '') AS summary_error,
+             summary_job.generated_at AS summary_generated_at,
+             COALESCE(summary_job.model, '') AS summary_model,
+             (length(btrim(COALESCE(cnt.body_html, ''))) > 0
+               OR length(btrim(COALESCE(summary_import.source_description_html, ''))) > 0) AS summary_source_available
+           <cfelse>
+             ''::text AS summary_policy,
+             ''::text AS summary_status,
+             ''::text AS summary_error,
+             NULL::timestamp AS summary_generated_at,
+             ''::text AS summary_model,
+             false AS summary_source_available
+           </cfif>
     FROM news.tb_content cnt
     LEFT JOIN news.tb_content_types typ ON typ.id = cnt.content_type_id
     LEFT JOIN news.tb_categories cat ON cat.id = cnt.category_id
     LEFT JOIN news.tb_users usr ON usr.id = cnt.author_id
     <cfif VARIABLES.contentHasFeaturedMedia>
         LEFT JOIN news.tb_media med ON med.id = cnt.featured_media_id
+    </cfif>
+    <cfif VARIABLES.contentSummaryReady>
+        LEFT JOIN LATERAL (
+            SELECT j.status,j.last_error,j.generated_at,j.model
+            FROM news.tb_article_summary_jobs j
+            WHERE j.content_id = cnt.id
+            ORDER BY j.updated_at DESC,j.id DESC
+            LIMIT 1
+        ) summary_job ON TRUE
+        LEFT JOIN LATERAL (
+            SELECT COALESCE(i.detail_json ->> 'source_description_html', '') AS source_description_html
+            FROM news.tb_content_imports i
+            WHERE i.content_id = cnt.id
+            ORDER BY i.updated_at DESC,i.id DESC
+            LIMIT 1
+        ) summary_import ON TRUE
     </cfif>
     WHERE 1 = 1
       <cfif VARIABLES.contentStatusFilter EQ "publicados">

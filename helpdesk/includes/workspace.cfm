@@ -1,5 +1,5 @@
 <cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403" statustext="Forbidden"/><cfabort/></cfif>
-<link rel="stylesheet" href="/helpdesk/assets/workspace.css?v=20260914-1"/>
+<link rel="stylesheet" href="/helpdesk/assets/workspace.css?v=20260919-1"/>
 <section class="hd-workspace" aria-label="Central de atendimento">
 <cfoutput>
   <header class="hd-header">
@@ -54,7 +54,22 @@
       </aside>
       <section class="hd-detail" id="hd-conversa" aria-label="Conversa e atendimento">
         <cfif qHelpdeskTicketEdit.recordcount>
-          <header class="hd-detail-header"><div class="hd-ticket-top"><span class="hd-protocol">#encodeForHTML(qHelpdeskTicketEdit.protocolo)#</span><span class="hd-badge" data-status="#encodeForHTMLAttribute(qHelpdeskTicketEdit.status)#">#encodeForHTML(hdStatus(qHelpdeskTicketEdit.status))#</span></div><h2>#encodeForHTML(qHelpdeskTicketEdit.assunto)#</h2><div class="hd-contact"><strong>#encodeForHTML(qHelpdeskTicketEdit.nome_usuario)#</strong><span>#encodeForHTML(qHelpdeskTicketEdit.email_usuario)#</span></div><div class="hd-detail-meta"><span>Aberto em #dateTimeFormat(qHelpdeskTicketEdit.created_at,'dd/mm/yyyy HH:nn')#</span><span>Setor: #encodeForHTML(qHelpdeskTicketEdit.nome_setor)#</span><span>Responsável do setor: #len(trim(qHelpdeskTicketEdit.nome_responsavel)) ? encodeForHTML(qHelpdeskTicketEdit.nome_responsavel) : 'Não definido'#</span></div><a class="hd-jump" href="##hd-editor">Ir para a resposta <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></header>
+          <cfset hdUserManagementUrl="/administracao/usuarios/?user_id=" & val(qHelpdeskTicketEdit.id_usuario)/>
+          <cfset hdPublicProfileUrl=""/>
+          <cfif len(trim(qHelpdeskTicketEdit.perfil_tag)) AND len(trim(qHelpdeskTicketEdit.perfil_tag_prefix))>
+            <cfset hdPublicProfileUrl="https://roadrunners.run/" & urlEncodedFormat(trim(qHelpdeskTicketEdit.perfil_tag_prefix)) & "/" & urlEncodedFormat(trim(qHelpdeskTicketEdit.perfil_tag)) & "/"/>
+          </cfif>
+          <header class="hd-detail-header">
+            <div class="hd-ticket-top"><span class="hd-protocol">#encodeForHTML(qHelpdeskTicketEdit.protocolo)#</span><span class="hd-badge" data-status="#encodeForHTMLAttribute(qHelpdeskTicketEdit.status)#">#encodeForHTML(hdStatus(qHelpdeskTicketEdit.status))#</span></div>
+            <h2>#encodeForHTML(qHelpdeskTicketEdit.assunto)#</h2>
+            <div class="hd-contact"><strong>#encodeForHTML(qHelpdeskTicketEdit.nome_usuario)#</strong><span>#encodeForHTML(qHelpdeskTicketEdit.email_usuario)#</span></div>
+            <div class="hd-contact-actions" aria-label="Atalhos do usuário">
+              <cfif len(hdPublicProfileUrl)><a class="btn btn-sm btn-outline-secondary" href="#encodeForHTMLAttribute(hdPublicProfileUrl)#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Perfil público no RR</a></cfif>
+              <a class="btn btn-sm btn-outline-secondary" href="#encodeForHTMLAttribute(hdUserManagementUrl)#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Editar conta no Business</a>
+            </div>
+            <div class="hd-detail-meta"><span>Aberto em #dateTimeFormat(qHelpdeskTicketEdit.created_at,'dd/mm/yyyy HH:nn')#</span><span>Setor: #encodeForHTML(qHelpdeskTicketEdit.nome_setor)#</span><span>Responsável do setor: #len(trim(qHelpdeskTicketEdit.nome_responsavel)) ? encodeForHTML(qHelpdeskTicketEdit.nome_responsavel) : 'Não definido'#</span></div>
+            <a class="hd-jump" href="##hd-editor">Ir para a resposta <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+          </header>
           <div class="hd-thread" aria-label="Histórico da conversa">
             <cfif NOT qHelpdeskMensagens.recordcount><p class="text-muted">Nenhuma mensagem registrada.</p></cfif>
             <cfloop query="qHelpdeskMensagens"><article class="hd-message <cfif qHelpdeskMensagens.is_admin>is-team</cfif>"><header><span class="hd-avatar" aria-hidden="true">#encodeForHTML(uCase(left(qHelpdeskMensagens.nome_usuario,1)))#</span><div><strong>#encodeForHTML(qHelpdeskMensagens.nome_usuario)#</strong><small><cfif qHelpdeskMensagens.is_admin>Equipe de atendimento<cfelse>Solicitante</cfif></small></div><time datetime="#dateTimeFormat(qHelpdeskMensagens.created_at,"yyyy-mm-dd'T'HH:nn:ss")#">#dateTimeFormat(qHelpdeskMensagens.created_at,'dd/mm HH:nn')#</time></header><div class="hd-message-body">#encodeForHTML(qHelpdeskMensagens.mensagem)#</div></article></cfloop>

@@ -9,33 +9,26 @@ function mailCollect() {
     var collected=0;var pages=0;
     try {
         cfg=mailConfig();
-        if(!cfg.initial_complete && !len(cfg.initial_history)) {
+        if(!cfg.initial_complete || !len(cfg.history_id)) {
             var profile=mailGoogle("/profile");
             if(compareNoCase(profile.emailAddress,cfg.email)!=0) mailFail("A conta conectada não corresponde à caixa configurada.");
-            // Freeze the search window while paging; include old unread/important messages.
-            var cutoff=int(createObject("java","java.lang.System").currentTimeMillis()/1000)-cfg.initial_days*86400;
-            agendaDb("UPDATE public.tb_ai_mail_config SET initial_history=:h,initial_query=:q,page_token='',collected=0 WHERE id=1",{h=agendaParam(profile.historyId&""),q=agendaParam("in:inbox {after:"&cutoff&" is:unread is:important}")});
-            cfg=mailConfig();
-        }
-        // One bounded page per run, persisted before advancing its cursor.
-        if(!cfg.initial_complete) {
-            var args={"q"=cfg.initial_query,"maxResults"=100};if(len(cfg.page_token)) args["pageToken"]=cfg.page_token;
-            var result=mailGoogle("/threads",args);
+            var cutoffMs=createObject("java","java.lang.System").currentTimeMillis();
             transaction {
-                if(structKeyExists(result,"threads")) for(var thread in result.threads) {mailEnqueue(thread.id);collected++;}
-                var next=structKeyExists(result,"nextPageToken")?result.nextPageToken:"";
-                agendaDb("UPDATE public.tb_ai_mail_config SET page_token=:page,collected=collected+:count,initial_complete=:done,history_id=CASE WHEN :done THEN initial_history ELSE history_id END,last_error='',failures=0,last_sync_at=CASE WHEN :done THEN now() ELSE last_sync_at END WHERE id=1 AND collector_token=:lease",{page=agendaParam(next),count=mailInt(collected),done=mailBool(!len(next)),lease=agendaParam(lease)});
+                agendaDb("DELETE FROM public.tb_ai_mail_queue WHERE lease_until IS NULL OR lease_until<now()");
+                agendaDb("UPDATE public.tb_ai_mail_config SET monitor_since_ms=:cutoff,history_id=:h,initial_history=:h,initial_query='',page_token='',collected=0,initial_complete=true,last_error='',failures=0,last_sync_at=now() WHERE id=1 AND collector_token=:lease",{cutoff=mailInt(cutoffMs),h=agendaParam(profile.historyId&""),lease=agendaParam(lease)});
             }
-            pages=1;
+            return {success=true,status="watching_new",processed=0,pages=0,message="Monitor iniciado: somente mensagens recebidas a partir de agora."};
         } else {
             var args={"startHistoryId"=cfg.history_id,"maxResults"=100};if(len(cfg.page_token)) args["pageToken"]=cfg.page_token;
             var result=mailGoogle("/history",args,true);
             if(structKeyExists(result,"missing")) {
+                var profile=mailGoogle("/profile");
+                var cutoffMs=createObject("java","java.lang.System").currentTimeMillis();
                 transaction {
-                    agendaDb("INSERT INTO public.tb_ai_mail_queue(thread_id) SELECT thread_id FROM public.tb_ai_mail_threads WHERE source_available ON CONFLICT(thread_id) DO UPDATE SET revision=tb_ai_mail_queue.revision+1,available_at=now()");
-                    agendaDb("UPDATE public.tb_ai_mail_config SET initial_complete=false,initial_history='',page_token='',initial_query='',last_error='Histórico expirado: reconciliando sem apagar decisões.' WHERE id=1");
+                    agendaDb("DELETE FROM public.tb_ai_mail_queue WHERE lease_until IS NULL OR lease_until<now()");
+                    agendaDb("UPDATE public.tb_ai_mail_config SET monitor_since_ms=:cutoff,history_id=:h,initial_history=:h,page_token='',initial_query='',initial_complete=true,last_sync_at=now(),last_error='Histórico anterior indisponível. Monitor reiniciado a partir de agora.',failures=0 WHERE id=1",{cutoff=mailInt(cutoffMs),h=agendaParam(profile.historyId&"")});
                 }
-                return {success=true,status="reconciling",message="Histórico expirado. Reconciliação agendada."};
+                return {success=true,status="watching_new",processed=0,message="Histórico anterior indisponível. Monitor reiniciado a partir de agora."};
             }
             transaction {
                 var seen={};

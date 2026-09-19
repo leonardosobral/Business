@@ -52,7 +52,7 @@
 <cfset qHelpdeskAdmins = QueryNew("id,name")/>
 <cfset qHelpdeskSetores = QueryNew("id_setor,nome_setor,descricao_setor,id_usuario_responsavel,nome_responsavel,ativo,created_at,updated_at")/>
 <cfset qHelpdeskChamados = QueryNew("id_chamado,protocolo,id_usuario,id_setor,assunto,status,created_at,updated_at,nome_setor,nome_usuario,nome_responsavel")/>
-<cfset qHelpdeskTicketEdit = QueryNew("id_chamado,protocolo,id_usuario,id_setor,assunto,status,created_at,updated_at,nome_setor,nome_usuario,email_usuario,nome_responsavel")/>
+<cfset qHelpdeskTicketEdit = QueryNew("id_chamado,protocolo,id_usuario,id_setor,assunto,status,created_at,updated_at,nome_setor,nome_usuario,email_usuario,nome_responsavel,perfil_tag,perfil_tag_prefix")/>
 <cfset qHelpdeskMensagens = QueryNew("id_mensagem,id_chamado,id_usuario,mensagem,created_at,is_admin,nome_usuario,email_usuario")/>
 <cfset qHelpdeskSetorEdit = QueryNew("id_setor,nome_setor,descricao_setor,id_usuario_responsavel,ativo")/>
 <cfset qHelpdeskStats = QueryNew("total_chamados,total_abertos,total_setores", "integer,integer,integer")/>
@@ -547,6 +547,8 @@
                    cham.updated_at,
                    usr.name as nome_usuario,
                    usr.email as email_usuario,
+                   coalesce(perfil.tag, '') as perfil_tag,
+                   coalesce(perfil.tag_prefix, '') as perfil_tag_prefix,
                    to_char(cham.updated_at,'YYYY-MM-DD HH24:MI:SS.US') AS revision,
                    (SELECT coalesce(max(id_mensagem),0) FROM tb_helpdesk_mensagens WHERE id_chamado=cham.id_chamado) AS last_message_id,
                    setr.nome_setor,
@@ -555,6 +557,17 @@
             INNER JOIN tb_usuarios usr ON usr.id = cham.id_usuario
             INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
             LEFT JOIN tb_usuarios resp ON resp.id = setr.id_usuario_responsavel
+            LEFT JOIN LATERAL (
+                SELECT pag.tag, pag.tag_prefix
+                FROM tb_paginas_usuarios pgusr
+                INNER JOIN tb_paginas pag ON pag.id_pagina = pgusr.id_pagina
+                WHERE pgusr.id_usuario = usr.id
+                  AND coalesce(pag.perfil_publico, true) = true
+                  AND nullif(trim(pag.tag), '') IS NOT NULL
+                  AND nullif(trim(pag.tag_prefix), '') IS NOT NULL
+                ORDER BY (lower(pag.tag_prefix) = 'atleta') DESC, pag.id_pagina ASC
+                LIMIT 1
+            ) perfil ON true
             WHERE cham.id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.ticket_id#"/>
             <cfif NOT VARIABLES.helpdeskCanManage>
                 AND cham.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>

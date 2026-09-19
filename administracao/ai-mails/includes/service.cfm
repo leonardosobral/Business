@@ -41,17 +41,18 @@ function mailMutation() {
 }
 function mailStatus() {
     var cfg=mailConfig();
-    var q=agendaDb("SELECT count(*) FILTER(WHERE state<>'resolved' AND source_available AND (relevant OR needs_review))::int AS pending,count(*) FILTER(WHERE state<>'resolved' AND source_available AND priority IN('critical','high'))::int AS urgent,count(*) FILTER(WHERE state<>'resolved' AND source_available AND needs_response)::int AS response,count(*) FILTER(WHERE state<>'resolved' AND source_available AND deadline_at<now())::int AS overdue FROM public.tb_ai_mail_threads");
+    var q=agendaDb("SELECT count(*) FILTER(WHERE state<>'resolved' AND source_available AND (relevant OR needs_review))::int AS pending,count(*) FILTER(WHERE state<>'resolved' AND source_available AND priority IN('critical','high'))::int AS urgent,count(*) FILTER(WHERE state<>'resolved' AND source_available AND needs_response)::int AS response,count(*) FILTER(WHERE state<>'resolved' AND source_available AND deadline_at<now())::int AS overdue FROM public.tb_ai_mail_threads WHERE analyzed_at IS NOT NULL OR last_inbound_ms>(SELECT monitor_since_ms FROM public.tb_ai_mail_config WHERE id=1)");
     var queue=agendaDb("SELECT count(*)::int AS total,count(*) FILTER(WHERE last_error<>'')::int AS errors FROM public.tb_ai_mail_queue");
-    var usage=agendaDb("SELECT count(*)::int AS total,coalesce(sum(input_tokens),0) AS input,coalesce(sum(output_tokens),0) AS output FROM public.tb_ai_mail_usage WHERE (created_at AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date");
+    var usage=agendaDb("SELECT count(*)::int AS total,count(*) FILTER(WHERE operation='thread')::int AS thread_today,count(*) FILTER(WHERE operation='thread' AND (:cutoff=0 OR created_at>=to_timestamp(:cutoff/1000.0)))::int AS thread_quota,count(*) FILTER(WHERE operation='batch')::int AS batch_total,coalesce(sum(input_tokens),0) AS input,coalesce(sum(output_tokens),0) AS output FROM public.tb_ai_mail_usage WHERE (created_at AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date",{cutoff=mailInt(cfg.monitor_since_ms)});
     // Reference price checked 2026-09-17. Text only, without cache discounts/RAG fees.
     var cost=agendaDb("SELECT coalesce(sum(CASE WHEN model IN('gpt-4.1-mini','gpt-4.1-mini-2025-04-14') THEN (input_tokens*0.40+output_tokens*1.60)/1000000.0 ELSE 0 END),0) AS usd,count(*) FILTER(WHERE model NOT IN('gpt-4.1-mini','gpt-4.1-mini-2025-04-14') OR status IN('reserved','failed')) AS uncertain FROM public.tb_ai_mail_usage WHERE (created_at AT TIME ZONE 'America/Sao_Paulo')::date=(now() AT TIME ZONE 'America/Sao_Paulo')::date");
     var actors=mailRows(agendaDb("SELECT json_build_object('id',id,'name',name) AS data FROM public.tb_usuarios WHERE is_admin=true ORDER BY name"));
     var jobs=mailRows(agendaDb("SELECT json_build_object('name',nome,'active',ativo,'last_run',last_run_at,'status',last_status) AS data FROM public.tb_cron_jobs WHERE endpoint_url IN ('https://business.roadrunners.run/administracao/ai-mails/jobs/collect.cfm','https://business.roadrunners.run/administracao/ai-mails/jobs/process.cfm') ORDER BY id_cron_job"));
-    return mailWire({connected=mailAuthorized(),ai_configured=structKeyExists(application,"vickyKnowledge") && application.vickyKnowledge.configured,config={enabled=cfg.enabled,email=cfg.email,model=cfg.model,initial_days=cfg.initial_days,daily_limit=cfg.daily_limit,retention_days=cfg.retention_days,initial_complete=cfg.initial_complete,collected=cfg.collected,last_sync_at=structKeyExists(cfg,"last_sync_at")?cfg.last_sync_at:"",last_error=cfg.last_error},metrics={pending=q.pending,urgent=q.urgent,response=q.response,overdue=q.overdue},queue={total=queue.total,errors=queue.errors},usage={total=usage.total,input_tokens=usage.input,output_tokens=usage.output,limited=usage.total>=cfg.daily_limit,estimated_usd=val(cost.usd),estimate_incomplete=cost.uncertain>0},actors=actors,jobs=jobs});
+    var batches=mailBatchMetrics();
+    return mailWire({connected=mailAuthorized(),ai_configured=structKeyExists(application,"vickyKnowledge") && application.vickyKnowledge.configured,config={enabled=cfg.enabled,email=cfg.email,model=cfg.model,daily_limit=cfg.daily_limit,retention_days=cfg.retention_days,initial_complete=cfg.initial_complete,monitor_since_ms=cfg.monitor_since_ms,last_sync_at=structKeyExists(cfg,"last_sync_at")?cfg.last_sync_at:"",last_error=cfg.last_error},metrics={pending=q.pending,urgent=q.urgent,response=q.response,overdue=q.overdue},batches=batches,queue={total=queue.total,errors=queue.errors},usage={total=usage.total,thread_total=usage.thread_quota,thread_today=usage.thread_today,batch_total=usage.batch_total,batch_limit=20,input_tokens=usage.input,output_tokens=usage.output,limited=usage.thread_quota>=cfg.daily_limit,estimated_usd=val(cost.usd),estimate_incomplete=cost.uncertain>0},actors=actors,jobs=jobs});
 }
 function mailList(required struct filters) {
-    var p={}; var where=" WHERE true ";
+    var p={}; var where=" WHERE (t.analyzed_at IS NOT NULL OR t.last_inbound_ms>(SELECT monitor_since_ms FROM public.tb_ai_mail_config WHERE id=1)) ";
     var view=structKeyExists(arguments.filters,"view")?arguments.filters.view:"pending";
     if(view=="review") where&=" AND (NOT t.relevant OR t.needs_review OR NOT t.source_available) ";
     else if(view=="resolved") where&=" AND t.state='resolved' ";
@@ -74,7 +75,7 @@ function mailList(required struct filters) {
     if(structKeyExists(arguments.filters,"days") && val(arguments.filters.days)>0) {where&=" AND t.last_message_at>=now()-(:days*interval '1 day')";p.days=mailInt(min(365,val(arguments.filters.days)));}
     var count=agendaDb("SELECT count(*) AS total FROM public.tb_ai_mail_threads t"&where,p).total;
     p.offset=mailInt(structKeyExists(arguments.filters,"offset")?max(0,min(100000,val(arguments.filters.offset))):0);
-    var rows=mailRows(agendaDb("SELECT to_jsonb(v) AS data FROM (SELECT t.*,EXISTS(SELECT 1 FROM public.tb_ai_mail_queue q WHERE q.thread_id=t.thread_id) AS queued FROM public.tb_ai_mail_threads t"&where&" ORDER BY CASE t.priority WHEN 'critical' THEN 0 WHEN 'high' THEN 1 WHEN 'normal' THEN 2 WHEN 'informational' THEN 3 ELSE 4 END,t.deadline_at NULLS LAST,t.last_message_at ASC NULLS LAST,t.id LIMIT 30 OFFSET :offset) v",p));
+    var rows=mailRows(agendaDb("SELECT to_jsonb(v) AS data FROM (SELECT t.*,EXISTS(SELECT 1 FROM public.tb_ai_mail_queue q WHERE q.thread_id=t.thread_id) AS queued,(SELECT count(*)::int FROM public.tb_ai_mail_batch_items bi WHERE bi.thread_id=t.id) AS batch_count,(SELECT count(*)::int FROM public.tb_ai_mail_batch_items bi JOIN public.tb_ai_mail_batches b ON b.id=bi.batch_id WHERE bi.thread_id=t.id AND b.state<>'resolved') AS open_batch_count FROM public.tb_ai_mail_threads t"&where&" ORDER BY CASE t.priority WHEN 'critical' THEN 0 WHEN 'high' THEN 1 WHEN 'normal' THEN 2 WHEN 'informational' THEN 3 ELSE 4 END,t.deadline_at NULLS LAST,t.last_message_at ASC NULLS LAST,t.id LIMIT 30 OFFSET :offset) v",p));
     return {items=rows,total=count};
 }
 function mailUpdate(required string action,required numeric id,required numeric version,required numeric actor,required string actorName) {
@@ -108,7 +109,7 @@ function mailUpdate(required string action,required numeric id,required numeric 
     return {message="Conversa atualizada."};
 }
 function mailSafeError(required any error) {
-    return listFindNoCase("AIMail.Validation,AIMail.Provider,Agenda.Validation,AIMail.Conflict",arguments.error.type)?left(arguments.error.message,250):"Falha temporária no processamento. Consulte o histórico operacional e tente novamente.";
+    return listFindNoCase("AIMail.Validation,AIMail.Provider,AIMail.Limit,Agenda.Validation,AIMail.Conflict",arguments.error.type)?left(arguments.error.message,250):"Falha temporária no processamento. Consulte o histórico operacional e tente novamente.";
 }
 function mailOAuth() {
     var c=agendaConfig(); var state=agendaRandom(); var verifier=agendaRandom()&agendaRandom();
