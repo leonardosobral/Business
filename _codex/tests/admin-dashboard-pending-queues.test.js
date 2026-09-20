@@ -49,6 +49,7 @@ test('uses the same actionable definitions as each source workspace', () => {
   assert.match(dashboard, /FROM public\.tb_mailing/);
   assert.match(dashboard, /FROM public\.tb_vicky_notificacao_fila/);
   assert.match(dashboard, /FROM public\.tb_vicky_documento/);
+  assert.match(dashboard, /FROM public\.tb_ai_mail_threads[\s\S]*analyzed_at IS NOT NULL[\s\S]*last_inbound_ms > \(SELECT monitor_since_ms FROM public\.tb_ai_mail_config WHERE id=1\)/);
 });
 
 test('counts only operational exceptions that no longer look transient', () => {

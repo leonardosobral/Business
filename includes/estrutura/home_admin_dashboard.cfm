@@ -909,6 +909,8 @@
                (SELECT count(*) FROM public.tb_ai_mail_queue WHERE last_error<>'')::int AS errors,
                (SELECT enabled FROM public.tb_ai_mail_config WHERE id=1) AS enabled
         FROM public.tb_ai_mail_threads
+        WHERE analyzed_at IS NOT NULL
+           OR last_inbound_ms > (SELECT monitor_since_ms FROM public.tb_ai_mail_config WHERE id=1)
     </cfquery>
     <cfset VARIABLES.businessAdminAiMailCount=val(qBusinessAdminAiMail.total)/>
     <cfset VARIABLES.businessAdminAiMailLoaded=true/>
