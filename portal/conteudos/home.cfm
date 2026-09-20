@@ -123,6 +123,11 @@
     align-items: end;
   }
 
+  .content-summary-batch {
+    border: 1px solid rgba(255, 193, 7, 0.35);
+    background: rgba(255, 193, 7, 0.06);
+  }
+
 </style>
 
 <section>
@@ -227,6 +232,34 @@
                 </a>
               </div>
             </form>
+
+            <cfif VARIABLES.contentSummaryReady AND qContentSummaryStats.recordcount>
+              <cfset VARIABLES.contentSummaryFailed = val(qContentSummaryStats.total_failed[1]) />
+              <cfset VARIABLES.contentSummaryPending = val(qContentSummaryStats.total_pending[1]) />
+              <cfset VARIABLES.contentSummaryProcessing = val(qContentSummaryStats.total_processing[1]) />
+              <div class="content-summary-batch rounded-3 p-3 mb-4 d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="text-warning fs-4"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                  <div>
+                    <div class="fw-semibold">Fila de resumos por IA</div>
+                    <div class="small text-muted">
+                      <cfoutput>
+                        #LSNumberFormat(VARIABLES.contentSummaryFailed)# com falha
+                        · #LSNumberFormat(VARIABLES.contentSummaryPending)# aguardando
+                        · #LSNumberFormat(VARIABLES.contentSummaryProcessing)# em processamento
+                      </cfoutput>
+                    </div>
+                    <div class="small text-muted mt-1">O processamento ocorre gradualmente pelo monitor automático, sem bloquear esta página.</div>
+                  </div>
+                </div>
+                <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" data-summary-batch-form data-failed-count="<cfoutput>#VARIABLES.contentSummaryFailed#</cfoutput>">
+                  <input type="hidden" name="content_summary_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
+                  <button class="btn btn-warning text-nowrap" type="submit" name="requeue_failed_summaries" value="1" data-summary-batch-action <cfif VARIABLES.contentSummaryFailed LTE 0>disabled</cfif>>
+                    <i class="fa-solid fa-rotate me-1"></i>Reprocessar falhas em lote
+                  </button>
+                </form>
+              </div>
+            </cfif>
 
             <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" id="contentBulkForm">
               <input type="hidden" name="content_bulk_action" value="apply_status"/>
@@ -451,6 +484,18 @@
     const bulkCheckboxes = Array.from(document.querySelectorAll('.content-bulk-checkbox'));
     const bulkSubmit = document.getElementById('contentBulkSubmit');
     const bulkCount = document.getElementById('contentBulkCount');
+    const summaryBatchForm = document.querySelector('[data-summary-batch-form]');
+
+    if (summaryBatchForm) {
+      summaryBatchForm.addEventListener('submit', function () {
+        const batchButton = summaryBatchForm.querySelector('[data-summary-batch-action]');
+        if (batchButton) {
+          batchButton.setAttribute('aria-disabled', 'true');
+          batchButton.classList.add('disabled');
+          batchButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Enfileirando…';
+        }
+      });
+    }
 
     function updateBulkSelection() {
       const selectedCount = bulkCheckboxes.filter(function (checkbox) {

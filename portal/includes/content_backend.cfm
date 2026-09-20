@@ -149,6 +149,49 @@ function contentSummaryProcess(required numeric contentId) {
         return {success=false,message="Falha ao consultar o processador de resumos: " & left(trim(error.message ?: "erro desconhecido"),350)};
     }
 }
+
+function contentSummaryRequeueFailed() {
+    var secret = "";
+    var endpoint = "";
+    var httpResult = {};
+    var statusCode = 0;
+    var payload = {};
+
+    if (structKeyExists(APPLICATION, "cronJobs")
+        AND isStruct(APPLICATION.cronJobs)
+        AND structKeyExists(APPLICATION.cronJobs, "secrets")
+        AND isStruct(APPLICATION.cronJobs.secrets)
+        AND structKeyExists(APPLICATION.cronJobs.secrets, "conteudo_internal")) {
+        secret = trim(APPLICATION.cronJobs.secrets.conteudo_internal & "");
+    }
+    if (!len(secret)) return {success=false,message="A credencial interna do processador de resumos não está configurada.",requeued=0};
+
+    endpoint = reReplace(VARIABLES.contentAdminBaseUrl, "/+$", "", "all")
+        & "/api/admin/jobs/article_summary.cfm?action=requeue_failed&limit=500";
+    try {
+        cfhttp(url=endpoint,method="post",result="httpResult",timeout=30,throwOnError=false,redirect=false) {
+            cfhttpparam(type="header",name="Content-Type",value="application/json; charset=utf-8");
+            cfhttpparam(type="header",name="X-API-Key",value=secret);
+            cfhttpparam(type="body",value="{}");
+        }
+        statusCode = val(listFirst(httpResult.statusCode ?: "0", " "));
+        if (statusCode LT 200 OR statusCode GTE 300 OR !isJSON(httpResult.fileContent ?: "")) {
+            return {success=false,message="O processador de resumos não respondeu com sucesso (HTTP " & statusCode & ").",requeued=0};
+        }
+        payload = deserializeJSON(httpResult.fileContent);
+        if (!(payload.ok ?: false)) return {success=false,message=left(trim(payload.message ?: payload.error ?: "Resposta inválida do processador de resumos."),500),requeued=0};
+        var requeued = max(0,int(payload.requeued ?: 0));
+        return {
+            success=true,
+            requeued=requeued,
+            message=requeued GT 0
+                ? requeued & (requeued EQ 1 ? " resumo foi enfileirado" : " resumos foram enfileirados") & " para reprocessamento gradual."
+                : "Não há resumos com falha aguardando reprocessamento."
+        };
+    } catch(any error) {
+        return {success=false,message="Falha ao enfileirar os resumos: " & left(trim(error.message ?: "erro desconhecido"),350),requeued=0};
+    }
+}
 </cfscript>
 
 <cfif isDefined("FORM.process_summary_id")
@@ -164,6 +207,22 @@ function contentSummaryProcess(required numeric contentId) {
         <cfset VARIABLES.contentSummaryResult.message = "Conteúdo inválido."/>
     <cfelse>
         <cfset VARIABLES.contentSummaryResult = contentSummaryProcess(int(FORM.process_summary_id))/>
+    </cfif>
+    <cfset VARIABLES.contentSummaryResultType = VARIABLES.contentSummaryResult.success ? "success" : "warning"/>
+    <cflocation addtoken="false" url="#VARIABLES.contentReturnUrl#&summary_result=#VARIABLES.contentSummaryResultType#&summary_notice=#urlEncodedFormat(VARIABLES.contentSummaryResult.message)#"/>
+</cfif>
+
+<cfif isDefined("FORM.requeue_failed_summaries")
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin>
+    <cfset VARIABLES.contentSummaryResult = {success=false,message="Solicitação inválida."}/>
+    <cfif compare(trim(FORM.content_summary_csrf ?: ""), VARIABLES.contentSummaryCsrf) NEQ 0>
+        <cfset VARIABLES.contentSummaryResult.message = "A sessão expirou. Atualize a página e tente novamente."/>
+    <cfelseif NOT VARIABLES.contentSummaryReady>
+        <cfset VARIABLES.contentSummaryResult.message = "O processador de resumos ainda não está instalado."/>
+    <cfelse>
+        <cfset VARIABLES.contentSummaryResult = contentSummaryRequeueFailed()/>
     </cfif>
     <cfset VARIABLES.contentSummaryResultType = VARIABLES.contentSummaryResult.success ? "success" : "warning"/>
     <cflocation addtoken="false" url="#VARIABLES.contentReturnUrl#&summary_result=#VARIABLES.contentSummaryResultType#&summary_notice=#urlEncodedFormat(VARIABLES.contentSummaryResult.message)#"/>
@@ -439,6 +498,31 @@ function contentSummaryProcess(required numeric contentId) {
         count(*) FILTER (WHERE <cfif VARIABLES.contentHasIsFeatured>is_featured = true<cfelse>false</cfif>) AS total_destaques
     FROM news.tb_content
 </cfquery>
+
+<cfset qContentSummaryStats = queryNew("total_failed,total_pending,total_processing")/>
+<cfif VARIABLES.contentSummaryReady>
+  <cfquery name="qContentSummaryStats">
+      WITH latest_jobs AS (
+          SELECT DISTINCT ON (j.content_id)
+                 j.content_id,
+                 j.status
+          FROM news.tb_article_summary_jobs j
+          JOIN news.tb_content cnt ON cnt.id = j.content_id
+          JOIN news.tb_content_types typ ON typ.id = cnt.content_type_id
+          WHERE CASE
+                  WHEN typ.rr_publication_mode = 'licensed_full'
+                   AND typ.rr_license_expires_at IS NOT NULL
+                   AND typ.rr_license_expires_at < CURRENT_DATE THEN 'summary_link'
+                  ELSE typ.rr_publication_mode
+                END = 'summary_link'
+          ORDER BY j.content_id, j.updated_at DESC, j.id DESC
+      )
+      SELECT count(*) FILTER (WHERE status = 'failed') AS total_failed,
+             count(*) FILTER (WHERE status = 'pending') AS total_pending,
+             count(*) FILTER (WHERE status = 'processing') AS total_processing
+      FROM latest_jobs
+  </cfquery>
+</cfif>
 
 <cfquery name="qContents">
     SELECT cnt.id,
