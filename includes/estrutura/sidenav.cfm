@@ -491,6 +491,12 @@
             </li>
 
             <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/ponto/">link-warning</cfif>" href="/administracao/ponto/" data-menu-aliases="ponto horas trabalho jornada viagem">
+                    <i class="fa-solid fa-clock fa-fw me-3"></i><span>Meu ponto</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agenda/">link-warning</cfif>" href="/administracao/agenda/" data-menu-aliases="agenda google calendário compromissos reuniões">
                     <i class="fa-regular fa-calendar fa-fw me-3"></i><span>Agenda</span>
                 </a>
