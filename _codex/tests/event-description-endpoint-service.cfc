@@ -7,6 +7,8 @@ component output=false {
         }
         if (REQUEST.fixtureProviderMode EQ 'reject' OR (REQUEST.fixtureProviderMode EQ 'reject-en' AND arguments.language EQ 'en')) throw(type='EventDescriptionRewrite.Validation', message='Fixture translation rejected');
         if (REQUEST.fixtureProviderMode EQ 'provider-error') throw(type='EventDescriptionRewrite.Provider', message='DO_NOT_EXPOSE_PROVIDER_SECRET');
+        if (REQUEST.fixtureProviderMode EQ 'provider-quota') throw(type='EventDescriptionRewrite.ProviderQuota', message='DO_NOT_EXPOSE_PROVIDER_SECRET', errorcode='provider_quota_exhausted');
+        if (REQUEST.fixtureProviderMode EQ 'provider-unavailable') throw(type='EventDescriptionRewrite.ProviderUnavailable', message='DO_NOT_EXPOSE_PROVIDER_SECRET', errorcode='provider_rate_limited');
         if (REQUEST.fixtureProviderMode EQ 'unexpected-error') throw(type='FixtureUnexpected', message='DO_NOT_EXPOSE_SOURCE_OR_SQL');
         if (REQUEST.fixtureProviderMode EQ 'changed-source') {
             queryExecute("UPDATE public.tb_evento_corridas SET descricao = descricao || ' Fonte alterada.' WHERE id_evento=1", [], {datasource='runner_dba'});
@@ -24,6 +26,8 @@ component output=false {
         REQUEST.fixtureProviderCalls++;
         if (REQUEST.fixtureProviderMode EQ 'reject') throw(type='EventDescriptionRewrite.Validation', message='Fixture source rejected');
         if (REQUEST.fixtureProviderMode EQ 'provider-error') throw(type='EventDescriptionRewrite.Provider', message='DO_NOT_EXPOSE_PROVIDER_SECRET');
+        if (REQUEST.fixtureProviderMode EQ 'provider-quota') throw(type='EventDescriptionRewrite.ProviderQuota', message='DO_NOT_EXPOSE_PROVIDER_SECRET', errorcode='provider_quota_exhausted');
+        if (REQUEST.fixtureProviderMode EQ 'provider-unavailable') throw(type='EventDescriptionRewrite.ProviderUnavailable', message='DO_NOT_EXPOSE_PROVIDER_SECRET', errorcode='provider_rate_limited');
         if (REQUEST.fixtureProviderMode EQ 'unexpected-error') throw(type='FixtureUnexpected', message='DO_NOT_EXPOSE_SOURCE_OR_SQL');
         if (REQUEST.fixtureProviderMode EQ 'changed-source') {
             queryExecute("UPDATE public.tb_evento_corridas SET descricao_original = descricao_original || ' Fonte alterada.' WHERE id_evento=1", [], {datasource='runner_dba'});

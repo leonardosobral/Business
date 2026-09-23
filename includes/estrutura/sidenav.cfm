@@ -220,6 +220,8 @@
 <cfset VARIABLES.businessContentCurationPendingTotal = 0/>
 <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
 <cfset VARIABLES.businessPendingTasksTotal = 0/>
+<cfset VARIABLES.businessIsMedicalWorkspace = isDefined("VARIABLES.businessCurrentAccountIsMedical")
+    AND VARIABLES.businessCurrentAccountIsMedical/>
 <cfset VARIABLES.businessIsPendingWorkspace = isDefined("VARIABLES.businessPendingWorkspace")
     AND VARIABLES.businessPendingWorkspace/>
 <cfif isDefined("REQUEST.businessIdentity.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
@@ -530,6 +532,12 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/" data-menu-aliases="rotas mapas trajetos">
                     <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/" data-menu-aliases="saúde saude médico médica atendimento triagem ocorrências">
+                    <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
                 </a>
             </li>
 
@@ -894,6 +902,16 @@
                 </a>
             </li>
         <cfelse>
+            <cfif VARIABLES.businessIsMedicalWorkspace>
+                <li class="sidenav-item pt-3">
+                    <span class="sidenav-subheading text-muted text-uppercase fw-bold">Central médica</span>
+                </li>
+                <li class="sidenav-item business-sidenav-fixed-item">
+                    <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/">
+                        <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
+                    </a>
+                </li>
+            <cfelse>
             <li class="sidenav-item business-sidenav-fixed-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/">link-warning</cfif>" href="/">
                     <i class="fa-solid fa-house fa-fw me-3"></i><span>Início</span>
@@ -915,6 +933,11 @@
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/">
                         <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/" data-menu-aliases="saúde saude médico médica central atendimento triagem ocorrências">
+                        <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
                     </a>
                 </li>
             </cfif>
@@ -945,6 +968,24 @@
                 <li class="sidenav-item">
                     <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/">
                         <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanManageCatarinenseChallenges>
+                <li class="sidenav-item pt-3">
+                    <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
+                </li>
+
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "catarinensecorridaderua">link-warning</cfif>" href="/desafios/catarinensecorridaderua/" data-menu-aliases="catarinense corrida rua campeonato ranking">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Catarinense de Rua</span>
+                    </a>
+                </li>
+
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "catarinensetrailrun">link-warning</cfif>" href="/desafios/catarinensetrailrun/" data-menu-aliases="catarinense trail run campeonato ranking">
+                        <i class="fa-solid fa-mountain-sun fa-fw me-3"></i><span>Catarinense Trail Run</span>
                     </a>
                 </li>
             </cfif>
@@ -1017,6 +1058,7 @@
                     <i class="fa-solid fa-life-ring fa-fw me-3"></i><span>Suporte</span>
                 </a>
             </li>
+            </cfif>
         </cfif>
 
         </cfif>

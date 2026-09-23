@@ -11,13 +11,15 @@
 <cfset VARIABLES.subscriptionRole = isDefined("VARIABLES.businessCurrentAccountRole") ? uCase(trim(VARIABLES.businessCurrentAccountRole)) : ""/>
 <cfset VARIABLES.subscriptionRoleLabel = "Acesso Business"/>
 <cfif VARIABLES.subscriptionRole EQ "OWNER">
-    <cfset VARIABLES.subscriptionRoleLabel = "Proprietário"/>
+    <cfset VARIABLES.subscriptionRoleLabel = "Dono"/>
 <cfelseif VARIABLES.subscriptionRole EQ "ADMIN">
     <cfset VARIABLES.subscriptionRoleLabel = "Administrador"/>
 <cfelseif VARIABLES.subscriptionRole EQ "OPERADOR">
     <cfset VARIABLES.subscriptionRoleLabel = "Operador"/>
+<cfelseif VARIABLES.subscriptionRole EQ "MEDICO">
+    <cfset VARIABLES.subscriptionRoleLabel = "Médico"/>
 <cfelseif VARIABLES.subscriptionRole EQ "VISUALIZADOR">
-    <cfset VARIABLES.subscriptionRoleLabel = "Visualizador"/>
+    <cfset VARIABLES.subscriptionRoleLabel = "Auditor"/>
 </cfif>
 
 <!--- CONTEUDO --->

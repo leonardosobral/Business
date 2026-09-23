@@ -8,6 +8,7 @@ function eventDescriptionQueueSql() {
             CAST(0 AS bigint) AS cached_id, '' AS cached_html, '' AS cached_model,
             CASE WHEN pt_history.id IS NULL THEN 'ready'
                 WHEN pt_history.status='rejected' THEN 'rejected'
+                WHEN pt_history.status='error' AND pt_history.error_code='provider_error' THEN 'ready'
                 WHEN pt_history.status='error' THEN 'errors_exhausted'
                 WHEN pt_history.status='running' THEN 'running'
                 ELSE 'already_processed' END AS queue_status
@@ -20,7 +21,8 @@ function eventDescriptionQueueSql() {
         SELECT evt.id_evento, evt.descricao AS source_text, lang.language, lang.language_rank,
             CASE WHEN COALESCE(evt.data_final,evt.data_inicial) >= CURRENT_DATE THEN 0 ELSE 1 END AS date_rank,
             COALESCE(lang.target_text,'') AS target_text, lang.target_text IS NULL AS target_is_null,
-            COALESCE(history.attempt_count,0) AS attempt_count,
+            CASE WHEN history.status='error' AND history.error_code='provider_error'
+                THEN 0 ELSE COALESCE(history.attempt_count,0) END AS attempt_count,
             COALESCE(cached.id,0) AS cached_id, COALESCE(cached.description_after,'') AS cached_html, COALESCE(cached.model,'') AS cached_model,
             CASE WHEN EXISTS (
                 SELECT 1 FROM public.tb_evento_descricao_translations rejected
@@ -29,6 +31,7 @@ function eventDescriptionQueueSql() {
                 ) THEN 'rejected'
                 WHEN cached.id IS NOT NULL THEN 'ready'
                 WHEN history.status='running' THEN 'running'
+                WHEN history.status='error' AND history.error_code='provider_error' THEN 'ready'
                 WHEN history.status='error' AND history.attempt_count >= 3 THEN 'errors_exhausted'
                 WHEN history.status='error' AND (history.next_retry_at IS NULL OR history.next_retry_at > now()) THEN 'waiting_retry'
                 ELSE 'ready' END AS queue_status
@@ -41,7 +44,7 @@ function eventDescriptionQueueSql() {
             ORDER BY audit.id DESC LIMIT 1
         ) owner ON true
         LEFT JOIN LATERAL (
-            SELECT audit.status, audit.attempt_count, audit.next_retry_at
+            SELECT audit.status, audit.error_code, audit.attempt_count, audit.next_retry_at
             FROM public.tb_evento_descricao_translations audit
             WHERE audit.id_evento=evt.id_evento AND audit.language=lang.language
               AND audit.source_hash=md5(evt.descricao) AND audit.source_text=evt.descricao

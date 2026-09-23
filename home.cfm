@@ -593,6 +593,12 @@
         AND NOT find("\", URL.redirect & "")
         AND NOT find(chr(10), URL.redirect & "")
         AND NOT find(chr(13), URL.redirect & "")/>
+    <cfset VARIABLES.loginHealthRedirect = isDefined("URL.redirect")
+        AND left(trim(URL.redirect & ""), len("/saude-eventos/central/")) EQ "/saude-eventos/central/"
+        AND left(trim(URL.redirect & ""), 2) NEQ "//"
+        AND NOT find("\", URL.redirect & "")
+        AND NOT find(chr(10), URL.redirect & "")
+        AND NOT find(chr(13), URL.redirect & "")/>
     <cfif VARIABLES.loginResearchRedirect>
         <cfset SESSION.researchLoginRedirect = trim(URL.redirect & "")/>
     </cfif>
@@ -607,6 +613,10 @@
                 <span class="login-kicker">Conta Road Runners</span>
                 <h2 id="login-title">Entre para continuar a entrevista.</h2>
                 <p>Use sua conta Google. Depois do login, você voltará automaticamente para a pesquisa.</p>
+            <cfelseif VARIABLES.loginHealthRedirect>
+                <span class="login-kicker">Central de Saúde</span>
+                <h2 id="login-title">Entre para acessar a operação médica.</h2>
+                <p>Depois do login, você voltará a esta Central. Se ainda não possuir permissão, poderá solicitar o perfil Médico.</p>
             <cfelse>
                 <span class="login-kicker">Acesso Business</span>
                 <h2 id="login-title">Bem-vindo de volta.</h2>
@@ -635,7 +645,7 @@
                 </div>
             </div>
 
-            <cfif NOT VARIABLES.loginResearchRedirect>
+            <cfif NOT VARIABLES.loginResearchRedirect AND NOT VARIABLES.loginHealthRedirect>
                 <div class="login-divider"><span>ou</span></div>
                 <p class="login-new">Sua empresa ainda não está no Run Pro?</p>
                 <a class="button button-primary" href="/cadastro/">Solicitar acesso gratuito</a>

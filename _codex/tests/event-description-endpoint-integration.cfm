@@ -48,8 +48,28 @@ check(result.payload.selected EQ 0 AND REQUEST.fixtureProviderCalls EQ 1, 'Rejec
 resetFixture();
 REQUEST.fixtureProviderMode = 'provider-error';
 result = invokeFixture();
-check(result.code EQ 502 AND fixtureSql('SELECT status FROM public.tb_evento_descricao_rewrites').status[1] EQ 'error', 'Provider error persists audit and returns failure');
+check(result.code EQ 422 AND fixtureSql('SELECT status FROM public.tb_evento_descricao_rewrites').status[1] EQ 'error', 'Invalid provider output persists audit and returns a source-level failure');
 check(!find('DO_NOT_EXPOSE', serializeJSON(result)) AND !find('DO_NOT_EXPOSE', serializeJSON(fixtureSql('SELECT * FROM public.tb_evento_descricao_rewrites'))), 'Provider errors stay sanitized');
+
+resetFixture();
+REQUEST.fixtureProviderMode = 'provider-quota';
+result = invokeFixture();
+check(result.code EQ 424 AND result.payload.stopReason EQ 'provider_quota_exhausted' AND result.payload.status EQ 'blocked', 'Exhausted provider credit is reported as a dependency block');
+check(fixtureSql('SELECT * FROM public.tb_evento_descricao_rewrites').recordCount EQ 0, 'Quota failures keep the source retryable without consuming an audit attempt');
+check(!find('DO_NOT_EXPOSE', serializeJSON(result)), 'Quota response stays sanitized');
+
+resetFixture();
+fixtureSql("INSERT INTO public.tb_evento_descricao_rewrites(id_evento,source_hash,source_text,status,model,error_code,finished_at) VALUES (1,md5(:source),:source,'error','gpt-4.1-mini','provider_error',now())", {source={value=fixtureSource,cfsqltype='cf_sql_longvarchar'}});
+result = invokeFixture();
+check(result.code EQ 200 AND result.payload.updated EQ 1, 'Legacy generic provider failures are retried after the diagnosis fix');
+check(fixtureSql("SELECT count(*) AS total FROM public.tb_evento_descricao_rewrites WHERE id_evento=1").total[1] EQ 1, 'Portuguese legacy retry reuses its unique audit row');
+check(fixtureSql("SELECT status FROM public.tb_evento_descricao_rewrites WHERE id_evento=1").status[1] EQ 'updated', 'Portuguese legacy retry records the recovered state');
+
+resetFixture();
+REQUEST.fixtureProviderMode = 'provider-unavailable';
+result = invokeFixture();
+check(result.code EQ 503 AND result.payload.stopReason EQ 'provider_rate_limited' AND result.payload.status EQ 'deferred', 'Temporary provider failures defer the source');
+check(fixtureSql('SELECT * FROM public.tb_evento_descricao_rewrites').recordCount EQ 0, 'Temporary provider failures keep the source retryable');
 
 resetFixture();
 REQUEST.fixtureProviderMode = 'changed-source';

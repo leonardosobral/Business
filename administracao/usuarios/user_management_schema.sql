@@ -109,6 +109,7 @@ SECURITY DEFINER
 SET search_path = pg_catalog, public
 AS $$
 DECLARE
+    v_source_user public.tb_usuarios%ROWTYPE;
     v_source_page record;
     v_keep_page integer;
     v_reference record;
@@ -133,49 +134,50 @@ BEGIN
         RAISE EXCEPTION 'Uma das contas selecionadas não existe mais.';
     END IF;
 
+    -- Preserva os dados antigos antes de liberar identificadores da origem. Essas
+    -- etapas precisam ser comandos separados: em um CTE modificador o PostgreSQL
+    -- ainda pode enxergar o username antigo ao validar a unicidade do destino.
+    SELECT usr.* INTO STRICT v_source_user
+      FROM public.tb_usuarios usr
+     WHERE usr.id = p_source_user;
+
+    UPDATE public.tb_usuarios
+       SET username = NULL,
+           strava_id = NULL
+     WHERE id = p_source_user;
+
     -- A conta mantida tem prioridade; lacunas cadastrais são preenchidas pela origem.
-    WITH source_values AS (
-        SELECT * FROM public.tb_usuarios WHERE id = p_source_user
-    ), source AS (
-        -- Libera identificadores únicos, preservando os valores antigos no CTE.
-        UPDATE public.tb_usuarios usr
-           SET username = NULL, strava_id = NULL
-          FROM source_values old
-         WHERE usr.id = old.id
-         RETURNING old.*
-    )
     UPDATE public.tb_usuarios keep
-       SET name = coalesce(nullif(btrim(keep.name), ''), source.name),
-           username = coalesce(nullif(btrim(keep.username), ''), source.username),
-           aka = coalesce(nullif(btrim(keep.aka), ''), source.aka),
-           genero = coalesce(nullif(btrim(keep.genero), ''), source.genero),
-           pais = coalesce(nullif(btrim(keep.pais), ''), source.pais),
-           estado = coalesce(nullif(btrim(keep.estado), ''), source.estado),
-           cidade = coalesce(nullif(btrim(keep.cidade), ''), source.cidade),
-           cep = coalesce(nullif(btrim(keep.cep), ''), source.cep),
-           endereco = coalesce(nullif(btrim(keep.endereco), ''), source.endereco),
-           data_nascimento = coalesce(keep.data_nascimento, source.data_nascimento),
-           ano_nascimento = coalesce(keep.ano_nascimento, source.ano_nascimento),
-           cbat = coalesce(nullif(btrim(keep.cbat), ''), source.cbat),
-           assessoria = coalesce(nullif(btrim(keep.assessoria), ''), source.assessoria),
-           ddi_usuario = coalesce(nullif(btrim(keep.ddi_usuario), ''), source.ddi_usuario),
-           ddd_usuario = coalesce(nullif(btrim(keep.ddd_usuario), ''), source.ddd_usuario),
-           telefone_usuario = coalesce(nullif(btrim(keep.telefone_usuario), ''), source.telefone_usuario),
-           imagem_usuario = coalesce(nullif(btrim(keep.imagem_usuario), ''), source.imagem_usuario),
-           strava_id = coalesce(keep.strava_id, source.strava_id),
-           strava_profile = coalesce(nullif(btrim(keep.strava_profile), ''), source.strava_profile),
-           tag_usuario = coalesce(nullif(btrim(keep.tag_usuario), ''), source.tag_usuario),
-           url_usuario = coalesce(nullif(btrim(keep.url_usuario), ''), source.url_usuario),
-           fonte_lead = coalesce(nullif(btrim(keep.fonte_lead), ''), source.fonte_lead),
-           manychat_subscriber_id = coalesce(keep.manychat_subscriber_id, source.manychat_subscriber_id),
-           is_admin = coalesce(keep.is_admin, false) OR coalesce(source.is_admin, false),
-           is_dev = coalesce(keep.is_dev, false) OR coalesce(source.is_dev, false),
-           is_partner = coalesce(keep.is_partner, false) OR coalesce(source.is_partner, false),
-           is_email_verified = coalesce(keep.is_email_verified, false) OR coalesce(source.is_email_verified, false),
-           optin_usuario = coalesce(keep.optin_usuario, false) OR coalesce(source.optin_usuario, false),
+       SET name = coalesce(nullif(btrim(keep.name), ''), v_source_user.name),
+           username = coalesce(nullif(btrim(keep.username), ''), v_source_user.username),
+           aka = coalesce(nullif(btrim(keep.aka), ''), v_source_user.aka),
+           genero = coalesce(nullif(btrim(keep.genero), ''), v_source_user.genero),
+           pais = coalesce(nullif(btrim(keep.pais), ''), v_source_user.pais),
+           estado = coalesce(nullif(btrim(keep.estado), ''), v_source_user.estado),
+           cidade = coalesce(nullif(btrim(keep.cidade), ''), v_source_user.cidade),
+           cep = coalesce(nullif(btrim(keep.cep), ''), v_source_user.cep),
+           endereco = coalesce(nullif(btrim(keep.endereco), ''), v_source_user.endereco),
+           data_nascimento = coalesce(keep.data_nascimento, v_source_user.data_nascimento),
+           ano_nascimento = coalesce(keep.ano_nascimento, v_source_user.ano_nascimento),
+           cbat = coalesce(nullif(btrim(keep.cbat), ''), v_source_user.cbat),
+           assessoria = coalesce(nullif(btrim(keep.assessoria), ''), v_source_user.assessoria),
+           ddi_usuario = coalesce(nullif(btrim(keep.ddi_usuario), ''), v_source_user.ddi_usuario),
+           ddd_usuario = coalesce(nullif(btrim(keep.ddd_usuario), ''), v_source_user.ddd_usuario),
+           telefone_usuario = coalesce(nullif(btrim(keep.telefone_usuario), ''), v_source_user.telefone_usuario),
+           imagem_usuario = coalesce(nullif(btrim(keep.imagem_usuario), ''), v_source_user.imagem_usuario),
+           strava_id = coalesce(keep.strava_id, v_source_user.strava_id),
+           strava_profile = coalesce(nullif(btrim(keep.strava_profile), ''), v_source_user.strava_profile),
+           tag_usuario = coalesce(nullif(btrim(keep.tag_usuario), ''), v_source_user.tag_usuario),
+           url_usuario = coalesce(nullif(btrim(keep.url_usuario), ''), v_source_user.url_usuario),
+           fonte_lead = coalesce(nullif(btrim(keep.fonte_lead), ''), v_source_user.fonte_lead),
+           manychat_subscriber_id = coalesce(keep.manychat_subscriber_id, v_source_user.manychat_subscriber_id),
+           is_admin = coalesce(keep.is_admin, false) OR coalesce(v_source_user.is_admin, false),
+           is_dev = coalesce(keep.is_dev, false) OR coalesce(v_source_user.is_dev, false),
+           is_partner = coalesce(keep.is_partner, false) OR coalesce(v_source_user.is_partner, false),
+           is_email_verified = coalesce(keep.is_email_verified, false) OR coalesce(v_source_user.is_email_verified, false),
+           optin_usuario = coalesce(keep.optin_usuario, false) OR coalesce(v_source_user.optin_usuario, false),
            data_alteracao = now()
-      FROM public.tb_usuarios source
-     WHERE keep.id = p_keep_user AND source.id = p_source_user;
+     WHERE keep.id = p_keep_user;
 
     -- Perfis do mesmo tipo são consolidados. Tipos que só existem na origem são transferidos.
     FOR v_source_page IN

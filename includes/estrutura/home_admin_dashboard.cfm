@@ -21,6 +21,7 @@
 <cfset VARIABLES.businessAdminHomeHasChallengeTable = false/>
 <cfset VARIABLES.businessAdminHomeHasResultImportTable = false/>
 <cfset VARIABLES.businessAdminHomeHasAthleteReviewTable = false/>
+<cfset VARIABLES.businessAdminHomeHasMedicalAccessTable = false/>
 <cfset VARIABLES.businessAdminHomeHasCrmPendingTable = false/>
 <cfset VARIABLES.businessAdminHomeHasStravaMigrationTable = false/>
 <cfset VARIABLES.businessAdminHomeHasPushQueueTable = false/>
@@ -38,6 +39,7 @@
 <cfset VARIABLES.businessAdminHomeResultImportFailureTotal = 0/>
 <cfset VARIABLES.businessAdminHomeResultImportDelayedTotal = 0/>
 <cfset VARIABLES.businessAdminHomeAthleteReviewPendingTotal = 0/>
+<cfset VARIABLES.businessAdminHomeMedicalAccessPendingTotal = 0/>
 <cfset VARIABLES.businessAdminHomeCrmPendingTotal = 0/>
 <cfset VARIABLES.businessAdminHomeStravaPendingTotal = 0/>
 <cfset VARIABLES.businessAdminHomeStravaReviewTotal = 0/>
@@ -83,6 +85,7 @@
 <cfset VARIABLES.businessAdminHomeChallengeLoaded = false/>
 <cfset VARIABLES.businessAdminHomeResultImportLoaded = false/>
 <cfset VARIABLES.businessAdminHomeAthleteReviewLoaded = false/>
+<cfset VARIABLES.businessAdminHomeMedicalAccessLoaded = false/>
 <cfset VARIABLES.businessAdminHomeCrmPendingLoaded = false/>
 <cfset VARIABLES.businessAdminHomeStravaMigrationLoaded = false/>
 <cfset VARIABLES.businessAdminHomePushQueueLoaded = false/>
@@ -123,6 +126,7 @@
               <cfqueryparam cfsqltype="cf_sql_varchar" value="desafios"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_resultados_importacoes"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_atleta_verificacao_solicitacao"/>,
+              <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_evento_saude_acesso_solicitacoes"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_percurso_migracoes_strava"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_push_delivery_queue"/>,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_mailing"/>
@@ -165,6 +169,7 @@
     <cfset VARIABLES.businessAdminHomeHasChallengeTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "desafios")/>
     <cfset VARIABLES.businessAdminHomeHasResultImportTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_resultados_importacoes")/>
     <cfset VARIABLES.businessAdminHomeHasAthleteReviewTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_atleta_verificacao_solicitacao")/>
+    <cfset VARIABLES.businessAdminHomeHasMedicalAccessTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_evento_saude_acesso_solicitacoes")/>
     <cfset VARIABLES.businessAdminHomeHasCrmPendingTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_crm_participacoes")/>
     <cfset VARIABLES.businessAdminHomeHasStravaMigrationTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_percurso_migracoes_strava")/>
     <cfset VARIABLES.businessAdminHomeHasPushQueueTable = ListFindNoCase(VARIABLES.businessAdminHomeTableNames, "tb_push_delivery_queue")/>
@@ -600,6 +605,21 @@
         </cftry>
     </cfif>
 
+    <cfif VARIABLES.businessAdminHomeHasMedicalAccessTable>
+        <cftry>
+            <cfquery name="qBusinessAdminHomeMedicalAccessPending" datasource="runnerhub">
+                SELECT count(*)::integer AS total
+                FROM public.tb_evento_saude_acesso_solicitacoes
+                WHERE status = 'PENDENTE'
+            </cfquery>
+            <cfset VARIABLES.businessAdminHomeMedicalAccessPendingTotal = val(qBusinessAdminHomeMedicalAccessPending.total)/>
+            <cfset VARIABLES.businessAdminHomeMedicalAccessLoaded = true/>
+            <cfcatch type="any">
+                <cfset VARIABLES.businessAdminHomeMedicalAccessPendingTotal = 0/>
+            </cfcatch>
+        </cftry>
+    </cfif>
+
     <cfif VARIABLES.businessAdminHomeHasLogTable>
         <cftry>
             <cfquery name="qBusinessAdminHomePortalHealth">
@@ -993,6 +1013,9 @@
     }
     if (VARIABLES.businessAdminHomeHasAthleteReviewTable) {
         arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Aprovação", label="Atletas verificados", description="Solicitações de selo aguardando decisão", value=VARIABLES.businessAdminHomeAthleteReviewPendingTotal, loaded=VARIABLES.businessAdminHomeAthleteReviewLoaded, href="/portal/verificados/?status=pendentes", icon="fa-circle-check"});
+    }
+    if (VARIABLES.businessAdminHomeHasMedicalAccessTable) {
+        arrayAppend(VARIABLES.businessAdminHomeQueue, {kind="Aprovação", label="Acesso médico", description="Pedidos para operar Centrais de Saúde", value=VARIABLES.businessAdminHomeMedicalAccessPendingTotal, loaded=VARIABLES.businessAdminHomeMedicalAccessLoaded, href="/administracao/contas/?tab=solicitacoes-saude##solicitacoes-saude", icon="fa-user-doctor"});
     }
     VARIABLES.businessAdminHomeDecisionLoaded = true;
     VARIABLES.businessAdminHomeDecisionTotal = 0;

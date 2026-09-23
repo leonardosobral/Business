@@ -8,8 +8,25 @@ function mailOpenAI(required string path,required struct body,numeric timeout=45
         cfhttpparam(type="body",value=serializeJSON(mailWire(arguments.body)));
     }
     var status=structKeyExists(r,"statusCode")?val(r.statusCode):0;
-    if(status<200 || status>=300 || !structKeyExists(r,"fileContent") || !isJSON(toString(r.fileContent))) throw(type="AIMail.Provider",message="IA temporariamente indisponível (HTTP "&status&"). A conversa continua na fila.");
-    return deserializeJSON(toString(r.fileContent));
+    var responseText=structKeyExists(r,"fileContent")?toString(r.fileContent):"";
+    var responseData=isJSON(responseText)?deserializeJSON(responseText):{};
+    var providerCode="";
+    if(isStruct(responseData) && structKeyExists(responseData,"error") && isStruct(responseData.error)) {
+        if(structKeyExists(responseData.error,"code")) providerCode=responseData.error.code&"";
+        if(!len(providerCode) && structKeyExists(responseData.error,"type")) providerCode=responseData.error.type&"";
+    }
+    if(status==429) {
+        if(compareNoCase(providerCode,"insufficient_quota")==0) throw(type="AIMail.ProviderConfig",errorCode="429",message="A cota da integração OpenAI está indisponível. Revise o faturamento ou os limites do projeto antes de reprocessar a fila.");
+        var retryAfter=0;
+        if(structKeyExists(r,"responseHeader") && structKeyExists(r.responseHeader,"Retry-After") && isNumeric(r.responseHeader["Retry-After"])) retryAfter=min(21600,max(60,int(r.responseHeader["Retry-After"])));
+        throw(type="AIMail.RateLimit",errorCode="429",detail=retryAfter&"",message="Limite temporário da IA atingido.");
+    }
+    if(status<200 || status>=300) {
+        if(status==0 || listFind("408,409,425,500,502,503,504",status)) throw(type="AIMail.Provider",errorCode=status&"",message="IA temporariamente indisponível (HTTP "&status&").");
+        throw(type="AIMail.ProviderConfig",errorCode=status&"",message="A integração de IA recusou a solicitação (HTTP "&status&"). Revise a configuração antes de reprocessar a fila.");
+    }
+    if(!isJSON(responseText)) throw(type="AIMail.Provider",errorCode=status&"",message="A IA respondeu em formato inválido.");
+    return responseData;
 }
 function mailKnowledge(required struct context) {
     var result={items=[],sources=[],warning=""};
@@ -127,9 +144,14 @@ function mailProcessOne() {
         return {success=true,status="ok",processed=1};
     } catch(any error) {
         var limited=error.type=="AIMail.Limit";
-        var delay=limited?1800:min(21600,60*(2^min(8,claimed.attempts)));
+        var rateLimited=error.type=="AIMail.RateLimit";
+        var providerUnavailable=error.type=="AIMail.Provider";
+        var providerRetryAfter=rateLimited && structKeyExists(error,"detail") && isNumeric(error.detail)?val(error.detail):0;
+        var retryDelay=min(21600,60*(2^min(8,claimed.attempts)));
+        var delay=limited?1800:(rateLimited?max(300,max(providerRetryAfter,retryDelay)):retryDelay);
         agendaDb("UPDATE public.tb_ai_mail_queue SET attempts=attempts+1,last_error=:error,available_at=now()+(:delay*interval '1 second') WHERE thread_id=:id AND revision=:revision AND lease_token=:lease",{error=agendaParam(limited?error.message:mailSafeError(error)),delay=mailInt(delay),id=agendaParam(id),revision=mailInt(revision),lease=agendaParam(lease)});
         if(limited) return {success=true,status="daily_limit",processed=0,message=error.message};
+        if(rateLimited || providerUnavailable) return {success=true,status=rateLimited?"rate_limited":"retry_scheduled",processed=0,deferred=1,retry_after_seconds=delay,message=mailSafeError(error)&" Nova tentativa agendada em "&delay&" segundos; conversa mantida na fila."};
         rethrow;
     } finally {
         agendaDb("UPDATE public.tb_ai_mail_queue SET lease_until=NULL,lease_token='' WHERE thread_id=:id AND lease_token=:lease",{id=agendaParam(id),lease=agendaParam(lease)});

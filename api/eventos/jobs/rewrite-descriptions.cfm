@@ -1,7 +1,7 @@
 <cfsetting showdebugoutput="false" requesttimeout="110" />
 <cfscript>
 function rewriteJsonResponse(required numeric statusCode, required struct payload) {
-    var labels = {"200"="OK", "400"="Bad Request", "401"="Unauthorized", "405"="Method Not Allowed", "409"="Conflict", "422"="Unprocessable Entity", "502"="Bad Gateway", "503"="Service Unavailable"};
+    var labels = {"200"="OK", "400"="Bad Request", "401"="Unauthorized", "405"="Method Not Allowed", "409"="Conflict", "422"="Unprocessable Entity", "424"="Failed Dependency", "429"="Too Many Requests", "502"="Bad Gateway", "503"="Service Unavailable"};
     cfheader(statuscode=arguments.statusCode, statustext=structKeyExists(labels, arguments.statusCode) ? labels[arguments.statusCode] : "Internal Server Error");
     cfcontent(type="application/json; charset=utf-8", reset=true);
     writeOutput(serializeJSON(arguments.payload));
@@ -24,6 +24,11 @@ function rewriteValidHmac(required string secret, required string body, required
     } catch (any invalidTimestamp) { return false; }
     var expected = lCase(hmac(arguments.timestamp & "." & arguments.body, arguments.secret, "HmacSHA256", "UTF-8"));
     return hash(expected, "SHA-256") EQ hash(lCase(arguments.signature), "SHA-256");
+}
+
+function rewriteExceptionCode(required any exception, required string fallback) {
+    var candidate = structKeyExists(arguments.exception, "errorCode") ? lCase(trim(arguments.exception.errorCode & "")) : "";
+    return reFind("^[a-z0-9_]{1,100}$", candidate) ? candidate : arguments.fallback;
 }
 
 function rewriteTranslation(required struct row, required boolean dryRun, required string apiKey, required string model, numeric deadlineTick=0) {
@@ -106,9 +111,15 @@ function rewriteTranslation(required struct row, required boolean dryRun, requir
         errorCode = "validation_rejected";
         outcome.httpStatus = 422;
         outcome.errors = 1;
+    } catch (EventDescriptionRewrite.ProviderQuota providerQuota) {
+        rethrow;
+    } catch (EventDescriptionRewrite.ProviderUnavailable providerUnavailable) {
+        rethrow;
+    } catch (EventDescriptionRewrite.ProviderConfiguration providerConfiguration) {
+        rethrow;
     } catch (EventDescriptionRewrite.Provider providerFailure) {
-        errorCode = "provider_error";
-        outcome.httpStatus = 502;
+        errorCode = rewriteExceptionCode(providerFailure, "provider_invalid_response");
+        outcome.httpStatus = 422;
         outcome.errors = 1;
     }
     if (!arguments.dryRun) {
@@ -275,6 +286,12 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
                         FROM public.tb_evento_corridas evt
                         WHERE evt.id_evento = :event_id AND evt.descricao_original = :source_text
                           AND btrim(COALESCE(evt.descricao, '')) = ''
+                        ON CONFLICT (id_evento, source_hash) DO UPDATE
+                        SET source_text = EXCLUDED.source_text, status = 'running',
+                            description_before = EXCLUDED.description_before, model = EXCLUDED.model,
+                            error_code = NULL, created_at = clock_timestamp(), finished_at = NULL
+                        WHERE tb_evento_descricao_rewrites.status = 'error'
+                          AND tb_evento_descricao_rewrites.error_code = 'provider_error'
                         RETURNING id", {
                         event_id={value=VARIABLES.rewriteRow.id_evento, cfsqltype="cf_sql_integer"},
                         source_hash={value=VARIABLES.rewriteSourceHash, cfsqltype="cf_sql_varchar"},
@@ -321,9 +338,15 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
                     VARIABLES.rewriteErrorCode = "validation_rejected";
                     VARIABLES.rewriteHttpStatus = max(VARIABLES.rewriteHttpStatus, 422);
                     VARIABLES.rewriteResponse.errors++;
+                } catch (EventDescriptionRewrite.ProviderQuota providerQuota) {
+                    rethrow;
+                } catch (EventDescriptionRewrite.ProviderUnavailable providerUnavailable) {
+                    rethrow;
+                } catch (EventDescriptionRewrite.ProviderConfiguration providerConfiguration) {
+                    rethrow;
                 } catch (EventDescriptionRewrite.Provider providerFailure) {
-                    VARIABLES.rewriteErrorCode = "provider_error";
-                    VARIABLES.rewriteHttpStatus = 502;
+                    VARIABLES.rewriteErrorCode = rewriteExceptionCode(providerFailure, "provider_invalid_response");
+                    VARIABLES.rewriteHttpStatus = max(VARIABLES.rewriteHttpStatus, 422);
                     VARIABLES.rewriteResponse.errors++;
                 }
                 if (!VARIABLES.rewriteDryRun) {
@@ -342,6 +365,35 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
             }
         }
     }
+    } catch (EventDescriptionRewrite.ProviderQuota quotaExhausted) {
+        // Dependency/account failures do not consume a source attempt or leave a running audit.
+        VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;
+        VARIABLES.rewriteResponse.success = false;
+        VARIABLES.rewriteResponse.errors++;
+        VARIABLES.rewriteResponse.status = "blocked";
+        VARIABLES.rewriteResponse.stopReason = rewriteExceptionCode(quotaExhausted, "provider_quota_exhausted");
+        VARIABLES.rewriteResponse.message = "Créditos da OpenAI esgotados. Adicione saldo à conta da API para retomar o processamento.";
+        VARIABLES.rewriteResponse.actionUrl = "https://platform.openai.com/settings/organization/billing";
+        VARIABLES.rewriteHttpStatus = 424;
+        break;
+    } catch (EventDescriptionRewrite.ProviderUnavailable providerUnavailable) {
+        VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;
+        VARIABLES.rewriteResponse.success = false;
+        VARIABLES.rewriteResponse.errors++;
+        VARIABLES.rewriteResponse.status = "deferred";
+        VARIABLES.rewriteResponse.stopReason = rewriteExceptionCode(providerUnavailable, "provider_unavailable");
+        VARIABLES.rewriteResponse.message = "A OpenAI está temporariamente indisponível. A etapa continua na fila.";
+        VARIABLES.rewriteHttpStatus = 503;
+        break;
+    } catch (EventDescriptionRewrite.ProviderConfiguration providerConfiguration) {
+        VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;
+        VARIABLES.rewriteResponse.success = false;
+        VARIABLES.rewriteResponse.errors++;
+        VARIABLES.rewriteResponse.status = "configuration_error";
+        VARIABLES.rewriteResponse.stopReason = rewriteExceptionCode(providerConfiguration, "provider_request_rejected");
+        VARIABLES.rewriteResponse.message = "A OpenAI recusou a configuração da requisição. Revise o modelo e o formato enviados.";
+        VARIABLES.rewriteHttpStatus = 424;
+        break;
     } catch (EventDescriptionRewrite.Budget budgetExhausted) {
         // Only the current step rolls back. Previously committed results remain accurate.
         VARIABLES.rewriteResponse = VARIABLES.rewriteBeforeStep;

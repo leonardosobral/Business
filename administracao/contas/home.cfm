@@ -82,13 +82,15 @@
 <cfset VARIABLES.accountsClientRole = isDefined("VARIABLES.businessCurrentAccountRole") ? uCase(trim(VARIABLES.businessCurrentAccountRole)) : ""/>
 <cfset VARIABLES.accountsClientRoleLabel = "Acesso Business"/>
 <cfif VARIABLES.accountsClientRole EQ "OWNER">
-    <cfset VARIABLES.accountsClientRoleLabel = "Proprietário"/>
+    <cfset VARIABLES.accountsClientRoleLabel = "Dono"/>
 <cfelseif VARIABLES.accountsClientRole EQ "ADMIN">
     <cfset VARIABLES.accountsClientRoleLabel = "Administrador"/>
 <cfelseif VARIABLES.accountsClientRole EQ "OPERADOR">
     <cfset VARIABLES.accountsClientRoleLabel = "Operador"/>
+<cfelseif VARIABLES.accountsClientRole EQ "MEDICO">
+    <cfset VARIABLES.accountsClientRoleLabel = "Médico"/>
 <cfelseif VARIABLES.accountsClientRole EQ "VISUALIZADOR">
-    <cfset VARIABLES.accountsClientRoleLabel = "Visualizador"/>
+    <cfset VARIABLES.accountsClientRoleLabel = "Auditor"/>
 </cfif>
 
 <cfif VARIABLES.accountsClientOverviewReady>
@@ -830,8 +832,8 @@
                 <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsPendingTotal)#</cfoutput></div>
               </div>
               <div class="accounts-kpi business-kpi">
-                <div class="accounts-kpi-label">Solicitações</div>
-                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsRegistrationPendingTotal)#</cfoutput></div>
+                <div class="accounts-kpi-label">Revisões</div>
+                <div class="accounts-kpi-value"><cfoutput>#LSNumberFormat(VARIABLES.accountsRegistrationPendingTotal + VARIABLES.accountsMedicalAccessPendingTotal)#</cfoutput></div>
               </div>
               <div class="accounts-kpi business-kpi">
                 <div class="accounts-kpi-label">Usuários vinculados</div>
@@ -898,6 +900,12 @@
             </div>
           </cfif>
 
+          <cfif len(trim(VARIABLES.accountsMedicalAccessErrorMessage))>
+            <div class="alert alert-danger" role="alert">
+              <cfoutput>#htmlEditFormat(VARIABLES.accountsMedicalAccessErrorMessage)#</cfoutput>
+            </div>
+          </cfif>
+
           <cfif VARIABLES.accountsClientOverviewReady>
             <cfif VARIABLES.accountsClientHasAccount>
               <div class="business-panel accounts-client-overview p-3 mb-3">
@@ -959,6 +967,92 @@
           </cfif>
 
           <cfif VARIABLES.businessAccountsCanReviewExistingRequests>
+            <div id="solicitacoes-saude" class="accounts-panel p-3 mb-4 <cfif VARIABLES.accountsMedicalAccessPendingTotal EQ 0>accounts-requests-compact</cfif>">
+              <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
+                <div>
+                  <h5 class="mb-1">Acesso médico às Centrais de Saúde</h5>
+                  <div class="text-muted small">
+                    <cfoutput>#LSNumberFormat(VARIABLES.accountsMedicalAccessPendingTotal)# solicitação(ões) aguardando decisão</cfoutput>
+                  </div>
+                </div>
+                <span class="accounts-status text-warning align-self-start"><i class="fa-solid fa-user-doctor me-1"></i>Perfil Médico</span>
+              </div>
+
+              <cfif NOT VARIABLES.businessMedicalAccessTableReady>
+                <div class="text-muted py-3">A fila médica será exibida depois que sua estrutura for aplicada.</div>
+              <cfelseif qBusinessMedicalAccessRequests.recordcount>
+                <cfoutput query="qBusinessMedicalAccessRequests">
+                  <article class="accounts-registration-row">
+                    <header class="accounts-registration-header">
+                      <div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                          <span class="accounts-status">Solicitação ## #id_solicitacao#</span>
+                          <span class="accounts-status">Evento ## #id_evento#</span>
+                          <span class="accounts-status">Médico</span>
+                        </div>
+                        <p class="accounts-registration-summary">
+                          <strong class="text-body">#htmlEditFormat(usuario_nome)#</strong>
+                          solicitou acesso médico à Central de
+                          <strong class="text-body">#htmlEditFormat(nome_evento)#</strong>.
+                        </p>
+                      </div>
+                      <span class="accounts-status text-warning flex-shrink-0">Aguardando decisão</span>
+                    </header>
+
+                    <div class="accounts-registration-body">
+                      <section class="accounts-registration-details accounts-cell" aria-label="Dados da solicitação médica">
+                        <div class="accounts-action-title mb-2">Dados da solicitação</div>
+                        <div class="accounts-request-grid small">
+                          <div>
+                            <span class="accounts-request-label">Conta</span>
+                            <span class="accounts-request-value">#htmlEditFormat(nome_conta)#</span>
+                          </div>
+                          <div>
+                            <span class="accounts-request-label">Usuário</span>
+                            <span class="accounts-request-value">#htmlEditFormat(usuario_nome)#</span>
+                          </div>
+                          <div>
+                            <span class="accounts-request-label">E-mail</span>
+                            <span class="accounts-request-value">#htmlEditFormat(usuario_email)#</span>
+                          </div>
+                          <div>
+                            <span class="accounts-request-label">Perfil solicitado</span>
+                            <span class="accounts-request-value">Médico</span>
+                          </div>
+                        </div>
+                        <cfif len(trim(mensagem & ""))>
+                          <div class="small mt-3">
+                            <span class="accounts-request-label">Mensagem</span>
+                            #htmlEditFormat(mensagem)#
+                          </div>
+                        </cfif>
+                        <div class="small text-muted mt-2">Criada em #dateTimeFormat(data_criacao, "dd/mm/yyyy HH:nn")#</div>
+                      </section>
+
+                      <div class="accounts-registration-actions">
+                        <form method="post" action="./##solicitacoes-saude" class="accounts-request-decision">
+                          <div class="accounts-action-title">Decisão da solicitação</div>
+                          <p class="accounts-request-decision-copy">Ao aprovar, o usuário será vinculado à conta com o perfil Médico e poderá operar esta Central.</p>
+                          <input type="hidden" name="id_solicitacao_medica" value="#id_solicitacao#"/>
+                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+
+                          <label class="form-label small" for="nota-medica-#id_solicitacao#">Nota da decisão <span class="text-muted">(opcional)</span></label>
+                          <textarea class="form-control form-control-sm mb-3" id="nota-medica-#id_solicitacao#" name="observacao_revisor_medica" rows="3"></textarea>
+
+                          <div class="accounts-request-decision-actions">
+                            <button class="btn btn-sm btn-warning" type="submit" name="medical_access_action" value="aprovar">Aprovar como Médico</button>
+                            <button class="btn btn-sm btn-outline-danger" type="submit" name="medical_access_action" value="recusar" onclick="return confirm('Recusar esta solicitação de acesso médico?');">Recusar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </article>
+                </cfoutput>
+              <cfelse>
+                <div class="text-muted py-3 accounts-requests-empty">Nenhuma solicitação médica pendente.</div>
+              </cfif>
+            </div>
+
             <div class="accounts-panel p-3 mb-4 <cfif VARIABLES.accountsRegistrationPendingTotal EQ 0>accounts-requests-compact</cfif>">
               <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
                 <div>
@@ -1064,8 +1158,9 @@
                             <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel após a aprovação</label>
                             <select class="form-select form-select-sm mb-3" id="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="papel_solicitacao">
                               <option value="OPERADOR" selected>Operador</option>
-                              <option value="ADMIN">Administrador da conta</option>
-                              <option value="VISUALIZADOR">Visualizador</option>
+                              <option value="ADMIN">Administrador</option>
+                              <option value="MEDICO">Médico</option>
+                              <option value="VISUALIZADOR">Auditor</option>
                             </select>
                           <cfelseif VARIABLES.businessAccountsCanAdminAll>
                             <label class="form-label small" for="conta-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Associar a uma conta existente</label>
@@ -1079,8 +1174,9 @@
                             <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel se associar à conta existente</label>
                             <select class="form-select form-select-sm mb-3" id="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="papel_solicitacao">
                               <option value="OPERADOR" selected>Operador</option>
-                              <option value="ADMIN">Administrador da conta</option>
-                              <option value="VISUALIZADOR">Visualizador</option>
+                              <option value="ADMIN">Administrador</option>
+                              <option value="MEDICO">Médico</option>
+                              <option value="VISUALIZADOR">Auditor</option>
                             </select>
                           </cfif>
 
@@ -1497,7 +1593,7 @@
                                     <select class="form-select" name="papel">
                             </cfoutput>
                                       <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                        <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#accountPapelOption#</option></cfoutput>
+                                        <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
                                       </cfloop>
                             <cfoutput>
                                     </select>
@@ -1556,7 +1652,7 @@
                         </cfoutput>
                                   <cfoutput query="qBusinessAccountUserSearch">
                                     <option value="#qBusinessAccountUserSearch.id#">
-                                      ## #qBusinessAccountUserSearch.id# - #htmlEditFormat(qBusinessAccountUserSearch.name)# - #htmlEditFormat(qBusinessAccountUserSearch.email)#<cfif len(trim(qBusinessAccountUserSearch.status))> - vínculo atual: #qBusinessAccountUserSearch.papel#/#qBusinessAccountUserSearch.status#</cfif>
+                                      ## #qBusinessAccountUserSearch.id# - #htmlEditFormat(qBusinessAccountUserSearch.name)# - #htmlEditFormat(qBusinessAccountUserSearch.email)#<cfif len(trim(qBusinessAccountUserSearch.status))> - vínculo atual: #htmlEditFormat(VARIABLES.accountUserPapelLabels[qBusinessAccountUserSearch.papel])#/#qBusinessAccountUserSearch.status#</cfif>
                                     </option>
                                   </cfoutput>
                         <cfoutput>
@@ -1567,7 +1663,7 @@
                                 <select class="form-select" name="papel">
                         </cfoutput>
                                   <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                    <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#accountPapelOption#</option></cfoutput>
+                                    <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
                                   </cfloop>
                         <cfoutput>
                                 </select>
@@ -1617,7 +1713,7 @@
                               <label class="form-label small">Papel</label>
                               <select class="form-select form-select-sm" name="papel">
                                 <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                  <option value="#accountPapelOption#" <cfif qBusinessAccountUsers.papel EQ accountPapelOption>selected</cfif>>#accountPapelOption#</option>
+                                  <option value="#accountPapelOption#" <cfif qBusinessAccountUsers.papel EQ accountPapelOption>selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option>
                                 </cfloop>
                               </select>
                             </div>
@@ -1643,7 +1739,7 @@
                               <div class="small text-muted">## #qBusinessAccountUsers.id_usuario# - #htmlEditFormat(qBusinessAccountUsers.email)#</div>
                             </div>
                             <div>
-                              <span class="accounts-status">#htmlEditFormat(qBusinessAccountUsers.papel)#</span>
+                              <span class="accounts-status">#htmlEditFormat(VARIABLES.accountUserPapelLabels[qBusinessAccountUsers.papel])#</span>
                             </div>
                             <div>
                               <span class="accounts-status">#htmlEditFormat(qBusinessAccountUsers.status)#</span>
@@ -1692,10 +1788,11 @@
                             <div class="col-12 col-lg-5">
                               <label class="form-label">Papel no resgate</label>
                               <select class="form-select" name="papel_resgate">
-                                <option value="OWNER" selected>OWNER</option>
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="OPERADOR">OPERADOR</option>
-                                <option value="VISUALIZADOR">VISUALIZADOR</option>
+                                <option value="OWNER" selected>Dono</option>
+                                <option value="ADMIN">Administrador</option>
+                                <option value="OPERADOR">Operador</option>
+                                <option value="MEDICO">Médico</option>
+                                <option value="VISUALIZADOR">Auditor</option>
                               </select>
                             </div>
                             <div class="col-12 col-lg-7">
@@ -1797,7 +1894,7 @@
                             <h6 class="mb-1">Permissões por papel</h6>
                             <div class="small text-muted">
                               A permissão de processamento inclui automaticamente a visualização da fila.
-                              O papel <code>OWNER</code> também herda as capacidades concedidas a <code>ADMIN</code>.
+                              O papel <strong>Dono</strong> também herda as capacidades concedidas a <strong>Administrador</strong>.
                             </div>
                           </div>
 
@@ -1812,7 +1909,7 @@
                                     <tr>
                                       <th>Capacidade</th>
                                       <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
-                                        <th class="text-center">#htmlEditFormat(accountAccessRole)#</th>
+                                        <th class="text-center">#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountAccessRole])#</th>
                                       </cfloop>
                                     </tr>
                                   </thead>
@@ -1830,7 +1927,7 @@
                                                    type="checkbox"
                                                    name="permission_#qBusinessAccountPermissionCatalog.id_permissao#_#accountAccessRole#"
                                                    value="1"
-                                                   aria-label="#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)# para #htmlEditFormat(accountAccessRole)#"
+                                                   aria-label="#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)# para #htmlEditFormat(VARIABLES.accountUserPapelLabels[accountAccessRole])#"
                                                    <cfif structKeyExists(VARIABLES.accountPermissionGrantMap, accountAccessGrantKey)>checked</cfif>/>
                                           </td>
                                         </cfloop>

@@ -97,7 +97,7 @@ check(result.payload.updated EQ 1, 'Changed source has a separate rejection hist
 resetTranslationFixture();
 REQUEST.fixtureProviderMode='provider-error';
 result = invokeFixture('{"dryRun":false,"language":"en"}');
-check(result.code EQ 502 AND !find('DO_NOT_EXPOSE',serializeJSON(result)), 'Provider failure stays sanitized');
+check(result.code EQ 422 AND !find('DO_NOT_EXPOSE',serializeJSON(result)), 'Invalid provider output stays sanitized');
 audit = fixtureSql("SELECT attempt_count,next_retry_at>now()+interval '4 minutes' AS delayed FROM public.tb_evento_descricao_translations ORDER BY id DESC LIMIT 1");
 check(audit.attempt_count[1] EQ 1 AND audit.delayed[1], 'First provider retry waits five minutes');
 result = invokeFixture('{"dryRun":false,"language":"en"}');
@@ -107,7 +107,7 @@ check(counts.queue_status[1] EQ 'waiting_retry' AND counts.queue_status[2] EQ 'r
 for (attempt in [2,3]) {
     fixtureSql("UPDATE public.tb_evento_descricao_translations SET next_retry_at=now()-interval '1 second' WHERE language='en'");
     result=invokeFixture('{"dryRun":false,"language":"en"}');
-    check(result.code EQ 502, 'Retry returns provider failure');
+    check(result.code EQ 422, 'Retry returns invalid provider output');
 }
 fixtureSql("UPDATE public.tb_evento_descricao_translations SET next_retry_at=now()-interval '1 second'");
 result=invokeFixture('{"dryRun":false,"language":"en"}');
@@ -117,6 +117,12 @@ check(counts.queue_status[1] EQ 'errors_exhausted', 'Terminal provider failure i
 REQUEST.fixtureProviderMode='success';
 result=invokeFixture('{"dryRun":false}');
 check(result.payload.results[1].language EQ 'es' AND result.payload.updated EQ 1, 'Exhausted English attempts cannot block Spanish');
+
+resetTranslationFixture();
+fixtureSql("INSERT INTO public.tb_evento_descricao_translations(id_evento,language,source_hash,source_text,status,model,error_code,attempt_count,finished_at) SELECT id_evento,'en',md5(descricao),descricao,'error','gpt-4.1-mini','provider_error',3,now() FROM public.tb_evento_corridas WHERE id_evento=1");
+result=invokeFixture('{"dryRun":false,"language":"en"}');
+check(result.code EQ 200 AND result.payload.updated EQ 1, 'Legacy generic translation provider failures return to the queue');
+check(fixtureSql("SELECT attempt_count FROM public.tb_evento_descricao_translations ORDER BY id DESC LIMIT 1").attempt_count[1] EQ 1, 'Recovered legacy translation starts a fresh classified attempt series');
 
 resetTranslationFixture();
 REQUEST.fixtureProviderMode='unexpected-error';

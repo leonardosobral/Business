@@ -1,0 +1,112 @@
+.saude-eventos-main {
+  margin-top: -55px;
+  padding-bottom: 3rem;
+}
+
+.saude-eventos-shell {
+  --saude-accent: #f6ad0f;
+  --saude-line: rgba(255, 255, 255, 0.1);
+  --saude-panel: rgba(30, 30, 32, 0.92);
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+.saude-eventos-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--saude-line);
+  border-top: 2px solid var(--saude-accent);
+  border-radius: 1rem;
+  background: radial-gradient(circle at 0 0, rgba(246, 173, 15, 0.12), transparent 34%), var(--saude-panel);
+}
+
+.saude-eventos-hero__icon {
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  flex: 0 0 auto;
+  border: 1px solid rgba(246, 173, 15, 0.45);
+  border-radius: 0.9rem;
+  color: var(--saude-accent);
+  background: rgba(246, 173, 15, 0.1);
+  font-size: 1.4rem;
+}
+
+.saude-eventos-hero h1,
+.saude-config-card h2,
+.saude-event-card h2 { margin: 0; }
+.saude-eventos-hero h1 { font-size: clamp(1.35rem, 2vw, 1.9rem); }
+.saude-eventos-hero p { margin: 0.25rem 0 0; color: rgba(255,255,255,.68); }
+.saude-eventos-eyebrow { color: var(--saude-accent); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+
+.saude-eventos-hero__summary {
+  min-width: 130px;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--saude-line);
+  text-align: right;
+}
+.saude-eventos-hero__summary strong { display: block; font-size: 1.8rem; color: var(--saude-accent); line-height: 1; }
+.saude-eventos-hero__summary span { color: rgba(255,255,255,.58); font-size: .78rem; }
+
+.saude-eventos-toolbar,
+.saude-config-card {
+  border: 1px solid var(--saude-line);
+  border-radius: 1rem;
+  background: var(--saude-panel);
+}
+.saude-eventos-toolbar { padding: 1rem; margin-bottom: 1rem; }
+
+.saude-config-card { margin-bottom: 1rem; overflow: hidden; box-shadow: 0 18px 48px rgba(0,0,0,.2); }
+.saude-config-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.3rem; border-bottom: 1px solid var(--saude-line); background: rgba(246,173,15,.05); }
+.saude-config-card__head h2 { font-size: 1.25rem; margin-top: .2rem; }
+.saude-config-card__head p { margin: .35rem 0 0; color: rgba(255,255,255,.62); font-size: .84rem; }
+.saude-config-form { padding: 1.25rem 1.3rem 1.35rem; }
+.saude-config-toggle { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 1rem; margin-bottom: 1.15rem; border: 1px solid rgba(246,173,15,.25); border-radius: .8rem; background: rgba(246,173,15,.06); }
+.saude-config-toggle strong,
+.saude-config-toggle span { display: block; }
+.saude-config-toggle span { color: rgba(255,255,255,.58); font-size: .8rem; margin-top: .1rem; }
+.saude-config-toggle .form-check-input { width: 2.8rem; height: 1.4rem; }
+
+.saude-eventos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.saude-event-card { display: flex; flex-direction: column; min-height: 285px; padding: 1.15rem; border: 1px solid var(--saude-line); border-radius: 1rem; background: linear-gradient(145deg, rgba(255,255,255,.035), transparent 55%), var(--saude-panel); transition: border-color .18s ease, transform .18s ease; }
+.saude-event-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.2); }
+.saude-event-card.is-active { border-color: rgba(246,173,15,.38); }
+.saude-event-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.saude-event-status { display: inline-flex; align-items: center; gap: .4rem; padding: .28rem .55rem; border-radius: 999px; font-size: .72rem; font-weight: 800; background: rgba(255,255,255,.08); color: rgba(255,255,255,.7); }
+.saude-event-status.is-active { background: rgba(37, 191, 116, .14); color: #70dea5; }
+.saude-event-status.is-paused { background: rgba(246, 173, 15, .12); color: #ffc956; }
+.saude-event-status.is-new { background: rgba(132, 147, 170, .12); color: #aab6c8; }
+.saude-event-id { color: rgba(255,255,255,.38); font-size: .72rem; font-variant-numeric: tabular-nums; }
+.saude-event-card h2 { min-height: 2.7em; font-size: 1.02rem; line-height: 1.35; }
+.saude-event-meta { display: flex; flex-wrap: wrap; gap: .45rem .85rem; padding: .75rem 0; color: rgba(255,255,255,.58); font-size: .76rem; }
+.saude-event-meta span { display: inline-flex; align-items: center; gap: .38rem; }
+.saude-event-meta i { color: var(--saude-accent); }
+.saude-event-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: .45rem; margin-top: auto; padding: .75rem 0; }
+.saude-event-metrics div { padding: .55rem .3rem; border: 1px solid rgba(255,255,255,.07); border-radius: .65rem; text-align: center; background: rgba(0,0,0,.12); }
+.saude-event-metrics strong { display: block; font-size: 1.15rem; }
+.saude-event-metrics span { display: block; color: rgba(255,255,255,.5); font-size: .68rem; }
+.saude-event-card__hint { margin: auto 0 .75rem; color: rgba(255,255,255,.48); font-size: .78rem; }
+.saude-event-card__actions { display: flex; justify-content: flex-end; gap: .5rem; padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.07); }
+
+.saude-eventos-empty { grid-column: 1 / -1; padding: 4rem 1rem; border: 1px dashed rgba(255,255,255,.14); border-radius: 1rem; text-align: center; color: rgba(255,255,255,.58); }
+.saude-eventos-empty i { color: var(--saude-accent); font-size: 2rem; }
+.saude-eventos-empty h2 { margin: .85rem 0 .25rem; color: #fff; font-size: 1.15rem; }
+.saude-eventos-empty p { margin: 0; }
+
+@media (max-width: 1199.98px) {
+  .saude-eventos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767.98px) {
+  .saude-eventos-main { padding-bottom: 1.5rem; }
+  .saude-eventos-hero { align-items: flex-start; padding: 1rem; }
+  .saude-eventos-hero__icon { width: 2.8rem; height: 2.8rem; }
+  .saude-eventos-hero__summary { display: none; }
+  .saude-eventos-grid { grid-template-columns: 1fr; }
+  .saude-config-card__head { flex-direction: column; }
+  .saude-config-toggle { align-items: flex-start; }
+}

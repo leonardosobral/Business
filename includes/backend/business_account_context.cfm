@@ -12,6 +12,7 @@
 <cfset VARIABLES.businessEffectiveAccountOperatorIds = "0"/>
 <cfset VARIABLES.businessEffectiveAccountViewerIds = "0"/>
 <cfset VARIABLES.businessCurrentAccountRole = ""/>
+<cfset VARIABLES.businessCurrentAccountIsMedical = false/>
 <cfset VARIABLES.businessPendingAccountId = ""/>
 <cfset VARIABLES.businessPendingAccountName = ""/>
 <cfset VARIABLES.businessPendingAccountRole = ""/>
@@ -123,7 +124,8 @@
                     WHEN 'OWNER'::papel_usuario_conta THEN 1
                     WHEN 'ADMIN'::papel_usuario_conta THEN 2
                     WHEN 'OPERADOR'::papel_usuario_conta THEN 3
-                    ELSE 4
+                    WHEN 'MEDICO'::papel_usuario_conta THEN 4
+                    ELSE 5
                 END,
                 cu.id_conta
             </cfquery>
@@ -378,3 +380,6 @@
         </cfcatch>
     </cftry>
 </cfif>
+
+<cfset VARIABLES.businessCurrentAccountIsMedical = NOT VARIABLES.businessEffectiveIsAdmin
+    AND compareNoCase(trim(VARIABLES.businessCurrentAccountRole & ""), "MEDICO") EQ 0/>

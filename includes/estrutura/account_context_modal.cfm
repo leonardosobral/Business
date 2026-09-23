@@ -1,7 +1,11 @@
 <cfparam name="VARIABLES.businessAccountModalRequired" default="false"/>
 
 <cfset VARIABLES.businessAccountModalRedirect = "/"/>
-<cfif NOT VARIABLES.businessAccountModalRequired>
+<cfif VARIABLES.businessAccountModalRequired
+    AND isDefined("VARIABLES.businessAccountModalForcedRedirect")
+    AND len(trim(VARIABLES.businessAccountModalForcedRedirect & ""))>
+    <cfset VARIABLES.businessAccountModalRedirect = VARIABLES.businessAccountModalForcedRedirect/>
+<cfelseif NOT VARIABLES.businessAccountModalRequired>
     <cfset VARIABLES.businessAccountModalRedirect = CGI.SCRIPT_NAME/>
     <cfif len(trim(CGI.QUERY_STRING))>
         <cfset VARIABLES.businessAccountModalRedirect = VARIABLES.businessAccountModalRedirect & "?" & CGI.QUERY_STRING/>
@@ -161,10 +165,11 @@
               <cfset VARIABLES.businessAccountOptionActive = len(trim(VARIABLES.businessActiveAccountId)) AND VARIABLES.businessActiveAccountId EQ qBusinessAccountContextAccounts.id_conta/>
               <cfset VARIABLES.businessAccountOptionRole = qBusinessAccountContextAccounts.papel/>
               <cfswitch expression="#qBusinessAccountContextAccounts.papel#">
-                <cfcase value="OWNER"><cfset VARIABLES.businessAccountOptionRole = "Proprietário"/></cfcase>
+                <cfcase value="OWNER"><cfset VARIABLES.businessAccountOptionRole = "Dono"/></cfcase>
                 <cfcase value="ADMIN"><cfset VARIABLES.businessAccountOptionRole = "Administrador"/></cfcase>
                 <cfcase value="OPERADOR"><cfset VARIABLES.businessAccountOptionRole = "Operador"/></cfcase>
-                <cfcase value="VISUALIZADOR"><cfset VARIABLES.businessAccountOptionRole = "Visualizador"/></cfcase>
+                <cfcase value="MEDICO"><cfset VARIABLES.businessAccountOptionRole = "Médico"/></cfcase>
+                <cfcase value="VISUALIZADOR"><cfset VARIABLES.businessAccountOptionRole = "Auditor"/></cfcase>
               </cfswitch>
               <form class="business-account-option" method="post" action="/selecionar-conta/">
                 <input type="hidden" name="business_account_context_action" value="select"/>

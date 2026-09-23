@@ -116,7 +116,11 @@
         AND NOT find(chr(10), VARIABLES.googleSignInRequestedRedirect)
         AND NOT find(chr(13), VARIABLES.googleSignInRequestedRedirect)
         AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
-    <cfif VARIABLES.googleSignInValidRedirect AND left(VARIABLES.googleSignInRequestedRedirect, 10) EQ "/pesquisa/">
+    <cfif VARIABLES.googleSignInValidRedirect
+        AND left(VARIABLES.googleSignInRequestedRedirect, len("/saude-eventos/central/")) EQ "/saude-eventos/central/">
+        <!--- A própria Central decide entre acesso imediato e solicitação do perfil Médico. --->
+        <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
+    <cfelseif VARIABLES.googleSignInValidRedirect AND left(VARIABLES.googleSignInRequestedRedirect, 10) EQ "/pesquisa/">
         <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
     <cfelseif VARIABLES.googleSignInValidRedirect AND left(VARIABLES.googleSignInRequestedRedirect,4) EQ "/bi/"
         AND VARIABLES.googleSignInHasLegacyBiAccess>

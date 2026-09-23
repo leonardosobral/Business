@@ -1,0 +1,2 @@
+ALTER TYPE public.papel_usuario_conta
+    ADD VALUE IF NOT EXISTS 'MEDICO' BEFORE 'VISUALIZADOR';

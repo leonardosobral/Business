@@ -109,7 +109,7 @@ function mailUpdate(required string action,required numeric id,required numeric 
     return {message="Conversa atualizada."};
 }
 function mailSafeError(required any error) {
-    return listFindNoCase("AIMail.Validation,AIMail.Provider,AIMail.Limit,Agenda.Validation,AIMail.Conflict",arguments.error.type)?left(arguments.error.message,250):"Falha temporária no processamento. Consulte o histórico operacional e tente novamente.";
+    return listFindNoCase("AIMail.Validation,AIMail.Provider,AIMail.ProviderConfig,AIMail.RateLimit,AIMail.Limit,Agenda.Validation,AIMail.Conflict",arguments.error.type)?left(arguments.error.message,250):"Falha temporária no processamento. Consulte o histórico operacional e tente novamente.";
 }
 function mailOAuth() {
     var c=agendaConfig(); var state=agendaRandom(); var verifier=agendaRandom()&agendaRandom();

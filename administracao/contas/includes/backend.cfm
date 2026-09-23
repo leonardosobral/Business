@@ -10,13 +10,21 @@
 <cfparam name="VARIABLES.accountsRegistrationSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsVoucherSaveErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsAccessSaveErrorMessage" default=""/>
+<cfparam name="VARIABLES.accountsMedicalAccessErrorMessage" default=""/>
 <cfparam name="VARIABLES.accountsNoticeMessage" default=""/>
 
 <cfset VARIABLES.accountsPage = max(1, int(URL.pagina))/>
 <cfset VARIABLES.accountsPerPage = 25/>
 <cfset VARIABLES.accountTipoTitularList = "PF,PJ"/>
 <cfset VARIABLES.accountStatusList = "ATIVA,SUSPENSA,CANCELADA,PENDENTE"/>
-<cfset VARIABLES.accountUserPapelList = "OWNER,ADMIN,OPERADOR,VISUALIZADOR"/>
+<cfset VARIABLES.accountUserPapelList = "OWNER,ADMIN,OPERADOR,MEDICO,VISUALIZADOR"/>
+<cfset VARIABLES.accountUserPapelLabels = {
+    OWNER = "Dono",
+    ADMIN = "Administrador",
+    OPERADOR = "Operador",
+    MEDICO = "Médico",
+    VISUALIZADOR = "Auditor"
+}/>
 <cfset VARIABLES.accountUserAssignablePapelList = VARIABLES.accountUserPapelList/>
 <cfset VARIABLES.accountUserStatusList = "ATIVO,INATIVO,CONVIDADO,BLOQUEADO"/>
 <cfset VARIABLES.accountEventStatusList = "ATIVO,INATIVO,PENDENTE"/>
@@ -34,6 +42,7 @@
 <cfset VARIABLES.businessAccountVoucherTableReady = false/>
 <cfset VARIABLES.businessAccountVoucherColumnsReady = false/>
 <cfset VARIABLES.businessAccountAccessTablesReady = false/>
+<cfset VARIABLES.businessMedicalAccessTableReady = false/>
 
 <cfif isDefined("VARIABLES.businessRealIsAdmin")>
     <cfset VARIABLES.businessAccountsRealIsAdmin = VARIABLES.businessRealIsAdmin/>
@@ -69,7 +78,7 @@
     <cfif VARIABLES.businessAccountsManageUserAccountIds NEQ "0">
         <cfset VARIABLES.businessAccountsCanManageUsers = true/>
     </cfif>
-    <cfset VARIABLES.accountUserAssignablePapelList = "ADMIN,OPERADOR,VISUALIZADOR"/>
+    <cfset VARIABLES.accountUserAssignablePapelList = "ADMIN,OPERADOR,MEDICO,VISUALIZADOR"/>
 </cfif>
 
 <cfset VARIABLES.businessAccountsCanReviewExistingRequests = VARIABLES.businessAccountsCanAdminAll
@@ -89,6 +98,7 @@
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_usuarios"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_eventos"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_cadastro_solicitacoes"/>,
+        <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_evento_saude_acesso_solicitacoes"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_business_permissoes"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_permissoes"/>,
         <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_conta_integracoes_resultados"/>
@@ -136,6 +146,7 @@
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_usuarios")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_eventos")/>
 <cfset VARIABLES.businessAccountRegistrationTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_cadastro_solicitacoes")/>
+<cfset VARIABLES.businessMedicalAccessTableReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_evento_saude_acesso_solicitacoes")/>
 <cfset VARIABLES.businessAccountAccessTablesReady = ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_business_permissoes")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_permissoes")
     AND ListFindNoCase(VARIABLES.businessAccountTableNames, "tb_conta_integracoes_resultados")/>
@@ -165,6 +176,10 @@
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao aprovada e conta vinculada com sucesso."/>
     <cfelseif URL.sucesso EQ "solicitacao_recusada">
         <cfset VARIABLES.accountsNoticeMessage = "Solicitacao recusada com sucesso."/>
+    <cfelseif URL.sucesso EQ "acesso_medico_aprovado">
+        <cfset VARIABLES.accountsNoticeMessage = "Acesso médico aprovado. O usuário já pode abrir e operar a Central de Saúde do evento."/>
+    <cfelseif URL.sucesso EQ "acesso_medico_recusado">
+        <cfset VARIABLES.accountsNoticeMessage = "Solicitação de acesso médico recusada."/>
     <cfelseif URL.sucesso EQ "solicitacao_eliminada">
         <cfset VARIABLES.accountsResetDeletedTotal = isDefined("URL.removidos") AND isNumeric(URL.removidos) ? max(0, int(URL.removidos)) : 0/>
         <cfset VARIABLES.accountsNoticeMessage = "Solicitação e dados de teste eliminados com sucesso."/>
@@ -193,6 +208,7 @@
 <cfset qBusinessAccountEvents = QueryNew("id_conta_evento,id_conta,id_evento,status,data_criacao,data_atualizacao,nome_evento,tag,data_inicial,data_final,cidade,estado")/>
 <cfset qBusinessAccountEventSearch = QueryNew("id_evento,nome_evento,tag,data_inicial,data_final,cidade,estado,status")/>
 <cfset qBusinessAccountRegistrationRequests = QueryNew("id_solicitacao,nome_empresa,tipo_titular,documento,nome_responsavel,email_responsavel,telefone_responsavel,site,cidade,estado,tipo_prestador,mensagem,id_usuario,id_conta,status,status_conta,data_criacao,nome_conta,usuario_nome,id_ad_voucher,voucher_codigo,voucher_credito,voucher_status,voucher_conta_id")/>
+<cfset qBusinessMedicalAccessRequests = QueryNew("id_solicitacao,id_evento,id_conta,id_usuario_solicitante,papel_solicitado,status,mensagem,data_criacao,nome_conta,nome_evento,usuario_nome,usuario_email")/>
 <cfset qBusinessAccountRegistrationAccountOptions = QueryNew("id_conta,nome_conta,documento,status")/>
 <cfset qBusinessAccountVouchers = QueryNew("id_ad_voucher,codigo,credito,credito_disponivel,status,data_criacao,data_expiracao,data_resgate,papel_resgate,observacao,id_usuario_resgate,usuario_resgate_nome,usuario_resgate_email")/>
 <cfset qBusinessAccountPermissionCatalog = QueryNew("id_permissao,codigo,descricao")/>
@@ -207,6 +223,7 @@
 <cfset VARIABLES.accountsLinkedEventsTotal = 0/>
 <cfset VARIABLES.accountsRegistrationPendingTotal = 0/>
 <cfset VARIABLES.accountsRegistrationTotal = 0/>
+<cfset VARIABLES.accountsMedicalAccessPendingTotal = 0/>
 <cfset VARIABLES.accountsTotalPages = 1/>
 <cfset VARIABLES.accountsOffset = (VARIABLES.accountsPage - 1) * VARIABLES.accountsPerPage/>
 <cfset VARIABLES.accountSearchTerm = trim(URL.busca)/>
@@ -290,6 +307,181 @@
     </cfif>
 </cfif>
 <!--- END BUSINESS PENDING RESET --->
+
+<!--- Solicitações específicas de acesso à Central de Saúde. --->
+<cfif VARIABLES.businessAccountsTablesReady
+    AND VARIABLES.businessMedicalAccessTableReady
+    AND isDefined("FORM.medical_access_action")>
+
+    <cfset VARIABLES.medicalAccessAction = lCase(trim(FORM.medical_access_action & ""))/>
+    <cfset VARIABLES.medicalAccessRequestId = isDefined("FORM.id_solicitacao_medica") ? trim(FORM.id_solicitacao_medica & "") : ""/>
+    <cfset VARIABLES.medicalAccessReviewNote = isDefined("FORM.observacao_revisor_medica") ? left(trim(FORM.observacao_revisor_medica & ""), 2000) : ""/>
+    <cfset VARIABLES.medicalAccessCsrf = isDefined("FORM.business_account_access_csrf") ? trim(FORM.business_account_access_csrf & "") : ""/>
+    <cfset VARIABLES.medicalAccessErrors = []/>
+
+    <cfif CGI.request_method NEQ "POST"
+        OR NOT len(VARIABLES.medicalAccessCsrf)
+        OR NOT isDefined("VARIABLES.businessAccountContextCsrf")
+        OR compare(VARIABLES.medicalAccessCsrf, VARIABLES.businessAccountContextCsrf) NEQ 0>
+        <cfset arrayAppend(VARIABLES.medicalAccessErrors, "A sessão do formulário expirou. Atualize a página e tente novamente.")/>
+    </cfif>
+    <cfif NOT listFindNoCase("aprovar,recusar", VARIABLES.medicalAccessAction)>
+        <cfset arrayAppend(VARIABLES.medicalAccessErrors, "Ação de solicitação inválida.")/>
+    </cfif>
+    <cfif NOT isNumeric(VARIABLES.medicalAccessRequestId) OR val(VARIABLES.medicalAccessRequestId) LTE 0>
+        <cfset arrayAppend(VARIABLES.medicalAccessErrors, "Solicitação inválida.")/>
+    </cfif>
+
+    <cfif NOT arrayLen(VARIABLES.medicalAccessErrors)>
+        <cftry>
+            <cftransaction>
+                <cfquery name="qBusinessMedicalAccessReview" datasource="runnerhub">
+                    SELECT req.*,
+                           cont.status::text AS status_conta,
+                           evt.nome_evento,
+                           usr.name AS usuario_nome,
+                           usr.email AS usuario_email,
+                           EXISTS (
+                               SELECT 1
+                               FROM tb_conta_eventos ce
+                               WHERE ce.id_conta = req.id_conta
+                                 AND ce.id_evento = req.id_evento
+                                 AND ce.status = 'ATIVO'::status_conta_evento
+                           ) AS vinculo_evento_ativo
+                    FROM tb_evento_saude_acesso_solicitacoes req
+                    INNER JOIN tb_contas cont ON cont.id_conta = req.id_conta
+                    INNER JOIN tb_evento_corridas evt ON evt.id_evento = req.id_evento
+                    INNER JOIN tb_usuarios usr ON usr.id = req.id_usuario_solicitante
+                    WHERE req.id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.medicalAccessRequestId#"/>
+                    FOR UPDATE OF req
+                </cfquery>
+
+                <cfif NOT qBusinessMedicalAccessReview.recordcount>
+                    <cfset arrayAppend(VARIABLES.medicalAccessErrors, "Solicitação não encontrada.")/>
+                <cfelseif qBusinessMedicalAccessReview.status NEQ "PENDENTE">
+                    <cfset arrayAppend(VARIABLES.medicalAccessErrors, "Esta solicitação já foi revisada.")/>
+                </cfif>
+
+                <cfset VARIABLES.medicalAccessReviewerAuthorized = VARIABLES.businessAccountsCanAdminAll/>
+                <cfif NOT arrayLen(VARIABLES.medicalAccessErrors) AND NOT VARIABLES.medicalAccessReviewerAuthorized>
+                    <cfquery name="qBusinessMedicalAccessOwnerAuthorization" datasource="runnerhub">
+                        SELECT 1
+                        FROM tb_conta_usuarios cu
+                        WHERE cu.id_conta = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessMedicalAccessReview.id_conta#"/>
+                          AND cu.id_usuario = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                          AND cu.status = 'ATIVO'::status_usuario_conta
+                          AND cu.papel = 'OWNER'::papel_usuario_conta
+                        LIMIT 1
+                    </cfquery>
+                    <cfset VARIABLES.medicalAccessReviewerAuthorized = qBusinessMedicalAccessOwnerAuthorization.recordcount GT 0/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.medicalAccessErrors) AND NOT VARIABLES.medicalAccessReviewerAuthorized>
+                    <cfset arrayAppend(VARIABLES.medicalAccessErrors, "Apenas o Dono desta conta ou um Admin Global pode revisar a solicitação.")/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.medicalAccessErrors)
+                    AND VARIABLES.medicalAccessAction EQ "aprovar"
+                    AND (qBusinessMedicalAccessReview.status_conta NEQ "ATIVA" OR NOT qBusinessMedicalAccessReview.vinculo_evento_ativo)>
+                    <cfset arrayAppend(VARIABLES.medicalAccessErrors, "A conta ou o vínculo com o evento não está mais ativo.")/>
+                </cfif>
+
+                <cfif NOT arrayLen(VARIABLES.medicalAccessErrors) AND VARIABLES.medicalAccessAction EQ "aprovar">
+                    <cfquery datasource="runnerhub">
+                        INSERT INTO tb_conta_usuarios
+                        (
+                            id_conta,
+                            id_usuario,
+                            papel,
+                            status,
+                            usuario_convite,
+                            data_convite,
+                            data_aceite
+                        )
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessMedicalAccessReview.id_conta#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessMedicalAccessReview.id_usuario_solicitante#"/>,
+                            'MEDICO'::papel_usuario_conta,
+                            'ATIVO'::status_usuario_conta,
+                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
+                            now(),
+                            now()
+                        )
+                        ON CONFLICT (id_conta, id_usuario)
+                        DO UPDATE SET papel = 'MEDICO'::papel_usuario_conta,
+                                      status = 'ATIVO'::status_usuario_conta,
+                                      usuario_convite = excluded.usuario_convite,
+                                      data_aceite = coalesce(tb_conta_usuarios.data_aceite, now()),
+                                      data_atualizacao = now()
+                    </cfquery>
+
+                    <cfquery datasource="runnerhub">
+                        UPDATE tb_evento_saude_acesso_solicitacoes
+                        SET status = 'APROVADA',
+                            id_usuario_revisor = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
+                            observacao_revisor = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.medicalAccessReviewNote#" null="#NOT len(VARIABLES.medicalAccessReviewNote)#"/>,
+                            data_revisao = now(),
+                            data_atualizacao = now()
+                        WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessMedicalAccessReview.id_solicitacao#"/>
+                    </cfquery>
+
+                    <cfquery datasource="runnerhub">
+                        INSERT INTO tb_notifica
+                        (id_usuario, data_publicacao, data_expiracao, conteudo_notifica, link, icone)
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessMedicalAccessReview.id_usuario_solicitante#"/>,
+                            now(),
+                            now() + interval '30 days',
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="Seu acesso médico à Central de Saúde foi aprovado."/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="/saude-eventos/central/?id_evento=#qBusinessMedicalAccessReview.id_evento#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="fa-kit-medical"/>
+                        )
+                    </cfquery>
+                <cfelseif NOT arrayLen(VARIABLES.medicalAccessErrors)>
+                    <cfquery datasource="runnerhub">
+                        UPDATE tb_evento_saude_acesso_solicitacoes
+                        SET status = 'RECUSADA',
+                            id_usuario_revisor = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>,
+                            observacao_revisor = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.medicalAccessReviewNote#" null="#NOT len(VARIABLES.medicalAccessReviewNote)#"/>,
+                            data_revisao = now(),
+                            data_atualizacao = now()
+                        WHERE id_solicitacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qBusinessMedicalAccessReview.id_solicitacao#"/>
+                    </cfquery>
+
+                    <cfquery datasource="runnerhub">
+                        INSERT INTO tb_notifica
+                        (id_usuario, data_publicacao, data_expiracao, conteudo_notifica, link, icone)
+                        VALUES
+                        (
+                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qBusinessMedicalAccessReview.id_usuario_solicitante#"/>,
+                            now(),
+                            now() + interval '30 days',
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="Sua solicitação de acesso médico à Central de Saúde foi revisada."/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="/saude-eventos/central/?id_evento=#qBusinessMedicalAccessReview.id_evento#"/>,
+                            <cfqueryparam cfsqltype="cf_sql_varchar" value="fa-kit-medical"/>
+                        )
+                    </cfquery>
+                </cfif>
+            </cftransaction>
+
+            <cfif arrayLen(VARIABLES.medicalAccessErrors)>
+                <cfset VARIABLES.accountsMedicalAccessErrorMessage = arrayToList(VARIABLES.medicalAccessErrors, " ")/>
+            <cfelseif VARIABLES.medicalAccessAction EQ "aprovar">
+                <cflocation addtoken="false" url="./?sucesso=acesso_medico_aprovado##solicitacoes-saude"/>
+            <cfelse>
+                <cflocation addtoken="false" url="./?sucesso=acesso_medico_recusado##solicitacoes-saude"/>
+            </cfif>
+            <cfcatch type="any">
+                <cfset VARIABLES.accountsMedicalAccessErrorMessage = "Não foi possível revisar a solicitação médica. " & cfcatch.message/>
+                <cflog file="business_accounts" type="error" text="medical_access_review actor=#qPerfil.id# request=#VARIABLES.medicalAccessRequestId# message=#left(cfcatch.message & '', 1000)# detail=#left(cfcatch.detail & '', 1800)#"/>
+            </cfcatch>
+        </cftry>
+    <cfelse>
+        <cfset VARIABLES.accountsMedicalAccessErrorMessage = arrayToList(VARIABLES.medicalAccessErrors, " ")/>
+    </cfif>
+</cfif>
 
 <cfif VARIABLES.businessAccountsTablesReady
     AND VARIABLES.businessAccountRegistrationTableReady
@@ -818,7 +1010,7 @@
         <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Informe um credito maior que zero.")/>
     </cfif>
 
-    <cfif NOT listFindNoCase("OWNER,ADMIN,OPERADOR,VISUALIZADOR", VARIABLES.accountVoucherPapel)>
+    <cfif NOT listFindNoCase(VARIABLES.accountUserPapelList, VARIABLES.accountVoucherPapel)>
         <cfset arrayAppend(VARIABLES.accountVoucherErrors, "Informe um papel valido para o resgate.")/>
     </cfif>
 
@@ -1801,7 +1993,8 @@
                     WHEN 'OWNER'::papel_usuario_conta THEN 1
                     WHEN 'ADMIN'::papel_usuario_conta THEN 2
                     WHEN 'OPERADOR'::papel_usuario_conta THEN 3
-                    ELSE 4
+                    WHEN 'MEDICO'::papel_usuario_conta THEN 4
+                    ELSE 5
                 END,
                 usr.name,
                 usr.email
@@ -2032,4 +2225,34 @@
         ORDER BY sol.data_criacao ASC
         LIMIT 25
     </cfquery>
+</cfif>
+
+<cfif VARIABLES.businessAccountsTablesReady
+    AND VARIABLES.businessMedicalAccessTableReady
+    AND VARIABLES.businessAccountsCanReviewExistingRequests>
+    <cfquery name="qBusinessMedicalAccessRequests" datasource="runnerhub">
+        SELECT req.id_solicitacao,
+               req.id_evento,
+               req.id_conta,
+               req.id_usuario_solicitante,
+               req.papel_solicitado::text AS papel_solicitado,
+               req.status,
+               req.mensagem,
+               req.data_criacao,
+               cont.nome_conta,
+               evt.nome_evento,
+               usr.name AS usuario_nome,
+               usr.email AS usuario_email
+        FROM tb_evento_saude_acesso_solicitacoes req
+        INNER JOIN tb_contas cont ON cont.id_conta = req.id_conta
+        INNER JOIN tb_evento_corridas evt ON evt.id_evento = req.id_evento
+        INNER JOIN tb_usuarios usr ON usr.id = req.id_usuario_solicitante
+        WHERE req.status = 'PENDENTE'
+        <cfif NOT VARIABLES.businessAccountsCanAdminAll>
+            AND req.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessAccountsScopedAccountIds#" list="true"/>)
+        </cfif>
+        ORDER BY req.data_criacao ASC
+        LIMIT 50
+    </cfquery>
+    <cfset VARIABLES.accountsMedicalAccessPendingTotal = qBusinessMedicalAccessRequests.recordcount/>
 </cfif>

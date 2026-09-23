@@ -5,8 +5,12 @@ component output="false" {
         throw(type="EventDescriptionRewrite.Validation",message="A descrição não passou pelas verificações de integridade.");
     }
 
-    private void function rejectProvider() {
-        throw(type="EventDescriptionRewrite.Provider",message="O provedor de IA não retornou uma resposta válida e completa.");
+    private void function rejectProvider(string reason="provider_invalid_response") {
+        throw(type="EventDescriptionRewrite.Provider",message="O provedor de IA não retornou uma resposta válida e completa.",errorcode=arguments.reason);
+    }
+
+    private void function rejectProviderDependency(required string type,required string reason,required string message) {
+        throw(type="EventDescriptionRewrite." & arguments.type,message=arguments.message,errorcode=arguments.reason);
     }
 
     private any function matcher(required string pattern,required string value) {
@@ -106,7 +110,7 @@ component output="false" {
             "model"=trim(arguments.model),
             "store"=false,
             "temperature"=0,
-            "max_output_tokens"=8000,
+            "max_output_tokens"=16000,
             "input"=[{"role"="system","content"=arguments.instructions},{"role"="user","content"=arguments.content}],
             "text"={"format"={"type"="json_schema","name"=arguments.schemaName,"strict"=true,"schema"=arguments.schema}}
         };
@@ -190,8 +194,13 @@ component output="false" {
         var content="";
         var texts=[];
         var parsed={};
+        if(structKeyExists(arguments.response,"status") AND arguments.response.status EQ "incomplete") {
+            if(structKeyExists(arguments.response,"incomplete_details") AND isStruct(arguments.response.incomplete_details)
+                AND structKeyExists(arguments.response.incomplete_details,"reason")
+                AND arguments.response.incomplete_details.reason EQ "max_output_tokens") rejectProvider("provider_output_limit");
+            rejectProvider("provider_incomplete_response");
+        }
         if(!structKeyExists(arguments.response,"status") OR arguments.response.status NEQ "completed"
-            OR (structKeyExists(arguments.response,"incomplete_details") AND !isNull(arguments.response.incomplete_details))
             OR !structKeyExists(arguments.response,"output") OR !isArray(arguments.response.output)) rejectProvider();
         for(item in arguments.response.output) {
             if(!isStruct(item) OR !structKeyExists(item,"type") OR item.type NEQ "message") continue;
@@ -226,6 +235,9 @@ component output="false" {
         var httpResult={};
         var response={};
         var timeoutSeconds=45;
+        var statusCode=0;
+        var providerCode="";
+        var providerType="";
         if(arguments.deadlineTick GT 0) {
             timeoutSeconds=min(45,int((arguments.deadlineTick-getTickCount())/1000));
             if(timeoutSeconds LT 1) throw(type="EventDescriptionRewrite.Budget",message="O tempo disponível para o lote terminou.");
@@ -236,16 +248,34 @@ component output="false" {
                 cfhttpparam(type="header",name="Content-Type",value="application/json; charset=utf-8");
                 cfhttpparam(type="body",value=serializeJSON(arguments.payload));
             }
-            if(!structKeyExists(httpResult,"statusCode") OR val(httpResult.statusCode) LT 200 OR val(httpResult.statusCode) GTE 300
-                OR !structKeyExists(httpResult,"fileContent") OR !isJSON(httpResult.fileContent)) rejectProvider();
-            response=deserializeJSON(httpResult.fileContent);
-            if(!isStruct(response)) rejectProvider();
         } catch(any providerError) {
             if(arguments.deadlineTick GT 0 AND getTickCount() GTE arguments.deadlineTick-1000) {
                 throw(type="EventDescriptionRewrite.Budget",message="O tempo disponível para o lote terminou.");
             }
-            rejectProvider();
+            rejectProviderDependency("ProviderUnavailable","provider_transport_error","Não foi possível conectar ao provedor de IA.");
         }
+        statusCode=structKeyExists(httpResult,"statusCode") ? val(httpResult.statusCode) : 0;
+        if(structKeyExists(httpResult,"fileContent") AND isJSON(httpResult.fileContent)) {
+            response=deserializeJSON(httpResult.fileContent);
+        }
+        if(statusCode LT 200 OR statusCode GTE 300) {
+            if(isStruct(response) AND structKeyExists(response,"error") AND isStruct(response.error)) {
+                if(structKeyExists(response.error,"code") AND !isNull(response.error.code)) providerCode=lCase(trim(response.error.code & ""));
+                if(structKeyExists(response.error,"type") AND !isNull(response.error.type)) providerType=lCase(trim(response.error.type & ""));
+            }
+            if(statusCode EQ 429 AND (listFindNoCase("credit_balance_exhausted,insufficient_quota",providerCode)
+                OR providerType EQ "insufficient_quota")) {
+                rejectProviderDependency("ProviderQuota","provider_quota_exhausted","Os créditos da OpenAI estão esgotados.");
+            }
+            if(statusCode EQ 429) {
+                rejectProviderDependency("ProviderUnavailable","provider_rate_limited","A OpenAI limitou temporariamente as requisições.");
+            }
+            if(statusCode GTE 500 OR statusCode EQ 0) {
+                rejectProviderDependency("ProviderUnavailable","provider_unavailable","A OpenAI está temporariamente indisponível.");
+            }
+            rejectProviderDependency("ProviderConfiguration","provider_request_rejected","A OpenAI recusou a configuração da requisição.");
+        }
+        if(!isStruct(response)) rejectProvider();
         return response;
     }
 

@@ -222,7 +222,7 @@ create type public.status_usuario_conta as enum ('ATIVO', 'INATIVO', 'CONVIDADO'
 
 alter type public.status_usuario_conta owner to runner_dba;
 
-create type public.papel_usuario_conta as enum ('OWNER', 'ADMIN', 'OPERADOR', 'VISUALIZADOR');
+create type public.papel_usuario_conta as enum ('OWNER', 'ADMIN', 'OPERADOR', 'MEDICO', 'VISUALIZADOR');
 
 alter type public.papel_usuario_conta owner to runner_dba;
 
@@ -6196,6 +6196,52 @@ alter table public.tb_conta_evento_solicitacoes
 grant select, usage on sequence public.tb_conta_evento_solicitacoes_id_solicitacao_seq to runner;
 
 grant delete, insert, references, select, trigger, truncate, update on public.tb_conta_evento_solicitacoes to runner;
+
+create table public.tb_evento_saude_acesso_solicitacoes
+(
+    id_solicitacao         bigserial
+        primary key,
+    id_evento              integer                                                        not null
+        references public.tb_evento_corridas
+            on delete cascade,
+    id_conta               bigint                                                         not null
+        references public.tb_contas
+            on delete cascade,
+    id_usuario_solicitante bigint                                                         not null
+        references public.tb_usuarios
+            on delete cascade,
+    papel_solicitado       papel_usuario_conta      default 'MEDICO'::papel_usuario_conta not null,
+    status                 varchar(16)              default 'PENDENTE'::character varying not null,
+    mensagem               text,
+    id_usuario_revisor     bigint
+        references public.tb_usuarios
+            on delete set null,
+    observacao_revisor     text,
+    data_criacao           timestamp with time zone default now()                         not null,
+    data_atualizacao       timestamp with time zone default now()                         not null,
+    data_revisao           timestamp with time zone,
+    constraint ck_evento_saude_acesso_papel_medico
+        check (papel_solicitado = 'MEDICO'::papel_usuario_conta),
+    constraint ck_evento_saude_acesso_status
+        check (status::text = ANY (ARRAY['PENDENTE'::text, 'APROVADA'::text, 'RECUSADA'::text, 'CANCELADA'::text]))
+);
+
+alter table public.tb_evento_saude_acesso_solicitacoes
+    owner to runner_dba;
+
+grant select, usage on sequence public.tb_evento_saude_acesso_solicitacoes_id_solicitacao_seq to runner;
+
+create unique index uq_evento_saude_acesso_pendente
+    on public.tb_evento_saude_acesso_solicitacoes (id_evento, id_conta, id_usuario_solicitante)
+    where ((status)::text = 'PENDENTE'::text);
+
+create index idx_evento_saude_acesso_conta_status
+    on public.tb_evento_saude_acesso_solicitacoes (id_conta, status, data_criacao);
+
+create index idx_evento_saude_acesso_usuario
+    on public.tb_evento_saude_acesso_solicitacoes (id_usuario_solicitante, data_criacao desc);
+
+grant delete, insert, references, select, trigger, truncate, update on public.tb_evento_saude_acesso_solicitacoes to runner;
 
 create table public.tb_conta_cadastro_solicitacoes
 (

@@ -122,7 +122,26 @@
         AND isDefined("VARIABLES.businessAccountSelectionRequired")
         AND VARIABLES.businessAccountSelectionRequired
         AND NOT findNoCase("/selecionar-conta/", CGI.SCRIPT_NAME)>
-        <cflocation addtoken="false" url="/selecionar-conta/"/>
+        <cfset VARIABLES.businessAccountSelectionUrl = "/selecionar-conta/"/>
+        <cfif findNoCase("/saude-eventos/central/", CGI.SCRIPT_NAME)>
+            <cfset VARIABLES.businessAccountSelectionReturn = "/saude-eventos/central/"/>
+            <cfif isDefined("URL.id_evento") AND isNumeric(URL.id_evento) AND val(URL.id_evento) GT 0>
+                <cfset VARIABLES.businessAccountSelectionReturn &= "?id_evento=" & int(URL.id_evento)/>
+                <cfif isDefined("URL.percurso") AND isNumeric(URL.percurso) AND val(URL.percurso) GT 0>
+                    <cfset VARIABLES.businessAccountSelectionReturn &= "&percurso=" & val(URL.percurso)/>
+                </cfif>
+            </cfif>
+            <cfset VARIABLES.businessAccountSelectionUrl &= "?redirect=" & urlEncodedFormat(VARIABLES.businessAccountSelectionReturn)/>
+        </cfif>
+        <cflocation addtoken="false" url="#VARIABLES.businessAccountSelectionUrl#"/>
+    </cfif>
+    <cfif qPerfil.recordcount
+        AND isDefined("VARIABLES.businessCurrentAccountIsMedical")
+        AND VARIABLES.businessCurrentAccountIsMedical
+        AND NOT findNoCase("/saude-eventos/", CGI.SCRIPT_NAME)
+        AND NOT findNoCase("/selecionar-conta/", CGI.SCRIPT_NAME)
+        AND compareNoCase(CGI.SCRIPT_NAME, "/logout.cfm") NEQ 0>
+        <cflocation addtoken="false" url="/saude-eventos/"/>
     </cfif>
     <cftry>
         <cfquery name="qBusinessPendingRegistration">
@@ -377,7 +396,8 @@
         </cfquery>
     </cfif>
 <cfelse>
-    <cfif isDefined("VARIABLES.template")>
+    <cfif isDefined("VARIABLES.template")
+        AND compareNoCase(VARIABLES.template, "/saude-eventos/central/") NEQ 0>
         <cflocation addtoken="false" url="/"/>
     </cfif>
 </cfif>
