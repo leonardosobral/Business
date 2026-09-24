@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "site": "RoadRunners",
+      "path": "includes/eventos_ads.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/eventos_ads.cfm",
+      "before": "27fc141bb871ab8207deaddb80c7fd0eade8e34c07cf00dab1ec7b739dfd4c9f",
+      "after": "6798ac534296edd2faf6fff25a421695b14703779f995a954dfebaa427798ffb"
+    },
+    {
+      "site": "RoadRunners",
+      "path": "includes/ads_v1/native_event_slot.cfm",
+      "candidate": "/Users/Shared/Projects/RunnerHub/RoadRunners/includes/ads_v1/native_event_slot.cfm",
+      "before": "5ed718a0d8a37ee1c04b261ce10d4adee6e3051f4cb0b527ae45332bdfbc9e1c",
+      "after": "ed7cb29a117a715f4b0541ac6ae7e0656203ca35020b602cd8b10bfa4981679d"
+    }
+  ]
+}

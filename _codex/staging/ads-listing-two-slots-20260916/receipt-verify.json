@@ -1,0 +1,51 @@
+{
+  "directory": "/var/backups/house-banner-scope.0ac510fba4da",
+  "publisherSHA": "512feca9b058db452dd6cb2189e813055f671a657d3b4a36975c2d4a97521d04",
+  "manifestSHA": "79a4e420352a6f09db048d1f9a3384b69944f2d8efbb4ce87ccd3e12147f8b55",
+  "phase": "published",
+  "mode": "verify",
+  "files": [
+    {
+      "after": "6798ac534296edd2faf6fff25a421695b14703779f995a954dfebaa427798ffb",
+      "before": "27fc141bb871ab8207deaddb80c7fd0eade8e34c07cf00dab1ec7b739dfd4c9f",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109750965145,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "includes/eventos_ads.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789568766996711885,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "RoadRunners"
+    },
+    {
+      "after": "ed7cb29a117a715f4b0541ac6ae7e0656203ca35020b602cd8b10bfa4981679d",
+      "before": "5ed718a0d8a37ee1c04b261ce10d4adee6e3051f4cb0b527ae45332bdfbc9e1c",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1788832121576000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "includes/ads_v1/native_event_slot.cfm",
+      "publishedMetadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789568767010061721,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "site": "RoadRunners"
+    }
+  ],
+  "guard_count": 114,
+  "compile_log": "/var/backups/house-banner-scope.0ac510fba4da/compile.log"
+}
