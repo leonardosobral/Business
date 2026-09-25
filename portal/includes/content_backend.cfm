@@ -131,10 +131,19 @@ function contentSummaryProcess(required numeric contentId) {
             cfhttpparam(type="body",value="{}");
         }
         statusCode = val(listFirst(httpResult.statusCode ?: "0", " "));
-        if (statusCode LT 200 OR statusCode GTE 300 OR !isJSON(httpResult.fileContent ?: "")) {
+        if (isJSON(httpResult.fileContent ?: "")) payload = deserializeJSON(httpResult.fileContent);
+        if (statusCode LT 200 OR statusCode GTE 300) {
+            if (isStruct(payload) AND (payload.status ?: "") EQ "provider_temporarily_unavailable") {
+                item = isArray(payload.results ?: "") AND arrayLen(payload.results) ? payload.results[1] : {};
+                return {
+                    success=false,
+                    message=left(trim(payload.message ?: "A IA está temporariamente indisponível.")
+                        & (len(trim(item.error ?: "")) ? " Detalhe: " & trim(item.error) : ""),500)
+                };
+            }
             return {success=false,message="O processador de resumos não respondeu com sucesso (HTTP " & statusCode & ")."};
         }
-        payload = deserializeJSON(httpResult.fileContent);
+        if (!isStruct(payload)) return {success=false,message="Resposta inválida do processador de resumos."};
         if (!(payload.ok ?: false) OR !isArray(payload.results ?: "") OR !arrayLen(payload.results)) {
             return {success=false,message=left(trim(payload.message ?: payload.error ?: "Resposta inválida do processador de resumos."),500)};
         }
@@ -499,13 +508,15 @@ function contentSummaryRequeueFailed() {
     FROM news.tb_content
 </cfquery>
 
-<cfset qContentSummaryStats = queryNew("total_failed,total_pending,total_processing")/>
+<cfset qContentSummaryStats = queryNew("total_failed,total_recoverable_failed,total_pending,total_deferred,total_processing")/>
 <cfif VARIABLES.contentSummaryReady>
   <cfquery name="qContentSummaryStats">
       WITH latest_jobs AS (
           SELECT DISTINCT ON (j.content_id)
                  j.content_id,
-                 j.status
+                 j.status,
+                 COALESCE(j.last_error, '') AS last_error,
+                 j.available_at
           FROM news.tb_article_summary_jobs j
           JOIN news.tb_content cnt ON cnt.id = j.content_id
           JOIN news.tb_content_types typ ON typ.id = cnt.content_type_id
@@ -518,7 +529,23 @@ function contentSummaryRequeueFailed() {
           ORDER BY j.content_id, j.updated_at DESC, j.id DESC
       )
       SELECT count(*) FILTER (WHERE status = 'failed') AS total_failed,
+             count(*) FILTER (
+               WHERE status = 'failed'
+                 AND lower(last_error) NOT LIKE '%fonte não tem texto suficiente%'
+                 AND lower(last_error) NOT LIKE '%fonte integral não está mais disponível%'
+             ) AS total_recoverable_failed,
              count(*) FILTER (WHERE status = 'pending') AS total_pending,
+             count(*) FILTER (
+               WHERE status = 'pending'
+                 AND available_at > now()
+                 AND EXISTS (
+                   SELECT 1
+                   FROM latest_jobs cooldown
+                   WHERE cooldown.status = 'pending'
+                     AND cooldown.available_at > now()
+                     AND lower(cooldown.last_error) LIKE '%openai%http%'
+                 )
+             ) AS total_deferred,
              count(*) FILTER (WHERE status = 'processing') AS total_processing
       FROM latest_jobs
   </cfquery>

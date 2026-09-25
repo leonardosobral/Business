@@ -235,7 +235,9 @@
 
             <cfif VARIABLES.contentSummaryReady AND qContentSummaryStats.recordcount>
               <cfset VARIABLES.contentSummaryFailed = val(qContentSummaryStats.total_failed[1]) />
+              <cfset VARIABLES.contentSummaryRecoverableFailed = val(qContentSummaryStats.total_recoverable_failed[1]) />
               <cfset VARIABLES.contentSummaryPending = val(qContentSummaryStats.total_pending[1]) />
+              <cfset VARIABLES.contentSummaryDeferred = val(qContentSummaryStats.total_deferred[1]) />
               <cfset VARIABLES.contentSummaryProcessing = val(qContentSummaryStats.total_processing[1]) />
               <div class="content-summary-batch rounded-3 p-3 mb-4 d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
                 <div class="d-flex align-items-start gap-3">
@@ -246,16 +248,17 @@
                       <cfoutput>
                         #LSNumberFormat(VARIABLES.contentSummaryFailed)# com falha
                         · #LSNumberFormat(VARIABLES.contentSummaryPending)# aguardando
+                        <cfif VARIABLES.contentSummaryDeferred GT 0>· #LSNumberFormat(VARIABLES.contentSummaryDeferred)# em espera pela IA</cfif>
                         · #LSNumberFormat(VARIABLES.contentSummaryProcessing)# em processamento
                       </cfoutput>
                     </div>
                     <div class="small text-muted mt-1">O processamento ocorre gradualmente pelo monitor automático, sem bloquear esta página.</div>
                   </div>
                 </div>
-                <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" data-summary-batch-form data-failed-count="<cfoutput>#VARIABLES.contentSummaryFailed#</cfoutput>">
+                <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" data-summary-batch-form data-failed-count="<cfoutput>#VARIABLES.contentSummaryRecoverableFailed#</cfoutput>">
                   <input type="hidden" name="content_summary_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
-                  <button class="btn btn-warning text-nowrap" type="submit" name="requeue_failed_summaries" value="1" data-summary-batch-action <cfif VARIABLES.contentSummaryFailed LTE 0>disabled</cfif>>
-                    <i class="fa-solid fa-rotate me-1"></i>Reprocessar falhas em lote
+                  <button class="btn btn-warning text-nowrap" type="submit" name="requeue_failed_summaries" value="1" data-summary-batch-action <cfif VARIABLES.contentSummaryRecoverableFailed LTE 0>disabled</cfif>>
+                    <i class="fa-solid fa-rotate me-1"></i>Reprocessar falhas recuperáveis
                   </button>
                 </form>
               </div>
@@ -362,7 +365,11 @@
                               <cfelseif qContents.summary_status EQ "processing">
                                 <span class="text-info"><i class="fa-solid fa-spinner me-1"></i>Resumo em processamento</span>
                               <cfelseif qContents.summary_status EQ "pending">
-                                <span class="text-warning"><i class="fa-regular fa-clock me-1"></i>Resumo aguardando processamento</span>
+                                <cfif findNoCase("OpenAI",qContents.summary_error) AND findNoCase("HTTP",qContents.summary_error)>
+                                  <span class="text-warning" title="#htmlEditFormat(left(qContents.summary_error, 500))#"><i class="fa-solid fa-pause me-1"></i>IA temporariamente indisponível; tentativa preservada</span>
+                                <cfelse>
+                                  <span class="text-warning"><i class="fa-regular fa-clock me-1"></i>Resumo aguardando processamento</span>
+                                </cfif>
                               <cfelseif qContents.summary_status EQ "failed">
                                 <span class="text-danger" title="#htmlEditFormat(left(qContents.summary_error, 500))#"><i class="fa-solid fa-triangle-exclamation me-1"></i>Falha no resumo</span>
                               <cfelse>
