@@ -4,6 +4,21 @@
 
 <!--- WIDGETS --->
 
+<nav class="nav nav-pills flex-wrap gap-2 mb-3" aria-label="Público das notificações">
+  <cfoutput><cfloop list="usuarios,admins,todos" item="notificaAudienceTab">
+    <a class="nav-link <cfif VARIABLES.notificaPublico EQ notificaAudienceTab>active</cfif>"
+       href="#htmlEditFormat(VARIABLES.notificaAudienceBaseUrl & notificaAudienceTab)#"
+       <cfif VARIABLES.notificaPublico EQ notificaAudienceTab>aria-current="page"</cfif>>#VARIABLES.notificaAudienceLabels[notificaAudienceTab]#</a>
+  </cfloop></cfoutput>
+</nav>
+<p class="text-muted small mb-3">
+  <cfif VARIABLES.notificaPublico EQ "usuarios">Destinatários não-admins. Admins excluídos.
+  <cfelseif VARIABLES.notificaPublico EQ "admins">Somente destinatários admin.
+  <cfelse>Todos os destinatários, incluindo admins e registros sem usuário identificado.</cfif>
+  Indicadores e histórico seguem os filtros selecionados; sem datas, mostram todo o histórico.
+  “Lidas” significa leitura registrada, não entrega de push nem clique comprovado.
+</p>
+
 <section class="mb-4">
 
   <div class="row gx-xl-3">
@@ -20,7 +35,7 @@
             <div class="flex-grow-1 ms-3">
               <p class="text-muted mb-1">Notificações</p>
               <h4 class="mb-0">
-                <cfoutput>#LSNumberFormat(qNotificaCount.total, "9,999,999")#</cfoutput>
+                <cfoutput>#LSNumberFormat(qNotificaHistoricoStats.total, "9,999,999")#</cfoutput>
               </h4>
             </div>
           </div>
@@ -38,9 +53,9 @@
               </div>
             </div>
             <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">Clicks</p>
+              <p class="text-muted mb-1">Lidas</p>
               <h4 class="mb-0">
-                <cfoutput>#LSNumberFormat(qNotificaCountClicks.total, "9,999,999")# (#LSNumberFormat((qNotificaCountClicks.total*100)/qNotificaCount.total, "9.99")#%)</cfoutput>
+                <cfoutput>#LSNumberFormat(val(qNotificaHistoricoStats.total_lidas), "9,999,999")# (#LSNumberFormat(VARIABLES.notificaReadRate, "9.99")#%)</cfoutput>
               </h4>
             </div>
           </div>
@@ -54,13 +69,13 @@
           <div class="d-flex align-items-center">
             <div class="flex-shrink-0">
               <div class="p-3 badge-primary rounded-4">
-                <i class="fas fa-dollar-sign fa-lg fa-fw"></i>
+                <i class="fas fa-envelope fa-lg fa-fw"></i>
               </div>
             </div>
             <div class="flex-grow-1 ms-3">
-              <p class="text-muted mb-1">Conversão</p>
+              <p class="text-muted mb-1">Não lidas</p>
               <h4 class="mb-0">
-                <cfoutput>#lsCurrencyFormat(qNotificaCountConversoes.valor_total)# (#qNotificaCountConversoes.total#)</cfoutput>
+                <cfoutput>#LSNumberFormat(val(qNotificaHistoricoStats.total_nao_lidas), "9,999,999")#</cfoutput>
               </h4>
             </div>
           </div>
@@ -103,6 +118,7 @@
 
           <form method="get" action="./" class="mb-4">
             <input type="hidden" name="pagina" value="1"/>
+            <input type="hidden" name="publico" value="<cfoutput>#VARIABLES.notificaPublico#</cfoutput>"/>
 
             <div class="row g-3">
               <div class="col-12 col-xl-4">
@@ -148,7 +164,7 @@
             </div>
 
             <div class="d-flex flex-wrap gap-2 justify-content-end mt-3">
-              <a class="btn btn-outline-secondary" href="/notificacoes/">Limpar filtros</a>
+              <a class="btn btn-outline-secondary" href="/notificacoes/?publico=<cfoutput>#VARIABLES.notificaPublico#</cfoutput>">Limpar filtros</a>
               <button type="submit" class="btn btn-warning">Filtrar histórico</button>
             </div>
           </form>
@@ -162,7 +178,7 @@
                 <cfoutput>Página #VARIABLES.notificaPage# de #VARIABLES.notificaTotalPages#</cfoutput>
               </div>
               <cfif isDefined("qPerfil") AND qPerfil.recordcount AND qPerfil.is_admin AND qNotificaHistoricoCount.total>
-                <form method="post" action="./?pagina=<cfoutput>#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#</cfoutput>" class="d-flex flex-wrap gap-2">
+                <form method="post" action="./?pagina=<cfoutput>#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#&publico=#VARIABLES.notificaPublico#</cfoutput>" class="d-flex flex-wrap gap-2">
                   <button type="submit" name="history_action" value="desativar_filtradas" class="btn btn-sm btn-outline-warning" onclick="return confirm('Tem certeza que deseja desativar todas as notificações filtradas?');">Desativar filtradas</button>
                   <button type="submit" name="history_action" value="excluir_filtradas" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir todas as notificações filtradas?');">Excluir filtradas</button>
                 </form>
@@ -239,6 +255,7 @@
                         <div class="fw-semibold">#htmlEditFormat(name)#</div>
                         <div class="small text-muted">#htmlEditFormat(email)#</div>
                         <div class="small text-muted">Usuário #id_usuario#</div>
+                        <cfif len(trim(destinatario_admin)) AND destinatario_admin><span class="badge badge-secondary">Admin</span></cfif>
                       </td>
                       <td style="max-width: 180px;">
                         <cfif len(trim(campanha_template))>
@@ -285,8 +302,8 @@
                       </td>
                       <td>
                         <div class="d-flex flex-wrap gap-2">
-                          <a class="btn btn-sm btn-outline-warning" href="./?acao=desativar&id_notifica=#id_notifica#&pagina=#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#" onclick="return confirm('Tem certeza que deseja desativar esta notificação?');">Desativar</a>
-                          <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&id_notifica=#id_notifica#&pagina=#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#" onclick="return confirm('Tem certeza que deseja excluir esta notificação?');">Excluir</a>
+                          <a class="btn btn-sm btn-outline-warning" href="./?acao=desativar&id_notifica=#id_notifica#&pagina=#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#&publico=#VARIABLES.notificaPublico#" onclick="return confirm('Tem certeza que deseja desativar esta notificação?');">Desativar</a>
+                          <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&id_notifica=#id_notifica#&pagina=#VARIABLES.notificaPage#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#&publico=#VARIABLES.notificaPublico#" onclick="return confirm('Tem certeza que deseja excluir esta notificação?');">Excluir</a>
                         </div>
                       </td>
                     </tr>
@@ -303,10 +320,10 @@
           <cfif VARIABLES.notificaTotalPages GT 1>
             <div class="d-flex flex-wrap gap-2 justify-content-end mt-3">
               <cfif VARIABLES.notificaPage GT 1>
-                <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.notificaPage - 1#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#">Anterior</a></cfoutput>
+                <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.notificaPage - 1#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#&publico=#VARIABLES.notificaPublico#">Anterior</a></cfoutput>
               </cfif>
               <cfif VARIABLES.notificaPage LT VARIABLES.notificaTotalPages>
-                <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.notificaPage + 1#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#">Próxima</a></cfoutput>
+                <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.notificaPage + 1#&busca=#urlEncodedFormat(VARIABLES.notificaBusca)#&template_id=#urlEncodedFormat(VARIABLES.notificaTemplateId)#&campanha=#urlEncodedFormat(VARIABLES.notificaCampanha)#&leitura=#urlEncodedFormat(VARIABLES.notificaLeitura)#&data_publicacao_inicial=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)#&data_publicacao_final=#urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)#&publico=#VARIABLES.notificaPublico#">Próxima</a></cfoutput>
               </cfif>
             </div>
           </cfif>

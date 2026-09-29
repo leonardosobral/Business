@@ -1,0 +1,24 @@
+{
+  "file": "/var/www/business.roadrunners.run/administracao/agrega-revisao/home.cfm",
+  "before": "2b7d068c20d4ec428597d0dcb1efdfaea12720b06fb53c0ff32eeea3adee5241",
+  "after": "9e98a2444b168dde93cc4b82765432981b1aa0baa05213cb3b9fb3daef8cf388",
+  "backup": "/var/backups/business-agrega-sem-confirmacao-20260927/home.before.cfm",
+  "compilation": {
+    "code": 0,
+    "output": "/var/tmp/agrega-confirm-compile-qe2kkd29/home.cfm... successful 1\ntotal 1\nelapsed 1.411 sec\n\n"
+  },
+  "published_at": "2026-09-27T13:18:12.966020+00:00",
+  "browser_verification": {
+    "authenticated_chrome": true,
+    "detail_group": 4744,
+    "create_button": {
+      "type": "submit",
+      "onclick": null
+    },
+    "apply_button": {
+      "type": "submit",
+      "onclick": "this.form.acao.value='aplicar_agregador';"
+    },
+    "data_mutations_for_testing": false
+  }
+}

@@ -165,3 +165,7 @@ Como nao ha dicionario de dados consolidado no repositorio, futuras integracoes 
 3. diferencas entre o snapshot DDL em `_codex/sql/ddl.sql` e o ambiente alvo
 4. se o modulo usa reflection via `information_schema`
 5. se a tabela e do schema `public` ou `news`
+
+## Circuitos e edições — 28/09/2026
+
+Circuitos usam `tb_agregadores.agregador_tipo='circuito'` e os eventos em `tb_agregadores_eventos`. `tb_evento_corridas.id_agrega_evento` identifica o grupo de edições; um trigger rejeita circuito legado nesse campo. A coluna `tb_agregadores.id_agrega_evento_legado` preserva referências de URLs/cupons e não é um vínculo de edição. Detalhes na [migração](../_codex/docs/2026-09-28_circuitos_migracao.md).

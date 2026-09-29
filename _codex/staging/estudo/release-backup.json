@@ -1,0 +1,15 @@
+{
+  "backup": "/var/backups/business-estudo-20260928/database-before.json",
+  "notebooks": 14,
+  "cells": 43,
+  "snapshot_count": 4,
+  "functions": [
+    {
+      "name": "extrair_faixa_etaria",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.extrair_faixa_etaria(texto text)\n RETURNS text\n LANGUAGE plpgsql\n IMMUTABLE\nAS $function$\r\nDECLARE\r\n    v_min TEXT;\r\n    v_max TEXT;\r\n    v_lim_f TEXT;\r\nBEGIN\r\n    -- 1) Faixas explícitas: 10-17, 10/17, 10 a 17, 10A17\r\n    SELECT\r\n        m[1], m[2]\r\n    INTO\r\n        v_min, v_max\r\n    FROM regexp_matches(\r\n        texto,\r\n        '(?<!\\d)(\\d{2})\\s*(?:-|/|A|a|\\s+a\\s+)\\s*(\\d{2})(?!\\d)'\r\n    ) AS m\r\n    LIMIT 1;\r\n\r\n    IF v_min > v_max THEN\r\n        RETURN null;\r\n    end if;\r\n\r\n    if v_max = '99' THEN\r\n        v_lim_f := ']';\r\n    else\r\n        if substring(v_max,2,1) = '9' or substring(v_max,2,1) = '4' then\r\n            v_max = (cast(v_max as integer) + 1)::text;\r\n        end if;\r\n        v_lim_f := ')';\r\n    end if;\r\n\r\n    IF v_min IS NOT NULL THEN\r\n        RETURN '[' || v_min || ',' || v_max || v_lim_f;\r\n    END IF;\r\n\r\n    -- 2) Faixa concatenada: 1019, 1629, 5559\r\n    SELECT\r\n        m[1], m[2]\r\n    INTO\r\n        v_min, v_max\r\n    FROM regexp_matches(\r\n        texto,\r\n        '(?<!\\d)(\\d{2})(\\d{2})(?!\\d)'\r\n    ) AS m\r\n    LIMIT 1;\r\n\r\n    IF v_min > v_max THEN\r\n        RETURN null;\r\n    end if;\r\n\r\n    if v_max = '99' THEN\r\n        v_lim_f := ']';\r\n    else\r\n        if substring(v_max,2,1) = '9' or substring(v_max,2,1) = '4' then\r\n            v_max = (cast(v_max as integer) + 1)::text;\r\n        end if;\r\n        v_lim_f := ')';\r\n    end if;\r\n\r\n    IF v_min IS NOT NULL THEN\r\n        RETURN '[' || v_min || ',' || v_max || v_lim_f;\r\n    END IF;\r\n\r\n    -- 3) Faixa aberta: 60+, 70 +\r\n    SELECT\r\n        m[1]\r\n    INTO\r\n        v_min\r\n    FROM regexp_matches(\r\n        texto,\r\n        '(?<!\\d)(\\d{2})\\s*\\+(?!\\d)'\r\n    ) AS m\r\n    LIMIT 1;\r\n\r\n    IF v_min IS NOT NULL THEN\r\n        RETURN '[' || v_min || ',99]';\r\n    END IF;\r\n\r\n    -- Nenhuma faixa encontrada\r\n    RETURN NULL;\r\nEND;\r\n$function$\n",
+      "volatility": "i",
+      "security_definer": false
+    }
+  ]
+}

@@ -5,6 +5,13 @@
 <cfparam name="URL.leitura" default=""/>
 <cfparam name="URL.data_publicacao_inicial" default=""/>
 <cfparam name="URL.data_publicacao_final" default=""/>
+<cfparam name="URL.publico" default="usuarios"/>
+
+<cfset VARIABLES.notificaPublico = lCase(trim(URL.publico))/>
+<cfif NOT listFind("usuarios,admins,todos", VARIABLES.notificaPublico)>
+    <cfset VARIABLES.notificaPublico = "usuarios"/>
+</cfif>
+<cfset VARIABLES.notificaAudienceLabels = {usuarios="Usuários", admins="Admins", todos="Todos"}/>
 
 <cfset VARIABLES.notificaPage = max(1, int(URL.pagina))/>
 <cfset VARIABLES.notificaPerPage = 50/>
@@ -23,6 +30,8 @@
 <cfif len(trim(VARIABLES.notificaLeitura))><cfset VARIABLES.notificaHistoryRedirectUrl &= "&leitura=" & urlEncodedFormat(VARIABLES.notificaLeitura)/></cfif>
 <cfif len(trim(VARIABLES.notificaDataPublicacaoInicial))><cfset VARIABLES.notificaHistoryRedirectUrl &= "&data_publicacao_inicial=" & urlEncodedFormat(VARIABLES.notificaDataPublicacaoInicial)/></cfif>
 <cfif len(trim(VARIABLES.notificaDataPublicacaoFinal))><cfset VARIABLES.notificaHistoryRedirectUrl &= "&data_publicacao_final=" & urlEncodedFormat(VARIABLES.notificaDataPublicacaoFinal)/></cfif>
+<cfset VARIABLES.notificaAudienceBaseUrl = replace(VARIABLES.notificaHistoryRedirectUrl, "./?pagina=" & VARIABLES.notificaPage, "./?pagina=1", "one") & "&publico="/>
+<cfset VARIABLES.notificaHistoryRedirectUrl &= "&publico=" & VARIABLES.notificaPublico/>
 
 <cfset VARIABLES.notificaDataPublicacaoInicialValue = ""/>
 <cfset VARIABLES.notificaDataPublicacaoFinalValue = ""/>
@@ -104,6 +113,7 @@
             SET data_expiracao = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
             FROM tb_usuarios usr
             WHERE usr.id = ntf.id_usuario
+            <cfinclude template="audience_filter.cfm"/>
             <cfif len(trim(VARIABLES.notificaBusca))>
                 AND (
                     <cfif isNumeric(VARIABLES.notificaBusca)>
@@ -151,6 +161,7 @@
             DELETE FROM tb_notifica ntf
             USING tb_usuarios usr
             WHERE usr.id = ntf.id_usuario
+            <cfinclude template="audience_filter.cfm"/>
             <cfif len(trim(VARIABLES.notificaBusca))>
                 AND (
                     <cfif isNumeric(VARIABLES.notificaBusca)>
@@ -198,27 +209,6 @@
     <cflocation addtoken="false" url="#VARIABLES.notificaHistoryRedirectUrl#"/>
 </cfif>
 
-<cfquery name="qNotificaCount">
-    SELECT count(*) as total
-    FROM tb_notifica notifica
-</cfquery>
-
-<cfquery name="qNotificaCountClicks">
-    SELECT count(*) as total
-    FROM tb_notifica notifica
-    WHERE data_leitura is not null
-</cfquery>
-
-<cfquery name="qNotificaCountConversoes">
-    select count(*) as total, sum(tran.valor_transacao)/100 as valor_total
-    from tb_transacoes tran WHERE tran.status_atual = 'order.paid'
-    AND tran.id_usuario IN
-    (SELECT t.id_usuario
-    FROM public.tb_notifica t
-    WHERE data_leitura is not null
-    AND (select data_inscricao from desafios where id_usuario = t.id_usuario and desafio = 'todosantodia' order by status limit 1) > '2025-12-29 14:40:00');
-</cfquery>
-
 <cfquery name="qNotificaCampanhas">
     SELECT DISTINCT campaign_name
     FROM (
@@ -236,6 +226,7 @@
     LEFT JOIN tb_notifica_template tpl ON tpl.id_notifica_template = ntf.id_notifica_template
     LEFT JOIN tb_usuarios usr ON usr.id = ntf.id_usuario
     WHERE 1 = 1
+    <cfinclude template="audience_filter.cfm"/>
     <cfif len(trim(VARIABLES.notificaBusca))>
         AND (
             <cfif isNumeric(VARIABLES.notificaBusca)>
@@ -284,6 +275,7 @@
     LEFT JOIN tb_notifica_template tpl ON tpl.id_notifica_template = ntf.id_notifica_template
     LEFT JOIN tb_usuarios usr ON usr.id = ntf.id_usuario
     WHERE 1 = 1
+    <cfinclude template="audience_filter.cfm"/>
     <cfif len(trim(VARIABLES.notificaBusca))>
         AND (
             <cfif isNumeric(VARIABLES.notificaBusca)>
@@ -322,6 +314,14 @@
     </cfif>
 </cfquery>
 
+<cfset VARIABLES.notificaReadRate = 0/>
+<cfif qNotificaHistoricoStats.total GT 0>
+    <cfset VARIABLES.notificaReadRate = val(qNotificaHistoricoStats.total_lidas) * 100 / qNotificaHistoricoStats.total/>
+</cfif>
+<cfset VARIABLES.notificaTotalPages = max(1, ceiling(qNotificaHistoricoCount.total / VARIABLES.notificaPerPage))/>
+<cfset VARIABLES.notificaPage = min(VARIABLES.notificaPage, VARIABLES.notificaTotalPages)/>
+<cfset VARIABLES.notificaOffset = (VARIABLES.notificaPage - 1) * VARIABLES.notificaPerPage/>
+
 <cfquery name="qNotificaHistorico">
     SELECT ntf.id_notifica,
            ntf.id_usuario,
@@ -334,11 +334,13 @@
            ntf.conteudo_notifica,
            usr.name,
            usr.email,
+           usr.is_admin AS destinatario_admin,
            #PreserveSingleQuotes(VARIABLES.notificaTemplateCampaignSql)# AS campanha_template
     FROM tb_notifica ntf
     LEFT JOIN tb_notifica_template tpl ON tpl.id_notifica_template = ntf.id_notifica_template
     LEFT JOIN tb_usuarios usr ON usr.id = ntf.id_usuario
     WHERE 1 = 1
+    <cfinclude template="audience_filter.cfm"/>
     <cfif len(trim(VARIABLES.notificaBusca))>
         AND (
             <cfif isNumeric(VARIABLES.notificaBusca)>
@@ -379,9 +381,3 @@
     LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificaPerPage#"/>
     OFFSET <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.notificaOffset#"/>
 </cfquery>
-
-<cfif qNotificaHistoricoCount.total GT 0>
-    <cfset VARIABLES.notificaTotalPages = ceiling(qNotificaHistoricoCount.total / VARIABLES.notificaPerPage)/>
-<cfelse>
-    <cfset VARIABLES.notificaTotalPages = 1/>
-</cfif>

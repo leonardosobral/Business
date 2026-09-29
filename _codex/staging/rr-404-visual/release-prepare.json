@@ -1,0 +1,17 @@
+{
+  "before": {
+    "errors/404.html": "70244601de7ba9bd0299699d4dbc19f7e20eef48e8a57cacc1de2c807b211735",
+    "errors/404-en.html": "19a602c4ef8f8abd4e223aa5392861aeb852ed7df2fc7f74ef373270f1006e59",
+    "errors/404-es.html": "8deed1ca3f797a923416b402e36a0b4aa13b0346e3ff602e08cee9167b0cec9f"
+  },
+  "candidate": {
+    "errors/404-en.html": "b6cfb66e9432f72d40481b77cdac4cd19dea00a0016f5417eb2207dc7c2dd4fd",
+    "errors/404.html": "a5bfd1989237685a218341ff3482eda53ca75c41ac7752a88c32fb728953ba63",
+    "errors/404-es.html": "3be690981e44643e6a70863bd8b8775800b2b6831d5cc1b61d79f5420ec5981c"
+  },
+  "order": [
+    "errors/404-en.html",
+    "errors/404.html",
+    "errors/404-es.html"
+  ]
+}

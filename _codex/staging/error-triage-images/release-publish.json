@@ -1,0 +1,8 @@
+{
+  "published": [
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/images.cfm",
+    "portal/erros/home.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-images-20260928/baseline"
+}

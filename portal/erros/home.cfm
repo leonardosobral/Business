@@ -1,6 +1,12 @@
+<cfif NOT structKeyExists(VARIABLES,"requireAdminAllowed") OR NOT VARIABLES.requireAdminAllowed><cfheader statuscode="403"/><cfabort/></cfif>
+<cfset etMainTab="acompanhamento"/>
+<cfif listFindNoCase("logs,resumo,imagens",URL.aba ?: "")><cfset etMainTab=lCase(URL.aba)/>
+<cfelseif len(trim(URL.log_id ?: "")) OR structKeyExists(URL,"dias") OR structKeyExists(URL,"item") OR structKeyExists(URL,"termo")><cfset etMainTab="logs"/></cfif>
+<cfif len(trim(URL.log_id ?: ""))><cfset etMainTab="logs"/></cfif>
 <cfinclude template="../includes/error_log_backend.cfm"/>
 
-<cfset VARIABLES.errorLogBaseQuery = "dias=#urlEncodedFormat(VARIABLES.errorLogDays)#&item=#urlEncodedFormat(VARIABLES.errorLogItem)#&limite=#urlEncodedFormat(VARIABLES.errorLogSampleLimit)#"/>
+
+<cfset VARIABLES.errorLogBaseQuery = "aba=logs&dias=#urlEncodedFormat(VARIABLES.errorLogDays)#&item=#urlEncodedFormat(VARIABLES.errorLogItem)#&limite=#urlEncodedFormat(VARIABLES.errorLogSampleLimit)#"/>
 <cfif len(VARIABLES.errorLogSite)>
   <cfset VARIABLES.errorLogBaseQuery = VARIABLES.errorLogBaseQuery & "&site=#urlEncodedFormat(VARIABLES.errorLogSite)#"/>
 </cfif>
@@ -8,6 +14,21 @@
   <cfset VARIABLES.errorLogBaseQuery = VARIABLES.errorLogBaseQuery & "&termo=#urlEncodedFormat(VARIABLES.errorLogTerm)#"/>
 </cfif>
 
+<link rel="stylesheet" href="/portal/erros/assets/triage.css?v=20260926-tabs"/>
+<div class="error-tabs-page" data-error-tabs data-tab-default="<cfoutput>#etMainTab#</cfoutput>" data-tab-hash="true">
+  <nav class="error-tabs mb-4" role="tablist" aria-label="Área de erros">
+    <button type="button" id="tab-acompanhamento" role="tab" aria-controls="errors-acompanhamento" data-error-tab="acompanhamento">Acompanhamento</button>
+    <button type="button" id="tab-imagens" role="tab" aria-controls="errors-imagens" data-error-tab="imagens">Imagens ausentes</button>
+    <button type="button" id="tab-logs" role="tab" aria-controls="errors-logs" data-error-tab="logs">Logs</button>
+    <button type="button" id="tab-resumo" role="tab" aria-controls="errors-resumo" data-error-tab="resumo">Resumo</button>
+  </nav>
+  <div id="errors-acompanhamento" role="tabpanel" aria-labelledby="tab-acompanhamento" data-error-panel="acompanhamento">
+    <cfinclude template="includes/workspace.cfm"/>
+  </div>
+  <div id="errors-imagens" role="tabpanel" aria-labelledby="tab-imagens" data-error-panel="imagens">
+    <cfinclude template="includes/images.cfm"/>
+  </div>
+  <div data-error-panel="logs resumo">
 <style>
   .error-log-page .error-filter,
   .error-log-page .error-metric,
@@ -98,6 +119,7 @@
             </div>
           <cfelse>
             <form class="error-filter mb-4" method="get" action="./">
+              <input type="hidden" name="aba" value="<cfoutput>#etMainTab#</cfoutput>" data-error-tab-value/>
               <div class="row g-3 align-items-end">
                 <div class="col-md-2">
                   <label class="form-label">Periodo</label>
@@ -152,51 +174,14 @@
               A busca textual roda sobre a amostra carregada de 404 e erro, nao sobre a tabela inteira. Para investigacao profunda, use filtros mais fechados antes de aumentar a amostra.
             </div>
 
-            <div class="row g-3 mb-4">
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">Logs na amostra</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.total, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">Erros</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.erros, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">404</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.notFound, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">Bots</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.bots, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">Sites</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.sites, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xl-2">
-                <div class="error-metric">
-                  <div class="error-metric-label mb-1">Origens</div>
-                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.origens, "9,999,999")#</cfoutput></div>
-                </div>
-              </div>
-            </div>
-
+            <div id="errors-logs" role="tabpanel" aria-labelledby="tab-logs" data-error-panel="logs">
             <cfif len(trim(URL.log_id))>
               <cfif qErrorLogDetail.recordcount>
                 <div class="error-panel mb-4">
                   <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
                     <div>
                       <h5 class="mb-1"><cfoutput>Detalhe do log ###qErrorLogDetail.id_log#</cfoutput></h5>
+                      <cfoutput><div class="my-2">#etLogLink(qErrorLogDetail.id_log)#</div></cfoutput>
                       <div class="text-muted small">
                         <cfoutput>#errorLogFormatDateTime(qErrorLogDetail.log_timestamp)# - #htmlEditFormat(qErrorLogDetail.site)# - #htmlEditFormat(qErrorLogDetail.classificacao)#</cfoutput>
                       </div>
@@ -250,6 +235,108 @@
                 <div class="alert alert-warning">Log nao encontrado para o ID informado.</div>
               </cfif>
             </cfif>
+
+            <div class="error-panel">
+              <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
+                <div>
+                  <h5 class="mb-1">Ultimos logs da amostra</h5>
+                  <div class="text-muted small"><cfoutput>Exibindo ate #VARIABLES.errorLogDisplayLimit# registros da amostra filtrada</cfoutput></div>
+                </div>
+                <a class="btn btn-outline-light btn-sm" href="./?aba=logs">Voltar ao padrao</a>
+              </div>
+
+              <cfif qErrorLogRecent.recordcount>
+                <div class="table-responsive">
+                  <table class="table table-sm table-striped table-hover error-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Site</th>
+                        <th>URL / resumo</th>
+                        <th>Origem</th>
+                        <th>Flags</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <cfoutput query="qErrorLogRecent">
+                        <tr>
+                          <td>#qErrorLogRecent.id_log#<div class="small">#etLogLink(qErrorLogRecent.id_log)#</div></td>
+                          <td>#errorLogFormatDateTime(qErrorLogRecent.log_timestamp)#</td>
+                          <td>
+                            <div>#htmlEditFormat(qErrorLogRecent.classificacao)#</div>
+                            <div class="small text-muted">#htmlEditFormat(errorLogItemLabel(qErrorLogRecent.log_item))#</div>
+                          </td>
+                          <td><span class="badge badge-secondary">#htmlEditFormat(qErrorLogRecent.site)#</span></td>
+                          <td class="error-text-cell">
+                            <cfif len(trim(qErrorLogRecent.url_path))>
+                              <strong>#htmlEditFormat(qErrorLogRecent.url_path)#</strong>
+                              <div class="small text-muted">#htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 180))#</div>
+                            <cfelse>
+                              #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 220))#
+                            </cfif>
+                          </td>
+                          <td class="error-text-cell">
+                            #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_user, 120))#
+                          </td>
+                          <td>
+                            <div class="error-badges">
+                              <cfif qErrorLogRecent.parece_bot><span class="badge badge-warning">bot</span></cfif>
+                              <cfif len(trim(qErrorLogRecent.url_detectada))><span class="badge badge-info">url</span></cfif>
+                            </div>
+                          </td>
+                          <td><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.errorLogBaseQuery#&log_id=#qErrorLogRecent.id_log#">Detalhe</a></td>
+                        </tr>
+                      </cfoutput>
+                    </tbody>
+                  </table>
+                </div>
+              <cfelse>
+                <div class="text-muted">Nenhum log encontrado para os filtros atuais.</div>
+              </cfif>
+            </div>
+            </div>
+            <div id="errors-resumo" role="tabpanel" aria-labelledby="tab-resumo" data-error-panel="resumo">
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">Logs na amostra</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.total, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">Erros</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.erros, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">404</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.notFound, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">Bots</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.bots, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">Sites</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.sites, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-2">
+                <div class="error-metric">
+                  <div class="error-metric-label mb-1">Origens</div>
+                  <div class="h4 mb-0"><cfoutput>#LSNumberFormat(VARIABLES.errorLogStats.origens, "9,999,999")#</cfoutput></div>
+                </div>
+              </div>
+            </div>
 
             <div class="row g-4 mb-4">
               <div class="col-xl-4">
@@ -375,66 +462,6 @@
               </cfif>
             </div>
 
-            <div class="error-panel">
-              <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
-                <div>
-                  <h5 class="mb-1">Ultimos logs da amostra</h5>
-                  <div class="text-muted small"><cfoutput>Exibindo ate #VARIABLES.errorLogDisplayLimit# registros da amostra filtrada</cfoutput></div>
-                </div>
-                <a class="btn btn-outline-light btn-sm" href="./">Voltar ao padrao</a>
-              </div>
-
-              <cfif qErrorLogRecent.recordcount>
-                <div class="table-responsive">
-                  <table class="table table-sm table-striped table-hover error-table">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Data</th>
-                        <th>Tipo</th>
-                        <th>Site</th>
-                        <th>URL / resumo</th>
-                        <th>Origem</th>
-                        <th>Flags</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <cfoutput query="qErrorLogRecent">
-                        <tr>
-                          <td>#qErrorLogRecent.id_log#</td>
-                          <td>#errorLogFormatDateTime(qErrorLogRecent.log_timestamp)#</td>
-                          <td>
-                            <div>#htmlEditFormat(qErrorLogRecent.classificacao)#</div>
-                            <div class="small text-muted">#htmlEditFormat(errorLogItemLabel(qErrorLogRecent.log_item))#</div>
-                          </td>
-                          <td><span class="badge badge-secondary">#htmlEditFormat(qErrorLogRecent.site)#</span></td>
-                          <td class="error-text-cell">
-                            <cfif len(trim(qErrorLogRecent.url_path))>
-                              <strong>#htmlEditFormat(qErrorLogRecent.url_path)#</strong>
-                              <div class="small text-muted">#htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 180))#</div>
-                            <cfelse>
-                              #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 220))#
-                            </cfif>
-                          </td>
-                          <td class="error-text-cell">
-                            #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_user, 120))#
-                          </td>
-                          <td>
-                            <div class="error-badges">
-                              <cfif qErrorLogRecent.parece_bot><span class="badge badge-warning">bot</span></cfif>
-                              <cfif len(trim(qErrorLogRecent.url_detectada))><span class="badge badge-info">url</span></cfif>
-                            </div>
-                          </td>
-                          <td><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.errorLogBaseQuery#&log_id=#qErrorLogRecent.id_log#">Detalhe</a></td>
-                        </tr>
-                      </cfoutput>
-                    </tbody>
-                  </table>
-                </div>
-              <cfelse>
-                <div class="text-muted">Nenhum log encontrado para os filtros atuais.</div>
-              </cfif>
             </div>
           </cfif>
         </div>
@@ -442,3 +469,7 @@
     </div>
   </div>
 </section>
+
+  </div>
+</div>
+<script src="/portal/erros/assets/triage.js?v=20260928-form" defer></script>

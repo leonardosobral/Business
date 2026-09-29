@@ -1,0 +1,164 @@
+
+<link rel="stylesheet" href="/portal/erros/assets/triage.css?v=20260926"/>
+<div class="card shadow-0 mb-4"><div class="card-body"><section class="triage-workspace" aria-labelledby="triage-heading">
+  <h2 id="triage-heading" class="h4">Acompanhamento de erros</h2>
+  <p class="text-muted">Classifique os problemas, registre a investigação e acompanhe a correção até a verificação.</p>
+  
+  
+    
+    
+    <div class="row g-3 mb-3">
+      <div class="col-sm-4"><div class="border rounded p-3"><div class="small text-muted">Problemas registrados</div><strong class="fs-4">2</strong></div></div>
+      <div class="col-sm-4"><div class="border rounded p-3"><div class="small text-muted">Pendentes de verificação</div><strong class="fs-4">2</strong></div></div>
+      <div class="col-sm-4"><div class="border rounded p-3"><div class="small text-muted">Ocorrências processadas</div><strong class="fs-4">206</strong></div></div>
+    </div>
+    <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+      <form method="post" action="./" data-triage-write><input type="hidden" name="csrf" value="e428ec194065722eb32efc1261884b55ee96a59d57e26cce8a0e2ddc9b508506"/><input type="hidden" name="triage_action" value="collect"/><button class="btn btn-warning" type="submit">Processar próximo lote</button></form>
+      <div class="small text-muted">Até 200 logs por lote. Processamento sob demanda; os totais acima incluem todos os lotes já processados.
+      <br/>Recorte iniciado em 19/09/2026 21:35:59. Horários no fuso America&#x2f;Sao_Paulo.</div>
+    </div>
+    
+    
+    
+      
+      
+        
+        
+        <div class="border rounded p-3 mb-4">
+          <div class="d-flex flex-wrap justify-content-between gap-2 mb-3"><h3 class="h5 mb-0">Problema #1 · RR</h3><a href="./" class="btn btn-sm btn-outline-light">Voltar à fila</a></div>
+          <p class="small text-muted">206 ocorrências · Primeira: 26/09/2026 19:36:00 · Última: 26/09/2026 21:36:00 · Versão 210</p>
+          
+          <form method="post" action="./?problem_id=1" data-triage-write>
+            <input type="hidden" name="csrf" value="e428ec194065722eb32efc1261884b55ee96a59d57e26cce8a0e2ddc9b508506"/><input type="hidden" name="triage_action" value="save"/><input type="hidden" name="problem_id" value="1"/>
+            <input type="hidden" name="version" value="210"/>
+            <div class="row g-3">
+              <div class="col-12"><label class="form-label" for="et-title">Título</label><input id="et-title" class="form-control" name="title" maxlength="180" required value="Corre&ccedil;&atilde;o SQL"/></div>
+              <div class="col-md-4"><label class="form-label" for="et-status">Status</label><select id="et-status" class="form-select" name="status"><option value="PUBLISHED">Publicado</option><option value="READY">Correção pronta</option><option value="IGNORED">Ignorado</option><option value="REOPENED" selected>Reaberto</option><option value="INVESTIGATING">Investigando</option><option value="VERIFIED">Verificado</option><option value="NEW">Novo</option></select></div>
+              <div class="col-md-4"><label class="form-label" for="et-category">Categoria</label><select id="et-category" class="form-select" name="category"><option value="NOT_FOUND">Página não encontrada</option><option value="UNCLASSIFIED">Não classificado</option><option value="INPUT">Entrada inválida / robô</option><option value="CODE">Código / CFML</option><option value="EXTERNAL">Serviço externo</option><option value="DATABASE" selected>Banco / SQL</option></select><div class="small text-muted mt-1">Sugestão inicial: C&oacute;digo &#x2f; CFML</div></div>
+              <div class="col-md-4"><label class="form-label" for="et-owner">Responsável</label><select id="et-owner" class="form-select" name="owner_id"><option value="">Sem responsável</option><option value="1" selected>Administrador de teste</option></select></div>
+              <div class="col-md-6"><label class="form-label" for="et-analysis">Análise / diagnóstico</label><textarea id="et-analysis" class="form-control" name="analysis" maxlength="8000">An&aacute;lise interna</textarea></div>
+              <div class="col-md-6"><label class="form-label" for="et-proposal">Correção proposta</label><textarea id="et-proposal" class="form-control" name="proposal" maxlength="8000">Corrigir consulta</textarea></div>
+              <div class="col-md-6"><label class="form-label" for="et-evidence">Evidências da publicação / verificação</label><textarea id="et-evidence" class="form-control" name="evidence" maxlength="8000">Publica&ccedil;&atilde;o validada</textarea><div class="small text-muted">Descreva o que foi publicado e como foi testado. Obrigatório para publicado ou verificado.</div></div>
+              <div class="col-md-6"><label class="form-label" for="et-published">Horário efetivo da publicação</label><input id="et-published" class="form-control" name="published_at" value="2026-09-26 20&#x3a;36&#x3a;00" placeholder="AAAA-MM-DD HH:MM:SS"/><div class="small text-muted mb-3">Use o fuso do banco informado acima. Um erro posterior a esse horário reabre o problema quando coletado.</div><label class="form-label" for="et-reason">Motivo da alteração</label><textarea id="et-reason" class="form-control" name="reason" maxlength="8000"></textarea><div class="small text-muted">Obrigatório para ignorar ou reabrir.</div></div>
+              <div class="col-12"><button class="btn btn-warning" type="submit">Salvar acompanhamento</button><span class="small text-muted ms-2">Salvar um status registra o acompanhamento; não executa a correção.</span></div>
+            </div>
+          </form>
+          <details class="mt-4"><summary class="fw-semibold">Histórico de alterações (até 100 mais recentes)</summary>
+            
+              <div class="border-bottom py-2"><strong>26/09/2026 21:36:00</strong> · Administrador #1 · Reaberto → Reaberto
+              <div class="small triage-text">Log 203 do problema 205&#x3a; Mesmo defeito</div>
+              </div>
+            
+              <div class="border-bottom py-2"><strong>26/09/2026 21:36:00</strong> · Administrador #1 · Reaberto → Reaberto
+              <div class="small triage-text">Log 203 separado para 205&#x3a; Separar para investigar</div>
+              </div>
+            
+              <div class="border-bottom py-2"><strong>26/09/2026 21:36:00</strong> · Administrador #1 · Publicado → Reaberto
+              <div class="small triage-text">Ocorr&ecirc;ncia posterior &agrave; publica&ccedil;&atilde;o&#x3a; log 203</div>
+              </div>
+            
+              <div class="border-bottom py-2"><strong>26/09/2026 21:36:00</strong> · Administrador #1 · Novo → Publicado
+              <div class="small triage-text"><strong>Publicação:</strong> 2026-09-26 20&#x3a;36&#x3a;00</div><div class="small triage-text"><strong>Evidências:</strong> Publica&ccedil;&atilde;o validada</div><div class="small triage-text"><strong>Análise:</strong> An&aacute;lise interna</div><div class="small triage-text"><strong>Categoria:</strong> database</div><div class="small triage-text"><strong>Responsável (ID):</strong> 1</div><div class="small triage-text"><strong>Motivo:</strong> Publica&ccedil;&atilde;o de teste</div><div class="small triage-text"><strong>Título:</strong> Corre&ccedil;&atilde;o SQL</div><div class="small triage-text"><strong>Proposta:</strong> Corrigir consulta</div>
+              </div>
+            
+              <div class="border-bottom py-2"><strong>26/09/2026 21:35:59</strong> · Administrador #1 ·  → Novo
+              <div class="small triage-text">Coleta de logs</div>
+              </div>
+            
+          </details>
+          <h4 class="h6 mt-4">Ocorrências vinculadas</h4>
+          <div class="table-responsive"><table class="table table-sm triage-table"><thead><tr><th>Log</th><th>Horário</th><th>Local / mensagem</th><th>Agrupamento</th></tr></thead><tbody>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=205">#205</a></td><td>26/09/2026 21:36:00</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=204">#204</a></td><td>26/09/2026 21:36:00</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=203">#203</a></td><td>26/09/2026 21:36:00</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=202">#202</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=201">#201</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=200">#200</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=199">#199</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=198">#198</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=197">#197</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=196">#196</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=195">#195</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=194">#194</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=193">#193</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=192">#192</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=191">#191</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=190">#190</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=189">#189</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=188">#188</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=187">#187</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=186">#186</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=185">#185</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=184">#184</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=183">#183</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=182">#182</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+            <tr><td><a href="./?problem_id=1&amp;log_id=181">#181</a></td><td>26/09/2026 21:35:59</td><td class="triage-title">&#x2f;eventos&#x2f;index.cfm<div class="small text-muted">Variable EVENT_ID is undefined.</div></td><td>Identidade técnica</td></tr>
+          
+          </tbody></table></div>
+          <div class="d-flex gap-2"><a class="btn btn-sm btn-outline-light" href="./?problem_id=1&amp;occurrence_page=2">Próximas ocorrências</a></div>
+          <details class="mt-3"><summary>Corrigir o agrupamento de uma ocorrência</summary>
+            <form method="post" action="./?problem_id=1" class="row g-2 mt-2" data-triage-write>
+              <input type="hidden" name="csrf" value="e428ec194065722eb32efc1261884b55ee96a59d57e26cce8a0e2ddc9b508506"/><input type="hidden" name="problem_id" value="1"/><input type="hidden" name="version" value="210"/>
+              <div class="col-md-3"><label class="form-label">ID do log</label><input class="form-control" type="number" name="log_id" min="1" required/></div>
+              <div class="col-md-3"><label class="form-label">Problema de destino</label><input class="form-control" type="number" name="target_id" min="1"/></div>
+              <div class="col-md-3"><label class="form-label">Versão do destino</label><input class="form-control" type="number" name="target_version" min="1"/></div>
+              <div class="col-12"><label class="form-label">Justificativa</label><input class="form-control" name="reason" maxlength="8000" required/></div>
+              <div class="col-12 d-flex flex-wrap gap-2"><button class="btn btn-sm btn-outline-warning" name="triage_action" value="move">Vincular ao destino</button><button class="btn btn-sm btn-outline-light" name="triage_action" value="split">Separar em novo problema</button></div>
+              <div class="small text-muted">Para vincular, consulte o ID e a versão no detalhe do destino. Para separar, basta informar o log e a justificativa.</div>
+            </form>
+          </details>
+        </div>
+        
+      
+    
+    
+    <form method="get" action="./" class="row g-2 mb-3">
+      <div class="col-md-3"><label class="form-label" for="et-filter-status">Status</label><select id="et-filter-status" name="status" class="form-select"><option value="">Todos</option><option value="PUBLISHED">Publicado</option><option value="READY">Correção pronta</option><option value="IGNORED">Ignorado</option><option value="REOPENED">Reaberto</option><option value="INVESTIGATING">Investigando</option><option value="VERIFIED">Verificado</option><option value="NEW">Novo</option></select></div>
+      <div class="col-md-4"><label class="form-label" for="et-filter-category">Categoria</label><select id="et-filter-category" name="category" class="form-select"><option value="">Todas</option><option value="NOT_FOUND">Página não encontrada</option><option value="UNCLASSIFIED">Não classificado</option><option value="INPUT">Entrada inválida / robô</option><option value="CODE">Código / CFML</option><option value="EXTERNAL">Serviço externo</option><option value="DATABASE">Banco / SQL</option></select></div>
+      <div class="col-md-3"><label class="form-label" for="et-filter-site">Site</label><input id="et-filter-site" name="triage_site" class="form-control" maxlength="32" value="" placeholder="RR, OR, CT..."/></div>
+      <div class="col-md-2 d-flex align-items-end"><button class="btn btn-outline-warning w-100" type="submit">Filtrar fila</button></div>
+    </form>
+    <form method="post" action="export.cfm" id="triage-export" data-triage-export>
+      <input type="hidden" name="csrf" value="e428ec194065722eb32efc1261884b55ee96a59d57e26cce8a0e2ddc9b508506"/>
+      <div class="table-responsive"><table class="table table-hover triage-table"><thead><tr><th><span class="visually-hidden">Selecionar</span></th><th>Problema</th><th>Categoria</th><th>Status</th><th>Ocorrências</th><th>Última</th></tr></thead><tbody>
+      
+        <tr><td><input class="form-check-input" type="checkbox" name="ids" value="1" aria-label="Selecionar problema 1"/></td><td class="triage-title"><a href="./?problem_id=1">#1 · Corre&ccedil;&atilde;o SQL</a><div class="small text-muted">RR</div></td><td>Banco &#x2f; SQL</td><td><span class="triage-status">Reaberto</span></td><td>206</td><td>26/09/2026 21:36:00</td></tr>
+      
+        <tr><td><input class="form-check-input" type="checkbox" name="ids" value="205" aria-label="Selecionar problema 205"/></td><td class="triage-title"><a href="./?problem_id=205">#205 · Corre&ccedil;&atilde;o SQL</a><div class="small text-muted">RR</div></td><td>Banco &#x2f; SQL</td><td><span class="triage-status">Novo</span></td><td>0</td><td>—</td></tr>
+      
+      
+      </tbody></table></div>
+      <div class="d-flex flex-wrap align-items-center gap-3"><button class="btn btn-outline-light" type="submit">Exportar selecionados para o Codex</button><span class="small text-muted">Até 20 problemas. Inclui apenas metadados e mensagens técnicas reconhecidas; textos livres não reconhecidos são omitidos.</span></div>
+      <div data-triage-feedback class="text-warning mt-2" role="alert"></div>
+    </form>
+    
+    <div class="d-flex flex-wrap align-items-center gap-3 mt-3"><span class="small text-muted">2 problemas · Página 1 de 1</span></div>
+    
+  
+</section></div></div>
+<script src="/portal/erros/assets/triage.js?v=20260926" defer></script>

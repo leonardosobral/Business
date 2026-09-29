@@ -1,0 +1,24 @@
+{
+  "HTMLLENGTH": 23979,
+  "TOTAL": 457.0,
+  "PAGES": 46.0,
+  "STATS": {
+    "COLUMNS": [
+      "REVIEW",
+      "APPLIED",
+      "IGNORED"
+    ],
+    "DATA": [
+      [
+        0,
+        457,
+        4
+      ]
+    ]
+  },
+  "IDS": "3751,3750,3749,3564,3563,3562,3560,3559,3557,3556",
+  "PAGE": 1,
+  "ERROR": "",
+  "RENDERABLE": 10.0,
+  "ROWS": 10
+}

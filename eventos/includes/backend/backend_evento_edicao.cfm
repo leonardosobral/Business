@@ -182,6 +182,17 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
 <cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_configuracoes" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
 
+    <cfif val(FORM.id_agrega_evento) GT 0>
+        <cfquery name="qEdicaoTipoValido">
+            SELECT id_agrega_evento FROM tb_agrega_eventos
+            WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_agrega_evento#" />
+              AND lower(trim(tipo_agregacao)) <> 'circuito'
+        </cfquery>
+        <cfif NOT qEdicaoTipoValido.recordcount>
+            <cfthrow message="Selecione um grupo de edições. Circuitos devem ser vinculados em Agregadores e circuitos." />
+        </cfif>
+    </cfif>
+
     <cfquery>
         UPDATE tb_evento_corridas
         SET

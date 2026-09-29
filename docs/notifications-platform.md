@@ -1,5 +1,15 @@
 # Plataforma de Notificações
 
+## Separação de audiência — 28/09/2026
+
+- A home mede leitura de notificações publicadas nos últimos 7 dias, até agora, apenas para destinatários identificados não-admins (`coalesce(tb_usuarios.is_admin, false) = false`). Publicações futuras não entram nesse indicador.
+- O histórico `/notificacoes/` abre em `publico=usuarios`. As abas `usuarios`, `admins` e `todos` separam pelo perfil atual do destinatário, não pelo remetente nem pelo tipo de mensagem. Mudanças posteriores no perfil podem reclassificar o histórico.
+- Registros sem destinatário identificável aparecem somente em Todos. O filtro não altera entregas, notificações armazenadas ou marcação de leitura.
+- Abas, filtros, paginação, links de ações e redirecionamentos preservam o público selecionado. As ações em lote também respeitam esse público.
+- Os cards Notificações, Lidas (com percentual) e Não lidas usam o mesmo recorte da listagem: público, busca, template, campanha, status e datas de publicação. Sem datas, o histórico é completo, incluindo agendamentos; não deve ser confundido com os últimos 7 dias da home. Filtrar somente Lidas produz 100% dentro desse recorte.
+- “Lidas” significa `data_leitura` preenchida: não comprova clique no link nem entrega de push. O card legado de conversão comercial foi substituído por Não lidas para não misturar outra regra de cálculo no acompanhamento.
+- Verificação local: `python3 _codex/scripts/test_notification_audience.py`, com PostgreSQL temporário isolado e execução CFML real. Não executa ações sobre dados de produção.
+
 Atualizado em: 2026-05-19
 
 ## Objetivo

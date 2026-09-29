@@ -1,0 +1,1022 @@
+{
+  "cells": [
+    {
+      "id": 4,
+      "notebook_id": 1,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "db3834ebdff94182ca50792aea919e4f8c39ab169f0c348c3b4b7545390189e4"
+    },
+    {
+      "id": 78,
+      "notebook_id": 8,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "558694a19f5611b93340021c9e6f87d0d677b3aca9c4b3e99627169a58b1d5fe"
+    },
+    {
+      "id": 56,
+      "notebook_id": 14,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "5dc0ff97f293a7f2cd6bb4b85ea56325b7b5f18a8a7a19004da2f7f1aa6ca538"
+    },
+    {
+      "id": 5,
+      "notebook_id": 2,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "494fe2d04f3a0cba4de6830bba1b2b370a9c80207e8b8896444665b7fae81c85"
+    },
+    {
+      "id": 65,
+      "notebook_id": 1,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "2f22a0e490611f43291ff8068799c1f67b82853d93e82db627aa54aa4113968c"
+    },
+    {
+      "id": 2,
+      "notebook_id": 1,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "45457110dc93704c41668ac512bf703d705b1e34f78c550b45897607928034f5"
+    },
+    {
+      "id": 76,
+      "notebook_id": 6,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "246f66f929680c9083efd3ca822035db448b16088e3840b1007b2e8b74f11d93"
+    },
+    {
+      "id": 74,
+      "notebook_id": 5,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "4486f378766bcdea56fceb4b68899fe76d8f0aeb9b229e78868164a9d5896378"
+    },
+    {
+      "id": 36,
+      "notebook_id": 9,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "2de6f3cad36075b862de57bb1a4972c9fe9dcb5a0164a26049e28c8af72638ba"
+    },
+    {
+      "id": 46,
+      "notebook_id": 11,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "8692380ccd92341d9fd435420852a5db547ba3da4285c4f85d07eb70330b53f8"
+    },
+    {
+      "id": 80,
+      "notebook_id": 10,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "2f5cafc4b8f8bee0d634b7a63227cdca48c23017b03ef9c5d8f4a8f94a0967dc"
+    },
+    {
+      "id": 8,
+      "notebook_id": 2,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "475a536dd66f7a1a3bbe036618e49d1d2380968f996f4619891fef3065fc914d"
+    },
+    {
+      "id": 57,
+      "notebook_id": 14,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "47711e8163009496802b989e5f3b27b63f8943891c96c24552c6e06bb9680a23"
+    },
+    {
+      "id": 89,
+      "notebook_id": 17,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "49b18f39379f106d30769a021ae4664225513c7b5107037266810c25bbd907fe"
+    },
+    {
+      "id": 24,
+      "notebook_id": 6,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "24bbdcb50ffa56ddf42f417b3506c87dc53c74a469d8575941078d4ef7e75744"
+    },
+    {
+      "id": 71,
+      "notebook_id": 2,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "37fe7fbfc9bcd11b9af287e987dee96a867e9ef28ab70cd9946179348e300a57"
+    },
+    {
+      "id": 28,
+      "notebook_id": 7,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "b57f35e75779d4936b25a60619eb344bf2aebe531b42f31456d4513414c472a9"
+    },
+    {
+      "id": 40,
+      "notebook_id": 10,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "d8bda1dc39c68a163045e30c365ba2a689f0e6151dbe2e0f87d4beeb65e9ab28"
+    },
+    {
+      "id": 48,
+      "notebook_id": 12,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "cb10b9ff1fb98585aa19ead1f2d18514de01ebe99b034aa62f982b2eec5a8d94"
+    },
+    {
+      "id": 52,
+      "notebook_id": 13,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "68a93531ffac61dc706ead804b4139f65b7db214e76b3be38fa60f098b01f6d8"
+    },
+    {
+      "id": 90,
+      "notebook_id": 17,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "c61890a60c7e45c52f177e39100ff35fa138809f7e3bee2ca5b5278b3447a188"
+    },
+    {
+      "id": 72,
+      "notebook_id": 3,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "8797744d68fd6080ab73a14198658c8f25867607664a6d123071bf6480a718da"
+    },
+    {
+      "id": 30,
+      "notebook_id": 7,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "bf6a0d3e40dd8f859c34672233489eba0e53dec55421daac3051b42de541d58e"
+    },
+    {
+      "id": 22,
+      "notebook_id": 5,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "938b2e68a12302be2987a1a1532250c69882f31cc8bbdde48a2d24187b10959b"
+    },
+    {
+      "id": 91,
+      "notebook_id": 18,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "26155298cb89bb4e95e8c8049d58402c5b30fe3ab7f31cff8ec9a227d91cf27b"
+    },
+    {
+      "id": 92,
+      "notebook_id": 18,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "bbbda411d69d5ae8c550bbedddc7ab229566c7c8ee4d9d7e9d5f4569a0e35a27"
+    },
+    {
+      "id": 109,
+      "notebook_id": 27,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "bc83d33671a841587bbb477e05806c432af222875231c483b011990e29e9f80d"
+    },
+    {
+      "id": 18,
+      "notebook_id": 4,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "68550c1b9f7c59d2946034e079e939544d4802a6f874396f1252f85359944256"
+    },
+    {
+      "id": 6,
+      "notebook_id": 3,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "97bbde003dd6f14b6c8bb0455bffa1d1ac57449382c0fb06aff0d2a5e794adc9"
+    },
+    {
+      "id": 16,
+      "notebook_id": 4,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "f31d7d9d8b0a0809f95b9ceff53ea9a9e101fa70b8710be55375e843e1d05219"
+    },
+    {
+      "id": 20,
+      "notebook_id": 5,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "19cbf47662c487f0ace6b36e2f219919772e204184024a4240bd15366f1c2e0c"
+    },
+    {
+      "id": 85,
+      "notebook_id": 1,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "209cb21a547805adeb2eaae282f763b5b0135d42409fa1122d92b7ba583ea615"
+    },
+    {
+      "id": 32,
+      "notebook_id": 8,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "3471e0863e962cc725cd676e43bbe7826a6ed63e0273be94c9019153887384a7"
+    },
+    {
+      "id": 14,
+      "notebook_id": 3,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "aad6414ceefee9bae489e20cd6c5631caf137cf750e224ba1e6915f1080049de"
+    },
+    {
+      "id": 44,
+      "notebook_id": 11,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "markdown",
+      "sha256": "e986b038bbb1032421f1a34e021acc2570dae80dfb66dfb86cd74736f931fdec"
+    },
+    {
+      "id": 26,
+      "notebook_id": 6,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "3322b178e1843fdba69911a495bfc5cec632615c41d75377cdb0b317f58d11f9"
+    },
+    {
+      "id": 37,
+      "notebook_id": 9,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "5138d0af7248c51bcab7917035f8efc02d81150e12d00043e854183440cd5e33"
+    },
+    {
+      "id": 79,
+      "notebook_id": 9,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "cbc0ccb9f294c82187670bee4d4bf56a38657894a2ef128afe50a6f975ca0b2d"
+    },
+    {
+      "id": 41,
+      "notebook_id": 10,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "44dbc5ac460ac5c2795c3ae52141851f36cfbe795779b47a5e4fca850dc1e799"
+    },
+    {
+      "id": 110,
+      "notebook_id": 27,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "9448a2eb8108ae7caf78a20e613c59b4dea8eb40291de5baa10611e1c51323ef"
+    },
+    {
+      "id": 77,
+      "notebook_id": 11,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 49,
+      "notebook_id": 12,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "3bba7ddcaa730e3e10411b0cd6ca1a9cc97ccaf70c0a618066f5c449bcd4e016"
+    },
+    {
+      "id": 111,
+      "notebook_id": 28,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "dd9f6a16b9870db2e0e5a7f45b3ede2d65108c5c78e3168115b9aefa59cb4df5"
+    },
+    {
+      "id": 112,
+      "notebook_id": 28,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "86057d7b9a98fd016297b9f35fa77c029292b54604d2d466d7126de59ce894c1"
+    },
+    {
+      "id": 113,
+      "notebook_id": 29,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "7b0f6a9eae9aa7809b413b156ca80a8955e5ffe65300bec9114b2e3c3bdfb253"
+    },
+    {
+      "id": 114,
+      "notebook_id": 29,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "6a6fa7009fd05203d4a1e13640aafab3864fe568117018f25faa3c3c720a0007"
+    },
+    {
+      "id": 88,
+      "notebook_id": 16,
+      "version": 2,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "76bf29784ac3cb15d21d14f1be926b69b95931f01ce2d01b1bb72ac35804dcea"
+    },
+    {
+      "id": 33,
+      "notebook_id": 8,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "3701f5c4b91404e7a9bb2517c1c27af785411b1cc85d798f295c52f9a437fc4b"
+    },
+    {
+      "id": 99,
+      "notebook_id": 22,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "de1aa3bdaffe82b6c36fd923288ad6d1663b84e2408ff1ee64af1b4a4b680526"
+    },
+    {
+      "id": 100,
+      "notebook_id": 22,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "abeb5fb91030e093af168394ec125fcfe592aa8b01d5efb0ea020fc6fe3c2944"
+    },
+    {
+      "id": 54,
+      "notebook_id": 13,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "9a980eb60864e701a123ccb99bc60297858a90ba331daecbfc933fca78e41993"
+    },
+    {
+      "id": 81,
+      "notebook_id": 12,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "99d49e2c55f9a51a22ac2684d07cef885c1486c0da0b0d635695e4fd60f1fbe9"
+    },
+    {
+      "id": 101,
+      "notebook_id": 23,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "7936ffa3f45f2f67020129af103c62514fcc2b1d9ecc9bd3af29cf2cb9bce8d4"
+    },
+    {
+      "id": 102,
+      "notebook_id": 23,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "181ffe8d26cf80ca7610a6d9a791b6b2b36fbbe1aa1bde59eec6ce4ff19552aa"
+    },
+    {
+      "id": 103,
+      "notebook_id": 24,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "bf025089315ff64c651dc437951ef9e6dd1cc02e7b805688df45ba20313f46c4"
+    },
+    {
+      "id": 104,
+      "notebook_id": 24,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "4c46063fe0c758da2f0ec7a250bdc6b5c932f37a0122937ff5888b682b712842"
+    },
+    {
+      "id": 105,
+      "notebook_id": 25,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "c82fd45201b58110e50affc49ded9431e3b5fa1d59fc54d1f13af4e2b68002e5"
+    },
+    {
+      "id": 106,
+      "notebook_id": 25,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "a8345284edbc86fdf10eae8996c5cf1d841fc3a4938decefb42d3fc2f5564485"
+    },
+    {
+      "id": 107,
+      "notebook_id": 26,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "33ed20b307601c2ac9f8a956f3bc6660b16b9a52734bb2318e4d99aae50e8ca8"
+    },
+    {
+      "id": 108,
+      "notebook_id": 26,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "b6e34a398fdd646924cd6ded9231e1dea790915505fdc0ca669aeaec117782e6"
+    },
+    {
+      "id": 73,
+      "notebook_id": 4,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "8bc9b3fdd7a451ecf41f10398218213891348ecb804d72f59e20160cee820992"
+    },
+    {
+      "id": 87,
+      "notebook_id": 16,
+      "version": 2,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "d5f35e83d2a2f02b6123d9954c91e336dfb824ab02b3563393ce504af1d89472"
+    },
+    {
+      "id": 82,
+      "notebook_id": 13,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "0232c471ac6c9b9d9333beb1e48e41b6f41c07a43ac4f50eddcac4a5adf5b515"
+    },
+    {
+      "id": 86,
+      "notebook_id": 15,
+      "version": 1,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "ed15f8678e883f9690617c85eb2635a1e3b739617fe7cb77d9a1514502fb4352"
+    },
+    {
+      "id": 83,
+      "notebook_id": 14,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "bd4e58dfd3a7272bd5d78eac47f79641110bf0bb9e5216b55420af07620e5c13"
+    },
+    {
+      "id": 75,
+      "notebook_id": 7,
+      "version": 1,
+      "cell_type": "code",
+      "lang": "html",
+      "sha256": "629c352d6b9364aed07a08452c6e66b9e3af969f170eeef01d90354f840727eb"
+    },
+    {
+      "id": 94,
+      "notebook_id": 19,
+      "version": 2,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "7a6f0a28a751cb47d4a8b4c87be429117bf7c9c0e895f065228978dee380860d"
+    },
+    {
+      "id": 93,
+      "notebook_id": 19,
+      "version": 2,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "d4d5f79f9d55a458beada5da631defac25a0e5915068802e924aaf8c1b5f1216"
+    },
+    {
+      "id": 96,
+      "notebook_id": 20,
+      "version": 2,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "c5fb5d5b38f79e20cde40760d91942da0b3ee06d2ba6170bfe90dd293c3ade3f"
+    },
+    {
+      "id": 95,
+      "notebook_id": 20,
+      "version": 2,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "23b3cdcc91634fcf3b808ef2657375c64dffdeee7189bd84644beacafc1beae2"
+    },
+    {
+      "id": 98,
+      "notebook_id": 21,
+      "version": 2,
+      "cell_type": "code",
+      "lang": "sql",
+      "sha256": "675652db70f6bbe27ce5559780bd1f807b9fa012ed6001b5c6536c95ee605f57"
+    },
+    {
+      "id": 97,
+      "notebook_id": 21,
+      "version": 2,
+      "cell_type": "markdown",
+      "lang": "",
+      "sha256": "d7967dece4e409d51ce41f2f20c8d13f61e0f995bf0429895d6c86f80b734428"
+    }
+  ],
+  "definitions": {
+    "get_id_geracao": "CREATE OR REPLACE FUNCTION public.get_id_geracao(p_faixa_idade int4range, p_ano_referencia integer)\n RETURNS integer\n LANGUAGE sql\n IMMUTABLE\nAS $function$\r\nSELECT\r\n    CASE\r\n\r\n        WHEN p_faixa_idade IS NULL OR p_ano_referencia IS NULL THEN 0\r\n        WHEN int4range(\r\n                 p_ano_referencia - upper(p_faixa_idade),\r\n                 p_ano_referencia - lower(p_faixa_idade),\r\n                 '[)'\r\n             ) && int4range(1946, 1965, '[)') THEN 1\r\n        WHEN int4range(\r\n                 p_ano_referencia - upper(p_faixa_idade),\r\n                 p_ano_referencia - lower(p_faixa_idade),\r\n                 '[)'\r\n             ) && int4range(1965, 1981, '[)') THEN 2\r\n        WHEN int4range(\r\n                 p_ano_referencia - upper(p_faixa_idade),\r\n                 p_ano_referencia - lower(p_faixa_idade),\r\n                 '[)'\r\n             ) && int4range(1981, 1996, '[)') THEN 3\r\n        WHEN int4range(\r\n                 p_ano_referencia - upper(p_faixa_idade),\r\n                 p_ano_referencia - lower(p_faixa_idade),\r\n                 '[)'\r\n             ) && int4range(1996, 2011, '[)') THEN 4\r\n        WHEN int4range(\r\n                 p_ano_referencia - upper(p_faixa_idade),\r\n                 p_ano_referencia - lower(p_faixa_idade),\r\n                 '[)'\r\n             ) && int4range(2010, NULL, '[)') THEN 0\r\n        ELSE 0\r\n    END;\r\n$function$\n"
+  },
+  "sections": [
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "UFs",
+      "call_order": 7,
+      "updated_at": "2026-09-28T12:48:02.59454-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 7
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Conclusões por mês",
+      "call_order": 9,
+      "updated_at": "2026-09-28T12:48:02.59457-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 9
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Headline performance",
+      "call_order": 13,
+      "updated_at": "2026-09-28T12:48:02.594571-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 13
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Concentração de mercado",
+      "call_order": 8,
+      "updated_at": "2026-09-28T12:48:02.594572-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 8
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Gênero",
+      "call_order": 2,
+      "updated_at": "2026-09-28T12:48:02.594572-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 2
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Faixas de tempo",
+      "call_order": 12,
+      "updated_at": "2026-09-28T12:48:02.594573-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 12
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Distâncias",
+      "call_order": 5,
+      "updated_at": "2026-09-28T12:48:02.594573-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 5
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Taxa de completude",
+      "call_order": 14,
+      "updated_at": "2026-09-28T12:48:02.594574-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 14
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Headline distâncias",
+      "call_order": 6,
+      "updated_at": "2026-09-28T12:48:02.594574-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 6
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Picos de calendário",
+      "call_order": 10,
+      "updated_at": "2026-09-28T12:48:02.594575-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 10
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Faixa etária",
+      "call_order": 3,
+      "updated_at": "2026-09-28T12:48:02.594575-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 3
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Modalidade",
+      "call_order": 4,
+      "updated_at": "2026-09-28T12:48:02.594576-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 4
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Escopo Infograficos",
+      "call_order": 1,
+      "updated_at": "2026-09-28T12:48:02.594576-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 1
+    },
+    {
+      "caderno_id": 1,
+      "source_key": null,
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Provas Rápidas",
+      "call_order": 11,
+      "updated_at": "2026-09-28T12:48:02.594577-03:00",
+      "tag": "infografico-2025",
+      "archived": false,
+      "notebook_id": 11
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "sources-2025-map",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "Mapa de conciliação",
+      "call_order": 1,
+      "updated_at": "2026-09-28T12:48:02.655421-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 15
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-estudo_treinos.sql.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · estudo_treinos.sql",
+      "call_order": 2,
+      "updated_at": "2026-09-28T12:48:02.659568-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 16
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-INFOGRAFICO_DISTANCIAS.sql.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · INFOGRAFICO_DISTANCIAS.sql",
+      "call_order": 3,
+      "updated_at": "2026-09-28T12:48:02.661182-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 17
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-insights_previa.docx.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · insights_prévia.docx",
+      "call_order": 4,
+      "updated_at": "2026-09-28T12:48:02.662872-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 18
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-regiao_capital_interior.sql.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · regiao_capital_interior.sql",
+      "call_order": 5,
+      "updated_at": "2026-09-28T12:48:02.665153-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 19
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-script_perfil_2025_segundo_semestre.txt.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · script_perfil_2025_segundo_semestre.txt",
+      "call_order": 6,
+      "updated_at": "2026-09-28T12:48:02.665908-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 20
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "dba-202509-script_perfil_br_corre_2025.sql.txt",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DBA · script_perfil_br_corre_2025.sql",
+      "call_order": 7,
+      "updated_at": "2026-09-28T12:48:02.66701-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 21
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO.sql",
+      "call_order": 8,
+      "updated_at": "2026-09-28T12:48:02.667948-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 22
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_COLAB_CNA.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_COLAB_CNA.sql",
+      "call_order": 9,
+      "updated_at": "2026-09-28T12:48:02.668925-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 23
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_DISTANCIAS.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_DISTANCIAS.sql",
+      "call_order": 10,
+      "updated_at": "2026-09-28T12:48:02.669761-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 24
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_INUTEIS.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_INUTEIS.sql",
+      "call_order": 11,
+      "updated_at": "2026-09-28T12:48:02.670825-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 25
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_MARATONAS.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_MARATONAS.sql",
+      "call_order": 12,
+      "updated_at": "2026-09-28T12:48:02.67149-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 26
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_MERCADO.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_MERCADO.sql",
+      "call_order": 13,
+      "updated_at": "2026-09-28T12:48:02.672492-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 27
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_PERSONAS.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_PERSONAS.sql",
+      "call_order": 14,
+      "updated_at": "2026-09-28T12:48:02.673413-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 28
+    },
+    {
+      "caderno_id": 2,
+      "source_key": "datagrip-2025-INFOGRAFICO_USUARIO.sql",
+      "updated_by": null,
+      "version": 1,
+      "notebook_title": "DataGrip · INFOGRAFICO_USUARIO.sql",
+      "call_order": 15,
+      "updated_at": "2026-09-28T12:48:02.674307-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 29
+    },
+    {
+      "caderno_id": 2,
+      "source_key": null,
+      "updated_by": 139,
+      "version": 1,
+      "notebook_title": "Validação da migração — 28/09/2026",
+      "call_order": 16,
+      "updated_at": "2026-09-28T12:57:09.412749-03:00",
+      "tag": null,
+      "archived": false,
+      "notebook_id": 30
+    }
+  ],
+  "snapshots": [
+    {
+      "id": 1,
+      "hash": "ef76fb668aeffef7c1a70b6d150c13464153dcd02af85d08e735480a8d06d6a2"
+    },
+    {
+      "id": 4,
+      "hash": "dac0de2c8f3481bd4c60dad7731ba313cfeb575d9c662832b6791ec62b66fd5d"
+    },
+    {
+      "id": 5,
+      "hash": "2680f46d7b71449f8b65c88779fc23587125dabd181916751ce2934eed304a31"
+    },
+    {
+      "id": 6,
+      "hash": "566c11ac44e82e911aee464d94eb2d7b1b808382d0eb8a8a28befb1adeaee2d1"
+    }
+  ],
+  "view_definition": " SELECT id_resultado,\n    num_peito,\n    nome,\n    data_nascimento,\n    id_evento,\n    modalidade,\n    pace,\n    percurso,\n    sexo,\n    tempo_bruto,\n    tempo_total,\n    classificacao_categoria,\n    classificacao_sexo,\n    classificacao_total,\n    velocidade_media,\n    equipe,\n    nome_categoria,\n    id_usuario,\n    id_categoria,\n    homologado,\n    concluinte,\n    chave_processamento,\n    chave_verificacao,\n    nacionalidade,\n    status_final,\n    hora_largada,\n    tempo_f1_categoria,\n    tempo_f1_sexo,\n    tempo_f1_total,\n    posicao_ranking,\n    classificacao_pais,\n    pcd,\n    nome_full_text,\n    idade_range\n   FROM tb_resultados\n  WHERE ((status_final = 0) AND (homologado = true));",
+  "books": [
+    {
+      "ano": 2025,
+      "atualizado_em": "2026-09-28T12:48:02.58942-03:00",
+      "source_key": "legacy-runnerhub-2025",
+      "descricao": "Acervo original do editor RunnerHub. Queries e resultados HTML historicos preservados.",
+      "version": 1,
+      "criado_por": null,
+      "atualizado_por": null,
+      "titulo": "Brasil que Corre Provas — 2025",
+      "id": 1,
+      "criado_em": "2026-09-28T12:48:02.58942-03:00"
+    },
+    {
+      "ano": 2025,
+      "atualizado_em": "2026-09-28T12:48:02.655179-03:00",
+      "source_key": "sources-2025-v1",
+      "descricao": "Arquivos do DBA, DataGrip e registro das diferenças com o editor recuperado. Fontes históricas para revisão.",
+      "version": 1,
+      "criado_por": null,
+      "atualizado_por": null,
+      "titulo": "Fontes e conciliação — 2025",
+      "id": 2,
+      "criado_em": "2026-09-28T12:48:02.655179-03:00"
+    }
+  ],
+  "runs": [
+    {
+      "status": "error",
+      "cell_id": 4,
+      "id": 1,
+      "frozen": false
+    },
+    {
+      "status": "error",
+      "cell_id": 4,
+      "id": 2,
+      "frozen": false
+    },
+    {
+      "status": "error",
+      "cell_id": 4,
+      "id": 3,
+      "frozen": false
+    },
+    {
+      "status": "ok",
+      "cell_id": 4,
+      "id": 4,
+      "frozen": true
+    },
+    {
+      "status": "ok",
+      "cell_id": 115,
+      "id": 5,
+      "frozen": true
+    }
+  ]
+}

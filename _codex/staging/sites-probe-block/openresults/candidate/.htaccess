@@ -1,0 +1,21 @@
+# Native response: denied requests must not enter a dynamic error handler.
+ErrorDocument 403 "Access denied"
+ErrorDocument 404 /404/
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    # Reject environment files and common backups, including nested paths, before routing.
+    RewriteRule (^|/)\.env([./_~-]|$) - [F,L,NC]
+    # Private metadata and known configuration probes; keep public discovery files available.
+    RewriteRule (^|/)\.(git|aws|github)(/|$) - [F,L,NC]
+    RewriteRule (^|/)\.netrc([./_~-]|$) - [F,L,NC]
+    RewriteRule (^|/)(phpinfo\.php|aws-exports\.js|docker-compose\.yml|key\.json|local_settings\.py)(/|$) - [F,L,NC]
+    RewriteRule (^|/)\.(npmrc|gitlab-ci\.yml)(/|$) - [F,L,NC]
+    RewriteRule (^|/)(secrets|credentials|token|keys|serviceAccountKey|service[-_]account|firebase-adminsdk)\.json(/|$) - [F,L,NC]
+    # Exact configuration paths observed in scans; do not blanket-block JSON or public API schemas.
+    RewriteRule ^(config\.json|env\.(js|json)|vercel\.json|appsettings\.json|firebase\.json|application\.(yml|properties)|web\.config|serverless\.yml|amplifyconfiguration\.json|awsconfiguration\.json|terraform\.(tfvars|tfstate)|ai/config\.json|assets/env\.js|instance/config\.py)(/|$) - [F,L,NC]
+    RewriteRule ^(api/(config|env)|debug/vars)(/|$) - [F,L,NC]
+    # These endpoints are not used by this ColdFusion portal.
+    RewriteRule ^(graphql|actuator)(/|$) - [F,L,NC]
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>

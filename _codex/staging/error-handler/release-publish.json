@@ -1,0 +1,20 @@
+{
+  "published": [
+    "errors/404-en.html",
+    "errors/404-es.html",
+    "errors/404.html",
+    "errors/500-en.html",
+    "errors/500-es.html",
+    "errors/500.html",
+    "includes/errors/handle.cfm",
+    "includes/errors/notfound.cfm",
+    "includes/errors/notify.cfm",
+    "services/ErrorReporter.cfc",
+    "404/index.cfm",
+    "404/Application.cfc",
+    "Application.cfc",
+    "maratonadefloripa/Application.cfc",
+    ".htaccess"
+  ],
+  "backup": "/var/backups/roadrunners-error-handler-20260926-v2/baseline"
+}

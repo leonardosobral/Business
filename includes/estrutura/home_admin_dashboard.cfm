@@ -816,9 +816,12 @@
             <cfquery name="qBusinessAdminHomeNotificationStats">
                 SELECT
                     count(*)::integer AS total,
-                    (count(*) FILTER (WHERE data_leitura IS NOT NULL))::integer AS lidas
-                FROM tb_notifica
-                WHERE data_publicacao >= now() - interval '7 days'
+                    (count(*) FILTER (WHERE ntf.data_leitura IS NOT NULL))::integer AS lidas
+                FROM tb_notifica ntf
+                INNER JOIN tb_usuarios usr ON usr.id = ntf.id_usuario
+                WHERE ntf.data_publicacao >= now() - interval '7 days'
+                  AND ntf.data_publicacao <= now()
+                  AND coalesce(usr.is_admin, false) = false
             </cfquery>
             <cfset VARIABLES.businessAdminHomeNotifications7d = val(qBusinessAdminHomeNotificationStats.total)/>
             <cfset VARIABLES.businessAdminHomeNotificationsRead7d = val(qBusinessAdminHomeNotificationStats.lidas)/>
@@ -1182,8 +1185,8 @@
                     <cfoutput><div class="gd-ring" style="--progress:#numberFormat(VARIABLES.businessAdminHomeNotificationReadRate7d, '0.00')#%"><strong>#LSNumberFormat(VARIABLES.businessAdminHomeNotificationReadRate7d, "9.9")#<small>%</small></strong><span>lidas</span></div></cfoutput>
                     <dl class="gd-notification-counts"><div><dt>Lidas</dt><dd><cfoutput>#businessAdminMetric(VARIABLES.businessAdminHomeNotificationsRead7d)#</cfoutput></dd></div><div><dt>Publicadas</dt><dd><cfoutput>#businessAdminMetric(VARIABLES.businessAdminHomeNotifications7d)#</cfoutput></dd></div></dl>
                 </div>
-                <p class="gd-caption">Registros com leitura confirmada entre as notificações publicadas nos últimos 7 dias.</p>
-            <cfelseif VARIABLES.businessAdminHomeNotificationsLoaded><p class="gd-empty"><i class="fa-regular fa-bell-slash" aria-hidden="true"></i>Nenhuma notificação publicada nos últimos 7 dias.</p>
+                <p class="gd-caption">Admins excluídos. Leitura confirmada das notificações publicadas para usuários nos últimos 7 dias.</p>
+            <cfelseif VARIABLES.businessAdminHomeNotificationsLoaded><p class="gd-empty"><i class="fa-regular fa-bell-slash" aria-hidden="true"></i>Nenhuma notificação para usuários nos últimos 7 dias. Admins excluídos.</p>
             <cfelse><p class="gd-empty">Dados de notificações indisponíveis.</p></cfif>
         </section>
     </div>

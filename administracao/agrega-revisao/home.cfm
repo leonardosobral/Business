@@ -39,12 +39,12 @@
     <div>
       <div class="text-warning text-uppercase small fw-bold">Administração</div>
       <h1 class="business-page-title mb-1">Revisão de Agregadores</h1>
-      <p class="text-muted mb-0">Agrupe edições anuais do mesmo evento por similaridade de nome e cidade, sem considerar datas.</p>
+      <p class="text-muted mb-0">Encontre edições anuais da mesma prova e revise os vínculos antes de publicá-los no portal.</p>
     </div>
     <a class="btn btn-outline-light btn-sm" href="/eventos/">Eventos</a>
   </div>
 
-  <cfif len(VARIABLES.agregaReviewNotice)>
+  <cfif len(VARIABLES.agregaReviewNotice) AND NOT listFind("sugestao_aceita,sugestao_ja_aplicada", URL.sucesso)>
     <div class="alert alert-success"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
   </cfif>
   <cfif len(VARIABLES.agregaReviewError)>
@@ -68,15 +68,15 @@
         <input type="hidden" name="acao" value="gerar_sugestoes" />
         <div class="col-12 col-lg-5">
           <label class="form-label">Gerar sugestões</label>
-          <div class="text-muted small">Compara eventos ativos da mesma cidade/UF, remove anos e edições do nome e não altera nenhum agregador automaticamente.</div>
+          <div class="text-muted small">Analisa os dois calendários completos, sem limite por cidade. Exige nome normalizado igual, mesma cidade/UF, país e tipo de corrida, uma candidata por ano e datas próximas na temporada. Preserva distâncias e etapas; só sugere eventos ativos. Nenhum vínculo é aplicado automaticamente. Circuitos são mantidos separadamente em Agregadores e circuitos, nas configurações de cada evento.</div>
         </div>
         <div class="col-6 col-lg-2">
-          <label class="form-label">Score mínimo</label>
-          <input class="form-control" type="number" min="40" max="100" step="1" name="min_score" value="78" />
+          <label class="form-label" for="agrega-year-base">Ano base</label>
+          <input id="agrega-year-base" class="form-control" type="number" min="1900" max="<cfoutput>#year(now())+1#</cfoutput>" name="ano_base" value="<cfoutput>#year(now())-1#</cfoutput>" required />
         </div>
         <div class="col-6 col-lg-2">
-          <label class="form-label">Limite de eventos</label>
-          <input class="form-control" type="number" min="100" max="12000" step="100" name="limite_eventos" value="5000" />
+          <label class="form-label" for="agrega-year-next">Ano comparado</label>
+          <input id="agrega-year-next" class="form-control" type="number" min="1901" max="<cfoutput>#year(now())+2#</cfoutput>" name="ano_comparado" value="<cfoutput>#year(now())#</cfoutput>" required />
         </div>
         <div class="col-12 col-lg-3">
           <button class="btn btn-warning w-100" onclick="return confirm('Gerar novas sugestões de agregação? Nenhum evento será alterado agora.');">Gerar sugestões</button>
@@ -256,6 +256,10 @@
     </form>
     </cfif>
 
+    <div id="agrega-review-list"></div>
+    <cfif len(VARIABLES.agregaReviewNotice) AND listFind("sugestao_aceita,sugestao_ja_aplicada", URL.sucesso)>
+      <div class="alert alert-success" role="status"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
+    </cfif>
     <cfif !qAgregaReviewGroups.recordcount OR VARIABLES.agregaReviewRenderableTotal EQ 0>
       <div class="alert alert-secondary">Nenhum grupo encontrado com os filtros atuais.</div>
     <cfelse>
@@ -299,7 +303,7 @@
                 <div class="small text-muted">Grupo ###id_evento_agrega_review_group# · #htmlEditFormat(cidade)#/#htmlEditFormat(estado)#</div>
                 <h2 class="h5 mb-1">#htmlEditFormat(group_display_name)#</h2>
                 <div class="small text-muted">
-                  #candidate_count# eventos · Score máximo #numberFormat(max_score, "0.00")#
+                  #candidate_count# eventos · <cfif left(group_key, 11) EQ "edicoes-v1:">Correspondência exata após normalização<cfelse>Score máximo #numberFormat(max_score, "0.00")#</cfif>
                   <cfif len(suggested_nome_evento_agregado & "")>
                     · Sugerido: #htmlEditFormat(suggested_tipo_agregacao)# - #htmlEditFormat(suggested_nome_evento_agregado)#
                   </cfif>
@@ -308,6 +312,40 @@
               <span class="badge badge-warning text-dark align-self-start">#htmlEditFormat(status)#</span>
             </div>
 
+            <cfif left(group_key, 11) EQ "edicoes-v1:">
+              <div class="alert alert-info py-2 small">Nome normalizado idêntico; mesma cidade/UF, país e tipo de corrida; uma candidata por ano; diferença sazonal de até 90 dias; números de edição consecutivos quando informados. Confirme que representam a mesma prova.</div>
+            </cfif>
+            <cfif NOT VARIABLES.agregaReviewIsFocusedGroup>
+              <cfloop query="qAgregaReviewCandidates">
+                <cfif qAgregaReviewCandidates.id_evento_agrega_review_group EQ qAgregaReviewGroups.id_evento_agrega_review_group>
+                  <div class="small mb-1">#htmlEditFormat(qAgregaReviewCandidates.nome_evento)# · <cfif isDate(qAgregaReviewCandidates.data_inicial)>#dateFormat(qAgregaReviewCandidates.data_inicial, "dd/mm/yyyy")#<cfelse>Data não informada</cfif> · <cfif val(qAgregaReviewCandidates.id_agrega_evento_atual) GT 0>Agregador ###qAgregaReviewCandidates.id_agrega_evento_atual#<cfelse>Sem agregador</cfif></div>
+                </cfif>
+              </cfloop>
+              <cfif structKeyExists(VARIABLES.agregaReviewQuickGroups, VARIABLES.agregaReviewCurrentGroupKey)>
+                <cfset VARIABLES.agregaReviewQuickName = group_display_name />
+                <cfif FORM.acao EQ "aceitar_sugestao" AND structKeyExists(FORM, "id_grupo")
+                    AND val(FORM.id_grupo) EQ val(id_evento_agrega_review_group) AND structKeyExists(FORM, "nome_evento_agregado")>
+                  <cfset VARIABLES.agregaReviewQuickName = FORM.nome_evento_agregado />
+                </cfif>
+                <form method="post" class="agrega-review-quick-form row g-2 align-items-end mt-3">
+                  <input type="hidden" name="acao" value="aceitar_sugestao" />
+                  <input type="hidden" name="id_grupo" value="#id_evento_agrega_review_group#" />
+                  <input type="hidden" name="eventos_esperados" value="#htmlEditFormat(VARIABLES.agregaReviewQuickGroups[VARIABLES.agregaReviewCurrentGroupKey])#" />
+                  <input type="hidden" name="quick_token" value="#htmlEditFormat(VARIABLES.agregaReviewQuickToken)#" />
+                  <div class="col-12 col-xl">
+                    <label class="form-label" for="agrega-quick-name-#id_evento_agrega_review_group#">Nome do agregador</label>
+                    <input class="form-control" id="agrega-quick-name-#id_evento_agrega_review_group#" name="nome_evento_agregado" value="#htmlEditFormat(VARIABLES.agregaReviewQuickName)#" maxlength="256" required />
+                  </div>
+                  <div class="col-12 col-sm-auto d-flex flex-wrap gap-2">
+                    <button class="btn btn-warning btn-sm" type="submit">Aceitar sugestão</button>
+                    <a class="btn btn-outline-warning btn-sm" href="/administracao/agrega-revisao/?grupo=#id_evento_agrega_review_group#">Revisar este par</a>
+                  </div>
+                  <div class="col-12 small text-muted">Cria o agregador e vincula as duas provas listadas.</div>
+                </form>
+              <cfelse>
+              <a class="btn btn-outline-warning btn-sm mt-2" href="/administracao/agrega-revisao/?grupo=#id_evento_agrega_review_group#"><cfif status EQ "review">Revisar este par<cfelse>Ver revisão</cfif></a>
+              </cfif>
+            <cfelse>
             <cfif status EQ "review" AND val(suggested_id_agrega_evento) LTE 0>
               <div class="card shadow-0 border border-light border-opacity-10 mb-3">
                 <div class="card-body">
@@ -360,7 +398,7 @@
                       <input class="form-control" type="number" name="ordem" value="300" />
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-outline-warning btn-sm" onclick="return confirm('Criar este agregador e selecioná-lo para o grupo?');"><i class="fa-solid fa-plus me-1"></i> Criar agregador</button>
+                      <button class="btn btn-outline-warning btn-sm" type="submit"><i class="fa-solid fa-plus me-1"></i> Criar agregador</button>
                     </div>
                   </form>
                 </div>
@@ -647,10 +685,11 @@
 
               <input type="hidden" name="id_candidato" value="" />
               <div class="d-flex flex-wrap gap-2 justify-content-between pt-3 border-top border-light border-opacity-10">
-                <button class="btn btn-success btn-sm" <cfif status NEQ "review">disabled</cfif> onclick="this.form.acao.value='aplicar_agregador'; return confirm('Salvar o nome e o tipo finais e aplicar o agregador aos eventos marcados?');"><i class="fa-solid fa-object-group me-1"></i> Aplicar aos selecionados</button>
+                <button class="btn btn-success btn-sm" <cfif status NEQ "review">disabled</cfif> onclick="this.form.acao.value='aplicar_agregador';"><i class="fa-solid fa-object-group me-1"></i> Aplicar aos selecionados</button>
                 <button class="btn btn-outline-danger btn-sm" type="submit" <cfif status NEQ "review">disabled</cfif> onclick="this.form.acao.value='ignorar_grupo'; return confirm('Ignorar todo este grupo de revisão?');"><i class="fa-solid fa-eye-slash me-1"></i> Ignorar grupo</button>
               </div>
             </form>
+            </cfif>
           </article>
           </cfif>
         </cfoutput>
@@ -658,9 +697,10 @@
     </cfif>
 
     <cfif VARIABLES.agregaReviewTotalPages GT 1>
-      <nav class="mt-4">
-        <ul class="pagination pagination-sm">
-          <cfloop from="1" to="#VARIABLES.agregaReviewTotalPages#" index="VARIABLES.agregaReviewPageIndex">
+      <nav class="mt-4" aria-label="Páginas da revisão">
+        <div class="small text-muted mb-2"><cfoutput>#VARIABLES.agregaReviewTotal# grupos · Página #VARIABLES.agregaReviewPage# de #VARIABLES.agregaReviewTotalPages#</cfoutput></div>
+        <ul class="pagination pagination-sm flex-wrap">
+          <cfloop from="#max(1, VARIABLES.agregaReviewPage-3)#" to="#min(VARIABLES.agregaReviewTotalPages, VARIABLES.agregaReviewPage+3)#" index="VARIABLES.agregaReviewPageIndex">
             <li class="page-item <cfif VARIABLES.agregaReviewPageIndex EQ VARIABLES.agregaReviewPage>active</cfif>">
               <a class="page-link" href="/administracao/agrega-revisao/?pagina=<cfoutput>#VARIABLES.agregaReviewPageIndex#&busca=#urlEncodedFormat(VARIABLES.agregaReviewSearch)#&status=#urlEncodedFormat(VARIABLES.agregaReviewStatus)#&ordenar=#urlEncodedFormat(VARIABLES.agregaReviewOrder)#&direcao=#urlEncodedFormat(VARIABLES.agregaReviewDirection)#</cfoutput>"><cfoutput>#VARIABLES.agregaReviewPageIndex#</cfoutput></a>
             </li>
@@ -673,6 +713,23 @@
 
 <script>
 (function () {
+  const quickForms = Array.from(document.querySelectorAll('.agrega-review-quick-form'));
+  quickForms.forEach(function (form) {
+    form.addEventListener('submit', function () {
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      button.textContent = 'Aplicando…';
+      form.setAttribute('aria-busy', 'true');
+    });
+  });
+  window.addEventListener('pageshow', function () {
+    quickForms.forEach(function (form) {
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = false;
+      button.textContent = 'Aceitar sugestão';
+      form.removeAttribute('aria-busy');
+    });
+  });
   const manualForm = document.getElementById('agrega-review-manual-form');
 
   if (manualForm) {

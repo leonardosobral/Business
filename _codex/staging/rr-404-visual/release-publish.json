@@ -1,0 +1,8 @@
+{
+  "published": [
+    "errors/404-en.html",
+    "errors/404.html",
+    "errors/404-es.html"
+  ],
+  "backup": "/var/backups/roadrunners-404-visual-20260926/baseline"
+}

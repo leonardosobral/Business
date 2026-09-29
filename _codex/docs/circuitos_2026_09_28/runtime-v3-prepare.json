@@ -1,0 +1,13 @@
+{
+  "Business": {
+    "before": {
+      "administracao/agrega-revisao/includes/backend.cfm": "ed254e622dc5878741dfdd8a1da45482d69b8a39e9a6ff2abd6725a0c85d9d71"
+    },
+    "candidate": {
+      "administracao/agrega-revisao/includes/backend.cfm": "74a626338b559286ae316fc572835b4ee4d36251afdf4cb408cda1060d257d6c"
+    },
+    "order": [
+      "administracao/agrega-revisao/includes/backend.cfm"
+    ]
+  }
+}

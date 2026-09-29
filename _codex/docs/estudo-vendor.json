@@ -1,0 +1,37 @@
+{
+  "codemirror.js": {
+    "url": "https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js",
+    "sha256": "d230e4614ed889647dc357e34f343bde5669ca37a0a14d05121e04d0d5ae435a",
+    "bytes": 173953
+  },
+  "codemirror.css": {
+    "url": "https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css",
+    "sha256": "c176f3906cb706151ddbfe37b7856f17b4e612c6c6583a56a290561c9f5996a7",
+    "bytes": 6378
+  },
+  "sql.js": {
+    "url": "https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/sql/sql.min.js",
+    "sha256": "83826c8869e9a2b6fd0816f1a39896cef3aed9011df12e5a38e59eb3ef0fbd2c",
+    "bytes": 47815
+  },
+  "markdown.js": {
+    "url": "https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/markdown/markdown.min.js",
+    "sha256": "432666afda166008f9328b81a78215e2cb5c8b3f36df41dec1f90540f1c99041",
+    "bytes": 15256
+  },
+  "xml.js": {
+    "url": "https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js",
+    "sha256": "4b95c039e814f16c4196a3514d040feb2a53795465d9f700cbaa5b394b270a32",
+    "bytes": 6376
+  },
+  "purify.js": {
+    "url": "https://cdn.jsdelivr.net/npm/dompurify@3.3.1/dist/purify.min.js",
+    "sha256": "9b494057fad6656fd9ce2089d0b6898df9632c10e45e4775a43073a46cffc8cb",
+    "bytes": 23129
+  },
+  "marked.js": {
+    "url": "https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js",
+    "sha256": "15fabce5b65898b32b03f5ed25e9f891a729ad4c0d6d877110a7744aa847a894",
+    "bytes": 35479
+  }
+}

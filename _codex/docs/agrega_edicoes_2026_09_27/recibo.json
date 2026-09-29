@@ -1,0 +1,38 @@
+{
+  "url": "https://business.roadrunners.run/administracao/agrega-revisao/",
+  "years": [
+    2025,
+    2026
+  ],
+  "events_scanned": 19515,
+  "new_pairs": 1036,
+  "existing_review_pairs_skipped": 1,
+  "already_linked_pairs": 80,
+  "ambiguous_name_keys": 47,
+  "incompatible_pairs": 282,
+  "repeat_generation_new_pairs": 0,
+  "active_candidates": 2072,
+  "duplicate_pending_events": 0,
+  "event_links_unchanged": true,
+  "previous_reviews_unchanged": true,
+  "tested_cases": 24,
+  "ui_checks": [
+    "authenticated Chrome",
+    "pagination page 2",
+    "accented search Monte Líbano",
+    "individual review",
+    "desktop screenshot",
+    "mobile 390x844, no horizontal overflow"
+  ],
+  "limitations": [
+    "Matches remain suggestions and require human approval.",
+    "Includes future events and events without results; not the study cohort.",
+    "No aggregator created or event link applied."
+  ],
+  "runtime_files": [
+    "administracao/agrega-revisao/includes/matching.cfm",
+    "administracao/agrega-revisao/includes/backend.cfm",
+    "administracao/agrega-revisao/home.cfm"
+  ],
+  "backup": "/var/backups/business-agrega-edicoes-20260927/baseline"
+}

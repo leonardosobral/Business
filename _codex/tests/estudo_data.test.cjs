@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const {parse,csv}=require('../../estudo/assets/notebook-data.js');
+const raw='{"columns":["decimal","big","empty","text"],"rows":[{"decimal":0.123456789012345678901,"big":9007199254740993,"empty":null,"text":"a 123 and \\"456\\""}]}';
+const row=parse(raw).rows[0];
+assert.equal(row.decimal,'0.123456789012345678901');assert.equal(row.big,'9007199254740993');assert.equal(row.empty,null);assert.equal(row.text,'a 123 and "456"');
+assert.ok(csv(raw).includes('"0.123456789012345678901","9007199254740993",'));
+assert.equal(parse('{"n":-1.23456e-30,"t":true}').n,'-1.23456e-30');
+assert.equal(parse('{"n":-1.23456e-30,"t":true}').t,true);
+assert.ok(csv('{"columns":["x"],"rows":[{"x":"=1+1"}]}').includes("'=1+1"));
+console.log('ESTUDO_DATA_PASS 8');

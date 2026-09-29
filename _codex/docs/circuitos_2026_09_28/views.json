@@ -1,0 +1,451 @@
+{
+  "views": {
+    "vw_evento_corridas_cr": " SELECT eve.id_evento,\n    eve.cidade,\n    eve.estado,\n    eve.tag,\n    eve.homologado,\n    eve.url_resultado,\n    eve.url_wiclax,\n    eve.cod_cidade,\n    eve.id_agrega_evento,\n    eve.pais,\n    eve.data_inicial,\n    eve.data_final,\n    eve.descricao,\n    eve.endereco,\n    eve.coordenadas,\n    eve.imagem,\n    eve.destaque,\n    eve.categorias,\n    eve.url_inscricao,\n    eve.info_duplicado,\n    eve.nome_simplificado,\n    eve.organizador,\n    eve.obs,\n    eve.tipo_corrida,\n    eve.ranking,\n    eve.id_tema,\n    eve.data_processamento,\n    eve.resumo,\n    eve.tag_301,\n    eve.ativo,\n    eve.data_inclusao,\n    eve.nome_evento_full_text,\n    eve.obs_resultado,\n    eve.status_evento,\n    eve.resultado_completo,\n    eve.url_hotsite,\n    eve.url_imagem,\n    eve.id_fornecedor,\n    eve.url_imagem_listagem,\n    eve.descricao_original,\n    eve.obs_homologacao,\n    eve.cronometragem,\n    eve.realizacao,\n    eve.cobertura,\n    eve.url_regulamento\n   FROM (tb_evento_corridas eve\n     JOIN tb_agregadores_eventos age ON ((age.id_evento = eve.id_evento)))\n  WHERE ((age.agregador_tag)::text = 'contra-relogio'::text);",
+    "vw_cupom": " SELECT 'pagina'::text AS tipo_cupom,\n    pg.id_pagina,\n    pg.id_pagina AS id_tipo_cupom,\n    tp.nome AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    cp.url AS curl,\n    cp.ativo,\n    NULL::integer AS id_evento,\n    NULL::character varying AS url_inscricao\n   FROM ((tb_cupom cp\n     JOIN tb_paginas_cupom pg ON ((pg.id_cupom = cp.id_cupom)))\n     JOIN tb_paginas tp ON ((tp.id_pagina = pg.id_pagina)))\n  WHERE ((NOT (EXISTS ( SELECT ev.id_cupom\n           FROM tb_evento_circuitos_cupom ev\n          WHERE (ev.id_cupom = cp.id_cupom)))) AND (NOT (EXISTS ( SELECT cr.id_cupom\n           FROM tb_evento_corridas_cupom cr\n          WHERE (cr.id_cupom = cp.id_cupom)))))\nUNION ALL\n SELECT 'evento'::text AS tipo_cupom,\n    1 AS id_pagina,\n    pg.id_evento AS id_tipo_cupom,\n    tp.nome_evento AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    COALESCE(tp.url_inscricao, tp.url_hotsite) AS curl,\n    cp.ativo,\n    tp.id_evento,\n    tp.url_inscricao\n   FROM ((tb_cupom cp\n     JOIN tb_evento_corridas_cupom pg ON ((pg.id_cupom = cp.id_cupom)))\n     JOIN tb_evento_corridas tp ON (((tp.id_evento = pg.id_evento) AND (tp.data_inicial > CURRENT_DATE))))\nUNION ALL\n SELECT 'circuito'::text AS tipo_cupom,\n    1 AS id_pagina,\n    pg.id_agrega_evento AS id_tipo_cupom,\n    tp.nome_evento AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    COALESCE(tp.url_inscricao, tp.url_hotsite) AS curl,\n    cp.ativo,\n    tp.id_evento,\n    tp.url_inscricao\n   FROM ((tb_cupom cp\n     JOIN tb_evento_circuitos_cupom pg ON ((pg.id_cupom = cp.id_cupom)))\n     JOIN tb_evento_corridas tp ON (((tp.id_agrega_evento = pg.id_agrega_evento) AND (tp.data_inicial > CURRENT_DATE))));",
+    "vw_evento_corridas": " SELECT id_evento,\n    nome_evento,\n    cidade,\n    estado,\n    pais,\n    categorias,\n    coordenadas,\n    data_inicial,\n    data_final,\n    tag,\n    destaque,\n    tipo_corrida,\n    url_inscricao,\n    url_resultado,\n    status_evento,\n    id_tema,\n    id_agrega_evento,\n    ''::text AS id_foco_radical,\n    date_part('week'::text, data_final) AS week,\n    date_part('month'::text, data_final) AS month,\n    date_part('year'::text, data_final) AS year,\n    translate(lower((cidade)::text), ' ''àáâãäéèëêíìïîóòõöôúùüûçÇ%.+!&ªº°'::text, '--aaaaaeeeeiiiiooooouuuucc'::text) AS tag_cidade,\n    ( SELECT json_agg(row_to_json(linha.*)) AS json_agg\n           FROM ( SELECT DISTINCT bd.badge,\n                    bd.valor_badge,\n                    bd.percurso,\n                    tip.badge_tooltip,\n                    tip.ordem\n                   FROM (tb_badges bd\n                     JOIN tb_badges_tipos tip ON (((tip.badge)::text = (bd.badge)::text)))\n                  WHERE ((bd.id_evento = evt.id_evento) AND (tip.ativo = true))\n                  ORDER BY tip.ordem) linha) AS badges,\n    ( SELECT sum(res.concluintes) AS sum\n           FROM tb_resultados_resumo res\n          WHERE (res.id_evento = evt.id_evento)) AS concluintes,\n    ( SELECT json_agg(json_build_object('percurso', pcr.percurso_evento, 'unidade', pcr.unidade_de_medida, 'tipo_corrida', pcr.tipo_corrida, 'mapa', pcr.mapa) ORDER BY pcr.percurso_evento) AS json_agg\n           FROM tb_evento_corridas_percursos pcr\n          WHERE (pcr.id_evento = evt.id_evento)) AS lista_percursos,\n    ( SELECT max(pcr.percurso_evento) AS max\n           FROM tb_evento_corridas_percursos pcr\n          WHERE (pcr.id_evento = evt.id_evento)) AS max_percurso,\n    ( SELECT vw_evento_corridas_cupom.condicoes\n           FROM vw_evento_corridas_cupom\n          WHERE ((((vw_evento_corridas_cupom.id_evento_agrega = evt.id_evento) AND (vw_evento_corridas_cupom.tipo_evento = 1)) OR ((vw_evento_corridas_cupom.id_evento_agrega = evt.id_agrega_evento) AND (vw_evento_corridas_cupom.tipo_evento = 2))) AND (CURRENT_DATE >= vw_evento_corridas_cupom.data_validade_inicio) AND (CURRENT_DATE <= vw_evento_corridas_cupom.data_validade_fim))) AS cupom,\n    ( SELECT json_agg(json_build_object('percurso', pcr.percurso, 'modalidade', pcr.modalidade, 'concluintes', pcr.concluintes) ORDER BY pcr.percurso) AS json_agg\n           FROM tb_resultados_resumo pcr\n          WHERE (pcr.id_evento = evt.id_evento)) AS lista_percursos_resultado,\n    ( SELECT pcr.percurso_evento\n           FROM tb_evento_corridas_percursos pcr\n          WHERE ((pcr.id_evento = evt.id_evento) AND (pcr.percurso_evento = (42)::numeric))\n         LIMIT 1) AS is_maratona\n   FROM tb_evento_corridas evt\n  WHERE (ativo = true);",
+    "vw_evento_corridas_cupom": " SELECT cc.id_evento_cupom,\n    cc.id_cupom,\n    1 AS tipo_evento,\n    cc.id_evento AS id_evento_agrega,\n    cc.qtd_limite_cupom,\n    cc.data_cadastro AS data_cadastro_cupom_evento,\n    cc.data_validade_inicio,\n    cc.data_validade_fim,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao\n   FROM (tb_evento_corridas_cupom cc\n     JOIN tb_cupom cp ON ((cp.id_cupom = cc.id_cupom)))\nUNION ALL\n SELECT cc.id_evento_cupom,\n    cc.id_cupom,\n    2 AS tipo_evento,\n    cc.id_agrega_evento AS id_evento_agrega,\n    cc.qtd_limite_cupom,\n    cc.data_cadastro AS data_cadastro_cupom_evento,\n    cc.data_validade_inicio,\n    cc.data_validade_fim,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao\n   FROM (tb_evento_circuitos_cupom cc\n     JOIN tb_cupom cp ON ((cp.id_cupom = cc.id_cupom)));"
+  },
+  "existing_links": [
+    {
+      "id_evento": 35612,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 35095,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 37004,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 37085,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 36281,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 37011,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 36979,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 36621,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 37083,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 37084,
+      "agregador_tag": "fca-trailrun",
+      "percursos": null
+    },
+    {
+      "id_evento": 37006,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 24998,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 3000,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 7779,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 14258,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 34236,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 22792,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 22582,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 2997,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 21,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 10541,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 37310,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 24016,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 9794,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 32450,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 27532,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 9803,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 20,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 39393,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 39399,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 36245,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40543,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40544,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40545,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40546,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40547,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40548,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40787,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40788,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40789,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40790,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40791,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40792,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40793,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40794,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40795,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40796,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40797,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40798,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40799,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40800,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40801,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40802,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40803,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40804,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40805,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40806,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40807,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40808,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40809,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40810,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40811,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40812,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40813,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40814,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40815,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40816,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40817,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40818,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40819,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40820,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40821,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40822,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40823,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40824,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40825,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40826,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40827,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40828,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40829,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 40830,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 29291,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 34529,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 34529,
+      "agregador_tag": "fca-corridaderua",
+      "percursos": null
+    },
+    {
+      "id_evento": 43439,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 44949,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    },
+    {
+      "id_evento": 47883,
+      "agregador_tag": "brasil-gigante",
+      "percursos": null
+    }
+  ],
+  "review_counts": {
+    "review": 893,
+    "ignored": 4,
+    "applied": 1596
+  },
+  "event_link_hash": "e77b3ec31374b9f1d175182d052121dd"
+}

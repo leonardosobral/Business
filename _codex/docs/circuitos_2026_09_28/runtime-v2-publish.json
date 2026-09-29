@@ -1,0 +1,20 @@
+{
+  "Business": {
+    "published": [
+      "administracao/agrega-revisao/includes/backend.cfm",
+      "administracao/agrega-revisao/home.cfm",
+      "eventos/includes/backend/backend.cfm",
+      "eventos/includes/backend/backend_evento_edicao.cfm",
+      "eventos/form_edicao_configuracoes.cfm",
+      "administracao/agregadores/includes/backend.cfm",
+      "administracao/agregadores/home.cfm"
+    ],
+    "backup": "/var/backups/circuitos-20260928/runtime-v2/Business/baseline"
+  },
+  "RoadRunners": {
+    "published": [
+      "circuito/index.cfm"
+    ],
+    "backup": "/var/backups/circuitos-20260928/runtime-v2/RoadRunners/baseline"
+  }
+}

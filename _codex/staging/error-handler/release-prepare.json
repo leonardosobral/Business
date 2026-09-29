@@ -1,0 +1,42 @@
+{
+  "before": {
+    "Application.cfc": "7172319683da6d57d9cc3b2e7cef4a615b14f1138e84655abc48a207c313a54e",
+    "404/index.cfm": "9b8a54cc002044a0f7779f95ad349517425c4bdad8c43817bc62680c660b58d7",
+    ".htaccess": "c6c3ce0fcb45438d24174f7771806166afd5182bcc2419b757bd9bb63a5ddca3",
+    "maratonadefloripa/Application.cfc": "a5a7d84ad9a2909af36c82285aed5c7f76f5ec2bf8eee30a50aa115144bb0b48"
+  },
+  "candidate": {
+    "errors/404-en.html": "19a602c4ef8f8abd4e223aa5392861aeb852ed7df2fc7f74ef373270f1006e59",
+    "errors/404-es.html": "8deed1ca3f797a923416b402e36a0b4aa13b0346e3ff602e08cee9167b0cec9f",
+    "errors/404.html": "70244601de7ba9bd0299699d4dbc19f7e20eef48e8a57cacc1de2c807b211735",
+    "errors/500-en.html": "4eb2da3744e074546cedbfb5b27638e90e374ae04a44728968ee089f34d5c132",
+    "errors/500-es.html": "cb2da4bbbe32e7efeb6207c31fdabde8c043b20e1b50ca5b9a8126cc1517630a",
+    "errors/500.html": "8f057a4fb916073036a3bd0a74a44b00704726ac39a7a7904b15d02ffc9abaa8",
+    "includes/errors/handle.cfm": "b89ab4a25944f72b7885a99a5eefe1fecbad39137a9de7057ba52524ee4e0c88",
+    "includes/errors/notfound.cfm": "53d8ad7c25811c31396805e232b4e4d48bfaad566cf2fffb151df62968805790",
+    "includes/errors/notify.cfm": "e7afc50ca1b059605caa3b382c859b0241f672eb72d5ca225f52afd72d508c9d",
+    "services/ErrorReporter.cfc": "f621be119d718bb0eaaa81191b4e0b1ff086b8e2eee6818d2d0bb86aa1b03699",
+    "404/Application.cfc": "68fcb935f0a9f42d4c9dc304a572ac30524fac326d239c206a7a93d42524caac",
+    "404/index.cfm": "36681c4f36080ffbc4fbb75e79dfcb517e05a8cef21af6b0f03c0f9b199097d7",
+    "Application.cfc": "3bb06a71d3cb548cd3445dd2fadc623e66a3ef4403e86b88612c7832530ca62f",
+    "maratonadefloripa/Application.cfc": "97cf62bb3c4f97ea76d486078884d5eabdd20d232305054fb644cd15d8568604",
+    ".htaccess": "1bb9b05a3429b8a46ac2192f21028f320a77fa66a4a7491a1d10fdb3025ea483"
+  },
+  "order": [
+    "errors/404-en.html",
+    "errors/404-es.html",
+    "errors/404.html",
+    "errors/500-en.html",
+    "errors/500-es.html",
+    "errors/500.html",
+    "includes/errors/handle.cfm",
+    "includes/errors/notfound.cfm",
+    "includes/errors/notify.cfm",
+    "services/ErrorReporter.cfc",
+    "404/Application.cfc",
+    "404/index.cfm",
+    "Application.cfc",
+    "maratonadefloripa/Application.cfc",
+    ".htaccess"
+  ]
+}

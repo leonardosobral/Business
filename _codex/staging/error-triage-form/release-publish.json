@@ -1,0 +1,9 @@
+{
+  "published": [
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/workspace.cfm",
+    "portal/erros/assets/triage.js",
+    "portal/erros/home.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-form-20260928/baseline"
+}

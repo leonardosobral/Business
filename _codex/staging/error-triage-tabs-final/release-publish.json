@@ -1,0 +1,9 @@
+{
+  "published": [
+    "portal/erros/assets/triage.css",
+    "portal/erros/assets/triage.js",
+    "portal/erros/includes/workspace.cfm",
+    "portal/erros/home.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-tabs-final-20260926/baseline"
+}

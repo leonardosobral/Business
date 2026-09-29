@@ -1,3 +1,4 @@
+<cfif NOT structKeyExists(VARIABLES,"requireAdminAllowed") OR NOT VARIABLES.requireAdminAllowed><cfheader statuscode="403"/><cfabort/></cfif>
 <cfscript>
 function errorLogFormatDateTime(value) {
     if (!isDate(arguments.value)) {
@@ -466,3 +467,20 @@ function errorLogItemLabel(value) {
         </cfquery>
     </cfif>
 </cfif>
+
+<cfscript>
+etLogProblems={};
+if(structKeyExists(VARIABLES,"etReady") && etReady) {
+    etLogIds=valueList(qErrorLogRecent.id_log);
+    if(qErrorLogDetail.recordCount)etLogIds=listAppend(etLogIds,qErrorLogDetail.id_log);
+    if(len(etLogIds)) {
+        etLinks=queryExecute("SELECT o.id_log,p.id,p.status FROM public.tb_error_occurrence o JOIN public.tb_error_problem p ON p.id=o.problem_id WHERE o.id_log IN (:ids)",{ids={value=etLogIds,cfsqltype="cf_sql_integer",list=true}},{datasource="runner_dba"});
+        for(etRow in etLinks)etLogProblems[etRow.id_log & ""]={id=etRow.id,status=etRow.status};
+    }
+}
+function etLogLink(required numeric id) {
+    if(!structKeyExists(VARIABLES.etLogProblems,arguments.id & ""))return "Ainda não processado";
+    var link=VARIABLES.etLogProblems[arguments.id & ""];
+    return '<a href="./?problem_id=' & link.id & '">' & etHtml(etLabel(etStatuses,link.status)) & '</a>';
+}
+</cfscript>

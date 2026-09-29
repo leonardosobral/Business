@@ -1,0 +1,16 @@
+{
+  "published": [
+    "portal/erros/includes/ErrorNormalizer.cfc",
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/init.cfm",
+    "portal/erros/includes/actions.cfm",
+    "portal/erros/includes/workspace.cfm",
+    "portal/erros/assets/triage.css",
+    "portal/erros/assets/triage.js",
+    "portal/erros/export.cfm",
+    "portal/includes/error_log_backend.cfm",
+    "portal/erros/index.cfm",
+    "portal/erros/home.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-20260926/baseline"
+}

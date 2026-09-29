@@ -1,0 +1,8 @@
+{
+  "published": [
+    "portal/erros/includes/ErrorNormalizer.cfc",
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/workspace.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-admin-evidence-20260928/baseline"
+}

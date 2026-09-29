@@ -62,3 +62,30 @@ test("admin places Banners in Marketing e audiência", () => {
 test("admin places Verificados in Contas e parceiros", () => {
     assert.equal(adminSectionForHref("/portal/verificados/"), "Contas e parceiros");
 });
+
+for (const [label, href] of [
+    ["Runner Apps", "/portal/runner-apps/"],
+    ["Notificações", "/notificacoes/"],
+    ["Temas", "/temas/"],
+    ["CRM interno", "/crm-interno/"],
+    ["Vicky Pacer", "/administracao/vicky/"]
+]) {
+    test(`admin finds ${label} under Plataforma`, () => {
+        assert.equal(adminSectionForHref(href), "Plataforma");
+    });
+}
+
+test("admin exposes challenges and training as their own top-level section", () => {
+    assert.equal(adminSectionForHref("/treinos-config/"), "Desafios e treinos");
+    assert.equal(adminSectionForHref("/desafios/circuitobrasilgigante/"), "Desafios e treinos");
+});
+
+test("admin lists Plataforma destinations alphabetically", () => {
+    const template = fs.readFileSync(path.resolve(__dirname, "../../includes/estrutura/sidenav.cfm"), "utf8");
+    const section = template.split("<!--- PLATAFORMA --->")[1].split("<!--- AJUDA --->")[0];
+    assert.deepEqual([...section.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [
+        "/bi/", "/crm-interno/", "/administracao/cron-jobs/", "/portal/erros/",
+        "/estudo/", "/administracao/api-monitor/", "/notificacoes/", "/administracao/pesquisas/",
+        "/portal/runner-apps/", "/portal/seo/", "/administracao/status/", "/temas/", "/administracao/vicky/"
+    ]);
+});

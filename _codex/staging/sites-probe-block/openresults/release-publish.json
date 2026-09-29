@@ -1,0 +1,6 @@
+{
+  "published": [
+    ".htaccess"
+  ],
+  "backup": "/var/backups/openresults-probe-block-20260928/baseline"
+}

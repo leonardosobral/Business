@@ -6,7 +6,7 @@
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
   <div>
     <h1 class="business-page-title mb-1">Gerenciador de Agregadores</h1>
-    <p class="text-muted mb-0">Pesquise agregadores, edite seus dados e gerencie os eventos vinculados.</p>
+    <p class="text-muted mb-0">Gerencie os grupos de edições da mesma prova. Circuitos são vinculados separadamente em Agregadores e circuitos, nas configurações do evento.</p>
   </div>
   <a class="btn btn-outline-warning" href="/administracao/agrega-revisao/"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Revisão de agregações</a>
 </div>

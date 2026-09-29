@@ -1,0 +1,144 @@
+[
+  {
+    "INPUT": "1ª Etapa Circuito das Águas 2025",
+    "ACTUAL": "1 etapa circuito das aguas",
+    "EXPECTED": "1 etapa circuito das aguas",
+    "PASSED": true
+  },
+  {
+    "INPUT": "Desafio 24 Horas de São Paulo",
+    "ACTUAL": "desafio 24 horas de sao paulo",
+    "EXPECTED": "desafio 24 horas de sao paulo",
+    "PASSED": true
+  },
+  {
+    "INPUT": "4ª Corrida da Cidade 2025",
+    "ACTUAL": "corrida da cidade",
+    "EXPECTED": "corrida da cidade",
+    "PASSED": true
+  },
+  {
+    "INPUT": "5ª EDIÇÃO Corrida da Cidade 2026",
+    "ACTUAL": "corrida da cidade",
+    "EXPECTED": "corrida da cidade",
+    "PASSED": true
+  },
+  {
+    "INPUT": "Corrida Cidade - 2ª Etapa 10 km 2026",
+    "ACTUAL": "corrida cidade 2 etapa 10 km",
+    "EXPECTED": "corrida cidade 2 etapa 10 km",
+    "PASSED": true
+  },
+  {
+    "INPUT": "Consecutive editions",
+    "ACTUAL": 1,
+    "EXPECTED": 1,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Numeric distances differ",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Stage numbers differ",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Duplicate annual edition",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Inactive duplicate still blocks",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Nonconsecutive editions",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Different race type",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Different city",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Date shift beyond 90 days",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Already linked",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Circuit aggregator",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Missing type",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Leap day",
+    "ACTUAL": 1,
+    "EXPECTED": 1,
+    "PASSED": true
+  },
+  {
+    "INPUT": "One existing aggregator",
+    "ACTUAL": 1,
+    "EXPECTED": 1,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Missing country",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Different country",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Conflicting aggregators remain reviewable",
+    "ACTUAL": 1,
+    "EXPECTED": 1,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Short generic name",
+    "ACTUAL": 0,
+    "EXPECTED": 0,
+    "PASSED": true
+  },
+  {
+    "INPUT": "Other year in brand preserved",
+    "PASSED": true
+  }
+]

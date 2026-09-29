@@ -1,0 +1,9 @@
+[
+  {
+    "BOUND_START": "2025-01-01 -03",
+    "BOUND_END": "2027-01-01 -03",
+    "LITERAL_COUNT": 19515,
+    "PARAM_COUNT": 19515,
+    "TIMEZONE": "America/Sao_Paulo"
+  }
+]

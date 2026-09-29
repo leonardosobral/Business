@@ -1,0 +1,16 @@
+{
+  "Business": {
+    "administracao/agrega-revisao/includes/backend.cfm": "74a626338b559286ae316fc572835b4ee4d36251afdf4cb408cda1060d257d6c",
+    "administracao/agrega-revisao/home.cfm": "57d144beabf61ae97df132132b828108dadaab829d9b2cc684ecd92646f29d3b",
+    "eventos/includes/backend/backend.cfm": "ac2f4658b037d057cc87e6bf3424756c98df883ef044808aac7af44b9802fd65",
+    "eventos/includes/backend/backend_evento_edicao.cfm": "0f612772f7cdfb72c4af888839e3f84c3c0d76b3c452a14bec995193dd4853dd",
+    "eventos/form_edicao_configuracoes.cfm": "87f84a29999f6643ef72196703b52628ed40601aa0b7ac87bcdb5bdd7f527498",
+    "administracao/agregadores/includes/backend.cfm": "7e5cd4b7c6bd40156c1ad6dd8b9a75c9c7335964292b1c2546ab1695bd7c663a",
+    "administracao/agregadores/home.cfm": "10390b0859ae628d4ac9c0ffa309db2ed869d7e36df197a0f4cbbe1586fa2d23"
+  },
+  "RoadRunners": {
+    "circuito/index.cfm": "30e0328e76f25e25058d244af3d9fe8139a158bd32be04573e4e6c8b7460233d"
+  },
+  "backup": "/var/backups/circuitos-20260928",
+  "scope": "39 circuitos; 1387 eventos; nenhuma edição aplicada automaticamente"
+}

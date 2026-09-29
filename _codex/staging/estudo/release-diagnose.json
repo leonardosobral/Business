@@ -1,0 +1,23 @@
+{
+  "EMPTY_COMMAND": {
+    "EXISTS": false,
+    "IS_QUERY": false
+  },
+  "RUNS": [
+    {
+      "STATUS": "running",
+      "ERROR": "",
+      "ID": 3
+    },
+    {
+      "STATUS": "error",
+      "ERROR": "Error Executing Database Query. ERROR: trailing junk after numeric literal at or near \"45s\"   Position: 31",
+      "ID": 2
+    },
+    {
+      "STATUS": "error",
+      "ERROR": "Variable RESULT is undefined. ",
+      "ID": 1
+    }
+  ]
+}

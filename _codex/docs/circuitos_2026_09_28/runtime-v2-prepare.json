@@ -1,0 +1,42 @@
+{
+  "Business": {
+    "before": {
+      "administracao/agrega-revisao/includes/backend.cfm": "e0fa5830cff9deb3012f3327b5f44d79bf2b8a382688e2fe9036d150cecda158",
+      "administracao/agrega-revisao/home.cfm": "43a4271726a88dcd0f10a166bc03eaa47d5f6dc7257e9e07ecfc3a4782c24a79",
+      "eventos/includes/backend/backend.cfm": "b83a333bf9b9156c446b762f6aa8e60f637998606d40256ed8ac4d6f0b7229e8",
+      "eventos/includes/backend/backend_evento_edicao.cfm": "b755632bd6a7f052150ddd34bc8ebbd3d194c72c10ea7e993c0a048de10caa9a",
+      "eventos/form_edicao_configuracoes.cfm": "bcefb582cf15203394b4ce0c3b29c1927f31262686a76906f9980588b6461925",
+      "administracao/agregadores/includes/backend.cfm": "0b596818e602ab3274c5d3c617408294bea367e810263b6c76defd68304940f1",
+      "administracao/agregadores/home.cfm": "74f8b6250d03fad1bfe40d1e85d6c9eec7c3e95205a4479784193f928b43d744"
+    },
+    "candidate": {
+      "administracao/agrega-revisao/includes/backend.cfm": "ed254e622dc5878741dfdd8a1da45482d69b8a39e9a6ff2abd6725a0c85d9d71",
+      "administracao/agrega-revisao/home.cfm": "57d144beabf61ae97df132132b828108dadaab829d9b2cc684ecd92646f29d3b",
+      "eventos/includes/backend/backend.cfm": "ac2f4658b037d057cc87e6bf3424756c98df883ef044808aac7af44b9802fd65",
+      "eventos/includes/backend/backend_evento_edicao.cfm": "0f612772f7cdfb72c4af888839e3f84c3c0d76b3c452a14bec995193dd4853dd",
+      "eventos/form_edicao_configuracoes.cfm": "87f84a29999f6643ef72196703b52628ed40601aa0b7ac87bcdb5bdd7f527498",
+      "administracao/agregadores/includes/backend.cfm": "7e5cd4b7c6bd40156c1ad6dd8b9a75c9c7335964292b1c2546ab1695bd7c663a",
+      "administracao/agregadores/home.cfm": "10390b0859ae628d4ac9c0ffa309db2ed869d7e36df197a0f4cbbe1586fa2d23"
+    },
+    "order": [
+      "administracao/agrega-revisao/includes/backend.cfm",
+      "administracao/agrega-revisao/home.cfm",
+      "eventos/includes/backend/backend.cfm",
+      "eventos/includes/backend/backend_evento_edicao.cfm",
+      "eventos/form_edicao_configuracoes.cfm",
+      "administracao/agregadores/includes/backend.cfm",
+      "administracao/agregadores/home.cfm"
+    ]
+  },
+  "RoadRunners": {
+    "before": {
+      "circuito/index.cfm": "b11b0fd4c7488265a3cc5194b908942ca3a0c54d4ad3d64deb1d482f6bed9fbe"
+    },
+    "candidate": {
+      "circuito/index.cfm": "30e0328e76f25e25058d244af3d9fe8139a158bd32be04573e4e6c8b7460233d"
+    },
+    "order": [
+      "circuito/index.cfm"
+    ]
+  }
+}

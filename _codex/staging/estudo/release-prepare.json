@@ -1,0 +1,39 @@
+{
+  "before": {
+    "includes/estrutura/sidenav.cfm": "b22a14ca770a329966610bb73c741d8d2f126b152251c5d7e54a3881e4ae0141"
+  },
+  "candidate": {
+    "estudo/api.cfm": "dd87577e16406bc7b3b9deeb38c20faa78bede541ef6fef8ae63ff63ded85be1",
+    "estudo/index.cfm": "e3c7d7929bf6e3ade5e62ed0f0d8fc57937bc4a212f66d57f04d3a4234a71e90",
+    "estudo/home.cfm": "7691c1e98b9885ef98e7991897f646b17b958cf6ae0dc46d422477cba9d777e0",
+    "estudo/includes/SqlReadGuard.cfc": "15a6cfddce556e49d7e1692869015b39a9889de69ff1484e0af5805d01fa0649",
+    "estudo/includes/StudyNotebook.cfc": "3b8a316167cebf2af18149b8c4237f296521c1b8ab1757a6769921ec7bc32722",
+    "estudo/assets/notebook.js": "e8177fcf340a724b148f3629440dcf412659fc068087691ff066841a82e185fd",
+    "estudo/assets/notebook.css": "e6e2f684082951470e71ddf04f2b86ed6ee57fc991eda0f1bcd7e3d375b19f69",
+    "estudo/assets/vendor/codemirror.js": "d230e4614ed889647dc357e34f343bde5669ca37a0a14d05121e04d0d5ae435a",
+    "estudo/assets/vendor/xml.js": "4b95c039e814f16c4196a3514d040feb2a53795465d9f700cbaa5b394b270a32",
+    "estudo/assets/vendor/purify.js": "9b494057fad6656fd9ce2089d0b6898df9632c10e45e4775a43073a46cffc8cb",
+    "estudo/assets/vendor/codemirror.css": "c176f3906cb706151ddbfe37b7856f17b4e612c6c6583a56a290561c9f5996a7",
+    "estudo/assets/vendor/marked.js": "15fabce5b65898b32b03f5ed25e9f891a729ad4c0d6d877110a7744aa847a894",
+    "estudo/assets/vendor/sql.js": "83826c8869e9a2b6fd0816f1a39896cef3aed9011df12e5a38e59eb3ef0fbd2c",
+    "estudo/assets/vendor/markdown.js": "432666afda166008f9328b81a78215e2cb5c8b3f36df41dec1f90540f1c99041",
+    "includes/estrutura/sidenav.cfm": "6d9c901175a0d9c31b8df0f0bfce7f2020ea48ef2be3ba0e787dcc3ca040e48f"
+  },
+  "order": [
+    "estudo/api.cfm",
+    "estudo/index.cfm",
+    "estudo/home.cfm",
+    "estudo/includes/SqlReadGuard.cfc",
+    "estudo/includes/StudyNotebook.cfc",
+    "estudo/assets/notebook.js",
+    "estudo/assets/notebook.css",
+    "estudo/assets/vendor/codemirror.js",
+    "estudo/assets/vendor/xml.js",
+    "estudo/assets/vendor/purify.js",
+    "estudo/assets/vendor/codemirror.css",
+    "estudo/assets/vendor/marked.js",
+    "estudo/assets/vendor/sql.js",
+    "estudo/assets/vendor/markdown.js",
+    "includes/estrutura/sidenav.cfm"
+  ]
+}

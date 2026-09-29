@@ -1,0 +1,11 @@
+{
+  "before": {
+    ".htaccess": "1bb9b05a3429b8a46ac2192f21028f320a77fa66a4a7491a1d10fdb3025ea483"
+  },
+  "candidate": {
+    ".htaccess": "c366ab650dfa56aaec11ae354dd15521e7a23e6b0bef943bbbd2217c3100de1e"
+  },
+  "order": [
+    ".htaccess"
+  ]
+}

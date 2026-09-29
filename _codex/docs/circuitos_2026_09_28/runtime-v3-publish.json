@@ -1,0 +1,8 @@
+{
+  "Business": {
+    "published": [
+      "administracao/agrega-revisao/includes/backend.cfm"
+    ],
+    "backup": "/var/backups/circuitos-20260928/runtime-v3/Business/baseline"
+  }
+}

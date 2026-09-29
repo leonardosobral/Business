@@ -1,0 +1,76 @@
+{
+  "columns": [
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "id_evento_cupom",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "id_cupom",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "qtd_limite_cupom",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "data_cadastro",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "data_validade_inicio",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_circuitos_cupom",
+      "column": "data_validade_fim",
+      "type": "date"
+    },
+    {
+      "table": "tb_agrega_eventos",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    },
+    {
+      "table": "vw_evento_corridas_cupom",
+      "column": "id_evento_agrega",
+      "type": "integer"
+    },
+    {
+      "table": "vw_evento_corridas",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    },
+    {
+      "table": "vw_evento_corridas_cr",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    }
+  ],
+  "functions": null,
+  "coupons": [
+    {
+      "qtd_limite_cupom": null,
+      "data_cadastro": "2025-01-13",
+      "data_validade_fim": "2026-12-31",
+      "id_cupom": 68,
+      "id_agrega_evento": 2,
+      "id_evento_cupom": 4,
+      "data_validade_inicio": "2025-01-13"
+    }
+  ]
+}

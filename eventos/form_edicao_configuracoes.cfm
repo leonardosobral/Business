@@ -44,12 +44,12 @@
             <div class="col-md-12 mb-3">
                 <div class="form-outline">
                     <select data-mdb-select-init class="form-select" name="id_agrega_evento" id="selectAgrega">
-                        <option value="">Selecione um Evento</option>
+                        <option value="">Sem grupo de edições</option>
                         <cfoutput query="qAgrega">
                             <option value="#qAgrega.id_agrega_evento#" <cfif qEvento.id_agrega_evento EQ qAgrega.id_agrega_evento>selected</cfif>>#uCase(qAgrega.tipo_agregacao)# - #qAgrega.nome_evento_agregado#</option>
                         </cfoutput>
                     </select>
-                    <label class="form-label select-label">Eventos Grandes e Circuitos</label>
+                    <label class="form-label select-label">Edições da mesma prova</label>
                 </div>
             </div>
 
@@ -79,6 +79,9 @@
     </form>
 
     <hr class="my-3"/>
+
+    <h5>Agregadores e circuitos</h5>
+    <p class="text-muted small">O evento pode pertencer a circuitos e outros grupos sem alterar o vínculo entre suas edições.</p>
 
     <cfquery name="qFornecedores">
         select agevt.agregador_tag, agr.agregador_nome from tb_agregadores_eventos agevt inner join tb_agregadores agr ON agr.agregador_tag = agevt.agregador_tag
@@ -118,7 +121,7 @@
 
                 <div class="col-md-12">
                     <select class="form-select" name="agregador_tag" id="selectAgregadorTag">
-                        <option value="">Selecionar Agregador de Evento</option>
+                        <option value="">Selecionar agregador ou circuito</option>
                         <cfoutput query="qListaFornecedores">
                             <option value="#qListaFornecedores.agregador_tag#" <cfif item.agregador_tag EQ qListaFornecedores.agregador_tag>selected</cfif>>#qListaFornecedores.agregador_nome#</option>
                         </cfoutput>

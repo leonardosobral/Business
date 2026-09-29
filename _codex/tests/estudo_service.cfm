@@ -1,0 +1,38 @@
+<cfscript>
+s=new estudo.includes.StudyNotebook().init();
+actor=42;
+legacyText=s.createCell(7,"markdown","markdown","Nota antiga",actor);
+legacyText=s.saveCell(legacyText.id,1,"markdown","markdown","Nota atualizada",actor);
+check(legacyText.version==2,"markdown legado editável");
+book=s.createBook("Caderno de teste",2026,actor);
+renamed=s.saveBook(book.id,1,"Caderno renomeado",actor);check(renamed.version==2,"renomear caderno");
+section=s.createNotebook(book.id,"Panorama",actor);
+cell=s.createCell(section.id,"code","sql","SELECT 1 AS n, NULL::text AS vazio, 9007199254740993::bigint AS grande, 'ação' AS texto",actor);
+saved=s.saveCell(cell.id,cell.version,"code","sql",cell.content,actor);
+check(saved.version==2,"nova revisão");
+conflict=false;try{s.saveCell(cell.id,1,"code","sql","SELECT 2",actor);}catch(Study.Conflict e){conflict=true;}check(conflict,"edição concorrente");
+run=s.execute(cell.id,2,saved.content,actor);
+check(run.status=="ok" && run.row_count==1,"execução de leitura: "&serializeJSON(run));
+raw=s.getRun(run.id);
+check(find('"vazio": null',raw.result_json)>0 || find('"vazio":null',raw.result_json)>0,"NULL preservado");
+check(find("9007199254740993",raw.result_json)>0,"bigint preservado");
+s.freeze(run.id,"Coleta de teste","Notas",actor);
+frozen=s.getRun(run.id);check(frozen.frozen,"congelado");
+check(frozen.sql_text==saved.content,"SQL registrado");
+edited=s.saveCell(cell.id,2,"code","sql","SELECT 2 AS n",actor);
+check(s.getRun(run.id).result_json==frozen.result_json,"editar não altera congelamento");
+limited=s.saveCell(cell.id,3,"code","sql","SELECT generate_series(1,1005) AS n",actor);
+large=s.execute(cell.id,4,limited.content,actor);check(large.truncated && large.row_count==1000,"limite de linhas");
+denied=false;try{s.freeze(large.id,"Incompleto","",actor);}catch(Study.Validation e){denied=true;}check(denied,"não congela truncado");
+errorCell=s.saveCell(cell.id,4,"code","sql","SELECT 1/0 AS n",actor);
+errorRun=s.execute(cell.id,5,errorCell.content,actor);check(errorRun.status=="error","erro registrado");
+check(queryExecute("SELECT current_user AS u",{}, {datasource="runner_dba"}).u[1]=="runner_dba","papel restaurado após erro");
+duplicate=s.saveCell(cell.id,5,"code","sql","SELECT 1 AS n, 2 AS n",actor);
+dupeRun=s.execute(cell.id,6,duplicate.content,actor);check(dupeRun.status=="error","aliases duplicados");
+check(arrayLen(s.revisions(cell.id))==6,"histórico disponível");
+check(arrayLen(s.runs(section.id))==4,"execuções disponíveis");
+archived=s.archiveCell(cell.id,6,true,actor);check(arrayLen(s.getNotebook(section.id).cells)==0,"arquivamento");
+check(arrayLen(s.archivedCells(section.id))==1,"arquivadas recuperáveis após recarregar");
+s.archiveCell(cell.id,archived.version,false,actor);check(arrayLen(s.getNotebook(section.id).cells)==1,"restauração persistente");
+writeOutput("SERVICE_PASS "&checks&chr(10));
+</cfscript>

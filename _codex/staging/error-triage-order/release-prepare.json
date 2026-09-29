@@ -1,0 +1,11 @@
+{
+  "before": {
+    "portal/erros/includes/ErrorTriage.cfc": "a3f4ae1f83ab64113caab5c23cc013b5532758a50720fccece4601b0fae3cd4d"
+  },
+  "candidate": {
+    "portal/erros/includes/ErrorTriage.cfc": "1b1aba8405065b6352abb2b9e229f7d0443b000272cb516bcfb4c41c61a03467"
+  },
+  "order": [
+    "portal/erros/includes/ErrorTriage.cfc"
+  ]
+}

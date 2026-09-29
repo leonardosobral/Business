@@ -1,0 +1,20 @@
+{
+  "before": {
+    "portal/erros/includes/ErrorNormalizer.cfc": "d0a7cbeba0e0e806f2839dfdd6097e02b451cb3739ee715d93d4edbd18d9f2b5",
+    "portal/erros/includes/ErrorTriage.cfc": "1b1aba8405065b6352abb2b9e229f7d0443b000272cb516bcfb4c41c61a03467",
+    "portal/erros/includes/init.cfm": "24335b727e674fb9537b0447ddf445fd1bbbfec98f40d114a4ec6634bb9da95f",
+    "portal/erros/includes/workspace.cfm": "2b702db5b16d3b4c6e1d9839c6f1af2507d81be966cccf9f422a5f409469006b"
+  },
+  "candidate": {
+    "portal/erros/includes/ErrorNormalizer.cfc": "d13cefce3db4324d77effef71b4424745e1ad6a0ac5ba2833ddb60a1d4122edf",
+    "portal/erros/includes/ErrorTriage.cfc": "69ddb2ca89d6950d33c2707af66aca00f4c613fa362b1d8a370f65a34e42c144",
+    "portal/erros/includes/init.cfm": "cc3942ed072bff6674c165f48e1bbd191eee3bdfc350617eddeb076b30e60ed2",
+    "portal/erros/includes/workspace.cfm": "1b70177c00211a4debb640714db3b237c27453be2dc3754a7a20ebe7ad9fd2cc"
+  },
+  "order": [
+    "portal/erros/includes/ErrorNormalizer.cfc",
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/init.cfm",
+    "portal/erros/includes/workspace.cfm"
+  ]
+}

@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
 <cfprocessingdirective pageencoding="utf-8"/>
 
 <cfset VARIABLES.theme = "dark"/>
@@ -8,6 +5,11 @@
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
+<cfinclude template="includes/init.cfm"/>
+<cfinclude template="includes/actions.cfm"/>
+<cfheader name="Cache-Control" value="no-store"/>
+<!DOCTYPE html>
+<html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">

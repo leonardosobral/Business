@@ -1,0 +1,129 @@
+{
+  "date": "2026-09-28",
+  "book_id": 4,
+  "sections": 15,
+  "cells_hash_checked": 93,
+  "sql_queries": 24,
+  "runs_frozen_complete": 24,
+  "retained_errors": [
+    9
+  ],
+  "old_acervo": {
+    "books": {
+      "before": 2,
+      "after": 2,
+      "equal": true
+    },
+    "sections": {
+      "before": 30,
+      "after": 30,
+      "equal": true
+    },
+    "cells": {
+      "before": 73,
+      "after": 73,
+      "equal": true
+    }
+  },
+  "public_snapshot_hashes_unchanged": 4,
+  "sql_guards": {
+    "CHECKS": [
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p03-genero"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p03-total"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p03-eventos"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p04-faixas"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p05-historico"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p05-bi"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p06-detalhe"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p06-padrao"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p06-faixas"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p06-sexo"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p06-presenca"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p07-geracoes"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p08-tempos"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p08-sexo"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p09-regioes"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p10-ufs"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p10-cidades"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p10-capital"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p11-calendario"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p12-ranking"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p13-limites"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p14-cna"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p15-esportes"
+      },
+      {
+        "OK": true,
+        "KEY": "pdf-2025-p99-qualidade"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "before": {},
+  "candidate": {
+    ".htaccess": "84704880597c6208f774a29d06a2f0bd9e373a0d9af4a6c3d8669300964ebdf8"
+  },
+  "order": [
+    ".htaccess"
+  ]
+}

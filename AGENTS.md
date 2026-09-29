@@ -7,3 +7,7 @@ Complementa as instruções de `../AGENTS.md`.
 - Se houver falha de validação, conflito de produção, acesso ausente ou necessidade de ação fora do escopo, informar o bloqueio; essa preferência não autoriza contornar proteções, alterar credenciais/permissões, executar migrações destrutivas ou publicar mudanças alheias.
 - Pedidos somente de explicação, diagnóstico, revisão ou plano não autorizam alterações nem publicação. Respeitar uma instrução mais recente para não publicar.
 - Publicação não autoriza commit, branch, tag, push ou PR; essas operações continuam exigindo solicitação específica.
+
+## Preferência de interface
+
+- Preferência expressa em 26/09/2026: em páginas extensas, organizar conteúdos por abas para evitar rolagem excessiva. Separar tarefas e detalhes relacionados, preservando filtros, links diretos e navegação por teclado.

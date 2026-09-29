@@ -45,6 +45,9 @@
       <cfif VARIABLES.saveAggregatorId LTE 0 OR NOT len(VARIABLES.saveAggregatorName) OR NOT len(VARIABLES.saveAggregatorType)>
         <cfthrow type="AggregatorManager.Validation" message="Informe o agregador, o nome e o tipo de agregação." />
       </cfif>
+      <cfif compareNoCase(VARIABLES.saveAggregatorType, "circuito") EQ 0>
+        <cfthrow type="AggregatorManager.Validation" message="Circuitos são mantidos separadamente. Use Agregadores e circuitos nas configurações do evento." />
+      </cfif>
       <cfif VARIABLES.saveAggregatorThemeId LTE 0>
         <cfthrow type="AggregatorManager.Validation" message="Selecione um tema." />
       </cfif>
@@ -52,6 +55,7 @@
       <cfquery name="qAggregatorSaveTarget">
         SELECT id_agrega_evento FROM tb_agrega_eventos
         WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.saveAggregatorId#" />
+        AND lower(trim(tipo_agregacao)) <> 'circuito'
         FOR UPDATE
       </cfquery>
       <cfif NOT qAggregatorSaveTarget.recordcount>
@@ -105,6 +109,7 @@
       <cfquery name="qAggregatorLinkTarget">
         SELECT id_agrega_evento FROM tb_agrega_eventos
         WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.linkAggregatorId#" />
+        AND lower(trim(tipo_agregacao)) <> 'circuito'
       </cfquery>
       <cfif NOT qAggregatorLinkTarget.recordcount>
         <cfthrow type="AggregatorManager.Validation" message="Agregador não encontrado." />
@@ -152,7 +157,7 @@
          count(evt.id_evento) AS total_eventos
   FROM tb_agrega_eventos agr
   LEFT JOIN tb_evento_corridas evt ON evt.id_agrega_evento = agr.id_agrega_evento
-  WHERE 1=1
+  WHERE lower(trim(agr.tipo_agregacao)) <> 'circuito'
   <cfif len(VARIABLES.aggregatorSearch)>
     AND (
       unaccent(lower(coalesce(agr.nome_evento_agregado,''))) LIKE unaccent(lower(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.aggregatorSearch#%" />))
@@ -172,6 +177,7 @@
     SELECT id_agrega_evento, nome_evento_agregado, tipo_agregacao, tag, id_tema, divisao, ordem
     FROM tb_agrega_eventos
     WHERE id_agrega_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.aggregatorId#" />
+        AND lower(trim(tipo_agregacao)) <> 'circuito'
   </cfquery>
   <cfquery name="qAggregatorEvents">
     SELECT id_evento, nome_evento, tag, cidade, estado, data_inicial, data_final, ativo

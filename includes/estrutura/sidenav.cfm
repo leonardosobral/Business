@@ -595,7 +595,10 @@
                 </a>
             </li>
 
-            <li class="sidenav-item business-sidenav-subgroup-label"><span>Desafios e treinos</span></li>
+            <!--- DESAFIOS E TREINOS --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios e treinos</span>
+            </li>
 
             <cfquery name="qDesafiosBusinessAtivos">
                 SELECT *
@@ -691,26 +694,6 @@
                 </a>
             </li>
 
-            <li class="sidenav-item business-sidenav-subgroup-label"><span>Experiência do portal</span></li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/" data-menu-aliases="aplicativos atalhos">
-                    <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/" data-menu-aliases="push mensagens templates envio">
-                    <i class="fa-solid fa-bell fa-fw me-3"></i><span>Notificações</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/temas/">link-warning</cfif>" href="/temas/" data-menu-aliases="aparência layout cores">
-                    <i class="fa-solid fa-palette fa-fw me-3"></i><span>Temas</span>
-                </a>
-            </li>
-
             <!--- MARKETING E AUDIÊNCIA --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Marketing e audiência</span>
@@ -751,26 +734,8 @@
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Audiência e relacionamento</span></li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/seo/">link-warning</cfif>" href="/portal/seo/" data-menu-aliases="otimização busca orgânica google auditoria canonical indexação correções">
-                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>SEO</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/audiencia/">link-warning</cfif>" href="/portal/audiencia/" data-menu-aliases="audiência inventário posições acessos analytics potencial regional">
                     <i class="fa-solid fa-chart-area fa-fw me-3"></i><span>Audiência e inventário</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/pesquisas/">link-warning</cfif>" href="/administracao/pesquisas/" data-menu-aliases="enquetes respostas formulários">
-                    <i class="fa-solid fa-square-poll-horizontal fa-fw me-3"></i><span>Pesquisas</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/bi/">link-warning</cfif>" href="/bi/" data-menu-aliases="business intelligence indicadores relatórios dados">
-                    <i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span>
                 </a>
             </li>
 
@@ -795,12 +760,6 @@
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/grupos-especiais/">link-warning</cfif>" href="/administracao/chat/grupos-especiais/" data-menu-aliases="chat comunidades">
                     <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Grupos especiais</span>
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/vicky/">link-warning</cfif>" href="/administracao/vicky/" data-menu-aliases="pacer assistente inteligência artificial">
-                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Vicky Pacer</span>
                 </a>
             </li>
 
@@ -847,8 +806,66 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/bi/">link-warning</cfif>" href="/bi/" data-menu-aliases="business intelligence indicadores relatórios dados">
+                    <i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span>
+                </a>
+            </li>
+
+            <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/crm-interno/">link-warning</cfif>" href="/crm-interno/">
+                            <i class="fa-solid fa-bullseye fa-fw me-3"></i><span>CRM interno</span>
+                        </a>
+                    </li>
+            </cfif>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/cron-jobs/">link-warning</cfif>" href="/administracao/cron-jobs/" data-menu-aliases="automações tarefas agendadas rotinas">
                     <i class="fa-solid fa-clock-rotate-left fa-fw me-3"></i><span>Cron Jobs</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/erros/">link-warning</cfif>" href="/portal/erros/" data-menu-aliases="falhas logs exceções portal">
+                    <i class="fa-solid fa-triangle-exclamation fa-fw me-3"></i><span>Erros do portal</span>
+                </a>
+            </li>
+
+            <cfif isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/estudo/">link-warning</cfif>" href="/estudo/" data-menu-aliases="notebook queries pesquisa dados congelados">
+                        <i class="fa-solid fa-book-open fa-fw me-3"></i><span>Estudo</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/api-monitor/">link-warning</cfif>" href="/administracao/api-monitor/" data-menu-aliases="saúde integrações desempenho requisições">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/" data-menu-aliases="push mensagens templates envio">
+                    <i class="fa-solid fa-bell fa-fw me-3"></i><span>Notificações</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/pesquisas/">link-warning</cfif>" href="/administracao/pesquisas/" data-menu-aliases="enquetes respostas formulários">
+                    <i class="fa-solid fa-square-poll-horizontal fa-fw me-3"></i><span>Pesquisas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/" data-menu-aliases="aplicativos atalhos">
+                    <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/seo/">link-warning</cfif>" href="/portal/seo/" data-menu-aliases="otimização busca orgânica google auditoria canonical indexação correções">
+                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>SEO</span>
                 </a>
             </li>
 
@@ -862,14 +879,14 @@
             </li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/api-monitor/">link-warning</cfif>" href="/administracao/api-monitor/" data-menu-aliases="saúde integrações desempenho requisições">
-                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span>
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/temas/">link-warning</cfif>" href="/temas/" data-menu-aliases="aparência layout cores">
+                    <i class="fa-solid fa-palette fa-fw me-3"></i><span>Temas</span>
                 </a>
             </li>
 
             <li class="sidenav-item">
-                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/erros/">link-warning</cfif>" href="/portal/erros/" data-menu-aliases="falhas logs exceções portal">
-                    <i class="fa-solid fa-triangle-exclamation fa-fw me-3"></i><span>Erros do portal</span>
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/vicky/">link-warning</cfif>" href="/administracao/vicky/" data-menu-aliases="pacer assistente inteligência artificial">
+                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Vicky Pacer</span>
                 </a>
             </li>
 
@@ -1020,6 +1037,11 @@
                 </li>
 
                 <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/crm-interno/">link-warning</cfif>" href="/crm-interno/">
+                            <i class="fa-solid fa-bullseye fa-fw me-3"></i><span>CRM interno</span>
+                        </a>
+                    </li>
                     <li class="sidenav-item">
                         <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/usuarios/">link-warning</cfif>" href="/administracao/usuarios/">
                             <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Usuários</span>

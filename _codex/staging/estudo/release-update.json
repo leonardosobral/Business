@@ -1,0 +1,22 @@
+{
+  "published": [
+    "estudo/includes/SqlReadGuard.cfc",
+    "estudo/includes/StudyNotebook.cfc",
+    "estudo/assets/notebook-data.js",
+    "estudo/assets/notebook.js",
+    "estudo/assets/notebook.css",
+    "estudo/assets/vendor/codemirror.js",
+    "estudo/assets/vendor/xml.js",
+    "estudo/assets/vendor/purify.js",
+    "estudo/assets/vendor/codemirror.css",
+    "estudo/assets/vendor/marked.js",
+    "estudo/assets/vendor/sql.js",
+    "estudo/assets/vendor/markdown.js",
+    "estudo/home.cfm",
+    "estudo/api.cfm",
+    "estudo/index.cfm",
+    "includes/estrutura/sidenav.cfm"
+  ],
+  "backup": "/var/backups/business-estudo-20260928/updates/1790610836897344198/baseline",
+  "compile": "successful 6\ntotal 6\nelapsed 2.021 sec\n\n"
+}

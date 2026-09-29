@@ -1,0 +1,29 @@
+{
+  "verified_hashes": 16,
+  "database": {
+    "cells": 73,
+    "revisions": 84,
+    "reader_superuser": false,
+    "sections": 30,
+    "snapshots": [
+      {
+        "id": 1,
+        "sha": "f8b76f0eb90ccab092a3c757b3aea5a741f0e31ca893ff8fd68044a169f49ac3"
+      },
+      {
+        "id": 4,
+        "sha": "40799d2e27c2e54af41d25427e846a3103da3fd26d2249af3625b053799830e2"
+      },
+      {
+        "id": 5,
+        "sha": "8ee0cb5c9eb7beff6ae371260c5ae07fe355118e04e29ee44f4cf297c9451611"
+      },
+      {
+        "id": 6,
+        "sha": "0854507f2e9d4e1260009ad6ac29cae6086792304ea0624cda3b22d2b738be88"
+      }
+    ],
+    "old_tables_absent": true,
+    "books": 2
+  }
+}

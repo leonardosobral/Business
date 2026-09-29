@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/404/",
+    "status": 404,
+    "visual_roadrunners": true
+  },
+  {
+    "path": "/en/404/",
+    "status": 404,
+    "visual_roadrunners": true
+  },
+  {
+    "path": "/es/404/",
+    "status": 404,
+    "visual_roadrunners": true
+  }
+]

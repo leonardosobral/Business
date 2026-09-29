@@ -1,0 +1,8 @@
+.triage-workspace{border:1px solid var(--mdb-border-color);border-radius:8px;padding:1.25rem;margin-bottom:2rem}
+.triage-workspace .triage-text{overflow-wrap:anywhere;white-space:pre-wrap;max-height:24rem;overflow:auto}
+.triage-workspace textarea{min-height:8rem}
+.triage-workspace .triage-table{min-width:760px}
+.triage-workspace .triage-title{max-width:400px;overflow-wrap:anywhere}
+.triage-workspace summary{cursor:pointer}
+.triage-workspace .triage-status{display:inline-block;background:rgba(255,193,7,.12);color:var(--mdb-body-color);border:1px solid rgba(255,193,7,.4);padding:.2rem .5rem;border-radius:5px;white-space:nowrap}
+@media(max-width:576px){.triage-workspace{padding:.75rem}.triage-workspace .btn{white-space:normal}}

@@ -1,0 +1,163 @@
+{
+  "writer_role": "runner_dba",
+  "source_text_hashes_match": true,
+  "reader": {
+    "create_role": false,
+    "superuser": false,
+    "login": false,
+    "name": "estudo_reader"
+  },
+  "validation_cell": {
+    "revision": 4,
+    "id": 115,
+    "archived": false
+  },
+  "source_files": 14,
+  "source_details": [
+    {
+      "source_key": "dba-202509-INFOGRAFICO_DISTANCIAS.sql.txt-cell-2",
+      "id": 90,
+      "file_sha": "c61890a60c7e45c52f177e39100ff35fa138809f7e3bee2ca5b5278b3447a188",
+      "file": "INFOGRAFICO_DISTANCIAS.sql",
+      "text_sha": "c61890a60c7e45c52f177e39100ff35fa138809f7e3bee2ca5b5278b3447a188"
+    },
+    {
+      "source_key": "dba-202509-insights_previa.docx.txt-cell-2",
+      "id": 92,
+      "file_sha": "bbbda411d69d5ae8c550bbedddc7ab229566c7c8ee4d9d7e9d5f4569a0e35a27",
+      "file": "insights_prévia.docx",
+      "text_sha": "bbbda411d69d5ae8c550bbedddc7ab229566c7c8ee4d9d7e9d5f4569a0e35a27"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_MERCADO.sql-cell-2",
+      "id": 110,
+      "file_sha": "9448a2eb8108ae7caf78a20e613c59b4dea8eb40291de5baa10611e1c51323ef",
+      "file": "INFOGRAFICO_MERCADO.sql",
+      "text_sha": "9448a2eb8108ae7caf78a20e613c59b4dea8eb40291de5baa10611e1c51323ef"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_PERSONAS.sql-cell-2",
+      "id": 112,
+      "file_sha": "86057d7b9a98fd016297b9f35fa77c029292b54604d2d466d7126de59ce894c1",
+      "file": "INFOGRAFICO_PERSONAS.sql",
+      "text_sha": "86057d7b9a98fd016297b9f35fa77c029292b54604d2d466d7126de59ce894c1"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_USUARIO.sql-cell-2",
+      "id": 114,
+      "file_sha": "6a6fa7009fd05203d4a1e13640aafab3864fe568117018f25faa3c3c720a0007",
+      "file": "INFOGRAFICO_USUARIO.sql",
+      "text_sha": "6a6fa7009fd05203d4a1e13640aafab3864fe568117018f25faa3c3c720a0007"
+    },
+    {
+      "source_key": "dba-202509-estudo_treinos.sql.txt-cell-2",
+      "id": 88,
+      "file_sha": "6b0b1a3a6e7c24fa389b97a2b7e156ce462fe29e714bc6b08d818bdad40d1857",
+      "file": "estudo_treinos.sql",
+      "text_sha": "76bf29784ac3cb15d21d14f1be926b69b95931f01ce2d01b1bb72ac35804dcea"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO.sql-cell-2",
+      "id": 100,
+      "file_sha": "abeb5fb91030e093af168394ec125fcfe592aa8b01d5efb0ea020fc6fe3c2944",
+      "file": "INFOGRAFICO.sql",
+      "text_sha": "abeb5fb91030e093af168394ec125fcfe592aa8b01d5efb0ea020fc6fe3c2944"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_COLAB_CNA.sql-cell-2",
+      "id": 102,
+      "file_sha": "181ffe8d26cf80ca7610a6d9a791b6b2b36fbbe1aa1bde59eec6ce4ff19552aa",
+      "file": "INFOGRAFICO_COLAB_CNA.sql",
+      "text_sha": "181ffe8d26cf80ca7610a6d9a791b6b2b36fbbe1aa1bde59eec6ce4ff19552aa"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_DISTANCIAS.sql-cell-2",
+      "id": 104,
+      "file_sha": "4c46063fe0c758da2f0ec7a250bdc6b5c932f37a0122937ff5888b682b712842",
+      "file": "INFOGRAFICO_DISTANCIAS.sql",
+      "text_sha": "4c46063fe0c758da2f0ec7a250bdc6b5c932f37a0122937ff5888b682b712842"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_INUTEIS.sql-cell-2",
+      "id": 106,
+      "file_sha": "a8345284edbc86fdf10eae8996c5cf1d841fc3a4938decefb42d3fc2f5564485",
+      "file": "INFOGRAFICO_INUTEIS.sql",
+      "text_sha": "a8345284edbc86fdf10eae8996c5cf1d841fc3a4938decefb42d3fc2f5564485"
+    },
+    {
+      "source_key": "datagrip-2025-INFOGRAFICO_MARATONAS.sql-cell-2",
+      "id": 108,
+      "file_sha": "b6e34a398fdd646924cd6ded9231e1dea790915505fdc0ca669aeaec117782e6",
+      "file": "INFOGRAFICO_MARATONAS.sql",
+      "text_sha": "b6e34a398fdd646924cd6ded9231e1dea790915505fdc0ca669aeaec117782e6"
+    },
+    {
+      "source_key": "dba-202509-regiao_capital_interior.sql.txt-cell-2",
+      "id": 94,
+      "file_sha": "9e70fe72f9e494ab5d8a1e9f65792cdca2110703e7c9b19d2d1393d560c794b0",
+      "file": "regiao_capital_interior.sql",
+      "text_sha": "7a6f0a28a751cb47d4a8b4c87be429117bf7c9c0e895f065228978dee380860d"
+    },
+    {
+      "source_key": "dba-202509-script_perfil_2025_segundo_semestre.txt.txt-cell-2",
+      "id": 96,
+      "file_sha": "52a32957fb5e87352fe19ee993b41bdc4970fcd08869f759158f75711be98364",
+      "file": "script_perfil_2025_segundo_semestre.txt",
+      "text_sha": "c5fb5d5b38f79e20cde40760d91942da0b3ee06d2ba6170bfe90dd293c3ade3f"
+    },
+    {
+      "source_key": "dba-202509-script_perfil_br_corre_2025.sql.txt-cell-2",
+      "id": 98,
+      "file_sha": "766dd8fe588ea3d9429a32f10721006f3160238064c03261e94a8fafcb0c8117",
+      "file": "script_perfil_br_corre_2025.sql",
+      "text_sha": "675652db70f6bbe27ce5559780bd1f807b9fa012ed6001b5c6536c95ee605f57"
+    }
+  ],
+  "runs": [
+    {
+      "revision": 1,
+      "status": "error",
+      "duration_ms": 3,
+      "cell_id": 4,
+      "id": 1,
+      "frozen": false,
+      "rows": 0
+    },
+    {
+      "revision": 1,
+      "status": "error",
+      "duration_ms": 6,
+      "cell_id": 4,
+      "id": 2,
+      "frozen": false,
+      "rows": 0
+    },
+    {
+      "revision": 1,
+      "status": "error",
+      "duration_ms": 112532,
+      "cell_id": 4,
+      "id": 3,
+      "frozen": false,
+      "rows": 0
+    },
+    {
+      "revision": 1,
+      "status": "ok",
+      "duration_ms": 2251,
+      "cell_id": 4,
+      "id": 4,
+      "frozen": true,
+      "rows": 1
+    },
+    {
+      "revision": 2,
+      "status": "ok",
+      "duration_ms": 9,
+      "cell_id": 115,
+      "id": 5,
+      "frozen": true,
+      "rows": 1
+    }
+  ]
+}

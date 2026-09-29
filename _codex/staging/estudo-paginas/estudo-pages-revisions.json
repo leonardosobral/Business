@@ -1,0 +1,63 @@
+[
+  {
+    "key": "pdf-2025-p04-faixas",
+    "before_hash": "c31f0942aa75f7335f2ee6bbb379c79b9b6c455632e12e492929f89c3da3dab9",
+    "after": {
+      "key": "pdf-2025-p04-faixas",
+      "type": "code",
+      "lang": "sql",
+      "content": "-- Idades: mesmas faixas e populações; agregar intervalos antes do cruzamento.\nWITH intervalos AS (\n SELECT r.idade_range,coalesce(r.sexo,'N/A') AS sexo,\n count(r.id_resultado) AS editor,\n count(r.id_resultado) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE) AS datagrip\n FROM public.tb_resultados r JOIN public.tb_evento_corridas e ON e.id_evento=r.id_evento\n WHERE e.pais='BR' AND e.data_final BETWEEN DATE '2025-01-01' AND DATE '2025-12-31'\n GROUP BY r.idade_range,r.sexo\n), popula AS (\n SELECT 'Editor / geral' AS versao,idade_range,sum(editor) AS n FROM intervalos GROUP BY idade_range\n UNION ALL SELECT 'DataGrip / geral',idade_range,sum(datagrip) FROM intervalos GROUP BY idade_range\n UNION ALL SELECT 'Editor / '||sexo,idade_range,editor FROM intervalos WHERE sexo IN ('F','M')\n UNION ALL SELECT 'DataGrip / '||sexo,idade_range,datagrip FROM intervalos WHERE sexo IN ('F','M')\n), versoes AS (\n SELECT 'Editor / geral' AS versao UNION ALL SELECT 'DataGrip / geral'\n UNION ALL SELECT 'Editor / F' UNION ALL SELECT 'Editor / M'\n UNION ALL SELECT 'DataGrip / F' UNION ALL SELECT 'DataGrip / M'\n), faixas AS (\nSELECT 1 AS ordem, '13–19' AS faixa, int4range(13,20,'[)') AS r\nUNION ALL\nSELECT 2 AS ordem, '20–24' AS faixa, int4range(20,25,'[)') AS r\nUNION ALL\nSELECT 3 AS ordem, '25–29' AS faixa, int4range(25,30,'[)') AS r\nUNION ALL\nSELECT 4 AS ordem, '30–34' AS faixa, int4range(30,35,'[)') AS r\nUNION ALL\nSELECT 5 AS ordem, '35–39' AS faixa, int4range(35,40,'[)') AS r\nUNION ALL\nSELECT 6 AS ordem, '40–44' AS faixa, int4range(40,45,'[)') AS r\nUNION ALL\nSELECT 7 AS ordem, '45–49' AS faixa, int4range(45,50,'[)') AS r\nUNION ALL\nSELECT 8 AS ordem, '50–54' AS faixa, int4range(50,55,'[)') AS r\nUNION ALL\nSELECT 9 AS ordem, '55–59' AS faixa, int4range(55,60,'[)') AS r\nUNION ALL\nSELECT 10 AS ordem, '60–64' AS faixa, int4range(60,65,'[)') AS r\nUNION ALL\nSELECT 11 AS ordem, '65–69' AS faixa, int4range(65,70,'[)') AS r\nUNION ALL\nSELECT 12 AS ordem, '70+' AS faixa, int4range(70,NULL,'[)') AS r\n), agregados AS (\n SELECT v.versao,f.ordem,f.faixa,coalesce(sum(p.n),0) AS total\n FROM versoes v CROSS JOIN faixas f\n LEFT JOIN popula p ON p.versao=v.versao AND p.idade_range && f.r\n GROUP BY v.versao,f.ordem,f.faixa\n)\nSELECT versao,faixa,total,round(total*100.0/nullif(sum(total) OVER(PARTITION BY versao),0),2) AS porcentagem\nFROM agregados ORDER BY versao,ordem;",
+      "origin": {
+        "tipo": "consulta_conciliacao",
+        "pagina_pdf": 4,
+        "fontes": [
+          "editor:03_faixa_etaria.sql.txt:4",
+          "datagrip:INFOGRAFICO.sql.txt:9"
+        ],
+        "regra": "Derivação explícita do bloco do editor: executa geral/F/M em tb_resultados e vw_resultados, mantendo 13–19, sobreposição e duas casas para comparar. As repetições por fonte/sexo são intencionais.",
+        "data_registro": "2026-09-28",
+        "otimizacao": "Após timeout da revisão 1: agrega as contagens por intervalo/sexo antes do join &&. Mantém as seis populações, o primeiro grupo 13–19 e o denominador por associações; não é correção metodológica."
+      },
+      "title": "Idades — duas fontes, geral e por sexo"
+    }
+  },
+  {
+    "key": "pdf-2025-p04-faixas-nota",
+    "before_hash": "d7e9745cd831ae0275769042bed5c0923e85699e3d19f9bd76bd928696b1bb85",
+    "after": {
+      "key": "pdf-2025-p04-faixas-nota",
+      "type": "markdown",
+      "lang": "",
+      "content": "### Idades — duas fontes, geral e por sexo\n\nDerivação explícita do bloco do editor: executa geral/F/M em tb_resultados e vw_resultados, mantendo 13–19, sobreposição e duas casas para comparar. As repetições por fonte/sexo são intencionais.\n\n**Linhas de origem:** `editor:03_faixa_etaria.sql.txt:4`, `datagrip:INFOGRAFICO.sql.txt:9`.\n\nA saída representa a base atual no momento da execução; não é o snapshot usado no PDF.\n\n**Otimização da execução:** a revisão 1 atingiu 45s. A revisão seguinte agrega por intervalo/sexo antes do cruzamento. Preserva as populações, as sobreposições e os percentuais; reduz a repetição de varreduras.",
+      "origin": {
+        "tipo": "conciliacao_por_pagina",
+        "pagina_pdf": 4,
+        "referencia_pdf": "https://roadrunners.run/brasilquecorreprovas/BrasilQueCorreProvas2025_v3.10.3.pdf",
+        "data_registro": "2026-09-28"
+      }
+    }
+  },
+  {
+    "key": "pdf-2025-p05-historico",
+    "before_hash": "2a20b33645aa8d7d6c4af85b55b85882894ecef7924d4885d8993fdedfa48e7e",
+    "after": {
+      "key": "pdf-2025-p05-historico",
+      "type": "code",
+      "lang": "sql",
+      "content": "-- Gerações históricas: mesmos ranges e sexos, com pré-agregação.\nWITH intervalos AS (\n SELECT extract(year FROM e.data_final)::integer AS ano,r.idade_range,count(*) AS n\n FROM public.vw_resultados r JOIN public.tb_evento_corridas e ON e.id_evento=r.id_evento\n WHERE e.pais='BR' AND e.data_final>=DATE '2023-01-01' AND e.data_final<DATE '2026-01-01'\n AND (extract(year FROM e.data_final)=2023 OR extract(year FROM e.data_final)=2024 AND r.sexo='M'\n OR extract(year FROM e.data_final)=2025 AND r.sexo='F')\n GROUP BY extract(year FROM e.data_final),r.idade_range\n), faixas AS (\nSELECT 2025 AS ano, f.* FROM (\n  SELECT 1 AS ordem, 'Alfa' AS faixa, int4range(0, 15, '[)') AS r UNION ALL\n  SELECT 2, 'Z', int4range(16, 28, '[)') UNION ALL\n  SELECT 3, 'Y', int4range(29, 44, '[)') UNION ALL\n  SELECT 4, 'X', int4range(45, 60, '[)') UNION ALL\n  SELECT 12, '60+',   int4range(60, NULL, '[)')\n) f\nUNION ALL\nSELECT 2024 AS ano, f.* FROM (\n  SELECT 1 AS ordem, 'Alfa' AS faixa, int4range(0, 15, '[)') AS r UNION ALL\n  SELECT 2, 'Z', int4range(16, 28, '[)') UNION ALL\n  SELECT 3, 'Y', int4range(29, 44, '[)') UNION ALL\n  SELECT 4, 'X', int4range(45, 60, '[)') UNION ALL\n  SELECT 12, 'Boomers',   int4range(60, NULL, '[)')\n) f\nUNION ALL\nSELECT 2023 AS ano, f.* FROM (\n  SELECT 1 AS ordem, 'Alfa' AS faixa, int4range(0, 14, '[)') AS r UNION ALL\n  SELECT 2, 'Z', int4range(15, 28, '[)') UNION ALL\n  SELECT 3, 'Y', int4range(29, 44, '[)') UNION ALL\n  SELECT 4, 'X', int4range(45, 60, '[)') UNION ALL\n  SELECT 12, 'Boomers',   int4range(60, NULL, '[)')\n) f\n), agregados AS (\n SELECT f.ano,f.ordem,f.faixa,coalesce(sum(i.n),0) AS total\n FROM faixas f LEFT JOIN intervalos i ON i.ano=f.ano AND i.idade_range && f.r\n GROUP BY f.ano,f.ordem,f.faixa\n)\nSELECT CASE ano WHEN 2025 THEN 'DataGrip 2025 / F' WHEN 2024 THEN 'DataGrip 2024 / M' ELSE 'DataGrip 2023 / geral' END AS versao,\n faixa,total,round(total*100.0/nullif(sum(total) OVER(PARTITION BY ano),0),1) AS porcentagem\nFROM agregados ORDER BY ano,ordem;",
+      "origin": {
+        "tipo": "consulta_conciliacao",
+        "pagina_pdf": 5,
+        "fontes": [
+          "datagrip:INFOGRAFICO.sql.txt:10",
+          "datagrip:INFOGRAFICO.sql.txt:11",
+          "datagrip:INFOGRAFICO.sql.txt:12"
+        ],
+        "regra": "Preserva os filtros salvos F/2025, M/2024 e geral/2023; não interpretar essa saída como evolução anual de uma população comum.",
+        "data_registro": "2026-09-28",
+        "otimizacao": "Pré-agrega por ano/intervalo antes de cruzar as faixas literais; preserva filtros de sexo e limites dos três blocos de origem."
+      },
+      "title": "Gerações — variantes históricas disponíveis"
+    }
+  }
+]

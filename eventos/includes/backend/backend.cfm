@@ -160,6 +160,7 @@
 
 <cfquery name="qAgrega" cachedwithin="#CreateTimeSpan(0, 0, 5, 0)#">
     SELECT * FROM tb_agrega_eventos
+    WHERE lower(trim(tipo_agregacao)) <> 'circuito'
     ORDER by tipo_agregacao, nome_evento_agregado
 </cfquery>
 
