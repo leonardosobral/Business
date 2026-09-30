@@ -1,0 +1,102 @@
+- generic [ref=f9e1]:
+  - paragraph [ref=f9e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f9e3]:
+    - generic [ref=f9e4]:
+      - generic [ref=f9e5]:
+        - generic [ref=f9e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f9e7]
+      - generic [ref=f9e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f9e9]:
+      - button "Públicos" [ref=f9e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f9e11] [cursor=pointer]
+      - button "Campanhas" [ref=f9e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f9e13] [cursor=pointer]
+    - generic [ref=f9e53]:
+      - generic [ref=f9e55]:
+        - heading "Oportunidades e próximos retornos" [level=2] [ref=f9e56]
+        - paragraph [ref=f9e57]: Registros internos por pessoa; não enviam mensagens nem comprovam receita.
+      - generic [ref=f9e58]:
+        - generic [ref=f9e59]:
+          - text: Responsável
+          - combobox "Responsável" [ref=f9e60]:
+            - option "Todos" [selected]
+            - option "Operador sintético"
+        - generic [ref=f9e61]:
+          - text: Etapa
+          - combobox "Etapa" [ref=f9e62]:
+            - option "Todas" [selected]
+            - option "Nova"
+            - option "Em contato"
+            - option "Interessado"
+            - option "Convertida manualmente"
+            - option "Encerrada"
+        - generic [ref=f9e63]:
+          - text: Prazo
+          - combobox "Prazo" [ref=f9e64]:
+            - option "Todos" [selected]
+            - option "Vencidas"
+            - option "Hoje"
+            - option "Próximas"
+            - option "Sem prazo"
+        - button "Atualizar" [ref=f9e65] [cursor=pointer]
+      - status [ref=f9e66]:
+        - article [ref=f9e67]:
+          - generic [ref=f9e68]:
+            - strong [ref=f9e69]: Corredor sintético
+            - text: · Assessoria Nova
+            - paragraph [ref=f9e70]: Revisar opções de assessoria · Sem prazo
+            - text: "Responsável: Operador sintético · revisão 2"
+          - generic [ref=f9e71]:
+            - button "Ver perfil" [ref=f9e72] [cursor=pointer]
+            - button "Abrir" [ref=f9e73] [cursor=pointer]
+      - generic [ref=f9e74]:
+        - button "Anterior" [disabled] [ref=f9e75]
+        - generic [ref=f9e76]: Página 1 de 1
+        - button "Próxima" [disabled] [ref=f9e77]
+    - dialog [ref=f9e78]:
+      - generic [ref=f9e79]:
+        - heading "Editar oportunidade" [level=2] [ref=f9e80]
+        - button "Fechar oportunidade" [active] [ref=f9e81] [cursor=pointer]: Fechar
+      - generic [ref=f9e82]:
+        - paragraph [ref=f9e83]: Corredor sintético · registro comercial interno. Salvar não cria contato.
+        - generic [ref=f9e84]:
+          - generic [ref=f9e85]:
+            - generic [ref=f9e86]:
+              - text: Interesse
+              - combobox "Interesse" [ref=f9e87]:
+                - option "Tênis"
+                - option "Assessoria" [selected]
+                - option "Prova"
+                - option "Serviço"
+                - option "Outro"
+            - generic [ref=f9e88]:
+              - text: Responsável
+              - combobox "Responsável" [ref=f9e89]:
+                - option "Operador sintético" [selected]
+            - generic [ref=f9e90]:
+              - text: Próxima ação
+              - textbox "Próxima ação" [ref=f9e91]: Revisar opções de assessoria
+            - generic [ref=f9e92]:
+              - text: Prazo (Brasília)
+              - textbox "Prazo (Brasília)" [ref=f9e93]
+          - button "Salvar oportunidade" [ref=f9e95] [cursor=pointer]
+        - generic [ref=f9e96]:
+          - heading "Etapa e histórico" [level=3] [ref=f9e97]
+          - generic [ref=f9e98]:
+            - generic [ref=f9e99]:
+              - text: Etapa
+              - combobox "Etapa" [ref=f9e100]:
+                - option "Nova" [selected]
+                - option "Em contato"
+                - option "Interessado"
+                - option "Convertida manualmente"
+                - option "Encerrada"
+            - button "Atualizar etapa" [ref=f9e101] [cursor=pointer]
+          - generic [ref=f9e102]:
+            - generic [ref=f9e103]:
+              - text: Nova observação
+              - textbox "Nova observação" [ref=f9e104]
+            - button "Registrar observação" [ref=f9e105] [cursor=pointer]
+          - article [ref=f9e107]:
+            - text: 24/09/2026, 12:00 · Operador sintético
+            - paragraph [ref=f9e108]: <img src=x onerror=alert(1)>

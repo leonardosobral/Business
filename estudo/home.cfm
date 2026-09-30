@@ -14,6 +14,7 @@
   <div class="study-tabs" role="tablist" aria-label="Visualização do caderno">
     <button type="button" class="active" id="tab-notebook" data-tab="notebook" role="tab" aria-selected="true" aria-controls="panel-notebook">Caderno</button>
     <button type="button" id="tab-runs" data-tab="runs" role="tab" aria-selected="false" aria-controls="panel-runs">Execuções e congelados</button>
+    <button type="button" id="tab-web" data-tab="web" role="tab" aria-selected="false" aria-controls="panel-web">Versão web</button>
     <button type="button" id="tab-guide" data-tab="guide" role="tab" aria-selected="false" aria-controls="panel-guide">Como usar</button>
   </div>
 </div>
@@ -32,6 +33,18 @@
   <div class="study-toolbar"><h2 class="h5 mb-0">Histórico desta seção</h2><button type="button" id="refresh-runs" class="btn btn-outline-light btn-sm">Atualizar</button></div>
   <div id="study-runs"></div><div id="study-run-detail"></div>
 </section>
+<section id="panel-web" role="tabpanel" aria-labelledby="tab-web" hidden>
+ <div class="study-card">
+  <h2 class="h5">Versão web do estudo</h2>
+  <p>Executar e congelar preserva os dados. Somente <strong>Usar na versão web</strong> troca a edição disponível no link público. Esta é uma prévia em conciliação, sem divulgação na página do PDF.</p>
+  <p>2025 combina consultas congeladas do notebook e fontes anteriores identificadas. 2026 preserva o pacote parcial atual, sem nova coleta. Confira as fontes antes de substituir uma versão.</p>
+  <div class="study-selectors"><label>Edição<select id="web-year" class="form-select" aria-label="Edição para web"></select></label><label>Resultado congelado<select id="web-run" class="form-select" aria-label="Congelamento para web"></select></label><button type="button" id="web-refresh" class="btn btn-outline-light btn-sm">Atualizar versões</button></div>
+  <p id="web-current" class="study-meta"></p><div class="study-actions"><a id="web-notebook" class="btn btn-outline-light btn-sm">Abrir query de saída</a><a id="web-live" class="btn btn-outline-light btn-sm" target="_blank" rel="noopener">Abrir versão no ar</a><button type="button" id="web-preview" class="btn btn-warning btn-sm">Conferir pacote</button></div>
+  <div id="web-preview-content" class="mt-3"></div>
+  <div id="web-publish-area" hidden><label class="d-block my-3">Nota pública desta versão<textarea id="web-note" class="form-control" maxlength="2000" placeholder="Origem dos resultados, recorte e ressalvas mantidas nesta versão"></textarea></label><button type="button" id="web-publish" class="btn btn-warning btn-sm">Usar na versão web</button></div>
+ </div>
+</section>
+
 <section id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" hidden>
   <div class="study-card study-guide">
     <h2 class="h5">Da consulta ao resultado preservado</h2>
@@ -39,7 +52,7 @@
     <p>Consultas de leitura: até 45 segundos, 1.000 linhas, 100 colunas e 5 MB por execução. Resultados incompletos ficam identificados e precisam ser refinados antes do congelamento. Funções administrativas ou não habilitadas são recusadas.</p>
     <h3 class="h6">Acervo de 2025</h3><p>As células do editor antigo foram preservadas. Seus blocos HTML são resultados colados manualmente e podem corresponder a uma versão anterior da query. Eles não equivalem a um congelamento verificado.</p>
     <p>O caderno de fontes reúne os arquivos do DBA e do DataGrip e as observações de conciliação. Scripts de manutenção ficam registrados para consulta; a execução aqui aceita apenas SELECT e WITH de leitura.</p>
-    <p class="mb-0">Esta área é exclusiva de administradores. A versão web do estudo será integrada em uma próxima etapa.</p>
+    <p class="mb-0">Esta área é exclusiva de administradores. Na aba Versão web, confira um congelamento das células de saída e use-o na prévia pública. Salvar, executar ou congelar uma query não muda automaticamente a web.</p>
   </div>
 </section>
 <dialog id="revision-dialog" class="study-dialog"><div class="study-toolbar"><h2 id="revision-title" class="h5 mb-0">Revisões da célula</h2><button type="button" id="close-revisions" class="btn btn-outline-light btn-sm">Fechar</button></div><div id="revision-list"></div></dialog>

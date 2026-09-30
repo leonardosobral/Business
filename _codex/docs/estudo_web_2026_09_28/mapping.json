@@ -1,0 +1,22 @@
+{
+  "run_ids": [
+    6,
+    7,
+    8,
+    15,
+    16,
+    17,
+    25
+  ],
+  "values": 33,
+  "series": [
+    "distancia_dentro_sexo_F",
+    "distancia_dentro_sexo_M",
+    "distancias_faixas",
+    "eventos_com_5km",
+    "meses",
+    "sexo_2024",
+    "sexo_2025",
+    "trimestres"
+  ]
+}

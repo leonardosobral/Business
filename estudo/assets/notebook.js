@@ -130,9 +130,42 @@ async function loadRuns(){
  const records=await api('runs',{notebookId:state.section.id});if(!records.length){box.append(el('div','study-card','Ainda não há execuções nesta seção.'));return;}
  records.forEach(r=>{const card=el('div','study-run-row'),text=el('div');text.append(el('strong','',r.frozen?'❄ '+r.title:'Execução #'+r.id+' · célula '+r.cell_id),el('p','study-meta',date(r.started_at)+' · '+(r.status==='ok'?r.row_count+' linhas'+(r.truncated?' · incompleto':''):r.status==='running'?'em andamento':'erro')+' · revisão '+r.cell_version));card.append(text,button('Abrir resultado',async()=>{const run=await api('getRun',{id:r.id});renderResult(run,$('study-run-detail'));$('study-run-detail').scrollIntoView({behavior:'smooth',block:'start'});}));box.append(card);});
 }
+let webCatalog=[],webChecked=null;
+function webChoice(){return webCatalog.find(d=>String(d.ano)===$('web-year').value);}
+function clearWebPreview(){webChecked=null;$('web-preview-content').replaceChildren();$('web-publish-area').hidden=true;}
+function chooseWebYear(){
+ clearWebPreview();const d=webChoice();if(!d)return;
+ selectOptions($('web-run'),d.runs.map(r=>({...r,label:'#'+r.id+' · '+r.title+' · revisão '+r.cell_version})),'label');
+ if(d.runs.some(r=>String(r.id)===String(d.run_atual)))$('web-run').value=d.run_atual;
+ $('web-current').textContent=d.publicacao_id?'No ar: versão '+d.versao+' · congelamento #'+d.run_atual+' · '+date(d.publicado_em):'Edição ainda não conectada à web.';
+ $('web-notebook').href='/estudo/?caderno='+d.caderno_id+'&secao='+d.notebook_id;
+ $('web-live').href='https://roadrunners.run/brasilquecorreprovas/web/?ano='+d.ano;
+ $('web-preview').disabled=!d.runs.length;$('web-note').value='';
+}
+async function loadWeb(){const prior=$('web-year').value;webCatalog=await api('webCatalog');selectOptions($('web-year'),webCatalog.map(d=>({id:d.ano,label:String(d.ano)})),'label');if(webCatalog.some(d=>String(d.ano)===prior))$('web-year').value=prior;chooseWebYear();}
+$('web-year').addEventListener('change',chooseWebYear);$('web-run').addEventListener('change',clearWebPreview);
+$('web-refresh').addEventListener('click',()=>loadWeb().catch(e=>notice(e.message,true)));
+$('web-preview').addEventListener('click',async()=>{
+ if(state.pending)return;busy(1);clearWebPreview();
+ try{const d=webChoice(),id=$('web-run').value,p=await api('webPreview',{year:d.ano,runId:id}),payload=JSON.parse(p.payload_json);
+ if(webChoice()!==d||$('web-run').value!==id)return;
+ webChecked={year:d.ano,runId:id,expected:d.publicacao_id};const box=$('web-preview-content');
+ box.append(el('h3','h6','Congelamento #'+id+' · edição '+d.ano),el('p','study-hint',payload.meta.origem||'Fonte identificada no pacote.'));
+ box.append(el('p','','Resultados: '+Number(payload.totais_atuais.resultados).toLocaleString('pt-BR')+' · Eventos cadastrados: '+Number(payload.totais_atuais.eventos).toLocaleString('pt-BR')));
+ const details=el('details'),summary=el('summary','','Conferir '+payload.comparacoes.length+' valores, fontes e pendências'),wrap=el('div','study-table-wrap'),table=el('table','table table-sm'),head=el('thead'),tr=el('tr');
+ ['Série / categoria','Valor','Fonte / ressalva'].forEach(t=>tr.append(el('th','',t)));head.append(tr);table.append(head);const body=el('tbody');
+ payload.comparacoes.forEach(c=>{const row=el('tr');row.append(el('td','',c.serie+' / '+c.categoria),el('td','',c.atual?.valor===null||c.atual?.valor===undefined?'—':String(c.atual.valor)),el('td','',c.atual?[c.atual.fonte||payload.meta.origem,c.atual.nota||''].filter(Boolean).join(' · '):'Sem recálculo'));body.append(row);});table.append(body);wrap.append(table);details.append(summary,wrap);box.append(details);$('web-publish-area').hidden=false;
+ notice('Pacote completo e compatível. Confira os valores e registre a nota antes de usar na web.');
+ }catch(e){notice(e.message,true);}finally{busy(-1);}
+});
+$('web-publish').addEventListener('click',async()=>{
+ if(state.pending||!webChecked)return;const checked={...webChecked},note=$('web-note').value.trim();if(!note){notice('Informe a nota pública desta versão.',true);return;}
+ busy(1);try{await api('webPublish',{...checked,note});await loadWeb();notice('Versão web atualizada. O pacote anterior permanece no histórico.');}catch(e){notice(e.message,true);}finally{busy(-1);}
+});
+
 document.querySelectorAll('[data-tab]').forEach(tab=>tab.addEventListener('click',async()=>{
  document.querySelectorAll('[data-tab]').forEach(t=>{const active=t===tab;t.classList.toggle('active',active);t.setAttribute('aria-selected',active);$('panel-'+t.dataset.tab).hidden=!active;});
- try{if(tab.dataset.tab==='runs')await loadRuns();else if(tab.dataset.tab==='notebook')state.cells.forEach(c=>c.editor.refresh());}catch(e){notice(e.message,true);}
+ try{if(tab.dataset.tab==='web')await loadWeb();else if(tab.dataset.tab==='runs')await loadRuns();else if(tab.dataset.tab==='notebook')state.cells.forEach(c=>c.editor.refresh());}catch(e){notice(e.message,true);}
 }));
 $('study-book').addEventListener('change',async()=>{if(!canLeave()){$('study-book').value=state.book.id;return;}busy(1);try{await loadBooks($('study-book').value);}catch(e){notice(e.message,true);}finally{busy(-1);}});
 $('study-section').addEventListener('change',async()=>{if(!canLeave()){$('study-section').value=state.section.id;return;}busy(1);try{await loadSection($('study-section').value);}catch(e){notice(e.message,true);}finally{busy(-1);}});

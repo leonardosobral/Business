@@ -1,0 +1,56 @@
+- generic [active] [ref=f11e1]:
+  - paragraph [ref=f11e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f11e3]:
+    - generic [ref=f11e4]:
+      - generic [ref=f11e5]:
+        - generic [ref=f11e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f11e7]
+      - generic [ref=f11e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f11e9]:
+      - button "Públicos" [ref=f11e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f11e11] [cursor=pointer]
+      - button "Planejamento" [ref=f11e12] [cursor=pointer]
+      - button "Campanhas" [ref=f11e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f11e14] [cursor=pointer]
+    - generic [ref=f11e16]:
+      - complementary [ref=f11e17]:
+        - generic [ref=f11e18]:
+          - heading "Públicos 2" [level=2] [ref=f11e19]
+          - button "Novo público" [ref=f11e20] [cursor=pointer]
+        - generic [ref=f11e21]:
+          - generic [ref=f11e22]: Buscar público
+          - searchbox "Buscar público" [ref=f11e23]
+        - generic [ref=f11e24]:
+          - button "Público sintético SCv1 1 pessoas" [ref=f11e25] [cursor=pointer]:
+            - generic [ref=f11e26]: Público sintético SCv1
+            - generic [ref=f11e27]:
+              - text: "1"
+              - generic [ref=f11e28]: pessoas
+          - button "Público sintético SPv1 1 pessoas" [ref=f11e29] [cursor=pointer]:
+            - generic [ref=f11e30]: Público sintético SPv1
+            - generic [ref=f11e31]:
+              - text: "1"
+              - generic [ref=f11e32]: pessoas
+        - generic [ref=f11e33]:
+          - button "Anterior" [disabled] [ref=f11e34]
+          - generic [ref=f11e35]: 1 / 1
+          - button "Próxima" [disabled] [ref=f11e36]
+        - paragraph [ref=f11e37]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f11e38]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f11e39]:
+        - generic [ref=f11e41]:
+          - heading "Usuários do público" [level=2] [ref=f11e42]
+          - paragraph [ref=f11e43]: Selecione um público na lista para ver seus usuários.
+        - table [ref=f11e45]:
+          - rowgroup [ref=f11e46]:
+            - row [ref=f11e47]:
+              - columnheader "Usuário" [ref=f11e48]
+              - columnheader "Localidade" [ref=f11e49]
+              - columnheader "Motivo da seleção" [ref=f11e50]
+              - columnheader [ref=f11e51]
+          - rowgroup [ref=f11e52]:
+            - row [ref=f11e53]:
+              - cell "Selecione um público para começar." [ref=f11e54]
+        - generic [ref=f11e55]:
+          - button "Anterior" [disabled] [ref=f11e56]
+          - button "Próxima" [disabled] [ref=f11e57]

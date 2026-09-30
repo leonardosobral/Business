@@ -1,0 +1,25 @@
+- generic [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+      - generic [ref=e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e9]:
+      - button "Públicos" [ref=e10] [cursor=pointer]
+      - button "Oportunidades" [ref=e11] [cursor=pointer]
+      - button "Planejamento" [ref=e12] [cursor=pointer]
+      - button "Campanhas" [active] [ref=e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e14] [cursor=pointer]
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - heading "Campanhas revisadas" [level=2] [ref=e61]
+          - paragraph [ref=e62]: Notificações, e-mail e cards no mini perfil. Salvar não envia.
+        - button "Nova campanha" [ref=e63] [cursor=pointer]
+      - paragraph [ref=e65]: Nenhuma campanha criada. Comece por um público salvo.
+      - generic [ref=e66]:
+        - button "Anterior" [disabled] [ref=e67]
+        - generic [ref=e68]: Página 1
+        - button "Próxima" [disabled] [ref=e69]

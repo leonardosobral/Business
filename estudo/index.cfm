@@ -23,5 +23,5 @@
 <script src="/estudo/assets/vendor/purify.js"></script>
 <script src="/estudo/assets/vendor/marked.js"></script>
 <script src="/estudo/assets/notebook-data.js?v=20260928-2"></script>
-<script src="/estudo/assets/notebook.js?v=20260928-2"></script>
+<script src="/estudo/assets/notebook.js?v=20260928-web-1"></script>
 </body></html>

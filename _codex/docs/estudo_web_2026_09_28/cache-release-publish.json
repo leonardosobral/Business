@@ -1,0 +1,8 @@
+{
+  "Business": {
+    "published": [
+      "estudo/index.cfm"
+    ],
+    "backup": "/var/backups/business-estudo-web-20260928/cache-version/Business/baseline"
+  }
+}

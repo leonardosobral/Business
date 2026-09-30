@@ -63,7 +63,14 @@ component output="false" {
         result.total=db("SELECT count(*) AS n FROM @.tb_error_problem" & where,params).n[1];
         result.page=min(max(1,int(val(arguments.filters.page ?: 1))),max(1,ceiling(result.total/25)));
         params.offset=num((result.page-1)*25);
-        result.items=db("SELECT * FROM @.tb_error_problem" & where & " ORDER BY last_seen DESC NULLS LAST,id DESC LIMIT 25 OFFSET :offset",params);
+        // Fetch one occurrence only for each problem on this page; recover old masked paths from the original log.
+        result.items=db("SELECT p.*,coalesce(o.path,'') AS resource_path,l.log_item AS resource_item,coalesce(l.log_item_id,'') AS resource_log FROM (SELECT * FROM @.tb_error_problem" & where & " ORDER BY last_seen DESC NULLS LAST,id DESC LIMIT 25 OFFSET :offset) p LEFT JOIN LATERAL (SELECT id_log,path FROM @.tb_error_occurrence WHERE problem_id=p.id ORDER BY occurred_at DESC,id_log DESC LIMIT 1) o ON true LEFT JOIN @.tb_log l ON l.id_log=o.id_log ORDER BY p.last_seen DESC NULLS LAST,p.id DESC",params);
+        for(var i=1;i<=result.items.recordCount;i++) {
+            if(len(result.items.resource_log[i])) {
+                var resource=variables.normalizer.evidence({log_item=result.items.resource_item[i],log_item_id=result.items.resource_log[i]});
+                if(len(resource.path))querySetCell(result.items,"resource_path",resource.path,i);
+            }
+        }
         result.stats=db("SELECT count(*) AS total,count(*) FILTER(WHERE status NOT IN ('verified','ignored')) AS pending,coalesce(sum(occurrences),0) AS occurrences FROM @.tb_error_problem" & windowWhere,windowParams);
         result.pendingLogs=0;
         if(result.collector.recordCount)result.pendingLogs=db("SELECT count(*) AS n FROM @.tb_log l WHERE l.log_item IN ('erro','404') AND l.log_timestamp>=:start AND NOT EXISTS(SELECT 1 FROM @.tb_error_occurrence o WHERE o.id_log=l.id_log)",{start={value=result.collector.started_at[1],cfsqltype="cf_sql_timestamp"}}).n[1];

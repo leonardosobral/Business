@@ -171,6 +171,8 @@ function agregaReviewIdInList(listValue, idValue) {
     </cfif>
 <cfelseif URL.sucesso EQ "sugestao_aceita">
     <cfset VARIABLES.agregaReviewNotice = "Agregador criado e as duas provas vinculadas. Sugestão concluída." />
+<cfelseif URL.sucesso EQ "sugestao_vinculada">
+    <cfset VARIABLES.agregaReviewNotice = "Prova vinculada ao agregador existente. Sugestão concluída." />
 <cfelseif URL.sucesso EQ "sugestao_ja_aplicada">
     <cfset VARIABLES.agregaReviewNotice = "Esta sugestão já foi aplicada. Nenhum vínculo foi alterado novamente." />
 <cfelseif URL.sucesso EQ "aplicado">
@@ -613,9 +615,10 @@ function agregaReviewIdInList(listValue, idValue) {
             <cfparam name="FORM.id_grupo" default="0" />
             <cfparam name="FORM.nome_evento_agregado" default="" />
             <cfparam name="FORM.eventos_esperados" default="" />
+            <cfparam name="FORM.agregador_esperado" default="0" />
             <cfinclude template="quick_accept.cfm" />
-            <cfset VARIABLES.agregaReviewQuickResult = agregaReviewAcceptSuggestion(val(FORM.id_grupo), FORM.nome_evento_agregado, val(qPerfil.id), FORM.eventos_esperados) />
-            <cfset VARIABLES.agregaReviewQuickSuccess = VARIABLES.agregaReviewQuickResult.alreadyApplied ? "sugestao_ja_aplicada" : "sugestao_aceita" />
+            <cfset VARIABLES.agregaReviewQuickResult = agregaReviewAcceptSuggestion(val(FORM.id_grupo), FORM.nome_evento_agregado, val(qPerfil.id), FORM.eventos_esperados, val(FORM.agregador_esperado)) />
+            <cfset VARIABLES.agregaReviewQuickSuccess = VARIABLES.agregaReviewQuickResult.alreadyApplied ? "sugestao_ja_aplicada" : (VARIABLES.agregaReviewQuickResult.reusedExisting ? "sugestao_vinculada" : "sugestao_aceita") />
             <cflocation addtoken="false" url="/administracao/agrega-revisao/?sucesso=#VARIABLES.agregaReviewQuickSuccess#&pagina=#VARIABLES.agregaReviewPage#&busca=#urlEncodedFormat(VARIABLES.agregaReviewSearch)#&status=#urlEncodedFormat(VARIABLES.agregaReviewStatus)#&ordenar=#urlEncodedFormat(VARIABLES.agregaReviewOrder)#&direcao=#urlEncodedFormat(VARIABLES.agregaReviewDirection)###agrega-review-list" />
         <cfelseif VARIABLES.agregaReviewAction EQ "criar_agregador">
             <cfset VARIABLES.agregaReviewGroupId = 0 />
@@ -1077,6 +1080,7 @@ function agregaReviewIdInList(listValue, idValue) {
 <cfif VARIABLES.agregaReviewSchemaReady>
     <cfset VARIABLES.agregaReviewQuickToken = csrfGenerateToken("agregaReviewQuickAccept", false) />
     <cfset VARIABLES.agregaReviewQuickGroups = {} />
+    <cfset VARIABLES.agregaReviewQuickExistingGroups = {} />
     <cfquery name="qAgregaReviewStats" timeout="15">
         SELECT count(*) FILTER (WHERE grp.status = 'review' AND EXISTS (
                    SELECT 1 FROM tb_evento_agrega_review_candidates c
@@ -1440,6 +1444,23 @@ function agregaReviewIdInList(listValue, idValue) {
                 AND VARIABLES.agregaReviewCurrentTotalCandidates EQ 2 AND VARIABLES.agregaReviewCurrentActiveCandidates EQ 2
                 AND VARIABLES.agregaReviewCurrentAllActive AND NOT len(VARIABLES.agregaReviewCurrentAggregators)>
                 <cfset VARIABLES.agregaReviewQuickGroups[VARIABLES.agregaReviewCurrentGroupId] = VARIABLES.agregaReviewCurrentEventIds />
+            </cfif>
+
+            <cfif qAgregaReviewGroups.status EQ "review" AND left(qAgregaReviewGroups.group_key, 11) EQ "edicoes-v1:"
+                AND val(qAgregaReviewGroups.candidate_count) EQ 2
+                AND VARIABLES.agregaReviewCurrentTotalCandidates EQ 2 AND VARIABLES.agregaReviewCurrentActiveCandidates EQ 2
+                AND VARIABLES.agregaReviewCurrentAllActive AND VARIABLES.agregaReviewCurrentHasMissing
+                AND listLen(VARIABLES.agregaReviewCurrentAggregators) EQ 1>
+                <cfset VARIABLES.agregaReviewExistingId = listFirst(VARIABLES.agregaReviewCurrentAggregators) />
+                <cfset VARIABLES.agregaReviewExistingOption = VARIABLES.agregaReviewCurrentAggregatorsByGroup[VARIABLES.agregaReviewCurrentGroupId][VARIABLES.agregaReviewExistingId] />
+                <cfif len(trim(VARIABLES.agregaReviewExistingOption.nome))
+                    AND lCase(trim(VARIABLES.agregaReviewExistingOption.tipo)) NEQ "circuito"
+                    AND (val(qAgregaReviewGroups.suggested_id_agrega_evento) LTE 0 OR val(qAgregaReviewGroups.suggested_id_agrega_evento) EQ val(VARIABLES.agregaReviewExistingId))>
+                    <cfset VARIABLES.agregaReviewQuickExistingGroups[VARIABLES.agregaReviewCurrentGroupId] = {
+                        id = val(VARIABLES.agregaReviewExistingId), nome = VARIABLES.agregaReviewExistingOption.nome,
+                        eventIds = VARIABLES.agregaReviewCurrentEventIds
+                    } />
+                </cfif>
             </cfif>
 
             <cfif qAgregaReviewGroups.status NEQ "review" OR (VARIABLES.agregaReviewCurrentActiveCandidates GTE 2

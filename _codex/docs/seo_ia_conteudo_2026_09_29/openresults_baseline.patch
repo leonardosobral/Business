@@ -1,0 +1,41 @@
+diff --git a/evento/index.cfm b/evento/index.cfm
+index 8cb9382..7b50354 100644
+--- a/evento/index.cfm
++++ b/evento/index.cfm
+@@ -28,7 +28,7 @@
+ </cfif>
+ 
+ <!--- META INFO --->
+-<cfset VARIABLES.canonical = "#APPLICATION.baseCanonica##VARIABLES.template##qEvento.tag#/"/>
++<cfset VARIABLES.canonical = APPLICATION.baseCanonica & VARIABLES.template & replace(encodeForURL(qEvento.tag), "+", "%20", "all") & "/"/>
+ <cfset VARIABLES.title = "#htmlEditFormat(qEvento.nome_evento)# - Resultados e informações - #APPLICATION.nomeSite#"/>
+ <cfset VARIABLES.description = htmlEditFormat("#qEvento.nome_evento# em #qEvento.cidade#/#qEvento.estado#. #VARIABLES.eventoStatusTitulo#. #VARIABLES.eventoStatusDescricao#")/>
+ <cfset VARIABLES.keywords = "resultados, corrida, competição, pódio, atletas, corredores"/>
+diff --git a/includes/head.cfm b/includes/head.cfm
+index bb93291..3c62a84 100644
+--- a/includes/head.cfm
++++ b/includes/head.cfm
+@@ -17,20 +17,20 @@
+     <title><cfoutput>#VARIABLES.title#</cfoutput></title>
+     <meta name="description" content="<cfoutput>#VARIABLES.description#</cfoutput>" />
+     <meta name="keywords" content="<cfoutput>#VARIABLES.keywords#</cfoutput>" />
+-    <link rel="canonical" href="<cfoutput>#VARIABLES.canonical#</cfoutput>" />
++    <link rel="canonical" href="<cfoutput>#htmlEditFormat(VARIABLES.canonical)#</cfoutput>" />
+ 
+     <!--- SOCIAL MEDIA METADATA --->
+     <meta name="twitter:title" content="<cfoutput>#VARIABLES.title#</cfoutput>" />
+     <meta name="twitter:card" content="summary" />
+     <meta name="twitter:description" content="<cfoutput>#VARIABLES.description#</cfoutput>" />
+     <meta name="twitter:image" content="<cfoutput>#VARIABLES.twitterImage#</cfoutput>" />
+-    <meta name="twitter:site" content="<cfoutput>#VARIABLES.canonical#</cfoutput>" />
++    <meta name="twitter:site" content="<cfoutput>#htmlEditFormat(VARIABLES.canonical)#</cfoutput>" />
+ 
+     <!--- OPEN GRAPH METADATA --->
+     <meta property="og:type" content="website" />
+     <meta property="og:title" content="<cfoutput>#VARIABLES.title#</cfoutput>" />
+     <meta property="og:description" content="<cfoutput>#VARIABLES.description#</cfoutput>" />
+-    <meta property="og:url" content="<cfoutput>#VARIABLES.canonical#</cfoutput>" />
++    <meta property="og:url" content="<cfoutput>#htmlEditFormat(VARIABLES.canonical)#</cfoutput>" />
+     <meta property="og:image" content="<cfoutput>#VARIABLES.socialImage#</cfoutput>" />
+ 
+     <!--- FAVICON --->

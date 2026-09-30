@@ -1,0 +1,56 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+      - generic [ref=e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e9]:
+      - button "Públicos" [ref=e10] [cursor=pointer]
+      - button "Oportunidades" [ref=e11] [cursor=pointer]
+      - button "Planejamento" [ref=e12] [cursor=pointer]
+      - button "Campanhas" [ref=e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e14] [cursor=pointer]
+    - generic [ref=e16]:
+      - complementary [ref=e17]:
+        - generic [ref=e18]:
+          - heading "Públicos 2" [level=2] [ref=e19]
+          - button "Novo público" [ref=e20] [cursor=pointer]
+        - generic [ref=e21]:
+          - generic [ref=e22]: Buscar público
+          - searchbox "Buscar público" [ref=e23]
+        - generic [ref=e24]:
+          - button "Público sintético SCv1 1 pessoas" [ref=e25] [cursor=pointer]:
+            - generic [ref=e26]: Público sintético SCv1
+            - generic [ref=e27]:
+              - text: "1"
+              - generic [ref=e28]: pessoas
+          - button "Público sintético SPv1 1 pessoas" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: Público sintético SPv1
+            - generic [ref=e31]:
+              - text: "1"
+              - generic [ref=e32]: pessoas
+        - generic [ref=e33]:
+          - button "Anterior" [disabled] [ref=e34]
+          - generic [ref=e35]: 1 / 1
+          - button "Próxima" [disabled] [ref=e36]
+        - paragraph [ref=e37]: Contagem em 24/09/2026, 12:00
+        - generic [ref=e38]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - heading "Usuários do público" [level=2] [ref=e42]
+          - paragraph [ref=e43]: Selecione um público na lista para ver seus usuários.
+        - table [ref=e45]:
+          - rowgroup [ref=e46]:
+            - row [ref=e47]:
+              - columnheader "Usuário" [ref=e48]
+              - columnheader "Localidade" [ref=e49]
+              - columnheader "Motivo da seleção" [ref=e50]
+              - columnheader [ref=e51]
+          - rowgroup [ref=e52]:
+            - row [ref=e53]:
+              - cell "Selecione um público para começar." [ref=e54]
+        - generic [ref=e55]:
+          - button "Anterior" [disabled] [ref=e56]
+          - button "Próxima" [disabled] [ref=e57]

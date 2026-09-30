@@ -1,0 +1,133 @@
+- generic [ref=f5e1]:
+  - paragraph [ref=f5e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - generic [ref=f5e5]:
+        - generic [ref=f5e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f5e7]
+      - generic [ref=f5e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f5e9]:
+      - button "Públicos" [ref=f5e10] [cursor=pointer]
+      - button "Campanhas" [ref=f5e11] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f5e12] [cursor=pointer]
+    - generic [ref=f5e14]:
+      - complementary [ref=f5e15]:
+        - generic [ref=f5e16]:
+          - heading "Públicos 1" [level=2] [ref=f5e17]
+          - button "Novo público" [ref=f5e18] [cursor=pointer]
+        - generic [ref=f5e19]:
+          - generic [ref=f5e20]: Buscar público
+          - searchbox "Buscar público" [ref=f5e21]
+        - button "Público sintético SCv1 1 pessoas" [ref=f5e23] [cursor=pointer]:
+          - generic [ref=f5e24]: Público sintético SCv1
+          - generic [ref=f5e25]:
+            - text: "1"
+            - generic [ref=f5e26]: pessoas
+        - generic [ref=f5e27]:
+          - button "Anterior" [disabled] [ref=f5e28]
+          - generic [ref=f5e29]: 1 / 1
+          - button "Próxima" [disabled] [ref=f5e30]
+        - paragraph [ref=f5e31]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f5e32]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f5e33]:
+        - generic [ref=f5e34]:
+          - generic [ref=f5e35]:
+            - heading "Público sintético SC" [level=2] [ref=f5e52]
+            - paragraph [ref=f5e37]: 1 usuários · consulta em 24/09/2026, 12:00 · elegibilidade de cada canal será revisada na campanha.
+          - generic [ref=f5e53]:
+            - button "Editar público" [ref=f5e54] [cursor=pointer]
+            - button "Criar campanha" [ref=f5e55] [cursor=pointer]
+        - region "Pessoas aptas por canal" [ref=f5e56]:
+          - generic [ref=f5e57]:
+            - generic [ref=f5e58]:
+              - strong [ref=f5e59]: Aptos por canal
+              - generic [ref=f5e60]: Público v1 · 24/09/2026, 12:00
+            - button "Recalcular" [ref=f5e61] [cursor=pointer]
+          - status [ref=f5e62]:
+            - generic [ref=f5e63]:
+              - generic [ref=f5e64]:
+                - strong [ref=f5e65]: "1"
+                - generic [ref=f5e66]: E-mail · aptos
+                - generic [ref=f5e67]: 0 excluídos de 1
+              - generic [ref=f5e68]:
+                - strong [ref=f5e69]: "0"
+                - generic [ref=f5e70]: Notificação · aptos
+                - generic [ref=f5e71]: 1 excluídos de 1
+                - group [ref=f5e72]:
+                  - generic "Ver motivos" [ref=f5e73] [cursor=pointer]
+              - generic [ref=f5e74]:
+                - strong [ref=f5e75]: "1"
+                - generic [ref=f5e76]: Card no perfil · aptos
+                - generic [ref=f5e77]: 0 excluídos de 1
+          - paragraph [ref=f5e78]: Estimativa para este público. Preferências e limites são verificados novamente antes de cada envio.
+        - group [ref=f5e79]:
+          - generic "Cobertura dos dados deste público" [ref=f5e80] [cursor=pointer]
+        - table [ref=f5e39]:
+          - rowgroup [ref=f5e40]:
+            - row [ref=f5e41]:
+              - columnheader "Usuário" [ref=f5e42]
+              - columnheader "Localidade" [ref=f5e43]
+              - columnheader "Motivo da seleção" [ref=f5e44]
+              - columnheader [ref=f5e45]
+          - rowgroup [ref=f5e46]:
+            - row [ref=f5e81]:
+              - cell "Corredor sintético runner@example.test" [ref=f5e82]:
+                - text: Corredor sintético
+                - generic [ref=f5e83]: runner@example.test
+              - cell "Florianópolis / SC" [ref=f5e84]
+              - cell [ref=f5e85]:
+                - list [ref=f5e86]:
+                  - listitem [ref=f5e87]: Resultado reconhecido nos últimos 30 dias (meia maratona)
+              - cell [ref=f5e88]:
+                - button "Ver perfil" [ref=f5e89] [cursor=pointer]
+        - generic [ref=f5e49]:
+          - button "Anterior" [disabled] [ref=f5e50]
+          - generic [ref=f5e90]: Página 1 de 1
+          - button "Próxima" [disabled] [ref=f5e51]
+    - dialog [ref=f5e91]:
+      - generic [ref=f5e92]:
+        - generic [ref=f5e93]:
+          - text: FICHA DO USUÁRIO
+          - heading "Corredor sintético" [level=2] [ref=f5e94]
+        - button "Fechar ficha" [active] [ref=f5e95] [cursor=pointer]: Fechar
+      - status [ref=f5e96]:
+        - paragraph [ref=f5e97]: runner@example.testFlorianópolis / SC
+        - generic [ref=f5e98]:
+          - generic [ref=f5e99]: Opt-in comercial registrado
+          - generic [ref=f5e100]: E-mail confirmado
+        - generic [ref=f5e101]:
+          - generic [ref=f5e102]: "E-mail: Preferência ativa"
+          - generic [ref=f5e103]: "Notificação: Preferência ativa"
+          - generic [ref=f5e104]: "Card no perfil: Preferência ativa"
+        - paragraph [ref=f5e105]: Preferências na consulta. A autorização do contato é conferida novamente antes do envio.
+        - generic [ref=f5e106]:
+          - heading "Acessos identificados" [level=3] [ref=f5e107]
+          - paragraph [ref=f5e108]:
+            - strong [ref=f5e109]: "3"
+            - text: "dias observados nos últimos 30 · último registro: 24/09/2026, 12:00"
+          - text: Cobertura parcial; ausência de registro não indica inatividade.
+        - generic [ref=f5e110]:
+          - generic [ref=f5e111]:
+            - heading "Agenda e inscrições" [level=3] [ref=f5e112]
+            - paragraph [ref=f5e113]:
+              - strong [ref=f5e114]: Meia da cidade
+              - text: calendario · 10/10/2026, 09:00
+            - text: Distância pessoal não confirmada pela agenda.
+          - generic [ref=f5e115]:
+            - heading "Resultados reconhecidos" [level=3] [ref=f5e116]
+            - paragraph [ref=f5e117]:
+              - strong [ref=f5e118]: Meia realizada
+              - text: 21.0975 km · 10/09/2026, 09:00
+      - generic [ref=f5e119]:
+        - generic [ref=f5e120]:
+          - heading "Linha do tempo" [level=3] [ref=f5e121]
+          - generic [ref=f5e122]: Registros próprios e contatos deste CRM
+        - generic [ref=f5e123]:
+          - article [ref=f5e124]:
+            - time [ref=f5e125]: 10/09/2026, 09:00
+            - strong [ref=f5e126]: Meia realizada
+            - generic [ref=f5e127]: Resultado reconhecido · 21.0975
+          - article [ref=f5e128]:
+            - time [ref=f5e129]: 24/09/2026, 12:00
+            - strong [ref=f5e130]: Acesso identificado ao site
+            - generic [ref=f5e131]: Acesso identificado · partial

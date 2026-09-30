@@ -51,7 +51,7 @@
       </cfoutput>
     </cfloop>
   </div>
-  <p class="seo-note seo-report-note mb-0">A nota representa a auditoria na data indicada. Correções verificadas depois dessa coleta aparecem na fila abaixo e só alteram a nota após uma nova auditoria. Recarregar a tela não executa uma coleta. A amostra não permite concluir que todo o site está correto.</p>
+  <p class="seo-note seo-report-note mb-0">A nota representa a auditoria na data indicada. Correções verificadas depois dessa coleta aparecem na aba Fila de correções e só alteram a nota após uma nova auditoria. Recarregar a tela não executa uma coleta. A amostra não permite concluir que todo o site está correto.</p>
 
   <details class="seo-method">
     <summary>Como a pontuação é calculada</summary>
@@ -73,6 +73,7 @@
     </div>
   </div>
   <form class="seo-filter mb-3" method="get" action="/portal/seo/">
+    <input type="hidden" name="aba" value="relatorio"/>
     <cfoutput>
       <input type="hidden" name="site" value="#encodeForHtmlAttribute(VARIABLES.seoQueueSiteFilter)#"/>
       <input type="hidden" name="prioridade" value="#encodeForHtmlAttribute(VARIABLES.seoQueuePriorityFilter)#"/>

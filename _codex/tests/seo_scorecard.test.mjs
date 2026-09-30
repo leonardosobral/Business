@@ -77,3 +77,38 @@ test('equal coverage counts with different evaluated URLs cannot claim progress;
  const repaired=run({run_id:'run-3',selected_urls:[a,b],observations:[obs({source_url:a,title:'Reparado'}),obs({source_url:b,title:undefined})]});
  assert.equal(call('appendHistory',history,repaired,call('scoreRun',repaired)).at(-1).comparable,true);
 });
+
+test('AI readiness separates declared crawl permission, HTML delivery and unmeasured outcomes',()=>{
+ const o=obs({robots_policy:{'oai-searchbot':{allowed:true},perplexitybot:{allowed:false}}});
+ const checks=call('aiChecks',run({observations:[o]}));const get=id=>checks.find(c=>c.id===id);
+ assert.equal(get('oai-searchbot').status,'pass');assert.equal(get('perplexitybot').status,'warning');assert.equal(get('html').status,'pass');
+ for(const id of ['provider-access','citations','referrals','structured','facts','training'])assert.equal(get(id).status,'unknown');
+ const fail=call('aiChecks',run({observations:[{...o,status:403,html_evaluation:'not_evaluated'}]}));assert.equal(fail.find(c=>c.id==='html').status,'error');assert.equal(fail.find(c=>c.id==='oai-searchbot').status,'pass');
+});
+test('AI permission is unknown without evidence, and redirects must check source and destination',()=>{
+ for(const patch of [{robots_policy:{}},{redirected:true},{robots_policy:{'oai-searchbot':{allowed:'true'}}}]){
+  const c=call('aiChecks',run({observations:[obs(patch)]})).find(c=>c.id==='oai-searchbot');assert.equal(c.status,'unknown');
+ }
+ const c=call('aiChecks',run({observations:[obs({redirected:true,source_robots_policy:{'oai-searchbot':{allowed:false}},robots_policy:{'oai-searchbot':{allowed:true}}})]})).find(c=>c.id==='oai-searchbot');assert.equal(c.status,'warning');
+ const empty=call('aiChecks',run({observations:[]}));assert.equal(empty.find(c=>c.id==='html').status,'unknown');
+});
+
+test('new metadata checks keep unmeasured audits unknown and technical weights unchanged',()=>{
+ const measured=obs({metadata_version:1,description_values:['Prova pública'],hreflang:[{lang:'pt-BR',url}],jsonld:{count:1,invalid:0,types:['SportsEvent']},event_metadata:[{name:'Prova',start_date:'2026-10-10',has_location:true,name_in_body:true,city_in_body:true,has_organizer:true}]});
+ const audit=run({observations:[measured]});
+ const s=call('scoreRun',audit);assert.equal(s.score,100);assert.equal(criterion(s,'description').status,'pass');assert.equal(criterion(s,'structured').status,'pass');assert.equal(criterion(s,'hreflang').status,'pass');
+ assert.equal(criterion(call('scoreRun',run()),'structured').status,'unknown');
+ const ai=call('aiChecks',audit);assert.equal(ai.find(c=>c.id==='structured').status,'pass');assert.equal(ai.find(c=>c.id==='facts').status,'unknown');
+});
+test('malformed JSON-LD, duplicate descriptions and invalid alternates produce evidence without changing the note',()=>{
+ const s=call('scoreRun',run({observations:[obs({metadata_version:1,description_values:['A','B'],hreflang:[{lang:'en',url:null}],jsonld:{count:2,invalid:1,types:[]}})]}));
+ assert.equal(s.score,100);assert.equal(criterion(s,'structured').status,'error');assert.equal(criterion(s,'description').status,'warning');assert.equal(criterion(s,'hreflang').status,'warning');
+ assert.equal(criterion(call('scoreRun',run({observations:[obs({status:403,metadata_version:1,jsonld:{count:1,invalid:0}})]})),'structured').status,'unknown');
+});
+test('event metadata is a coverage check: missing markup warns, other page types and failed HTML remain unknown',()=>{
+ const event='https://roadrunners.run/evento/prova/';
+ const ai=extra=>call('aiChecks',run({observations:[obs({source_url:event,final_url:event,metadata_version:1,jsonld:{count:1,invalid:0},event_metadata:[],...extra})]})).find(c=>c.id==='event-fields');
+ assert.equal(ai({}).status,'warning');assert.equal(ai({status:403}).status,'unknown');
+ assert.equal(ai({event_metadata:[{name:'Prova',start_date:'2026-02-30',has_location:true,name_in_body:true,city_in_body:true,has_organizer:true}]}).status,'warning');
+ assert.equal(ai({event_metadata:[{name:'Prova',start_date:'2026-10-10',has_location:true,name_in_body:true,city_in_body:true,has_organizer:true}]}).status,'pass');
+});

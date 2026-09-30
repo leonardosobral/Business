@@ -1,0 +1,17 @@
+{
+  "DESTINATIONS": [
+    {
+      "YEAR": 2025,
+      "BOOK_ID": 6,
+      "CELL_ID": 249,
+      "SECTION_ID": 54
+    },
+    {
+      "YEAR": 2026,
+      "BOOK_ID": 6,
+      "CELL_ID": 251,
+      "SECTION_ID": 55
+    }
+  ],
+  "SAVED": true
+}

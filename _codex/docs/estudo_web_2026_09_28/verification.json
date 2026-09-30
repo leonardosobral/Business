@@ -1,0 +1,34 @@
+{
+  "2025": {
+    "headers": "HTTP/1.1 200 OK\nDate: Tue, 29 Sep 2026 03:01:24 GMT\nServer: Apache/2.4.52 (Ubuntu)\nX-Robots-Tag: noindex, nofollow\nCache-Control: private, no-store\nContent-Language: pt-BR\nCache-Control: private, no-store\nX-Robots-Tag: noindex, nofollow\nCache-Control: private, no-store\nX-Robots-Tag: noindex, nofollow\nTransfer-Encoding: chunked\nContent-Type: application/json;charset=utf-8",
+    "publicacao": {
+      "nota": "Prévia em conciliação: totais e 33 valores ligados a sete congelamentos do notebook; demais fontes iniciais identificadas. Referência do PDF preservada.",
+      "versao": 1,
+      "execucao": 32,
+      "publicado_em": "2026-09-28T23:55:33.866732-03:00"
+    },
+    "exact_projection": true,
+    "comparacoes": 486
+  },
+  "2026": {
+    "headers": "HTTP/1.1 200 OK\nDate: Tue, 29 Sep 2026 03:01:24 GMT\nServer: Apache/2.4.52 (Ubuntu)\nX-Robots-Tag: noindex, nofollow\nCache-Control: private, no-store\nContent-Language: pt-BR\nCache-Control: private, no-store\nX-Robots-Tag: noindex, nofollow\nCache-Control: private, no-store\nX-Robots-Tag: noindex, nofollow\nTransfer-Encoding: chunked\nContent-Type: application/json;charset=utf-8",
+    "publicacao": {
+      "nota": "Prévia parcial preservada do snapshot 2026 v3, agora congelada no notebook Business. Sem nova coleta: números, data de corte e coortes mantidos.",
+      "versao": 1,
+      "execucao": 33,
+      "publicado_em": "2026-09-28T23:56:19.709755-03:00"
+    },
+    "exact_projection": true,
+    "comparacoes": 535
+  },
+  "invalid_year": 400,
+  "unauthenticated_business": "HTTP/1.1 302 Found\nDate: Tue, 29 Sep 2026 03:01:25 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Language: pt-BR\nlocation: /\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8",
+  "previous_records_unchanged": {
+    "books": 3,
+    "sections": 45,
+    "cells": 166,
+    "runs": 31,
+    "snapshots": 4
+  },
+  "landing_matches_unchanged_local": true
+}

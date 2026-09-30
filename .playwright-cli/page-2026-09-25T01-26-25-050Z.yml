@@ -1,0 +1,135 @@
+- generic [ref=f1e1]:
+  - paragraph [ref=f1e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - generic [ref=f1e5]:
+        - generic [ref=f1e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f1e7]
+      - generic [ref=f1e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f1e9]:
+      - button "Públicos" [ref=f1e10] [cursor=pointer]
+      - button "Campanhas" [ref=f1e11] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f1e12] [cursor=pointer]
+    - generic [ref=f1e14]:
+      - complementary [ref=f1e15]:
+        - generic [ref=f1e16]:
+          - heading "Públicos 0" [level=2] [ref=f1e17]
+          - button "Novo público" [ref=f1e18] [cursor=pointer]
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]: Buscar público
+          - searchbox "Buscar público" [ref=f1e21]
+        - paragraph [ref=f1e23]: Nenhum público encontrado.
+        - generic [ref=f1e24]:
+          - button "Anterior" [disabled] [ref=f1e25]
+          - generic [ref=f1e26]: 1 / 1
+          - button "Próxima" [disabled] [ref=f1e27]
+        - paragraph [ref=f1e28]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f1e29]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f1e30]:
+        - generic [ref=f1e32]:
+          - heading "Usuários do público" [level=2] [ref=f1e33]
+          - paragraph [ref=f1e34]: Selecione um público na lista para ver seus usuários.
+        - table [ref=f1e36]:
+          - rowgroup [ref=f1e37]:
+            - row [ref=f1e38]:
+              - columnheader "Usuário" [ref=f1e39]
+              - columnheader "Localidade" [ref=f1e40]
+              - columnheader "Motivo da seleção" [ref=f1e41]
+              - columnheader [ref=f1e42]
+          - rowgroup [ref=f1e43]:
+            - row [ref=f1e44]:
+              - cell "Selecione um público para começar." [ref=f1e45]
+        - generic [ref=f1e46]:
+          - button "Anterior" [disabled] [ref=f1e47]
+          - button "Próxima" [disabled] [ref=f1e48]
+    - dialog [ref=f1e49]:
+      - generic [ref=f1e50]:
+        - generic [ref=f1e51]:
+          - heading "Montar público" [level=2] [ref=f1e53]
+          - button "Fechar editor" [active] [ref=f1e54] [cursor=pointer]: Fechar
+        - generic [ref=f1e55]:
+          - strong [ref=f1e56]: —
+          - generic [ref=f1e57]: pessoas na consulta dos critérios
+        - generic "Adicionar filtros básicos" [ref=f1e58]:
+          - button "+ Estado" [ref=f1e59] [cursor=pointer]
+          - button "+ Cidade" [ref=f1e60] [cursor=pointer]
+          - button "+ Idade" [ref=f1e61] [cursor=pointer]
+          - button "+ Gênero" [ref=f1e62] [cursor=pointer]
+          - button "+ Brasil Gigante" [ref=f1e63] [cursor=pointer]
+          - button "+ Desafio" [ref=f1e64] [cursor=pointer]
+        - group [ref=f1e65]:
+          - generic "Atalhos por interesse" [ref=f1e66] [cursor=pointer]
+        - generic [ref=f1e67]:
+          - generic [ref=f1e68]:
+            - generic [ref=f1e69]:
+              - text: Nome do público
+              - textbox "Nome do público" [ref=f1e70]:
+                - /placeholder: "Ex.: interesse em meia maratona"
+            - generic [ref=f1e71]:
+              - text: Combinar critérios
+              - combobox "Combinar critérios" [ref=f1e72]:
+                - option "Todos os critérios" [selected]
+                - option "Qualquer um dos critérios"
+          - group [ref=f1e73]:
+            - generic "Observação interna" [ref=f1e74] [cursor=pointer]
+          - generic [ref=f1e76]:
+            - generic [ref=f1e77]:
+              - generic [ref=f1e78]:
+                - text: Filtro
+                - combobox "Filtro" [ref=f1e79]:
+                  - option "Estado" [selected]
+                  - option "Cidade"
+                  - option "Faixa etária"
+                  - option "Gênero informado"
+                  - option "Mês de aniversário"
+                  - option "Localidade do perfil"
+                  - option "Cadastro recente"
+                  - option "E-mail confirmado"
+                  - option "Opt-in comercial"
+                  - option "Histórico de contato CRM"
+                  - option "Circuito Brasil Gigante — inscrição"
+                  - option "Inscrição em desafio"
+                  - option "Resultado recente"
+                  - option "Evento na agenda"
+                  - option "Inscrição registrada"
+                  - option "Evento oferece distância"
+                  - option "Acessos identificados"
+                  - option "Treinos recentes · indisponível" [disabled]
+                  - option "Quilometragem do tênis · indisponível" [disabled]
+              - button "Remover critério" [ref=f1e80] [cursor=pointer]: Remover
+            - generic [ref=f1e82]:
+              - text: Estado
+              - combobox "Estado" [ref=f1e83]:
+                - option "Selecione o estado" [selected]
+                - option "AC — Acre"
+                - option "AL — Alagoas"
+                - option "AP — Amapá"
+                - option "AM — Amazonas"
+                - option "BA — Bahia"
+                - option "CE — Ceará"
+                - option "DF — Distrito Federal"
+                - option "ES — Espírito Santo"
+                - option "GO — Goiás"
+                - option "MA — Maranhão"
+                - option "MT — Mato Grosso"
+                - option "MS — Mato Grosso do Sul"
+                - option "MG — Minas Gerais"
+                - option "PA — Pará"
+                - option "PB — Paraíba"
+                - option "PR — Paraná"
+                - option "PE — Pernambuco"
+                - option "PI — Piauí"
+                - option "RJ — Rio de Janeiro"
+                - option "RN — Rio Grande do Norte"
+                - option "RS — Rio Grande do Sul"
+                - option "RO — Rondônia"
+                - option "RR — Roraima"
+                - option "SC — Santa Catarina"
+                - option "SP — São Paulo"
+                - option "SE — Sergipe"
+                - option "TO — Tocantins"
+          - button "+ Adicionar critério" [ref=f1e84] [cursor=pointer]
+          - generic [ref=f1e85]:
+            - button "Consultar quantidade" [ref=f1e86] [cursor=pointer]
+            - button "Salvar público" [ref=f1e87] [cursor=pointer]
+            - button "Cancelar" [ref=f1e88] [cursor=pointer]

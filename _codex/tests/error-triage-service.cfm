@@ -94,12 +94,18 @@ testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) 
  triageAssert(export404.problems[1].samples[1].path==recovered.occurrences.path[1] && export404.problems[1].title=="Página não encontrada","Existing 404 export preserves title and original path");
  testDb("UPDATE " & testSchema & ".tb_log SET log_item_id=:payload WHERE id_log=300",{payload="/" & repeatString("long/",100) & "?q=<script>alert(1)</script>"});
  fullEvidence=svc.detail(target404);
+ queueEvidence=svc.list({category="not_found"});
+ triageAssert(queueEvidence.items.resource_path[1]==fullEvidence.occurrences.path[1],"Queue recovers original 404 path instead of old masked summary");
+ etProblemId=0;etFilters={scope="recent",status="",category="not_found",site="",page=1};
+ savecontent variable="queueRendered" {include "../../portal/erros/includes/workspace.cfm";}
+ triageAssert(find("Recurso:",queueRendered) && find(encodeForHTML(right(fullEvidence.occurrences.path[1],180)),queueRendered) && !find("<script>alert(1)</script>",queueRendered),"Queue shows the end of long resource paths and escapes hostile log text");
  triageAssert(len(fullEvidence.occurrences.path[1])>320 && find("<script>",fullEvidence.occurrences.original_log[1]),"Admin detail recovers full original beyond stored summary limit");
  etProblemId=target404;
  savecontent variable="originalRendered" {include "../../portal/erros/includes/workspace.cfm";}
  triageAssert(!find("<script>alert(1)</script>",originalRendered) && find("&lt;script&gt;",originalRendered),"Original log is displayed as escaped text, never executable HTML");
  testDb("DELETE FROM " & testSchema & ".tb_log WHERE id_log=300");
  missingOriginal=svc.detail(target404);
+ triageAssert(svc.list({category="not_found"}).items.resource_path[1]=="/{omitido}","Queue retains stored path when original log is absent");
  triageAssert(!missingOriginal.occurrences.original_available[1] && missingOriginal.occurrences.recordCount==1,"Missing original keeps stored evidence and occurrence accessible");
  testDb("UPDATE " & testSchema & ".tb_error_problem SET last_seen=now()-interval '10 days' WHERE id=:id",{id={value=split,cfsqltype="cf_sql_bigint"}});
  recent=svc.list({});allHistory=svc.list({scope="all"});

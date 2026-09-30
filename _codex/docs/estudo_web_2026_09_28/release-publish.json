@@ -1,0 +1,10 @@
+{
+  "RoadRunners": {
+    "published": [
+      "brasilquecorreprovas/web/_consulta.cfm",
+      "brasilquecorreprovas/web/dados.js",
+      "brasilquecorreprovas/web/estudo.js"
+    ],
+    "backup": "/var/backups/business-estudo-web-20260928/runtime/RoadRunners/baseline"
+  }
+}

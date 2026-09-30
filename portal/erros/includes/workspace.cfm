@@ -108,7 +108,7 @@
       <input type="hidden" name="csrf" value="#etCsrf#"/>
       <div class="table-responsive"><table class="table table-hover triage-table"><thead><tr><th><span class="visually-hidden">Selecionar</span></th><th>Problema</th><th>Categoria</th><th>Status</th><th>Ocorrências</th><th>Última</th></tr></thead><tbody>
       <cfloop query="etQueue.items"><cfset etItem=etQueue.items/>
-        <tr><td><input class="form-check-input" type="checkbox" name="ids" value="#etItem.id#" aria-label="Selecionar problema #etItem.id#"/></td><td class="triage-title"><a href="./?problem_id=#etItem.id#">###etItem.id# · #etHtml(etItem.title)#</a><div class="small text-muted">#etHtml(etItem.site)#</div></td><td>#etHtml(etLabel(etCategories,etItem.category))#</td><td><span class="triage-status">#etHtml(etLabel(etStatuses,etItem.status))#</span></td><td>#etItem.occurrences#</td><td>#etDate(etItem.last_seen)#</td></tr>
+        <tr><td><input class="form-check-input" type="checkbox" name="ids" value="#etItem.id#" aria-label="Selecionar problema #etItem.id#"/></td><td class="triage-title"><a href="./?problem_id=#etItem.id#">###etItem.id# · #etHtml(etItem.title)#</a><cfif len(etItem.resource_path)><div class="small mt-1" title="#etHtml(etItem.resource_path)#"><span class="text-muted">Recurso:</span> #etHtml(len(etItem.resource_path) GT 180 ? '…' & right(etItem.resource_path,180) : etItem.resource_path)#</div></cfif><div class="small text-muted">#etHtml(etItem.site)#</div></td><td>#etHtml(etLabel(etCategories,etItem.category))#</td><td><span class="triage-status">#etHtml(etLabel(etStatuses,etItem.status))#</span></td><td>#etItem.occurrences#</td><td>#etDate(etItem.last_seen)#</td></tr>
       </cfloop>
       <cfif NOT etQueue.items.recordCount><tr><td colspan="6">Nenhum problema neste filtro. Processe um lote para trazer os logs à fila.</td></tr></cfif>
       </tbody></table></div>
@@ -121,4 +121,3 @@
     </cfif>
   </cfif>
 </section></div></div>
-

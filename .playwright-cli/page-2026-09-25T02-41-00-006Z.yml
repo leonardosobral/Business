@@ -1,0 +1,59 @@
+- generic [ref=f10e1]:
+  - paragraph [ref=f10e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - generic [ref=f10e5]:
+        - generic [ref=f10e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f10e7]
+      - generic [ref=f10e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f10e9]:
+      - button "Públicos" [ref=f10e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f10e11] [cursor=pointer]
+      - button "Planejamento" [active] [ref=f10e12] [cursor=pointer]
+      - button "Campanhas" [ref=f10e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f10e14] [cursor=pointer]
+    - generic [ref=f10e164]:
+      - generic [ref=f10e166]:
+        - heading "Calendário de campanhas" [level=2] [ref=f10e167]
+        - paragraph [ref=f10e168]: Programação e pressão estimada entre e-mail e notificação. A entrega revalida o limite de contato.
+      - generic [ref=f10e169]:
+        - generic [ref=f10e170]:
+          - text: De
+          - textbox "De" [ref=f10e171]: 2026-09-24
+        - generic [ref=f10e172]:
+          - text: Até
+          - textbox "Até" [ref=f10e173]: 2026-10-08
+        - generic [ref=f10e174]:
+          - text: Canal
+          - combobox "Canal" [ref=f10e175]:
+            - option "Todos" [selected]
+            - option "E-mail"
+            - option "Notificação"
+            - option "Card no perfil"
+        - generic [ref=f10e176]:
+          - text: Estado
+          - combobox "Estado" [ref=f10e177]:
+            - option "Todos" [selected]
+            - option "Rascunho"
+            - option "Em revisão"
+            - option "Agendada"
+            - option "Em envio"
+            - option "Ativa"
+            - option "Pausada"
+            - option "Concluída"
+            - option "Cancelada"
+        - button "Consultar" [ref=f10e178] [cursor=pointer]
+      - status [ref=f10e179]:
+        - heading "Semana de 21/09/2026" [level=3] [ref=f10e180]
+        - heading "25/09/2026" [level=4] [ref=f10e181]
+        - article [ref=f10e182]:
+          - generic [ref=f10e183]:
+            - strong [ref=f10e184]: Campanha sintética de outubro
+            - text: Agendada
+            - paragraph [ref=f10e185]: E-mail · 25/09/2026, 10:00 → 30/09/2026, 18:00
+            - text: Público 1 · versão 1.
+          - button "Ver pressão" [ref=f10e186] [cursor=pointer]
+      - generic [ref=f10e187]:
+        - button "Anterior" [disabled] [ref=f10e188]
+        - generic [ref=f10e189]: Página 1 de 1
+        - button "Próxima" [disabled] [ref=f10e190]

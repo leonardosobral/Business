@@ -1,0 +1,19 @@
+{
+  "Business": {
+    "before": {
+      "administracao/agrega-revisao/includes/quick_accept.cfm": "880b3ee85ac41b47785a160e01f3694da07680e5bc0d5fe6b224ac603cddfe07",
+      "administracao/agrega-revisao/includes/backend.cfm": "74a626338b559286ae316fc572835b4ee4d36251afdf4cb408cda1060d257d6c",
+      "administracao/agrega-revisao/home.cfm": "57d144beabf61ae97df132132b828108dadaab829d9b2cc684ecd92646f29d3b"
+    },
+    "candidate": {
+      "administracao/agrega-revisao/includes/quick_accept.cfm": "7a8f6f21c2bd99181dbb41f56fee0c9823d436a896131611039cf4a0764f3f33",
+      "administracao/agrega-revisao/includes/backend.cfm": "ff78537ce05f7f7b6826b545fc51acf0360535b8f0d6a51b7b980f97fff66e9f",
+      "administracao/agrega-revisao/home.cfm": "07c3442915c04e80dd332b90d8eaaae7a40ba79f9fba358463d0755ae47b79bb"
+    },
+    "order": [
+      "administracao/agrega-revisao/includes/quick_accept.cfm",
+      "administracao/agrega-revisao/includes/backend.cfm",
+      "administracao/agrega-revisao/home.cfm"
+    ]
+  }
+}

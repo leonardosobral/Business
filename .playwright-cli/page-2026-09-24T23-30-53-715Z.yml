@@ -1,0 +1,25 @@
+- generic [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+        - paragraph [ref=e8]: Encontre públicos, prepare a mensagem e revise antes de ativar.
+      - generic [ref=e9]: Revisão manual ativa
+    - status [ref=e74]: Público salvo. Você pode preparar uma campanha e revisar os destinatários.
+    - navigation "Áreas do CRM" [ref=e10]:
+      - button "Públicos" [ref=e11] [cursor=pointer]
+      - button "Campanhas" [active] [ref=e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e13] [cursor=pointer]
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "Campanhas revisadas" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Notificações, e-mail e cards no mini perfil. Salvar não envia.
+        - button "Nova campanha" [ref=e94] [cursor=pointer]
+      - paragraph [ref=e96]: Nenhuma campanha criada. Comece por um público salvo.
+      - generic [ref=e97]:
+        - button "Anterior" [disabled] [ref=e98]
+        - generic [ref=e99]: Página 1
+        - button "Próxima" [disabled] [ref=e100]

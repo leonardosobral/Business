@@ -23,9 +23,9 @@ const defs=[
  ['crawl','Googlebot permitido no robots.txt',10,'Permissão observada; não comprova intenção da política nem indexação.'],
  ['sitemaps','Sitemaps descobertos e XML validado',5,'Exige descoberta completa, contagem de XML processado e respostas válidas do coletor.'],
  ['hierarchy','Hierarquia de títulos para revisão',0,'Múltiplos H1 pedem revisão editorial; este item não penaliza a nota nem prova penalidade Google.'],
- ['description','Meta description',0,'Não coletada nesta auditoria.'],
- ['hreflang','Hreflang',0,'Não coletado na coorte da auditoria; verificações direcionadas ficam na fila.'],
- ['structured','Dados estruturados',0,'Não coletados nesta auditoria.'],
+ ['description','Meta description',0,'Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.'],
+ ['hreflang','Declarações hreflang',0,'Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.'],
+ ['structured','Sintaxe JSON-LD',0,'Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.'],
  ['cwv','Core Web Vitals',0,'Sem medição de experiência real ou laboratório nesta auditoria.'],
  ['google','Indexação e tráfego Google',0,'Sem dados de Search Console ou Analytics nesta auditoria.']
 ];
@@ -34,6 +34,60 @@ export function safeCaseUrl(value){
  try{const u=new URL(value);return u.protocol==='https:'&&['roadrunners.run','openresults.run'].includes(u.hostname)&&!u.username&&!u.password&&!u.port?u.href:null;}catch{return null;}
 }
 function usable(o){return o.html_evaluation==='evaluated'&&!o.error&&!o.error_code&&!o.skip_reason&&o.status>=200&&o.status<300&&/^(text\/html|application\/xhtml\+xml)(?:\s*;|\s*$)/i.test(o.content_type||'');}
+function metadataStatus(o,id){
+ if(!usable(o)||o.metadata_version!==1)return 'unknown';
+ if(id==='description')return !Array.isArray(o.description_values)?'unknown':o.description_values.length===1&&typeof o.description_values[0]==='string'&&o.description_values[0].trim()?'pass':'warning';
+ if(id==='structured'){
+  const j=o.jsonld;if(!j||!Number.isInteger(j.count)||!Number.isInteger(j.invalid)||j.count<0||j.invalid<0||j.invalid>j.count)return 'unknown';
+  return j.invalid?'error':j.count?'pass':'unknown';
+ }
+ if(id==='hreflang'){
+  if(!Array.isArray(o.hreflang)||!o.hreflang.length)return 'unknown';
+  const seen=new Set();
+  for(const a of o.hreflang){if(!a||typeof a.lang!=='string'||!/^([a-z]{2,3}(?:-[a-z0-9]{2,8})*|x-default)$/i.test(a.lang)||!a.url)return 'warning';
+   try{if(!['http:','https:'].includes(new URL(a.url).protocol))return 'warning';}catch{return 'warning';}
+   if(seen.has(a.lang.toLowerCase()))return 'warning';seen.add(a.lang.toLowerCase());
+  }
+  return o.hreflang.some(a=>a.url===o.final_url)?'pass':'warning';
+ }
+ return 'unknown';
+}
+function validEventDate(value){
+ if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})?)?$/.test(value))return false;
+ const ms=Date.parse(value.slice(0,10));return Number.isFinite(ms)&&new Date(ms).toISOString().slice(0,10)===value.slice(0,10)&&Number.isFinite(Date.parse(value));
+}
+function eventFieldsStatus(o){
+ if(!usable(o)||o.metadata_version!==1||!/(?:\/evento\/|\/event\/)/.test(new URL(o.final_url).pathname)||!Array.isArray(o.event_metadata))return 'unknown';
+ if(!o.event_metadata.length)return 'warning';
+ return o.event_metadata.every(e=>typeof e.name==='string'&&e.name.trim()&&validEventDate(e.start_date)&&e.has_location===true&&e.name_in_body===true&&(!e.city||e.city_in_body===true)&&e.has_organizer===true)?'pass':'warning';
+}
+export function aiChecks(run){
+ const rows=run.observations||[];
+ const check=(id,label,note,classify)=>{
+  const counts={pass:0,warning:0,error:0,unknown:0},cases=[];
+  for(const o of rows){const status=classify(o);counts[status]++;const url=safeCaseUrl(o.source_url);if(url&&status!=='pass'&&cases.length<3)cases.push(url);}
+  const status=counts.error?'error':counts.warning?'warning':counts.unknown||!rows.length?'unknown':'pass';
+  const partial=counts.unknown>0&&counts.pass+counts.warning+counts.error>0;
+  return {id,label,note,status,statusLabel:status==='unknown'&&partial?'Medição parcial':states[status][0],icon:states[status][1],partial,...counts,total:rows.length,cases};
+ };
+ const checks=[['oai-searchbot','Permissão no robots.txt · ChatGPT Search'],['perplexitybot','Permissão no robots.txt · Perplexity']].map(([id,label])=>check(id,label,
+  'Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.',o=>{
+   const values=[o.robots_policy?.[id]?.allowed];if(o.redirected)values.push(o.source_robots_policy?.[id]?.allowed);
+   return values.includes(false)?'warning':values.every(v=>v===true)?'pass':'unknown';
+  }));
+ checks.push(check('html','HTML disponível ao coletor','Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.',o=>
+  o.error||o.error_code||o.status>=400?'error':usable(o)?'pass':o.status>=200&&o.status<300?'warning':'unknown'));
+ for(const [id,label,note] of defs.filter(d=>['description','hreflang','structured'].includes(d[0])).map(([id,label,_weight,note])=>[id,label,note]))checks.push(check(id,label,note,o=>metadataStatus(o,id)));
+ checks.push(check('event-fields','Campos de eventos no JSON-LD','Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.',eventFieldsStatus));
+ for(const [id,label,note] of [
+  ['provider-access','Acesso real pelos provedores','Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.'],
+  ['facts','Informações de eventos e resultados','Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.'],
+  ['citations','Citações nas respostas de IA','Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.'],
+  ['referrals','Visitas e conversões vindas de IA','Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.'],
+  ['training','Política de uso para treinamento','GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.']
+ ])checks.push({id,label,note,status:'unknown',statusLabel:'Não medido',icon:'—',pass:0,warning:0,error:0,unknown:0,total:0,cases:[]});
+ return checks;
+}
 function relevantDirectives(o){
  if(typeof o.meta_robots!=='string'||typeof o.x_robots_tag!=='string'||!o.robots_by_agent||!o.robots_header_by_agent)return null;
  const relevant=['googlebot','robots','*',''];
@@ -66,6 +120,7 @@ export function scoreRun(run){
  add('alignment',!html||!o.canonical_url?'unknown':o.canonical_url===o.source_url?'pass':'warning',o.source_url);
  add('index',!html||directives===null?'unknown':/(?:^|[\s,;])(noindex|none)(?:$|[\s,;])/i.test(directives)?'warning':'pass',o.source_url);
  add('crawl',typeof o.robots_policy?.googlebot?.allowed!=='boolean'?'unknown':o.robots_policy.googlebot.allowed?'pass':'warning',o.source_url);
+ for(const id of ['description','hreflang','structured'])add(id,metadataStatus(o,id),o.source_url);
  }
  const errors=run.errors||[];
  for(const sm of run.sitemaps||[])add('sitemaps',sm.error||sm.error_code||(sm.status>=400)||errors.some(e=>e.url===sm.url)?'error':run.discovery_complete!==true||errors.length||!Number.isInteger(sm.count)||sm.count<0||!Number.isInteger(sm.status)||sm.status<200||sm.status>=300?'unknown':'pass',sm.url);
@@ -115,6 +170,7 @@ export async function generate({reportsRoot='/Users/Shared/RunnerHubReports/seo'
  const writes=[];
  for(const id of Object.keys(labels)){
  const run=await loadLatest(reportsRoot,id),site=scoreRun(run),file=path.join(privateRoot,id+'.json');let history=[];
+ site.aiChecks=aiChecks(run);
  try{if((await lstat(file)).isSymbolicLink())throw new Error('Histórico simbólico não permitido.');history=JSON.parse(await readFile(file,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
  history=appendHistory(history,run,site);site.history=history.map(({runId,auditAt,auditLabel,scoreLabel,comparable,deltaLabel})=>({runId,auditAt,auditLabel,scoreLabel,comparable,deltaLabel}));writes.push([file,JSON.stringify(history,null,2)+'\n']);snapshot.sites.push(site);
  }

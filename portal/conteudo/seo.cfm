@@ -1,11 +1,22 @@
 <cfprocessingdirective pageencoding="utf-8"/>
-<cfheader name="Cache-Control" value="private, no-store"/>
+<!--- Cache-Control is set by /portal/seo/index.cfm before the layout sends output. --->
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfinclude template="../includes/seo_queue_backend.cfm"/>
 <cfinclude template="../includes/seo_score_backend.cfm"/>
+<cfscript>
+VARIABLES.seoTab = "relatorio";
+if (VARIABLES.seoQueueSiteFilter NEQ "all" OR VARIABLES.seoQueuePriorityFilter NEQ "all") VARIABLES.seoTab = "fila";
+if (structKeyExists(URL,"aba") AND isSimpleValue(URL.aba) AND listFind("relatorio,ia,fila",URL.aba)) VARIABLES.seoTab = URL.aba;
+VARIABLES.seoTabFilters = "&site=" & VARIABLES.seoQueueSiteFilter & "&prioridade=" & VARIABLES.seoQueuePriorityFilter & "&verificacao=" & VARIABLES.seoScoreFilter;
+VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ia",label="SEO para IA"},{id="fila",label="Fila de correções"}];
+</cfscript>
 
 <style>
   .seo-queue { --seo-border: rgba(255,255,255,.14); }
+  .seo-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0; border-bottom:1px solid var(--seo-border); padding-bottom:.75rem; }
+  .seo-tabs a { padding:.7rem 1rem; border-radius:6px; color:var(--mdb-body-color); }
+  .seo-tabs a[aria-current="page"] { background:rgba(255,193,7,.15); color:#ffda86; font-weight:650; }
+  .seo-tabs a:focus-visible { outline:2px solid #ffda86; outline-offset:3px; }
   .seo-queue .seo-subtitle { max-width: 760px; color: var(--mdb-secondary-color); }
   .seo-queue .seo-run-grid, .seo-queue .seo-detail-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
   .seo-queue .seo-run, .seo-queue .seo-filter, .seo-queue .seo-issue { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.025); }
@@ -124,13 +135,23 @@
       </div>
       <div class="small text-muted">Revisão da fila<br><strong><cfoutput>#encodeForHtml(VARIABLES.seoQueueSnapshot.updatedLabel)#</cfoutput></strong></div>
     </div>
-    <div class="mt-4"><cfinclude template="seo_report.cfm"/></div>
+    <nav class="seo-tabs" aria-label="Seções de SEO">
+      <cfloop array="#VARIABLES.seoTabs#" index="seoTabItem"><cfoutput>
+        <a href="/portal/seo/?aba=#seoTabItem.id##encodeForHtmlAttribute(VARIABLES.seoTabFilters)#"<cfif VARIABLES.seoTab EQ seoTabItem.id> aria-current="page"</cfif>>#encodeForHtml(seoTabItem.label)#</a>
+      </cfoutput></cfloop>
+    </nav>
+    <cfif VARIABLES.seoTab EQ "relatorio">
+      <cfinclude template="seo_report.cfm"/>
+    <cfelseif VARIABLES.seoTab EQ "ia">
+      <cfinclude template="seo_ai.cfm"/>
+    <cfelse>
 
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
       <h2 class="h5 mb-0">Fila de correções</h2>
       <span class="small text-muted"><cfoutput>#VARIABLES.seoQueueTotal# frentes · #VARIABLES.seoQueueOpenTotal# #VARIABLES.seoQueueOpenTotal EQ 1 ? 'pendente' : 'pendentes'# · #VARIABLES.seoQueueResolvedTotal# #VARIABLES.seoQueueResolvedTotal EQ 1 ? 'concluída' : 'concluídas'# · #VARIABLES.seoQueueHighPriorityTotal# #VARIABLES.seoQueueHighPriorityTotal EQ 1 ? 'pendente' : 'pendentes'# de prioridade alta</cfoutput></span>
     </div>
     <form class="seo-filter mb-3" method="get" action="/portal/seo/">
+      <input type="hidden" name="aba" value="fila"/>
       <cfoutput><input type="hidden" name="verificacao" value="#encodeForHtmlAttribute(VARIABLES.seoScoreFilter)#"/></cfoutput>
       <div class="seo-filter-field">
         <label class="form-label" for="seo-site">Site</label>
@@ -151,7 +172,7 @@
         </select>
       </div>
       <button class="btn btn-warning" type="submit">Filtrar</button>
-      <a class="btn btn-link text-reset" href="<cfoutput>/portal/seo/?verificacao=#encodeForHtmlAttribute(VARIABLES.seoScoreFilter)#</cfoutput>">Limpar filtros da fila</a>
+      <a class="btn btn-link text-reset" href="<cfoutput>/portal/seo/?aba=fila&amp;verificacao=#encodeForHtmlAttribute(VARIABLES.seoScoreFilter)#</cfoutput>">Limpar filtros da fila</a>
     </form>
     <p class="small text-muted mb-3" role="status"><cfoutput>Exibindo #arrayLen(VARIABLES.seoQueueItems)# de #VARIABLES.seoQueueTotal# frentes.</cfoutput></p>
 
@@ -190,5 +211,18 @@
       </cfloop>
     </cfif>
     <p class="seo-note mt-3 mb-0">As frentes agrupam avisos e falhas com a mesma causa. Uma correção só deve ser encerrada depois de publicada e conferida nas páginas afetadas.</p>
+    </cfif>
   </div>
 </section>
+<script>
+// Preserve existing links to correction IDs created before the section navigation.
+(function () {
+  function openLegacyIssue() {
+    if (/^#(?:RR|OR|SH)-\d+$/.test(location.hash)) {
+      var url = new URL(location.href);
+      if (url.searchParams.get('aba') !== 'fila') { url.searchParams.set('aba', 'fila'); location.replace(url.href); }
+    }
+  }
+  openLegacyIssue(); window.addEventListener('hashchange', openLegacyIssue);
+})();
+</script>

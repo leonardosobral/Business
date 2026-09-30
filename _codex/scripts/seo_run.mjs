@@ -9,7 +9,7 @@ import { writeReport, readReport } from './seo_report.mjs';
 
 const SITE_IDS=new Set(['roadrunners','openresults']);
 const FORBIDDEN=['/Users/Shared/Projects/RunnerHub/Business','/Users/Shared/Projects/RunnerHub/RoadRunners','/Users/Shared/Projects/RunnerHub/OpenResults','/var/www'];
-const PILOT={limit:100,concurrency:2,timeoutMs:15000,maxSitemaps:100,maxDiscoveredUrls:100000,maxRunMs:600000,maxRps:1};
+const PILOT={limit:100,concurrency:2,timeoutMs:15000,maxSitemaps:100,maxDiscoveredUrls:150000,maxRunMs:600000,maxRps:1};
 const sha=value=>createHash('sha256').update(value).digest('hex');
 
 async function noSymlinks(target) {

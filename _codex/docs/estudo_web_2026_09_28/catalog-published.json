@@ -1,0 +1,44 @@
+{
+  "CATALOG": [
+    {
+      "ano": 2025,
+      "caderno_id": 6,
+      "run_atual": 32,
+      "publicacao_id": 1,
+      "nota": "Prévia em conciliação: totais e 33 valores ligados a sete congelamentos do notebook; demais fontes iniciais identificadas. Referência do PDF preservada.",
+      "cell_id": 249,
+      "notebook_id": 54,
+      "versao": 1,
+      "publicado_em": "2026-09-28T23:55:33.866732-03:00",
+      "runs": [
+        {
+          "started_at": "2026-09-28T23:50:07.353989-03:00",
+          "title": "Web 2025 · sete fontes do notebook e legado identificado",
+          "frozen_at": "2026-09-28T23:50:28.900331-03:00",
+          "cell_version": 2,
+          "id": 32
+        }
+      ]
+    },
+    {
+      "ano": 2026,
+      "caderno_id": 6,
+      "run_atual": 33,
+      "publicacao_id": 2,
+      "nota": "Prévia parcial preservada do snapshot 2026 v3, agora congelada no notebook Business. Sem nova coleta: números, data de corte e coortes mantidos.",
+      "cell_id": 251,
+      "notebook_id": 55,
+      "versao": 1,
+      "publicado_em": "2026-09-28T23:56:19.709755-03:00",
+      "runs": [
+        {
+          "started_at": "2026-09-28T23:55:49.355262-03:00",
+          "title": "Web 2026 · pacote parcial v3 preservado",
+          "frozen_at": "2026-09-28T23:55:59.333627-03:00",
+          "cell_version": 1,
+          "id": 33
+        }
+      ]
+    }
+  ]
+}

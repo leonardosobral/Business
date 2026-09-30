@@ -22,7 +22,9 @@ SEO_INVENTORY_CLI=/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/se
 
 Esses caminhos são configuração do executor local, não dependências do runtime web. Em outro host, instalar a distribuição do coletor e definir as duas variáveis para caminhos próprios. Não presumir Node no servidor web. O cron HTTP existente no Business não executa `.mjs` diretamente.
 
-Cada comando faz uma rodada; **nenhuma agenda é criada**. Executar os sites sequencialmente. O piloto usa no máximo 100 páginas, concorrência 2 e 1 request/s, incluindo cada hop de redirect. Recurso: deadline de 15 s incluindo corpo; rodada: até 10 min; descoberta: até 100 sitemaps e 100 mil URLs. Sitemaps/robots são solicitações adicionais contabilizadas no orçamento temporal e de taxa. Limites alcançados não são ampliados automaticamente.
+Cada comando faz uma rodada; **nenhuma agenda é criada**. Executar os sites sequencialmente. O piloto usa no máximo 100 páginas, concorrência 2 e 1 request/s, incluindo cada hop de redirect. Recurso: deadline de 15 s incluindo corpo; rodada: até 10 min; descoberta: até 100 sitemaps e 150 mil URLs. Sitemaps/robots são solicitações adicionais contabilizadas no orçamento temporal e de taxa. Limites alcançados não são ampliados automaticamente.
+
+Em 29/09/2026, a descoberta RoadRunners ultrapassou o teto anterior de 100 mil URLs. O teto foi revisado manualmente para 150 mil para comportar o inventário, preservando todos os demais limites. A tentativa parcial foi mantida nos relatórios privados. A alteração de configuração interrompe a comparação numérica com a base anterior; não tratar a diferença de notas como progresso comprovado.
 
 O próprio coletor respeita robots, inclusive em redirects, sem sessão/cookies e sem simular crawler autenticado. Host e porta precisam corresponder à origem permitida. Três respostas consecutivas 429/5xx interrompem o host; 429 tem até duas novas tentativas respeitando Retry-After dentro do orçamento.
 
@@ -120,3 +122,17 @@ O runner CFML também aceita um nome de cenário por execução para evitar que 
 ### Endereço próprio de SEO
 
 Desde14/09/2026, acessar `/portal/seo/` pelo menu **Marketing e audiência → SEO**. Conteúdo das provas permanece em `/portal/conteudo/`, em **Conteúdo e portal**. O endereço anterior com `?visao=seo` redireciona preservando os filtros permitidos. Detalhes e recuperação em `2026-09-14_seo_navegacao.md`.
+
+### SEO para IA (29/09/2026)
+
+O painel agora separa `?aba=relatorio`, `?aba=ia` e `?aba=fila`. O mesmo gerador acima inclui `aiChecks` no snapshot: permissão declarada para OAI-SearchBot e PerplexityBot e entrega de HTML pelo coletor. Ausência de evidência é “não medido”; permissão não comprova acesso efetivo nem citação. A nota e o histórico técnicos permanecem independentes, sem nota ou série histórica de IA nesta etapa. Filtros e links antigos de itens da fila são preservados. Ver `2026-09-29_seo_ia.md`.
+
+### Metadados e eventos (29/09/2026, 21:22 Brasília)
+
+Nas novas coletas GET, o coletor acrescenta `metadata_version: 1`, `description_values`, `html_lang`, `hreflang`, `jsonld` e `event_metadata`. Usa o parser HTML já instalado. A checagem JSON-LD reconhece objetos, arrays e `@graph`; não é um validador completo de Schema.org. Eventos guardam somente nome/data/cidade e indicadores de presença/coincidência, sem corpo HTML, texto integral ou resultados de atletas.
+
+O gerador Business mede descrição única e não vazia; alternates básicos com idioma/URL/duplicatas/autorreferência; JSON-LD analisável; e cobertura de campos de evento. Reciprocidade, tradução e confirmação dos fatos continuam revisões próprias. Ausência de hreflang em página de idioma único não é classificada automaticamente como erro. Auditorias antigas sem a versão de metadados continuam “não medidas”. “Medição parcial” distingue checks com evidência em parte da amostra.
+
+Os três critérios técnicos adicionais têm peso zero; os dez pesos existentes e `technical-checks-v1` permanecem. O hash novo do coletor interrompe a comparação com coletas anteriores; a nota igual não prova ausência de melhorias. Uma nova coleta só atualiza a produção depois de gerar, conferir e publicar o snapshot. A fila é curada separadamente; não inferir resolução de URLs que não foram rechecadas.
+
+As amostras de 29/09 às 21:13 descobriram 102.509 URLs Road Runners e 34.144 Open Results, inspecionando 100 por site. Publicação, limites, pendências e evidências em [entrega de conteúdo](2026-09-29_seo_ia_conteudo.md).

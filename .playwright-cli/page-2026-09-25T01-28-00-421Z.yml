@@ -1,0 +1,61 @@
+- generic [active] [ref=f2e1]:
+  - paragraph [ref=f2e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - generic [ref=f2e5]:
+        - generic [ref=f2e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f2e7]
+      - generic [ref=f2e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f2e9]:
+      - button "Públicos" [ref=f2e10] [cursor=pointer]
+      - button "Campanhas" [ref=f2e11] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f2e12] [cursor=pointer]
+    - generic [ref=f2e14]:
+      - complementary [ref=f2e15]:
+        - generic [ref=f2e16]:
+          - heading "Públicos 1" [level=2] [ref=f2e17]
+          - button "Novo público" [ref=f2e18] [cursor=pointer]
+        - generic [ref=f2e19]:
+          - generic [ref=f2e20]: Buscar público
+          - searchbox "Buscar público" [ref=f2e21]
+        - button "Teste de elegibilidadev1 — indisponível" [ref=f2e23] [cursor=pointer]:
+          - generic [ref=f2e24]: Teste de elegibilidadev1
+          - generic [ref=f2e25]:
+            - text: —
+            - generic [ref=f2e26]: indisponível
+        - generic [ref=f2e27]:
+          - button "Anterior" [disabled] [ref=f2e28]
+          - generic [ref=f2e29]: 1 / 1
+          - button "Próxima" [disabled] [ref=f2e30]
+        - paragraph [ref=f2e31]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f2e32]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f2e33]:
+        - generic [ref=f2e34]:
+          - generic [ref=f2e35]:
+            - heading "Teste de elegibilidade" [level=2] [ref=f2e52]
+            - paragraph [ref=f2e37]: 1 usuários · consulta em 24/09/2026, 12:00 · elegibilidade de cada canal será revisada na campanha.
+          - generic [ref=f2e53]:
+            - button "Editar público" [ref=f2e54] [cursor=pointer]
+            - button "Criar campanha" [ref=f2e55] [cursor=pointer]
+        - table [ref=f2e39]:
+          - rowgroup [ref=f2e40]:
+            - row [ref=f2e41]:
+              - columnheader "Usuário" [ref=f2e42]
+              - columnheader "Localidade" [ref=f2e43]
+              - columnheader "Motivo da seleção" [ref=f2e44]
+              - columnheader [ref=f2e45]
+          - rowgroup [ref=f2e46]:
+            - row [ref=f2e56]:
+              - cell "Corredor sintético runner@example.test" [ref=f2e57]:
+                - text: Corredor sintético
+                - generic [ref=f2e58]: runner@example.test
+              - cell "Florianópolis / SC" [ref=f2e59]
+              - cell [ref=f2e60]:
+                - list [ref=f2e61]:
+                  - listitem [ref=f2e62]: Resultado reconhecido nos últimos 30 dias (meia maratona)
+              - cell [ref=f2e63]:
+                - button "Ver perfil" [ref=f2e64] [cursor=pointer]
+        - generic [ref=f2e49]:
+          - button "Anterior" [disabled] [ref=f2e50]
+          - generic [ref=f2e65]: Página 1 de 1
+          - button "Próxima" [disabled] [ref=f2e51]

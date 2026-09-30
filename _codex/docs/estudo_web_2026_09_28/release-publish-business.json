@@ -1,0 +1,12 @@
+{
+  "Business": {
+    "published": [
+      "estudo/includes/StudyPublication.cfc",
+      "estudo/includes/SqlReadGuard.cfc",
+      "estudo/assets/notebook.js",
+      "estudo/home.cfm",
+      "estudo/api.cfm"
+    ],
+    "backup": "/var/backups/business-estudo-web-20260928/runtime/Business/baseline"
+  }
+}

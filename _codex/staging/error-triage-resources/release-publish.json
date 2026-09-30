@@ -1,0 +1,7 @@
+{
+  "published": [
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/workspace.cfm"
+  ],
+  "backup": "/var/backups/business-error-triage-resources-20260929/baseline"
+}

@@ -1,0 +1,525 @@
+{
+  "client_date": "2026-09-29",
+  "timezone": "America/Sao_Paulo",
+  "public_runtime": {
+    "baseline": {
+      "at": "2026-09-30T00:08:47.411492+00:00",
+      "projects": {
+        "rr": [
+          {
+            "path": "includes/estrutura/head.cfm",
+            "sha256": "373a185ba61cdef97a6e62ec342eb488aaa3a9dc08586c71cb89aae20ed39b11",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "evento/index.cfm",
+            "sha256": "9a1798965be2d7d8b61b38c39cab94320c655cc0fc1fcdf8ffa78f50d807e78f",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/backend_evento.cfm",
+            "sha256": "acb7c394b545200cfd065012d5e28fc78a48b902129ebc94f3fa7a018bc99ace",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "3bb06a71d3cb548cd3445dd2fadc623e66a3ef4403e86b88612c7832530ca62f",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          }
+        ],
+        "or": [
+          {
+            "path": "includes/seo_event_schema.cfm",
+            "sha256": null,
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/head.cfm",
+            "sha256": "cbba7d3bdcf18527d60ac4ee2ece7a6911dc7488e3bbdc00330b4ccef750528b",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "evento/index.cfm",
+            "sha256": "2c5c70aae6aa1f141a70d8ea620a3995844533f3fcc0e32576f592fe8fa5af73",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/backend_evento.cfm",
+            "sha256": "bb88dc35bae754baa738c6e3229cd3ed1d3eded48c830889afb73c0caaa19835",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/backend.cfm",
+            "sha256": "936b73a2eee79807ee9fad021bc57d95b74d0f7bf6843f8f4657d221535bf0cd",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/resultados.cfm",
+            "sha256": "ab54aca0692356aafa460bcb906332682909b08d26fb6052a137916ec9c61945",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "1cf609c526b7fbae1a7baad4d8910038df41519e0c393ade41d31e9132daf1d4",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          }
+        ]
+      },
+      "recovery": {
+        "project": "or",
+        "git_revision": "e769528c34b23beb6fc3a16ea615184849ce5e5c",
+        "patch_sha256": "9ffb1194fa6ee37579f09fdcd42bea1f16006d32a5b693a8b7d700b1eec4f227"
+      }
+    },
+    "compile": {
+      "compilations": [
+        {
+          "project": "rr",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-content-rr-eem6xfyr/evento/index.cfm... /var/tmp/seo-content-rr-eem6xfyr/includes/estrutura/head.cfm... successful 2\ntotal 2\nelapsed 1.472 sec\n\n"
+        },
+        {
+          "project": "or",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-content-or-_mpi34x_/evento/index.cfm... /var/tmp/seo-content-or-_mpi34x_/includes/seo_event_schema.cfm... /var/tmp/seo-content-or-_mpi34x_/includes/head.cfm... successful 3\ntotal 3\nelapsed 1.429 sec\n\n"
+        }
+      ],
+      "hashes": {
+        "rr:includes/estrutura/head.cfm": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3",
+        "rr:evento/index.cfm": "ffeac0c354a54ffb026458822dc482ada18a92cd20c340eb890d0a9d4a400d13",
+        "or:includes/seo_event_schema.cfm": "a743dbb7bc2b783b2a4196a4030f97ed20ef33add08f5e917806b4191f0032cc",
+        "or:includes/head.cfm": "202202ab3a1267d456605a365ab0c6e748200654f9024bb1efa28bf4e713e65c",
+        "or:evento/index.cfm": "62a0464e015a5cfad086a3db5a3ed15832860a21ec0bd335c969a16d4b4dbaae"
+      }
+    },
+    "publish": {
+      "at": "2026-09-30T00:10:15.206467+00:00",
+      "projects": [
+        {
+          "project": "rr",
+          "backup": "/var/backups/seo-content-rr-74spiu76",
+          "rows": [
+            {
+              "path": "includes/estrutura/head.cfm",
+              "before": "373a185ba61cdef97a6e62ec342eb488aaa3a9dc08586c71cb89aae20ed39b11",
+              "after": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3"
+            },
+            {
+              "path": "evento/index.cfm",
+              "before": "9a1798965be2d7d8b61b38c39cab94320c655cc0fc1fcdf8ffa78f50d807e78f",
+              "after": "ffeac0c354a54ffb026458822dc482ada18a92cd20c340eb890d0a9d4a400d13"
+            }
+          ]
+        },
+        {
+          "project": "or",
+          "backup": null,
+          "rows": [
+            {
+              "path": "includes/seo_event_schema.cfm",
+              "before": null,
+              "after": "a743dbb7bc2b783b2a4196a4030f97ed20ef33add08f5e917806b4191f0032cc"
+            },
+            {
+              "path": "includes/head.cfm",
+              "before": "cbba7d3bdcf18527d60ac4ee2ece7a6911dc7488e3bbdc00330b4ccef750528b",
+              "after": "202202ab3a1267d456605a365ab0c6e748200654f9024bb1efa28bf4e713e65c"
+            },
+            {
+              "path": "evento/index.cfm",
+              "before": "2c5c70aae6aa1f141a70d8ea620a3995844533f3fcc0e32576f592fe8fa5af73",
+              "after": "62a0464e015a5cfad086a3db5a3ed15832860a21ec0bd335c969a16d4b4dbaae"
+            }
+          ]
+        }
+      ]
+    },
+    "verify": {
+      "at": "2026-09-30T00:32:16.230905+00:00",
+      "verified": true,
+      "hashes": {
+        "rr:includes/estrutura/head.cfm": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3",
+        "rr:evento/index.cfm": "ffeac0c354a54ffb026458822dc482ada18a92cd20c340eb890d0a9d4a400d13",
+        "or:includes/seo_event_schema.cfm": "a743dbb7bc2b783b2a4196a4030f97ed20ef33add08f5e917806b4191f0032cc",
+        "or:includes/head.cfm": "202202ab3a1267d456605a365ab0c6e748200654f9024bb1efa28bf4e713e65c",
+        "or:evento/index.cfm": "62a0464e015a5cfad086a3db5a3ed15832860a21ec0bd335c969a16d4b4dbaae"
+      }
+    }
+  },
+  "business": {
+    "baseline": {
+      "at": "2026-09-30T00:20:52.528138+00:00",
+      "rows": [
+        {
+          "path": "portal/includes/seo_queue_data.cfm",
+          "sha256": "a8346051eabe9de3822025d66d6308701e4dc103dfa7be71948ec785555d0f71",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/includes/seo_score_data.cfm",
+          "sha256": "1b2dd82c02c9e3ad1b468990757abe72ced91b722769f998d8f2f16916a56f9b",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/seo/index.cfm",
+          "sha256": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/conteudo/index.cfm",
+          "sha256": "d6af7783d7b0fd02698db522d094f140d4c611f0bd79ef46628765f44b696247",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/includes/seo_queue_backend.cfm",
+          "sha256": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/includes/seo_score_backend.cfm",
+          "sha256": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "includes/backend/require_admin.cfm",
+          "sha256": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "includes/backend/backend_login.cfm",
+          "sha256": "3e411483487108c8f249a17fc0cda0082f327563b531bf0078879d7afaa9d288",
+          "uid": 501,
+          "gid": 50,
+          "mode": 420
+        },
+        {
+          "path": "includes/estrutura/head.cfm",
+          "sha256": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606",
+          "uid": 501,
+          "gid": 50,
+          "mode": 420
+        },
+        {
+          "path": "includes/estrutura/header.cfm",
+          "sha256": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "includes/estrutura/sidenav.cfm",
+          "sha256": "733384de4aa0bfe5870fb32bb7f9a213081440a58991f6ab70d43c0531a136e0",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/conteudo/seo.cfm",
+          "sha256": "2bfcafff6ba713f471ba285409f287547796d1f8f97397269e6c70fbb0904bd5",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/conteudo/seo_report.cfm",
+          "sha256": "e3d14c17216500d9c83e33d1d6ba080388d6a0da65cd136a2332e70cb4bcd6f3",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/conteudo/seo_ai.cfm",
+          "sha256": "4ba454d881bc02382df234c9add923c2dbb81f623f55457e82947ab49a3b953e",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      ]
+    },
+    "compile": {
+      "stage": "/var/tmp/seo-content-business-compile-nggn6p46",
+      "exit_code": 0,
+      "output": "/var/tmp/seo-content-business-compile-nggn6p46/portal/includes/seo_score_data.cfm... /var/tmp/seo-content-business-compile-nggn6p46/portal/includes/seo_queue_data.cfm... successful 2\ntotal 2\nelapsed 1.912 sec\n\n",
+      "rows": [
+        {
+          "path": "portal/includes/seo_queue_data.cfm",
+          "after": "afc5431eecfebd90b4d4e25bd841f156354dad58f1fea730528d5d3c7a75e487"
+        },
+        {
+          "path": "portal/includes/seo_score_data.cfm",
+          "after": "b250adb9242d3cc013c614af7f8ae7cfd60187ba1e676d7046e2cb06a306e984"
+        }
+      ]
+    },
+    "publish": {
+      "published_at": "2026-09-30T00:22:07.910379+00:00",
+      "backup": "/var/backups/seo-content-Business-fyyef_vo",
+      "rows": [
+        {
+          "path": "portal/includes/seo_queue_data.cfm",
+          "before": "a8346051eabe9de3822025d66d6308701e4dc103dfa7be71948ec785555d0f71",
+          "after": "afc5431eecfebd90b4d4e25bd841f156354dad58f1fea730528d5d3c7a75e487",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        },
+        {
+          "path": "portal/includes/seo_score_data.cfm",
+          "before": "1b2dd82c02c9e3ad1b468990757abe72ced91b722769f998d8f2f16916a56f9b",
+          "after": "b250adb9242d3cc013c614af7f8ae7cfd60187ba1e676d7046e2cb06a306e984",
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      ],
+      "published": [
+        "portal/includes/seo_queue_data.cfm",
+        "portal/includes/seo_score_data.cfm"
+      ],
+      "protected": {
+        "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+        "portal/conteudo/index.cfm": "d6af7783d7b0fd02698db522d094f140d4c611f0bd79ef46628765f44b696247",
+        "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+        "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+        "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+        "includes/backend/backend_login.cfm": "3e411483487108c8f249a17fc0cda0082f327563b531bf0078879d7afaa9d288",
+        "includes/estrutura/head.cfm": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606",
+        "includes/estrutura/header.cfm": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+        "includes/estrutura/sidenav.cfm": "733384de4aa0bfe5870fb32bb7f9a213081440a58991f6ab70d43c0531a136e0",
+        "portal/conteudo/seo.cfm": "2bfcafff6ba713f471ba285409f287547796d1f8f97397269e6c70fbb0904bd5",
+        "portal/conteudo/seo_report.cfm": "e3d14c17216500d9c83e33d1d6ba080388d6a0da65cd136a2332e70cb4bcd6f3",
+        "portal/conteudo/seo_ai.cfm": "4ba454d881bc02382df234c9add923c2dbb81f623f55457e82947ab49a3b953e"
+      },
+      "verified_at": "2026-09-30T00:22:07.914577+00:00"
+    },
+    "verify": {
+      "verified_at": "2026-09-30T00:32:19.503160+00:00",
+      "runtime_hashes": {
+        "portal/includes/seo_queue_data.cfm": "afc5431eecfebd90b4d4e25bd841f156354dad58f1fea730528d5d3c7a75e487",
+        "portal/includes/seo_score_data.cfm": "b250adb9242d3cc013c614af7f8ae7cfd60187ba1e676d7046e2cb06a306e984"
+      },
+      "protected_unchanged": [
+        "portal/seo/index.cfm",
+        "portal/conteudo/index.cfm",
+        "portal/includes/seo_queue_backend.cfm",
+        "portal/includes/seo_score_backend.cfm",
+        "includes/backend/require_admin.cfm",
+        "includes/backend/backend_login.cfm",
+        "includes/estrutura/head.cfm",
+        "includes/estrutura/header.cfm",
+        "includes/estrutura/sidenav.cfm",
+        "portal/conteudo/seo.cfm",
+        "portal/conteudo/seo_report.cfm",
+        "portal/conteudo/seo_ai.cfm"
+      ],
+      "metadata_verified": true
+    }
+  },
+  "public_get": [
+    {
+      "url": "https://roadrunners.run/es/evento/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/",
+      "status": 200,
+      "canonical": "https://roadrunners.run/es/evento/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/",
+      "alternates": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/evento/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/event/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/evento/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/evento/2025-ix-encontro-dos-amigos-correm-%22por-do-sol%22/"
+        }
+      ],
+      "jsonld": {
+        "count": 1,
+        "invalid": 0,
+        "types": [
+          "SportsEvent"
+        ]
+      },
+      "event": [
+        {
+          "name": "IX ENCONTRO DOS AMIGOS CORREM \"PÔR DO SOL\"",
+          "start_date": "2025-12-20",
+          "end_date": "2025-12-20",
+          "city": "Salvador",
+          "name_in_body": true,
+          "city_in_body": true,
+          "has_location": true,
+          "has_organizer": false,
+          "has_image": true,
+          "event_status": "https://schema.org/EventScheduled",
+          "offer_availability": ""
+        }
+      ]
+    },
+    {
+      "url": "https://openresults.run/evento/2026-maratona-salvador-2026/",
+      "status": 200,
+      "canonical": "https://openresults.run/evento/2026-maratona-salvador-2026/",
+      "alternates": [],
+      "jsonld": {
+        "count": 1,
+        "invalid": 0,
+        "types": [
+          "SportsEvent"
+        ]
+      },
+      "event": [
+        {
+          "name": "Maratona de Salvador 2026",
+          "start_date": "2026-09-27",
+          "end_date": "2026-09-27",
+          "city": "Salvador",
+          "name_in_body": true,
+          "city_in_body": true,
+          "has_location": true,
+          "has_organizer": false,
+          "has_image": false,
+          "event_status": "",
+          "offer_availability": ""
+        }
+      ]
+    },
+    {
+      "url": "https://openresults.run/evento/2026-venha-viver-a-2-atleta-de-cristo-run-correndo-com-proposito%3F/",
+      "status": 200,
+      "canonical": "https://openresults.run/evento/2026-venha-viver-a-2-atleta-de-cristo-run-correndo-com-proposito%3F/",
+      "alternates": [],
+      "jsonld": {
+        "count": 1,
+        "invalid": 0,
+        "types": [
+          "SportsEvent"
+        ]
+      },
+      "event": [
+        {
+          "name": "Venha viver a 2ª Atleta de Cristo Run Correndo com Propósito?.",
+          "start_date": "2026-06-07",
+          "end_date": "2026-06-07",
+          "city": "São Paulo",
+          "name_in_body": true,
+          "city_in_body": true,
+          "has_location": true,
+          "has_organizer": false,
+          "has_image": false,
+          "event_status": "",
+          "offer_availability": ""
+        }
+      ]
+    },
+    {
+      "url": "https://openresults.run/includes/seo_event_schema.cfm",
+      "status": 403,
+      "canonical": null,
+      "alternates": [],
+      "jsonld": {
+        "count": 0,
+        "invalid": 0,
+        "types": []
+      },
+      "event": []
+    }
+  ],
+  "audits": {
+    "roadrunners": {
+      "run_id": "2026-09-30T00-13-25-201Z-355c9c21",
+      "discovered": 102509,
+      "inspected": 100,
+      "page_errors": 2,
+      "warnings": 99,
+      "score": 70
+    },
+    "openresults": {
+      "run_id": "2026-09-30T00-13-19-583Z-33417e9a",
+      "discovered": 34144,
+      "inspected": 100,
+      "page_errors": 0,
+      "warnings": 1,
+      "score": 95
+    }
+  },
+  "checks": {
+    "collector_node_tests": 83,
+    "business_node_tests": 42,
+    "cfml_schema_fixtures": 3,
+    "cfml_panel_scenarios": 6,
+    "adobe_templates": 7,
+    "desktop_width": 1516,
+    "mobile_width": 390,
+    "horizontal_overflow": false,
+    "queue": {
+      "total": 11,
+      "resolved": 6,
+      "pending": 5
+    },
+    "openresults_future": {
+      "url": "https://openresults.run/evento/2026-2-circuito-de-corrida-colina-park-1-corrida-kids-vargem-alta/",
+      "date": "2026-10-12",
+      "city": "Vargem Alta",
+      "visible_matches_schema": true
+    },
+    "scoped_diff_check_passed": true,
+    "unrelated_whitespace_issue": "RoadRunners/_codex/docs/2026-09-22_openai_cloudflare_validacao.md:138 — preexisting blank line at EOF; preserved."
+  },
+  "openresults_recovery": {
+    "git_ref": "e769528c34b23beb6fc3a16ea615184849ce5e5c",
+    "patch": "seo_ia_conteudo_2026_09_29/openresults_baseline.patch",
+    "sha256": "9ffb1194fa6ee37579f09fdcd42bea1f16006d32a5b693a8b7d700b1eec4f227",
+    "reconstructed_before_publish": true
+  },
+  "limits": [
+    "Sample of 100 pages per site, not whole-site content audit",
+    "Provider identity/access and citations unmeasured",
+    "RR Operario CRLF URL still 403; cause not identified",
+    "Schema syntax and field presence do not validate factual accuracy",
+    "No AI score, no Git operations"
+  ]
+}

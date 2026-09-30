@@ -1,0 +1,72 @@
+{
+  "compile": {
+    "stage": "/var/tmp/seo-header-compile-v6ohyogq",
+    "exit_code": 0,
+    "output": "/var/tmp/seo-header-compile-v6ohyogq/portal/conteudo/seo.cfm... successful 1\ntotal 1\nelapsed 1.402 sec\n\n",
+    "rows": [
+      {
+        "path": "portal/conteudo/seo.cfm",
+        "after": "6d0ad15bc635d8beeeee914e2478acb59731e570520574bc0438536c688f111a"
+      }
+    ]
+  },
+  "publish": {
+    "published_at": "2026-09-29T13:05:07.720985+00:00",
+    "backup": "/var/backups/seo-header-Business-czy4cpd0",
+    "rows": [
+      {
+        "path": "portal/conteudo/seo.cfm",
+        "before": "6d5559e5044aff7708f515aeb556482aee5d19d0b17ac73f3146ab0c1e2fb8d7",
+        "after": "6d0ad15bc635d8beeeee914e2478acb59731e570520574bc0438536c688f111a",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      }
+    ],
+    "published": [
+      "portal/conteudo/seo.cfm"
+    ],
+    "protected": {
+      "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+      "portal/conteudo/index.cfm": "d6af7783d7b0fd02698db522d094f140d4c611f0bd79ef46628765f44b696247",
+      "portal/conteudo/seo_report.cfm": "6a9ee23dedc77dd7f7d925b79284c4860dd763e844cef8cfe5d7ae0ae960e613",
+      "portal/includes/seo_queue_data.cfm": "293cf2983497de7526ce13381c12b31349e96b2bac8f658f5d734b20d96da97e",
+      "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+      "portal/includes/seo_score_data.cfm": "7d1190317b552f74053caa7a83ba0a5e6e2d24c57aae814e46ccc90926de8f1c",
+      "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+      "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+      "includes/backend/backend_login.cfm": "3e411483487108c8f249a17fc0cda0082f327563b531bf0078879d7afaa9d288",
+      "includes/estrutura/head.cfm": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606",
+      "includes/estrutura/header.cfm": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+      "includes/estrutura/sidenav.cfm": "733384de4aa0bfe5870fb32bb7f9a213081440a58991f6ab70d43c0531a136e0"
+    },
+    "verified_at": "2026-09-29T13:05:07.724473+00:00"
+  },
+  "verify": {
+    "verified_at": "2026-09-29T13:05:43.300946+00:00",
+    "runtime_hashes": {
+      "portal/conteudo/seo.cfm": "6d0ad15bc635d8beeeee914e2478acb59731e570520574bc0438536c688f111a"
+    },
+    "protected_unchanged": [
+      "portal/seo/index.cfm",
+      "portal/conteudo/index.cfm",
+      "portal/conteudo/seo_report.cfm",
+      "portal/includes/seo_queue_data.cfm",
+      "portal/includes/seo_queue_backend.cfm",
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_score_backend.cfm",
+      "includes/backend/require_admin.cfm",
+      "includes/backend/backend_login.cfm",
+      "includes/estrutura/head.cfm",
+      "includes/estrutura/header.cfm",
+      "includes/estrutura/sidenav.cfm"
+    ],
+    "metadata_verified": true
+  },
+  "browser_verification": {
+    "url": "https://business.roadrunners.run/portal/seo/",
+    "before": "Failed to add HTML header at portal/conteudo/seo.cfm:2",
+    "after": "Same authenticated Chrome session, normal reload: SEO heading, both score cards, 32 checks, history and 7 correction items rendered; no ColdFusion error.",
+    "screenshot": "output/seo-header-20260929/seo-corrigido.png"
+  }
+}

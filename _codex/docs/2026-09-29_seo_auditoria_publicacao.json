@@ -1,0 +1,89 @@
+{
+  "compile": {
+    "stage": "/var/tmp/seo-audit-compile-kp1_emy8",
+    "exit_code": 0,
+    "output": "/var/tmp/seo-audit-compile-kp1_emy8/portal/includes/seo_score_data.cfm... /var/tmp/seo-audit-compile-kp1_emy8/portal/includes/seo_queue_data.cfm... successful 2\ntotal 2\nelapsed 2.676 sec\n\n",
+    "rows": [
+      {
+        "path": "portal/includes/seo_score_data.cfm",
+        "after": "bbdc67f55eea02ab51ff7be6f1621d8bc4b11b5310856db2b05746c5ea9f1fd6"
+      },
+      {
+        "path": "portal/includes/seo_queue_data.cfm",
+        "after": "a8346051eabe9de3822025d66d6308701e4dc103dfa7be71948ec785555d0f71"
+      }
+    ]
+  },
+  "publish": {
+    "published_at": "2026-09-29T13:19:01.547478+00:00",
+    "backup": "/var/backups/seo-audit-Business-dgkpigll",
+    "rows": [
+      {
+        "path": "portal/includes/seo_score_data.cfm",
+        "before": "7d1190317b552f74053caa7a83ba0a5e6e2d24c57aae814e46ccc90926de8f1c",
+        "after": "bbdc67f55eea02ab51ff7be6f1621d8bc4b11b5310856db2b05746c5ea9f1fd6",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      },
+      {
+        "path": "portal/includes/seo_queue_data.cfm",
+        "before": "293cf2983497de7526ce13381c12b31349e96b2bac8f658f5d734b20d96da97e",
+        "after": "a8346051eabe9de3822025d66d6308701e4dc103dfa7be71948ec785555d0f71",
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      }
+    ],
+    "published": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "protected": {
+      "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+      "portal/conteudo/index.cfm": "d6af7783d7b0fd02698db522d094f140d4c611f0bd79ef46628765f44b696247",
+      "portal/conteudo/seo_report.cfm": "6a9ee23dedc77dd7f7d925b79284c4860dd763e844cef8cfe5d7ae0ae960e613",
+      "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+      "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+      "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+      "includes/backend/backend_login.cfm": "3e411483487108c8f249a17fc0cda0082f327563b531bf0078879d7afaa9d288",
+      "includes/estrutura/head.cfm": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606",
+      "includes/estrutura/header.cfm": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+      "includes/estrutura/sidenav.cfm": "733384de4aa0bfe5870fb32bb7f9a213081440a58991f6ab70d43c0531a136e0",
+      "portal/conteudo/seo.cfm": "6d0ad15bc635d8beeeee914e2478acb59731e570520574bc0438536c688f111a"
+    },
+    "verified_at": "2026-09-29T13:19:01.552717+00:00"
+  },
+  "verify": {
+    "verified_at": "2026-09-29T16:05:11.488845+00:00",
+    "runtime_hashes": {
+      "portal/includes/seo_score_data.cfm": "bbdc67f55eea02ab51ff7be6f1621d8bc4b11b5310856db2b05746c5ea9f1fd6",
+      "portal/includes/seo_queue_data.cfm": "a8346051eabe9de3822025d66d6308701e4dc103dfa7be71948ec785555d0f71"
+    },
+    "protected_unchanged": [
+      "portal/seo/index.cfm",
+      "portal/conteudo/index.cfm",
+      "portal/conteudo/seo_report.cfm",
+      "portal/includes/seo_queue_backend.cfm",
+      "portal/includes/seo_score_backend.cfm",
+      "includes/backend/require_admin.cfm",
+      "includes/backend/backend_login.cfm",
+      "includes/estrutura/head.cfm",
+      "includes/estrutura/header.cfm",
+      "includes/estrutura/sidenav.cfm",
+      "portal/conteudo/seo.cfm"
+    ],
+    "metadata_verified": true
+  },
+  "browser": {
+    "url": "https://business.roadrunners.run/portal/seo/",
+    "verified": true,
+    "notes": [
+      "RR 70,0, 102.491 URLs; OR 95,0, 34.144 URLs",
+      "100 páginas por site",
+      "Histórico com 2 pontos por site e indicação de não comparabilidade",
+      "8 frentes: 4 pendentes, 4 concluídas; RR-05 visível"
+    ],
+    "screenshot": "output/seo-audit-20260929/painel.png"
+  }
+}

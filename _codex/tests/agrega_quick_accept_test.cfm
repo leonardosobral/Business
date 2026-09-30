@@ -49,6 +49,39 @@ if (!structKeyExists(variables,"agregaReviewAcceptSuggestion")) {
   } catch (any e) { failed=true;message=e.message; }
   arrayAppend(checks,{test=testCase,passed=failed,message=message});
  }
+ // Existing-group shortcut: one linked edition plus one unlinked edition.
+ for (testCase in ["reuse","repeat_reuse","stale_target","other_target","both_linked","both_unlinked","circuit_target","missing_target","suggestion_conflict","reuse_changed_pair","reuse_inactive","reuse_ignored","reuse_late_failure"]) {
+  failed=false; message=""; accepted=false; expectedFailure=!listFind("reuse,repeat_reuse",testCase);
+  try {
+   transaction {
+    fixture(); expected="101,102"; target=25;
+    queryExecute("INSERT INTO pg_temp.tb_agrega_eventos (id_agrega_evento,nome_evento_agregado,tipo_agregacao) VALUES (25,'Corrida existente','corrida'),(26,'Outra corrida','corrida')");
+    queryExecute("UPDATE pg_temp.tb_evento_corridas SET id_agrega_evento=25 WHERE id_evento=102");
+    switch(testCase) {
+     case "stale_target": target=26;break;
+     case "other_target": queryExecute("UPDATE pg_temp.tb_evento_corridas SET id_agrega_evento=26 WHERE id_evento=101");break;
+     case "both_linked": queryExecute("UPDATE pg_temp.tb_evento_corridas SET id_agrega_evento=25");break;
+     case "both_unlinked": queryExecute("UPDATE pg_temp.tb_evento_corridas SET id_agrega_evento=NULL");break;
+     case "circuit_target": queryExecute("UPDATE pg_temp.tb_agrega_eventos SET tipo_agregacao='circuito' WHERE id_agrega_evento=25");break;
+     case "missing_target": queryExecute("DELETE FROM pg_temp.tb_agrega_eventos WHERE id_agrega_evento=25");break;
+     case "suggestion_conflict": queryExecute("UPDATE pg_temp.tb_evento_agrega_review_groups SET suggested_id_agrega_evento=26");break;
+     case "reuse_changed_pair": expected="101,103";break;
+     case "reuse_inactive": queryExecute("UPDATE pg_temp.tb_evento_corridas SET ativo=false WHERE id_evento=101");break;
+     case "reuse_ignored": queryExecute("UPDATE pg_temp.tb_evento_agrega_review_candidates SET status='ignored' WHERE id_evento=101");break;
+     case "reuse_late_failure": queryExecute("ALTER TABLE pg_temp.tb_evento_corridas ADD CONSTRAINT reject_reuse CHECK (id_evento<>101 OR id_agrega_evento IS NULL)");break;
+    }
+    r=agregaReviewAcceptSuggestion(1,"",999,expected,target);
+    q=queryExecute("SELECT (SELECT count(*) FROM pg_temp.tb_agrega_eventos) aggregates,(SELECT count(*) FROM pg_temp.tb_evento_corridas WHERE id_agrega_evento=25) linked,(SELECT count(*) FROM pg_temp.tb_evento_agrega_review_candidates WHERE status='applied' AND reviewed_by=999) audited,(SELECT suggested_id_agrega_evento FROM pg_temp.tb_evento_agrega_review_groups WHERE id_evento_agrega_review_group=1) target");
+    accepted=q.aggregates[1]==2 AND q.linked[1]==2 AND q.audited[1]==2 AND q.target[1]==25 AND r.idAgregaEvento==25;
+    if(testCase=="repeat_reuse") {
+     r2=agregaReviewAcceptSuggestion(1,"",999,expected,target);
+     accepted=accepted AND r2.alreadyApplied;
+    }
+    transaction action="rollback";
+   }
+  } catch(any e){failed=true;message=e.message;}
+  arrayAppend(checks,{test=testCase,passed=expectedFailure ? failed : (!failed AND accepted),message=message});
+ }
  writeOutput(serializeJSON(checks));
 }
 </cfscript>

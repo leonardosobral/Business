@@ -1,0 +1,86 @@
+- generic [active] [ref=f4e1]:
+  - paragraph [ref=f4e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - generic [ref=f4e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f4e7]
+      - generic [ref=f4e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f4e9]:
+      - button "Públicos" [ref=f4e10] [cursor=pointer]
+      - button "Campanhas" [ref=f4e11] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f4e12] [cursor=pointer]
+    - generic [ref=f4e14]:
+      - complementary [ref=f4e15]:
+        - generic [ref=f4e16]:
+          - heading "Públicos 1" [level=2] [ref=f4e17]
+          - button "Novo público" [ref=f4e18] [cursor=pointer]
+        - generic [ref=f4e19]:
+          - generic [ref=f4e20]: Buscar público
+          - searchbox "Buscar público" [ref=f4e21]
+        - button "Público sintético SCv1 1 pessoas" [ref=f4e23] [cursor=pointer]:
+          - generic [ref=f4e24]: Público sintético SCv1
+          - generic [ref=f4e25]:
+            - text: "1"
+            - generic [ref=f4e26]: pessoas
+        - generic [ref=f4e27]:
+          - button "Anterior" [disabled] [ref=f4e28]
+          - generic [ref=f4e29]: 1 / 1
+          - button "Próxima" [disabled] [ref=f4e30]
+        - paragraph [ref=f4e31]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f4e32]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f4e33]:
+        - generic [ref=f4e34]:
+          - generic [ref=f4e35]:
+            - heading "Público sintético SC" [level=2] [ref=f4e52]
+            - paragraph [ref=f4e37]: 1 usuários · consulta em 24/09/2026, 12:00 · elegibilidade de cada canal será revisada na campanha.
+          - generic [ref=f4e53]:
+            - button "Editar público" [ref=f4e54] [cursor=pointer]
+            - button "Criar campanha" [ref=f4e55] [cursor=pointer]
+        - region "Pessoas aptas por canal" [ref=f4e56]:
+          - generic [ref=f4e57]:
+            - generic [ref=f4e58]:
+              - strong [ref=f4e59]: Aptos por canal
+              - generic [ref=f4e60]: Público v1 · 24/09/2026, 12:00
+            - button "Recalcular" [ref=f4e61] [cursor=pointer]
+          - status [ref=f4e62]:
+            - generic [ref=f4e63]:
+              - generic [ref=f4e64]:
+                - strong [ref=f4e65]: "1"
+                - generic [ref=f4e66]: E-mail · aptos
+                - generic [ref=f4e67]: 0 excluídos de 1
+              - generic [ref=f4e68]:
+                - strong [ref=f4e69]: "0"
+                - generic [ref=f4e70]: Notificação · aptos
+                - generic [ref=f4e71]: 1 excluídos de 1
+                - group [ref=f4e72]:
+                  - generic "Ver motivos" [ref=f4e73] [cursor=pointer]
+              - generic [ref=f4e74]:
+                - strong [ref=f4e75]: "1"
+                - generic [ref=f4e76]: Card no perfil · aptos
+                - generic [ref=f4e77]: 0 excluídos de 1
+          - paragraph [ref=f4e78]: Estimativa para este público. Preferências e limites são verificados novamente antes de cada envio.
+        - group [ref=f4e79]:
+          - generic "Cobertura dos dados deste público" [ref=f4e80] [cursor=pointer]
+        - table [ref=f4e39]:
+          - rowgroup [ref=f4e40]:
+            - row [ref=f4e41]:
+              - columnheader "Usuário" [ref=f4e42]
+              - columnheader "Localidade" [ref=f4e43]
+              - columnheader "Motivo da seleção" [ref=f4e44]
+              - columnheader [ref=f4e45]
+          - rowgroup [ref=f4e46]:
+            - row [ref=f4e81]:
+              - cell "Corredor sintético runner@example.test" [ref=f4e82]:
+                - text: Corredor sintético
+                - generic [ref=f4e83]: runner@example.test
+              - cell "Florianópolis / SC" [ref=f4e84]
+              - cell [ref=f4e85]:
+                - list [ref=f4e86]:
+                  - listitem [ref=f4e87]: Resultado reconhecido nos últimos 30 dias (meia maratona)
+              - cell [ref=f4e88]:
+                - button "Ver perfil" [ref=f4e89] [cursor=pointer]
+        - generic [ref=f4e49]:
+          - button "Anterior" [disabled] [ref=f4e50]
+          - generic [ref=f4e90]: Página 1 de 1
+          - button "Próxima" [disabled] [ref=f4e51]

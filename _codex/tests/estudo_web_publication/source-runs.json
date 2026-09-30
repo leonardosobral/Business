@@ -1,0 +1,542 @@
+{
+  "runs": [
+    {
+      "id": 6,
+      "cell_id": 155,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "versao",
+          "genero",
+          "total",
+          "porcentagem"
+        ],
+        "rows": [
+          {
+            "total": 2957462,
+            "genero": "F",
+            "porcentagem": 52.82,
+            "versao": "Editor 2025"
+          },
+          {
+            "total": 2639839,
+            "genero": "M",
+            "porcentagem": 47.14,
+            "versao": "Editor 2025"
+          },
+          {
+            "total": 2134,
+            "genero": "X",
+            "porcentagem": 0.04,
+            "versao": "Editor 2025"
+          },
+          {
+            "total": 2790249,
+            "genero": "F",
+            "porcentagem": 52.85,
+            "versao": "DataGrip 2025 (tempo positivo)"
+          },
+          {
+            "total": 2487220,
+            "genero": "M",
+            "porcentagem": 47.11,
+            "versao": "DataGrip 2025 (tempo positivo)"
+          },
+          {
+            "total": 1938,
+            "genero": "X",
+            "porcentagem": 0.04,
+            "versao": "DataGrip 2025 (tempo positivo)"
+          },
+          {
+            "total": 2698527,
+            "genero": "F",
+            "porcentagem": 52.87,
+            "versao": "BI 2025 (fonte DBA)"
+          },
+          {
+            "total": 2403435,
+            "genero": "M",
+            "porcentagem": 47.09,
+            "versao": "BI 2025 (fonte DBA)"
+          },
+          {
+            "total": 1912,
+            "genero": "X",
+            "porcentagem": 0.04,
+            "versao": "BI 2025 (fonte DBA)"
+          },
+          {
+            "total": 1755023,
+            "genero": "F",
+            "porcentagem": 50.67,
+            "versao": "Editor 2024"
+          },
+          {
+            "total": 1707288,
+            "genero": "M",
+            "porcentagem": 49.29,
+            "versao": "Editor 2024"
+          },
+          {
+            "total": 908,
+            "genero": "X",
+            "porcentagem": 0.03,
+            "versao": "Editor 2024"
+          },
+          {
+            "total": 226,
+            "genero": "N/A",
+            "porcentagem": 0.01,
+            "versao": "Editor 2024"
+          },
+          {
+            "total": 1636523,
+            "genero": "F",
+            "porcentagem": 50.65,
+            "versao": "DataGrip 2024"
+          },
+          {
+            "total": 1593655,
+            "genero": "M",
+            "porcentagem": 49.32,
+            "versao": "DataGrip 2024"
+          },
+          {
+            "total": 612,
+            "genero": "X",
+            "porcentagem": 0.02,
+            "versao": "DataGrip 2024"
+          },
+          {
+            "total": 215,
+            "genero": "N/A",
+            "porcentagem": 0.01,
+            "versao": "DataGrip 2024"
+          }
+        ]
+      },
+      "row_count": 17,
+      "started_at": "2026-09-28T14:31:40.577141-03:00"
+    },
+    {
+      "id": 7,
+      "cell_id": 157,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "versao",
+          "total"
+        ],
+        "rows": [
+          {
+            "total": 5599435,
+            "versao": "Editor"
+          },
+          {
+            "total": 5279415,
+            "versao": "DataGrip"
+          }
+        ]
+      },
+      "row_count": 2,
+      "started_at": "2026-09-28T14:32:48.853189-03:00"
+    },
+    {
+      "id": 8,
+      "cell_id": 159,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "ano",
+          "eventos_cadastrados",
+          "eventos_com_resultados_brutos",
+          "eventos_com_resultados_view",
+          "cobertura_bruta_pct"
+        ],
+        "rows": [
+          {
+            "ano": 2024,
+            "eventos_cadastrados": 6167,
+            "cobertura_bruta_pct": 52.15,
+            "eventos_com_resultados_view": 3214,
+            "eventos_com_resultados_brutos": 3216
+          },
+          {
+            "ano": 2025,
+            "eventos_cadastrados": 9360,
+            "cobertura_bruta_pct": 54.73,
+            "eventos_com_resultados_view": 5121,
+            "eventos_com_resultados_brutos": 5123
+          }
+        ]
+      },
+      "row_count": 2,
+      "started_at": "2026-09-28T14:33:28.366959-03:00"
+    },
+    {
+      "id": 15,
+      "cell_id": 177,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "percurso",
+          "total",
+          "perc"
+        ],
+        "rows": [
+          {
+            "total": 3096008,
+            "perc": 59.1,
+            "percurso": "< 6"
+          },
+          {
+            "total": 1486855,
+            "perc": 28.4,
+            "percurso": "6-11"
+          },
+          {
+            "total": 579462,
+            "perc": 11.1,
+            "percurso": "11-30"
+          },
+          {
+            "total": 72691,
+            "perc": 1.4,
+            "percurso": "30+"
+          }
+        ]
+      },
+      "row_count": 4,
+      "started_at": "2026-09-28T14:42:25.630758-03:00"
+    },
+    {
+      "id": 16,
+      "cell_id": 179,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "sexo",
+          "percurso",
+          "total",
+          "perc"
+        ],
+        "rows": [
+          {
+            "total": 1263367,
+            "perc": 51.3,
+            "percurso": "< 6",
+            "sexo": "M"
+          },
+          {
+            "total": 1831467,
+            "perc": 66.1,
+            "percurso": "< 6",
+            "sexo": "F"
+          },
+          {
+            "total": 788393,
+            "perc": 32.0,
+            "percurso": "6-11",
+            "sexo": "M"
+          },
+          {
+            "total": 697985,
+            "perc": 25.2,
+            "percurso": "6-11",
+            "sexo": "F"
+          },
+          {
+            "total": 356404,
+            "perc": 14.5,
+            "percurso": "11-30",
+            "sexo": "M"
+          },
+          {
+            "total": 222878,
+            "perc": 8.0,
+            "percurso": "11-30",
+            "sexo": "F"
+          },
+          {
+            "total": 54875,
+            "perc": 2.2,
+            "percurso": "30+",
+            "sexo": "M"
+          },
+          {
+            "total": 17746,
+            "perc": 0.6,
+            "percurso": "30+",
+            "sexo": "F"
+          }
+        ]
+      },
+      "row_count": 8,
+      "started_at": "2026-09-28T14:42:30.01158-03:00"
+    },
+    {
+      "id": 17,
+      "cell_id": 181,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "eventos_com_resultados_rua",
+          "eventos_com_5km",
+          "percentual"
+        ],
+        "rows": [
+          {
+            "percentual": 74.53,
+            "eventos_com_resultados_rua": 5002,
+            "eventos_com_5km": 3728
+          }
+        ]
+      },
+      "row_count": 1,
+      "started_at": "2026-09-28T14:42:34.868361-03:00"
+    },
+    {
+      "id": 25,
+      "cell_id": 207,
+      "cell_version": 1,
+      "result": {
+        "columns": [
+          "periodo",
+          "ordem",
+          "versao",
+          "total",
+          "percentual"
+        ],
+        "rows": [
+          {
+            "total": 138830,
+            "percentual": 2.63,
+            "ordem": 1,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 145904,
+            "percentual": 2.61,
+            "ordem": 1,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 204351,
+            "percentual": 3.87,
+            "ordem": 2,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 217457,
+            "percentual": 3.88,
+            "ordem": 2,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 391411,
+            "percentual": 7.41,
+            "ordem": 3,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 408904,
+            "percentual": 7.3,
+            "ordem": 3,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 368338,
+            "percentual": 6.98,
+            "ordem": 4,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 389318,
+            "percentual": 6.95,
+            "ordem": 4,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 431271,
+            "percentual": 8.17,
+            "ordem": 5,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 464794,
+            "percentual": 8.3,
+            "ordem": 5,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 511073,
+            "percentual": 9.68,
+            "ordem": 6,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 537343,
+            "percentual": 9.6,
+            "ordem": 6,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 419399,
+            "percentual": 7.94,
+            "ordem": 7,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 442697,
+            "percentual": 7.91,
+            "ordem": 7,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 505127,
+            "percentual": 9.57,
+            "ordem": 8,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 524751,
+            "percentual": 9.37,
+            "ordem": 8,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 566385,
+            "percentual": 10.73,
+            "ordem": 9,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 597427,
+            "percentual": 10.67,
+            "ordem": 9,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 567446,
+            "percentual": 10.75,
+            "ordem": 10,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 615839,
+            "percentual": 11.0,
+            "ordem": 10,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 697187,
+            "percentual": 13.21,
+            "ordem": 11,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 753254,
+            "percentual": 13.45,
+            "ordem": 11,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 478597,
+            "percentual": 9.07,
+            "ordem": 12,
+            "periodo": "Mês",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 501747,
+            "percentual": 8.96,
+            "ordem": 12,
+            "periodo": "Mês",
+            "versao": "Editor"
+          },
+          {
+            "total": 734592,
+            "percentual": 13.91,
+            "ordem": 1,
+            "periodo": "Trimestre",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 772265,
+            "percentual": 13.79,
+            "ordem": 1,
+            "periodo": "Trimestre",
+            "versao": "Editor"
+          },
+          {
+            "total": 1310682,
+            "percentual": 24.83,
+            "ordem": 2,
+            "periodo": "Trimestre",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 1391455,
+            "percentual": 24.85,
+            "ordem": 2,
+            "periodo": "Trimestre",
+            "versao": "Editor"
+          },
+          {
+            "total": 1490911,
+            "percentual": 28.24,
+            "ordem": 3,
+            "periodo": "Trimestre",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 1564875,
+            "percentual": 27.95,
+            "ordem": 3,
+            "periodo": "Trimestre",
+            "versao": "Editor"
+          },
+          {
+            "total": 1743230,
+            "percentual": 33.02,
+            "ordem": 4,
+            "periodo": "Trimestre",
+            "versao": "DataGrip"
+          },
+          {
+            "total": 1870840,
+            "percentual": 33.41,
+            "ordem": 4,
+            "periodo": "Trimestre",
+            "versao": "Editor"
+          }
+        ]
+      },
+      "row_count": 32,
+      "started_at": "2026-09-28T14:45:23.512717-03:00"
+    }
+  ]
+}

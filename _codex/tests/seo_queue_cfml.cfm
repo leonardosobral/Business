@@ -112,6 +112,7 @@ if (left(VARIABLES.seoTestCase,9) EQ "anonymous") {
     <cfset URL.site="openresults"/>
     <cfset URL.prioridade="p3"/>
     <cfinclude template="portal/includes/seo_queue_backend.cfm"/>
+    <cfset VARIABLES.seoTestQueueBaselineIds=seoTestIds(VARIABLES.seoQueueItems)/>
     <cfset URL.verificacao="all"/>
     <cfinclude template="portal/includes/seo_score_backend.cfm"/>
     <cfscript>
@@ -145,7 +146,7 @@ if (left(VARIABLES.seoTestCase,9) EQ "anonymous") {
         }
         seoTestAssert(VARIABLES.seoScoreVisibleTotal EQ VARIABLES.seoTestVisibleSum,"Visible report total must match the site checklists.");
         seoTestAssert(VARIABLES.seoQueueSiteFilter EQ "openresults" AND VARIABLES.seoQueuePriorityFilter EQ "p3","Check filtering must retain independent queue filters.");
-        seoTestAssert(seoTestIds(VARIABLES.seoQueueItems) EQ "SH-01","Check filtering must not change queue results.");
+        seoTestAssert(seoTestIds(VARIABLES.seoQueueItems) EQ VARIABLES.seoTestQueueBaselineIds,"Check filtering must not change queue results.");
         </cfscript>
     </cfloop>
     <cfoutput>SEO_SCORE_CONTRACT_PASSED:#VARIABLES.seoTestAssertions#</cfoutput>
@@ -175,10 +176,17 @@ if (left(VARIABLES.seoTestCase,9) EQ "anonymous") {
 <cfset URL.site=listFind("render-filtered,render-empty",VARIABLES.seoTestCase) ? "openresults" : "all"/>
 <cfset URL.prioridade=VARIABLES.seoTestCase EQ "render-filtered" ? "p3" : (VARIABLES.seoTestCase EQ "render-empty" ? "p1" : "all")/>
 <cfset URL.verificacao=VARIABLES.seoTestCase EQ "render-score-filtered" ? "error" : "all"/>
+<cfset URL.aba=listFind("render-all,render-score-filtered,render-score-escaped",VARIABLES.seoTestCase) ? "relatorio" : "fila"/>
 <!doctype html><html lang="pt-br"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Fila SEO — validação local isolada</title><link rel="stylesheet" href="/assets/css/mdb.min.css"/><link rel="stylesheet" href="/assets/css/business-ui.css"/></head>
 <body data-mdb-theme="dark" class="bg-dark-subtle"><main class="container-fluid px-4 py-4">
+<cfif VARIABLES.seoTestCase EQ "render-ai"><cfset URL.aba="ia"/></cfif>
 <cfinclude template="portal/conteudo/seo.cfm"/>
+<!--- The aggregate fixture inspects both separate sections; browser tests verify navigation. --->
+<cfif VARIABLES.seoTestCase EQ "render-all">
+    <cfset URL.aba="fila"/>
+    <cfinclude template="portal/conteudo/seo.cfm"/>
+</cfif>
 </main><!-- SEO_QUEUE_RENDER_PASSED --></body></html>
 <cfscript>
 // Compare each source date in its HTML representation, without duplicating an entity decoder.

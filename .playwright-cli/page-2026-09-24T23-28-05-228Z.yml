@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+        - paragraph [ref=e8]: Encontre públicos, prepare a mensagem e revise antes de ativar.
+      - generic [ref=e9]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e10]:
+      - button "Públicos" [ref=e11] [cursor=pointer]
+      - button "Campanhas" [ref=e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e13] [cursor=pointer]
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - complementary [ref=e16]:
+          - generic [ref=e17]:
+            - heading "Públicos salvos" [level=2] [ref=e18]
+            - button "Novo" [ref=e19] [cursor=pointer]
+          - paragraph [ref=e21]: Seus públicos aparecerão aqui.
+          - generic [ref=e22]:
+            - button "Anterior" [disabled] [ref=e23]
+            - generic [ref=e24]: Página 1
+            - button "Próxima" [disabled] [ref=e25]
+        - generic [ref=e26]:
+          - heading "Montar público" [level=2] [ref=e28]
+          - generic [ref=e29]:
+            - button "Correu uma meia" [ref=e30] [cursor=pointer]
+            - button "Meia na agenda" [ref=e31] [cursor=pointer]
+            - button "Visita regularmente" [ref=e32] [cursor=pointer]
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - text: Nome do público
+              - textbox "Nome do público" [ref=e35]:
+                - /placeholder: "Ex.: interesse em meia maratona"
+            - generic [ref=e36]:
+              - text: Observação opcional
+              - textbox "Observação opcional" [ref=e37]
+            - generic [ref=e38]:
+              - text: Combinar critérios
+              - combobox "Combinar critérios" [ref=e39]:
+                - option "Todos os critérios" [selected]
+                - option "Qualquer um dos critérios"
+            - generic [ref=e41]:
+              - generic [ref=e42]:
+                - generic [ref=e43]:
+                  - text: Sinal de interesse
+                  - combobox "Sinal de interesse" [ref=e44]:
+                    - option "Localidade do perfil"
+                    - option "Resultado recente" [selected]
+                    - option "Evento na agenda"
+                    - option "Inscrição registrada"
+                    - option "Evento oferece distância"
+                    - option "Inscrição em desafio"
+                    - option "Acessos identificados"
+                    - option "Histórico de contato CRM"
+                    - option "Treinos recentes · indisponível" [disabled]
+                    - option "Quilometragem do tênis · indisponível" [disabled]
+                - button "Remover critério" [ref=e45] [cursor=pointer]: Remover
+              - generic [ref=e46]:
+                - generic [ref=e47]:
+                  - text: Nos últimos dias
+                  - spinbutton "Nos últimos dias" [ref=e48]: "30"
+                - generic [ref=e49]:
+                  - text: Distância
+                  - combobox "Distância" [ref=e50]:
+                    - option "Qualquer" [selected]
+                    - option "5 km"
+                    - option "10 km"
+                    - option "Meia maratona (21 km)"
+                    - option "Maratona (42 km)"
+            - button "+ Adicionar critério" [ref=e51] [cursor=pointer]
+            - generic [ref=e52]:
+              - button "Ver usuários" [ref=e53] [cursor=pointer]
+              - button "Salvar público" [ref=e54] [cursor=pointer]
+      - generic [ref=e55]:
+        - generic [ref=e57]:
+          - heading "Usuários do público" [level=2] [ref=e58]
+          - paragraph [ref=e59]: Critérios alterados. Consulte novamente para atualizar os usuários.
+        - table [ref=e61]:
+          - rowgroup [ref=e62]:
+            - row "Usuário Localidade Motivo da seleção" [ref=e63]:
+              - columnheader "Usuário" [ref=e64]
+              - columnheader "Localidade" [ref=e65]
+              - columnheader "Motivo da seleção" [ref=e66]
+              - columnheader [ref=e67]
+          - rowgroup [ref=e68]:
+            - row "Consulta desatualizada." [ref=e69]:
+              - cell "Consulta desatualizada." [ref=e70]
+        - generic [ref=e71]:
+          - button "Anterior" [disabled] [ref=e72]
+          - button "Próxima" [disabled] [ref=e73]

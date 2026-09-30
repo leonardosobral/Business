@@ -1,0 +1,98 @@
+- generic [ref=f8e1]:
+  - paragraph [ref=f8e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f8e3]:
+    - generic [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - generic [ref=f8e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f8e7]
+      - generic [ref=f8e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f8e9]:
+      - button "Públicos" [active] [ref=f8e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f8e11] [cursor=pointer]
+      - button "Campanhas" [ref=f8e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f8e13] [cursor=pointer]
+    - generic [ref=f8e15]:
+      - complementary [ref=f8e16]:
+        - generic [ref=f8e17]:
+          - heading "Públicos 1" [level=2] [ref=f8e18]
+          - button "Novo público" [ref=f8e19] [cursor=pointer]
+        - generic [ref=f8e20]:
+          - generic [ref=f8e21]: Buscar público
+          - searchbox "Buscar público" [ref=f8e22]
+        - button "Público sintético SCv1 1 pessoas" [ref=f8e24] [cursor=pointer]:
+          - generic [ref=f8e25]: Público sintético SCv1
+          - generic [ref=f8e26]:
+            - text: "1"
+            - generic [ref=f8e27]: pessoas
+        - generic [ref=f8e28]:
+          - button "Anterior" [disabled] [ref=f8e29]
+          - generic [ref=f8e30]: 1 / 1
+          - button "Próxima" [disabled] [ref=f8e31]
+        - paragraph [ref=f8e32]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f8e33]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f8e34]:
+        - generic [ref=f8e35]:
+          - generic [ref=f8e36]:
+            - heading "Público sintético SC" [level=2] [ref=f8e53]
+            - paragraph [ref=f8e38]: 1 usuários · consulta em 24/09/2026, 12:00 · elegibilidade de cada canal será revisada na campanha.
+          - generic [ref=f8e54]:
+            - button "Editar público" [ref=f8e55] [cursor=pointer]
+            - button "Criar campanha" [ref=f8e56] [cursor=pointer]
+        - region "Pessoas aptas por canal" [ref=f8e57]:
+          - generic [ref=f8e58]:
+            - generic [ref=f8e59]:
+              - strong [ref=f8e60]: Aptos por canal
+              - generic [ref=f8e61]: Público v1 · 24/09/2026, 12:00
+            - button "Recalcular" [ref=f8e62] [cursor=pointer]
+          - status [ref=f8e63]:
+            - generic [ref=f8e64]:
+              - generic [ref=f8e65]:
+                - strong [ref=f8e66]: "1"
+                - generic [ref=f8e67]: E-mail · aptos
+                - generic [ref=f8e68]: 0 excluídos de 1
+              - generic [ref=f8e69]:
+                - strong [ref=f8e70]: "0"
+                - generic [ref=f8e71]: Notificação · aptos
+                - generic [ref=f8e72]: 1 excluídos de 1
+                - group [ref=f8e73]:
+                  - generic "Ver motivos" [ref=f8e74] [cursor=pointer]
+              - generic [ref=f8e75]:
+                - strong [ref=f8e76]: "1"
+                - generic [ref=f8e77]: Card no perfil · aptos
+                - generic [ref=f8e78]: 0 excluídos de 1
+          - paragraph [ref=f8e79]: Estimativa para este público. Preferências e limites são verificados novamente antes de cada envio.
+        - group [ref=f8e80]:
+          - generic "Cobertura dos dados deste público" [ref=f8e81] [cursor=pointer]
+        - group [ref=f8e82]:
+          - generic "Ideias de campanha para este público" [ref=f8e83] [cursor=pointer]
+          - paragraph [ref=f8e94]: Público v1 · sugestões baseadas apenas nos critérios deste público.
+          - status [ref=f8e95]:
+            - article [ref=f8e96]:
+              - generic [ref=f8e97]:
+                - strong [ref=f8e98]: Próxima prova
+                - generic [ref=f8e99]: Resultado reconhecido em prova nos últimos 90 dias
+              - generic [ref=f8e100]:
+                - button "Preparar campanha" [ref=f8e101] [cursor=pointer]
+                - button "Ignorar" [ref=f8e102] [cursor=pointer]
+        - table [ref=f8e40]:
+          - rowgroup [ref=f8e41]:
+            - row [ref=f8e42]:
+              - columnheader "Usuário" [ref=f8e43]
+              - columnheader "Localidade" [ref=f8e44]
+              - columnheader "Motivo da seleção" [ref=f8e45]
+              - columnheader [ref=f8e46]
+          - rowgroup [ref=f8e47]:
+            - row [ref=f8e84]:
+              - cell "Corredor sintético runner@example.test" [ref=f8e85]:
+                - text: Corredor sintético
+                - generic [ref=f8e86]: runner@example.test
+              - cell "Florianópolis / SC" [ref=f8e87]
+              - cell [ref=f8e88]:
+                - list [ref=f8e89]:
+                  - listitem [ref=f8e90]: Resultado reconhecido nos últimos 30 dias (meia maratona)
+              - cell [ref=f8e91]:
+                - button "Ver perfil" [ref=f8e92] [cursor=pointer]
+        - generic [ref=f8e50]:
+          - button "Anterior" [disabled] [ref=f8e51]
+          - generic [ref=f8e93]: Página 1 de 1
+          - button "Próxima" [disabled] [ref=f8e52]

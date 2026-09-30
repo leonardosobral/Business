@@ -1,0 +1,48 @@
+- generic [active] [ref=f7e1]:
+  - paragraph [ref=f7e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f7e3]:
+    - generic [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - generic [ref=f7e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f7e7]
+      - generic [ref=f7e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f7e9]:
+      - button "Públicos" [ref=f7e10] [cursor=pointer]
+      - button "Campanhas" [ref=f7e11] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f7e12] [cursor=pointer]
+    - generic [ref=f7e14]:
+      - complementary [ref=f7e15]:
+        - generic [ref=f7e16]:
+          - heading "Públicos 1" [level=2] [ref=f7e17]
+          - button "Novo público" [ref=f7e18] [cursor=pointer]
+        - generic [ref=f7e19]:
+          - generic [ref=f7e20]: Buscar público
+          - searchbox "Buscar público" [ref=f7e21]
+        - button "Público sintético SCv1 1 pessoas" [ref=f7e23] [cursor=pointer]:
+          - generic [ref=f7e24]: Público sintético SCv1
+          - generic [ref=f7e25]:
+            - text: "1"
+            - generic [ref=f7e26]: pessoas
+        - generic [ref=f7e27]:
+          - button "Anterior" [disabled] [ref=f7e28]
+          - generic [ref=f7e29]: 1 / 1
+          - button "Próxima" [disabled] [ref=f7e30]
+        - paragraph [ref=f7e31]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f7e32]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f7e33]:
+        - generic [ref=f7e35]:
+          - heading "Usuários do público" [level=2] [ref=f7e36]
+          - paragraph [ref=f7e37]: Selecione um público na lista para ver seus usuários.
+        - table [ref=f7e39]:
+          - rowgroup [ref=f7e40]:
+            - row [ref=f7e41]:
+              - columnheader "Usuário" [ref=f7e42]
+              - columnheader "Localidade" [ref=f7e43]
+              - columnheader "Motivo da seleção" [ref=f7e44]
+              - columnheader [ref=f7e45]
+          - rowgroup [ref=f7e46]:
+            - row [ref=f7e47]:
+              - cell "Selecione um público para começar." [ref=f7e48]
+        - generic [ref=f7e49]:
+          - button "Anterior" [disabled] [ref=f7e50]
+          - button "Próxima" [disabled] [ref=f7e51]

@@ -1,0 +1,10 @@
+{
+  "Business": {
+    "published": [
+      "administracao/agrega-revisao/includes/quick_accept.cfm",
+      "administracao/agrega-revisao/includes/backend.cfm",
+      "administracao/agrega-revisao/home.cfm"
+    ],
+    "backup": "/var/backups/circuitos-20260928/quick-existing/Business/baseline"
+  }
+}

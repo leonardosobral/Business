@@ -1,0 +1,68 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+        - paragraph [ref=e8]: Encontre públicos, prepare a mensagem e revise antes de ativar.
+      - generic [ref=e9]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e10]:
+      - button "Públicos" [ref=e11] [cursor=pointer]
+      - button "Campanhas" [ref=e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e13] [cursor=pointer]
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "Campanhas revisadas" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Notificações, e-mail e cards no mini perfil. Salvar não envia.
+        - button "Nova campanha" [ref=e94] [cursor=pointer]
+      - paragraph [ref=e96]: Nenhuma campanha criada. Comece por um público salvo.
+      - generic [ref=e97]:
+        - button "Anterior" [disabled] [ref=e98]
+        - generic [ref=e99]: Página 1
+        - button "Próxima" [disabled] [ref=e100]
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - heading "Nova campanha" [level=2] [ref=e103]
+          - button "Fechar" [ref=e104] [cursor=pointer]
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - text: Nome interno
+            - textbox "Nome interno" [ref=e107]
+          - generic [ref=e108]:
+            - text: Público salvo
+            - combobox "Público salvo" [ref=e109]:
+              - option "Meia maratona — teste" [selected]
+          - generic [ref=e110]:
+            - text: Canal
+            - combobox "Canal" [ref=e111]:
+              - option "Notificação no site" [selected]
+              - option "E-mail marketing"
+              - option "Card no mini perfil"
+          - generic [ref=e112]:
+            - text: Prioridade do card
+            - spinbutton "Prioridade do card" [ref=e113]: "0"
+          - generic [ref=e114]:
+            - text: Título / assunto
+            - textbox "Título / assunto" [ref=e115]
+          - generic [ref=e116]:
+            - text: Texto do botão
+            - textbox "Texto do botão" [ref=e117]: Saiba mais
+          - generic [ref=e118]:
+            - text: Mensagem
+            - textbox "Mensagem" [ref=e119]
+          - generic [ref=e120]:
+            - text: Link de destino
+            - textbox "Link de destino" [ref=e121]:
+              - /placeholder: /busca/ ou URL HTTPS dos sites autorizados
+          - generic [ref=e122]:
+            - text: Início (Brasília)
+            - textbox "Início (Brasília)" [ref=e123]: 2026-09-24T20:31
+          - generic [ref=e124]:
+            - text: Fim (Brasília)
+            - textbox "Fim (Brasília)" [ref=e125]: 2026-10-01T20:31
+        - paragraph [ref=e126]: "E-mail e notificação: no máximo um contato comercial em 7 dias por pessoa. Cards: até 3 sessões por dia, com opção de dispensar."
+        - generic [ref=e127]:
+          - button "Salvar rascunho" [ref=e128] [cursor=pointer]
+          - button "Revisar destinatários" [disabled] [ref=e129]

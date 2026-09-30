@@ -1,0 +1,69 @@
+- generic [ref=f8e1]:
+  - paragraph [ref=f8e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f8e3]:
+    - generic [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - generic [ref=f8e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f8e7]
+      - generic [ref=f8e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f8e9]:
+      - button "Públicos" [ref=f8e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f8e11] [cursor=pointer]
+      - button "Campanhas" [ref=f8e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f8e13] [cursor=pointer]
+    - generic [ref=f8e103]:
+      - generic [ref=f8e104]:
+        - generic [ref=f8e105]:
+          - heading "Campanhas revisadas" [level=2] [ref=f8e106]
+          - paragraph [ref=f8e107]: Notificações, e-mail e cards no mini perfil. Salvar não envia.
+        - button "Nova campanha" [ref=f8e108] [cursor=pointer]
+      - paragraph [ref=f8e110]: Nenhuma campanha criada. Comece por um público salvo.
+      - generic [ref=f8e111]:
+        - button "Anterior" [disabled] [ref=f8e112]
+        - generic [ref=f8e113]: Página 1
+        - button "Próxima" [disabled] [ref=f8e114]
+      - generic [ref=f8e115]:
+        - generic [ref=f8e116]:
+          - heading "Nova campanha" [level=2] [ref=f8e117]
+          - button "Fechar" [ref=f8e118] [cursor=pointer]
+        - generic [ref=f8e119]:
+          - generic [ref=f8e120]:
+            - text: Nome interno
+            - textbox "Nome interno" [ref=f8e121]: Próxima prova · Público sintético SC
+          - generic [ref=f8e122]:
+            - text: Público salvo
+            - combobox "Público salvo" [ref=f8e123]:
+              - option "Público sintético SC" [selected]
+          - generic [ref=f8e124]:
+            - text: Canal
+            - combobox "Canal" [ref=f8e125]:
+              - option "Notificação no site"
+              - option "E-mail marketing"
+              - option "Card no mini perfil" [selected]
+          - generic [ref=f8e126]:
+            - text: Prioridade do card
+            - spinbutton "Prioridade do card" [ref=f8e127]: "0"
+          - generic [ref=f8e128]:
+            - text: Título / assunto
+            - textbox "Título / assunto" [ref=f8e129]: Escolha sua próxima prova
+          - generic [ref=f8e130]:
+            - text: Texto do botão
+            - textbox "Texto do botão" [ref=f8e131]: Ver provas
+          - generic [ref=f8e132]:
+            - text: Mensagem
+            - textbox "Mensagem" [ref=f8e133]: Explore as próximas provas disponíveis.
+          - generic [ref=f8e134]:
+            - text: Link de destino
+            - textbox "Link de destino" [active] [ref=f8e135]:
+              - /placeholder: /busca/ ou URL HTTPS dos sites autorizados
+          - generic [ref=f8e136]:
+            - text: Início (Brasília)
+            - textbox "Início (Brasília)" [ref=f8e137]: 2026-09-24T23:11
+          - generic [ref=f8e138]:
+            - text: Fim (Brasília)
+            - textbox "Fim (Brasília)" [ref=f8e139]: 2026-10-01T23:11
+        - paragraph [ref=f8e140]: Sugestão para Público sintético SC · versão 1 na consulta. Escolha o destino e revise os destinatários antes de confirmar.
+        - paragraph [ref=f8e141]: "E-mail e notificação: no máximo um contato comercial em 7 dias por pessoa. Cards: até 3 sessões por dia, com opção de dispensar."
+        - generic [ref=f8e142]:
+          - button "Salvar rascunho" [ref=f8e143] [cursor=pointer]
+          - button "Revisar destinatários" [disabled] [ref=f8e144]

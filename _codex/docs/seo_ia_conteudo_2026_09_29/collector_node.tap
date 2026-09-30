@@ -1,0 +1,508 @@
+TAP version 13
+# Subtest: invalid flags reject instead of silently launching an unlimited crawl
+ok 1 - invalid flags reject instead of silently launching an unlimited crawl
+  ---
+  duration_ms: 0.753833
+  type: 'test'
+  ...
+# Subtest: audit implies GET while deep remains legacy HTML collection
+ok 2 - audit implies GET while deep remains legacy HTML collection
+  ---
+  duration_ms: 0.1825
+  type: 'test'
+  ...
+# Subtest: invalid sitemap is failed discovery, never healthy empty report
+ok 3 - invalid sitemap is failed discovery, never healthy empty report
+  ---
+  duration_ms: 70.119708
+  type: 'test'
+  ...
+# Subtest: 200 noindex is an SEO error with provenance in audit mode
+ok 4 - 200 noindex is an SEO error with provenance in audit mode
+  ---
+  duration_ms: 94.80725
+  type: 'test'
+  ...
+# Subtest: HEAD has non-evaluated HTML and does not fabricate missing canonicals
+ok 5 - HEAD has non-evaluated HTML and does not fabricate missing canonicals
+  ---
+  duration_ms: 7.543292
+  type: 'test'
+  ...
+# Subtest: completed planned sample is complete/sample not partial or full
+ok 6 - completed planned sample is complete/sample not partial or full
+  ---
+  duration_ms: 6.586167
+  type: 'test'
+  ...
+# Subtest: robots denial skips actual requests and records a policy problem
+ok 7 - robots denial skips actual requests and records a policy problem
+  ---
+  duration_ms: 4.675375
+  type: 'test'
+  ...
+# Subtest: deep without audit captures noindex but preserves legacy exit semantics
+ok 8 - deep without audit captures noindex but preserves legacy exit semantics
+  ---
+  duration_ms: 6.865625
+  type: 'test'
+  ...
+# Subtest: CSV retains original header order and escapes spreadsheet formulas
+ok 9 - CSV retains original header order and escapes spreadsheet formulas
+  ---
+  duration_ms: 0.747042
+  type: 'test'
+  ...
+# Subtest: redirects never request a robots-disallowed destination and retain target policy
+ok 10 - redirects never request a robots-disallowed destination and retain target policy
+  ---
+  duration_ms: 5.654708
+  type: 'test'
+  ...
+# Subtest: 204 is never a successful HTML evaluation that could resolve old findings
+ok 11 - 204 is never a successful HTML evaluation that could resolve old findings
+  ---
+  duration_ms: 4.608
+  type: 'test'
+  ...
+# Subtest: reads actual HTML attributes and entity-decoded title/canonical
+ok 12 - reads actual HTML attributes and entity-decoded title/canonical
+  ---
+  duration_ms: 3.962791
+  type: 'test'
+  ...
+# Subtest: ignores inactive markup and body canonical while respecting body robots meta
+ok 13 - ignores inactive markup and body canonical while respecting body robots meta
+  ---
+  duration_ms: 1.231208
+  type: 'test'
+  ...
+# Subtest: resolves all canonical links against the first base href
+ok 14 - resolves all canonical links against the first base href
+  ---
+  duration_ms: 0.499792
+  type: 'test'
+  ...
+# Subtest: retains invalid canonical evidence rather than silently choosing a valid link
+ok 15 - retains invalid canonical evidence rather than silently choosing a valid link
+  ---
+  duration_ms: 0.187875
+  type: 'test'
+  ...
+# Subtest: keeps missing metadata distinct from malformed metadata
+ok 16 - keeps missing metadata distinct from malformed metadata
+  ---
+  duration_ms: 0.228916
+  type: 'test'
+  ...
+# Subtest: does not read arbitrary description and viewport metadata as robots policy
+ok 17 - does not read arbitrary description and viewport metadata as robots policy
+  ---
+  duration_ms: 0.246333
+  type: 'test'
+  ...
+# Subtest: GET preserves body, lowercase headers, and total versus header latency
+ok 18 - GET preserves body, lowercase headers, and total versus header latency
+  ---
+  duration_ms: 135.458167
+  type: 'test'
+  ...
+# Subtest: deadline includes a delayed body after headers have arrived
+ok 19 - deadline includes a delayed body after headers have arrived
+  ---
+  duration_ms: 64.372917
+  type: 'test'
+  ...
+# Subtest: deadline cancels a response stream that never finishes
+ok 20 - deadline cancels a response stream that never finishes
+  ---
+  duration_ms: 77.649125
+  type: 'test'
+  ...
+# Subtest: same deadline covers all redirect hops
+ok 21 - same deadline covers all redirect hops
+  ---
+  duration_ms: 82.246417
+  type: 'test'
+  ...
+# Subtest: redirects retain source status and location and schedule every hop
+ok 22 - redirects retain source status and location and schedule every hop
+  ---
+  duration_ms: 4.884583
+  type: 'test'
+  ...
+# Subtest: external redirect is rejected before the target receives a request
+ok 23 - external redirect is rejected before the target receives a request
+  ---
+  duration_ms: 2.157125
+  type: 'test'
+  ...
+# Subtest: redirect loops and redirect limits fail explicitly
+ok 24 - redirect loops and redirect limits fail explicitly
+  ---
+  duration_ms: 6.204125
+  type: 'test'
+  ...
+# Subtest: redirect response body is cancelled without waiting for its end
+ok 25 - redirect response body is cancelled without waiting for its end
+  ---
+  duration_ms: 21.447417
+  type: 'test'
+  ...
+# Subtest: HEAD falls back to GET on 405 while retaining empty unevaluated body
+ok 26 - HEAD falls back to GET on 405 while retaining empty unevaluated body
+  ---
+  duration_ms: 2.675625
+  type: 'test'
+  ...
+# Subtest: HEAD cancellation also handles an injected response with a body
+ok 27 - HEAD cancellation also handles an injected response with a body
+  ---
+  duration_ms: 1.143042
+  type: 'test'
+  ...
+# Subtest: body limit applies to streamed bytes without Content-Length
+ok 28 - body limit applies to streamed bytes without Content-Length
+  ---
+  duration_ms: 3.270334
+  type: 'test'
+  ...
+# Subtest: binary gzip sitemaps are decoded and expanded bytes are bounded
+ok 29 - binary gzip sitemaps are decoded and expanded bytes are bounded
+  ---
+  duration_ms: 3.326333
+  type: 'test'
+  ...
+# Subtest: native Content-Encoding gzip cannot bypass expanded byte limit
+ok 30 - native Content-Encoding gzip cannot bypass expanded byte limit
+  ---
+  duration_ms: 1.979042
+  type: 'test'
+  ...
+# Subtest: corrupt gzip data is a typed error
+ok 31 - corrupt gzip data is a typed error
+  ---
+  duration_ms: 6.508208
+  type: 'test'
+  ...
+# Subtest: external abort interrupts body reads and pre-aborted signals do not fetch
+ok 32 - external abort interrupts body reads and pre-aborted signals do not fetch
+  ---
+  duration_ms: 52.115833
+  type: 'test'
+  ...
+# Subtest: deadline covers a scheduler that does not complete
+ok 33 - deadline covers a scheduler that does not complete
+  ---
+  duration_ms: 31.082542
+  type: 'test'
+  ...
+# Subtest: invalid URLs and options fail before fetching
+ok 34 - invalid URLs and options fail before fetching
+  ---
+  duration_ms: 0.774875
+  type: 'test'
+  ...
+# Subtest: allowlisted hostname does not authorize an alternate service port
+ok 35 - allowlisted hostname does not authorize an alternate service port
+  ---
+  duration_ms: 0.632166
+  type: 'test'
+  ...
+# Subtest: collects description and head alternates without treating absent hreflang as broken
+ok 36 - collects description and head alternates without treating absent hreflang as broken
+  ---
+  duration_ms: 3.101833
+  type: 'test'
+  ...
+# Subtest: JSON-LD syntax and event field presence are separate from factual accuracy
+ok 37 - JSON-LD syntax and event field presence are separate from factual accuracy
+  ---
+  duration_ms: 1.114541
+  type: 'test'
+  ...
+# Subtest: inactive or nonobject JSON-LD never proves structure; metadata omits raw body and personal rows
+ok 38 - inactive or nonobject JSON-LD never proves structure; metadata omits raw body and personal rows
+  ---
+  duration_ms: 0.781292
+  type: 'test'
+  ...
+# Subtest: specific user-agent group does not inherit wildcard group
+ok 39 - specific user-agent group does not inherit wildcard group
+  ---
+  duration_ms: 1.640625
+  type: 'test'
+  ...
+# Subtest: wildcards, terminal dollar, longer rule and allow-on-tie are effective
+ok 40 - wildcards, terminal dollar, longer rule and allow-on-tie are effective
+  ---
+  duration_ms: 0.639291
+  type: 'test'
+  ...
+# Subtest: merges repeated specific groups and handles comments, CRLF, user-agent version
+ok 41 - merges repeated specific groups and handles comments, CRLF, user-agent version
+  ---
+  duration_ms: 0.166375
+  type: 'test'
+  ...
+# Subtest: unknown robots policy stays unknown; empty file allows
+ok 42 - unknown robots policy stays unknown; empty file allows
+  ---
+  duration_ms: 0.171583
+  type: 'test'
+  ...
+# Subtest: a declared specific group with no rules does not inherit wildcard blocking
+ok 43 - a declared specific group with no rules does not inherit wildcard blocking
+  ---
+  duration_ms: 0.077833
+  type: 'test'
+  ...
+# Subtest: sitemap and unsupported fields do not split adjacent user-agent groups
+ok 44 - sitemap and unsupported fields do not split adjacent user-agent groups
+  ---
+  duration_ms: 0.065791
+  type: 'test'
+  ...
+# Subtest: Googlebot wildcard and version decorations still select its specific policy
+ok 45 - Googlebot wildcard and version decorations still select its specific policy
+  ---
+  duration_ms: 0.11425
+  type: 'test'
+  ...
+# Subtest: parses generic and scoped X-Robots-Tag without leaking scope across headers
+ok 46 - parses generic and scoped X-Robots-Tag without leaking scope across headers
+  ---
+  duration_ms: 0.184875
+  type: 'test'
+  ...
+# Subtest: parses combined header scopes and keeps directive parameters out of agent names
+ok 47 - parses combined header scopes and keeps directive parameters out of agent names
+  ---
+  duration_ms: 0.266125
+  type: 'test'
+  ...
+# Subtest: retains comma inside unavailable_after dates as part of its directive
+ok 48 - retains comma inside unavailable_after dates as part of its directive
+  ---
+  duration_ms: 0.294709
+  type: 'test'
+  ...
+# Subtest: healthy page has no findings and warnings carry actual observable evidence
+ok 49 - healthy page has no findings and warnings carry actual observable evidence
+  ---
+  duration_ms: 1.688917
+  type: 'test'
+  ...
+# Subtest: HEAD and failed HTML evaluations do not invent missing HTML metadata
+ok 50 - HEAD and failed HTML evaluations do not invent missing HTML metadata
+  ---
+  duration_ms: 0.094
+  type: 'test'
+  ...
+# Subtest: generic and scoped noindex or none are effective despite index/follow
+ok 51 - generic and scoped noindex or none are effective despite index/follow
+  ---
+  duration_ms: 0.291333
+  type: 'test'
+  ...
+# Subtest: noindex applies only to matching agents and expected-indexable pages
+ok 52 - noindex applies only to matching agents and expected-indexable pages
+  ---
+  duration_ms: 0.137375
+  type: 'test'
+  ...
+# Subtest: evaluates X-Robots-Tag in HEAD with correct evidence source
+ok 53 - evaluates X-Robots-Tag in HEAD with correct evidence source
+  ---
+  duration_ms: 0.119083
+  type: 'test'
+  ...
+# Subtest: Googlebot robots blocking is a separate error with its matched policy
+ok 54 - Googlebot robots blocking is a separate error with its matched policy
+  ---
+  duration_ms: 0.144375
+  type: 'test'
+  ...
+# Subtest: HTTP failures and transport errors include URL and status without missing metadata noise
+ok 55 - HTTP failures and transport errors include URL and status without missing metadata noise
+  ---
+  duration_ms: 0.336875
+  type: 'test'
+  ...
+# Subtest: operational deadline and robots skips do not fabricate HTTP errors
+ok 56 - operational deadline and robots skips do not fabricate HTTP errors
+  ---
+  duration_ms: 0.073834
+  type: 'test'
+  ...
+# Subtest: redirects and a different canonical are separate warnings, with redirect chain preserved
+ok 57 - redirects and a different canonical are separate warnings, with redirect chain preserved
+  ---
+  duration_ms: 0.292583
+  type: 'test'
+  ...
+# Subtest: different canonicals are errors but duplicate equivalent links do not conflict
+ok 58 - different canonicals are errors but duplicate equivalent links do not conflict
+  ---
+  duration_ms: 4.792958
+  type: 'test'
+  ...
+# Subtest: canonical policies can disable missing warning or explicitly promote mismatch
+ok 59 - canonical policies can disable missing warning or explicitly promote mismatch
+  ---
+  duration_ms: 0.205875
+  type: 'test'
+  ...
+# Subtest: non-HTML content is rejected and h1 counts remain review warnings
+ok 60 - non-HTML content is rejected and h1 counts remain review warnings
+  ---
+  duration_ms: 0.108167
+  type: 'test'
+  ...
+# Subtest: successful responses with missing Content-Type are explicit errors, including failed HTML evaluation
+ok 61 - successful responses with missing Content-Type are explicit errors, including failed HTML evaluation
+  ---
+  duration_ms: 0.082542
+  type: 'test'
+  ...
+# Subtest: HEAD still reports missing Content-Type without guessing HTML metadata
+ok 62 - HEAD still reports missing Content-Type without guessing HTML metadata
+  ---
+  duration_ms: 0.039417
+  type: 'test'
+  ...
+# Subtest: invalid MIME identifies the returned value as incompatible
+ok 63 - invalid MIME identifies the returned value as incompatible
+  ---
+  duration_ms: 0.049709
+  type: 'test'
+  ...
+# Subtest: bodyless successful status cannot be a healthy expected page even with HTML Content-Type
+ok 64 - bodyless successful status cannot be a healthy expected page even with HTML Content-Type
+  ---
+  duration_ms: 0.054
+  type: 'test'
+  ...
+# Subtest: soft 404 requires explicit evidence and remains manual review
+ok 65 - soft 404 requires explicit evidence and remains manual review
+  ---
+  duration_ms: 0.150125
+  type: 'test'
+  ...
+# Subtest: namespace-qualified locations, entities, CDATA, and lastmod are preserved
+ok 66 - namespace-qualified locations, entities, CDATA, and lastmod are preserved
+  ---
+  duration_ms: 2.366375
+  type: 'test'
+  ...
+# Subtest: extensions and commented locations are not page URLs
+ok 67 - extensions and commented locations are not page URLs
+  ---
+  duration_ms: 0.421625
+  type: 'test'
+  ...
+# Subtest: a legitimate empty urlset is valid
+ok 68 - a legitimate empty urlset is valid
+  ---
+  duration_ms: 0.106542
+  type: 'test'
+  ...
+# Subtest: HTML, broken XML, incorrect namespaces, and unsupported roots are errors
+ok 69 - HTML, broken XML, incorrect namespaces, and unsupported roots are errors
+  ---
+  duration_ms: 0.949667
+  type: 'test'
+  ...
+# Subtest: DTD and external entity declarations are rejected
+ok 70 - DTD and external entity declarations are rejected
+  ---
+  duration_ms: 0.556583
+  type: 'test'
+  ...
+# Subtest: missing, duplicate, nested, nonabsolute, and unsafe loc values are rejected
+ok 71 - missing, duplicate, nested, nonabsolute, and unsafe loc values are rejected
+  ---
+  duration_ms: 0.551834
+  type: 'test'
+  ...
+# Subtest: discovery retains completed children when another returns malformed XML
+ok 72 - discovery retains completed children when another returns malformed XML
+  ---
+  duration_ms: 54.64875
+  type: 'test'
+  ...
+# Subtest: duplicates retain all source sitemaps and lastmod without repeated requests
+ok 73 - duplicates retain all source sitemaps and lastmod without repeated requests
+  ---
+  duration_ms: 8.433625
+  type: 'test'
+  ...
+# Subtest: cycles are explicit partial discovery and do not loop
+ok 74 - cycles are explicit partial discovery and do not loop
+  ---
+  duration_ms: 4.580458
+  type: 'test'
+  ...
+# Subtest: maxSitemaps stops fetching beyond budget while preserving observed URLs
+ok 75 - maxSitemaps stops fetching beyond budget while preserving observed URLs
+  ---
+  duration_ms: 2.427833
+  type: 'test'
+  ...
+# Subtest: maxDiscoveredUrls bounds adopted URLs and prevents further sitemap requests
+ok 76 - maxDiscoveredUrls bounds adopted URLs and prevents further sitemap requests
+  ---
+  duration_ms: 4.427208
+  type: 'test'
+  ...
+# Subtest: external child sitemaps and page locations are rejected without network to those URLs
+ok 77 - external child sitemaps and page locations are rejected without network to those URLs
+  ---
+  duration_ms: 2.25725
+  type: 'test'
+  ...
+# Subtest: compressed sitemaps and HTTP failure reporting use the real transport
+ok 78 - compressed sitemaps and HTTP failure reporting use the real transport
+  ---
+  duration_ms: 12.69675
+  type: 'test'
+  ...
+# Subtest: invalid discovery limits or missing allowed hosts reject before network
+ok 79 - invalid discovery limits or missing allowed hosts reject before network
+  ---
+  duration_ms: 0.275
+  type: 'test'
+  ...
+# Subtest: page discovery stops parsing at its unique URL budget and preserves a partial prefix
+ok 80 - page discovery stops parsing at its unique URL budget and preserves a partial prefix
+  ---
+  duration_ms: 1.55425
+  type: 'test'
+  ...
+# Subtest: index discovery bounds pending children while still fetching the allowed prefix
+ok 81 - index discovery bounds pending children while still fetching the allowed prefix
+  ---
+  duration_ms: 2.38
+  type: 'test'
+  ...
+# Subtest: a malformed child does not commit locations parsed before the XML error
+ok 82 - a malformed child does not commit locations parsed before the XML error
+  ---
+  duration_ms: 1.335875
+  type: 'test'
+  ...
+# Subtest: content-type mismatch is an operational sitemap error even for XML-looking content
+ok 83 - content-type mismatch is an operational sitemap error even for XML-looking content
+  ---
+  duration_ms: 1.116416
+  type: 'test'
+  ...
+1..83
+# tests 83
+# suites 0
+# pass 83
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 576.182042

@@ -1,0 +1,76 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+      - generic [ref=e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e9]:
+      - button "Públicos" [ref=e10] [cursor=pointer]
+      - button "Oportunidades" [ref=e11] [cursor=pointer]
+      - button "Planejamento" [ref=e12] [cursor=pointer]
+      - button "Campanhas" [ref=e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e14] [cursor=pointer]
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - heading "Campanhas revisadas" [level=2] [ref=e61]
+          - paragraph [ref=e62]: Notificações, e-mail e cards no mini perfil. Salvar não envia.
+        - button "Nova campanha" [ref=e63] [cursor=pointer]
+      - paragraph [ref=e65]: Nenhuma campanha criada. Comece por um público salvo.
+      - generic [ref=e66]:
+        - button "Anterior" [disabled] [ref=e67]
+        - generic [ref=e68]: Página 1
+        - button "Próxima" [disabled] [ref=e69]
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - heading "Nova campanha" [level=2] [ref=e72]
+          - button "Fechar" [ref=e73] [cursor=pointer]
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - text: Nome interno
+            - textbox "Nome interno" [ref=e76]
+          - generic [ref=e77]:
+            - text: Público salvo
+            - combobox "Público salvo" [ref=e78]:
+              - option "Público sintético SC" [selected]
+              - option "Público sintético SP"
+          - generic [ref=e79]:
+            - text: Canal
+            - combobox "Canal" [ref=e80]:
+              - option "Notificação no site" [selected]
+              - option "E-mail marketing"
+              - option "Card no mini perfil"
+          - generic [ref=e81]:
+            - text: Prioridade do card
+            - spinbutton "Prioridade do card" [ref=e82]: "0"
+          - generic [ref=e83]:
+            - text: Objetivo mensurável
+            - combobox "Objetivo mensurável" [ref=e84]:
+              - option "Sem objetivo de conversão" [selected]
+              - option "Início de inscrição no Todo Santo Dia"
+          - generic [ref=e85]:
+            - text: Título / assunto
+            - textbox "Título / assunto" [ref=e86]
+          - generic [ref=e87]:
+            - text: Texto do botão
+            - textbox "Texto do botão" [ref=e88]: Saiba mais
+          - generic [ref=e89]:
+            - text: Mensagem
+            - textbox "Mensagem" [ref=e90]
+          - generic [ref=e91]:
+            - text: Link de destino
+            - textbox "Link de destino" [ref=e92]:
+              - /placeholder: /busca/ ou URL HTTPS dos sites autorizados
+          - generic [ref=e93]:
+            - text: Início (Brasília)
+            - textbox "Início (Brasília)" [ref=e94]: 2026-09-25T09:19
+          - generic [ref=e95]:
+            - text: Fim (Brasília)
+            - textbox "Fim (Brasília)" [ref=e96]: 2026-10-02T09:19
+        - paragraph
+        - paragraph [ref=e97]: "E-mail e notificação: no máximo um contato comercial em 7 dias por pessoa. Cards: até 3 sessões por dia, com opção de dispensar."
+        - generic [ref=e98]:
+          - button "Salvar rascunho" [ref=e99] [cursor=pointer]
+          - button "Revisar destinatários" [disabled] [ref=e100]

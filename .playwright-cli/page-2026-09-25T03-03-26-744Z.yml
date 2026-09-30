@@ -1,0 +1,100 @@
+- generic [active] [ref=f12e1]:
+  - paragraph [ref=f12e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=f12e3]:
+    - generic [ref=f12e4]:
+      - generic [ref=f12e5]:
+        - generic [ref=f12e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=f12e7]
+      - generic [ref=f12e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=f12e9]:
+      - button "Públicos" [ref=f12e10] [cursor=pointer]
+      - button "Oportunidades" [ref=f12e11] [cursor=pointer]
+      - button "Planejamento" [ref=f12e12] [cursor=pointer]
+      - button "Campanhas" [ref=f12e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=f12e14] [cursor=pointer]
+    - generic [ref=f12e16]:
+      - complementary [ref=f12e17]:
+        - generic [ref=f12e18]:
+          - heading "Públicos 2" [level=2] [ref=f12e19]
+          - button "Novo público" [ref=f12e20] [cursor=pointer]
+        - generic [ref=f12e21]:
+          - generic [ref=f12e22]: Buscar público
+          - searchbox "Buscar público" [ref=f12e23]
+        - generic [ref=f12e24]:
+          - button "Público sintético SCv1 1 pessoas" [ref=f12e25] [cursor=pointer]:
+            - generic [ref=f12e26]: Público sintético SCv1
+            - generic [ref=f12e27]:
+              - text: "1"
+              - generic [ref=f12e28]: pessoas
+          - button "Público sintético SPv1 1 pessoas" [ref=f12e29] [cursor=pointer]:
+            - generic [ref=f12e30]: Público sintético SPv1
+            - generic [ref=f12e31]:
+              - text: "1"
+              - generic [ref=f12e32]: pessoas
+        - generic [ref=f12e33]:
+          - button "Anterior" [disabled] [ref=f12e34]
+          - generic [ref=f12e35]: 1 / 1
+          - button "Próxima" [disabled] [ref=f12e36]
+        - paragraph [ref=f12e37]: Contagem em 24/09/2026, 12:00
+        - generic [ref=f12e38]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=f12e39]:
+        - generic [ref=f12e40]:
+          - generic [ref=f12e41]:
+            - heading "Público sintético SC" [level=2] [ref=f12e58]
+            - paragraph [ref=f12e43]: 1 usuários · consulta em 24/09/2026, 12:00 · elegibilidade de cada canal será revisada na campanha.
+          - generic [ref=f12e59]:
+            - button "Editar público" [ref=f12e60] [cursor=pointer]
+            - button "Criar campanha" [ref=f12e61] [cursor=pointer]
+        - region "Pessoas aptas por canal" [ref=f12e62]:
+          - generic [ref=f12e63]:
+            - generic [ref=f12e64]:
+              - strong [ref=f12e65]: Aptos por canal
+              - generic [ref=f12e66]: Público v1 · 24/09/2026, 12:00
+            - button "Recalcular" [ref=f12e67] [cursor=pointer]
+          - status [ref=f12e68]:
+            - generic [ref=f12e69]:
+              - generic [ref=f12e70]:
+                - strong [ref=f12e71]: "1"
+                - generic [ref=f12e72]: E-mail · aptos
+                - generic [ref=f12e73]: 0 excluídos de 1
+              - generic [ref=f12e74]:
+                - strong [ref=f12e75]: "0"
+                - generic [ref=f12e76]: Notificação · aptos
+                - generic [ref=f12e77]: 1 excluídos de 1
+                - group [ref=f12e78]:
+                  - generic "Ver motivos" [ref=f12e79] [cursor=pointer]
+              - generic [ref=f12e80]:
+                - strong [ref=f12e81]: "1"
+                - generic [ref=f12e82]: Card no perfil · aptos
+                - generic [ref=f12e83]: 0 excluídos de 1
+          - paragraph [ref=f12e84]: Estimativa para este público. Preferências e limites são verificados novamente antes de cada envio.
+        - group [ref=f12e85]:
+          - generic "Cobertura dos dados deste público" [ref=f12e86] [cursor=pointer]
+        - group [ref=f12e87]:
+          - generic "Ideias de campanha para este público" [ref=f12e88] [cursor=pointer]
+        - group [ref=f12e89]:
+          - generic "Evolução diária deste público" [ref=f12e90] [cursor=pointer]
+        - group [ref=f12e91]:
+          - generic "Sobreposição com outros públicos" [ref=f12e92] [cursor=pointer]
+        - table [ref=f12e45]:
+          - rowgroup [ref=f12e46]:
+            - row [ref=f12e47]:
+              - columnheader "Usuário" [ref=f12e48]
+              - columnheader "Localidade" [ref=f12e49]
+              - columnheader "Motivo da seleção" [ref=f12e50]
+              - columnheader [ref=f12e51]
+          - rowgroup [ref=f12e52]:
+            - row [ref=f12e93]:
+              - cell "Corredor sintético runner@example.test" [ref=f12e94]:
+                - text: Corredor sintético
+                - generic [ref=f12e95]: runner@example.test
+              - cell "Florianópolis / SC" [ref=f12e96]
+              - cell [ref=f12e97]:
+                - list [ref=f12e98]:
+                  - listitem [ref=f12e99]: Resultado reconhecido nos últimos 30 dias (meia maratona)
+              - cell [ref=f12e100]:
+                - button "Ver perfil" [ref=f12e101] [cursor=pointer]
+        - generic [ref=f12e55]:
+          - button "Anterior" [disabled] [ref=f12e56]
+          - generic [ref=f12e102]: Página 1 de 1
+          - button "Próxima" [disabled] [ref=f12e57]

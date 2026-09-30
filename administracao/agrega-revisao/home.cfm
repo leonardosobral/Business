@@ -44,7 +44,7 @@
     <a class="btn btn-outline-light btn-sm" href="/eventos/">Eventos</a>
   </div>
 
-  <cfif len(VARIABLES.agregaReviewNotice) AND NOT listFind("sugestao_aceita,sugestao_ja_aplicada", URL.sucesso)>
+  <cfif len(VARIABLES.agregaReviewNotice) AND NOT listFind("sugestao_aceita,sugestao_vinculada,sugestao_ja_aplicada", URL.sucesso)>
     <div class="alert alert-success"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
   </cfif>
   <cfif len(VARIABLES.agregaReviewError)>
@@ -257,7 +257,7 @@
     </cfif>
 
     <div id="agrega-review-list"></div>
-    <cfif len(VARIABLES.agregaReviewNotice) AND listFind("sugestao_aceita,sugestao_ja_aplicada", URL.sucesso)>
+    <cfif len(VARIABLES.agregaReviewNotice) AND listFind("sugestao_aceita,sugestao_vinculada,sugestao_ja_aplicada", URL.sucesso)>
       <div class="alert alert-success" role="status"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
     </cfif>
     <cfif !qAgregaReviewGroups.recordcount OR VARIABLES.agregaReviewRenderableTotal EQ 0>
@@ -341,6 +341,24 @@
                     <a class="btn btn-outline-warning btn-sm" href="/administracao/agrega-revisao/?grupo=#id_evento_agrega_review_group#">Revisar este par</a>
                   </div>
                   <div class="col-12 small text-muted">Cria o agregador e vincula as duas provas listadas.</div>
+                </form>
+              <cfelseif structKeyExists(VARIABLES.agregaReviewQuickExistingGroups, VARIABLES.agregaReviewCurrentGroupKey)>
+                <cfset VARIABLES.agregaReviewQuickExisting = VARIABLES.agregaReviewQuickExistingGroups[VARIABLES.agregaReviewCurrentGroupKey] />
+                <form method="post" class="agrega-review-quick-form row g-2 align-items-end mt-3">
+                  <input type="hidden" name="acao" value="aceitar_sugestao" />
+                  <input type="hidden" name="id_grupo" value="#id_evento_agrega_review_group#" />
+                  <input type="hidden" name="agregador_esperado" value="#VARIABLES.agregaReviewQuickExisting.id#" />
+                  <input type="hidden" name="eventos_esperados" value="#htmlEditFormat(VARIABLES.agregaReviewQuickExisting.eventIds)#" />
+                  <input type="hidden" name="quick_token" value="#htmlEditFormat(VARIABLES.agregaReviewQuickToken)#" />
+                  <div class="col-12 col-xl">
+                    <div class="small text-muted mb-1">Agregador existente</div>
+                    <div class="fw-semibold">#htmlEditFormat(VARIABLES.agregaReviewQuickExisting.nome)# · ###VARIABLES.agregaReviewQuickExisting.id#</div>
+                  </div>
+                  <div class="col-12 col-sm-auto d-flex flex-wrap gap-2">
+                    <button class="btn btn-warning btn-sm" type="submit">Vincular ao agregador existente</button>
+                    <a class="btn btn-outline-warning btn-sm" href="/administracao/agrega-revisao/?grupo=#id_evento_agrega_review_group#">Revisar este par</a>
+                  </div>
+                  <div class="col-12 small text-muted">Vincula a prova sem agregador ao mesmo grupo da outra edição.</div>
                 </form>
               <cfelse>
               <a class="btn btn-outline-warning btn-sm mt-2" href="/administracao/agrega-revisao/?grupo=#id_evento_agrega_review_group#"><cfif status EQ "review">Revisar este par<cfelse>Ver revisão</cfif></a>
@@ -715,6 +733,8 @@
 (function () {
   const quickForms = Array.from(document.querySelectorAll('.agrega-review-quick-form'));
   quickForms.forEach(function (form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.dataset.idleLabel = submitButton.textContent;
     form.addEventListener('submit', function () {
       const button = form.querySelector('button[type="submit"]');
       button.disabled = true;
@@ -726,7 +746,7 @@
     quickForms.forEach(function (form) {
       const button = form.querySelector('button[type="submit"]');
       button.disabled = false;
-      button.textContent = 'Aceitar sugestão';
+      button.textContent = button.dataset.idleLabel;
       form.removeAttribute('aria-busy');
     });
   });

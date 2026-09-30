@@ -12,9 +12,9 @@ import { spawnSync } from 'node:child_process';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const templates = ['portal/conteudo/seo.cfm', 'portal/includes/seo_queue_backend.cfm', 'portal/includes/seo_queue_data.cfm',
-  'portal/conteudo/seo_report.cfm', 'portal/includes/seo_score_backend.cfm', 'portal/includes/seo_score_data.cfm'];
+  'portal/conteudo/seo_report.cfm', 'portal/includes/seo_score_backend.cfm', 'portal/includes/seo_score_data.cfm', 'portal/conteudo/seo_ai.cfm'];
 const cases = ['contract', 'resolved-contract', ...templates.flatMap((_, index) => [`anonymous-${index}`, `effective-denied-${index}`]),
-  'render-all', 'render-filtered', 'render-empty', 'render-escaped', 'invalid-urls',
+  'render-all', 'render-ai', 'render-filtered', 'render-empty', 'render-escaped', 'invalid-urls',
   'score-contract', 'score-invalid-data', 'render-score-filtered', 'render-score-escaped'];
 const requested = process.argv.slice(2);
 if (requested.includes('--list')) { console.log(cases.join('\n')); process.exit(0); }
@@ -63,6 +63,11 @@ try {
   copyFileSync(resolve(root, '_codex/tests/seo_queue_cfml.cfm'), resolve(scratch, 'fixture.cfm'));
   // Synthetic resolution states exercise the optional field without changing curated data.
   appendFileSync(resolve(scratch, 'portal/includes/seo_queue_data.cfm'), `\n<cfscript>
+if (listFind("contract,resolved-contract",VARIABLES.seoTestCase)) {
+    VARIABLES.seoQueueSnapshot.items = arrayFilter(VARIABLES.seoQueueSnapshot.items,function(item) {
+        return listFind("OR-01,OR-02,RR-01,RR-02,RR-03,RR-04,SH-01",item.id) GT 0;
+    });
+}
 if (VARIABLES.seoTestCase EQ "contract") {
     for (seoTestItem in VARIABLES.seoQueueSnapshot.items) structDelete(seoTestItem,"resolved");
 }
@@ -146,6 +151,18 @@ if (VARIABLES.seoTestCase EQ "render-score-escaped") {
   passed++;
   });
 
+  scenario('render-ai', () => {
+    const html = execute('render-ai');
+    assert.match(html,/SEO_QUEUE_RENDER_PASSED/);
+    assert.equal((html.match(/aria-label="SEO para IA —/g)||[]).length,2,'AI report must render both sites');
+    assert.match(html,/Sintaxe JSON-LD/);
+    assert.match(html,/Campos de eventos no JSON-LD/);
+    assert.doesNotMatch(html,/<article class="seo-issue/, 'AI navigation must keep the queue in its own section');
+    assert.doesNotMatch(html,/href\s*=\s*["'](?:javascript:|file:|data:)/i);
+    writeFileSync(resolve(output,'seo-ai.html'),html);
+    passed++;
+  });
+
   scenario('render-filtered', () => {
   const filtered = execute('render-filtered');
   assert.match(filtered, /SEO_QUEUE_RENDER_PASSED/);
@@ -218,7 +235,7 @@ if (VARIABLES.seoTestCase EQ "render-escaped") {
     for (const site of data.sites) {
       assert.ok(html.includes(site.scorelabel), `${site.id}: filtering must leave its score visible`);
     }
-    assert.ok(html.includes('RR-01') && html.includes('SH-01'), 'Filtering checks must leave the correction queue intact');
+    assert.doesNotMatch(html, /<article class="seo-issue"/, 'Technical checks must render in their own section; the queue remains on its tab');
     writeFileSync(resolve(output, 'seo-score-filtered.html'), html);
     passed++;
   });

@@ -105,3 +105,11 @@ Publicado somente `includes/quick_accept.cfm`, `includes/backend.cfm` e `home.cf
 Circuitos foram migrados para `tb_agregadores` / `tb_agregadores_eventos`. O campo de edição foi liberado, e agora as etapas podem entrar no gerador normalmente. Os cadastros legados de circuito não são oferecidos como grupos de edições. Revisões historicamente aplicadas a circuitos migrados são preservadas e não bloqueiam uma nova sugestão de edições; as demais proteções de histórico e pendências permanecem.
 
 Execução, números, compatibilidade de cupons e recuperação em [Migração de circuitos](../_codex/docs/2026-09-28_circuitos_migracao.md).
+
+## Atalho para agregador existente — 28/09/2026
+
+A listagem oferece **Vincular ao agregador existente** nos pares `edicoes-v1:` pendentes com exatamente duas candidatas ativas, uma sem vínculo e outra em um único agregador de edições válido. Mostra nome/ID do destino e preserva a revisão detalhada. Grupos conflitantes, circuitos, candidatos inativos ou sugestões de outro destino não recebem o atalho. O botão de criar agregador continua disponível para pares sem vínculos.
+
+O mesmo POST `aceitar_sugestao` recebe `agregador_esperado`. A operação administrativa mantém CSRF, bloqueia grupo/candidatas/eventos e revalida os IDs esperados e o destino. Reutilizar não cria nem renomeia agregadores: atualiza somente a prova ainda sem vínculo, conclui os dois candidatos e registra auditoria em uma transação. Repetir um envio concluído não reaplica. A listagem conserva busca, ordenação e página após o POST, sem confirmação JavaScript.
+
+Validação: 27 cenários CFML/PostgreSQL passaram usando tabelas temporárias com nomes exclusivos e rollback; incluem criação anterior, reutilização, repetição, destino alterado, dois destinos, circuito, inatividade e falha de escrita. Compilação dos três arquivos bem-sucedida, publicação limitada ao escopo e hashes verificados. Chrome autenticado mostrou o atalho do grupo 5777 para **Corrida dos Bancários - Salvador · #1253**, mantendo o grupo pendente; nenhum vínculo real foi aplicado no teste. Desktop e mobile 390px verificados, sem overflow horizontal. Evidências em `_codex/docs/agrega_existing_2026_09_28/`; backup remoto `/var/backups/circuitos-20260928/quick-existing/Business/baseline`.

@@ -1,0 +1,49 @@
+- generic [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+      - generic [ref=e8]: Revisão manual ativa
+    - navigation "Áreas do CRM" [ref=e9]:
+      - button "Públicos" [ref=e10] [cursor=pointer]
+      - button "Oportunidades" [active] [ref=e11] [cursor=pointer]
+      - button "Planejamento" [ref=e12] [cursor=pointer]
+      - button "Campanhas" [ref=e13] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e14] [cursor=pointer]
+    - generic [ref=e58]:
+      - generic [ref=e60]:
+        - heading "Oportunidades e próximos retornos" [level=2] [ref=e61]
+        - paragraph [ref=e62]: Registros internos por pessoa; não enviam mensagens nem comprovam receita.
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - text: Responsável
+          - combobox "Responsável" [ref=e65]:
+            - option "Todos" [selected]
+            - option "Operador sintético"
+        - generic [ref=e66]:
+          - text: Etapa
+          - combobox "Etapa" [ref=e67]:
+            - option "Todas" [selected]
+            - option "Nova"
+            - option "Em contato"
+            - option "Interessado"
+            - option "Convertida manualmente"
+            - option "Encerrada"
+        - generic [ref=e68]:
+          - text: Prazo
+          - combobox "Prazo" [ref=e69]:
+            - option "Todos" [selected]
+            - option "Vencidas"
+            - option "Hoje"
+            - option "Próximas"
+            - option "Sem prazo"
+        - button "Atualizar" [ref=e70] [cursor=pointer]
+      - status [ref=e71]: 0 oportunidades no filtro · 0 convertidas manualmente (todas) · registro interno; não comprova compras ou receita.
+      - status [ref=e72]:
+        - paragraph [ref=e73]: Nenhuma oportunidade corresponde aos filtros.
+      - generic [ref=e74]:
+        - button "Anterior" [disabled] [ref=e75]
+        - generic [ref=e76]: Página 1 de 1
+        - button "Próxima" [disabled] [ref=e77]

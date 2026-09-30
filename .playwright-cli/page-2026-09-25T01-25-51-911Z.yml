@@ -1,0 +1,44 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e2]: Ambiente de teste · somente dados sintéticos
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: RELACIONAMENTO · ADMINISTRAÇÃO
+        - heading "CRM interno" [level=1] [ref=e7]
+      - generic [ref=e8]: Revisão manual ativa
+    - status [ref=e9]: Cannot read properties of undefined (reading 'toLocaleString')
+    - navigation "Áreas do CRM" [ref=e10]:
+      - button "Públicos" [ref=e11] [cursor=pointer]
+      - button "Campanhas" [ref=e12] [cursor=pointer]
+      - button "Dados disponíveis" [ref=e13] [cursor=pointer]
+    - generic [ref=e15]:
+      - complementary [ref=e16]:
+        - generic [ref=e17]:
+          - heading "Públicos" [level=2] [ref=e18]
+          - button "Novo público" [ref=e19] [cursor=pointer]
+        - generic [ref=e20]:
+          - generic [ref=e21]: Buscar público
+          - searchbox "Buscar público" [ref=e22]
+        - generic [ref=e23]: Carregando…
+        - generic [ref=e24]:
+          - button "Anterior" [ref=e25] [cursor=pointer]
+          - button "Próxima" [ref=e26] [cursor=pointer]
+        - paragraph
+        - generic [ref=e27]: Pessoas no público; elegibilidade de envio revisada na campanha. Os públicos podem se sobrepor.
+      - generic [ref=e28]:
+        - generic [ref=e30]:
+          - heading "Usuários do público" [level=2] [ref=e31]
+          - paragraph [ref=e32]: Selecione um público na lista para ver seus usuários.
+        - table [ref=e34]:
+          - rowgroup [ref=e35]:
+            - row [ref=e36]:
+              - columnheader "Usuário" [ref=e37]
+              - columnheader "Localidade" [ref=e38]
+              - columnheader "Motivo da seleção" [ref=e39]
+              - columnheader [ref=e40]
+          - rowgroup [ref=e41]:
+            - row [ref=e42]:
+              - cell "Selecione um público para começar." [ref=e43]
+        - generic [ref=e44]:
+          - button "Anterior" [disabled] [ref=e45]
+          - button "Próxima" [disabled] [ref=e46]

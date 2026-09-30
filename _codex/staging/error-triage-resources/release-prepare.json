@@ -1,0 +1,14 @@
+{
+  "before": {
+    "portal/erros/includes/ErrorTriage.cfc": "fa4ce5c6427ac1144f49f1ced19a34bf4b0224849271789572a4c5ab25afdd9c",
+    "portal/erros/includes/workspace.cfm": "ad18ba84bb265485ea1a4e1204bc86ea128818c7ce53f9869090e07b9bf6e63d"
+  },
+  "candidate": {
+    "portal/erros/includes/ErrorTriage.cfc": "9c2625e92f9fe8d708a964e979358cc950c8e57abbd521847f2a406e76c6c8ad",
+    "portal/erros/includes/workspace.cfm": "2b0cf75f38edbe6c78dc8598e26cc5b449fd357f84ace992c7986e8d581a85a7"
+  },
+  "order": [
+    "portal/erros/includes/ErrorTriage.cfc",
+    "portal/erros/includes/workspace.cfm"
+  ]
+}
