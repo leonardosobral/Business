@@ -1,7 +1,7 @@
 <cfoutput><div id="study-app" class="business-page study-page" data-csrf="#encodeForHTMLAttribute(SESSION.estudoCsrf)#">
 <div class="business-page-card">
   <div class="business-page-header">
-    <div><div class="study-eyebrow">ADMINISTRAÇÃO · PESQUISA E DADOS</div><h1 class="business-page-title">Estudo</h1><p class="text-muted mb-0">Queries, análises e resultados congelados, no mesmo caderno.</p></div>
+    <div><div class="study-eyebrow">ADMINISTRAÇÃO · PESQUISA E DADOS</div><h1 class="business-page-title">Estudo</h1><p class="text-muted mb-0">Consultas de 2025 e 2026, resultados congelados e publicação web no mesmo caderno.</p></div>
     <div class="study-actions"><button type="button" class="btn btn-link btn-sm" id="rename-book">Renomear caderno</button><button type="button" class="btn btn-outline-warning btn-sm" id="new-book">Novo caderno</button></div>
   </div>
   <div class="study-selectors">
@@ -47,7 +47,7 @@
 
 <section id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" hidden>
   <div class="study-card study-guide">
-    <h2 class="h5">Da consulta ao resultado preservado</h2>
+    <h2 class="h5">Da consulta ao resultado preservado</h2><p>Use o caderno <strong>Brasil que Corre Provas — Estudo e publicação</strong>. As seções de 2025 reúnem as consultas por página do PDF e a saída para web; 2026 tem sua própria seção de saída. Fontes e legado ficam como referências históricas.</p><p>Depois de corrigir uma consulta e congelar o resultado, atualize a execução usada na seção <strong>Saída para web</strong> do mesmo caderno. Execute, congele e confira o pacote na aba <strong>Versão web</strong> antes de ativá-lo.</p>
     <ol><li>Escolha um caderno e uma seção. Use células SQL para consultas e Texto para metodologia e observações.</li><li>Salve suas alterações. Cada salvamento cria uma revisão com data e autor. Se outra pessoa salvar antes, seu texto permanece no editor para comparação.</li><li>Execute a célula SQL inteira ou selecione uma única consulta. O botão salva a revisão antes de executar.</li><li>Confira a tabela e clique em <strong>Congelar resultado</strong>. Dê um título e registre o recorte e as ressalvas. O resultado exibido será preservado, sem nova consulta.</li></ol>
     <p>Consultas de leitura: até 45 segundos, 1.000 linhas, 100 colunas e 5 MB por execução. Resultados incompletos ficam identificados e precisam ser refinados antes do congelamento. Funções administrativas ou não habilitadas são recusadas.</p>
     <h3 class="h6">Acervo de 2025</h3><p>As células do editor antigo foram preservadas. Seus blocos HTML são resultados colados manualmente e podem corresponder a uma versão anterior da query. Eles não equivalem a um congelamento verificado.</p>

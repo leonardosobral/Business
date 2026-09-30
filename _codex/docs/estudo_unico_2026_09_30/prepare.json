@@ -1,0 +1,22 @@
+{
+  "Business": {
+    "before": {
+      "estudo/includes/StudyNotebook.cfc": "79c323a5d9cc3180cd4566f9c3a61a379940d7f082dcb2030185c7b9247a3300",
+      "estudo/assets/notebook.js": "9187c4eeb8306d70da95f2e35dcea8a8e7714de7cc0077ae3e927fa0695d23ac",
+      "estudo/index.cfm": "99353e13c6874f19d3b00211946eb3d23f4ef24720029cdb36bfc569c2e828c0",
+      "estudo/home.cfm": "cba4efe62e15fb1f2259adcebd642961603d84aac61cbc43c9f6ab4718701448"
+    },
+    "candidate": {
+      "estudo/includes/StudyNotebook.cfc": "4f1069361d9c399d402589ebc77238ddc93b52824f7337de6cbb827b2964ae19",
+      "estudo/assets/notebook.js": "74aad4c8c9fd10abb5dc5b5943ca9187133ea238cc8cc3b284d4c153adc795cd",
+      "estudo/index.cfm": "b82835721700f4829c796f8bcbe5342345b00c38ec8c3ac57997f530067962e9",
+      "estudo/home.cfm": "1e7070c7047906dbd0fec63b748ea48ae187b4d279f2aa88b8ace57c3b8d3234"
+    },
+    "order": [
+      "estudo/includes/StudyNotebook.cfc",
+      "estudo/assets/notebook.js",
+      "estudo/index.cfm",
+      "estudo/home.cfm"
+    ]
+  }
+}

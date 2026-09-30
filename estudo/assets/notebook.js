@@ -28,7 +28,7 @@ function selectOptions(select,items,label){select.replaceChildren();items.forEac
 function date(value){if(!value)return '';const parsed=new Date(value);return Number.isNaN(parsed.valueOf())?value:parsed.toLocaleString('pt-BR');}
 async function loadBooks(preferred){
  const books=await api('list');selectOptions($('study-book'),books,'titulo');
- state.book=books.find(b=>String(b.id)===String(preferred))||books[0];
+ state.book=books.find(b=>String(b.id)===String(preferred)||String(b.merged_ids||'').split(',').includes(String(preferred)))||books[0];
  if(!state.book){notice('Crie o primeiro caderno.');return;}
  $('study-book').value=state.book.id;await loadSections();
 }

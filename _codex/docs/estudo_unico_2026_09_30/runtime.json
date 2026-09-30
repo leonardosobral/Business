@@ -1,0 +1,194 @@
+{
+  "PUBLICATION": [
+    {
+      "ano": 2025,
+      "caderno_id": 6,
+      "run_atual": 32,
+      "publicacao_id": 1,
+      "nota": "Prévia em conciliação: totais e 33 valores ligados a sete congelamentos do notebook; demais fontes iniciais identificadas. Referência do PDF preservada.",
+      "cell_id": 249,
+      "notebook_id": 54,
+      "versao": 1,
+      "publicado_em": "2026-09-28T23:55:33.866732-03:00",
+      "runs": [
+        {
+          "started_at": "2026-09-28T23:50:07.353989-03:00",
+          "title": "Web 2025 · sete fontes do notebook e legado identificado",
+          "frozen_at": "2026-09-28T23:50:28.900331-03:00",
+          "cell_version": 2,
+          "id": 32
+        }
+      ]
+    },
+    {
+      "ano": 2026,
+      "caderno_id": 6,
+      "run_atual": 33,
+      "publicacao_id": 2,
+      "nota": "Prévia parcial preservada do snapshot 2026 v3, agora congelada no notebook Business. Sem nova coleta: números, data de corte e coortes mantidos.",
+      "cell_id": 251,
+      "notebook_id": 55,
+      "versao": 1,
+      "publicado_em": "2026-09-28T23:56:19.709755-03:00",
+      "runs": [
+        {
+          "started_at": "2026-09-28T23:55:49.355262-03:00",
+          "title": "Web 2026 · pacote parcial v3 preservado",
+          "frozen_at": "2026-09-28T23:55:59.333627-03:00",
+          "cell_version": 1,
+          "id": 33
+        }
+      ]
+    }
+  ],
+  "SECTIONS": [
+    {
+      "version": 2,
+      "call_order": 0,
+      "title": "2025 — Comece aqui — mapa das páginas",
+      "id": "37",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 3,
+      "title": "2025 — P03 — Panorama, volume e gênero",
+      "id": "38",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 4,
+      "title": "2025 — P04 — Faixas etárias",
+      "id": "39",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 5,
+      "title": "2025 — P05 — Gerações e comparações anuais",
+      "id": "40",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 6,
+      "title": "2025 — P06 — Distâncias e participação por sexo",
+      "id": "41",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 7,
+      "title": "2025 — P07 — Gerações nas distâncias",
+      "id": "42",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 8,
+      "title": "2025 — P08 — Ritmo e performance",
+      "id": "43",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 9,
+      "title": "2025 — P09 — Regiões e gênero",
+      "id": "44",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 10,
+      "title": "2025 — P10 — Estados, cidades e capital/interior",
+      "id": "45",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 11,
+      "title": "2025 — P11 — Calendário, trimestres e estações",
+      "id": "46",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 12,
+      "title": "2025 — P12 — Top maratonas e tempos",
+      "id": "47",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 13,
+      "title": "2025 — P13 — Maratonas rápidas e pódio",
+      "id": "48",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 14,
+      "title": "2025 — P14 — Faixas Corrida no Ar",
+      "id": "49",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 15,
+      "title": "2025 — P15 — Perfil e outros esportes",
+      "id": "50",
+      "tag": ""
+    },
+    {
+      "version": 2,
+      "call_order": 99,
+      "title": "2025 — Apoio — qualidade, fontes e pendências",
+      "id": "51",
+      "tag": ""
+    },
+    {
+      "version": 1,
+      "call_order": 2025,
+      "title": "2025 — Saída para web",
+      "id": "54",
+      "tag": ""
+    },
+    {
+      "version": 1,
+      "call_order": 2026,
+      "title": "2026 — Saída para web",
+      "id": "55",
+      "tag": ""
+    }
+  ],
+  "BOOKS": [
+    {
+      "ano": "",
+      "descricao": "Consultas por página, resultados congelados e publicação de 2025 e 2026 no mesmo caderno.",
+      "sections": 17,
+      "version": 2,
+      "merged_ids": "4",
+      "titulo": "Brasil que Corre Provas — Estudo e publicação",
+      "id": "6"
+    },
+    {
+      "ano": 2025,
+      "descricao": "Arquivos do DBA, DataGrip e registro das diferenças com o editor recuperado. Fontes históricas para revisão.",
+      "sections": 17,
+      "version": 2,
+      "merged_ids": "",
+      "titulo": "Fontes e conciliação — 2025 (referências)",
+      "id": "2"
+    },
+    {
+      "ano": 2025,
+      "descricao": "Acervo original do editor RunnerHub. Queries e resultados HTML historicos preservados.",
+      "sections": 14,
+      "version": 2,
+      "merged_ids": "",
+      "titulo": "Brasil que Corre Provas — 2025 (legado)",
+      "id": "1"
+    }
+  ]
+}

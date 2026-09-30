@@ -2,9 +2,13 @@
 
 Implementado e ativado em 28/09/2026, validação encerrada em 29/09/2026.
 
+## Atualização de organização — 30/09/2026
+
+O caderno 6 agora se chama **Brasil que Corre Provas — Estudo e publicação** e reúne também as consultas por página antes no caderno 4. Editar consultas, consultar congelamentos e publicar acontece no mesmo caderno. O caderno 4 saiu do seletor; links antigos são reconhecidos. São 17 seções e 97 células, sem alteração de payloads ou runs. Detalhes em `2026-09-30_estudo_unico.md`.
+
 ## Fluxo do administrador
 
-Em `/estudo/?caderno=6`, abrir **Brasil que Corre Provas — Publicação web**:
+Em `/estudo/?caderno=6`, abrir **Brasil que Corre Provas — Estudo e publicação**:
 
 1. Revisar as queries de origem e congelar os resultados necessários.
 2. Na seção do ano, atualizar a query de saída para usar esses congelamentos. Executar e congelar.

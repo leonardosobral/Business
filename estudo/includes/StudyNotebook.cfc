@@ -23,7 +23,7 @@ component output=false {
         if(!((type=="markdown" && (lang=="" || lang=="markdown")) || (type=="code" && listFind("sql,html",lang))))throw(type="Study.Validation",message="Tipo de célula inválido.");
     }
     public array function listBooks(){
-        return rows(db("SELECT c.id,c.titulo,c.ano,c.descricao,c.version,(SELECT count(*) FROM estudo.notebooks n WHERE n.caderno_id=c.id AND NOT n.archived) AS sections FROM estudo.cadernos c ORDER BY CASE WHEN c.source_key='legacy-runnerhub-2025' THEN 1 ELSE 0 END,c.id"));
+        return rows(db("SELECT c.id,c.titulo,c.ano,c.descricao,c.version,(SELECT coalesce(string_agg(m.id::text,',' ORDER BY m.id),'') FROM estudo.cadernos m WHERE m.merged_into=c.id) AS merged_ids,(SELECT count(*) FROM estudo.notebooks n WHERE n.caderno_id=c.id AND NOT n.archived) AS sections FROM estudo.cadernos c WHERE c.merged_into IS NULL ORDER BY CASE WHEN EXISTS(SELECT 1 FROM estudo.web_destinos d JOIN estudo.notebook_cells w ON w.id=d.cell_id JOIN estudo.notebooks n ON n.notebook_id=w.notebook_id WHERE n.caderno_id=c.id) THEN 0 WHEN c.source_key='legacy-runnerhub-2025' THEN 2 ELSE 1 END,c.id"));
     }
     public array function sections(required any bookId){return rows(db("SELECT notebook_id AS id,notebook_title AS title,version,tag,call_order FROM estudo.notebooks WHERE caderno_id=:id AND NOT archived ORDER BY call_order,notebook_id",{id=idp(bookId)}));}
     public struct function getNotebook(required any id){
@@ -37,7 +37,7 @@ component output=false {
     }
     public struct function saveBook(required any id,required numeric version,required string title,required any actor){
         textLimit(title,200,true);
-        var result=db("UPDATE estudo.cadernos SET titulo=:t,version=version+1,atualizado_em=clock_timestamp(),atualizado_por=:a WHERE id=:id AND version=:v RETURNING id,titulo,version",{id=idp(id),v=p(version,"cf_sql_integer"),t=p(trim(title)),a=idp(actor)});
+        var result=db("UPDATE estudo.cadernos SET titulo=:t,version=version+1,atualizado_em=clock_timestamp(),atualizado_por=:a WHERE id=:id AND version=:v AND merged_into IS NULL RETURNING id,titulo,version",{id=idp(id),v=p(version,"cf_sql_integer"),t=p(trim(title)),a=idp(actor)});
         if(!result.recordCount)throw(type="Study.Conflict",message="O caderno mudou. Recarregue antes de renomear.");
         return one(result);
     }
@@ -47,7 +47,7 @@ component output=false {
     public struct function createNotebook(required any bookId,required string title,required any actor){
         textLimit(title,200,true);var result={};
         transaction {
-            db("SELECT id FROM estudo.cadernos WHERE id=:id FOR UPDATE",{id=idp(bookId)});
+            one(db("SELECT id FROM estudo.cadernos WHERE id=:id AND merged_into IS NULL FOR UPDATE",{id=idp(bookId)}));
             result=one(db("INSERT INTO estudo.notebooks(notebook_title,caderno_id,call_order,updated_by) SELECT :t,:id,coalesce(max(call_order),0)+1,:a FROM estudo.notebooks WHERE caderno_id=:id RETURNING notebook_id AS id,notebook_title AS title,version",{t=p(trim(title)),id=idp(bookId),a=idp(actor)}));
         }
         return result;
