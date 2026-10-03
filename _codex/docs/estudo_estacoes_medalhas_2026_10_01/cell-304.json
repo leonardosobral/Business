@@ -1,0 +1,6 @@
+{
+  "cell_type": "markdown",
+  "version": 1,
+  "id": 304,
+  "content": "### Método e conciliação — 01/10/2026\n\nPódio revisado v1, derivado dos valores congelados em 95, sem nova coleta. 11 critérios com peso igual: maiores quantidades sub4/sub3/sub2h30; menores tempos mínimo/médio/mediano e médias Top10/Top100/melhores5%/10%/50%. Não pontua percentuais. Ouro/prata/bronze para posições 1/2/3 em cada critério; empates compartilham a posição e pulam a seguinte (1,1,3). Usa tempos publicados arredondados ao segundo. Mesmas dez maratonas e populações revisadas em 41 e 67. Zero significa nenhuma medalha atribuída; traços históricos permanecem. A regra é uma inferência dos destaques do PDF, não confirmação do código original. No PDF, o bronze Top5% está em Curitiba (03:16:17), embora Floripa tenha tempo menor (03:14:23). Pelos números históricos, Floripa teria 7 bronzes e Curitiba 1; o quadro mostra 6 e 2. Esse desvio é explicado, sem reescrever o PDF. Célula 301 rev1, execução 98; testes 35 casos em 99. Não compara o mercado nem certifica a qualidade dos resultados."
+}

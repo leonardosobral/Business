@@ -1,0 +1,312 @@
+[
+  {
+    "caso": "aberto70",
+    "idade": "70+",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "70+",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "aberto80",
+    "idade": "70+",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Anteriores a 1946",
+    "idade_31dez": null,
+    "esperado_idade": "70+",
+    "esperado_geracao": "Anteriores a 1946"
+  },
+  {
+    "caso": "abertoinferior",
+    "idade": "Idade indeterminada",
+    "origem": "Dado inválido",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "ampla",
+    "idade": "Idade indeterminada",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "fronteira14",
+    "idade": "Idade indeterminada",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "geracao25a30",
+    "idade": "25–29",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "25–29",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "idade13",
+    "idade": "Menos de 14",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Menos de 14",
+    "idade_31dez": null,
+    "esperado_idade": "Menos de 14",
+    "esperado_geracao": "Menos de 14"
+  },
+  {
+    "caso": "idade14",
+    "idade": "14–19",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Alfa",
+    "idade_31dez": null,
+    "esperado_idade": "14–19",
+    "esperado_geracao": "Alfa"
+  },
+  {
+    "caso": "idade15",
+    "idade": "14–19",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Alfa",
+    "idade_31dez": null,
+    "esperado_idade": "14–19",
+    "esperado_geracao": "Alfa"
+  },
+  {
+    "caso": "idade16",
+    "idade": "14–19",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração Z",
+    "idade_31dez": null,
+    "esperado_idade": "14–19",
+    "esperado_geracao": "Geração Z"
+  },
+  {
+    "caso": "idade19",
+    "idade": "14–19",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração Z",
+    "idade_31dez": null,
+    "esperado_idade": "14–19",
+    "esperado_geracao": "Geração Z"
+  },
+  {
+    "caso": "idade20",
+    "idade": "20–24",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração Z",
+    "idade_31dez": null,
+    "esperado_idade": "20–24",
+    "esperado_geracao": "Geração Z"
+  },
+  {
+    "caso": "idade28",
+    "idade": "25–29",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração Z",
+    "idade_31dez": null,
+    "esperado_idade": "25–29",
+    "esperado_geracao": "Geração Z"
+  },
+  {
+    "caso": "idade29",
+    "idade": "25–29",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Millennials",
+    "idade_31dez": null,
+    "esperado_idade": "25–29",
+    "esperado_geracao": "Millennials"
+  },
+  {
+    "caso": "idade44",
+    "idade": "40–44",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Millennials",
+    "idade_31dez": null,
+    "esperado_idade": "40–44",
+    "esperado_geracao": "Millennials"
+  },
+  {
+    "caso": "idade45",
+    "idade": "45–49",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração X",
+    "idade_31dez": null,
+    "esperado_idade": "45–49",
+    "esperado_geracao": "Geração X"
+  },
+  {
+    "caso": "idade60",
+    "idade": "60–64",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração X",
+    "idade_31dez": null,
+    "esperado_idade": "60–64",
+    "esperado_geracao": "Geração X"
+  },
+  {
+    "caso": "idade61",
+    "idade": "60–64",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Boomers",
+    "idade_31dez": null,
+    "esperado_idade": "60–64",
+    "esperado_geracao": "Boomers"
+  },
+  {
+    "caso": "idade79",
+    "idade": "70+",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Boomers",
+    "idade_31dez": null,
+    "esperado_idade": "70+",
+    "esperado_geracao": "Boomers"
+  },
+  {
+    "caso": "idade80",
+    "idade": "70+",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Anteriores a 1946",
+    "idade_31dez": null,
+    "esperado_idade": "70+",
+    "esperado_geracao": "Anteriores a 1946"
+  },
+  {
+    "caso": "idadeimpossivel",
+    "idade": "Idade indeterminada",
+    "origem": "Dado inválido",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "nascimento120",
+    "idade": "70+",
+    "origem": "Nascimento plausível",
+    "confere": true,
+    "geracao": "Anteriores a 1946",
+    "idade_31dez": 120,
+    "esperado_idade": "70+",
+    "esperado_geracao": "Anteriores a 1946"
+  },
+  {
+    "caso": "nascimento121",
+    "idade": "30–34",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Millennials",
+    "idade_31dez": 121,
+    "esperado_idade": "30–34",
+    "esperado_geracao": "Millennials"
+  },
+  {
+    "caso": "nascimentofuturo",
+    "idade": "30–34",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Millennials",
+    "idade_31dez": -1,
+    "esperado_idade": "30–34",
+    "esperado_geracao": "Millennials"
+  },
+  {
+    "caso": "nascimentomenor14",
+    "idade": "Menos de 14",
+    "origem": "Nascimento plausível",
+    "confere": true,
+    "geracao": "Menos de 14",
+    "idade_31dez": 13,
+    "esperado_idade": "Menos de 14",
+    "esperado_geracao": "Menos de 14"
+  },
+  {
+    "caso": "nascimentoprioritario",
+    "idade": "25–29",
+    "origem": "Nascimento plausível",
+    "confere": true,
+    "geracao": "Millennials",
+    "idade_31dez": 29,
+    "esperado_idade": "25–29",
+    "esperado_geracao": "Millennials"
+  },
+  {
+    "caso": "nascimentosemfaixa",
+    "idade": "45–49",
+    "origem": "Nascimento plausível",
+    "confere": true,
+    "geracao": "Geração X",
+    "idade_31dez": 45,
+    "esperado_idade": "45–49",
+    "esperado_geracao": "Geração X"
+  },
+  {
+    "caso": "negativo",
+    "idade": "Idade indeterminada",
+    "origem": "Dado inválido",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "semidade",
+    "idade": "Sem idade informada",
+    "origem": "Sem idade informada",
+    "confere": true,
+    "geracao": "Sem idade informada",
+    "idade_31dez": null,
+    "esperado_idade": "Sem idade informada",
+    "esperado_geracao": "Sem idade informada"
+  },
+  {
+    "caso": "sobreposicao25a31",
+    "idade": "Idade indeterminada",
+    "origem": "Faixa da categoria",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  },
+  {
+    "caso": "vazio",
+    "idade": "Idade indeterminada",
+    "origem": "Dado inválido",
+    "confere": true,
+    "geracao": "Geração indeterminada",
+    "idade_31dez": null,
+    "esperado_idade": "Idade indeterminada",
+    "esperado_geracao": "Geração indeterminada"
+  }
+]

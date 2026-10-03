@@ -1,0 +1,1017 @@
+[
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 3068448,
+      "regiao": "Brasil",
+      "percentual": 58.613918276467544,
+      "denominador": 5235016
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 2138486,
+      "regiao": "Brasil",
+      "percentual": 40.849655473832364,
+      "denominador": 5235016
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 28082,
+      "regiao": "Brasil",
+      "percentual": 0.5364262497000964,
+      "denominador": 5235016
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 3262,
+      "regiao": "CO",
+      "percentual": 0.6726314074740031,
+      "denominador": 484961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 372891,
+      "regiao": "CO",
+      "percentual": 76.89092524965925,
+      "denominador": 484961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 108808,
+      "regiao": "CO",
+      "percentual": 22.436443342866745,
+      "denominador": 484961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 3044,
+      "regiao": "N",
+      "percentual": 0.9878241906591553,
+      "denominador": 308152
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 219553,
+      "regiao": "N",
+      "percentual": 71.24828006957605,
+      "denominador": 308152
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 85555,
+      "regiao": "N",
+      "percentual": 27.76389573976479,
+      "denominador": 308152
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 3237,
+      "regiao": "NE",
+      "percentual": 0.3106642187183589,
+      "denominador": 1041961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 410853,
+      "regiao": "NE",
+      "percentual": 39.43074644828357,
+      "denominador": 1041961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 627871,
+      "regiao": "NE",
+      "percentual": 60.25858933299807,
+      "denominador": 1041961
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 322667,
+      "regiao": "S",
+      "percentual": 35.5624892541143,
+      "denominador": 907324
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 578386,
+      "regiao": "S",
+      "percentual": 63.74635742028206,
+      "denominador": 907324
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 6271,
+      "regiao": "S",
+      "percentual": 0.6911533256036433,
+      "denominador": 907324
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Interior",
+      "total": 954884,
+      "regiao": "SE",
+      "percentual": 38.30847727168784,
+      "denominador": 2492618
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Não classificada",
+      "total": 12268,
+      "regiao": "SE",
+      "percentual": 0.4921732892886114,
+      "denominador": 2492618
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2025,
+      "tipo": "Capital",
+      "total": 1525466,
+      "regiao": "SE",
+      "percentual": 61.19934943902355,
+      "denominador": 2492618
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 8068,
+      "regiao": "Brasil",
+      "percentual": 0.1908884594345462,
+      "denominador": 4226552
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 1992831,
+      "regiao": "Brasil",
+      "percentual": 47.15027757850844,
+      "denominador": 4226552
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 2225653,
+      "regiao": "Brasil",
+      "percentual": 52.65883396205702,
+      "denominador": 4226552
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 324074,
+      "regiao": "CO",
+      "percentual": 74.15897976883242,
+      "denominador": 436999
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 112925,
+      "regiao": "CO",
+      "percentual": 25.841020231167576,
+      "denominador": 436999
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 174844,
+      "regiao": "N",
+      "percentual": 66.81008624280196,
+      "denominador": 261703
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 794,
+      "regiao": "N",
+      "percentual": 0.30339736265919764,
+      "denominador": 261703
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 86065,
+      "regiao": "N",
+      "percentual": 32.886516394538845,
+      "denominador": 261703
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 1890,
+      "regiao": "Não classificada",
+      "percentual": 100.0,
+      "denominador": 1890
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 883,
+      "regiao": "NE",
+      "percentual": 0.09983379877214603,
+      "denominador": 884470
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 462980,
+      "regiao": "NE",
+      "percentual": 52.34547242981672,
+      "denominador": 884470
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 420607,
+      "regiao": "NE",
+      "percentual": 47.55469377141113,
+      "denominador": 884470
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 520719,
+      "regiao": "S",
+      "percentual": 67.64367748900035,
+      "denominador": 769797
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 835,
+      "regiao": "S",
+      "percentual": 0.10847015511881704,
+      "denominador": 769797
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 248243,
+      "regiao": "S",
+      "percentual": 32.24785235588084,
+      "denominador": 769797
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Capital",
+      "total": 1015512,
+      "regiao": "SE",
+      "percentual": 54.256333704298726,
+      "denominador": 1871693
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Não classificada",
+      "total": 3666,
+      "regiao": "SE",
+      "percentual": 0.19586545443082815,
+      "denominador": 1871693
+    }
+  },
+  {
+    "bloco": "geografia",
+    "dados": {
+      "ano": 2026,
+      "tipo": "Interior",
+      "total": 852515,
+      "regiao": "SE",
+      "percentual": 45.547800841270444,
+      "denominador": 1871693
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "eventos": 3833,
+      "qualidade": "Cidade/UF única; evento sem código",
+      "participacoes": 3200108
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 2,
+      "qualidade": "Cidade/UF sem correspondência",
+      "participacoes": 181
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 18,
+      "qualidade": "Cidade/UF única; evento sem código",
+      "participacoes": 5865
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "eventos": 19,
+      "qualidade": "Cidade/UF sem correspondência",
+      "participacoes": 8068
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 24,
+      "qualidade": "Código diverge da cidade/UF",
+      "participacoes": 27901
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 4958,
+      "qualidade": "Código e cidade/UF validados",
+      "participacoes": 5201069
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "eventos": 609,
+      "qualidade": "Código e cidade/UF validados",
+      "participacoes": 1018376
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SC",
+      "ano": 2025,
+      "cidade": "ITAJAI",
+      "codigo": 4200051,
+      "evento": 27508,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 1010
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "AM",
+      "ano": 2025,
+      "cidade": "IRANDUBA",
+      "codigo": 1300029,
+      "evento": 26862,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 476
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "MAIRIPORA",
+      "codigo": 3500105,
+      "evento": 27303,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 417
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PR",
+      "ano": 2025,
+      "cidade": "PONTA GROSSA",
+      "codigo": 4100103,
+      "evento": 28827,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 321
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "ES",
+      "ano": 2025,
+      "cidade": "PIUMA",
+      "codigo": 3200102,
+      "evento": 27190,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 56
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "MARILIA",
+      "codigo": 3500105,
+      "evento": 26576,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 294
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "BA",
+      "ano": 2025,
+      "cidade": "PORTO SEGURO",
+      "codigo": 2900108,
+      "evento": 28835,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 171
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MG",
+      "ano": 2025,
+      "cidade": "BELO HORIZONTE",
+      "codigo": 3100104,
+      "evento": 27852,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 692
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "AM",
+      "ano": 2025,
+      "cidade": "MANAUS",
+      "codigo": 1300029,
+      "evento": 27737,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 367
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "INDAIATUBA",
+      "codigo": 3500105,
+      "evento": 24177,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 636
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MG",
+      "ano": 2025,
+      "cidade": "SAO TOME DAS LETRAS",
+      "codigo": 3100104,
+      "evento": 26516,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 393
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "LIMEIRA",
+      "codigo": 3500105,
+      "evento": 27302,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 697
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PR",
+      "ano": 2025,
+      "cidade": "CURITIBA",
+      "codigo": 4100103,
+      "evento": 24085,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 3351
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SC",
+      "ano": 2025,
+      "cidade": "FLORIANOPOLIS",
+      "codigo": 4200051,
+      "evento": 28949,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 446
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MS",
+      "ano": 2025,
+      "cidade": "CAMPO GRANDE",
+      "codigo": 5000203,
+      "evento": 27747,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 3168
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "SAO BERNARDO DO CAMPO",
+      "codigo": 3500105,
+      "evento": 26580,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 1955
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PA",
+      "ano": 2025,
+      "cidade": "MARABA",
+      "codigo": 1500107,
+      "evento": 27185,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 225
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RO",
+      "ano": 2025,
+      "cidade": "JI-PARANA",
+      "codigo": 1100015,
+      "evento": 26537,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 1976
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "ES",
+      "ano": 2025,
+      "cidade": "MARATAIZES",
+      "codigo": 3200102,
+      "evento": 26591,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 618
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MA",
+      "ano": 2025,
+      "cidade": "SAO LUIS",
+      "codigo": 2100055,
+      "evento": 28136,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 2298
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MA",
+      "ano": 2025,
+      "cidade": "SAO LUIS",
+      "codigo": 2100055,
+      "evento": 25948,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 768
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SC",
+      "ano": 2025,
+      "cidade": "ITUPORANGA",
+      "codigo": 4200051,
+      "evento": 27529,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 345
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RJ",
+      "ano": 2025,
+      "cidade": "RIO DE JANEIRO",
+      "codigo": 3300100,
+      "evento": 24087,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 6423
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SC",
+      "ano": 2025,
+      "cidade": "BLUMENAU",
+      "codigo": 4200051,
+      "evento": 26542,
+      "motivo": "Código diverge da cidade/UF",
+      "participacoes": 798
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PR",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 39772,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 399
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PR",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 43015,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 134
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SC",
+      "ano": 2026,
+      "cidade": "HERVAL D` OESTE",
+      "codigo": null,
+      "evento": 43871,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 120
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "MT",
+      "ano": 2025,
+      "cidade": "BOA ESPERANCA DO NORTE",
+      "codigo": null,
+      "evento": 32703,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 94
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "AC",
+      "ano": 2026,
+      "cidade": "IGARA",
+      "codigo": null,
+      "evento": 36922,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 356
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 46827,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 784
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 42789,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 265
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 47353,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 534
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "",
+      "ano": 2026,
+      "cidade": "RUA DOS JASMINS - CENTRO",
+      "codigo": null,
+      "evento": 47565,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 236
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "cidade": "FBV",
+      "codigo": null,
+      "evento": 32218,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 87
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "BA",
+      "ano": 2026,
+      "cidade": "DIAS D’AVILA",
+      "codigo": null,
+      "evento": 40078,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 432
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RJ",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 39936,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 276
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RJ",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 38817,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 138
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "XX",
+      "ano": 2026,
+      "cidade": "COCOA BEACH",
+      "codigo": null,
+      "evento": 42139,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 71
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "AC",
+      "ano": 2026,
+      "cidade": "SANTA ELENA DE UAIREN",
+      "codigo": null,
+      "evento": 47128,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 220
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "PR",
+      "ano": 2026,
+      "cidade": "ITAPEJARA D OESTE",
+      "codigo": null,
+      "evento": 45342,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 182
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 44984,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 221
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 44752,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 2797
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "SP",
+      "ano": 2026,
+      "cidade": "",
+      "codigo": null,
+      "evento": 44217,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 234
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RN",
+      "ano": 2026,
+      "cidade": "CEARA MIRIM",
+      "codigo": null,
+      "evento": 44408,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 451
+    }
+  },
+  {
+    "bloco": "pendencias",
+    "dados": {
+      "uf": "RO",
+      "ano": 2026,
+      "cidade": "JI PARANA",
+      "codigo": null,
+      "evento": 46786,
+      "motivo": "Cidade/UF sem correspondência",
+      "participacoes": 218
+    }
+  },
+  {
+    "bloco": "integridade",
+    "dados": {
+      "ano": 2026,
+      "eventos": 4461,
+      "participacoes": 4226552
+    }
+  },
+  {
+    "bloco": "integridade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 5002,
+      "participacoes": 5235016
+    }
+  }
+]

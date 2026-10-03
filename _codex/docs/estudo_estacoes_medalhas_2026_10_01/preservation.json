@@ -1,0 +1,16 @@
+{
+  "original_cells": 144,
+  "changed_cells": [
+    249,
+    251
+  ],
+  "preserved_original_cells": 142,
+  "new_cells": [
+    300,
+    301,
+    302,
+    303,
+    304
+  ],
+  "validator_unchanged": true
+}

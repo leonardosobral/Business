@@ -1,0 +1,43 @@
+{
+  "old_cells": 161,
+  "unchanged_cells": 159,
+  "changed": [
+    {
+      "id": 251,
+      "from": 20,
+      "to": 21
+    },
+    {
+      "id": 256,
+      "from": 2,
+      "to": 3
+    }
+  ],
+  "added": [
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324
+  ],
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 23,
+      "cell_id": 249,
+      "versao": 13
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 25,
+      "cell_id": 251,
+      "versao": 12
+    }
+  ],
+  "validator_unchanged": true,
+  "old_baselines_unchanged": true,
+  "initial_queries_sha_match": true
+}

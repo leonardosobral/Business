@@ -1,0 +1,37 @@
+{
+  "2025": {
+    "old_series_preserved": 101,
+    "old_comparisons_preserved": 665,
+    "new_series": 7,
+    "new_comparisons": 29,
+    "conclusion_denominator": 5279212,
+    "age_categories": {
+      "14+ identificados": 4330048,
+      "Dado inválido": 4,
+      "Faixa cruza 14": 98282,
+      "Menos de 14": 9676,
+      "Sem idade informada": 841202
+    },
+    "totals_and_cohorts_unchanged": true,
+    "six_population_reconciliations": true,
+    "age_percent_sum": 100
+  },
+  "2026": {
+    "old_series_preserved": 98,
+    "old_comparisons_preserved": 671,
+    "new_series": 7,
+    "new_comparisons": 29,
+    "conclusion_denominator": 4301399,
+    "age_categories": {
+      "14+ identificados": 3846948,
+      "Dado inválido": 80,
+      "Faixa cruza 14": 75566,
+      "Menos de 14": 9419,
+      "Sem idade informada": 369386
+    },
+    "totals_and_cohorts_unchanged": true,
+    "six_population_reconciliations": true,
+    "age_percent_sum": 100
+  },
+  "fixtures": 23
+}

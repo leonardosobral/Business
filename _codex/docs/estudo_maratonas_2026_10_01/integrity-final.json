@@ -1,0 +1,37 @@
+{
+  "original_cells": 152,
+  "unchanged_cells": 151,
+  "changed_cell": {
+    "id": 251,
+    "before_revision": 15,
+    "after_revision": 16
+  },
+  "added_cells": [
+    308,
+    309,
+    310,
+    311
+  ],
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 20,
+      "cell_id": 249,
+      "versao": 12
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 22,
+      "cell_id": 251,
+      "versao": 10
+    }
+  ],
+  "old_baselines_preserved": true,
+  "validator_unchanged": true,
+  "runs_frozen": [
+    110,
+    111,
+    112,
+    113
+  ]
+}

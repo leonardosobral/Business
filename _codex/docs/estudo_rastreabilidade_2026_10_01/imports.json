@@ -1,0 +1,52 @@
+{
+  "IMPORTS": [
+    {
+      "COLLECTED": "2026-09-26T23:35:44.446141-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/12_diagnostico.json",
+      "VERSION": 1,
+      "CELL": "317",
+      "SQL": "_codex/sql/brasil_que_corre_provas/12_diagnostico_2026.sql",
+      "SQL_SHA256": "ee701e9ad6822fec05a8888e5e756aa780ca06a24c16830830a0407112fe800b"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:37:25.233531-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/13_recortes.json",
+      "VERSION": 1,
+      "CELL": "318",
+      "SQL": "_codex/sql/brasil_que_corre_provas/13_recortes_2026.sql",
+      "SQL_SHA256": "e43220eb304cfcc9d3f894ecfcef2a627626182b8fe2e1f25d241b5b8a36d683"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:38:42.685667-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/14_comparativo_2025.json",
+      "VERSION": 1,
+      "CELL": "319",
+      "SQL": "_codex/sql/brasil_que_corre_provas/14_comparativo_2025.sql",
+      "SQL_SHA256": "031981134283173901c0b2eb5fabd3789ca2eebbf48a888995aa7c9788fc86e1"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:39:42.649205-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/15_tempos.json",
+      "VERSION": 1,
+      "CELL": "320",
+      "SQL": "_codex/sql/brasil_que_corre_provas/15_tempos_2026.sql",
+      "SQL_SHA256": "65542d02655578a6b5669f25c3561860d55bb6528f7db362d1ffdb7a91ab1108"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:39:53.407883-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/16_maratonas.json",
+      "VERSION": 1,
+      "CELL": "321",
+      "SQL": "_codex/sql/brasil_que_corre_provas/16_maratonas_2026.sql",
+      "SQL_SHA256": "78118e1dc9373086d69037e0671d7f136f7b909302a46f697000c0d3b5ae9b1a"
+    },
+    {
+      "COLLECTED": "2026-09-27T09:21:10.707659-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/comparativo_provas_2026-09-27/20_provas.json",
+      "VERSION": 1,
+      "CELL": "322",
+      "SQL": "_codex/sql/brasil_que_corre_provas/20_comparativo_provas.sql",
+      "SQL_SHA256": "79b7a15b4f0de128b428007ee7aa40d1d61959a5228d3b0cbe04480eb9dbde18"
+    }
+  ]
+}

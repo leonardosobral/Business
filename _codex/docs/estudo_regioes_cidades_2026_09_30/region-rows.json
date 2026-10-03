@@ -1,0 +1,767 @@
+[
+  {
+    "n": 292823,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Centro-Oeste",
+    "percentual": 9.06290767114257,
+    "denominador": 3231005
+  },
+  {
+    "n": 246,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Não informada",
+    "percentual": 0.0076137300932681935,
+    "denominador": 3231005
+  },
+  {
+    "n": 584795,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Nordeste",
+    "percentual": 18.099476788182006,
+    "denominador": 3231005
+  },
+  {
+    "n": 131531,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Norte",
+    "percentual": 4.070900540234385,
+    "denominador": 3231005
+  },
+  {
+    "n": 1599433,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Sudeste",
+    "percentual": 49.5026470092123,
+    "denominador": 3231005
+  },
+  {
+    "n": 622177,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2024",
+    "categoria": "Sul",
+    "percentual": 19.256454261135467,
+    "denominador": 3231005
+  },
+  {
+    "n": 485829,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2025",
+    "categoria": "Centro-Oeste",
+    "percentual": 9.20232639411753,
+    "denominador": 5279415
+  },
+  {
+    "n": 1048798,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2025",
+    "categoria": "Nordeste",
+    "percentual": 19.865799525136783,
+    "denominador": 5279415
+  },
+  {
+    "n": 309932,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2025",
+    "categoria": "Norte",
+    "percentual": 5.870574675413848,
+    "denominador": 5279415
+  },
+  {
+    "n": 2509006,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2025",
+    "categoria": "Sudeste",
+    "percentual": 47.52431850877417,
+    "denominador": 5279415
+  },
+  {
+    "n": 925850,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_2025",
+    "categoria": "Sul",
+    "percentual": 17.53698089655767,
+    "denominador": 5279415
+  },
+  {
+    "n": 269182,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Centro-Oeste",
+    "percentual": 9.647228995803964,
+    "denominador": 2790252
+  },
+  {
+    "n": 533781,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Nordeste",
+    "percentual": 19.130207594152786,
+    "denominador": 2790252
+  },
+  {
+    "n": 172223,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Norte",
+    "percentual": 6.17230988455523,
+    "denominador": 2790252
+  },
+  {
+    "n": 1344878,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Sudeste",
+    "percentual": 48.19915907237053,
+    "denominador": 2790252
+  },
+  {
+    "n": 470188,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Sul",
+    "percentual": 16.851094453117497,
+    "denominador": 2790252
+  },
+  {
+    "n": 216644,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Centro-Oeste",
+    "percentual": 8.71026947702761,
+    "denominador": 2487225
+  },
+  {
+    "n": 513626,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Nordeste",
+    "percentual": 20.65056438400225,
+    "denominador": 2487225
+  },
+  {
+    "n": 137674,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Norte",
+    "percentual": 5.53524510247364,
+    "denominador": 2487225
+  },
+  {
+    "n": 1164098,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Sudeste",
+    "percentual": 46.803083758003396,
+    "denominador": 2487225
+  },
+  {
+    "n": 455183,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Sul",
+    "percentual": 18.3008372784931,
+    "denominador": 2487225
+  },
+  {
+    "n": 269182,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Centro-Oeste",
+    "categoria": "F",
+    "percentual": 55.406737761640414,
+    "denominador": 485829
+  },
+  {
+    "n": 216644,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Centro-Oeste",
+    "categoria": "M",
+    "percentual": 44.59264473714002,
+    "denominador": 485829
+  },
+  {
+    "n": 3,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Centro-Oeste",
+    "categoria": "X",
+    "percentual": 0.0006175012195649087,
+    "denominador": 485829
+  },
+  {
+    "n": 533781,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Nordeste",
+    "categoria": "F",
+    "percentual": 50.89454785382886,
+    "denominador": 1048798
+  },
+  {
+    "n": 513626,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Nordeste",
+    "categoria": "M",
+    "percentual": 48.972824128192464,
+    "denominador": 1048798
+  },
+  {
+    "n": 1391,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Nordeste",
+    "categoria": "X",
+    "percentual": 0.13262801797867654,
+    "denominador": 1048798
+  },
+  {
+    "n": 172223,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Norte",
+    "categoria": "F",
+    "percentual": 55.567995560316454,
+    "denominador": 309932
+  },
+  {
+    "n": 137674,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Norte",
+    "categoria": "M",
+    "percentual": 44.42071163997264,
+    "denominador": 309932
+  },
+  {
+    "n": 35,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Norte",
+    "categoria": "X",
+    "percentual": 0.011292799710904328,
+    "denominador": 309932
+  },
+  {
+    "n": 1344878,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sudeste",
+    "categoria": "F",
+    "percentual": 53.60202406849565,
+    "denominador": 2509006
+  },
+  {
+    "n": 1164098,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sudeste",
+    "categoria": "M",
+    "percentual": 46.39678023886751,
+    "denominador": 2509006
+  },
+  {
+    "n": 30,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sudeste",
+    "categoria": "X",
+    "percentual": 0.0011956926368450296,
+    "denominador": 2509006
+  },
+  {
+    "n": 470188,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sul",
+    "categoria": "F",
+    "percentual": 50.78446832640277,
+    "denominador": 925850
+  },
+  {
+    "n": 455183,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sul",
+    "categoria": "M",
+    "percentual": 49.16379543122536,
+    "denominador": 925850
+  },
+  {
+    "n": 479,
+    "ano": 2025,
+    "fonte": 21,
+    "serie": "sexo_por_regiao_Sul",
+    "categoria": "X",
+    "percentual": 0.05173624237187449,
+    "denominador": 925850
+  },
+  {
+    "n": 872,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "AC",
+    "percentual": 0.016516981521626922,
+    "denominador": 5279415
+  },
+  {
+    "n": 61135,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "AL",
+    "percentual": 1.1579881483080985,
+    "denominador": 5279415
+  },
+  {
+    "n": 68691,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "AM",
+    "percentual": 1.3011100661721042,
+    "denominador": 5279415
+  },
+  {
+    "n": 23384,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "AP",
+    "percentual": 0.4429278622726192,
+    "denominador": 5279415
+  },
+  {
+    "n": 260541,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "BA",
+    "percentual": 4.935035415855734,
+    "denominador": 5279415
+  },
+  {
+    "n": 200238,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "CE",
+    "percentual": 3.7928065893664353,
+    "denominador": 5279415
+  },
+  {
+    "n": 228132,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "DF",
+    "percentual": 4.32116058313279,
+    "denominador": 5279415
+  },
+  {
+    "n": 126426,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "ES",
+    "percentual": 2.3946971397399146,
+    "denominador": 5279415
+  },
+  {
+    "n": 144557,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "GO",
+    "percentual": 2.738125341538788,
+    "denominador": 5279415
+  },
+  {
+    "n": 37776,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "MA",
+    "percentual": 0.7155338233497461,
+    "denominador": 5279415
+  },
+  {
+    "n": 357966,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "MG",
+    "percentual": 6.7804103295535585,
+    "denominador": 5279415
+  },
+  {
+    "n": 27522,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "MS",
+    "percentual": 0.5213077585300644,
+    "denominador": 5279415
+  },
+  {
+    "n": 85618,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "MT",
+    "percentual": 1.6217327109158874,
+    "denominador": 5279415
+  },
+  {
+    "n": 145602,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "PA",
+    "percentual": 2.7579192012751412,
+    "denominador": 5279415
+  },
+  {
+    "n": 138311,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "PB",
+    "percentual": 2.619816778942364,
+    "denominador": 5279415
+  },
+  {
+    "n": 157983,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "PE",
+    "percentual": 2.9924338207926446,
+    "denominador": 5279415
+  },
+  {
+    "n": 18374,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "PI",
+    "percentual": 0.3480309844935471,
+    "denominador": 5279415
+  },
+  {
+    "n": 439328,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "PR",
+    "percentual": 8.32152804808866,
+    "denominador": 5279415
+  },
+  {
+    "n": 654971,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "RJ",
+    "percentual": 12.406128330506316,
+    "denominador": 5279415
+  },
+  {
+    "n": 98072,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "RN",
+    "percentual": 1.85763005939105,
+    "denominador": 5279415
+  },
+  {
+    "n": 28120,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "RO",
+    "percentual": 0.5326347710873269,
+    "denominador": 5279415
+  },
+  {
+    "n": 22766,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "RR",
+    "percentual": 0.43122201986394326,
+    "denominador": 5279415
+  },
+  {
+    "n": 172761,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "RS",
+    "percentual": 3.272351198002051,
+    "denominador": 5279415
+  },
+  {
+    "n": 313761,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "SC",
+    "percentual": 5.943101650466955,
+    "denominador": 5279415
+  },
+  {
+    "n": 76368,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "SE",
+    "percentual": 1.4465239046371614,
+    "denominador": 5279415
+  },
+  {
+    "n": 1369643,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "SP",
+    "percentual": 25.943082708974384,
+    "denominador": 5279415
+  },
+  {
+    "n": 20497,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs",
+    "categoria": "TO",
+    "percentual": 0.38824377322108605,
+    "denominador": 5279415
+  },
+  {
+    "n": 260541,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "BA",
+    "percentual": 4.935035415855734,
+    "denominador": 5279415
+  },
+  {
+    "n": 200238,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "CE",
+    "percentual": 3.7928065893664353,
+    "denominador": 5279415
+  },
+  {
+    "n": 228132,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "DF",
+    "percentual": 4.32116058313279,
+    "denominador": 5279415
+  },
+  {
+    "n": 357966,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "MG",
+    "percentual": 6.7804103295535585,
+    "denominador": 5279415
+  },
+  {
+    "n": 1282074,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "Outros",
+    "percentual": 24.284395146053114,
+    "denominador": 5279415
+  },
+  {
+    "n": 439328,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "PR",
+    "percentual": 8.32152804808866,
+    "denominador": 5279415
+  },
+  {
+    "n": 654971,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "RJ",
+    "percentual": 12.406128330506316,
+    "denominador": 5279415
+  },
+  {
+    "n": 172761,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "RS",
+    "percentual": 3.272351198002051,
+    "denominador": 5279415
+  },
+  {
+    "n": 313761,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "SC",
+    "percentual": 5.943101650466955,
+    "denominador": 5279415
+  },
+  {
+    "n": 1369643,
+    "ano": 2025,
+    "fonte": 22,
+    "serie": "ufs_top_grafico",
+    "categoria": "SP",
+    "percentual": 25.943082708974384,
+    "denominador": 5279415
+  },
+  {
+    "n": 238302,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Centro-Oeste",
+    "percentual": 10.502743559796382,
+    "denominador": 2268950
+  },
+  {
+    "n": 8061,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Não informada",
+    "percentual": 0.35527446616276254,
+    "denominador": 2268950
+  },
+  {
+    "n": 466209,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Nordeste",
+    "percentual": 20.547345688534342,
+    "denominador": 2268950
+  },
+  {
+    "n": 147612,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Norte",
+    "percentual": 6.505740540778774,
+    "denominador": 2268950
+  },
+  {
+    "n": 1011858,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Sudeste",
+    "percentual": 44.59587033649926,
+    "denominador": 2268950
+  },
+  {
+    "n": 396908,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_feminino_rotulos_visiveis",
+    "categoria": "Sul",
+    "percentual": 17.493025408228476,
+    "denominador": 2268950
+  },
+  {
+    "n": 183731,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Centro-Oeste",
+    "percentual": 9.451465115728762,
+    "denominador": 1943942
+  },
+  {
+    "n": 6598,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Não informada",
+    "percentual": 0.33941341871310976,
+    "denominador": 1943942
+  },
+  {
+    "n": 414707,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Nordeste",
+    "percentual": 21.33330109643189,
+    "denominador": 1943942
+  },
+  {
+    "n": 110488,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Norte",
+    "percentual": 5.683708670320411,
+    "denominador": 1943942
+  },
+  {
+    "n": 856036,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Sudeste",
+    "percentual": 44.03608749643765,
+    "denominador": 1943942
+  },
+  {
+    "n": 372382,
+    "ano": 2026,
+    "fonte": 74,
+    "serie": "regioes_masculino_rotulos_visiveis",
+    "categoria": "Sul",
+    "percentual": 19.156024202368176,
+    "denominador": 1943942
+  }
+]

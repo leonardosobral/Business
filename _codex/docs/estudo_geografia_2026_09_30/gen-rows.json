@@ -1,0 +1,374 @@
+[
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Idade nula",
+      "atribuicoes": 0,
+      "participacoes": 662812
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Uma sobreposição, mas faixa ultrapassa limites",
+      "atribuicoes": 466840,
+      "participacoes": 466840
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Mais de uma geração por sobreposição",
+      "atribuicoes": 2499303,
+      "participacoes": 1112908
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Contida em uma faixa legada",
+      "atribuicoes": 2169337,
+      "participacoes": 2169337
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Sem geração nas faixas legadas",
+      "atribuicoes": 0,
+      "participacoes": 34
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Mais de uma geração por sobreposição",
+      "atribuicoes": 2375923,
+      "participacoes": 1033699
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Uma sobreposição, mas faixa ultrapassa limites",
+      "atribuicoes": 389799,
+      "participacoes": 389799
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Contida em uma faixa legada",
+      "atribuicoes": 2518156,
+      "participacoes": 2518156
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Intervalo vazio",
+      "atribuicoes": 0,
+      "participacoes": 216
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "qualidade": "Intervalo vazio",
+      "atribuicoes": 0,
+      "participacoes": 80
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Idade nula",
+      "atribuicoes": 0,
+      "participacoes": 1181280
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "qualidade": "Sem geração nas faixas legadas",
+      "atribuicoes": 0,
+      "participacoes": 15
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[25,30)",
+      "posicao": 1,
+      "contencoes": 0,
+      "participacoes": 331514,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[40,50)",
+      "posicao": 2,
+      "contencoes": 0,
+      "participacoes": 288972,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[20,30)",
+      "posicao": 3,
+      "contencoes": 0,
+      "participacoes": 86488,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[18,30)",
+      "posicao": 4,
+      "contencoes": 0,
+      "participacoes": 62968,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[0,100)",
+      "posicao": 5,
+      "contencoes": 0,
+      "participacoes": 54200,
+      "correspondencias": 5
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[16,30)",
+      "posicao": 6,
+      "contencoes": 0,
+      "participacoes": 40987,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[14,30)",
+      "posicao": 7,
+      "contencoes": 0,
+      "participacoes": 36352,
+      "correspondencias": 3
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[14,20)",
+      "posicao": 8,
+      "contencoes": 0,
+      "participacoes": 24660,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[25,35)",
+      "posicao": 9,
+      "contencoes": 0,
+      "participacoes": 21005,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[14,25)",
+      "posicao": 10,
+      "contencoes": 0,
+      "participacoes": 12297,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[41,50)",
+      "posicao": 11,
+      "contencoes": 0,
+      "participacoes": 10797,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2025,
+      "faixa": "[15,30)",
+      "posicao": 12,
+      "contencoes": 0,
+      "participacoes": 9222,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[40,50)",
+      "posicao": 1,
+      "contencoes": 0,
+      "participacoes": 306796,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[25,30)",
+      "posicao": 2,
+      "contencoes": 0,
+      "participacoes": 248234,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[20,30)",
+      "posicao": 3,
+      "contencoes": 0,
+      "participacoes": 102626,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[18,30)",
+      "posicao": 4,
+      "contencoes": 0,
+      "participacoes": 46563,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[14,30)",
+      "posicao": 5,
+      "contencoes": 0,
+      "participacoes": 38222,
+      "correspondencias": 3
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[0,100)",
+      "posicao": 6,
+      "contencoes": 0,
+      "participacoes": 37904,
+      "correspondencias": 5
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[16,30)",
+      "posicao": 7,
+      "contencoes": 0,
+      "participacoes": 36170,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[14,20)",
+      "posicao": 8,
+      "contencoes": 0,
+      "participacoes": 26145,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[14,100)",
+      "posicao": 9,
+      "contencoes": 0,
+      "participacoes": 24586,
+      "correspondencias": 5
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[25,35)",
+      "posicao": 10,
+      "contencoes": 0,
+      "participacoes": 18508,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[14,25)",
+      "posicao": 11,
+      "contencoes": 0,
+      "participacoes": 14334,
+      "correspondencias": 2
+    }
+  },
+  {
+    "bloco": "exemplos",
+    "dados": {
+      "ano": 2026,
+      "faixa": "[0,60)",
+      "posicao": 12,
+      "contencoes": 0,
+      "participacoes": 13387,
+      "correspondencias": 4
+    }
+  }
+]

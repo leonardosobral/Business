@@ -1,0 +1,58 @@
+{
+  "publicacoes": {
+    "2025": {
+      "nota": "Ritmo/CNA: 83 valores recalculados com tempo válido, bases de gênero e limites exatos. Referência do PDF e outros recortes preservados; qualidade PCD sinalizada.",
+      "versao": 5,
+      "execucao": 63,
+      "publicado_em": "2026-09-30T22:34:25.555694-03:00"
+    },
+    "2026": {
+      "nota": "Calendário por meses/trimestres apresentado com contagens anteriores, sem nova coleta. Critérios de tempo recuperados e auditados; todos os números de 2026 preservados.",
+      "versao": 4,
+      "execucao": 64,
+      "publicado_em": "2026-09-30T22:34:25.613372-03:00"
+    }
+  },
+  "runtime": {
+    "RoadRunners": {
+      "verified_hashes": 2
+    }
+  },
+  "runtime_status": {
+    "RoadRunners": {
+      "verified_hashes": 1
+    }
+  },
+  "fontes_preservadas": [
+    {
+      "celula": 189,
+      "revisao": 1,
+      "preservada": true,
+      "sha256": "9307917c333cc1726ba455f62abb6092b2958e7c031ac944cad3b64162f658c9"
+    },
+    {
+      "celula": 191,
+      "revisao": 1,
+      "preservada": true,
+      "sha256": "458d73b37563e7826fd698c83b0db4d56e279fd0342110178e43eeae5825b9c7"
+    },
+    {
+      "celula": 207,
+      "revisao": 1,
+      "preservada": true,
+      "sha256": "43e8855ae972b257a9faecd0b8b3d7b7460ddd3befd2d78822d3b39f2f6ff67d"
+    },
+    {
+      "celula": 219,
+      "revisao": 1,
+      "preservada": true,
+      "sha256": "2c3733bf9bf8e39c229aa8754110448d7e5c43bc12d672e8d5f7f897138b77a1"
+    }
+  ],
+  "nota_cna": {
+    "NOTE": "279"
+  },
+  "tests": 43,
+  "casos_fronteira": 24,
+  "backup": "/var/backups/roadrunners-estudo-tempos-calendario-20260930"
+}

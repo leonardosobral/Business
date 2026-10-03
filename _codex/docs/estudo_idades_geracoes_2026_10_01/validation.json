@@ -1,0 +1,20 @@
+{
+  "browser": "Chrome",
+  "local_mobile": {
+    "width": 390,
+    "document_width": 390,
+    "edition": 2026,
+    "generation_gender": "F",
+    "chart_rendered": true,
+    "screenshot_saved": false
+  },
+  "production": {
+    "width": 1516,
+    "document_width": 1516,
+    "year2025_source_switch": "PDF and recalculation verified",
+    "year2026_chart_rendered": true,
+    "mobile_emulation_applied": false
+  },
+  "test_count": 66,
+  "sql_boundary_checks": 31
+}

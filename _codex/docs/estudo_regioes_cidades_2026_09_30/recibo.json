@@ -1,0 +1,45 @@
+{
+  "originais_preservados": 129,
+  "celulas_saida": {
+    "2025": {
+      "celula": 249,
+      "revisao": 13,
+      "execucao": 80,
+      "contrato": 3,
+      "web": 7
+    },
+    "2026": {
+      "celula": 251,
+      "revisao": 10,
+      "execucao": 81,
+      "contrato": 2,
+      "web": 6
+    }
+  },
+  "fontes": {
+    "regioes": {
+      "celula": 287,
+      "revisao": 1,
+      "execucao": 75
+    },
+    "cidades": {
+      "celula": 288,
+      "revisao": 2,
+      "execucao": 77
+    },
+    "conciliacao": {
+      "celula": 291,
+      "revisao": 1,
+      "execucao": 82
+    }
+  },
+  "novas_notas": {
+    "regioes": "289",
+    "cidades": "290"
+  },
+  "testes": 55,
+  "cabecalhos": {
+    "Cache-Control": "private, no-store",
+    "X-Robots-Tag": "noindex, nofollow"
+  }
+}

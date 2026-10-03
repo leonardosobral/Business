@@ -1,0 +1,15 @@
+# P03 — Volume anual e publicação 2025 · 01/10/2026
+
+Fonte única: Business `/estudo/?caderno=6`, seção 38/P03. Consulta 292 rev1, congelamento 83; nota 293 rev2. Saída canônica 249 rev15, congelamento publicado 86, web v9/publicação 15. O pacote preserva 80 e adiciona 14 valores atuais de volume/resultados e eventos 2023–2025, com 5 definições sem valores históricos. Arquivos desta pasta são recibos de auditoria; não executar por cima da autoria atual sem reler o notebook e verificar revisões.
+
+`volume.sql` usa ano pela data final, país BR, todas as modalidades/idades, resultados status 0/homologados, sem filtro adicional de conclusão ou 14+. A condição coincide com a definição atual de `vw_resultados`, registrada em `view.json`. Uma agregação por evento precede a junção ao calendário. `volume-rows.json` guarda as 3 linhas completas, soma bruta/elegível e variações relativas. Cadastradas não garante realização; coleta bruta não garante captura completa. Não foi recalculada a cobertura PDF de 84,1% nem inferido crescimento do mercado.
+
+2025 desta coleta: 5.279.220 resultados e 9.440 cadastros. Panorama anterior preservado: 5.279.415 e 9.360. Diferença de calendário: 9 treino + 71 triatlo além dos 9.360 rua/trail anteriores; não é aumento de cadastros da mesma população. Fonte anual coleta 01/10 às 00h05. Resultados 2023/2024: 1.406.551/3.231.005. As contagens históricas exatas das barras do PDF seguem sem referência congelada.
+
+Contrato 2025/4 é aditivo/imutável em `estudo.web_base_versoes`, com a mesma forma de tipos do contrato 3. Nenhuma função ou permissão foi modificada. Migrations conferem digest do contrato/função, revisão esperada da saída e publicação vigente; preview dos antigos 80/81 e novo 85 passou. Na primeira tentativa, o validador recusou o campo `denominador: null` e a transação foi revertida. Consulta corrigida omite esse campo quando inaplicável, sem relaxar tipos. 84 preservado como congelamento recusado, sem publicação. 85/v8 teve nota com escapes Unicode; o publish idempotente manteve a nota. 86 tem payload idêntico e publicou a nota correta, preservando o histórico.
+
+135 células preexistentes intactas, incluindo queries DBA/originais; única atualização deliberada foi a saída 249, por revisão esperada. Nenhum runtime Business mudou. Rodaram 60 testes Node de consumidor/dados/gráficos, 5 testes de volume repetidos após correção e inspeção Chrome em desktop/390 px. Produção 2025 igual ao candidato; PDF/CSV e pacote/publicação 2026 v6/81 idênticos ao baseline. Query pesada roda apenas no notebook; leitor web recebe o congelamento.
+
+Backup: `/var/backups/business-estudo-web-20260928/database/volume-anual-contrato-v4-corrected-20261001-before.json`. Para voltar aos dados anteriores, publicar 80 com a publicação esperada atual, 15 nesta entrega. Manter contratos e congelamentos históricos. Evidências visuais, testes, runtime e recuperação no RoadRunners: `_codex/docs/brasil_que_corre_provas/volume_anual_2026_10_01/README.md`.
+
+Marco integral continua aberto: contagens históricas, idade/gerações, estações, medalhas, perfil e cobertura. Nenhuma célula pendente recebeu um número presumido.

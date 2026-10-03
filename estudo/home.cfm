@@ -37,7 +37,7 @@
  <div class="study-card">
   <h2 class="h5">Versão web do estudo</h2>
   <p>Executar e congelar preserva os dados. Somente <strong>Usar na versão web</strong> troca a edição disponível no link público. Esta é uma prévia em conciliação, sem divulgação na página do PDF.</p>
-  <p>2025 combina consultas congeladas do notebook e fontes anteriores identificadas. 2026 preserva o pacote parcial atual, sem nova coleta. Confira as fontes antes de substituir uma versão.</p>
+  <p>Cada edição combina resultados congelados identificados nas fontes. Um indicador pode ter população e data de coleta próprias; atualizar um recorte não recalcula automaticamente os totais ou comparativos. Confira as fontes antes de substituir uma versão.</p>
   <div class="study-selectors"><label>Edição<select id="web-year" class="form-select" aria-label="Edição para web"></select></label><label>Resultado congelado<select id="web-run" class="form-select" aria-label="Congelamento para web"></select></label><button type="button" id="web-refresh" class="btn btn-outline-light btn-sm">Atualizar versões</button></div>
   <p id="web-current" class="study-meta"></p><div class="study-actions"><a id="web-notebook" class="btn btn-outline-light btn-sm">Abrir query de saída</a><a id="web-live" class="btn btn-outline-light btn-sm" target="_blank" rel="noopener">Abrir versão no ar</a><button type="button" id="web-preview" class="btn btn-warning btn-sm">Conferir pacote</button></div>
   <div id="web-preview-content" class="mt-3"></div>

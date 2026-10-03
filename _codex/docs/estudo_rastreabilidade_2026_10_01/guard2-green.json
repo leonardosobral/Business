@@ -1,0 +1,100 @@
+{
+  "CHECKS": [
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "materialized"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "not_materialized"
+    },
+    {
+      "MESSAGE": "Função não habilitada para leitura no Estudo: materialized.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "function"
+    },
+    {
+      "MESSAGE": "Use funções analíticas do PostgreSQL sem outro schema.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "qualified_function"
+    },
+    {
+      "MESSAGE": "Função não habilitada para leitura no Estudo: materialized.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "pg_function"
+    },
+    {
+      "MESSAGE": "Esta célula aceita somente leitura; operação não permitida: delete.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "write_cte"
+    },
+    {
+      "MESSAGE": "Selecione apenas uma consulta antes de executar.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "write_after"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "ordinary_cte"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "range"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "receipt_metadata"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "json_interval"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "cte_columns"
+    },
+    {
+      "MESSAGE": "",
+      "ACCEPTED": true,
+      "EXPECTED": true,
+      "NAME": "grouping_sets"
+    },
+    {
+      "MESSAGE": "Função não habilitada para leitura no Estudo: set_config.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "config_write"
+    },
+    {
+      "MESSAGE": "Use funções analíticas do PostgreSQL sem outro schema.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "function_after_with"
+    },
+    {
+      "MESSAGE": "Função não habilitada para leitura no Estudo: malicious.",
+      "ACCEPTED": false,
+      "EXPECTED": false,
+      "NAME": "record_function"
+    }
+  ]
+}

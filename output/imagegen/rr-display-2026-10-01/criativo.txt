@@ -1,0 +1,9 @@
+Criativo do teste Display Road Runners — 01/10/2026
+
+Arquivo final: corredores-parque.png
+Ferramenta: image_gen integrada (geração e edição).
+Uso: imagem ilustrativa de corredores em parque, sem identificar uma prova ou cidade real. Recortes horizontal e quadrado realizados no Google Ads. Logotipo oficial selecionado da biblioteca existente da conta.
+
+Direção final do prompt: fotografia publicitária natural de três corredores adultos recreativos, mulheres e homem, roupas pretas e amarelas sem marcas, luz da manhã, parque urbano genérico no sul do Brasil, árvores e morros baixos, edifícios baixos distantes. Sem mar, praia, montanha isolada ou ponto turístico identificável. Sem texto, logotipo, marca d'água ou montagem. Composição horizontal com pessoas na região central para permitir recorte quadrado.
+
+A primeira versão continha cenário semelhante ao Rio de Janeiro e foi rejeitada. Somente a versão final do parque foi enviada ao Google Ads.

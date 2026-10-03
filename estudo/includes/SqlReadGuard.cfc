@@ -40,21 +40,31 @@ component output=false {
         if(!arrayLen(tokens) || !listFind("select,with",tokens[1]))invalid();
         var forbidden="insert,update,delete,merge,drop,alter,create,truncate,grant,revoke,copy,call,do,execute,prepare,deallocate,begin,commit,rollback,savepoint,set,reset,show,into,lock,vacuum,analyze,reindex,cluster,refresh,listen,notify,unlisten,load";
         // Function calls are intentionally limited to standard analytical PostgreSQL functions.
-        var allowed="count,sum,avg,min,max,round,abs,ceil,ceiling,floor,power,sqrt,mod,sign,trunc,coalesce,nullif,greatest,least,cast,extract,date_part,date_trunc,age,to_char,to_date,to_timestamp,make_date,now,current_date,current_timestamp,lower,upper,initcap,length,char_length,octet_length,trim,btrim,ltrim,rtrim,substring,substr,replace,translate,concat,concat_ws,split_part,regexp_replace,regexp_match,regexp_matches,regexp_split_to_array,regexp_split_to_table,position,strpos,left,right,lpad,rpad,format,string_agg,array_agg,array_length,cardinality,unnest,generate_series,row_number,rank,dense_rank,ntile,lag,lead,first_value,last_value,nth_value,percent_rank,cume_dist,percentile_cont,percentile_disc,mode,bool_and,bool_or,every,stddev,stddev_pop,stddev_samp,variance,var_pop,var_samp,filter,over,within,group,in,exists,not,as,values,select,from,where,and,or,distinct,on,using,any,all,some,case,when,then,else,end,numeric,decimal,varchar,char,character,timestamp,time,interval,int4range,int8range,numrange,daterange,json_build_object,jsonb_build_object,json_agg,jsonb_agg,json_array_length,jsonb_array_length,json_extract_path_text,jsonb_extract_path_text,jsonb_each,jsonb_each_text,jsonb_array_elements,jsonb_array_elements_text,jsonb_object_keys,jsonb_object_agg,jsonb_typeof,row_to_json,to_json,to_jsonb,pg_typeof,extrair_faixa_etaria";
+        var allowed="isempty,lower_inf,upper_inf,current_database,current_setting,transaction_timestamp,jsonb_build_array,make_interval,grouping,count,sum,avg,min,max,round,abs,ceil,ceiling,floor,power,sqrt,mod,sign,trunc,coalesce,nullif,greatest,least,cast,extract,date_part,date_trunc,age,to_char,to_date,to_timestamp,make_date,now,current_date,current_timestamp,lower,upper,initcap,length,char_length,octet_length,trim,btrim,ltrim,rtrim,substring,substr,replace,translate,concat,concat_ws,split_part,regexp_replace,regexp_match,regexp_matches,regexp_split_to_array,regexp_split_to_table,position,strpos,left,right,lpad,rpad,format,string_agg,array_agg,array_length,cardinality,unnest,generate_series,row_number,rank,dense_rank,ntile,lag,lead,first_value,last_value,nth_value,percent_rank,cume_dist,percentile_cont,percentile_disc,mode,bool_and,bool_or,every,stddev,stddev_pop,stddev_samp,variance,var_pop,var_samp,filter,over,within,group,in,exists,not,as,values,select,from,where,and,or,distinct,on,using,any,all,some,case,when,then,else,end,numeric,decimal,varchar,char,character,timestamp,time,interval,int4range,int8range,numrange,daterange,json_build_object,jsonb_build_object,json_agg,jsonb_agg,json_array_length,jsonb_array_length,json_extract_path_text,jsonb_extract_path_text,jsonb_each,jsonb_each_text,jsonb_array_elements,jsonb_array_elements_text,jsonb_object_keys,jsonb_object_agg,jsonb_typeof,row_to_json,to_json,to_jsonb,pg_typeof,extrair_faixa_etaria";
+        var statementDepth=0;var mainQuerySeen=false;
         for(i=1;i<=arrayLen(tokens);i++){
             value=tokens[i];
+            if(statementDepth==0 && value=="select")mainQuerySeen=true;
+            // A top-level name before the main SELECT is a CTE declaration.
+            // Column lists here are syntax; calls inside its body still validate.
+            var cteColumns=tokens[1]=="with" && !mainQuerySeen && statementDepth==0 && i>1 && (listFind("with,recursive",tokens[i-1]) || tokens[i-1]==",");
+            var groupingSets=value=="sets" && i>1 && tokens[i-1]=="grouping";
             if(listFind(forbidden,value))invalid("Esta célula aceita somente leitura; operação não permitida: "&value&".");
             if(value=="&" && i>1 && tokens[i-1]=="u")invalid("Use identificadores sem escape Unicode.");
             if(value==";"){
                 if(i!=arrayLen(tokens))invalid("Selecione apenas uma consulta antes de executar.");
                 source=trim(left(source,positions[i]-1));
             }
-            if(i<arrayLen(tokens) && tokens[i+1]=="(" && reFind("^[a-z_]",value) && !listFind(allowed,value)){
+            // AS [NOT] MATERIALIZED is CTE syntax, not a function call.
+            var materializedCte=value=="materialized" && i>1 && (tokens[i-1]=="as" || (tokens[i-1]=="not" && i>2 && tokens[i-2]=="as"));
+            if(i<arrayLen(tokens) && tokens[i+1]=="(" && reFind("^[a-z_]",value) && !listFind(allowed,value) && !materializedCte && !cteColumns && !groupingSets){
                 invalid("Função não habilitada para leitura no Estudo: "&value&".");
             }
             if(i+3<=arrayLen(tokens) && tokens[i+1]=="." && tokens[i+3]=="(" && value!="pg_catalog" && !(value=="public" && tokens[i+2]=="extrair_faixa_etaria")){
                 invalid("Use funções analíticas do PostgreSQL sem outro schema.");
             }
+            if(value=="(")statementDepth++;
+            else if(value==")")statementDepth--;
         }
         return source;
     }

@@ -1,0 +1,13 @@
+{
+  "Business": {
+    "before": {
+      "estudo/home.cfm": "1e7070c7047906dbd0fec63b748ea48ae187b4d279f2aa88b8ace57c3b8d3234"
+    },
+    "candidate": {
+      "estudo/home.cfm": "6ec1f40fe56bb687ae5c667a0230e23aaa2f10030e24e5c16097b78e65849cf1"
+    },
+    "order": [
+      "estudo/home.cfm"
+    ]
+  }
+}

@@ -1,0 +1,504 @@
+[
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "nome": "SAO PAULO",
+      "ordem": 1,
+      "total": 650696,
+      "codigo": 3550308,
+      "rotulo": "São Paulo",
+      "eventos": 189,
+      "percentual": 12.325608707346918,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "RJ",
+      "ano": 2025,
+      "nome": "RIO DE JANEIRO",
+      "ordem": 2,
+      "total": 556639,
+      "codigo": 3304557,
+      "rotulo": "Rio de Janeiro",
+      "eventos": 159,
+      "percentual": 10.543962933918268,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "MG",
+      "ano": 2025,
+      "nome": "BELO HORIZONTE",
+      "ordem": 3,
+      "total": 263982,
+      "codigo": 3106200,
+      "rotulo": "Belo Horizonte",
+      "eventos": 70,
+      "percentual": 5.000397786036574,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "DF",
+      "ano": 2025,
+      "nome": "BRASILIA",
+      "ordem": 4,
+      "total": 228132,
+      "codigo": 5300108,
+      "rotulo": "Brasília",
+      "eventos": 102,
+      "percentual": 4.321320195028811,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PR",
+      "ano": 2025,
+      "nome": "CURITIBA",
+      "ordem": 5,
+      "total": 151971,
+      "codigo": 4106902,
+      "rotulo": "Curitiba",
+      "eventos": 63,
+      "percentual": 2.878663893529726,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "BA",
+      "ano": 2025,
+      "nome": "SALVADOR",
+      "ordem": 6,
+      "total": 146751,
+      "codigo": 2927408,
+      "rotulo": "Salvador",
+      "eventos": 93,
+      "percentual": 2.7797856501528635,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "CE",
+      "ano": 2025,
+      "nome": "FORTALEZA",
+      "ordem": 7,
+      "total": 134366,
+      "codigo": 2304400,
+      "rotulo": "Fortaleza",
+      "eventos": 73,
+      "percentual": 2.5451865995355374,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "RS",
+      "ano": 2025,
+      "nome": "PORTO ALEGRE",
+      "ordem": 8,
+      "total": 93620,
+      "codigo": 4314902,
+      "rotulo": "Porto Alegre",
+      "eventos": 51,
+      "percentual": 1.7733680354294763,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PA",
+      "ano": 2025,
+      "nome": "BELEM",
+      "ordem": 9,
+      "total": 81529,
+      "codigo": 1501402,
+      "rotulo": "Belém",
+      "eventos": 42,
+      "percentual": 1.5443379893241804,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PE",
+      "ano": 2025,
+      "nome": "RECIFE",
+      "ordem": 10,
+      "total": 81277,
+      "codigo": 2611606,
+      "rotulo": "Recife",
+      "eventos": 47,
+      "percentual": 1.5395645568852974,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SC",
+      "ano": 2025,
+      "nome": "FLORIANOPOLIS",
+      "ordem": 11,
+      "total": 79201,
+      "codigo": 4205407,
+      "rotulo": "Florianópolis",
+      "eventos": 54,
+      "percentual": 1.500240565841166,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "GO",
+      "ano": 2025,
+      "nome": "GOIANIA",
+      "ordem": 12,
+      "total": 73381,
+      "codigo": 5208707,
+      "rotulo": "Goiânia",
+      "eventos": 60,
+      "percentual": 1.3899970071336296,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PB",
+      "ano": 2025,
+      "nome": "JOAO PESSOA",
+      "ordem": 13,
+      "total": 70644,
+      "codigo": 2507507,
+      "rotulo": "João Pessoa",
+      "eventos": 47,
+      "percentual": 1.338152227033539,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "AM",
+      "ano": 2025,
+      "nome": "MANAUS",
+      "ordem": 14,
+      "total": 66120,
+      "codigo": 1302603,
+      "rotulo": "Manaus",
+      "eventos": 39,
+      "percentual": 1.2524577494402582,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SP",
+      "ano": 2025,
+      "nome": "SANTOS",
+      "ordem": 15,
+      "total": 65664,
+      "codigo": 3548500,
+      "rotulo": "Santos",
+      "eventos": 20,
+      "percentual": 1.243820109788946,
+      "denominador": 5279220
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "RJ",
+      "ano": 2026,
+      "nome": "RIO DE JANEIRO",
+      "ordem": 1,
+      "total": 415176,
+      "codigo": 3304557,
+      "rotulo": "Rio de Janeiro",
+      "eventos": 115,
+      "percentual": 9.713466586153158,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SP",
+      "ano": 2026,
+      "nome": "SAO PAULO",
+      "ordem": 2,
+      "total": 403446,
+      "codigo": 3550308,
+      "rotulo": "São Paulo",
+      "eventos": 136,
+      "percentual": 9.439031254978966,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "DF",
+      "ano": 2026,
+      "nome": "BRASILIA",
+      "ordem": 3,
+      "total": 190151,
+      "codigo": 5300108,
+      "rotulo": "Brasília",
+      "eventos": 102,
+      "percentual": 4.44877686769854,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "MG",
+      "ano": 2026,
+      "nome": "BELO HORIZONTE",
+      "ordem": 4,
+      "total": 158468,
+      "codigo": 3106200,
+      "rotulo": "Belo Horizonte",
+      "eventos": 49,
+      "percentual": 3.707520721271265,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PR",
+      "ano": 2026,
+      "nome": "CURITIBA",
+      "ordem": 5,
+      "total": 117554,
+      "codigo": 4106902,
+      "rotulo": "Curitiba",
+      "eventos": 48,
+      "percentual": 2.7502959011808206,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "BA",
+      "ano": 2026,
+      "nome": "SALVADOR",
+      "ordem": 6,
+      "total": 105749,
+      "codigo": 2927408,
+      "rotulo": "Salvador",
+      "eventos": 63,
+      "percentual": 2.474105868400655,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "CE",
+      "ano": 2026,
+      "nome": "FORTALEZA",
+      "ordem": 7,
+      "total": 79259,
+      "codigo": 2304400,
+      "rotulo": "Fortaleza",
+      "eventos": 47,
+      "percentual": 1.8543452611709568,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "RS",
+      "ano": 2026,
+      "nome": "PORTO ALEGRE",
+      "ordem": 8,
+      "total": 73352,
+      "codigo": 4314902,
+      "rotulo": "Porto Alegre",
+      "eventos": 31,
+      "percentual": 1.7161449626845156,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "GO",
+      "ano": 2026,
+      "nome": "GOIANIA",
+      "ordem": 9,
+      "total": 67165,
+      "codigo": 5208707,
+      "rotulo": "Goiânia",
+      "eventos": 57,
+      "percentual": 1.5713937782024416,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PE",
+      "ano": 2026,
+      "nome": "RECIFE",
+      "ordem": 10,
+      "total": 62255,
+      "codigo": 2611606,
+      "rotulo": "Recife",
+      "eventos": 40,
+      "percentual": 1.456519313064736,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "PA",
+      "ano": 2026,
+      "nome": "BELEM",
+      "ordem": 11,
+      "total": 62070,
+      "codigo": 1501402,
+      "rotulo": "Belém",
+      "eventos": 43,
+      "percentual": 1.4521910491033359,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "AM",
+      "ano": 2026,
+      "nome": "MANAUS",
+      "ordem": 12,
+      "total": 61399,
+      "codigo": 1302603,
+      "rotulo": "Manaus",
+      "eventos": 33,
+      "percentual": 1.4364923187352299,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SP",
+      "ano": 2026,
+      "nome": "SANTOS",
+      "ordem": 13,
+      "total": 59140,
+      "codigo": 3548500,
+      "rotulo": "Santos",
+      "eventos": 22,
+      "percentual": 1.38364070636332,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "cidades",
+    "dados": {
+      "uf": "SC",
+      "ano": 2026,
+      "nome": "FLORIANOPOLIS",
+      "ordem": 14,
+      "total": 57778,
+      "codigo": 4205407,
+      "rotulo": "Florianópolis",
+      "eventos": 33,
+      "percentual": 1.3517753251988487,
+      "denominador": 4274231
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "total": 8068,
+      "eventos": 19,
+      "qualidade": "Cidade/UF sem correspondência"
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "total": 31081,
+      "eventos": 26,
+      "qualidade": "Código diverge da cidade/UF"
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "total": 5247745,
+      "eventos": 5092,
+      "qualidade": "Cidade/UF validada"
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2026,
+      "total": 4266163,
+      "eventos": 4544,
+      "qualidade": "Cidade/UF validada"
+    }
+  },
+  {
+    "bloco": "qualidade",
+    "dados": {
+      "ano": 2025,
+      "total": 394,
+      "eventos": 3,
+      "qualidade": "Cidade/UF sem correspondência"
+    }
+  },
+  {
+    "bloco": "integridade",
+    "dados": {
+      "ano": 2025,
+      "eventos": 5121,
+      "validas": 5247745,
+      "denominador": 5279220,
+      "cidades_validas": 1323,
+      "resultados_antes_do_mapa": 5279220
+    }
+  },
+  {
+    "bloco": "integridade",
+    "dados": {
+      "ano": 2026,
+      "eventos": 4563,
+      "validas": 4266163,
+      "denominador": 4274231,
+      "cidades_validas": 1429,
+      "resultados_antes_do_mapa": 4274231
+    }
+  }
+]

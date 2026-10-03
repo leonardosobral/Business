@@ -1,0 +1,41 @@
+[
+  {
+    "ano": 2023,
+    "coletadas": 1288,
+    "resultados": 1406551,
+    "cadastradas": 4796,
+    "coletado_em": "2026-10-01T00:05:17.510216-03:00",
+    "controle_soma": 1406551,
+    "eventos_elegiveis": 1276,
+    "resultados_brutos": 1540159,
+    "variacao_percentual": null,
+    "resultados_fora_view": 133608,
+    "resultados_ano_anterior": null
+  },
+  {
+    "ano": 2024,
+    "coletadas": 3218,
+    "resultados": 3231005,
+    "cadastradas": 6178,
+    "coletado_em": "2026-10-01T00:05:17.510216-03:00",
+    "controle_soma": 3231005,
+    "eventos_elegiveis": 3216,
+    "resultados_brutos": 3463445,
+    "variacao_percentual": 129.7111871521189,
+    "resultados_fora_view": 232440,
+    "resultados_ano_anterior": 1406551
+  },
+  {
+    "ano": 2025,
+    "coletadas": 5123,
+    "resultados": 5279220,
+    "cadastradas": 9440,
+    "coletado_em": "2026-10-01T00:05:17.510216-03:00",
+    "controle_soma": 5279220,
+    "eventos_elegiveis": 5121,
+    "resultados_brutos": 5599240,
+    "variacao_percentual": 63.39250480887526,
+    "resultados_fora_view": 320020,
+    "resultados_ano_anterior": 3231005
+  }
+]

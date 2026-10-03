@@ -1,0 +1,8 @@
+{
+  "Business": {
+    "published": [
+      "estudo/home.cfm"
+    ],
+    "backup": "/var/backups/roadrunners-estudo-geografia-20260930/runtime/Business/baseline"
+  }
+}

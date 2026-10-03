@@ -1,0 +1,4594 @@
+{
+  "indicadores": [
+    {
+      "serie": "capital_interior_Brasil",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":52.6588339620570148,\"contagem\":2225653,\"denominador\":4226552}"
+    },
+    {
+      "serie": "capital_interior_Brasil",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":47.1502775785084390,\"contagem\":1992831,\"denominador\":4226552}"
+    },
+    {
+      "serie": "capital_interior_Centro-Oeste",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":74.1589797688324230,\"contagem\":324074,\"denominador\":436999}"
+    },
+    {
+      "serie": "capital_interior_Centro-Oeste",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":25.8410202311675770,\"contagem\":112925,\"denominador\":436999}"
+    },
+    {
+      "serie": "capital_interior_Nordeste",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":52.3454724298167264,\"contagem\":462980,\"denominador\":884470}"
+    },
+    {
+      "serie": "capital_interior_Nordeste",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":47.5546937714111276,\"contagem\":420607,\"denominador\":884470}"
+    },
+    {
+      "serie": "capital_interior_Norte",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":66.8100862428019549,\"contagem\":174844,\"denominador\":261703}"
+    },
+    {
+      "serie": "capital_interior_Norte",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":32.8865163945388475,\"contagem\":86065,\"denominador\":261703}"
+    },
+    {
+      "serie": "capital_interior_Sudeste",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":54.2563337042987285,\"contagem\":1015512,\"denominador\":1871693}"
+    },
+    {
+      "serie": "capital_interior_Sudeste",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":45.5478008412704434,\"contagem\":852515,\"denominador\":1871693}"
+    },
+    {
+      "serie": "capital_interior_Sul",
+      "categoria": "Capital",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":32.2478523558808361,\"contagem\":248243,\"denominador\":769797}"
+    },
+    {
+      "serie": "capital_interior_Sul",
+      "categoria": "Interior",
+      "execucao": 52,
+      "celula": 267,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 267 rev2, execução #52; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":67.6436774890003468,\"contagem\":520719,\"denominador\":769797}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Belém · PA",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.4521910491033358\",\"contagem\":62070,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Belo Horizonte · MG",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"3.7075207212712649\",\"contagem\":158468,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Brasília · DF",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"4.4487768676985404\",\"contagem\":190151,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Curitiba · PR",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"2.7502959011808206\",\"contagem\":117554,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Florianópolis · SC",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.3517753251988486\",\"contagem\":57778,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Fortaleza · CE",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.8543452611709568\",\"contagem\":79259,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Goiânia · GO",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.5713937782024416\",\"contagem\":67165,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Manaus · AM",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.4364923187352298\",\"contagem\":61399,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Porto Alegre · RS",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.7161449626845156\",\"contagem\":73352,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Recife · PE",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.4565193130647361\",\"contagem\":62255,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Rio de Janeiro · RJ",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"9.7134665861531583\",\"contagem\":415176,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Salvador · BA",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"2.4741058684006550\",\"contagem\":105749,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "Santos · SP",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"1.3836407063633201\",\"contagem\":59140,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cidades",
+      "categoria": "São Paulo · SP",
+      "execucao": 77,
+      "celula": 288,
+      "revisao": 2,
+      "fonte": "Notebook Business — célula 288 rev2, execução #77; coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"9.4390312549789658\",\"contagem\":403446,\"denominador\":4274231}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Amarela",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"13.91237533231908779370860418\",\"contagem\":90532,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Azul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"9.679897960751771087855178031\",\"contagem\":62990,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Branca",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"51.44284111689948212008052495\",\"contagem\":334754,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Laranja",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"16.99583544634487421818572987\",\"contagem\":110597,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Marrom",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"1.635394095861570851197885452\",\"contagem\":10642,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Mestre",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.5927189464140273231601432238\",\"contagem\":3857,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Preta",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.209211193582591858374441012\",\"contagem\":14376,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_10k",
+      "categoria": "Vermelha",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"3.531725907826594747437493277\",\"contagem\":22982,\"denominador\":650730}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Amarela",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"7.305075595763015917191707100\",\"contagem\":21786,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Azul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"6.070797469075984723251439321\",\"contagem\":18105,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Branca",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"56.03441627463275112245205897\",\"contagem\":167112,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Laranja",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"19.15260318343834141990604598\",\"contagem\":57119,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Marrom",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.077584154564750143345259212\",\"contagem\":6196,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Mestre",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.8939379206051684767847742186\",\"contagem\":2666,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Preta",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"1.128319993562037481013040227\",\"contagem\":3365,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_21k",
+      "categoria": "Vermelha",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"7.337265408357950716055674963\",\"contagem\":21882,\"denominador\":298231}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Amarela",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"10.77804851884204557644859240\",\"contagem\":7033,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Azul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"8.129894410984935558518382297\",\"contagem\":5305,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Branca",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"58.05556832636047384794568832\",\"contagem\":37883,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Laranja",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"15.09202642024121496329670666\",\"contagem\":9848,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Marrom",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.859638637304031998528803273\",\"contagem\":1866,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Mestre",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.2957718419076517554748440685\",\"contagem\":193,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Preta",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.6742984996858381990100072027\",\"contagem\":440,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_42k",
+      "categoria": "Vermelha",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"4.114753344673808100776975771\",\"contagem\":2685,\"denominador\":65253}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Amarela",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"5.825807215174892138192225342\",\"contagem\":135367,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Azul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"6.292071484673401977556136557\",\"contagem\":146201,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Branca",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"71.81020625544688680158807011\",\"contagem\":1668564,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Laranja",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"11.10289101922683795444519759\",\"contagem\":257984,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Marrom",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"1.973467609179819889609760821\",\"contagem\":45855,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Mestre",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.03589296665698331235273231981\",\"contagem\":834,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Preta",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.2609341209128175333268777638\",\"contagem\":6063,\"denominador\":2323575}"
+    },
+    {
+      "serie": "cna_5k",
+      "categoria": "Vermelha",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.698729328728360392928999494\",\"contagem\":62707,\"denominador\":2323575}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":368338,\"contagem\":368338,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":505127,\"contagem\":505127,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":204351,\"contagem\":204351,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":138830,\"contagem\":138830,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":419399,\"contagem\":419399,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":511073,\"contagem\":511073,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":431271,\"contagem\":431271,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":391410,\"contagem\":391410,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2025",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 14 — Comparativo 2025 no mesmo corte; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 14,
+      "esperado_texto": "{\"valor\":380579,\"contagem\":380579,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":445944,\"contagem\":445944,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":721019,\"contagem\":721019,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":162960,\"contagem\":162960,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":155492,\"contagem\":155492,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":497307,\"contagem\":497307,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":517032,\"contagem\":517032,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":688323,\"contagem\":688323,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":561375,\"contagem\":561375,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_mensal_2026",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":464588,\"contagem\":464588,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":487,\"contagem\":487,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":899,\"contagem\":899,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":318,\"contagem\":318,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":213,\"contagem\":213,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":681,\"contagem\":681,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":798,\"contagem\":798,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":766,\"contagem\":766,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":548,\"contagem\":548,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2025",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":865,\"contagem\":865,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":718,\"contagem\":718,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":1315,\"contagem\":1315,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":362,\"contagem\":362,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":315,\"contagem\":315,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":884,\"contagem\":884,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":789,\"contagem\":789,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":1217,\"contagem\":1217,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":864,\"contagem\":864,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_cadastradas_2026",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":1112,\"contagem\":1112,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":306,\"contagem\":306,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":490,\"contagem\":490,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":194,\"contagem\":194,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":130,\"contagem\":130,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":378,\"contagem\":378,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":399,\"contagem\":399,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":427,\"contagem\":427,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":345,\"contagem\":345,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2025",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":398,\"contagem\":398,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":446,\"contagem\":446,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":752,\"contagem\":752,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":192,\"contagem\":192,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":185,\"contagem\":185,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":543,\"contagem\":543,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":473,\"contagem\":473,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":734,\"contagem\":734,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":547,\"contagem\":547,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_coletadas_2026",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":610,\"contagem\":610,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_resumo_2025",
+      "categoria": "Provas cadastradas",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":4710,\"contagem\":4710,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_resumo_2025",
+      "categoria": "Provas com resultado coletado",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":2669,\"contagem\":2669,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_resumo_2026",
+      "categoria": "Provas cadastradas",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":6464,\"contagem\":6464,\"denominador\":null}"
+    },
+    {
+      "serie": "comparativo_provas_resumo_2026",
+      "categoria": "Provas com resultado coletado",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 20 — Cadastro e coleta de provas; recibo de 27/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 20,
+      "esperado_texto": "{\"valor\":3872,\"contagem\":3872,\"denominador\":null}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Alfa",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.87990401047158491801,\"contagem\":242,\"denominador\":27503}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Alfa",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.23633785405228520525,\"contagem\":65,\"denominador\":27503}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Alfa",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.7696251318038032,\"contagem\":3237,\"denominador\":27503}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Alfa",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":87.1141330036723267,\"contagem\":23959,\"denominador\":27503}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Anteriores a 1946",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.8080731150038081,\"contagem\":50,\"denominador\":1313}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Anteriores a 1946",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.1424219345011424,\"contagem\":15,\"denominador\":1313}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Anteriores a 1946",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":18.3549124143183549,\"contagem\":241,\"denominador\":1313}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Anteriores a 1946",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":76.6945925361766946,\"contagem\":1007,\"denominador\":1313}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Boomers",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":7.4094696636677119,\"contagem\":7585,\"denominador\":102369}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Boomers",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.1663687249069543,\"contagem\":1194,\"denominador\":102369}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Boomers",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":25.3182115679551427,\"contagem\":25918,\"denominador\":102369}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Boomers",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":66.1059500434701912,\"contagem\":67672,\"denominador\":102369}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração X",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":10.1585733543255230,\"contagem\":59232,\"denominador\":583074}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração X",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.1007625104189177,\"contagem\":12249,\"denominador\":583074}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração X",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":26.3829290964783201,\"contagem\":153832,\"denominador\":583074}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração X",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":61.3577350387772393,\"contagem\":357761,\"denominador\":583074}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração Z",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.1162868986451596,\"contagem\":63909,\"denominador\":701042}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração Z",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.3352980277929140,\"contagem\":9361,\"denominador\":701042}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração Z",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":24.4011057825351405,\"contagem\":171062,\"denominador\":701042}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Geração Z",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":65.1473092910267858,\"contagem\":456710,\"denominador\":701042}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Millennials",
+      "categoria": "11 a 29 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.3516196584029651,\"contagem\":203766,\"denominador\":1795039}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Millennials",
+      "categoria": "+30 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.2864684277054705,\"contagem\":41043,\"denominador\":1795039}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Millennials",
+      "categoria": "6 a 10 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":26.2424381865797902,\"contagem\":471062,\"denominador\":1795039}"
+    },
+    {
+      "serie": "distancia_dentro_geracao_Millennials",
+      "categoria": "Até 5 km",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":60.1194737273117743,\"contagem\":1079168,\"denominador\":1795039}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_F",
+      "categoria": "11 a 29 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":7.5788479530348647,\"contagem\":170925,\"denominador\":2255290}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_F",
+      "categoria": "+30 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.96887761662579978628,\"contagem\":21851,\"denominador\":2255290}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_F",
+      "categoria": "6 a 10 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":23.6539425085022325,\"contagem\":533465,\"denominador\":2255290}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_F",
+      "categoria": "Até 5 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":67.7983319218371030,\"contagem\":1529049,\"denominador\":2255290}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_M",
+      "categoria": "11 a 29 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.8572766466742930,\"contagem\":267224,\"denominador\":1928402}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_M",
+      "categoria": "+30 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.2290466406900636,\"contagem\":62269,\"denominador\":1928402}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_M",
+      "categoria": "6 a 10 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":29.4957690357093594,\"contagem\":568797,\"denominador\":1928402}"
+    },
+    {
+      "serie": "distancia_dentro_sexo_M",
+      "categoria": "Até 5 km",
+      "execucao": 42,
+      "celula": 260,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 260 rev1, execução #42; derivação da execução #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":53.4179076769262840,\"contagem\":1030112,\"denominador\":1928402}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "10 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"15.70971444247091459607329424\",\"contagem\":657425,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "15 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.350114257899542418797796136\",\"contagem\":56500,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "21 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"7.111900098235747154425112985\",\"contagem\":297621,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "3 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"2.404469857922577996578595408\",\"contagem\":100623,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "42 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.539703753867240994917118517\",\"contagem\":64434,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "4 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"2.229002796050784368592184487\",\"contagem\":93280,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "5 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"56.12033078516193365992557406\",\"contagem\":2348541,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "6 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"5.553700973826661100531897226\",\"contagem\":232413,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "7 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.561720891476860116931842648\",\"contagem\":149052,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "8 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.168290905893212891990142493\",\"contagem\":48891,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_detalhe",
+      "categoria": "Outras",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.251051237194524701236441806\",\"contagem\":136051,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_faixas",
+      "categoria": "11 a 29 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"10.47526172502545503032261040\",\"contagem\":438372,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_faixas",
+      "categoria": "+30 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"2.011550765132450987865459800\",\"contagem\":84180,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_faixas",
+      "categoria": "6 a 10 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"26.34330992099800445943934176\",\"contagem\":1102423,\"denominador\":4184831}"
+    },
+    {
+      "serie": "distancias_faixas",
+      "categoria": "Até 5 km",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"61.16987758884408952237258804\",\"contagem\":2559856,\"denominador\":4184831}"
+    },
+    {
+      "serie": "estacoes",
+      "categoria": "Inverno",
+      "execucao": 97,
+      "celula": 300,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 300 rev1, execução #97; contagens mensais da saída #96, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":41.1803874666590730,\"contagem\":1735358,\"denominador\":4214040}"
+    },
+    {
+      "serie": "estacoes",
+      "categoria": "Outono",
+      "execucao": 97,
+      "celula": 300,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 300 rev1, execução #97; contagens mensais da saída #96, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":40.2379189566306917,\"contagem\":1695642,\"denominador\":4214040}"
+    },
+    {
+      "serie": "estacoes",
+      "categoria": "Primavera",
+      "execucao": 97,
+      "celula": 300,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 300 rev1, execução #97; contagens mensais da saída #96, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.0247648337462388,\"contagem\":464588,\"denominador\":4214040}"
+    },
+    {
+      "serie": "estacoes",
+      "categoria": "Verão",
+      "execucao": 97,
+      "celula": 300,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 300 rev1, execução #97; contagens mensais da saída #96, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":7.5569287429639965,\"contagem\":318452,\"denominador\":4214040}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.05498837745658304040,\"contagem\":242,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.01136123501169071083,\"contagem\":50,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.7234993512734808,\"contagem\":7585,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":16.2751963789471771,\"contagem\":71626,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.4589734442492837,\"contagem\":59232,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":14.5217033672428328,\"contagem\":63909,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.01454238081496410986,\"contagem\":64,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":46.3006682678433876,\"contagem\":203766,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_11 a 29 km",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":7.6390671971606001,\"contagem\":33619,\"denominador\":440093}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.07676228491798245096,\"contagem\":65,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.01771437344261133484,\"contagem\":15,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.4100641260318623,\"contagem\":1194,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":21.0836472713960107,\"contagem\":17853,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":14.4655573532364160,\"contagem\":12249,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.0549499864189804,\"contagem\":9361,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.41924017147513492448,\"contagem\":355,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":48.4700686136731344,\"contagem\":41043,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_+30 km",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.0019958194078675,\"contagem\":2542,\"denominador\":84677}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.29035218096018040047,\"contagem\":3237,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.02161719975638043760,\"contagem\":241,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.3247908020160505,\"contagem\":25918,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":16.6131319555134175,\"contagem\":185212,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.7984110909689439,\"contagem\":153832,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":15.3439063266636947,\"contagem\":171062,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.05633029646060960503,\"contagem\":628,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":42.2532836167638245,\"contagem\":471062,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_6 a 10 km",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.2981765308968985,\"contagem\":103661,\"denominador\":1114853}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.91959043509266718840,\"contagem\":23959,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.03865050996027863678,\"contagem\":1007,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.5973756802700853,\"contagem\":67672,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":14.8573020869356287,\"contagem\":387092,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.7315244229386747,\"contagem\":357761,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":17.5293688222034322,\"contagem\":456710,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.31879953895737274790,\"contagem\":8306,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":41.4204503801529056,\"contagem\":1079168,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracao_dentro_distancia_Até 5 km",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.5869381234889551,\"contagem\":223724,\"denominador\":2605399}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.45693833938530500200,\"contagem\":10520,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.02488837152735549108,\"contagem\":573,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.0738572197995031,\"contagem\":47746,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":15.1902027555293014,\"contagem\":349721,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.8001459422833018,\"contagem\":317718,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":15.7076463332001320,\"contagem\":361634,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.17500043435203363622,\"contagem\":4029,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":44.2614278020049690,\"contagem\":1019022,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_F",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.3098928019180986,\"contagem\":191317,\"denominador\":2302280}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.64638527959766329897,\"contagem\":27628,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.03074237213664867435,\"contagem\":1314,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.4042921405043387,\"contagem\":102765,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":15.6787033737764758,\"contagem\":670144,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.7496312202124780,\"contagem\":587691,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":16.4726239644043572,\"contagem\":704078,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.21975882913207077484,\"contagem\":9393,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":42.2607949827700000,\"contagem\":1806324,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_geral",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.5370678374659676,\"contagem\":364894,\"denominador\":4274231}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Alfa",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.86792473892488962565,\"contagem\":17105,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Anteriores a 1946",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.03719315016848547767,\"contagem\":733,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Boomers",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.7910084925205235,\"contagem\":55005,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Geração indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":16.2555377454659114,\"contagem\":320363,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Geração X",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.6955530083575495,\"contagem\":269911,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Geração Z",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":17.3480421332935524,\"contagem\":341894,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.27212396228320275138,\"contagem\":5363,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Millennials",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":39.9380858365135253,\"contagem\":787097,\"denominador\":1970793}"
+    },
+    {
+      "serie": "geracoes_2026_M",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.7945309324723601,\"contagem\":173322,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "14–19",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.5443386555935855,\"contagem\":35555,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "20–24",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.4627847177580485,\"contagem\":79723,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "25–29",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.0717462689160311,\"contagem\":208857,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "30–34",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":12.4164741039317546,\"contagem\":285862,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "35–39",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":13.4186111159372448,\"contagem\":308934,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "40–44",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":12.6175356603019615,\"contagem\":290491,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "45–49",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.4781260315860799,\"contagem\":218213,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "50–54",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":5.4684486682766649,\"contagem\":125899,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "55–59",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.2196778845318554,\"contagem\":74126,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "60–64",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.2499869694389909,\"contagem\":51801,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "65–69",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.0860972601073718,\"contagem\":25005,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "70+",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.81306357176364299738,\"contagem\":18719,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "Idade indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":16.6682158555866359,\"contagem\":383749,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.17500043435203363622,\"contagem\":4029,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_F",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.3098928019180986,\"contagem\":191317,\"denominador\":2302280}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "14–19",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.0696120541917365,\"contagem\":88460,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "20–24",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.7669232196388075,\"contagem\":161007,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "25–29",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.0789898814546991,\"contagem\":388057,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "30–34",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.8426215148409152,\"contagem\":506181,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "35–39",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":12.7768480458824055,\"contagem\":546112,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "40–44",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.9847757409461491,\"contagem\":512257,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "45–49",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.1091707490774364,\"contagem\":389347,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "50–54",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":5.3723582089971272,\"contagem\":229627,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "55–59",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.2951424478461740,\"contagem\":140842,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "60–64",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.4291153192235048,\"contagem\":103826,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "65–69",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.2447619232559026,\"contagem\":53204,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "70+",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.97411674755061202822,\"contagem\":41636,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "Idade indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":17.2987374804964916,\"contagem\":739388,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.21975882913207077484,\"contagem\":9393,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_geral",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.5370678374659676,\"contagem\":364894,\"denominador\":4274231}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "14–19",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.6837927676828566,\"contagem\":52892,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "20–24",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":4.1156529376753419,\"contagem\":81111,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "25–29",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":9.0742660441761261,\"contagem\":178835,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "30–34",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.1758058811858983,\"contagem\":220252,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "35–39",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":12.0310453710765159,\"contagem\":237107,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "40–44",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.2500399585344580,\"contagem\":221715,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "45–49",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.6814799930789281,\"contagem\":171094,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "50–54",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":5.2621457453928444,\"contagem\":103706,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "55–59",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":3.3848303703128639,\"contagem\":66708,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "60–64",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":2.6395466190513159,\"contagem\":52020,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "65–69",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.4306423860851951,\"contagem\":28195,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "70+",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.1620702935315886,\"contagem\":22902,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "Idade indeterminada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":18.0420267374605045,\"contagem\":355571,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "Menos de 14",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.27212396228320275138,\"contagem\":5363,\"denominador\":1970793}"
+    },
+    {
+      "serie": "idades_M",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.7945309324723601,\"contagem\":173322,\"denominador\":1970793}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Abr",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"10.58233903807272830822678475\",\"contagem\":445944,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Ago",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"17.10992301924044384960750254\",\"contagem\":721019,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Fev",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.867072927641882848762707521\",\"contagem\":162960,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Jan",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.689855815322113696120587370\",\"contagem\":155492,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Jul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"11.80119315431272603012785830\",\"contagem\":497307,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Jun",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"12.26927129310590312384315289\",\"contagem\":517032,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Mai",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"16.33404049320841757553321753\",\"contagem\":688323,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Mar",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"13.32153942534954580402653985\",\"contagem\":561375,\"denominador\":4214040}"
+    },
+    {
+      "serie": "meses",
+      "categoria": "Set",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"11.02476483374623876375164925\",\"contagem\":464588,\"denominador\":4214040}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Caminhada",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.2886972310485701,\"contagem\":25564,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Crossfit",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.15109266584527592244,\"contagem\":466,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Elíptico",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.20232150962972569872,\"contagem\":624,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Fortalecimento",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":11.6266779067505350,\"contagem\":35859,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Natação",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":1.5063873938136308,\"contagem\":4646,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Pedal",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":5.0625770053822709,\"contagem\":15614,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Rolo",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.21399390441605602749,\"contagem\":660,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Stepper",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.11542701510926658453,\"contagem\":356,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Treino livre",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":5.6319304844043836,\"contagem\":17370,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Trilha",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.16535892613967965761,\"contagem\":510,\"denominador\":308420}"
+    },
+    {
+      "serie": "outros_esportes",
+      "categoria": "Yoga",
+      "execucao": 71,
+      "celula": 284,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 284 rev1, execução #71; fonte #65, coleta própria 30/09/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.37838013099020815771,\"contagem\":1167,\"denominador\":308420}"
+    },
+    {
+      "serie": "performance_10k_F",
+      "categoria": "40–50min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"5.777486668707594386974134801\",\"contagem\":16230,\"denominador\":280918}"
+    },
+    {
+      "serie": "performance_10k_F",
+      "categoria": "50–60min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"25.55300835119145088602367951\",\"contagem\":71783,\"denominador\":280918}"
+    },
+    {
+      "serie": "performance_10k_F",
+      "categoria": "60+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"68.12379413209548693924917592\",\"contagem\":191372,\"denominador\":280918}"
+    },
+    {
+      "serie": "performance_10k_F",
+      "categoria": "Até 40min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.5457108480054677877530097751\",\"contagem\":1533,\"denominador\":280918}"
+    },
+    {
+      "serie": "performance_10k_geral",
+      "categoria": "40–50min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"14.90866740223121245555964203\",\"contagem\":97288,\"denominador\":652560}"
+    },
+    {
+      "serie": "performance_10k_geral",
+      "categoria": "50–60min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"30.94811205099914184136324629\",\"contagem\":201955,\"denominador\":652560}"
+    },
+    {
+      "serie": "performance_10k_geral",
+      "categoria": "60+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"51.32876670344489395611131543\",\"contagem\":334951,\"denominador\":652560}"
+    },
+    {
+      "serie": "performance_10k_geral",
+      "categoria": "Até 40min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.814453843324751746965796249\",\"contagem\":18366,\"denominador\":652560}"
+    },
+    {
+      "serie": "performance_10k_M",
+      "categoria": "40–50min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"21.81167960992621534785346400\",\"contagem\":81057,\"denominador\":371622}"
+    },
+    {
+      "serie": "performance_10k_M",
+      "categoria": "50–60min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"35.02645160943108857925526476\",\"contagem\":130166,\"denominador\":371622}"
+    },
+    {
+      "serie": "performance_10k_M",
+      "categoria": "60+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"38.63280430114471156174822804\",\"contagem\":143568,\"denominador\":371622}"
+    },
+    {
+      "serie": "performance_10k_M",
+      "categoria": "Até 40min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"4.529064479497984511143043200\",\"contagem\":16831,\"denominador\":371622}"
+    },
+    {
+      "serie": "performance_21k_F",
+      "categoria": "1:30–2:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"26.35641075569559752880989892\",\"contagem\":29778,\"denominador\":112982}"
+    },
+    {
+      "serie": "performance_21k_F",
+      "categoria": "2:00–2:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"52.02333115009470535129489653\",\"contagem\":58777,\"denominador\":112982}"
+    },
+    {
+      "serie": "performance_21k_F",
+      "categoria": "2:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"20.94227399054716680533182277\",\"contagem\":23661,\"denominador\":112982}"
+    },
+    {
+      "serie": "performance_21k_F",
+      "categoria": "Até 1:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.6779841036625303145633817776\",\"contagem\":766,\"denominador\":112982}"
+    },
+    {
+      "serie": "performance_21k_geral",
+      "categoria": "1:30–2:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"40.07848908511160166789305862\",\"contagem\":119282,\"denominador\":297621}"
+    },
+    {
+      "serie": "performance_21k_geral",
+      "categoria": "2:00–2:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"41.53100755659042876678728988\",\"contagem\":123605,\"denominador\":297621}"
+    },
+    {
+      "serie": "performance_21k_geral",
+      "categoria": "2:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"14.25638647810470363314416657\",\"contagem\":42430,\"denominador\":297621}"
+    },
+    {
+      "serie": "performance_21k_geral",
+      "categoria": "Até 1:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"4.134116880193265932175484929\",\"contagem\":12304,\"denominador\":297621}"
+    },
+    {
+      "serie": "performance_21k_M",
+      "categoria": "1:30–2:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"48.48355102704460462847542139\",\"contagem\":89457,\"denominador\":184510}"
+    },
+    {
+      "serie": "performance_21k_M",
+      "categoria": "2:00–2:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"35.09782667606091810741965205\",\"contagem\":64759,\"denominador\":184510}"
+    },
+    {
+      "serie": "performance_21k_M",
+      "categoria": "2:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"10.16530269362094195436561704\",\"contagem\":18756,\"denominador\":184510}"
+    },
+    {
+      "serie": "performance_21k_M",
+      "categoria": "Até 1:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"6.253319603273535309739309523\",\"contagem\":11538,\"denominador\":184510}"
+    },
+    {
+      "serie": "performance_42k_F",
+      "categoria": "3:00–3:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"4.951722338204592901878914405\",\"contagem\":759,\"denominador\":15328}"
+    },
+    {
+      "serie": "performance_42k_F",
+      "categoria": "3:30–4:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"21.31393528183716075156576200\",\"contagem\":3267,\"denominador\":15328}"
+    },
+    {
+      "serie": "performance_42k_F",
+      "categoria": "4:00–4:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"28.11847599164926931106471816\",\"contagem\":4310,\"denominador\":15328}"
+    },
+    {
+      "serie": "performance_42k_F",
+      "categoria": "4:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"44.95041753653444676409185804\",\"contagem\":6890,\"denominador\":15328}"
+    },
+    {
+      "serie": "performance_42k_F",
+      "categoria": "Até 3:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.6654488517745302713987473904\",\"contagem\":102,\"denominador\":15328}"
+    },
+    {
+      "serie": "performance_42k_geral",
+      "categoria": "3:00–3:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"12.39873358785734239687121706\",\"contagem\":7989,\"denominador\":64434}"
+    },
+    {
+      "serie": "performance_42k_geral",
+      "categoria": "3:30–4:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"26.17717354191886271223267219\",\"contagem\":16867,\"denominador\":64434}"
+    },
+    {
+      "serie": "performance_42k_geral",
+      "categoria": "4:00–4:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"24.37222584349877393922463296\",\"contagem\":15704,\"denominador\":64434}"
+    },
+    {
+      "serie": "performance_42k_geral",
+      "categoria": "4:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"33.14554427786572306546233355\",\"contagem\":21357,\"denominador\":64434}"
+    },
+    {
+      "serie": "performance_42k_geral",
+      "categoria": "Até 3:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"3.906322748859297886209144241\",\"contagem\":2517,\"denominador\":64434}"
+    },
+    {
+      "serie": "performance_42k_M",
+      "categoria": "3:00–3:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"14.72325174113142996782470574\",\"contagem\":7230,\"denominador\":49106}"
+    },
+    {
+      "serie": "performance_42k_M",
+      "categoria": "3:30–4:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"27.69518999714902455911701218\",\"contagem\":13600,\"denominador\":49106}"
+    },
+    {
+      "serie": "performance_42k_M",
+      "categoria": "4:00–4:30",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"23.20286726672911660489553211\",\"contagem\":11394,\"denominador\":49106}"
+    },
+    {
+      "serie": "performance_42k_M",
+      "categoria": "4:30+",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"29.46075835946727487476072170\",\"contagem\":14467,\"denominador\":49106}"
+    },
+    {
+      "serie": "performance_42k_M",
+      "categoria": "Até 3:00",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"4.917932635523153993402028265\",\"contagem\":2415,\"denominador\":49106}"
+    },
+    {
+      "serie": "performance_5k_F",
+      "categoria": "20–25min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"3.065144366916343525614933679\",\"contagem\":42321,\"denominador\":1380718}"
+    },
+    {
+      "serie": "performance_5k_F",
+      "categoria": "25–30min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"12.22306075534613150549207007\",\"contagem\":168766,\"denominador\":1380718}"
+    },
+    {
+      "serie": "performance_5k_F",
+      "categoria": "30+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"84.50451142086943170147705759\",\"contagem\":1166769,\"denominador\":1380718}"
+    },
+    {
+      "serie": "performance_5k_F",
+      "categoria": "Até 20min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"0.2072834568680932674159386638\",\"contagem\":2862,\"denominador\":1380718}"
+    },
+    {
+      "serie": "performance_5k_geral",
+      "categoria": "20–25min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"9.022364621950546288018808861\",\"contagem\":210832,\"denominador\":2336771}"
+    },
+    {
+      "serie": "performance_5k_geral",
+      "categoria": "25–30min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"16.94684673851224617217519389\",\"contagem\":396009,\"denominador\":2336771}"
+    },
+    {
+      "serie": "performance_5k_geral",
+      "categoria": "30+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"71.74404338294167464419919624\",\"contagem\":1676494,\"denominador\":2336771}"
+    },
+    {
+      "serie": "performance_5k_geral",
+      "categoria": "Até 20min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"2.286745256595532895606801009\",\"contagem\":53436,\"denominador\":2336771}"
+    },
+    {
+      "serie": "performance_5k_M",
+      "categoria": "20–25min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"17.61629835670654816284543121\",\"contagem\":168338,\"denominador\":955581}"
+    },
+    {
+      "serie": "performance_5k_M",
+      "categoria": "25–30min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"23.77161119779484941621903324\",\"contagem\":227157,\"denominador\":955581}"
+    },
+    {
+      "serie": "performance_5k_M",
+      "categoria": "30+min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"53.32734744621335083054183790\",\"contagem\":509586,\"denominador\":955581}"
+    },
+    {
+      "serie": "performance_5k_M",
+      "categoria": "Até 20min",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 15 — Performance/CNA 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 15,
+      "esperado_texto": "{\"valor\":\"5.284742999285251590393697656\",\"contagem\":50500,\"denominador\":955581}"
+    },
+    {
+      "serie": "qualidade_idades_F",
+      "categoria": "Dado inválido",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.00052122244036346578,\"contagem\":12,\"denominador\":2302280}"
+    },
+    {
+      "serie": "qualidade_idades_F",
+      "categoria": "Faixa da categoria",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":55.4867783240961134,\"contagem\":1277461,\"denominador\":2302280}"
+    },
+    {
+      "serie": "qualidade_idades_F",
+      "categoria": "Nascimento plausível",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":36.2028076515454245,\"contagem\":833490,\"denominador\":2302280}"
+    },
+    {
+      "serie": "qualidade_idades_F",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.3098928019180986,\"contagem\":191317,\"denominador\":2302280}"
+    },
+    {
+      "serie": "qualidade_idades_geral",
+      "categoria": "Dado inválido",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.00187168171303797104,\"contagem\":80,\"denominador\":4274231}"
+    },
+    {
+      "serie": "qualidade_idades_geral",
+      "categoria": "Faixa da categoria",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":56.1379111236617768,\"contagem\":2399464,\"denominador\":4274231}"
+    },
+    {
+      "serie": "qualidade_idades_geral",
+      "categoria": "Nascimento plausível",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":35.3231493571592176,\"contagem\":1509793,\"denominador\":4274231}"
+    },
+    {
+      "serie": "qualidade_idades_geral",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.5370678374659676,\"contagem\":364894,\"denominador\":4274231}"
+    },
+    {
+      "serie": "qualidade_idades_M",
+      "categoria": "Dado inválido",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":0.00345038773732198156,\"contagem\":68,\"denominador\":1970793}"
+    },
+    {
+      "serie": "qualidade_idades_M",
+      "categoria": "Faixa da categoria",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":56.9280995010637850,\"contagem\":1121935,\"denominador\":1970793}"
+    },
+    {
+      "serie": "qualidade_idades_M",
+      "categoria": "Nascimento plausível",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":34.2739191787265329,\"contagem\":675468,\"denominador\":1970793}"
+    },
+    {
+      "serie": "qualidade_idades_M",
+      "categoria": "Sem idade informada",
+      "execucao": 90,
+      "celula": 297,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 297 rev1, execução #90; coleta própria 01/10/2026",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":8.7945309324723601,\"contagem\":173322,\"denominador\":1970793}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Centro-Oeste",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"10.02477432582509895492211749\",\"contagem\":422448,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Não informada",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.3480270714089092652181754326\",\"contagem\":14666,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Nordeste",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"20.90967337756642082182418772\",\"contagem\":881142,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Norte",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"6.128086112139419654298487912\",\"contagem\":258240,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Sudeste",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"44.32549287619481542652656358\",\"contagem\":1867894,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_2026",
+      "categoria": "Sul",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"18.26394623686533587721046786\",\"contagem\":769650,\"denominador\":4214040}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Centro-Oeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"10.5027435597963816\",\"contagem\":238302,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Não informada",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"0.35527446616276251129\",\"contagem\":8061,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Nordeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"20.5473456885343441\",\"contagem\":466209,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Norte",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"6.5057405407787743\",\"contagem\":147612,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Sudeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"44.5958703364992618\",\"contagem\":1011858,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_feminino_rotulos_visiveis",
+      "categoria": "Sul",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"17.4930254082284757\",\"contagem\":396908,\"denominador\":2268950}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Centro-Oeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"9.4514651157287615\",\"contagem\":183731,\"denominador\":1943942}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Não informada",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"0.33941341871310975327\",\"contagem\":6598,\"denominador\":1943942}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Nordeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"21.3333010964318894\",\"contagem\":414707,\"denominador\":1943942}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Norte",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"5.6837086703204108\",\"contagem\":110488,\"denominador\":1943942}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Sudeste",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"44.0360874964376509\",\"contagem\":856036,\"denominador\":1943942}"
+    },
+    {
+      "serie": "regioes_masculino_rotulos_visiveis",
+      "categoria": "Sul",
+      "execucao": 75,
+      "celula": 287,
+      "revisao": 1,
+      "fonte": "Notebook Business — célula 287 rev1, execução #75; derivação da saída #74, origem #33 / consulta inicial 13",
+      "consulta_inicial": null,
+      "esperado_texto": "{\"valor\":\"19.1560242023681777\",\"contagem\":372382,\"denominador\":1943942}"
+    },
+    {
+      "serie": "sexo_2026",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"53.84263082457689058480697858\",\"contagem\":2268950,\"denominador\":4214040}"
+    },
+    {
+      "serie": "sexo_2026",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"46.13012690909436075594916043\",\"contagem\":1943942,\"denominador\":4214040}"
+    },
+    {
+      "serie": "sexo_2026",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.02724226632874865924386099800\",\"contagem\":1148,\"denominador\":4214040}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_11 a 29 km",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"38.99085708028797459691768635\",\"contagem\":170925,\"denominador\":438372}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_11 a 29 km",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"60.95827288239212358453550865\",\"contagem\":267224,\"denominador\":438372}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_11 a 29 km",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.05087003731990181854680499667\",\"contagem\":223,\"denominador\":438372}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_+30 km",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"25.95747208363031598954621050\",\"contagem\":21851,\"denominador\":84180}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_+30 km",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"73.97125207887859349014017581\",\"contagem\":62269,\"denominador\":84180}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_+30 km",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.07127583749109052031361368496\",\"contagem\":60,\"denominador\":84180}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_6 a 10 km",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"48.39022770751335920966815823\",\"contagem\":533465,\"denominador\":1102423}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_6 a 10 km",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"51.59516809790797180392644203\",\"contagem\":568797,\"denominador\":1102423}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_6 a 10 km",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.01460419457866898640539974220\",\"contagem\":161,\"denominador\":1102423}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_Até 5 km",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"59.73183647830190448212711965\",\"contagem\":1529049,\"denominador\":2559856}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_Até 5 km",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"40.24101355701258195773512260\",\"contagem\":1030112,\"denominador\":2559856}"
+    },
+    {
+      "serie": "sexo_dentro_distancia_Até 5 km",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.02714996468551356013775774887\",\"contagem\":695,\"denominador\":2559856}"
+    },
+    {
+      "serie": "sexo_por_regiao_Centro-Oeste",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"56.40978297920690830587433246\",\"contagem\":238302,\"denominador\":422448}"
+    },
+    {
+      "serie": "sexo_por_regiao_Centro-Oeste",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"43.49198007802143695792144832\",\"contagem\":183731,\"denominador\":422448}"
+    },
+    {
+      "serie": "sexo_por_regiao_Centro-Oeste",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.09823694277165473620421921751\",\"contagem\":415,\"denominador\":422448}"
+    },
+    {
+      "serie": "sexo_por_regiao_Nordeste",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"52.90963318057702390761080507\",\"contagem\":466209,\"denominador\":881142}"
+    },
+    {
+      "serie": "sexo_por_regiao_Nordeste",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"47.06471828604243129938193844\",\"contagem\":414707,\"denominador\":881142}"
+    },
+    {
+      "serie": "sexo_por_regiao_Nordeste",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.02564853338054479300725649214\",\"contagem\":226,\"denominador\":881142}"
+    },
+    {
+      "serie": "sexo_por_regiao_Norte",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"57.16078066914498141263940520\",\"contagem\":147612,\"denominador\":258240}"
+    },
+    {
+      "serie": "sexo_por_regiao_Norte",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"42.78500619578686493184634449\",\"contagem\":110488,\"denominador\":258240}"
+    },
+    {
+      "serie": "sexo_por_regiao_Norte",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.05421313506815365551425030979\",\"contagem\":140,\"denominador\":258240}"
+    },
+    {
+      "serie": "sexo_por_regiao_Sudeste",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"54.17106109875613926700337385\",\"contagem\":1011858,\"denominador\":1867894}"
+    },
+    {
+      "serie": "sexo_por_regiao_Sudeste",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"45.82893890124386073299662615\",\"contagem\":856036,\"denominador\":1867894}"
+    },
+    {
+      "serie": "sexo_por_regiao_Sul",
+      "categoria": "F",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"51.56993438575976093029299032\",\"contagem\":396908,\"denominador\":769650}"
+    },
+    {
+      "serie": "sexo_por_regiao_Sul",
+      "categoria": "M",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"48.38329110634704086272981225\",\"contagem\":372382,\"denominador\":769650}"
+    },
+    {
+      "serie": "sexo_por_regiao_Sul",
+      "categoria": "X",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.04677450789319820697719742740\",\"contagem\":360,\"denominador\":769650}"
+    },
+    {
+      "serie": "trimestres",
+      "categoria": "1",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"20.87846816831354234890983474\",\"contagem\":879827,\"denominador\":4214040}"
+    },
+    {
+      "serie": "trimestres",
+      "categoria": "2",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"39.18565082438704900760315517\",\"contagem\":1651299,\"denominador\":4214040}"
+    },
+    {
+      "serie": "trimestres",
+      "categoria": "3",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33; calendário conferido na execução #61",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"39.93588100729940864348701009\",\"contagem\":1682914,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "AC",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.06297994323736841605680059990\",\"contagem\":2654,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "AL",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.651242038518856014655769760\",\"contagem\":69584,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "AM",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.487693519757762147487921330\",\"contagem\":62692,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "AP",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.2319626771459217283177188636\",\"contagem\":9775,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "BA",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"4.957428026312042600449924538\",\"contagem\":208908,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "CE",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.169808544769389944091655513\",\"contagem\":133577,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "DF",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"4.454086814553255308445102562\",\"contagem\":187697,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "ES",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.752403868971343413921082856\",\"contagem\":73847,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "FL",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.003037465235261174549838160055\",\"contagem\":128,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "GO",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.161740277738227449193647901\",\"contagem\":133237,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "MA",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.102789721977010185000616985\",\"contagem\":46472,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "MG",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"7.002448956345929321980807017\",\"contagem\":295086,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "MS",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.8883162001309906882706381525\",\"contagem\":37434,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "MT",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.520631033402625509012728878\",\"contagem\":64080,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "Não informado",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.3433047621759641579102239181\",\"contagem\":14467,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "PA",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.151441372174920029235602889\",\"contagem\":132803,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "PB",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"2.665874078081840703932568272\",\"contagem\":112341,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "PE",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.311762584123548898444248275\",\"contagem\":139559,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "PI",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.7419958045011437955026530360\",\"contagem\":31268,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "PR",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"9.075993583354690510768763467\",\"contagem\":382466,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "RJ",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"12.35398809693310932027223282\",\"contagem\":520602,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "RN",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.973640497005249119609685717\",\"contagem\":83170,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "RO",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.4043862896412943398733756680\",\"contagem\":17041,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "RR",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.1942553938738123036326185798\",\"contagem\":8186,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "RS",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.221089500811572742546345075\",\"contagem\":135738,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "SC",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"5.966863152699072623895359323\",\"contagem\":251446,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "SE",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"1.335132082277339560137065619\",\"contagem\":56263,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "SP",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"23.21665195394443337035244089\",\"contagem\":978359,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "TO",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.5953669163083406896944499815\",\"contagem\":25089,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs",
+      "categoria": "US",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"0.001684843997683932758113354406\",\"contagem\":71,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "BA",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"4.957428026312042600449924538\",\"contagem\":208908,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "DF",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"4.454086814553255308445102562\",\"contagem\":187697,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "MG",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"7.002448956345929321980807017\",\"contagem\":295086,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "Outros",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"26.43968733092234530284477603\",\"contagem\":1114179,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "PE",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.311762584123548898444248275\",\"contagem\":139559,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "PR",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"9.075993583354690510768763467\",\"contagem\":382466,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "RJ",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"12.35398809693310932027223282\",\"contagem\":520602,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "RS",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"3.221089500811572742546345075\",\"contagem\":135738,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "SC",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"5.966863152699072623895359323\",\"contagem\":251446,\"denominador\":4214040}"
+    },
+    {
+      "serie": "ufs_top_grafico",
+      "categoria": "SP",
+      "execucao": 33,
+      "celula": 251,
+      "revisao": 1,
+      "fonte": "Consulta inicial 13 — Recortes 2026; recibo de 26/09/2026; snapshot v3, execução #33",
+      "consulta_inicial": 13,
+      "esperado_texto": "{\"valor\":\"23.21665195394443337035244089\",\"contagem\":978359,\"denominador\":4214040}"
+    }
+  ],
+  "totais": {
+    "eventos": "Consulta inicial 12 — cadastro de eventos BR até 26/09/2026; recibo de 26/09, snapshot v3, execução #33",
+    "resultados": "Consulta inicial 13 — recortes 2026, participações elegíveis até 26/09; recibo de 26/09, snapshot v3, execução #33"
+  },
+  "evidencias_iniciais": [
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/12_diagnostico.json",
+      "recibo_sha256": "ebbb61187c31e69e5802ae9a36562223833dbb3adce946538a3fc7de13c35499",
+      "sql": "_codex/sql/brasil_que_corre_provas/12_diagnostico_2026.sql",
+      "sql_sha256": "ee701e9ad6822fec05a8888e5e756aa780ca06a24c16830830a0407112fe800b",
+      "coletado_em": "2026-09-26T23:35:44.446141-03:00"
+    },
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/13_recortes.json",
+      "recibo_sha256": "a4e0c77be008bbd1868d8719970a1f334b2b46e94868465bca4a7a4d9e27a60d",
+      "sql": "_codex/sql/brasil_que_corre_provas/13_recortes_2026.sql",
+      "sql_sha256": "e43220eb304cfcc9d3f894ecfcef2a627626182b8fe2e1f25d241b5b8a36d683",
+      "coletado_em": "2026-09-26T23:37:25.233531-03:00"
+    },
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/14_comparativo_2025.json",
+      "recibo_sha256": "75a57d10c86f3cc4653e78f115b34914a5ee1b3f821090bb4bcf1a1d4e4dc889",
+      "sql": "_codex/sql/brasil_que_corre_provas/14_comparativo_2025.sql",
+      "sql_sha256": "031981134283173901c0b2eb5fabd3789ca2eebbf48a888995aa7c9788fc86e1",
+      "coletado_em": "2026-09-26T23:38:42.685667-03:00"
+    },
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/15_tempos.json",
+      "recibo_sha256": "43ec555659f3e52bc231d88a41da0b05bd46a50766785cc7d927a969ccf6faaf",
+      "sql": "_codex/sql/brasil_que_corre_provas/15_tempos_2026.sql",
+      "sql_sha256": "65542d02655578a6b5669f25c3561860d55bb6528f7db362d1ffdb7a91ab1108",
+      "coletado_em": "2026-09-26T23:39:42.649205-03:00"
+    },
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/16_maratonas.json",
+      "recibo_sha256": "259abc762e891d8b108467748f41ec8047d310befe05599da76e5e62646bb3d5",
+      "sql": "_codex/sql/brasil_que_corre_provas/16_maratonas_2026.sql",
+      "sql_sha256": "78118e1dc9373086d69037e0671d7f136f7b909302a46f697000c0d3b5ae9b1a",
+      "coletado_em": "2026-09-26T23:39:53.407883-03:00"
+    },
+    {
+      "recibo": "_codex/docs/brasil_que_corre_provas/coletas/comparativo_provas_2026-09-27/20_provas.json",
+      "recibo_sha256": "d06d125090a3bc674a73a5020aecd0c90d96db04eebc829d01e9661c5f058075",
+      "sql": "_codex/sql/brasil_que_corre_provas/20_comparativo_provas.sql",
+      "sql_sha256": "79b7a15b4f0de128b428007ee7aa40d1d61959a5228d3b0cbe04480eb9dbde18",
+      "coletado_em": "2026-09-27T09:21:10.707659-03:00"
+    }
+  ],
+  "consultas_no_notebook": [
+    {
+      "COLLECTED": "2026-09-26T23:35:44.446141-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/12_diagnostico.json",
+      "VERSION": 1,
+      "CELL": "317",
+      "SQL": "_codex/sql/brasil_que_corre_provas/12_diagnostico_2026.sql",
+      "SQL_SHA256": "ee701e9ad6822fec05a8888e5e756aa780ca06a24c16830830a0407112fe800b"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:37:25.233531-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/13_recortes.json",
+      "VERSION": 1,
+      "CELL": "318",
+      "SQL": "_codex/sql/brasil_que_corre_provas/13_recortes_2026.sql",
+      "SQL_SHA256": "e43220eb304cfcc9d3f894ecfcef2a627626182b8fe2e1f25d241b5b8a36d683"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:38:42.685667-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/14_comparativo_2025.json",
+      "VERSION": 1,
+      "CELL": "319",
+      "SQL": "_codex/sql/brasil_que_corre_provas/14_comparativo_2025.sql",
+      "SQL_SHA256": "031981134283173901c0b2eb5fabd3789ca2eebbf48a888995aa7c9788fc86e1"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:39:42.649205-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/15_tempos.json",
+      "VERSION": 1,
+      "CELL": "320",
+      "SQL": "_codex/sql/brasil_que_corre_provas/15_tempos_2026.sql",
+      "SQL_SHA256": "65542d02655578a6b5669f25c3561860d55bb6528f7db362d1ffdb7a91ab1108"
+    },
+    {
+      "COLLECTED": "2026-09-26T23:39:53.407883-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/2026_parcial_2026-09-26/16_maratonas.json",
+      "VERSION": 1,
+      "CELL": "321",
+      "SQL": "_codex/sql/brasil_que_corre_provas/16_maratonas_2026.sql",
+      "SQL_SHA256": "78118e1dc9373086d69037e0671d7f136f7b909302a46f697000c0d3b5ae9b1a"
+    },
+    {
+      "COLLECTED": "2026-09-27T09:21:10.707659-03:00",
+      "RECEIPT": "_codex/docs/brasil_que_corre_provas/coletas/comparativo_provas_2026-09-27/20_provas.json",
+      "VERSION": 1,
+      "CELL": "322",
+      "SQL": "_codex/sql/brasil_que_corre_provas/20_comparativo_provas.sql",
+      "SQL_SHA256": "79b7a15b4f0de128b428007ee7aa40d1d61959a5228d3b0cbe04480eb9dbde18"
+    }
+  ],
+  "saida_origem": {
+    "execucao": 122,
+    "celula": 251,
+    "revisao": 20,
+    "publicacao": 24,
+    "web_versao": 11
+  },
+  "verificacoes": {
+    "hashes_ancorados_no_snapshot": true,
+    "strings_e_tokens_decimais_exatos": true,
+    "numeros_publicados_alterados": false
+  }
+}

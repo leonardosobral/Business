@@ -1,0 +1,20 @@
+{
+  "tipos": [
+    {
+      "tipo_corrida": "rua",
+      "n": 9053
+    },
+    {
+      "tipo_corrida": "trail",
+      "n": 307
+    },
+    {
+      "tipo_corrida": "treino",
+      "n": 9
+    },
+    {
+      "tipo_corrida": "triatlo",
+      "n": 71
+    }
+  ]
+}

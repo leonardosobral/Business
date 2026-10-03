@@ -1,0 +1,11 @@
+{
+  "RoadRunners": {
+    "published": [
+      "brasilquecorreprovas/web/estudo.js",
+      "brasilquecorreprovas/web/parcial.js",
+      "brasilquecorreprovas/web/dados.js",
+      "brasilquecorreprovas/web/graficos.js"
+    ],
+    "backup": "/var/backups/roadrunners-estudo-regioes-cidades-20260930/runtime/RoadRunners/baseline"
+  }
+}

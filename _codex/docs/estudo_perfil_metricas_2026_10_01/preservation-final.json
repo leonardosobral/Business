@@ -1,0 +1,30 @@
+{
+  "original_cells": 149,
+  "changed_original_cells": [
+    249,
+    251
+  ],
+  "original_unchanged": 147,
+  "new_cells": [
+    305,
+    306,
+    307
+  ],
+  "validator_preserved": true,
+  "previous_baselines_preserved": true,
+  "runtime_candidate_hashes_match": 4,
+  "publications": {
+    "2025": {
+      "nota": "P15: dez indicadores por contas cadastradas até 31/12/2025; atributos atuais, denominadores explícitos e peso provisório 20–300 kg. PDF e comparativos preservados.",
+      "versao": 12,
+      "execucao": 108,
+      "publicado_em": "2026-10-01T10:07:10.560046-03:00"
+    },
+    "2026": {
+      "nota": "P15: dez indicadores próprios da coorte de contas até 26/09/2026; atributos atuais, bases informadas. Não mede crescimento. Outros indicadores e comparativos preservados.",
+      "versao": 9,
+      "execucao": 109,
+      "publicado_em": "2026-10-01T10:11:39.14765-03:00"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "2025": {
+    "publication": {
+      "nota": "Cobertura cadastral e auditoria14+; coleta própria01/10/2026. Séries anteriores e comparativos preservados.",
+      "versao": 13,
+      "execucao": 120,
+      "publicado_em": "2026-10-01T15:53:28.647765-03:00"
+    },
+    "status": 200,
+    "candidate_match": true,
+    "headers": {
+      "Date": "Thu, 01 Oct 2026 18:53:32 GMT",
+      "Content-Type": "application/json;charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Server": "cloudflare",
+      "X-Robots-Tag": "noindex, nofollow",
+      "Cache-Control": "private, no-store",
+      "Content-Language": "pt-BR",
+      "Set-Cookie": "CFID=146254603; Expires=Sat, 23 Sep 2056 18:52:59 GMT; Path=/; HttpOnly",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=LyMi0UVNg0iWhjfxvushZNa2%2FdWIM2VH00KIzyGkJOFTGgZWBmYPK18VmDH%2B245zMfkrinR60ZRoGpUyYjvGv%2FQUAqQWQMOld1p8LkTVvZEDjbR3eyVZgrA%2Bd78Xs7ilgsSy5tr%2BTcoAEjZ%2FM88%3D\"}]}",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "cf-cache-status": "DYNAMIC",
+      "Server-Timing": "cfCacheStatus;desc=\"DYNAMIC\"",
+      "CF-RAY": "a43dabb65e592524-GRU",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    }
+  },
+  "2026": {
+    "publication": {
+      "nota": "Cobertura cadastral e auditoria14+ até26/09; fontes congeladas117/119. Séries anteriores e comparativos preservados.",
+      "versao": 11,
+      "execucao": 122,
+      "publicado_em": "2026-10-01T15:53:28.73174-03:00"
+    },
+    "status": 200,
+    "candidate_match": true,
+    "headers": {
+      "Date": "Thu, 01 Oct 2026 18:53:32 GMT",
+      "Content-Type": "application/json;charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Server": "cloudflare",
+      "X-Robots-Tag": "noindex, nofollow",
+      "Cache-Control": "private, no-store",
+      "Content-Language": "pt-BR",
+      "Set-Cookie": "CFID=146254605; Expires=Sat, 23 Sep 2056 18:52:59 GMT; Path=/; HttpOnly",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=F9GLzvhLjh3arUrMuz7JZO129g5cTZVlaQZKP9trCMsTVNiqgBy6%2FuZ32eHNtjqA0%2BswEi79FrbnkDd3waiy3gdpEDQDlV2cHHL1eexIJJwREsIv4XLNN8uZ2agRlcG0TjKLof8FMiRBG8OuNhw%3D\"}]}",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "cf-cache-status": "DYNAMIC",
+      "Server-Timing": "cfCacheStatus;desc=\"DYNAMIC\"",
+      "CF-RAY": "a43dabb82e2c621b-GRU",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    }
+  }
+}

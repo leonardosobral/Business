@@ -1,0 +1,24 @@
+[
+  {
+    "ano": 2025,
+    "caderno_id": 6,
+    "run_atual": 55,
+    "publicacao_id": 6,
+    "nota": "Geografia: cidade/UF e código validados, sem descarte de participações. Apenas capital/interior atualizado; referência do PDF e demais recortes preservados.",
+    "cell_id": 249,
+    "notebook_id": 54,
+    "versao": 4,
+    "publicado_em": "2026-09-30T14:03:24.356705-03:00"
+  },
+  {
+    "ano": 2026,
+    "caderno_id": 6,
+    "run_atual": 56,
+    "publicacao_id": 7,
+    "nota": "Capital/interior: novo recorte de rua, coleta 30/09 com corte até 26/09. Totais, coortes e demais comparativos preservados.",
+    "cell_id": 251,
+    "notebook_id": 55,
+    "versao": 3,
+    "publicado_em": "2026-09-30T14:03:24.413864-03:00"
+  }
+]

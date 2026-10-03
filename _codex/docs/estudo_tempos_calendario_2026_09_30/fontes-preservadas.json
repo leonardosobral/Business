@@ -1,0 +1,26 @@
+[
+  {
+    "celula": 189,
+    "revisao": 1,
+    "preservada": true,
+    "sha256": "9307917c333cc1726ba455f62abb6092b2958e7c031ac944cad3b64162f658c9"
+  },
+  {
+    "celula": 191,
+    "revisao": 1,
+    "preservada": true,
+    "sha256": "458d73b37563e7826fd698c83b0db4d56e279fd0342110178e43eeae5825b9c7"
+  },
+  {
+    "celula": 207,
+    "revisao": 1,
+    "preservada": true,
+    "sha256": "43e8855ae972b257a9faecd0b8b3d7b7460ddd3befd2d78822d3b39f2f6ff67d"
+  },
+  {
+    "celula": 219,
+    "revisao": 1,
+    "preservada": true,
+    "sha256": "2c3733bf9bf8e39c229aa8754110448d7e5c43bc12d672e8d5f7f897138b77a1"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "original_cells": 156,
+  "unchanged_cells": 154,
+  "changed_authorial_outputs": [
+    249,
+    251
+  ],
+  "new_cells": [
+    312,
+    313,
+    314,
+    315,
+    316
+  ],
+  "validator_unchanged": true,
+  "previous_baselines_unchanged": true,
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 23,
+      "cell_id": 249,
+      "versao": 13
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 24,
+      "cell_id": 251,
+      "versao": 11
+    }
+  ],
+  "review": "No blocking findings; explicit runtime rollback corrected before deployment",
+  "node_tests": 89,
+  "sql_classifier_fixture": 23
+}

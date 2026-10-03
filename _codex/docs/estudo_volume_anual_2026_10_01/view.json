@@ -1,0 +1,53 @@
+{
+  "event_pk": [
+    "PRIMARY KEY (id_evento)"
+  ],
+  "view": " SELECT id_resultado,\n    num_peito,\n    nome,\n    data_nascimento,\n    id_evento,\n    modalidade,\n    pace,\n    percurso,\n    sexo,\n    tempo_bruto,\n    tempo_total,\n    classificacao_categoria,\n    classificacao_sexo,\n    classificacao_total,\n    velocidade_media,\n    equipe,\n    nome_categoria,\n    id_usuario,\n    id_categoria,\n    homologado,\n    concluinte,\n    chave_processamento,\n    chave_verificacao,\n    nacionalidade,\n    status_final,\n    hora_largada,\n    tempo_f1_categoria,\n    tempo_f1_sexo,\n    tempo_f1_total,\n    posicao_ranking,\n    classificacao_pais,\n    pcd,\n    nome_full_text,\n    idade_range\n   FROM tb_resultados\n  WHERE status_final = 0 AND homologado = true;",
+  "runs": [
+    {
+      "truncated": false,
+      "status": "ok",
+      "row_count": 2,
+      "version": 1,
+      "id": 7,
+      "frozen": true,
+      "cell": 157
+    },
+    {
+      "truncated": false,
+      "status": "ok",
+      "row_count": 2,
+      "version": 1,
+      "id": 8,
+      "frozen": true,
+      "cell": 159
+    },
+    {
+      "truncated": false,
+      "status": "ok",
+      "row_count": 33,
+      "version": 1,
+      "id": 21,
+      "frozen": true,
+      "cell": 195
+    },
+    {
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "version": 13,
+      "id": 80,
+      "frozen": true,
+      "cell": 249
+    },
+    {
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "version": 10,
+      "id": 81,
+      "frozen": true,
+      "cell": 251
+    }
+  ]
+}

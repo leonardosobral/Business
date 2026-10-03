@@ -1,0 +1,22 @@
+{
+  "RoadRunners": {
+    "before": {
+      "brasilquecorreprovas/web/estudo.js": "a5b75e6a8936af00eb2a376cc76730c89fbb574673750ed3e995aeb603d8c1be",
+      "brasilquecorreprovas/web/parcial.js": "0cfe275e196815e627327b58a535ff1d0bb7967eaf74eca0fe6467b89ed9321d",
+      "brasilquecorreprovas/web/dados.js": "bd3e4ba19ca7bb8643a2c99b02937cef9226d639983de6e2f96b9231b3def2eb",
+      "brasilquecorreprovas/web/graficos.js": "7db39d15b88ec1851ce3facb2e44fda75e57f69dcc3ca9bc6f9cbf1ff8b13b0f"
+    },
+    "candidate": {
+      "brasilquecorreprovas/web/estudo.js": "196cee8d354c5c13db96049a17e98a1d31d4e6d43c7667e803b5f5abf4edba2e",
+      "brasilquecorreprovas/web/parcial.js": "c43f567b8916d5200bb61b1ffe009fec5fa805a8c25fe8fbf627df058d974d21",
+      "brasilquecorreprovas/web/dados.js": "29fa14a98575099a3ed2b76e01b03dcc16be0843f3c28f6787c659ffcf3a8256",
+      "brasilquecorreprovas/web/graficos.js": "f72babee876efe669c83e324369273021652921baca7a088d11f41a5912d4e67"
+    },
+    "order": [
+      "brasilquecorreprovas/web/estudo.js",
+      "brasilquecorreprovas/web/parcial.js",
+      "brasilquecorreprovas/web/dados.js",
+      "brasilquecorreprovas/web/graficos.js"
+    ]
+  }
+}

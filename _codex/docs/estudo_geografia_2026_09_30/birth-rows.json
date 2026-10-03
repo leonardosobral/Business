@@ -1,0 +1,28 @@
+[
+  {
+    "ano": 2025,
+    "participacoes": 5279415,
+    "idade_maior_120": 38,
+    "nascimento_futuro": 4708,
+    "nascimento_ausente": 3515653,
+    "nascimento_com_faixa": 1418921,
+    "nascimento_informado": 1763762,
+    "faixa_contem_idade_31dez": 1390448,
+    "faixa_contem_idade_evento": 1203419,
+    "nascimento_idade_plausivel": 1759016,
+    "nascimento_primeiro_janeiro": 0
+  },
+  {
+    "ano": 2026,
+    "participacoes": 4255761,
+    "idade_maior_120": 61,
+    "nascimento_futuro": 3324,
+    "nascimento_ausente": 2750573,
+    "nascimento_com_faixa": 1202447,
+    "nascimento_informado": 1505188,
+    "faixa_contem_idade_31dez": 1191158,
+    "faixa_contem_idade_evento": 1040810,
+    "nascimento_idade_plausivel": 1501803,
+    "nascimento_primeiro_janeiro": 0
+  }
+]

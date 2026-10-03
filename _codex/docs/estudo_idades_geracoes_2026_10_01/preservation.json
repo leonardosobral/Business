@@ -1,0 +1,38 @@
+{
+  "original_cells": 138,
+  "unchanged_original_cells": 136,
+  "changed": [
+    {
+      "id": 249,
+      "old": 15,
+      "new": 18
+    },
+    {
+      "id": 251,
+      "old": 10,
+      "new": 12
+    }
+  ],
+  "new_cells": [
+    294,
+    295,
+    296,
+    297,
+    298,
+    299
+  ],
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 16,
+      "cell_id": 249,
+      "versao": 10
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 17,
+      "cell_id": 251,
+      "versao": 7
+    }
+  ]
+}
