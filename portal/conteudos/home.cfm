@@ -174,6 +174,11 @@
               <cfoutput>#htmlEditFormat(left(URL.summary_notice, 600))#</cfoutput>
             </div>
           </cfif>
+          <cfif len(trim(URL.reimport_notice))>
+            <div class="alert <cfif URL.reimport_result EQ 'success'>alert-success<cfelse>alert-warning</cfif>" role="status">
+              <cfoutput>#htmlEditFormat(left(URL.reimport_notice, 600))#</cfoutput>
+            </div>
+          </cfif>
 
           <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
             <div class="alert alert-warning mb-0">
@@ -304,6 +309,7 @@
                       <cfset VARIABLES.contentEditorialStatus = lCase(trim(qContents.editorial_status & ""))/>
                       <cfset VARIABLES.contentFeatured = IsBoolean(qContents.is_featured) ? qContents.is_featured : ListFindNoCase("true,1,yes,sim", trim(qContents.is_featured & "")) GT 0/>
                       <cfset VARIABLES.contentFeaturedMediaUrl = trim(qContents.featured_media_url & "")/>
+                      <cfset VARIABLES.contentCanReimport = VARIABLES.contentImportsReady AND listFindNoCase(VARIABLES.contentReimportSupportedKeys, trim(qContents.importer_key & "")) GT 0/>
                       <cfif len(VARIABLES.contentFeaturedMediaUrl)
                           AND NOT reFindNoCase("^(https?:)?//", VARIABLES.contentFeaturedMediaUrl)
                           AND left(VARIABLES.contentFeaturedMediaUrl, 5) NEQ "data:">
@@ -380,6 +386,14 @@
                         </td>
                         <td class="content-actions-cell">
                           <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-sm btn-outline-primary" type="submit"
+                              name="reimport_content_id" value="#qContents.id#"
+                              formnovalidate
+                              data-reimport-action
+                              <cfif NOT VARIABLES.contentCanReimport>disabled</cfif>
+                              title="<cfif VARIABLES.contentCanReimport>Buscar novamente este item no importador #htmlEditFormat(qContents.importer_key)# e atualizar os dados importados, preservando o estado editorial.<cfelseif len(trim(qContents.importer_key & ''))>O importador #htmlEditFormat(qContents.importer_key)# não oferece reimportação individual.<cfelse>Este conteúdo não possui vínculo com um importador.</cfif>">
+                              <i class="fa-solid fa-rotate me-1"></i>Reimportar
+                            </button>
                             <cfif VARIABLES.contentSummaryReady AND qContents.summary_policy EQ "summary_link">
                               <button class="btn btn-sm btn-outline-info" type="submit"
                                 name="process_summary_id" value="#qContents.id#"
@@ -541,6 +555,19 @@
         const summaryButton = event.submitter && event.submitter.matches('[data-summary-action]')
           ? event.submitter
           : null;
+        const reimportButton = event.submitter && event.submitter.matches('[data-reimport-action]')
+          ? event.submitter
+          : null;
+        if (reimportButton) {
+          if (!window.confirm('Reimportar este conteúdo a partir da fonte original? Os dados importados serão atualizados, mas o status editorial, a publicação e o destaque serão preservados.')) {
+            event.preventDefault();
+            return;
+          }
+          reimportButton.setAttribute('aria-disabled', 'true');
+          reimportButton.classList.add('disabled');
+          reimportButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Reimportando…';
+          return;
+        }
         if (summaryButton) {
           if (summaryButton.dataset.summaryReprocess === 'true'
               && !window.confirm('Gerar novamente o resumo por IA deste conteúdo? O resumo atual só será substituído se a nova versão for validada.')) {

@@ -759,7 +759,7 @@
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/grupos-especiais/">link-warning</cfif>" href="/administracao/chat/grupos-especiais/" data-menu-aliases="chat comunidades">
-                    <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Grupos especiais</span>
+                    <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Grupos e canais</span>
                 </a>
             </li>
 

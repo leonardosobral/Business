@@ -36,6 +36,8 @@ function specialGroupsMessage(required string code) {
         invalid_special_group_rule="A regra contém um critério ou valor inválido.",
         invalid_special_group_rule_type="O tipo de critério não é permitido.",
         special_group_owner_ineligible="O atleta definido como Dono não atende à regra de participação.",
+        special_group_admin_required="Somente um admin global pode administrar esta comunidade.",
+        invalid_official_event="Selecione um evento válido para o vínculo oficial.",
         special_group_duplicate="Já existe um grupo especial com este nome ou código.",
         special_group_sync_in_progress="Este grupo já possui uma sincronização em andamento.",
         special_groups_not_installed="A migration de grupos especiais ainda não foi aplicada.",
@@ -52,6 +54,16 @@ VARIABLES.specialGroupsFeedback="";
 VARIABLES.specialGroupsFeedbackType="success";
 VARIABLES.specialGroupsPreview={};
 
+// Read-only catalog proxy; the route's global-admin guard runs before this include.
+if (uCase(CGI.REQUEST_METHOD) EQ "GET" && structKeyExists(URL,"references")) {
+    VARIABLES.referencesResult=specialGroupsBusinessApi({action="references",actor_id=val(qPerfil.id),kind=left(URL.references & "",30),term=structKeyExists(URL,"term") ? left(URL.term & "",100) : "",selected=structKeyExists(URL,"selected") ? left(URL.selected & "",120) : ""});
+    cfcontent(type="application/json; charset=utf-8",reset=true);
+    cfheader(name="Cache-Control",value="private, no-store");
+    if (!structKeyExists(VARIABLES.referencesResult,"success") || !VARIABLES.referencesResult.success) cfheader(statuscode=502);
+    writeOutput(serializeJSON(VARIABLES.referencesResult));
+    abort;
+}
+
 if (uCase(CGI.REQUEST_METHOD) EQ "POST") {
     try {
         if (!structKeyExists(FORM,"special_groups_csrf") || compare(FORM.special_groups_csrf & "",VARIABLES.specialGroupsCsrf)) throw(type="SpecialGroups.Csrf",message="Sessão expirada. Recarregue a página e tente novamente.");
@@ -62,7 +74,7 @@ if (uCase(CGI.REQUEST_METHOD) EQ "POST") {
             if (!reFind("^[a-z0-9][a-z0-9._:-]{15,119}$",VARIABLES.managerPayload.idempotency_key)) throw(type="SpecialGroups.Validation",message="Identificador da operação inválido. Recarregue a página.");
         }
         if (listFindNoCase("create,update,preview",VARIABLES.managerAction)) {
-            if (!structKeyExists(FORM,"policy_json") || !isJSON(FORM.policy_json & "")) throw(type="SpecialGroups.Validation",message="Defina ao menos um critério de participação válido.");
+            if (!structKeyExists(FORM,"policy_json") || len(FORM.policy_json & "") GT 12000 || !isJSON(FORM.policy_json & "")) throw(type="SpecialGroups.Validation",message="Selecione o público e o vínculo da comunidade.");
             VARIABLES.managerPayload.policy=deserializeJSON(FORM.policy_json & "");
             VARIABLES.managerPayload.name=structKeyExists(FORM,"group_name") ? trim(FORM.group_name & "") : "";
             VARIABLES.managerPayload.description=structKeyExists(FORM,"group_description") ? trim(FORM.group_description & "") : "";
@@ -70,8 +82,10 @@ if (uCase(CGI.REQUEST_METHOD) EQ "POST") {
             VARIABLES.managerPayload.owner_id=structKeyExists(FORM,"owner_id") ? val(FORM.owner_id) : 0;
             VARIABLES.managerPayload.image_path=structKeyExists(FORM,"image_path") ? trim(FORM.image_path & "") : "";
             VARIABLES.managerPayload.invitations_enabled=structKeyExists(FORM,"invitations_enabled") && specialGroupsBoolean(FORM.invitations_enabled);
+            VARIABLES.managerPayload.mode=structKeyExists(FORM,"group_mode") ? lCase(trim(FORM.group_mode & "")) : "chat";
+            VARIABLES.managerPayload.automatic_membership=structKeyExists(FORM,"automatic_membership") && specialGroupsBoolean(FORM.automatic_membership);
             if (VARIABLES.managerAction EQ "create") VARIABLES.managerPayload.status=structKeyExists(FORM,"activate_now") && specialGroupsBoolean(FORM.activate_now) ? "active" : "draft";
-            if (VARIABLES.managerAction EQ "update") VARIABLES.managerPayload.group_id=structKeyExists(FORM,"group_id") ? val(FORM.group_id) : 0;
+            VARIABLES.managerPayload.group_id=structKeyExists(FORM,"group_id") ? val(FORM.group_id) : 0;
         } else if (VARIABLES.managerAction EQ "status") {
             VARIABLES.managerPayload.group_id=structKeyExists(FORM,"group_id") ? val(FORM.group_id) : 0;
             VARIABLES.managerPayload.status=structKeyExists(FORM,"group_status") ? trim(FORM.group_status & "") : "";
@@ -95,7 +109,7 @@ if (uCase(CGI.REQUEST_METHOD) EQ "POST") {
 }
 
 if (structKeyExists(URL,"ok")) {
-    if (URL.ok EQ "created") VARIABLES.specialGroupsFeedback="Grupo especial criado com sucesso.";
+    if (URL.ok EQ "created") VARIABLES.specialGroupsFeedback="Comunidade criada com sucesso.";
     else if (URL.ok EQ "updated") VARIABLES.specialGroupsFeedback="Configuração atualizada. Execute uma simulação antes da próxima sincronização.";
     else if (URL.ok EQ "synced") VARIABLES.specialGroupsFeedback="Sincronização concluída.";
     else if (URL.ok EQ "status") VARIABLES.specialGroupsFeedback="Status atualizado.";
@@ -110,7 +124,7 @@ if (structKeyExists(URL,"editar") && isNumeric(URL.editar)) {
     for (VARIABLES.specialGroupItem in VARIABLES.specialGroups) if (val(VARIABLES.specialGroupItem.id_chat_grupo) EQ val(URL.editar)) { VARIABLES.specialGroupsEdit=VARIABLES.specialGroupItem; break; }
 }
 VARIABLES.specialGroupsEditing=structCount(VARIABLES.specialGroupsEdit)>0;
-if (structKeyExists(VARIABLES,"managerAction") && VARIABLES.managerAction EQ "preview" && structKeyExists(VARIABLES,"managerPayload")) {
+if (structKeyExists(VARIABLES,"managerAction") && listFindNoCase("preview,create,update",VARIABLES.managerAction) && structKeyExists(VARIABLES,"managerPayload") && structKeyExists(VARIABLES.managerPayload,"policy")) {
     VARIABLES.specialGroupsEdit={
         id_chat_grupo=structKeyExists(VARIABLES.managerPayload,"group_id") ? val(VARIABLES.managerPayload.group_id) : 0,
         nome=VARIABLES.managerPayload.name,
@@ -119,8 +133,20 @@ if (structKeyExists(VARIABLES,"managerAction") && VARIABLES.managerAction EQ "pr
         id_dono=VARIABLES.managerPayload.owner_id,
         path_imagem=VARIABLES.managerPayload.image_path,
         convites_habilitados=VARIABLES.managerPayload.invitations_enabled,
+        associacao_automatica=VARIABLES.managerPayload.automatic_membership,
+        modo=VARIABLES.managerPayload.mode,
         regra=VARIABLES.managerPayload.policy
     };
     VARIABLES.specialGroupsEditing=VARIABLES.specialGroupsEdit.id_chat_grupo GT 0;
+}
+VARIABLES.specialGroupsForm={nome="",codigo="community_" & lCase(replace(createUUID(),"-","","all")),descricao="",id_dono=val(qPerfil.id),path_imagem="",modo="chat",associacao_automatica=false,convites_habilitados=true,regra={audience="open",criteria=[]},id_chat_grupo=0};
+if (structCount(VARIABLES.specialGroupsEdit)) structAppend(VARIABLES.specialGroupsForm,VARIABLES.specialGroupsEdit,true);
+if (!isStruct(VARIABLES.specialGroupsForm.regra)) VARIABLES.specialGroupsForm.regra=deserializeJSON(VARIABLES.specialGroupsForm.regra & "");
+VARIABLES.specialGroupsStats={groups=0,channels=0,active=0,members=0};
+for (VARIABLES.item in VARIABLES.specialGroups) {
+    if (structKeyExists(VARIABLES.item,"modo") && VARIABLES.item.modo EQ "channel") VARIABLES.specialGroupsStats.channels++;
+    else VARIABLES.specialGroupsStats.groups++;
+    if (VARIABLES.item.status EQ "active") VARIABLES.specialGroupsStats.active++;
+    VARIABLES.specialGroupsStats.members+=val(VARIABLES.item.member_count);
 }
 </cfscript>

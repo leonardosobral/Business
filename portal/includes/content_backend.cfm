@@ -6,6 +6,8 @@
 <cfparam name="URL.published" default=""/>
 <cfparam name="URL.summary_notice" default=""/>
 <cfparam name="URL.summary_result" default=""/>
+<cfparam name="URL.reimport_notice" default=""/>
+<cfparam name="URL.reimport_result" default=""/>
 
 <cfset VARIABLES.contentPageSize = 20/>
 <cfset VARIABLES.contentPage = max(1, int(URL.pagina))/>
@@ -80,6 +82,8 @@
     AND qContentSummarySchema.imports_ready
     AND ListFindNoCase(VARIABLES.contentTypeColumns, "rr_publication_mode")
     AND ListFindNoCase(VARIABLES.contentTypeColumns, "rr_license_expires_at")/>
+<cfset VARIABLES.contentImportsReady = qContentSummarySchema.recordcount AND qContentSummarySchema.imports_ready/>
+<cfset VARIABLES.contentReimportSupportedKeys = "corridanoar_feed,contrarelogio_feed,jornalcorrida_feed,correriacampinas_feed,cbat_corridaderua,sixcomm_email"/>
 
 <cfscript>
 VARIABLES.contentAuthorExpressionParts = [];
@@ -201,7 +205,61 @@ function contentSummaryRequeueFailed() {
         return {success=false,message="Falha ao enfileirar os resumos: " & left(trim(error.message ?: "erro desconhecido"),350),requeued=0};
     }
 }
+
+function contentReimportProcess(required numeric contentId) {
+    var secret = "";
+    var reimportClient = "";
+    var requestData = {};
+    var httpResult = {};
+    var statusCode = 0;
+
+    if (structKeyExists(APPLICATION, "cronJobs")
+        AND isStruct(APPLICATION.cronJobs)
+        AND structKeyExists(APPLICATION.cronJobs, "secrets")
+        AND isStruct(APPLICATION.cronJobs.secrets)
+        AND structKeyExists(APPLICATION.cronJobs.secrets, "conteudo_internal")) {
+        secret = trim(APPLICATION.cronJobs.secrets.conteudo_internal & "");
+    }
+    if (!len(secret)) return {success=false,message="A credencial interna de reimportação não está configurada."};
+
+    try {
+        reimportClient = createObject("component", "portal.services.content_reimport_client").init(
+            baseUrl=VARIABLES.contentAdminBaseUrl,
+            secret=secret
+        );
+        requestData = reimportClient.buildRequest(arguments.contentId);
+        cfhttp(url=requestData.endpoint,method="post",result="httpResult",timeout=900,throwOnError=false,redirect=false) {
+            cfhttpparam(type="header",name="Content-Type",value="application/json; charset=utf-8");
+            cfhttpparam(type="header",name="Accept",value="application/json");
+            cfhttpparam(type="header",name="X-RR-Handoff-Timestamp",value=requestData.timestamp);
+            cfhttpparam(type="header",name="X-RR-Handoff-Signature",value=requestData.signature);
+            cfhttpparam(type="body",value=requestData.body);
+        }
+        statusCode = val(listFirst(httpResult.statusCode ?: "0", " "));
+        return reimportClient.parseResponse(statusCode, httpResult.fileContent ?: "");
+    } catch(any error) {
+        return {success=false,message="Falha ao solicitar a reimportação ao News: " & left(trim(error.message ?: "erro desconhecido"),350)};
+    }
+}
 </cfscript>
+
+<cfif isDefined("FORM.reimport_content_id")
+    AND isDefined("qPerfil")
+    AND qPerfil.recordcount
+    AND qPerfil.is_admin>
+    <cfset VARIABLES.contentReimportResult = {success=false,message="Solicitação inválida."}/>
+    <cfif compare(trim(FORM.content_summary_csrf ?: ""), VARIABLES.contentSummaryCsrf) NEQ 0>
+        <cfset VARIABLES.contentReimportResult.message = "A sessão expirou. Atualize a página e tente novamente."/>
+    <cfelseif NOT VARIABLES.contentImportsReady>
+        <cfset VARIABLES.contentReimportResult.message = "Os vínculos de importação ainda não estão disponíveis."/>
+    <cfelseif NOT isNumeric(FORM.reimport_content_id) OR val(FORM.reimport_content_id) LTE 0>
+        <cfset VARIABLES.contentReimportResult.message = "Conteúdo inválido."/>
+    <cfelse>
+        <cfset VARIABLES.contentReimportResult = contentReimportProcess(int(FORM.reimport_content_id))/>
+    </cfif>
+    <cfset VARIABLES.contentReimportResultType = VARIABLES.contentReimportResult.success ? "success" : "warning"/>
+    <cflocation addtoken="false" url="#VARIABLES.contentReturnUrl#&reimport_result=#VARIABLES.contentReimportResultType#&reimport_notice=#urlEncodedFormat(VARIABLES.contentReimportResult.message)#"/>
+</cfif>
 
 <cfif isDefined("FORM.process_summary_id")
     AND isDefined("qPerfil")
@@ -566,6 +624,7 @@ function contentSummaryRequeueFailed() {
            cat.name AS categoria_nome,
            #preserveSingleQuotes(VARIABLES.contentAuthorExpression)# AS autor_nome,
            <cfif VARIABLES.contentHasFeaturedMedia>med.url_public<cfelse>NULL::text</cfif> AS featured_media_url,
+           <cfif VARIABLES.contentImportsReady>COALESCE(content_import.importer_key, '')<cfelse>''::text</cfif> AS importer_key,
            <cfif VARIABLES.contentSummaryReady>
              CASE
                WHEN typ.rr_publication_mode = 'licensed_full'
@@ -593,6 +652,15 @@ function contentSummaryRequeueFailed() {
     LEFT JOIN news.tb_users usr ON usr.id = cnt.author_id
     <cfif VARIABLES.contentHasFeaturedMedia>
         LEFT JOIN news.tb_media med ON med.id = cnt.featured_media_id
+    </cfif>
+    <cfif VARIABLES.contentImportsReady>
+        LEFT JOIN LATERAL (
+            SELECT i.importer_key
+            FROM news.tb_content_imports i
+            WHERE i.content_id = cnt.id
+            ORDER BY i.updated_at DESC,i.id DESC
+            LIMIT 1
+        ) content_import ON TRUE
     </cfif>
     <cfif VARIABLES.contentSummaryReady>
         LEFT JOIN LATERAL (
