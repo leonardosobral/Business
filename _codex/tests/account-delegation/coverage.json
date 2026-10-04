@@ -1,0 +1,235 @@
+{
+  "scope": "Isolated synthetic PostgreSQL + Lucee real HTTP; runtime candidate in control/Business only",
+  "status_values": [
+    "passed",
+    "failed",
+    "not_run"
+  ],
+  "criteria": [
+    {
+      "id": 1,
+      "criterion": "Alternar clientes mantendo ator real",
+      "status": "passed",
+      "suite_case": "boundary/http: selector, stale-tab; http: actual campaign actor903",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 2,
+      "criterion": "Acesso direto e delegado sem união",
+      "status": "passed",
+      "suite_case": "policy:testThreeAccessPathsStaySeparate; http: DIRECT102 + DELEGATED101/103",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 3,
+      "criterion": "Duas gestoras independentes",
+      "status": "passed",
+      "suite_case": "policy:testThreeAccessPathsStaySeparate; http: second agency has no Ads union",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 4,
+      "criterion": "Criação, revisão limitada e titular posterior",
+      "status": "passed",
+      "suite_case": "accounts:testReviewAndPendingCorrection; http: create/review/assign/campaign/owner",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 5,
+      "criterion": "Documento duplicado inclusive concorrente",
+      "status": "passed",
+      "suite_case": "accounts:testConcurrentDocumentCollision + testDuplicateDocumentDoesNotGrantAccess",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 6,
+      "criterion": "Convite pendente/expirado/cancelado/incorreto/repetido",
+      "status": "passed",
+      "suite_case": "lifecycle:testSevenDayExpiry + testRenewalCompanyRecipientAndVerifiedIdentity; accounts:testExactOwnerExpiry; receiver HTTP",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 7,
+      "criterion": "Novo titular após login sem dados antes",
+      "status": "passed",
+      "suite_case": "receiver: actual callback/return/accept/reject; http: fresh pending verified login and root",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 8,
+      "criterion": "Aprovação restrita e ampliação com aceite",
+      "status": "passed",
+      "suite_case": "lifecycle:testRequestApprovalCanOnlyNarrow + testExpansionNeedsConsentAndRevocationCancels",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 9,
+      "criterion": "Formulário antigo após troca de contexto",
+      "status": "passed",
+      "suite_case": "boundary:testStaleTabCannotChangeClient + actual HTTP signed form",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 10,
+      "criterion": "Revogação/suspensão/remove invalida sessão",
+      "status": "passed",
+      "suite_case": "policy:testFreshStatusTokensAndAtomicAudit + testDeletedMembershipDoesNotResurrect; lifecycle; http old campaign POST",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 11,
+      "criterion": "Concorrência revogação e auditoria",
+      "status": "passed",
+      "suite_case": "policy:testRevocationWinsBeforeMutation + testMutationCommittedBeforeRevocationStaysAudited (real lock waits)",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 12,
+      "criterion": "Atribuição respeita teto e não autoamplia",
+      "status": "passed",
+      "suite_case": "lifecycle:testViewerCeilingIndependentOfSubset + testRequestApprovalCanOnlyNarrow; workspace authority cases",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 13,
+      "criterion": "Leitor sem escrita e campanhas sem poderes financeiros",
+      "status": "passed",
+      "suite_case": "policy:testViewerCannotInheritWrite; ads real payments/banners; events viewer HTTP",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 14,
+      "criterion": "Rotas, verbos, downloads, CFC não integrados negados",
+      "status": "passed",
+      "suite_case": "boundary HTTP route inventory + root/nested BI/remoting (real guard; denied-target counters, not full business handlers)",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 15,
+      "criterion": "Recursos estrangeiros e BI sem agregação",
+      "status": "passed",
+      "suite_case": "ads/events actual foreign resource404 and zero writes; boundary USERS=0 BI=0; no forbidden schema installed",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 16,
+      "criterion": "Campanhas/banners preservam revisão, saldo e ator",
+      "status": "passed",
+      "suite_case": "ads/ads-db canonical baseline + actual HTTP; http campaign DRAFT/account/actor",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 17,
+      "criterion": "Cliente sem titular recuperável internamente",
+      "status": "passed",
+      "suite_case": "accounts:testOwnerInvitationAfterRenunciation; workspace:testInternalDirectOnly + approved unconfirmed render",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ]
+    },
+    {
+      "id": 18,
+      "criterion": "Regressões direto/simulação/cadastro/login/perfil médico",
+      "status": "not_run",
+      "suite_case": "boundary direct/simulation and actual remember regression passed; medical-profile positive end-to-end not executed",
+      "evidence": [
+        "../../../../task-11-all-final.log",
+        "../../../../task-11-remember-green.log",
+        "../../../../task-11-existing-account.log",
+        "../../../../task-11-duplicate-document.log"
+      ]
+    },
+    {
+      "id": 19,
+      "criterion": "Desktop/mobile abas/filtros/paginação/teclado/noJS",
+      "status": "not_run",
+      "suite_case": "workspace actual HTTP page2 POST preserves filters; Chrome1280 focus/Enter;390 noJS selector and return; dedicated mobile História focus/Enter not completed",
+      "evidence": [
+        "../../../../task-11-all-final.log"
+      ],
+      "detail": "Partial verified: desktop tabs/keyboard/focus, actual HTTP filter/page2 POST preservation, mobile390 JSoff visual/selector/return. Dedicated fourth History tab horizontal overflow and keyboard activation on mobile not completed; no overall accessibility pass claim."
+    }
+  ],
+  "additional_checks": [
+    {
+      "case": "browser1280/390, desktop keyboard, selector noJS native POST and return",
+      "status": "passed",
+      "evidence": [
+        "output/playwright/desktop-1280.png",
+        "output/playwright/keyboard-focus-1280.png",
+        "output/playwright/team-1280.png",
+        "output/playwright/mobile-390-nojs.png",
+        "output/playwright/selector-390-nojs.png",
+        "output/playwright/delegated-390-nojs.png"
+      ]
+    },
+    {
+      "case": "Dedicated mobile History tab keyboard/scroll completion",
+      "status": "not_run",
+      "reason": "CLI JS evaluation waits with JS disabled; final browser fixture20min timeout. Tab present in actual DOM; desktop keyboard other tab passed."
+    },
+    {
+      "case": "Native Adobe candidate compilation preliminary",
+      "status": "passed",
+      "evidence": "../../../../adobe-compile-task11.json",
+      "detail": "78/78; final hash scope recompilation belongs Task12"
+    },
+    {
+      "case": "Native Adobe lifecycle/runtime DB behavior and production homologation",
+      "status": "not_run",
+      "reason": "No production auth/data/actions; Task12 gate"
+    },
+    {
+      "case": "First all invocation with browser hold",
+      "status": "failed",
+      "evidence": "../../../../task-11-all.log",
+      "reason": "All assertions reached PASS, but optional20min browser evidence hold expired; exit1. Superseded by final all without browser."
+    },
+    {
+      "case": "Targeted servlet launches while browser open",
+      "status": "failed",
+      "evidence": "../../../../task-11-startup-diagnostic.log",
+      "reason": "RunWAR internal default port8779 already in use; fixed operationally by closing owned browser servlet and sequential final all."
+    }
+  ],
+  "final_run": {
+    "status": "passed",
+    "command": "node _codex/scripts/test_account_delegation.mjs --suite all",
+    "exit_code": 0,
+    "skipped": 0,
+    "evidence": "../../../../task-11-all-final.log",
+    "cleanup": "All suite child private clusters/servlets removed; held browser servlet and stray owned CLI daemons stopped."
+  }
+}

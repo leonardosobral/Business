@@ -1,0 +1,167 @@
+[
+  {
+    "id": 37570,
+    "url": "https://roadrunners.run/evento/2026-live-run-xp-fortaleza-2026-ii/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 37570,
+    "url": "https://roadrunners.run/en/event/2026-live-run-xp-fortaleza-2026-ii/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 37570,
+    "url": "https://roadrunners.run/es/evento/2026-live-run-xp-fortaleza-2026-ii/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 40745,
+    "url": "https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-primavera-campo-grande/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 40745,
+    "url": "https://roadrunners.run/en/event/2026-circuito-das-estacoes-2026-primavera-campo-grande/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 40745,
+    "url": "https://roadrunners.run/es/evento/2026-circuito-das-estacoes-2026-primavera-campo-grande/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 42288,
+    "url": "https://roadrunners.run/evento/2026-tgs-run-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "description_date_correct": true
+    }
+  },
+  {
+    "id": 42288,
+    "url": "https://roadrunners.run/en/event/2026-tgs-run-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "description_date_correct": true
+    }
+  },
+  {
+    "id": 42288,
+    "url": "https://roadrunners.run/es/evento/2026-tgs-run-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "description_date_correct": true
+    }
+  },
+  {
+    "id": 45413,
+    "url": "https://roadrunners.run/evento/2026-meia-maratona-dos-reis-magos-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 45413,
+    "url": "https://roadrunners.run/en/event/2026-meia-maratona-dos-reis-magos-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 45413,
+    "url": "https://roadrunners.run/es/evento/2026-meia-maratona-dos-reis-magos-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  }
+]

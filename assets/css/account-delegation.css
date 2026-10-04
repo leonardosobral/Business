@@ -1,0 +1,12 @@
+.business-workspace{padding-top:2rem;padding-bottom:3rem}
+.business-workspace-manager{min-width:16rem;max-width:24rem}
+.business-workspace-tabs{overflow-x:auto}
+.business-workspace-tabs .nav{flex-wrap:nowrap;white-space:nowrap}
+.business-workspace-panel{min-height:12rem}
+.business-workspace-card{border:1px solid rgba(255,255,255,.16);border-radius:.6rem;padding:1rem;background:rgba(255,255,255,.035)}
+.business-workspace-card summary{cursor:pointer;font-weight:600;margin-bottom:.75rem}
+.business-workspace-capabilities{border:1px solid rgba(255,255,255,.16);border-radius:.5rem;padding:.75rem;display:grid;gap:.4rem}
+.business-workspace-capabilities label{display:flex;gap:.5rem;align-items:center}
+.business-workspace-warning{color:#ffd366;font-weight:700}
+.business-workspace :focus-visible{outline:3px solid #ffd366;outline-offset:2px}
+@media(max-width:600px){.business-workspace{padding-top:1rem}.business-workspace-manager{width:100%;max-width:none}.business-workspace-card{padding:.8rem}}

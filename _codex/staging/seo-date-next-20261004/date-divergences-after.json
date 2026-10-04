@@ -1,0 +1,1735 @@
+{
+  "events": [
+    {
+      "data_final": "2026-10-10",
+      "nome_evento": "4ª PRIME NIGHT RUN",
+      "routes": [
+        {
+          "date": "2026-11-10",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62952
+        }
+      ],
+      "id_evento": 45211,
+      "tag": "2026-4-prime-night-run",
+      "data_inicial": "2026-10-10"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "Track&Field Run Series 2026 - ParkShoppingBarigüi",
+      "routes": [
+        {
+          "date": "2026-11-01",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64763
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64764
+        }
+      ],
+      "id_evento": 37728,
+      "tag": "2026-trackfield-run-series-2026-parkshoppingbarigui",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "Central Gym Run",
+      "routes": [
+        {
+          "date": "2026-10-18",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65892
+        },
+        {
+          "date": "2026-10-18",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65893
+        }
+      ],
+      "id_evento": 46069,
+      "tag": "2026-central-gym-run",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "Corrida por patas 2026 - corrida beneficente",
+      "routes": [
+        {
+          "date": "2026-10-04",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 65919
+        },
+        {
+          "date": "2026-10-04",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65920
+        }
+      ],
+      "id_evento": 46080,
+      "tag": "2026-corrida-por-patas-2026-corrida-beneficente",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "1ª CORRE PELA FORMATURA 2026",
+      "routes": [
+        {
+          "date": "2026-10-18",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67996
+        }
+      ],
+      "id_evento": 46589,
+      "tag": "2026-1-corre-pela-formatura-2026",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "2ª Corrida De Nossa Senhora Do Rosário",
+      "routes": [
+        {
+          "date": "2026-09-26",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68573
+        },
+        {
+          "date": "2026-09-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68574
+        }
+      ],
+      "id_evento": 47023,
+      "tag": "2026-2-corrida-de-nossa-senhora-do-rosario",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026",
+      "routes": [
+        {
+          "date": "2026-12-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 70765
+        }
+      ],
+      "id_evento": 48246,
+      "tag": "2026-corrida-do-comerciario-etapa-manacapuru-2026",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "Itamaracá Night Run",
+      "routes": [
+        {
+          "date": "2026-09-19",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62296
+        }
+      ],
+      "id_evento": 43093,
+      "tag": "2026-itamaraca-night-run",
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "Serrinha Runners 2026",
+      "routes": [
+        {
+          "date": "2026-08-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64896
+        }
+      ],
+      "id_evento": 44229,
+      "tag": "2026-serrinha-runners-2026",
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+      "routes": [
+        {
+          "date": "2026-10-18",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65042
+        },
+        {
+          "date": "2026-10-18",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65043
+        }
+      ],
+      "id_evento": 45646,
+      "tag": "2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana",
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "Ardap Run - Corrida Beneficente",
+      "routes": [
+        {
+          "date": "2026-10-11",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65367
+        },
+        {
+          "date": "2026-10-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65368
+        }
+      ],
+      "id_evento": 40879,
+      "tag": "2026-ardap-run-corrida-beneficente",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "Bota Pra Correr - Rio de Janeiro - 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61654
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61655
+        }
+      ],
+      "id_evento": 42850,
+      "tag": "2026-bota-pra-correr-rio-de-janeiro-2026",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª RCC RUN - BRAGANÇA 2026",
+      "routes": [
+        {
+          "date": "2026-09-19",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 65161
+        }
+      ],
+      "id_evento": 44483,
+      "tag": "2026-1-rcc-run-braganca-2026",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª CORRIDA EMPORIO PRIME",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62495
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62496
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62497
+        }
+      ],
+      "id_evento": 44805,
+      "tag": "2026-1-corrida-emporio-prime",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "10 MILHAS DE MARÍLIA SP",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 16.09,
+          "unit": "km",
+          "locked": false,
+          "id": 65923
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65924
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65925
+        }
+      ],
+      "id_evento": 46084,
+      "tag": "2026-10-milhas-de-marilia-sp",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "2º PATINHAS RUN",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 68590
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68591
+        }
+      ],
+      "id_evento": 47031,
+      "tag": "2026-2-patinhas-run",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "CORRIDA TOCA RAUL BARRA MANSA",
+      "routes": [
+        {
+          "date": "2026-10-17",
+          "distance": 2,
+          "unit": "km",
+          "locked": false,
+          "id": 66939
+        },
+        {
+          "date": "2026-10-17",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 66940
+        }
+      ],
+      "id_evento": 40176,
+      "tag": "2026-corrida-toca-raul-barra-mansa",
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "3º CIRCUITO RUN",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61688
+        }
+      ],
+      "id_evento": 43533,
+      "tag": "2026-3-circuito-run",
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA",
+      "routes": [
+        {
+          "date": "2026-06-21",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 54925
+        },
+        {
+          "date": "2026-06-21",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 54926
+        }
+      ],
+      "id_evento": 39867,
+      "tag": "2026-1-corrida-q2-eventos-de-revezamento-de-americana",
+      "data_inicial": "2026-10-25"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "Circuito Das Águas - Etapa Inverno",
+      "routes": [
+        {
+          "date": "2026-08-16",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60218
+        }
+      ],
+      "id_evento": 40891,
+      "tag": "2026-circuito-das-aguas-etapa-inverno",
+      "data_inicial": "2026-10-25"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "CORRE POTIRETAMA SOLIDÁRIO",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68555
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68556
+        }
+      ],
+      "id_evento": 47013,
+      "tag": "2026-corre-potiretama-solidario",
+      "data_inicial": "2026-10-25"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "Corrida nossa senhora aparecida trindad",
+      "routes": [
+        {
+          "date": "2026-10-12",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69147
+        }
+      ],
+      "id_evento": 47496,
+      "tag": "2026-corrida-nossa-senhora-aparecida-trindad",
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Blue Run 2026 - Santos",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60746
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60747
+        }
+      ],
+      "id_evento": 38508,
+      "tag": "2026-blue-run-2026-santos",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Corrida Águia 2026",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64868
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64870
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64871
+        }
+      ],
+      "id_evento": 43392,
+      "tag": "2026-corrida-aguia-2026",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "LEGADO RUN",
+      "routes": [
+        {
+          "date": "2026-11-08",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63977
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 63978
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 9,
+          "unit": "km",
+          "locked": false,
+          "id": 63979
+        }
+      ],
+      "id_evento": 45308,
+      "tag": "2026-legado-run",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "CORRIDA IZ1 TELECOM",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67993
+        }
+      ],
+      "id_evento": 46585,
+      "tag": "2026-corrida-iz1-telecom",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Morro Beach Run",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69133
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 69134
+        }
+      ],
+      "id_evento": 47482,
+      "tag": "2026-morro-beach-run",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-11-07",
+      "nome_evento": "Night Run - Etapa 1 - Fortaleza 2026",
+      "routes": [
+        {
+          "date": "2026-10-03",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61826
+        },
+        {
+          "date": "2026-10-03",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61827
+        }
+      ],
+      "id_evento": 37784,
+      "tag": "2026-night-run-etapa-1-fortaleza-2026",
+      "data_inicial": "2026-11-07"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "PRINCESA DOS MONTES RUNNING",
+      "routes": [
+        {
+          "date": "2026-07-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61656
+        }
+      ],
+      "id_evento": 43140,
+      "tag": "2026-princesa-dos-montes-running",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "1ª Apaexonados Por Corrida",
+      "routes": [
+        {
+          "date": "2026-08-02",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 62255
+        },
+        {
+          "date": "2026-08-02",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62256
+        },
+        {
+          "date": "2026-08-02",
+          "distance": 2,
+          "unit": "km",
+          "locked": false,
+          "id": 62257
+        }
+      ],
+      "id_evento": 43541,
+      "tag": "2026-1-apaexonados-por-corrida",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "Girl Power - Brasília 2026",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61916
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61917
+        }
+      ],
+      "id_evento": 44234,
+      "tag": "2026-girl-power-brasilia-2026",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "ACIG EM MOVIMENTO – CAMINHADA PELA SAÚDE 3 KM",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64469
+        }
+      ],
+      "id_evento": 45435,
+      "tag": "2026-acig-em-movimento-–-caminhada-pela-saude-3-km",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "SEVEN RUNNING",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 67820
+        }
+      ],
+      "id_evento": 46485,
+      "tag": "2026-seven-running",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "4ª Edição IVIA Em Ação",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68451
+        }
+      ],
+      "id_evento": 46944,
+      "tag": "2026-4-edicao-ivia-em-acao",
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "CORRIDA ERGOS",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64560
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64561
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64562
+        }
+      ],
+      "id_evento": 41408,
+      "tag": "2026-corrida-ergos",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "5ª Edição Corrida E Caminhada Fazendo Meu Difícil",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 2.5,
+          "unit": "km",
+          "locked": false,
+          "id": 63150
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63151
+        }
+      ],
+      "id_evento": 43831,
+      "tag": "2026-5-edicao-corrida-e-caminhada-fazendo-meu-dificil",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "SUPER ACTION SOROCABA 2026",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63647
+        }
+      ],
+      "id_evento": 44863,
+      "tag": "2026-super-action-sorocaba-2026",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "FLA RESENHA RUN",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65055
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65056
+        }
+      ],
+      "id_evento": 45651,
+      "tag": "2026-fla-resenha-run",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "16ª VOLTA A LAGOA DA CONCEIÇÃO",
+      "routes": [
+        {
+          "date": "2026-11-01",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 65512
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65513
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 12,
+          "unit": "km",
+          "locked": false,
+          "id": 65514
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 65515
+        }
+      ],
+      "id_evento": 45873,
+      "tag": "2026-16-volta-a-lagoa-da-conceicao",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE!21K - FORTALEZA 2026",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 64286
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64287
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64288
+        }
+      ],
+      "id_evento": 45366,
+      "tag": "2026-live21k-fortaleza-2026",
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "data_final": "2026-11-20",
+      "nome_evento": "CORRIDA THE LAST RUNNER 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 70637
+        }
+      ],
+      "id_evento": 48133,
+      "tag": "2026-corrida-the-last-runner-2026",
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Palmas",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61906
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61907
+        }
+      ],
+      "id_evento": 37769,
+      "tag": "2026-circuito-das-estacoes-2026-verao-palmas",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "Trun Caruaru 2026",
+      "routes": [
+        {
+          "date": "2026-11-28",
+          "distance": 56,
+          "unit": "km",
+          "locked": false,
+          "id": 69989
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 28,
+          "unit": "km",
+          "locked": false,
+          "id": 69990
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 18,
+          "unit": "km",
+          "locked": false,
+          "id": 69991
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 69992
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69993
+        }
+      ],
+      "id_evento": 42042,
+      "tag": "2026-trun-caruaru-2026",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa",
+      "routes": [
+        {
+          "date": "2026-12-12",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63263
+        },
+        {
+          "date": "2026-12-12",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63264
+        },
+        {
+          "date": "2026-12-12",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 63265
+        }
+      ],
+      "id_evento": 43239,
+      "tag": "2026-tricolor-run-noturna-2026-2-etapa",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "MATTRIC RUN 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62896
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62897
+        }
+      ],
+      "id_evento": 45208,
+      "tag": "2026-mattric-run-2026",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68241
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 68242
+        }
+      ],
+      "id_evento": 44114,
+      "tag": "2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "1ª CORRIDA GRUPO PACE DE OURO",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 65152
+        }
+      ],
+      "id_evento": 44481,
+      "tag": "2026-1-corrida-grupo-pace-de-ouro",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "CORRIDA DO MEL",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68561
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68562
+        }
+      ],
+      "id_evento": 47016,
+      "tag": "2026-corrida-do-mel",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "APAE Santo André",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68857
+        }
+      ],
+      "id_evento": 47272,
+      "tag": "2026-apae-santo-andre",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-24",
+      "nome_evento": "1ª CORRIDA PEDESTRE OAB TEODORO SAMPAIO",
+      "routes": [
+        {
+          "date": "2025-11-23",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 50153
+        }
+      ],
+      "id_evento": 32639,
+      "tag": "2025-1-corrida-pedestre-oab-teodoro-sampaio",
+      "data_inicial": "2026-11-24"
+    },
+    {
+      "data_final": "2026-11-28",
+      "nome_evento": "Santander Night Run - São Paulo Etapa 2 - 2026",
+      "routes": [
+        {
+          "date": "2026-10-24",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61780
+        },
+        {
+          "date": "2026-10-24",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61781
+        }
+      ],
+      "id_evento": 41938,
+      "tag": "2026-santander-night-run-sao-paulo-etapa-2-2026",
+      "data_inicial": "2026-11-28"
+    },
+    {
+      "data_final": "2026-11-28",
+      "nome_evento": "Anabólica Night Run",
+      "routes": [
+        {
+          "date": "2026-09-12",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62677
+        }
+      ],
+      "id_evento": 43854,
+      "tag": "2026-anabolica-night-run",
+      "data_inicial": "2026-11-28"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADA FFSMS 2026",
+      "routes": [
+        {
+          "date": "2026-09-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65731
+        },
+        {
+          "date": "2026-09-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65732
+        },
+        {
+          "date": "2026-09-25",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65733
+        }
+      ],
+      "id_evento": 43166,
+      "tag": "2026-corrida-e-caminhada-ffsms-2026",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "1a Corrida da UJADI",
+      "routes": [
+        {
+          "date": "2026-08-16",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62514
+        },
+        {
+          "date": "2026-08-16",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62515
+        }
+      ],
+      "id_evento": 44134,
+      "tag": "2026-1a-corrida-da-ujadi",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADAS PIRATAS DO ASFALTO",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 63306
+        }
+      ],
+      "id_evento": 44160,
+      "tag": "2026-corrida-e-caminhadas-piratas-do-asfalto",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "2ª UNIFECAF RUN",
+      "routes": [
+        {
+          "date": "2026-08-30",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 67410
+        },
+        {
+          "date": "2026-08-30",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67411
+        }
+      ],
+      "id_evento": 44278,
+      "tag": "2026-2-unifecaf-run",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "1ª Corrida Ab Run",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67751
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 2.6,
+          "unit": "km",
+          "locked": false,
+          "id": 67752
+        }
+      ],
+      "id_evento": 45121,
+      "tag": "2026-1-corrida-ab-run",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADA LAÇOS DA VIDA",
+      "routes": [
+        {
+          "date": "2026-11-08",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65510
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65511
+        }
+      ],
+      "id_evento": 45870,
+      "tag": "2026-corrida-e-caminhada-lacos-da-vida",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "ALPHA RUNNER 2026",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68196
+        }
+      ],
+      "id_evento": 46733,
+      "tag": "2026-alpha-runner-2026",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "FLUIR RUN",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69068
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69069
+        }
+      ],
+      "id_evento": 47442,
+      "tag": "2026-fluir-run",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-12-05",
+      "nome_evento": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63963
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 63964
+        }
+      ],
+      "id_evento": 45303,
+      "tag": "2026-corrida-coronel-oliveria-junior-11-gb",
+      "data_inicial": "2026-12-05"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "TERCEIRA CORRIDA DE RUA COARACI",
+      "routes": [
+        {
+          "date": "2026-07-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60042
+        }
+      ],
+      "id_evento": 41364,
+      "tag": "2026-terceira-corrida-de-rua-coaraci",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Black Run",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60872
+        }
+      ],
+      "id_evento": 41908,
+      "tag": "2026-black-run",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Corrida UNINTER em Movimento",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 60593
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60594
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60595
+        }
+      ],
+      "id_evento": 42544,
+      "tag": "2026-corrida-uninter-em-movimento",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "SUN RUN CORRIDA E CAMINHADA 2026",
+      "routes": [
+        {
+          "date": "2026-12-13",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 60957
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60958
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60959
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 15,
+          "unit": "km",
+          "locked": false,
+          "id": 60960
+        }
+      ],
+      "id_evento": 42847,
+      "tag": "2026-sun-run-corrida-e-caminhada-2026",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Corrida Rústica Trentina 2026",
+      "routes": [
+        {
+          "date": "2026-10-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 66363
+        }
+      ],
+      "id_evento": 46297,
+      "tag": "2026-corrida-rustica-trentina-2026",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "CIRCUITO UNINTA RUN - 2026",
+      "routes": [
+        {
+          "date": "2026-05-31",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 61292
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61293
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61294
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 61295
+        }
+      ],
+      "id_evento": 39558,
+      "tag": "2026-circuito-uninta-run-2026",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "MENTONE RUN - A IDENTIDADE",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 67097
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 67098
+        }
+      ],
+      "id_evento": 40457,
+      "tag": "2026-mentone-run-a-identidade",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63961
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63962
+        }
+      ],
+      "id_evento": 45302,
+      "tag": "2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "1º Meia Maratona Trailrun Rd Fitness",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62632
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62633
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 62634
+        }
+      ],
+      "id_evento": 43860,
+      "tag": "2026-1-meia-maratona-trailrun-rd-fitness",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "Corrida TÁtico Extreme Run",
+      "routes": [
+        {
+          "date": "2026-08-30",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 63062
+        }
+      ],
+      "id_evento": 44550,
+      "tag": "2026-corrida-tatico-extreme-run",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "data_final": "2026-12-27",
+      "nome_evento": "27 RUN 5K ANO NOVO 5KM",
+      "routes": [
+        {
+          "date": "2026-11-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69054
+        }
+      ],
+      "id_evento": 47432,
+      "tag": "2026-27-run-5k-ano-novo-5km",
+      "data_inicial": "2026-12-27"
+    },
+    {
+      "data_final": "2027-01-10",
+      "nome_evento": "3ª CORRIDA 7KM GALO CONCHENSE",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 64609
+        }
+      ],
+      "id_evento": 45484,
+      "tag": "2026-3-corrida-7km-galo-conchense",
+      "data_inicial": "2027-01-10"
+    },
+    {
+      "data_final": "2027-01-31",
+      "nome_evento": "15k DAS PRAIAS - 2027",
+      "routes": [
+        {
+          "date": "2027-01-24",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62422
+        },
+        {
+          "date": "2027-01-24",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62423
+        },
+        {
+          "date": "2027-01-24",
+          "distance": 15,
+          "unit": "km",
+          "locked": false,
+          "id": 62424
+        }
+      ],
+      "id_evento": 45190,
+      "tag": "2027-15k-das-praias-2027",
+      "data_inicial": "2027-01-31"
+    },
+    {
+      "data_final": "2027-01-31",
+      "nome_evento": "PIRANGI PRAIANO 2027",
+      "routes": [
+        {
+          "date": "2027-01-17",
+          "distance": 8,
+          "unit": "km",
+          "locked": false,
+          "id": 64327
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 64328
+        }
+      ],
+      "id_evento": 45377,
+      "tag": "2027-pirangi-praiano-2027",
+      "data_inicial": "2027-01-31"
+    },
+    {
+      "data_final": "2027-02-21",
+      "nome_evento": "Meia Maratona Sustentável Tubo Forte",
+      "routes": [
+        {
+          "date": "2027-01-17",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62486
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62487
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 62488
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62489
+        }
+      ],
+      "id_evento": 44804,
+      "tag": "2027-meia-maratona-sustentavel-tubo-forte",
+      "data_inicial": "2027-02-21"
+    },
+    {
+      "data_final": "2027-08-07",
+      "nome_evento": "Nightrun Garibaldi",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62330
+        }
+      ],
+      "id_evento": 43631,
+      "tag": "2026-nightrun-garibaldi",
+      "data_inicial": "2027-08-07"
+    }
+  ],
+  "checked_at": "2026-10-04T04:35:59.746228-03:00",
+  "database_date": "2026-10-04"
+}
