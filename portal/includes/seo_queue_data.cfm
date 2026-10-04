@@ -18,21 +18,21 @@
 --->
 <cfscript>
 VARIABLES.seoQueueSnapshot = {
-    updatedAt = "2026-10-03T22:29:43.169671+00:00",
-    updatedLabel = "03/10/2026 às 19:29 (Brasília)",
+    updatedAt = "2026-10-04T04:36:30-03:00",
+    updatedLabel = "04/10/2026 às 04:36 (Brasília)",
     runs = [
         {
             siteId = "roadrunners",
             label = "Road Runners",
-            auditLabel = "03/10/2026, 17:12 (Brasília)",
+            auditLabel = "04/10/2026, 01:02 (Brasília)",
             completionLabel = "Amostra concluída",
             discoveryComplete = true,
-            discovered = 103050,
+            discovered = 104006,
             inspected = 100,
             operationalErrors = 0,
             pageErrors = 1,
-            warnings = 22,
-            coverageNote = "Foram analisadas 100 de 103.050 URLs descobertas nos sitemaps. A amostra não representa todas as páginas do site. Descoberta completa dos sitemaps; sem nova reconciliação com o banco. Conferências complementares de traduções, logs e audiência têm datas e escopos próprios na aba SEO para IA. A amostra preserva o 404 da notícia retirada e avisos brutos de rotas privadas, canonical na fonte e escapes percentuais. Correções institucionais, da busca e de Maratonas permanecem verificadas."
+            warnings = 20,
+            coverageNote = "Foram analisadas 100 de 104.006 URLs descobertas nos sitemaps. A amostra não representa todas as páginas do site. Descoberta completa; sem nova reconciliação com o banco. Regras v2 reconhecem escapes percentuais equivalentes, como %0D e %0d; dois falsos avisos de canonical deixaram de ser emitidos. Nota técnica 70/100, com pesos preservados. O método v2 inicia comparação separada; a troca de regra não comprova melhora do site. Permanecem o 404 da notícia retirada e avisos de rotas privadas e canonical na fonte. Conferências complementares de conteúdo, traduções, logs e audiência mantêm suas datas e escopos próprios. Não comprova indexação no Google."
         },
         {
             siteId = "openresults",
@@ -50,6 +50,63 @@ VARIABLES.seoQueueSnapshot = {
     ],
     items = [
         {
+            resolved = false, id = "RR-16", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · Alta",
+            title = "Revalidar as URLs sinalizadas como soft 404",
+            summary = "Corrigido o redirect genérico de eventos inexistentes para a busca. Os demais exemplos históricos exigem revisão própria; eventos válidos não foram retirados.",
+            impact = "Evita indicar uma busca genérica como substituição permanente de uma página ausente. Preserva o acervo histórico que continua disponível.",
+            owner = "RoadRunners — backend de eventos e acompanhamento no Search Console",
+            rule = "google.soft404; missing-event.http",
+            evidence = "Consulta direta em 04/10/2026: relatório de 20/09 com 167 exemplos, sendo 121 eventos, nove buscas, 36 perfis e um endpoint interno. Há 32 URLs com parâmetros de ações; não foram executadas nesta análise. Amostra pública de 13 URLs: nove eventos válidos e uma busca responderam 200, três eventos ausentes redirecionavam com 301 para busca genérica. Corrigido somente o ramo sem evento encontrado para reutilizar a página 404 localizada. Nove URLs ausentes em PT/EN/ES responderam 404 sem redirect; onze controles válidos permaneceram 200, com H1, canonical, alternates e JSON-LD preservados. Testes Adobe: 33 verificações em seis cenários, antes e após publicar; revisão independente, compilação e backup concluídos. O handler conserva o registro operacional de 404. Não houve alteração dos cadastros ou resultados, nem comprovação de reprocessamento pelo Google. Revalidação ampliada em 04/10: os 96 endereços de eventos sem query entre os 121 exemplos foram consultados; 51 retornaram 200 com H1, canonical e SportsEvent, e 45 retornaram 404. Nenhum 5xx, erro CFML ou erro de leitura JSON-LD nessa coleta. Nos nove endereços sem barra final que retornaram 200, o canonical aponta para a variante com barra; isso não foi tratado como erro. Os 45 endereços ausentes não têm tag exata nem alias cadastrado; nenhuma equivalência ou redirect foi inventado. As 25 URLs de evento com parâmetros de ação não foram executadas; buscas, perfis e endpoint interno ficaram fora desta coleta. Inspeção individual autenticada de /en/event/2022-2-dc-run/ informa página indexada, Googlebot Smartphone com êxito em 24/09/2026 às 11:12:49 e canonical selecionado igual ao inspecionado. A lista soft 404 ainda é de 20/09: esse exemplo já está superado na inspeção individual. A evidência de indexação vale somente para essa URL; HTTP 200 não comprova indexação das outras 50. Sem pedido de indexação nem validação global.",
+            acceptance = "Correção do redirect de evento inexistente entregue. Ainda conferir as demais páginas válidas, buscas e exemplos do relatório, identificar equivalentes reais quando houver e acompanhar nova coleta do Google. Não devolver 404 a um evento existente por ser antigo e não abrir páginas pessoais por motivo de SEO.",
+            urls = [{url = "https://roadrunners.run/evento/2026-grand-premium-brasil-recife/", label = "Exemplo ausente — agora HTTP 404"}, {url = "https://roadrunners.run/evento/2025-maratona-internacional-de-floripa/", label = "Controle histórico preservado"}],
+            stateLabel = "Parcial — redirect genérico corrigido; demais casos em revisão"
+        },
+        {
+            resolved = true, id = "RR-13", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · Disponibilidade",
+            title = "Recuperar as estatísticas de 2025 e seus filtros",
+            summary = "Consultas repetidas e comparação de cidade após normalização causavam lentidão e erros. A consulta anual foi otimizada; filtros sem participantes agora têm estado vazio.",
+            impact = "Permite que usuários e rastreadores acessem novamente exemplos de URLs presentes no relatório histórico de erros 5xx.",
+            owner = "RoadRunners — estatísticas do Desafio 365",
+            rule = "http.5xx; response-time; filter-empty-state",
+            evidence = "Publicado em 04/10/2026. Cinco URLs públicas com HTTP 200 e sem erro CFML: geral, Valinhos, Sul/RS, AM e filtro inexistente. Primeira carga 5,2 s; demais cerca de 0,2 s com cache. Comparação SQL real: 2.126 linhas e 365 dias preservados; oito fixtures sem divergências. Seis renders de filtros e um cenário com 79 participantes sem atividades passaram. Desktop 1280 e celular 390 sem transbordamento. Não houve nova auditoria ampla nem confirmação de reindexação.",
+            acceptance = "HTTP 200, filtros em caixa alta ou baixa equivalentes, totais e doações preservados, estado vazio sem divisão inválida e dependências intactas. Aguardar evidência posterior do Google antes de encerrar a recuperação de indexação.",
+            urls = [{url = "https://roadrunners.run/desafiocna/estatisticas/2025/", label = "Estatísticas de 2025"}, {url = "https://roadrunners.run/desafiocna/estatisticas/2025/?estado=SP&cidade=VALINHOS", label = "Estatísticas de Valinhos"}],
+            stateLabel = "Publicado e verificado em 04/10/2026; Google ainda não revalidado"
+        },
+        {
+            resolved = true, id = "OR-04", sites = ["openresults"], priority = "p1", priorityLabel = "P1 · Alta",
+            title = "Confirmar processamento do sitemap pelo Google",
+            summary = "O Search Console confirmou o processamento de /sitemap.xml e dos quatro lotes, com 34.319 URLs descobertas.",
+            impact = "Confirma a recuperação da leitura do sitemap pelo Google. A recuperação da indexação permanece acompanhada separadamente em OR-05.",
+            owner = "OpenResults — entrega pública e acompanhamento no Search Console",
+            rule = "google.sitemap.fetch",
+            evidence = "Consulta autenticada em 04/10/2026: índice Processado, última leitura em 03/10; quatro lotes Processado, todos com leitura em 04/10, com 10.000, 10.000, 10.000 e 4.319 URLs. Total 34.319. Esta evidência do leitor de sitemaps supera a falha informada em 03/10 após publicar o XML. Não é inferência a partir de HTTP 200 local e não comprova indexação das páginas.",
+            acceptance = "Concluído: índice e quatro lotes processados no Search Console. Indexação acompanhada em OR-05; páginas pessoais permanecem protegidas.",
+            urls = [{url = "https://openresults.run/sitemap.xml", label = "Índice XML processado"}], stateLabel = "Concluído — processamento confirmado no Google em 04/10"
+        },
+        {
+            resolved = false, id = "OR-05", sites = ["openresults"], priority = "p1", priorityLabel = "P1 · Alta",
+            title = "Confirmar recuperação da indexação dos eventos",
+            summary = "A leitura do sitemap foi recuperada, mas o relatório de páginas ainda antecede as mudanças de acesso de 03/10.",
+            impact = "Evita confundir descoberta de URLs com retorno dos eventos aos resultados do Google.",
+            owner = "OpenResults — acompanhamento no Search Console",
+            rule = "google.index.recovery",
+            evidence = "Consulta direta de 04/10/2026: relatório atualizado em 20/09, com zero indexadas, cerca de 139 mil não indexadas e 135.791 bloqueadas por 403. Os quatro sitemaps de eventos já foram processados, com 34.319 URLs descobertas. Não há nova posição de indexação que confirme recuperação após as mudanças de 03/10.",
+            acceptance = "Registrar nova posição do relatório de páginas após as mudanças, conferir exemplos de /evento e evolução das páginas indexadas. Não inferir indexação de HTTP 200 ou sitemap processado. Manter noindex em /resultados e bloqueio de /perfil.",
+            urls = [{url = "https://openresults.run/", label = "OpenResults"}], stateLabel = "Pendente — nova evidência de indexação no Google"
+        },
+        {
+            resolved = true, id = "SH-03", sites = ["roadrunners","openresults"], priority = "p1", priorityLabel = "P1 · Alta",
+            title = "Separar nota técnica e situação no Google",
+            summary = "A situação no Google aparece antes da pontuação. A nota técnica da amostra fica recolhida com seus limites; não há nota geral de SEO.",
+            impact = "Evita interpretar 100/100 na amostra como comprovação de indexação ou ausência de bloqueios ao Google.",
+            owner = "Business — relatório SEO e evidências externas",
+            rule = "report.search-evidence",
+            evidence = "Registro manual datado das capturas: RoadRunners com índice processado e 103.036 URLs descobertas; OpenResults com falha de busca reportada em 03/10 e processamento confirmado em 04/10 (OR-04). Consulta direta posterior ao Search Console, posição de 20/09: RoadRunners com cerca de 14,1 mil indexadas e OpenResults com zero; esses números não refletem as mudanças de 03/10. A fórmula e o histórico técnico foram preservados.",
+            acceptance = "Cartões exibem evidência/fonte/data, diferenciam descoberta e indexação, mantêm a recuperação de indexação do OpenResults pendente mesmo com 100/100 técnico e preservam filtros e histórico.",
+            urls = [], stateLabel = "Publicado — nota técnica com limites explícitos"
+        },
+        {
             resolved = true,
             id = "RR-01",
             sites = ["roadrunners"],
@@ -61,7 +118,7 @@ VARIABLES.seoQueueSnapshot = {
             owner = "RoadRunners — manutenção das rotas e dos identificadores de eventos",
             rule = "http.error / http.redirect / canonical.mismatch — corrigidos nos casos rechecados",
             evidence = "Rechecagem focal em 03/10/2026: o cadastro confirmou as tags de Operário Night Run, Rock N Run Nashville e das duas provas Atibaia. A origem reproduziu os erros; o Apache registrou AH10411 por consulta interna com caracteres sem escape. As regras agora codificam os identificadores, e os parâmetros usados para construir canonical e links de idioma recebem codificação de URL uma única vez. As URLs dos quatro eventos foram conferidas em português, inglês e espanhol após a publicação, com HTTP 200 e canonical coerente.",
-            acceptance = "Concluído nos quatro casos: HTTP 200, evento e canonical corretos nos três idiomas, sem mudar tags ou o cadastro. Teste com Apache real confere caracteres especiais e preserva caminhos sensíveis. A auditoria de 03/10 rechecou Operário com HTTP 200; seu aviso de canonical compara %0D com %0d, equivalentes, e foi mantido como evidência da regra legada.",
+            acceptance = "Concluído nos quatro casos: HTTP 200, evento e canonical corretos nos três idiomas, sem mudar tags ou o cadastro. Teste com Apache real confere caracteres especiais e preserva caminhos sensíveis. A auditoria de 03/10 rechecou Operário com HTTP 200 e registrou aviso da regra legada por %0D versus %0d. Na nova auditoria de 04/10, a regra v2 reconhece essa equivalência: o evento continua HTTP 200 e sem esse falso aviso. O relatório anterior permanece preservado.",
             urls = [
                 {url = "https://roadrunners.run/sitemaps/events-upcoming-1.xml", label = "Sitemap de eventos futuros"},
                 {url = "https://roadrunners.run/es/evento/2026-operario%0D%0Anight%0D%0Arun/", label = "Operário Night Run — caso rechecado"}
@@ -134,7 +191,7 @@ VARIABLES.seoQueueSnapshot = {
             impact = "O sitemap estático deixou de anunciar esses destinos privados. A exigência de login permanece preservada.",
             owner = "RoadRunners — seleção do sitemap; autenticação com o dono da rota",
             rule = "http.redirect; canonical.mismatch",
-            evidence = "Rechecagem em 29/09/2026: o sitemap estático contém 49 URLs e os três destinos privados continuam ausentes dos sitemaps. Eles entraram na amostra pela rechecagem de pendências antigas e ainda retornam HTTP 302 para login. Esses avisos não indicam que os destinos voltaram ao sitemap nem que a autenticação deva ser removida.",
+            evidence = "Rechecagem em 29/09/2026: o sitemap estático contém 49 URLs e os três destinos privados continuam ausentes dos sitemaps. Eles entraram na amostra pela rechecagem de pendências antigas e ainda retornam HTTP 302 para login. Esses avisos não indicam que os destinos voltaram ao sitemap nem que a autenticação deva ser removida. Conferência pública em 03/10, após SEO regional: sitemap estático com 1.026 URLs (22 rotas anteriores, 27 estados e 977 cidades), sem os destinos privados. As 49 rotas anteriores continuam presentes.",
             acceptance = "Concluído: XML válido, conjunto anterior menos os três destinos privados e comportamento de autenticação preservado.",
             urls = [
                 {url = "https://roadrunners.run/desafios/", label = "Desafios — português"},
@@ -230,20 +287,50 @@ VARIABLES.seoQueueSnapshot = {
             urls = [{url = "https://openresults.run/evento/2026-maratona-salvador-2026/", label = "Evento com resultados e JSON-LD"}],
             stateLabel = "Publicado e verificado em produção"
         },{
+            resolved = true,
+            id = "RR-15",
+            sites = ["roadrunners"],
+            priority = "p2",
+            priorityLabel = "P2 · Identidade do site",
+            title = "Declarar a identidade estruturada na página inicial",
+            summary = "A home identifica Road Runners como WebSite e sua relação com a RunnerHub Inteligência Esportiva como Organization.",
+            impact = "Ajuda mecanismos a interpretar a identidade do site e a empresa responsável, com base nas informações públicas da página Sobre e do rodapé.",
+            owner = "RoadRunners — metadados da home",
+            rule = "Identidade WebSite e Organization sustentada pelo conteúdo público",
+            evidence = "Publicado e conferido em 04/10/2026: homes PT/EN/ES e uma URL com parâmetro de campanha entregam um único grafo com IDs estáveis. Canonical, alternates, robots e JSON-LD anterior preservados em seis URLs públicas, incluindo Sobre e evento como controles. Vinte e três verificações Adobe passaram; ambientes dev/beta não recebem o grafo, e dados estruturados preexistentes são preservados. Dois templates compilados, revisão Astra sem achados e hashes publicados conferidos. O nome RunnerHub corresponde à identificação pública; não foram inferidos razão social, CNPJ, endereço, contato, logo ou perfis externos.",
+            acceptance = "Concluído no escopo da home: WebSite e Organization válidos como JSON-LD, identidade coerente entre idiomas e publisher vinculado por ID. Esta entrega não comprova escolha do nome pelo Google, indexação, resultado enriquecido ou citação por IA; a extensão a outras entidades continua separada.",
+            urls = [{url = "https://roadrunners.run/", label = "Página inicial"}, {url = "https://roadrunners.run/en/", label = "Home em inglês"}, {url = "https://roadrunners.run/es/", label = "Home em espanhol"}, {url = "https://roadrunners.run/sobre/", label = "Identidade pública da plataforma"}],
+            stateLabel = "Publicado e verificado em produção"
+        },{
+            resolved = false,
+            id = "RR-14",
+            sites = ["roadrunners"],
+            priority = "p2",
+            priorityLabel = "P2 · Confiabilidade dos resultados",
+            title = "Conferir recordes históricos de São Paulo com a fonte oficial",
+            summary = "Os recordes exibidos derivam de classificações históricas divergentes da fonte oficial. Conferência focada identificou os casos de 2008 masculino e 1998 feminino.",
+            impact = "Informações históricas incorretas podem ser reproduzidas por leitores e assistentes. A divergência exige revisão da origem dos resultados, sem presumir fraude, deficiência ou desclassificação de atletas.",
+            owner = "RoadRunners — importação de resultados e resumo das edições",
+            rule = "Coerência factual entre resultados, campeão da edição e recorde",
+            evidence = "Conferência em 04/10/2026: o bloco público da Maratona de São Paulo mostra 01:42:19/2008 no masculino e 02:16:54/1998 no feminino. Consulta somente leitura encontrou esses tempos em tb_resultados, percurso 42, classificacao_sexo=1, pcd=false, homologado=true. A página oficial de campeões da Yescom informa 02:17:07 para o vencedor masculino de 2008 e 02:39:58 para a vencedora feminina de 1998, com nomes diferentes dos selecionados. O registro de 02:17:07 existe na base de 2008 como segundo colocado. As URLs de origem cadastradas são Athlinks; ainda falta confrontar a lista completa e o histórico de processamento para determinar a origem da divergência. Não basta trocar o título do bloco ou filtrar por limite arbitrário de tempo. Nenhum resultado, classificação, atributo pessoal ou vínculo foi alterado nesta investigação.",
+            acceptance = "Reconciliar as duas edições com fontes completas, identificar e corrigir a regra de importação ou cadastro responsável, testar a reexecução sem perda de vínculos e verificar campeões, recordes e gráficos nos três idiomas. Preservar resultados pessoais e registrar fonte, data e backup; não substituir tempos por inferência nem anunciar novo recorde sem comprovação.",
+            urls = [{url = "https://roadrunners.run/evento/2027-maratona-internacional-de-sao-paulo-2027/", label = "Resumo público das edições"}],
+            stateLabel = "Divergência confirmada; correção dos dados pendente"
+        },{
             resolved = false,
             id = "SH-02",
             sites = ["roadrunners", "openresults"],
             priority = "p3",
             priorityLabel = "P3 · Qualidade dos dados",
             title = "Completar e conferir fatos dos eventos",
-            summary = "A leitura básica de nome, data e cidade avançou. O vínculo de organizador continua ausente em muitos eventos da amostra.",
+            summary = "Organizador e regulamento estão visíveis quando cadastrados. Quatro eventos agora mostram fonte e data da conferência das datas; revisão dos demais campos e eventos continua pendente.",
             impact = "Lacunas dificultam atribuição e respostas precisas. Campo ausente não comprova erro factual nem autoriza adivinhar organizadores.",
             owner = "Business — cadastro; RoadRunners e OpenResults — apresentação pública",
             rule = "Revisão factual; campos de eventos",
-            evidence = "Auditorias datadas no painel: Road Runners: 38 eventos avaliados, 37 com lacunas; Open Results: 99 eventos avaliados, 96 com lacunas. Verifica presença de nome, data válida, local e organizador, além de nome/cidade no texto; não comprova exatidão factual. A consulta anterior encontrou organizador nomeado em apenas 1.332 de 34.320 eventos ativos. Não usar cronometrador como organizador nem inferir dados ausentes.",
+            evidence = "Auditorias datadas no painel: Road Runners: 38 eventos avaliados, 37 com lacunas; Open Results: 99 eventos avaliados, 96 com lacunas. Verifica presença de nome, data válida, local e organizador, além de nome/cidade no texto; não comprova exatidão factual. Consulta de 04/10: 34.318 eventos ativos; 1.332 com vínculo de organizador nomeado e 13.068 com texto de organizador sem esse vínculo. Esse total é potencial de cadastro, não contagem de páginas verificadas. Publicado no RoadRunners o bloco Organizador informado, com prioridade ao vínculo formal, escape e rótulos PT/EN/ES. Doze URLs públicas retornaram 200; JSON-LD e canonical ficaram idênticos ao baseline. Não houve promoção automática do texto para Person/Organization, revisão factual de todos os nomes nem alteração do OpenResults. Não usar cronometrador como organizador nem inferir dados ausentes. Conferência focal em 04/10: cinco eventos mais acessados na medição própria dos sete dias até 01:08, com 504 visualizações agregadas; todos históricos. Regulamentos conferidos para Salvador, Criciúma e Corre RD; fontes primárias para Goiânia e Garoto. Link Regulamento do evento publicado quando cadastrado: 15 URLs PT/EN/ES testadas, nove com link e seis sem fonte, sem alteração de JSON-LD/canonical. Conferência complementar de 04/10: Salvador corrigido para 26–27/09, com datas dos percursos 3/5/10 em 26/09 e 21/42 em 27/09, mantendo chaves e resultados. Regulamento atualizado para o PDF atualmente ligado na página oficial. Página TicketSports e regulamento confirmam intervalo e programação de 5/10/21/42; reportagem GE de 23/09 confirma também 3 km no sábado. Alteração ensaiada com rollback, hashes e backup. Goiânia: a Agência Municipal de Turismo explica que a categoria nominal 4 km tem aproximadamente 4,28 km devido aos retornos da pista; não excluir nem renomear percursos. Página antiga da TFSports retorna Página não encontrada após carregar. Salvador ainda tem conflito de local entre trechos da própria fonte oficial (Centro de Convenções versus Arena O Canto da Cidade); endereço preservado até esclarecer. Distância nominal 16 km de Garoto ligada a 17.606 resultados; não renomear automaticamente para 16,09. Criciúma conserva 26–27/09, incluindo Kids. Corrigida a apresentação de categorias: o bloco agora preserva texto e unidades cadastradas, incluindo kids, caminhada, metros e decimais, sem acrescentar km indevidamente. Quarenta verificações CFML, 11 cenários e 15 URLs públicas PT/EN/ES aprovados; canonical/JSON-LD e dados de percursos/resultados preservados. Lote de próximos eventos conferido em 04/10: LIVE Rio, LIVE Bonito, Paraná 2027, São Paulo 2027 e Floripa 2027, priorizados por audiência própria (178 visualizações na janela de sete dias até 01:34; todos os canais). São Paulo: edição e descrição corrigidas em PT/EN/ES; percursos 7/14/21/42 km em 04/04, com Corrida das Nações explicada separadamente. Bonito: descrição corrigida de 6 para 5 km nos três idiomas; o slug jurer da fonte é válido. Paraná: percurso 10 km corrigido para 28/03. Floripa: início e meia maratona corrigidos para 28/08; 5/42 km permanecem em 29/08. Cinco links de regulamento adicionados ou atualizados, incluindo páginas LIVE com regulamento HTML. Onze IDs de percursos e dependências preservados; ensaio e inversão transacionais validados antes da publicação. Dezoito URLs públicas verificadas, com canonical preservado. São Paulo já exibe o vínculo formal com Yescom; o campo legado vazio não representa ausência de organizador. Segundo lote futuro conferido em 04/10: Porto Alegre 2027, Corrida de Impacto, Aracaju, LIVE Juiz de Fora e Jurerê, com 108 visualizações na mesma janela de sete dias. Corrigidas nove datas de percursos e início de Jurerê para 10/10; quatro links de regulamento atualizados. Impacto: data 14/11 corrigida em PT/ES; EN permanece com fallback português. Quinze páginas PT/EN/ES conferidas no navegador, com canonical e alternates preservados. Dezesseis IDs de percursos e 13 tabelas de dependências preservados; backup, ensaio, inversão, rejeição de drift e revisão independente aprovados. Fontes de Juiz de Fora divergem sobre local/horário e as de Aracaju sobre horários; esses campos não foram alterados. Diagnóstico de 04/10: 169 percursos em 86 eventos futuros ativos têm datas fora do intervalo do evento (consulta de 4.164 percursos em 2.012 eventos com percursos); são divergências para revisão, não 169 erros confirmados. Corrigida nas duas rotinas de geração a sobrescrita de percursos bloqueados por edição manual. Doze cenários PostgreSQL aprovados antes e após publicação; aplicação, inversão e rollback forçado ensaiados. Eventos e percursos não foram alterados nesta publicação. A mudança exclusiva de data do evento ainda não sincroniza percursos; a distribuição automática por distância permanece e não substitui o regulamento. Lote de divergências conferido em 04/10: LIVE Rio, LIVE Niterói, Night Run Curitiba, Night Run Maceió e Corrida do 5º BEC (103 visualizações na janela já indicada). Corrigidas onze datas de percursos e ativada a proteção de edição manual desses onze registros. Link do regulamento de Niterói adicionado e verificado em PT/EN/ES; canonical, alternates e JSON-LD preservados. Na fonte do 5º BEC, a descrição e a programação de kits sustentam 11/10, mas o cabeçalho Sympla mostra agosto; disponibilidade não foi inferida. Aplicação, inversão, rejeição de drift e revisão independente aprovadas; cinco eventos, onze IDs e treze tabelas dependentes verificados. Recontagem após publicação: 158 percursos em 81 eventos futuros ainda fora do intervalo do evento, pendentes de conferência factual. Revisão parcial, sem selo de exatidão universal; demais campos do cadastro e resultados preservados. Fontes das datas publicadas em quatro eventos: LIVE Rio, LIVE Niterói, Night Run Curitiba e Night Run Maceió. Bloco PT/EN/ES informa início/término conferidos, fonte oficial e conferência em 04/10/2026; declara que local, horários e inscrições não foram verificados nessa conferência. A indicação desaparece se as datas do cadastro mudarem. Recibos manuais: mudanças posteriores nas fontes não são detectadas automaticamente; histórico por campo e gestão pelo cadastro ainda pendentes. O 5º BEC permanece excluído por conflito na fonte. 54 verificações CFML e 15 URLs públicas aprovadas; canonical, alternates e JSON-LD preservados. Includes diretos retornam 403; apresentação desktop e mobile conferida. Nenhum dado de evento ou resultado alterado nesta entrega. Canal de correção contextual publicado nas páginas de eventos RoadRunners: link Informar correção em PT/EN/ES abre o atendimento existente, preserva o evento no retorno do login e prepara assunto/mensagem com nome e URL do cadastro. A pessoa descreve o erro, informa a fonte e envia pelo fluxo existente. Identificador validado e consulta parametrizada; rascunho somente em GET, sem sobrescrever texto de POST. Quatro arquivos compilados, 37 verificações de serviço/links e 60 de integração focal aprovadas; 19 casos públicos conferidos, com metadados de nove páginas preservados. Formulários autenticados reais PT/EN/ES e link desktop/mobile conferidos; nove dependências preservadas. Nenhum chamado de teste enviado, nenhuma edição automática de evento. Histórico público de correções por campo permanece pendente. Novo lote factual de 04/10: LIVE Fortaleza (20/11), Primavera Campo Grande (11/10), TGS Run (22/11) e Reis Magos (18/10), com 23 visualizações na janela de sete dias até 01:34. Dez datas de percursos corrigidas e protegidas como edição manual; dois links de regulamento adicionados e descrição TGS atualizada para 22/11 conforme aviso de adiamento do organizador. Quatro eventos, dez IDs e treze tabelas dependentes verificados, com ensaio, inversão, rejeição de drift, backup e revisão independente. Doze páginas PT/EN/ES retornam 200, com canonical e alternates preservados e dados estruturados coerentes com a descrição corrigida. Recontagem: 148 percursos em 77 eventos futuros ainda fora do intervalo, pendentes de revisão. IZ1 Telecom excluída deste lote: página informa 01/11, mas PDF ligado continua em 25/10; fonte também diverge sobre local. Demais campos e resultados preservados; datas conferidas não equivalem a revisão integral do evento.",
             acceptance = "Conferir os dados com fontes dos organizadores; completar somente informação comprovada e exibi-la de forma coerente em cada idioma. Manter indicação de resultado em processamento/indisponível e acesso existente. Registrar fonte e data da revisão.",
             urls = [{url = "https://roadrunners.run/evento/2026-maratona-salvador-2026/", label = "Evento Road Runners sem vínculo de organizador"}, {url = "https://openresults.run/evento/2026-maratona-salvador-2026/", label = "Evento OpenResults sem vínculo de organizador"}],
-            stateLabel = "Revisão editorial e cadastro pendentes"
+            stateLabel = "Datas e fontes conferidas na amostra; demais lacunas pendentes"
         }
         ,{
             resolved = true,
@@ -322,6 +409,27 @@ VARIABLES.seoQueueSnapshot = {
             acceptance = "Esclarecer a pausa e conferir saldo atual antes de retomar o cron. Preservar a revisão de rejeitados e as proteções de fatos; validar uma execução controlada e o texto entregue contra a fonte. Ampliar a cobertura com amostra explícita, sem inferir fidelidade por tamanho ou idioma anotado.",
             urls = [{url = "https://roadrunners.run/en/event/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/", label = "Descrição com fallback em português"}],
             stateLabel = "Cron pausado; últimas falhas por créditos da API"
+        }
+
+        ,{
+            resolved = true,
+            id = "RR-12",
+            sites = ["roadrunners"],
+            priority = "p2",
+            priorityLabel = "P2 · Descoberta regional",
+            title = "Ampliar navegação e descoberta por cidade",
+            summary = "Filtro completo de cidades publicado; estados e cidades agora têm metadados por localidade, contexto visível e breadcrumb com JSON-LD correspondente.",
+            impact = "Ajuda corredores e rastreadores a encontrar o calendário local e compreender a relação entre estado e cidade.",
+            owner = "Road Runners — páginas regionais e sitemap",
+            rule = "Conferência focal de navegação, metadados, BreadcrumbList e sitemap",
+            evidence = "Publicado e conferido em 03/10/2026: Bahia, Alagoinhas com filtros e Florianopolis retornam HTTP200, título por localidade, canonical sem filtros e breadcrumb visível correspondente ao JSON-LD. Sitemap estático com 977 cidades, 27 estados e 22 rotas anteriores. Cidades elegíveis têm eventos ativos BR entre hoje e 360 dias; sitemaps históricos preservados. Compilação Adobe, fixtures CFML, testes Node e desktop/celular verificados; revisão final Astra sem achados. A auditoria das 22:57 inspecionou 100 páginas e descobriu 104.021 URLs, sem achados novos. Em 04/10, páginas de evento receberam breadcrumb visível e BreadcrumbList: início localizado, estado somente com país BR e UF válida, e evento canônico. PT/EN/ES conferidos no navegador; SportsEvent, canonical, robots e alternates preservados. Sessenta verificações Adobe, compilação de dois templates, revisão independente e desktop/celular aprovados; link regional acionado por teclado. A validação regional é complementar; não comprova indexação, posição ou citações por assistentes.",
+            acceptance = "Calendário local acessível, filtros preservados e estados/cidades identificados em títulos, descrições e H1. Breadcrumb visível e JSON-LD coerentes com canonical. Sitemap com cidades não vazias no calendário padrão, sem combinações de filtros nem lastmod inventado.",
+            urls = [
+                {url = "https://roadrunners.run/estado/ba/", label = "Calendário da Bahia"},
+                {url = "https://roadrunners.run/estado/ba/alagoinhas/", label = "Calendário de Alagoinhas"},
+                {url = "https://roadrunners.run/sitemaps/static.xml", label = "Sitemap de estados e cidades"}
+            ],
+            stateLabel = "Publicado e verificado; 977 cidades no sitemap"
         }
     ]
 };

@@ -81,6 +81,7 @@
     </cfquery>
 
     <cfset VARIABLES.googleSignInSessionReturn = structKeyExists(SESSION,"researchLoginRedirect") ? SESSION.researchLoginRedirect : ""/>
+    <cfset VARIABLES.googleInviteReturn = createObject("component","services.accountDelegation.InviteReturn").consumeRedirect(SESSION)/>
     <cfset user_data.name = qPerfil.name/>
     <cfset sessionRotate()/>
     <cfset REQUEST.businessAuthSession.establish(SESSION,qPerfil.id,user_data)/>
@@ -116,7 +117,9 @@
         AND NOT find(chr(10), VARIABLES.googleSignInRequestedRedirect)
         AND NOT find(chr(13), VARIABLES.googleSignInRequestedRedirect)
         AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
-    <cfif VARIABLES.googleSignInValidRedirect
+    <cfif VARIABLES.googleInviteReturn EQ "/convites/">
+        <cfset VARIABLES.googleSignInRedirect = "/convites/"/>
+    <cfelseif VARIABLES.googleSignInValidRedirect
         AND left(VARIABLES.googleSignInRequestedRedirect, len("/saude-eventos/central/")) EQ "/saude-eventos/central/">
         <!--- A própria Central decide entre acesso imediato e solicitação do perfil Médico. --->
         <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>

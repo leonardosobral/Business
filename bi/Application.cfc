@@ -62,7 +62,9 @@
                 required="true"
                 />
 
+        <cfset REQUEST.businessTargetPath=ARGUMENTS.TargetPage/>
         <cfinclude template="../includes/backend/business_request_identity.cfm"/>
+        <cfinclude template="../includes/backend/business_delegation_request.cfm"/>
         <cfif IsDefined("url.resetApp")>
           <cfset ApplicationStop()>
           <cfabort><!--- or, if you like, <cflocation url="index.cfm"> --->

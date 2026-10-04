@@ -59,7 +59,8 @@ component output="false" hint="Orquestra intencoes Ads sem DML financeiro direto
         required numeric accountId,
         required numeric createdBy,
         required numeric amountCents,
-        required string idempotencyKey
+        required string idempotencyKey,
+        struct accessContext = {}
     ) output="false" {
         var normalizedAccountId = val(arguments.accountId);
         var normalizedCreatedBy = val(arguments.createdBy);
@@ -84,6 +85,9 @@ component output="false" hint="Orquestra intencoes Ads sem DML financeiro direto
             return failureResult("invalid_idempotency_key", "A chave desta tentativa e invalida.");
         }
 
+        if (!structIsEmpty(arguments.accessContext)) {
+            authorizeLocalIntent(arguments.accessContext,normalizedAccountId,normalizedCreatedBy,normalizedAmount,normalizedKey,providerStatus);
+        }
         intentQuery = findIntentByIdempotency(normalizedAccountId, normalizedKey);
         if (intentQuery.recordCount) {
             intent = mapIntent(intentQuery, 1);
@@ -227,9 +231,39 @@ component output="false" hint="Orquestra intencoes Ads sem DML financeiro direto
         }
     }
 
+    private boolean function delegationEnabled() {
+        return structKeyExists(APPLICATION,'businessAccountDelegationEnabled') AND APPLICATION.businessAccountDelegationEnabled;
+    }
+
+    // Commit the intent and its origin before any external provider request. Retry reuses that intent.
+    private void function authorizeLocalIntent(required struct context,required numeric accountId,required numeric actorId,required numeric amount,required string key,required struct providerStatus) {
+        if(context.accountId!=accountId || context.actorId!=actorId) throw(type='BusinessDelegation.Forbidden',message='Payment context mismatch');
+        var service=createObject('component','services.BusinessAccountDelegation').init(variables.datasource,delegationEnabled());
+        var store=createObject('component','services.accountDelegation.Store').init(variables.datasource);
+        var resource={type='ACCOUNT',id=accountId};
+        service.withMutation(context,'ads.credits.purchase',context,resource,function(fresh){
+            var existing=findIntentByIdempotency(accountId,key);
+            if(existing.recordCount) {
+                var saved=mapIntent(existing,1);
+                if(saved.createdBy!=actorId || saved.amountCents!=amount || saved.currency!='BRL' ||
+                   (fresh.accessMode=='DELEGATED' && !store.paymentReceipt(fresh,saved.paymentIntentId)))
+                    throw(type='BusinessDelegation.Forbidden',message='Payment attempt belongs to another origin');
+                return saved;
+            }
+            if(!providerStatus.ready || !providerStatus.enabled) throw(type='BusinessDelegation.Unavailable',message='New payments unavailable');
+            var created=queryExecute("SELECT * FROM ads.create_payment_intent(CAST(:account AS bigint),CAST(:actor AS integer),CAST(:amount AS bigint),CAST('BRL' AS character(3)),:key,CAST(:expires AS timestamp with time zone))",
+                {account={value=fresh.accountId,cfsqltype='cf_sql_bigint'},actor={value=fresh.actorId,cfsqltype='cf_sql_integer'},amount={value=amount,cfsqltype='cf_sql_bigint'},key={value=key,cfsqltype='cf_sql_varchar'},expires={value=dateAdd('n',variables.pagarMeClient.getPaymentLinkExpiresMinutes(),now()),cfsqltype='cf_sql_timestamp'}},{datasource=fresh.datasource});
+            if(created.recordCount!=1) throw(type='AdsPayment.IntentUncertain',message='Local payment not confirmed');
+            var id=queryString(created,1,'payment_intent_id');
+            store.audit(fresh,'ads.credits.purchase',{type='PAYMENT_INTENT',id=id});
+            return {paymentIntentId=id};
+        });
+    }
+
     public struct function getIntentStatus(
         required numeric accountId,
-        required string paymentIntentId
+        required string paymentIntentId,
+        struct accessContext = {}
     ) output="false" {
         var intentQuery = queryNew("");
         var intent = {};
@@ -237,6 +271,14 @@ component output="false" hint="Orquestra intencoes Ads sem DML financeiro direto
 
         if (val(arguments.accountId) LTE 0 OR !isUuid(arguments.paymentIntentId)) {
             return failureResult("invalid_context", "A referencia do pagamento e invalida.");
+        }
+        if(!structIsEmpty(arguments.accessContext)) {
+            var delegation=createObject('component','services.BusinessAccountDelegation').init(variables.datasource,delegationEnabled());
+            var fresh=delegation.resolve({id=arguments.accessContext.actorId},arguments.accessContext);
+            createObject('component','services.accountDelegation.Policy').assertExpected(fresh,arguments.accessContext);
+            if(fresh.accountId!=arguments.accountId || (!delegation.has(fresh,'ads.payments.view') &&
+                !(delegation.has(fresh,'ads.credits.purchase') && createObject('component','services.accountDelegation.Store').init(variables.datasource).paymentReceipt(fresh,arguments.paymentIntentId))))
+                return failureResult('not_found','Pagamento nao encontrado.');
         }
         intentQuery = findIntentById(arguments.paymentIntentId, val(arguments.accountId));
         if (!intentQuery.recordCount) {

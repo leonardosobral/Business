@@ -20,6 +20,8 @@
 
 <div class="row g-3">
 
+    <cfinclude template="delegation_home.cfm"/>
+
     <cfif VARIABLES.businessHomeIsAdmin>
 
         <cfinclude template="includes/estrutura/home_admin_dashboard.cfm"/>

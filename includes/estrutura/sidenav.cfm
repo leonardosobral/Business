@@ -1,3 +1,11 @@
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <nav aria-label="Serviços do cliente" class="business-delegated-navigation p-3">
+        <a href="/">Início</a> · <a href="/gestao-clientes/">Gestão de clientes</a>
+        <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"ads.campaigns.view")> · <a href="/ads/">Publicidade</a> · <a href="/portal/banners/">Banners CPC</a></cfif>
+        <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.view")> · <a href="/eventos/">Eventos</a></cfif>
+    </nav>
+    <cfexit method="exittemplate"/>
+</cfif>
 <nav id="main-sidenav"
      data-mdb-sidenav-init
      class="sidenav business-sidenav shadow-1"

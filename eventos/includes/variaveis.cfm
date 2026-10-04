@@ -14,6 +14,11 @@
     <cfset VARIABLES.adminIsAdmin = true/>
 </cfif>
 
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <cfset VARIABLES.adminIsAdmin=false/>
+    <cfset VARIABLES.eventoApiTokenParam=""/>
+</cfif>
+
 <!--- URL PARAMS --->
 
 <cfparam name="URL.regiao" default=""/>

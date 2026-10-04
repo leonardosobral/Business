@@ -108,7 +108,7 @@ if (listFindNoCase(VARIABLES.adsV1CampaignActions, FORM.ads_v1_action) AND len(V
 if (listFindNoCase(VARIABLES.adsV1FinanceActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
 if (listFindNoCase(VARIABLES.adsV1ReviewActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "admin";
 if (listFindNoCase(VARIABLES.adsV1VoucherAdminActions, FORM.ads_v1_action) AND len(VARIABLES.adsV1Error)) VARIABLES.adsV1WorkspaceView = "vouchers";
-if (VARIABLES.adsV1WorkspaceView EQ "payments" AND !VARIABLES.adsAccessCanViewPayments) VARIABLES.adsV1WorkspaceView = "overview";
+if (VARIABLES.adsV1WorkspaceView EQ "payments" AND !(VARIABLES.adsAccessCanViewPayments OR VARIABLES.adsAccessCanPurchaseCredit)) VARIABLES.adsV1WorkspaceView = "overview";
 if (VARIABLES.adsV1WorkspaceView EQ "vouchers" AND !VARIABLES.adsAccessCanAdminVouchers) VARIABLES.adsV1WorkspaceView = "overview";
 if (VARIABLES.adsV1WorkspaceView EQ "admin" AND !VARIABLES.adsAccessCanAdminFinance AND !VARIABLES.adsAccessCanReviewCampaign) VARIABLES.adsV1WorkspaceView = "overview";
 if (!VARIABLES.adsV1HasAccount
@@ -153,7 +153,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
     <cfset VARIABLES.adsV1FormDevice = structKeyExists(FORM, "target_device_class") ? uCase(trim(FORM.target_device_class & "")) : "ALL"/>
     <cfset VARIABLES.adsV1FormCountry = structKeyExists(FORM, "target_country_code") ? uCase(trim(FORM.target_country_code & "")) : "BR"/>
     <cfset VARIABLES.adsV1FormRegion = structKeyExists(FORM, "target_region_code") ? uCase(trim(FORM.target_region_code & "")) : ""/>
-    <cfset VARIABLES.adsV1FormPlacementKeys = structKeyExists(FORM, "placement_keys") ? adsV1FormList(FORM.placement_keys) : []/>
+    <cfset VARIABLES.adsV1FormPlacementKeys = structKeyExists(VARIABLES,"adsV1FormPlacementCandidates") ? VARIABLES.adsV1FormPlacementCandidates : (structKeyExists(FORM,"placement_keys") ? adsV1FormList(FORM.placement_keys) : [])/>
 <cfelseif qAdsV1SelectedCampaign.recordcount>
     <cfset VARIABLES.adsV1FormCampaignId = qAdsV1SelectedCampaign.campaign_id & ""/>
     <cfset VARIABLES.adsV1FormEventId = val(qAdsV1SelectedCampaign.core_event_id)/>
@@ -323,7 +323,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
     </div>
   </section>
 
-  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>active</cfif>" href="./?view=overview">Visão geral</a><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>active</cfif>" href="./?view=campaigns">Campanhas</a><cfif VARIABLES.adsAccessCanViewPayments><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'payments'>active</cfif>" href="./?view=payments">Saldo e pagamentos</a></cfif><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'history'>active</cfif>" href="./?view=history">Histórico</a><cfif VARIABLES.adsAccessCanAdminVouchers><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'vouchers'>active</cfif>" href="./?view=vouchers">Vouchers</a></cfif><cfif VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'admin'>active</cfif>" href="./?view=admin"><cfif VARIABLES.adsAccessCanReviewCampaign>Revisão de anúncios<cfelse>Administração</cfif></a></cfif></nav>
+  <nav class="ads-workspace-nav" aria-label="Áreas de publicidade"><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'overview'>active</cfif>" href="./?view=overview">Visão geral</a><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'campaigns'>active</cfif>" href="./?view=campaigns">Campanhas</a><cfif VARIABLES.adsAccessCanViewPayments OR VARIABLES.adsAccessCanPurchaseCredit><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'payments'>active</cfif>" href="./?view=payments">Saldo e pagamentos</a></cfif><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'history'>active</cfif>" href="./?view=history">Histórico</a><cfif VARIABLES.adsAccessCanAdminVouchers><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'vouchers'>active</cfif>" href="./?view=vouchers">Vouchers</a></cfif><cfif VARIABLES.adsAccessCanAdminFinance OR VARIABLES.adsAccessCanReviewCampaign><a class="<cfif VARIABLES.adsV1WorkspaceView EQ 'admin'>active</cfif>" href="./?view=admin"><cfif VARIABLES.adsAccessCanReviewCampaign>Revisão de anúncios<cfelse>Administração</cfif></a></cfif></nav>
 
   <cfif VARIABLES.adsV1Summary.active GT 0 AND VARIABLES.adsV1Summary.balance LTE 0><div class="alert alert-warning d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2"><div><strong>Campanha ativa sem saldo.</strong> Adicione crédito para retomar a exibição.</div><cfif VARIABLES.adsAccessCanPurchaseCredit><a class="btn btn-sm btn-outline-warning" href="./?view=payments#payment-credit">Adicionar saldo</a></cfif></div></cfif>
   </cfif>

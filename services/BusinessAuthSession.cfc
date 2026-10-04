@@ -13,6 +13,13 @@ component output=false {
         return duplicate(principal);
     }
 
+    public struct function delegationIdentity(required struct state) {
+        var principal=identity(state);
+        if(structIsEmpty(principal)) return {};
+        // establish is called only after verified Google claims or a current device-bound restore.
+        return {id=principal.id,email=lCase(trim(principal.email)),emailVerified=true,accessMode='DIRECT'};
+    }
+
     public void function clear(required struct state) {
         for (var key in structKeyArray(arguments.state)) {
             if (left(key,8) == "business" || left(key,14) == "cadastroGoogle"

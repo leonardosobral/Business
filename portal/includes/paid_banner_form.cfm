@@ -8,7 +8,7 @@
         <a class="btn btn-outline-light btn-sm" href="#encodeForHTMLAttribute(VARIABLES.paidBannerBannersUrl)#">Fechar formulário</a>
     </div>
     <cfif VARIABLES.paidBannerFormConflict><div class="alert alert-warning" role="alert">Este envio conflita com uma versão mais recente. Os valores abaixo foram preservados somente para conferência e estão desabilitados. Reabra a versão atual antes de editar ou enviar novamente.</div></cfif>
-    <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerFormActionUrl)#" enctype="multipart/form-data" data-banner-form<cfif VARIABLES.paidBannerFormConflict> aria-disabled="true" onsubmit="return false"</cfif>>
+    <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerFormActionUrl)#" enctype="multipart/form-data" data-banner-form<cfif VARIABLES.paidBannerFormConflict> aria-disabled="true" onsubmit="return false"</cfif>><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
         <input type="hidden" name="paid_banner_action" value="save"/>
         <input type="hidden" name="paid_banner_csrf" value="#htmlEditFormat(VARIABLES.paidBannerCsrf)#"/>
         <input type="hidden" name="campaign_id" value="#htmlEditFormat(VARIABLES.paidBannerEditId)#"/>

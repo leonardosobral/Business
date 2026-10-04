@@ -53,6 +53,16 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ia",label
   .seo-queue .seo-report { margin-bottom: 2rem; }
   .seo-queue .seo-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1rem; }
   .seo-queue .seo-score-card { padding: 1.25rem; }
+  .seo-queue .seo-search-health { margin: 1rem 0; padding: 1rem; border: 1px solid var(--seo-status-border); border-left: 4px solid var(--seo-status-color); border-radius: .6rem; background: var(--seo-status-bg); }
+  .seo-queue .seo-search-health h4 { color: var(--seo-status-color); line-height: 1.5; }
+  .seo-queue .seo-search-eyebrow { font-size: .75rem; margin-bottom: .5rem; color: #bcc3cf; }
+  .seo-queue .seo-search-facts { margin: .85rem 0; }
+  .seo-queue .seo-search-facts div + div { margin-top: .85rem; }
+  .seo-queue .seo-search-facts dt { color: var(--seo-status-color); font-size: .85rem; }
+  .seo-queue .seo-search-facts dd { font-size: .8rem; margin: .3rem 0 0; line-height: 1.6; }
+  .seo-queue .seo-technical-score { padding: .8rem 0; margin-bottom: 1rem; border-bottom: 1px solid var(--seo-border); }
+  .seo-queue .seo-technical-score summary { cursor: pointer; font-size: .85rem; }
+  .seo-queue .seo-technical-score summary:focus-visible { outline: 2px solid #ffce67; outline-offset: 4px; }
   .seo-queue .seo-score-main { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 0; }
   .seo-queue .seo-score-number { display: flex; align-items: baseline; gap: .25rem; flex-shrink: 0; }
   .seo-queue .seo-score-value { font-size: 3rem; line-height: 1; font-weight: 750; letter-spacing: -.05em; color: #f3f5f8; }

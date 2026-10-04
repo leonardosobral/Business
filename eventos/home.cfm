@@ -5,9 +5,22 @@
 <cfinclude template="includes/variaveis.cfm"/>
 
 <!--- BACKEND --->
+<cftry>
 <cfinclude template="includes/backend/backend_evento_edicao.cfm"/>
 <cfinclude template="includes/backend/backend_evento_solicitacoes.cfm"/>
 <cfinclude template="includes/backend/backend.cfm"/>
+    <cfcatch type="BusinessDelegation">
+        <cfset VARIABLES.eventDelegationStatus=403/>
+        <cfif cfcatch.type EQ "BusinessDelegation.NotFound"><cfset VARIABLES.eventDelegationStatus=404/></cfif>
+        <cfif cfcatch.type EQ "BusinessDelegation.Conflict"><cfset VARIABLES.eventDelegationStatus=409/></cfif>
+        <cfif cfcatch.type EQ "BusinessDelegation.Validation"><cfset VARIABLES.eventDelegationStatus=400/></cfif>
+        <cfif cfcatch.type EQ "BusinessDelegation.Unavailable"><cfset VARIABLES.eventDelegationStatus=503/></cfif>
+        <cfheader statuscode="#VARIABLES.eventDelegationStatus#"/>
+        <cfheader name="Cache-Control" value="no-store"/>
+        <cfoutput>#encodeForHTML("Não foi possível realizar esta operação. Reabra o evento e confira seu acesso.")#</cfoutput>
+        <cfabort/>
+    </cfcatch>
+</cftry>
 
 <!--- FILTROS --->
 

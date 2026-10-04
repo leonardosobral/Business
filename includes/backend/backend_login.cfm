@@ -9,6 +9,38 @@
     <cfexit method="exittemplate"/>
 </cfif>
 <cfset REQUEST.businessBackendLoginLoaded = true/>
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <cfset VARIABLES.roadRunnersBaseUrl="https://roadrunners.run"/>
+    <cfset VARIABLES.businessAccountPendingAccess=false/>
+    <cfset VARIABLES.businessPendingWorkspace=false/>
+    <cfset qPerfil=queryNew("id,name,email,is_admin,is_dev,is_partner,id_pagina,nome,imagem_usuario,tag,tag_prefix,strava_id,aka,fonte_lead,partner_info")/>
+    <cfset queryAddRow(qPerfil)/>
+    <cfset querySetCell(qPerfil,"id",REQUEST.businessAccessContext.actorId)/>
+    <cfset querySetCell(qPerfil,"name",REQUEST.businessIdentity.name)/>
+    <cfset querySetCell(qPerfil,"nome",REQUEST.businessIdentity.name)/>
+    <cfset querySetCell(qPerfil,"email",REQUEST.businessIdentity.email)/>
+    <cfset querySetCell(qPerfil,"imagem_usuario","/assets/user.png")/>
+    <cfloop list="is_admin,is_dev,is_partner" index="businessDelegationFlag"><cfset querySetCell(qPerfil,businessDelegationFlag,false)/></cfloop>
+    <cfinclude template="business_account_context.cfm"/>
+    <cfinclude template="business_permissions.cfm"/>
+    <cfset qNotificacoes=queryNew("id_notifica,link,icone,conteudo_notifica,data_leitura")/>
+    <cfset qNotificacoesNaoLidas=queryNew("total")/>
+    <cfset queryAddRow(qNotificacoesNaoLidas)/><cfset querySetCell(qNotificacoesNaoLidas,"total",0)/>
+    <cfset qPermissoes=queryNew("id_permissao,id_usuario,tag,tipo_agregacao,titulo,ordem")/>
+    <cfset VARIABLES.permissoes=""/>
+    <cfset qEventosConta=queryNew("id_evento")/>
+    <cfset qEventosContaOperacao=queryNew("id_evento")/>
+    <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.view")>
+        <cfquery name="qEventosConta" datasource="runnerhub">
+            SELECT DISTINCT id_evento FROM tb_conta_eventos
+            WHERE id_conta=<cfqueryparam cfsqltype="cf_sql_bigint" value="#REQUEST.businessAccessContext.accountId#"/>
+              AND status::text='ATIVO'
+        </cfquery>
+        <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.manage")><cfset qEventosContaOperacao=duplicate(qEventosConta)/></cfif>
+    </cfif>
+    <cfexit method="exittemplate"/>
+</cfif>
+
 
 <cfinclude template="business_pending_access.cfm"/>
 
@@ -19,7 +51,7 @@
 <cfset VARIABLES.businessPendingRequestAccountId = ""/>
 <cfset VARIABLES.businessPendingExistingAccountRequest = false/>
 <cfset VARIABLES.businessUserManagementStatusReady = false/>
-<cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel")/>
+<cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel,origem_gestora_id")/>
 
 <cftry>
     <cfquery name="qBusinessUserManagementSchema">
@@ -111,6 +143,9 @@
                 SELECT 1
                 FROM tb_conta_cadastro_solicitacoes sol
                 WHERE lower(sol.email_responsavel) = lower(usr.email)
+                  <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+                    AND sol.origem_gestora_id IS NULL
+                  </cfif>
                   AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
             )
         )
@@ -155,10 +190,14 @@
                    cont.status::text AS status_conta,
                    sol.data_criacao,
                    sol.nome_responsavel,
-                   sol.email_responsavel
+                   sol.email_responsavel,
+                   <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>sol.origem_gestora_id<cfelse>NULL::bigint AS origem_gestora_id</cfif>
             FROM tb_usuarios usr
             INNER JOIN tb_conta_cadastro_solicitacoes sol
                 ON lower(sol.email_responsavel) = lower(usr.email)
+                <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+                  AND sol.origem_gestora_id IS NULL
+                </cfif>
             LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
             WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
               AND coalesce(usr.is_admin, false) = false
@@ -175,6 +214,22 @@
             LIMIT 1
         </cfquery>
 
+        <cfif NOT qBusinessPendingRegistration.recordcount
+          AND structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled
+          AND isDefined("VARIABLES.businessPendingAccountId") AND len(trim(VARIABLES.businessPendingAccountId & ""))
+          AND structKeyExists(REQUEST,"businessDelegationIdentity")>
+            <cfset VARIABLES.businessPendingOwnerRecord=createObject("component","services.accountDelegation.Workspace").init(
+                createObject("component","services.accountDelegation.Store").init("runnerhub"),
+                createObject("component","services.accountDelegation.Policy")
+            ).pendingOwnerRegistration(REQUEST.businessDelegationIdentity)/>
+            <cfif NOT structIsEmpty(VARIABLES.businessPendingOwnerRecord)>
+                <cfset queryAddRow(qBusinessPendingRegistration)/>
+                <cfloop collection="#VARIABLES.businessPendingOwnerRecord#" item="businessPendingOwnerKey">
+                    <cfset querySetCell(qBusinessPendingRegistration,businessPendingOwnerKey,VARIABLES.businessPendingOwnerRecord[businessPendingOwnerKey])/>
+                </cfloop>
+            </cfif>
+        </cfif>
+
         <cfif qBusinessPendingRegistration.recordcount>
             <cfset VARIABLES.businessPendingWorkspace = true/>
             <cfset VARIABLES.businessPendingRegistrationId = qBusinessPendingRegistration.id_solicitacao/>
@@ -189,11 +244,19 @@
 
         <cfcatch type="any">
             <cfset VARIABLES.businessAccountPendingAccess = false/>
-            <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel")/>
+            <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel,origem_gestora_id")/>
         </cfcatch>
     </cftry>
 
     <cfif VARIABLES.businessAccountPendingAccess AND isDefined("VARIABLES.template")>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+
+    <!--- Confirmed owners of agency-created pending accounts receive status only until internal approval. --->
+    <cfif qBusinessPendingRegistration.recordcount
+        AND len(trim(qBusinessPendingRegistration.origem_gestora_id & ""))
+        AND isDefined("VARIABLES.template")
+        AND NOT listFindNoCase("/,/faq/,/suporte/", VARIABLES.template)>
         <cflocation addtoken="false" url="/"/>
     </cfif>
 

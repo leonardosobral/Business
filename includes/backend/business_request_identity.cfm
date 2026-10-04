@@ -28,4 +28,5 @@
     <cfif NOT structKeyExists(SESSION,"businessLoginCsrf")>
         <cfset SESSION.businessLoginCsrf = lCase(hash(generateSecretKey("AES",256),"SHA-256"))/>
     </cfif>
+    <cfset REQUEST.businessDelegationIdentity=REQUEST.businessAuthSession.delegationIdentity(SESSION)/>
 </cfif>

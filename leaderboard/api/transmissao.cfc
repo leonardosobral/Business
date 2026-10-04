@@ -2,6 +2,7 @@
     <cfargument name="id_evento" type="numeric" default="22792"/>
     <cfargument name="genero" type="string" default=""/>
     <cfargument name="categoria" type="string" default=""/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qEvento" datasource="runner_dba">
         WITH ranked AS (
           SELECT
@@ -122,6 +123,7 @@
     <cfargument name="id_evento" type="numeric" default="22792"/>
     <cfargument name="genero" type="string" default=""/>
     <cfargument name="categoria" type="string" default=""/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qVencedor" datasource="runner_dba">
         WITH ranked AS (
           SELECT
@@ -192,6 +194,7 @@
     <cfargument name="id_evento" type="numeric" default="22792"/>
     <cfargument name="genero" type="string" default=""/>
     <cfargument name="categoria" type="string" default=""/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qEvento" datasource="runner_dba">
         select *
         from tb_leaderboard_evento levt
@@ -270,6 +273,7 @@
 
 <cffunction name="widget" returnType="string" access="remote" output="false">
     <cfargument name="id_evento" type="numeric" default="22792"/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qEvento" datasource="runner_dba">
         select *
         from tb_leaderboard_evento levt
@@ -298,6 +302,7 @@
     <cfargument name="id_evento" type="numeric" default="22792"/>
     <cfargument name="genero" type="string" default=""/>
     <cfargument name="categoria" type="string" default=""/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qEvento" datasource="runner_dba">
         select res.num_peito, res.nacionalidade, COALESCE(usr.aka, res.nome) as nome, res.sexo,
         usr.assessoria as equipe, usr.cidade, usr.estado, '00:00:00' as rp

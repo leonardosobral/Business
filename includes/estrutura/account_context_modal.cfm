@@ -1,3 +1,7 @@
+<cfif structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled>
+    <p><a href="/selecionar-conta/">Escolher conta e forma de acesso</a></p>
+    <cfexit method="exittemplate"/>
+</cfif>
 <cfparam name="VARIABLES.businessAccountModalRequired" default="false"/>
 
 <cfset VARIABLES.businessAccountModalRedirect = "/"/>

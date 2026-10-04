@@ -41,15 +41,20 @@
     </cfloop>
 
     <form class="form" method="post">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
+        <cfset fornecedorIndex=0/>
+        <input type="hidden" name="fornecedor_count" value="<cfoutput>#arrayLen(arrFornecedores)#</cfoutput>"/>
         <cfloop array="#arrFornecedores#" index="item">
+            <cfset fornecedorIndex++/>
 
             <div class="row mb-3">
 
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">
-                            <select class="form-select" name="id_fornecedor" id="selectIdFornecedor">
+                            <select class="form-select" name="fornecedor_<cfoutput>#fornecedorIndex#</cfoutput>" id="selectIdFornecedor<cfoutput>#fornecedorIndex#</cfoutput>">
                                 <option value="">Empresa</option>
                                 <cfoutput query="qListaFornecedores">
                                     <option value="#qListaFornecedores.id_fornecedor#" <cfif item.id_fornecedor EQ qListaFornecedores.id_fornecedor>selected</cfif>>#qListaFornecedores.nome_fornecedor#</option>
@@ -57,7 +62,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-select" name="id_fornecedor_tipo" id="selectIdTipoFornecedor">
+                            <select class="form-select" name="fornecedor_tipo_<cfoutput>#fornecedorIndex#</cfoutput>" id="selectIdTipoFornecedor<cfoutput>#fornecedorIndex#</cfoutput>">
                                 <option value="">Tipo</option>
                                 <cfoutput query="qListaTipoFornecedores">
                                     <option value="#qListaTipoFornecedores.id_fornecedor_tipo#" <cfif item.id_fornecedor_tipo EQ qListaTipoFornecedores.id_fornecedor_tipo>selected</cfif>>#qListaTipoFornecedores.descricao_tipo#</option>
@@ -81,6 +86,7 @@
 
         </div>
 
+    </fieldset>
     </form>
 
     <hr class="my-4"/>
@@ -97,6 +103,8 @@
     </cfquery>
 
     <form class="form" method="post">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
         <div class="row">
 
@@ -123,13 +131,16 @@
 
         </div>
 
+    </fieldset>
     </form>
 
-    <div class="row">
+    <cfif VARIABLES.adminIsAdmin><div class="row">
         <div class="col-md-12">
             <a target="_blank" class="btn btn-outline-primary me-2" href="/administracao/foco-revisao/?busca=<cfoutput>#qEvento.id_evento#</cfoutput>&amp;status=all">Revisar integração Foco</a>
         </div>
     </div>
+
+    </cfif>
 
     <script>
         const eventoFornecedorApiTokenParam = "<cfoutput>#JSStringFormat(VARIABLES.eventoApiTokenParam)#</cfoutput>";

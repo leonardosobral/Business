@@ -20,7 +20,7 @@
         AND listFindNoCase(VARIABLES.businessPermissionCodes, trim(arguments.permissionCode)) GT 0/>
 </cffunction>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount>
+<cfif isDefined("qPerfil") AND qPerfil.recordcount AND NOT (structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED")>
     <cftry>
         <cfquery name="qBusinessPermissionSchema">
             SELECT table_name

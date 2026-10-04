@@ -36,7 +36,7 @@
 </cfif>
 
 <cfset VARIABLES.accountManagementTab = lCase(trim(URL.tab))/>
-<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados,acessos", VARIABLES.accountManagementTab)>
+<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados,acessos,gestoras", VARIABLES.accountManagementTab)>
     <cfif VARIABLES.businessAccountsCanAdminAll
         AND qBusinessAccountEdit.recordcount
         AND ((isDefined("URL.editar_conta") AND URL.editar_conta)
@@ -60,6 +60,9 @@
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
 </cfif>
 <cfif VARIABLES.accountManagementTab EQ "acessos" AND NOT VARIABLES.businessAccountsCanAdminAll>
+    <cfset VARIABLES.accountManagementTab = "usuarios"/>
+</cfif>
+<cfif VARIABLES.accountManagementTab EQ "gestoras" AND NOT (VARIABLES.businessDelegationAdminReady AND (VARIABLES.businessAccountsCanAdminAll OR VARIABLES.businessDelegationCanSeeClientManagers))>
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
 </cfif>
 
@@ -845,6 +848,7 @@
               </div>
             </div>
           </cfif>
+          <cfinclude template="delegation_queue.cfm"/>
 
           <cfif len(trim(VARIABLES.accountsNoticeMessage))>
             <div class="alert alert-success" role="alert">
@@ -1470,8 +1474,13 @@
                           </a>
                         </li>
                       </cfif>
+                      <cfif VARIABLES.businessDelegationAdminReady AND (VARIABLES.businessAccountsCanAdminAll OR VARIABLES.businessDelegationCanSeeClientManagers)>
+                        <li class="nav-item"><a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'gestoras'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=gestoras&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="gestoras"<cfif VARIABLES.accountManagementTab EQ 'gestoras'> aria-current="page"</cfif>>Gestoras</a></li>
+                      </cfif>
                     </ul>
                   </cfoutput>
+
+                  <cfif VARIABLES.businessDelegationAdminReady AND (VARIABLES.businessAccountsCanAdminAll OR VARIABLES.businessDelegationCanSeeClientManagers)><cfinclude template="delegation_home.cfm"/></cfif>
 
                   <cfif VARIABLES.businessAccountsCanAdminAll>
                     <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'dados'>d-none</cfif>" data-account-tab-panel="dados">

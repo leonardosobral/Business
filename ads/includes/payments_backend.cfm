@@ -40,7 +40,7 @@
     </cfcatch>
 </cftry>
 
-<cfif VARIABLES.adsAccessCanViewPayments AND VARIABLES.adsV1HasAccount>
+<cfif (VARIABLES.adsAccessCanViewPayments OR VARIABLES.adsAccessCanPurchaseCredit) AND VARIABLES.adsV1HasAccount>
     <cftry>
         <cfquery name="qAdsPaymentReadiness" datasource="runnerhub">
             WITH expected_functions(signature) AS (
@@ -112,11 +112,13 @@
             <cfthrow type="AdsPayment.Validation" message="A chave desta tentativa e invalida. Recarregue a pagina."/>
         </cfif>
 
+        <cfset VARIABLES.adsPaymentAccessContext=adsDelegationValidate(FORM,'ads.credits.purchase')/>
         <cfset VARIABLES.adsPaymentCheckoutResult = VARIABLES.adsPaymentService.createCheckout(
             accountId = VARIABLES.adsV1AccountId,
             createdBy = VARIABLES.adsV1ActorId,
             amountCents = VARIABLES.adsPaymentAmountCents,
-            idempotencyKey = VARIABLES.adsPaymentIdempotencyKey
+            idempotencyKey = VARIABLES.adsPaymentIdempotencyKey,
+            accessContext = VARIABLES.adsPaymentAccessContext
         )/>
         <cfif NOT VARIABLES.adsPaymentCheckoutResult.success>
             <cfthrow type="AdsPayment.Validation" message="#VARIABLES.adsPaymentCheckoutResult.message#"/>
@@ -213,4 +215,15 @@
 <cfif NOT len(VARIABLES.adsPaymentIdempotencyKey)>
     <cfset VARIABLES.adsPaymentIdempotencyKey = "business:payment:"
         & VARIABLES.adsV1AccountId & ":" & adsV1NewIdempotencyToken()/>
+</cfif>
+
+<!--- Buyer-only receipt never queries the payment list. The service rechecks its recorded origin. --->
+<cfif VARIABLES.adsAccessCanPurchaseCredit AND NOT VARIABLES.adsAccessCanViewPayments AND VARIABLES.adsPaymentApiReady AND adsV1IsUuid(URL.payment)>
+    <cfset VARIABLES.adsPaymentReceipt=VARIABLES.adsPaymentService.getIntentStatus(VARIABLES.adsV1AccountId,URL.payment,adsDelegationContext())/>
+    <cfif VARIABLES.adsPaymentReceipt.success>
+        <cfset VARIABLES.adsPaymentCurrent=VARIABLES.adsPaymentReceipt/>
+        <cfset VARIABLES.adsPaymentCurrent.status=uCase(VARIABLES.adsPaymentReceipt.status)/>
+        <cfset VARIABLES.adsPaymentSelectedId=VARIABLES.adsPaymentReceipt.paymentIntentId/>
+        <cfset VARIABLES.adsPaymentValidatedCheckoutUrl=VARIABLES.adsPaymentReceipt.checkoutUrl/>
+    </cfif>
 </cfif>

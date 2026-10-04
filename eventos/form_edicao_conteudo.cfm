@@ -1,6 +1,8 @@
 <div class="tab-pane fade <cfif URL.sessao EQ "conteudo">show active</cfif>" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3" tabindex="2">
 
     <form class="form" method="post">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
         <div class="form-outline mb-3" data-mdb-input-init>
           <textarea class="form-control pt-3" rows="3" maxlength="150" id="txtResumo" name="resumo"><cfoutput>#qEvento.resumo#</cfoutput></textarea>
@@ -51,6 +53,7 @@
 
         </div>
 
+    </fieldset>
     </form>
 
 </div>

@@ -206,6 +206,7 @@
                       <td><span class="badge badge-#VARIABLES.eventoSolicitacaoResultBadge#">#htmlEditFormat(VARIABLES.eventoSolicitacaoResultStatus)#</span></td>
                       <td class="text-end">
                         <form method="post" action="/eventos/" class="d-inline-block">
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
                           <input type="hidden" name="evento_solicitacao_action" value="solicitar"/>
                           <input type="hidden" name="id_conta_solicitacao" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/>
                           <input type="hidden" name="id_evento" value="#qEventoSolicitacaoBusca.id_evento#"/>
@@ -321,6 +322,7 @@
                     <div class="event-request-meta mb-2">Origem: #htmlEditFormat(qEventoSolicitacoesPendentes.url_informada)#</div>
                   </cfif>
                   <form method="post" action="/eventos/">
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
                     <input type="hidden" name="id_solicitacao" value="#qEventoSolicitacoesPendentes.id_solicitacao#"/>
                     <div class="mb-2">
                       <input class="form-control form-control-sm" type="text" name="observacao_revisor" placeholder="Observação opcional"/>

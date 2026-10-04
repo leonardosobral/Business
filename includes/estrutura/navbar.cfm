@@ -1,3 +1,10 @@
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <nav aria-label="Conta ativa" class="business-delegated-navigation p-3">
+        <cfoutput><strong>#encodeForHTML(VARIABLES.businessActiveAccountName)#</strong> · Acesso pela gestora</cfoutput>
+        <a href="/selecionar-conta/">Trocar conta</a> · <a href="/logout.cfm">Sair</a>
+    </nav>
+    <cfexit method="exittemplate"/>
+</cfif>
 <style>
   .business-topbar-notification-menu {
     width: min(22rem, calc(100vw - 1rem));
@@ -360,7 +367,9 @@
                 <span class="business-navbar-account-label"><cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>Conta em análise<cfelse>Conta ativa</cfif></span>
                 <cfoutput><span class="business-navbar-account-name" title="#htmlEditFormat(VARIABLES.businessNavbarAccountName)#">#htmlEditFormat(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
             </span>
-            <cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+            <cfif structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled>
+                <a class="btn btn-outline-light business-navbar-account-switch" href="/selecionar-conta/" aria-label="Trocar conta">Trocar conta</a>
+            <cfelseif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
                 <button class="btn btn-outline-light business-navbar-account-switch" type="button" data-business-account-modal-open aria-label="Trocar conta" title="Trocar conta">
                     <i class="fa-solid fa-right-left"></i>
                 </button>

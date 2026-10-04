@@ -120,3 +120,17 @@ test('event metadata is a coverage check: missing markup warns, other page types
  assert.equal(ai({event_metadata:[{name:'Prova',start_date:'2026-02-30',has_location:true,name_in_body:true,city_in_body:true,has_organizer:true}]}).status,'warning');
  assert.equal(ai({event_metadata:[{name:'Prova',start_date:'2026-10-10',has_location:true,name_in_body:true,city_in_body:true,has_organizer:true}]}).status,'pass');
 });
+
+
+test('canonical alignment and hreflang self compare percent escapes without changing path or query case',()=>{
+ const source='https://roadrunners.run/evento/a%0D%0Ab/?q=%C3%A9';
+ const canonical='https://roadrunners.run/evento/a%0d%0ab/?q=%c3%a9';
+ const row=obs({source_url:source,final_url:source,canonical_url:canonical,metadata_version:1,hreflang:[{lang:'pt-BR',url:canonical}]});
+ const s=call('scoreRun',run({observations:[row]}));
+ assert.equal(criterion(s,'alignment').status,'pass');
+ assert.equal(criterion(s,'hreflang').status,'pass');
+ assert.equal(row.canonical_url,canonical);
+ for(const other of ['https://roadrunners.run/evento/A%0D%0Ab/?q=%C3%A9','https://roadrunners.run/evento/a%250D%0Ab/?q=%C3%A9','https://roadrunners.run/evento/a%0D%0Ab/?q=%C3%A8','https://openresults.run/evento/a%0D%0Ab/?q=%C3%A9']) {
+  assert.equal(criterion(call('scoreRun',run({observations:[{...row,canonical_url:other}]})),'alignment').status,'warning');
+ }
+});

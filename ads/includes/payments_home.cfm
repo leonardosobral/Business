@@ -1,4 +1,4 @@
-<cfif VARIABLES.adsAccessCanViewPayments>
+<cfif VARIABLES.adsAccessCanViewPayments OR VARIABLES.adsAccessCanPurchaseCredit>
   <cfif VARIABLES.adsAccessIsPendingNewAccount>
     <section class="card shadow-0 mb-4" id="payment-credit">
       <div class="card-body p-3 p-lg-4">
@@ -14,7 +14,7 @@
             </div>
           </div>
         <cfelseif VARIABLES.adsAccessCanReserveVoucher>
-          <form method="post" action="./?view=payments#ads-voucher-form" id="ads-voucher-form" class="border rounded p-3">
+          <form method="post" action="./?view=payments#ads-voucher-form" id="ads-voucher-form" class="border rounded p-3"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
             <input type="hidden" name="ads_v1_action" value="reserve_voucher"/>
             <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
             <label class="form-label" for="ads-voucher-code">Código do voucher</label>
@@ -38,7 +38,7 @@
         <span class="badge badge-info align-self-lg-start">Checkout Pagar.me</span>
       </div>
 
-      <cfif VARIABLES.adsAccessCanPurchaseCredit>
+      <cfif VARIABLES.adsAccessCanPurchaseCredit AND NOT VARIABLES.adsAccessDelegated>
         <div class="border rounded p-3 mb-4">
           <div class="row g-3 align-items-end">
             <div class="col-lg-5">
@@ -46,7 +46,7 @@
               <p class="small text-muted mb-0">Resgate o código para adicionar o crédito diretamente ao saldo desta conta.</p>
             </div>
             <div class="col-lg-7">
-              <form method="post" action="./?view=payments#payment-credit" id="ads-voucher-form">
+              <form method="post" action="./?view=payments#payment-credit" id="ads-voucher-form"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                 <input type="hidden" name="ads_v1_action" value="redeem_voucher"/>
                 <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
                 <label class="visually-hidden" for="ads-voucher-code">Código do voucher</label>
@@ -101,7 +101,7 @@
         <cfif NOT VARIABLES.adsPaymentProviderStatus.ready OR NOT VARIABLES.adsPaymentProviderStatus.enabled>
           <div class="alert alert-info mb-0">Novas compras estao temporariamente indisponiveis. Checkouts existentes e o historico permanecem acessiveis.</div>
         <cfelseif VARIABLES.adsAccessCanPurchaseCredit>
-          <form method="post" action="./?view=payments#payment-credit" id="ads-payment-form" class="js-payment-checkout-form" data-submitting="false">
+          <form method="post" action="./?view=payments#payment-credit" id="ads-payment-form" class="js-payment-checkout-form" data-submitting="false"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
             <input type="hidden" name="ads_v1_action" value="create_payment_checkout"/>
             <input type="hidden" name="ads_payment_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCsrf)#</cfoutput>"/>
             <input type="hidden" name="ads_payment_idempotency_key" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentIdempotencyKey)#</cfoutput>"/>
@@ -132,7 +132,7 @@
     </div>
   </section>
 
-  <cfif VARIABLES.adsPaymentApiReady AND VARIABLES.adsPaymentDataReady>
+  <cfif VARIABLES.adsAccessCanViewPayments AND VARIABLES.adsPaymentApiReady AND VARIABLES.adsPaymentDataReady>
     <section class="card shadow-0 mb-4">
       <div class="card-body p-3 p-lg-4">
         <div class="ads-v1-eyebrow">Pagamentos</div>

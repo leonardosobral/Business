@@ -10,35 +10,48 @@
   <cfabort/>
 </cfif>
 
+<cfinclude template="../includes/seo_search_evidence.cfm"/>
 <div class="seo-report">
   <div class="seo-section-head">
     <h2 class="h5 mb-0">Auditorias por site</h2>
-    <span class="seo-label">Nota técnica interna · 0 a 100</span>
+    <span class="seo-label">Situação no Google + auditoria técnica</span>
   </div>
   <div class="seo-run-grid">
     <cfloop array="#VARIABLES.seoScoreSnapshot.sites#" index="seoScoreSite">
+      <cfset seoSearch = VARIABLES.seoSearchEvidence[seoScoreSite.id]/>
       <cfoutput>
         <section class="seo-run seo-score-card" data-seo-site="#encodeForHtmlAttribute(seoScoreSite.id)#" aria-label="Auditoria #encodeForHtmlAttribute(seoScoreSite.label)#">
           <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
             <h3 class="h5 mb-0">#encodeForHtml(seoScoreSite.label)#</h3>
-            <span class="seo-label #seoScoreSite.discoveryComplete ? 'seo-complete' : 'seo-partial'#">#seoScoreSite.discoveryComplete ? 'Descoberta completa dos sitemaps' : 'Cobertura incompleta'#</span>
+            <span class="seo-label #seoScoreSite.discoveryComplete ? 'seo-complete' : 'seo-partial'#">#seoScoreSite.discoveryComplete ? 'Sitemaps lidos pelo coletor' : 'Coleta incompleta'#</span>
           </div>
           <p class="seo-note mt-2 mb-0">Auditoria: #encodeForHtml(seoScoreSite.auditLabel)#</p>
-          <div class="seo-score-main">
-            <div class="seo-score-number" aria-label="Nota #encodeForHtmlAttribute(seoScoreSite.scoreLabel)# de 100">
-              <span class="seo-score-value">#encodeForHtml(seoScoreSite.scoreLabel)#</span><span class="seo-score-max">/100</span>
-            </div>
-            <div class="seo-score-copy">
-              <strong>Nota da amostra auditada</strong>
-              <p class="seo-note mb-0 mt-1">#encodeForHtml(seoScoreSite.scopeLabel)#</p>
-            </div>
+          <div class="seo-search-health seo-status-#encodeForHtmlAttribute(seoSearch.status)#" data-seo-search-status="#encodeForHtmlAttribute(seoSearch.status)#">
+            <p class="seo-search-eyebrow">Situação no Google · consulta e datas abaixo</p>
+            <h4 class="h6">#encodeForHtml(seoSearch.label)#</h4>
+            <dl class="seo-search-facts">
+              <div class="seo-status-#encodeForHtmlAttribute(seoSearch.sitemapStatus)#"><dt>#encodeForHtml(seoSearch.sitemapLabel)#</dt><dd>#encodeForHtml(seoSearch.sitemapDetail)#</dd></div>
+              <div class="seo-status-#encodeForHtmlAttribute(seoSearch.indexStatus)#"><dt>#encodeForHtml(seoSearch.indexLabel)#</dt><dd>#encodeForHtml(seoSearch.indexDetail)#</dd></div>
+            </dl>
+            <p class="seo-note mb-2">Fonte: #encodeForHtml(seoSearch.source)# Registro manual; não é consulta ao vivo.</p>
+            <p class="small mb-0"><strong>Próximo passo:</strong> #encodeForHtml(seoSearch.nextAction)#</p>
           </div>
+          <details class="seo-technical-score">
+            <summary>Ver nota técnica da amostra e seus limites</summary>
+            <div class="seo-score-main">
+              <div class="seo-score-number" aria-label="Nota técnica da amostra #encodeForHtmlAttribute(seoScoreSite.scoreLabel)# de 100; não mede indexação">
+                <span class="seo-score-value">#encodeForHtml(seoScoreSite.scoreLabel)#</span><span class="seo-score-max">/100</span>
+              </div>
+              <div class="seo-score-copy"><strong>Somente condições técnicas da amostra</strong><p class="seo-note mb-0 mt-1">#encodeForHtml(seoScoreSite.scopeLabel)#</p></div>
+            </div>
+            <p class="small mb-0">Mesmo 100/100 não comprova acesso do Google, páginas indexadas, posição ou tráfego. Não há nota geral de SEO calculada neste painel.</p>
+          </details>
           <ul class="seo-status-totals" aria-label="Resultado das verificações de #encodeForHtmlAttribute(seoScoreSite.label)#">
             <cfloop array="#VARIABLES.seoScoreStatuses#" index="seoScoreStatus">
               <li class="seo-status-total seo-status-#encodeForHtmlAttribute(seoScoreStatus.id)#"><strong>#seoScoreSite.counts[seoScoreStatus.id]#</strong><span><span class="d-inline" aria-hidden="true">#encodeForHtml(seoScoreStatus.icon)#</span> #encodeForHtml(seoScoreStatus.label)#</span></li>
             </cfloop>
           </ul>
-          <p class="seo-note mb-0">Contagens de critérios, incluindo verificações fora da nota. Evidências avaliadas nos critérios pontuados: #encodeForHtml(seoScoreSite.coverageLabel)#.</p>
+          <p class="seo-note mb-0">Contagens da auditoria técnica, incluindo verificações fora da nota. A situação no Google é acompanhada separadamente. Evidências avaliadas nos critérios pontuados: #encodeForHtml(seoScoreSite.coverageLabel)#.</p>
           <dl class="seo-run-numbers">
             <div><dt>Páginas analisadas</dt><dd>#replace(numberFormat(seoScoreSite.inspected, ','), ',', '.', 'all')#</dd></div>
             <div><dt>URLs coletadas</dt><dd>#replace(numberFormat(seoScoreSite.discovered, ','), ',', '.', 'all')#</dd></div>
@@ -163,7 +176,7 @@
 
   <div class="seo-section-head mt-4 mb-0">
     <div>
-      <h2 class="h5 mb-1">Histórico da pontuação</h2>
+      <h2 class="h5 mb-1">Histórico da nota técnica da amostra</h2>
       <p class="seo-note mb-0">A evolução só é comparada entre auditorias com o mesmo método e uma amostra comparável.</p>
     </div>
   </div>

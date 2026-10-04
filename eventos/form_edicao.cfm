@@ -65,14 +65,45 @@
                             SELECT DISTINCT uf from tb_cidades ORDER BY uf
                         </cfquery>
 
+                        <cfset VARIABLES.eventBasicDelegated=structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED"/>
+                        <cfset VARIABLES.eventBasicEstado=uCase(trim(qEvento.estado & ""))/>
+                        <cfif VARIABLES.eventBasicDelegated AND structKeyExists(URL,"cidade_uf") AND isSimpleValue(URL.cidade_uf)>
+                            <cfset VARIABLES.eventBasicRequestedEstado=uCase(trim(URL.cidade_uf))/>
+                            <cfif reFind("^[A-Z]{2}$",VARIABLES.eventBasicRequestedEstado) AND listFind(ValueList(qEstados.uf),VARIABLES.eventBasicRequestedEstado)>
+                                <cfset VARIABLES.eventBasicEstado=VARIABLES.eventBasicRequestedEstado/>
+                            </cfif>
+                        </cfif>
+                        <cfset VARIABLES.eventBasicStateChanged=compareNoCase(VARIABLES.eventBasicEstado,trim(qEvento.estado & "")) NEQ 0/>
+
                         <cfquery name="qCidades">
                             SELECT cod_cidade, nome_cidade
                             FROM tb_cidades
-                            where uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qEvento.estado#"/>
+                            where uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.eventBasicEstado#"/>
                             order by nome_cidade
                         </cfquery>
 
+                        <cfif VARIABLES.eventBasicDelegated>
+                            <form method="get" action="/eventos/" id="eventCityLookup" class="mb-3">
+                                <p class="small mb-2">Para mudar o estado, carregue as cidades antes de preencher os dados abaixo.</p>
+                                <input type="hidden" name="id_evento" value="<cfoutput>#encodeForHTMLAttribute(URL.id_evento)#</cfoutput>"/>
+                                <input type="hidden" name="sessao" value="dados"/>
+                                <cfoutput><cfloop list="periodo,preset,busca,estado,regiao,cidade,id_agrega_evento,agregador_tag" index="eventCityFilter"><input type="hidden" name="#eventCityFilter#" value="#encodeForHTMLAttribute(URL[eventCityFilter])#"/></cfloop></cfoutput>
+                                <div class="d-flex gap-2 align-items-end">
+                                    <div>
+                                        <label class="form-label" for="eventCityState">Estado para edição</label>
+                                        <select class="form-select" id="eventCityState" name="cidade_uf" required>
+                                            <option value="">Escolha o estado</option>
+                                            <cfoutput query="qEstados"><option value="#encodeForHTMLAttribute(qEstados.uf)#" <cfif VARIABLES.eventBasicEstado EQ qEstados.uf>selected</cfif>>#encodeForHTML(qEstados.uf)#</option></cfoutput>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Carregar cidades</button>
+                                </div>
+                            </form>
+                        </cfif>
+
                         <form class="form" method="post">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
                             <div class="row">
 
@@ -104,7 +135,7 @@
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-3">
-                                <input type="text" class="form-control pt-3" maxlength="128" id="txtNomeEvento" name="nome_evento" value="<cfoutput>#qEvento.nome_evento#</cfoutput>" onblur="getTag()"/>
+                                <input type="text" class="form-control pt-3" maxlength="128" id="txtNomeEvento" name="nome_evento" value="<cfoutput>#qEvento.nome_evento#</cfoutput>" <cfif NOT VARIABLES.eventBasicDelegated>onblur="getTag()"</cfif>/>
                                 <label class="form-label" for="txtNomeEvento">Nome do Evento</label>
                             </div>
 
@@ -124,22 +155,26 @@
 
                                 <div class="col-md-3 mb-3">
                                     <div class="form-outline">
+                                        <cfif VARIABLES.eventBasicDelegated>
+                                            <input type="text" class="form-control pt-3" name="estado" id="selectEstado" readonly value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.eventBasicEstado)#</cfoutput>"/>
+                                        <cfelse>
                                         <select data-mdb-select-init class="form-select pt-3" name="estado" id="selectEstado" onchange="getCidades()">
                                             <option value="">Estado</option>
                                             <cfoutput query="qEstados">
                                                 <option value="#qEstados.uf#" <cfif qEvento.estado EQ qEstados.uf>selected</cfif>>#qEstados.uf#</option>
                                             </cfoutput>
                                         </select>
+                                        </cfif>
                                         <label class="form-label select-label">Estado</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-9 mb-3">
                                     <div class="form-outline">
-                                        <select data-mdb-select-init data-mdb-filter="true" class="form-select pt-3" name="cidade" id="selectCidade">
+                                        <select data-mdb-select-init data-mdb-filter="true" class="form-select pt-3" name="cidade" id="selectCidade" required>
                                             <option value="">Cidade</option>
                                             <cfoutput query="qCidades">
-                                                <option value="#qCidades.cod_cidade#" <cfif qEvento.cidade EQ qCidades.nome_cidade>selected</cfif>>#qCidades.nome_cidade#</option>
+                                                <option value="#qCidades.cod_cidade#" <cfif NOT VARIABLES.eventBasicStateChanged AND qEvento.cod_cidade EQ qCidades.cod_cidade>selected</cfif>>#qCidades.nome_cidade#</option>
                                             </cfoutput>
                                         </select>
                                         <label class="form-label select-label">Cidade</label>
@@ -202,8 +237,10 @@
 
                             </div>
 
-                        </form>
+                        </fieldset>
+    </form>
 
+                        <cfif NOT VARIABLES.eventBasicDelegated>
                         <script>
                             const eventoApiTokenParam = "<cfoutput>#JSStringFormat(VARIABLES.eventoApiTokenParam)#</cfoutput>";
                             function getCidades() {
@@ -224,6 +261,7 @@
                                 }
                             }
                         </script>
+                        </cfif>
 
                     </div>
 
@@ -274,6 +312,8 @@
                                                             <iframe src="https://www.youtube.com/embed/<cfoutput>#qYoutube.media_url#</cfoutput>" class="col mx-12" style="height: 300px;width: 450px;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                                                             <form method="post">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
                                                                 <div class="form-group row mb-3">
                                                                     <label class="col-sm-4 col-form-label">URL</label>
@@ -298,7 +338,8 @@
                                                                 </div>
                                                                 </div>
 
-                                                            </form>
+                                                            </fieldset>
+    </form>
                                                         </div>
                                                     </div>
                                                 </div>

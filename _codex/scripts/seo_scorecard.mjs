@@ -5,9 +5,9 @@ import {fileURLToPath} from 'node:url';
 import {createHash,randomUUID} from 'node:crypto';
 import {readReport} from './seo_report.mjs';
 import {validateReportRoot} from './seo_run.mjs';
-import {hreflangReciprocity} from './seo_languages.mjs';
+import {hreflangReciprocity,comparableHttpUrl} from './seo_languages.mjs';
 import {withAiEvidence} from './seo_ai_evidence.mjs';
-export const METHOD='technical-checks-v1';
+export const METHOD='technical-checks-v2';
 const sha=v=>createHash('sha256').update(v).digest('hex');
 const labels={roadrunners:'Road Runners',openresults:'Open Results'};
 const number=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
@@ -50,7 +50,8 @@ function metadataStatus(o,id){
    try{if(!['http:','https:'].includes(new URL(a.url).protocol))return 'warning';}catch{return 'warning';}
    if(seen.has(a.lang.toLowerCase()))return 'warning';seen.add(a.lang.toLowerCase());
   }
-  return o.hreflang.some(a=>a.url===o.final_url)?'pass':'warning';
+  const self=comparableHttpUrl(o.final_url);
+  return self&&o.hreflang.some(a=>comparableHttpUrl(a.url)===self)?'pass':'warning';
  }
  return 'unknown';
 }
@@ -123,7 +124,7 @@ export function scoreRun(run){
  add('h1',!html||!Number.isInteger(o.h1_count)||o.h1_count<0?'unknown':o.h1_count>0?'pass':'warning',o.source_url);
  add('hierarchy',!html||!Number.isInteger(o.h1_count)||o.h1_count<0?'unknown':o.h1_count===1?'pass':'warning',o.source_url);
  add('canonical',!html||!Number.isInteger(o.canonical_count)||typeof o.canonical_invalid!=='boolean'?'unknown':o.canonical_invalid?'error':o.canonical_count===1&&o.canonical_url?'pass':'warning',o.source_url);
- add('alignment',!html||!o.canonical_url?'unknown':o.canonical_url===o.source_url?'pass':'warning',o.source_url);
+ add('alignment',!html||!o.canonical_url?'unknown':comparableHttpUrl(o.canonical_url)&&comparableHttpUrl(o.canonical_url)===comparableHttpUrl(o.source_url)?'pass':'warning',o.source_url);
  add('index',!html||directives===null?'unknown':/(?:^|[\s,;])(noindex|none)(?:$|[\s,;])/i.test(directives)?'warning':'pass',o.source_url);
  add('crawl',typeof o.robots_policy?.googlebot?.allowed!=='boolean'?'unknown':o.robots_policy.googlebot.allowed?'pass':'warning',o.source_url);
  for(const id of ['description','hreflang','structured'])add(id,metadataStatus(o,id),o.source_url);

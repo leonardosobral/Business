@@ -16,6 +16,12 @@
 <cfset VARIABLES.pendingRegistrationBadge = "Cadastro em analise"/>
 <cfset VARIABLES.pendingRegistrationTitle = "Sua solicitacao ainda esta pendente"/>
 <cfset VARIABLES.pendingRegistrationMessage = "O login Google foi confirmado, mas a area Business so sera liberada depois que um admin aprovar a empresa e vincular sua conta."/>
+<cfset VARIABLES.pendingAgencyOwner = isDefined("qBusinessPendingRegistration") AND qBusinessPendingRegistration.recordcount AND len(trim(qBusinessPendingRegistration.origem_gestora_id & ""))/>
+<cfif VARIABLES.pendingAgencyOwner>
+    <cfset VARIABLES.pendingRegistrationBadge = "Conta em revisão"/>
+    <cfset VARIABLES.pendingRegistrationTitle = "Sua titularidade foi confirmada"/>
+    <cfset VARIABLES.pendingRegistrationMessage = "A conta criada pela gestora ainda aguarda aprovação interna. A confirmação do convite não libera campanhas ou eventos antes da aprovação."/>
+</cfif>
 
 <cfif VARIABLES.pendingRegistrationStatus EQ "APROVADA">
     <cfset VARIABLES.pendingRegistrationBadge = "Cadastro aprovado"/>
@@ -93,7 +99,7 @@
       </div>
 
       <div class="d-flex flex-column flex-sm-row gap-2">
-        <a class="btn btn-warning" href="/cadastro/">Enviar outra solicitacao</a>
+        <cfif NOT VARIABLES.pendingAgencyOwner><a class="btn btn-warning" href="/cadastro/">Enviar outra solicitacao</a><cfelse><a class="btn btn-outline-warning" href="/faq/">Ajuda</a></cfif>
         <a class="btn btn-outline-light" href="/logout.cfm">Sair</a>
       </div>
     </div>

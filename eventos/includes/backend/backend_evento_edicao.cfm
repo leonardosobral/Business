@@ -1,3 +1,13 @@
+<cfinclude template="event_delegation.cfm"/>
+<cfinclude template="event_mutations.cfm"/>
+<cfset VARIABLES.eventDelegated=eventDelegationActive()/>
+<cfif VARIABLES.eventDelegated>
+    <cfset VARIABLES.adminIsAdmin=false/>
+    <cfset VARIABLES.qEventosConta=eventDelegationEvents()/>
+    <cfif structKeyExists(FORM,"action")>
+        <cfset eventDelegationAssertAction(FORM.action)/>
+    </cfif>
+</cfif>
 <!--- EDITAR DADOS DO EVENTO --->
 
 <cfset VARIABLES.adminRestrictByConta = NOT (isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin)/>
@@ -8,54 +18,17 @@
 <cfset VARIABLES.adminEventoRequestedTag = ""/>
 <cfset VARIABLES.adminEventoResolvedTag = ""/>
 
-<cfscript>
-function adminEventoResolveUniqueTag(required string requestedTag, numeric eventId=0) {
-    var baseTag = trim(arguments.requestedTag);
-    var candidateTag = baseTag;
-    var suffix = "";
-    var attempt = 1;
-    var qTagConflict = "";
 
-    if (!len(baseTag)) {
-        baseTag = arguments.eventId GT 0
-            ? "evento-" & int(arguments.eventId)
-            : "evento-" & lCase(replace(createUUID(), "-", "", "all"));
-        candidateTag = baseTag;
-    }
-
-    while (attempt LTE 100) {
-        qTagConflict = queryExecute(
-            "SELECT id_evento
-             FROM tb_evento_corridas
-             WHERE tag = :tag
-               AND id_evento <> :eventId
-             LIMIT 1",
-            {
-                tag = {value=candidateTag, cfsqltype="cf_sql_varchar"},
-                eventId = {value=val(arguments.eventId), cfsqltype="cf_sql_integer"}
-            }
-        );
-
-        if (!qTagConflict.recordcount) {
-            return candidateTag;
-        }
-
-        suffix = arguments.eventId GT 0
-            ? "-" & int(arguments.eventId) & (attempt GT 1 ? "-" & attempt : "")
-            : "-" & (attempt + 1);
-        candidateTag = left(baseTag, max(1, 512 - len(suffix))) & suffix;
-        attempt++;
-    }
-
-    throw(
-        type="EventoTagConflict",
-        message="Não foi possível gerar uma tag única para o evento."
-    );
-}
-</cfscript>
 
 <cfif isDefined("qEventosConta") AND qEventosConta.recordcount>
     <cfset VARIABLES.adminEventosContaIds = ValueList(qEventosConta.id_evento)/>
+</cfif>
+
+<cfif structKeyExists(FORM,"action") AND listFind("editar_evento_basico,editar_evento_fornecedores,editar_evento_competition_id,editar_evento_descricao,editar_evento_percursos,salvar_evento_percurso",FORM.action)>
+    <cfset eventDelegationMutation(FORM,"events.manage",{type="EVENT",id=FORM.id_evento},eventMutationEdit,VARIABLES)/>
+    <cfif FORM.action EQ "editar_evento_basico" AND FORM.id_evento EQ 0 AND structKeyExists(VARIABLES,"qInsert")>
+        <cflocation addtoken="false" url="/eventos/?id_evento=#VARIABLES.qInsert.id_evento#"/>
+    </cfif>
 </cfif>
 
 <cfif VARIABLES.adminRestrictByConta
@@ -89,102 +62,6 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 </cfif>
 
 <cfinclude template="inscricao_disponibilidade.cfm"/>
-
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_basico" AND isDefined("FORM.nome_evento") AND Len(trim(FORM.nome_evento))>
-
-    <cfif VARIABLES.adminRestrictByConta
-        AND isDefined("FORM.id_evento")
-        AND isNumeric(FORM.id_evento)
-        AND val(FORM.id_evento) EQ 0>
-        <cflocation addtoken="false" url="./?solicitacao=evento_admin&periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
-    </cfif>
-
-    <cfset VARIABLES.inscricaoBasicSchemaReady = new services.EventRegistrationAvailabilityService().isSchemaReady()/>
-
-    <cfquery name="qCidade">
-        SELECT cod_cidade, nome_cidade
-        FROM tb_cidades
-        where cod_cidade = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.cidade#"/>
-        order by nome_cidade
-    </cfquery>
-
-    <cfset VARIABLES.adminEventoRequestedTag = trim(FORM.tag & "")/>
-    <cfset VARIABLES.adminEventoResolvedTag = adminEventoResolveUniqueTag(
-        VARIABLES.adminEventoRequestedTag,
-        isNumeric(FORM.id_evento) ? val(FORM.id_evento) : 0
-    )/>
-    <cfset VARIABLES.adminEventoTagAdjusted = compare(
-        VARIABLES.adminEventoRequestedTag,
-        VARIABLES.adminEventoResolvedTag
-    ) NEQ 0/>
-
-    <cfif FORM.id_evento EQ 0>
-
-        <cfquery name="qInsert">
-            INSERT INTO tb_evento_corridas
-            (nome_evento, cidade, cod_cidade, estado, data_inicial, data_final, tag,
-                tipo_corrida, endereco, coordenadas, url_inscricao, url_hotsite)
-            VALUES
-            (
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome_evento#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.nome_cidade#"/>,
-             <cfqueryparam cfsqltype="cf_sql_integer" value="#qCidade.cod_cidade#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.estado#"/>,
-             <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
-             <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
-	             <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adminEventoResolvedTag#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_inscricao#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_hotsite#"/>
-            ) RETURNING id_evento
-        </cfquery>
-
-        <cfquery>
-            INSERT INTO tb_log
-            (log_item, log_item_id, log_user, site)
-            VALUES
-            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-        </cfquery>
-
-        <cflocation addtoken="false" url="/eventos/?id_evento=#qInsert.id_evento#"/>
-
-    <cfelse>
-
-        <cfquery>
-            UPDATE tb_evento_corridas
-            SET
-            nome_evento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome_evento#"/>,
-            cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.nome_cidade#"/>,
-            cod_cidade = <cfqueryparam cfsqltype="cf_sql_integer" value="#qCidade.cod_cidade#"/>,
-            estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.estado#"/>,
-            data_inicial = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
-            data_final = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
-            tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adminEventoResolvedTag#"/>,
-            tipo_corrida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
-            endereco = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
-            coordenadas = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
-            <cfif VARIABLES.inscricaoBasicSchemaReady>
-                inscricao_disponibilidade = CASE WHEN trim(coalesce(url_inscricao, '')) IS DISTINCT FROM <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.url_inscricao)#"/>
-                    THEN NULL ELSE inscricao_disponibilidade END,
-            </cfif>
-            url_inscricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_inscricao#"/>,
-            url_hotsite = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_hotsite#"/>
-            WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-        </cfquery>
-
-        <cfquery>
-            INSERT INTO tb_log
-            (log_item, log_item_id, log_user, site)
-            VALUES
-            (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.nome_evento#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-        </cfquery>
-
-    </cfif>
-
-</cfif>
-
 
 <!--- EDITAR CONFIGURACOES DO EVENTO --->
 
@@ -251,36 +128,6 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
 <!--- EDITAR FORNECEDORES --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_fornecedores" AND isDefined("FORM.id_fornecedor") AND Len(trim(FORM.id_fornecedor))>
-
-    <cfquery datasource="runner_dba">
-        DELETE FROM tb_evento_corridas_fornecedores
-        WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-    </cfquery>
-
-    <cfloop list="#FORM.id_fornecedor#" item="item" index="index" delimiters=",">
-        <cfquery>
-            INSERT INTO tb_evento_corridas_fornecedores
-            (id_fornecedor, id_fornecedor_tipo, id_evento)
-            VALUES
-            (
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#listToArray(FORM.id_fornecedor, ',')[index]#"/>,
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#listToArray(FORM.id_fornecedor_tipo, ',')[index]#"/>,
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-            )
-        </cfquery>
-    </cfloop>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_fornecedor#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-    </cfquery>
-
-</cfif>
-
-
 <!--- EDITAR AGRAGADORES --->
 
 <cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_agregadores" AND isDefined("FORM.agregador_tag") AND Len(trim(FORM.agregador_tag)) AND isDefined("VARIABLES.adminIsAdmin") AND VARIABLES.adminIsAdmin>
@@ -316,37 +163,6 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
 
 <!--- EDITAR INTEGRACOES --->
-
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_competition_id" AND isDefined("FORM.id_evento") AND Len(trim(FORM.id_evento))>
-
-    <cfquery datasource="runner_dba">
-        DELETE FROM tb_evento_corridas_relaciona
-        WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-        AND id_parceiro = 1
-        AND nome_variavel = 'competition_id'
-    </cfquery>
-
-    <cfquery>
-        INSERT INTO tb_evento_corridas_relaciona
-        (id_evento_parceiro, id_parceiro, nome_variavel, id_evento)
-        VALUES
-        (
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento_parceiro#"/>,
-            <cfqueryparam cfsqltype="cf_sql_integer" value="1"/>,
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="competition_id"/>,
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-        )
-    </cfquery>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento_parceiro#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-    </cfquery>
-
-</cfif>
-
 
 <!--- EXCLUIR EVENTO --->
 
@@ -428,105 +244,9 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
 <!--- EDITAR DESCRICAO --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_descricao" AND isDefined("FORM.descricao")>
-
-    <cfquery>
-        UPDATE tb_evento_corridas
-        SET descricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.descricao#"/>,
-        url_imagem = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_imagem#"/>,
-        resumo = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.resumo#"/>
-        WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-    </cfquery>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.resumo#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-    </cfquery>
-
-</cfif>
-
-
 <!--- EDITAR PERCURSOS --->
 
-<cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_percursos" AND isDefined("FORM.categorias")>
-
-    <cfquery>
-        UPDATE tb_evento_corridas
-        SET categorias = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.categorias#"/>
-        WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-    </cfquery>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.categorias#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-    </cfquery>
-
-</cfif>
-
-
 <!--- SALVAR PERCURSOS --->
-
-<cfif isDefined("FORM.action") AND FORM.action EQ "salvar_evento_percurso" AND isDefined("FORM.id_evento_percurso") AND Len(trim(FORM.id_evento_percurso))>
-
-    <cfquery>
-        UPDATE tb_evento_corridas_percursos
-        SET percurso_evento = <cfqueryparam cfsqltype="cf_sql_numeric" value="#FORM.percurso_evento#"/>,
-        unidade_de_medida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.unidade_de_medida#"/>,
-        data_percurso = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_percurso#"/>,
-        hora_largada = <cfqueryparam cfsqltype="cf_sql_time" value="#FORM.hora_largada#" null="#NOT len(trim(FORM.hora_largada))#"/>,
-        tipo_corrida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
-        percurso_bloqueado = <cfqueryparam cfsqltype="cf_sql_bit" value="true"/>
-        WHERE id_evento_percurso = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento_percurso#"/>
-    </cfquery>
-
-    <cfquery name="qBadges">
-        SELECT tip.image_path, tip.badge, bg.valor_badge, bg.percurso, bg.complemento_badge from tb_badges_tipos tip
-        left join tb_badges bg on bg.badge = tip.badge
-            and bg.id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>
-            and bg.percurso = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.percurso_evento#"/>
-        where tip.tipo_badge = 'percurso'
-        and tip.min_km <= <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.percurso_evento#"/>
-        order by ordem
-    </cfquery>
-
-    <cfloop query="qBadges">
-
-        <cfif isDefined("FORM.#qBadges.badge#")>
-            <cfquery>
-                INSERT INTO tb_badges
-                (id_evento, percurso, badge, valor_badge, complemento_badge, flag_badge)
-                values
-                (
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>,
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.percurso_evento#"/>,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#qBadges.badge#"/>,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM[qBadges.badge&'_valor_badge']#"/>,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM[qBadges.badge&'_complemento_badge']#"/>,
-                true
-                )
-                ON CONFLICT (id_evento, percurso, badge)
-                    DO UPDATE SET
-                    valor_badge  = excluded.valor_badge,
-                    complemento_badge  = excluded.complemento_badge
-                    RETURNING *;
-            </cfquery>
-        </cfif>
-
-    </cfloop>
-
-    <cfquery>
-        INSERT INTO tb_log
-        (log_item, log_item_id, log_user, site)
-        VALUES
-        (<cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.action#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#REQUEST.businessIdentity.id#,#FORM.id_evento_percurso#"/>,<cfqueryparam cfsqltype="cf_sql_varchar" value="#cgi.remote_addr#"/>, 'RH')
-    </cfquery>
-
-</cfif>
-
 
 <!--- DADOS DO EVENTO EDITADO --->
 

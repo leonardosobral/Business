@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Synthetic accounts in a fresh socket-only PostgreSQL; all finance functions are canonical SQL.
 import assert from 'node:assert/strict';
+import {loadCanonicalAdsFixture} from '../tests/ads-canonical-fixture.mjs';
 import {mkdtempSync,readFileSync,existsSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {resolve,dirname} from 'node:path';
@@ -17,7 +18,6 @@ const args=['-X','-qAt','-v','ON_ERROR_STOP=1','-h',scratch,'-U','postgres','-d'
 const sql=(input,fail=false)=>run('psql',args,input,fail);
 const read=name=>readFileSync(resolve(rr,name),'utf8');
 const business=name=>readFileSync(resolve(root,'_codex/sql',name),'utf8');
-function func(source,name){const start=source.indexOf(`CREATE OR REPLACE FUNCTION ads.${name}(`);const end=source.indexOf('$function$;',start);assert(start>=0&&end>start,`Missing canonical ${name}`);return source.slice(start,end+11);}
 let started=false;
 try {
   run('initdb',['-D',resolve(scratch,'data'),'-U','postgres','-A','trust','--no-locale','-c','shared_memory_type=mmap','-c','dynamic_shared_memory_type=mmap']);
@@ -31,47 +31,26 @@ try {
     CREATE TABLE public.tb_conta_eventos(id_conta bigint,id_evento integer,status text,PRIMARY KEY(id_conta,id_evento));
     CREATE TABLE public.tb_conta_cadastro_solicitacoes(id_solicitacao bigint,id_conta bigint,id_usuario integer,status text);
     CREATE TABLE public.tb_conta_evento_solicitacoes(id_conta bigint,id_evento integer,id_usuario_solicitante integer,status text);`);
-  sql(read('2026-07-26_ads_v1_canonical_foundation.sql'));
-  sql(read('2026-08-18_ads_v1_admin_api.sql'));
-  sql(read('2026-08-18_ads_v1_shadow_selection.sql'));
-  sql(read('2026-08-18_ads_v1_house_delivery.sql'));
-  sql(read('2026-08-19_ads_v1_cpc_delivery.sql'));
-  sql(func(read('2026-08-20_ads_v1_all_spots_foundation.sql'),'select_delivery_candidate_v2'));
-  sql(func(read('2026-08-20_ads_v1_all_spots_foundation.sql'),'replace_campaign_placements'));
-  sql(`ALTER FUNCTION ads.select_delivery_candidate_v2(text,timestamptz,text,character,text,integer,text,text[],uuid[]) OWNER TO ads_owner`);
-  // All-spots migration also migrates legacy data. This fixture creates only its required placement.
-  sql(`INSERT INTO ads.schema_migrations(migration_key,description) VALUES('2026-08-20_ads_v1_all_spots_foundation','synthetic inventory');
-    INSERT INTO ads.placements(placement_key,channel,surface,format_key,device_class,status) VALUES('rr-sidebar-banner-300x250','ROADRUNNERS','SIDEBAR','IMAGE','ALL','ACTIVE');
-    GRANT SELECT ON ALL TABLES IN SCHEMA public TO ads_owner,runner;`);
-  sql(read('2026-08-21_ads_phase2_payments.sql'));
-  sql(read('2026-09-02_ads_event_auction_ranking.sql'));
-  sql(func(read('2026-08-20_ads_v1_house_banner.sql'),'save_house_banner_campaign'));
-  const onboarding=business('2026-08-24_ads_pending_onboarding.sql');
-  sql(onboarding.slice(onboarding.indexOf('CREATE TABLE IF NOT EXISTS ads.campaign_review_requests'),onboarding.indexOf('CREATE OR REPLACE FUNCTION ads.guard_reserved_voucher_redemption')));
-  for(const name of ['submit_campaign_review','review_campaign','cancel_open_campaign_reviews'])sql(func(onboarding,name));
-  sql(business('2026-08-25_ads_refresh_campaign_review_permission.sql'));
-  sql(business('2026-09-11_ads_prepare_pending_campaign_edit.sql'));
-  sql(read('2026-09-04_ads_review_activation_invariants.sql'));
-  sql(`DO $b$ DECLARE f regprocedure; BEGIN FOR f IN SELECT oid::regprocedure FROM pg_proc WHERE pronamespace='ads'::regnamespace LOOP EXECUTE format('ALTER FUNCTION %s OWNER TO ads_owner',f);END LOOP; END $b$;
-    ALTER TABLE ads.campaign_review_requests OWNER TO ads_owner; ALTER TABLE ads.campaign_review_history OWNER TO ads_owner;
-    GRANT SELECT ON ads.campaign_review_requests,ads.campaign_review_history TO ads_reader;
-    REVOKE ALL ON FUNCTION ads.cancel_open_campaign_reviews(bigint,integer,text),ads.replace_campaign_placements(uuid,text[],integer,text) FROM PUBLIC;
-    GRANT EXECUTE ON FUNCTION ads.cancel_open_campaign_reviews(bigint,integer,text) TO ads_admin;
-    GRANT EXECUTE ON FUNCTION ads.replace_campaign_placements(uuid,text[],integer,text) TO ads_business;
-    REVOKE ALL ON FUNCTION ads.save_house_banner_campaign(uuid,bigint,text,text,text,integer,integer,text,integer,integer,text,text,boolean,timestamptz,timestamptz,integer,integer,integer,bigint) FROM PUBLIC;
-    GRANT EXECUTE ON FUNCTION ads.save_house_banner_campaign(uuid,bigint,text,text,text,integer,integer,text,integer,integer,text,text,boolean,timestamptz,timestamptz,integer,integer,integer,bigint) TO ads_business;
-    INSERT INTO public.tb_usuarios VALUES(901,true,false),(902,false,false),(903,false,false),(904,false,false);
+  await loadCanonicalAdsFixture(sql,root);
+  sql(`    INSERT INTO public.tb_usuarios VALUES(901,true,false),(902,false,false),(903,false,false),(904,false,false);
     INSERT INTO public.tb_contas VALUES(1,'ATIVA'),(2,'ATIVA'),(3,'PENDENTE');
     INSERT INTO public.tb_conta_usuarios VALUES(2,902,'ATIVO','OWNER'),(2,903,'ATIVO','VISUALIZADOR'),(3,904,'ATIVO','OWNER');
     INSERT INTO public.tb_evento_corridas VALUES(901,true,'SC'); INSERT INTO public.tb_conta_eventos VALUES(2,901,'ATIVO');`);
-  // Immutable reviewed HOUSE baseline: the live workspace migration was replaced by an operator query.
-  // Recovered byte-for-byte from the September 15 final-review added-file diff; no runtime source edits.
-  sql(readFileSync(resolve(root,'_codex/tests/paid-banner-house-scope-baseline.sql'),'utf8'));
   if(process.argv.includes('--inspect'))console.log(sql(`SELECT proname||' '||oid::regprocedure::text||' '||md5(prosrc) FROM pg_proc WHERE pronamespace='ads'::regnamespace AND proname IN('activate_campaign','serve_delivery','change_campaign_status','charge_cpc_click','record_cpc_viewable','charge_cpc_click_token','invalidate_campaign_review_on_edit','prepare_campaign_for_edit','replace_campaign_placements') ORDER BY proname; SELECT conrelid::regclass||' '||conname||' '||pg_get_constraintdef(oid) FROM pg_constraint WHERE connamespace='ads'::regnamespace AND conname IN('ck_ads_advertisements_product','ck_ads_deliveries_product','ck_ads_credit_ledger_click');`));
   const migration='2026-09-16_ads_paid_banners.sql';
   if(!process.argv.includes('--baseline')&&existsSync(resolve(rr,migration))){sql(read(migration));sql(read(migration));sql(read('2026-09-16_ads_paid_banners_preflight.sql'));}
   console.log(sql(read('2026-09-16_ads_paid_banners_contract_tests.sql')));
   console.log(sql(read('2026-09-15_ads_house_banner_scope_contract_tests.sql')).split('\n').filter(line=>line.startsWith('PASS')).join('\n'));
+  if(process.argv.includes('--delegation')) {
+    // Disposable fixture only: exercise the full canonical runtime suite after the additive Business migration.
+    sql(`ALTER TABLE public.tb_conta_usuarios ADD COLUMN id_conta_usuario bigserial PRIMARY KEY;
+      CREATE TABLE public.tb_business_permissoes(id_permissao bigserial PRIMARY KEY,codigo varchar(100) UNIQUE NOT NULL,descricao varchar(255) NOT NULL,ativo boolean NOT NULL DEFAULT true);`);
+    sql(business('2026-10-03_business_account_delegation.sql'));
+    sql('GRANT SELECT ON ALL TABLES IN SCHEMA public TO ads_owner');
+    sql(business('2026-10-03_business_account_delegation_ads.sql'));
+    sql(business('2026-10-03_business_account_delegation_campaigns.sql'));
+    console.log('PASS canonical Ads running with installed Business delegation helper');
+  }
   const quote=v=>v===null?'NULL':"'"+String(v).replaceAll("'","''")+"'";
   const row=q=>JSON.parse(sql(`SELECT row_to_json(x) FROM (${q}) x`));
   const fails=(q,pattern)=>{const r=sql(q,true);assert.notEqual(r.status,0,`Unexpected success: ${q.slice(0,220)}`);if(pattern)assert.match(r.stderr,pattern);};
@@ -226,6 +205,7 @@ try {
   assert.equal(sql(`SELECT bool_and(proowner='ads_owner'::regrole AND prosecdef AND proconfig @> ARRAY['search_path=pg_catalog']) FROM pg_proc WHERE pronamespace='ads'::regnamespace AND proname IN('save_paid_banner_campaign','submit_paid_banner_review','review_paid_banner_campaign','select_paid_banner_candidate')`),'t');
   console.log('PASS locked serving revalidation after concurrent edit and runtime least privilege');
   // A new migration must reject future unrelated function bodies atomically on rerun.
+  if(!process.argv.includes('--delegation')) {
   for(const signature of ['ads.charge_cpc_click_token(uuid,uuid,text,timestamptz,integer,text,text,text,jsonb)','ads.refresh_campaign_review_prerequisites(bigint,integer,integer)']){
     const installed=sql(`SELECT pg_get_functiondef('${signature}'::regprocedure)`);
     const drift=installed.replace('BEGIN','BEGIN\n -- future contract');sql(drift);
@@ -237,5 +217,6 @@ try {
   fails(read(migration),/diverg|drift|baseline/i);
   sql(`ALTER TABLE ads.advertisements DROP CONSTRAINT ck_ads_advertisements_product;ALTER TABLE ads.advertisements ADD CONSTRAINT ck_ads_advertisements_product ${constraint}`);
   console.log('PASS idempotent migration and future-code drift rejection');
+  }
 }catch(error){console.error(error.message);process.exitCode=1;}
 finally{if(started)run('pg_ctl',['-D',resolve(scratch,'data'),'-m','fast','-w','stop']);console.log(`Isolated fixture retained: ${scratch}`);}

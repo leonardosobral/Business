@@ -96,7 +96,7 @@
         var countryInput = form.querySelector("#ads-v1-country");
         var regionInput = form.querySelector("#ads-v1-region");
         var cpcOptions = Array.prototype.slice.call(form.querySelectorAll("input[name='ads_cpc_option']"));
-        var placementInputs = Array.prototype.slice.call(form.querySelectorAll("input[name='placement_keys']"));
+        var placementInputs = Array.prototype.slice.call(form.querySelectorAll("input[data-placement-label]"));
         var currentStep = Math.min(4, Math.max(1, Number(form.dataset.initialStep) || 1));
         var isNew = form.dataset.isNew === "true";
         var preserveInputs = form.dataset.preserveInputs === "true";

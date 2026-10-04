@@ -20,6 +20,8 @@ mkdir -p "$auth_test_root/app/bi" "$auth_test_root/app/includes/backend" "$auth_
 cp "$business_root/Application.cfc" "$business_root/logout.cfm" "$auth_test_root/app/"
 cp "$business_root/bi/Application.cfc" "$auth_test_root/app/bi/"
 cp "$business_root/cadastro/includes/backend.cfm" "$auth_test_root/app/cadastro/includes/"
+mkdir -p "$auth_test_root/app/services/accountDelegation"
+cp "$business_root/services/accountDelegation/InviteReturn.cfc" "$auth_test_root/app/services/accountDelegation/"
 cp "$business_root/services/BusinessAuthSession.cfc" "$business_root/services/GoogleIdentityVerifier.cfc" "$auth_test_root/app/services/"
 cp "$business_root/includes/backend/business_request_identity.cfm" "$business_root/includes/backend/business_google_callback.cfm" "$auth_test_root/app/includes/backend/"
 cp "$business_root/includes/backend/"business_remember_*.cfm "$auth_test_root/app/includes/backend/"

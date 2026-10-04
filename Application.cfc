@@ -41,6 +41,8 @@
                 <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
             </cfif>
         </cfif>
+        <cfset var accountDelegationSetting = structKeyExists(environment, "BUSINESS_ACCOUNT_DELEGATION_ENABLED") ? trim(environment["BUSINESS_ACCOUNT_DELEGATION_ENABLED"] & "") : (structKeyExists(businessLocalConfig, "accountDelegationEnabled") ? trim(businessLocalConfig.accountDelegationEnabled & "") : "false")/>
+        <cfset APPLICATION.businessAccountDelegationEnabled = listFindNoCase("true,1,yes", accountDelegationSetting) GT 0/>
         <cfset var openAiApiKey = structKeyExists(environment, "OPENAI_API_KEY") ? trim(environment["OPENAI_API_KEY"]) : (structKeyExists(businessLocalConfig, "openAiApiKey") ? trim(businessLocalConfig.openAiApiKey) : "")/>
         <cfset var pushDispatchSecret = structKeyExists(environment, "RR_HANDOFF_SECRET") ? trim(environment["RR_HANDOFF_SECRET"]) : (structKeyExists(businessLocalConfig, "notificationDispatchSecret") ? trim(businessLocalConfig.notificationDispatchSecret) : "")/>
         <cfset var specialGroupsSecret = structKeyExists(environment, "RR_CHAT_SPECIAL_GROUPS_SECRET") ? trim(environment["RR_CHAT_SPECIAL_GROUPS_SECRET"]) : (structKeyExists(businessLocalConfig, "specialGroupsSecret") ? trim(businessLocalConfig.specialGroupsSecret) : "")/>
@@ -202,7 +204,9 @@
                 required="true"
                 />
 
+        <cfset REQUEST.businessTargetPath=ARGUMENTS.TargetPage/>
         <cfinclude template="includes/backend/business_request_identity.cfm"/>
+        <cfinclude template="includes/backend/business_delegation_request.cfm"/>
 
         <cfif IsDefined("url.resetApp")>
           <cfset ApplicationStop()>

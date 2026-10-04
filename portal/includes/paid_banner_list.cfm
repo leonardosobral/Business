@@ -31,7 +31,7 @@
                     <cfif paidBannerRowItem.status EQ 'DRAFT' AND NOT listFind('PENDING_REVIEW,WAITING_PREREQUISITES,APPROVED',paidBannerRowItem.review_status)>
                         <a class="btn btn-sm btn-outline-light" href="#encodeForHTMLAttribute('/portal/banners/?section=form&edit=' & encodeForURL(paidBannerRowItem.campaign_id) & '&' & VARIABLES.paidBannerReturnQuery & '##paid-banner-form')#">Editar</a>
                     </cfif>
-                    <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerListActionUrl)#" class="d-flex flex-wrap gap-2">
+                    <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerListActionUrl)#" class="d-flex flex-wrap gap-2"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                         <input type="hidden" name="paid_banner_csrf" value="#htmlEditFormat(VARIABLES.paidBannerCsrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(paidBannerRowItem.campaign_id)#"/><input type="hidden" name="paid_banner_return_banner" value="#htmlEditFormat(VARIABLES.paidBannerFilter)#"/><input type="hidden" name="paid_banner_return_period" value="#VARIABLES.paidBannerDays#"/>
                         <cfif paidBannerRowItem.status NEQ 'DRAFT' OR listFind('PENDING_REVIEW,WAITING_PREREQUISITES,APPROVED',paidBannerRowItem.review_status)><button class="btn btn-sm btn-outline-light" type="submit" name="paid_banner_action" value="prepare">#paidBannerRowItem.status EQ 'ACTIVE' ? 'Pausar e editar' : 'Retirar da análise e editar'#</button>
                         <cfelse><button class="btn btn-sm btn-info" name="paid_banner_action" value="submit">Enviar para análise</button></cfif>
@@ -42,7 +42,7 @@
                 </cfif>
             </div>
             <cfif VARIABLES.paidBannerContext.canReview AND paidBannerRowItem.review_status EQ 'PENDING_REVIEW'>
-                <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerListActionUrl)#" class="mt-3 border rounded p-3">
+                <form method="post" action="#encodeForHTMLAttribute(VARIABLES.paidBannerListActionUrl)#" class="mt-3 border rounded p-3"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                     <h3 class="h6">Revisão RunnerHub</h3><p class="small">Confira as duas imagens, o destino e o escopo. Aprovar libera a veiculação conforme o período, saldo e orçamento.</p>
                     <input type="hidden" name="paid_banner_action" value="review"/><input type="hidden" name="paid_banner_csrf" value="#htmlEditFormat(VARIABLES.paidBannerCsrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(paidBannerRowItem.campaign_id)#"/><input type="hidden" name="review_id" value="#val(paidBannerRowItem.review_id)#"/><input type="hidden" name="paid_banner_return_banner" value="#htmlEditFormat(VARIABLES.paidBannerFilter)#"/><input type="hidden" name="paid_banner_return_period" value="#VARIABLES.paidBannerDays#"/>
                     <label class="form-label" for="review-reason-#paidBannerRowItem.campaign_id#">Comentário (obrigatório para solicitar ajustes)</label><textarea class="form-control mb-2" name="reason" maxlength="1000" id="review-reason-#paidBannerRowItem.campaign_id#"></textarea>

@@ -517,7 +517,18 @@
         <cfset arrayAppend(VARIABLES.accountRegistrationErrors, "Conta existente invalida.")/>
     </cfif>
 
+    <cfset VARIABLES.accountRegistrationDelegationHandled = false/>
     <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors)>
+        <cfinclude template="delegation_backend.cfm"/>
+        <cfif VARIABLES.accountRegistrationDelegationHandled
+            AND NOT arrayLen(VARIABLES.accountRegistrationErrors)
+            AND len(VARIABLES.accountRegistrationRedirectUrl)>
+            <cflocation addtoken="false" url="#VARIABLES.accountRegistrationRedirectUrl#"/>
+        </cfif>
+    </cfif>
+
+    <!--- Agency registrations must never reach legacy OWNER creation or voucher processing. --->
+    <cfif NOT arrayLen(VARIABLES.accountRegistrationErrors) AND NOT VARIABLES.accountRegistrationDelegationHandled>
         <cftry>
             <cftransaction>
                 <cfquery name="qBusinessAccountRegistrationReview" datasource="runnerhub">
@@ -2218,6 +2229,9 @@
             LEFT JOIN ads.tb_ad_vouchers vou ON vou.id_ad_voucher = sol.id_ad_voucher
         </cfif>
         WHERE sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+        <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+          AND sol.origem_gestora_id IS NULL
+        </cfif>
         <cfif NOT VARIABLES.businessAccountsCanAdminAll>
           AND sol.id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessAccountsScopedAccountIds#" list="true"/>)
           AND cont.status = 'ATIVA'::status_conta
@@ -2226,6 +2240,7 @@
         LIMIT 25
     </cfquery>
 </cfif>
+<cfinclude template="delegation_workspace_backend.cfm"/>
 
 <cfif VARIABLES.businessAccountsTablesReady
     AND VARIABLES.businessMedicalAccessTableReady

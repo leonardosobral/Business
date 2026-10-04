@@ -6,6 +6,8 @@
     </cfquery>
 
     <form class="form" method="post" action="/eventos/?<cfoutput>busca=#URL.busca#&estado=#URL.estado#&id_evento=#URL.id_evento#&id_agrega_evento=#URL.id_agrega_evento#&preset=#URL.preset#&sessao=percursos</cfoutput>">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
         <div data-mdb-input-init class="form-outline mb-3">
             <input type="text" class="form-control pt-3" maxlength="128" id="txtPercursos" name="categorias" value="<cfoutput>#qEvento.categorias#</cfoutput>"/>
@@ -22,6 +24,7 @@
 
         </div>
 
+    </fieldset>
     </form>
 
     <div class="row">
@@ -47,6 +50,8 @@
                     <div class="card-body p-3 pb-0 g-3">
 
                         <form class="form" method="post" action="/eventos/?<cfoutput>busca=#URL.busca#&estado=#URL.estado#&id_evento=#URL.id_evento#&id_agrega_evento=#URL.id_agrega_evento#&preset=#URL.preset#&sessao=percursos</cfoutput>">
+        <fieldset <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED" AND NOT arrayFind(REQUEST.businessAccessContext.capabilities,"events.manage")>disabled</cfif>>
+        <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
 
                             <div class="row g-3">
 
@@ -122,7 +127,8 @@
 
                             </div>
 
-                        </form>
+                        </fieldset>
+    </form>
 
                     </div>
                 </div>

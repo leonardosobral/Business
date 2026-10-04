@@ -43,6 +43,11 @@
     ) as has_cronometrador
     FROM tb_evento_corridas evt
     WHERE ativo = true
+    <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+        AND EXISTS (SELECT 1 FROM tb_conta_eventos ce WHERE ce.id_evento=evt.id_evento
+            AND ce.id_conta=<cfqueryparam value="#REQUEST.businessAccessContext.accountId#" cfsqltype="cf_sql_bigint"/>
+            AND ce.status='ATIVO')
+    </cfif>
     <!---cfif URL.preset EQ "inativos">
         WHERE ativo = false
         <cfelse>

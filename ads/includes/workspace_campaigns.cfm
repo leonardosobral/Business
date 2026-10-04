@@ -77,7 +77,7 @@
                           <cfif VARIABLES.adsAccessCanManageCampaign>
                             <cfif VARIABLES.adsV1RowStatus EQ "DRAFT"
                               AND (NOT len(VARIABLES.adsV1RowReviewStatus) OR listFind("CHANGES_REQUESTED,CANCELED", VARIABLES.adsV1RowReviewStatus))>
-                              <form method="post" action="./?view=campaigns">
+                              <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                 <input type="hidden" name="ads_v1_action" value="submit_campaign_review"/>
                                 <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
                                 <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
@@ -87,7 +87,7 @@
                             <details class="ads-row-actions text-start"><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
                               <cfif VARIABLES.adsV1RowStatus EQ "DRAFT"
                                 AND listFind("PENDING_REVIEW,WAITING_PREREQUISITES", VARIABLES.adsV1RowReviewStatus)>
-                                <form method="post" action="./?view=campaigns">
+                                <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                   <input type="hidden" name="ads_v1_action" value="prepare_campaign_edit"/>
                                   <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
                                   <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
@@ -97,7 +97,7 @@
                               </cfif>
                               <cfif VARIABLES.adsV1RowReviewStatus EQ "APPROVED"
                                 AND listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)>
-                                <form method="post" action="./?view=campaigns">
+                                <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                   <input type="hidden" name="ads_v1_action" value="prepare_campaign_edit"/>
                                   <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
                                   <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
@@ -109,8 +109,8 @@
                                 AND NOT listFind("WAITING_PREREQUISITES,PENDING_REVIEW,APPROVED", VARIABLES.adsV1RowReviewStatus)>
                                 <a class="btn btn-sm btn-outline-light" href="./?view=campaigns&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)###campaign-form">Editar</a>
                               </cfif>
-                              <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
-                              <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
+                              <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
+                              <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
                             </div></details>
                           </cfif>
                           </div></td>

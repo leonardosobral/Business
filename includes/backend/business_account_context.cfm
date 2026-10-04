@@ -29,6 +29,22 @@
 <cfset qBusinessAccountContextPages = QueryNew("id_pagina")/>
 <cfset qBusinessPendingAccount = QueryNew("id_conta,nome_conta,papel,id_solicitacao")/>
 
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <cfset VARIABLES.businessAccountContextTablesReady=true/>
+    <cfset VARIABLES.businessAccountSwitchAvailable=true/>
+    <cfset VARIABLES.businessEffectiveUserIds="0"/>
+    <cfset VARIABLES.businessEffectivePaginaIds="0"/>
+    <cfset VARIABLES.businessActiveAccountId=REQUEST.businessAccessContext.accountId/>
+    <cfset VARIABLES.businessEffectiveAccountIds=REQUEST.businessAccessContext.accountId/>
+    <cfset VARIABLES.businessEffectiveAccountViewerIds=REQUEST.businessAccessContext.accountId/>
+    <cfset VARIABLES.businessCurrentAccountRole="DELEGATED"/>
+    <cfquery name="qBusinessDelegatedAccount" datasource="runnerhub">
+        SELECT nome_conta FROM tb_contas WHERE id_conta=<cfqueryparam cfsqltype="cf_sql_bigint" value="#REQUEST.businessAccessContext.accountId#"/>
+    </cfquery>
+    <cfset VARIABLES.businessActiveAccountName=qBusinessDelegatedAccount.nome_conta/>
+    <cfexit method="exittemplate"/>
+</cfif>
+
 <cfif isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif isDefined("qPerfil.is_admin")>
         <cfif IsBoolean(qPerfil.is_admin)>
@@ -68,14 +84,29 @@
                 SELECT cont.id_conta,
                        cont.nome_conta,
                        cu.papel::text AS papel,
-                       sol.id_solicitacao
+                       sol.id_solicitacao,
+                       sol.origem_gestora_id
                 FROM tb_conta_usuarios cu
                 INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
                 LEFT JOIN LATERAL (
-                    SELECT cad.id_solicitacao
+                    SELECT cad.id_solicitacao,
+                      <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>cad.origem_gestora_id<cfelse>NULL::bigint AS origem_gestora_id</cfif>
                     FROM tb_conta_cadastro_solicitacoes cad
                     WHERE cad.id_conta = cont.id_conta
-                      AND cad.id_usuario = cu.id_usuario
+                      AND (cad.id_usuario = cu.id_usuario
+                      <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+                      OR (
+                        cad.origem_gestora_id IS NOT NULL
+                        AND EXISTS (
+                          SELECT 1 FROM tb_conta_gestao_convites owner_invite
+                          WHERE owner_invite.id_conta = cont.id_conta
+                            AND owner_invite.id_vinculo = cad.gestao_vinculo_id
+                            AND owner_invite.tipo = 'TITULAR'
+                            AND owner_invite.status = 'ACEITO'
+                            AND owner_invite.id_usuario_aceite = cu.id_usuario
+                        )
+                      )
+                      </cfif>)
                       AND cad.status = 'PENDENTE'::status_conta_cadastro_solicitacao
                     ORDER BY cad.data_criacao DESC
                     LIMIT 1
@@ -144,13 +175,14 @@
             </cfquery>
 
             <cfif VARIABLES.businessRealIsAdmin
+                AND NOT (structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled)
                 AND qBusinessAccountContextAccounts.recordcount GT 1
                 AND NOT StructKeyExists(SESSION, "businessAccountSelectionConfirmed")
                 AND NOT StructKeyExists(SESSION, "businessSimulatedAccountId")>
                 <cfset VARIABLES.businessAccountSelectionRequired = true/>
             </cfif>
 
-            <cfif isDefined("FORM.business_account_context_action")
+            <cfif NOT (structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled) AND isDefined("FORM.business_account_context_action")
                 AND FORM.business_account_context_action EQ "select"
                 AND isDefined("FORM.business_account_context_csrf")
                 AND FORM.business_account_context_csrf EQ VARIABLES.businessAccountContextCsrf>
@@ -192,6 +224,8 @@
                 </cfif>
 
                 <cfif VARIABLES.businessAccountContextSelectionValid>
+                    <cfset createObject("component","services.accountDelegation.RequestBoundary").init("runnerhub",false).clearLegacySelection(SESSION)/>
+                    <cfset structDelete(REQUEST,"businessAccessContext",false)/>
                     <cfset VARIABLES.businessAccountContextRedirect = isDefined("FORM.business_account_context_redirect") ? trim(FORM.business_account_context_redirect) : "/"/>
                     <cfif NOT len(VARIABLES.businessAccountContextRedirect)
                         OR left(VARIABLES.businessAccountContextRedirect, 1) NEQ "/"
@@ -204,7 +238,7 @@
                 </cfif>
             </cfif>
 
-            <cfif VARIABLES.businessRealIsAdmin AND isDefined("URL.business_account_context_id")>
+            <cfif NOT (structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled) AND VARIABLES.businessRealIsAdmin AND isDefined("URL.business_account_context_id")>
                 <cfset VARIABLES.businessAccountContextRequestedId = trim(URL.business_account_context_id)/>
 
                 <cfif len(VARIABLES.businessAccountContextRequestedId) AND isNumeric(VARIABLES.businessAccountContextRequestedId) AND val(VARIABLES.businessAccountContextRequestedId) GT 0>
@@ -224,6 +258,8 @@
                     <cfset StructDelete(SESSION, "businessSimulatedAccountId", false)/>
                 </cfif>
 
+                <cfset createObject("component","services.accountDelegation.RequestBoundary").init("runnerhub",false).clearLegacySelection(SESSION)/>
+                <cfset structDelete(REQUEST,"businessAccessContext",false)/>
                 <cfset VARIABLES.businessAccountContextRedirect = isDefined("URL.business_account_context_redirect") ? trim(URL.business_account_context_redirect) : "/"/>
                 <cfif NOT len(VARIABLES.businessAccountContextRedirect)
                     OR left(VARIABLES.businessAccountContextRedirect, 1) NEQ "/"

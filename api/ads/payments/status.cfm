@@ -38,7 +38,7 @@ if (uCase(trim(CGI.request_method & "")) NEQ "GET") {
     }, 401, "Unauthorized")/>
 </cfif>
 
-<cfif NOT VARIABLES.adsAccessCanViewPayments>
+<cfif NOT VARIABLES.adsAccessCanViewPayments AND NOT VARIABLES.adsAccessCanPurchaseCredit>
     <cfset adsPaymentStatusWrite({
         success = false,
         status = "forbidden"
@@ -59,7 +59,8 @@ if (uCase(trim(CGI.request_method & "")) NEQ "GET") {
     )/>
     <cfset VARIABLES.adsPaymentStatusResult = VARIABLES.adsPaymentStatusService.getIntentStatus(
         accountId = VARIABLES.adsAccessAccountId,
-        paymentIntentId = VARIABLES.adsPaymentStatusId
+        paymentIntentId = VARIABLES.adsPaymentStatusId,
+        accessContext = adsDelegationContext()
     )/>
     <cfif NOT VARIABLES.adsPaymentStatusResult.success>
         <cfif VARIABLES.adsPaymentStatusResult.errorCode EQ "not_found">

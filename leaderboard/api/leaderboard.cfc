@@ -1,6 +1,7 @@
 <cffunction name="rankingToHTML" returnType="string" access="remote" output="false">
     <cfargument name="id_evento" type="numeric" default="22792"/>
     <cfargument name="genero" type="string" default=""/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfquery name="qEvento" datasource="runner_dba">
         select res.num_peito, res.nacionalidade, res.nome, res.sexo,
         marca.tempo_total, ponto.distancia
@@ -51,6 +52,7 @@
 <cffunction name="raceresulttoavelar" returnType="xml" access="remote" output="false">
     <cfargument name="maxchars" type="numeric" default="32"/>
     <cfargument name="caps" type="boolean" default="false"/>
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfhttp result="resultado" url="#ARGUMENTS.url#"/>
 	<cfset var xml = xmlTransform(XMLPARSE(resultado.filecontent),
       expandPath('xml-to-json.xsl')
@@ -85,6 +87,7 @@
 </cffunction>
 
 <cffunction name="raceresult" returnType="string" access="remote" output="false">
+    <cfinclude template="../../includes/backend/business_delegation_remote.cfm"/>
     <cfhttp result="resultado" url="#ARGUMENTS.url#"/>
 	<cfset var xml = xmlTransform(XMLPARSE(resultado.filecontent),
       expandPath('xml-to-json.xsl')

@@ -41,6 +41,7 @@
                 <cftry>
                     <cfset VARIABLES.paidBannerAction=paidBannerText(FORM,'paid_banner_action')/>
                     <cfset paidBannerAssertAction(CGI.request_method,paidBannerText(FORM,'paid_banner_csrf'),VARIABLES.paidBannerCsrf,VARIABLES.paidBannerContext.canManage,VARIABLES.paidBannerContext.canReview,VARIABLES.paidBannerContext.accountId GT 0,VARIABLES.paidBannerAction)/>
+                    <cfset adsDelegationValidate(FORM,'ads.campaigns.manage')/>
                     <cfif VARIABLES.paidBannerAction EQ 'save'>
                         <cfset VARIABLES.paidBannerEditId=paidBannerText(FORM,'campaign_id')/>
                         <cfset paidBannerValues(FORM)/>

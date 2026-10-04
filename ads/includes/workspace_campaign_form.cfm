@@ -109,7 +109,7 @@
     <cfelseif NOT qAdsV1Placements.recordcount>
       <div class="p-3 p-lg-4"><div class="alert alert-warning mb-0">Nenhum local de exibição está disponível.</div></div>
     <cfelse>
-      <form method="post" action="./?view=campaigns#campaign-form" id="ads-campaign-wizard" data-initial-step="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>4<cfelse>1</cfif>" data-is-new="<cfif len(VARIABLES.adsV1FormCampaignId)>false<cfelse>true</cfif>" data-preserve-inputs="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>true<cfelse>false</cfif>" novalidate>
+      <form method="post" action="./?view=campaigns#campaign-form" id="ads-campaign-wizard" data-initial-step="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>4<cfelse>1</cfif>" data-is-new="<cfif len(VARIABLES.adsV1FormCampaignId)>false<cfelse>true</cfif>" data-preserve-inputs="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>true<cfelse>false</cfif>" novalidate><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
         <input type="hidden" name="ads_v1_action" value="save_campaign"/>
         <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
         <input type="hidden" name="campaign_id" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCampaignId)#</cfoutput>"/>
@@ -210,7 +210,7 @@
                 <div class="ads-placement-grid">
                   <cfoutput query="qAdsV1Placements">
                     <label class="ads-placement-card" for="ads-v1-placement-#currentRow#">
-                      <input class="form-check-input flex-shrink-0 mt-1" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_keys" value="#htmlEditFormat(placement_key)#" data-placement-label="#htmlEditFormat(adsV1PlacementLabel(placement_key))#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
+                      <input class="form-check-input flex-shrink-0 mt-1" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_#htmlEditFormat(placement_key)#" value="#htmlEditFormat(placement_key)#" data-placement-label="#htmlEditFormat(adsV1PlacementLabel(placement_key))#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
                       <span class="ads-placement-copy"><strong class="d-block">#htmlEditFormat(adsV1PlacementLabel(placement_key))#</strong><span class="d-block small text-muted mt-1">#htmlEditFormat(adsV1PlacementDescription(placement_key))#</span></span>
                     </label>
                   </cfoutput>

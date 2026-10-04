@@ -3,6 +3,11 @@
 </cfif>
 
 <cfinclude template="includes/backend/backend_login.cfm"/>
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <cfinclude template="includes/estrutura/home_delegated_account.cfm"/>
+    <cfexit method="exittemplate"/>
+</cfif>
+
 
 <cfset VARIABLES.researchLoginReturn = isDefined("URL.redirect") ? trim(URL.redirect & "") : ""/>
 <cfset VARIABLES.validResearchLoginReturn = len(VARIABLES.researchLoginReturn)
@@ -18,6 +23,10 @@
 <cfif isDefined("URL.logout") AND URL.logout EQ "1">
 
     <cfinclude template="home.cfm"/>
+
+<cfelseif isDefined("VARIABLES.businessPendingAccountId") AND len(trim(VARIABLES.businessPendingAccountId & "")) AND (NOT isDefined("VARIABLES.businessEffectiveAccountIds") OR VARIABLES.businessEffectiveAccountIds EQ "0")>
+
+    <cfinclude template="cadastro/status.cfm"/>
 
 <cfelseif isDefined("VARIABLES.businessAccountPendingAccess") AND VARIABLES.businessAccountPendingAccess>
 

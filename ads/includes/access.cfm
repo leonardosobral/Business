@@ -117,3 +117,21 @@
     AND VARIABLES.adsAccessRealIsAdmin/>
 <cfset VARIABLES.adsAccessCanAdminVouchers = VARIABLES.adsAccessHasActor
     AND VARIABLES.adsAccessRealIsAdmin/>
+
+<!--- Selected delegation capabilities replace every legacy/global Ads privilege. --->
+<cfset VARIABLES.adsAccessDelegated=structKeyExists(REQUEST,'businessAccessContext') AND REQUEST.businessAccessContext.accessMode EQ 'DELEGATED'/>
+<cfif VARIABLES.adsAccessDelegated>
+    <cfset VARIABLES.adsAccessAccountId=REQUEST.businessAccessContext.accountId/>
+    <cfset VARIABLES.adsAccessActorId=REQUEST.businessAccessContext.actorId/>
+    <cfset VARIABLES.adsAccessHasAccount=true/><cfset VARIABLES.adsAccessHasActor=true/>
+    <cfset VARIABLES.adsAccessRole=''/><cfset VARIABLES.adsAccessRealIsAdmin=false/>
+    <cfset VARIABLES.adsAccessIsPendingNewAccount=false/>
+    <cfset VARIABLES.adsAccessCanView=arrayFindNoCase(REQUEST.businessAccessContext.capabilities,'ads.campaigns.view') GT 0/>
+    <cfset VARIABLES.adsAccessCanManageCampaign=arrayFindNoCase(REQUEST.businessAccessContext.capabilities,'ads.campaigns.manage') GT 0/>
+    <cfset VARIABLES.adsAccessCanPurchaseCredit=arrayFindNoCase(REQUEST.businessAccessContext.capabilities,'ads.credits.purchase') GT 0/>
+    <cfset VARIABLES.adsAccessCanViewPayments=arrayFindNoCase(REQUEST.businessAccessContext.capabilities,'ads.payments.view') GT 0/>
+    <cfset VARIABLES.adsAccessCanAdminFinance=false/><cfset VARIABLES.adsAccessCanReserveVoucher=false/>
+    <cfset VARIABLES.adsAccessCanPrepareCampaign=false/><cfset VARIABLES.adsAccessCanReviewCampaign=false/>
+    <cfset VARIABLES.adsAccessCanAdminVouchers=false/>
+</cfif>
+<cfif NOT structKeyExists(VARIABLES,'adsDelegationMutation')><cfinclude template="delegation.cfm"/></cfif>

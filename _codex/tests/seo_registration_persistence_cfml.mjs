@@ -9,10 +9,10 @@ try {
  mkdirSync(scratch+'/services');
  for(const n of ['EventRegistrationAvailability','EventRegistrationAvailabilityService'])copyFileSync('services/'+n+'.cfc',scratch+'/services/'+n+'.cfc');
  copyFileSync('_codex/sql/2026-10-03_event_registration_availability.sql',scratch+'/migration.sql');
- const backend=readFileSync('eventos/includes/backend/backend_evento_edicao.cfm','utf8');
+ const backend=readFileSync('eventos/includes/backend/event_mutations.cfm','utf8');
  const at=backend.indexOf('UPDATE tb_evento_corridas\n');
- const qStart=backend.lastIndexOf('<cfquery>',at);
- writeFileSync(scratch+'/basic-update.cfm',backend.slice(qStart,backend.indexOf('</cfquery>',at)+10));
+ const qStart=backend.lastIndexOf('<cfquery',at);
+ writeFileSync(scratch+'/basic-update.cfm','<cffunction name="runBasicUpdate" output="false"><cfargument name="fresh" required="true"/><cfargument name="state" required="true"/>'+backend.slice(qStart,backend.indexOf('</cfquery>',at)+10)+'</cffunction><cfset runBasicUpdate({datasource="runner_dba"},VARIABLES)/>');
  writeFileSync(scratch+'/fixture.cfm',`<cfscript>
 settings=getApplicationSettings();mappings=duplicate(settings.mappings);mappings['/services']=getDirectoryFromPath(getCurrentTemplatePath()) & 'services';
 application action='update' mappings=mappings datasource='runner_dba' datasources={runner_dba={class='org.postgresql.Driver',bundleName='org.postgresql.jdbc',bundleVersion='42.2.20',connectionString='jdbc:postgresql://127.0.0.1:${port}/postgres',username='${userInfo().username}',password=''}};
@@ -34,7 +34,7 @@ queryExecute("UPDATE public.tb_evento_corridas SET data_final='2099-10-10' WHERE
 for(s in ['sold_out','preorder','closed']){base.status=s;service.save(1,99,base,true,true,true);q=queryExecute('SELECT inscricao_disponibilidade FROM public.tb_evento_corridas WHERE id_evento=1');checks['stored_' & s]=deserializeJSON(q.inscricao_disponibilidade[1]).status EQ s;}
 q=queryExecute('SELECT inscricao_disponibilidade::text AS saved FROM public.tb_evento_corridas WHERE id_evento=1');before=q.saved[1];queryExecute('ALTER TABLE public.tb_log RENAME COLUMN log_item TO unavailable_log_item');base.status='open';checks.logFailureRejected=false;try{service.save(1,99,base,true,true,true);}catch(any rejected){checks.logFailureRejected=true;}
 q=queryExecute('SELECT inscricao_disponibilidade::text AS saved FROM public.tb_evento_corridas WHERE id_evento=1');checks.auditRollback=compare(q.saved[1],before) EQ 0;queryExecute('ALTER TABLE public.tb_log RENAME COLUMN unavailable_log_item TO log_item');
-structAppend(FORM,{id_evento=1,nome_evento='Prova',estado='BA',data_inicial='2099-10-10',data_final='2099-10-10',tipo_corrida='rua',endereco='',coordenadas='',url_inscricao=base.registration_url,url_hotsite=''},true);qCidade={nome_cidade='Salvador',cod_cidade=1};VARIABLES.adminEventoResolvedTag='prova';VARIABLES.inscricaoBasicSchemaReady=true;
+structAppend(FORM,{id_evento=1,nome_evento='Prova',estado='BA',data_inicial='2099-10-10',data_final='2099-10-10',tipo_corrida='rua',endereco='',coordenadas='',url_inscricao=base.registration_url,url_hotsite=''},true);qCidade={nome_cidade='Salvador',cod_cidade=1,uf='BA'};VARIABLES.adminEventoResolvedTag='prova';VARIABLES.inscricaoBasicSchemaReady=true;
 </cfscript><cfinclude template='basic-update.cfm'><cfscript>
 q=queryExecute('SELECT inscricao_disponibilidade::text AS saved FROM public.tb_evento_corridas WHERE id_evento=1');checks.sameLinkKeepsConfirmation=compare(q.saved[1],before) EQ 0;
 FORM.url_inscricao='https://inscricao.example/alterada';</cfscript><cfinclude template='basic-update.cfm'><cfscript>
