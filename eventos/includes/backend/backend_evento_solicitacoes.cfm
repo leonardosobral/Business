@@ -1,5 +1,5 @@
-<cfinclude template="event_delegation.cfm"/>
-<cfinclude template="event_mutations.cfm"/>
+<cfif NOT structKeyExists(VARIABLES,"eventDelegationActive")><cfinclude template="event_delegation.cfm"/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"adminEventoResolveUniqueTag")><cfinclude template="event_mutations.cfm"/></cfif>
 <cfif eventDelegationActive() AND structKeyExists(FORM,"evento_solicitacao_action") AND FORM.evento_solicitacao_action NEQ "solicitar">
     <cfthrow type="BusinessDelegation.Forbidden" message="Event request action unavailable"/>
 </cfif>

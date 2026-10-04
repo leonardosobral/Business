@@ -27,3 +27,11 @@ Fixture usa UTF-8 de template/web/resource e JVM file.encoding UTF-8; a primeira
 ## Atualização de instalação — 04/10/2026
 
 Migração estrutural aditiva executada e verificada em produção:8 tabelas, marcador versão1. Backup do catálogo anterior em `/var/backups/business-agencies.9e63d359efd2/database-before-schema.json`. Não foram aplicados GRANTs, migrations Ads, habilitação ou upload de runtime. A comparação da estrutura foi validada corrigindo somente ordenação dos índices e precisão bigint da referência WIP local; não houve ajuste da estrutura instalada. Se a execução anterior do SQL de permissões falhou, executar ROLLBACK nessa conexão antes de tentar novamente.
+
+## Publicação — 04/10/2026
+
+Após o usuário executar os GRANTs, todas as permissões foram verificadas. As duas migrations Ads foram aplicadas juntas em uma transação, com comparação exata de catálogo antes/depois e backup. Os80 arquivos de runtime foram publicados e conferidos pelo publicador existente. Não houve commit ou push.
+
+No Chrome autenticado, administração/listagem/detalhe de conta e Publicidade carregaram. Eventos revelou redeclaração de funções no Adobe ao incluir os mesmos auxiliares por dois handlers. Corrigidos somente os dois pontos de include com guarda da função já definida em VARIABLES, publicados com backup próprio; a página passou a listar normalmente os eventos. A verificação final cobre os80 hashes com essas duas correções.
+
+**A funcionalidade permanece desligada globalmente.** A revisão automática rejeitou a ativação por falta de autorização clara para mudança global de acesso. Autorização específica foi solicitada. Nenhuma configuração de ativação, agência ou vínculo de cliente foi alterado. Testes de fluxos delegados habilitados em produção permanecem pendentes. Evidências atuais: `.superpowers/sdd/2026-10-03-contas-gestoras/production-final-verification.json`, `production-db-final-verified.json`, `production-published.json` e `production-events-include-fix.json`.

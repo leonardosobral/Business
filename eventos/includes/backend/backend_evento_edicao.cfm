@@ -1,5 +1,5 @@
-<cfinclude template="event_delegation.cfm"/>
-<cfinclude template="event_mutations.cfm"/>
+<cfif NOT structKeyExists(VARIABLES,"eventDelegationActive")><cfinclude template="event_delegation.cfm"/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"adminEventoResolveUniqueTag")><cfinclude template="event_mutations.cfm"/></cfif>
 <cfset VARIABLES.eventDelegated=eventDelegationActive()/>
 <cfif VARIABLES.eventDelegated>
     <cfset VARIABLES.adminIsAdmin=false/>
