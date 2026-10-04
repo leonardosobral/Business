@@ -1,0 +1,181 @@
+{
+  "checked_at_utc": "2026-10-03T17:23:39Z",
+  "events": [
+    {
+      "url": "https://roadrunners.run/evento/2026-operario%0D%0Anight%0D%0Arun/",
+      "status": 200,
+      "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/evento/2026-operario%0d%0anight%0d%0arun/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-operario%0D%0Anight%0D%0Arun/",
+      "status": 200,
+      "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-operario%0d%0anight%0d%0arun/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-operario%0D%0Anight%0D%0Arun/",
+      "status": 200,
+      "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-operario%0d%0anight%0d%0arun/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+      "status": 200,
+      "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/evento/2026-rock-n-run%0a----nashville-2026/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+      "status": 200,
+      "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-rock-n-run%0a----nashville-2026/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+      "status": 200,
+      "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-rock-n-run%0a----nashville-2026/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+      "status": 200,
+      "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+      "identity_ok": true,
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+      ],
+      "canonical_ok": true,
+      "alternates_ok": true,
+      "jsonld_parse_errors": 0
+    }
+  ],
+  "guards": [
+    {
+      "path": "/.env",
+      "status": 403
+    },
+    {
+      "path": "/.git/config",
+      "status": 403
+    },
+    {
+      "path": "/config.json",
+      "status": 403
+    },
+    {
+      "path": "/mcp/",
+      "status": 403
+    }
+  ],
+  "news": {
+    "status": 404,
+    "slug": "ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria"
+  },
+  "sitemaps": [
+    {
+      "url": "https://roadrunners.run/sitemaps/news-recent.xml",
+      "status": 200,
+      "news_slug_present": false
+    }
+  ],
+  "events_ok": true,
+  "guards_ok": true,
+  "news_ok": true
+}

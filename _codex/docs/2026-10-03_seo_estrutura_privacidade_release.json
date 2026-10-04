@@ -1,0 +1,358 @@
+{
+  "headings": {
+    "checked_at_utc": "2026-10-03T18:18:30Z",
+    "headings": [
+      {
+        "url": "https://roadrunners.run/",
+        "kind": "home",
+        "status": 200,
+        "h1": [
+          "Sua próxima corrida começa aqui."
+        ],
+        "canonical": [
+          "https://roadrunners.run/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/busca/",
+        "kind": "search",
+        "status": 200,
+        "h1": [
+          "Resultado da busca"
+        ],
+        "canonical": [
+          "https://roadrunners.run/busca/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+        "kind": "event",
+        "status": 200,
+        "h1": [
+          "Maratona de Salvador 2026"
+        ],
+        "canonical": [
+          "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "kind": "news",
+        "status": 200,
+        "h1": [
+          "Gleison da Silva Santos é tricampeão do Circuito CAIXA em Maceió"
+        ],
+        "canonical": [
+          "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/",
+        "kind": "home",
+        "status": 200,
+        "h1": [
+          "Your next run starts here."
+        ],
+        "canonical": [
+          "https://roadrunners.run/en/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/search/",
+        "kind": "search",
+        "status": 200,
+        "h1": [
+          "Search results"
+        ],
+        "canonical": [
+          "https://roadrunners.run/en/search/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+        "kind": "event",
+        "status": 200,
+        "h1": [
+          "Maratona de Salvador 2026"
+        ],
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "kind": "news",
+        "status": 200,
+        "h1": [
+          "Gleison da Silva Santos é tricampeão do Circuito CAIXA em Maceió"
+        ],
+        "canonical": [
+          "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/",
+        "kind": "home",
+        "status": 200,
+        "h1": [
+          "Tu próxima carrera empieza aquí."
+        ],
+        "canonical": [
+          "https://roadrunners.run/es/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/busqueda/",
+        "kind": "search",
+        "status": 200,
+        "h1": [
+          "Resultado de la búsqueda"
+        ],
+        "canonical": [
+          "https://roadrunners.run/es/busqueda/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+        "kind": "event",
+        "status": 200,
+        "h1": [
+          "Maratona de Salvador 2026"
+        ],
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "kind": "news",
+        "status": 200,
+        "h1": [
+          "Gleison da Silva Santos é tricampeão do Circuito CAIXA em Maceió"
+        ],
+        "canonical": [
+          "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://openresults.run/",
+        "kind": "home",
+        "status": 200,
+        "h1": [
+          "Pesquise entre 17.094.767 resultados oficiais."
+        ],
+        "canonical": [
+          "https://openresults.run/"
+        ],
+        "ok": true
+      }
+    ],
+    "facts": [
+      {
+        "url": "https://roadrunners.run/evento/2026-6-maratona-internacional-de-joao-pessoa-2026/",
+        "status": 200,
+        "organizer": null,
+        "expected": null,
+        "ok": true
+      },
+      {
+        "url": "https://openresults.run/evento/2026-6-maratona-internacional-de-joao-pessoa-2026/",
+        "status": 200,
+        "organizer": null,
+        "expected": null,
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/evento/2027-maratona-internacional-de-floripa-fibra-2027/",
+        "status": 200,
+        "organizer": "Grupo STC",
+        "expected": "Grupo STC",
+        "ok": true
+      },
+      {
+        "url": "https://openresults.run/evento/2027-maratona-internacional-de-floripa-fibra-2027/",
+        "status": 200,
+        "organizer": "Grupo STC",
+        "expected": "Grupo STC",
+        "ok": true
+      }
+    ],
+    "robots": {
+      "status": 200,
+      "body": "User-agent: Googlebot\nDisallow: /nogooglebot/\nDisallow: /perfil\nDisallow: /resultados\n\nUser-agent: *\nAllow: /\nDisallow: /perfil\nDisallow: /resultados\n\nSitemap: https://openresults.run/sitemap.cfm\n",
+      "content_type": "text/plain",
+      "cf_cache_status": null
+    },
+    "sitemaps": [
+      {
+        "url": "https://openresults.run/sitemap.cfm",
+        "status": 200,
+        "xml_root": "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/sitemap.xml",
+        "status": 200,
+        "xml_root": "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex",
+        "ok": true
+      }
+    ],
+    "ok": true
+  },
+  "sitemaps": {
+    "sitemaps": [
+      {
+        "sitemap": "https://openresults.run/sitemap.cfm?pagina=1",
+        "status": 200,
+        "urls": 10000,
+        "athlete_history_urls": 0,
+        "ok": true
+      },
+      {
+        "sitemap": "https://openresults.run/sitemap.cfm?pagina=2",
+        "status": 200,
+        "urls": 10000,
+        "athlete_history_urls": 0,
+        "ok": true
+      },
+      {
+        "sitemap": "https://openresults.run/sitemap.cfm?pagina=3",
+        "status": 200,
+        "urls": 10000,
+        "athlete_history_urls": 0,
+        "ok": true
+      },
+      {
+        "sitemap": "https://openresults.run/sitemap.cfm?pagina=4",
+        "status": 200,
+        "urls": 4321,
+        "athlete_history_urls": 0,
+        "ok": true
+      }
+    ],
+    "urls": 34321,
+    "ok": true
+  },
+  "privacy_head": {
+    "published": [
+      "includes/head.cfm"
+    ],
+    "head_evidence": [
+      {
+        "path": "/resultados/seo-verificacao-nome-inexistente/",
+        "status": 200,
+        "noindex": true,
+        "expected": true,
+        "ok": true
+      },
+      {
+        "path": "/resultados/index.cfm?tag=seo-verificacao-nome-inexistente",
+        "status": 200,
+        "noindex": true,
+        "expected": true,
+        "ok": true
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "noindex": false,
+        "expected": false,
+        "ok": true
+      },
+      {
+        "path": "/evento/2026-maratona-salvador-2026/",
+        "status": 200,
+        "noindex": false,
+        "expected": false,
+        "ok": true
+      }
+    ]
+  },
+  "privacy_origin": {
+    "published": [
+      "robots.txt"
+    ],
+    "backup": "/var/backups/seo-noindex-openresults-20261003/baseline"
+  },
+  "edge_status": "Noindex public and verified; robots origin updated but public edge serves prior restriction. Panel published: 9 resolved, 2 pending.",
+  "panel": {
+    "total": 11,
+    "rendered": true,
+    "resolved": 9.0,
+    "updated": "03/10/2026 às 15:33 (Brasília)",
+    "pending": 2.0,
+    "items": [
+      {
+        "RESOLVED": true,
+        "ID": "RR-01"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-02"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-03"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "OR-01"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-04"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "SH-01"
+      },
+      {
+        "RESOLVED": false,
+        "ID": "OR-02"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-05"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-06"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "OR-03"
+      },
+      {
+        "RESOLVED": false,
+        "ID": "SH-02"
+      }
+    ]
+  },
+  "final_runtime_hashes": {
+    "RoadRunners": {
+      "verified_hashes": 2,
+      "unrelated_files_unchanged": 7
+    },
+    "OpenResults": {
+      "verified_hashes": 3,
+      "authorized_followup": "athlete noindex",
+      "unrelated_files_unchanged": 5
+    },
+    "Business": {
+      "verified_hashes": 1,
+      "unrelated_files_unchanged": 4
+    }
+  }
+}

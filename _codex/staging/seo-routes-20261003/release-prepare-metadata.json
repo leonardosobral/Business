@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "before": {
+      "evento/index.cfm": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+    },
+    "candidate": {
+      "evento/index.cfm": "20476f260e471634c56b6c77b78ef5a359938516b8725b6db5fec1613542fa7b"
+    },
+    "order": [
+      "evento/index.cfm"
+    ]
+  },
+  "event_compile": {
+    "returncode": 0,
+    "output": "successful 1\ntotal 1\nelapsed 1.821 sec\n\n"
+  },
+  "queue_compile": {
+    "returncode": 0,
+    "output": "successful 1\ntotal 1\nelapsed 1.485 sec\n\n"
+  }
+}

@@ -1,0 +1,32 @@
+TAP version 13
+# Subtest: later generation keeps the private complementary evidence with its original date
+not ok 1 - later generation keeps the private complementary evidence with its original date
+  ---
+  duration_ms: 109.760792
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_scorecard.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /03\/10\/2026/. Input:
+    
+    'Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_scorecard.test.mjs:17:43)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 162.33875

@@ -1,0 +1,215 @@
+{
+  "measured_at": "2026-10-03T22:15:52.302842+00:00",
+  "events": [
+    {
+      "tag": "2026-maratona-salvador-2026",
+      "cohort": "past",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+          "description_regions": 1,
+          "description_lang": "pt-BR",
+          "description_chars": 333,
+          "description_hash": "59a9e1937b1da7c8bd06a9f2b666bd7093c7980f171fc6b1eb5a4b0bf664d388"
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+          "description_regions": 1,
+          "description_lang": "en",
+          "description_chars": 338,
+          "description_hash": "f844161156b58db210500ebba93bb5fdc4b69d49dbc00f6a64d9a1000a49fd28",
+          "translation_status": "pass"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+          "description_regions": 1,
+          "description_lang": "es",
+          "description_chars": 372,
+          "description_hash": "25a678822201bccb2c4d25fa62a4b7517ece54a8ca51eb98bfcbe3c5e82c56b1",
+          "translation_status": "pass"
+        }
+      }
+    },
+    {
+      "tag": "2026-3-corrida-alcance-run",
+      "cohort": "past",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2026-3-corrida-alcance-run/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2026-3-corrida-alcance-run/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2026-3-corrida-alcance-run/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2026-3-corrida-alcance-run/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2026-3-corrida-alcance-run/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2026-3-corrida-alcance-run/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        }
+      }
+    },
+    {
+      "tag": "2025-thanks-giving-run-2025-caminhada-solidaria",
+      "cohort": "past",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2025-thanks-giving-run-2025-caminhada-solidaria/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        }
+      }
+    },
+    {
+      "tag": "2025-ii-corrida-multmais",
+      "cohort": "past",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2025-ii-corrida-multmais/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2025-ii-corrida-multmais/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2025-ii-corrida-multmais/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2025-ii-corrida-multmais/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2025-ii-corrida-multmais/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2025-ii-corrida-multmais/",
+          "description_regions": 0,
+          "description_lang": null,
+          "description_chars": 0,
+          "description_hash": null,
+          "translation_status": "unknown"
+        }
+      }
+    },
+    {
+      "tag": "2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea",
+      "cohort": "future",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "description_regions": 1,
+          "description_lang": "pt-BR",
+          "description_chars": 807,
+          "description_hash": "41035ec7e32c972580e20f0a5b15cc3c636f5b853033a7bf18346b9820f69227"
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "description_regions": 1,
+          "description_lang": "pt-BR",
+          "description_chars": 807,
+          "description_hash": "41035ec7e32c972580e20f0a5b15cc3c636f5b853033a7bf18346b9820f69227",
+          "translation_status": "warning"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+          "description_regions": 1,
+          "description_lang": "es",
+          "description_chars": 864,
+          "description_hash": "c5dea0d442ba4d79b0b9242dcfea9dd3ce29c3249e55780161637b359fbe169e",
+          "translation_status": "pass"
+        }
+      }
+    },
+    {
+      "tag": "2026-bmfit-running",
+      "cohort": "future",
+      "pages": {
+        "pt-BR": {
+          "url": "https://roadrunners.run/evento/2026-bmfit-running/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/evento/2026-bmfit-running/",
+          "description_regions": 1,
+          "description_lang": "pt-BR",
+          "description_chars": 249,
+          "description_hash": "ae2c29b1836e564a1d29e0d70a2cef4a8f3a51b883247994140f542ea2322abf"
+        },
+        "en": {
+          "url": "https://roadrunners.run/en/event/2026-bmfit-running/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/en/event/2026-bmfit-running/",
+          "description_regions": 1,
+          "description_lang": "en",
+          "description_chars": 246,
+          "description_hash": "52dd1dbc3ffb8336806bb84a5c1170dfa1ac9f42d42b547fbc0e5f3d33c27a7b",
+          "translation_status": "pass"
+        },
+        "es": {
+          "url": "https://roadrunners.run/es/evento/2026-bmfit-running/",
+          "status": 200,
+          "final_url": "https://roadrunners.run/es/evento/2026-bmfit-running/",
+          "description_regions": 1,
+          "description_lang": "es",
+          "description_chars": 261,
+          "description_hash": "fda7150e6c0de394abb8fcee88829e8cde43b065d52926b8fcee12c327893d15",
+          "translation_status": "pass"
+        }
+      }
+    }
+  ]
+}

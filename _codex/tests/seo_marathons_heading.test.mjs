@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {parseHtml} from '/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/seo/html.mjs';
+const source=process.argv[2]||'_codex/staging/seo-institutional-20261003/marathons/baseline/RoadRunners';
+const text=readFileSync(source+'/maratonas/index.cfm','utf8');
+const fragment=text.slice(text.indexOf('<!--- TITULO --->'),text.indexOf('<!--- LISTA DE MARATONAS --->'));
+const parsed=parseHtml('<main>'+fragment+'</main>','https://roadrunners.run/maratonas/');
+assert.equal(parsed.h1_count,1,'The public marathon listing must identify its main heading');
+assert.match(fragment,/<h1 class="h3">/,'Keep the existing h3 appearance');
+assert.match(fragment,/Maratonas do Brasil/);
+console.log('Marathon listing has one main heading with the existing appearance.');

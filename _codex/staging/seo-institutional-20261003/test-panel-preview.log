@@ -1,0 +1,81 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: CFML execution failed (contract): 
+BOOM GOES THE DYNAMITE!!
+We're truly sorry, but something horrible has gone wrong when starting up CommandBox.
+Here's what we know:.
+
+Message:
+Can't create file [/private/tmp/seo-availability-cfml-20261003/commandbox/engine/cfml/cli/cfml-web/cfclasses/CF_private_tmp_seo_availability_cfml_20261003_commandbox_cfml_system_wirebox15393/system/async/asyncmanager_cfc$cf.class]
+
+
+Tag Context:
+/private/tmp/seo-availability-cfml-20261003/commandbox/cfml/system/wirebox/system/ioc/Injector.cfc: line 186
+called from /private/tmp/seo-availability-cfml-20261003/commandbox/cfml/system/Bootstrap.cfm: line 44
+
+lucee.runtime.exp.NativeException: Can't create file [/private/tmp/seo-availability-cfml-20261003/commandbox/engine/cfml/cli/cfml-web/cfclasses/CF_private_tmp_seo_availability_cfml_20261003_commandbox_cfml_system_wirebox15393/system/async/asyncmanager_cfc$cf.class]
+	at lucee.commons.io.res.type.file.FileResource.getOutputStream(FileResource.java:262)
+	at lucee.commons.io.res.type.file.FileResource.getOutputStream(FileResource.java:254)
+	at lucee.commons.io.IOUtil.copy(IOUtil.java:171)
+	at lucee.runtime.compiler.CFMLCompilerImpl._compile(CFMLCompilerImpl.java:154)
+	at lucee.runtime.compiler.CFMLCompilerImpl.compile(CFMLCompilerImpl.java:76)
+	at lucee.runtime.PageSourceImpl._compile(PageSourceImpl.java:446)
+	at lucee.runtime.PageSourceImpl.compile(PageSourceImpl.java:413)
+	at lucee.runtime.PageSourceImpl.loadPhysical(PageSourceImpl.java:346)
+	at lucee.runtime.PageSourceImpl.loadPageThrowTemplateException(PageSourceImpl.java:237)
+	at lucee.runtime.PageSourceImpl.loadPage(PageSourceImpl.java:1013)
+	at lucee.runtime.component.ComponentLoader._search(ComponentLoader.java:365)
+	at lucee.runtime.component.ComponentLoader._search(ComponentLoader.java:188)
+	at lucee.runtime.component.ComponentLoader.searchComponent(ComponentLoader.java:82)
+	at lucee.runtime.PageContextImpl.loadComponent(PageContextImpl.java:3280)
+	at lucee.runtime.functions.other.CreateObject.doComponent(CreateObject.java:148)
+	at lucee.runtime.functions.other._CreateComponent.call(_CreateComponent.java:42)
+	at _private.tmp.seo_availability_cfml_202610031935.commandbox.cfml.system.wirebox.system.ioc.injector_cfc$cf.udfCall1(/private/tmp/seo-availability-cfml-20261003/commandbox/cfml/system/wirebox/system/ioc/Injector.cfc:186)
+	at _private.tmp.seo_availability_cfml_202610031935.commandbox.cfml.system.wirebox.system.ioc.injector_cfc$cf.udfCall(/private/tmp/seo-availability-cfml-20261003/commandbox/cfml/system/wirebox/system/ioc/Injector.cfc)
+	at lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)
+	at lucee.runtime.type.UDFImpl._call(UDFImpl.java:350)
+	at lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:696)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:584)
+	at lucee.runtime.ComponentImpl.call(ComponentImpl.java:1931)
+	at lucee.runtime.functions.other._CreateComponent.call(_CreateComponent.java:81)
+	at _private.tmp.seo_availability_cfml_202610031935.commandbox.cfml.system.bootstrap_cfm$cf.call(/private/tmp/seo-availability-cfml-20261003/commandbox/cfml/system/Bootstrap.cfm:44)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1056)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:948)
+	at lucee.runtime.PageContextImpl.doInclude(PageContextImpl.java:929)
+	at 1n99rb0g85zup.call(Unknown Source)
+	at lucee.runtime.compiler.Renderer.tag(Renderer.java:107)
+	at lucee.runtime.compiler.Renderer.script(Renderer.java:97)
+	at lucee.runtime.jsr223.ScriptEngineImpl.eval(ScriptEngineImpl.java:65)
+	at lucee.runtime.jsr223.ScriptEngineImpl.eval(ScriptEngineImpl.java:220)
+	at cliloader.LoaderCLIMain.execute(LoaderCLIMain.java:331)
+	at cliloader.LoaderCLIMain.execute(LoaderCLIMain.java:157)
+	at cliloader.LoaderCLIMain.main(LoaderCLIMain.java:583)
+Caused by: java.io.IOException: Can't create file [/private/tmp/seo-availability-cfml-20261003/commandbox/engine/cfml/cli/cfml-web/cfclasses/CF_private_tmp_seo_availability_cfml_20261003_commandbox_cfml_system_wirebox15393/system/async/asyncmanager_cfc$cf.class]
+	... 37 more
+
+To disable full stack trace, run "config set verboseErrors=false"
+
+
+
+
+1 !== 0
+
+    at execute (file:///Users/Shared/Projects/RunnerHub/Business/_codex/scripts/test_seo_queue_cfml_local.mjs:48:10)
+    at file:///Users/Shared/Projects/RunnerHub/Business/_codex/scripts/test_seo_queue_cfml_local.mjs:93:20
+    at scenario (file:///Users/Shared/Projects/RunnerHub/Business/_codex/scripts/test_seo_queue_cfml_local.mjs:25:58)
+    at file:///Users/Shared/Projects/RunnerHub/Business/_codex/scripts/test_seo_queue_cfml_local.mjs:92:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.21.1

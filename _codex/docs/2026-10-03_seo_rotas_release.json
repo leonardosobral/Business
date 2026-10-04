@@ -1,0 +1,348 @@
+{
+  "release-prepare.json": {
+    "RoadRunners": {
+      "before": {
+        ".htaccess": "dfcbb100a0842d0c584f800d0be8a399aeb7bec039e614efdc625758c194231f",
+        "evento/.htaccess": "9db57ce8d89c858c2f20ca74a0784c2123f6c2728e30d7c4a89f02b2d87786d6"
+      },
+      "candidate": {
+        ".htaccess": "c914b4294c8dc423c6e01691fe69891383bcbd705e0b0e84f84d7a26e8160437",
+        "evento/.htaccess": "bc59a9772ae3f15d7414d7fa95969f5d94b753459468094161d4be667f622199"
+      },
+      "order": [
+        ".htaccess",
+        "evento/.htaccess"
+      ]
+    },
+    "Business": {
+      "before": {
+        "portal/includes/seo_queue_data.cfm": "afc5431eecfebd90b4d4e25bd841f156354dad58f1fea730528d5d3c7a75e487"
+      },
+      "candidate": {
+        "portal/includes/seo_queue_data.cfm": "aeb23c34b8b2cef932c9f5eb0482e9a16f57703aa22a1feb65f93290f2d6ccdb"
+      },
+      "order": [
+        "portal/includes/seo_queue_data.cfm"
+      ]
+    },
+    "compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.438 sec\n\n"
+    }
+  },
+  "release-publish-rr.json": {
+    "RoadRunners": {
+      "published": [
+        ".htaccess",
+        "evento/.htaccess"
+      ],
+      "backup": "/var/backups/seo-routes-rr-20261003/baseline"
+    }
+  },
+  "release-prepare-metadata.json": {
+    "metadata": {
+      "before": {
+        "evento/index.cfm": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+      },
+      "candidate": {
+        "evento/index.cfm": "20476f260e471634c56b6c77b78ef5a359938516b8725b6db5fec1613542fa7b"
+      },
+      "order": [
+        "evento/index.cfm"
+      ]
+    },
+    "event_compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.821 sec\n\n"
+    },
+    "queue_compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.485 sec\n\n"
+    }
+  },
+  "release-publish-metadata.json": {
+    "metadata": {
+      "published": [
+        "evento/index.cfm"
+      ],
+      "backup": "/var/backups/seo-routes-rr-metadata-20261003/baseline"
+    }
+  },
+  "release-publish-business.json": {
+    "Business": {
+      "published": [
+        "portal/includes/seo_queue_data.cfm"
+      ],
+      "backup": "/var/backups/seo-routes-business-20261003/baseline"
+    }
+  },
+  "release-verify.json": {
+    "RoadRunners": {
+      "verified_hashes": 2,
+      "unrelated_files_changed": []
+    },
+    "Business": {
+      "verified_hashes": 1,
+      "unrelated_files_changed": []
+    },
+    "metadata": {
+      "verified_hashes": 1
+    }
+  },
+  "public-verification.json": {
+    "checked_at_utc": "2026-10-03T17:23:39Z",
+    "events": [
+      {
+        "url": "https://roadrunners.run/evento/2026-operario%0D%0Anight%0D%0Arun/",
+        "status": 200,
+        "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/evento/2026-operario%0d%0anight%0d%0arun/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-operario%0D%0Anight%0D%0Arun/",
+        "status": 200,
+        "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-operario%0d%0anight%0d%0arun/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-operario%0D%0Anight%0D%0Arun/",
+        "status": 200,
+        "event_name": "OPERÁRIO\r\nNIGHT\r\nRUN",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-operario%0d%0anight%0d%0arun/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+        "status": 200,
+        "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/evento/2026-rock-n-run%0a----nashville-2026/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+        "status": 200,
+        "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-rock-n-run%0a----nashville-2026/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+        "status": 200,
+        "event_name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-rock-n-run%0a----nashville-2026/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+        "status": 200,
+        "event_name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+        "identity_ok": true,
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/"
+        ],
+        "canonical_ok": true,
+        "alternates_ok": true,
+        "jsonld_parse_errors": 0
+      }
+    ],
+    "guards": [
+      {
+        "path": "/.env",
+        "status": 403
+      },
+      {
+        "path": "/.git/config",
+        "status": 403
+      },
+      {
+        "path": "/config.json",
+        "status": 403
+      },
+      {
+        "path": "/mcp/",
+        "status": 403
+      }
+    ],
+    "news": {
+      "status": 404,
+      "slug": "ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria"
+    },
+    "sitemaps": [
+      {
+        "url": "https://roadrunners.run/sitemaps/news-recent.xml",
+        "status": 200,
+        "news_slug_present": false
+      }
+    ],
+    "events_ok": true,
+    "guards_ok": true,
+    "news_ok": true
+  },
+  "panel-verification.json": {
+    "total": 11,
+    "rendered": true,
+    "resolved": 8.0,
+    "updated": "03/10/2026 às 14:09 (Brasília)",
+    "pending": 3.0,
+    "items": [
+      {
+        "RESOLVED": true,
+        "ID": "RR-01"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-02"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-03"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "OR-01"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-04"
+      },
+      {
+        "RESOLVED": false,
+        "ID": "SH-01"
+      },
+      {
+        "RESOLVED": false,
+        "ID": "OR-02"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-05"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "RR-06"
+      },
+      {
+        "RESOLVED": true,
+        "ID": "OR-03"
+      },
+      {
+        "RESOLVED": false,
+        "ID": "SH-02"
+      }
+    ]
+  },
+  "runtime_files": [
+    {
+      "project": "RoadRunners",
+      "path": ".htaccess",
+      "sha256": "c914b4294c8dc423c6e01691fe69891383bcbd705e0b0e84f84d7a26e8160437"
+    },
+    {
+      "project": "RoadRunners",
+      "path": "evento/.htaccess",
+      "sha256": "bc59a9772ae3f15d7414d7fa95969f5d94b753459468094161d4be667f622199"
+    },
+    {
+      "project": "RoadRunners",
+      "path": "evento/index.cfm",
+      "sha256": "20476f260e471634c56b6c77b78ef5a359938516b8725b6db5fec1613542fa7b"
+    },
+    {
+      "project": "Business",
+      "path": "portal/includes/seo_queue_data.cfm",
+      "sha256": "60a221731affc74e8166f3a3c1d877ce57686fb05356605a6c8a050c04e874d5"
+    }
+  ]
+}

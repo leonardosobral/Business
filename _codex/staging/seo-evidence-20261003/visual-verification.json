@@ -1,0 +1,17 @@
+{
+  "source": "HTML exported from the verified published Adobe templates; local CSS preview, not an authenticated admin login",
+  "desktop": {
+    "viewport": 1280,
+    "scrollWidth": 1280,
+    "checks": 32,
+    "sites": 2
+  },
+  "mobile": {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "checks": 32,
+    "sites": 2
+  },
+  "viewport_reset": true,
+  "tab_closed": true
+}

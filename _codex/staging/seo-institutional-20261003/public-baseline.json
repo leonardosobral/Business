@@ -1,0 +1,765 @@
+{
+  "checked_at_utc": "2026-10-03T19:58:45.428526Z",
+  "pages": [
+    {
+      "url": "https://roadrunners.run/sobre/",
+      "lang": "pt-BR",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/sobre/",
+      "canonical": [
+        "https://roadrunners.run/sobre/"
+      ],
+      "hreflang": [],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/about/",
+      "lang": "en",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/about/",
+      "canonical": [
+        "https://roadrunners.run/en/about/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/sobre/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/about/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/sobre/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/sobre/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/sobre/",
+      "lang": "es",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/sobre/",
+      "canonical": [
+        "https://roadrunners.run/es/sobre/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/sobre/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/about/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/sobre/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/sobre/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/ajuda/",
+      "lang": "pt-BR",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/ajuda/",
+      "canonical": [
+        "https://roadrunners.run/ajuda/"
+      ],
+      "hreflang": [],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/help/",
+      "lang": "en",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/help/",
+      "canonical": [
+        "https://roadrunners.run/en/help/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/ajuda/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/help/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/ayuda/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/ajuda/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/ayuda/",
+      "lang": "es",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/ayuda/",
+      "canonical": [
+        "https://roadrunners.run/es/ayuda/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/ajuda/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/help/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/ayuda/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/ajuda/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/privacidade/",
+      "lang": "pt-BR",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/privacidade/",
+      "canonical": [
+        "https://roadrunners.run/privacidade/"
+      ],
+      "hreflang": [],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/privacy/",
+      "lang": "en",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/privacy/",
+      "canonical": [
+        "https://roadrunners.run/en/privacy/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/privacidade/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/privacy/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/privacidad/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/privacidade/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/privacidad/",
+      "lang": "es",
+      "kind": "institutional",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/privacidad/",
+      "canonical": [
+        "https://roadrunners.run/es/privacidad/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/privacidade/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/privacy/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/privacidad/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/privacidade/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/",
+      "lang": "pt-BR",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/",
+      "canonical": [
+        "https://roadrunners.run/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/",
+      "lang": "en",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/",
+      "canonical": [
+        "https://roadrunners.run/en/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/",
+      "lang": "es",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/",
+      "canonical": [
+        "https://roadrunners.run/es/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/busca/",
+      "lang": "pt-BR",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/busca/",
+      "canonical": [
+        "https://roadrunners.run/busca/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/busca/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/search/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/busqueda/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/busca/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/search/",
+      "lang": "en",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/search/",
+      "canonical": [
+        "https://roadrunners.run/en/search/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/busca/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/search/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/busqueda/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/busca/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/busqueda/",
+      "lang": "es",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/busqueda/",
+      "canonical": [
+        "https://roadrunners.run/es/busqueda/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/busca/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/search/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/busqueda/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/busca/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "lang": "pt-BR",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "canonical": [
+        "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "lang": "en",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "canonical": [
+        "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "lang": "es",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "canonical": [
+        "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "lang": "pt-BR",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "canonical": [
+        "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "lang": "en",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "canonical": [
+        "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "lang": "es",
+      "kind": "external_news",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "canonical": [
+        "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "lang": "pt-BR",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "canonical": [
+        "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "lang": "en",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "canonical": [
+        "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "lang": "es",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "canonical": [
+        "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+      "lang": "pt-BR",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+      "canonical": [
+        "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+      "lang": "en",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+      "lang": "es",
+      "kind": "control",
+      "status": 200,
+      "final_url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+      ],
+      "hreflang": [
+        {
+          "lang": "pt-BR",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "en",
+          "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "es",
+          "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        }
+      ],
+      "navigation": {},
+      "ok": false
+    }
+  ],
+  "ok": false
+}

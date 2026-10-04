@@ -1,0 +1,18 @@
+{
+  "Business": {
+    "before": {
+      "portal/includes/seo_queue_data.cfm": "60a221731affc74e8166f3a3c1d877ce57686fb05356605a6c8a050c04e874d5"
+    },
+    "candidate": {
+      "portal/includes/seo_queue_data.cfm": "b2238a9c0c35d29b33f3e09e21cdc084f75b6ea37b9c91a912b64db38f2322e1"
+    },
+    "order": [
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 2.399 sec\n\n",
+      "templates": 1
+    }
+  }
+}

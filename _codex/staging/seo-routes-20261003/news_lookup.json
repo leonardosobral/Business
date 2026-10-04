@@ -1,0 +1,54 @@
+{
+  "ROWS": [
+    {
+      "PUBLISHED": 0,
+      "PUBLISHED_AT": "September, 14 2026 08:50:47",
+      "BODY_LENGTH": 0,
+      "TITLE": "Ranking atualizado com as maratonas Inter. J. Pessoa, Maceió, Live!, Taubaté, Floripa, Goiânia Movi e Vitória",
+      "UPDATED_AT": "September, 20 2026 21:18:36",
+      "ID": 2380,
+      "SLUG": "ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria",
+      "EDITORIAL_STATUS": "rejected"
+    },
+    {
+      "PUBLISHED": 1,
+      "PUBLISHED_AT": "August, 04 2026 16:17:14",
+      "BODY_LENGTH": 0,
+      "TITLE": "Ranking atualizado com os selecionados nas maratonas de Praia Grande, Inter. BH, Blumenau, Campo Grande, Litoral do Paraná, Londrina, NB Porto Alegre e SP City",
+      "UPDATED_AT": "September, 20 2026 15:51:33",
+      "ID": 2083,
+      "SLUG": "ranking-atualizado-com-os-selecionados-nas-maratonas-de-praia-grande-inter-bh-blumenau-campo-grande-litoral-do-parana-londrina-nb-porto-alegre-e-sp-city",
+      "EDITORIAL_STATUS": "published"
+    },
+    {
+      "PUBLISHED": 1,
+      "PUBLISHED_AT": "June, 13 2026 17:57:08",
+      "BODY_LENGTH": 0,
+      "TITLE": "Ranking atualizado com os selecionados nas maratonas do Paraná, Campinas, Uberlândia, Oficial de BH, Feira de Santana, Ponta Grossa, Goiânia, Tubarão, Farol a Farol, Porto Alegre e Rio",
+      "UPDATED_AT": "September, 29 2026 17:14:58",
+      "ID": 1814,
+      "SLUG": "ranking-atualizado-com-os-selecionados-nas-maratonas-do-parana-campinas-uberlandia-oficial-de-bh-feira-de-santana-ponta-grossa-goiania-tubarao-farol-a-farol-porto-alegre-e-rio-de-janeiro",
+      "EDITORIAL_STATUS": "published"
+    },
+    {
+      "PUBLISHED": 1,
+      "PUBLISHED_AT": "June, 06 2024 11:21:22",
+      "BODY_LENGTH": 9917,
+      "TITLE": "Ranking Brasileiro de Maratonistas 2024 atualizado, com os classificados em Uberlândia, Ponta Grossa, Natal, FMO Olinda, Tubarão, Florianópolis e Rio de Janeiro",
+      "UPDATED_AT": "September, 19 2026 20:47:33",
+      "ID": 1443,
+      "SLUG": "ranking-brasileiro-de-maratonistas-2024-atualizado-com-os-classificados-em-uberlandia-ponta-grossa-natal-fmo-olinda-tubarao-florianopolis-e-rio-de-janeiro",
+      "EDITORIAL_STATUS": "published"
+    },
+    {
+      "PUBLISHED": 1,
+      "PUBLISHED_AT": "November, 10 2025 22:16:28",
+      "BODY_LENGTH": 0,
+      "TITLE": "Ranking BR atualizado, com os selecionados nas maratonas de Santa Maria, Pomerode, Aracaju, Jurerê e Santa Cruz do Sul",
+      "UPDATED_AT": "October, 01 2026 02:02:10",
+      "ID": 773,
+      "SLUG": "ranking-br-atualizado-com-os-selecionados-nas-maratonas-de-santa-maria-pomerode-aracaju-jurere-e-santa-cruz-do-sul",
+      "EDITORIAL_STATUS": "published"
+    }
+  ]
+}

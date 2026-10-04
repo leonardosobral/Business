@@ -1,0 +1,16 @@
+{
+  "RoadRunners": {
+    "published": [
+      "includes/estrutura/home_hero_busca.cfm",
+      "evento/index.cfm"
+    ],
+    "backup": "/var/backups/seo-structure-roadrunners-20261003/baseline"
+  },
+  "OpenResults": {
+    "published": [
+      "index.cfm",
+      "robots.txt"
+    ],
+    "backup": "/var/backups/seo-structure-openresults-20261003/baseline"
+  }
+}

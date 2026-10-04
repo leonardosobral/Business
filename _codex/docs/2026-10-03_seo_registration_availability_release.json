@@ -1,0 +1,525 @@
+{
+  "initial": {
+    "baseline": {
+      "at": "2026-10-03T15:10:20.333017+00:00",
+      "projects": {
+        "business": [
+          {
+            "path": "services/EventRegistrationAvailability.cfc",
+            "sha256": null,
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "services/EventRegistrationAvailabilityService.cfc",
+            "sha256": null,
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "eventos/includes/backend/inscricao_disponibilidade.cfm",
+            "sha256": null,
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "eventos/form_edicao_inscricoes.cfm",
+            "sha256": null,
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "eventos/includes/variaveis.cfm",
+            "sha256": "82f1d30cec857b81b8e61bd5a839479039a5622b8f86ee0c78cda5cca509f025",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "eventos/includes/backend/backend_evento_edicao.cfm",
+            "sha256": "0f612772f7cdfb72c4af888839e3f84c3c0d76b3c452a14bec995193dd4853dd",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "eventos/form_edicao.cfm",
+            "sha256": "fa29bdf8539e9f765979ccb542d2f7820478486f65a0c5ea0918ecce14c49cd9",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "573c86a10325f847395a182bac7703662304d527f71f7f50941aa2e50032ab99",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/backend_login.cfm",
+            "sha256": "0fed87e9757e46e7b99e92772daab7b23bb742a9c428f2e13370b76744a27ec6",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/require_admin.cfm",
+            "sha256": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/estrutura/sidenav.cfm",
+            "sha256": "2e8b14d953ee6d0d4a23fcf15dcb2a0776a417af68cee138a343eef1c4dfe63f",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        ],
+        "rr": [
+          {
+            "path": "services/EventRegistrationAvailability.cfc",
+            "sha256": null,
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "evento/parts/inscricao_disponibilidade.cfm",
+            "sha256": null,
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/backend_evento.cfm",
+            "sha256": "acb7c394b545200cfd065012d5e28fc78a48b902129ebc94f3fa7a018bc99ace",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "evento/index.cfm",
+            "sha256": "a2695bc10cdb6d64bc9cd8ca201e205994638bc12526a8e4b3185afdcd9ac924",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "3bb06a71d3cb548cd3445dd2fadc623e66a3ef4403e86b88612c7832530ca62f",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/estrutura/head.cfm",
+            "sha256": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "api/ads/v1/cpc-click.cfm",
+            "sha256": "42ea4727351e0572246e9c7e2724bdb03a7949538fba4f0b32b2ba648789ecfb",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        ]
+      }
+    },
+    "compile": {
+      "compilations": [
+        {
+          "project": "business",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-availability-business-bgh5inst/services/EventRegistrationAvailability.cfc... /var/tmp/seo-availability-business-bgh5inst/services/EventRegistrationAvailabilityService.cfc... /var/tmp/seo-availability-business-bgh5inst/eventos/form_edicao.cfm... /var/tmp/seo-availability-business-bgh5inst/eventos/form_edicao_inscricoes.cfm... /var/tmp/seo-availability-business-bgh5inst/eventos/includes/variaveis.cfm... /var/tmp/seo-availability-business-bgh5inst/eventos/includes/backend/backend_evento_edicao.cfm... /var/tmp/seo-availability-business-bgh5inst/eventos/includes/backend/inscricao_disponibilidade.cfm... successful 7\ntotal 7\nelapsed 1.739 sec\n\n"
+        },
+        {
+          "project": "rr",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-availability-rr-i5ghntyq/evento/index.cfm... /var/tmp/seo-availability-rr-i5ghntyq/evento/parts/inscricao_disponibilidade.cfm... /var/tmp/seo-availability-rr-i5ghntyq/services/EventRegistrationAvailability.cfc... /var/tmp/seo-availability-rr-i5ghntyq/includes/backend/backend_evento.cfm... successful 4\ntotal 4\nelapsed 1.873 sec\n\n"
+        }
+      ],
+      "hashes": {
+        "business:services/EventRegistrationAvailability.cfc": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+        "business:services/EventRegistrationAvailabilityService.cfc": "b2827fa7c2b9231a806af030aea963b02edafa64e01a5fb4675b79e95d9bab4c",
+        "business:eventos/includes/backend/inscricao_disponibilidade.cfm": "4cffb88d24e184c3aeb4b160dc8b989a00500394608aa6623cca7ad8b85dbd59",
+        "business:eventos/form_edicao_inscricoes.cfm": "01951df7253e5e212136ce12f89d568a8149827a677f33d734a4abc174a0309b",
+        "business:eventos/includes/variaveis.cfm": "c70342a8340e6b14addf6849c10627e14d4e399ed2973c50b39007c794cb7a82",
+        "business:eventos/includes/backend/backend_evento_edicao.cfm": "81ba2134dbbc0077c24462e72b6c2e2cc7d740ac81d784387cadf47a1d358244",
+        "business:eventos/form_edicao.cfm": "3362c976bbd838449e329df52099f02a1f3a764a71b6ac99f9942817764aeb23",
+        "rr:services/EventRegistrationAvailability.cfc": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+        "rr:evento/parts/inscricao_disponibilidade.cfm": "c45e7768e2efd3b1f3e0fe6a40a85f9472c96b89f32452872bfe54ab31ff7270",
+        "rr:includes/backend/backend_evento.cfm": "cd41c42e9b3b10d9fde85e55f2d8945772618748965649cde8d54966142fb8ff",
+        "rr:evento/index.cfm": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+      }
+    },
+    "publish": {
+      "at": "2026-10-03T15:23:05.664239+00:00",
+      "projects": [
+        {
+          "project": "business",
+          "backup": "/var/backups/seo-availability-business-uos190l0",
+          "rows": [
+            {
+              "path": "services/EventRegistrationAvailability.cfc",
+              "before": null,
+              "after": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa"
+            },
+            {
+              "path": "services/EventRegistrationAvailabilityService.cfc",
+              "before": null,
+              "after": "b2827fa7c2b9231a806af030aea963b02edafa64e01a5fb4675b79e95d9bab4c"
+            },
+            {
+              "path": "eventos/includes/backend/inscricao_disponibilidade.cfm",
+              "before": null,
+              "after": "4cffb88d24e184c3aeb4b160dc8b989a00500394608aa6623cca7ad8b85dbd59"
+            },
+            {
+              "path": "eventos/form_edicao_inscricoes.cfm",
+              "before": null,
+              "after": "01951df7253e5e212136ce12f89d568a8149827a677f33d734a4abc174a0309b"
+            },
+            {
+              "path": "eventos/includes/variaveis.cfm",
+              "before": "82f1d30cec857b81b8e61bd5a839479039a5622b8f86ee0c78cda5cca509f025",
+              "after": "c70342a8340e6b14addf6849c10627e14d4e399ed2973c50b39007c794cb7a82"
+            },
+            {
+              "path": "eventos/includes/backend/backend_evento_edicao.cfm",
+              "before": "0f612772f7cdfb72c4af888839e3f84c3c0d76b3c452a14bec995193dd4853dd",
+              "after": "81ba2134dbbc0077c24462e72b6c2e2cc7d740ac81d784387cadf47a1d358244"
+            },
+            {
+              "path": "eventos/form_edicao.cfm",
+              "before": "fa29bdf8539e9f765979ccb542d2f7820478486f65a0c5ea0918ecce14c49cd9",
+              "after": "3362c976bbd838449e329df52099f02a1f3a764a71b6ac99f9942817764aeb23"
+            }
+          ]
+        },
+        {
+          "project": "rr",
+          "backup": "/var/backups/seo-availability-rr-vxzihrkf",
+          "rows": [
+            {
+              "path": "services/EventRegistrationAvailability.cfc",
+              "before": null,
+              "after": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa"
+            },
+            {
+              "path": "evento/parts/inscricao_disponibilidade.cfm",
+              "before": null,
+              "after": "c45e7768e2efd3b1f3e0fe6a40a85f9472c96b89f32452872bfe54ab31ff7270"
+            },
+            {
+              "path": "includes/backend/backend_evento.cfm",
+              "before": "acb7c394b545200cfd065012d5e28fc78a48b902129ebc94f3fa7a018bc99ace",
+              "after": "cd41c42e9b3b10d9fde85e55f2d8945772618748965649cde8d54966142fb8ff"
+            },
+            {
+              "path": "evento/index.cfm",
+              "before": "a2695bc10cdb6d64bc9cd8ca201e205994638bc12526a8e4b3185afdcd9ac924",
+              "after": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+            }
+          ]
+        }
+      ]
+    },
+    "verify": {
+      "at": "2026-10-03T15:26:54.355328+00:00",
+      "verified": true,
+      "hashes": {
+        "business:services/EventRegistrationAvailability.cfc": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+        "business:services/EventRegistrationAvailabilityService.cfc": "b2827fa7c2b9231a806af030aea963b02edafa64e01a5fb4675b79e95d9bab4c",
+        "business:eventos/includes/backend/inscricao_disponibilidade.cfm": "4cffb88d24e184c3aeb4b160dc8b989a00500394608aa6623cca7ad8b85dbd59",
+        "business:eventos/form_edicao_inscricoes.cfm": "01951df7253e5e212136ce12f89d568a8149827a677f33d734a4abc174a0309b",
+        "business:eventos/includes/variaveis.cfm": "c70342a8340e6b14addf6849c10627e14d4e399ed2973c50b39007c794cb7a82",
+        "business:eventos/includes/backend/backend_evento_edicao.cfm": "81ba2134dbbc0077c24462e72b6c2e2cc7d740ac81d784387cadf47a1d358244",
+        "business:eventos/form_edicao.cfm": "3362c976bbd838449e329df52099f02a1f3a764a71b6ac99f9942817764aeb23",
+        "rr:services/EventRegistrationAvailability.cfc": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+        "rr:evento/parts/inscricao_disponibilidade.cfm": "c45e7768e2efd3b1f3e0fe6a40a85f9472c96b89f32452872bfe54ab31ff7270",
+        "rr:includes/backend/backend_evento.cfm": "cd41c42e9b3b10d9fde85e55f2d8945772618748965649cde8d54966142fb8ff",
+        "rr:evento/index.cfm": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+      }
+    }
+  },
+  "null_fix": {
+    "baseline": {
+      "at": "2026-10-03T15:36:02.862016+00:00",
+      "projects": {
+        "business": [
+          {
+            "path": "services/EventRegistrationAvailability.cfc",
+            "sha256": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "eventos/form_edicao_inscricoes.cfm",
+            "sha256": "01951df7253e5e212136ce12f89d568a8149827a677f33d734a4abc174a0309b",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "573c86a10325f847395a182bac7703662304d527f71f7f50941aa2e50032ab99",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/backend_login.cfm",
+            "sha256": "0fed87e9757e46e7b99e92772daab7b23bb742a9c428f2e13370b76744a27ec6",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/require_admin.cfm",
+            "sha256": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/estrutura/sidenav.cfm",
+            "sha256": "2e8b14d953ee6d0d4a23fcf15dcb2a0776a417af68cee138a343eef1c4dfe63f",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        ],
+        "rr": [
+          {
+            "path": "services/EventRegistrationAvailability.cfc",
+            "sha256": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "includes/backend/backend_evento.cfm",
+            "sha256": "cd41c42e9b3b10d9fde85e55f2d8945772618748965649cde8d54966142fb8ff",
+            "uid": 501,
+            "gid": 50,
+            "mode": 420
+          },
+          {
+            "path": "Application.cfc",
+            "sha256": "3bb06a71d3cb548cd3445dd2fadc623e66a3ef4403e86b88612c7832530ca62f",
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          },
+          {
+            "path": "includes/estrutura/head.cfm",
+            "sha256": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          },
+          {
+            "path": "api/ads/v1/cpc-click.cfm",
+            "sha256": "42ea4727351e0572246e9c7e2724bdb03a7949538fba4f0b32b2ba648789ecfb",
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        ]
+      }
+    },
+    "compile": {
+      "compilations": [
+        {
+          "project": "business",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-availability-business-4mo9clcu/services/EventRegistrationAvailability.cfc... /var/tmp/seo-availability-business-4mo9clcu/eventos/form_edicao_inscricoes.cfm... successful 2\ntotal 2\nelapsed 1.149 sec\n\n"
+        },
+        {
+          "project": "rr",
+          "exit_code": 0,
+          "successful": true,
+          "output": "/var/tmp/seo-availability-rr-m1eekl6o/services/EventRegistrationAvailability.cfc... /var/tmp/seo-availability-rr-m1eekl6o/includes/backend/backend_evento.cfm... successful 2\ntotal 2\nelapsed 1.322 sec\n\n"
+        }
+      ],
+      "hashes": {
+        "business:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+        "business:eventos/form_edicao_inscricoes.cfm": "2c839193ed0f1f45c3aabc9058ec083a5f3ff83ae57213d15ecda04b2a7b3951",
+        "rr:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+        "rr:includes/backend/backend_evento.cfm": "3bea2c7f476435f2e868377bc2547f2eac34a97e2b967b4cc16462615643dc21"
+      }
+    },
+    "publish": {
+      "at": "2026-10-03T15:36:08.608932+00:00",
+      "projects": [
+        {
+          "project": "business",
+          "backup": "/var/backups/seo-availability-business-bdap1gtn",
+          "rows": [
+            {
+              "path": "services/EventRegistrationAvailability.cfc",
+              "before": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+              "after": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2"
+            },
+            {
+              "path": "eventos/form_edicao_inscricoes.cfm",
+              "before": "01951df7253e5e212136ce12f89d568a8149827a677f33d734a4abc174a0309b",
+              "after": "2c839193ed0f1f45c3aabc9058ec083a5f3ff83ae57213d15ecda04b2a7b3951"
+            }
+          ]
+        },
+        {
+          "project": "rr",
+          "backup": "/var/backups/seo-availability-rr-h7o9dxjl",
+          "rows": [
+            {
+              "path": "services/EventRegistrationAvailability.cfc",
+              "before": "30abc889810753537c758a410b7be0739da0996bc881c29f43729ceca2fb3dfa",
+              "after": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2"
+            },
+            {
+              "path": "includes/backend/backend_evento.cfm",
+              "before": "cd41c42e9b3b10d9fde85e55f2d8945772618748965649cde8d54966142fb8ff",
+              "after": "3bea2c7f476435f2e868377bc2547f2eac34a97e2b967b4cc16462615643dc21"
+            }
+          ]
+        }
+      ]
+    },
+    "verify": {
+      "at": "2026-10-03T15:38:12.580143+00:00",
+      "verified": true,
+      "hashes": {
+        "business:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+        "business:eventos/form_edicao_inscricoes.cfm": "2c839193ed0f1f45c3aabc9058ec083a5f3ff83ae57213d15ecda04b2a7b3951",
+        "rr:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+        "rr:includes/backend/backend_evento.cfm": "3bea2c7f476435f2e868377bc2547f2eac34a97e2b967b4cc16462615643dc21"
+      }
+    }
+  },
+  "database-inspect": {
+    "row_fingerprint": "36c56410040e448857b513d1bb1d3cdd",
+    "events": 34381,
+    "database": "runnerhub",
+    "column_type": null,
+    "metadata_nonempty": 0,
+    "column_default": null
+  },
+  "database-migrate": {
+    "event_data_preserved": true,
+    "added": true,
+    "events": 34381
+  },
+  "database-verify": {
+    "row_fingerprint": "36c56410040e448857b513d1bb1d3cdd",
+    "events": 34381,
+    "column_type": "jsonb",
+    "metadata_nonempty": 0
+  },
+  "native-check": {
+    "admin_form_status": true,
+    "native_csrf": true,
+    "bad_csrf_rejected": true,
+    "schema_ready": true,
+    "locales": [
+      {
+        "LOCALE": "pt-BR",
+        "HTML": "\n    <div class=\"alert alert-light mb-3\" role=\"status\">\n        <strong>Inscrições abertas</strong>\n        <div class=\"small mt-1\">\n            Verificado em 03/10/2026 12:38 &middot;\n                <a href=\"https&#x3a;&#x2f;&#x2f;organizador.example&#x2f;prova\" target=\"_blank\" rel=\"noopener noreferrer\">Fonte oficial</a>\n            \n        </div>\n    </div>\n"
+      },
+      {
+        "LOCALE": "en",
+        "HTML": "\n    <div class=\"alert alert-light mb-3\" role=\"status\">\n        <strong>Registration open</strong>\n        <div class=\"small mt-1\">\n            Checked on 03/10/2026 12:38 &middot;\n                <a href=\"https&#x3a;&#x2f;&#x2f;organizador.example&#x2f;prova\" target=\"_blank\" rel=\"noopener noreferrer\">Official source</a>\n            \n        </div>\n    </div>\n"
+      },
+      {
+        "LOCALE": "es",
+        "HTML": "\n    <div class=\"alert alert-light mb-3\" role=\"status\">\n        <strong>Inscripciones abiertas</strong>\n        <div class=\"small mt-1\">\n            Verificado el 03/10/2026 12:38 &middot;\n                <a href=\"https&#x3a;&#x2f;&#x2f;organizador.example&#x2f;prova\" target=\"_blank\" rel=\"noopener noreferrer\">Fuente oficial</a>\n            \n        </div>\n    </div>\n"
+      }
+    ],
+    "null_form": true
+  },
+  "native-null-check": {
+    "CASES": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "http-check": [
+    {
+      "url": "https://roadrunners.run/evento/2026-maratona-franciscana-lokos-do-pedal-2026/",
+      "status": 200,
+      "event_status": "https://schema.org/EventScheduled",
+      "availability_omitted": true
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-maratona-franciscana-lokos-do-pedal-2026/",
+      "status": 200,
+      "event_status": "https://schema.org/EventScheduled",
+      "availability_omitted": true
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-maratona-franciscana-lokos-do-pedal-2026/",
+      "status": 200,
+      "event_status": "https://schema.org/EventScheduled",
+      "availability_omitted": true
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-1*-corrida-outubro-rosa/",
+      "status": 200,
+      "event_status": "https://schema.org/EventScheduled",
+      "availability_omitted": true
+    }
+  ],
+  "tests": {
+    "schema_cases": 15,
+    "submission_cases": 12,
+    "persistence_checks": 16,
+    "adobe_invalid_metadata_cases": 5,
+    "public_http_pages": 4
+  },
+  "ui": {
+    "desktop": {
+      "width": 1280,
+      "horizontal_overflow": false
+    },
+    "mobile": {
+      "width": 390,
+      "horizontal_overflow": false
+    },
+    "context": "Real Adobe-rendered form using a fictional event in an isolated read-only fixture; authenticated Business browser not available."
+  },
+  "preservation": "RR production candidate preserves existing organizer/header differences; local RR file keeps its existing organizer/header logic. Only registration changes were applied to both.",
+  "final_runtime_check": {
+    "at": "2026-10-03T15:44:13.247018+00:00",
+    "verified": true,
+    "hashes": {
+      "business:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+      "business:services/EventRegistrationAvailabilityService.cfc": "b2827fa7c2b9231a806af030aea963b02edafa64e01a5fb4675b79e95d9bab4c",
+      "business:eventos/includes/backend/inscricao_disponibilidade.cfm": "4cffb88d24e184c3aeb4b160dc8b989a00500394608aa6623cca7ad8b85dbd59",
+      "business:eventos/form_edicao_inscricoes.cfm": "2c839193ed0f1f45c3aabc9058ec083a5f3ff83ae57213d15ecda04b2a7b3951",
+      "business:eventos/includes/variaveis.cfm": "c70342a8340e6b14addf6849c10627e14d4e399ed2973c50b39007c794cb7a82",
+      "business:eventos/includes/backend/backend_evento_edicao.cfm": "81ba2134dbbc0077c24462e72b6c2e2cc7d740ac81d784387cadf47a1d358244",
+      "business:eventos/form_edicao.cfm": "3362c976bbd838449e329df52099f02a1f3a764a71b6ac99f9942817764aeb23",
+      "rr:services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2",
+      "rr:evento/parts/inscricao_disponibilidade.cfm": "c45e7768e2efd3b1f3e0fe6a40a85f9472c96b89f32452872bfe54ab31ff7270",
+      "rr:includes/backend/backend_evento.cfm": "3bea2c7f476435f2e868377bc2547f2eac34a97e2b967b4cc16462615643dc21",
+      "rr:evento/index.cfm": "732eb14b272aca6b875f9f9fe3ed45f366321036ea41ecaf266b4b2c81c0a81f"
+    }
+  }
+}

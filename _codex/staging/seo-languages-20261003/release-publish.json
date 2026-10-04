@@ -1,0 +1,7 @@
+{
+  "published": [
+    "portal/includes/seo_score_data.cfm",
+    "portal/includes/seo_queue_data.cfm"
+  ],
+  "backup": "/var/backups/seo-languages-business-20261003/baseline"
+}

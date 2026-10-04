@@ -1,0 +1,23 @@
+....E.E...
+======================================================================
+ERROR: test_same_or_hidden_nested_language_does_not_create_conflict (__main__.Descriptions.test_same_or_hidden_nested_language_does_not_create_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_live_evidence.test.py", line 35, in test_same_or_hidden_nested_language_does_not_create_conflict
+    self.assertFalse(o['description_lang_conflict']);self.assertEqual(m.translation_status(self.page('Corrida domingo','pt-BR'),o,'en'),'pass')
+                     ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'description_lang_conflict'
+
+======================================================================
+ERROR: test_visible_nested_language_conflict_cannot_pass (__main__.Descriptions.test_visible_nested_language_conflict_cannot_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_live_evidence.test.py", line 30, in test_visible_nested_language_conflict_cannot_pass
+    self.assertTrue(target['description_lang_conflict']);self.assertEqual(m.translation_status(original,target,'en'),'unknown')
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'description_lang_conflict'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.011s
+
+FAILED (errors=2)

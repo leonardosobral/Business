@@ -1,0 +1,8 @@
+{
+  "published": [
+    "portal/includes/seo_score_data.cfm",
+    "portal/includes/seo_queue_data.cfm",
+    "portal/conteudo/seo_ai.cfm"
+  ],
+  "backup": "/var/backups/seo-evidence-business-20261003/baseline"
+}

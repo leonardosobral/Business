@@ -1,0 +1,6 @@
+SEO_QUEUE_CONTRACT_PASSED:138
+SEO_QUEUE_RESOLVED_PASSED:10
+SEO_SCORE_CONTRACT_PASSED:146
+SEO_SCORE_INVALID_DATA_PASSED:9
+SEO queue CFML: 9 execution scenarios passed.
+HTML: /var/folders/ct/41b1hy657kq5s56h529h2y3m0000gn/T/seo-queue-render-y6FtJ9/seo-queue.html

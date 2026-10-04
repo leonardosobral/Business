@@ -1,0 +1,68 @@
+--- baseline/RoadRunners/sobre/index.cfm
++++ candidate/RoadRunners/sobre/index.cfm
+@@ -6,6 +6,7 @@
+ <!--- TEMPLATE --->
+ <cfset VARIABLES.template = "/sobre/"/>
+ <cfset VARIABLES.routeKey = "about"/>
++<cfset REQUEST.currentRouteKey = VARIABLES.routeKey/>
+ 
+ <!--- TAG PARAM TREAT --->
+ <cfparam name="URL.tag" default=""/>
+--- baseline/RoadRunners/ajuda/index.cfm
++++ candidate/RoadRunners/ajuda/index.cfm
+@@ -6,6 +6,7 @@
+ <!--- TEMPLATE --->
+ <cfset VARIABLES.template = "/ajuda/"/>
+ <cfset VARIABLES.routeKey = "help"/>
++<cfset REQUEST.currentRouteKey = VARIABLES.routeKey/>
+ 
+ <!--- TAG PARAM TREAT --->
+ <cfparam name="URL.tag" default=""/>
+--- baseline/RoadRunners/privacidade/index.cfm
++++ candidate/RoadRunners/privacidade/index.cfm
+@@ -6,6 +6,7 @@
+ <!--- TEMPLATE --->
+ <cfset VARIABLES.template = "/privacidade/"/>
+ <cfset VARIABLES.routeKey = "privacy"/>
++<cfset REQUEST.currentRouteKey = VARIABLES.routeKey/>
+ 
+ <!--- TAG PARAM TREAT --->
+ <cfparam name="URL.tag" default=""/>
+--- baseline/RoadRunners/noticias/index.cfm
++++ candidate/RoadRunners/noticias/index.cfm
+@@ -472,6 +472,7 @@
+ </cfif>
+ 
+ <!--- META INFO --->
++<cfset VARIABLES.includeHreflang = true/>
+ <cfif VARIABLES.isNoticiaDetalhe>
+     <cfset VARIABLES.canonical = REQUEST.i18nBuildAbsoluteUrl("newsDetail")/>
+ <cfelseif len(trim(URL.canal))>
+@@ -484,6 +485,8 @@
+     AND structKeyExists(VARIABLES.noticia, "content_type") AND isStruct(VARIABLES.noticia.content_type)
+     AND structKeyExists(VARIABLES.noticia.content_type, "publication_mode")
+     AND listFindNoCase("licensed_full,external_only", trim(VARIABLES.noticia.content_type.publication_mode & ""))>
++    <!--- Preserve language navigation; canonicalized copies do not form a local SEO language cluster. --->
++    <cfset VARIABLES.includeHreflang = compare(trim(VARIABLES.noticia.original_url & ""), VARIABLES.canonical) EQ 0/>
+     <cfset VARIABLES.canonical = trim(VARIABLES.noticia.original_url & "")>
+     <cfif lCase(trim(VARIABLES.noticia.content_type.publication_mode & "")) EQ "external_only">
+         <cfset VARIABLES.metaRobots = "noindex,follow">
+--- baseline/RoadRunners/includes/estrutura/head.cfm
++++ candidate/RoadRunners/includes/estrutura/head.cfm
+@@ -9,6 +9,7 @@
+     <cfparam name="VARIABLES.metaRobots" default=""/>
+     <cfparam name="VARIABLES.rrSharedAssetBaseUrl" default=""/>
+     <cfparam name="VARIABLES.includePwaAssets" default="true"/>
++    <cfparam name="VARIABLES.includeHreflang" type="boolean" default="true"/>
+     <cfset VARIABLES.rrSharedAssetBaseUrl = reReplace(trim(VARIABLES.rrSharedAssetBaseUrl & ""), "/+$", "")/>
+ 
+     <!--- REQUIRED META TAGS --->
+@@ -37,7 +38,7 @@
+         </cfif>
+     </cfif>
+     <link rel="canonical" href="<cfoutput>#HTMLEditFormat(VARIABLES.canonical)#</cfoutput>" />
+-    <cfif structKeyExists(REQUEST, "currentRouteKey") AND len(trim(REQUEST.currentRouteKey))>
++    <cfif VARIABLES.includeHreflang AND structKeyExists(REQUEST, "currentRouteKey") AND len(trim(REQUEST.currentRouteKey))>
+         <cfloop array="#REQUEST.availableLanguages#" index="languageOption">
+             <cfoutput><link rel="alternate" hreflang="#languageOption.hreflang#" href="#HTMLEditFormat(REQUEST.i18nBuildAbsoluteUrl(REQUEST.currentRouteKey, languageOption.code))#" /></cfoutput>
+         </cfloop>

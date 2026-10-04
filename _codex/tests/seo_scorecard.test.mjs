@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
+import {mkdtemp,readFile,writeFile,rm,mkdir} from 'node:fs/promises';
 import {writeReport} from '../scripts/seo_report.mjs';
 const api=await import('../scripts/seo_scorecard.mjs').catch(e=>{if(e.code!=='ERR_MODULE_NOT_FOUND')throw e;return {};});
 const call=(name,...args)=>{assert.equal(typeof api[name],'function',`Export obrigatório ausente: ${name}`);return api[name](...args);};
@@ -8,6 +8,14 @@ const url='https://roadrunners.run/prova/';
 const obs=(extra={})=>({source_url:url,status:200,final_url:url,redirected:false,content_type:'text/html;charset=UTF-8',html_evaluation:'evaluated',title:'Prova',h1_count:1,canonical_count:1,canonical_invalid:false,canonical_url:url,meta_robots:'',x_robots_tag:'',robots_by_agent:{},robots_header_by_agent:{},robots_policy:{googlebot:{allowed:true}},...extra});
 const run=(extra={})=>({schema_version:1,rules_version:'1',collector_version:'2.0.0',collector_hash:'a'.repeat(64),site_id:'roadrunners',run_id:'run-1',base_url:'https://roadrunners.run',sitemap_url:'https://roadrunners.run/sitemap.xml',started_at:'2026-09-13T10:00:00Z',finished_at:'2026-09-13T10:00:01Z',mode:'audit',scope:'sample',completion:'complete',discovery_complete:true,exit_code:0,config_hash:'b'.repeat(64),selection_hash:'c'.repeat(64),selected_urls:[url],counts:{discovered:1,selected:1,inspected:1,duplicates:0,errors:0,warnings:0},limits:{},sitemaps:[{url:'https://roadrunners.run/sitemap.xml',status:200,count:1}],errors:[],observations:[obs()],findings:[],...extra});
 const criterion=(s,id)=>s.criteria.find(c=>c.id===id);
+test('later generation keeps the private complementary evidence with its original date',async t=>{
+ const root=await mkdtemp('/private/tmp/seo-evidence-generation-');t.after(()=>rm(root,{recursive:true,force:true}));
+ await writeReport(run(),root);
+ const other='https://openresults.run/prova/';await writeReport(run({site_id:'openresults',run_id:'or-1',base_url:'https://openresults.run',sitemap_url:'https://openresults.run/sitemap.cfm',selected_urls:[other],observations:[obs({source_url:other,final_url:other,canonical_url:other})],sitemaps:[{url:'https://openresults.run/sitemap.cfm',status:200,count:1}]}),root);
+ await mkdir(root+'/evidence');await writeFile(root+'/evidence/latest.json',JSON.stringify({schemaVersion:1,access:{measured_at:'2026-10-03T22:00:00Z',files_scanned:9,site_attribution:false,vhosts:{'roadrunners.run':{shared_combined_log:true},'openresults.run':{shared_combined_log:true}}}}));
+ const snapshot=await call('generate',{reportsRoot:root,output:root+'/output.cfm',historyRoot:root+'/history'});
+ for(const site of snapshot.sites){assert.match(site.aiChecks.find(c=>c.id==='provider-access').note,/03\/10\/2026/);assert.equal(site.score,100);}
+});
 test('fixed weights and worst status yield 100, 85 and 97.5, independently of finding counts',()=>{
  assert.equal(call('scoreRun',run()).score,100);
  const s=call('scoreRun',run({observations:[obs(),obs({status:403})]}));assert.equal(s.score,85);assert.equal(criterion(s,'http').status,'error');assert.equal(criterion(s,'title').partial,true);

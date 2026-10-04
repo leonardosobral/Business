@@ -1,0 +1,40 @@
+{
+  "RoadRunners": {
+    "before": {
+      "includes/estrutura/home_hero_busca.cfm": "24c759d2b2219b8c955ba23d375e53bbbd6247a72705141782f5bd1ac9b49b33",
+      "evento/index.cfm": "20476f260e471634c56b6c77b78ef5a359938516b8725b6db5fec1613542fa7b"
+    },
+    "candidate": {
+      "includes/estrutura/home_hero_busca.cfm": "beae33d95f7a0a7e4c7a4211ccf452ec7f9582c02e3ce0c4e45a0226c58ee630",
+      "evento/index.cfm": "b019570110bc36e4c52a95934abaaf1599ea7351096dbe4fc12c87bec9c22b88"
+    },
+    "order": [
+      "includes/estrutura/home_hero_busca.cfm",
+      "evento/index.cfm"
+    ],
+    "compile": {
+      "returncode": 0,
+      "output": "successful 2\ntotal 2\nelapsed 2.077 sec\n\n",
+      "templates": 2
+    }
+  },
+  "OpenResults": {
+    "before": {
+      "index.cfm": "150ced540d0315ea5d80484e2445270fa43d7ec57543207ca803c4af8248300a",
+      "robots.txt": "49e2d09166f60321d18d91d50e17ed7e303693b461e08bafb9429d3a4b5d7816"
+    },
+    "candidate": {
+      "index.cfm": "1d092604d797a90c860c632155dedfab43dea56fddd1bece7bd22e38aee19901",
+      "robots.txt": "dfb004dd7a10f52a70ac4aa39228e6adf5ceee0fc0de920d25790fcf6421fd23"
+    },
+    "order": [
+      "index.cfm",
+      "robots.txt"
+    ],
+    "compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.607 sec\n\n",
+      "templates": 1
+    }
+  }
+}

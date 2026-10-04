@@ -1,0 +1,25 @@
+{
+  "state": {
+    "status": 200,
+    "bytes": 519725,
+    "canonical": "https://roadrunners.run/estado/ba/"
+  },
+  "city": {
+    "status": 200,
+    "bytes": 413967,
+    "canonical": "https://roadrunners.run/estado/ba/alagoinhas/"
+  },
+  "api": {
+    "status": 200,
+    "bytes": 24426,
+    "city_facets_delivered": true
+  },
+  "js": {
+    "status": 200,
+    "bytes": 6599
+  },
+  "css": {
+    "status": 200,
+    "bytes": 2584
+  }
+}

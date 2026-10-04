@@ -1,0 +1,1487 @@
+{
+  "rr-release-prepare": {
+    "before": {
+      "sobre/index.cfm": "e690d40660347d4926bf228135f2d0bc0c32013df5768204cbefa0135c8ec8fd",
+      "ajuda/index.cfm": "c529518c19eb9a7ee2bf891cec6964f83006ce5ea3447f118d2b6319d01d067d",
+      "privacidade/index.cfm": "00305919ca23a5dbbfdd0ad34d90a7e16eef94794ad0bc13b017ce59501c0965",
+      "noticias/index.cfm": "1fb7013fef18972ac73873bed21336451d85f19b9a3edd75d054093cc3bc398b",
+      "includes/estrutura/head.cfm": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3"
+    },
+    "candidate": {
+      "sobre/index.cfm": "caaef5e45179a26c7d33960c16c7a0022100f053e5b81b0537b5f58c06f852fc",
+      "ajuda/index.cfm": "82248dd4bc22fe32c1129d34fe013d2edc08980bdc03b4aa1aaccedc43ba2f5d",
+      "privacidade/index.cfm": "1aeb4ee44a270567892bd14368b87935acc5b150bc100d560087e44768b55116",
+      "noticias/index.cfm": "a7ab656dea0a641844e30893847935a9e49b1350401bd73fad06aa74a7bd7ea3",
+      "includes/estrutura/head.cfm": "0e64c861c024ae8fd2053a63e361d4ee95ee10a6e95a7f7e0ff154608d602bc2"
+    },
+    "order": [
+      "sobre/index.cfm",
+      "ajuda/index.cfm",
+      "privacidade/index.cfm",
+      "noticias/index.cfm",
+      "includes/estrutura/head.cfm"
+    ],
+    "compile": {
+      "templates": 5,
+      "output": "successful 5\ntotal 5\nelapsed 3.755 sec\n\n",
+      "returncode": 0
+    }
+  },
+  "rr-release-publish": {
+    "published": [
+      "sobre/index.cfm",
+      "ajuda/index.cfm",
+      "privacidade/index.cfm",
+      "noticias/index.cfm",
+      "includes/estrutura/head.cfm"
+    ],
+    "backup": "/var/backups/seo-institutional-roadrunners-20261003/baseline"
+  },
+  "rr-release-verify": {
+    "verified_hashes": 5,
+    "unrelated_files_unchanged": 5
+  },
+  "release-prepare": {
+    "before": {
+      "portal/includes/seo_score_data.cfm": "c60f8a822a0a36fcd54657df33b66363ea14643fd56b4b2855d4599fbeabf15f",
+      "portal/includes/seo_queue_data.cfm": "1caf5af65f269f192474bedef74274c6b644e1be25cc80d2da0a65345e188ed3"
+    },
+    "candidate": {
+      "portal/includes/seo_score_data.cfm": "a6f04d8bb554d55a7761ff1ebf39df115c88fa5b0503d7fb4a0100f13846343b",
+      "portal/includes/seo_queue_data.cfm": "d12e71388119c27abfc5907542b27dcceddcde440f405887ae8d2c8857d14dc1"
+    },
+    "order": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "compile": {
+      "templates": 2,
+      "output": "successful 2\ntotal 2\nelapsed 4.123 sec\n\n",
+      "returncode": 0
+    }
+  },
+  "release-publish": {
+    "published": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "backup": "/var/backups/seo-institutional-business-20261003/baseline"
+  },
+  "release-verify": {
+    "verified_hashes": 2,
+    "unrelated_files_unchanged": 6
+  },
+  "public-verification": {
+    "checked_at_utc": "2026-10-03T20:00:21.464138Z",
+    "pages": [
+      {
+        "url": "https://roadrunners.run/sobre/",
+        "lang": "pt-BR",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/sobre/",
+        "canonical": [
+          "https://roadrunners.run/sobre/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/sobre/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/about/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/sobre/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/sobre/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/about/",
+        "lang": "en",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/about/",
+        "canonical": [
+          "https://roadrunners.run/en/about/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/sobre/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/about/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/sobre/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/sobre/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/sobre/",
+        "lang": "es",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/sobre/",
+        "canonical": [
+          "https://roadrunners.run/es/sobre/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/sobre/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/about/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/sobre/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/sobre/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/ajuda/",
+        "lang": "pt-BR",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/ajuda/",
+        "canonical": [
+          "https://roadrunners.run/ajuda/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/ajuda/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/help/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/ayuda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/ajuda/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/help/",
+        "lang": "en",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/help/",
+        "canonical": [
+          "https://roadrunners.run/en/help/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/ajuda/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/help/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/ayuda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/ajuda/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/ayuda/",
+        "lang": "es",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/ayuda/",
+        "canonical": [
+          "https://roadrunners.run/es/ayuda/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/ajuda/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/help/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/ayuda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/ajuda/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/privacidade/",
+        "lang": "pt-BR",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/privacidade/",
+        "canonical": [
+          "https://roadrunners.run/privacidade/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/privacidade/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/privacy/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/privacidad/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/privacidade/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/privacy/",
+        "lang": "en",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/privacy/",
+        "canonical": [
+          "https://roadrunners.run/en/privacy/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/privacidade/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/privacy/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/privacidad/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/privacidade/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/privacidad/",
+        "lang": "es",
+        "kind": "institutional",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/privacidad/",
+        "canonical": [
+          "https://roadrunners.run/es/privacidad/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/privacidade/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/privacy/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/privacidad/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/privacidade/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/",
+        "lang": "pt-BR",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/",
+        "canonical": [
+          "https://roadrunners.run/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/",
+        "lang": "en",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/",
+        "canonical": [
+          "https://roadrunners.run/en/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/",
+        "lang": "es",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/",
+        "canonical": [
+          "https://roadrunners.run/es/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/busca/",
+        "lang": "pt-BR",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/busca/",
+        "canonical": [
+          "https://roadrunners.run/busca/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/search/",
+        "lang": "en",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/search/",
+        "canonical": [
+          "https://roadrunners.run/en/search/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/busqueda/",
+        "lang": "es",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/busqueda/",
+        "canonical": [
+          "https://roadrunners.run/es/busqueda/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "lang": "pt-BR",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": [
+          "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "lang": "en",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": [
+          "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "lang": "es",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": [
+          "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "lang": "pt-BR",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": [
+          "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "lang": "en",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": [
+          "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "lang": "es",
+        "kind": "external_news",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": [
+          "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/"
+        ],
+        "hreflang": [],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "lang": "pt-BR",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "canonical": [
+          "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "lang": "en",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "canonical": [
+          "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "lang": "es",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+        "canonical": [
+          "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/news/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+        "lang": "pt-BR",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+        "lang": "en",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+        "lang": "es",
+        "kind": "control",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/event/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/"
+          }
+        ],
+        "navigation": {},
+        "navigation_check": "not_rendered_anonymous",
+        "ok": true
+      }
+    ],
+    "ok": true
+  },
+  "audit-verification": {
+    "runId": "2026-10-03T20-12-03-545Z-4c5460b6",
+    "startedAt": "2026-10-03T20:10:10.918Z",
+    "auditAt": "2026-10-03T20:12:03.546Z",
+    "institutional": [
+      {
+        "url": "https://roadrunners.run/sobre/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/en/about/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/es/sobre/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/ajuda/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/en/help/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/es/ayuda/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/privacidade/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/en/privacy/",
+        "status": "pass"
+      },
+      {
+        "url": "https://roadrunners.run/es/privacidad/",
+        "status": "pass"
+      }
+    ],
+    "news": [
+      {
+        "url": "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "alternates": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "alternates": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "canonical": "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "alternates": 0
+      },
+      {
+        "url": "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "alternates": 0
+      },
+      {
+        "url": "https://roadrunners.run/en/news/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "alternates": 0
+      },
+      {
+        "url": "https://roadrunners.run/es/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "canonical": "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "alternates": 0
+      }
+    ],
+    "marathons": {
+      "url": "https://roadrunners.run/maratonas/",
+      "status": "pass",
+      "h1_count": 1
+    }
+  },
+  "panel-verification": {
+    "total": 15,
+    "resolved": 12.0,
+    "sites": [
+      {
+        "checks": [
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · ChatGPT Search",
+            "error": 0,
+            "id": "oai-searchbot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · Perplexity",
+            "error": 0,
+            "id": "perplexitybot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Erro",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ],
+            "status": "error",
+            "pass": 99,
+            "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+            "label": "HTML disponível ao coletor",
+            "error": 1,
+            "id": "html",
+            "icon": "×",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ],
+            "status": "unknown",
+            "pass": 99,
+            "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+            "label": "Meta description",
+            "error": 0,
+            "id": "description",
+            "icon": "—",
+            "unknown": 1
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 2,
+            "cases": [
+              "https://roadrunners.run/evento/2026-1-corrida-fit-%E2%80%93-ufc-crateus/",
+              "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+            ],
+            "status": "warning",
+            "pass": 71,
+            "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+            "label": "Declarações hreflang",
+            "error": 0,
+            "id": "hreflang",
+            "icon": "!",
+            "unknown": 27
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "status": "unknown",
+            "pass": 56,
+            "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+            "label": "Sintaxe JSON-LD",
+            "error": 0,
+            "id": "structured",
+            "icon": "—",
+            "unknown": 44
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/evento/2026-3-corrida-alcance-run/",
+              "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+            ],
+            "status": "unknown",
+            "pass": 27,
+            "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+            "label": "Reciprocidade entre idiomas",
+            "error": 0,
+            "id": "hreflang-reciprocity",
+            "icon": "—",
+            "unknown": 73
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 37,
+            "cases": [
+              "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+            ],
+            "status": "warning",
+            "pass": 1,
+            "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+            "label": "Campos de eventos no JSON-LD",
+            "error": 0,
+            "id": "event-fields",
+            "icon": "!",
+            "unknown": 62
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+            "label": "Tradução do conteúdo principal",
+            "error": 0,
+            "id": "translations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+            "label": "Acesso real pelos provedores",
+            "error": 0,
+            "id": "provider-access",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+            "label": "Informações de eventos e resultados",
+            "error": 0,
+            "id": "facts",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+            "label": "Citações nas respostas de IA",
+            "error": 0,
+            "id": "citations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+            "label": "Visitas e conversões vindas de IA",
+            "error": 0,
+            "id": "referrals",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+            "label": "Política de uso para treinamento",
+            "error": 0,
+            "id": "training",
+            "icon": "—",
+            "unknown": 0
+          }
+        ],
+        "score": 70,
+        "id": "roadrunners",
+        "auditat": "2026-10-03T20:12:03.546Z"
+      },
+      {
+        "checks": [
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · ChatGPT Search",
+            "error": 0,
+            "id": "oai-searchbot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · Perplexity",
+            "error": 0,
+            "id": "perplexitybot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+            "label": "HTML disponível ao coletor",
+            "error": 0,
+            "id": "html",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+            "label": "Meta description",
+            "error": 0,
+            "id": "description",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Não medido",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+            "label": "Declarações hreflang",
+            "error": 0,
+            "id": "hreflang",
+            "icon": "—",
+            "unknown": 100
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/"
+            ],
+            "status": "unknown",
+            "pass": 99,
+            "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+            "label": "Sintaxe JSON-LD",
+            "error": 0,
+            "id": "structured",
+            "icon": "—",
+            "unknown": 1
+          },
+          {
+            "total": 100,
+            "statuslabel": "Não medido",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+            "label": "Reciprocidade entre idiomas",
+            "error": 0,
+            "id": "hreflang-reciprocity",
+            "icon": "—",
+            "unknown": 100
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 96,
+            "cases": [
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+              "https://openresults.run/evento/2026-maratona-salvador-2026/"
+            ],
+            "status": "warning",
+            "pass": 3,
+            "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+            "label": "Campos de eventos no JSON-LD",
+            "error": 0,
+            "id": "event-fields",
+            "icon": "!",
+            "unknown": 1
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+            "label": "Tradução do conteúdo principal",
+            "error": 0,
+            "id": "translations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+            "label": "Acesso real pelos provedores",
+            "error": 0,
+            "id": "provider-access",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+            "label": "Informações de eventos e resultados",
+            "error": 0,
+            "id": "facts",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+            "label": "Citações nas respostas de IA",
+            "error": 0,
+            "id": "citations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+            "label": "Visitas e conversões vindas de IA",
+            "error": 0,
+            "id": "referrals",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+            "label": "Política de uso para treinamento",
+            "error": 0,
+            "id": "training",
+            "icon": "—",
+            "unknown": 0
+          }
+        ],
+        "score": 100,
+        "id": "openresults",
+        "auditat": "2026-10-03T19:05:46.881Z"
+      }
+    ],
+    "pending": 3.0,
+    "items": [
+      {
+        "resolved": true,
+        "id": "RR-01"
+      },
+      {
+        "resolved": true,
+        "id": "RR-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-03"
+      },
+      {
+        "resolved": true,
+        "id": "OR-01"
+      },
+      {
+        "resolved": true,
+        "id": "RR-04"
+      },
+      {
+        "resolved": true,
+        "id": "SH-01"
+      },
+      {
+        "resolved": false,
+        "id": "OR-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-05"
+      },
+      {
+        "resolved": true,
+        "id": "RR-06"
+      },
+      {
+        "resolved": true,
+        "id": "OR-03"
+      },
+      {
+        "resolved": false,
+        "id": "SH-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-07"
+      },
+      {
+        "resolved": false,
+        "id": "RR-08"
+      },
+      {
+        "resolved": true,
+        "id": "RR-09"
+      },
+      {
+        "resolved": true,
+        "id": "RR-10"
+      }
+    ]
+  },
+  "robots-edge-verification": {
+    "checked_at_utc": "2026-10-03T20:03:37.357235+00:00",
+    "status": 200,
+    "robots": "User-agent: Googlebot\nDisallow: /nogooglebot/\nDisallow: /perfil\nDisallow: /resultados\n\nUser-agent: *\nAllow: /\nDisallow: /perfil\nDisallow: /resultados\n\nSitemap: https://openresults.run/sitemap.cfm\n",
+    "headers": {
+      "Date": "Sat, 03 Oct 2026 20:03:37 GMT",
+      "Age": "6264",
+      "Cache-Control": "max-age=3600",
+      "cf-cache-status": "HIT"
+    }
+  },
+  "editorial-policy-verification": {
+    "records": [
+      {
+        "api_url": "https://conteudo.roadrunners.run/rest/cmscf_api/v1/content/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa",
+        "slug": "o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa",
+        "original_url": "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+        "publication_mode": "licensed_full",
+        "authorized_republication": false,
+        "license_expires_at": null
+      },
+      {
+        "api_url": "https://conteudo.roadrunners.run/rest/cmscf_api/v1/content/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio",
+        "slug": "por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio",
+        "original_url": "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+        "publication_mode": "licensed_full",
+        "authorized_republication": false,
+        "license_expires_at": null
+      }
+    ]
+  },
+  "marathons": {
+    "rr-release-prepare": {
+      "before": {
+        "maratonas/index.cfm": "11452bbe3557a0d941c7f6d0ba7f31c8e1e39c55dd615f45cd99934140b877fe"
+      },
+      "candidate": {
+        "maratonas/index.cfm": "abebf4bcb5d620442fef02ac7723e3efda22d10282c580b5cef1d3834e125499"
+      },
+      "order": [
+        "maratonas/index.cfm"
+      ],
+      "compile": {
+        "templates": 1,
+        "output": "successful 1\ntotal 1\nelapsed 2.32 sec\n\n",
+        "returncode": 0
+      }
+    },
+    "rr-release-publish": {
+      "published": [
+        "maratonas/index.cfm"
+      ],
+      "backup": "/var/backups/seo-marathons-roadrunners-20261003/baseline"
+    },
+    "rr-release-verify": {
+      "verified_hashes": 1,
+      "unrelated_files_unchanged": 3
+    },
+    "public-verification": {
+      "checked_at_utc": "2026-10-03T20:09:43.239Z",
+      "url": "https://roadrunners.run/maratonas/",
+      "status": 200,
+      "canonical": "https://roadrunners.run/maratonas/",
+      "h1_count": 1,
+      "ok": true
+    }
+  }
+}

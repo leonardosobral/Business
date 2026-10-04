@@ -1,12 +1,15 @@
 import assert from 'node:assert/strict';
-import {mkdtempSync,readFileSync,writeFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,writeFileSync,rmSync,mkdirSync,copyFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 const source=process.argv[2]||'/Users/Shared/Projects/RunnerHub/RoadRunners';
 const s=readFileSync(source+'/evento/index.cfm','utf8');const block=s.slice(s.indexOf('<cfscript>',s.indexOf('<!--- STRUCTURED DATA --->')),s.indexOf('</cfscript>',s.indexOf('<!--- STRUCTURED DATA --->'))+11);
 const scratch=mkdtempSync('/private/tmp/seo-rr-schema-test-');
 try{
+ mkdirSync(scratch+'/services');
+ copyFileSync(source+'/services/EventRegistrationAvailability.cfc',scratch+'/services/EventRegistrationAvailability.cfc');
  writeFileSync(scratch+'/schema.cfm',block);
  writeFileSync(scratch+'/fixture.cfm',`<cfscript>
+settings=getApplicationSettings();mappings=duplicate(settings.mappings);mappings['/services']=getDirectoryFromPath(getCurrentTemplatePath()) & 'services';application action='update' mappings=mappings;
 VARIABLES.canonical="https://roadrunners.run/evento/prova/";VARIABLES.description="Descrição pública";REQUEST.currentBaseUrl="https://roadrunners.run";
 qEvento={nome_evento="Prova",data_inicial=createDate(2026,10,10),data_final=createDate(2026,10,10),status_evento="",url_imagem="",endereco="",cidade="Salvador",estado="BA",pais="BR",coordenadas="",url_inscricao="https://inscricao.example/prova"};
 qFornecedores=queryNew("id_fornecedor_tipo,nome_fornecedor,site_fornecedor", "integer,varchar,varchar", [{id_fornecedor_tipo=2,nome_fornecedor="Cronometrador",site_fornecedor=""},{id_fornecedor_tipo=1,nome_fornecedor="Organizador correto",site_fornecedor=""}]);

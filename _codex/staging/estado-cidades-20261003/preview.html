@@ -1,0 +1,650 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verificação do filtro de cidades</title><style>body{font-family:Arial,sans-serif;color:#333;background:#f5f5f5;margin:0}.container{max-width:1200px;margin:40px auto;padding:16px}.estado-page-hero-header{display:flex;align-items:center;justify-content:space-between;gap:12px}.page-section-hero-title{font-size:26px;display:flex;gap:8px;align-items:center;min-width:0}.page-section-hero-icon{width:26px;height:26px}.home-hero-chip-select{border:1px solid #ddd;background:#fff;padding:12px;border-radius:24px;font-size:14px;max-width:100%}.home-hero-chip-select-wrap{display:flex}button{padding:12px;border:1px solid #ddd;border-radius:8px;margin-top:32px;background:#fff}@media(max-width:767px){.estado-page-hero-header{flex-direction:column;align-items:stretch}}</style><style>.estado-city-picker,.estado-city-picker * { box-sizing:border-box; }
+.estado-page-hero-location { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.estado-city-picker { position:relative; width:260px; max-width:100%; color:#333; }
+.estado-city-picker summary { display:flex; align-items:center; gap:.6rem; min-height:42px; padding:.6rem .8rem; border:1px solid #d5d5d5; border-radius:22px; background:#fff; cursor:pointer; font-size:.85rem; font-weight:600; list-style:none; }
+.estado-city-picker summary::-webkit-details-marker { display:none; }
+.estado-city-picker summary span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
+.estado-city-picker summary:focus-visible,.estado-city-picker a:focus-visible { outline:2px solid #d79b0c; outline-offset:2px; }
+.estado-city-picker[open] summary { border-color:#fab120; }
+.estado-city-picker-panel { position:absolute; right:0; top:calc(100% + .4rem); z-index:1040; width:340px; max-width:calc(100vw - 32px); padding:.85rem; border:1px solid #ddd; border-radius:14px; background:#fff; box-shadow:0 8px 24px #0002; }
+.estado-city-picker-label { display:block; font-size:.8rem; font-weight:600; margin-bottom:.35rem; }
+.estado-city-picker input { width:100%; padding:.55rem .65rem; border:1px solid #ccc; border-radius:8px; font-size:16px; }
+.estado-city-picker-hint { margin:.4rem 0 .3rem; color:#666; font-size:.72rem; }
+.estado-city-picker-list { max-height:280px; overflow-y:auto; overscroll-behavior:contain; }
+.estado-city-picker-item { display:flex; align-items:center; justify-content:space-between; gap:.6rem; padding:.65rem .4rem; border-radius:7px; color:#333; text-decoration:none; font-size:.82rem; }
+.estado-city-picker-item[hidden] { display:none; }
+.estado-city-picker-item:hover { background:#fff5db; color:#333; }
+.estado-city-picker-item[aria-current="page"] { background:#fff0c7; font-weight:700; }
+.estado-city-picker-item[aria-disabled="true"] { color:#888; cursor:default; }
+.estado-city-picker-item [data-city-count] { flex:0 0 auto; font-size:.72rem; }
+.estado-city-picker-status { font-size:.8rem; margin:.5rem 0 0; }
+.estado-city-picker-status:empty { display:none; }
+@media (max-width:1199.98px) { .estado-page-hero-header { flex-wrap:wrap; } }
+@media (max-width:767.98px) {
+ .estado-page-hero-location { width:100%; align-items:stretch; }
+ .estado-page-hero-state-select,.estado-city-picker { width:100%; }
+ .estado-page-hero-state-select .home-hero-chip-select { width:100%; }
+ .estado-city-picker-panel { left:0; right:auto; width:100%; max-width:100%; }
+}
+</style><body><div class="container">            <div class="estado-page-hero-header">
+                <h1 class="page-section-hero-title">
+                    <svg class="page-section-hero-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 767.999994" preserveAspectRatio="xMidYMid meet" version="1.0" aria-hidden="true"><path fill="#f4b120" d="M 217.46875 764.9375 C 209.929688 764.9375 204.402344 762.171875 200.878906 756.648438 C 197.367188 751.136719 196.113281 744.105469 197.121094 735.5625 L 298.066406 17.609375 C 299.0625 10.574219 300.566406 6.308594 302.578125 4.808594 C 304.59375 3.296875 309.109844 2.542969 316.132812 2.542969 L 386.199219 2.542969 C 391.722656 2.542969 396.238281 4.550781 399.75 8.566406 C 403.261719 12.582031 404.519531 16.847656 403.527344 21.367188 L 300.316406 755.914062 C 299.8125 759.925781 298.804688 762.429688 297.292969 763.429688 C 295.792969 764.433594 292.535156 764.9375 287.515625 764.9375 Z M 217.46875 764.9375 " fill-opacity="1" fill-rule="nonzero"/><path fill="#f4b120" d="M 401.449219 764.9375 C 393.910156 764.9375 388.382812 762.171875 384.859375 756.648438 C 381.351562 751.136719 380.097656 744.105469 381.101562 735.5625 L 482.050781 17.609375 C 483.042969 10.574219 484.546875 6.308594 486.5625 4.808594 C 488.574219 3.296875 493.089844 2.542969 500.113281 2.542969 L 570.179688 2.542969 C 575.703125 2.542969 580.21875 4.550781 583.734375 8.566406 C 587.242188 12.582031 588.5 16.847656 587.507812 21.367188 L 484.296875 755.914062 C 483.792969 759.925781 482.785156 762.429688 481.277344 763.429688 C 479.777344 764.433594 476.519531 764.9375 471.5 764.9375 Z M 401.449219 764.9375 " fill-opacity="1" fill-rule="nonzero"/></svg>
+                    <span class="page-section-hero-text">Eventos na Bahia</span>
+                </h1>
+                <div class="estado-page-hero-location">
+                <div class="home-hero-chip-select-wrap estado-page-hero-state-select">
+                    <i class="fa-solid fa-location-dot home-hero-chip-select-icon"></i>
+                    <select class="home-hero-chip home-hero-chip-select"
+                            aria-label="Selecione um estado"
+                            data-estado-state-select>
+                        
+                                <option value="BA" selected>Eventos na Bahia</option>
+                            
+                                <option value="SC" >Eventos em Santa Catarina</option>
+                            
+                    </select>
+                    <i class="fa-solid fa-chevron-down home-hero-chip-select-caret"></i>
+                </div>
+                <details class="estado-city-picker" data-estado-city-picker>
+                    <summary><i class="fa-solid fa-city" aria-hidden="true"></i><span>Cidade: Todas as cidades</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                    <div class="estado-city-picker-panel">
+                        <label class="estado-city-picker-label" for="estado-city-search">Buscar cidade</label>
+                        <input type="search" id="estado-city-search" placeholder="Digite o nome da cidade" autocomplete="off"/>
+                        <p class="estado-city-picker-hint">Contagens conforme os filtros do calendário.</p>
+                        <div class="estado-city-picker-list">
+                            <a class="estado-city-picker-item" data-estado-city-slug="" data-estado-city-name="Todas as cidades" href="&#x2f;estado&#x2f;ba&#x2f;" aria-current="page"><span>Todas as cidades</span><span data-city-count>184 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="abaira" data-estado-city-name="Aba&iacute;ra" aria-disabled="true" tabindex="-1"><span>Aba&iacute;ra</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="abare" data-estado-city-name="Abar&eacute;" aria-disabled="true" tabindex="-1"><span>Abar&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="adustina" data-estado-city-name="Adustina" aria-disabled="true" tabindex="-1"><span>Adustina</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="alagoinhas" data-estado-city-name="Alagoinhas" href="&#x2f;estado&#x2f;ba&#x2f;alagoinhas&#x2f;" aria-disabled="false"><span>Alagoinhas</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="almadina" data-estado-city-name="Almadina" href="&#x2f;estado&#x2f;ba&#x2f;almadina&#x2f;" aria-disabled="false"><span>Almadina</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="amargosa" data-estado-city-name="Amargosa" aria-disabled="true" tabindex="-1"><span>Amargosa</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="amelia-rodrigues" data-estado-city-name="Am&eacute;lia&#x20;Rodrigues" aria-disabled="true" tabindex="-1"><span>Am&eacute;lia Rodrigues</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="andarai" data-estado-city-name="Andara&iacute;" aria-disabled="true" tabindex="-1"><span>Andara&iacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="andorinha" data-estado-city-name="Andorinha" aria-disabled="true" tabindex="-1"><span>Andorinha</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="antonio-goncalves" data-estado-city-name="Ant&ocirc;nio&#x20;Gon&ccedil;alves" aria-disabled="true" tabindex="-1"><span>Ant&ocirc;nio Gon&ccedil;alves</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="apora" data-estado-city-name="Apor&aacute;" aria-disabled="true" tabindex="-1"><span>Apor&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="arataca" data-estado-city-name="Arataca" aria-disabled="true" tabindex="-1"><span>Arataca</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="aurelino-leal" data-estado-city-name="Aurelino&#x20;Leal" href="&#x2f;estado&#x2f;ba&#x2f;aurelino-leal&#x2f;" aria-disabled="false"><span>Aurelino Leal</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="baianopolis" data-estado-city-name="Baianopolis" aria-disabled="true" tabindex="-1"><span>Baianopolis</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="barra" data-estado-city-name="Barra" aria-disabled="true" tabindex="-1"><span>Barra</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="barra-da-estiva" data-estado-city-name="Barra&#x20;da&#x20;Estiva" aria-disabled="true" tabindex="-1"><span>Barra da Estiva</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="barra-do-choca" data-estado-city-name="Barra&#x20;do&#x20;Cho&ccedil;a" aria-disabled="true" tabindex="-1"><span>Barra do Cho&ccedil;a</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="barreiras" data-estado-city-name="Barreiras" aria-disabled="true" tabindex="-1"><span>Barreiras</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="belmonte" data-estado-city-name="Belmonte" href="&#x2f;estado&#x2f;ba&#x2f;belmonte&#x2f;" aria-disabled="false"><span>Belmonte</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="belo-campo" data-estado-city-name="Belo&#x20;Campo" aria-disabled="true" tabindex="-1"><span>Belo Campo</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="bom-jesus-da-lapa" data-estado-city-name="Bom&#x20;Jesus&#x20;da&#x20;Lapa" aria-disabled="true" tabindex="-1"><span>Bom Jesus da Lapa</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="bonito" data-estado-city-name="Bonito" aria-disabled="true" tabindex="-1"><span>Bonito</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="brejoes" data-estado-city-name="Brej&otilde;es" aria-disabled="true" tabindex="-1"><span>Brej&otilde;es</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="brotas-de-macaubas" data-estado-city-name="Brotas&#x20;de&#x20;Maca&uacute;bas" aria-disabled="true" tabindex="-1"><span>Brotas de Maca&uacute;bas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="brumado" data-estado-city-name="Brumado" href="&#x2f;estado&#x2f;ba&#x2f;brumado&#x2f;" aria-disabled="false"><span>Brumado</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="buerarema" data-estado-city-name="Buerarema" aria-disabled="true" tabindex="-1"><span>Buerarema</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cachoeira" data-estado-city-name="Cachoeira" aria-disabled="true" tabindex="-1"><span>Cachoeira</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cacule" data-estado-city-name="Cacule" aria-disabled="true" tabindex="-1"><span>Cacule</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="caem" data-estado-city-name="Ca&eacute;m" aria-disabled="true" tabindex="-1"><span>Ca&eacute;m</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="caetite" data-estado-city-name="Caetit&eacute;" aria-disabled="true" tabindex="-1"><span>Caetit&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cairu" data-estado-city-name="Cairu" href="&#x2f;estado&#x2f;ba&#x2f;cairu&#x2f;" aria-disabled="false"><span>Cairu</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="caldeirao-grande" data-estado-city-name="Caldeir&atilde;o&#x20;Grande" aria-disabled="true" tabindex="-1"><span>Caldeir&atilde;o Grande</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="camacan" data-estado-city-name="Camacan" aria-disabled="true" tabindex="-1"><span>Camacan</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="camacari" data-estado-city-name="Camacari" href="&#x2f;estado&#x2f;ba&#x2f;camacari&#x2f;" aria-disabled="false"><span>Camacari</span><span data-city-count>8 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="campo-alegre-de-lourdes" data-estado-city-name="Campo&#x20;Alegre&#x20;de&#x20;Lourdes" aria-disabled="true" tabindex="-1"><span>Campo Alegre de Lourdes</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="campo-formoso" data-estado-city-name="Campo&#x20;Formoso" href="&#x2f;estado&#x2f;ba&#x2f;campo-formoso&#x2f;" aria-disabled="false"><span>Campo Formoso</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="canarana" data-estado-city-name="Canarana" aria-disabled="true" tabindex="-1"><span>Canarana</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="canavieiras" data-estado-city-name="Canavieiras" aria-disabled="true" tabindex="-1"><span>Canavieiras</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="candeal" data-estado-city-name="Candeal" aria-disabled="true" tabindex="-1"><span>Candeal</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="candiba" data-estado-city-name="Candiba" aria-disabled="true" tabindex="-1"><span>Candiba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="candido-sales" data-estado-city-name="C&acirc;ndido&#x20;Sales" href="&#x2f;estado&#x2f;ba&#x2f;candido-sales&#x2f;" aria-disabled="false"><span>C&acirc;ndido Sales</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="capim-grosso" data-estado-city-name="Capim&#x20;Grosso" href="&#x2f;estado&#x2f;ba&#x2f;capim-grosso&#x2f;" aria-disabled="false"><span>Capim Grosso</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="caraibas" data-estado-city-name="Cara&iacute;bas" aria-disabled="true" tabindex="-1"><span>Cara&iacute;bas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cardeal-da-silva" data-estado-city-name="Cardeal&#x20;da&#x20;Silva" aria-disabled="true" tabindex="-1"><span>Cardeal da Silva</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="carinhanha" data-estado-city-name="Carinhanha" aria-disabled="true" tabindex="-1"><span>Carinhanha</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="casa-nova" data-estado-city-name="Casa&#x20;Nova" href="&#x2f;estado&#x2f;ba&#x2f;casa-nova&#x2f;" aria-disabled="false"><span>Casa Nova</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="castro-alves" data-estado-city-name="Castro&#x20;Alves" aria-disabled="true" tabindex="-1"><span>Castro Alves</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="catu" data-estado-city-name="Catu" href="&#x2f;estado&#x2f;ba&#x2f;catu&#x2f;" aria-disabled="false"><span>Catu</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="central" data-estado-city-name="Central" href="&#x2f;estado&#x2f;ba&#x2f;central&#x2f;" aria-disabled="false"><span>Central</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cicero-dantas" data-estado-city-name="C&iacute;cero&#x20;Dantas" aria-disabled="true" tabindex="-1"><span>C&iacute;cero Dantas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="coaraci" data-estado-city-name="Coaraci" href="&#x2f;estado&#x2f;ba&#x2f;coaraci&#x2f;" aria-disabled="false"><span>Coaraci</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="conceicao-da-feira" data-estado-city-name="Concei&ccedil;&atilde;o&#x20;da&#x20;Feira" aria-disabled="true" tabindex="-1"><span>Concei&ccedil;&atilde;o da Feira</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="conceicao-do-coite" data-estado-city-name="Concei&ccedil;&atilde;o&#x20;do&#x20;Coit&eacute;" href="&#x2f;estado&#x2f;ba&#x2f;conceicao-do-coite&#x2f;" aria-disabled="false"><span>Concei&ccedil;&atilde;o do Coit&eacute;</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="conceicao-do-jacuipe" data-estado-city-name="Concei&ccedil;&atilde;o&#x20;do&#x20;Jacuipe" aria-disabled="true" tabindex="-1"><span>Concei&ccedil;&atilde;o do Jacuipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="conde" data-estado-city-name="Conde" aria-disabled="true" tabindex="-1"><span>Conde</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="condeuba" data-estado-city-name="Condeuba" href="&#x2f;estado&#x2f;ba&#x2f;condeuba&#x2f;" aria-disabled="false"><span>Condeuba</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="coracao-de-maria" data-estado-city-name="Cora&ccedil;&atilde;o&#x20;de&#x20;Maria" href="&#x2f;estado&#x2f;ba&#x2f;coracao-de-maria&#x2f;" aria-disabled="false"><span>Cora&ccedil;&atilde;o de Maria</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="coronel-joao-sa" data-estado-city-name="Coronel&#x20;Jo&atilde;o&#x20;S&aacute;" aria-disabled="true" tabindex="-1"><span>Coronel Jo&atilde;o S&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="correntina" data-estado-city-name="Correntina" aria-disabled="true" tabindex="-1"><span>Correntina</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cotegipe" data-estado-city-name="Cotegipe" aria-disabled="true" tabindex="-1"><span>Cotegipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cristopolis" data-estado-city-name="Cristop&oacute;lis" aria-disabled="true" tabindex="-1"><span>Cristop&oacute;lis</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="cruz-das-almas" data-estado-city-name="Cruz&#x20;das&#x20;Almas" href="&#x2f;estado&#x2f;ba&#x2f;cruz-das-almas&#x2f;" aria-disabled="false"><span>Cruz das Almas</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="curaca" data-estado-city-name="Cura&ccedil;a" aria-disabled="true" tabindex="-1"><span>Cura&ccedil;a</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="dias-d-avila" data-estado-city-name="Dias&#x20;D&#x27;&Aacute;vila" href="&#x2f;estado&#x2f;ba&#x2f;dias-d-avila&#x2f;" aria-disabled="false"><span>Dias D&#x27;&Aacute;vila</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="encruzilhada" data-estado-city-name="Encruzilhada" href="&#x2f;estado&#x2f;ba&#x2f;encruzilhada&#x2f;" aria-disabled="false"><span>Encruzilhada</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="entre-rios" data-estado-city-name="Entre&#x20;Rios" aria-disabled="true" tabindex="-1"><span>Entre Rios</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="esplanada" data-estado-city-name="Esplanada" aria-disabled="true" tabindex="-1"><span>Esplanada</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="eunapolis" data-estado-city-name="Eunapolis" aria-disabled="true" tabindex="-1"><span>Eunapolis</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="feira-de-santana" data-estado-city-name="Feira&#x20;de&#x20;Santana" href="&#x2f;estado&#x2f;ba&#x2f;feira-de-santana&#x2f;" aria-disabled="false"><span>Feira de Santana</span><span data-city-count>8 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="filadelfia" data-estado-city-name="Filad&eacute;lfia" aria-disabled="true" tabindex="-1"><span>Filad&eacute;lfia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="formosa-do-rio-preto" data-estado-city-name="Formosa&#x20;do&#x20;Rio&#x20;Preto" href="&#x2f;estado&#x2f;ba&#x2f;formosa-do-rio-preto&#x2f;" aria-disabled="false"><span>Formosa do Rio Preto</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="gaviao" data-estado-city-name="Gavi&atilde;o" aria-disabled="true" tabindex="-1"><span>Gavi&atilde;o</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="guanambi" data-estado-city-name="Guanambi" href="&#x2f;estado&#x2f;ba&#x2f;guanambi&#x2f;" aria-disabled="false"><span>Guanambi</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibicarai" data-estado-city-name="Ibicarai" aria-disabled="true" tabindex="-1"><span>Ibicarai</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibicoara" data-estado-city-name="Ibicoara" aria-disabled="true" tabindex="-1"><span>Ibicoara</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibicui" data-estado-city-name="Ibicu&iacute;" href="&#x2f;estado&#x2f;ba&#x2f;ibicui&#x2f;" aria-disabled="false"><span>Ibicu&iacute;</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibirapitanga" data-estado-city-name="Ibirapitanga" aria-disabled="true" tabindex="-1"><span>Ibirapitanga</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibirapua" data-estado-city-name="Ibirapu&atilde;" aria-disabled="true" tabindex="-1"><span>Ibirapu&atilde;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibirataia" data-estado-city-name="Ibirataia" aria-disabled="true" tabindex="-1"><span>Ibirataia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibitita" data-estado-city-name="Ibitita" aria-disabled="true" tabindex="-1"><span>Ibitita</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ibotirama" data-estado-city-name="Ibotirama" aria-disabled="true" tabindex="-1"><span>Ibotirama</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="igrapiuna" data-estado-city-name="Igrapi&uacute;na" aria-disabled="true" tabindex="-1"><span>Igrapi&uacute;na</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ilheus" data-estado-city-name="Ilheus" href="&#x2f;estado&#x2f;ba&#x2f;ilheus&#x2f;" aria-disabled="false"><span>Ilheus</span><span data-city-count>13 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="inhambupe" data-estado-city-name="Inhambupe" aria-disabled="true" tabindex="-1"><span>Inhambupe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ipecaeta" data-estado-city-name="Ipecaet&aacute;" aria-disabled="true" tabindex="-1"><span>Ipecaet&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ipiau" data-estado-city-name="Ipiau" aria-disabled="true" tabindex="-1"><span>Ipiau</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ipira" data-estado-city-name="Ipir&aacute;" aria-disabled="true" tabindex="-1"><span>Ipir&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="iramaia" data-estado-city-name="Iramaia" aria-disabled="true" tabindex="-1"><span>Iramaia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="iraquara" data-estado-city-name="Iraquara" aria-disabled="true" tabindex="-1"><span>Iraquara</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="irara" data-estado-city-name="Irar&aacute;" aria-disabled="true" tabindex="-1"><span>Irar&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="irece" data-estado-city-name="Irec&ecirc;" aria-disabled="true" tabindex="-1"><span>Irec&ecirc;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itaberaba" data-estado-city-name="Itaberaba" href="&#x2f;estado&#x2f;ba&#x2f;itaberaba&#x2f;" aria-disabled="false"><span>Itaberaba</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itabuna" data-estado-city-name="Itabuna" href="&#x2f;estado&#x2f;ba&#x2f;itabuna&#x2f;" aria-disabled="false"><span>Itabuna</span><span data-city-count>3 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itacare" data-estado-city-name="Itacar&eacute;" href="&#x2f;estado&#x2f;ba&#x2f;itacare&#x2f;" aria-disabled="false"><span>Itacar&eacute;</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itajuipe" data-estado-city-name="Itajuipe" aria-disabled="true" tabindex="-1"><span>Itajuipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itamaraju" data-estado-city-name="Itamaraju" href="&#x2f;estado&#x2f;ba&#x2f;itamaraju&#x2f;" aria-disabled="false"><span>Itamaraju</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itambe" data-estado-city-name="Itamb&eacute;" aria-disabled="true" tabindex="-1"><span>Itamb&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itaparica" data-estado-city-name="Itaparica" href="&#x2f;estado&#x2f;ba&#x2f;itaparica&#x2f;" aria-disabled="false"><span>Itaparica</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itape" data-estado-city-name="Itap&eacute;" aria-disabled="true" tabindex="-1"><span>Itap&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itapetinga" data-estado-city-name="Itapetinga" aria-disabled="true" tabindex="-1"><span>Itapetinga</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itaquara" data-estado-city-name="Itaquara" aria-disabled="true" tabindex="-1"><span>Itaquara</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itatim" data-estado-city-name="Itatim" aria-disabled="true" tabindex="-1"><span>Itatim</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itiuba" data-estado-city-name="Iti&uacute;ba" aria-disabled="true" tabindex="-1"><span>Iti&uacute;ba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ituacu" data-estado-city-name="Itua&ccedil;u" aria-disabled="true" tabindex="-1"><span>Itua&ccedil;u</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="itubera" data-estado-city-name="Ituber&aacute;" href="&#x2f;estado&#x2f;ba&#x2f;itubera&#x2f;" aria-disabled="false"><span>Ituber&aacute;</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="iuiu" data-estado-city-name="Iui&uacute;" aria-disabled="true" tabindex="-1"><span>Iui&uacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jacobina" data-estado-city-name="Jacobina" aria-disabled="true" tabindex="-1"><span>Jacobina</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jaguaquara" data-estado-city-name="Jaguaquara" aria-disabled="true" tabindex="-1"><span>Jaguaquara</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jaguarari" data-estado-city-name="Jaguarari" aria-disabled="true" tabindex="-1"><span>Jaguarari</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jequie" data-estado-city-name="Jequie" href="&#x2f;estado&#x2f;ba&#x2f;jequie&#x2f;" aria-disabled="false"><span>Jequie</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jeremoabo" data-estado-city-name="Jeremoabo" aria-disabled="true" tabindex="-1"><span>Jeremoabo</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="juazeiro" data-estado-city-name="Juazeiro" aria-disabled="true" tabindex="-1"><span>Juazeiro</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jussara" data-estado-city-name="Jussara" aria-disabled="true" tabindex="-1"><span>Jussara</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="jussari" data-estado-city-name="Jussari" aria-disabled="true" tabindex="-1"><span>Jussari</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="lafaiete-coutinho" data-estado-city-name="Lafaiete&#x20;Coutinho" aria-disabled="true" tabindex="-1"><span>Lafaiete Coutinho</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="lapao" data-estado-city-name="Lap&atilde;o" aria-disabled="true" tabindex="-1"><span>Lap&atilde;o</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="lauro-de-freitas" data-estado-city-name="Lauro&#x20;de&#x20;Freitas" href="&#x2f;estado&#x2f;ba&#x2f;lauro-de-freitas&#x2f;" aria-disabled="false"><span>Lauro de Freitas</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="lencois" data-estado-city-name="Len&ccedil;&oacute;is" aria-disabled="true" tabindex="-1"><span>Len&ccedil;&oacute;is</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="licinio-de-almeida" data-estado-city-name="Lic&iacute;nio&#x20;de&#x20;Almeida" href="&#x2f;estado&#x2f;ba&#x2f;licinio-de-almeida&#x2f;" aria-disabled="false"><span>Lic&iacute;nio de Almeida</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="livramento-de-nossa-senhora" data-estado-city-name="Livramento&#x20;de&#x20;Nossa&#x20;Senhora" href="&#x2f;estado&#x2f;ba&#x2f;livramento-de-nossa-senhora&#x2f;" aria-disabled="false"><span>Livramento de Nossa Senhora</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="luis-eduardo-magalhaes" data-estado-city-name="Luis&#x20;Eduardo&#x20;Magalh&atilde;es" aria-disabled="true" tabindex="-1"><span>Luis Eduardo Magalh&atilde;es</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="macajuba" data-estado-city-name="Macajuba" aria-disabled="true" tabindex="-1"><span>Macajuba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="macarani" data-estado-city-name="Macarani" aria-disabled="true" tabindex="-1"><span>Macarani</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="macurure" data-estado-city-name="Macurur&eacute;" aria-disabled="true" tabindex="-1"><span>Macurur&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="madre-de-deus" data-estado-city-name="Madre&#x20;de&#x20;Deus" href="&#x2f;estado&#x2f;ba&#x2f;madre-de-deus&#x2f;" aria-disabled="false"><span>Madre de Deus</span><span data-city-count>3 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="maiquinique" data-estado-city-name="Maiquinique" aria-disabled="true" tabindex="-1"><span>Maiquinique</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mairi" data-estado-city-name="Mairi" aria-disabled="true" tabindex="-1"><span>Mairi</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="manoel-vitorino" data-estado-city-name="Manoel&#x20;Vitorino" aria-disabled="true" tabindex="-1"><span>Manoel Vitorino</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="maracas" data-estado-city-name="Marac&aacute;s" href="&#x2f;estado&#x2f;ba&#x2f;maracas&#x2f;" aria-disabled="false"><span>Marac&aacute;s</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="maragogipe" data-estado-city-name="Maragogipe" aria-disabled="true" tabindex="-1"><span>Maragogipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="marau" data-estado-city-name="Mara&uacute;" href="&#x2f;estado&#x2f;ba&#x2f;marau&#x2f;" aria-disabled="false"><span>Mara&uacute;</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="marcionilio-souza" data-estado-city-name="Marcion&iacute;lio&#x20;Souza" aria-disabled="true" tabindex="-1"><span>Marcion&iacute;lio Souza</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mascote" data-estado-city-name="Mascote" href="&#x2f;estado&#x2f;ba&#x2f;mascote&#x2f;" aria-disabled="false"><span>Mascote</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mata-de-sao-joao" data-estado-city-name="Mata&#x20;de&#x20;S&atilde;o&#x20;Jo&atilde;o" href="&#x2f;estado&#x2f;ba&#x2f;mata-de-sao-joao&#x2f;" aria-disabled="false"><span>Mata de S&atilde;o Jo&atilde;o</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="miguel-calmon" data-estado-city-name="Miguel&#x20;Calmon" aria-disabled="true" tabindex="-1"><span>Miguel Calmon</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="monte-santo" data-estado-city-name="Monte&#x20;Santo" aria-disabled="true" tabindex="-1"><span>Monte Santo</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="morro-do-chapeu" data-estado-city-name="Morro&#x20;do&#x20;Chap&eacute;u" aria-disabled="true" tabindex="-1"><span>Morro do Chap&eacute;u</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mortugaba" data-estado-city-name="Mortugaba" href="&#x2f;estado&#x2f;ba&#x2f;mortugaba&#x2f;" aria-disabled="false"><span>Mortugaba</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mucuge" data-estado-city-name="Mucug&ecirc;" href="&#x2f;estado&#x2f;ba&#x2f;mucuge&#x2f;" aria-disabled="false"><span>Mucug&ecirc;</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mucuri" data-estado-city-name="Mucuri" aria-disabled="true" tabindex="-1"><span>Mucuri</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mundo-novo" data-estado-city-name="Mundo&#x20;Novo" aria-disabled="true" tabindex="-1"><span>Mundo Novo</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="muniz-ferreira" data-estado-city-name="Muniz&#x20;Ferreira" href="&#x2f;estado&#x2f;ba&#x2f;muniz-ferreira&#x2f;" aria-disabled="false"><span>Muniz Ferreira</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="muquem-do-sao-francisco" data-estado-city-name="Muqu&eacute;m&#x20;do&#x20;S&atilde;o&#x20;Francisco" aria-disabled="true" tabindex="-1"><span>Muqu&eacute;m do S&atilde;o Francisco</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="muritiba" data-estado-city-name="Muritiba" aria-disabled="true" tabindex="-1"><span>Muritiba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="mutuipe" data-estado-city-name="Mutuipe" aria-disabled="true" tabindex="-1"><span>Mutuipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="nilo-pecanha" data-estado-city-name="Nilo&#x20;Pe&ccedil;anha" href="&#x2f;estado&#x2f;ba&#x2f;nilo-pecanha&#x2f;" aria-disabled="false"><span>Nilo Pe&ccedil;anha</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="nordestina" data-estado-city-name="Nordestina" aria-disabled="true" tabindex="-1"><span>Nordestina</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="nova-vicosa" data-estado-city-name="Nova&#x20;Vi&ccedil;osa" aria-disabled="true" tabindex="-1"><span>Nova Vi&ccedil;osa</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="olindina" data-estado-city-name="Olindina" aria-disabled="true" tabindex="-1"><span>Olindina</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="oliveira-dos-brejinhos" data-estado-city-name="Oliveira&#x20;dos&#x20;Brejinhos" aria-disabled="true" tabindex="-1"><span>Oliveira dos Brejinhos</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ourolandia" data-estado-city-name="Ourol&acirc;ndia" aria-disabled="true" tabindex="-1"><span>Ourol&acirc;ndia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="palmeiras" data-estado-city-name="Palmeiras" href="&#x2f;estado&#x2f;ba&#x2f;palmeiras&#x2f;" aria-disabled="false"><span>Palmeiras</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="paramirim" data-estado-city-name="Paramirim" aria-disabled="true" tabindex="-1"><span>Paramirim</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="paratinga" data-estado-city-name="Paratinga" aria-disabled="true" tabindex="-1"><span>Paratinga</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="paripiranga" data-estado-city-name="Paripiranga" aria-disabled="true" tabindex="-1"><span>Paripiranga</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="paulo-afonso" data-estado-city-name="Paulo&#x20;Afonso" href="&#x2f;estado&#x2f;ba&#x2f;paulo-afonso&#x2f;" aria-disabled="false"><span>Paulo Afonso</span><span data-city-count>6 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pe-de-serra" data-estado-city-name="P&eacute;&#x20;de&#x20;Serra" aria-disabled="true" tabindex="-1"><span>P&eacute; de Serra</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="piata" data-estado-city-name="Piat&atilde;" href="&#x2f;estado&#x2f;ba&#x2f;piata&#x2f;" aria-disabled="false"><span>Piat&atilde;</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pindai" data-estado-city-name="Pinda&iacute;" aria-disabled="true" tabindex="-1"><span>Pinda&iacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pindobacu" data-estado-city-name="Pindoba&ccedil;u" aria-disabled="true" tabindex="-1"><span>Pindoba&ccedil;u</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pintadas" data-estado-city-name="Pintadas" aria-disabled="true" tabindex="-1"><span>Pintadas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="piritiba" data-estado-city-name="Piritiba" aria-disabled="true" tabindex="-1"><span>Piritiba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pocoes" data-estado-city-name="Po&ccedil;&otilde;es" href="&#x2f;estado&#x2f;ba&#x2f;pocoes&#x2f;" aria-disabled="false"><span>Po&ccedil;&otilde;es</span><span data-city-count>3 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="pojuca" data-estado-city-name="Pojuca" aria-disabled="true" tabindex="-1"><span>Pojuca</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ponto-novo" data-estado-city-name="Ponto&#x20;Novo" aria-disabled="true" tabindex="-1"><span>Ponto Novo</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="porto-seguro" data-estado-city-name="Porto&#x20;Seguro" href="&#x2f;estado&#x2f;ba&#x2f;porto-seguro&#x2f;" aria-disabled="false"><span>Porto Seguro</span><span data-city-count>7 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="prado" data-estado-city-name="Prado" aria-disabled="true" tabindex="-1"><span>Prado</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="presidente-dutra" data-estado-city-name="Presidente&#x20;Dutra" aria-disabled="true" tabindex="-1"><span>Presidente Dutra</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="presidente-tancredo-neves" data-estado-city-name="Presidente&#x20;Tancredo&#x20;Neves" aria-disabled="true" tabindex="-1"><span>Presidente Tancredo Neves</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="queimadas" data-estado-city-name="Queimadas" aria-disabled="true" tabindex="-1"><span>Queimadas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="quixabeira" data-estado-city-name="Quixabeira" aria-disabled="true" tabindex="-1"><span>Quixabeira</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="rafael-jambeiro" data-estado-city-name="Rafael&#x20;Jambeiro" aria-disabled="true" tabindex="-1"><span>Rafael Jambeiro</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="riachao-das-neves" data-estado-city-name="Riach&atilde;o&#x20;das&#x20;Neves" aria-disabled="true" tabindex="-1"><span>Riach&atilde;o das Neves</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="riachao-do-jacuipe" data-estado-city-name="Riach&atilde;o&#x20;do&#x20;Jacu&iacute;pe" aria-disabled="true" tabindex="-1"><span>Riach&atilde;o do Jacu&iacute;pe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ribeira-do-pombal" data-estado-city-name="Ribeira&#x20;do&#x20;Pombal" aria-disabled="true" tabindex="-1"><span>Ribeira do Pombal</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="rio-de-contas" data-estado-city-name="Rio&#x20;de&#x20;Contas" aria-disabled="true" tabindex="-1"><span>Rio de Contas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="rio-real" data-estado-city-name="Rio&#x20;Real" aria-disabled="true" tabindex="-1"><span>Rio Real</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="rodelas" data-estado-city-name="Rodelas" aria-disabled="true" tabindex="-1"><span>Rodelas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="salinas-da-margarida" data-estado-city-name="Salinas&#x20;da&#x20;Margarida" aria-disabled="true" tabindex="-1"><span>Salinas da Margarida</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="salvador" data-estado-city-name="Salvador" href="&#x2f;estado&#x2f;ba&#x2f;salvador&#x2f;" aria-disabled="false"><span>Salvador</span><span data-city-count>36 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-barbara" data-estado-city-name="Santa&#x20;Barbara" href="&#x2f;estado&#x2f;ba&#x2f;santa-barbara&#x2f;" aria-disabled="false"><span>Santa Barbara</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-cruz-cabralia" data-estado-city-name="Santa&#x20;Cruz&#x20;Cabralia" href="&#x2f;estado&#x2f;ba&#x2f;santa-cruz-cabralia&#x2f;" aria-disabled="false"><span>Santa Cruz Cabralia</span><span data-city-count>3 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-cruz-da-vitoria" data-estado-city-name="Santa&#x20;Cruz&#x20;da&#x20;Vit&oacute;ria" aria-disabled="true" tabindex="-1"><span>Santa Cruz da Vit&oacute;ria</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santaluz" data-estado-city-name="Santaluz" aria-disabled="true" tabindex="-1"><span>Santaluz</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-maria-da-vitoria" data-estado-city-name="Santa&#x20;Maria&#x20;da&#x20;Vit&oacute;ria" aria-disabled="true" tabindex="-1"><span>Santa Maria da Vit&oacute;ria</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santana" data-estado-city-name="Santana" aria-disabled="true" tabindex="-1"><span>Santana</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santanopolis" data-estado-city-name="Santanopolis" aria-disabled="true" tabindex="-1"><span>Santanopolis</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-rita-de-cassia" data-estado-city-name="Santa&#x20;Rita&#x20;de&#x20;C&aacute;ssia" aria-disabled="true" tabindex="-1"><span>Santa Rita de C&aacute;ssia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santa-terezinha" data-estado-city-name="Santa&#x20;Terezinha" href="&#x2f;estado&#x2f;ba&#x2f;santa-terezinha&#x2f;" aria-disabled="false"><span>Santa Terezinha</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santo-amaro" data-estado-city-name="Santo&#x20;Amaro" aria-disabled="true" tabindex="-1"><span>Santo Amaro</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santo-antonio-de-jesus" data-estado-city-name="Santo&#x20;Antonio&#x20;de&#x20;Jesus" href="&#x2f;estado&#x2f;ba&#x2f;santo-antonio-de-jesus&#x2f;" aria-disabled="false"><span>Santo Antonio de Jesus</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="santo-estevao" data-estado-city-name="Santo&#x20;Estev&atilde;o" aria-disabled="true" tabindex="-1"><span>Santo Estev&atilde;o</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-desiderio" data-estado-city-name="S&atilde;o&#x20;Desid&eacute;rio" aria-disabled="true" tabindex="-1"><span>S&atilde;o Desid&eacute;rio</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-felipe" data-estado-city-name="S&atilde;o&#x20;Felipe" aria-disabled="true" tabindex="-1"><span>S&atilde;o Felipe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-felix" data-estado-city-name="Sao&#x20;Felix" aria-disabled="true" tabindex="-1"><span>Sao Felix</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-goncalo-dos-campos" data-estado-city-name="S&atilde;o&#x20;Gon&ccedil;alo&#x20;dos&#x20;Campos" href="&#x2f;estado&#x2f;ba&#x2f;sao-goncalo-dos-campos&#x2f;" aria-disabled="false"><span>S&atilde;o Gon&ccedil;alo dos Campos</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-jose-do-jacuipe" data-estado-city-name="S&atilde;o&#x20;Jos&eacute;&#x20;do&#x20;Jacu&iacute;pe" aria-disabled="true" tabindex="-1"><span>S&atilde;o Jos&eacute; do Jacu&iacute;pe</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-miguel-das-matas" data-estado-city-name="Sao&#x20;Miguel&#x20;das&#x20;Matas" aria-disabled="true" tabindex="-1"><span>Sao Miguel das Matas</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sao-sebastiao-do-passe" data-estado-city-name="S&atilde;o&#x20;Sebasti&atilde;o&#x20;do&#x20;Pass&eacute;" href="&#x2f;estado&#x2f;ba&#x2f;sao-sebastiao-do-passe&#x2f;" aria-disabled="false"><span>S&atilde;o Sebasti&atilde;o do Pass&eacute;</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="satiro-dias" data-estado-city-name="S&aacute;tiro&#x20;Dias" aria-disabled="true" tabindex="-1"><span>S&aacute;tiro Dias</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="saubara" data-estado-city-name="Saubara" href="&#x2f;estado&#x2f;ba&#x2f;saubara&#x2f;" aria-disabled="false"><span>Saubara</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="seabra" data-estado-city-name="Seabra" aria-disabled="true" tabindex="-1"><span>Seabra</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="senhor-do-bonfim" data-estado-city-name="Senhor&#x20;do&#x20;Bonfim" href="&#x2f;estado&#x2f;ba&#x2f;senhor-do-bonfim&#x2f;" aria-disabled="false"><span>Senhor do Bonfim</span><span data-city-count>3 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sento-se" data-estado-city-name="Sento&#x20;S&eacute;" aria-disabled="true" tabindex="-1"><span>Sento S&eacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="serra-dourada" data-estado-city-name="Serra&#x20;Dourada" aria-disabled="true" tabindex="-1"><span>Serra Dourada</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="serra-preta" data-estado-city-name="Serra&#x20;Preta" aria-disabled="true" tabindex="-1"><span>Serra Preta</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="serrinha" data-estado-city-name="Serrinha" href="&#x2f;estado&#x2f;ba&#x2f;serrinha&#x2f;" aria-disabled="false"><span>Serrinha</span><span data-city-count>4 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="serrolandia" data-estado-city-name="Serrolandia" aria-disabled="true" tabindex="-1"><span>Serrolandia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="simoes-filho" data-estado-city-name="Sim&otilde;es&#x20;Filho" aria-disabled="true" tabindex="-1"><span>Sim&otilde;es Filho</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sitio-do-mato" data-estado-city-name="S&iacute;tio&#x20;do&#x20;Mato" href="&#x2f;estado&#x2f;ba&#x2f;sitio-do-mato&#x2f;" aria-disabled="false"><span>S&iacute;tio do Mato</span><span data-city-count>1 prova</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="sobradinho" data-estado-city-name="Sobradinho" aria-disabled="true" tabindex="-1"><span>Sobradinho</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="tabocas-do-brejo-velho" data-estado-city-name="Tabocas&#x20;do&#x20;Brejo&#x20;Velho" aria-disabled="true" tabindex="-1"><span>Tabocas do Brejo Velho</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="tanquinho" data-estado-city-name="Tanquinho" aria-disabled="true" tabindex="-1"><span>Tanquinho</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="teixeira-de-freitas" data-estado-city-name="Teixeira&#x20;de&#x20;Freitas" href="&#x2f;estado&#x2f;ba&#x2f;teixeira-de-freitas&#x2f;" aria-disabled="false"><span>Teixeira de Freitas</span><span data-city-count>2 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="teofilandia" data-estado-city-name="Teofil&acirc;ndia" aria-disabled="true" tabindex="-1"><span>Teofil&acirc;ndia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="teolandia" data-estado-city-name="Teolandia" aria-disabled="true" tabindex="-1"><span>Teolandia</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="tremedal" data-estado-city-name="Tremedal" aria-disabled="true" tabindex="-1"><span>Tremedal</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="tucano" data-estado-city-name="Tucano" aria-disabled="true" tabindex="-1"><span>Tucano</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="uaua" data-estado-city-name="Uau&aacute;" aria-disabled="true" tabindex="-1"><span>Uau&aacute;</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="ubaitaba" data-estado-city-name="Ubaitaba" aria-disabled="true" tabindex="-1"><span>Ubaitaba</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="urandi" data-estado-city-name="Urandi" aria-disabled="true" tabindex="-1"><span>Urandi</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="valenca" data-estado-city-name="Valenca" aria-disabled="true" tabindex="-1"><span>Valenca</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="valente" data-estado-city-name="Valente" aria-disabled="true" tabindex="-1"><span>Valente</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="varzea-da-roca" data-estado-city-name="V&aacute;rzea&#x20;da&#x20;Ro&ccedil;a" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea da Ro&ccedil;a</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="varzea-do-poco" data-estado-city-name="V&aacute;rzea&#x20;do&#x20;Po&ccedil;o" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea do Po&ccedil;o</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="varzea-nova" data-estado-city-name="V&aacute;rzea&#x20;Nova" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea Nova</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="vera-cruz" data-estado-city-name="Vera&#x20;Cruz" aria-disabled="true" tabindex="-1"><span>Vera Cruz</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="vitoria-da-conquista" data-estado-city-name="Vitoria&#x20;da&#x20;Conquista" href="&#x2f;estado&#x2f;ba&#x2f;vitoria-da-conquista&#x2f;" aria-disabled="false"><span>Vitoria da Conquista</span><span data-city-count>26 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="wanderley" data-estado-city-name="Wanderley" aria-disabled="true" tabindex="-1"><span>Wanderley</span><span data-city-count>0 provas</span></a>
+                            
+                                <a class="estado-city-picker-item" data-estado-city-slug="xique-xique" data-estado-city-name="Xique-Xique" aria-disabled="true" tabindex="-1"><span>Xique-Xique</span><span data-city-count>0 provas</span></a>
+                            
+                        </div>
+                        <p class="estado-city-picker-status" data-estado-city-status role="status" aria-live="polite"></p>
+                    </div>
+                </details>
+                </div>
+            </div>
+                           <div class="home-side-block p-3 estado-city-list-card" hidden>
+                       <div class="home-side-title mb-2"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Cidades na Bahia</div>
+                       <div data-estado-city-sidebar>
+                       
+                       </div>
+                   </div>
+
+<button id="test-period">Verificar contagens: próximos 30 dias</button><p id="test-period-result"></p></div><script>(function (window) {
+    'use strict';
+    var validStates = 'AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO'.split(' ');
+    var filterKeys = ['distancia', 'tempo', 'rua', 'trail', 'nacional', 'internacional', 'cupom', 'badges'];
+    var defaults = {distancia:'1,42', tempo:'0,12', rua:'true', trail:'true', nacional:'true', internacional:'false', cupom:'false', badges:''};
+
+    function normalizeFilter(key, value) {
+        if (value === null || value === undefined || value === '') value = defaults[key];
+        value = String(value).trim();
+        if (['rua','trail','nacional','internacional','cupom'].indexOf(key) >= 0) {
+            return /^(true|yes|1)$/i.test(value) ? 'true' : 'false';
+        }
+        if (key === 'distancia' || key === 'tempo') {
+            var parts = value.split(',').filter(function(part) { return part.trim() !== ''; });
+            return Number(parts[0]) + ',' + Number(parts[parts.length - 1]);
+        }
+        return value;
+    }
+
+    function acceptsFilters(href, filters) {
+        if (!filters) return false;
+        var source = new URL(href);
+        return filterKeys.every(function(key) { return normalizeFilter(key, source.searchParams.get(key)) === normalizeFilter(key, filters[key]); });
+    }
+
+    function buildUrl(href, uf, slug) {
+        uf = String(uf || '').toUpperCase();
+        slug = String(slug || '');
+        if (validStates.indexOf(uf) < 0 || (slug && !/^[a-z0-9-]+$/.test(slug))) return '';
+        var source = new URL(href);
+        var target = new URL('/estado/' + uf.toLowerCase() + '/' + (slug ? slug + '/' : ''), source.origin);
+        filterKeys.forEach(function (key) {
+            var value = source.searchParams.get(key);
+            if (value !== null && value !== '') target.searchParams.set(key, value);
+        });
+        return target.pathname + target.search;
+    }
+
+    function normalize(value) {
+        return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, ' ');
+    }
+
+    function matches(name, term) { return normalize(name).indexOf(normalize(term)) >= 0; }
+
+    function init(document, uf, selected) {
+        var picker = document.querySelector('[data-estado-city-picker]');
+        if (!picker) return;
+        var input = picker.querySelector('input');
+        var summary = picker.querySelector('summary');
+        var items = picker.querySelectorAll('[data-estado-city-slug]');
+        var status = picker.querySelector('[data-estado-city-status]');
+        var sidebar = document.querySelector('[data-estado-city-sidebar]');
+
+        function search() {
+            var visible = 0;
+            items.forEach(function (item) {
+                var found = matches(item.dataset.estadoCityName, input.value);
+                item.hidden = !found;
+                if (found) visible++;
+            });
+            status.textContent = visible ? '' : 'Nenhuma cidade encontrada.';
+        }
+
+        function syncLinks() {
+            document.querySelectorAll('[data-estado-city-slug]').forEach(function (item) {
+                if (item.getAttribute('aria-disabled') !== 'true') item.href = buildUrl(window.location.href, uf, item.dataset.estadoCitySlug);
+            });
+        }
+
+        picker.addEventListener('toggle', function () {
+            if (picker.open) { syncLinks(); input.focus(); }
+            else { input.value = ''; search(); }
+        });
+        input.addEventListener('input', search);
+        picker.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') { picker.open = false; summary.focus(); }
+        });
+        document.addEventListener('click', function (event) {
+            if (!picker.contains(event.target)) picker.open = false;
+            var link = event.target.closest('[data-estado-city-slug]');
+            if (link && link.getAttribute('aria-disabled') !== 'true') link.href = buildUrl(window.location.href, uf, link.dataset.estadoCitySlug);
+        });
+        var stateSelect = document.querySelector('[data-estado-state-select]');
+        if (stateSelect) stateSelect.addEventListener('change', function () {
+            var target = buildUrl(window.location.href, stateSelect.value, '');
+            if (target) window.location.assign(target);
+        });
+
+        window.RunnerHubEstadoCities.update = function (data) {
+            if (!data || String(data.uf).toLowerCase() !== String(uf).toLowerCase() || !Array.isArray(data.cities) || !acceptsFilters(window.location.href, data.filters)) return;
+            var counts = {};
+            data.cities.forEach(function (city) { counts[city.slug] = city; });
+            items.forEach(function (item) {
+                var slug = item.dataset.estadoCitySlug;
+                var total = slug ? (counts[slug] ? counts[slug].total : 0) : data.total;
+                var enabled = total > 0 || slug === '' || slug === selected;
+                item.querySelector('[data-city-count]').textContent = total + (total === 1 ? ' prova' : ' provas');
+                item.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+                if (enabled) { item.href = buildUrl(window.location.href, uf, slug); item.removeAttribute('tabindex'); }
+                else { item.removeAttribute('href'); item.setAttribute('tabindex', '-1'); }
+            });
+            if (sidebar) {
+                sidebar.textContent = '';
+                data.cities.filter(function (city) { return city.total > 0; }).sort(function (a,b) { return b.total - a.total || a.name.localeCompare(b.name, 'pt-BR'); }).slice(0,10).forEach(function (city) {
+                    var link = document.createElement('a');
+                    link.className = 'estado-city-list-item';
+                    link.dataset.estadoCitySlug = city.slug;
+                    link.href = buildUrl(window.location.href, uf, city.slug);
+                    var name = document.createElement('span'); name.className = 'estado-city-list-name'; name.textContent = city.name;
+                    var count = document.createElement('span'); count.className = 'estado-city-list-count'; count.textContent = city.total + (city.total === 1 ? ' prova' : ' provas');
+                    link.append(name,count); sidebar.appendChild(link);
+                });
+                sidebar.parentElement.hidden = !sidebar.children.length;
+            }
+            search();
+        };
+        syncLinks();
+    }
+    window.RunnerHubEstadoCities = {buildUrl:buildUrl, matches:matches, acceptsFilters:acceptsFilters, init:init};
+})(window);
+</script><script>window.RunnerHubEstadoCities.init(document,"BA","");const nextCounts={"total": 65.0, "uf": "ba", "filters": {"distancia": "1,42", "internacional": false, "trail": true, "badges": "", "cupom": false, "tempo": "0,1", "nacional": true, "rua": true}, "cities": [{"total": 0, "slug": "abaira", "name": "Abaíra"}, {"total": 0, "slug": "abare", "name": "Abaré"}, {"total": 0, "slug": "adustina", "name": "Adustina"}, {"total": 1, "slug": "alagoinhas", "name": "Alagoinhas"}, {"total": 0, "slug": "almadina", "name": "Almadina"}, {"total": 0, "slug": "amargosa", "name": "Amargosa"}, {"total": 0, "slug": "amelia-rodrigues", "name": "Amélia Rodrigues"}, {"total": 0, "slug": "andarai", "name": "Andaraí"}, {"total": 0, "slug": "andorinha", "name": "Andorinha"}, {"total": 0, "slug": "antonio-goncalves", "name": "Antônio Gonçalves"}, {"total": 0, "slug": "apora", "name": "Aporá"}, {"total": 0, "slug": "arataca", "name": "Arataca"}, {"total": 0, "slug": "aurelino-leal", "name": "Aurelino Leal"}, {"total": 0, "slug": "baianopolis", "name": "Baianopolis"}, {"total": 0, "slug": "barra", "name": "Barra"}, {"total": 0, "slug": "barra-da-estiva", "name": "Barra da Estiva"}, {"total": 0, "slug": "barra-do-choca", "name": "Barra do Choça"}, {"total": 0, "slug": "barreiras", "name": "Barreiras"}, {"total": 0, "slug": "belmonte", "name": "Belmonte"}, {"total": 0, "slug": "belo-campo", "name": "Belo Campo"}, {"total": 0, "slug": "bom-jesus-da-lapa", "name": "Bom Jesus da Lapa"}, {"total": 0, "slug": "bonito", "name": "Bonito"}, {"total": 0, "slug": "brejoes", "name": "Brejões"}, {"total": 0, "slug": "brotas-de-macaubas", "name": "Brotas de Macaúbas"}, {"total": 1, "slug": "brumado", "name": "Brumado"}, {"total": 0, "slug": "buerarema", "name": "Buerarema"}, {"total": 0, "slug": "cachoeira", "name": "Cachoeira"}, {"total": 0, "slug": "cacule", "name": "Cacule"}, {"total": 0, "slug": "caem", "name": "Caém"}, {"total": 0, "slug": "caetite", "name": "Caetité"}, {"total": 1, "slug": "cairu", "name": "Cairu"}, {"total": 0, "slug": "caldeirao-grande", "name": "Caldeirão Grande"}, {"total": 0, "slug": "camacan", "name": "Camacan"}, {"total": 2, "slug": "camacari", "name": "Camacari"}, {"total": 0, "slug": "campo-alegre-de-lourdes", "name": "Campo Alegre de Lourdes"}, {"total": 0, "slug": "campo-formoso", "name": "Campo Formoso"}, {"total": 0, "slug": "canarana", "name": "Canarana"}, {"total": 0, "slug": "canavieiras", "name": "Canavieiras"}, {"total": 0, "slug": "candeal", "name": "Candeal"}, {"total": 0, "slug": "candiba", "name": "Candiba"}, {"total": 0, "slug": "candido-sales", "name": "Cândido Sales"}, {"total": 1, "slug": "capim-grosso", "name": "Capim Grosso"}, {"total": 0, "slug": "caraibas", "name": "Caraíbas"}, {"total": 0, "slug": "cardeal-da-silva", "name": "Cardeal da Silva"}, {"total": 0, "slug": "carinhanha", "name": "Carinhanha"}, {"total": 1, "slug": "casa-nova", "name": "Casa Nova"}, {"total": 0, "slug": "castro-alves", "name": "Castro Alves"}, {"total": 0, "slug": "catu", "name": "Catu"}, {"total": 0, "slug": "central", "name": "Central"}, {"total": 0, "slug": "cicero-dantas", "name": "Cícero Dantas"}, {"total": 0, "slug": "coaraci", "name": "Coaraci"}, {"total": 0, "slug": "conceicao-da-feira", "name": "Conceição da Feira"}, {"total": 1, "slug": "conceicao-do-coite", "name": "Conceição do Coité"}, {"total": 0, "slug": "conceicao-do-jacuipe", "name": "Conceição do Jacuipe"}, {"total": 0, "slug": "conde", "name": "Conde"}, {"total": 0, "slug": "condeuba", "name": "Condeuba"}, {"total": 0, "slug": "coracao-de-maria", "name": "Coração de Maria"}, {"total": 0, "slug": "coronel-joao-sa", "name": "Coronel João Sá"}, {"total": 0, "slug": "correntina", "name": "Correntina"}, {"total": 0, "slug": "cotegipe", "name": "Cotegipe"}, {"total": 0, "slug": "cristopolis", "name": "Cristopólis"}, {"total": 1, "slug": "cruz-das-almas", "name": "Cruz das Almas"}, {"total": 0, "slug": "curaca", "name": "Curaça"}, {"total": 2, "slug": "dias-d-avila", "name": "Dias D'Ávila"}, {"total": 0, "slug": "encruzilhada", "name": "Encruzilhada"}, {"total": 0, "slug": "entre-rios", "name": "Entre Rios"}, {"total": 0, "slug": "esplanada", "name": "Esplanada"}, {"total": 0, "slug": "eunapolis", "name": "Eunapolis"}, {"total": 3, "slug": "feira-de-santana", "name": "Feira de Santana"}, {"total": 0, "slug": "filadelfia", "name": "Filadélfia"}, {"total": 0, "slug": "formosa-do-rio-preto", "name": "Formosa do Rio Preto"}, {"total": 0, "slug": "gaviao", "name": "Gavião"}, {"total": 0, "slug": "guanambi", "name": "Guanambi"}, {"total": 0, "slug": "ibicarai", "name": "Ibicarai"}, {"total": 0, "slug": "ibicoara", "name": "Ibicoara"}, {"total": 0, "slug": "ibicui", "name": "Ibicuí"}, {"total": 0, "slug": "ibirapitanga", "name": "Ibirapitanga"}, {"total": 0, "slug": "ibirapua", "name": "Ibirapuã"}, {"total": 0, "slug": "ibirataia", "name": "Ibirataia"}, {"total": 0, "slug": "ibitita", "name": "Ibitita"}, {"total": 0, "slug": "ibotirama", "name": "Ibotirama"}, {"total": 0, "slug": "igrapiuna", "name": "Igrapiúna"}, {"total": 5, "slug": "ilheus", "name": "Ilheus"}, {"total": 0, "slug": "inhambupe", "name": "Inhambupe"}, {"total": 0, "slug": "ipecaeta", "name": "Ipecaetá"}, {"total": 0, "slug": "ipiau", "name": "Ipiau"}, {"total": 0, "slug": "ipira", "name": "Ipirá"}, {"total": 0, "slug": "iramaia", "name": "Iramaia"}, {"total": 0, "slug": "iraquara", "name": "Iraquara"}, {"total": 0, "slug": "irara", "name": "Irará"}, {"total": 0, "slug": "irece", "name": "Irecê"}, {"total": 0, "slug": "itaberaba", "name": "Itaberaba"}, {"total": 1, "slug": "itabuna", "name": "Itabuna"}, {"total": 0, "slug": "itacare", "name": "Itacaré"}, {"total": 0, "slug": "itajuipe", "name": "Itajuipe"}, {"total": 0, "slug": "itamaraju", "name": "Itamaraju"}, {"total": 0, "slug": "itambe", "name": "Itambé"}, {"total": 0, "slug": "itaparica", "name": "Itaparica"}, {"total": 0, "slug": "itape", "name": "Itapé"}, {"total": 0, "slug": "itapetinga", "name": "Itapetinga"}, {"total": 0, "slug": "itaquara", "name": "Itaquara"}, {"total": 0, "slug": "itatim", "name": "Itatim"}, {"total": 0, "slug": "itiuba", "name": "Itiúba"}, {"total": 0, "slug": "ituacu", "name": "Ituaçu"}, {"total": 0, "slug": "itubera", "name": "Ituberá"}, {"total": 0, "slug": "iuiu", "name": "Iuiú"}, {"total": 0, "slug": "jacobina", "name": "Jacobina"}, {"total": 0, "slug": "jaguaquara", "name": "Jaguaquara"}, {"total": 0, "slug": "jaguarari", "name": "Jaguarari"}, {"total": 1, "slug": "jequie", "name": "Jequie"}, {"total": 0, "slug": "jeremoabo", "name": "Jeremoabo"}, {"total": 0, "slug": "juazeiro", "name": "Juazeiro"}, {"total": 0, "slug": "jussara", "name": "Jussara"}, {"total": 0, "slug": "jussari", "name": "Jussari"}, {"total": 0, "slug": "lafaiete-coutinho", "name": "Lafaiete Coutinho"}, {"total": 0, "slug": "lapao", "name": "Lapão"}, {"total": 0, "slug": "lauro-de-freitas", "name": "Lauro de Freitas"}, {"total": 0, "slug": "lencois", "name": "Lençóis"}, {"total": 0, "slug": "licinio-de-almeida", "name": "Licínio de Almeida"}, {"total": 0, "slug": "livramento-de-nossa-senhora", "name": "Livramento de Nossa Senhora"}, {"total": 0, "slug": "luis-eduardo-magalhaes", "name": "Luis Eduardo Magalhães"}, {"total": 0, "slug": "macajuba", "name": "Macajuba"}, {"total": 0, "slug": "macarani", "name": "Macarani"}, {"total": 0, "slug": "macurure", "name": "Macururé"}, {"total": 1, "slug": "madre-de-deus", "name": "Madre de Deus"}, {"total": 0, "slug": "maiquinique", "name": "Maiquinique"}, {"total": 0, "slug": "mairi", "name": "Mairi"}, {"total": 0, "slug": "manoel-vitorino", "name": "Manoel Vitorino"}, {"total": 1, "slug": "maracas", "name": "Maracás"}, {"total": 0, "slug": "maragogipe", "name": "Maragogipe"}, {"total": 2, "slug": "marau", "name": "Maraú"}, {"total": 0, "slug": "marcionilio-souza", "name": "Marcionílio Souza"}, {"total": 1, "slug": "mascote", "name": "Mascote"}, {"total": 0, "slug": "mata-de-sao-joao", "name": "Mata de São João"}, {"total": 0, "slug": "miguel-calmon", "name": "Miguel Calmon"}, {"total": 0, "slug": "monte-santo", "name": "Monte Santo"}, {"total": 0, "slug": "morro-do-chapeu", "name": "Morro do Chapéu"}, {"total": 0, "slug": "mortugaba", "name": "Mortugaba"}, {"total": 0, "slug": "mucuge", "name": "Mucugê"}, {"total": 0, "slug": "mucuri", "name": "Mucuri"}, {"total": 0, "slug": "mundo-novo", "name": "Mundo Novo"}, {"total": 1, "slug": "muniz-ferreira", "name": "Muniz Ferreira"}, {"total": 0, "slug": "muquem-do-sao-francisco", "name": "Muquém do São Francisco"}, {"total": 0, "slug": "muritiba", "name": "Muritiba"}, {"total": 0, "slug": "mutuipe", "name": "Mutuipe"}, {"total": 0, "slug": "nilo-pecanha", "name": "Nilo Peçanha"}, {"total": 0, "slug": "nordestina", "name": "Nordestina"}, {"total": 0, "slug": "nova-vicosa", "name": "Nova Viçosa"}, {"total": 0, "slug": "olindina", "name": "Olindina"}, {"total": 0, "slug": "oliveira-dos-brejinhos", "name": "Oliveira dos Brejinhos"}, {"total": 0, "slug": "ourolandia", "name": "Ourolândia"}, {"total": 1, "slug": "palmeiras", "name": "Palmeiras"}, {"total": 0, "slug": "paramirim", "name": "Paramirim"}, {"total": 0, "slug": "paratinga", "name": "Paratinga"}, {"total": 0, "slug": "paripiranga", "name": "Paripiranga"}, {"total": 3, "slug": "paulo-afonso", "name": "Paulo Afonso"}, {"total": 0, "slug": "pe-de-serra", "name": "Pé de Serra"}, {"total": 1, "slug": "piata", "name": "Piatã"}, {"total": 0, "slug": "pindai", "name": "Pindaí"}, {"total": 0, "slug": "pindobacu", "name": "Pindobaçu"}, {"total": 0, "slug": "pintadas", "name": "Pintadas"}, {"total": 0, "slug": "piritiba", "name": "Piritiba"}, {"total": 1, "slug": "pocoes", "name": "Poções"}, {"total": 0, "slug": "pojuca", "name": "Pojuca"}, {"total": 0, "slug": "ponto-novo", "name": "Ponto Novo"}, {"total": 4, "slug": "porto-seguro", "name": "Porto Seguro"}, {"total": 0, "slug": "prado", "name": "Prado"}, {"total": 0, "slug": "presidente-dutra", "name": "Presidente Dutra"}, {"total": 0, "slug": "presidente-tancredo-neves", "name": "Presidente Tancredo Neves"}, {"total": 0, "slug": "queimadas", "name": "Queimadas"}, {"total": 0, "slug": "quixabeira", "name": "Quixabeira"}, {"total": 0, "slug": "rafael-jambeiro", "name": "Rafael Jambeiro"}, {"total": 0, "slug": "riachao-das-neves", "name": "Riachão das Neves"}, {"total": 0, "slug": "riachao-do-jacuipe", "name": "Riachão do Jacuípe"}, {"total": 0, "slug": "ribeira-do-pombal", "name": "Ribeira do Pombal"}, {"total": 0, "slug": "rio-de-contas", "name": "Rio de Contas"}, {"total": 0, "slug": "rio-real", "name": "Rio Real"}, {"total": 0, "slug": "rodelas", "name": "Rodelas"}, {"total": 0, "slug": "salinas-da-margarida", "name": "Salinas da Margarida"}, {"total": 14, "slug": "salvador", "name": "Salvador"}, {"total": 1, "slug": "santa-barbara", "name": "Santa Barbara"}, {"total": 0, "slug": "santa-cruz-cabralia", "name": "Santa Cruz Cabralia"}, {"total": 0, "slug": "santa-cruz-da-vitoria", "name": "Santa Cruz da Vitória"}, {"total": 0, "slug": "santaluz", "name": "Santaluz"}, {"total": 0, "slug": "santa-maria-da-vitoria", "name": "Santa Maria da Vitória"}, {"total": 0, "slug": "santana", "name": "Santana"}, {"total": 0, "slug": "santanopolis", "name": "Santanopolis"}, {"total": 0, "slug": "santa-rita-de-cassia", "name": "Santa Rita de Cássia"}, {"total": 0, "slug": "santa-terezinha", "name": "Santa Terezinha"}, {"total": 0, "slug": "santo-amaro", "name": "Santo Amaro"}, {"total": 0, "slug": "santo-antonio-de-jesus", "name": "Santo Antonio de Jesus"}, {"total": 0, "slug": "santo-estevao", "name": "Santo Estevão"}, {"total": 0, "slug": "sao-desiderio", "name": "São Desidério"}, {"total": 0, "slug": "sao-felipe", "name": "São Felipe"}, {"total": 0, "slug": "sao-felix", "name": "Sao Felix"}, {"total": 0, "slug": "sao-goncalo-dos-campos", "name": "São Gonçalo dos Campos"}, {"total": 0, "slug": "sao-jose-do-jacuipe", "name": "São José do Jacuípe"}, {"total": 0, "slug": "sao-miguel-das-matas", "name": "Sao Miguel das Matas"}, {"total": 1, "slug": "sao-sebastiao-do-passe", "name": "São Sebastião do Passé"}, {"total": 0, "slug": "satiro-dias", "name": "Sátiro Dias"}, {"total": 0, "slug": "saubara", "name": "Saubara"}, {"total": 0, "slug": "seabra", "name": "Seabra"}, {"total": 1, "slug": "senhor-do-bonfim", "name": "Senhor do Bonfim"}, {"total": 0, "slug": "sento-se", "name": "Sento Sé"}, {"total": 0, "slug": "serra-dourada", "name": "Serra Dourada"}, {"total": 0, "slug": "serra-preta", "name": "Serra Preta"}, {"total": 1, "slug": "serrinha", "name": "Serrinha"}, {"total": 0, "slug": "serrolandia", "name": "Serrolandia"}, {"total": 0, "slug": "simoes-filho", "name": "Simões Filho"}, {"total": 1, "slug": "sitio-do-mato", "name": "Sítio do Mato"}, {"total": 0, "slug": "sobradinho", "name": "Sobradinho"}, {"total": 0, "slug": "tabocas-do-brejo-velho", "name": "Tabocas do Brejo Velho"}, {"total": 0, "slug": "tanquinho", "name": "Tanquinho"}, {"total": 0, "slug": "teixeira-de-freitas", "name": "Teixeira de Freitas"}, {"total": 0, "slug": "teofilandia", "name": "Teofilândia"}, {"total": 0, "slug": "teolandia", "name": "Teolandia"}, {"total": 0, "slug": "tremedal", "name": "Tremedal"}, {"total": 0, "slug": "tucano", "name": "Tucano"}, {"total": 0, "slug": "uaua", "name": "Uauá"}, {"total": 0, "slug": "ubaitaba", "name": "Ubaitaba"}, {"total": 0, "slug": "urandi", "name": "Urandi"}, {"total": 0, "slug": "valenca", "name": "Valenca"}, {"total": 0, "slug": "valente", "name": "Valente"}, {"total": 0, "slug": "varzea-da-roca", "name": "Várzea da Roça"}, {"total": 0, "slug": "varzea-do-poco", "name": "Várzea do Poço"}, {"total": 0, "slug": "varzea-nova", "name": "Várzea Nova"}, {"total": 0, "slug": "vera-cruz", "name": "Vera Cruz"}, {"total": 9, "slug": "vitoria-da-conquista", "name": "Vitoria da Conquista"}, {"total": 0, "slug": "wanderley", "name": "Wanderley"}, {"total": 0, "slug": "xique-xique", "name": "Xique-Xique"}]};const oldCounts={"total": 184.0, "uf": "ba", "filters": {"distancia": "1,42", "internacional": false, "trail": true, "badges": "", "cupom": false, "tempo": "0,12", "nacional": true, "rua": true}, "cities": [{"total": 0, "slug": "abaira", "name": "Abaíra"}, {"total": 0, "slug": "abare", "name": "Abaré"}, {"total": 0, "slug": "adustina", "name": "Adustina"}, {"total": 1, "slug": "alagoinhas", "name": "Alagoinhas"}, {"total": 1, "slug": "almadina", "name": "Almadina"}, {"total": 0, "slug": "amargosa", "name": "Amargosa"}, {"total": 0, "slug": "amelia-rodrigues", "name": "Amélia Rodrigues"}, {"total": 0, "slug": "andarai", "name": "Andaraí"}, {"total": 0, "slug": "andorinha", "name": "Andorinha"}, {"total": 0, "slug": "antonio-goncalves", "name": "Antônio Gonçalves"}, {"total": 0, "slug": "apora", "name": "Aporá"}, {"total": 0, "slug": "arataca", "name": "Arataca"}, {"total": 1, "slug": "aurelino-leal", "name": "Aurelino Leal"}, {"total": 0, "slug": "baianopolis", "name": "Baianopolis"}, {"total": 0, "slug": "barra", "name": "Barra"}, {"total": 0, "slug": "barra-da-estiva", "name": "Barra da Estiva"}, {"total": 0, "slug": "barra-do-choca", "name": "Barra do Choça"}, {"total": 0, "slug": "barreiras", "name": "Barreiras"}, {"total": 1, "slug": "belmonte", "name": "Belmonte"}, {"total": 0, "slug": "belo-campo", "name": "Belo Campo"}, {"total": 0, "slug": "bom-jesus-da-lapa", "name": "Bom Jesus da Lapa"}, {"total": 0, "slug": "bonito", "name": "Bonito"}, {"total": 0, "slug": "brejoes", "name": "Brejões"}, {"total": 0, "slug": "brotas-de-macaubas", "name": "Brotas de Macaúbas"}, {"total": 1, "slug": "brumado", "name": "Brumado"}, {"total": 0, "slug": "buerarema", "name": "Buerarema"}, {"total": 0, "slug": "cachoeira", "name": "Cachoeira"}, {"total": 0, "slug": "cacule", "name": "Cacule"}, {"total": 0, "slug": "caem", "name": "Caém"}, {"total": 0, "slug": "caetite", "name": "Caetité"}, {"total": 1, "slug": "cairu", "name": "Cairu"}, {"total": 0, "slug": "caldeirao-grande", "name": "Caldeirão Grande"}, {"total": 0, "slug": "camacan", "name": "Camacan"}, {"total": 8, "slug": "camacari", "name": "Camacari"}, {"total": 0, "slug": "campo-alegre-de-lourdes", "name": "Campo Alegre de Lourdes"}, {"total": 1, "slug": "campo-formoso", "name": "Campo Formoso"}, {"total": 0, "slug": "canarana", "name": "Canarana"}, {"total": 0, "slug": "canavieiras", "name": "Canavieiras"}, {"total": 0, "slug": "candeal", "name": "Candeal"}, {"total": 0, "slug": "candiba", "name": "Candiba"}, {"total": 1, "slug": "candido-sales", "name": "Cândido Sales"}, {"total": 1, "slug": "capim-grosso", "name": "Capim Grosso"}, {"total": 0, "slug": "caraibas", "name": "Caraíbas"}, {"total": 0, "slug": "cardeal-da-silva", "name": "Cardeal da Silva"}, {"total": 0, "slug": "carinhanha", "name": "Carinhanha"}, {"total": 1, "slug": "casa-nova", "name": "Casa Nova"}, {"total": 0, "slug": "castro-alves", "name": "Castro Alves"}, {"total": 2, "slug": "catu", "name": "Catu"}, {"total": 1, "slug": "central", "name": "Central"}, {"total": 0, "slug": "cicero-dantas", "name": "Cícero Dantas"}, {"total": 2, "slug": "coaraci", "name": "Coaraci"}, {"total": 0, "slug": "conceicao-da-feira", "name": "Conceição da Feira"}, {"total": 1, "slug": "conceicao-do-coite", "name": "Conceição do Coité"}, {"total": 0, "slug": "conceicao-do-jacuipe", "name": "Conceição do Jacuipe"}, {"total": 0, "slug": "conde", "name": "Conde"}, {"total": 1, "slug": "condeuba", "name": "Condeuba"}, {"total": 1, "slug": "coracao-de-maria", "name": "Coração de Maria"}, {"total": 0, "slug": "coronel-joao-sa", "name": "Coronel João Sá"}, {"total": 0, "slug": "correntina", "name": "Correntina"}, {"total": 0, "slug": "cotegipe", "name": "Cotegipe"}, {"total": 0, "slug": "cristopolis", "name": "Cristopólis"}, {"total": 2, "slug": "cruz-das-almas", "name": "Cruz das Almas"}, {"total": 0, "slug": "curaca", "name": "Curaça"}, {"total": 2, "slug": "dias-d-avila", "name": "Dias D'Ávila"}, {"total": 1, "slug": "encruzilhada", "name": "Encruzilhada"}, {"total": 0, "slug": "entre-rios", "name": "Entre Rios"}, {"total": 0, "slug": "esplanada", "name": "Esplanada"}, {"total": 0, "slug": "eunapolis", "name": "Eunapolis"}, {"total": 8, "slug": "feira-de-santana", "name": "Feira de Santana"}, {"total": 0, "slug": "filadelfia", "name": "Filadélfia"}, {"total": 1, "slug": "formosa-do-rio-preto", "name": "Formosa do Rio Preto"}, {"total": 0, "slug": "gaviao", "name": "Gavião"}, {"total": 2, "slug": "guanambi", "name": "Guanambi"}, {"total": 0, "slug": "ibicarai", "name": "Ibicarai"}, {"total": 0, "slug": "ibicoara", "name": "Ibicoara"}, {"total": 1, "slug": "ibicui", "name": "Ibicuí"}, {"total": 0, "slug": "ibirapitanga", "name": "Ibirapitanga"}, {"total": 0, "slug": "ibirapua", "name": "Ibirapuã"}, {"total": 0, "slug": "ibirataia", "name": "Ibirataia"}, {"total": 0, "slug": "ibitita", "name": "Ibitita"}, {"total": 0, "slug": "ibotirama", "name": "Ibotirama"}, {"total": 0, "slug": "igrapiuna", "name": "Igrapiúna"}, {"total": 13, "slug": "ilheus", "name": "Ilheus"}, {"total": 0, "slug": "inhambupe", "name": "Inhambupe"}, {"total": 0, "slug": "ipecaeta", "name": "Ipecaetá"}, {"total": 0, "slug": "ipiau", "name": "Ipiau"}, {"total": 0, "slug": "ipira", "name": "Ipirá"}, {"total": 0, "slug": "iramaia", "name": "Iramaia"}, {"total": 0, "slug": "iraquara", "name": "Iraquara"}, {"total": 0, "slug": "irara", "name": "Irará"}, {"total": 0, "slug": "irece", "name": "Irecê"}, {"total": 1, "slug": "itaberaba", "name": "Itaberaba"}, {"total": 3, "slug": "itabuna", "name": "Itabuna"}, {"total": 1, "slug": "itacare", "name": "Itacaré"}, {"total": 0, "slug": "itajuipe", "name": "Itajuipe"}, {"total": 1, "slug": "itamaraju", "name": "Itamaraju"}, {"total": 0, "slug": "itambe", "name": "Itambé"}, {"total": 1, "slug": "itaparica", "name": "Itaparica"}, {"total": 0, "slug": "itape", "name": "Itapé"}, {"total": 0, "slug": "itapetinga", "name": "Itapetinga"}, {"total": 0, "slug": "itaquara", "name": "Itaquara"}, {"total": 0, "slug": "itatim", "name": "Itatim"}, {"total": 0, "slug": "itiuba", "name": "Itiúba"}, {"total": 0, "slug": "ituacu", "name": "Ituaçu"}, {"total": 1, "slug": "itubera", "name": "Ituberá"}, {"total": 0, "slug": "iuiu", "name": "Iuiú"}, {"total": 0, "slug": "jacobina", "name": "Jacobina"}, {"total": 0, "slug": "jaguaquara", "name": "Jaguaquara"}, {"total": 0, "slug": "jaguarari", "name": "Jaguarari"}, {"total": 2, "slug": "jequie", "name": "Jequie"}, {"total": 0, "slug": "jeremoabo", "name": "Jeremoabo"}, {"total": 0, "slug": "juazeiro", "name": "Juazeiro"}, {"total": 0, "slug": "jussara", "name": "Jussara"}, {"total": 0, "slug": "jussari", "name": "Jussari"}, {"total": 0, "slug": "lafaiete-coutinho", "name": "Lafaiete Coutinho"}, {"total": 0, "slug": "lapao", "name": "Lapão"}, {"total": 1, "slug": "lauro-de-freitas", "name": "Lauro de Freitas"}, {"total": 0, "slug": "lencois", "name": "Lençóis"}, {"total": 1, "slug": "licinio-de-almeida", "name": "Licínio de Almeida"}, {"total": 1, "slug": "livramento-de-nossa-senhora", "name": "Livramento de Nossa Senhora"}, {"total": 0, "slug": "luis-eduardo-magalhaes", "name": "Luis Eduardo Magalhães"}, {"total": 0, "slug": "macajuba", "name": "Macajuba"}, {"total": 0, "slug": "macarani", "name": "Macarani"}, {"total": 0, "slug": "macurure", "name": "Macururé"}, {"total": 3, "slug": "madre-de-deus", "name": "Madre de Deus"}, {"total": 0, "slug": "maiquinique", "name": "Maiquinique"}, {"total": 0, "slug": "mairi", "name": "Mairi"}, {"total": 0, "slug": "manoel-vitorino", "name": "Manoel Vitorino"}, {"total": 1, "slug": "maracas", "name": "Maracás"}, {"total": 0, "slug": "maragogipe", "name": "Maragogipe"}, {"total": 2, "slug": "marau", "name": "Maraú"}, {"total": 0, "slug": "marcionilio-souza", "name": "Marcionílio Souza"}, {"total": 1, "slug": "mascote", "name": "Mascote"}, {"total": 2, "slug": "mata-de-sao-joao", "name": "Mata de São João"}, {"total": 0, "slug": "miguel-calmon", "name": "Miguel Calmon"}, {"total": 0, "slug": "monte-santo", "name": "Monte Santo"}, {"total": 0, "slug": "morro-do-chapeu", "name": "Morro do Chapéu"}, {"total": 1, "slug": "mortugaba", "name": "Mortugaba"}, {"total": 2, "slug": "mucuge", "name": "Mucugê"}, {"total": 0, "slug": "mucuri", "name": "Mucuri"}, {"total": 0, "slug": "mundo-novo", "name": "Mundo Novo"}, {"total": 1, "slug": "muniz-ferreira", "name": "Muniz Ferreira"}, {"total": 0, "slug": "muquem-do-sao-francisco", "name": "Muquém do São Francisco"}, {"total": 0, "slug": "muritiba", "name": "Muritiba"}, {"total": 0, "slug": "mutuipe", "name": "Mutuipe"}, {"total": 1, "slug": "nilo-pecanha", "name": "Nilo Peçanha"}, {"total": 0, "slug": "nordestina", "name": "Nordestina"}, {"total": 0, "slug": "nova-vicosa", "name": "Nova Viçosa"}, {"total": 0, "slug": "olindina", "name": "Olindina"}, {"total": 0, "slug": "oliveira-dos-brejinhos", "name": "Oliveira dos Brejinhos"}, {"total": 0, "slug": "ourolandia", "name": "Ourolândia"}, {"total": 1, "slug": "palmeiras", "name": "Palmeiras"}, {"total": 0, "slug": "paramirim", "name": "Paramirim"}, {"total": 0, "slug": "paratinga", "name": "Paratinga"}, {"total": 0, "slug": "paripiranga", "name": "Paripiranga"}, {"total": 6, "slug": "paulo-afonso", "name": "Paulo Afonso"}, {"total": 0, "slug": "pe-de-serra", "name": "Pé de Serra"}, {"total": 2, "slug": "piata", "name": "Piatã"}, {"total": 0, "slug": "pindai", "name": "Pindaí"}, {"total": 0, "slug": "pindobacu", "name": "Pindobaçu"}, {"total": 0, "slug": "pintadas", "name": "Pintadas"}, {"total": 0, "slug": "piritiba", "name": "Piritiba"}, {"total": 3, "slug": "pocoes", "name": "Poções"}, {"total": 0, "slug": "pojuca", "name": "Pojuca"}, {"total": 0, "slug": "ponto-novo", "name": "Ponto Novo"}, {"total": 7, "slug": "porto-seguro", "name": "Porto Seguro"}, {"total": 0, "slug": "prado", "name": "Prado"}, {"total": 0, "slug": "presidente-dutra", "name": "Presidente Dutra"}, {"total": 0, "slug": "presidente-tancredo-neves", "name": "Presidente Tancredo Neves"}, {"total": 0, "slug": "queimadas", "name": "Queimadas"}, {"total": 0, "slug": "quixabeira", "name": "Quixabeira"}, {"total": 0, "slug": "rafael-jambeiro", "name": "Rafael Jambeiro"}, {"total": 0, "slug": "riachao-das-neves", "name": "Riachão das Neves"}, {"total": 0, "slug": "riachao-do-jacuipe", "name": "Riachão do Jacuípe"}, {"total": 0, "slug": "ribeira-do-pombal", "name": "Ribeira do Pombal"}, {"total": 0, "slug": "rio-de-contas", "name": "Rio de Contas"}, {"total": 0, "slug": "rio-real", "name": "Rio Real"}, {"total": 0, "slug": "rodelas", "name": "Rodelas"}, {"total": 0, "slug": "salinas-da-margarida", "name": "Salinas da Margarida"}, {"total": 36, "slug": "salvador", "name": "Salvador"}, {"total": 1, "slug": "santa-barbara", "name": "Santa Barbara"}, {"total": 3, "slug": "santa-cruz-cabralia", "name": "Santa Cruz Cabralia"}, {"total": 0, "slug": "santa-cruz-da-vitoria", "name": "Santa Cruz da Vitória"}, {"total": 0, "slug": "santaluz", "name": "Santaluz"}, {"total": 0, "slug": "santa-maria-da-vitoria", "name": "Santa Maria da Vitória"}, {"total": 0, "slug": "santana", "name": "Santana"}, {"total": 0, "slug": "santanopolis", "name": "Santanopolis"}, {"total": 0, "slug": "santa-rita-de-cassia", "name": "Santa Rita de Cássia"}, {"total": 1, "slug": "santa-terezinha", "name": "Santa Terezinha"}, {"total": 0, "slug": "santo-amaro", "name": "Santo Amaro"}, {"total": 1, "slug": "santo-antonio-de-jesus", "name": "Santo Antonio de Jesus"}, {"total": 0, "slug": "santo-estevao", "name": "Santo Estevão"}, {"total": 0, "slug": "sao-desiderio", "name": "São Desidério"}, {"total": 0, "slug": "sao-felipe", "name": "São Felipe"}, {"total": 0, "slug": "sao-felix", "name": "Sao Felix"}, {"total": 1, "slug": "sao-goncalo-dos-campos", "name": "São Gonçalo dos Campos"}, {"total": 0, "slug": "sao-jose-do-jacuipe", "name": "São José do Jacuípe"}, {"total": 0, "slug": "sao-miguel-das-matas", "name": "Sao Miguel das Matas"}, {"total": 2, "slug": "sao-sebastiao-do-passe", "name": "São Sebastião do Passé"}, {"total": 0, "slug": "satiro-dias", "name": "Sátiro Dias"}, {"total": 1, "slug": "saubara", "name": "Saubara"}, {"total": 0, "slug": "seabra", "name": "Seabra"}, {"total": 3, "slug": "senhor-do-bonfim", "name": "Senhor do Bonfim"}, {"total": 0, "slug": "sento-se", "name": "Sento Sé"}, {"total": 0, "slug": "serra-dourada", "name": "Serra Dourada"}, {"total": 0, "slug": "serra-preta", "name": "Serra Preta"}, {"total": 4, "slug": "serrinha", "name": "Serrinha"}, {"total": 0, "slug": "serrolandia", "name": "Serrolandia"}, {"total": 0, "slug": "simoes-filho", "name": "Simões Filho"}, {"total": 1, "slug": "sitio-do-mato", "name": "Sítio do Mato"}, {"total": 0, "slug": "sobradinho", "name": "Sobradinho"}, {"total": 0, "slug": "tabocas-do-brejo-velho", "name": "Tabocas do Brejo Velho"}, {"total": 0, "slug": "tanquinho", "name": "Tanquinho"}, {"total": 2, "slug": "teixeira-de-freitas", "name": "Teixeira de Freitas"}, {"total": 0, "slug": "teofilandia", "name": "Teofilândia"}, {"total": 0, "slug": "teolandia", "name": "Teolandia"}, {"total": 0, "slug": "tremedal", "name": "Tremedal"}, {"total": 0, "slug": "tucano", "name": "Tucano"}, {"total": 0, "slug": "uaua", "name": "Uauá"}, {"total": 0, "slug": "ubaitaba", "name": "Ubaitaba"}, {"total": 0, "slug": "urandi", "name": "Urandi"}, {"total": 0, "slug": "valenca", "name": "Valenca"}, {"total": 0, "slug": "valente", "name": "Valente"}, {"total": 0, "slug": "varzea-da-roca", "name": "Várzea da Roça"}, {"total": 0, "slug": "varzea-do-poco", "name": "Várzea do Poço"}, {"total": 0, "slug": "varzea-nova", "name": "Várzea Nova"}, {"total": 0, "slug": "vera-cruz", "name": "Vera Cruz"}, {"total": 26, "slug": "vitoria-da-conquista", "name": "Vitoria da Conquista"}, {"total": 0, "slug": "wanderley", "name": "Wanderley"}, {"total": 0, "slug": "xique-xique", "name": "Xique-Xique"}]};document.querySelector('#test-period').addEventListener('click',function(){history.replaceState(null,'','?tempo=0%2C1');window.RunnerHubEstadoCities.update(nextCounts);window.RunnerHubEstadoCities.update(oldCounts);document.querySelector('#test-period-result').textContent='Período atualizado: '+nextCounts.total+' provas';});</script></body></html>

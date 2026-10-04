@@ -5,6 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {createHash,randomUUID} from 'node:crypto';
 import {readReport} from './seo_report.mjs';
 import {validateReportRoot} from './seo_run.mjs';
+import {hreflangReciprocity} from './seo_languages.mjs';
+import {withAiEvidence} from './seo_ai_evidence.mjs';
 export const METHOD='technical-checks-v1';
 const sha=v=>createHash('sha256').update(v).digest('hex');
 const labels={roadrunners:'Road Runners',openresults:'Open Results'};
@@ -64,8 +66,9 @@ function eventFieldsStatus(o){
 export function aiChecks(run){
  const rows=run.observations||[];
  const check=(id,label,note,classify)=>{
-  const counts={pass:0,warning:0,error:0,unknown:0},cases=[];
-  for(const o of rows){const status=classify(o);counts[status]++;const url=safeCaseUrl(o.source_url);if(url&&status!=='pass'&&cases.length<3)cases.push(url);}
+  const counts={pass:0,warning:0,error:0,unknown:0},caseBuckets={error:[],warning:[],unknown:[]};
+  for(const [index,o] of rows.entries()){const status=classify(o,index);counts[status]++;const url=safeCaseUrl(o.source_url);if(url&&status!=='pass'&&caseBuckets[status].length<3&&!caseBuckets[status].includes(url))caseBuckets[status].push(url);}
+  const cases=[...caseBuckets.error,...caseBuckets.warning,...caseBuckets.unknown].slice(0,3);
   const status=counts.error?'error':counts.warning?'warning':counts.unknown||!rows.length?'unknown':'pass';
   const partial=counts.unknown>0&&counts.pass+counts.warning+counts.error>0;
   return {id,label,note,status,statusLabel:status==='unknown'&&partial?'Medição parcial':states[status][0],icon:states[status][1],partial,...counts,total:rows.length,cases};
@@ -78,8 +81,11 @@ export function aiChecks(run){
  checks.push(check('html','HTML disponível ao coletor','Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.',o=>
   o.error||o.error_code||o.status>=400?'error':usable(o)?'pass':o.status>=200&&o.status<300?'warning':'unknown'));
  for(const [id,label,note] of defs.filter(d=>['description','hreflang','structured'].includes(d[0])).map(([id,label,_weight,note])=>[id,label,note]))checks.push(check(id,label,note,o=>metadataStatus(o,id)));
+ const reciprocity=hreflangReciprocity(rows);
+ checks.push(check('hreflang-reciprocity','Reciprocidade entre idiomas','Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.',(_o,index)=>reciprocity[index]));
  checks.push(check('event-fields','Campos de eventos no JSON-LD','Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.',eventFieldsStatus));
  for(const [id,label,note] of [
+  ['translations','Tradução do conteúdo principal','A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.'],
   ['provider-access','Acesso real pelos provedores','Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.'],
   ['facts','Informações de eventos e resultados','Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.'],
   ['citations','Citações nas respostas de IA','Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.'],
@@ -164,13 +170,16 @@ export function renderCfml(snapshot){
  return `<cfinclude template="../../includes/backend/require_admin.cfm"/>\n<cfprocessingdirective pageencoding="utf-8"/>\n<cfif compareNoCase(getBaseTemplatePath(), getCurrentTemplatePath()) EQ 0>\n    <cfheader statuscode="403" statustext="Forbidden"/>\n    <cfabort/>\n</cfif>\n<cfif structKeyExists(CGI, "request_method") AND compareNoCase(CGI.request_method, "GET") NEQ 0>\n    <cfheader statuscode="405" statustext="Method Not Allowed"/>\n    <cfheader name="Allow" value="GET"/>\n    <cfabort/>\n</cfif>\n<!--- Gerado por seo_scorecard.mjs. Dados auditados; aplicar escape na view. --->\n<cfscript>\nVARIABLES.seoScoreSnapshot = deserializeJSON(charsetEncode(binaryDecode("${encoded}", "base64"), "utf-8"));\n</cfscript>\n`;
 }
 async function atomic(file,data){const temp=file+'.'+randomUUID()+'.tmp';await writeFile(temp,data,{mode:0o600,flag:'wx'});await rename(temp,file);}
-export async function generate({reportsRoot='/Users/Shared/RunnerHubReports/seo',output,historyRoot}){
+export async function generate({reportsRoot='/Users/Shared/RunnerHubReports/seo',output,historyRoot,aiEvidenceFile}){
  const privateRoot=await validateReportRoot(historyRoot);await mkdir(privateRoot,{recursive:true,mode:0o700});
  const snapshot={methodVersion:METHOD,generatedAt:new Date().toISOString(),methodLabel:'Nota técnica interna',formula:'100 × soma(peso × resultado de cada critério) ÷ soma dos pesos avaliados. Verificado = 1; atenção = 0,5; erro = 0; não medido fica fora.',methodNote:'Heurística interna, não é nota WooRank nem avaliação do Google. Cada critério usa o pior resultado observado. Itens informativos têm peso zero. A cobertura representa campos avaliados na amostra; correções posteriores não reescrevem a auditoria.',sites:[]};
  const writes=[];
+ let aiEvidence=null;
+ const evidencePath=aiEvidenceFile??path.join(reportsRoot,'evidence','latest.json');
+ try{const stat=await lstat(evidencePath);if(stat.isSymbolicLink()||!stat.isFile()||stat.size>2*1024*1024)throw new Error('Arquivo de evidência inválido.');aiEvidence=JSON.parse(await readFile(evidencePath,'utf8'));}catch(e){if(e.code!=='ENOENT'||aiEvidenceFile)throw e;}
  for(const id of Object.keys(labels)){
  const run=await loadLatest(reportsRoot,id),site=scoreRun(run),file=path.join(privateRoot,id+'.json');let history=[];
- site.aiChecks=aiChecks(run);
+ site.aiChecks=withAiEvidence(aiChecks(run),id,aiEvidence);
  try{if((await lstat(file)).isSymbolicLink())throw new Error('Histórico simbólico não permitido.');history=JSON.parse(await readFile(file,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
  history=appendHistory(history,run,site);site.history=history.map(({runId,auditAt,auditLabel,scoreLabel,comparable,deltaLabel})=>({runId,auditAt,auditLabel,scoreLabel,comparable,deltaLabel}));writes.push([file,JSON.stringify(history,null,2)+'\n']);snapshot.sites.push(site);
  }
@@ -179,6 +188,6 @@ export async function generate({reportsRoot='/Users/Shared/RunnerHubReports/seo'
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const args=process.argv.slice(2),opts={reportsRoot:'/Users/Shared/RunnerHubReports/seo',output:path.resolve('portal/includes/seo_score_data.cfm'),historyRoot:'/Users/Shared/RunnerHubReports/seo/score-history'};
- const names={'--reports-root':'reportsRoot','--output':'output','--history-root':'historyRoot'};
+ const names={'--reports-root':'reportsRoot','--output':'output','--history-root':'historyRoot','--ai-evidence':'aiEvidenceFile'};
  try{for(let i=0;i<args.length;i+=2){if(!names[args[i]]||!args[i+1])throw new Error('Argumentos inválidos.');opts[names[args[i]]]=args[i+1];}const s=await generate(opts);console.log(JSON.stringify({methodVersion:s.methodVersion,sites:s.sites.map(({id,scoreLabel,coverageLabel,counts})=>({id,scoreLabel,coverageLabel,counts}))}));}catch(e){console.error(e.message);process.exitCode=1;}
 }

@@ -1,0 +1,27 @@
+{
+  "before": {
+    "estado/index.cfm": "df7cff26b79025c96d51950c032a93b5bddb5c329b403c128dfda2928c908b79",
+    "api/eventos.cfm": "73cf269c6a161664023b10579fc5a7c6114cd632b2bd1032df1526aaf99706c2"
+  },
+  "candidate": {
+    "includes/backend/backend_estado_cidades.cfm": "b1ca32e2a28486b0f831cc2ae6aef776673d6118c0b6d17482937e964613dadd",
+    "assets/js/runnerhub-estado-cidades.js": "2251ed3bb338a9e3a06fc9ff51907a7fb9fd7466b7acc59c6c9f6427f310724b",
+    "assets/css/runnerhub-estado-cidades.css": "29055f2dd86757c54e74c8201f82e4cf8f15f7a5ab3c0edf709bfbdee574bc16",
+    "api/eventos.cfm": "22e8730c2235facb009cbaf8ed76529ec86f84f4f14ec1bf99de428acef1ba6a",
+    "estado/index.cfm": "efedaf916b6ee76a2464673ad7afed97ba05c17accb89999f0482921abed331f"
+  },
+  "order": [
+    "includes/backend/backend_estado_cidades.cfm",
+    "assets/js/runnerhub-estado-cidades.js",
+    "assets/css/runnerhub-estado-cidades.css",
+    "api/eventos.cfm",
+    "estado/index.cfm"
+  ],
+  "compile": {
+    "templates": 3,
+    "returncode": 0
+  },
+  "adobe": {
+    "OUTPUT": "RR_CITY_COUNTS_PASSED:8"
+  }
+}

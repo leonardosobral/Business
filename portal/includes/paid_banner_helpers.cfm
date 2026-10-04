@@ -81,6 +81,26 @@ function paidBannerForm(required struct posted, struct saved={}) {
     }
     return v;
 }
+function paidBannerWorkspaceSection(required struct queryScope, required boolean showForm, required boolean canManage) {
+    if (arguments.showForm AND arguments.canManage) return 'form';
+    var section=lCase(paidBannerText(arguments.queryScope,'section','banners'));
+    if (!listFind('performance,banners,form',section)) section='banners';
+    if (section=='form' AND !arguments.canManage) section='banners';
+    return section;
+}
+function paidBannerFilterQuery(required string banner, required any days) {
+    var normalizedBanner=paidBannerUuid(arguments.banner) ? lCase(trim(arguments.banner)) : '';
+    var normalizedDays=val(arguments.days);
+    if (!listFind('7,30,90',normalizedDays)) normalizedDays=30;
+    return 'banner=' & encodeForURL(normalizedBanner) & '&periodo=' & normalizedDays;
+}
+function paidBannerActionReturnUrl(required string action, required string campaign, required string banner, required any days) {
+    var returnQuery=paidBannerFilterQuery(arguments.banner,arguments.days);
+    if (arguments.action=='prepare' AND paidBannerUuid(arguments.campaign)) {
+        return '/portal/banners/?section=form&edit=' & encodeForURL(lCase(trim(arguments.campaign))) & '&' & returnQuery & chr(35) & 'paid-banner-form';
+    }
+    return '/portal/banners/?section=banners&' & returnQuery;
+}
 function paidBannerStatus(required string status, string review='NONE') {
     if(status=='DRAFT') {
         if(review=='PENDING_REVIEW') return 'Em análise';

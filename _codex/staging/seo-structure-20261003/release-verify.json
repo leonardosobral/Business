@@ -1,0 +1,15 @@
+{
+  "RoadRunners": {
+    "verified_hashes": 2,
+    "unrelated_files_unchanged": 7
+  },
+  "OpenResults": {
+    "verified_hashes": 3,
+    "authorized_followup": "athlete noindex",
+    "unrelated_files_unchanged": 5
+  },
+  "Business": {
+    "verified_hashes": 1,
+    "unrelated_files_unchanged": 4
+  }
+}

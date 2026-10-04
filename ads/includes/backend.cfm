@@ -98,8 +98,8 @@ function adsV1FormList(required any value) {
 <cfset qAdsV1Placements = QueryNew("placement_key,surface")/>
 <cfset qAdsV1Campaigns = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,advertisement_id,creative_id,core_event_id,destination_url,nome_evento,event_tag,event_date,event_city,event_state,placement_keys,spent_total,spent_today,spent_date,served_count,viewable_impression_count,valid_click_count,billable_click_count,conversion_count,reversal_count,reversal_amount,cost,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at,event_link_status,account_status")/>
 <cfset qAdsV1SelectedCampaign = QueryNew("campaign_id,account_id,name,status,currency,cpc_bid,budget_total,budget_daily,target_device_class,target_country_code,target_region_code,starts_at,ends_at,created_at,updated_at,core_event_id,destination_url,event_name,event_tag,event_date,event_city,event_state,placement_keys,spent_total,campaign_review_request_id,review_status,review_reason,submitted_at,reviewed_at")/>
-<cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name")/>
-<cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name")/>
+<cfset qAdsV1Ledger = QueryNew("ledger_entry_id,account_id,campaign_id,entry_type,source_type,amount,currency,balance_after,idempotency_key,reference_entry_id,occurred_at,created_by,metadata,campaign_name,product_type")/>
+<cfset qAdsV1ReversibleDebits = QueryNew("ledger_entry_id,campaign_id,amount,currency,balance_after,occurred_at,campaign_name,product_type")/>
 <cfset qAdsV1StatusHistory = QueryNew("campaign_status_history_id,campaign_id,account_id,from_status,to_status,reason,changed_by,changed_at,campaign_name,changed_by_name")/>
 <cfset qAdsV1VoucherReservation = QueryNew("voucher_reservation_id,id_ad_voucher,id_conta,id_solicitacao_cadastro,status,expires_at,transition_reason,codigo,credito")/>
 <cfset qAdsV1CampaignReviewQueue = QueryNew("campaign_review_request_id,campaign_id,account_id,core_event_id,review_status,review_reason,submitted_at,updated_at,campaign_name,campaign_status,cpc_bid,budget_total,budget_daily,starts_at,ends_at,target_device_class,target_country_code,target_region_code,account_name,account_status,event_name,event_tag,event_city,event_state,event_link_status,available_balance,placement_keys")/>
@@ -399,6 +399,7 @@ function adsV1FormList(required any value) {
                       AND link.status = 'ACTIVE'
                 ) placement ON true
                 WHERE review.status IN ('WAITING_PREREQUISITES', 'PENDING_REVIEW')
+                  AND review.ad_type = 'EVENT'
                 ORDER BY CASE review.status
                              WHEN 'PENDING_REVIEW' THEN 0
                              ELSE 1
@@ -443,6 +444,7 @@ function adsV1FormList(required any value) {
                     FROM ads.campaign_review_requests request
                     WHERE request.campaign_id = campaign.campaign_id
                       AND request.account_id = campaign.account_id
+                      AND request.ad_type = 'EVENT'
                     ORDER BY request.campaign_review_request_id DESC
                     LIMIT 1
                 ) review ON true
@@ -472,6 +474,8 @@ function adsV1FormList(required any value) {
                     FROM ads.daily_metrics metric
                     WHERE metric.campaign_id = campaign.campaign_id
                       AND metric.account_id = campaign.account_id
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
                 ) metrics ON true
                 LEFT JOIN LATERAL (
                     SELECT string_agg(
@@ -486,6 +490,7 @@ function adsV1FormList(required any value) {
                       AND link.status = 'ACTIVE'
                 ) placement ON true
                 WHERE campaign.billing_model = 'CPC'
+                  AND advertisement.core_event_id IS NOT NULL
                   AND review.status = 'APPROVED'
                   AND campaign.status IN ('ACTIVE', 'PAUSED')
                 ORDER BY CASE campaign.status WHEN 'ACTIVE' THEN 0 ELSE 1 END,
@@ -849,6 +854,7 @@ function adsV1FormList(required any value) {
                     FROM ads.campaign_review_requests request
                     WHERE request.campaign_id = c.campaign_id
                       AND request.account_id = c.account_id
+                      AND request.ad_type = 'EVENT'
                     ORDER BY request.campaign_review_request_id DESC
                     LIMIT 1
                 ) review ON true
@@ -880,9 +886,12 @@ function adsV1FormList(required any value) {
                     FROM ads.daily_metrics metric
                     WHERE metric.campaign_id = c.campaign_id
                       AND metric.account_id = c.account_id
+                      AND metric.billing_model = 'CPC'
+                      AND metric.ad_type = 'EVENT'
                 ) metrics ON true
                 WHERE c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                   AND c.billing_model = 'CPC'
+                  AND advertisement.advertisement_id IS NOT NULL
                 ORDER BY c.updated_at DESC, c.created_at DESC
             </cfquery>
 
@@ -980,11 +989,21 @@ function adsV1FormList(required any value) {
                            ledger.occurred_at,
                            ledger.created_by,
                            ledger.metadata,
-                           campaign.name AS campaign_name
+                           campaign.name AS campaign_name,
+                           coalesce(product.ad_type, 'ACCOUNT') AS product_type
                     FROM ads.credit_ledger ledger
                     LEFT JOIN ads.campaigns campaign
                       ON campaign.campaign_id = ledger.campaign_id
                      AND campaign.account_id = ledger.account_id
+                    LEFT JOIN LATERAL (
+                        SELECT advertisement.ad_type::text AS ad_type
+                        FROM ads.advertisements advertisement
+                        WHERE advertisement.campaign_id = ledger.campaign_id
+                          AND advertisement.account_id = ledger.account_id
+                          AND advertisement.status <> 'ARCHIVED'
+                        ORDER BY advertisement.created_at, advertisement.advertisement_id
+                        LIMIT 1
+                    ) product ON true
                     WHERE ledger.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                     ORDER BY ledger.occurred_at DESC, ledger.ledger_entry_id DESC
                     LIMIT 50
@@ -997,11 +1016,21 @@ function adsV1FormList(required any value) {
                            ledger.currency,
                            ledger.balance_after,
                            ledger.occurred_at,
-                           campaign.name AS campaign_name
+                           campaign.name AS campaign_name,
+                           coalesce(product.ad_type, 'ACCOUNT') AS product_type
                     FROM ads.credit_ledger ledger
                     LEFT JOIN ads.campaigns campaign
                       ON campaign.campaign_id = ledger.campaign_id
                      AND campaign.account_id = ledger.account_id
+                    LEFT JOIN LATERAL (
+                        SELECT advertisement.ad_type::text AS ad_type
+                        FROM ads.advertisements advertisement
+                        WHERE advertisement.campaign_id = ledger.campaign_id
+                          AND advertisement.account_id = ledger.account_id
+                          AND advertisement.status <> 'ARCHIVED'
+                        ORDER BY advertisement.created_at, advertisement.advertisement_id
+                        LIMIT 1
+                    ) product ON true
                     WHERE ledger.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND ledger.entry_type = 'DEBIT'
                       AND ledger.source_type = 'CLICK'
@@ -1035,6 +1064,13 @@ function adsV1FormList(required any value) {
                 LEFT JOIN public.tb_usuarios usr
                   ON usr.id = history.changed_by
                 WHERE history.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                  AND EXISTS (
+                      SELECT 1
+                      FROM ads.advertisements advertisement
+                      WHERE advertisement.campaign_id = history.campaign_id
+                        AND advertisement.account_id = history.account_id
+                        AND advertisement.ad_type = 'EVENT'
+                  )
                 ORDER BY history.changed_at DESC,
                          history.campaign_status_history_id DESC
                 LIMIT 50
@@ -1116,6 +1152,7 @@ function adsV1FormList(required any value) {
                         FROM ads.campaign_review_requests request
                         WHERE request.campaign_id = c.campaign_id
                           AND request.account_id = c.account_id
+                          AND request.ad_type = 'EVENT'
                         ORDER BY request.campaign_review_request_id DESC
                         LIMIT 1
                     ) review ON true
@@ -1126,6 +1163,7 @@ function adsV1FormList(required any value) {
                     WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1SelectedCampaignId#"/> AS uuid)
                       AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND c.billing_model = 'CPC'
+                      AND advertisement.core_event_id IS NOT NULL
                     LIMIT 1
                 </cfquery>
 
@@ -1372,6 +1410,7 @@ function adsV1FormList(required any value) {
                     FROM ads.campaign_review_requests review
                     WHERE review.campaign_review_request_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1ReviewRequestId#"/>
                       AND review.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1ReviewCampaignId#"/> AS uuid)
+                      AND review.ad_type = 'EVENT'
                       AND review.status IN ('WAITING_PREREQUISITES', 'PENDING_REVIEW', 'CHANGES_REQUESTED')
                     LIMIT 1
                 </cfquery>
@@ -1413,6 +1452,25 @@ function adsV1FormList(required any value) {
                 <cfset VARIABLES.adsV1PrepareEditCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
                 <cfif NOT adsV1IsUuid(VARIABLES.adsV1PrepareEditCampaignId)>
                     <cfthrow type="AdsV1.Validation" message="Campanha inválida."/>
+                </cfif>
+
+                <cfquery name="qAdsV1PrepareEditTarget" datasource="runnerhub">
+                    SELECT campaign.campaign_id
+                    FROM ads.campaigns campaign
+                    WHERE campaign.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1PrepareEditCampaignId#"/> AS uuid)
+                      AND campaign.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
+                      AND campaign.billing_model = 'CPC'
+                      AND EXISTS (
+                          SELECT 1
+                          FROM ads.advertisements advertisement
+                          WHERE advertisement.campaign_id = campaign.campaign_id
+                            AND advertisement.account_id = campaign.account_id
+                            AND advertisement.ad_type = 'EVENT'
+                      )
+                    LIMIT 1
+                </cfquery>
+                <cfif NOT qAdsV1PrepareEditTarget.recordcount>
+                    <cfthrow type="AdsV1.Validation" message="A campanha de evento não foi encontrada nesta conta."/>
                 </cfif>
 
                 <cfquery name="qAdsV1PrepareEditResult" datasource="runnerhub">
@@ -1548,6 +1606,7 @@ function adsV1FormList(required any value) {
                             FROM ads.campaign_review_requests request
                             WHERE request.campaign_id = c.campaign_id
                               AND request.account_id = c.account_id
+                              AND request.ad_type = 'EVENT'
                             ORDER BY request.campaign_review_request_id DESC
                             LIMIT 1
                         ) review ON true
@@ -1555,6 +1614,13 @@ function adsV1FormList(required any value) {
                           AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                           AND c.billing_model = 'CPC'
                           AND c.status IN ('DRAFT', 'PAUSED')
+                          AND EXISTS (
+                              SELECT 1
+                              FROM ads.advertisements advertisement
+                              WHERE advertisement.campaign_id = c.campaign_id
+                                AND advertisement.account_id = c.account_id
+                                AND advertisement.ad_type = 'EVENT'
+                          )
                         LIMIT 1
                     </cfquery>
                     <cfif NOT qAdsV1CampaignSaveTarget.recordcount
@@ -1779,6 +1845,13 @@ function adsV1FormList(required any value) {
                     WHERE c.campaign_id = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.adsV1StatusCampaignId#"/> AS uuid)
                       AND c.account_id = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.adsV1AccountId#"/>
                       AND c.billing_model = 'CPC'
+                      AND EXISTS (
+                          SELECT 1
+                          FROM ads.advertisements advertisement
+                          WHERE advertisement.campaign_id = c.campaign_id
+                            AND advertisement.account_id = c.account_id
+                            AND advertisement.ad_type = 'EVENT'
+                      )
                     LIMIT 1
                 </cfquery>
                 <cfif NOT qAdsV1StatusTarget.recordcount

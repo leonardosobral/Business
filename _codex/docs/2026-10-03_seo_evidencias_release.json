@@ -1,0 +1,65 @@
+{
+  "checked_at_utc": "2026-10-03T22:35:05.254041+00:00",
+  "published": {
+    "published": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm",
+      "portal/conteudo/seo_ai.cfm"
+    ],
+    "backup": "/var/backups/seo-evidence-business-20261003/baseline"
+  },
+  "verification": {
+    "verified_hashes": 3,
+    "unrelated_files_unchanged": 5
+  },
+  "panel": {
+    "total": 16,
+    "resolved": 13,
+    "pending": 3,
+    "rendered_sites": 2,
+    "rendered_ai_checks": 32,
+    "auth": "temporary loopback-only fixture; no real admin login"
+  },
+  "visual": {
+    "source": "HTML exported from the verified published Adobe templates; local CSS preview, not an authenticated admin login",
+    "desktop": {
+      "viewport": 1280,
+      "scrollWidth": 1280,
+      "checks": 32,
+      "sites": 2
+    },
+    "mobile": {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "checks": 32,
+      "sites": 2
+    },
+    "viewport_reset": true,
+    "tab_closed": true
+  },
+  "review": "Astra; one Important nested-language finding fixed RED→GREEN; no other Critical/Important",
+  "tests": {
+    "node": 67,
+    "python": 10,
+    "cfml_scenarios": 9,
+    "adobe_compiled_templates": 3
+  },
+  "private_evidence": {
+    "path": "/Users/Shared/RunnerHubReports/seo/evidence/2026-10-03-evidence-v2.json",
+    "sha256": "53231eb61a7ce31c257ff8c6dadff876c65c1e32efe1ca2aff9d030dcf1331b4"
+  },
+  "audits": [
+    {
+      "site": "roadrunners",
+      "runId": "2026-10-03T20-12-03-545Z-4c5460b6",
+      "auditAt": "2026-10-03T20:12:03.546Z",
+      "score": 70
+    },
+    {
+      "site": "openresults",
+      "runId": "2026-10-03T22-14-34-701Z-75e4580d",
+      "auditAt": "2026-10-03T22:14:34.701Z",
+      "score": 100
+    }
+  ]
+}

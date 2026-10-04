@@ -1,0 +1,8 @@
+{
+  "user_instruction": "vamos focar no roadrunners porque ele que da dinheiro",
+  "data_sha256": "519c60e879757a8b871041feb63b08253a2f503b28f30e2d0bcdb361ee34cc9e",
+  "query_scope": "roadrunners.run/prod/is_internal=false/7 rolling days; aggregates only",
+  "plan_updated": "_codex/docs/2026-09-29_seo_para_ia_plano.md",
+  "runtime_changed": false,
+  "publication": "not applicable: prioritization document only"
+}

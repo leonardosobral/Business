@@ -1,0 +1,716 @@
+{
+  "rr_prepare": {
+    "before": {
+      "busca/index.cfm": "08a6b24b262b29c994ae6f5ef4cba8f79063d23311b1f4c616ae8aa6a0034c3e"
+    },
+    "candidate": {
+      "busca/index.cfm": "a121e790b42d078f2dad72c1685a8202f58560fa72357bd5208829baa0cfddd9"
+    },
+    "order": [
+      "busca/index.cfm"
+    ],
+    "compile": {
+      "templates": 1,
+      "output": "successful 1\ntotal 1\nelapsed 3.156 sec\n\n",
+      "returncode": 0
+    }
+  },
+  "rr_publish": {
+    "published": [
+      "busca/index.cfm"
+    ],
+    "backup": "/var/backups/seo-hreflang-roadrunners-20261003/baseline"
+  },
+  "rr_verify": {
+    "verified_hashes": 1,
+    "unrelated_files_unchanged": 2
+  },
+  "business_prepare": {
+    "before": {
+      "portal/includes/seo_score_data.cfm": "b250adb9242d3cc013c614af7f8ae7cfd60187ba1e676d7046e2cb06a306e984",
+      "portal/includes/seo_queue_data.cfm": "68399f0c6aa24bacd5506d206cf451210dd365d565a41065166ea61d5cfa4291"
+    },
+    "candidate": {
+      "portal/includes/seo_score_data.cfm": "c60f8a822a0a36fcd54657df33b66363ea14643fd56b4b2855d4599fbeabf15f",
+      "portal/includes/seo_queue_data.cfm": "1caf5af65f269f192474bedef74274c6b644e1be25cc80d2da0a65345e188ed3"
+    },
+    "order": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "compile": {
+      "templates": 2,
+      "output": "successful 2\ntotal 2\nelapsed 3.846 sec\n\n",
+      "returncode": 0
+    }
+  },
+  "business_publish": {
+    "published": [
+      "portal/includes/seo_score_data.cfm",
+      "portal/includes/seo_queue_data.cfm"
+    ],
+    "backup": "/var/backups/seo-languages-business-20261003/baseline"
+  },
+  "business_verify": {
+    "verified_hashes": 2,
+    "unrelated_files_unchanged": 6
+  },
+  "panel": {
+    "total": 14,
+    "resolved": 10.0,
+    "sites": [
+      {
+        "checks": [
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · ChatGPT Search",
+            "error": 0,
+            "id": "oai-searchbot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · Perplexity",
+            "error": 0,
+            "id": "perplexitybot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Erro",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ],
+            "status": "error",
+            "pass": 99,
+            "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+            "label": "HTML disponível ao coletor",
+            "error": 1,
+            "id": "html",
+            "icon": "×",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ],
+            "status": "unknown",
+            "pass": 99,
+            "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+            "label": "Meta description",
+            "error": 0,
+            "id": "description",
+            "icon": "—",
+            "unknown": 1
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 1,
+            "cases": [
+              "https://roadrunners.run/desafios/",
+              "https://roadrunners.run/en/challenges/",
+              "https://roadrunners.run/es/desafios/"
+            ],
+            "status": "warning",
+            "pass": 79,
+            "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+            "label": "Declarações hreflang",
+            "error": 0,
+            "id": "hreflang",
+            "icon": "!",
+            "unknown": 20
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "status": "unknown",
+            "pass": 55,
+            "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+            "label": "Sintaxe JSON-LD",
+            "error": 0,
+            "id": "structured",
+            "icon": "—",
+            "unknown": 45
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 8,
+            "cases": [
+              "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+              "https://roadrunners.run/en/about/"
+            ],
+            "status": "warning",
+            "pass": 18,
+            "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+            "label": "Reciprocidade entre idiomas",
+            "error": 0,
+            "id": "hreflang-reciprocity",
+            "icon": "!",
+            "unknown": 74
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 41,
+            "cases": [
+              "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+            ],
+            "status": "warning",
+            "pass": 1,
+            "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+            "label": "Campos de eventos no JSON-LD",
+            "error": 0,
+            "id": "event-fields",
+            "icon": "!",
+            "unknown": 58
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+            "label": "Tradução do conteúdo principal",
+            "error": 0,
+            "id": "translations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+            "label": "Acesso real pelos provedores",
+            "error": 0,
+            "id": "provider-access",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+            "label": "Informações de eventos e resultados",
+            "error": 0,
+            "id": "facts",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+            "label": "Citações nas respostas de IA",
+            "error": 0,
+            "id": "citations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+            "label": "Visitas e conversões vindas de IA",
+            "error": 0,
+            "id": "referrals",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+            "label": "Política de uso para treinamento",
+            "error": 0,
+            "id": "training",
+            "icon": "—",
+            "unknown": 0
+          }
+        ],
+        "score": 70,
+        "id": "roadrunners",
+        "auditat": "2026-10-03T19:21:34.802Z"
+      },
+      {
+        "checks": [
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · ChatGPT Search",
+            "error": 0,
+            "id": "oai-searchbot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+            "label": "Permissão no robots.txt · Perplexity",
+            "error": 0,
+            "id": "perplexitybot",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+            "label": "HTML disponível ao coletor",
+            "error": 0,
+            "id": "html",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Verificado",
+            "partial": false,
+            "warning": 0,
+            "cases": [],
+            "status": "pass",
+            "pass": 100,
+            "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+            "label": "Meta description",
+            "error": 0,
+            "id": "description",
+            "icon": "✓",
+            "unknown": 0
+          },
+          {
+            "total": 100,
+            "statuslabel": "Não medido",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+            "label": "Declarações hreflang",
+            "error": 0,
+            "id": "hreflang",
+            "icon": "—",
+            "unknown": 100
+          },
+          {
+            "total": 100,
+            "statuslabel": "Medição parcial",
+            "partial": true,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/"
+            ],
+            "status": "unknown",
+            "pass": 99,
+            "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+            "label": "Sintaxe JSON-LD",
+            "error": 0,
+            "id": "structured",
+            "icon": "—",
+            "unknown": 1
+          },
+          {
+            "total": 100,
+            "statuslabel": "Não medido",
+            "partial": false,
+            "warning": 0,
+            "cases": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+            "label": "Reciprocidade entre idiomas",
+            "error": 0,
+            "id": "hreflang-reciprocity",
+            "icon": "—",
+            "unknown": 100
+          },
+          {
+            "total": 100,
+            "statuslabel": "Atenção",
+            "partial": true,
+            "warning": 96,
+            "cases": [
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+              "https://openresults.run/evento/2026-maratona-salvador-2026/"
+            ],
+            "status": "warning",
+            "pass": 3,
+            "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+            "label": "Campos de eventos no JSON-LD",
+            "error": 0,
+            "id": "event-fields",
+            "icon": "!",
+            "unknown": 1
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+            "label": "Tradução do conteúdo principal",
+            "error": 0,
+            "id": "translations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+            "label": "Acesso real pelos provedores",
+            "error": 0,
+            "id": "provider-access",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+            "label": "Informações de eventos e resultados",
+            "error": 0,
+            "id": "facts",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+            "label": "Citações nas respostas de IA",
+            "error": 0,
+            "id": "citations",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+            "label": "Visitas e conversões vindas de IA",
+            "error": 0,
+            "id": "referrals",
+            "icon": "—",
+            "unknown": 0
+          },
+          {
+            "total": 0,
+            "statuslabel": "Não medido",
+            "warning": 0,
+            "cases": [],
+            "status": "unknown",
+            "pass": 0,
+            "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+            "label": "Política de uso para treinamento",
+            "error": 0,
+            "id": "training",
+            "icon": "—",
+            "unknown": 0
+          }
+        ],
+        "score": 100,
+        "id": "openresults",
+        "auditat": "2026-10-03T19:05:46.881Z"
+      }
+    ],
+    "pending": 4.0,
+    "items": [
+      {
+        "resolved": true,
+        "id": "RR-01"
+      },
+      {
+        "resolved": true,
+        "id": "RR-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-03"
+      },
+      {
+        "resolved": true,
+        "id": "OR-01"
+      },
+      {
+        "resolved": true,
+        "id": "RR-04"
+      },
+      {
+        "resolved": true,
+        "id": "SH-01"
+      },
+      {
+        "resolved": false,
+        "id": "OR-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-05"
+      },
+      {
+        "resolved": true,
+        "id": "RR-06"
+      },
+      {
+        "resolved": true,
+        "id": "OR-03"
+      },
+      {
+        "resolved": false,
+        "id": "SH-02"
+      },
+      {
+        "resolved": true,
+        "id": "RR-07"
+      },
+      {
+        "resolved": false,
+        "id": "RR-08"
+      },
+      {
+        "resolved": false,
+        "id": "RR-09"
+      }
+    ]
+  },
+  "search_public": {
+    "checked_at_utc": "2026-10-03T19:19:25.802355Z",
+    "pages": [
+      {
+        "url": "https://roadrunners.run/busca/",
+        "lang": "pt-BR",
+        "status": 200,
+        "final_url": "https://roadrunners.run/busca/",
+        "canonical": [
+          "https://roadrunners.run/busca/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/en/search/",
+        "lang": "en",
+        "status": 200,
+        "final_url": "https://roadrunners.run/en/search/",
+        "canonical": [
+          "https://roadrunners.run/en/search/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "ok": true
+      },
+      {
+        "url": "https://roadrunners.run/es/busqueda/",
+        "lang": "es",
+        "status": 200,
+        "final_url": "https://roadrunners.run/es/busqueda/",
+        "canonical": [
+          "https://roadrunners.run/es/busqueda/"
+        ],
+        "hreflang": [
+          {
+            "lang": "pt-BR",
+            "url": "https://roadrunners.run/busca/"
+          },
+          {
+            "lang": "en",
+            "url": "https://roadrunners.run/en/search/"
+          },
+          {
+            "lang": "es",
+            "url": "https://roadrunners.run/es/busqueda/"
+          },
+          {
+            "lang": "x-default",
+            "url": "https://roadrunners.run/busca/"
+          }
+        ],
+        "ok": true
+      }
+    ],
+    "ok": true
+  },
+  "search_audit": {
+    "runId": "2026-10-03T19-21-34-802Z-56cf12f6",
+    "auditAt": "2026-10-03T19:21:34.802Z",
+    "pages": [
+      {
+        "url": "https://roadrunners.run/busca/",
+        "status": "pass",
+        "http": 200,
+        "canonical": "https://roadrunners.run/busca/"
+      },
+      {
+        "url": "https://roadrunners.run/en/search/",
+        "status": "pass",
+        "http": 200,
+        "canonical": "https://roadrunners.run/en/search/"
+      },
+      {
+        "url": "https://roadrunners.run/es/busqueda/",
+        "status": "pass",
+        "http": 200,
+        "canonical": "https://roadrunners.run/es/busqueda/"
+      }
+    ]
+  },
+  "robots_origin": {
+    "origin_hashes_match": true,
+    "files": 2
+  },
+  "robots_edge": {
+    "url": "https://openresults.run/robots.txt",
+    "headers": "HTTP/2 200 \ndate: Sat, 03 Oct 2026 19:38:35 GMT\ncontent-type: text/plain\nserver: cloudflare\nlast-modified: Sat, 03 Oct 2026 18:18:04 GMT\nvary: Accept-Encoding\netag: W/\"c4-65cf3ab7c91e0-gzip\"\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=j3qcDEYGIYqlktrOqWsNCQSGTITJ1P3eWNkmu9TF1dfS4CU2kIaYZYZSHJFY2E%2F3UB3PTN7VgCuGcYRV3gwSzSLNSluxSElfxnFPQ2zs9GV9SkKdrTdffbXFtPNLH%2BMRC3jdiGmKo05v%2FisowO8%3D\"}]}\nage: 4763\ncache-control: max-age=3600\ncf-cache-status: HIT\ncf-ray: a44e6875fd9fda2e-GRU\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "body": "User-agent: Googlebot\nDisallow: /nogooglebot/\nDisallow: /perfil\nDisallow: /resultados\n\nUser-agent: *\nAllow: /\nDisallow: /perfil\nDisallow: /resultados\n\nSitemap: https://openresults.run/sitemap.cfm\n",
+    "matches_candidate": false
+  },
+  "visual": {
+    "desktop": {
+      "width": 1280,
+      "scrollWidth": 1280
+    },
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390
+    },
+    "keyboard_details": "Enter collapses",
+    "source": "published Adobe HTML in local preview",
+    "preview_stopped": true
+  }
+}

@@ -88,6 +88,8 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
     <cflocation addtoken="false" url="./?periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
 </cfif>
 
+<cfinclude template="inscricao_disponibilidade.cfm"/>
+
 <cfif isDefined("FORM.action") AND FORM.action EQ "editar_evento_basico" AND isDefined("FORM.nome_evento") AND Len(trim(FORM.nome_evento))>
 
     <cfif VARIABLES.adminRestrictByConta
@@ -96,6 +98,8 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
         AND val(FORM.id_evento) EQ 0>
         <cflocation addtoken="false" url="./?solicitacao=evento_admin&periodo=#URL.periodo#&busca=#urlEncodedFormat(URL.busca)#&estado=#URL.estado#"/>
     </cfif>
+
+    <cfset VARIABLES.inscricaoBasicSchemaReady = new services.EventRegistrationAvailabilityService().isSchemaReady()/>
 
     <cfquery name="qCidade">
         SELECT cod_cidade, nome_cidade
@@ -161,6 +165,10 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
             tipo_corrida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
             endereco = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
             coordenadas = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
+            <cfif VARIABLES.inscricaoBasicSchemaReady>
+                inscricao_disponibilidade = CASE WHEN trim(coalesce(url_inscricao, '')) IS DISTINCT FROM <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.url_inscricao)#"/>
+                    THEN NULL ELSE inscricao_disponibilidade END,
+            </cfif>
             url_inscricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_inscricao#"/>,
             url_hotsite = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_hotsite#"/>
             WHERE id_evento = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_evento#"/>

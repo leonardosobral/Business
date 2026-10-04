@@ -1,0 +1,7 @@
+{
+  "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+  "includes/estrutura/sidenav.cfm": "2e8b14d953ee6d0d4a23fcf15dcb2a0776a417af68cee138a343eef1c4dfe63f",
+  "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+  "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+  "portal/conteudo/seo.cfm": "2bfcafff6ba713f471ba285409f287547796d1f8f97397269e6c70fbb0904bd5"
+}

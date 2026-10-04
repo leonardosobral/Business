@@ -1,0 +1,28 @@
+{
+  "before": {
+    "sobre/index.cfm": "e690d40660347d4926bf228135f2d0bc0c32013df5768204cbefa0135c8ec8fd",
+    "ajuda/index.cfm": "c529518c19eb9a7ee2bf891cec6964f83006ce5ea3447f118d2b6319d01d067d",
+    "privacidade/index.cfm": "00305919ca23a5dbbfdd0ad34d90a7e16eef94794ad0bc13b017ce59501c0965",
+    "noticias/index.cfm": "1fb7013fef18972ac73873bed21336451d85f19b9a3edd75d054093cc3bc398b",
+    "includes/estrutura/head.cfm": "799e87c28cc89c121ce8686161faac29ddd60c0a86673e80c788e06cfcbf95f3"
+  },
+  "candidate": {
+    "sobre/index.cfm": "caaef5e45179a26c7d33960c16c7a0022100f053e5b81b0537b5f58c06f852fc",
+    "ajuda/index.cfm": "82248dd4bc22fe32c1129d34fe013d2edc08980bdc03b4aa1aaccedc43ba2f5d",
+    "privacidade/index.cfm": "1aeb4ee44a270567892bd14368b87935acc5b150bc100d560087e44768b55116",
+    "noticias/index.cfm": "a7ab656dea0a641844e30893847935a9e49b1350401bd73fad06aa74a7bd7ea3",
+    "includes/estrutura/head.cfm": "0e64c861c024ae8fd2053a63e361d4ee95ee10a6e95a7f7e0ff154608d602bc2"
+  },
+  "order": [
+    "sobre/index.cfm",
+    "ajuda/index.cfm",
+    "privacidade/index.cfm",
+    "noticias/index.cfm",
+    "includes/estrutura/head.cfm"
+  ],
+  "compile": {
+    "templates": 5,
+    "output": "successful 5\ntotal 5\nelapsed 3.755 sec\n\n",
+    "returncode": 0
+  }
+}

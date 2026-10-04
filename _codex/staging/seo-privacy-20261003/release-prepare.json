@@ -1,0 +1,19 @@
+{
+  "before": {
+    "includes/head.cfm": "202202ab3a1267d456605a365ab0c6e748200654f9024bb1efa28bf4e713e65c",
+    "robots.txt": "dfb004dd7a10f52a70ac4aa39228e6adf5ceee0fc0de920d25790fcf6421fd23"
+  },
+  "candidate": {
+    "includes/head.cfm": "59b902f8432dc97f5c30dbbae8e54e51532e806259bc6d9e0a27c5e9a1e0d39b",
+    "robots.txt": "268cf9688b20cf0c7bc2507efd38d0ffb50e73758147b371f09b56072b21d19b"
+  },
+  "order": [
+    "includes/head.cfm",
+    "robots.txt"
+  ],
+  "compile": {
+    "returncode": 0,
+    "output": "successful 1\ntotal 1\nelapsed 1.167 sec\n\n",
+    "templates": 1
+  }
+}

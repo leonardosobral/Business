@@ -5,7 +5,7 @@ import path from 'node:path';
 import {parseHtml} from '/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/seo/html.mjs';
 const source=process.argv[2]||'/Users/Shared/Projects/RunnerHub/RoadRunners';
 const head=readFileSync(path.join(source,'includes/estrutura/head.cfm'),'utf8');
-const block=head.slice(head.indexOf('    <link rel="canonical"'),head.indexOf('    <!--- SOCIAL MEDIA METADATA --->'))+head.match(/    <cfif len\(trim\(VARIABLES[.]structuredDataJsonLd\)\)>[\s\S]*?<\/cfif>/)[0];
+const block=(head.match(/<cfparam name="VARIABLES.includeHreflang"[^>]*>/)?.[0]||'')+head.slice(head.indexOf('    <link rel="canonical"'),head.indexOf('    <!--- SOCIAL MEDIA METADATA --->'))+head.match(/    <cfif len\(trim\(VARIABLES[.]structuredDataJsonLd\)\)>[\s\S]*?<\/cfif>/)[0];
 assert.match(block,/canonical/);
 const scratch=mkdtempSync('/private/tmp/seo-head-test-');
 try{

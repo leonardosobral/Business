@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import {parseHtml} from '/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/seo/html.mjs';
+const url='https://roadrunners.run/maratonas/';
+const response=await fetch(url,{headers:{'User-Agent':'RunnerHub-SEO-hreflang/20261003'},redirect:'manual',signal:AbortSignal.timeout(30000)});
+const parsed=parseHtml(await response.text(),url);
+const report={checked_at_utc:new Date().toISOString(),url,status:response.status,canonical:parsed.canonical_url,h1_count:parsed.h1_count,ok:response.status===200&&parsed.canonical_count===1&&parsed.canonical_url===url&&parsed.h1_count===1};
+await writeFile(fileURLToPath(new URL('./public-verification.json',import.meta.url)),JSON.stringify(report,null,2));
+console.log(JSON.stringify(report));assert.equal(report.ok,true);

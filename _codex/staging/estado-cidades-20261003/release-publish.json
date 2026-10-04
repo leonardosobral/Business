@@ -1,0 +1,10 @@
+{
+  "published": [
+    "includes/backend/backend_estado_cidades.cfm",
+    "assets/js/runnerhub-estado-cidades.js",
+    "assets/css/runnerhub-estado-cidades.css",
+    "api/eventos.cfm",
+    "estado/index.cfm"
+  ],
+  "backup": "/var/backups/rr-estado-cidades-20261003/baseline"
+}

@@ -1,0 +1,10 @@
+{
+  "published": [
+    "sobre/index.cfm",
+    "ajuda/index.cfm",
+    "privacidade/index.cfm",
+    "noticias/index.cfm",
+    "includes/estrutura/head.cfm"
+  ],
+  "backup": "/var/backups/seo-institutional-roadrunners-20261003/baseline"
+}

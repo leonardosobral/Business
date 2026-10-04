@@ -1,0 +1,16 @@
+{
+  "before": {
+    "busca/index.cfm": "08a6b24b262b29c994ae6f5ef4cba8f79063d23311b1f4c616ae8aa6a0034c3e"
+  },
+  "candidate": {
+    "busca/index.cfm": "a121e790b42d078f2dad72c1685a8202f58560fa72357bd5208829baa0cfddd9"
+  },
+  "order": [
+    "busca/index.cfm"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 3.156 sec\n\n",
+    "returncode": 0
+  }
+}

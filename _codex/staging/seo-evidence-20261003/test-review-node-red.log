@@ -1,0 +1,123 @@
+TAP version 13
+# Subtest: delivered description is separate from translation fidelity
+ok 1 - delivered description is separate from translation fidelity
+  ---
+  duration_ms: 11.553625
+  type: 'test'
+  ...
+# Subtest: Portuguese fallback and identical text cannot pass
+ok 2 - Portuguese fallback and identical text cannot pass
+  ---
+  duration_ms: 0.492125
+  type: 'test'
+  ...
+# Subtest: explicit nested language conflicts cannot be a translation pass
+not ok 3 - explicit nested language conflicts cannot be a translation pass
+  ---
+  duration_ms: 1.189209
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_ai_evidence.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_ai_evidence.test.mjs:11:168)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: legacy description evidence without a nested language check is rejected
+not ok 4 - legacy description evidence without a nested language check is rejected
+  ---
+  duration_ms: 0.423417
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_ai_evidence.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_ai_evidence.test.mjs:12:178)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: missing source and ambiguous descriptions remain unknown
+ok 5 - missing source and ambiguous descriptions remain unknown
+  ---
+  duration_ms: 0.508583
+  type: 'test'
+  ...
+# Subtest: redirect and HTTP error are failures even with translated markers
+ok 6 - redirect and HTTP error are failures even with translated markers
+  ---
+  duration_ms: 0.294875
+  type: 'test'
+  ...
+# Subtest: audience is measured without claiming conversion or citation
+ok 7 - audience is measured without claiming conversion or citation
+  ---
+  duration_ms: 0.312542
+  type: 'test'
+  ...
+# Subtest: Open Results does not inherit Road Runners translations or traffic
+ok 8 - Open Results does not inherit Road Runners translations or traffic
+  ---
+  duration_ms: 0.217708
+  type: 'test'
+  ...
+# Subtest: shared logs cannot be credited as provider access per site
+ok 9 - shared logs cannot be credited as provider access per site
+  ---
+  duration_ms: 0.704667
+  type: 'test'
+  ...
+# Subtest: invalid dates, sites and contradictory counts are rejected
+ok 10 - invalid dates, sites and contradictory counts are rejected
+  ---
+  duration_ms: 0.589334
+  type: 'test'
+  ...
+# Subtest: unsafe participant URLs, host swaps and querystrings cannot enter snapshot
+ok 11 - unsafe participant URLs, host swaps and querystrings cannot enter snapshot
+  ---
+  duration_ms: 0.19675
+  type: 'test'
+  ...
+# Subtest: metadata must not contain raw page text or an unrecognized provider
+ok 12 - metadata must not contain raw page text or an unrecognized provider
+  ---
+  duration_ms: 0.156792
+  type: 'test'
+  ...
+# Subtest: base checks are unchanged when complementary evidence is omitted
+ok 13 - base checks are unchanged when complementary evidence is omitted
+  ---
+  duration_ms: 0.129375
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 11
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 57.286875

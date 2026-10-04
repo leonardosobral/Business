@@ -37,7 +37,18 @@ check(paidBannerWorkspaceView({}, {}, true)=='paid','admin defaults to paid bann
 check(paidBannerWorkspaceView({view='house'}, {}, true)=='house' AND paidBannerWorkspaceView({banner_novo='1'}, {}, true)=='house','explicit HOUSE view and legacy admin form links remain compatible');
 rejects(function(){paidBannerWorkspaceView({view='house'}, {}, false);},'account member cannot select HOUSE administration');
 check(paidBannerWorkspaceView({}, {paid_banner_action='save'}, false)=='paid','member paid save stays in account workspace');
+check(paidBannerWorkspaceSection({},false,true)=='banners','paid workspace defaults to the banner list tab');
+check(paidBannerWorkspaceSection({section='performance'},false,true)=='performance','performance tab has a stable direct URL');
+check(paidBannerWorkspaceSection({section='form'},false,true)=='form' AND paidBannerWorkspaceSection({section='form'},false,false)=='banners','form tab requires campaign-management capability');
+check(paidBannerWorkspaceSection({section='unknown'},true,true)=='form','an edit or validation response keeps the form tab selected');
+filterCampaign='11111111-1111-4111-8111-111111111111';
+check(paidBannerFilterQuery(filterCampaign,90)=='banner=' & filterCampaign & '&periodo=90','validated performance filters have a stable roundtrip query');
+check(paidBannerFilterQuery('../foreign',999)=='banner=&periodo=30','return query rejects a non-UUID banner and clamps an unsupported period');
+check(paidBannerActionReturnUrl('save','',filterCampaign,90)=='/portal/banners/?section=banners&banner=' & filterCampaign & '&periodo=90' AND paidBannerActionReturnUrl('prepare',filterCampaign,filterCampaign,90)=='/portal/banners/?section=form&edit=' & filterCampaign & '&banner=' & filterCampaign & '&periodo=90##paid-banner-form','successful POST redirects preserve the validated roundtrip filters');
 VARIABLES.paidBannerCsrf='test-token';VARIABLES.paidBannerEditId='';VARIABLES.paidBannerEditRow={};
+VARIABLES.paidBannerFilter='';VARIABLES.paidBannerDays=30;VARIABLES.paidBannerReturnQuery=paidBannerFilterQuery('',30);
+VARIABLES.paidBannerBannersUrl='/portal/banners/?section=banners&' & VARIABLES.paidBannerReturnQuery;
+VARIABLES.paidBannerFormActionUrl='/portal/banners/?section=form&' & VARIABLES.paidBannerReturnQuery & '##paid-banner-form';
 VARIABLES.paidBannerFormData=paidBannerForm({paid_banner_action='save',name='"/><img src=x onerror=alert(1)>'});
 savecontent variable='html' {include root & 'portal/includes/paid_banner_form.cfm';}
 check(find('<img src=x',html)==0 AND find('&lt;img',html)>0,'form redisplays invalid user text inertly');

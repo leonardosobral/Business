@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+const snapshotRoot = process.env.SEO_QUEUE_CFML_SNAPSHOT_ROOT;
+const sourceFor = name => resolve(snapshotRoot && ['portal/includes/seo_queue_data.cfm','portal/includes/seo_score_data.cfm'].includes(name) ? snapshotRoot : root, name);
 const templates = ['portal/conteudo/seo.cfm', 'portal/includes/seo_queue_backend.cfm', 'portal/includes/seo_queue_data.cfm',
   'portal/conteudo/seo_report.cfm', 'portal/includes/seo_score_backend.cfm', 'portal/includes/seo_score_data.cfm', 'portal/conteudo/seo_ai.cfm'];
 const cases = ['contract', 'resolved-contract', ...templates.flatMap((_, index) => [`anonymous-${index}`, `effective-denied-${index}`]),
@@ -24,7 +26,7 @@ function scenario(name, check) { if (selected.has(name)) check(); }
 const requiredTemplates = [...selected].some(name => name.startsWith('render-')) ? templates
   : [...new Set([templates[1], templates[2], templates[4], templates[5],
       ...[...selected].filter(name => /^(anonymous|effective-denied)-\d+$/.test(name)).map(name => templates[Number(name.match(/\d+$/)[0])])])];
-for (const name of requiredTemplates) assert.ok(existsSync(resolve(root, name)), `SEO queue template must exist before its CFML behavior can pass: ${name}`);
+for (const name of requiredTemplates) assert.ok(existsSync(sourceFor(name)), `SEO queue template must exist before its CFML behavior can pass: ${name}`);
 const box = process.env.SEO_QUEUE_CFML_BOX_RUNTIME || '/Users/Shared/Projects/ColdFusion Certification/box';
 const runtimeHome = process.env.SEO_QUEUE_CFML_COMMANDBOX_HOME || '/private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox';
 const java = process.env.SEO_QUEUE_CFML_JAVA_RUNTIME || '/usr/bin/java';
@@ -56,9 +58,9 @@ function readScoreMetadata(html) {
 }
 
 try {
-  for (const name of [...templates.filter(name => existsSync(resolve(root, name))), 'includes/backend/require_admin.cfm']) {
+  for (const name of [...templates.filter(name => existsSync(sourceFor(name))), 'includes/backend/require_admin.cfm']) {
     mkdirSync(dirname(resolve(scratch, name)), { recursive: true });
-    copyFileSync(resolve(root, name), resolve(scratch, name));
+    copyFileSync(sourceFor(name), resolve(scratch, name));
   }
   copyFileSync(resolve(root, '_codex/tests/seo_queue_cfml.cfm'), resolve(scratch, 'fixture.cfm'));
   // Synthetic resolution states exercise the optional field without changing curated data.
@@ -157,6 +159,8 @@ if (VARIABLES.seoTestCase EQ "render-score-escaped") {
     assert.equal((html.match(/aria-label="SEO para IA —/g)||[]).length,2,'AI report must render both sites');
     assert.match(html,/Sintaxe JSON-LD/);
     assert.match(html,/Campos de eventos no JSON-LD/);
+    assert.match(html,/Reciprocidade entre idiomas/);
+    assert.match(html,/Tradu(?:ção|&ccedil;&atilde;o) do conte(?:ú|&uacute;)do principal/);
     assert.doesNotMatch(html,/<article class="seo-issue/, 'AI navigation must keep the queue in its own section');
     assert.doesNotMatch(html,/href\s*=\s*["'](?:javascript:|file:|data:)/i);
     writeFileSync(resolve(output,'seo-ai.html'),html);

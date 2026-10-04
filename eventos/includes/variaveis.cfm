@@ -32,7 +32,7 @@
 <cfparam name="URL.mostrar" default=""/>
 <cfparam name="URL.sessao" default="dados"/>
 
-<cfif NOT VARIABLES.adminIsAdmin AND listFindNoCase("configuracoes,or", URL.sessao)>
+<cfif NOT VARIABLES.adminIsAdmin AND listFindNoCase("configuracoes,or,inscricoes", URL.sessao)>
     <cfset URL.sessao = "dados"/>
 </cfif>
 

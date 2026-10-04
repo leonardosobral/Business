@@ -1,0 +1,22 @@
+{
+  "before": {
+    "portal/includes/seo_score_data.cfm": "a6f04d8bb554d55a7761ff1ebf39df115c88fa5b0503d7fb4a0100f13846343b",
+    "portal/includes/seo_queue_data.cfm": "d12e71388119c27abfc5907542b27dcceddcde440f405887ae8d2c8857d14dc1",
+    "portal/conteudo/seo_ai.cfm": "4ba454d881bc02382df234c9add923c2dbb81f623f55457e82947ab49a3b953e"
+  },
+  "candidate": {
+    "portal/includes/seo_score_data.cfm": "369fe5e40d81b6639a8bb90bdf1ce234d0d992a7ec80134099df898c3b4d9ccf",
+    "portal/includes/seo_queue_data.cfm": "0c40d93b6c1cdfa790139cebab779e8ba0165642fd943421b1080f65f6a66b85",
+    "portal/conteudo/seo_ai.cfm": "83e3b7b933d2d2919ec6dba20e545827cc5e89176f7376af472d53fb8c6e9e2b"
+  },
+  "order": [
+    "portal/includes/seo_score_data.cfm",
+    "portal/includes/seo_queue_data.cfm",
+    "portal/conteudo/seo_ai.cfm"
+  ],
+  "compile": {
+    "templates": 3,
+    "output": "successful 3\ntotal 3\nelapsed 2.293 sec\n\n",
+    "returncode": 0
+  }
+}

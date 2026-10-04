@@ -1,0 +1,9 @@
+{
+  "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+  ".htaccess": "c914b4294c8dc423c6e01691fe69891383bcbd705e0b0e84f84d7a26e8160437",
+  "includes/backend/backend.cfm": "90c77c56a50af2f2bf190d6897cb9ccd16d69cba1e3c823bf5d0b3d55d277898",
+  "includes/estrutura/head.cfm": "0e64c861c024ae8fd2053a63e361d4ee95ee10a6e95a7f7e0ff154608d602bc2",
+  "includes/estrutura/home_hero_busca.cfm": "beae33d95f7a0a7e4c7a4211ccf452ec7f9582c02e3ce0c4e45a0226c58ee630",
+  "assets/js/runnerhub-event-filters.js": "a75dd389f526ccd5af0852ba67bc3d805314217ed97696b8cc568a9e01f8bced",
+  "api/ads/v1/cpc-click.cfm": "42ea4727351e0572246e9c7e2724bdb03a7949538fba4f0b32b2ba648789ecfb"
+}

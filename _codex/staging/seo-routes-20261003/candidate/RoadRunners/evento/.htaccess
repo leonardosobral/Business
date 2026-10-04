@@ -1,0 +1,12 @@
+ErrorDocument 404 /404/
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+    # Keep captured tag characters inside one encoded query parameter.
+    RewriteRule ^(.*) index.cfm?tag=$1 [B,NC,L,QSA]
+</IfModule>

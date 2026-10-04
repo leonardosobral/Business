@@ -1,0 +1,252 @@
+{
+  "db": {
+    "events": {
+      "ROWS": [
+        {
+          "NOME_EVENTO": "ATIBAIA RUN FEST - TRAIL MODE #04 | 7 PRAIAS - UBATUBA",
+          "DATA_FINAL": "October, 25 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 48167,
+          "TAG": "2026-atibaia-run-fest-trail-mode-#04-7-praias-ubatuba",
+          "DATA_INICIAL": "October, 25 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01",
+          "DATA_FINAL": "September, 19 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 47291,
+          "TAG": "2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-#01",
+          "DATA_INICIAL": "September, 19 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO",
+          "DATA_FINAL": "September, 27 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 47273,
+          "TAG": "2026-atibaia-run-fest-trail-mode-#03-socorro-pico-do-gaviao",
+          "DATA_INICIAL": "September, 27 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "ATIBAIA RUN FEST - TRAIL MODE - PICO DO LOPO 16/08",
+          "DATA_FINAL": "August, 16 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 46130,
+          "TAG": "2026-atibaia-run-fest-trail-mode-pico-do-lopo-1608",
+          "DATA_INICIAL": "August, 16 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "HALLOWEEN OPERARIO",
+          "DATA_FINAL": "October, 31 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 45387,
+          "TAG": "2026-halloween-operario",
+          "DATA_INICIAL": "October, 31 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "OPERÁRIO\r\nNIGHT\r\nRUN",
+          "DATA_FINAL": "May, 01 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 41660,
+          "TAG": "2026-operario\r\nnight\r\nrun",
+          "DATA_INICIAL": "May, 01 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "ROCK N' RUN\n                NASHVILLE 2026",
+          "DATA_FINAL": "December, 20 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 41252,
+          "TAG": "2026-rock-n-run\n----nashville-2026",
+          "DATA_INICIAL": "December, 20 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "1ª CORRIDA E CAMINHADA SÃO JOSÉ OPERÁRIO",
+          "DATA_FINAL": "April, 26 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 39098,
+          "TAG": "2026-1-corrida-e-caminhada-sao-jose-operario",
+          "DATA_INICIAL": "April, 26 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "VII Corrida de Rua de São José Operário",
+          "DATA_FINAL": "March, 22 2026 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 38913,
+          "TAG": "2026-vii-corrida-de-rua-de-sao-jose-operario",
+          "DATA_INICIAL": "March, 22 2026 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "ROCK' N RUNNING",
+          "DATA_FINAL": "October, 25 2025 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 33181,
+          "TAG": "2025-rock-n-running",
+          "DATA_INICIAL": "October, 25 2025 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "OPERARIO NIGHT RUN - HALLOWEEN EDiTION",
+          "DATA_FINAL": "October, 25 2025 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 33180,
+          "TAG": "2025-operario-night-run-halloween-edition",
+          "DATA_INICIAL": "October, 25 2025 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "VI Corrida de Rua de São José Operário",
+          "DATA_FINAL": "March, 23 2025 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 28842,
+          "TAG": "2025-vi-corrida-de-rua-de-sao-jose-operario",
+          "DATA_INICIAL": "March, 23 2025 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "Operário Run 2025",
+          "DATA_FINAL": "May, 01 2025 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 26789,
+          "TAG": "2025-operario-run-2025",
+          "DATA_INICIAL": "May, 01 2025 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "5ª Corrida de Rua e Caminha de São José Operário",
+          "DATA_FINAL": "March, 17 2024 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 24411,
+          "TAG": "2024-5-corrida-de-rua-e-caminha-de-sao-jose-operario",
+          "DATA_INICIAL": "March, 17 2024 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "Operário Night Run - Halloween Edition",
+          "DATA_FINAL": "October, 26 2024 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 23438,
+          "TAG": "2024-operario-night-run-halloween-edition",
+          "DATA_INICIAL": "October, 26 2024 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "Operário Run 2024",
+          "DATA_FINAL": "May, 01 2024 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 10724,
+          "TAG": "2024-operario-run-2024",
+          "DATA_INICIAL": "May, 01 2024 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "2ª Corrida de Rua São José Operário",
+          "DATA_FINAL": "November, 21 2021 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 8398,
+          "TAG": "2021-2-corrida-de-rua-sao-jose-operario",
+          "DATA_INICIAL": "November, 21 2021 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "3º Corrida de Rua de São José Operário",
+          "DATA_FINAL": "May, 22 2022 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 6103,
+          "TAG": "2022-3-corrida-de-rua-de-sao-jose-operario",
+          "DATA_INICIAL": "May, 22 2022 00:00:00"
+        },
+        {
+          "NOME_EVENTO": "4ª Corrida de Rua e Caminha de São José Operário",
+          "DATA_FINAL": "May, 21 2023 00:00:00",
+          "ATIVO": 1,
+          "ID_EVENTO": 3877,
+          "TAG": "2023-4-corrida-de-rua-e-caminha-de-sao-jose-operario",
+          "DATA_INICIAL": "May, 21 2023 00:00:00"
+        }
+      ]
+    },
+    "news_tables": {
+      "ROWS": []
+    }
+  },
+  "http": [
+    {
+      "path": "/es/evento/2026-operario%0D%0Anight%0D%0Arun/",
+      "origin": false,
+      "returncode": 0,
+      "headers": "HTTP/2 403 \ndate: Sat, 03 Oct 2026 16:58:53 GMT\ncontent-type: text/html; charset=iso-8859-1\ncontent-length: 13\nserver: cloudflare\ncf-cache-status: DYNAMIC\ncf-ray: a44d7e85bd581d27-GRU\nalt-svc: h3=\":443\"; ma=86400\n",
+      "error": ""
+    },
+    {
+      "path": "/es/evento/2026-operario%0D%0Anight%0D%0Arun/",
+      "origin": true,
+      "returncode": 0,
+      "headers": "HTTP/1.1 403 Forbidden\nDate: Sat, 03 Oct 2026 16:58:17 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Length: 13\nContent-Type: text/html; charset=iso-8859-1\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-rock-n-run%0A----nashville-2026/",
+      "origin": false,
+      "returncode": 0,
+      "headers": "HTTP/2 403 \ndate: Sat, 03 Oct 2026 16:58:53 GMT\ncontent-type: text/html; charset=iso-8859-1\ncontent-length: 13\nserver: cloudflare\ncf-cache-status: DYNAMIC\ncf-ray: a44d7e869e74a511-GRU\nalt-svc: h3=\":443\"; ma=86400\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-rock-n-run%0A----nashville-2026/",
+      "origin": true,
+      "returncode": 0,
+      "headers": "HTTP/1.1 403 Forbidden\nDate: Sat, 03 Oct 2026 16:58:17 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Length: 13\nContent-Type: text/html; charset=iso-8859-1\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+      "origin": false,
+      "returncode": 0,
+      "headers": "HTTP/2 301 \ndate: Sat, 03 Oct 2026 16:58:54 GMT\ncontent-type: text/html;charset=UTF-8\nserver: cloudflare\ncontent-language: pt-BR\nlocation: /busca/?termo=2026 atibaia run fest trail mode &redirect=true\ncache-control: no-cache\npragma: no-cache\ncf-cache-status: DYNAMIC\ncf-ray: a44d7e878dea36ec-GRU\nalt-svc: h3=\":443\"; ma=86400\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-atibaia-run-fest-trail-mode-%2303-socorro-pico-do-gaviao/",
+      "origin": true,
+      "returncode": 0,
+      "headers": "HTTP/1.1 301 Moved Permanently\nDate: Sat, 03 Oct 2026 16:58:17 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Language: pt-BR\nlocation: /busca/?termo=2026 atibaia run fest trail mode &redirect=true\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+      "origin": false,
+      "returncode": 0,
+      "headers": "HTTP/2 301 \ndate: Sat, 03 Oct 2026 16:58:54 GMT\ncontent-type: text/html;charset=UTF-8\nserver: cloudflare\ncontent-language: pt-BR\nlocation: /busca/?termo=2026 atibaia run fest x chopp germania corre pela breja &redirect=true\ncache-control: no-cache\npragma: no-cache\ncf-cache-status: DYNAMIC\ncf-ray: a44d7e88be35d8df-GRU\nalt-svc: h3=\":443\"; ma=86400\n",
+      "error": ""
+    },
+    {
+      "path": "/evento/2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-%2301/",
+      "origin": true,
+      "returncode": 0,
+      "headers": "HTTP/1.1 301 Moved Permanently\nDate: Sat, 03 Oct 2026 16:58:17 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Language: pt-BR\nlocation: /busca/?termo=2026 atibaia run fest x chopp germania corre pela breja &redirect=true\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n",
+      "error": ""
+    },
+    {
+      "path": "/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/",
+      "origin": false,
+      "returncode": 0,
+      "headers": "HTTP/2 404 \ndate: Sat, 03 Oct 2026 16:58:54 GMT\ncontent-type: text/html;charset=UTF-8\nserver: cloudflare\ncontent-language: pt-BR\ncf-cache-status: DYNAMIC\ncf-ray: a44d7e89eafda6ba-GRU\nalt-svc: h3=\":443\"; ma=86400\n",
+      "error": ""
+    },
+    {
+      "path": "/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/",
+      "origin": true,
+      "returncode": 0,
+      "headers": "HTTP/1.1 404 Not Found\nDate: Sat, 03 Oct 2026 16:58:17 GMT\nServer: Apache/2.4.52 (Ubuntu)\nContent-Language: pt-BR\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n",
+      "error": ""
+    }
+  ],
+  "rewrite": {
+    "/etc/apache2/sites-enabled/api.roadrunners.run-le-ssl.conf": "    ServerName api.roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br/public-api\n    ErrorLog ${APACHE_LOG_DIR}/api.roadrunners.run-error.log\n    CustomLog ${APACHE_LOG_DIR}/api.roadrunners.run-access.log combined\n    LogFormat \"%{sec}t\\t%{c}a\\t%a\\t%{CF-Connecting-IP}i\\t%m\\t%U\\t%>s\\t%B\\t%D\\t%{X-Request-Id}o\\t%{X-Api-Client-Id}o\\t%{X-Api-Error-Code}o\\t%{RateLimit-Limit}o\\t%{RateLimit-Remaining}o\\t%{CF-Ray}i\" roadrunners_api_telemetry\n    CustomLog ${APACHE_LOG_DIR}/api.roadrunners.run-telemetry.log roadrunners_api_telemetry\n    <Directory /var/www/roadrunners.com.br/public-api>\n    RewriteEngine On\n    RewriteCond %{REQUEST_METHOD} =POST [NC]\n    RewriteCond %{REQUEST_URI} !^/v1/result-imports/submissions\\.cfm$ [NC]\n    RewriteRule ^ - [R=405,END]\n    RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|OPTIONS|POST)$ [NC]\n    RewriteRule ^ - [R=405,END]\n    RewriteRule ^/?(CFIDE|cf_scripts|restplay)(/|$) - [F,END,NC]\n    RewriteRule ^/?\\. - [F,END]\n    RewriteRule ^/?Application\\.cfc$ - [F,END,NC]\n    RewriteRule ^/?$ /index.cfm [PT,L]\n    RewriteRule ^/?index\\.cfm$ - [END,NC]\n    RewriteRule ^/?openapi\\.json$ - [END,NC]\n    RewriteRule ^/?health\\.cfm$ - [END,NC]\n    RewriteRule ^/?assets/playground\\.js$ - [END,NC]\n    RewriteRule ^/?v1/(athletes|events|results|result-imports|discovery|editorial|feed|challenges|training|coupons|session|me)/[a-z0-9-]+\\.cfm$ - [END,NC]\n    RewriteRule ^ - [R=404,END]\n    SSLCertificateFile /etc/letsencrypt/live/api.roadrunners.run/fullchain.pem\n    SSLCertificateKeyFile /etc/letsencrypt/live/api.roadrunners.run/privkey.pem",
+    "/etc/apache2/sites-enabled/roadrunners.redirect-le-ssl.conf": "    ServerName roadrunners.com.br\n    DocumentRoot /var/www/roadrunners.301\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =roadrunners.com.br\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]\nSSLCertificateFile /etc/letsencrypt/live/roadrunners.com.br/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/roadrunners.com.br/privkey.pem",
+    "/etc/apache2/sites-enabled/roadrunners.run.conf": "    ServerName roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =roadrunners.run\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/www.roadrunners.redirect-le-ssl.conf": "    ServerName www.roadrunners.com.br\n    DocumentRoot /var/www/roadrunners.301\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =www.roadrunners.com.br\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]\nSSLCertificateFile /etc/letsencrypt/live/www.roadrunners.com.br/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/www.roadrunners.com.br/privkey.pem",
+    "/etc/apache2/sites-enabled/roadrunners.redirect.conf": "    ServerName roadrunners.com.br\n    DocumentRoot /var/www/roadrunners.301\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =roadrunners.com.br\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/api.roadrunners.run.conf": "    ServerName api.roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br/public-api\n    ErrorLog ${APACHE_LOG_DIR}/api.roadrunners.run-error.log\n    CustomLog ${APACHE_LOG_DIR}/api.roadrunners.run-access.log combined\n    <Directory /var/www/roadrunners.com.br/public-api>\n    RewriteEngine On\n    RewriteRule ^ https://api.roadrunners.run%{REQUEST_URI} [R=301,END,NE]",
+    "/etc/apache2/sites-enabled/www.maratonadefloripa.com.br.conf": "    DocumentRoot /var/www/roadrunners.com.br/maratonadefloripa\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =www.maratonadefloripa.com.br\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/www.maratonadefloripa.com.br-le-ssl.conf": "    DocumentRoot /var/www/roadrunners.com.br/maratonadefloripa\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =www.maratonadefloripa.com.br\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/www.roadrunners.redirect.conf": "    ServerName www.roadrunners.com.br\n    DocumentRoot /var/www/roadrunners.301\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =www.roadrunners.com.br\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/maratonadefloripa.com.br-le-ssl.conf": "    DocumentRoot /var/www/roadrunners.com.br/maratonadefloripa\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =maratonadefloripa.com.br\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/www.roadrunners.run.conf": "    ServerName www.roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =www.roadrunners.run\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/maratonadefloripa.com.br.conf": "    DocumentRoot /var/www/roadrunners.com.br/maratonadefloripa\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\nRewriteCond %{SERVER_NAME} =maratonadefloripa.com.br\nRewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]",
+    "/etc/apache2/sites-enabled/www.roadrunners.run-le-ssl.conf": "    ServerName www.roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =www.roadrunners.run\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]\nSSLCertificateFile /etc/letsencrypt/live/www.roadrunners.run/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/www.roadrunners.run/privkey.pem",
+    "/etc/apache2/sites-enabled/roadrunners.run-le-ssl.conf": "    ServerName roadrunners.run\n    DocumentRoot /var/www/roadrunners.com.br\n    ErrorLog ${APACHE_LOG_DIR}/error.log\n    CustomLog ${APACHE_LOG_DIR}/access.log combined\nRewriteEngine on\n# RewriteCond %{SERVER_NAME} =roadrunners.run\n# RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]\nSSLCertificateFile /etc/letsencrypt/live/roadrunners.run/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/roadrunners.run/privkey.pem"
+  },
+  "logs": {}
+}

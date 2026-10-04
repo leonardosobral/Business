@@ -1,0 +1,855 @@
+{
+  "db": {
+    "supplier_types": {
+      "ROWS": [
+        {
+          "ID_FORNECEDOR_TIPO": 1,
+          "DESCRICAO_TIPO": "Organização"
+        },
+        {
+          "ID_FORNECEDOR_TIPO": 2,
+          "DESCRICAO_TIPO": "Cronometragem"
+        },
+        {
+          "ID_FORNECEDOR_TIPO": 3,
+          "DESCRICAO_TIPO": "Assessoria"
+        },
+        {
+          "ID_FORNECEDOR_TIPO": 4,
+          "DESCRICAO_TIPO": "Clube de Corrida"
+        },
+        {
+          "ID_FORNECEDOR_TIPO": 5,
+          "DESCRICAO_TIPO": "Canal de Corrida"
+        },
+        {
+          "ID_FORNECEDOR_TIPO": 6,
+          "DESCRICAO_TIPO": "Creator"
+        }
+      ]
+    },
+    "organizer_coverage": {
+      "ROWS": [
+        {
+          "ACTIVE_EVENTS": 34320,
+          "WITH_NAMED_ORGANIZER": 1332,
+          "WITH_ORGANIZER_RELATION": 1332
+        }
+      ]
+    },
+    "mismatched_roles": {
+      "ROWS": [
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "Just Run Assessoria Esportiva",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 36,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "ATP Run Assessoria Esportiva",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 69,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "Get Running",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 87,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "Edido Running",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 98,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "Club Run",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 102,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "The Running Club",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 111,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "BH Run",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 114,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "EVENT_ROLE": 1,
+          "NOME_FORNECEDOR": "Pulsar Running",
+          "ID_EVENTO": 47643,
+          "ID_FORNECEDOR": 119,
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "SUPPLIER_TYPE": "assessoria"
+        }
+      ]
+    },
+    "timer_only_events": {
+      "ROWS": [
+        {
+          "NOME_EVENTO": "Maratona Internacional De João Pessoa 2026",
+          "TAG": "2026-6-maratona-internacional-de-joao-pessoa-2026",
+          "ID_EVENTO": 32450
+        },
+        {
+          "NOME_EVENTO": "Maratona de Campo Grande 2026",
+          "TAG": "2026-maratona-de-campo-grande-2026",
+          "ID_EVENTO": 39393
+        },
+        {
+          "NOME_EVENTO": "CARNARUN",
+          "TAG": "2026-carnarun",
+          "ID_EVENTO": 37941
+        },
+        {
+          "NOME_EVENTO": "Circuito sesc - etapa Sorocaba 2026",
+          "TAG": "2026-circuito-sesc-etapa-sorocaba-2026",
+          "ID_EVENTO": 38745
+        }
+      ]
+    },
+    "organizer_events": {
+      "ROWS": [
+        {
+          "NOME_EVENTO": "Maratona Internacional de Floripa 2027",
+          "TAG": "2027-maratona-internacional-de-floripa-fibra-2027",
+          "NOME_FORNECEDOR": "Grupo STC",
+          "ID_EVENTO": 47147
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "NOME_FORNECEDOR": "Just Run Assessoria Esportiva",
+          "ID_EVENTO": 47643
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "NOME_FORNECEDOR": "ATP Run Assessoria Esportiva",
+          "ID_EVENTO": 47643
+        },
+        {
+          "NOME_EVENTO": "MEIA MARATONA DE BRASÍLIA - 2027",
+          "TAG": "2027-meia-maratona-de-brasilia-2027",
+          "NOME_FORNECEDOR": "Get Running",
+          "ID_EVENTO": 47643
+        }
+      ]
+    }
+  },
+  "http": [
+    {
+      "url": "https://roadrunners.run/busca/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Arraste",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Atividades",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Agenda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Desafios",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Notícias",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Vídeos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Busca",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Eventos",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Atletas",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Notícias",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Vídeos",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Explore",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Para o atleta",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Road Runners",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Medição de audiência",
+          "class": ""
+        }
+      ],
+      "schemas": []
+    },
+    {
+      "url": "https://roadrunners.run/en/search/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Swipe",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Activities",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Agenda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Results",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Challenges",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "News",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Videos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Search",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Events",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Results",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Athletes",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "News",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Videos",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Explore",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "For athletes",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Road Runners",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Audience measurement",
+          "class": ""
+        }
+      ],
+      "schemas": []
+    },
+    {
+      "url": "https://roadrunners.run/es/busqueda/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Desliza",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Actividades",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Agenda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Desafíos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Noticias",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Videos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Búsqueda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Eventos",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Atletas",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Noticias",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Videos",
+          "class": "h6 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Explora",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Para atletas",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Road Runners",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Medición de audiencia",
+          "class": ""
+        }
+      ],
+      "schemas": []
+    },
+    {
+      "url": "https://openresults.run/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Destaques recentes",
+          "class": "h4 mb-0"
+        },
+        {
+          "tag": "h2",
+          "text": "Recentes",
+          "class": "h4 mb-1"
+        },
+        {
+          "tag": "h2",
+          "text": "5ª Corrida da FACISA/UFRN",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Dez Milhas Garoto 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Corrida Pao de Acucar - 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "41ª CORRIDA INTEGRAÇÃO CAMPINAS - 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Maratona de Salvador 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "SESC NAS PONTES 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "BIMBO GLOBAL RACE 2026 - SÃO PAULO",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "14ª Meia Maratona Tribuna Praia Grande",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Circuito das Estações 2026 - Primavera - Fortaleza",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "CIRCUITO RIO ANTIGO -  ETAPA CINELÂNDIA",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Corrida Supermercados BH 2026 - Etapa JUIZ DE FORA",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "BIMBO GLOBAL RACE 2026 - RIO DE JANEIRO",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Corrida Em Movimento Pela Saúde - Drogaria Pacheco",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "2ª CORRIDA UNIPREÇO - VÁLIDO PELO RANKING CORRIDAS AENT - ETAPA 6",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "CIRCUITO DE CORRIDAS CAIXA - ETAPA FORTALEZA",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "6ª Volta da UEFS",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Circuito das Estações 2026 - Primavera - João Pessoa",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "MARATONA DE NITERÓI 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Circuito das Estações 2026 - Primavera - Porto Alegre",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "CORRIDA BOMBOM RUN",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Circuito das Estações 2026 - Primavera - Imperatriz",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Circuito das Estações 2026 - Primavera - Florianópolis",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "ETAPA LEBRE - Circuito ZOO RUN",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Blue Line - São Paulo 2026",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Próximas provas",
+          "class": "h4 mb-0"
+        },
+        {
+          "tag": "h3",
+          "text": "03/10 | 5km no Bruno Covas",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h3",
+          "text": "10º CIRCUITO IRANI DE ESPORTES",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h3",
+          "text": "13 Timbore Runner Gloss - Boleto e Pix",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h3",
+          "text": "13 Timbore Runner Gloss - Cartao",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h3",
+          "text": "1ª CORRIDA CHAMPIONS",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h3",
+          "text": "1ª CORRIDA DE RUA SÃO FRANCISCO DE ASSIS",
+          "class": "or-event-card-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Continue no Road Runners",
+          "class": "or-rr-title"
+        }
+      ],
+      "schemas": []
+    },
+    {
+      "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Arraste",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Atividades",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Agenda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Desafios",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Notícias",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Vídeos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Busca",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h1",
+          "text": "\n                    Saiba onde e quando correr as melhores provas.\n                ",
+          "class": "mb-2"
+        },
+        {
+          "tag": "h1",
+          "text": "Gleison da Silva Santos é tricampeão do Circuito CAIXA em Maceió",
+          "class": "h3 mb-3"
+        },
+        {
+          "tag": "h3",
+          "text": "Pontos principais",
+          "class": "news-summary-key-points-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Explore",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Para o atleta",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Road Runners",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Medição de audiência",
+          "class": ""
+        }
+      ],
+      "schemas": [
+        {
+          "citation": "https://contrarelogio.com.br/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+          "publisher": {
+            "@type": "Organization",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://roadrunners.run/assets/rr_icon.jpg"
+            },
+            "url": "https://roadrunners.run/",
+            "name": "Road Runners"
+          },
+          "@context": "https://schema.org",
+          "articleBody": "Gleison da Silva Santos conquistou o tricampeonato dos 10 km da etapa de Maceió do Circuito de Corridas CAIXA/Brazil Run Series ao vencer a prova neste domingo (6). O pernambucano, natural de Garanhuns e conhecido como Cebolão, repetiu os resultados de 2024 e 2025 com o tempo de 31min55. Silvan dos Santos foi o segundo colocado, em 31min59, e Jair José da Silva completou o pódio em terceiro, com 32min12. Na elite feminina, a alagoana Maria Silvania Ferreira da Silva venceu pela primeira vez os 10 km em Maceió, em 53min52. Participante do Circuito CAIXA desde 2012, ela afirmou correr há mais de 20 anos. A etapa reuniu disputas de 5 km e 10 km, além de caminhada de 5 km, com largadas a partir das 5h50 na região da Pajuçara. A próxima parada do circuito será em Fortaleza, em 27 de setembro.",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "Contra Relógio"
+          },
+          "url": "https://roadrunners.run/noticias/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+          "articleSection": "Notícias",
+          "image": [
+            "https://conteudo.roadrunners.run/public/uploads/470217-1218882-cccmaceioi-div007-jpg-web-6.jpeg"
+          ],
+          "description": "Pernambucano Gleison da Silva Santos venceu os 10 km do Circuito CAIXA em Maceió e repetiu os títulos obtidos em 2024 e 2025.",
+          "dateModified": "2026-09-20T11:24:23",
+          "isBasedOn": "https://contrarelogio.com.br/gleison-da-silva-santos-e-tricampeao-do-circuito-caixa-em-maceio/",
+          "@type": "NewsArticle",
+          "wordCount": 143,
+          "headline": "Gleison da Silva Santos é tricampeão do Circuito CAIXA em Maceió",
+          "datePublished": "2026-09-06T13:58:55",
+          "inLanguage": "pt-BR"
+        }
+      ]
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+      "status": 200,
+      "headings": [
+        {
+          "tag": "h2",
+          "text": "Arraste",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Atividades",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Agenda",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Resultados",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Desafios",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Notícias",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Vídeos",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h2",
+          "text": "Busca",
+          "class": "rr-mobile-onboarding-title"
+        },
+        {
+          "tag": "h1",
+          "text": "\n                    Encontre as melhores provas perto de você.\n                ",
+          "class": "mb-2"
+        },
+        {
+          "tag": "h1",
+          "text": "Maratona de Salvador 2026",
+          "class": "event-detail-card-title "
+        },
+        {
+          "tag": "h2",
+          "text": "Explore",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Para o atleta",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Road Runners",
+          "class": ""
+        },
+        {
+          "tag": "h2",
+          "text": "Medição de audiência",
+          "class": ""
+        }
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+          "name": "Maratona de Salvador 2026",
+          "description": "Maratona de Salvador 2026 acontece em 27 setembro 2026, em Av. Octávio Mangabeira - Boca do Rio, Salvador - BA, 41706-690 - Salvador - BA.",
+          "url": "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+          "startDate": "2026-09-27",
+          "endDate": "2026-09-27",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://www.ticketsports.com.br/_next/image?url=https%3A%2F%2Fcdn.ticketsports.com.br%2Fticketagora%2Fimages%2FY2H4R5N16JWKJTF70V3TOVRZM8D4ZA3FZGQVZO6JPKBT21ZZP0.png&w=640&q=75"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Av. Octávio Mangabeira - Boca do Rio, Salvador - BA, 41706-690",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Salvador",
+              "addressRegion": "BA",
+              "addressCountry": "BR",
+              "streetAddress": "Av. Octávio Mangabeira - Boca do Rio, Salvador - BA, 41706-690"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-12.980464",
+              "longitude": "-38.427875  "
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=74554&origem=novo-site&lang=en-US"
+          }
+        }
+      ]
+    }
+  ]
+}

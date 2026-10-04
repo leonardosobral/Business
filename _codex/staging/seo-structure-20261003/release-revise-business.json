@@ -1,0 +1,9 @@
+{
+  "Business": {
+    "compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 2.7 sec\n\n",
+      "templates": 1
+    }
+  }
+}

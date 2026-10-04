@@ -1,0 +1,328 @@
+TAP version 13
+# Subtest: complete bidirectional cluster passes, independently of link order and language case
+ok 1 - complete bidirectional cluster passes, independently of link order and language case
+  ---
+  duration_ms: 1.799667
+  type: 'test'
+  ...
+# Subtest: uninspected targets are unknown; one observed broken return link warns despite missing others
+ok 2 - uninspected targets are unknown; one observed broken return link warns despite missing others
+  ---
+  duration_ms: 0.253375
+  type: 'test'
+  ...
+# Subtest: observed target failure, redirects, mismatched canonical and missing HTML cannot prove reciprocity
+ok 3 - observed target failure, redirects, mismatched canonical and missing HTML cannot prove reciprocity
+  ---
+  duration_ms: 0.442959
+  type: 'test'
+  ...
+# Subtest: duplicate or malformed alternates and missing self reference warn, absent metadata remains unknown
+ok 4 - duplicate or malformed alternates and missing self reference warn, absent metadata remains unknown
+  ---
+  duration_ms: 0.123667
+  type: 'test'
+  ...
+# Subtest: same language pointing to a different URL breaks the cluster; x-default may reuse the Portuguese URL
+ok 5 - same language pointing to a different URL breaks the cluster; x-default may reuse the Portuguese URL
+  ---
+  duration_ms: 0.209166
+  type: 'test'
+  ...
+# Subtest: cross-domain alternates are allowed but never followed outside the observed cohort
+ok 6 - cross-domain alternates are allowed but never followed outside the observed cohort
+  ---
+  duration_ms: 0.584333
+  type: 'test'
+  ...
+# Subtest: conflicting duplicate observations are inconclusive and do not overwrite evidence silently
+ok 7 - conflicting duplicate observations are inconclusive and do not overwrite evidence silently
+  ---
+  duration_ms: 0.145833
+  type: 'test'
+  ...
+# Subtest: an inspected alternate with metadata but no return links is a demonstrated warning
+ok 8 - an inspected alternate with metadata but no return links is a demonstrated warning
+  ---
+  duration_ms: 0.077125
+  type: 'test'
+  ...
+# Subtest: percent-escape case is equivalent, without decoding slashes or changing path case
+ok 9 - percent-escape case is equivalent, without decoding slashes or changing path case
+  ---
+  duration_ms: 0.519083
+  type: 'test'
+  ...
+# Subtest: scorecard includes reciprocity without changing technical weights and keeps translation unmeasured
+ok 10 - scorecard includes reciprocity without changing technical weights and keeps translation unmeasured
+  ---
+  duration_ms: 4.750541
+  type: 'test'
+  ...
+# Subtest: examples prioritize observed warnings over targets missing from the sample
+ok 11 - examples prioritize observed warnings over targets missing from the sample
+  ---
+  duration_ms: 0.307917
+  type: 'test'
+  ...
+# Subtest: comparison separates new, persistent, resolved and URLs outside the checked sample
+ok 12 - comparison separates new, persistent, resolved and URLs outside the checked sample
+  ---
+  duration_ms: 1.031792
+  type: 'test'
+  ...
+# Subtest: a partial run never resolves previous findings even if its checked page succeeds
+ok 13 - a partial run never resolves previous findings even if its checked page succeeds
+  ---
+  duration_ms: 0.153958
+  type: 'test'
+  ...
+# Subtest: resolution requires successful HTML evaluation, not just absence of a finding
+ok 14 - resolution requires successful HTML evaluation, not just absence of a finding
+  ---
+  duration_ms: 0.345209
+  type: 'test'
+  ...
+# Subtest: site, mode, rules, schema and configuration changes keep previous findings unverified
+ok 15 - site, mode, rules, schema and configuration changes keep previous findings unverified
+  ---
+  duration_ms: 0.54675
+  type: 'test'
+  ...
+# Subtest: the initial baseline has new findings and no invented resolutions
+ok 16 - the initial baseline has new findings and no invented resolutions
+  ---
+  duration_ms: 0.065458
+  type: 'test'
+  ...
+# Subtest: report round-trip verifies all payload hashes and preserves exact JSON observations
+ok 17 - report round-trip verifies all payload hashes and preserves exact JSON observations
+  ---
+  duration_ms: 42.453583
+  type: 'test'
+  ...
+# Subtest: partial and failed reports preserve latest complete and compare against that verified baseline
+ok 18 - partial and failed reports preserve latest complete and compare against that verified baseline
+  ---
+  duration_ms: 156.061959
+  type: 'test'
+  ...
+# Subtest: a first partial report does not create latest-complete
+ok 19 - a first partial report does not create latest-complete
+  ---
+  duration_ms: 23.691042
+  type: 'test'
+  ...
+# Subtest: duplicate run IDs do not overwrite a published report
+ok 20 - duplicate run IDs do not overwrite a published report
+  ---
+  duration_ms: 26.794917
+  type: 'test'
+  ...
+# Subtest: CSV retains ten legacy columns and neutralizes spreadsheet formulas without changing JSON
+ok 21 - CSV retains ten legacy columns and neutralizes spreadsheet formulas without changing JSON
+  ---
+  duration_ms: 27.06075
+  type: 'test'
+  ...
+# Subtest: Markdown treats remote evidence as text and explicitly qualifies sampled coverage
+ok 22 - Markdown treats remote evidence as text and explicitly qualifies sampled coverage
+  ---
+  duration_ms: 27.31225
+  type: 'test'
+  ...
+# Subtest: tampering with any payload or manifest file map fails integrity checks
+ok 23 - tampering with any payload or manifest file map fails integrity checks
+  ---
+  duration_ms: 184.558917
+  type: 'test'
+  ...
+# Subtest: invalid IDs, relative roots and traversal are rejected before artifacts are written
+ok 24 - invalid IDs, relative roots and traversal are rejected before artifacts are written
+  ---
+  duration_ms: 1.140916
+  type: 'test'
+  ...
+# Subtest: symlink roots, ancestors, sites and report payloads are never followed
+ok 25 - symlink roots, ancestors, sites and report payloads are never followed
+  ---
+  duration_ms: 36.398583
+  type: 'test'
+  ...
+# Subtest: an invalid or tampered latest pointer cannot silently become a new baseline
+ok 26 - an invalid or tampered latest pointer cannot silently become a new baseline
+  ---
+  duration_ms: 32.13475
+  type: 'test'
+  ...
+# Subtest: unrechecked findings survive several compatible rotating samples without contaminating raw observations
+ok 27 - unrechecked findings survive several compatible rotating samples without contaminating raw observations
+  ---
+  duration_ms: 146.380916
+  type: 'test'
+  ...
+# Subtest: reserved pointer filename cannot be used as a run directory
+ok 28 - reserved pointer filename cannot be used as a run directory
+  ---
+  duration_ms: 1.373208
+  type: 'test'
+  ...
+# Subtest: operational failures precede findings and remain explicit when SEO error count is zero
+ok 29 - operational failures precede findings and remain explicit when SEO error count is zero
+  ---
+  duration_ms: 33.835417
+  type: 'test'
+  ...
+# Subtest: report storage rejects repository paths before creating artifacts
+ok 30 - report storage rejects repository paths before creating artifacts
+  ---
+  duration_ms: 0.61275
+  type: 'test'
+  ...
+# Subtest: unknown site never launches the collector
+ok 31 - unknown site never launches the collector
+  ---
+  duration_ms: 0.297834
+  type: 'test'
+  ...
+# Subtest: simultaneous site run does not launch a second crawler
+ok 32 - simultaneous site run does not launch a second crawler
+  ---
+  duration_ms: 6.678958
+  type: 'test'
+  ...
+# Subtest: collector crash persists a failed report instead of losing monitoring evidence
+ok 33 - collector crash persists a failed report instead of losing monitoring evidence
+  ---
+  duration_ms: 86.911834
+  type: 'test'
+  ...
+# Subtest: interrupted JSONL preserves complete observations before a truncated tail
+ok 34 - interrupted JSONL preserves complete observations before a truncated tail
+  ---
+  duration_ms: 83.432208
+  type: 'test'
+  ...
+# Subtest: fixed weights and worst status yield 100, 85 and 97.5, independently of finding counts
+ok 35 - fixed weights and worst status yield 100, 85 and 97.5, independently of finding counts
+  ---
+  duration_ms: 16.540167
+  type: 'test'
+  ...
+# Subtest: multiple H1 is informative only, absent H1 warns
+ok 36 - multiple H1 is informative only, absent H1 warns
+  ---
+  duration_ms: 0.44875
+  type: 'test'
+  ...
+# Subtest: zero observations and sitemaps never green; network failure is error, absent response unknown
+ok 37 - zero observations and sitemaps never green; network failure is error, absent response unknown
+  ---
+  duration_ms: 0.519417
+  type: 'test'
+  ...
+# Subtest: only usable HTML proves index directives; irrelevant agents never penalize Googlebot
+ok 38 - only usable HTML proves index directives; irrelevant agents never penalize Googlebot
+  ---
+  duration_ms: 1.646583
+  type: 'test'
+  ...
+# Subtest: sitemap success requires parsed counts and complete discovery, not only HTTP200
+ok 39 - sitemap success requires parsed counts and complete discovery, not only HTTP200
+  ---
+  duration_ms: 0.445
+  type: 'test'
+  ...
+# Subtest: history is idempotent and rejects changed cohort, coverage, rules or method as comparable
+ok 40 - history is idempotent and rejects changed cohort, coverage, rules or method as comparable
+  ---
+  duration_ms: 1.322333
+  type: 'test'
+  ...
+# Subtest: cases reject controls, credentials, deceptive domains, protocols and encoded controls
+ok 41 - cases reject controls, credentials, deceptive domains, protocols and encoded controls
+  ---
+  duration_ms: 0.068166
+  type: 'test'
+  ...
+# Subtest: valid bundle reads; corrupt payload and changed pointer hash are rejected
+ok 42 - valid bundle reads; corrupt payload and changed pointer hash are rejected
+  ---
+  duration_ms: 67.59425
+  type: 'test'
+  ...
+# Subtest: runtime preserves guard and stores JSON only as base64, without private paths
+ok 43 - runtime preserves guard and stores JSON only as base64, without private paths
+  ---
+  duration_ms: 1.240125
+  type: 'test'
+  ...
+# Subtest: collector defaults without an HTTP response cannot prove direct delivery or HTTPS
+ok 44 - collector defaults without an HTTP response cannot prove direct delivery or HTTPS
+  ---
+  duration_ms: 0.423583
+  type: 'test'
+  ...
+# Subtest: missing or malformed relevant robots map is unknown rather than implicitly green
+ok 45 - missing or malformed relevant robots map is unknown rather than implicitly green
+  ---
+  duration_ms: 0.63475
+  type: 'test'
+  ...
+# Subtest: collector changes break comparability and an older audit cannot become a progress point
+ok 46 - collector changes break comparability and an older audit cannot become a progress point
+  ---
+  duration_ms: 0.824833
+  type: 'test'
+  ...
+# Subtest: site summary uses its own audit findings, operational errors and inventory rather than queue data
+ok 47 - site summary uses its own audit findings, operational errors and inventory rather than queue data
+  ---
+  duration_ms: 0.202042
+  type: 'test'
+  ...
+# Subtest: equal coverage counts with different evaluated URLs cannot claim progress; same URL repair can
+ok 48 - equal coverage counts with different evaluated URLs cannot claim progress; same URL repair can
+  ---
+  duration_ms: 1.059125
+  type: 'test'
+  ...
+# Subtest: AI readiness separates declared crawl permission, HTML delivery and unmeasured outcomes
+ok 49 - AI readiness separates declared crawl permission, HTML delivery and unmeasured outcomes
+  ---
+  duration_ms: 0.602542
+  type: 'test'
+  ...
+# Subtest: AI permission is unknown without evidence, and redirects must check source and destination
+ok 50 - AI permission is unknown without evidence, and redirects must check source and destination
+  ---
+  duration_ms: 0.288875
+  type: 'test'
+  ...
+# Subtest: new metadata checks keep unmeasured audits unknown and technical weights unchanged
+ok 51 - new metadata checks keep unmeasured audits unknown and technical weights unchanged
+  ---
+  duration_ms: 0.653583
+  type: 'test'
+  ...
+# Subtest: malformed JSON-LD, duplicate descriptions and invalid alternates produce evidence without changing the note
+ok 52 - malformed JSON-LD, duplicate descriptions and invalid alternates produce evidence without changing the note
+  ---
+  duration_ms: 0.329083
+  type: 'test'
+  ...
+# Subtest: event metadata is a coverage check: missing markup warns, other page types and failed HTML remain unknown
+ok 53 - event metadata is a coverage check: missing markup warns, other page types and failed HTML remain unknown
+  ---
+  duration_ms: 0.393625
+  type: 'test'
+  ...
+1..53
+# tests 53
+# suites 0
+# pass 53
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 788.875583

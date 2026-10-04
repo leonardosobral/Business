@@ -10,6 +10,8 @@
 </cfif>
 <cfset REQUEST.businessBackendLoginLoaded = true/>
 
+<cfinclude template="business_pending_access.cfm"/>
+
 <cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
 <cfset VARIABLES.businessSkipCookieLogin = false/>
 <cfset VARIABLES.businessAccountPendingAccess = false/>
@@ -195,13 +197,13 @@
         <cflocation addtoken="false" url="/"/>
     </cfif>
 
-    <cfset VARIABLES.businessPendingAllowedTemplates = VARIABLES.businessPendingExistingAccountRequest
-        ? "/,/faq/,/suporte/"
-        : "/,/eventos/,/ads/,/faq/,/suporte/"/>
+    <cfset VARIABLES.businessPendingAllowedTemplates = businessPendingAllowedTemplates(
+        VARIABLES.businessPendingExistingAccountRequest
+    )/>
     <cfif qPerfil.recordcount
         AND VARIABLES.businessPendingWorkspace
         AND isDefined("VARIABLES.template")
-        AND NOT listFindNoCase(VARIABLES.businessPendingAllowedTemplates, VARIABLES.template)>
+        AND NOT businessPendingTemplateAllowed(VARIABLES.template, VARIABLES.businessPendingExistingAccountRequest)>
         <cflocation addtoken="false" url="/"/>
     </cfif>
 

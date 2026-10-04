@@ -2,6 +2,7 @@
 if (createObject("java", "java.lang.System").getenv("RUNNERHUB_OFFLINE_CFML_TESTS") != "1") abort;
 
 root = getDirectoryFromPath(getCurrentTemplatePath()) & "../../";
+setLocale("Portuguese (Brazilian)");
 include root & "portal/includes/banner_form_helpers.cfm";
 include root & "portal/includes/paid_banner_helpers.cfm";
 
@@ -47,10 +48,10 @@ VARIABLES.paidBannerTotals = {impressions=12840,clicks=386,cost=271.64};
 VARIABLES.paidBannerFilter = "";
 VARIABLES.paidBannerDays = 30;
 VARIABLES.paidBannerChartRows = [
-    {date="14/09/2026",impressions=1980,clicks=61,cost=41.55},
-    {date="15/09/2026",impressions=2240,clicks=69,cost=48.10},
-    {date="16/09/2026",impressions=2670,clicks=82,cost=57.93},
-    {date="17/09/2026",impressions=3010,clicks=91,cost=64.06}
+    {'date'="2026-09-14",'impressions'=1980,'clicks'=61,'cost'=41.55},
+    {'date'="2026-09-15",'impressions'=2240,'clicks'=69,'cost'=48.10},
+    {'date'="2026-09-16",'impressions'=2670,'clicks'=82,'cost'=57.93},
+    {'date'="2026-09-17",'impressions'=3010,'clicks'=91,'cost'=64.06}
 ];
 VARIABLES.paidBannerRows = [
     {
@@ -71,16 +72,30 @@ VARIABLES.paidBannerRows = [
     }
 ];
 
-savecontent variable="workspace" {
-    include root & "portal/includes/paid_banner_home.cfm";
+function visualDocument(required string workspace, required string section) {
+    return '<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paid banner workspace · ' & htmlEditFormat(arguments.section) & '</title>'
+        & '<link rel="stylesheet" href="/assets/css/mdb.min.css">'
+        & '<link rel="stylesheet" href="/assets/plugins/css/all.min.css">'
+        & '<link rel="stylesheet" href="/assets/css/style.css?2026062704">'
+        & '<link rel="stylesheet" href="/assets/css/cores_admin.css?202512062">'
+        & '<link rel="stylesheet" href="/assets/css/business-ui.css?2026062905">'
+        & '<link rel="stylesheet" href="/assets/css/portal-banner-dashboard.css?v=2026091601">'
+        & '<link rel="stylesheet" href="/assets/css/paid-banner-workspace.css?v=20260916">'
+        & '</head><body data-mdb-theme="dark" class="bg-dark-subtle"><main class="container-fluid px-4 py-4">'
+        & arguments.workspace
+        & '</main></body></html>';
 }
-writeOutput('<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paid banner workspace visual fixture</title>'
-    & '<link rel="stylesheet" href="/assets/css/mdb.min.css">'
-    & '<link rel="stylesheet" href="/assets/plugins/css/all.min.css">'
-    & '<link rel="stylesheet" href="/assets/css/style.css?2026062704">'
-    & '<link rel="stylesheet" href="/assets/css/cores_admin.css?202512062">'
-    & '<link rel="stylesheet" href="/assets/css/business-ui.css?2026062905">'
-    & '</head><body data-mdb-theme="dark" class="bg-dark-subtle"><main class="container-fluid px-4 py-4">'
-    & workspace
-    & '</main></body></html>');
+
+visualPages = {};
+for (visualSection in ["banners", "performance", "form"]) {
+    structClear(URL);
+    URL.section = visualSection;
+    VARIABLES.paidBannerShowForm = visualSection == "form";
+    savecontent variable="workspace" {
+        include root & "portal/includes/paid_banner_home.cfm";
+    }
+    visualPages[visualSection] = visualDocument(workspace, visualSection);
+    fileWrite("/private/tmp/paid-banner-workspace-" & visualSection & ".html", visualPages[visualSection]);
+}
+writeOutput(visualPages.banners);
 </cfscript>

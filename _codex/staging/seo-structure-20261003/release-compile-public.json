@@ -1,0 +1,16 @@
+{
+  "RoadRunners": {
+    "compile": {
+      "returncode": 0,
+      "output": "successful 2\ntotal 2\nelapsed 1.848 sec\n\n",
+      "templates": 2
+    }
+  },
+  "OpenResults": {
+    "compile": {
+      "returncode": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.481 sec\n\n",
+      "templates": 1
+    }
+  }
+}

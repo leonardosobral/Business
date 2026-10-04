@@ -1,0 +1,9 @@
+{
+  "RoadRunners": {
+    "published": [
+      ".htaccess",
+      "evento/.htaccess"
+    ],
+    "backup": "/var/backups/seo-routes-rr-20261003/baseline"
+  }
+}

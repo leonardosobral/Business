@@ -1,0 +1,16 @@
+--- baseline/RoadRunners/maratonas/index.cfm
++++ candidate/RoadRunners/maratonas/index.cfm
+@@ -62,11 +62,11 @@
+ 
+                 <!--- TITULO --->
+ 
+-                <h3>
++                <h1 class="h3">
+                     <a href="/"><icon class="fa fa-person-running"></icon></a>
+                     <img src="/assets/separador.png" alt="separador de breadcrumb" style="max-height: 24px; margin-top: -4px">
+                     Maratonas do Brasil
+-                </h3>
++                </h1>
+ 
+                 <!--- LISTA DE MARATONAS --->
+ 

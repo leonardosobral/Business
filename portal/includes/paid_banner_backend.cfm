@@ -87,7 +87,7 @@
                         <cfset VARIABLES.paidBannerNotice='Operação concluída. Confira o status atualizado abaixo.'/>
                     </cfif>
                     <cfset SESSION.paidBannerFlash={accountId=VARIABLES.paidBannerContext.accountId,message=VARIABLES.paidBannerNotice}/>
-                    <cfset VARIABLES.paidBannerNext=VARIABLES.paidBannerAction EQ 'prepare' ? '/portal/banners/?edit=' & encodeForURL(paidBannerText(FORM,'campaign_id')) & '##paid-banner-form' : '/portal/banners/'/>
+                    <cfset VARIABLES.paidBannerNext=paidBannerActionReturnUrl(VARIABLES.paidBannerAction,paidBannerText(FORM,'campaign_id'),paidBannerText(FORM,'paid_banner_return_banner'),paidBannerText(FORM,'paid_banner_return_period','30'))/>
                     <cfcatch type="any">
                         <cfif compareNoCase(cfcatch.type,'AdsV1.Conflict') EQ 0><cfset VARIABLES.paidBannerConflict=true/></cfif>
                         <cfif NOT VARIABLES.paidBannerSaveAttempted><cfloop array="#VARIABLES.paidBannerNewFiles#" index="paidBannerFailedFile"><cfif fileExists(paidBannerFailedFile)><cffile action="delete" file="#paidBannerFailedFile#"/></cfif></cfloop></cfif>

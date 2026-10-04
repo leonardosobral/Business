@@ -1,0 +1,1208 @@
+<nav id="main-sidenav"
+     data-mdb-sidenav-init
+     class="sidenav business-sidenav shadow-1"
+     data-mdb-hidden="false"
+     data-mdb-accordion="true"
+     data-mdb-mode="side"
+     data-mdb-width="216">
+<style>
+    .business-foco-review-pending-badge,
+    .business-cbg-validation-pending-badge,
+    .business-content-curation-pending-badge,
+    .business-status-attention-badge {
+        background-color: #fab120;
+        color: #1d1608;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: .25rem;
+        min-width: 1.55rem;
+    }
+
+    .business-sidenav .sidenav-menu {
+        padding-bottom: 1rem !important;
+        padding-left: .35rem !important;
+        padding-right: .35rem !important;
+    }
+
+    #main-sidenav > .ripple {
+        min-height: 0 !important;
+    }
+
+    .business-sidenav .business-sidenav-logo {
+        --business-sidenav-brand-spacing: .72rem;
+        align-items: center;
+        flex-direction: column;
+        gap: .16rem;
+        padding-bottom: .5rem !important;
+        padding-top: var(--business-sidenav-brand-spacing) !important;
+        width: 100%;
+    }
+
+    .business-sidenav .business-sidenav-logo svg {
+        aspect-ratio: 505.5 / 145.5;
+        display: block;
+        height: auto !important;
+        max-width: none;
+        width: calc(100% - var(--business-sidenav-brand-spacing) - var(--business-sidenav-brand-spacing)) !important;
+    }
+
+    .business-sidenav .business-sidenav-signature {
+        color: rgba(255, 255, 255, .68);
+        display: block;
+        font-size: .8rem;
+        font-weight: 400;
+        letter-spacing: .12em;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .business-sidenav .business-sidenav-signature-business {
+        color: #fab120;
+    }
+
+    .business-sidenav > .hr {
+        margin: .25rem 0 .35rem;
+        opacity: .18;
+    }
+
+    .business-sidenav .sidenav-link {
+        font-size: .82rem !important;
+        height: 32px !important;
+        line-height: 1.15;
+        min-height: 32px !important;
+        padding: 0 .6rem !important;
+    }
+
+    .business-sidenav .sidenav-link.ps-5 {
+        padding-left: 1.75rem !important;
+    }
+
+    .business-sidenav .sidenav-link i.me-3 {
+        font-size: .86rem;
+        margin-right: .48rem !important;
+    }
+
+    .business-sidenav .sidenav-item.pt-3 {
+        padding-top: .38rem !important;
+    }
+
+    .business-sidenav-section-toggle {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        color: rgba(255, 255, 255, .52);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+        width: 100%;
+        min-height: 27px;
+        padding: .28rem .55rem .14rem;
+        font-size: .66rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .business-sidenav-section-toggle:hover,
+    .business-sidenav-section-toggle:focus {
+        color: rgba(255, 255, 255, .82);
+    }
+
+    .business-sidenav-section-toggle .business-sidenav-section-icon {
+        color: rgba(255, 255, 255, .45);
+        font-size: .62rem;
+        transition: transform .16s ease;
+    }
+
+    .business-sidenav-section-toggle[aria-expanded="false"] .business-sidenav-section-icon {
+        transform: rotate(-90deg);
+    }
+
+    .business-sidenav-section-collapsed {
+        display: none !important;
+    }
+
+    .business-sidenav-submenu {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .business-sidenav-submenu .sidenav-link {
+        min-height: 30px;
+        padding-left: 2.35rem !important;
+        font-size: .78rem;
+    }
+
+    .business-sidenav-search-item {
+        padding: .45rem .25rem .2rem;
+    }
+
+    .business-sidenav-search {
+        align-items: center;
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .12);
+        border-radius: .42rem;
+        color: rgba(255, 255, 255, .58);
+        display: flex;
+        gap: .42rem;
+        min-height: 34px;
+        padding: 0 .48rem;
+    }
+
+    .business-sidenav-search:focus-within {
+        border-color: rgba(250, 177, 32, .72);
+        box-shadow: 0 0 0 2px rgba(250, 177, 32, .12);
+    }
+
+    .business-sidenav-search input {
+        background: transparent;
+        border: 0;
+        color: #fff;
+        font-size: .78rem;
+        min-width: 0;
+        outline: 0;
+        padding: .38rem 0;
+        width: 100%;
+    }
+
+    .business-sidenav-search input::placeholder {
+        color: rgba(255, 255, 255, .5);
+    }
+
+    .business-sidenav-search kbd {
+        background: rgba(0, 0, 0, .24);
+        color: rgba(255, 255, 255, .62);
+        font-size: .58rem;
+        font-weight: 600;
+        padding: .13rem .28rem;
+    }
+
+    .business-sidenav-fixed-item .sidenav-link {
+        font-weight: 600;
+    }
+
+    .business-sidenav-subgroup-label {
+        color: rgba(255, 255, 255, .38);
+        font-size: .61rem;
+        font-weight: 700;
+        letter-spacing: .055em;
+        padding: .5rem .65rem .12rem 1.75rem;
+        text-transform: uppercase;
+    }
+
+    .business-sidenav-search-empty {
+        color: rgba(255, 255, 255, .48);
+        font-size: .73rem;
+        padding: .6rem .65rem .35rem;
+        text-align: center;
+    }
+
+    .business-sidenav-search-hidden {
+        display: none !important;
+    }
+</style>
+
+<cfset VARIABLES.businessCanShowAdminNavigation = false/>
+<cfset VARIABLES.businessCanShowAccountNavigation = false/>
+<cfset VARIABLES.businessCanShowAgendaNavigation = false/>
+<cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
+<cfset VARIABLES.businessCanViewResultImports = false/>
+<cfset VARIABLES.businessCanProcessResultImports = false/>
+<cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
+<cfset VARIABLES.businessCanManageBrasilGiganteChallenge = false/>
+<cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
+<cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
+<cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+<cfset VARIABLES.businessContentCurationPendingTotal = 0/>
+<cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
+<cfset VARIABLES.businessPendingTasksTotal = 0/>
+<cfset VARIABLES.businessIsMedicalWorkspace = isDefined("VARIABLES.businessCurrentAccountIsMedical")
+    AND VARIABLES.businessCurrentAccountIsMedical/>
+<cfset VARIABLES.businessIsPendingWorkspace = isDefined("VARIABLES.businessPendingWorkspace")
+    AND VARIABLES.businessPendingWorkspace/>
+<cfif isDefined("REQUEST.businessIdentity.id") AND isDefined("qPerfil") AND qPerfil.recordcount>
+    <cfif isDefined("VARIABLES.businessEffectiveIsAdmin")>
+        <cfset VARIABLES.businessCanShowAdminNavigation = VARIABLES.businessEffectiveIsAdmin/>
+    <cfelseif isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+        <cfset VARIABLES.businessCanShowAdminNavigation = true/>
+    </cfif>
+
+    <cfif NOT VARIABLES.businessCanShowAdminNavigation
+        AND isDefined("VARIABLES.businessEffectiveAccountIds")
+        AND len(trim(VARIABLES.businessEffectiveAccountIds))
+        AND VARIABLES.businessEffectiveAccountIds NEQ "0">
+        <cfset VARIABLES.businessCanShowAccountNavigation = true/>
+    </cfif>
+
+    <cfif (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
+        OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)
+        OR (isDefined("qPerfil.is_partner") AND qPerfil.is_partner)>
+        <cfset VARIABLES.businessCanShowAgendaNavigation = true/>
+    </cfif>
+
+    <cfif (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
+        OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)>
+        <cfset VARIABLES.businessCanShowUserManagementNavigation = true/>
+    </cfif>
+
+    <cfset VARIABLES.businessCanViewResultImports = businessHasPermission("result_imports.view")/>
+    <cfset VARIABLES.businessCanProcessResultImports = businessHasPermission("result_imports.process")/>
+
+    <cfinclude template="../backend/catarinense_challenge_access.cfm"/>
+    <cfinclude template="../backend/brasil_gigante_challenge_access.cfm"/>
+
+    <cfif VARIABLES.businessCanShowUserManagementNavigation
+        AND isDefined("VARIABLES.businessAccountSimulationActive")
+        AND VARIABLES.businessAccountSimulationActive>
+        <cfset VARIABLES.businessCanShowUserManagementNavigation = false/>
+    </cfif>
+</cfif>
+
+<cfif VARIABLES.businessCanManageBrasilGiganteChallenge>
+    <cftry>
+        <cfquery name="qBusinessCbgValidationPending">
+            SELECT count(*) AS total
+            FROM desafios des
+            CROSS JOIN LATERAL jsonb_array_elements(
+                CASE
+                    WHEN jsonb_typeof(des.body -> 'validacoes_documentais') = 'array'
+                        THEN des.body -> 'validacoes_documentais'
+                    ELSE '[]'::jsonb
+                END
+            ) AS validacao
+            WHERE des.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
+              AND coalesce(nullif(lower(trim(validacao ->> 'status_analise')), ''), 'pendente') = 'pendente'
+        </cfquery>
+        <cfset VARIABLES.businessCbgValidationPendingTotal = val(qBusinessCbgValidationPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessCbgValidationPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+</cfif>
+
+<cfif VARIABLES.businessCanShowAdminNavigation>
+    <cftry>
+        <cfquery name="qBusinessContentCurationPending">
+            SELECT count(*) AS total
+            FROM news.tb_content
+            WHERE published = false
+              AND lower(coalesce(editorial_status, '')) = 'review'
+        </cfquery>
+        <cfset VARIABLES.businessContentCurationPendingTotal = val(qBusinessContentCurationPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessContentCurationPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
+        <cfquery name="qBusinessFocoReviewPending">
+            SELECT count(*) AS total
+            FROM tb_foco_event_match_state state
+            WHERE state.status IN ('review', 'linked')
+              AND EXISTS (
+                  SELECT 1
+                  FROM tb_foco_event_match_candidates pending_candidate
+                  WHERE pending_candidate.id_evento = state.id_evento
+                    AND pending_candidate.status = 'active'
+                    AND pending_candidate.exact_place = true
+                    AND pending_candidate.score >= 60
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM tb_evento_foco_vinculos pending_link
+                        WHERE pending_link.status = 'active'
+                          AND pending_link.competition_id = pending_candidate.competition_id
+                    )
+              )
+        </cfquery>
+        <cfset VARIABLES.businessFocoReviewPendingTotal = val(qBusinessFocoReviewPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessFocoReviewPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
+        <cfquery name="qBusinessAgregaReviewPending">
+            SELECT count(*) AS total
+            FROM tb_evento_agrega_review_groups
+            WHERE status = 'review'
+        </cfquery>
+        <cfset VARIABLES.businessAgregaReviewPendingTotal = val(qBusinessAgregaReviewPending.total)/>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessAgregaReviewPendingTotal = 0/>
+        </cfcatch>
+    </cftry>
+
+    <cftry>
+        <cfif structKeyExists(APPLICATION, "uptimeRobotStatus")
+            AND isStruct(APPLICATION.uptimeRobotStatus)
+            AND structKeyExists(APPLICATION.uptimeRobotStatus, "status")
+            AND isStruct(APPLICATION.uptimeRobotStatus.status)>
+            <cfset VARIABLES.businessUptimeStatusCached = APPLICATION.uptimeRobotStatus.status/>
+            <cfset VARIABLES.businessUptimeStatusAttentionTotal = (structKeyExists(VARIABLES.businessUptimeStatusCached, "down") ? val(VARIABLES.businessUptimeStatusCached.down) : 0) + (structKeyExists(VARIABLES.businessUptimeStatusCached, "warning") ? val(VARIABLES.businessUptimeStatusCached.warning) : 0)/>
+        <cfelse>
+            <cfinclude template="../backend/uptime_status.cfm"/>
+            <cfif structKeyExists(VARIABLES, "uptimeStatus") AND isStruct(VARIABLES.uptimeStatus)>
+                <cfset VARIABLES.businessUptimeStatusAttentionTotal = (structKeyExists(VARIABLES.uptimeStatus, "down") ? val(VARIABLES.uptimeStatus.down) : 0) + (structKeyExists(VARIABLES.uptimeStatus, "warning") ? val(VARIABLES.uptimeStatus.warning) : 0)/>
+            </cfif>
+        </cfif>
+        <cfcatch type="any">
+            <cfset VARIABLES.businessUptimeStatusAttentionTotal = 0/>
+        </cfcatch>
+    </cftry>
+</cfif>
+
+<cfif VARIABLES.businessCanShowAdminNavigation>
+    <cfset VARIABLES.businessPendingTasksTotal =
+        val(VARIABLES.businessCbgValidationPendingTotal)
+        + val(VARIABLES.businessContentCurationPendingTotal)
+        + val(VARIABLES.businessFocoReviewPendingTotal)
+        + val(VARIABLES.businessAgregaReviewPendingTotal)
+        + val(VARIABLES.businessUptimeStatusAttentionTotal)/>
+</cfif>
+
+
+<a class="ripple d-flex justify-content-center business-sidenav-logo" href="/" aria-label="Road Runners Business">
+    <!---<img id="MDB-logo" src="../assets/runnerhub_logo_negativo.png"--->
+    <!---alt="RunnerHub Logo" draggable="false" class="w-responsive" />--->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" zoomAndPan="magnify" viewBox="0 0 505.5 145.500001" height="60" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><g/><clipPath id="0e9079b715"><rect x="0" width="460" y="0" height="111"/></clipPath><clipPath id="b1587ce316"><path d="M 23 11 L 48.890625 11 L 48.890625 103 L 23 103 Z M 23 11 " clip-rule="nonzero"/></clipPath><clipPath id="50ef6cb472"><rect x="0" width="49" y="0" height="110"/></clipPath></defs><g transform="matrix(1, 0, 0, 1, 27, 16)"><g clip-path="url(#0e9079b715)"><g fill="#ffffff" fill-opacity="1"><g transform="translate(1.422162, 87.483045)"><g><path d="M 60.078125 -2.4375 C 60.203125 -2.132812 60.265625 -1.769531 60.265625 -1.34375 C 60.265625 -0.445312 59.691406 0 58.546875 0 L 41.078125 0 C 40.410156 0 39.894531 -0.160156 39.53125 -0.484375 C 39.175781 -0.816406 38.910156 -1.4375 38.734375 -2.34375 L 33.515625 -25.578125 C 33.390625 -25.941406 33.25 -26.195312 33.09375 -26.34375 C 32.945312 -26.5 32.632812 -26.578125 32.15625 -26.578125 L 26.75 -26.578125 C 26.269531 -26.578125 25.9375 -26.484375 25.75 -26.296875 C 25.570312 -26.117188 25.457031 -25.847656 25.40625 -25.484375 L 22.0625 -2.078125 C 21.945312 -1.171875 21.660156 -0.597656 21.203125 -0.359375 C 20.753906 -0.117188 19.960938 0 18.828125 0 L 3.6875 0 C 2.125 0 1.46875 -0.929688 1.71875 -2.796875 L 10.546875 -65.3125 C 10.597656 -65.96875 10.726562 -66.382812 10.9375 -66.5625 C 11.15625 -66.75 11.535156 -66.84375 12.078125 -66.84375 L 42.15625 -66.84375 C 50.144531 -66.84375 56.34375 -65.320312 60.75 -62.28125 C 65.164062 -59.25 67.375 -55.035156 67.375 -49.640625 C 67.375 -45.253906 66.097656 -41.195312 63.546875 -37.46875 C 60.992188 -33.75 57.675781 -31.078125 53.59375 -29.453125 C 52.8125 -29.148438 52.34375 -28.878906 52.1875 -28.640625 C 52.039062 -28.398438 52.03125 -28.070312 52.15625 -27.65625 Z M 37.5625 -40 C 40.019531 -40 42.070312 -40.835938 43.71875 -42.515625 C 45.375 -44.191406 46.203125 -46.144531 46.203125 -48.375 C 46.203125 -50.050781 45.585938 -51.320312 44.359375 -52.1875 C 43.128906 -53.0625 41.554688 -53.5 39.640625 -53.5 L 30.453125 -53.5 C 30.023438 -53.5 29.722656 -53.378906 29.546875 -53.140625 C 29.367188 -52.898438 29.21875 -52.421875 29.09375 -51.703125 L 27.5625 -41.34375 L 27.5625 -40.890625 C 27.5625 -40.535156 27.632812 -40.296875 27.78125 -40.171875 C 27.9375 -40.054688 28.195312 -40 28.5625 -40 Z M 37.5625 -40 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(67.979389, 87.483045)"><g><path d="M 61.890625 -25.859375 C 60.503906 -16.003906 57.125 -9.078125 51.75 -5.078125 C 46.375 -1.085938 39.125 0.90625 30 0.90625 C 20.863281 0.90625 14.253906 -0.9375 10.171875 -4.625 C 6.085938 -8.320312 4.046875 -13.804688 4.046875 -21.078125 C 4.046875 -23.054688 4.257812 -25.609375 4.6875 -28.734375 L 9.8125 -65.3125 C 9.875 -65.96875 10.007812 -66.382812 10.21875 -66.5625 C 10.4375 -66.75 10.8125 -66.84375 11.34375 -66.84375 L 28.46875 -66.84375 C 29.007812 -66.84375 29.441406 -66.585938 29.765625 -66.078125 C 30.097656 -65.566406 30.207031 -65.007812 30.09375 -64.40625 L 24.6875 -25.484375 C 24.445312 -23.566406 24.328125 -22.28125 24.328125 -21.625 C 24.328125 -18.675781 24.984375 -16.570312 26.296875 -15.3125 C 27.617188 -14.050781 29.570312 -13.421875 32.15625 -13.421875 C 35.457031 -13.421875 38.296875 -14.484375 40.671875 -16.609375 C 43.046875 -18.742188 44.5625 -22.15625 45.21875 -26.84375 L 50.625 -65.3125 C 50.6875 -65.96875 50.820312 -66.382812 51.03125 -66.5625 C 51.238281 -66.75 51.613281 -66.84375 52.15625 -66.84375 L 65.671875 -66.84375 C 66.210938 -66.84375 66.644531 -66.585938 66.96875 -66.078125 C 67.300781 -65.566406 67.40625 -65.007812 67.28125 -64.40625 Z M 61.890625 -25.859375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(133.545919, 87.483045)"><g><path d="M 68.640625 -66.84375 C 69.484375 -66.84375 69.84375 -66.359375 69.71875 -65.390625 L 60.625 -1.078125 C 60.5625 -0.660156 60.394531 -0.375 60.125 -0.21875 C 59.851562 -0.0703125 59.421875 0 58.828125 0 L 46.484375 0 C 46.054688 0 45.691406 -0.132812 45.390625 -0.40625 C 45.097656 -0.675781 44.738281 -1.140625 44.3125 -1.796875 L 24.046875 -35.40625 C 23.867188 -35.695312 23.691406 -35.84375 23.515625 -35.84375 C 23.148438 -35.84375 22.9375 -35.457031 22.875 -34.6875 L 18.203125 -1.71875 C 18.140625 -0.988281 17.972656 -0.519531 17.703125 -0.3125 C 17.429688 -0.101562 16.875 0 16.03125 0 L 3.0625 0 C 1.914062 0 1.4375 -0.78125 1.625 -2.34375 L 10.546875 -65.3125 C 10.597656 -65.96875 10.742188 -66.382812 10.984375 -66.5625 C 11.222656 -66.75 11.675781 -66.84375 12.34375 -66.84375 L 27.015625 -66.84375 C 27.679688 -66.84375 28.207031 -66.675781 28.59375 -66.34375 C 28.988281 -66.007812 29.394531 -65.484375 29.8125 -64.765625 L 47.375 -34.859375 C 47.675781 -34.378906 47.976562 -34.140625 48.28125 -34.140625 C 48.457031 -34.140625 48.617188 -34.242188 48.765625 -34.453125 C 48.921875 -34.660156 49.03125 -34.945312 49.09375 -35.3125 L 53.328125 -65.484375 C 53.390625 -66.085938 53.539062 -66.460938 53.78125 -66.609375 C 54.019531 -66.765625 54.46875 -66.84375 55.125 -66.84375 Z M 68.640625 -66.84375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(202.091372, 87.483045)"><g/></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(220.10416, 87.483045)"><g/></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(238.116948, 87.483045)"><g/></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(256.132718, 87.483045)"><g><path d="M 26.578125 -23.953125 C 25.972656 -23.953125 25.566406 -23.832031 25.359375 -23.59375 C 25.148438 -23.351562 25.015625 -22.960938 24.953125 -22.421875 L 22.0625 -2.078125 C 21.945312 -1.171875 21.707031 -0.597656 21.34375 -0.359375 C 20.988281 -0.117188 20.269531 0 19.1875 0 L 3.25 0 C 2.644531 0 2.222656 -0.117188 1.984375 -0.359375 C 1.742188 -0.597656 1.625 -1.019531 1.625 -1.625 C 1.625 -2.101562 1.65625 -2.492188 1.71875 -2.796875 L 10.546875 -65.3125 C 10.597656 -65.96875 10.726562 -66.382812 10.9375 -66.5625 C 11.15625 -66.75 11.535156 -66.84375 12.078125 -66.84375 L 41.890625 -66.84375 C 46.515625 -66.84375 50.6875 -66.101562 54.40625 -64.625 C 58.125 -63.15625 61.066406 -60.960938 63.234375 -58.046875 C 65.398438 -55.140625 66.484375 -51.613281 66.484375 -47.46875 C 66.484375 -42.664062 65.28125 -38.492188 62.875 -34.953125 C 60.46875 -31.410156 57.175781 -28.691406 53 -26.796875 C 48.832031 -24.898438 44.132812 -23.953125 38.90625 -23.953125 Z M 45.671875 -47.375 C 45.671875 -49 45.097656 -50.242188 43.953125 -51.109375 C 42.816406 -51.984375 41.285156 -52.421875 39.359375 -52.421875 L 30.984375 -52.421875 C 30.265625 -52.421875 29.753906 -52.269531 29.453125 -51.96875 C 29.148438 -51.675781 28.941406 -51.164062 28.828125 -50.4375 L 27.390625 -39.8125 L 27.296875 -39.28125 C 27.296875 -38.914062 27.382812 -38.671875 27.5625 -38.546875 C 27.738281 -38.429688 28.007812 -38.375 28.375 -38.375 L 37.203125 -38.375 C 38.765625 -38.375 40.191406 -38.804688 41.484375 -39.671875 C 42.773438 -40.546875 43.796875 -41.6875 44.546875 -43.09375 C 45.296875 -44.507812 45.671875 -45.9375 45.671875 -47.375 Z M 45.671875 -47.375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(321.969443, 87.483045)"><g><path d="M 60.078125 -2.4375 C 60.203125 -2.132812 60.265625 -1.769531 60.265625 -1.34375 C 60.265625 -0.445312 59.691406 0 58.546875 0 L 41.078125 0 C 40.410156 0 39.894531 -0.160156 39.53125 -0.484375 C 39.175781 -0.816406 38.910156 -1.4375 38.734375 -2.34375 L 33.515625 -25.578125 C 33.390625 -25.941406 33.25 -26.195312 33.09375 -26.34375 C 32.945312 -26.5 32.632812 -26.578125 32.15625 -26.578125 L 26.75 -26.578125 C 26.269531 -26.578125 25.9375 -26.484375 25.75 -26.296875 C 25.570312 -26.117188 25.457031 -25.847656 25.40625 -25.484375 L 22.0625 -2.078125 C 21.945312 -1.171875 21.660156 -0.597656 21.203125 -0.359375 C 20.753906 -0.117188 19.960938 0 18.828125 0 L 3.6875 0 C 2.125 0 1.46875 -0.929688 1.71875 -2.796875 L 10.546875 -65.3125 C 10.597656 -65.96875 10.726562 -66.382812 10.9375 -66.5625 C 11.15625 -66.75 11.535156 -66.84375 12.078125 -66.84375 L 42.15625 -66.84375 C 50.144531 -66.84375 56.34375 -65.320312 60.75 -62.28125 C 65.164062 -59.25 67.375 -55.035156 67.375 -49.640625 C 67.375 -45.253906 66.097656 -41.195312 63.546875 -37.46875 C 60.992188 -33.75 57.675781 -31.078125 53.59375 -29.453125 C 52.8125 -29.148438 52.34375 -28.878906 52.1875 -28.640625 C 52.039062 -28.398438 52.03125 -28.070312 52.15625 -27.65625 Z M 37.5625 -40 C 40.019531 -40 42.070312 -40.835938 43.71875 -42.515625 C 45.375 -44.191406 46.203125 -46.144531 46.203125 -48.375 C 46.203125 -50.050781 45.585938 -51.320312 44.359375 -52.1875 C 43.128906 -53.0625 41.554688 -53.5 39.640625 -53.5 L 30.453125 -53.5 C 30.023438 -53.5 29.722656 -53.378906 29.546875 -53.140625 C 29.367188 -52.898438 29.21875 -52.421875 29.09375 -51.703125 L 27.5625 -41.34375 L 27.5625 -40.890625 C 27.5625 -40.535156 27.632812 -40.296875 27.78125 -40.171875 C 27.9375 -40.054688 28.195312 -40 28.5625 -40 Z M 37.5625 -40 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(388.52667, 87.483045)"><g><path d="M 32.421875 0.90625 C 26.484375 0.90625 21.363281 -0.25 17.0625 -2.5625 C 12.769531 -4.875 9.484375 -8.160156 7.203125 -12.421875 C 4.921875 -16.691406 3.78125 -21.738281 3.78125 -27.5625 C 3.78125 -30.082031 3.929688 -32.304688 4.234375 -34.234375 C 5.191406 -40.953125 7.320312 -46.847656 10.625 -51.921875 C 13.925781 -57.003906 18.160156 -60.910156 23.328125 -63.640625 C 28.492188 -66.367188 34.257812 -67.734375 40.625 -67.734375 C 46.445312 -67.734375 51.503906 -66.546875 55.796875 -64.171875 C 60.097656 -61.804688 63.390625 -58.445312 65.671875 -54.09375 C 67.953125 -49.738281 69.09375 -44.648438 69.09375 -38.828125 C 69.09375 -36.304688 68.941406 -34.113281 68.640625 -32.25 C 67.679688 -25.519531 65.5625 -19.660156 62.28125 -14.671875 C 59.007812 -9.691406 54.804688 -5.847656 49.671875 -3.140625 C 44.535156 -0.441406 38.785156 0.90625 32.421875 0.90625 Z M 32.96875 -13.15625 C 37.050781 -13.15625 40.234375 -14.773438 42.515625 -18.015625 C 44.796875 -21.253906 46.445312 -26.566406 47.46875 -33.953125 C 47.945312 -37.617188 48.1875 -40.59375 48.1875 -42.875 C 48.1875 -46.78125 47.554688 -49.585938 46.296875 -51.296875 C 45.035156 -53.003906 42.992188 -53.859375 40.171875 -53.859375 C 36.085938 -53.859375 32.875 -52.128906 30.53125 -48.671875 C 28.1875 -45.222656 26.476562 -39.660156 25.40625 -31.984375 C 24.925781 -28.429688 24.6875 -25.578125 24.6875 -23.421875 C 24.6875 -19.691406 25.332031 -17.046875 26.625 -15.484375 C 27.914062 -13.929688 30.03125 -13.15625 32.96875 -13.15625 Z M 32.96875 -13.15625 "/></g></g></g></g></g><g transform="matrix(1, 0, 0, 1, 233, 17)"><g clip-path="url(#50ef6cb472)"><g fill="#f4b120" fill-opacity="1"><g transform="translate(1.648649, 87.405595)"><g><path d="M 2.15625 14.796875 C 1.257812 14.796875 0.597656 14.46875 0.171875 13.8125 C -0.242188 13.15625 -0.390625 12.316406 -0.265625 11.296875 L 11.75 -74.171875 C 11.863281 -75.003906 12.039062 -75.507812 12.28125 -75.6875 C 12.519531 -75.875 13.0625 -75.96875 13.90625 -75.96875 L 22.25 -75.96875 C 22.90625 -75.96875 23.441406 -75.726562 23.859375 -75.25 C 24.273438 -74.769531 24.425781 -74.257812 24.3125 -73.71875 L 12.015625 13.71875 C 11.953125 14.195312 11.832031 14.492188 11.65625 14.609375 C 11.476562 14.734375 11.09375 14.796875 10.5 14.796875 Z M 2.15625 14.796875 "/></g></g></g><g clip-path="url(#b1587ce316)"><g fill="#f4b120" fill-opacity="1"><g transform="translate(23.622358, 87.405595)"><g><path d="M 2.15625 14.796875 C 1.257812 14.796875 0.597656 14.46875 0.171875 13.8125 C -0.242188 13.15625 -0.390625 12.316406 -0.265625 11.296875 L 11.75 -74.171875 C 11.863281 -75.003906 12.039062 -75.507812 12.28125 -75.6875 C 12.519531 -75.875 13.0625 -75.96875 13.90625 -75.96875 L 22.25 -75.96875 C 22.90625 -75.96875 23.441406 -75.726562 23.859375 -75.25 C 24.273438 -74.769531 24.425781 -74.257812 24.3125 -73.71875 L 12.015625 13.71875 C 11.953125 14.195312 11.832031 14.492188 11.65625 14.609375 C 11.476562 14.734375 11.09375 14.796875 10.5 14.796875 Z M 2.15625 14.796875 "/></g></g></g></g></g></g></svg>
+        <span class="business-sidenav-signature" aria-hidden="true">
+            <span>Road</span>
+            <span>Runners</span>
+            <span class="business-sidenav-signature-business">Business</span>
+        </span>
+    </a>
+
+    <hr class="hr">
+
+    <ul class="sidenav-menu px-2 pb-5">
+
+        <cfif VARIABLES.businessIsPendingWorkspace>
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Primeiros passos</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/">link-warning</cfif>" href="/">
+                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Primeiros passos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <cfif isDefined("VARIABLES.businessPendingExistingAccountRequest") AND VARIABLES.businessPendingExistingAccountRequest>
+                    <span class="sidenav-link text-muted" aria-disabled="true">
+                        <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Aguardando acesso</span>
+                        <i class="fa-solid fa-lock ms-auto" aria-hidden="true"></i>
+                    </span>
+                <cfelse>
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/eventos/">link-warning</cfif>" href="/eventos/#primeiro-evento">
+                        <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Vincular evento</span>
+                    </a>
+                </cfif>
+            </li>
+
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Próximas etapas</span>
+            </li>
+
+            <li class="sidenav-item">
+                <cfif isDefined("VARIABLES.businessPendingExistingAccountRequest") AND VARIABLES.businessPendingExistingAccountRequest>
+                    <span class="sidenav-link text-muted" aria-disabled="true">
+                        <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Reservar voucher</span>
+                        <i class="fa-solid fa-lock ms-auto" aria-hidden="true"></i>
+                    </span>
+                <cfelse>
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/?view=payments#ads-voucher-form">
+                        <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Reservar voucher</span>
+                    </a>
+                </cfif>
+            </li>
+
+            <li class="sidenav-item">
+                <cfif isDefined("VARIABLES.businessPendingExistingAccountRequest") AND VARIABLES.businessPendingExistingAccountRequest>
+                    <span class="sidenav-link text-muted" aria-disabled="true">
+                        <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                        <i class="fa-solid fa-lock ms-auto" aria-hidden="true"></i>
+                    </span>
+                <cfelse>
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/?view=campaigns">
+                        <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                    </a>
+                </cfif>
+            </li>
+
+            <cfif NOT (isDefined("VARIABLES.businessPendingExistingAccountRequest") AND VARIABLES.businessPendingExistingAccountRequest)>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">
+                        <i class="fa-regular fa-image fa-fw me-3"></i><span>Banners</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ajuda</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/suporte/">
+                    <i class="fa-solid fa-life-ring fa-fw me-3"></i><span>Suporte</span>
+                </a>
+            </li>
+        <cfelse>
+
+        <cfif VARIABLES.businessCanShowAdminNavigation>
+            <li class="sidenav-item business-sidenav-search-item">
+                <label class="visually-hidden" for="business-sidenav-search-input">Buscar no menu</label>
+                <div class="business-sidenav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="business-sidenav-search-input"
+                           type="search"
+                           autocomplete="off"
+                           placeholder="Buscar no menu"
+                           aria-label="Buscar no menu administrativo">
+                    <kbd aria-hidden="true">⌘K</kbd>
+                </div>
+            </li>
+
+            <li id="business-sidenav-search-empty" class="sidenav-item business-sidenav-search-empty business-sidenav-search-hidden">
+                Nenhuma entrada encontrada
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/">link-warning</cfif>" href="/">
+                    <i class="fa-solid fa-house fa-fw me-3"></i><span>Início</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link" href="/#business-admin-pending" data-menu-aliases="fila decisões aprovações revisão tarefas agora">
+                    <i class="fa-solid fa-inbox fa-fw me-3"></i><span>Pendências</span>
+                    <cfif VARIABLES.businessPendingTasksTotal GT 0>
+                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessPendingTasksTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/kanban/">link-warning</cfif>" href="/administracao/kanban/" data-menu-aliases="kanban kamban trello tarefas departamentos cartões">
+                    <i class="fa-brands fa-trello fa-fw me-3"></i><span>Kanban</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/ponto/">link-warning</cfif>" href="/administracao/ponto/" data-menu-aliases="ponto horas trabalho jornada viagem">
+                    <i class="fa-solid fa-clock fa-fw me-3"></i><span>Meu ponto</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agenda/">link-warning</cfif>" href="/administracao/agenda/" data-menu-aliases="agenda google calendário compromissos reuniões">
+                    <i class="fa-regular fa-calendar fa-fw me-3"></i><span>Agenda</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/drive/">link-warning</cfif>" href="/administracao/drive/" data-menu-aliases="documentos arquivos pastas google drive docs sheets planilhas">
+                    <i class="fa-brands fa-google-drive fa-fw me-3"></i><span>Documentos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/ai-mails/">link-warning</cfif>" href="/administracao/ai-mails/" data-menu-aliases="ai-mails email gmail inteligência resumos mensagens caixa entrada">
+                    <i class="fa-solid fa-envelope-open-text fa-fw me-3"></i><span>AI-mails</span>
+                </a>
+            </li>
+
+            <!--- EVENTOS E RESULTADOS --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos e resultados</span>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Gestão do evento</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/eventos/">link-warning</cfif>" href="/eventos/" data-menu-aliases="provas corridas calendário">
+                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/" data-menu-aliases="rotas mapas trajetos">
+                    <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/" data-menu-aliases="saúde saude médico médica atendimento triagem ocorrências">
+                    <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/inscricoes/">link-warning</cfif>" href="/inscricoes/" data-menu-aliases="inscritos pagamentos participantes">
+                    <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Inscrições</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/agendas/">link-warning</cfif>" href="/portal/agendas/" data-menu-aliases="calendário programação">
+                    <i class="fa-solid fa-calendar-days fa-fw me-3"></i><span>Agendas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Resultados e integrações</span></li>
+
+            <cfif VARIABLES.businessCanViewResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/" data-menu-aliases="importações processamento classificação">
+                        <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanProcessResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/" data-menu-aliases="importação cronometragem">
+                        <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/foco-revisao/">link-warning</cfif>" href="/administracao/foco-revisao/" data-menu-aliases="fotos fotógrafos vínculo conferência">
+                    <i class="fa-solid fa-camera-retro fa-fw me-3"></i><span>Revisão Foco Radical</span>
+                    <cfif VARIABLES.businessFocoReviewPendingTotal GT 0>
+                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessFocoReviewPendingTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agregadores/">link-warning</cfif>" href="/administracao/agregadores/" data-menu-aliases="integrações fontes parceiros">
+                    <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Agregadores</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/agrega-revisao/">link-warning</cfif>" href="/administracao/agrega-revisao/" data-menu-aliases="agregadores conferência vínculos">
+                    <i class="fa-solid fa-code-branch fa-fw me-3"></i><span>Revisão de agregadores</span>
+                    <cfif VARIABLES.businessAgregaReviewPendingTotal GT 0>
+                        <span class="badge rounded-pill business-foco-review-pending-badge"><cfoutput>#VARIABLES.businessAgregaReviewPendingTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <!--- DESAFIOS E TREINOS --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios e treinos</span>
+            </li>
+
+            <cfquery name="qDesafiosBusinessAtivos">
+                SELECT *
+                FROM desafios_eventos
+                WHERE (
+                    (ativo = true AND data_fim + 30 > current_date)
+                    OR tag IN (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="circuitobrasilgigante"/>
+                    )
+                )
+                ORDER BY data_inicio DESC
+            </cfquery>
+
+            <cfset VARIABLES.menuHasBrasilGiganteChallenge = false/>
+            <cfoutput query="qDesafiosBusinessAtivos">
+                <cfif qDesafiosBusinessAtivos.tag EQ "circuitobrasilgigante">
+                    <cfset VARIABLES.menuHasBrasilGiganteChallenge = true/>
+                </cfif>
+                <cfset VARIABLES.challengeMenuTitle = qDesafiosBusinessAtivos.titulo/>
+                <cfif qDesafiosBusinessAtivos.tag EQ "catarinensecorridaderua">
+                    <cfset VARIABLES.challengeMenuTitle = "Catarinense de Rua"/>
+                <cfelseif qDesafiosBusinessAtivos.tag EQ "todosantodia">
+                    <cfset VARIABLES.challengeMenuTitle = "Todo Santo Dia"/>
+                </cfif>
+                <li class="sidenav-item">
+                    <a class="sidenav-link" href="/desafios/#qDesafiosBusinessAtivos.tag#/" data-menu-aliases="circuito campeonato ranking">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>#VARIABLES.challengeMenuTitle#</span>
+                        <cfif qDesafiosBusinessAtivos.tag EQ "circuitobrasilgigante" AND VARIABLES.businessCbgValidationPendingTotal GT 0>
+                            <span class="badge rounded-pill business-cbg-validation-pending-badge">#VARIABLES.businessCbgValidationPendingTotal#</span>
+                        </cfif>
+                    </a>
+                </li>
+            </cfoutput>
+
+            <cfif VARIABLES.businessCanManageBrasilGiganteChallenge AND NOT VARIABLES.menuHasBrasilGiganteChallenge>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "circuitobrasilgigante">link-warning</cfif>" href="/desafios/circuitobrasilgigante/" data-menu-aliases="circuito campeonato ranking">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Brasil Gigante</span>
+                        <cfif VARIABLES.businessCbgValidationPendingTotal GT 0>
+                            <span class="badge rounded-pill business-cbg-validation-pending-badge"><cfoutput>#VARIABLES.businessCbgValidationPendingTotal#</cfoutput></span>
+                        </cfif>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/treinos-config/" OR VARIABLES.template EQ "/treinos-config/inscritos/">link-warning</cfif>" href="/treinos-config/" data-menu-aliases="treinamentos configuração inscritos">
+                    <i class="fa-solid fa-dumbbell fa-fw me-3"></i><span>Configuração de treinos</span>
+                </a>
+            </li>
+
+            <!--- CONTEÚDO E PORTAL --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Conteúdo e portal</span>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Vídeos</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/canais/">link-warning</cfif>" href="/portal/canais/" data-menu-aliases="youtube produtores">
+                    <i class="fa-brands fa-youtube fa-fw me-3"></i><span>Canais de vídeo</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/videos/">link-warning</cfif>" href="/portal/videos/">
+                    <i class="fa-solid fa-photo-film fa-fw me-3"></i><span>Vídeos</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Editorial</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/conteudo-canais/">link-warning</cfif>" href="/portal/conteudo-canais/" data-menu-aliases="editorias fontes">
+                    <i class="fa-solid fa-newspaper fa-fw me-3"></i><span>Canais de conteúdo</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/conteudos/">link-warning</cfif>" href="/portal/conteudos/" data-menu-aliases="curadoria matérias notícias artigos">
+                    <i class="fa-solid fa-file-lines fa-fw me-3"></i><span>Conteúdos</span>
+                    <cfif VARIABLES.businessContentCurationPendingTotal GT 0>
+                        <span class="badge rounded-pill business-content-curation-pending-badge"><cfoutput>#VARIABLES.businessContentCurationPendingTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/conteudo/">link-warning</cfif>" href="/portal/conteudo/" data-menu-aliases="provas eventos publicação">
+                    <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Conteúdo das provas</span>
+                </a>
+            </li>
+
+            <!--- MARKETING E AUDIÊNCIA --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Marketing e audiência</span>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Campanhas</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/" data-menu-aliases="anúncios mídia publicidade">
+                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/" data-menu-aliases="destaques capas">
+                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Banners</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/cupons-rr/">link-warning</cfif>" href="/cupons-rr/" data-menu-aliases="descontos vouchers promoções">
+                    <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Cupons de desconto</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/emailmkt/">link-warning</cfif>" href="/emailmkt/" data-menu-aliases="newsletter disparos">
+                    <i class="fa-solid fa-envelope fa-fw me-3"></i><span>Email marketing</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/crm/">link-warning</cfif>" href="/crm/" data-menu-aliases="relacionamento contatos clientes">
+                    <i class="fa-solid fa-address-book fa-fw me-3"></i><span>CRM</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item business-sidenav-subgroup-label"><span>Audiência e relacionamento</span></li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/audiencia/">link-warning</cfif>" href="/portal/audiencia/" data-menu-aliases="audiência inventário posições acessos analytics potencial regional">
+                    <i class="fa-solid fa-chart-area fa-fw me-3"></i><span>Audiência e inventário</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/busca/">link-warning</cfif>" href="/portal/busca/" data-menu-aliases="termos pesquisas usuários">
+                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>Busca do site</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/eventos-analytics/">link-warning</cfif>" href="/portal/eventos-analytics/" data-menu-aliases="analytics acessos audiência visualizações">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Eventos visitados</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/">link-warning</cfif>" href="/administracao/chat/" data-menu-aliases="conversas mensagens">
+                    <i class="fa-solid fa-comments fa-fw me-3"></i><span>Uso do chat</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/chat/grupos-especiais/">link-warning</cfif>" href="/administracao/chat/grupos-especiais/" data-menu-aliases="chat comunidades">
+                    <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Grupos e canais</span>
+                </a>
+            </li>
+
+            <!--- CONTAS E PARCEIROS --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Contas e parceiros</span>
+            </li>
+
+            <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/usuarios/">link-warning</cfif>" href="/administracao/usuarios/" data-menu-aliases="equipe acessos pessoas">
+                        <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Usuários</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/permissoes/">link-warning</cfif>" href="/administracao/permissoes/" data-menu-aliases="papéis perfis acessos">
+                    <i class="fa-solid fa-user-shield fa-fw me-3"></i><span>Permissões</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/" data-menu-aliases="empresas clientes cadastro">
+                    <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/" data-menu-aliases="perfis selo">
+                    <i class="fa-solid fa-circle-check fa-fw me-3"></i><span>Verificados</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/fornecedores/">link-warning</cfif>" href="/fornecedores/" data-menu-aliases="parceiros prestadores integrações">
+                    <i class="fa-solid fa-boxes-packing fa-fw me-3"></i><span>Fornecedores</span>
+                </a>
+            </li>
+
+            <!--- PLATAFORMA --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Plataforma</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/bi/">link-warning</cfif>" href="/bi/" data-menu-aliases="business intelligence indicadores relatórios dados">
+                    <i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span>
+                </a>
+            </li>
+
+            <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/crm-interno/">link-warning</cfif>" href="/crm-interno/">
+                            <i class="fa-solid fa-bullseye fa-fw me-3"></i><span>CRM interno</span>
+                        </a>
+                    </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/cron-jobs/">link-warning</cfif>" href="/administracao/cron-jobs/" data-menu-aliases="automações tarefas agendadas rotinas">
+                    <i class="fa-solid fa-clock-rotate-left fa-fw me-3"></i><span>Cron Jobs</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/erros/">link-warning</cfif>" href="/portal/erros/" data-menu-aliases="falhas logs exceções portal">
+                    <i class="fa-solid fa-triangle-exclamation fa-fw me-3"></i><span>Erros do portal</span>
+                </a>
+            </li>
+
+            <cfif isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/estudo/">link-warning</cfif>" href="/estudo/" data-menu-aliases="notebook queries pesquisa dados congelados">
+                        <i class="fa-solid fa-book-open fa-fw me-3"></i><span>Estudo</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/api-monitor/">link-warning</cfif>" href="/administracao/api-monitor/" data-menu-aliases="saúde integrações desempenho requisições">
+                    <i class="fa-solid fa-chart-line fa-fw me-3"></i><span>Monitor da API</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/notificacoes/" OR VARIABLES.template EQ "/notificacoes/templates/" OR VARIABLES.template EQ "/notificacoes/envio/">link-warning</cfif>" href="/notificacoes/" data-menu-aliases="push mensagens templates envio">
+                    <i class="fa-solid fa-bell fa-fw me-3"></i><span>Notificações</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/pesquisas/">link-warning</cfif>" href="/administracao/pesquisas/" data-menu-aliases="enquetes respostas formulários">
+                    <i class="fa-solid fa-square-poll-horizontal fa-fw me-3"></i><span>Pesquisas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/runner-apps/">link-warning</cfif>" href="/portal/runner-apps/" data-menu-aliases="aplicativos atalhos">
+                    <i class="fa-solid fa-grip fa-fw me-3"></i><span>Runner Apps</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/seo/">link-warning</cfif>" href="/portal/seo/" data-menu-aliases="otimização busca orgânica google auditoria canonical indexação correções">
+                    <i class="fa-solid fa-magnifying-glass fa-fw me-3"></i><span>SEO</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/status/">link-warning</cfif>" href="/administracao/status/" data-menu-aliases="saúde disponibilidade uptime sites">
+                    <i class="fa-solid fa-heart-pulse fa-fw me-3"></i><span>Status dos sites</span>
+                    <cfif VARIABLES.businessUptimeStatusAttentionTotal GT 0>
+                        <span class="badge rounded-pill business-status-attention-badge"><cfoutput>#VARIABLES.businessUptimeStatusAttentionTotal#</cfoutput></span>
+                    </cfif>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/temas/">link-warning</cfif>" href="/temas/" data-menu-aliases="aparência layout cores">
+                    <i class="fa-solid fa-palette fa-fw me-3"></i><span>Temas</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/vicky/">link-warning</cfif>" href="/administracao/vicky/" data-menu-aliases="pacer assistente inteligência artificial">
+                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Vicky Pacer</span>
+                </a>
+            </li>
+
+            <!--- AJUDA --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ajuda</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/faq/" data-menu-aliases="dúvidas perguntas">
+                    <i class="fa-solid fa-circle-question fa-fw me-3"></i><span>FAQ</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/" data-menu-aliases="atendimento chamado">
+                    <i class="fa-solid fa-life-ring fa-fw me-3"></i><span>Suporte</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/helpdesk/">link-warning</cfif>" href="/helpdesk/" data-menu-aliases="chamados atendimento interno">
+                    <i class="fa-solid fa-headset fa-fw me-3"></i><span>Help Desk</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/documentacao/">link-warning</cfif>" href="/documentacao/" data-menu-aliases="guias manuais">
+                    <i class="fa-solid fa-book fa-fw me-3"></i><span>Documentação</span>
+                </a>
+            </li>
+        <cfelse>
+            <cfif VARIABLES.businessIsMedicalWorkspace>
+                <li class="sidenav-item pt-3">
+                    <span class="sidenav-subheading text-muted text-uppercase fw-bold">Central médica</span>
+                </li>
+                <li class="sidenav-item business-sidenav-fixed-item">
+                    <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/">
+                        <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
+                    </a>
+                </li>
+            <cfelse>
+            <li class="sidenav-item business-sidenav-fixed-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/">link-warning</cfif>" href="/">
+                    <i class="fa-solid fa-house fa-fw me-3"></i><span>Início</span>
+                </a>
+            </li>
+
+            <!--- EVENTOS --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Eventos</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/eventos/">link-warning</cfif>" href="/eventos/">
+                    <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span>
+                </a>
+            </li>
+
+            <cfif VARIABLES.businessCanShowAccountNavigation OR VARIABLES.businessCanShowUserManagementNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/percursos/">link-warning</cfif>" href="/percursos/">
+                        <i class="fa-solid fa-route fa-fw me-3"></i><span>Percursos</span>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif listFindNoCase('/saude-eventos/,/saude-eventos/central/', VARIABLES.template)>link-warning</cfif>" href="/saude-eventos/" data-menu-aliases="saúde saude médico médica central atendimento triagem ocorrências">
+                        <i class="fa-solid fa-kit-medical fa-fw me-3"></i><span>Operação de saúde</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/inscricoes/">link-warning</cfif>" href="/inscricoes/">
+                    <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Inscrições</span>
+                </a>
+            </li>
+
+            <cfif VARIABLES.businessCanShowAgendaNavigation>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/agendas/">link-warning</cfif>" href="/portal/agendas/">
+                        <i class="fa-solid fa-calendar-days fa-fw me-3"></i><span>Agendas</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanViewResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/importacoes-resultados/">link-warning</cfif>" href="/administracao/importacoes-resultados/">
+                        <i class="fa-solid fa-list-check fa-fw me-3"></i><span>Fila de resultados</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanProcessResultImports>
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/racetag/">link-warning</cfif>" href="/racetag/">
+                        <i class="fa-solid fa-stopwatch fa-fw me-3"></i><span>Importador RaceTag Pro</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <cfif VARIABLES.businessCanManageCatarinenseChallenges>
+                <li class="sidenav-item pt-3">
+                    <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios</span>
+                </li>
+
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "catarinensecorridaderua">link-warning</cfif>" href="/desafios/catarinensecorridaderua/" data-menu-aliases="catarinense corrida rua campeonato ranking">
+                        <i class="fa-solid fa-trophy fa-fw me-3"></i><span>Catarinense de Rua</span>
+                    </a>
+                </li>
+
+                <li class="sidenav-item">
+                    <a class="sidenav-link <cfif VARIABLES.template EQ "/desafios/" AND isDefined("URL.desafio") AND URL.desafio EQ "catarinensetrailrun">link-warning</cfif>" href="/desafios/catarinensetrailrun/" data-menu-aliases="catarinense trail run campeonato ranking">
+                        <i class="fa-solid fa-mountain-sun fa-fw me-3"></i><span>Catarinense Trail Run</span>
+                    </a>
+                </li>
+            </cfif>
+
+            <!--- DIVULGAÇÃO --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Divulgação</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/ads/">link-warning</cfif>" href="/ads/">
+                    <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">
+                    <i class="fa-regular fa-image fa-fw me-3"></i><span>Banners</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/cupons-rr/">link-warning</cfif>" href="/cupons-rr/">
+                    <i class="fa-solid fa-ticket fa-fw me-3"></i><span>Cupons de desconto</span>
+                </a>
+            </li>
+
+            <cfif VARIABLES.businessCanShowAccountNavigation OR VARIABLES.businessCanShowUserManagementNavigation>
+                <!--- CONTA --->
+                <li class="sidenav-item pt-3">
+                    <span class="sidenav-subheading text-muted text-uppercase fw-bold">Conta</span>
+                </li>
+
+                <cfif VARIABLES.businessCanShowUserManagementNavigation>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/crm-interno/">link-warning</cfif>" href="/crm-interno/">
+                            <i class="fa-solid fa-bullseye fa-fw me-3"></i><span>CRM interno</span>
+                        </a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/usuarios/">link-warning</cfif>" href="/administracao/usuarios/">
+                            <i class="fa-solid fa-users-gear fa-fw me-3"></i><span>Usuários</span>
+                        </a>
+                    </li>
+                </cfif>
+
+                <cfif VARIABLES.businessCanShowAccountNavigation>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/">
+                            <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Gestão da conta</span>
+                        </a>
+                    </li>
+
+                    <li class="sidenav-item">
+                        <a class="sidenav-link <cfif VARIABLES.template EQ "/assinaturas/">link-warning</cfif>" href="/assinaturas/">
+                            <i class="fas fa-file-contract fa-fw me-3"></i><span>Assinaturas</span>
+                        </a>
+                    </li>
+                </cfif>
+            </cfif>
+
+            <!--- AJUDA --->
+            <li class="sidenav-item pt-3">
+                <span class="sidenav-subheading text-muted text-uppercase fw-bold">Ajuda</span>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="/faq/">
+                    <i class="fa-solid fa-circle-question fa-fw me-3"></i><span>FAQ</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/suporte/">link-warning</cfif>" href="/suporte/">
+                    <i class="fa-solid fa-life-ring fa-fw me-3"></i><span>Suporte</span>
+                </a>
+            </li>
+            </cfif>
+        </cfif>
+
+        </cfif>
+
+
+    </ul>
+
+    <script src="/assets/js/business-sidenav.js?v=20260824-1"></script>
+    <script>
+        window.BusinessSidenav.init({
+            isAdmin: <cfif VARIABLES.businessCanShowAdminNavigation>true<cfelse>false</cfif>,
+            isPending: <cfif VARIABLES.businessIsPendingWorkspace>true<cfelse>false</cfif>,
+            defaultExpandedSections: <cfif VARIABLES.businessIsPendingWorkspace>["primeiros-passos", "proximas-etapas", "ajuda"]<cfelseif VARIABLES.businessCanShowAdminNavigation>["eventos-e-resultados"]<cfelse>["eventos", "divulgacao"]</cfif>,
+            storageKey: "business:sidenav:section-state:v4:<cfif VARIABLES.businessIsPendingWorkspace>pending<cfelseif VARIABLES.businessCanShowAdminNavigation>admin<cfelse>account</cfif>"
+        });
+    </script>
+
+</nav>
+
+<!--- Navbar --->
+<!---<nav id="main-navbar" class="navbar navbar-expand-lg fixed-top shadow-1">
+
+<!--- Container wrapper --->
+<div class="container-fluid">
+
+<!--- Toggler --->
+<button data-mdb-toggle="sidenav" data-mdb-target="#main-sidenav"
+  class="btn shadow-0 p-0 me-3 d-block d-xl-none" data-mdb-ripple-init aria-controls="#main-sidenav"
+  aria-haspopup="true">
+  <i class="fas fa-bars fa-lg"></i>
+</button>
+
+<!--- Search form --->
+<form class="d-none d-md-flex input-group w-auto my-auto">
+  <input id="search-focus" autocomplete="off" type="search" class="form-control rounded"
+    placeholder='Search (ctrl + alt to focus)' style="min-width: 225px" />
+  <span class="input-group-text border-0"><i class="fas fa-search text-secondary"></i></span>
+</form>
+
+<!--- Right links --->
+<ul class="navbar-nav ms-auto d-flex flex-row">
+
+  <!--- Notification dropdown --->
+  <li class="nav-item dropdown">
+    <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+      role="button" data-mdb-dropdown-init aria-expanded="false">
+      <i class="fas fa-bell link-secondary"></i>
+      <span class="badge rounded-pill badge-notification bg-danger">1</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+      <li><a class="dropdown-item" href="#">Some news</a></li>
+      <li><a class="dropdown-item" href="#">Another news</a></li>
+      <li>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </li>
+    </ul>
+  </li>
+
+  <!--- Icon dropdown --->
+  <li class="nav-item dropdown">
+    <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
+      data-mdb-dropdown-init aria-expanded="false">
+      <i class="flag flag-united-kingdom m-0"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-kingdom flag"></i>English
+          <i class="fa fa-check text-success ms-2"></i></a>
+      </li>
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-poland"></i>Polski</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-china"></i>中文</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-japan"></i>日本語</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-germany"></i>Deutsch</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-france"></i>Français</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-spain"></i>Español</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-russia"></i>Русский</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"><i class="flag flag-portugal"></i>Português</a>
+      </li>
+    </ul>
+  </li>
+
+  <!--- Avatar --->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+      id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
+      <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"
+        loading="lazy" />
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+      <li><a class="dropdown-item " href="#">My profile</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Logout</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+</nav>--->
+
+<!--- Heading --->
+<!---<section class="text-center text-md-start">
+
+<!--- Background gradient --->
+<div class="p-5" style="height: 200px;">
+</div>
+
+</section>--->

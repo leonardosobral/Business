@@ -1,0 +1,28 @@
+.estado-city-picker,.estado-city-picker * { box-sizing:border-box; }
+.estado-page-hero-location { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.estado-city-picker { position:relative; width:260px; max-width:100%; color:#333; }
+.estado-city-picker summary { display:flex; align-items:center; gap:.6rem; min-height:42px; padding:.6rem .8rem; border:1px solid #d5d5d5; border-radius:22px; background:#fff; cursor:pointer; font-size:.85rem; font-weight:600; list-style:none; }
+.estado-city-picker summary::-webkit-details-marker { display:none; }
+.estado-city-picker summary span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
+.estado-city-picker summary:focus-visible,.estado-city-picker a:focus-visible { outline:2px solid #d79b0c; outline-offset:2px; }
+.estado-city-picker[open] summary { border-color:#fab120; }
+.estado-city-picker-panel { position:absolute; right:0; top:calc(100% + .4rem); z-index:1040; width:340px; max-width:calc(100vw - 32px); padding:.85rem; border:1px solid #ddd; border-radius:14px; background:#fff; box-shadow:0 8px 24px #0002; }
+.estado-city-picker-label { display:block; font-size:.8rem; font-weight:600; margin-bottom:.35rem; }
+.estado-city-picker input { width:100%; padding:.55rem .65rem; border:1px solid #ccc; border-radius:8px; font-size:16px; }
+.estado-city-picker-hint { margin:.4rem 0 .3rem; color:#666; font-size:.72rem; }
+.estado-city-picker-list { max-height:280px; overflow-y:auto; overscroll-behavior:contain; }
+.estado-city-picker-item { display:flex; align-items:center; justify-content:space-between; gap:.6rem; padding:.65rem .4rem; border-radius:7px; color:#333; text-decoration:none; font-size:.82rem; }
+.estado-city-picker-item[hidden] { display:none; }
+.estado-city-picker-item:hover { background:#fff5db; color:#333; }
+.estado-city-picker-item[aria-current="page"] { background:#fff0c7; font-weight:700; }
+.estado-city-picker-item[aria-disabled="true"] { color:#888; cursor:default; }
+.estado-city-picker-item [data-city-count] { flex:0 0 auto; font-size:.72rem; }
+.estado-city-picker-status { font-size:.8rem; margin:.5rem 0 0; }
+.estado-city-picker-status:empty { display:none; }
+@media (max-width:1199.98px) { .estado-page-hero-header { flex-wrap:wrap; } }
+@media (max-width:767.98px) {
+ .estado-page-hero-location { width:100%; align-items:stretch; }
+ .estado-page-hero-state-select,.estado-city-picker { width:100%; }
+ .estado-page-hero-state-select .home-hero-chip-select { width:100%; }
+ .estado-city-picker-panel { left:0; right:auto; width:100%; max-width:100%; }
+}

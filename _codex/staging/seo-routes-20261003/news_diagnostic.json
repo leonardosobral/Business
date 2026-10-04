@@ -1,0 +1,46 @@
+{
+  "db": {
+    "ROWS": [
+      {
+        "TABLE_NAME": "tb_crm_participacao_respostas",
+        "TABLE_SCHEMA": "crm"
+      },
+      {
+        "TABLE_NAME": "tb_content",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_content_audio_jobs",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_content_imports",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_content_related_events",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_content_tags",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_content_types",
+        "TABLE_SCHEMA": "news"
+      },
+      {
+        "TABLE_NAME": "tb_pesquisa_resposta_etapas",
+        "TABLE_SCHEMA": "public"
+      },
+      {
+        "TABLE_NAME": "tb_pesquisa_resposta_funcionalidades",
+        "TABLE_SCHEMA": "public"
+      },
+      {
+        "TABLE_NAME": "tb_pesquisa_respostas",
+        "TABLE_SCHEMA": "public"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "lines_scanned": 3013612,
+  "files_scanned": 9,
+  "first": "2026-09-26T22:02:21+00:00",
+  "last": "2026-10-03T22:13:01+00:00",
+  "agents": {
+    "OAI-SearchBot": {
+      "requests": 12407,
+      "ip_compatible": 10857,
+      "ip_incompatible": 1550,
+      "ip_unknown": 0,
+      "status_2xx": 11509,
+      "status_3xx": 373,
+      "status_4xx": 524,
+      "status_5xx": 1
+    },
+    "ChatGPT-User": {
+      "requests": 6868,
+      "ip_compatible": 6015,
+      "ip_incompatible": 853,
+      "ip_unknown": 0,
+      "status_2xx": 6641,
+      "status_3xx": 82,
+      "status_4xx": 137,
+      "status_5xx": 8
+    },
+    "GPTBot": {
+      "requests": 109,
+      "ip_compatible": 9,
+      "ip_incompatible": 100,
+      "ip_unknown": 0,
+      "status_2xx": 54,
+      "status_3xx": 49,
+      "status_4xx": 6,
+      "status_5xx": 0
+    },
+    "PerplexityBot": {
+      "requests": 5912,
+      "ip_compatible": 5349,
+      "ip_incompatible": 563,
+      "ip_unknown": 0,
+      "status_2xx": 5325,
+      "status_3xx": 387,
+      "status_4xx": 200,
+      "status_5xx": 0
+    },
+    "Perplexity-User": {
+      "requests": 137,
+      "ip_compatible": 0,
+      "ip_incompatible": 137,
+      "ip_unknown": 0,
+      "status_2xx": 3,
+      "status_3xx": 27,
+      "status_4xx": 107,
+      "status_5xx": 0
+    }
+  },
+  "site_attribution": false,
+  "measured_at": "2026-10-03T22:15:15.333995+00:00",
+  "since": "2026-09-26T22:00:00+00:00",
+  "vhosts": {
+    "roadrunners.run": {
+      "shared_combined_log": true,
+      "remote_ip_header": true,
+      "trusted_proxy_directives": 22
+    },
+    "openresults.run": {
+      "shared_combined_log": true,
+      "remote_ip_header": false,
+      "trusted_proxy_directives": 0
+    }
+  },
+  "vhost_log_bytes": 0
+}

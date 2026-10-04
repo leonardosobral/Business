@@ -1,0 +1,6 @@
+{
+  "url": "https://openresults.run/robots.txt",
+  "headers": "HTTP/2 200 \ndate: Sat, 03 Oct 2026 19:38:35 GMT\ncontent-type: text/plain\nserver: cloudflare\nlast-modified: Sat, 03 Oct 2026 18:18:04 GMT\nvary: Accept-Encoding\netag: W/\"c4-65cf3ab7c91e0-gzip\"\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=j3qcDEYGIYqlktrOqWsNCQSGTITJ1P3eWNkmu9TF1dfS4CU2kIaYZYZSHJFY2E%2F3UB3PTN7VgCuGcYRV3gwSzSLNSluxSElfxnFPQ2zs9GV9SkKdrTdffbXFtPNLH%2BMRC3jdiGmKo05v%2FisowO8%3D\"}]}\nage: 4763\ncache-control: max-age=3600\ncf-cache-status: HIT\ncf-ray: a44e6875fd9fda2e-GRU\nalt-svc: h3=\":443\"; ma=86400\n\n",
+  "body": "User-agent: Googlebot\nDisallow: /nogooglebot/\nDisallow: /perfil\nDisallow: /resultados\n\nUser-agent: *\nAllow: /\nDisallow: /perfil\nDisallow: /resultados\n\nSitemap: https://openresults.run/sitemap.cfm\n",
+  "matches_candidate": false
+}

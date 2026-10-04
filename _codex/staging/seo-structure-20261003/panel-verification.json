@@ -1,0 +1,53 @@
+{
+  "total": 11,
+  "rendered": true,
+  "resolved": 9.0,
+  "updated": "03/10/2026 às 15:33 (Brasília)",
+  "pending": 2.0,
+  "items": [
+    {
+      "RESOLVED": true,
+      "ID": "RR-01"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "RR-02"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "RR-03"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "OR-01"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "RR-04"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "SH-01"
+    },
+    {
+      "RESOLVED": false,
+      "ID": "OR-02"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "RR-05"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "RR-06"
+    },
+    {
+      "RESOLVED": true,
+      "ID": "OR-03"
+    },
+    {
+      "RESOLVED": false,
+      "ID": "SH-02"
+    }
+  ]
+}

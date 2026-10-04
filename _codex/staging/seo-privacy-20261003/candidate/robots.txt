@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+Disallow: /perfil
+
+User-agent: *
+Allow: /
+Disallow: /perfil
+
+Sitemap: https://openresults.run/sitemap.cfm

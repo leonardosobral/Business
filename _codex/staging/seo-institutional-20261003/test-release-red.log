@@ -1,0 +1,33 @@
+..F
+======================================================================
+FAIL: test_preview_preserves_every_existing_resolution (__main__.ReleaseGuards.test_preview_preserves_every_existing_resolution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_institutional_release.test.py", line 20, in test_preview_preserves_every_existing_resolution
+    self.assertEqual(states(root/'candidate/portal/includes/seo_queue_data.cfm'),states(root/'baseline/Business/portal/includes/seo_queue_data.cfm'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'RR-[175 chars] 'false', 'RR-07': 'false', 'RR-08': 'false', 'RR-09': 'false'} != {'RR-[175 chars] 'false', 'RR-07': 'true', 'RR-08': 'false', 'RR-09': 'false'}
+  {'OR-01': 'true',
+   'OR-02': 'false',
+   'OR-03': 'true',
+   'RR-01': 'true',
+   'RR-02': 'true',
+   'RR-03': 'true',
+   'RR-04': 'true',
+   'RR-05': 'true',
+   'RR-06': 'true',
+-  'RR-07': 'false',
+?            ^^^^
+
++  'RR-07': 'true',
+?            ^^^
+
+   'RR-08': 'false',
+   'RR-09': 'false',
+   'SH-01': 'true',
+   'SH-02': 'false'}
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.049s
+
+FAILED (failures=1)

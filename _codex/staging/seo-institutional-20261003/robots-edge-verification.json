@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-10-03T20:03:37.357235+00:00",
+  "status": 200,
+  "robots": "User-agent: Googlebot\nDisallow: /nogooglebot/\nDisallow: /perfil\nDisallow: /resultados\n\nUser-agent: *\nAllow: /\nDisallow: /perfil\nDisallow: /resultados\n\nSitemap: https://openresults.run/sitemap.cfm\n",
+  "headers": {
+    "Date": "Sat, 03 Oct 2026 20:03:37 GMT",
+    "Age": "6264",
+    "Cache-Control": "max-age=3600",
+    "cf-cache-status": "HIT"
+  }
+}

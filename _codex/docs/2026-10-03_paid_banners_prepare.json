@@ -1,0 +1,243 @@
+{
+  "directory": "/var/backups/house-banner-scope.b748bb978dc2",
+  "publisherSHA": "512feca9b058db452dd6cb2189e813055f671a657d3b4a36975c2d4a97521d04",
+  "manifestSHA": "b7ddfa0bf5b7689d21ac2a639e26ae8ba6950bce19c19e870e9f1ac285326038",
+  "phase": "prepared",
+  "mode": "prepare",
+  "files": [
+    {
+      "after": "544145cd29ecc734736222230757df14d364046759cb76242584ea374f2ab380",
+      "before": "8d011e205238dc932246bb141424cb6989eb32849fdc181a55fad151d213ca62",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1781024972000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/banners/index.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "a214d7fdbeddb0955219ad087d20f6050e675dbe866a28bc4871ceef9aab1ff6",
+      "before": "16be1ecf36983825fbc89086ef87a28bf296f514478e3642bcbd4fa165d76888",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789559978750979927,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/banners/home.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "0fed87e9757e46e7b99e92772daab7b23bb742a9c428f2e13370b76744a27ec6",
+      "before": "3e411483487108c8f249a17fc0cda0082f327563b531bf0078879d7afaa9d288",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1790104143000000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "includes/backend/backend_login.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "b668f8926f9c10689ab7f8b01e91a40e9a337cf37d86ea60be7627e0f8b4b9ad",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "includes/backend/business_pending_access.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "f56124a6c35f9be5b49808cf347892fe1975875dfc7564b6fa6daf802a3a9b1a",
+      "before": "5ee0a62053d032d5fe7b983007ef746fb2c6fd7517ffe4f61e60212f890492ab",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789556109839069131,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_management_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "854ca7ff44b1e2d2a3c9ec15b0e7287de36b3509e3f0bd9879cb90e49402de14",
+      "before": "485db413fb6e42a2125386f661b38fd85d20d7fb26ed3619b7003b8e8b2732ba",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109830955215,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_form.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "146e38a1e3e01d2c2e2b72ceb52b21dfe263369c7754bf418f960b9a83919238",
+      "before": "3e63272f78f8967868fe702417f5c308a9cd5e16bab6440e4adeef01871444b8",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789559978729006553,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "portal/includes/banner_dashboard_list.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "44275fe70b8d119b40c599acd6f88fc6456dae9dfdfa0f72dc77ac8969c56d10",
+      "before": "3455c42d670f27631e7e651ada0c51d8a108103e6ccfee8a66fcfb33b54732a6",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789157012308000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "ads/includes/backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "e68671dcbb8da1dacd2cfcfe37b88b0a46925bdce145bdda01d36ed749f04ece",
+      "before": "4047a859ffba4367d049897d681880a37d8e5eea0fbf64444c090cbfeadb30cc",
+      "metadata": {
+        "gid": 50,
+        "mode": 420,
+        "mtime_ns": 1789175073684000000,
+        "uid": 501,
+        "xattrs": {}
+      },
+      "path": "ads/includes/workspace_admin.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "f1974095326300530589a1ec9d19cd96ffe6a152ee52ebbf7c74379c2d8c8ba5",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_actions.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "0a17464963befb8fdaf279c71aee91c5e903b488cc8d33b29dac3320047a3f3a",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_backend.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "35d153aa134dd86def84134e2a14bc3b45c49456f9e4d77332eea4c7f4c18cb6",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_form.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "90e9f82503dfcf4fb386026fee1aa65de68442b9ce7fe886b418a1f4997ca090",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_helpers.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "bbd74f6400b02517dab76d07d122a309d55c3ac4f6f863b006d2ea3438280cdc",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_home.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "8fcec9c2deb8a4e4ee3be3ea201d8bd6622c5ee982c225e9615eeb88ca4b39b0",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_list.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "ecf9756c4c9b88d65a2c75b9263a6e2711b8fdc771f14683f0d4fdbc60910694",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "portal/includes/paid_banner_queries.cfm",
+      "site": "Business"
+    },
+    {
+      "after": "a7025bbf67166034b22e652d04c4b72255a2fedf96b92336dc7c3d7471270756",
+      "before": "ABSENT",
+      "metadata": null,
+      "path": "assets/css/paid-banner-workspace.css",
+      "site": "Business"
+    },
+    {
+      "after": "0ff63fa118170c38a30c6615b5cad3e67b61491446c2b1ea7e3b7b87e76007e2",
+      "before": "8e62ca2e37bb56477e28ee34ec0ecb429bd24ce69a7d792447989c8b7254b908",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109735170973,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "services/AdsV1BannerDeliveryService.cfc",
+      "site": "RoadRunners"
+    },
+    {
+      "after": "a2b330679b20ad4b2837ab13f8c6e7658be67cb119ded9b19da0a239325f662e",
+      "before": "965876abb5c229ec9770b748ccc7e33dd5da9dcb39cd1529952c6405d9f8cf6c",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1788963093076000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "services/AdsV1ConfigService.cfc",
+      "site": "RoadRunners"
+    },
+    {
+      "after": "1f0d9b5cdd94c3420fde4ef8d391e0ae892d92e55134794f24e0e6634fb9dcbb",
+      "before": "65b279ae7ab1856ebd55a20a524f9f7cd6e9aca71d50461b89c5eb5d48bb0a60",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789556109743381440,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "includes/ads_v1/banner_delivery.cfm",
+      "site": "RoadRunners"
+    },
+    {
+      "after": "2f6f286363df0e7298557dc87a76747a50209138d192d38a9b5613f9cd893c47",
+      "before": "55fb7e403f62687639287dae7a604e1030674ed615b7035910324c59009cce3b",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789520823000000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "includes/ads_v1/banner_slot.cfm",
+      "site": "RoadRunners"
+    },
+    {
+      "after": "42ea4727351e0572246e9c7e2724bdb03a7949538fba4f0b32b2ba648789ecfb",
+      "before": "ff67e92dd0950e18970a38906b2c0c894fd1d5311e5bba0bd46f800283ffb2ab",
+      "metadata": {
+        "gid": 0,
+        "mode": 420,
+        "mtime_ns": 1789213074356000000,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "path": "api/ads/v1/cpc-click.cfm",
+      "site": "RoadRunners"
+    }
+  ],
+  "guard_count": 94,
+  "compile_log": "/var/backups/house-banner-scope.b748bb978dc2/compile.log"
+}

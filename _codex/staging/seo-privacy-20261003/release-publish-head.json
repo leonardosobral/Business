@@ -1,0 +1,35 @@
+{
+  "published": [
+    "includes/head.cfm"
+  ],
+  "head_evidence": [
+    {
+      "path": "/resultados/seo-verificacao-nome-inexistente/",
+      "status": 200,
+      "noindex": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "path": "/resultados/index.cfm?tag=seo-verificacao-nome-inexistente",
+      "status": 200,
+      "noindex": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "noindex": false,
+      "expected": false,
+      "ok": true
+    },
+    {
+      "path": "/evento/2026-maratona-salvador-2026/",
+      "status": 200,
+      "noindex": false,
+      "expected": false,
+      "ok": true
+    }
+  ]
+}

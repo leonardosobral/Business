@@ -1,0 +1,521 @@
+{
+  "total": 14,
+  "resolved": 10.0,
+  "sites": [
+    {
+      "checks": [
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "label": "Permissão no robots.txt · ChatGPT Search",
+          "error": 0,
+          "id": "oai-searchbot",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "label": "Permissão no robots.txt · Perplexity",
+          "error": 0,
+          "id": "perplexitybot",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Erro",
+          "partial": false,
+          "warning": 0,
+          "cases": [
+            "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+          ],
+          "status": "error",
+          "pass": 99,
+          "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+          "label": "HTML disponível ao coletor",
+          "error": 1,
+          "id": "html",
+          "icon": "×",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Medição parcial",
+          "partial": true,
+          "warning": 0,
+          "cases": [
+            "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+          ],
+          "status": "unknown",
+          "pass": 99,
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "label": "Meta description",
+          "error": 0,
+          "id": "description",
+          "icon": "—",
+          "unknown": 1
+        },
+        {
+          "total": 100,
+          "statuslabel": "Atenção",
+          "partial": true,
+          "warning": 1,
+          "cases": [
+            "https://roadrunners.run/desafios/",
+            "https://roadrunners.run/en/challenges/",
+            "https://roadrunners.run/es/desafios/"
+          ],
+          "status": "warning",
+          "pass": 79,
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "label": "Declarações hreflang",
+          "error": 0,
+          "id": "hreflang",
+          "icon": "!",
+          "unknown": 20
+        },
+        {
+          "total": 100,
+          "statuslabel": "Medição parcial",
+          "partial": true,
+          "warning": 0,
+          "cases": [
+            "https://roadrunners.run/",
+            "https://roadrunners.run/en/",
+            "https://roadrunners.run/es/"
+          ],
+          "status": "unknown",
+          "pass": 55,
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "label": "Sintaxe JSON-LD",
+          "error": 0,
+          "id": "structured",
+          "icon": "—",
+          "unknown": 45
+        },
+        {
+          "total": 100,
+          "statuslabel": "Atenção",
+          "partial": true,
+          "warning": 8,
+          "cases": [
+            "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+            "https://roadrunners.run/noticias/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+            "https://roadrunners.run/en/about/"
+          ],
+          "status": "warning",
+          "pass": 18,
+          "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+          "label": "Reciprocidade entre idiomas",
+          "error": 0,
+          "id": "hreflang-reciprocity",
+          "icon": "!",
+          "unknown": 74
+        },
+        {
+          "total": 100,
+          "statuslabel": "Atenção",
+          "partial": true,
+          "warning": 41,
+          "cases": [
+            "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+            "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+            "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+          ],
+          "status": "warning",
+          "pass": 1,
+          "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+          "label": "Campos de eventos no JSON-LD",
+          "error": 0,
+          "id": "event-fields",
+          "icon": "!",
+          "unknown": 58
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+          "label": "Tradução do conteúdo principal",
+          "error": 0,
+          "id": "translations",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+          "label": "Acesso real pelos provedores",
+          "error": 0,
+          "id": "provider-access",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+          "label": "Informações de eventos e resultados",
+          "error": 0,
+          "id": "facts",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+          "label": "Citações nas respostas de IA",
+          "error": 0,
+          "id": "citations",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+          "label": "Visitas e conversões vindas de IA",
+          "error": 0,
+          "id": "referrals",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+          "label": "Política de uso para treinamento",
+          "error": 0,
+          "id": "training",
+          "icon": "—",
+          "unknown": 0
+        }
+      ],
+      "score": 70,
+      "id": "roadrunners",
+      "auditat": "2026-10-03T19:21:34.802Z"
+    },
+    {
+      "checks": [
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "label": "Permissão no robots.txt · ChatGPT Search",
+          "error": 0,
+          "id": "oai-searchbot",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "label": "Permissão no robots.txt · Perplexity",
+          "error": 0,
+          "id": "perplexitybot",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+          "label": "HTML disponível ao coletor",
+          "error": 0,
+          "id": "html",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Verificado",
+          "partial": false,
+          "warning": 0,
+          "cases": [],
+          "status": "pass",
+          "pass": 100,
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "label": "Meta description",
+          "error": 0,
+          "id": "description",
+          "icon": "✓",
+          "unknown": 0
+        },
+        {
+          "total": 100,
+          "statuslabel": "Não medido",
+          "partial": false,
+          "warning": 0,
+          "cases": [
+            "https://openresults.run/",
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+          ],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "label": "Declarações hreflang",
+          "error": 0,
+          "id": "hreflang",
+          "icon": "—",
+          "unknown": 100
+        },
+        {
+          "total": 100,
+          "statuslabel": "Medição parcial",
+          "partial": true,
+          "warning": 0,
+          "cases": [
+            "https://openresults.run/"
+          ],
+          "status": "unknown",
+          "pass": 99,
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "label": "Sintaxe JSON-LD",
+          "error": 0,
+          "id": "structured",
+          "icon": "—",
+          "unknown": 1
+        },
+        {
+          "total": 100,
+          "statuslabel": "Não medido",
+          "partial": false,
+          "warning": 0,
+          "cases": [
+            "https://openresults.run/",
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+          ],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+          "label": "Reciprocidade entre idiomas",
+          "error": 0,
+          "id": "hreflang-reciprocity",
+          "icon": "—",
+          "unknown": 100
+        },
+        {
+          "total": 100,
+          "statuslabel": "Atenção",
+          "partial": true,
+          "warning": 96,
+          "cases": [
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+            "https://openresults.run/evento/2026-maratona-salvador-2026/"
+          ],
+          "status": "warning",
+          "pass": 3,
+          "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+          "label": "Campos de eventos no JSON-LD",
+          "error": 0,
+          "id": "event-fields",
+          "icon": "!",
+          "unknown": 1
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+          "label": "Tradução do conteúdo principal",
+          "error": 0,
+          "id": "translations",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Falta analisar logs e bloqueios de CDN/WAF com identidade do bot verificada. Um user-agent declarado não comprova a origem da visita.",
+          "label": "Acesso real pelos provedores",
+          "error": 0,
+          "id": "provider-access",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+          "label": "Informações de eventos e resultados",
+          "error": 0,
+          "id": "facts",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+          "label": "Citações nas respostas de IA",
+          "error": 0,
+          "id": "citations",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "Nenhuma fonte de audiência conectada a esta avaliação. Ausência de dados não significa zero visitas.",
+          "label": "Visitas e conversões vindas de IA",
+          "error": 0,
+          "id": "referrals",
+          "icon": "—",
+          "unknown": 0
+        },
+        {
+          "total": 0,
+          "statuslabel": "Não medido",
+          "warning": 0,
+          "cases": [],
+          "status": "unknown",
+          "pass": 0,
+          "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+          "label": "Política de uso para treinamento",
+          "error": 0,
+          "id": "training",
+          "icon": "—",
+          "unknown": 0
+        }
+      ],
+      "score": 100,
+      "id": "openresults",
+      "auditat": "2026-10-03T19:05:46.881Z"
+    }
+  ],
+  "pending": 4.0,
+  "items": [
+    {
+      "resolved": true,
+      "id": "RR-01"
+    },
+    {
+      "resolved": true,
+      "id": "RR-02"
+    },
+    {
+      "resolved": true,
+      "id": "RR-03"
+    },
+    {
+      "resolved": true,
+      "id": "OR-01"
+    },
+    {
+      "resolved": true,
+      "id": "RR-04"
+    },
+    {
+      "resolved": true,
+      "id": "SH-01"
+    },
+    {
+      "resolved": false,
+      "id": "OR-02"
+    },
+    {
+      "resolved": true,
+      "id": "RR-05"
+    },
+    {
+      "resolved": true,
+      "id": "RR-06"
+    },
+    {
+      "resolved": true,
+      "id": "OR-03"
+    },
+    {
+      "resolved": false,
+      "id": "SH-02"
+    },
+    {
+      "resolved": true,
+      "id": "RR-07"
+    },
+    {
+      "resolved": false,
+      "id": "RR-08"
+    },
+    {
+      "resolved": false,
+      "id": "RR-09"
+    }
+  ]
+}

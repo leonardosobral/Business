@@ -1,0 +1,34 @@
+{
+  "sitemaps": [
+    {
+      "sitemap": "https://openresults.run/sitemap.cfm?pagina=1",
+      "status": 200,
+      "urls": 10000,
+      "athlete_history_urls": 0,
+      "ok": true
+    },
+    {
+      "sitemap": "https://openresults.run/sitemap.cfm?pagina=2",
+      "status": 200,
+      "urls": 10000,
+      "athlete_history_urls": 0,
+      "ok": true
+    },
+    {
+      "sitemap": "https://openresults.run/sitemap.cfm?pagina=3",
+      "status": 200,
+      "urls": 10000,
+      "athlete_history_urls": 0,
+      "ok": true
+    },
+    {
+      "sitemap": "https://openresults.run/sitemap.cfm?pagina=4",
+      "status": 200,
+      "urls": 4321,
+      "athlete_history_urls": 0,
+      "ok": true
+    }
+  ],
+  "urls": 34321,
+  "ok": true
+}

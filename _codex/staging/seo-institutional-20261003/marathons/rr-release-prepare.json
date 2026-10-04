@@ -1,0 +1,16 @@
+{
+  "before": {
+    "maratonas/index.cfm": "11452bbe3557a0d941c7f6d0ba7f31c8e1e39c55dd615f45cd99934140b877fe"
+  },
+  "candidate": {
+    "maratonas/index.cfm": "abebf4bcb5d620442fef02ac7723e3efda22d10282c580b5cef1d3834e125499"
+  },
+  "order": [
+    "maratonas/index.cfm"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 2.32 sec\n\n",
+    "returncode": 0
+  }
+}

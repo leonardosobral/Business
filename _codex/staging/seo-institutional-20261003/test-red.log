@@ -1,0 +1,57 @@
+{
+  "cases": 39,
+  "failures": [
+    "institutional/about/pt-BR: alternate count\n\n0 !== 4\n",
+    "institutional/help/pt-BR: alternate count\n\n0 !== 4\n",
+    "institutional/privacy/pt-BR: alternate count\n\n0 !== 4\n",
+    "news/licensed_full/pt-BR: alternate count\n\n4 !== 0\n",
+    "news/external_only/pt-BR: alternate count\n\n4 !== 0\n",
+    "news/licensed_full/en: alternate count\n\n4 !== 0\n",
+    "news/external_only/en: alternate count\n\n4 !== 0\n",
+    "news/licensed_full/es: alternate count\n\n4 !== 0\n",
+    "news/external_only/es: alternate count\n\n4 !== 0\n"
+  ]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   'institutional/about/pt-BR: alternate count\n\n0 !== 4\n',
++   'institutional/help/pt-BR: alternate count\n\n0 !== 4\n',
++   'institutional/privacy/pt-BR: alternate count\n\n0 !== 4\n',
++   'news/licensed_full/pt-BR: alternate count\n\n4 !== 0\n',
++   'news/external_only/pt-BR: alternate count\n\n4 !== 0\n',
++   'news/licensed_full/en: alternate count\n\n4 !== 0\n',
++   'news/external_only/en: alternate count\n\n4 !== 0\n',
++   'news/licensed_full/es: alternate count\n\n4 !== 0\n',
++   'news/external_only/es: alternate count\n\n4 !== 0\n'
++ ]
+- []
+
+    at file:///Users/Shared/Projects/RunnerHub/Business/_codex/tests/seo_institutional_hreflang_cfml.mjs:71:74
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'institutional/about/pt-BR: alternate count\n\n0 !== 4\n',
+    'institutional/help/pt-BR: alternate count\n\n0 !== 4\n',
+    'institutional/privacy/pt-BR: alternate count\n\n0 !== 4\n',
+    'news/licensed_full/pt-BR: alternate count\n\n4 !== 0\n',
+    'news/external_only/pt-BR: alternate count\n\n4 !== 0\n',
+    'news/licensed_full/en: alternate count\n\n4 !== 0\n',
+    'news/external_only/en: alternate count\n\n4 !== 0\n',
+    'news/licensed_full/es: alternate count\n\n4 !== 0\n',
+    'news/external_only/es: alternate count\n\n4 !== 0\n'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.21.1

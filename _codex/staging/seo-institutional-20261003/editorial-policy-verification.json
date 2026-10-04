@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "api_url": "https://conteudo.roadrunners.run/rest/cmscf_api/v1/content/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa",
+      "slug": "o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa",
+      "original_url": "https://corridanoar.com/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+      "publication_mode": "licensed_full",
+      "authorized_republication": false,
+      "license_expires_at": null
+    },
+    {
+      "api_url": "https://conteudo.roadrunners.run/rest/cmscf_api/v1/content/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio",
+      "slug": "por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio",
+      "original_url": "https://corridanoar.com/por-que-ele-trocou-de-camiseta-tantas-vezes-no-podio/",
+      "publication_mode": "licensed_full",
+      "authorized_republication": false,
+      "license_expires_at": null
+    }
+  ]
+}

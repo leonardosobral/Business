@@ -1,0 +1,31 @@
+{
+  "RoadRunners": {
+    "before": {
+      ".htaccess": "dfcbb100a0842d0c584f800d0be8a399aeb7bec039e614efdc625758c194231f",
+      "evento/.htaccess": "9db57ce8d89c858c2f20ca74a0784c2123f6c2728e30d7c4a89f02b2d87786d6"
+    },
+    "candidate": {
+      ".htaccess": "c914b4294c8dc423c6e01691fe69891383bcbd705e0b0e84f84d7a26e8160437",
+      "evento/.htaccess": "bc59a9772ae3f15d7414d7fa95969f5d94b753459468094161d4be667f622199"
+    },
+    "order": [
+      ".htaccess",
+      "evento/.htaccess"
+    ]
+  },
+  "Business": {
+    "before": {
+      "portal/includes/seo_queue_data.cfm": "afc5431eecfebd90b4d4e25bd841f156354dad58f1fea730528d5d3c7a75e487"
+    },
+    "candidate": {
+      "portal/includes/seo_queue_data.cfm": "aeb23c34b8b2cef932c9f5eb0482e9a16f57703aa22a1feb65f93290f2d6ccdb"
+    },
+    "order": [
+      "portal/includes/seo_queue_data.cfm"
+    ]
+  },
+  "compile": {
+    "returncode": 0,
+    "output": "successful 1\ntotal 1\nelapsed 1.438 sec\n\n"
+  }
+}

@@ -1,0 +1,1532 @@
+{
+  "methodVersion": "technical-checks-v1",
+  "generatedAt": "2026-10-03T22:29:43.034Z",
+  "methodLabel": "Nota técnica interna",
+  "formula": "100 × soma(peso × resultado de cada critério) ÷ soma dos pesos avaliados. Verificado = 1; atenção = 0,5; erro = 0; não medido fica fora.",
+  "methodNote": "Heurística interna, não é nota WooRank nem avaliação do Google. Cada critério usa o pior resultado observado. Itens informativos têm peso zero. A cobertura representa campos avaliados na amostra; correções posteriores não reescrevem a auditoria.",
+  "sites": [
+    {
+      "coverageIdentity": "dc9c0d5fce91a3967fbc647685827e51c8916931d0897ad85fb8a01b2c95b26d",
+      "id": "roadrunners",
+      "label": "Road Runners",
+      "runId": "2026-10-03T20-12-03-545Z-4c5460b6",
+      "auditAt": "2026-10-03T20:12:03.546Z",
+      "auditLabel": "03/10/2026, 17:12 (Brasília)",
+      "scopeLabel": "Amostra de páginas",
+      "discovered": 103050,
+      "inspected": 100,
+      "discoveryComplete": true,
+      "operationalErrors": 0,
+      "pageErrors": 1,
+      "warnings": 22,
+      "coverageNote": "Foram analisadas 100 de 103.050 URLs descobertas nos sitemaps. A amostra não representa todas as páginas do site.",
+      "score": 70,
+      "scoreLabel": "70,0",
+      "coverageLabel": "99,4%",
+      "counts": {
+        "pass": 8,
+        "warning": 5,
+        "error": 1,
+        "unknown": 2
+      },
+      "criteria": [
+        {
+          "id": "http",
+          "label": "Resposta HTTP final 2xx",
+          "weight": 15,
+          "status": "error",
+          "statusLabel": "Erro",
+          "icon": "×",
+          "pass": 99,
+          "warning": 0,
+          "error": 1,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Resposta observada; falhas de rede explícitas contam como erro.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ],
+            "unknown": []
+          }
+        },
+        {
+          "id": "direct",
+          "label": "URLs sem redirecionamento",
+          "weight": 5,
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 97,
+          "warning": 3,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Redirecionamentos merecem revisão; podem ser intencionais.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [
+              "https://roadrunners.run/desafios/",
+              "https://roadrunners.run/en/challenges/",
+              "https://roadrunners.run/es/desafios/"
+            ],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "https",
+          "label": "Entrega por HTTPS",
+          "weight": 5,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Esquema da URL final observado; não é uma auditoria completa de TLS.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "title",
+          "label": "Título presente",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Presença de título no HTML; não mede qualidade nem unicidade no site.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "h1",
+          "label": "Título principal presente",
+          "weight": 10,
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 96,
+          "warning": 3,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Verifica presença de H1 no HTML utilizável.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [
+              "https://roadrunners.run/desafios/",
+              "https://roadrunners.run/en/challenges/",
+              "https://roadrunners.run/es/desafios/"
+            ],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical único e válido",
+          "weight": 15,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Declaração observada; não comprova o canonical escolhido pelo Google.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "alignment",
+          "label": "Canonical alinhado à URL",
+          "weight": 15,
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 83,
+          "warning": 16,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Diferenças da URL de origem pedem revisão de intenção.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [
+              "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+            ],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "index",
+          "label": "Diretivas sem noindex para Googlebot",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Somente diretivas genéricas e Googlebot observadas; não comprova indexação.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "crawl",
+          "label": "Googlebot permitido no robots.txt",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Permissão observada; não comprova intenção da política nem indexação.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "sitemaps",
+          "label": "Sitemaps descobertos e XML validado",
+          "weight": 5,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 8,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 8,
+          "known": 8,
+          "partial": false,
+          "note": "Exige descoberta completa, contagem de XML processado e respostas válidas do coletor.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/sitemap.xml",
+              "https://roadrunners.run/sitemaps/static.xml",
+              "https://roadrunners.run/sitemaps/news-recent.xml"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "hierarchy",
+          "label": "Hierarquia de títulos para revisão",
+          "weight": 0,
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 96,
+          "warning": 3,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Múltiplos H1 pedem revisão editorial; este item não penaliza a nota nem prova penalidade Google.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [
+              "https://roadrunners.run/desafios/",
+              "https://roadrunners.run/en/challenges/",
+              "https://roadrunners.run/es/desafios/"
+            ],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "description",
+          "label": "Meta description",
+          "weight": 0,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+            ]
+          }
+        },
+        {
+          "id": "hreflang",
+          "label": "Declarações hreflang",
+          "weight": 0,
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 71,
+          "warning": 2,
+          "error": 0,
+          "unknown": 27,
+          "total": 100,
+          "known": 73,
+          "partial": true,
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ],
+            "warning": [
+              "https://roadrunners.run/evento/2026-1-corrida-fit-%E2%80%93-ufc-crateus/"
+            ],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+              "https://roadrunners.run/es/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+            ]
+          }
+        },
+        {
+          "id": "structured",
+          "label": "Sintaxe JSON-LD",
+          "weight": 0,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 56,
+          "warning": 0,
+          "error": 0,
+          "unknown": 44,
+          "total": 100,
+          "known": 56,
+          "partial": true,
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "cases": {
+            "pass": [
+              "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+              "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://roadrunners.run/",
+              "https://roadrunners.run/en/",
+              "https://roadrunners.run/es/"
+            ]
+          }
+        },
+        {
+          "id": "cwv",
+          "label": "Core Web Vitals",
+          "weight": 0,
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 1,
+          "known": 0,
+          "partial": false,
+          "note": "Sem medição de experiência real ou laboratório nesta auditoria.",
+          "cases": {
+            "pass": [],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "google",
+          "label": "Indexação e tráfego Google",
+          "weight": 0,
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 1,
+          "known": 0,
+          "partial": false,
+          "note": "Sem dados de Search Console ou Analytics nesta auditoria.",
+          "cases": {
+            "pass": [],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        }
+      ],
+      "history": [
+        {
+          "runId": "2026-09-14T00-26-50-435Z-23615362",
+          "auditAt": "2026-09-14T00:26:50.436Z",
+          "auditLabel": "13/09/2026, 21:26 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Base inicial"
+        },
+        {
+          "runId": "2026-09-29T13-16-46-527Z-1e2c970f",
+          "auditAt": "2026-09-29T13:16:46.527Z",
+          "auditLabel": "29/09/2026, 10:16 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-09-30T00-13-25-201Z-355c9c21",
+          "auditAt": "2026-09-30T00:13:25.201Z",
+          "auditLabel": "29/09/2026, 21:13 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-10-03T19-21-34-802Z-56cf12f6",
+          "auditAt": "2026-10-03T19:21:34.802Z",
+          "auditLabel": "03/10/2026, 16:21 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-10-03T20-02-43-872Z-807642bd",
+          "auditAt": "2026-10-03T20:02:43.872Z",
+          "auditLabel": "03/10/2026, 17:02 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-10-03T20-12-03-545Z-4c5460b6",
+          "auditAt": "2026-10-03T20:12:03.546Z",
+          "auditLabel": "03/10/2026, 17:12 (Brasília)",
+          "scoreLabel": "70,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        }
+      ],
+      "historyNote": "Base inicial calculada com o método atual sobre a auditoria indicada. Correções direcionadas posteriores ficam na fila e não alteram esta nota. Cobertura de evidências não representa a fração do site auditada.",
+      "aiChecks": [
+        {
+          "id": "oai-searchbot",
+          "label": "Permissão no robots.txt · ChatGPT Search",
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "perplexitybot",
+          "label": "Permissão no robots.txt · Perplexity",
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "html",
+          "label": "HTML disponível ao coletor",
+          "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+          "status": "error",
+          "statusLabel": "Erro",
+          "icon": "×",
+          "partial": false,
+          "pass": 99,
+          "warning": 0,
+          "error": 1,
+          "unknown": 0,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+          ]
+        },
+        {
+          "id": "description",
+          "label": "Meta description",
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "status": "unknown",
+          "statusLabel": "Medição parcial",
+          "icon": "—",
+          "partial": true,
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/noticias/ranking-atualizado-com-maceio-live-inter-j-pessoa-taubate-floripa-goiania-movi-e-vitoria/"
+          ]
+        },
+        {
+          "id": "hreflang",
+          "label": "Declarações hreflang",
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "partial": true,
+          "pass": 71,
+          "warning": 2,
+          "error": 0,
+          "unknown": 27,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/evento/2026-1-corrida-fit-%E2%80%93-ufc-crateus/",
+            "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+            "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+          ]
+        },
+        {
+          "id": "structured",
+          "label": "Sintaxe JSON-LD",
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "status": "unknown",
+          "statusLabel": "Medição parcial",
+          "icon": "—",
+          "partial": true,
+          "pass": 56,
+          "warning": 0,
+          "error": 0,
+          "unknown": 44,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/",
+            "https://roadrunners.run/en/",
+            "https://roadrunners.run/es/"
+          ]
+        },
+        {
+          "id": "hreflang-reciprocity",
+          "label": "Reciprocidade entre idiomas",
+          "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+          "status": "unknown",
+          "statusLabel": "Medição parcial",
+          "icon": "—",
+          "partial": true,
+          "pass": 27,
+          "warning": 0,
+          "error": 0,
+          "unknown": 73,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/evento/2026-3-corrida-alcance-run/",
+            "https://roadrunners.run/noticias/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/",
+            "https://roadrunners.run/en/news/o-que-aconteceu-com-a-nike-no-mundo-da-corrida-e-na-bolsa/"
+          ]
+        },
+        {
+          "id": "event-fields",
+          "label": "Campos de eventos no JSON-LD",
+          "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "partial": true,
+          "pass": 1,
+          "warning": 37,
+          "error": 0,
+          "unknown": 62,
+          "total": 100,
+          "cases": [
+            "https://roadrunners.run/evento/2026-maratona-salvador-2026/",
+            "https://roadrunners.run/en/event/2026-maratona-salvador-2026/",
+            "https://roadrunners.run/es/evento/2026-maratona-salvador-2026/"
+          ]
+        },
+        {
+          "id": "translations",
+          "label": "Tradução do conteúdo principal",
+          "note": "Conferência complementar em 03/10/2026, 19:28 (Brasília): 6 eventos selecionados (4 históricos e 2 futuros), 6 páginas PT de referência e 12 versões EN/ES. Verifica a região visível da descrição, a anotação de idioma e se o texto difere da fonte; fallback para português pede atenção. Ausência de descrição marcada na fonte ou no destino fica não medida. Não mede todas as páginas, detecção automática do idioma nem fidelidade da tradução.",
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "pass": 5,
+          "warning": 1,
+          "error": 0,
+          "unknown": 6,
+          "total": 12,
+          "partial": true,
+          "cases": [
+            "https://roadrunners.run/en/event/2026-6-rustica-da-assgapa-alusiva-ao-dia-da-forca-aerea/",
+            "https://roadrunners.run/en/event/2026-3-corrida-alcance-run/",
+            "https://roadrunners.run/es/evento/2026-3-corrida-alcance-run/"
+          ]
+        },
+        {
+          "id": "provider-access",
+          "label": "Acesso real pelos provedores",
+          "note": "Logs existentes conferidos em 03/10/2026, 19:15 (Brasília) (9 arquivos, sem exportar IPs ou caminhos pessoais). Road Runners e Open Results escrevem em log compartilhado sem hostname; os registros não permitem atribuir visitas a cada site. As faixas oficiais atuais foram consultadas, mas user-agent ou IP compatível nesse log não comprovam acesso a este domínio. A normalização de IP também difere entre os vhosts. Bloqueios anteriores à origem, na CDN/WAF, não aparecem nesses logs.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "facts",
+          "label": "Informações de eventos e resultados",
+          "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "citations",
+          "label": "Citações nas respostas de IA",
+          "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "referrals",
+          "label": "Origem de visitas por referências de IA",
+          "note": "Fonte própria, produção e sem tráfego interno, de 26/09/2026, 19:13 (Brasília) a 03/10/2026, 19:13 (Brasília); consulta em 03/10/2026, 19:13 (Brasília). 66 visualizações distintas em 36 sessões distintas com referrer_host da lista exata de assistentes, entre 17329 visualizações e 6981 sessões medidas. ChatGPT: 66 visualizações e 36 sessões A referência é declarada pelo navegador; não comprova citação, recomendação ou conversão. Sessões podem aparecer em mais de um provedor; o total é deduplicado.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "training",
+          "label": "Política de uso para treinamento",
+          "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "translation-quality",
+          "label": "Fidelidade das traduções",
+          "note": "Conferir fatos, números, nomes e adequação do idioma contra as fontes. Texto diferente e anotação de idioma não comprovam uma tradução fiel.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "conversions",
+          "label": "Conversões vindas de IA",
+          "note": "As referências de audiência medem visitas. Atribuição de inscrições ou outras conversões a assistentes ainda não foi medida nesta avaliação.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        }
+      ]
+    },
+    {
+      "coverageIdentity": "dc345808bc3a095068afdbebebe13b39f52a4da2a29dab2c89e4b22183329610",
+      "id": "openresults",
+      "label": "Open Results",
+      "runId": "2026-10-03T22-14-34-701Z-75e4580d",
+      "auditAt": "2026-10-03T22:14:34.701Z",
+      "auditLabel": "03/10/2026, 19:14 (Brasília)",
+      "scopeLabel": "Amostra de páginas",
+      "discovered": 34321,
+      "inspected": 100,
+      "discoveryComplete": true,
+      "operationalErrors": 0,
+      "pageErrors": 0,
+      "warnings": 0,
+      "coverageNote": "Foram analisadas 100 de 34.321 URLs descobertas nos sitemaps. A amostra não representa todas as páginas do site.",
+      "score": 100,
+      "scoreLabel": "100,0",
+      "coverageLabel": "100,0%",
+      "counts": {
+        "pass": 13,
+        "warning": 0,
+        "error": 0,
+        "unknown": 3
+      },
+      "criteria": [
+        {
+          "id": "http",
+          "label": "Resposta HTTP final 2xx",
+          "weight": 15,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Resposta observada; falhas de rede explícitas contam como erro.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "direct",
+          "label": "URLs sem redirecionamento",
+          "weight": 5,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Redirecionamentos merecem revisão; podem ser intencionais.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "https",
+          "label": "Entrega por HTTPS",
+          "weight": 5,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Esquema da URL final observado; não é uma auditoria completa de TLS.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "title",
+          "label": "Título presente",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Presença de título no HTML; não mede qualidade nem unicidade no site.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "h1",
+          "label": "Título principal presente",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Verifica presença de H1 no HTML utilizável.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical único e válido",
+          "weight": 15,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Declaração observada; não comprova o canonical escolhido pelo Google.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "alignment",
+          "label": "Canonical alinhado à URL",
+          "weight": 15,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Diferenças da URL de origem pedem revisão de intenção.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "index",
+          "label": "Diretivas sem noindex para Googlebot",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Somente diretivas genéricas e Googlebot observadas; não comprova indexação.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "crawl",
+          "label": "Googlebot permitido no robots.txt",
+          "weight": 10,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Permissão observada; não comprova intenção da política nem indexação.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "sitemaps",
+          "label": "Sitemaps descobertos e XML validado",
+          "weight": 5,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 5,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 5,
+          "known": 5,
+          "partial": false,
+          "note": "Exige descoberta completa, contagem de XML processado e respostas válidas do coletor.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/sitemap.cfm",
+              "https://openresults.run/sitemap.cfm?pagina=1",
+              "https://openresults.run/sitemap.cfm?pagina=2"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "hierarchy",
+          "label": "Hierarquia de títulos para revisão",
+          "weight": 0,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Múltiplos H1 pedem revisão editorial; este item não penaliza a nota nem prova penalidade Google.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "description",
+          "label": "Meta description",
+          "weight": 0,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "known": 100,
+          "partial": false,
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "hreflang",
+          "label": "Declarações hreflang",
+          "weight": 0,
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 100,
+          "total": 100,
+          "known": 0,
+          "partial": false,
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "cases": {
+            "pass": [],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://openresults.run/",
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+            ]
+          }
+        },
+        {
+          "id": "structured",
+          "label": "Sintaxe JSON-LD",
+          "weight": 0,
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "known": 99,
+          "partial": true,
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "cases": {
+            "pass": [
+              "https://openresults.run/evento/2026-maratona-de-bonito/",
+              "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+              "https://openresults.run/evento/2026-maratona-salvador-2026/"
+            ],
+            "warning": [],
+            "error": [],
+            "unknown": [
+              "https://openresults.run/"
+            ]
+          }
+        },
+        {
+          "id": "cwv",
+          "label": "Core Web Vitals",
+          "weight": 0,
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 1,
+          "known": 0,
+          "partial": false,
+          "note": "Sem medição de experiência real ou laboratório nesta auditoria.",
+          "cases": {
+            "pass": [],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        },
+        {
+          "id": "google",
+          "label": "Indexação e tráfego Google",
+          "weight": 0,
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 1,
+          "known": 0,
+          "partial": false,
+          "note": "Sem dados de Search Console ou Analytics nesta auditoria.",
+          "cases": {
+            "pass": [],
+            "warning": [],
+            "error": [],
+            "unknown": []
+          }
+        }
+      ],
+      "history": [
+        {
+          "runId": "2026-09-13T18-25-15-052Z-05353aa2",
+          "auditAt": "2026-09-13T18:25:15.053Z",
+          "auditLabel": "13/09/2026, 15:25 (Brasília)",
+          "scoreLabel": "87,5",
+          "comparable": false,
+          "deltaLabel": "Base inicial"
+        },
+        {
+          "runId": "2026-09-29T13-14-14-874Z-558ade87",
+          "auditAt": "2026-09-29T13:14:14.874Z",
+          "auditLabel": "29/09/2026, 10:14 (Brasília)",
+          "scoreLabel": "95,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-09-30T00-13-19-583Z-33417e9a",
+          "auditAt": "2026-09-30T00:13:19.583Z",
+          "auditLabel": "29/09/2026, 21:13 (Brasília)",
+          "scoreLabel": "95,0",
+          "comparable": false,
+          "deltaLabel": "Amostra, método ou cobertura diferente"
+        },
+        {
+          "runId": "2026-10-03T19-05-46-880Z-f4cb034d",
+          "auditAt": "2026-10-03T19:05:46.881Z",
+          "auditLabel": "03/10/2026, 16:05 (Brasília)",
+          "scoreLabel": "100,0",
+          "comparable": true,
+          "deltaLabel": "+5,0 pontos"
+        },
+        {
+          "runId": "2026-10-03T22-14-34-701Z-75e4580d",
+          "auditAt": "2026-10-03T22:14:34.701Z",
+          "auditLabel": "03/10/2026, 19:14 (Brasília)",
+          "scoreLabel": "100,0",
+          "comparable": true,
+          "deltaLabel": "0,0 pontos"
+        }
+      ],
+      "historyNote": "Base inicial calculada com o método atual sobre a auditoria indicada. Correções direcionadas posteriores ficam na fila e não alteram esta nota. Cobertura de evidências não representa a fração do site auditada.",
+      "aiChecks": [
+        {
+          "id": "oai-searchbot",
+          "label": "Permissão no robots.txt · ChatGPT Search",
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "perplexitybot",
+          "label": "Permissão no robots.txt · Perplexity",
+          "note": "Permissão declarada no robots.txt para as URLs da amostra. Em redirecionamentos, considera origem e destino. Não comprova que o provedor conseguiu acessar ou citar a página.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "html",
+          "label": "HTML disponível ao coletor",
+          "note": "Resposta e avaliação do HTML na auditoria comum. Não mede a compreensão dos fatos pela IA nem simula uma visita originada nos provedores.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "description",
+          "label": "Meta description",
+          "note": "Verifica uma descrição não vazia no HTML; não mede qualidade ou unicidade no site.",
+          "status": "pass",
+          "statusLabel": "Verificado",
+          "icon": "✓",
+          "partial": false,
+          "pass": 100,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 100,
+          "cases": []
+        },
+        {
+          "id": "hreflang",
+          "label": "Declarações hreflang",
+          "note": "Verifica idioma, URL resolvida, duplicatas e referência à própria página. Ausência é não medida; reciprocidade e tradução exigem revisão própria.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "partial": false,
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 100,
+          "total": 100,
+          "cases": [
+            "https://openresults.run/",
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+          ]
+        },
+        {
+          "id": "structured",
+          "label": "Sintaxe JSON-LD",
+          "note": "Verifica JSON-LD presente e analisável. Ausência é não medida; não comprova conformidade com Schema.org, rich results ou exatidão factual.",
+          "status": "unknown",
+          "statusLabel": "Medição parcial",
+          "icon": "—",
+          "partial": true,
+          "pass": 99,
+          "warning": 0,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "cases": [
+            "https://openresults.run/"
+          ]
+        },
+        {
+          "id": "hreflang-reciprocity",
+          "label": "Reciprocidade entre idiomas",
+          "note": "Compara os conjuntos de hreflang das páginas inspecionadas nesta auditoria, incluindo a própria página. Destinos com falha, redirecionamento, canonical divergente ou links de retorno diferentes pedem atenção. Destinos fora da amostra ficam não medidos. Não valida traduções nem indexação.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "partial": false,
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 100,
+          "total": 100,
+          "cases": [
+            "https://openresults.run/",
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/"
+          ]
+        },
+        {
+          "id": "event-fields",
+          "label": "Campos de eventos no JSON-LD",
+          "note": "Cobertura de nome, data válida, local e organizador; nome e cidade também procurados no texto do HTML. Datas sem horário são aceitas. Lacunas pedem revisão, sem comprovar erro factual. Páginas de outros tipos ficam não medidas.",
+          "status": "warning",
+          "statusLabel": "Atenção",
+          "icon": "!",
+          "partial": true,
+          "pass": 3,
+          "warning": 96,
+          "error": 0,
+          "unknown": 1,
+          "total": 100,
+          "cases": [
+            "https://openresults.run/evento/2026-maratona-de-bonito/",
+            "https://openresults.run/evento/2026-10-corrida-avenida-brasil-2026/",
+            "https://openresults.run/evento/2026-maratona-salvador-2026/"
+          ]
+        },
+        {
+          "id": "translations",
+          "label": "Tradução do conteúdo principal",
+          "note": "A presença de hreflang e a reciprocidade dos links não comprovam tradução. Falta conferir as descrições entregues nos três idiomas e sua fidelidade; o cron de tradução tem acompanhamento próprio.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "provider-access",
+          "label": "Acesso real pelos provedores",
+          "note": "Logs existentes conferidos em 03/10/2026, 19:15 (Brasília) (9 arquivos, sem exportar IPs ou caminhos pessoais). Road Runners e Open Results escrevem em log compartilhado sem hostname; os registros não permitem atribuir visitas a cada site. As faixas oficiais atuais foram consultadas, mas user-agent ou IP compatível nesse log não comprovam acesso a este domínio. A normalização de IP também difere entre os vhosts. Bloqueios anteriores à origem, na CDN/WAF, não aparecem nesses logs.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "facts",
+          "label": "Informações de eventos e resultados",
+          "note": "Falta validar datas, local, distâncias, organizador, edição, categorias e fonte no texto visível.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "citations",
+          "label": "Citações nas respostas de IA",
+          "note": "Faltam observações datadas por provedor e pergunta, com URL citada e conferência dos fatos.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "referrals",
+          "label": "Origem de visitas por referências de IA",
+          "note": "Fonte própria, produção e sem tráfego interno, de 26/09/2026, 19:13 (Brasília) a 03/10/2026, 19:13 (Brasília); consulta em 03/10/2026, 19:13 (Brasília). A fonte consultada não contém cobertura de visualizações deste site no período. Ausência de dados não significa zero visitas; é necessário conferir sua instrumentação.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "training",
+          "label": "Política de uso para treinamento",
+          "note": "GPTBot e outros agentes de treinamento exigem avaliação própria. Permissão de busca e uso para treinamento são controles independentes.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "cases": []
+        },
+        {
+          "id": "translation-quality",
+          "label": "Fidelidade das traduções",
+          "note": "Conferir fatos, números, nomes e adequação do idioma contra as fontes. Texto diferente e anotação de idioma não comprovam uma tradução fiel.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        },
+        {
+          "id": "conversions",
+          "label": "Conversões vindas de IA",
+          "note": "As referências de audiência medem visitas. Atribuição de inscrições ou outras conversões a assistentes ainda não foi medida nesta avaliação.",
+          "status": "unknown",
+          "statusLabel": "Não medido",
+          "icon": "—",
+          "pass": 0,
+          "warning": 0,
+          "error": 0,
+          "unknown": 0,
+          "total": 0,
+          "partial": false,
+          "cases": []
+        }
+      ]
+    }
+  ]
+}

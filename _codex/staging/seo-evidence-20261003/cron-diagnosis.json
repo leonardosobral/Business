@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "status": "http_error",
+      "started_at": "2026-09-25T21:14:25.581371",
+      "stop_reason": "provider_quota_exhausted",
+      "http_status": "424 Failed Dependency",
+      "finished_at": "2026-09-25T21:14:33.164122"
+    },
+    {
+      "status": "http_error",
+      "started_at": "2026-09-25T21:02:24.945256",
+      "stop_reason": "provider_quota_exhausted",
+      "http_status": "424 Failed Dependency",
+      "finished_at": "2026-09-25T21:02:33.904646"
+    },
+    {
+      "status": "http_error",
+      "started_at": "2026-09-25T20:50:24.632245",
+      "stop_reason": "provider_quota_exhausted",
+      "http_status": "424 Failed Dependency",
+      "finished_at": "2026-09-25T20:50:33.282694"
+    },
+    {
+      "status": "http_error",
+      "started_at": "2026-09-25T20:38:24.442951",
+      "stop_reason": "provider_quota_exhausted",
+      "http_status": "424 Failed Dependency",
+      "finished_at": "2026-09-25T20:38:32.423374"
+    },
+    {
+      "status": "http_error",
+      "started_at": "2026-09-25T20:26:37.014821",
+      "stop_reason": "provider_quota_exhausted",
+      "http_status": "424 Failed Dependency",
+      "finished_at": "2026-09-25T20:26:45.132233"
+    }
+  ],
+  "measured_at": "2026-10-03T19:18:25.422001-03:00"
+}

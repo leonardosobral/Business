@@ -1,0 +1,24 @@
+{
+  "runId": "2026-10-03T19-21-34-802Z-56cf12f6",
+  "auditAt": "2026-10-03T19:21:34.802Z",
+  "pages": [
+    {
+      "url": "https://roadrunners.run/busca/",
+      "status": "pass",
+      "http": 200,
+      "canonical": "https://roadrunners.run/busca/"
+    },
+    {
+      "url": "https://roadrunners.run/en/search/",
+      "status": "pass",
+      "http": 200,
+      "canonical": "https://roadrunners.run/en/search/"
+    },
+    {
+      "url": "https://roadrunners.run/es/busqueda/",
+      "status": "pass",
+      "http": 200,
+      "canonical": "https://roadrunners.run/es/busqueda/"
+    }
+  ]
+}
