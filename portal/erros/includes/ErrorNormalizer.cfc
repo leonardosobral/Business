@@ -18,8 +18,10 @@ component output="false" {
             result.path=reReplaceNoCase(trim(raw),"^An error occurred:\s*","","one");
             result.path=reReplaceNoCase(result.path,"^https?://[^/\s]+(?=/)","","one");
         } else {
-            result.path=field(raw,"TEMPLATE");
-            result.message=field(raw,"MESSAGE");
+            // Decode stored HTML once; callers still HTML-encode when rendering.
+            var decoder=createObject("java","org.apache.commons.lang3.StringEscapeUtils");
+            result.path=decoder.unescapeHtml4(field(raw,"TEMPLATE"));
+            result.message=decoder.unescapeHtml4(field(raw,"MESSAGE"));
         }
         return result;
     }
@@ -59,6 +61,42 @@ component output="false" {
                 result.title=left(message,180);
                 // Generic DB messages need a code and detail hash to distinguish their grouping identity.
                 identity=serializeJSON([type,template,message,type=="database" ? sqlState & ":" & hash(dbDetail,"SHA-256") : ""]);
+            }
+        }
+        // Older CF dumps have no reporter fingerprint. Hash the complete exception identity,
+        // never the log ID or only the URL. Keep hosts, lines and diagnostic details distinct.
+        if(item=="erro" && result.confidence=="individual" && !len(field(raw,"FINGERPRINT"))) {
+            var legacyDecoder=createObject("java","org.apache.commons.lang3.StringEscapeUtils");
+            var legacyType=lCase(legacyDecoder.unescapeHtml4(field(raw,"TYPE")));
+            var legacyTemplate=legacyDecoder.unescapeHtml4(field(raw,"TEMPLATE"));
+            var legacyLine=trim(field(raw,"LINE"));
+            var legacyMessage=trim(reReplace(legacyDecoder.unescapeHtml4(field(raw,"MESSAGE")),"\s+"," ","all"));
+            var legacyDetail=trim(reReplace(legacyDecoder.unescapeHtml4(field(raw,"DETAIL")),"\s+"," ","all"));
+            var legacySqlState=uCase(trim(field(raw,"SQLSTATE")));
+            var legacyDatabase=legacyType=="database" || reFind("^[0-9A-Z]{5}$",legacySqlState)>0;
+            if(reFind("^[a-z][a-z0-9_.-]{0,79}$",legacyType) &&
+                reFind("^/[a-zA-Z0-9/_. -]{1,500}\.(cfm|cfc)$",legacyTemplate) &&
+                reFind("^[1-9][0-9]{0,8}$",legacyLine) && len(legacyMessage) && len(legacyMessage)<=4000 &&
+                (!legacyDatabase || (reFind("^[0-9A-Z]{5}$",legacySqlState) && len(legacyDetail)))) {
+                identity=serializeJSON(["legacy-exception-v1",legacyType,legacyTemplate,legacyLine,legacyMessage,legacySqlState,hash(legacyDetail,"SHA-256")]);
+                result.confidence="legacy_exception";
+                result.suggestedCategory=legacyDatabase ? "database" : "code";
+                result.title=left((legacyDatabase ? "Falha de banco de dados" : "Falha de aplicação") & " · " & listLast(legacyTemplate,"/"),180);
+            }
+        }
+        // Current reporters retain a stable defect fingerprint even when the public message is generic.
+        // Decode only this new identity path, preserving legacy signatures without a reporter fingerprint.
+        if(item=="erro") {
+            var fingerprint=lCase(field(raw,"FINGERPRINT"));
+            var environment=lCase(field(raw,"ENVIRONMENT"));
+            var reporterType=lCase(field(raw,"TYPE"));
+            var reporterTemplate=createObject("java","org.apache.commons.lang3.StringEscapeUtils").unescapeHtml4(field(raw,"TEMPLATE"));
+            if(reFind("^[a-f0-9]{64}$",fingerprint) && listFind("prod,beta,dev,unknown",environment) &&
+                reFind("^[a-z][a-z0-9_.-]{0,79}$",reporterType) && reFind("^/[a-zA-Z0-9/_. -]{1,500}\.(cfm|cfc)$",reporterTemplate)) {
+                identity=serializeJSON(["reporter-v1",site,environment,reporterType,reporterTemplate,fingerprint]);
+                result.confidence="fingerprint";
+                result.suggestedCategory=reporterType=="database" ? "database" : "code";
+                result.title=left((reporterType=="database" ? "Falha de banco de dados" : "Falha de aplicação") & " · " & listLast(reporterTemplate,"/"),180);
             }
         }
         // Bound stored summaries, preserving the full original in the admin detail/export.

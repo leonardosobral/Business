@@ -1,37 +1,33 @@
-# Contas gestoras — validação e operação
+# Contas gestoras — publicação e operação
 
-## Candidato e limites
+## Estado atual — 04/10/2026
 
-As Tasks1–11 foram revisadas e integradas ao projeto:116 arquivos de código, testes e documentação, dos quais80 são runtime. A pedido do usuário, a construção de novos scripts de publicação foi interrompida e seu WIP foi excluído. A publicação usa o mecanismo existente.
+Publicado e ativado em produção. Foram integrados116 arquivos revisados de código, testes e documentação e publicados80 arquivos de runtime, com backup e conferência de hashes. O usuário executou o SQL de permissões e autorizou explicitamente a ativação global. Nenhuma agência, relação com cliente, pessoa ou pagamento foi alterado para testes.
 
-Preparação de produção:baseline dos80 arquivos confirmado e backup recuperável em `/var/backups/business-agencies.9e63d359efd2`; compilação Adobe dos78 arquivos CFML finais passou78/78. A revisão final não identificou novo bloqueio de código. Até este checkpoint, os arquivos ainda não foram substituídos em produção e o banco não foi migrado. A flag permanece desabilitada.
+A estrutura aditiva tem8 tabelas e marcador versão1. As duas migrations de compatibilidade Ads foram executadas na mesma transação, com comparação exata de funções, owners e ACLs antes/depois. Todas as permissões requeridas foram verificadas. A flag global está ligada na configuração persistente e no APPLICATION vivo; ambas as conexões runnerhub e runner_dba reconheceram a estrutura. Zero agências estavam habilitadas na ativação.
 
-O preflight confirmou a dependência de permissões do papel `runner` nas tabelas novas e em `tb_business_permissoes(id_permissao)` para locks, além de leitura de autorização pelo papel `ads_owner`. O SQL exato está em `.superpowers/sdd/2026-10-03-contas-gestoras/production-required-grants.sql`, pendente de autorização específica conforme AGENTS.md. Depois:estrutura aditiva, permissões autorizadas, duas migrations de compatibilidade Ads, publicação dos80 arquivos e verificação real no Chrome. A sessão administrativa do Chrome já foi aberta para essa verificação; isso ainda não é teste pós-publicação.
+## Uso
 
-## Verificações locais
+Em Administração → Contas, abrir a conta e acessar a aba Gestoras. O admin interno pode classificar como Agência, Ticketeira ou Outros e habilitar a conta como gestora. Isso não concede automaticamente acesso aos clientes: relações, consentimento e atribuições da equipe continuam necessários. O seletor permite escolher explicitamente a conta e a forma de acesso.
 
-`node _codex/scripts/test_account_delegation.mjs --suite all` executa cada suíte uma vez em banco e servlet próprios. Inclui schema, policy, lifecycle, accounts, boundary, receiver, workspace, ads-db, ads, events, http. Executar sequencialmente: RunWAR4.8.3 também usa porta interna8779. Não manter browser fixture aberta ao lançar outro servlet.
+A carteira da gestora usa as abas Clientes, Equipe, Convites e Histórico. Uma conta criada pela gestora permanece pendente de aprovação interna. Convites de titularidade não tornam a agência dona do cliente. Campanhas, compras, histórico financeiro e Eventos têm permissões distintas.
 
-`node _codex/scripts/test_account_delegation.mjs --suite http` é o fluxo integrado suplementar: criação, titular pendente, login novo, root/status, bloqueio operacional, revisão interna, atribuição, acesso direto e duas gestoras, campanha real DRAFT com ator correto, aceite, revogação e POST de aba antiga negado sem escrita. Outros suites mantêm matrizes reais próprias de Ads/Eventos/convites/fronteira.
+## Verificação
 
-Evidências e resultados finais: `../task-11-report.md`, `../task-11-all-final.log`, `_codex/tests/account-delegation/coverage.json`. A matriz diferencia passed/failed/not_run. Contadores de alvo negado comprovam guard antes do handler; não representam execução integral do módulo negado. Admin integrado usa handlers/templates reais com adapter local de contexto da página; não simula revisão completa da página administrativa legada.
+Suíte local completa:11 suítes isoladas, zero skipped, exit0. Integração HTTP cobriu criação, titular pendente, aprovação, equipe, duas gestoras, campanhas, aceite, revogação e POST de aba antiga negado sem escrita. Regressões de autenticação e cadastro passaram. Os78 arquivos CFML do pacote original passaram no compilador Adobe.
 
-Regressões exigidas: `bash _codex/scripts/test_business_remember_local.sh` com runtime cache e JOSE4J_TEST_JAR temporário oficial0.9.4; `bash _codex/scripts/test_business_existing_account_access_request.sh`; `bash _codex/scripts/test_business_duplicate_document_registration.sh`. As duas últimas são regressões estáticas existentes; remember executa CFML real.
+No Chrome autenticado em produção: listagem/detalhe de contas, Publicidade e Eventos carregaram. O teste real de Eventos encontrou inclusão duplicada de funções no Adobe; os dois handlers foram corrigidos para incluir os auxiliares apenas quando as funções ainda não existem em VARIABLES. A correção foi publicada com backup próprio e a página passou a listar normalmente os eventos.
 
-## Interface
+Após ativar: a aba Gestoras exibiu os controles e as classificações Agência/Ticketeira/Outros; o seletor de contas abriu e o POST de seleção Administração RunnerHub retornou ao painel administrativo. Não foram salvos cadastros nem habilitadas agências nesses testes. O ciclo completo de delegação com cliente real e perfil médico positivo em produção não foi executado; não confundir os testes locais com essa homologação.
 
-Chrome existente via playwright-cli0.1.18, viewport1280x900 e390x844 com JavaScript desligado. Screenshots inspecionadas em output/playwright. Teclado desktop Tab/Enter abre Equipe; filtro enum real corrigido. Mobile semJS mantém conteúdo, seletor e retorno à carteira por navegação/form POST nativos. A aba Histórico existe na navegação horizontal, mas a interação dedicada mobile não foi concluída (coverage not_run). O fluxo completo foi executado via HTTP real, sem duplicação integral em browser.
+## Evidências e recuperação
 
-Fixture usa UTF-8 de template/web/resource e JVM file.encoding UTF-8; a primeira tentativa herdou LC_ALL=C/US-ASCII. Somente config temporária da engine foi corrigida, nunca os textos para screenshot. Assets remotos foram suprimidos somente na fixture, autenticação/provedor sintéticos. Não usar hooks locais de bootstrap em runtime distribuído.
+Backup privado no servidor: `/var/backups/business-agencies.9e63d359efd2`. Contém baseline dos arquivos, catálogo anterior, recibos de migração/publicação, correção de Eventos e configuração anterior à ativação. Não restaurar cegamente o runtime antigo após uso delegado: isso pode remover a proteção de formulários antigos. Uma desativação deve preservar guardas, schema, auditoria e dados; configurar false também precisa atualizar o APPLICATION vivo. Operações já autorizadas em andamento podem terminar.
 
-## Atualização de instalação — 04/10/2026
+Evidências locais em `.superpowers/sdd/2026-10-03-contas-gestoras/`: `production-final-verification.json`, `production-published.json`, `production-events-include-fix.json`, `production-feature-enabled.json`, `production-enabled-verified.json`, `production-compatibility-installed.json` e `task-11-all-final.log`.
 
-Migração estrutural aditiva executada e verificada em produção:8 tabelas, marcador versão1. Backup do catálogo anterior em `/var/backups/business-agencies.9e63d359efd2/database-before-schema.json`. Não foram aplicados GRANTs, migrations Ads, habilitação ou upload de runtime. A comparação da estrutura foi validada corrigindo somente ordenação dos índices e precisão bigint da referência WIP local; não houve ajuste da estrutura instalada. Se a execução anterior do SQL de permissões falhou, executar ROLLBACK nessa conexão antes de tentar novamente.
+A construção de novo publicador foi interrompida por instrução do usuário. Os scripts WIP da Task12 não foram integrados. A publicação reutilizou o mecanismo existente. Não foram realizados commit, branch, push ou PR.
 
-## Publicação — 04/10/2026
+## Testes locais
 
-Após o usuário executar os GRANTs, todas as permissões foram verificadas. As duas migrations Ads foram aplicadas juntas em uma transação, com comparação exata de catálogo antes/depois e backup. Os80 arquivos de runtime foram publicados e conferidos pelo publicador existente. Não houve commit ou push.
-
-No Chrome autenticado, administração/listagem/detalhe de conta e Publicidade carregaram. Eventos revelou redeclaração de funções no Adobe ao incluir os mesmos auxiliares por dois handlers. Corrigidos somente os dois pontos de include com guarda da função já definida em VARIABLES, publicados com backup próprio; a página passou a listar normalmente os eventos. A verificação final cobre os80 hashes com essas duas correções.
-
-**A funcionalidade permanece desligada globalmente.** A revisão automática rejeitou a ativação por falta de autorização clara para mudança global de acesso. Autorização específica foi solicitada. Nenhuma configuração de ativação, agência ou vínculo de cliente foi alterado. Testes de fluxos delegados habilitados em produção permanecem pendentes. Evidências atuais: `.superpowers/sdd/2026-10-03-contas-gestoras/production-final-verification.json`, `production-db-final-verified.json`, `production-published.json` e `production-events-include-fix.json`.
+`node _codex/scripts/test_account_delegation.mjs --suite all` executa schema, policy, lifecycle, accounts, boundary, receiver, workspace, ads-db, ads, events e http em bancos/servlets isolados. Executar sequencialmente por causa da porta interna8779 do RunWAR. A matriz detalhada está em `_codex/tests/account-delegation/coverage.json`.

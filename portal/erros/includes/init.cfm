@@ -14,6 +14,6 @@ function etField(required string name,any fallback="") {return structKeyExists(F
 etProblemId=etPositive(URL.problem_id ?: "") ? val(URL.problem_id) : 0;
 etFilters={scope=(URL.scope ?: "recent")=="all" ? "all" : "recent",status=URL.status ?: "",category=URL.category ?: "",site=left(URL.triage_site ?: "",32),page=max(1,int(val(URL.page ?: 1)))};
 if(len(etFilters.status) && !structKeyExists(etStatuses,etFilters.status))etFilters.status="";
-if(len(etFilters.category) && !structKeyExists(etCategories,etFilters.category))etFilters.category="";
+if(len(etFilters.category) && etFilters.category!="all" && !structKeyExists(etCategories,etFilters.category))etFilters.category="";
 etOwners=queryExecute("SELECT id,name FROM tb_usuarios WHERE is_admin=true ORDER BY name",{},{datasource="runner_dba"});
 </cfscript>

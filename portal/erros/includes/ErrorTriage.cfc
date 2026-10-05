@@ -45,17 +45,87 @@ component output="false" {
         }
         return result;
     }
+    // Operator-only maintenance: preview first, then apply exactly that plan. No original log is changed.
+    public struct function regroupFingerprints(required numeric actorId,boolean apply=false,string expectedPlan="") {
+        var result={groups=[],skipped=[],mergedProblems=0,movedOccurrences=0,applied=false};
+        transaction {
+            lockSettings();
+            // Same first lock as the collector; problem locks also serialize edits and manual moves.
+            db("SELECT id FROM @.tb_error_collector WHERE id=1 FOR UPDATE");
+            var problems=db("SELECT p.*,NOT EXISTS(SELECT 1 FROM @.tb_error_history h WHERE h.problem_id=p.id AND h.action NOT IN ('created','regrouped_signature','regrouped_in')) AS untouched FROM @.tb_error_problem p WHERE p.occurrences>0 AND p.category<>'not_found' ORDER BY p.id FOR UPDATE OF p");
+            var groups={};var blocked={};
+            for(var p in problems) {
+                var rows=db("SELECT o.id_log,l.site,l.log_item,l.log_item_id FROM @.tb_error_occurrence o LEFT JOIN @.tb_log l ON l.id_log=o.id_log WHERE o.problem_id=:id ORDER BY o.id_log",{id=num(p.id)});
+                var signature="";var valid=rows.recordCount==p.occurrences;var normalized={};var seen=[];
+                for(var row in rows) {
+                    normalized=variables.normalizer.normalize(row);
+                    if(!listFind("fingerprint,legacy_exception",normalized.confidence)) {valid=false;continue;}
+                    arrayAppend(seen,normalized.signature);
+                    if(len(signature) && signature!=normalized.signature)valid=false;
+                    signature=normalized.signature;
+                }
+                var untouched=p.untouched && (p.title=="Erro a classificar" || p.title==(normalized.title ?: "")) && p.status=="new" && p.category==p.suggested_category && !len(p.analysis) && !len(p.proposal) && !len(p.evidence) && !len(p.owner_id ?: "") && !len(p.published_at ?: "");
+                if(!valid || !untouched) {
+                    for(var sig in seen)blocked[sig]=true;
+                    arrayAppend(result.skipped,p.id);continue;
+                }
+                if(!len(signature))continue;
+                if(!structKeyExists(groups,signature))groups[signature]={signature=signature,target=p.id,members=[],occurrences=0,title=normalized.title,category=normalized.suggestedCategory,confidence=normalized.confidence};
+                arrayAppend(groups[signature].members,{id=p.id,version=p.version,signature=p.signature,occurrences=p.occurrences});
+                groups[signature].occurrences+=p.occurrences;
+            }
+            for(var sig in structSort(groups,"text","asc","signature")) {
+                var group=groups[sig];
+                if(structKeyExists(blocked,sig)) {for(var member in group.members)arrayAppend(result.skipped,member.id);continue;}
+                // Respect an existing signature owner even when it was emptied or manually treated.
+                var owner=db("SELECT id FROM @.tb_error_problem WHERE signature=:sig",{sig=txt(sig)});
+                if(owner.recordCount) {
+                    var found=false;for(var member in group.members)if(member.id==owner.id[1]){group.target=member.id;found=true;}
+                    if(!found){for(var member in group.members)arrayAppend(result.skipped,member.id);continue;}
+                }
+                if(arrayLen(group.members)==1 && group.members[1].signature==sig)continue;
+                arrayAppend(result.groups,group);
+                result.mergedProblems+=arrayLen(group.members)-1;
+                for(var member in group.members)if(member.id!=group.target)result.movedOccurrences+=member.occurrences;
+            }
+            result.plan=lCase(hash(serializeJSON(result.groups),"SHA-256"));
+            if(arguments.apply) {
+                if(!len(arguments.expectedPlan) || compare(result.plan,arguments.expectedPlan)!=0)throw(type="Triage.Conflict",message="O plano de agrupamento mudou. Gere uma nova prévia.");
+                for(var group in result.groups) {
+                    db("UPDATE @.tb_error_problem SET signature=:sig,title=:title,category=:category,suggested_category=:category,version=version+1,updated_at=now() WHERE id=:id",{sig=txt(group.signature),title=txt(group.title),category=txt(group.category),id=num(group.target)});
+                    history(group.target,"regrouped_signature",actorId,"new","new","Identidade da exceção (" & group.confidence & "): " & group.signature);
+                    for(var member in group.members) {
+                        if(member.id==group.target)continue;
+                        db("UPDATE @.tb_error_occurrence SET problem_id=:target,confidence=:confidence WHERE problem_id=:source",{target=num(group.target),source=num(member.id),confidence=txt(group.confidence)});
+                        db("UPDATE @.tb_error_problem SET occurrences=0,status='ignored',version=version+1,updated_at=now() WHERE id=:id",{id=num(member.id)});
+                        history(member.id,"regrouped_out",actorId,"new","ignored","Duplicata consolidada no problema " & group.target & "; " & member.occurrences & " ocorrências preservadas.");
+                        history(group.target,"regrouped_in",actorId,"new","new","Recebeu " & member.occurrences & " ocorrências do problema " & member.id & ". Histórico original preservado nesse ID.");
+                    }
+                    db("UPDATE @.tb_error_occurrence SET confidence=:confidence WHERE problem_id=:id",{id=num(group.target),confidence=txt(group.confidence)});
+                    recount(group.target);
+                }
+                result.applied=true;
+            }
+        }
+        return result;
+    }
     public struct function list(struct filters={}) {
         var result={};
         result.collector=db("SELECT *,to_char(localtimestamp,'YYYY-MM-DD HH24:MI:SS') AS database_now,current_setting('TimeZone') AS timezone FROM @.tb_error_collector WHERE id=1");
         var allHistory=(arguments.filters.scope ?: "recent")=="all";
-        var windowWhere=" WHERE 1=1";var windowParams={};
+        var windowWhere=" WHERE NOT (occurrences=0 AND EXISTS(SELECT 1 FROM @.tb_error_history gh WHERE gh.problem_id=tb_error_problem.id AND gh.action='regrouped_out'))";var windowParams={};
         if(!allHistory && result.collector.recordCount) {
             windowWhere &= " AND last_seen>=:start";
             windowParams.start={value=result.collector.started_at[1],cfsqltype="cf_sql_timestamp"};
         }
+        var category=trim(arguments.filters.category ?: "");
+        if(!len(category)) windowWhere &= " AND category<>'not_found'";
+        else if(category!="all") {
+            windowWhere &= " AND category=:category";
+            windowParams.category=txt(category);
+        }
         var where=windowWhere;var params=duplicate(windowParams);
-        for(var key in ['status','category','site']) {
+        for(var key in ['status','site']) {
             if(structKeyExists(arguments.filters,key) && len(trim(arguments.filters[key]))) {
                 where &= " AND " & key & "=:" & key;params[key]=txt(trim(arguments.filters[key]));
             }

@@ -28,28 +28,24 @@ Banco:
 ## Endpoint
 
 ```text
-GET https://business.roadrunners.run/api/portal/runner-apps/
+GET https://api.roadrunners.run/v1/discovery/runner-apps.cfm
 ```
 
-O endpoint e publico, somente leitura, e retorna apenas grupos e itens ativos por padrao.
+O endpoint é público, somente leitura, e retorna exclusivamente grupos e itens ativos. `GET` e `HEAD` são permitidos, `OPTIONS` retorna 204 e outros métodos retornam 405. Outros endpoints da API conservam sua autenticação.
+
+O endereço legado `https://business.roadrunners.run/api/portal/runner-apps/` responde 308 para o endereço canônico. Não consulta o banco nem inicializa o portal administrativo. O cadastro e as regras permanecem no Business, no componente `api/portal/runner-apps/Catalog.cfc`. A API pública usa esse componente por mapeamento local, sem requisição HTTP ao Business.
 
 ## Parametros
 
 | Parametro | Obrigatorio | Padrao | Descricao |
 | --- | --- | --- | --- |
-| `incluir_ocultos` | Nao | `0` | Quando `1`, retorna tambem grupos e itens ocultos. Deve ser usado apenas para diagnostico/admin. |
+| `incluir_ocultos` | Não aceito | — | Qualquer presença retorna 400; dados ocultos nunca fazem parte do catálogo público. |
 | `linha` | Nao | todas | Quando `principal`, retorna somente o grupo `Apps Principais` e seus aplicativos. |
-
-Exemplo:
-
-```text
-https://business.roadrunners.run/api/portal/runner-apps/?incluir_ocultos=1
-```
 
 Para exibir somente os Apps Principais:
 
 ```text
-https://business.roadrunners.run/api/portal/runner-apps/?linha=principal
+https://api.roadrunners.run/v1/discovery/runner-apps.cfm?linha=principal
 ```
 
 O filtro preserva o contrato da resposta: `groups` contém apenas `Apps Principais` e `items` contém somente os aplicativos desse grupo. Outros valores para `linha` retornam HTTP `400` com `status = "invalid_parameter"`.
@@ -122,37 +118,15 @@ O consumidor deve:
 
 No `Road Runners`, o fallback estatico continua existindo no proprio `menu_apps_data.cfm`.
 
-## Exemplo CFML
+## Cache e configuração
 
-```cfml
-<cfset runnerAppsMenuApiUrl = "https://business.roadrunners.run/api/portal/runner-apps/"/>
+O cabeçalho entrega imediatamente o último catálogo válido ou o fallback estático. Uma única atualização em background é iniciada por aplicação quando o cache de 300 segundos vence. Falhas preservam o catálogo anterior e aguardam 60 segundos antes da próxima tentativa. O HTTP tem timeout de 3 segundos e nunca bloqueia a renderização da página.
 
-<cftry>
-    <cfhttp url="#runnerAppsMenuApiUrl#" method="get" timeout="3" result="runnerAppsMenuApiResponse">
-        <cfhttpparam type="header" name="Accept" value="application/json"/>
-    </cfhttp>
+Implementação no RoadRunners: `services/RunnerAppsMenuCache.cfc`, `services/RunnerAppsHttpSource.cfc` e `services/runner_apps_menu_factory.cfm`. A factory resolve os componentes ao lado dela; isso também permite o uso do cabeçalho pelo OpenResults.
 
-    <cfif left(runnerAppsMenuApiResponse.statusCode, 3) EQ "200"
-        AND isJSON(runnerAppsMenuApiResponse.fileContent)>
+No bootstrap da API, `RR_RUNNER_APPS_CATALOG_PATH` pode substituir o caminho padrão `/var/www/business.roadrunners.run/api/portal/runner-apps`. O componente usa o datasource existente `runner_dba`; não foram alteradas permissões do banco. Instalações separadas precisam fornecer o componente pelo processo de deployment antes de ativar esse endpoint.
 
-        <cfset runnerAppsPayload = deserializeJSON(runnerAppsMenuApiResponse.fileContent)/>
-
-        <cfif isStruct(runnerAppsPayload)
-            AND structKeyExists(runnerAppsPayload, "success")
-            AND runnerAppsPayload.success
-            AND structKeyExists(runnerAppsPayload, "groups")
-            AND isArray(runnerAppsPayload.groups)>
-
-            <cfset REQUEST.runnerAppsMenuGroups = runnerAppsPayload.groups/>
-            <cfset REQUEST.runnerAppsMenuItems = runnerAppsPayload.items/>
-            <cfset REQUEST.runnerAppsMenuPoweredBy = runnerAppsPayload.poweredBy/>
-        </cfif>
-    </cfif>
-<cfcatch type="any">
-    <!-- usar fallback local -->
-</cfcatch>
-</cftry>
-```
+A resposta pública usa `Cache-Control: public, max-age=60, s-maxage=300, stale-if-error=86400`.
 
 ## Renderizacao recomendada
 
@@ -173,8 +147,8 @@ No `Road Runners`, o fallback estatico continua existindo no proprio `menu_apps_
 
 O projeto `Road Runners` ja foi adaptado para:
 
-- consumir a API do `Business`
-- manter cache de 5 minutos
+- consumir o catálogo público em `api.roadrunners.run`
+- manter cache de 5 minutos com atualização única em background e intervalo de 60 segundos após falha
 - preservar fallback estatico
 - manter os dois grupos para gestao e ordenacao
 - renderizar a lista plana em um unico grid em `menu_apps.cfm` e `header_slim.cfm`
@@ -189,7 +163,7 @@ Arquivos envolvidos:
 ## Cuidados
 
 - Nao remova o fallback estatico do consumidor.
-- Nao use `incluir_ocultos=1` em producao publica.
+- `incluir_ocultos` não é permitido no contrato público.
 - Em sites multilíngues, o consumidor pode sobrescrever o item de home localmente quando `href = "/"`.
 - A ordenacao vem pronta da API: `groups[].order` e `items[].order`.
 - A quantidade de icones e configurada individualmente em cada grupo e vem em `groups[].itemsPerRow`.

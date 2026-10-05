@@ -7,11 +7,13 @@
 <cfheader name="Referrer-Policy" value="no-referrer"/>
 <cfscript>
 oauthAiMails=false;
+oauthSeoGa4=false;
 try {
     lock name="RunnerHubBusiness.GoogleAgenda" type="exclusive" timeout="60" {
         if (!structKeyExists(session,"agendaOAuth") || !structKeyExists(url,"state") || compare(url.state,session.agendaOAuth.state)!=0 || session.agendaOAuth.actor!=val(qPerfil.id) || dateCompare(now(),session.agendaOAuth.expires)>0) agendaFail("A autorização expirou ou é inválida. Clique em Conectar Google novamente.");
         oauth=session.agendaOAuth;
         oauthAiMails=structKeyExists(oauth,"aiMails") && oauth.aiMails;
+        oauthSeoGa4=structKeyExists(oauth,"seoGa4") && oauth.seoGa4;
         structDelete(session,"agendaOAuth");
         if (structKeyExists(url,"error") || !structKeyExists(url,"code")) agendaFail("A autorização foi cancelada. Tente conectar novamente.");
         c=agendaConfig();
@@ -24,6 +26,8 @@ try {
         previousConnection=agendaDb("SELECT scopes FROM public.tb_google_agenda_conexao WHERE id=1");
         preserveGmail=oauthAiMails || (previousConnection.recordCount && listFind(previousConnection.scopes,"https://www.googleapis.com/auth/gmail.readonly"," "));
         if(preserveGmail && !listFind(token.data.scope,"https://www.googleapis.com/auth/gmail.readonly"," ")) agendaFail("Autorize a leitura do Gmail. A conexão anterior foi preservada.");
+        preserveAnalytics=oauthSeoGa4 || (previousConnection.recordCount && listFind(previousConnection.scopes,"https://www.googleapis.com/auth/analytics.readonly"," "));
+        if(preserveAnalytics && !listFind(token.data.scope,"https://www.googleapis.com/auth/analytics.readonly"," ")) agendaFail("Autorize a leitura do Analytics. A conexão anterior foi preservada.");
         if (!structKeyExists(token.data,"refresh_token") || !len(token.data.refresh_token)) agendaFail("O Google não forneceu acesso offline. A conexão anterior foi preservada; tente autorizar novamente.");
         audit=agendaAudit("connect");
         transaction {
@@ -31,12 +35,14 @@ try {
             agendaAuditEnd(audit,"success");
         }
         structDelete(application,"agendaAccess");
+        if(oauthSeoGa4) session.seoGa4Message="Analytics autorizado. Selecione a propriedade do Road Runners para carregar os dados.";
         session.agendaMessage="Conta Google conectada. Configure as agendas e, em Documentos, crie a pasta raiz do Business.";
         if(oauthAiMails) session.aiMailMessage="Gmail autorizado. Abra Configurações para confirmar o processamento e ativar o monitor.";
     }
 } catch(any error) {
     session.agendaMessage=error.type=="Agenda.Validation" ? error.message : "Não foi possível conectar a Agenda. Verifique a configuração do servidor e tente novamente.";
     if(oauthAiMails) session.aiMailMessage=session.agendaMessage;
+    if(oauthSeoGa4) session.seoGa4Message=session.agendaMessage;
 }
-location(url=oauthAiMails?"/administracao/ai-mails/":"/administracao/agenda/",addtoken=false);
+location(url=oauthSeoGa4?"/portal/seo/?aba=ga4":oauthAiMails?"/administracao/ai-mails/":"/administracao/agenda/",addtoken=false);
 </cfscript>

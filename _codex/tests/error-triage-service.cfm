@@ -88,6 +88,10 @@ testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) 
  triageAssert(svc.list({}).pendingLogs==1,"Pending count reports remaining logs");
  triageAssert(svc.collect(1).processed==1 && svc.list({}).pendingLogs==0,"Expanded 404 path no longer blocks a whole batch");
  target404=testDb("SELECT problem_id FROM " & testSchema & ".tb_error_occurrence WHERE id_log=300").problem_id[1];
+ defaultQueue=svc.list({});with404=svc.list({category="all"});only404=svc.list({category="not_found"});
+ triageAssert(with404.total==defaultQueue.total+only404.total && only404.total==1,"Default queue excludes ordinary 404s; explicit category keeps them accessible");
+ triageAssert(defaultQueue.stats.total[1]==defaultQueue.total,"Default pending cards exclude 404s too");
+
  testDb("UPDATE " & testSchema & ".tb_error_occurrence SET path='/{omitido}' WHERE id_log=300");
  recovered=svc.detail(target404);export404=svc.exportProblems([target404]);
  triageAssert(recovered.occurrences.path[1]=="/" & repeatString("x/",100),"Previously omitted path restored from original log on read");
@@ -139,5 +143,53 @@ testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) 
  imagesPage=svc.missingImages({site="RR",page=999});
  triageAssert(imagesPage.total==29 && imagesPage.page==2 && imagesPage.items.recordCount==4,"Image pagination includes all paths and clamps out-of-range pages");
  triageAssert(svc.missingImages({site="RR"}).items.path[1]=="/page-525.webp","Image view defaults to newest occurrence first");
+ // Recreate legacy one-log problems, preserving manual work during consolidation.
+ legacyIds={};
+ for(seed in [{log=8001,fp=repeatString("c",64),note=""},{log=8002,fp=repeatString("c",64),note=""},{log=8003,fp=repeatString("d",64),note="Investigação humana"},{log=8004,fp=repeatString("d",64),note=""},{log=8005,fp=repeatString("e",64),note=""}]) {
+  payload=fingerprintFixture(seed.log,seed.fp).log_item_id;
+  testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) VALUES(:id,'erro',:payload,'RR')",{id={value=seed.log,cfsqltype="cf_sql_integer"},payload=payload});
+  created=testDb("INSERT INTO " & testSchema & ".tb_error_problem(signature,site,title,suggested_category,category,occurrences,first_seen,last_seen,analysis) VALUES(:sig,'RR','Erro a classificar','unclassified','unclassified',1,now(),now(),:note) RETURNING id",{sig=hash(seed.log),note=seed.note});
+  legacyIds[seed.log]=created.id[1];
+  testDb("INSERT INTO " & testSchema & ".tb_error_occurrence(id_log,problem_id,occurred_at,confidence) VALUES(:log,:id,now(),'individual')",{log={value=seed.log,cfsqltype="cf_sql_integer"},id={value=created.id[1],cfsqltype="cf_sql_bigint"}});
+ }
+ beforeLogs=testDb("SELECT count(*) AS n FROM " & testSchema & ".tb_log").n[1];
+ beforeQueue=svc.list({category="all"}).total;
+ preview=svc.regroupFingerprints(0);
+ triageAssert(!preview.applied && preview.mergedProblems==1 && preview.movedOccurrences==1,"Regroup preview identifies exact duplicate fingerprints without writing");
+ rejected=false;try{svc.regroupFingerprints(0,true,"outdated");}catch(Triage.Conflict e){rejected=true;}
+ triageAssert(rejected && svc.detail(legacyIds[8001]).problem.occurrences[1]==1,"Stale regroup plan is rejected without mutations");
+ merged=svc.regroupFingerprints(0,true,preview.plan);
+ triageAssert(svc.list({category="all"}).total==beforeQueue-1,"Consolidated empty audit IDs leave the queue without being deleted");
+ triageAssert(merged.applied && svc.detail(legacyIds[8001]).problem.occurrences[1]==2,"Existing duplicates consolidate into one counted problem");
+ triageAssert(svc.detail(legacyIds[8002]).problem.occurrences[1]==0 && svc.detail(legacyIds[8002]).history.recordCount==1,"Duplicate ID and audit history are retained");
+ triageAssert(svc.detail(legacyIds[8003]).problem.analysis[1]=="Investigação humana" && svc.detail(legacyIds[8004]).problem.occurrences[1]==1,"Human-treated fingerprint group is untouched");
+ triageAssert(testDb("SELECT count(*) AS n FROM " & testSchema & ".tb_log").n[1]==beforeLogs,"Regroup preserves every original log");
+ triageAssert(arrayLen(svc.regroupFingerprints(0).groups)==0,"Regroup is idempotent");
+ payload=fingerprintFixture(8006,repeatString("c",64)).log_item_id;
+ testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) VALUES(8006,'erro',:payload,'RR')",{payload=payload});
+ svc.collect(1);
+ triageAssert(svc.detail(legacyIds[8001]).problem.occurrences[1]==3,"Future collection joins the consolidated fingerprint problem");
+ // Legacy CFML logs without reporter fingerprints follow the same conservative maintenance path.
+ legacyCfIds={};
+ for(seed in [{log=9001,componentName="services.RunnerAppsMenuCache",line=200,note=""},{log=9002,componentName="services.RunnerAppsMenuCache",line=200,note=""},{log=9003,componentName="services.RunnerAppsMenuCache",line=201,note=""},{log=9004,componentName="services.Other",line=200,note="Análise preservada"},{log=9005,componentName="services.Other",line=200,note=""}]) {
+  payload=legacyFixture(seed.log,seed.componentName,seed.line).log_item_id;
+  testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) VALUES(:id,'erro',:payload,'OR')",{id={value=seed.log,cfsqltype="cf_sql_integer"},payload=payload});
+  created=testDb("INSERT INTO " & testSchema & ".tb_error_problem(signature,site,title,suggested_category,category,occurrences,first_seen,last_seen,analysis) VALUES(:sig,'OR','Erro a classificar','unclassified','unclassified',1,now(),now(),:note) RETURNING id",{sig=hash(seed.log),note=seed.note});
+  legacyCfIds[seed.log]=created.id[1];
+  testDb("INSERT INTO " & testSchema & ".tb_error_occurrence(id_log,problem_id,occurred_at,confidence) VALUES(:log,:id,now(),'individual')",{log={value=seed.log,cfsqltype="cf_sql_integer"},id={value=created.id[1],cfsqltype="cf_sql_bigint"}});
+ }
+ beforeLogs=testDb("SELECT count(*) AS n FROM " & testSchema & ".tb_log").n[1];
+ preview=svc.regroupFingerprints(0);
+ triageAssert(preview.mergedProblems==1,"Legacy CFML preview groups only equal exceptions");
+ svc.regroupFingerprints(0,true,preview.plan);
+ triageAssert(svc.detail(legacyCfIds[9001]).problem.occurrences[1]==2,"Legacy duplicate occurrences consolidated");
+ triageAssert(svc.detail(legacyCfIds[9003]).problem.occurrences[1]==1,"Different source lines not merged by maintenance");
+ triageAssert(svc.detail(legacyCfIds[9004]).problem.analysis[1]=="Análise preservada" && svc.detail(legacyCfIds[9005]).problem.occurrences[1]==1,"Legacy manual investigations and their duplicates remain untouched");
+ triageAssert(testDb("SELECT count(*) AS n FROM " & testSchema & ".tb_log").n[1]==beforeLogs,"Legacy regroup preserves all original logs");
+ triageAssert(testDb("SELECT confidence FROM " & testSchema & ".tb_error_occurrence WHERE id_log=9002").confidence[1]=="legacy_exception","Maintenance preserves legacy identity confidence");
+ triageAssert(arrayLen(svc.regroupFingerprints(0).groups)==0,"Legacy regroup is idempotent");
+ payload=legacyFixture(9006).log_item_id;
+ testDb("INSERT INTO " & testSchema & ".tb_log(id_log,log_item,log_item_id,site) VALUES(9006,'erro',:payload,'OR')",{payload=payload});svc.collect(1);
+ triageAssert(svc.detail(legacyCfIds[9001]).problem.occurrences[1]==3,"Future legacy exceptions join the consolidated problem");
 } finally {testDb("DROP SCHEMA " & testSchema & " CASCADE");}
 </cfscript>

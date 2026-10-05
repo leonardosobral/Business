@@ -30,6 +30,9 @@
                         </li>
                         <cfif VARIABLES.adminIsAdmin>
                             <li class="nav-item" role="presentation">
+                                <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "fontes">active</cfif> px-3" id="ex1-tab-8" href="#ex1-tabs-8" role="tab" aria-controls="ex1-tabs-8" aria-selected="<cfoutput>#URL.sessao EQ 'fontes' ? 'true' : 'false'#</cfoutput>">Fontes e revisões</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <a data-mdb-tab-init class="nav-link <cfif URL.sessao EQ "inscricoes">active</cfif> px-3" id="ex1-tab-7" href="#ex1-tabs-7" role="tab" aria-controls="ex1-tabs-7" aria-selected="<cfoutput>#URL.sessao EQ 'inscricoes' ? 'true' : 'false'#</cfoutput>">Inscrições</a>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -287,6 +290,7 @@
                     <cfif VARIABLES.adminIsAdmin>
 
                         <cfinclude template="form_edicao_inscricoes.cfm"/>
+                        <cfinclude template="form_edicao_fontes.cfm"/>
 
                         <!--- CONFIGURACOES --->
 

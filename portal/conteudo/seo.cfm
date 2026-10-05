@@ -6,9 +6,9 @@
 <cfscript>
 VARIABLES.seoTab = "relatorio";
 if (VARIABLES.seoQueueSiteFilter NEQ "all" OR VARIABLES.seoQueuePriorityFilter NEQ "all") VARIABLES.seoTab = "fila";
-if (structKeyExists(URL,"aba") AND isSimpleValue(URL.aba) AND listFind("relatorio,ia,fila",URL.aba)) VARIABLES.seoTab = URL.aba;
+if (structKeyExists(URL,"aba") AND isSimpleValue(URL.aba) AND listFind("relatorio,ia,fila,semrush,ga4",URL.aba)) VARIABLES.seoTab = URL.aba;
 VARIABLES.seoTabFilters = "&site=" & VARIABLES.seoQueueSiteFilter & "&prioridade=" & VARIABLES.seoQueuePriorityFilter & "&verificacao=" & VARIABLES.seoScoreFilter;
-VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ia",label="SEO para IA"},{id="fila",label="Fila de correções"}];
+VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",label="Audiência Google"},{id="semrush",label="Semrush"},{id="ia",label="SEO para IA"},{id="fila",label="Fila de correções"}];
 </cfscript>
 
 <style>
@@ -152,6 +152,10 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ia",label
     </nav>
     <cfif VARIABLES.seoTab EQ "relatorio">
       <cfinclude template="seo_report.cfm"/>
+    <cfelseif VARIABLES.seoTab EQ "ga4">
+      <cfinclude template="seo_ga4.cfm"/>
+    <cfelseif VARIABLES.seoTab EQ "semrush">
+      <cfinclude template="seo_semrush.cfm"/>
     <cfelseif VARIABLES.seoTab EQ "ia">
       <cfinclude template="seo_ai.cfm"/>
     <cfelse>

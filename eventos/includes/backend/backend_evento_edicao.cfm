@@ -62,6 +62,7 @@
 </cfif>
 
 <cfinclude template="inscricao_disponibilidade.cfm"/>
+<cfinclude template="fontes_revisoes.cfm"/>
 
 <!--- EDITAR CONFIGURACOES DO EVENTO --->
 

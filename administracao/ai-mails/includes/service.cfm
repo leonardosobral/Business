@@ -115,7 +115,10 @@ function mailOAuth() {
     var c=agendaConfig(); var state=agendaRandom(); var verifier=agendaRandom()&agendaRandom();
     session.agendaOAuth={state=state,verifier=verifier,actor=val(qPerfil.id),expires=dateAdd("n",10,now()),aiMails=true};
     var challenge=replace(replace(replace(toBase64(binaryDecode(hash(verifier,"SHA-256"),"hex")),"+","-","all"),"/","_","all"),"=","","all");
-    var args={"client_id"=c.CLIENT_ID,"redirect_uri"=c.redirectUri,"response_type"="code","scope"=c.scopes&" https://www.googleapis.com/auth/gmail.readonly","include_granted_scopes"="true","access_type"="offline","prompt"="consent select_account","login_hint"=c.email,"state"=state,"code_challenge"=challenge,"code_challenge_method"="S256"};
+    var analyticsPrior=agendaDb("SELECT scopes FROM public.tb_google_agenda_conexao WHERE id=1");
+    var mailScopes=c.scopes&" https://www.googleapis.com/auth/gmail.readonly";
+    if(analyticsPrior.recordCount && listFind(analyticsPrior.scopes,"https://www.googleapis.com/auth/analytics.readonly"," ")) mailScopes&=" https://www.googleapis.com/auth/analytics.readonly";
+    var args={"client_id"=c.CLIENT_ID,"redirect_uri"=c.redirectUri,"response_type"="code","scope"=mailScopes,"include_granted_scopes"="true","access_type"="offline","prompt"="consent select_account","login_hint"=c.email,"state"=state,"code_challenge"=challenge,"code_challenge_method"="S256"};
     var pairs=[];for(var key in args) arrayAppend(pairs,encodeForURL(key)&"="&encodeForURL(args[key]));
     return {url="https://accounts.google.com/o/oauth2/v2/auth?"&arrayToList(pairs,"&")};
 }

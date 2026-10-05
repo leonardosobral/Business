@@ -42,4 +42,36 @@ for(sensitivePath in ['/debug/192.168.1.1','/reset/abc123secret','/users/johnsmi
 // Short untrusted segments expand during sanitization; the stored sample must remain bounded.
 expanded404={id_log=95,site="RR",log_item="404",log_item_id="/" & repeatString("x/",100)};
 triageAssert(len(n.normalize(expanded404).path)<=320,"Expanded sanitized 404 fits occurrence storage");
+encoded=fixture(96,"&lt;script&gt;alert(1)&lt;/script&gt;", "RR", "&##x2f;var&##x2f;www&##x2f;rr&##x2f;api&##x2f;analytics&##x2f;collect.cfm");
+triageAssert(n.evidence(encoded).path=="/var/www/rr/api/analytics/collect.cfm","HTML entity encoded paths are readable in evidence");
+triageAssert(n.evidence(encoded).message=="<script>alert(1)</script>","Decode evidence once; rendering still escapes untrusted text");
+function fingerprintFixture(required numeric id,string fingerprint=repeatString("a",64),string environment="prod",string path="/var/www/rr/api/analytics/collect.cfm",string site="RR") {
+ var row=fixture(id,"Erro interno ao processar a solicitação.",site,encodeForHTML(path));
+ row.log_item_id &= '<table><tr><td>FINGERPRINT</td><td>' & fingerprint & '</td></tr><tr><td>ENVIRONMENT</td><td>' & environment & '</td></tr></table>';
+ return row;
+}
+fpA=n.normalize(fingerprintFixture(1001));fpB=n.normalize(fingerprintFixture(1002));
+triageAssert(fpA.confidence=="fingerprint" && fpA.signature==fpB.signature,"Reporter fingerprints group generic encoded error logs");
+triageAssert(fpA.signature!=n.normalize(fingerprintFixture(1003,repeatString("b",64))).signature,"Different failures in one template remain separate");
+triageAssert(fpA.signature!=n.normalize(fingerprintFixture(id=1004,environment="beta")).signature,"Production and beta fingerprints stay separate");
+triageAssert(fpA.signature!=n.normalize(fingerprintFixture(id=1005,site="OR")).signature,"Reporter identity remains scoped to site");
+triageAssert(n.normalize(fingerprintFixture(1006,"bad")).confidence=="individual","Malformed fingerprint cannot merge generic logs");
+triageAssert(fpA.signature==n.normalize(fingerprintFixture(1007,uCase(repeatString("a",64)))).signature,"Fingerprint hex casing is normalized");
+function legacyFixture(required numeric id,string componentName="services.RunnerAppsMenuCache",numeric line=200,string site="OR",string path="/var/www/roadrunners.com.br/includes/estrutura/menu_apps_data.cfm") {
+ var row=fixture(id,"Could not find the ColdFusion component or interface " & componentName & ".",site,encodeForHTML(path));
+ row.log_item_id=replace(row.log_item_id,"Expression","CFML");
+ row.log_item_id &= '<table><tr><td>LINE</td><td>' & line & '</td></tr><tr><td>DETAIL</td><td>Ensure that the component exists.</td></tr></table>';
+ return row;
+}
+legacyA=n.normalize(legacyFixture(1101));legacyB=n.normalize(legacyFixture(1102));
+triageAssert(legacyA.confidence=="legacy_exception" && legacyA.signature==legacyB.signature,"Legacy CFML exceptions group without reporter fingerprint");
+triageAssert(legacyA.signature!=n.normalize(legacyFixture(1103,"services.OtherComponent")).signature,"Different missing components stay separate");
+triageAssert(legacyA.signature!=n.normalize(legacyFixture(id=1104,line=201)).signature,"Legacy failures on different lines stay separate");
+triageAssert(legacyA.signature!=n.normalize(legacyFixture(id=1105,site="RR")).signature,"Legacy signatures remain scoped to site");
+triageAssert(legacyA.signature!=n.normalize(legacyFixture(id=1106,path="/var/www/dev.roadrunners.run/includes/estrutura/menu_apps_data.cfm")).signature,"Legacy virtual hosts stay separate");
+triageAssert(n.normalize(legacyFixture(id=1107,line=0)).confidence=="individual","Incomplete legacy identity stays individual");
+legacyPlain=legacyFixture(1108);legacyPlain.log_item_id=replace(legacyPlain.log_item_id,encodeForHTML('/var/www/roadrunners.com.br/includes/estrutura/menu_apps_data.cfm'),'/var/www/roadrunners.com.br/includes/estrutura/menu_apps_data.cfm','all');
+triageAssert(n.normalize(legacyPlain).signature==legacyA.signature,"Encoded and plain legacy paths group equally");
+legacyDifferentDetail=legacyFixture(1109);legacyDifferentDetail.log_item_id=replace(legacyDifferentDetail.log_item_id,'Ensure that the component exists.','Different diagnostic detail.');
+triageAssert(n.normalize(legacyDifferentDetail).signature!=legacyA.signature,"Different legacy diagnostic details stay separate");
 </cfscript>

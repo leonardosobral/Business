@@ -32,6 +32,7 @@ function agendaDispatch() {
         var scopes=c.scopes;
         var prior=agendaDb("SELECT scopes FROM public.tb_google_agenda_conexao WHERE id=1");
         if(prior.recordCount && listFind(prior.scopes,"https://www.googleapis.com/auth/gmail.readonly"," ")) scopes &= " https://www.googleapis.com/auth/gmail.readonly";
+        if(prior.recordCount && listFind(prior.scopes,"https://www.googleapis.com/auth/analytics.readonly"," ")) scopes &= " https://www.googleapis.com/auth/analytics.readonly";
         var args={"client_id"=c.CLIENT_ID,"redirect_uri"=c.redirectUri,"response_type"="code","scope"=scopes,"include_granted_scopes"="true","access_type"="offline","prompt"="consent select_account","login_hint"=c.email,"state"=state,"code_challenge"=challenge,"code_challenge_method"="S256"};
         var pairs=[]; for (var key in args) arrayAppend(pairs,encodeForURL(key) & "=" & encodeForURL(args[key]));
         return {"url"="https://accounts.google.com/o/oauth2/v2/auth?" & arrayToList(pairs,"&")};
