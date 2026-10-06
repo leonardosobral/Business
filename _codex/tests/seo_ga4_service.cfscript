@@ -1,0 +1,40 @@
+report={passed=[]};
+function check(required boolean yes,required string label){if(!arguments.yes)throw(message=arguments.label);arrayAppend(report.passed,arguments.label);}
+function rejects(required any call,required string label){var failed=false;try{arguments.call();}catch(GA4.Validation e){failed=true;}check(failed,arguments.label);}
+periods=ga4Periods(7,"America/Sao_Paulo","2026-10-05");
+check(periods[1].startDate=="2026-09-28" && periods[1].endDate=="2026-10-04","seven complete days");
+check(periods[2].startDate=="2026-09-21" && periods[2].endDate=="2026-09-27","previous nonoverlapping equal window");
+check(ga4Periods(28,"America/Sao_Paulo","2026-03-01")[1].startDate=="2026-02-01","month boundary");
+check(ga4Periods(7,"America/Sao_Paulo","2024-03-01")[1].endDate=="2024-02-29","leap day");
+rejects(function(){ga4Periods(14,"America/Sao_Paulo");},"reject unsupported period");
+requests=ga4Requests(periods);wire=serializeJSON({"requests"=requests});
+check(arrayLen(requests)==5,"five report batch");
+check(find('"dateRanges"',wire)>0 && find('"dimensionFilter"',wire)>0 && find('"startDate"',wire)>0 && find('"orderBys"',wire)>0 && find('"dimensions"',wire)>0,"Google request casing");
+check(arrayLen(requests[1].dateRanges)==2 && arrayLen(requests[2].dateRanges)==1,"only totals compare both windows");
+for(r in requests) check(find('roadrunners.run',serializeJSON(r))>0,"production host filter");
+check(reFind(requests[5].dimensionFilter.andGroup.expressions[2].filter.stringFilter.value,"chatgpt.com")>0,"AI source regex matches ChatGPT");
+rejects(function(){ga4Google("https://attacker.test");},"reject arbitrary endpoint");
+rejects(function(){ga4Property("1/../../x");},"reject invalid property ID");
+variables.calls=[];variables.goodStream=false;
+variables.ga4Google=function(required string path,string method="GET",struct body={},struct params={}){
+ arrayAppend(variables.calls,duplicate(arguments));
+ if(find("/dataStreams",arguments.path))return {dataStreams=[{webStreamData={measurementId=variables.goodStream?"G-7MYGVTEDZV":"G-OTHER"}}]};
+ if(find(":batchRunReports",arguments.path))return deserializeJSON('{"reports":[{"dimensionHeaders":[{"name":"dateRange"}],"metricHeaders":[{"name":"activeUsers"}],"rows":[{"dimensionValues":[{"value":"atual"}],"metricValues":[{"value":"19"}]}]},{},{},{},{}]}');
+ return {displayName="Road Runners",timeZone="America/Sao_Paulo"};
+};
+application.seoGa4Verified={};application.seoGa4Reports={};
+rejects(function(){ga4Property("123");},"wrong property cannot show another site");
+variables.goodStream=true;
+check(ga4Property("123").id=="123","matching measurement ID accepted");
+data=ga4Report("123",7);before=arrayLen(variables.calls);ga4Report("123",7);
+check(arrayLen(variables.calls)==before,"report cache avoids second Google request");
+check(find('"reports"',serializeJSON(data))>0 && find('"timezone"',serializeJSON(data))>0,"browser response casing");
+check(find('"dimensionHeaders"',serializeJSON(data))>0 && find('"metricValues"',serializeJSON(data))>0,"preserve Google report casing");
+check(reFind("^20[0-9]{2}-",data.updated)>0,"timestamp is ISO date");
+variables.agendaConfig=function(){return {CLIENT_ID="test-client",redirectUri="https://business.roadrunners.run/administracao/agenda/oauth/callback.cfm",email="contato@runnerhub.run",scopes="openid email https://www.googleapis.com/auth/drive.file"};};
+variables.agendaDb=function(required string sql,struct params={}){return queryNew("scopes","varchar",[{scopes="https://www.googleapis.com/auth/gmail.readonly"}]);};
+oauth=ga4OAuth();
+check(find("analytics.readonly",urlDecode(oauth.url))>0,"request readonly Analytics");
+check(find("gmail.readonly",urlDecode(oauth.url))>0,"preserve Gmail permission");
+check(find("code_challenge_method=S256",oauth.url)>0 && len(session.agendaOAuth.verifier)>60,"PKCE S256");
+check(session.agendaOAuth.seoGa4 && session.agendaOAuth.actor==1,"OAuth return target and actor");

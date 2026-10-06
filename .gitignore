@@ -1069,3 +1069,9 @@ _codex/analyses/mif_2026_channels/product_mapping.draft.csv
 /_codex/staging/seo-video-language-20261004/test_cfml.py
 /_codex/staging/seo-video-language-20261004/tested-hashes.json
 /_codex/staging/seo-video-language-20261004/watch.json
+
+# Production source baselines can contain private configuration.
+/_codex/staging/seo-indexacao-prioridades-20261005/baseline/
+
+# Baselines read from production for SEO title review.
+/_codex/staging/seo-duplicacoes-20261005/baseline/

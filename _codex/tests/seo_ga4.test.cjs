@@ -1,0 +1,5 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');
+const {change,reportRows,summary,formatDate}=require('../../portal/seo/assets/ga4.js');
+test('Variação não inventa crescimento com base zero',()=>{assert.equal(change(10,0),null);assert.equal(change(125,100),25);assert.equal(change(0,10),-100);});
+test('Mapeia cabeçalhos, datas e métricas sem depender de ordem fixa',()=>{const r={dimensionHeaders:[{name:'date'}],metricHeaders:[{name:'sessions'},{name:'activeUsers'}],rows:[{dimensionValues:[{value:'20260930'}],metricValues:[{value:'20'},{value:'15'}]}]};assert.deepEqual(reportRows(r),[{date:'20260930',sessions:20,activeUsers:15}]);assert.equal(formatDate('20260930'),'30/09/2026');});
+test('Totais usam linhas dos períodos, não a soma dos usuários diários',()=>{const r={dimensionHeaders:[{name:'dateRange'}],metricHeaders:[{name:'activeUsers'}],rows:[{dimensionValues:[{value:'anterior'}],metricValues:[{value:'12'}]},{dimensionValues:[{value:'atual'}],metricValues:[{value:'19'}]}]};assert.equal(summary(r).atual.activeUsers,19);assert.equal(summary(r).anterior.activeUsers,12);assert.deepEqual(reportRows({}),[]);});

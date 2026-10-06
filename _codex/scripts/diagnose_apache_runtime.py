@@ -1,0 +1,10 @@
+"""Read-only Apache/ColdFusion incident diagnostic. Remote fixture is loopback-only and removed after use."""
+from pathlib import Path
+import json,subprocess,shlex
+root=Path(__file__).resolve().parents[2]
+source=(root/'_codex/scripts/deploy_error_triage.py').read_text().split("if __name__=='__main__':")[0].replace('ROOT=Path(__file__).resolve().parents[2]',"ROOT=Path('/var/www/business.roadrunners.run')")
+body='stacks=createObject("java","java.lang.Thread").getAllStackTraces();groups={};total=0;for(t in stacks.keySet().toArray()){try{name=t.getName();if(!reFindNoCase("^(ajp|http|catalina-exec)",name))continue;total++;methods=[];for(f in stacks.get(t))arrayAppend(methods,toString(f.getClassName()) & "." & toString(f.getMethodName()));key=arrayToList(methods," > ");if(!structKeyExists(groups,key))groups[key]={count=0,state=toString(t.getState()),methods=methods};groups[key].count++;}catch(any inaccessibleThread){} }report={threads=total,groups=[]};for(k in groups)arrayAppend(report.groups,groups[k]);q=queryExecute("SELECT state,wait_event_type,wait_event,count(*) AS n FROM pg_stat_activity WHERE pid<>pg_backend_pid() GROUP BY state,wait_event_type,wait_event",{},{datasource="runner_dba",timeout=5});report.database=[];for(r in q)arrayAppend(report.database,r);'
+source+='\nprint(json.dumps(bridge(Path("/var/www/business.roadrunners.run"),'+repr(body)+')))'
+p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10','-o','StrictHostKeyChecking=yes','-i','/Users/leonardosobral/.ssh/webs','root@ssh.runnerhub.run','python3 -c '+shlex.quote(source)],capture_output=True,text=True,timeout=110)
+if p.returncode:print(p.stderr[-1600:]);raise SystemExit(p.returncode)
+r=json.loads(p.stdout);(root/'_codex/staging/apache-capacity-20261004/runtime.json').write_text(json.dumps(r,indent=2));print(json.dumps({'threads':r['THREADS'],'groups':[{'count':g['COUNT'],'state':g['STATE'],'top':g['METHODS'][0],'templates':[x for x in g['METHODS'] if x.startswith('cf') and not x.startswith('coldfusion')]} for g in r['GROUPS']],'database':r['DATABASE']}))
