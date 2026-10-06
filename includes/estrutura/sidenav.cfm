@@ -742,6 +742,12 @@
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Audiência e relacionamento</span></li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/funil/">link-warning</cfif>" href="/portal/funil/" data-menu-aliases="funil conversão clientes pagantes renovação churn produtos">
+                    <i class="fa-solid fa-filter fa-fw me-3"></i><span>Funil</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/audiencia/">link-warning</cfif>" href="/portal/audiencia/" data-menu-aliases="audiência inventário posições acessos analytics potencial regional">
                     <i class="fa-solid fa-chart-area fa-fw me-3"></i><span>Audiência e inventário</span>
                 </a>
