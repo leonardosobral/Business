@@ -386,8 +386,10 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                     </cfloop>
                 </cfif>
 
-                <cfif NOT reFindNoCase("^https://[^[:space:]]+$", VARIABLES.bannerDesktopAssetPath)
-                    OR NOT reFindNoCase("^https://[^[:space:]]+$", VARIABLES.bannerMobileAssetPath)>
+                <!--- Failed uploads have no URL yet; report their field error, not HTTPS. --->
+                <cfif NOT structCount(VARIABLES.bannerFieldErrors)
+                    AND (NOT reFindNoCase("^https://[^[:space:]]+$", VARIABLES.bannerDesktopAssetPath)
+                    OR NOT reFindNoCase("^https://[^[:space:]]+$", VARIABLES.bannerMobileAssetPath))>
                     <cfset arrayAppend(VARIABLES.bannerSaveErrors,
                         "As imagens precisam possuir URLs HTTPS publicas.")/>
                 </cfif>

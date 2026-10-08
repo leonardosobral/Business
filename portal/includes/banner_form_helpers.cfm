@@ -70,6 +70,31 @@ function bannerFormValues(required struct posted, struct saved={}) {
     }
     return v;
 }
+function bannerImagePublicCall(required string contract, required any target, required string method, array types=[], array values=[]) {
+    // Adobe CF introspects concrete Java objects, including non-public ImageIO
+    // iterators/providers. Java 17 forbids that access. Invoke only the exported
+    // public contract; do not setAccessible or relax JVM module permissions.
+    var classes=createObject('java','java.lang.Class');
+    var arrays=createObject('java','java.lang.reflect.Array');
+    var parameterTypes=arrays.newInstance(classes.forName('java.lang.Class'),javaCast('int',arrayLen(arguments.types)));
+    var parameters=arrays.newInstance(classes.forName('java.lang.Object'),javaCast('int',arrayLen(arguments.values)));
+    var index=0; var parameterType=0; var parameterValue=0;
+    for(index=1;index<=arrayLen(arguments.types);index++) {
+        if(arguments.types[index]=='int') {
+            parameterType=createObject('java','java.lang.Integer').TYPE;
+            parameterValue=javaCast('int',arguments.values[index]);
+        } else if(arguments.types[index]=='boolean') {
+            parameterType=createObject('java','java.lang.Boolean').TYPE;
+            parameterValue=javaCast('boolean',arguments.values[index]);
+        } else {
+            parameterType=classes.forName(arguments.types[index]);
+            parameterValue=arguments.values[index];
+        }
+        arrays.set(parameterTypes,javaCast('int',index-1),parameterType);
+        arrays.set(parameters,javaCast('int',index-1),parameterValue);
+    }
+    return classes.forName(arguments.contract).getMethod(arguments.method,parameterTypes).invoke(arguments.target,parameters);
+}
 function bannerImageMetadata(required string path) {
     var f=createObject('java','java.io.File').init(path); var stream=0; var reader=0; var readers=0; var result={};
     var metadata=0; var descriptor=0; var frameIndex=0; var frameCount=1; var frameWidth=0; var frameHeight=0;
@@ -77,14 +102,17 @@ function bannerImageMetadata(required string path) {
     try {
         stream=createObject('java','javax.imageio.ImageIO').createImageInputStream(f);
         readers=createObject('java','javax.imageio.ImageIO').getImageReaders(stream);
-        if(!readers.hasNext()) throw(type='AdsV1.Validation',message='Arquivo inválido. Envie JPG, PNG ou GIF.');
-        reader=readers.next(); reader.setInput(stream);
-        result={extension=lCase(reader.getFormatName()),width=reader.getWidth(0),height=reader.getHeight(0)};
+        if(!bannerImagePublicCall('java.util.Iterator',readers,'hasNext')) throw(type='AdsV1.Validation',message='Arquivo inválido. Envie JPG, PNG ou GIF.');
+        reader=bannerImagePublicCall('java.util.Iterator',readers,'next');
+        bannerImagePublicCall('javax.imageio.ImageReader',reader,'setInput',['java.lang.Object'],[stream]);
+        result={extension=lCase(bannerImagePublicCall('javax.imageio.ImageReader',reader,'getFormatName')),width=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getWidth',['int'],[0]),height=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getHeight',['int'],[0])};
         if(result.extension=='jpeg') result.extension='jpg';
         if(result.extension=='gif') {
             // A GIF frame may occupy only a small rectangle of its displayed canvas.
-            metadata=reader.getStreamMetadata();
-            descriptor=metadata.getAsTree(metadata.getNativeMetadataFormatName()).getElementsByTagName('LogicalScreenDescriptor').item(0);
+            metadata=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getStreamMetadata');
+            descriptor=bannerImagePublicCall('javax.imageio.metadata.IIOMetadata',metadata,'getAsTree',['java.lang.String'],[bannerImagePublicCall('javax.imageio.metadata.IIOMetadata',metadata,'getNativeMetadataFormatName')]);
+            descriptor=bannerImagePublicCall('org.w3c.dom.Element',descriptor,'getElementsByTagName',['java.lang.String'],['LogicalScreenDescriptor']);
+            descriptor=bannerImagePublicCall('org.w3c.dom.NodeList',descriptor,'item',['int'],[0]);
             result.width=val(descriptor.getAttribute('logicalScreenWidth'));
             result.height=val(descriptor.getAttribute('logicalScreenHeight'));
         }
@@ -92,20 +120,26 @@ function bannerImageMetadata(required string path) {
         if(result.extension=='gif') {
             // Scan descriptors without allocating decoded frames. Later animation
             // frames must respect both the canvas and the pixel allocation limit.
-            frameCount=reader.getNumImages(true);
+            frameCount=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getNumImages',['boolean'],[true]);
             for(frameIndex=0;frameIndex<frameCount;frameIndex++) {
-                frameWidth=reader.getWidth(frameIndex); frameHeight=reader.getHeight(frameIndex);
+                frameWidth=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getWidth',['int'],[frameIndex]);
+                frameHeight=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getHeight',['int'],[frameIndex]);
                 if(frameWidth<=0 OR frameHeight<=0 OR frameWidth*frameHeight>40000000) throw(type='AdsV1.Validation',message='Cada quadro GIF deve ter até 40 megapixels.');
-                metadata=reader.getImageMetadata(frameIndex);
-                descriptor=metadata.getAsTree(metadata.getNativeMetadataFormatName()).getElementsByTagName('ImageDescriptor').item(0);
+                metadata=bannerImagePublicCall('javax.imageio.ImageReader',reader,'getImageMetadata',['int'],[frameIndex]);
+                descriptor=bannerImagePublicCall('javax.imageio.metadata.IIOMetadata',metadata,'getAsTree',['java.lang.String'],[bannerImagePublicCall('javax.imageio.metadata.IIOMetadata',metadata,'getNativeMetadataFormatName')]);
+                descriptor=bannerImagePublicCall('org.w3c.dom.Element',descriptor,'getElementsByTagName',['java.lang.String'],['ImageDescriptor']);
+                descriptor=bannerImagePublicCall('org.w3c.dom.NodeList',descriptor,'item',['int'],[0]);
                 if(val(descriptor.getAttribute('imageLeftPosition'))+frameWidth>result.width OR val(descriptor.getAttribute('imageTopPosition'))+frameHeight>result.height) throw(type='AdsV1.Validation',message='Quadro GIF fora das dimensões da imagem.');
             }
         }
         // Decode only after the header's dimensions pass the allocation cap. Original bytes are kept.
-        reader.read(0);
+        bannerImagePublicCall('javax.imageio.ImageReader',reader,'read',['int'],[0]);
         return result;
     } catch(AdsV1.Validation e) { rethrow; }
     catch(any e) { throw(type='AdsV1.Validation',message='Não foi possível decodificar a imagem. Envie JPG, PNG ou GIF válido.'); }
-    finally { if(isObject(reader)) reader.dispose(); if(isObject(stream)) stream.close(); }
+    finally {
+        if(isObject(reader)) bannerImagePublicCall('javax.imageio.ImageReader',reader,'dispose');
+        if(isObject(stream)) stream.close();
+    }
 }
 </cfscript>
